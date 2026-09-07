@@ -42,7 +42,7 @@ flowchart TD
 | [Triage labels](triage-labels.md) | Triage label vocabulary |
 | [Skills map](skills-map.md) | Full skills inventory |
 | [Skill inventory](skill-inventory.md) | Per-skill status table |
-| [Slash command map](slash-command-map.md) | Flat and categorized alias map |
+| [Slash command map](slash-command-map.md) | Flat alias map |
 | [Skill templates](skill-templates.md) | Artifact templates map |
 | [Adoption guide](adoption-guide.md) | Installation and sync |
 | [Stack matrix](stack-matrix.md) | Stack-specific skills |

@@ -70,30 +70,21 @@ async function recreateClaudeLinks() {
   const claudeRoot = path.join(targetRoot, '.claude', 'skills');
   const skillsRoot = path.join(targetRoot, '.agents', 'skills');
   await fs.mkdir(claudeRoot, { recursive: true });
-  const topLevelEntries = new Set((await fs.readdir(skillsRoot, { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory() && entry.name !== 'platform')
-    .map((entry) => entry.name));
   async function linkSkill(skillDir) {
-    const rel = path.relative(skillsRoot, skillDir);
     const flatName = path.basename(skillDir);
     const flatPath = path.join(claudeRoot, flatName);
-    const nestedPath = path.join(claudeRoot, rel);
-    const targetFor = (linkPath) => path.relative(path.dirname(linkPath), skillDir);
-    const linkPaths = [nestedPath];
-    if (!topLevelEntries.has(flatName)) linkPaths.unshift(flatPath);
-    for (const linkPath of linkPaths) {
-      await fs.mkdir(path.dirname(linkPath), { recursive: true });
-      if (await exists(linkPath)) {
-        const stat = await fs.lstat(linkPath);
-        if (!stat.isSymbolicLink()) {
-          if (!force) throw new Error(`Refusing to replace non-symlink ${linkPath}`);
-          await fs.rm(linkPath, { recursive: true, force: true });
-        } else {
-          await fs.unlink(linkPath);
-        }
+    const targetFor = path.relative(path.dirname(flatPath), skillDir);
+    await fs.mkdir(path.dirname(flatPath), { recursive: true });
+    if (await exists(flatPath)) {
+      const stat = await fs.lstat(flatPath);
+      if (!stat.isSymbolicLink()) {
+        if (!force) throw new Error(`Refusing to replace non-symlink ${flatPath}`);
+        await fs.rm(flatPath, { recursive: true, force: true });
+      } else {
+        await fs.unlink(flatPath);
       }
-      await fs.symlink(targetFor(linkPath), linkPath);
     }
+    await fs.symlink(targetFor, flatPath);
   }
   async function walkSkills(dir) {
     for (const entry of await fs.readdir(dir, { withFileTypes: true })) {

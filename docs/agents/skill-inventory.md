@@ -184,9 +184,9 @@ Generated from `.agents/skills/` on September 7, 2026.
 
 ## Status Key
 - `ok` = canonical skill plus flat alias both resolve cleanly and the manifest is fully specified.
-- `compatibility only` = the skill is healthy, but only one exposure path is guaranteed or the manifest intentionally leaves some metadata sparse.
+- `compatibility only` = the skill is healthy, but some metadata is intentionally sparse.
 - `needs review` = structural or contract issues are present.
 
 ## Notes
-- Skills whose flat alias collides with a top-level category are expected to fall back to categorized exposure, so they are `compatibility only`.
+- Skills whose flat alias collides with another alias remain `compatibility only` until the collision is resolved.
 - This bundle currently validates cleanly; `needs review` should remain empty unless a future regression appears.

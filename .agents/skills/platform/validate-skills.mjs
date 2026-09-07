@@ -127,13 +127,13 @@ async function main() {
       }
     }
 
-    const claudeLink = path.join(claudeSkillsDir, relDir);
+    const claudeLink = path.join(claudeSkillsDir, path.basename(skillDir));
     if (!(await exists(claudeLink))) {
-      errors.push(`missing .claude link for ${relDir}`);
+      errors.push(`missing flat .claude link for ${relDir}`);
     } else {
       const stat = await fs.lstat(claudeLink);
       if (!stat.isSymbolicLink()) {
-        errors.push(`.claude/${relDir} is not a symlink`);
+        errors.push(`.claude/${path.basename(skillDir)} is not a symlink`);
       }
     }
 
