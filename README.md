@@ -162,6 +162,84 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 
 The bundle is designed to be copied into another repository and then specialized there.
 
+## AI-Agnostic Prompts
+
+Use one of these prompts when you want an AI-agnostic IDE to install or sync this skills bundle into another repository.
+
+### 1. Greenfield repository, no prior context
+
+```text
+You are going to install the quirk Skills bundle into this repository from scratch.
+
+REPO_UPSTREAM = <url of the canonical skills repo>  # for example, https://github.com/quantumquirkxyz/skills-quirk
+
+## Objective
+Bring this repository into a valid quirk Skills state with the canonical bundle installed, local context documented, and the repo ready for normal work.
+
+## What you must not touch
+- Any existing ADRs or files under `docs/adr/`
+- Any repository documentation that is already established and unrelated to the bundle bootstrap
+- Anything that is not needed to install, configure, or validate the skills bundle
+
+## Allowed scope
+1. `.agents/skills/**`
+2. `.claude/skills/**`
+3. `skills-lock.json`
+4. `CONTEXT.md`
+5. `README.md` only if needed to add a short install or usage entry point
+6. `docs/agents/**` only if the repository does not already have the quirk documentation surface and it must be created as part of the bootstrap
+
+## Steps
+1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
+2. Verify that the upstream contains `.agents/skills/**`, `.claude/skills/**`, `skills-lock.json`, and the expected docs surface.
+3. Compare the local repo with the upstream bundle and identify any missing skills, renamed skills, or local-only additions.
+4. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
+5. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
+6. Update `README.md` only if it needs a short installation or usage entry point for the new repository.
+7. Run the bundle validation commands and confirm the working tree is clean for the intended scope.
+
+## Final checks
+- `git status` must show only the expected bundle files and the local context/docs files you intentionally changed.
+- No ADR file under `docs/adr/` should be modified unless the user explicitly requested it.
+- The result should be a repository that can be used by an AI-agnostic IDE without extra hidden setup.
+```
+
+### 2. Existing repository with ADRs and local context
+
+```text
+You are going to synchronize the quirk Skills bundle in this repository with the canonical upstream.
+
+REPO_UPSTREAM = <url of the canonical skills repo>  # for example, https://github.com/quantumquirkxyz/skills-quirk
+
+## Objective
+Update the skills implementation so it matches the upstream bundle while preserving the repository's own documentation, ADRs, and local context.
+
+## What you must not touch
+- `docs/adr/**` and any ADR content
+- `CONTEXT.md`
+- `README.md`
+- Any repository documentation outside the skills bundle scope
+- Any project files unrelated to the skills bundle
+
+## Allowed scope
+1. `.agents/skills/**`
+2. `.claude/skills/**`
+3. `skills-lock.json`
+4. Optional: `.agents/AGENTS.md` only if the upstream bundle includes it and it differs
+
+## Steps
+1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
+2. Inspect the differences between local and upstream before editing anything.
+3. Replace the canonical skills tree, compatibility view, and lockfile with the upstream versions, preserving symlinks.
+4. Do not rewrite repository docs or ADRs to make the sync fit; keep the bundle change narrowly scoped to the skills bundle only.
+5. Validate the sync and confirm that only the allowed paths changed.
+
+## Final checks
+- `git status --short` must show only `.agents/skills/`, `.claude/skills/`, `skills-lock.json`, and any explicitly allowed optional file.
+- `docs/adr/**`, `CONTEXT.md`, and `README.md` must remain untouched.
+- If any protected path changes, revert only that part before finishing.
+```
+
 ### Quick start
 
 ```bash

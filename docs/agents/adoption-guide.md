@@ -20,6 +20,13 @@ flowchart TD
 5. Run the validation commands in this guide.
 6. Start normal work through `ask-to` or the canonical feature flow.
 
+## Installation Prompts
+
+The repository `README.md` contains two copyable AI-agnostic prompts:
+
+- Use the greenfield prompt when you are bootstrapping a repository that has no prior local context.
+- Use the existing-repo prompt when the target repository already has ADRs, a `CONTEXT.md`, and documentation that must remain untouched.
+
 ## Required Repo Files
 
 | File | Purpose |
