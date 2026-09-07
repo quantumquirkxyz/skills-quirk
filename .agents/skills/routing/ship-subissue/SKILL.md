@@ -3,7 +3,7 @@ name: ship-subissue
 category: routing
 maturity: stable
 version: 1
-description: Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked
+description: Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.
 capabilities:
   - execute the core process defined in the skill body
   - produce a Markdown artifact or structured result

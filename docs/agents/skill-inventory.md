@@ -148,7 +148,7 @@ Generated from `.agents/skills/` on September 7, 2026.
 | `triage` | `.agents/skills/routing/triage/SKILL.md` | `triage` | `routing` | `low` | `1` | `experimental` | ok |
 | `wayfinder` | `.agents/skills/routing/wayfinder/SKILL.md` | `wayfinder` | `routing` | `low` | `1` | `experimental` | ok |
 | `work-item-router` | `.agents/skills/routing/work-item-router/SKILL.md` | `work-item-router` | `routing` | `low` | `1` | `experimental` | ok |
-| `rule-cataloger` | `.agents/skills/rule-cataloger/SKILL.md` | `rule-cataloger` | `rule-cataloger` | `low` | `2` | `unspecified` | compatibility only |
+| `rule-cataloger` | `.agents/skills/skill-dev/rule-cataloger/SKILL.md` | `rule-cataloger` | `skill-dev` | `low` | `2` | `unspecified` | compatibility only |
 | `se-architecture-decisions` | `.agents/skills/se/se-architecture-decisions/SKILL.md` | `se-architecture-decisions` | `se` | `low` | `1` | `experimental` | ok |
 | `se-performance` | `.agents/skills/se/se-performance/SKILL.md` | `se-performance` | `se` | `unknown` | `unset` | `unspecified` | compatibility only |
 | `se-system-design` | `.agents/skills/se/se-system-design/SKILL.md` | `se-system-design` | `se` | `unknown` | `unset` | `unspecified` | compatibility only |

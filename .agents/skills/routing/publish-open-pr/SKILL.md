@@ -3,7 +3,7 @@ name: publish-open-pr
 category: routing
 maturity: stable
 version: 1
-description: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue bra
+description: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.
 capabilities:
   - execute the core process defined in the skill body
   - produce a Markdown artifact or structured result
