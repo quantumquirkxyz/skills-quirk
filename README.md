@@ -171,7 +171,7 @@ bash scripts/install-quirk-skills.sh /path/to/target-repo
 ### One-line installer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/quirk/main/scripts/install-quirk-skills.sh | bash -s -- /path/to/target-repo
+curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh | bash -s -- /path/to/target-repo
 ```
 
 If you already have a local checkout of this bundle, use:
@@ -183,8 +183,8 @@ bash scripts/install-quirk-skills.sh /path/to/target-repo
 If you prefer to inspect first and then install from a clone:
 
 ```bash
-git clone https://github.com/quantumquirkxyz/quirk.git
-cd quirk
+git clone https://github.com/quantumquirkxyz/skills-quirk.git
+cd skills-quirk
 bash scripts/install-quirk-skills.sh /path/to/target-repo
 ```
 
