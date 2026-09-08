@@ -1,6 +1,6 @@
 # Work Item Format
 
-Canonical metadata shape for specs, tickets, and linked PRs in this repo.
+Canonical metadata shape for specs, tickets, and linked PRs.
 
 ## Metadata
 
@@ -20,7 +20,7 @@ Canonical metadata shape for specs, tickets, and linked PRs in this repo.
 
 - Specs default to `spec` and `ready-for-agent` with `fields.work_type = Epic`.
 - Tickets default to `ready-for-agent` plus justified labels inherited from the source spec or parent issue.
-- Preserve the linked issue or PR metadata as the source of truth.
+- Preserve linked issue or PR metadata as the source of truth.
 - Do not invent conflicting tracker metadata in downstream comments or handoff notes.
 
 ## Tracker coupling

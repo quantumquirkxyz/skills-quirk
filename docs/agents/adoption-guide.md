@@ -1,6 +1,6 @@
 # quirk Skills Adoption Guide
 
-Use this guide when installing this skills bundle into a new or existing project repository.
+Use this guide to install this skills bundle into a new or existing project repository.
 
 ## Adoption Flow
 
@@ -17,12 +17,13 @@ flowchart TD
 2. Run `setup-quirk-skills` once in the target repo.
 3. Configure `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, and `docs/agents/domain.md` for the project's real tracker and domain layout.
 4. Update `CONTEXT.md` with project-specific language. Do not copy domain vocabulary from another repo.
-5. Run the validation commands in this guide.
-6. Start normal work through `ask-to` or the canonical feature flow.
+5. Run `work-item-router` before any workflow skill whenever tracker governance or ownership may have changed.
+6. Run the validation commands in this guide.
+7. Start normal work through `ask-to` for ambiguous routing or the canonical feature flow for a claimed work item.
 
 ## Installation Prompts
 
-The repository `README.md` contains two copyable AI-agnostic prompts:
+The repository `README.md` contains two AI-agnostic prompts:
 
 - Use the greenfield prompt when you are bootstrapping a repository that has no prior local context.
 - Use the existing-repo prompt when the target repository already has ADRs, a `CONTEXT.md`, and documentation that must remain untouched.
@@ -98,6 +99,7 @@ flowchart LR
 - Preserve `AUTHORSHIP.md`, `docs/agents/quirk-method.md`, and `docs/agents/provenance.md` unless intentionally forking the method.
 - Add new skills only when the behavior is repeatedly useful and cannot be expressed cleanly through existing skills.
 - Prefer scenario fixtures under `evaluate-skill/scenarios/` before changing core workflow skills.
+- Treat `compatibility only` skills as transitional. Keep them only when the alias is still used externally, and add a concrete migration or retirement note in provenance before the next release that touches the surrounding area.
 
 ## Readiness Checklist
 

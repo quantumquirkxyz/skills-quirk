@@ -7,6 +7,8 @@ Each skill owns the template, examples, and supporting references for the artifa
 - If a skill writes a durable artifact, the template belongs next to that skill.
 - If a skill has multiple artifact shapes, it should keep one reference file per artifact shape.
 - Shared quality principles live in `docs/agents/quirk-method.md` and `docs/agents/work-item-format.md`.
+- `evaluate-skill` owns both `scenarios/` and `behavioral-fixtures/`; scenarios cover route and contract behavior, while behavioral fixtures cover representative artifact shape.
+- `skill-creator` and `skill-sandbox` should mirror the same split when generating experimental skills.
 
 ```mermaid
 flowchart TD
@@ -45,8 +47,9 @@ flowchart TD
 | Skill | Artifact | Purpose | Next consumer |
 |---|---|---|---|
 | `ask-to` | routing guidance in `SKILL.md` | Choose the next skill path | the user and downstream skill |
-| `evaluate-skill` | behavioral fixtures under `behavioral-fixtures/` | Prove artifact and route behavior | `audit-semantics`, `check-all` |
+| `evaluate-skill` | `scenarios/` and `behavioral-fixtures/` | Prove route behavior and representative artifact shape | `audit-semantics`, `check-all` |
 | `writing-great-skills` | glossary and authoring guidance files | Maintain the style and vocabulary of the bundle | skill authors and reviewers |
+| `skill-creator` | generated skill skeletons, scenarios, and behavioral fixtures | Scaffold new skills with the correct artifact split | `skill-sandbox`, `skill-testing-framework` |
 
 ## Operating rule
 

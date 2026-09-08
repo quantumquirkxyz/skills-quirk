@@ -92,5 +92,5 @@ When adding, renaming, or retiring a skill:
 
 1. Update this provenance file.
 2. Update `docs/agents/skills-map.md`.
-3. Update or add scenario fixtures under `.agents/skills/evaluate-skill/scenarios/`.
+3. Update or add scenario fixtures under `.agents/skills/skill-dev/evaluate-skill/scenarios/` and behavioral fixtures under `.agents/skills/skill-dev/evaluate-skill/behavioral-fixtures/` when the skill changes routes or artifact shapes.
 4. Run `validate-skills.mjs`, `audit-semantics.mjs`, and `evaluate-scenarios.mjs`.

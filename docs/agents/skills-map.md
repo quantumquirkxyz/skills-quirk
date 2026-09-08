@@ -28,7 +28,7 @@ mindmap
             docs-management
             triage
             make-project
-            setup-qquirk-skills
+            setup-quirk-skills
             setup-quirk-skills
         Platform
             frontend-design

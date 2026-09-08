@@ -5,7 +5,7 @@
 - Labels: `spec`, `ready-for-agent`
 - Milestone: none
 - Project: none
-- Fields: Work Type = Epic; Repo Scope = app; Phase = Ready for build; Priority = medium; Risk = medium
+- Fields: `work_type` = Epic; `repo_scope` = app; `phase` = spec; `priority` = medium; `risk` = medium
 
 ## Problem Statement
 
@@ -45,7 +45,7 @@ Add a workflow that publishes a request as structured work with acceptance crite
 ## Acceptance Criteria
 
 - [ ] Published work has metadata aligned with the work-item format.
-- [ ] Published work includes at least one validation check.
+- [ ] Published work includes at least one validation check and keeps the linked metadata aligned.
 
 ## Out of Scope
 

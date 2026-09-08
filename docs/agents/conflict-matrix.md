@@ -1,7 +1,7 @@
 # Skill Conflict Matrix
 
 This file records known overlaps, trigger ambiguities, and delegation rules between
-quirk Skills. It is the source of truth for routing when more than one skill could
+quirk Skills. It is the routing source of truth when more than one skill could
 apply to the same request.
 
 ## How to read this matrix
@@ -11,7 +11,7 @@ apply to the same request.
 | Primary | The skill that should win when both match |
 | Overlap | What the two skills share |
 | Rule | The explicit routing rule that resolves the conflict |
-| Status | `resolved` = rule is enforced; `known` = documented but not yet enforced by tooling |
+| Status | `resolved` = rule is enforced; `known` = documented but not yet enforced |
 
 ## Grilling family
 
@@ -58,5 +58,5 @@ apply to the same request.
 ## Automated enforcement
 
 `validate-skills.mjs` checks for description similarity > 50% and shared capabilities between
-any two skills and emits a warning. This matrix is the manual override: a `resolved` entry
-explains why a detected overlap is intentional.
+any two skills and emits a warning. This matrix is the manual override for intentional
+overlaps.

@@ -97,3 +97,10 @@ The method is maintained by executable checks:
 | `evaluate-scenarios.mjs` | Workflow route expectations |
 | `evaluate-behavioral-fixtures.mjs` | Representative artifact shape |
 | `check-all.mjs` | Full local gate |
+
+## Terminology Notes
+
+- `work-item-router` is the governance preflight for work-item and review flows.
+- `ask-to` is the router for ambiguous routing after governance preflight.
+- `grill-with-docs` updates durable docs when a codebase exists.
+- `review-fix-loop` coordinates the repair cycle; `ship-subissue` owns merge and closure.

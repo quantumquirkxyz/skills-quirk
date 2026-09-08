@@ -13,7 +13,7 @@ Make structured work-item validation available from the platform check command.
 - Labels: `ready-for-agent`
 - Milestone: none
 - Project: none
-- Fields: Work Type = Ticket; Repo Scope = platform; Phase = Ready for agent; Priority = medium; Risk = medium; Sprint = none; Release Train = none
+- Fields: `work_type` = Ticket; `repo_scope` = platform; `phase` = ready-for-agent; `priority` = medium; `risk` = medium; `sprint` = none; `release_train` = none
 
 ## Acceptance criteria
 

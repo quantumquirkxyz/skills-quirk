@@ -35,22 +35,19 @@ When a PR branch is conflicted, the review-repair flow first routes that branch-
 
 ```mermaid
 flowchart TD
-    A[setup-quirk-skills] --> B[ask-to]
-    B --> C[grill-with-docs]
-    C --> D[to-spec]
-    D --> E[to-tickets]
-    E --> F[implement]
-    F --> G[publish-open-pr]
-    G --> H[review-pr]
-    H --> I{findings?}
-    I -->|yes| J[review-fix-loop]
-    J --> H
-    I -->|no| K[ship-subissue]
+    A[setup-quirk-skills] --> B[work-item-router]
+    B --> C[ask-to]
+    C --> D[grill-with-docs]
+    D --> E[to-spec]
+    E --> F[to-tickets]
+    F --> G[implement]
+    G --> H[publish-open-pr]
+    H --> I[review-pr]
+    I --> J{findings?}
+    J -->|yes| K[review-fix-loop]
+    K --> I
+    J -->|no| L[ship-subissue]
 ```
-
-## Method
-
-The method is documented in:
 
 ## Method
 
