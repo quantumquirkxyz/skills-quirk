@@ -22,6 +22,8 @@ It follows the `quirk` method: clarify before building, preserve context, split 
 
 If a PR branch is conflicted, resolve branch state first with `resolving-merge-conflicts`, then return to `review-pr` and `review-fix-loop` before shipping.
 
+<a id="quick-start"></a>
+
 ```text
 [ START ] QUICK START
 ```
@@ -51,6 +53,8 @@ Then sync the bundle into the target repo and start with `ask-to` or the relevan
 
 ---
 
+<a id="what-this-is"></a>
+
 ```text
 [ INFO  ] WHAT THIS IS
 ```
@@ -64,6 +68,8 @@ Then sync the bundle into the target repo and start with `ask-to` or the relevan
 
 
 ---
+
+<a id="core-flow"></a>
 
 ```text
 [ FLOW  ] CORE FLOW
@@ -87,6 +93,8 @@ flowchart TD
 
 ---
 
+<a id="method"></a>
+
 ```text
 [ RULES ] METHOD
 ```
@@ -107,6 +115,8 @@ The method is documented in:
 | [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
 
 ---
+
+<a id="official-documentation"></a>
 
 ```text
 [ DOCS  ] OFFICIAL DOCUMENTATION
@@ -173,6 +183,8 @@ sequenceDiagram
 
 ---
 
+<a id="validate"></a>
+
 ```text
 [ CHECK ] VALIDATE
 ```
@@ -187,6 +199,8 @@ Expected result: `status: "pass"`.
 
 ---
 
+<a id="versioning"></a>
+
 ```text
 [ SAVE  ] VERSIONING
 ```
@@ -194,6 +208,8 @@ Expected result: `status: "pass"`.
 The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ---
+
+<a id="distribution"></a>
 
 ```text
 [ SYNC  ] DISTRIBUTION
@@ -212,6 +228,8 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
 ---
+
+<a id="install-in-any-repo"></a>
 
 ```text
 [ PORT  ] INSTALL IN ANY REPO
@@ -343,6 +361,8 @@ The installer copies these bundle files:
 3. Use `ask-to` or the standard flow to route work.
 
 ---
+
+<a id="authorship"></a>
 
 ```text
 [ END   ] AUTHORSHIP
