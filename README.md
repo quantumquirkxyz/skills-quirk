@@ -7,65 +7,7 @@
 # quirk Skills
 
 <p align="center">
-  <svg width="100%" viewBox="0 0 1200 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated quirk Skills banner">
-    <defs>
-      <style>
-        .pixel { shape-rendering: crispEdges; }
-        .blink { animation: blink 1.2s steps(1, end) infinite; }
-        .bob { animation: bob 2.8s steps(4, end) infinite; }
-        .bob-slow { animation: bob 3.6s steps(4, end) infinite; }
-        .scan { animation: scan 4s steps(24, end) infinite; }
-        @keyframes blink {
-          0%, 45%, 100% { opacity: 1; }
-          50%, 95% { opacity: 0.15; }
-        }
-        @keyframes bob {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-6px); }
-        }
-        @keyframes scan {
-          0% { transform: translateX(-120px); }
-          100% { transform: translateX(1320px); }
-        }
-      </style>
-      <linearGradient id="quirkGradient" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#1e293b" />
-        <stop offset="45%" stop-color="#22c55e" />
-        <stop offset="100%" stop-color="#facc15" />
-      </linearGradient>
-    </defs>
-    <rect x="0" y="0" width="1200" height="220" rx="0" fill="#020617" />
-    <rect x="0" y="0" width="1200" height="220" rx="0" fill="none" stroke="#334155" stroke-width="4" class="pixel" />
-
-    <g class="bob pixel">
-      <rect x="100" y="60" width="96" height="96" fill="#0f172a" stroke="#22c55e" stroke-width="4" />
-      <rect x="124" y="84" width="16" height="16" fill="#22c55e" />
-      <rect x="156" y="84" width="16" height="16" fill="#22c55e" />
-      <rect x="140" y="116" width="16" height="16" fill="#facc15" class="blink" />
-    </g>
-
-    <g class="bob-slow pixel">
-      <rect x="1020" y="66" width="88" height="88" fill="#0f172a" stroke="#facc15" stroke-width="4" />
-      <rect x="1040" y="88" width="14" height="14" fill="#facc15" />
-      <rect x="1064" y="88" width="14" height="14" fill="#facc15" />
-      <rect x="1036" y="116" width="56" height="12" fill="#22c55e" />
-    </g>
-
-    <g class="scan pixel" opacity="0.8">
-      <rect x="0" y="170" width="80" height="8" fill="#22c55e" />
-      <rect x="92" y="170" width="40" height="8" fill="#facc15" />
-      <rect x="144" y="170" width="56" height="8" fill="#22c55e" />
-    </g>
-
-    <path d="M72 150L120 150L120 126L168 126L168 102L216 102L216 126L264 126L264 150L312 150L312 126L360 126L360 102L408 102L408 126L456 126L456 150L504 150L504 126L552 126L552 102L600 102L600 126L648 126L648 150L696 150L696 126L744 126L744 102L792 102L792 126L840 126L840 150L888 150L888 126L936 126L936 102L984 102L984 126L1032 126L1032 150L1080 150L1080 126L1128 126L1128 150" stroke="url(#quirkGradient)" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" class="pixel" />
-
-    <text x="600" y="92" text-anchor="middle" fill="#e2e8f0" font-family="Courier New, monospace" font-size="40" font-weight="700" letter-spacing="2">
-      QUIRK SKILLS
-    </text>
-    <text x="600" y="134" text-anchor="middle" fill="#94a3b8" font-family="Courier New, monospace" font-size="16" letter-spacing="1">
-      8-BIT WORKFLOW SYSTEM
-    </text>
-  </svg>
+  <img src="assets/quirk-8bit-banner.svg" alt="Quirk Skills 8-bit animated banner" width="100%" />
 </p>
 
 <p align="center">
