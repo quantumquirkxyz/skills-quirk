@@ -1,17 +1,103 @@
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+<p align="center">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0f172a" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-facc15?style=flat-square&labelColor=0f172a" />
+  <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
+</p>
 
 # quirk Skills
 
-`quirk Skills` is a **repository-local engineering workflow** for taking software projects from rough intent to reviewed, validated delivery.
+<p align="center">
+  <svg width="100%" viewBox="0 0 1200 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated quirk Skills banner">
+    <defs>
+      <style>
+        .pixel { shape-rendering: crispEdges; }
+        .blink { animation: blink 1.2s steps(1, end) infinite; }
+        .bob { animation: bob 2.8s steps(4, end) infinite; }
+        .bob-slow { animation: bob 3.6s steps(4, end) infinite; }
+        .scan { animation: scan 4s steps(24, end) infinite; }
+        @keyframes blink {
+          0%, 45%, 100% { opacity: 1; }
+          50%, 95% { opacity: 0.15; }
+        }
+        @keyframes bob {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes scan {
+          0% { transform: translateX(-120px); }
+          100% { transform: translateX(1320px); }
+        }
+      </style>
+      <linearGradient id="quirkGradient" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#1e293b" />
+        <stop offset="45%" stop-color="#22c55e" />
+        <stop offset="100%" stop-color="#facc15" />
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="1200" height="220" rx="0" fill="#020617" />
+    <rect x="0" y="0" width="1200" height="220" rx="0" fill="none" stroke="#334155" stroke-width="4" class="pixel" />
 
-The bundle follows the `quirk` method: clarify before building, preserve project context, cut work into claimable slices, review through separate Standards and Spec axes, repair through explicit plans, and ship only after evidence is clean.
+    <g class="bob pixel">
+      <rect x="100" y="60" width="96" height="96" fill="#0f172a" stroke="#22c55e" stroke-width="4" />
+      <rect x="124" y="84" width="16" height="16" fill="#22c55e" />
+      <rect x="156" y="84" width="16" height="16" fill="#22c55e" />
+      <rect x="140" y="116" width="16" height="16" fill="#facc15" class="blink" />
+    </g>
 
-When a PR branch is conflicted, the review-repair flow first routes that branch-state problem through `resolving-merge-conflicts`, then returns to `review-pr` / `review-fix-loop`, and only ships once the branch is clean and review is clean.
+    <g class="bob-slow pixel">
+      <rect x="1020" y="66" width="88" height="88" fill="#0f172a" stroke="#facc15" stroke-width="4" />
+      <rect x="1040" y="88" width="14" height="14" fill="#facc15" />
+      <rect x="1064" y="88" width="14" height="14" fill="#facc15" />
+      <rect x="1036" y="116" width="56" height="12" fill="#22c55e" />
+    </g>
+
+    <g class="scan pixel" opacity="0.8">
+      <rect x="0" y="170" width="80" height="8" fill="#22c55e" />
+      <rect x="92" y="170" width="40" height="8" fill="#facc15" />
+      <rect x="144" y="170" width="56" height="8" fill="#22c55e" />
+    </g>
+
+    <path d="M72 150L120 150L120 126L168 126L168 102L216 102L216 126L264 126L264 150L312 150L312 126L360 126L360 102L408 102L408 126L456 126L456 150L504 150L504 126L552 126L552 102L600 102L600 126L648 126L648 150L696 150L696 126L744 126L744 102L792 102L792 126L840 126L840 150L888 150L888 126L936 126L936 102L984 102L984 126L1032 126L1032 150L1080 150L1080 126L1128 126L1128 150" stroke="url(#quirkGradient)" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" class="pixel" />
+
+    <text x="600" y="92" text-anchor="middle" fill="#e2e8f0" font-family="Courier New, monospace" font-size="40" font-weight="700" letter-spacing="2">
+      QUIRK SKILLS
+    </text>
+    <text x="600" y="134" text-anchor="middle" fill="#94a3b8" font-family="Courier New, monospace" font-size="16" letter-spacing="1">
+      8-BIT WORKFLOW SYSTEM
+    </text>
+  </svg>
+</p>
+
+<p align="center">
+  <img alt="status panel" src="https://img.shields.io/badge/status-ready-22c55e?style=for-the-badge&labelColor=0f172a" />
+  <img alt="flow panel" src="https://img.shields.io/badge/flow-clarify%20%7C%20review%20%7C%20ship-facc15?style=for-the-badge&labelColor=0f172a" />
+  <img alt="sync panel" src="https://img.shields.io/badge/sync-validated-38bdf8?style=for-the-badge&labelColor=0f172a" />
+</p>
+
+`quirk Skills` is a repository-local workflow system for moving software work from intent to validated delivery.
+
+It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against separate Standards and Spec axes, repair with explicit plans, and ship only on clean evidence.
+
+If a PR branch is conflicted, resolve branch state first with `resolving-merge-conflicts`, then return to `review-pr` and `review-fix-loop` before shipping.
+
+```text
+[ START ] QUICK START
+```
+
+Use this flow to validate the bundle before syncing it into another repository.
+
+```bash
+git clone https://github.com/quantumquirkxyz/skills-quirk.git
+cd skills-quirk
+node .agents/skills/platform/check-all.mjs
+```
+
+Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
 
 ## Table of Contents
 
 - [What This Is](#what-this-is)
+- [Quick Start](#quick-start)
 - [Core Flow](#core-flow)
 - [Method](#method)
 - [Official Documentation](#official-documentation)
@@ -21,9 +107,13 @@ When a PR branch is conflicted, the review-repair flow first routes that branch-
 - [Install In Any Repo](#install-in-any-repo)
 - [Authorship](#authorship)
 
-## What This Is
+---
 
-> A portable skills stack for standard project development. Copy or adapt into project repositories, then specialize through each repo's own `CONTEXT.md`, ADRs, issue tracker configuration, validation commands, and stack-specific skills.
+```text
+[ INFO  ] WHAT THIS IS
+```
+
+> A portable skills stack for standard project development. Install it into a repository, then specialize it through that repo's own `CONTEXT.md`, ADRs, issue tracker configuration, validation commands, and stack-specific skills.
 
 | Location | Role |
 |---|---|
@@ -31,7 +121,11 @@ When a PR branch is conflicted, the review-repair flow first routes that branch-
 | `.claude/skills/` | Compatibility view (symlinks) |
 
 
-## Core Flow
+---
+
+```text
+[ FLOW  ] CORE FLOW
+```
 
 ```mermaid
 flowchart TD
@@ -49,7 +143,11 @@ flowchart TD
     J -->|no| L[ship-subissue]
 ```
 
-## Method
+---
+
+```text
+[ RULES ] METHOD
+```
 
 The method is documented in:
 
@@ -66,11 +164,15 @@ The method is documented in:
 | [release checklist](docs/agents/release-checklist.md) | Pre/post-release gates |
 | [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
 
-## Official Documentation
+---
 
-For a portable, AI-agnostic installation and usage path, start here:
+```text
+[ DOCS  ] OFFICIAL DOCUMENTATION
+```
 
-> Start here for installation, templates, and the full skills inventory.
+For a portable, AI-agnostic installation path, start here:
+
+> Installation entry point, templates, and inventory map.
 
 | Document | Purpose |
 |---|---|
@@ -127,7 +229,11 @@ sequenceDiagram
     R-->>M: When clean
 ```
 
-## Validate
+---
+
+```text
+[ CHECK ] VALIDATE
+```
 
 Run the local gate from the repo root:
 
@@ -137,11 +243,19 @@ node .agents/skills/platform/check-all.mjs
 
 Expected result: `status: "pass"`.
 
-## Versioning
+---
+
+```text
+[ SAVE  ] VERSIONING
+```
 
 The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
-## Distribution
+---
+
+```text
+[ SYNC  ] DISTRIBUTION
+```
 
 ### Dry-run sync
 
@@ -155,11 +269,17 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
-## Install In Any Repo
+---
 
-The bundle is designed to be copied into another repository and then specialized there.
+```text
+[ PORT  ] INSTALL IN ANY REPO
+```
 
-## AI-Agnostic Prompts
+The bundle is designed to be copied into another repository and specialized there.
+
+```text
+[ PROMPTS ] AI-AGNOSTIC PROMPTS
+```
 
 Use one of these prompts when you want an AI-agnostic IDE to install or sync this skills bundle into another repository.
 
@@ -249,13 +369,13 @@ bash scripts/install-quirk-skills.sh /path/to/target-repo
 curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh | bash -s -- /path/to/target-repo
 ```
 
-If you already have a local checkout of this bundle, use:
+If you already have a local checkout of this bundle:
 
 ```bash
 bash scripts/install-quirk-skills.sh /path/to/target-repo
 ```
 
-If you prefer to inspect first and then install from a clone:
+If you prefer to inspect first, then install from a clone:
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
@@ -280,7 +400,16 @@ The installer copies these bundle files:
 2. Follow the [adoption guide](docs/agents/adoption-guide.md) to set the issue tracker, domain docs, and validation commands.
 3. Use `ask-to` or the standard flow to route work.
 
-## Authorship
+---
+
+```text
+[ END   ] AUTHORSHIP
+```
+
+<p align="center">
+  <img alt="level complete" src="https://img.shields.io/badge/LEVEL%20COMPLETE-quirk%20skills-22c55e?style=for-the-badge&labelColor=0f172a" />
+  <img alt="next quest" src="https://img.shields.io/badge/NEXT%20QUEST-ask--to%20%7C%20review%20%7C%20ship-facc15?style=for-the-badge&labelColor=0f172a" />
+</p>
 
 Copyright (c) 2026 Jhuomar Boskoll Quintero.
 
