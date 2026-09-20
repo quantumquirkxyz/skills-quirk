@@ -33,12 +33,20 @@ Use this flow to validate the bundle before syncing it into another repository.
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-node .agents/skills/platform/check-all.mjs
+node .agents/skills/platform/validate-skills.mjs
 ```
 
 Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
 
-The current bundle includes 183 canonical skills, including explicit operation skills for issue and PR coordination plus maintenance skills for lockfiles, quality gates, fixtures, and side-effect audits.
+The bundle includes 195 canonical skills and supports:
+
+- **Setup automation** (`scripts/setup-quirk-skills.sh` to install in target repos)
+- **Seed bundle** (`seed/` with `integration-playground` and `testing-framework` starter skills, plus new foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`)
+- **CI validation** (`.github/workflows/validate.yml` and legacy `skills-ci.yml`)
+- **Skill evolution** (`skill-lab.mjs` with graph, metrics, rules, diff, tutorial, playground, pr-check, work-item; `skill-evolver.mjs` for version management)
+- **Skills manifest** (`skills.json` for portable bundle definition and `npx skills` compatibility)
+- **Work-item routing** (`work-item-router.mjs` for keyword-based skill selection)
+- **Video tutorials** (`docs/videos/README.md` with links following framework pattern)
 
 ## Table of Contents
 
@@ -325,19 +333,19 @@ Update the skills implementation so it matches the upstream bundle while preserv
 ### Quick start
 
 ```bash
-bash scripts/install-quirk-skills.sh /path/to/target-repo
+bash scripts/install-quirk-
 ```
 
 ### One-line installer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh | bash -s -- /path/to/target-repo
+curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-
 ```
 
 If you already have a local checkout of this bundle:
 
 ```bash
-bash scripts/install-quirk-skills.sh /path/to/target-repo
+bash scripts/install-quirk-
 ```
 
 If you prefer to inspect first, then install from a clone:
@@ -345,7 +353,7 @@ If you prefer to inspect first, then install from a clone:
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-bash scripts/install-quirk-skills.sh /path/to/target-repo
+bash scripts/install-quirk-
 ```
 
 The installer copies these bundle files:
@@ -355,7 +363,7 @@ The installer copies these bundle files:
 | `.agents/skills/` | Canonical skill definitions |
 | `.claude/skills/` | Compatibility symlinks |
 | `docs/agents/` | Governance and method docs |
-| `docs/adr/README.md` | ADR entry point |
+| `.agents/adr/README.md` | ADR entry point (mandatory, per  standard) |
 | `CONTEXT.md` | Repository-local vocabulary |
 | `skills-lock.json` | Canonical skill hashes |
 
