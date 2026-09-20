@@ -28,6 +28,8 @@ maxIterations: 3
 - Input: server config, source list, access policy
 - Output: server definition, index, tools, connection test
 - Boundary: defines connection; does not write to external sources
+- Caller responsibility: name the target MCP client, allowed tools, source credentials owner, and whether writes are forbidden or supervised.
+- Operator responsibility: document trust boundaries, authentication assumptions, and the validation command for the server definition.
 
 ## Process
 1. Define server name and endpoint.
@@ -42,3 +44,12 @@ maxIterations: 3
 - Verify source authenticity.
 - Preserve provenance of indexed data.
 - Never expose secrets in server definition.
+- Rule: Treat every exposed tool as an API contract with explicit inputs, outputs, and side effects.
+- Rule: Do not grant write-capable tools unless the access policy names the approval path.
+- Rule: Keep credentials outside committed config and reference only their expected environment variable names.
+- Rule: Include a connection test that proves both positive access and denied access for out-of-scope sources.
+
+## Security Checklist
+- Define who operates the server and who consumes its tools.
+- Separate read-only context retrieval from mutating integrations.
+- Log tool invocation metadata without logging secret values or private payloads.

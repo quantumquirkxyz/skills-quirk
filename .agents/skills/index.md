@@ -1,32 +1,23 @@
-# Skills — Índice plano
+# Skills — Índice Plano
 
-> índice navegable de aliases planos | 72 skills
-
----
-
-| Skill | Descripción | Madurez |
-|-------|-------------|---------|
-| `ask-to` | Delegar decisión al usuario | stable |
-| `artifact-handoff` | Transferir artifacts entre skills | stable |
-| `code-review` | Revisar cambios contra estándares y spec | stable |
-| `codebase-design` | Vocabulario para diseñar módulos profundos | stable |
-| `context-pack` | Paquetes de contexto reusable | experimental |
-| `deployment` | Build, release y rollback como seam seguro | stable |
-| `diagnosing-bugs` | Loop de diagnóstico de bugs duros | stable |
-| `docs-management` | Mantener docs y ADRs alineados | stable |
-| `domain-modeling` | Construir y afinar el modelo de dominio | stable |
-| `implement` | Implementar a partir de spec o tickets | stable |
-| `implement-review-fixes` | Aplicar correcciones de review | stable |
-| `plan-review-fixes` | Planificar remediación de review | stable |
-| `publish-open-pr` | Publicar PR abierto desde branch | stable |
-| `review-fix-loop` | Bucle PR repair: review -> plan -> fix | stable |
-| `review-pr` | Publicar hallazgos de PR en GitHub | stable |
-| `ship-subissue` | Mergear PR y cerrar issue | stable |
-| `to-spec` | Convertir idea a spec estructurada | stable |
-| `to-tickets` | Dividir spec en tickets ejecutables | stable |
-| `triage` | Clasificar y priorizar issues | experimental |
-| `work-item-router` | Routing de work items | experimental |
+> Índice de entrada para aliases planos | 195 skills canónicas
 
 ---
 
-*Generado automáticamente - no editar a mano*
+| Recurso | Uso |
+|---|---|
+| [`docs/agents/skill-inventory.md`](../../docs/agents/skill-inventory.md) | Inventario por skill con estado de lockfile, compatibilidad y descripción |
+| [`docs/agents/skills-map.md`](../../docs/agents/skills-map.md) | Mapa conceptual de flujos, gobierno, plataforma y especializaciones |
+| [`skills-lock.json`](../../skills-lock.json) | Lista canónica de nombres y hashes actuales |
+| [`.claude/skills/`](../../.claude/skills/) | Vista de compatibilidad mediante symlinks planos por nombre de skill |
+
+## Invocación
+
+- Use el nombre de la skill, por ejemplo `ask-to`, `to-spec`, `implement`, `review-pr` o `setup-quirk-skills`.
+- La fuente canónica vive bajo `.agents/skills/<categoria>/<skill>/SKILL.md`.
+- La vista plana `.claude/skills/<skill>` es un symlink de compatibilidad y no debe editarse directamente.
+- Ejecute `node .agents/skills/platform/check-all.mjs` después de cambios en skills, rutas, docs de inventario o lockfile.
+
+---
+
+*Actualizado junto con el bundle; no lo use como reemplazo del inventario generado.*

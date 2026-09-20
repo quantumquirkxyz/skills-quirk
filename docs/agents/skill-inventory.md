@@ -181,7 +181,7 @@ Total canonical skills: 183.
 | `integration-playground` | `.agents/skills/auxiliary/integration-playground/SKILL.md` | `integration-playground` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
 | `interactive-tutorial-builder` | `.agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md` | `interactive-tutorial-builder` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
 | `rule-cataloger` | `.agents/skills/skill-dev/rule-cataloger/SKILL.md` | `rule-cataloger` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `setup-qquirk-skills` | `.agents/skills/auxiliary/setup-qquirk-skills/SKILL.md` | `setup-qquirk-skills` | `unspecified` | `medium` | `3` | `unspecified` | metadata sparse |
+| `setup-quirk-skills` | `.agents/skills/auxiliary/setup-quirk-skills/SKILL.md` | `setup-quirk-skills` | `unspecified` | `medium` | `3` | `unspecified` | metadata sparse |
 | `interaction-design` | `.agents/skills/ux/interaction-design/SKILL.md` | `interaction-design` | `ux` | `low` | `1` | `stable` | ok |
 | `ux-accessibility` | `.agents/skills/ux/ux-accessibility/SKILL.md` | `ux-accessibility` | `ux` | `low` | `1` | `stable` | ok |
 | `ux-prototyping` | `.agents/skills/ux/ux-prototyping/SKILL.md` | `ux-prototyping` | `ux` | `low` | `1` | `stable` | ok |

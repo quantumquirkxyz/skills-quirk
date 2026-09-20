@@ -27,6 +27,8 @@ maxIterations: 3
 - Input: codebase path and depth threshold
 - Output: HTML/JSON report with deepening candidates, plus selected candidate
 - Boundary: analysis only; no automatic rewrites
+- Caller responsibility: provide the repository path, any scope exclusions, and whether generated reports may be written to disk.
+- Operator responsibility: explain the scoring signals and keep recommendations traceable to concrete files or modules.
 
 ## Process
 1. Scan the target directory for module structures.
@@ -41,3 +43,12 @@ maxIterations: 3
 - Surface all candidates clearly; selection is user-controlled.
 - Preserve existing conventions.
 - Rule: Skill must include a Contract section with Input, Output, and Boundary.
+- Rule: Treat architecture scores as prompts for investigation, not as automatic refactoring orders.
+- Rule: Do not recommend a rewrite without naming the narrower seam that failed first.
+- Rule: If the scan cannot inspect a language or build graph, mark that evidence gap in the report.
+- Rule: When a candidate is selected, hand off to `grill-me` or `codebase-design` before implementation.
+
+## Report Requirements
+- Include the files or modules inspected, the heuristic used, and the reason each candidate matters.
+- Separate confirmed problems from suspected deepening opportunities.
+- Preserve enough evidence for a reviewer to reproduce the candidate list without rerunning the full scan.

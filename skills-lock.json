@@ -15,8 +15,13 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "agent-canvas": {
+      "hash": "a8479bc9a4449061ea17de5976a84f6c5c26ba928e23b2cff8ca77e16bf9dd30",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "agent-observability": {
-      "hash": "7c2aa8863b0cf4fcfaf5d2ffbf8d77f2fd1337ffd31b4fd81e6cf354aadf6497",
+      "hash": "f131c44027f4d14195d01d5b96cf4ec3fea22cc080ace80401700599c8a24b1e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -122,6 +127,11 @@
     },
     "compilers": {
       "hash": "13a71b9bf3d2657d415899eb105da79708663acb7c20950d2005c1d51fc60d76",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "context-engine": {
+      "hash": "1d4dd60c2d7969cc0798f15d556c62689d2411ed4ff9a0acccadba208ae0bb83",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -325,6 +335,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "improve-codebase-architecture": {
+      "hash": "72574d4577402d657ab61725e3c34846f23bf63eb62e1bd347d276f6c0609b73",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "integration-playground": {
       "hash": "7ca4e284dce9ac7d0f9bc4b1482e873cbf910471345b1862c2e3a90566c3e046",
       "revision": "working-tree",
@@ -432,6 +447,11 @@
     },
     "math-teaching-problem-set": {
       "hash": "3824e6c26380c5c48b01e92269211a24dd515ad68c07d9bad0d0a0ce786a576b",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "mcp-server": {
+      "hash": "a7e6745ec64873f83b4da11e83f00eaffcfdb06028491ca17ca694bd4dd41ff4",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -766,7 +786,7 @@
       "sourceType": "local"
     },
     "setup-quirk-skills": {
-      "hash": "c17ac3b62590fcaba5e40f7f0fcb203ba0368fa096fc583fe6e712f6cf13665d",
+      "hash": "f80381c397dab48cc0a254306e538df93b70a924cd641d5b63d8a608d38d5a7d",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -832,6 +852,11 @@
     },
     "skill-tutor": {
       "hash": "024f6e9e6b92a1bbb74d805d1912041bf4e58a6d67fc832a91a431587aa4ae16",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "subagent-swarm": {
+      "hash": "033f3f5b0bae1a2744f856707d1d3f3b5546657f002ba1c8f3c241027742b175",
       "revision": "working-tree",
       "sourceType": "local"
     },

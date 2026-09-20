@@ -18,7 +18,6 @@ When installing or syncing this bundle in another repository, prefer the AI-agno
 | **Canonical skill** | A skill folder under `.agents/skills/` with a `SKILL.md` entrypoint and matching lockfile entry |
 | **Compatibility view** | The `.claude/skills/` symlink tree that exposes canonical skills to consumers expecting that layout |
 | **Provenance** | The recorded origin and redesign status of a skill, name, or workflow |
-
 | **Agent Canvas** | Workspace/session control skill (`agent-canvas`) for multi-agent persistence |
 | **Context Engine** | Dynamic context retrieval (`context-engine`) via RAG from issues/docs/traces |
 | **MCP Server** | External data connection (`mcp-server`) for issues, PRs, traces |
@@ -41,6 +40,7 @@ flowchart LR
 - Use **Compatibility view** when discussing installation or parity.
 - Use **Provenance** when discussing authorship, influence, retired aliases, or renamed skills.
 - Use the README prompts as the operational entry point for AI-agnostic installation or sync tasks.
-# CONTEXT.md - OBLIGATORIO
 
-Este archivo es obligatorio. Debe nombrar el vocabulario del dominio local, los límites del proyecto, y las convenciones de nombrado. Cada skill debe referenciar este contexto. No debe contener términos de otro repositorio.
+## Maintenance Rule
+
+This file is required. It must name the local domain vocabulary, project boundaries, and naming conventions. Skills should reference this context and avoid vocabulary from unrelated repositories.

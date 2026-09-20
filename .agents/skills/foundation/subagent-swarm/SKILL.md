@@ -45,6 +45,10 @@ maxIterations: 3
 - Conflicts must be resolved with explicit reasoning.
 - Never merge outputs without validating evidence.
 - Preserve context between role handoffs.
+- Rule: Assign one owner for final integration even when work is parallelized.
+- Rule: Do not let a subagent operate outside its declared role boundary without an explicit handoff.
+- Rule: If outputs conflict, preserve both claims and the evidence used to choose between them.
+- Rule: Stop the swarm when validation evidence is missing for a required role instead of fabricating completion.
 
 ## Contracts Per Role
 

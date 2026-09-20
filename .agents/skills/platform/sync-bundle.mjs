@@ -45,6 +45,7 @@ async function hashFile(filePath) {
 
 async function walk(filePath) {
   const stat = await fs.lstat(filePath);
+  if (stat.isSymbolicLink()) return [];
   if (!stat.isDirectory()) return [filePath];
   const out = [];
   for (const entry of await fs.readdir(filePath)) {
@@ -54,7 +55,9 @@ async function walk(filePath) {
 }
 
 async function copyPath(source, target) {
+  if (source === target) return;
   const stat = await fs.lstat(source);
+  if (stat.isSymbolicLink()) return;
   if (stat.isDirectory()) {
     await fs.mkdir(target, { recursive: true });
     for (const entry of await fs.readdir(source)) {

@@ -51,7 +51,7 @@ function routeWorkItem(description) {
     'test': ['testing', 'evaluate-skill', 'skill-testing-framework'],
     'release': ['release-management', 'deployment', 'monitoring-alerting'],
     'skill': ['skill-template-generator', 'skill-testing-framework', 'agent-observability'],
-    'setup': ['integration-playground', 'setup-qquirk-skills'],
+    'setup': ['integration-playground', 'setup-quirk-skills'],
     'default': ['ask-to', 'capability-router'],
   };
   
