@@ -33,6 +33,6 @@
   "standards": [
     "quirk"
   ],
-  "session_memory": ".skill-sandbox/session/",
+  "session_memory": ".agents/skills/session/",
   "mcp_support": true
 }

@@ -1,6 +1,6 @@
 # Agent Skills Index
 
-This repo uses the repository-local quirk Skills bundle in `.agents/skills/`. This index is the operating map for the bundle and the first stop after `work-item-router` for any work-item or review flow.
+This repo uses the repository-local quirk Skills bundle in `.agents/skills/`. `.claude/skills/` is the compatibility symlink view pointing to the same canonical skills. `.agents/adr/` holds architecture decision records. This index is the operating map for the bundle and the first stop after `work-item-router` for any work-item or review flow.
 
 ```mermaid
 flowchart TD
