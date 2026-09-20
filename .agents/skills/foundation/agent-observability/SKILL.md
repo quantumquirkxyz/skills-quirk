@@ -1,25 +1,25 @@
 ---
 name: agent-observability
-description: Capture redacted execution records, traces, and quality signals for Skill runs with structured data for analysis.
-version: 2
+description: Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
+version: 1
 capabilities:
-  - capture-execution-record
-  - redact-sensitive-data
-  - structure-data-for-analysis
-  - link-to-outputs-and-evidence
+  - record-execution
+  - trace-decisions
+  - capture-quality-signals
+  - generate-trace-report
 inputs:
-  - skill-execution-context
-  - raw-execution-data
+  - skill-run: The execution being observed (optional)
+  - trace-level: basic, detailed, full (default: detailed)
+  - signal-types: latency, token-usage, error-rate, evidence-quality (default: all)
 outputs:
-  - redacted-execution-record
-  - structured-analysis-data
-  - traceability-links
-dependencies: []
-sideEffects:
-  - write-docs
-stopCondition: An execution record has been captured, redacted, structured for analysis, and linked to relevant outputs or validation evidence.
+  - execution-trace: Structured trace with timestamps and decisions
+  - quality-signals: Metrics for execution quality
+  - trace-report: Human-readable summary of execution
+  - audit-log: Redacted audit for review
+stopCondition: Trace recorded, signals captured, and report generated with explicit evidence.
 risk: low
 trustTier: 2
+maxIterations: 3
 ---
 
 # Agent Observability
