@@ -1,0 +1,38 @@
+{
+  "name": "quirk-skills",
+  "displayName": "Quirk Skills",
+  "description": "A portable skills bundle for standard project development with validation, fixtures, and quality gates.",
+  "version": "1.0.0",
+  "author": "quantumquirkxyz",
+  "repository": "https://github.com/quantumquirkxyz/skills-quirk",
+  "skillsDir": ".agents/skills",
+  "installCommand": "bash scripts/setup-quirk-skills.sh .",
+  "pluginName": "quirk-skills",
+  "categories": [
+    "engineering",
+    "delivery",
+    "skill-dev",
+    "platform"
+  ],
+  "supportsAgents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "openai",
+    "gemini"
+  ],
+  "license": "MIT",
+  "agents_compatible": [
+    "claude-code",
+    "codex",
+    "opencode",
+    "gemini",
+    "openhands",
+    "warp"
+  ],
+  "standards": [
+    "quirk"
+  ],
+  "session_memory": ".skill-sandbox/session/",
+  "mcp_support": true
+}
