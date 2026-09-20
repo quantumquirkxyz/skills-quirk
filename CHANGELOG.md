@@ -12,15 +12,23 @@ This project follows semantic versioning once releases are cut:
 
 ### Added
 
-- Added workflow operation skills for issue tracker and pull request mutations with explicit evidence and safety boundaries.
-- Added skill-dev maintenance skills for lockfile maintenance, quality gates, workflow fixtures, and side-effect audits.
-- Added 3 scenario fixtures covering operation boundaries, release quality, fixture quality, and side-effect quality.
-- Added operation summary templates, provider guidelines, fixture templates, a side-effect matrix, and a lockfile refresh script for the new workflow skills.
+- Added `work-item-router.mjs` - routes work items to appropriate skills based on input analysis and repository context.
+- Added `setup-quirk-skills.sh` - initializes the bundle in target repos with sandbox setup and seed skills.
+- Added `.env.template` - environment configuration template for reproducible environments.
+- Added `docs/videos/README.md` - video tutorial references and links (following  framework pattern).
+- Added `seed/` bundle - starter skills (`integration-playground`, `testing-framework` in seed/) for faster onboarding.
+- Added `.github/workflows/validate.yml` - comprehensive CI workflow with validation, audit, metrics, and graph generation.
+- Added `CONTRIBUTING.md` - contribution guidelines with development workflow and quality gates.
+- Added `.generated-notes.md` - tracking document for skill creation decisions and improvements.
+- Added `skill-evolver.mjs` - skill evolution tool with version management and section analysis.
 
 ### Changed
 
-- Updated the generated skill inventory, skills map, README validation notes, and provenance records to match the current canonical bundle.
-- Strengthened scenario fixtures to verify required references and the lockfile maintenance script.
+- Enhanced `skill-lab.mjs` with improved `graph()` (dependency visualization with central skills and modularity findings), `metrics()` (skill complexity tracking), `rules()` (rule cataloging), and `pr-check()` (PR change detection). Added guardrail: "Never write outside the sandbox or the target skill file." Added `evolve`, `work-item`, and recursive graph outputs.
+- Added `work-item-router.mjs` integration - connects work routing with the skill lab; updated to load skills recursively.
+- Updated `.github/workflows/validate.yml` references to match the current bundle (skills-lock, audit-semantics).
+- Enhanced `agent-observability` contract (version 1, preserved body) with new capabilities and audit outputs.
+- Added `.agents/adr/` entry point (`README.md`) and first decision record (`0001-bundle-integration.md`).
 
 ## 0.1.0 - 2026-08-27
 
