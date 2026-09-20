@@ -33,7 +33,7 @@ Use this flow to validate the bundle before syncing it into another repository.
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-node .agents/skills/platform/validate-skills.mjs
+node .agents/skills/platform/check-all.mjs
 ```
 
 Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
@@ -333,19 +333,19 @@ Update the skills implementation so it matches the upstream bundle while preserv
 ### Quick start
 
 ```bash
-bash scripts/install-quirk-
+bash scripts/install-quirk-skills.sh
 ```
 
 ### One-line installer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-
+curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh
 ```
 
 If you already have a local checkout of this bundle:
 
 ```bash
-bash scripts/install-quirk-
+bash scripts/install-quirk-skills.sh
 ```
 
 If you prefer to inspect first, then install from a clone:
@@ -353,7 +353,7 @@ If you prefer to inspect first, then install from a clone:
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-bash scripts/install-quirk-
+bash scripts/install-quirk-skills.sh
 ```
 
 The installer copies these bundle files:
