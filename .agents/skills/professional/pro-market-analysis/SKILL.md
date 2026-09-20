@@ -5,28 +5,28 @@ maturity: experimental
 version: 1
 description: Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact satisfying completion criteria
+  - apply pro market analysis workflow
+  - produce pro market analysis analysis artifact
+  - validate pro market analysis completion criteria
 outputs:
-  - Markdown artifact with all process steps completed
+  - Pro Market Analysis artifact with completed sections, evidence, and limitations
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved with all required sections present.
+stopCondition: Conduct professional market research complete; required sections present; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem description and inputs defined by the skill body.
-- **Output:** Markdown artifact with completed process steps.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** all process steps executed; artifact saved with required sections.
-- **Risk:** low.
-- **Boundary:** produces reasoning artifact only; no system changes.
-
+- **Input:** Pro Market Analysis request, problem context, constraints, and available evidence.
+- **Output:** Pro Market Analysis artifact with completed analysis, decisions, recommendations, and limitations.
+- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
+- **Dependencies:** declared dependencies, source material, and domain references required by the task.
+- **Stop condition:** Conduct professional market research is complete, required sections are present, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope and side-effect policy.
 
 # Professional Market Research
 

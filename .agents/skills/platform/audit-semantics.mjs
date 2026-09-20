@@ -97,6 +97,24 @@ function skillName(file, text) {
   return path.basename(path.dirname(file));
 }
 
+function wordCount(text) {
+  return (text.match(/[A-Za-z0-9_'-]+/g) ?? []).length;
+}
+
+function ruleCount(text) {
+  return (text.match(/^\s*-\s*Rule:/gmi) ?? []).length;
+}
+
+function hasGenericSkillMetadata(text, fm) {
+  const capabilities = Array.isArray(fm.capabilities) ? fm.capabilities : [];
+  const outputs = Array.isArray(fm.outputs) ? fm.outputs : [];
+  return capabilities.includes('execute the core process defined in the skill body')
+    || capabilities.includes('produce a Markdown artifact or structured result')
+    || outputs.includes('Markdown artifact with process steps and completion criteria')
+    || fm.stopCondition === 'All process steps executed; artifact saved; criteria met.'
+    || /problem or task defined by the skill body/i.test(text);
+}
+
 async function checkLinks(markdownFiles, errors) {
   const linkPattern = /\[[^\]]+\]\((?!https?:|mailto:|#)([^)]+)\)/g;
   for (const file of markdownFiles) {
@@ -139,7 +157,14 @@ async function main() {
     const text = await fs.readFile(file, 'utf8');
     const fm = parseFrontmatter(text);
     const name = skillName(file, text);
+    const body = text.replace(/^---[\s\S]*?---\s*/, '');
     if (fm.name && fm.name !== name) errors.push(`${name}: frontmatter name mismatch (${fm.name})`);
+    if (/\*\*Propósito\*\*[\s\S]*\*\*Contenido sugerido\*\*[\s\S]*\*\*Estado\*\*/.test(body)) {
+      warnings.push(`${name}: placeholder body should be expanded before release`);
+    }
+    if (wordCount(body) < 180) warnings.push(`${name}: short body (${wordCount(body)} words)`);
+    if (wordCount(body) < 300 && ruleCount(body) === 0) warnings.push(`${name}: short/medium body has no explicit Rule lines`);
+    if (hasGenericSkillMetadata(text, fm)) warnings.push(`${name}: generic metadata or boilerplate contract remains`);
     for (const dependency of fm.dependencies ?? []) {
       if (!skillNames.has(dependency)) errors.push(`${name}: dependency missing ${dependency}`);
     }

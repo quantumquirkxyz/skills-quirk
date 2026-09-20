@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply ux research workflow
+  - produce ux research artifact
+  - validate ux research completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Ux Research artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Conduct user research complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

@@ -40,13 +40,14 @@ function frontmatter(text) {
   }
   return data;
 }
-async function skillFiles(base = skillsRoot) {
+async function skillFiles(base = skillsRoot, out = []) {
   const entries = await fs.readdir(base, { withFileTypes: true });
-  const out = [];
   for (const entry of entries) {
     if (!entry.isDirectory() || entry.name === 'platform') continue;
-    const file = path.join(base, entry.name, 'SKILL.md');
+    const directory = path.join(base, entry.name);
+    const file = path.join(directory, 'SKILL.md');
     if (await exists(file)) out.push(file);
+    else await skillFiles(directory, out);
   }
   return out.sort();
 }

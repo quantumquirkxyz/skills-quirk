@@ -5,28 +5,28 @@ maturity: stable
 version: 1
 description: Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply frontend design workflow
+  - produce frontend design artifact
+  - validate frontend design completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Frontend Design artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem or task defined by the skill body.
-- **Output:** Markdown artifact or structured result with completion criteria met.
-- **Side effects:** none (design/review/documentation only unless explicitly stated).
-- **Dependencies:** none (self-contained unless linked to other skills).
-- **Stop condition:** all process steps completed; artifact saved; criteria checked.
-- **Risk:** low.
-- **Boundary:** produces reasoning or documentation artifacts; does not modify external systems unless explicitly instructed.
-
+- **Input:** Frontend Design request, relevant context, constraints, and source evidence.
+- **Output:** Frontend Design artifact with findings, decisions, recommendations, and validation notes.
+- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
+- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
+- **Stop condition:** Shape frontend work into a clear visual system, interaction model, and implementation seam is complete, evidence is captured, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
 
 # Frontend Design
 

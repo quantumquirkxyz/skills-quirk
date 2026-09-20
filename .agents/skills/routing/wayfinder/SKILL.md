@@ -5,28 +5,28 @@ maturity: experimental
 version: 1
 description: Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply wayfinder workflow
+  - produce wayfinder artifact
+  - validate wayfinder completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Wayfinder artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Plan a huge chunk of work complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem or task defined by the skill body.
-- **Output:** Markdown artifact or structured result with completion criteria met.
-- **Side effects:** none (design/review/documentation only unless explicitly stated).
-- **Dependencies:** none (self-contained unless linked to other skills).
-- **Stop condition:** all process steps completed; artifact saved; criteria checked.
-- **Risk:** low.
-- **Boundary:** produces reasoning or documentation artifacts; does not modify external systems unless explicitly instructed.
-
+- **Input:** Wayfinder request, relevant context, constraints, and source evidence.
+- **Output:** Wayfinder artifact with findings, decisions, recommendations, and validation notes.
+- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
+- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
+- **Stop condition:** Plan a huge chunk of work is complete, evidence is captured, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
 
 A loose idea has arrived — too big for one agent session, and wrapped in fog: the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **map** on the repo's issue tracker, then works its **decision tickets** — questions whose resolution is a decision, not slices of a build to execute — one at a time until the route is clear.
 

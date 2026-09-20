@@ -5,28 +5,28 @@ maturity: stable
 version: 1
 description: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply domain modeling workflow
+  - produce domain modeling artifact
+  - validate domain modeling completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Domain Modeling artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Build and sharpen a project's domain model complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem or task defined by the skill body.
-- **Output:** Markdown artifact or structured result with completion criteria met.
-- **Side effects:** none (design/review/documentation only unless explicitly stated).
-- **Dependencies:** none (self-contained unless linked to other skills).
-- **Stop condition:** all process steps completed; artifact saved; criteria checked.
-- **Risk:** low.
-- **Boundary:** produces reasoning or documentation artifacts; does not modify external systems unless explicitly instructed.
-
+- **Input:** Domain Modeling request, relevant context, constraints, and source evidence.
+- **Output:** Domain Modeling artifact with findings, decisions, recommendations, and validation notes.
+- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
+- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
+- **Stop condition:** Build and sharpen a project's domain model is complete, evidence is captured, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
 
 # Domain Modeling
 

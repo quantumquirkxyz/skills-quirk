@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply performance testing workflow
+  - produce performance testing artifact
+  - validate performance testing completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Performance Testing artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design and execute performance tests complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

@@ -5,28 +5,28 @@ maturity: experimental
 version: 1
 description: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact satisfying completion criteria
+  - apply math optimization workflow
+  - produce math optimization analysis artifact
+  - validate math optimization completion criteria
 outputs:
-  - Markdown artifact with all process steps completed
+  - Math Optimization artifact with completed sections, evidence, and limitations
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved with all required sections present.
+stopCondition: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) complete; required sections present; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem description and inputs defined by the skill body.
-- **Output:** Markdown artifact with completed process steps.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** all process steps executed; artifact saved with required sections.
-- **Risk:** low.
-- **Boundary:** produces reasoning artifact only; no system changes.
-
+- **Input:** Math Optimization request, problem context, constraints, and available evidence.
+- **Output:** Math Optimization artifact with completed analysis, decisions, recommendations, and limitations.
+- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
+- **Dependencies:** declared dependencies, source material, and domain references required by the task.
+- **Stop condition:** Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) is complete, required sections are present, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope and side-effect policy.
 
 # Mathematical Optimization
 

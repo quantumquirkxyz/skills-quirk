@@ -5,28 +5,28 @@ maturity: stable
 version: 1
 description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply code review workflow
+  - produce code review artifact
+  - validate code review completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Code Review artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem or task defined by the skill body.
-- **Output:** Markdown artifact or structured result with completion criteria met.
-- **Side effects:** none (design/review/documentation only unless explicitly stated).
-- **Dependencies:** none (self-contained unless linked to other skills).
-- **Stop condition:** all process steps completed; artifact saved; criteria checked.
-- **Risk:** low.
-- **Boundary:** produces reasoning or documentation artifacts; does not modify external systems unless explicitly instructed.
-
+- **Input:** Code Review request, relevant context, constraints, and source evidence.
+- **Output:** Code Review artifact with findings, decisions, recommendations, and validation notes.
+- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
+- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
+- **Stop condition:** Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only is complete, evidence is captured, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
 
 Do not edit source files, rewrite history, or repair the branch in this skill; review only.
 

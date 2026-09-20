@@ -5,28 +5,28 @@ maturity: experimental
 version: 1
 description: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply grill with docs workflow
+  - produce grill with docs artifact
+  - validate grill with docs completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Grill With Docs artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem or task defined by the skill body.
-- **Output:** Markdown artifact or structured result with completion criteria met.
-- **Side effects:** none (design/review/documentation only unless explicitly stated).
-- **Dependencies:** none (self-contained unless linked to other skills).
-- **Stop condition:** all process steps completed; artifact saved; criteria checked.
-- **Risk:** low.
-- **Boundary:** produces reasoning or documentation artifacts; does not modify external systems unless explicitly instructed.
-
+- **Input:** Grill With Docs request, relevant context, constraints, and source evidence.
+- **Output:** Grill With Docs artifact with findings, decisions, recommendations, and validation notes.
+- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
+- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
+- **Stop condition:** A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go is complete, evidence is captured, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
 
 Run a `/grilling` session, using the `/domain-modeling` skill.
 

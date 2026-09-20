@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply localization workflow
+  - produce localization artifact
+  - validate localization completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Localization artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design internationalization (i18n) and localization (l10n) complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

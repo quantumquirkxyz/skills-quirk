@@ -5,28 +5,28 @@ maturity: experimental
 version: 1
 description: Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact satisfying completion criteria
+  - apply db nosql modeling workflow
+  - produce db nosql modeling analysis artifact
+  - validate db nosql modeling completion criteria
 outputs:
-  - Markdown artifact with all process steps completed
+  - Db Nosql Modeling artifact with completed sections, evidence, and limitations
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved with all required sections present.
+stopCondition: Design NoSQL data models complete; required sections present; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Contract
+## Operating Contract
 
-- **Input:** problem description and inputs defined by the skill body.
-- **Output:** Markdown artifact with completed process steps.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** all process steps executed; artifact saved with required sections.
-- **Risk:** low.
-- **Boundary:** produces reasoning artifact only; no system changes.
-
+- **Input:** Db Nosql Modeling request, problem context, constraints, and available evidence.
+- **Output:** Db Nosql Modeling artifact with completed analysis, decisions, recommendations, and limitations.
+- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
+- **Dependencies:** declared dependencies, source material, and domain references required by the task.
+- **Stop condition:** Design NoSQL data models is complete, required sections are present, and completion criteria are checked.
+- **Risk:** use the frontmatter risk classification and call out any escalation.
+- **Boundary:** stay within the skill's declared scope and side-effect policy.
 
 # NoSQL Data Modeling
 

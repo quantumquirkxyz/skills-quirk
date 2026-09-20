@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply cms architecture workflow
+  - produce cms architecture artifact
+  - validate cms architecture completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Cms Architecture artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design content management systems complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

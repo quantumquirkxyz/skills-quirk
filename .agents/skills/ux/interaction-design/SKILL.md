@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply interaction design workflow
+  - produce interaction design artifact
+  - validate interaction design completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Interaction Design artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design user interactions complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

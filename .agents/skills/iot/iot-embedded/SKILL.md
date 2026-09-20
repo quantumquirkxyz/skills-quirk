@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply iot embedded workflow
+  - produce iot embedded artifact
+  - validate iot embedded completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Iot Embedded artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design embedded/IoT systems complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

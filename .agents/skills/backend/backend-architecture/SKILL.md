@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply backend architecture workflow
+  - produce backend architecture artifact
+  - validate backend architecture completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Backend Architecture artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Shape backend systems complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

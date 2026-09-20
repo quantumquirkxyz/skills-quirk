@@ -4,7 +4,7 @@
   "checks": [
     {
       "skill": "evaluate-skill",
-      "mustMention": ["Markdown artifact or structured result"]
+      "mustMention": ["Evaluate Skill artifact with findings"]
     }
   ]
 }

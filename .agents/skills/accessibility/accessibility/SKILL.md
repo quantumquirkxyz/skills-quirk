@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply accessibility workflow
+  - produce accessibility artifact
+  - validate accessibility completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Accessibility artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design inclusive products complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply microservices workflow
+  - produce microservices artifact
+  - validate microservices completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Microservices artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design microservice architectures complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply qa automation workflow
+  - produce qa automation artifact
+  - validate qa automation completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Qa Automation artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design and implement automated test suites complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

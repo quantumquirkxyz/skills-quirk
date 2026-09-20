@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply networking workflow
+  - produce networking artifact
+  - validate networking completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Networking artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design and analyze network infrastructure complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

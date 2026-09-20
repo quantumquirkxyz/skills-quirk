@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply accessibility testing workflow
+  - produce accessibility testing artifact
+  - validate accessibility testing completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Accessibility Testing artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Test web interfaces for accessibility compliance complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

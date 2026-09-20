@@ -5,13 +5,14 @@ maturity: stable
 version: 1
 description: Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.
 capabilities:
-  - execute the core process defined in the skill body
-  - produce a Markdown artifact or structured result
+  - apply os kernel workflow
+  - produce os kernel artifact
+  - validate os kernel completion criteria
 outputs:
-  - Markdown artifact with process steps and completion criteria
+  - Os Kernel artifact with findings, decisions, recommendations, and validation notes
 sideEffects: []
 dependencies: []
-stopCondition: All process steps executed; artifact saved; criteria met.
+stopCondition: Design and analyze operating system internals complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
