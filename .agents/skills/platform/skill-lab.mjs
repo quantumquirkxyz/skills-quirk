@@ -105,7 +105,9 @@ function usage() {
   tutorial <skill-name|SKILL.md>
   metrics [runs-directory]
   playground [--output directory] [--fixtures JSON] [--command JSON]
-  pr-check [--base ref]`);
+  pr-check [--base ref]
+  evolve [skill-path] [--target-version N] [--dry-run]
+  work-item [description]`);
 }
 async function template() {
   const name = process.argv[3];
@@ -157,6 +159,7 @@ maxIterations: 5
 
 - Preserve existing repository conventions.
 - Surface uncertainty and failures explicitly.
+- Never write outside the sandbox or the target skill file.
 `, 'utf8');
   json({ status: 'created', file: path.relative(root, file), sandboxSkill: path.relative(root, directory), completedFrontmatter: true, nextValidationCommand: `node .agents/skills/platform/skill-lab.mjs validate ${path.relative(root, directory)} --json` });
 }
@@ -257,9 +260,30 @@ async function graph() {
   const centralSkills = [...incoming].filter(([, count]) => count > 0).sort((a, b) => b[1] - a[1]).map(([skill, dependents]) => ({ skill, dependents }));
   const modularityFindings = centralSkills.filter(({ dependents }) => dependents >= 5).map(({ skill, dependents }) => `${skill} has ${dependents} dependents; review whether its contract is too broad.`);
   if (optionValue('--format', 'mermaid') === 'json') return json({ nodes, cycles: findCycles(nodes), centralSkills, modularityFindings });
+  console.log('%% quirk Skills Dependency Graph');
   console.log('graph TD');
-  for (const node of nodes) for (const dep of node.dependencies) console.log(`  ${node.name} --> ${dep}`);
-  if (centralSkills.length) console.log(`  %% central skills: ${centralSkills.slice(0, 5).map(({ skill }) => skill).join(', ')}`);
+  console.log('  %% Central skills (most dependents)');
+  if (centralSkills.length) console.log(`  %% Top: ${centralSkills.slice(0, 5).map(({ skill }) => skill).join(', ')}`);
+  console.log('');
+  for (const node of nodes) {
+    const deps = node.dependencies.length ? node.dependencies.join(', ') : 'none';
+    console.log(`  ${node.name} --> ${deps}`);
+  }
+  if (modularityFindings.length) {
+    console.log('');
+    console.log('  %% Modularity findings:');
+    for (const finding of modularityFindings.slice(0, 5)) {
+      console.log(`  %% ${finding}`);
+    }
+  }
+  console.log('');
+  console.log('  %% Cycles (if any):');
+  const cycles = findCycles(nodes);
+  if (cycles.length) {
+    for (const cycle of cycles.slice(0, 5)) console.log(`  %% ${cycle.join(' -> ')}`);
+  } else {
+    console.log('  %% None detected.');
+  }
 }
 function findCycles(nodes) {
   const edges = new Map(nodes.map((node) => [node.name, node.dependencies]));
