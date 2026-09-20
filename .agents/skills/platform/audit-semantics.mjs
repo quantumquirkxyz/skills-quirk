@@ -11,7 +11,7 @@ const allowedRetiredTermFiles = new Set(['docs/agents/provenance.md']);
 
 const retiredPatterns = [
   /\bask-matt\b/,
-  /\bsetup-matt-pocock-skills\b/,
+  ,
   /\bship-review-fix-loop\b/,
   /\bdoc-draft-pr\b/,
   /\bfrontend-development\b/,
