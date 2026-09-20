@@ -86,6 +86,15 @@ The point is not to hide influence. It is to turn influence into a distinct quir
 - **Method:** contracts completed, trustTier fixed (medium → 3), validated batch, promoted via copy + symlink.
 - **Status:** canonical bundle updated; provenance recorded.
 
+## 2026-09 — Workflow operations and quality gates expansion
+
+- **Source:** direct canonical hardening pass after bundle-wide skill audit.
+- **Outcome:** 6 new stable skills added to `.agents/skills/` with `.claude/skills/` symlinks: `issue-operations`, `pr-operations`, `lockfile-maintenance`, `skill-quality-gate`, `workflow-fixture-author`, and `side-effect-auditor`.
+- **Validation:** `check-all.mjs` passed with 10/10 checks; scenario coverage expanded from 5 to 8 fixtures.
+- **Categories:** Integrations (issue and PR operations) and Skill Dev (lockfile maintenance, quality gate interpretation, workflow fixture authoring, side-effect auditing).
+- **Method:** repeated operational concerns were extracted into explicit skills with contract, rules, side-effect metadata, evidence requirements, and release-gate coverage.
+- **Status:** canonical bundle updated; provenance recorded.
+
 ## Maintenance Rule
 
 When adding, renaming, or retiring a skill:

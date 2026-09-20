@@ -38,6 +38,8 @@ node .agents/skills/platform/check-all.mjs
 
 Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
 
+The current bundle includes 183 canonical skills, including explicit operation skills for issue and PR coordination plus maintenance skills for lockfiles, quality gates, fixtures, and side-effect audits.
+
 ## Table of Contents
 
 - [What This Is](#what-this-is)
@@ -113,6 +115,7 @@ The method is documented in:
 | [Skill Lab toolkit](docs/agents/skill-lab.md) | Skill lab reference |
 | [release checklist](docs/agents/release-checklist.md) | Pre/post-release gates |
 | [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
+| [skill inventory](docs/agents/skill-inventory.md) | Generated per-skill status table |
 
 ---
 
@@ -196,6 +199,8 @@ node .agents/skills/platform/check-all.mjs
 ```
 
 Expected result: `status: "pass"`.
+
+The full gate currently covers structure, semantic health, 8 scenario fixtures, 4 behavioral fixtures, syntax checks, shell template checks, and platform tests.
 
 ---
 

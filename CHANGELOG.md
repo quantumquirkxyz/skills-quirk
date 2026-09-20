@@ -8,6 +8,18 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## Unreleased
+
+### Added
+
+- Added workflow operation skills for issue tracker and pull request mutations with explicit evidence and safety boundaries.
+- Added skill-dev maintenance skills for lockfile maintenance, quality gates, workflow fixtures, and side-effect audits.
+- Added 3 scenario fixtures covering operation boundaries, release quality, fixture quality, and side-effect quality.
+
+### Changed
+
+- Updated the generated skill inventory, skills map, README validation notes, and provenance records to match the current canonical bundle.
+
 ## 0.1.0 - 2026-08-27
 
 Initial quirk-owned skills bundle baseline.

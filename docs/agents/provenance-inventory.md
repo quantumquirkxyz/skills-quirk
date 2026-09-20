@@ -13,6 +13,10 @@ This file classifies active skills by provenance status. Use `docs/agents/proven
 - `execution-policy`
 - `skill-audit`
 - `evaluate-skill`
+- `lockfile-maintenance`
+- `skill-quality-gate`
+- `workflow-fixture-author`
+- `side-effect-auditor`
 - `knowledge-curator`
 - `docs-management`
 
@@ -24,6 +28,8 @@ This file classifies active skills by provenance status. Use `docs/agents/proven
 - `publish-open-pr`
 - `review-pr`
 - `review-fix-loop`
+- `issue-operations`
+- `pr-operations`
 - `plan-review-fixes`
 - `implement-review-fixes`
 - `ship-subissue`

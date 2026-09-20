@@ -13,6 +13,8 @@ mindmap
             to-tickets
             implement
             publish-open-pr
+            issue-operations
+            pr-operations
             review-pr
             review-fix-loop
             ship-subissue
@@ -22,13 +24,16 @@ mindmap
             provenance
             skill-audit
             evaluate-skill
+            lockfile-maintenance
+            skill-quality-gate
+            workflow-fixture-author
+            side-effect-auditor
             knowledge-curator
             writing-great-skills
             execution-policy
             docs-management
             triage
             make-project
-            setup-quirk-skills
             setup-quirk-skills
         Platform
             frontend-design
@@ -81,6 +86,8 @@ mindmap
 | `to-tickets` | Break plan into tracer-bullet tickets |
 | `implement` | Implement work from spec or tickets |
 | `publish-open-pr` | Open a PR from an issue branch |
+| `issue-operations` | Create, update, comment, label, assign, or close issue tracker items with evidence |
+| `pr-operations` | Create or update pull requests, comments, labels, and reviewer requests with validation evidence |
 | `review-pr` | Review PR against Standards and Spec axes |
 | `review-fix-loop` | Orchestrate review-repair loop |
 | `plan-review-fixes` | Convert review findings into a remediation plan |
@@ -98,6 +105,10 @@ Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing 
 | `docs/agents/provenance.md` | Origin and redesign status |
 | `skill-audit` | Audit bundle, lockfile, symlink parity |
 | `evaluate-skill` | Evaluate skill against fixed scenarios |
+| `lockfile-maintenance` | Reconcile `skills-lock.json` with canonical skill files |
+| `skill-quality-gate` | Run and interpret schema, semantic, scenario, fixture, and side-effect gates |
+| `workflow-fixture-author` | Author deterministic scenario and behavioral fixtures |
+| `side-effect-auditor` | Audit side-effect, risk, trust tier, and dependency declarations |
 | `knowledge-curator` | Keep context and ADRs coherent |
 | `writing-great-skills` | Vocabulary and principles for skills |
 | `execution-policy` | Decide whether a skill action is allowed |
@@ -113,6 +124,10 @@ Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing 
 - `skill-dependency-graph`
 - `rule-cataloger`
 - `skill-diff-analyzer`
+- `lockfile-maintenance`
+- `skill-quality-gate`
+- `workflow-fixture-author`
+- `side-effect-auditor`
 - `interactive-tutorial-builder`
 - `skill-performance-metrics`
 - `integration-playground`
@@ -120,6 +135,19 @@ Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing 
 
 These Skills share the `platform/skill-lab.mjs` command surface and use the
 `.skill-sandbox/` directory for experiments before promotion.
+
+## Workflow Operations and Quality Gates - 2026-09
+
+Validated through `check-all.mjs` with 8 scenario fixtures and 4 behavioral fixtures.
+
+| Skill | Purpose |
+|---|---|
+| `issue-operations` | Scoped issue creation, updates, comments, labels, assignment, and closure evidence |
+| `pr-operations` | PR creation/update/comment/reviewer/label operations without merging |
+| `lockfile-maintenance` | Missing, stale, extra, and mismatched skill lockfile entry repair |
+| `skill-quality-gate` | Release readiness interpretation across schema, semantic, routing, placeholder, and side-effect checks |
+| `workflow-fixture-author` | Deterministic scenario and behavioral fixture authoring |
+| `side-effect-auditor` | Declared-vs-implied side-effect, risk, trust tier, and dependency audit |
 
 ## Platform
 
