@@ -10,11 +10,14 @@ capabilities:
   - validate make project completion criteria
 outputs:
   - Make Project artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - create-project
+  - create-project-fields
+  - link-repositories
 dependencies: []
 stopCondition: Use when the user wants a new board in GitHub Projects, or another skill needs one complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

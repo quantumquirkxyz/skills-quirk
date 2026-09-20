@@ -10,11 +10,13 @@ capabilities:
   - validate to tickets completion criteria
 outputs:
   - To Tickets artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - create-issues
+  - write-files
 dependencies: []
 stopCondition: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

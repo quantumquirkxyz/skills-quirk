@@ -10,11 +10,12 @@ capabilities:
   - validate skill template generator completion criteria
 outputs:
   - Skill Template Generator artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-files
 dependencies: []
 stopCondition: Generate an interactive, contract-complete Skill template in the sandbox complete; artifact saved; completion criteria checked.
 risk: low
-trustTier: 1
+trustTier: 2
 maxIterations: 6
 ---
 

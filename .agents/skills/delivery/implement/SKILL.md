@@ -10,11 +10,14 @@ capabilities:
   - validate implement completion criteria
 outputs:
   - Implement artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-code
+  - commit-git
+  - push-branch
 dependencies: []
 stopCondition: Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

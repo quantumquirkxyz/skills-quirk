@@ -301,7 +301,7 @@
       "sourceType": "local"
     },
     "grill-with-docs": {
-      "hash": "89627f460c8d4df1b2daa8999848f28701864a3dbce675e95c5ac6a4dac9104d",
+      "hash": "3dd12b9e4f754f89932a5a53d791dbc37b81bf3a470bc2dbd1f6bc021472b1ee",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -311,17 +311,17 @@
       "sourceType": "local"
     },
     "handoff": {
-      "hash": "1fda4c9db38d7293b20972aed0983efd808f5e44fd69e5dfbc94c9c12dda70a5",
+      "hash": "edfd28eb2606fb1e8fd356dbbdda92e93e43f81c89bd076fbccd1cef79b33a57",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "implement": {
-      "hash": "f3408c63e3ca02d50bc2363447cb6d6b6fb4dca162a6a1ee67a98e0a9825d31f",
+      "hash": "9a88fa87d93d497cda34b540bdb471ecc77cf5739ddffa27dbadf7f4b0cc4205",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "implement-review-fixes": {
-      "hash": "e47f71d113e7ff34d4ed48d75ace66252499e1d98b526f7b167a3791e74660d5",
+      "hash": "8c83cccf7db366b77091bedc5f062d0eb8f7aa52b9575936777824119eda16f4",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -346,7 +346,7 @@
       "sourceType": "local"
     },
     "knowledge-curator": {
-      "hash": "4af857adeea4a5042b8d77ebeb6b4171c05ef2d67fb83a0bd7b995d630aff98f",
+      "hash": "c589e19c49fa00bafea54665351b99439ccc3c802416607ca9443ce51b9109de",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -356,7 +356,7 @@
       "sourceType": "local"
     },
     "make-project": {
-      "hash": "13b6ad7a70e47e44ae7803ea223f1d5508303438ab7df03accfc3575b239aec5",
+      "hash": "e3f0802bc3f0b87a31ba119463d6abbe8fc7ce597beb12e36eb5c4fbb2a99ec6",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -551,7 +551,7 @@
       "sourceType": "local"
     },
     "plan-review-fixes": {
-      "hash": "d4bb7a96f017c93da7d71a68bb7a28c6ddd56dac0c26cf46d59189ae31ecda40",
+      "hash": "3c395f2b35226926c2628facd346415f7820afbc94dd1159d9d23810ba1be388",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -601,7 +601,7 @@
       "sourceType": "local"
     },
     "publish-open-pr": {
-      "hash": "2092d5a92dfb909021b544f7e149f7d4e594223e0c488a6eb2089fa059ba3855",
+      "hash": "a79e63e7f8fd41dc18cb4924ec12b4081ca9a73f37c6805de887decb6404f5da",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -671,7 +671,7 @@
       "sourceType": "local"
     },
     "research": {
-      "hash": "fb3eb68ef75462046343b54a18a3e61d4bebecff5d8db60dcad763e779a2800d",
+      "hash": "27bd9a340f59a4dd7af887c23353870f88c5a86754d8eb643495fbbe729dcc5e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -686,12 +686,12 @@
       "sourceType": "local"
     },
     "resolving-merge-conflicts": {
-      "hash": "5399772355c6de0becf872906893eab0ff7d6e51885ec6e073654ca5de119f06",
+      "hash": "2076717ab153ca711e88212117e12866be52f90169662e80c3acac1cea6b1c02",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "review-fix-loop": {
-      "hash": "a2581e1e5cb7a8c1421a91db786c7d95927a2cc5fcee15f64a13a7b28467b669",
+      "hash": "6f34041ca81d2ef29a56f6ccb3c9e8e660f1a2bf9feddfe52b8e9e837d696954",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -756,7 +756,7 @@
       "sourceType": "local"
     },
     "ship-subissue": {
-      "hash": "1300e3c2c435e1a5c0530941332f324462d5cb5f837d832f61e5b067eb6cc561",
+      "hash": "d094659a253c3c9e37f324b0557099f3ffcc867ed6f1ef7a79f1a0f976764f86",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -786,7 +786,7 @@
       "sourceType": "local"
     },
     "skill-promoter": {
-      "hash": "19f10e411f0e83114fbbb46d2e99a3ff657a5cc9c81f8cfafe811e56629f7124",
+      "hash": "f0e6660666ef8790fad8303242fa678b9cf5702d6aabd321bd3c17e22f5326ec",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -796,7 +796,7 @@
       "sourceType": "local"
     },
     "skill-template-generator": {
-      "hash": "cb93ae1dad5f938785cf8e079bf1bbad76370ba89762b6f70094b4f7ddd628d6",
+      "hash": "a4dbf3d3d8dfb67c705b8be952279a5c301ed31ce8635e2d8984ee370bcb87fc",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -821,17 +821,17 @@
       "sourceType": "local"
     },
     "to-spec": {
-      "hash": "bd43d2f25c06fbb68686e87c100c6a6fd47c033fbf55e04ab990a4a244b99eec",
+      "hash": "dc9b69f794a066d3a5551b0f7b64383843181ff2396f806b8a5ae0ad2bfa4982",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-tickets": {
-      "hash": "d0bc9f382cf3e02055453b3929ac1f850b91f29f7af14792b76789db954886f5",
+      "hash": "086deba99ea85225b8faac76ac5bad309e705f0321f08d108c4cbf9b4c83b1c7",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "triage": {
-      "hash": "5c4bac53e4f6491b5665ccdf0d30a38771948ff5e86ac7f8f949a70d0c8ed579",
+      "hash": "759a78ac4fcfc4d76ff59201e18ba9d16718baaddfaadaa96d7033106dbd8357",
       "revision": "working-tree",
       "sourceType": "local"
     },

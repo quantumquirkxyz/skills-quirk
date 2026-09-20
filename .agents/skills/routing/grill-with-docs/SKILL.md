@@ -10,11 +10,12 @@ capabilities:
   - validate grill with docs completion criteria
 outputs:
   - Grill With Docs artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-docs
 dependencies: []
 stopCondition: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go complete; artifact saved; completion criteria checked.
 risk: low
-trustTier: 1
+trustTier: 2
 maxIterations: 6
 ---
 

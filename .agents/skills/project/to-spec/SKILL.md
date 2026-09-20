@@ -10,11 +10,12 @@ capabilities:
   - validate to spec completion criteria
 outputs:
   - To Spec artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - create-issue
 dependencies: []
 stopCondition: Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

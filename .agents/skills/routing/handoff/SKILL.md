@@ -10,11 +10,12 @@ capabilities:
   - validate handoff completion criteria
 outputs:
   - Handoff artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-temp-file
 dependencies: []
 stopCondition: Compact the current conversation into a handoff document for another agent to pick up complete; artifact saved; completion criteria checked.
 risk: low
-trustTier: 1
+trustTier: 2
 maxIterations: 6
 ---
 

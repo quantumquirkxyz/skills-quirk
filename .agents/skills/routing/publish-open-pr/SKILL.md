@@ -10,11 +10,13 @@ capabilities:
   - validate publish open pr completion criteria
 outputs:
   - Publish Open Pr artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - push-branch
+  - create-pull-request
 dependencies: []
 stopCondition: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

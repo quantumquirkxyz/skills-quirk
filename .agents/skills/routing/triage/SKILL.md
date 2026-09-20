@@ -10,11 +10,15 @@ capabilities:
   - validate triage completion criteria
 outputs:
   - Triage artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - label-issue
+  - post-comment
+  - close-issue
+  - write-files
 dependencies: []
 stopCondition: Move issues and external PRs through a state machine of triage roles complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

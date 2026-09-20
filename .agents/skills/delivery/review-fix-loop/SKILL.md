@@ -10,11 +10,15 @@ capabilities:
   - validate review fix loop completion criteria
 outputs:
   - Review Fix Loop artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-code
+  - post-pr-comment
+  - commit-git
+  - push-branch
 dependencies: []
 stopCondition: Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

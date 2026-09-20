@@ -10,11 +10,14 @@ capabilities:
   - validate implement review fixes completion criteria
 outputs:
   - Implement Review Fixes artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-code
+  - commit-git
+  - push-branch
 dependencies: []
 stopCondition: Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

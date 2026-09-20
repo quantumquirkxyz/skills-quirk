@@ -10,11 +10,14 @@ capabilities:
   - validate ship subissue completion criteria
 outputs:
   - Ship Subissue artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - merge-pull-request
+  - close-issue
+  - update-project
 dependencies: []
 stopCondition: Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: high
+trustTier: 4
 maxIterations: 6
 ---
 

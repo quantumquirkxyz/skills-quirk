@@ -10,11 +10,12 @@ capabilities:
   - validate knowledge curator completion criteria
 outputs:
   - Knowledge Curator artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-docs
 dependencies: []
 stopCondition: Keep context, ADRs, registry entries, and research coherent over time complete; artifact saved; completion criteria checked.
 risk: low
-trustTier: 1
+trustTier: 2
 maxIterations: 6
 ---
 

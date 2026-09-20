@@ -10,11 +10,12 @@ capabilities:
   - validate plan review fixes completion criteria
 outputs:
   - Plan Review Fixes artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - post-pr-comment
 dependencies: []
 stopCondition: Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

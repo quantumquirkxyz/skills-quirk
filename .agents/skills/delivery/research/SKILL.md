@@ -10,11 +10,12 @@ capabilities:
   - validate research completion criteria
 outputs:
   - Research artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-docs
 dependencies: []
 stopCondition: Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo complete; artifact saved; completion criteria checked.
 risk: low
-trustTier: 1
+trustTier: 2
 maxIterations: 6
 ---
 

@@ -10,11 +10,14 @@ capabilities:
   - validate skill promoter completion criteria
 outputs:
   - Skill Promoter artifact with findings, decisions, recommendations, and validation notes
-sideEffects: []
+sideEffects:
+  - write-files
+  - create-symlink
+  - update-lockfile
 dependencies: []
 stopCondition: Promote validated experimental skills from the sandbox to the canonical skills bundle complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 

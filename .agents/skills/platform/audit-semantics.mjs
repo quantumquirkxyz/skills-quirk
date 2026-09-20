@@ -32,6 +32,26 @@ const weakTemplatePatterns = [
   /sharedInterests/,
 ];
 
+const sideEffectExpectations = new Map([
+  ['grill-with-docs', { effects: ['write-docs'], risk: 'low' }],
+  ['handoff', { effects: ['write-temp-file'], risk: 'low' }],
+  ['implement', { effects: ['write-code', 'commit-git', 'push-branch'], risk: 'medium' }],
+  ['implement-review-fixes', { effects: ['write-code', 'commit-git', 'push-branch'], risk: 'medium' }],
+  ['knowledge-curator', { effects: ['write-docs'], risk: 'low' }],
+  ['make-project', { effects: ['create-project', 'create-project-fields', 'link-repositories'], risk: 'medium' }],
+  ['plan-review-fixes', { effects: ['post-pr-comment'], risk: 'medium' }],
+  ['publish-open-pr', { effects: ['push-branch', 'create-pull-request'], risk: 'medium' }],
+  ['research', { effects: ['write-docs'], risk: 'low' }],
+  ['resolving-merge-conflicts', { effects: ['write-code', 'commit-git', 'continue-merge-or-rebase'], risk: 'medium' }],
+  ['review-fix-loop', { effects: ['write-code', 'post-pr-comment', 'commit-git', 'push-branch'], risk: 'medium' }],
+  ['ship-subissue', { effects: ['merge-pull-request', 'close-issue', 'update-project'], risk: 'high' }],
+  ['skill-promoter', { effects: ['write-files', 'create-symlink', 'update-lockfile'], risk: 'medium' }],
+  ['skill-template-generator', { effects: ['write-files'], risk: 'low' }],
+  ['to-spec', { effects: ['create-issue'], risk: 'medium' }],
+  ['to-tickets', { effects: ['create-issues', 'write-files'], risk: 'medium' }],
+  ['triage', { effects: ['label-issue', 'post-comment', 'close-issue', 'write-files'], risk: 'medium' }],
+]);
+
 async function exists(filePath) {
   try {
     await fs.access(filePath);
@@ -115,6 +135,10 @@ function hasGenericSkillMetadata(text, fm) {
     || /problem or task defined by the skill body/i.test(text);
 }
 
+function listValue(value) {
+  return Array.isArray(value) ? value : !value || value === '[]' ? [] : [value];
+}
+
 async function checkLinks(markdownFiles, errors) {
   const linkPattern = /\[[^\]]+\]\((?!https?:|mailto:|#)([^)]+)\)/g;
   for (const file of markdownFiles) {
@@ -165,6 +189,14 @@ async function main() {
     if (wordCount(body) < 180) warnings.push(`${name}: short body (${wordCount(body)} words)`);
     if (wordCount(body) < 300 && ruleCount(body) === 0) warnings.push(`${name}: short/medium body has no explicit Rule lines`);
     if (hasGenericSkillMetadata(text, fm)) warnings.push(`${name}: generic metadata or boilerplate contract remains`);
+    const expected = sideEffectExpectations.get(name);
+    if (expected) {
+      const actualEffects = new Set(listValue(fm.sideEffects));
+      for (const effect of expected.effects) {
+        if (!actualEffects.has(effect)) warnings.push(`${name}: expected side effect ${effect}`);
+      }
+      if (fm.risk !== expected.risk) warnings.push(`${name}: expected risk ${expected.risk} for declared side effects`);
+    }
     for (const dependency of fm.dependencies ?? []) {
       if (!skillNames.has(dependency)) errors.push(`${name}: dependency missing ${dependency}`);
     }
