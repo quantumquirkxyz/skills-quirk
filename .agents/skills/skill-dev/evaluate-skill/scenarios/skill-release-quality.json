@@ -14,6 +14,9 @@
       ],
       "expectedSideEffects": [
         "update-lockfile"
+      ],
+      "requiredReferences": [
+        "scripts/update-lockfile.mjs"
       ]
     },
     {
@@ -22,6 +25,10 @@
         "placeholder bodies",
         "side effects",
         "ready with warnings"
+      ],
+      "requiredReferences": [
+        "references/quality-gate-report-template.md",
+        "references/validator-counts.md"
       ],
       "forbid": [
         "All process steps executed"

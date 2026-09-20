@@ -38,6 +38,7 @@ maxIterations: 5
 - Rule: update hashes from the exact bytes currently in each `SKILL.md`; do not hash rendered excerpts or generated summaries.
 - Rule: remove lock entries only when the corresponding skill path is intentionally absent and no symlink still points to it.
 - Rule: preserve existing lockfile schema, indentation, and stable ordering unless the repository's maintenance script defines a different order.
+- Rule: prefer `scripts/update-lockfile.mjs` for canonical bundle lock refreshes; inspect its dry-run output before committing changes.
 - Rule: run the repository validator after lock updates and report the command, exit status, and any warning.
 - Rule: if a lock update follows skill edits, include both the edited skill names and the resulting lock entries in the summary.
 
@@ -49,6 +50,17 @@ maxIterations: 5
 4. Apply the smallest lockfile change that reconciles the intended tree.
 5. Validate the full skill bundle using the repository's available validation commands.
 6. Summarize every lockfile mutation and cite remaining drift, if any.
+
+## Script
+
+Use `scripts/update-lockfile.mjs` from this skill directory to reconcile the canonical skill tree with `skills-lock.json`.
+
+```bash
+node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs --dry-run
+node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs --write
+```
+
+The dry run reports added, updated, and removed lock entries without changing files. The write mode preserves the lockfile schema, sorts skill names, and writes hashes from the exact current `SKILL.md` bytes.
 
 ## Completion Criteria
 

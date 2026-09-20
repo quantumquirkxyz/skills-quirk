@@ -18,6 +18,10 @@
         "post-comment",
         "close-issue"
       ],
+      "requiredReferences": [
+        "references/operation-summary-template.md",
+        "references/tracker-provider-guidelines.md"
+      ],
       "forbid": [
         "execute the core process defined in the skill body"
       ]
@@ -34,6 +38,10 @@
         "update-pull-request",
         "post-pr-comment",
         "request-review"
+      ],
+      "requiredReferences": [
+        "references/pr-operation-summary-template.md",
+        "references/pr-provider-guidelines.md"
       ],
       "forbid": [
         "Markdown artifact or structured result"

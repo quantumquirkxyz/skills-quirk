@@ -45,6 +45,8 @@ maxIterations: 6
 - Rule: do not request reviewers or teams unless the user, CODEOWNERS, project workflow, or existing PR convention supports that notification.
 - Rule: never merge a PR from this skill; hand off merge decisions to the user or the repository's release workflow.
 - Rule: after mutation, return stable URLs, PR number, branch pair, and any review-blocking conditions.
+- Rule: use `references/pr-operation-summary-template.md` when creating or materially updating a PR.
+- Rule: consult `references/pr-provider-guidelines.md` before translating generic PR operations into GitHub, GitLab, Bitbucket, or Forgejo actions.
 
 ## Workflow
 
@@ -55,6 +57,11 @@ maxIterations: 6
 5. Apply only the requested PR mutations and avoid combining unrelated review coordination work.
 6. Re-read or verify the PR after mutation when tooling allows it.
 7. Summarize the final PR state, including what changed, what was validated, and what remains for reviewers.
+
+## References
+
+- `references/pr-operation-summary-template.md` - reusable PR operation summary format.
+- `references/pr-provider-guidelines.md` - provider-specific mapping notes and merge-safety boundaries.
 
 ## Completion Criteria
 

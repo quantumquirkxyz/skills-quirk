@@ -15,10 +15,12 @@ This project follows semantic versioning once releases are cut:
 - Added workflow operation skills for issue tracker and pull request mutations with explicit evidence and safety boundaries.
 - Added skill-dev maintenance skills for lockfile maintenance, quality gates, workflow fixtures, and side-effect audits.
 - Added 3 scenario fixtures covering operation boundaries, release quality, fixture quality, and side-effect quality.
+- Added operation summary templates, provider guidelines, fixture templates, a side-effect matrix, and a lockfile refresh script for the new workflow skills.
 
 ### Changed
 
 - Updated the generated skill inventory, skills map, README validation notes, and provenance records to match the current canonical bundle.
+- Strengthened scenario fixtures to verify required references and the lockfile maintenance script.
 
 ## 0.1.0 - 2026-08-27
 

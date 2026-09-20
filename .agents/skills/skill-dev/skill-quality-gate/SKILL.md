@@ -40,6 +40,8 @@ maxIterations: 5
 - Rule: when a command is unavailable, inspect nearby platform scripts before concluding the gate cannot run.
 - Rule: avoid declaring success from a single narrow validator when changed skills affect lockfiles, symlinks, or generated registries.
 - Rule: recommend fixes in priority order: correctness blockers, routing defects, unsafe side effects, quality debt, then optional cleanup.
+- Rule: use `references/quality-gate-report-template.md` for release or handoff summaries.
+- Rule: explain validator count differences using `references/validator-counts.md` before treating them as failures.
 
 ## Workflow
 
@@ -49,6 +51,11 @@ maxIterations: 5
 4. Inspect output for warnings that should be promoted to blockers due to the requested release or promotion context.
 5. If failures occur, map each failure to the responsible skill path and likely repair.
 6. Return a compact readiness decision: ready, ready with warnings, or blocked.
+
+## References
+
+- `references/quality-gate-report-template.md` - compact release-readiness report format.
+- `references/validator-counts.md` - explanation of expected count differences between structural and semantic checks.
 
 ## Completion Criteria
 

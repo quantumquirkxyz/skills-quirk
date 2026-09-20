@@ -14,6 +14,10 @@
       ],
       "expectedSideEffects": [
         "write-files"
+      ],
+      "requiredReferences": [
+        "references/scenario-fixture-template.json",
+        "references/behavioral-fixture-template.md"
       ]
     },
     {
@@ -22,6 +26,9 @@
         "under-declared side effects",
         "over-declared side effects",
         "exact frontmatter field changes"
+      ],
+      "requiredReferences": [
+        "references/side-effect-matrix.md"
       ],
       "forbid": [
         "problem or task defined by the skill body"

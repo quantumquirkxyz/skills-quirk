@@ -149,6 +149,8 @@ Validated through `check-all.mjs` with 8 scenario fixtures and 4 behavioral fixt
 | `workflow-fixture-author` | Deterministic scenario and behavioral fixture authoring |
 | `side-effect-auditor` | Declared-vs-implied side-effect, risk, trust tier, and dependency audit |
 
+These skills include reusable references for issue/PR operation summaries, provider mappings, quality-gate reports, fixture skeletons, side-effect expectations, and lockfile refresh.
+
 ## Platform
 
 | Skill | Purpose |

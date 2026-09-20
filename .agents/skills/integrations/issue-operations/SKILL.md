@@ -45,6 +45,8 @@ maxIterations: 6
 - Rule: never close, reopen, lock, delete, or transfer an issue as a side effect of summarizing or triaging unless the user requested that exact operation.
 - Rule: after every mutation, capture the issue number or stable ID, URL, final state, and any API or validation response that proves the action completed.
 - Rule: if a partial failure occurs, stop broadening the mutation set and report which issue actions succeeded, which failed, and what remains safe to retry.
+- Rule: use `references/operation-summary-template.md` for user-facing summaries when more than one issue action is performed.
+- Rule: consult `references/tracker-provider-guidelines.md` before mapping generic issue actions to GitHub, GitLab, Linear, Jira, or another tracker.
 
 ## Workflow
 
@@ -55,6 +57,11 @@ maxIterations: 6
 5. Apply the smallest safe mutation set. Avoid bundling unrelated changes into one issue operation when separate evidence would be clearer.
 6. Verify the final issue state by reading the target after mutation when the available tool supports it.
 7. Return a compact summary with links, IDs, changes made, skipped actions, and recommended next steps.
+
+## References
+
+- `references/operation-summary-template.md` - reusable issue operation summary format.
+- `references/tracker-provider-guidelines.md` - provider-specific mapping notes and safety checks.
 
 ## Completion Criteria
 

@@ -39,6 +39,7 @@ maxIterations: 5
 - Rule: compare risk and trust tier to the strongest declared or implied mutation, not the most common path.
 - Rule: when a skill delegates mutation to another skill, verify whether that delegation is optional guidance or part of the required workflow.
 - Rule: recommend exact frontmatter field changes instead of vague "tighten metadata" guidance.
+- Rule: use `references/side-effect-matrix.md` to map detected operations to expected side effects, risk, trust tier, and dependencies.
 
 ## Workflow
 
@@ -48,6 +49,10 @@ maxIterations: 5
 4. Classify each mismatch by severity: blocker, warning, or informational.
 5. Recommend exact frontmatter updates and, when needed, body rule changes that make operational authority explicit.
 6. Return a concise audit table or grouped list with paths and suggested changes.
+
+## References
+
+- `references/side-effect-matrix.md` - expected metadata for common mutating and diagnostic operations.
 
 ## Completion Criteria
 

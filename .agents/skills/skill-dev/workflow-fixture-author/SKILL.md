@@ -41,6 +41,8 @@ maxIterations: 6
 - Rule: preserve existing fixture formats and naming conventions.
 - Rule: when a fixture encodes a side effect, assert both the allowed operation and the condition that makes it safe.
 - Rule: run or identify the nearest validator after adding fixtures and report failures without diluting the test.
+- Rule: start scenario fixtures from `references/scenario-fixture-template.json` unless an existing neighboring fixture is more specific.
+- Rule: start behavioral fixtures from `references/behavioral-fixture-template.md` and replace every placeholder before validation.
 
 ## Workflow
 
@@ -51,6 +53,11 @@ maxIterations: 6
 5. Add or update fixture files in the correct location.
 6. Run the relevant fixture validator or explain why it cannot run locally.
 7. Summarize coverage added, validation result, and remaining gaps.
+
+## References
+
+- `references/scenario-fixture-template.json` - scenario fixture skeleton for route, phrase, side-effect, and reference checks.
+- `references/behavioral-fixture-template.md` - behavioral fixture skeleton for required sections and forbidden placeholder checks.
 
 ## Completion Criteria
 

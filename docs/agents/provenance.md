@@ -93,6 +93,7 @@ The point is not to hide influence. It is to turn influence into a distinct quir
 - **Validation:** `check-all.mjs` passed with 10/10 checks; scenario coverage expanded from 5 to 8 fixtures.
 - **Categories:** Integrations (issue and PR operations) and Skill Dev (lockfile maintenance, quality gate interpretation, workflow fixture authoring, side-effect auditing).
 - **Method:** repeated operational concerns were extracted into explicit skills with contract, rules, side-effect metadata, evidence requirements, and release-gate coverage.
+- **Hardening:** operation templates, provider guidelines, fixture templates, a side-effect matrix, and a lockfile refresh script were added so the new skills are directly actionable.
 - **Status:** canonical bundle updated; provenance recorded.
 
 ## Maintenance Rule
