@@ -1,0 +1,85 @@
+name: Validate Skills Bundle
+on:
+  push:
+    paths:
+      - ".agents/skills/**/*"
+      - "skills-lock.json"
+  pull_request:
+    paths:
+      - ".agents/skills/**/*"
+      - "skills-lock.json"
+  workflow_dispatch:
+
+env:
+  SKILLS_DIR: ".agents/skills"
+  SANDBOX_DIR: ".skill-sandbox"
+
+jobs:
+  validate:
+    name: Validate Skills Bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          echo "{}" > .skill-sandbox/manifest.json
+
+      - name: Validate skills structure
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/validate-skills.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Audit semantics
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/audit-semantics.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Evaluate scenarios
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/evaluate-scenarios.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Evaluate behavioral fixtures
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/evaluate-behavioral-fixtures.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Check node lint
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          bash -n .agents/skills/delivery/diagnosing-bugs/scripts/hitl-loop.template.sh
+
+      - name: Run unit tests
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node --test .agents/skills/platform/tests/*.test.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Sync bundle check
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/sync-bundle.mjs /tmp/test-target --check 2>&1 | tee "$(mktemp)"
+
+      - name: Generate metrics
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/skill-lab.mjs metrics 2>&1 | tee "$(mktemp)"
+
+      - name: Generate skill graph
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/skill-lab.mjs graph --format mermaid 2>&1 | tee "$(mktemp)"
+
+      - name: Summary
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          echo "Skills bundle validation complete."
+          echo "You can find the detailed validation report in the job summary."
