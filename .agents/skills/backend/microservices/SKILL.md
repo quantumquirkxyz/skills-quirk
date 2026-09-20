@@ -48,6 +48,21 @@ A microservices decomposition with:
 5. **Design resilience** — timeouts, retries, circuit breakers, bulkheads
 6. **Plan observability** — distributed tracing, centralized logging
 
+## Rules
+
+- Rule: do not split a service without a clear ownership, scaling, deployment, or team-boundary reason.
+- Rule: assign exactly one owner for each source of truth.
+- Rule: prefer asynchronous communication only when eventual consistency is acceptable and observable.
+- Rule: include timeout, retry, idempotency, and circuit-breaker behavior for every cross-service call.
+- Rule: account for distributed tracing, correlation IDs, and operational ownership from the start.
+
+## Completion Criteria
+
+- service boundaries and data ownership are explicit
+- communication patterns include failure behavior
+- consistency trade-offs are documented
+- observability and deployment implications are addressed
+
 ## References
 - `../backend-architecture/SKILL.md` — service design
 - `../../platform/queueing/SKILL.md` — async messaging

@@ -45,3 +45,18 @@ Conduct **market analysis** — TAM/SAM/SOM, competitor mapping, pricing analysi
 5. Trends — technology, regulation, demographic, macroeconomic; sources (reports, news, data APIs).
 6. Data quality — primary vs secondary; date; bias; missing data acknowledged.
 7. Deliver — Markdown report with sections, source citations, and a recommendation (enter / niche / avoid / watch).
+
+## Rules
+
+- Rule: define market boundaries before estimating size.
+- Rule: cite data sources and dates for every quantitative estimate.
+- Rule: separate TAM, SAM, and SOM assumptions.
+- Rule: include direct competitors, substitutes, and non-consumption alternatives.
+- Rule: state confidence level and missing data instead of overfitting a precise number.
+
+## Completion Criteria
+
+- market scope and geography are explicit
+- sizing assumptions and sources are traceable
+- competitor and pricing analysis are included
+- recommendation is tied to evidence quality

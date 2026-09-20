@@ -35,3 +35,18 @@ Its job:
 1. Investigate the question against **primary sources** — official docs, source code, specs, first-party APIs — not a secondary write-up of them. Follow every claim back to the source that owns it.
 2. Write the findings to a single Markdown file, citing each claim's source.
 3. Save it where the repo already keeps such notes; match the existing convention, and if there is none, put it somewhere sensible and say where.
+
+## Rules
+
+- Rule: prefer primary sources and record why any secondary source was used.
+- Rule: cite claim-level sources, not just a bibliography at the end.
+- Rule: capture publication or access dates when freshness matters.
+- Rule: separate confirmed facts, source interpretation, and open questions.
+- Rule: preserve enough search/query detail for another agent to reproduce the research path.
+
+## Completion Criteria
+
+- research question and scope are explicit
+- sources are primary or justified exceptions
+- findings are saved to a Markdown artifact
+- every material claim has traceable source evidence

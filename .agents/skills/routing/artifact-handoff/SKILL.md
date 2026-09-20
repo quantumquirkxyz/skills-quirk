@@ -38,7 +38,16 @@ Use this skill to move a result from one Skill to another without flattening it 
 2. Include the minimal context pointer required by the consumer.
 3. Preserve provenance and redaction by default.
 
+## Rules
+
+- Rule: include enough provenance for the consumer to verify the artifact without redoing the full prior session.
+- Rule: distinguish artifact content from commentary about the artifact.
+- Rule: redact secrets, personal data, and irrelevant private context before handoff.
+- Rule: name the intended consumer Skill and the exact next action it should take.
+- Rule: include validation status and known caveats when the artifact is partial.
+
 ## Completion criteria
 
 - the artifact validates against the shared envelope
 - the next consumer is explicit
+- provenance, evidence, and redaction status are recorded

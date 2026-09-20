@@ -51,7 +51,7 @@
       "sourceType": "local"
     },
     "artifact-handoff": {
-      "hash": "48fa6adf85d16b94856442c1dd495078a715b19687e5507d3c912c8716c56e6f",
+      "hash": "702567ed9e7c0d008fd8bb00789b2f0d462aa00ccd7edb27e1614a10b2654067",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -66,7 +66,7 @@
       "sourceType": "local"
     },
     "backend-architecture": {
-      "hash": "bf78c956b8864bf11f8168a0c7e4f8bc51784f2a7594427a66ac8282b1657462",
+      "hash": "2a06c040edf40689a17245a0ecee860f714aee7e29a7b053227415a9f90fb1ec",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -131,7 +131,7 @@
       "sourceType": "local"
     },
     "contribution-workflow-optimizer": {
-      "hash": "a8e940d8b2079eae5b7cbc77fd3bc52299ad2770f29eb85918f415f1d905920b",
+      "hash": "e6f2f0998b1ba6cad482b9c2bc9256cf13122f4c927c8498e8e091a39ea7bead",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -236,7 +236,7 @@
       "sourceType": "local"
     },
     "docs-adrs": {
-      "hash": "b234d993f83351c6857947d79945d5e7c8239b5ecd46276969c47efa4cdf2bb7",
+      "hash": "9a524feaad6c6022bdc9d3ca0559af0bb7873ca7599b34ff885c61428f005f04",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -306,12 +306,12 @@
       "sourceType": "local"
     },
     "grilling": {
-      "hash": "f356d95a42be90949b83df9165f8a868f5af799bff97fbdc23543d2ef0c228b5",
+      "hash": "695a24d62515d181134f03baefcb5820875f204970e07d5b1d4d8f783a763002",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "handoff": {
-      "hash": "cb1d71f2333bb953381d7dc38a762ce5110a988a5021b71c9bee29d608abd5b8",
+      "hash": "2cce979c8b9ed85a2580f5ad4da8c48b92ce55546f6b4b115610231057364dc8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -426,7 +426,7 @@
       "sourceType": "local"
     },
     "microservices": {
-      "hash": "0cfa62f7a328b056ba5287e31f63f68fe4a65b31d4d3c4542630ac96967d0ef1",
+      "hash": "a7808291775b0c24f404912a02ac43c578477bc5413f00b7f57cbc6b74884a8a",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -561,7 +561,7 @@
       "sourceType": "local"
     },
     "pro-market-analysis": {
-      "hash": "dc425c66f80cf7a9921cfa4bb10c1eea19c33eb88c1d917d96073796def847b8",
+      "hash": "ca7d5a9f30840432abb054b11892b0302754f8b0e474a76283e60033908d9647",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -671,7 +671,7 @@
       "sourceType": "local"
     },
     "research": {
-      "hash": "05eb60cf1c344b50a108ae56e71edc8e35f421faf22ba5fc5ee47eef118c75ef",
+      "hash": "15ee43ec683ee68d0972e2b6c1a8150d56adf41aebb4d518c83a32cada0f8008",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -706,7 +706,7 @@
       "sourceType": "local"
     },
     "scientific-hypothesis": {
-      "hash": "2e21dd2c5a2fcacfadb79d27fe2b4f8339016469a754a85b8f0f04e522350ab2",
+      "hash": "59729fb043566e7477a5d8aa00032c631a3f22faa73dee84fe5e0d5e14d2d01b",
       "revision": "working-tree",
       "sourceType": "local"
     },

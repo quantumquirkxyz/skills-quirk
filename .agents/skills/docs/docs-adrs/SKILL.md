@@ -47,3 +47,18 @@ Create an **Architecture Decision Record** (context, decision, consequences, alt
 7. Links — related ADRs, PRs, docs.
 8. Review — set a review date; document why it might be superseded.
 9. Deliver — Markdown artifact in docs/adr/ directory with the full template.
+
+## Rules
+
+- Rule: record one decision per ADR.
+- Rule: write the decision as an active choice, not a vague preference.
+- Rule: include rejected alternatives and the reason each lost.
+- Rule: mark status and supersession links when a decision changes.
+- Rule: keep consequences honest across benefits, costs, risks, and operational impact.
+
+## Completion Criteria
+
+- context, decision, alternatives, and consequences are present
+- status and date are explicit
+- links to related artifacts are included when available
+- review or supersession conditions are named

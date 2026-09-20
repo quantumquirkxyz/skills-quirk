@@ -37,3 +37,18 @@ Do not duplicate content already captured in other artifacts (specs, plans, ADRs
 Redact any sensitive information, such as API keys, passwords, or personally identifiable information.
 
 If the user passed arguments, treat them as a description of what the next session will focus on and tailor the doc accordingly.
+
+## Rules
+
+- Rule: write for a fresh agent with no hidden context.
+- Rule: include current objective, completed work, open work, validation, branch/commit state, and blockers.
+- Rule: prefer links and paths to duplicating long artifacts.
+- Rule: redact secrets and unnecessary personal data.
+- Rule: do not mark work complete unless the current objective is actually complete.
+
+## Completion Criteria
+
+- handoff location is outside the workspace unless the user requested otherwise
+- next agent can identify the next action without reading the whole prior conversation
+- open risks and validation status are explicit
+- suggested skills are relevant to the remaining work

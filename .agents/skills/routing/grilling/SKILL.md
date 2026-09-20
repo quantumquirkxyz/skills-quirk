@@ -35,3 +35,17 @@ Ask the questions one at a time, waiting for feedback on each question before co
 If a *fact* can be found by exploring the environment (filesystem, tools, etc.), look it up rather than asking me. The *decisions*, though, are mine — put each one to me and wait for my answer.
 
 Do not act on it until I confirm we have reached a shared understanding.
+
+## Rules
+
+- Rule: ask exactly one main question at a time.
+- Rule: provide a recommended answer with each question so the user has a concrete foil.
+- Rule: investigate discoverable facts directly before asking the user.
+- Rule: keep decisions with the user, even when facts are discoverable.
+- Rule: stop grilling when the plan is coherent enough to act or when a blocker requires outside input.
+
+## Completion Criteria
+
+- assumptions, dependencies, and trade-offs have been surfaced
+- the user has confirmed the shared understanding
+- next action is named but not executed unless the user asks for it

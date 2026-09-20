@@ -48,6 +48,21 @@ A backend architecture design with:
 5. **Plan error handling** — typed errors, retry logic, circuit breakers
 6. **Document the architecture** — ADR or README with diagrams
 
+## Rules
+
+- Rule: define service responsibilities before choosing transport details.
+- Rule: make caller obligations, error semantics, and versioning rules explicit.
+- Rule: keep business logic behind a stable interface rather than leaking transport concerns inward.
+- Rule: include data ownership, persistence boundaries, and transaction assumptions.
+- Rule: document operational concerns such as observability, rollout, and backward compatibility.
+
+## Completion Criteria
+
+- domain model and service boundaries are named
+- API contracts and error semantics are explicit
+- data ownership and state transitions are documented
+- versioning and operational concerns are addressed
+
 ## References
 - `../api-design/SKILL.md` — API seam design
 - `../api-contracts/SKILL.md` — contract versioning

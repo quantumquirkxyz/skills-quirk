@@ -44,3 +44,18 @@ Formulate a **scientific hypothesis** that is testable, falsifiable, and tied to
 4. Design — experiment vs observation; randomisation; controls; blinding; sample size (power analysis).
 5. Statistics — test selection (t-test, ANOVA, chi-square, regression), significance level (α), effect size, confidence intervals.
 6. Deliver — artifact with H₀/H₁, variables, design, statistical plan, and limitations.
+
+## Rules
+
+- Rule: make the hypothesis falsifiable with an observable prediction.
+- Rule: define operational measurements for every variable.
+- Rule: identify confounders and controls before choosing statistical tests.
+- Rule: distinguish exploratory analysis from confirmatory hypothesis testing.
+- Rule: include limitations, ethical constraints, and data-quality risks.
+
+## Completion Criteria
+
+- H0 and H1 are stated clearly
+- variables and measurement methods are defined
+- study design and statistical test are justified
+- limitations and confounders are explicit
