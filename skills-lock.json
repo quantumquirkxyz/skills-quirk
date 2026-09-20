@@ -345,6 +345,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "issue-operations": {
+      "hash": "16db79c805a7b58eaee3e35a68470fc34cce674401f4145d662b01d77a245cac",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "knowledge-curator": {
       "hash": "c589e19c49fa00bafea54665351b99439ccc3c802416607ca9443ce51b9109de",
       "revision": "working-tree",
@@ -352,6 +357,11 @@
     },
     "localization": {
       "hash": "56b39fda21d0bc40c8ae44c54a40f4dd9acefe2582c279afcd86a8daee7a4f6b",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "lockfile-maintenance": {
+      "hash": "9f14553be2c9e1af1752ef49f2d1555c89f40c6f622b034d3ab5a72bd9b9f52b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -560,6 +570,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "pr-operations": {
+      "hash": "8f7ac8b9ce2387670a6ea966539f86c26d11c23271c00d2525f4fc120fcd2ccf",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "pro-market-analysis": {
       "hash": "1d3b515f27f328c7340cc99b85c1b3eafdb4bd68daddcaa7f761ca946d128915",
       "revision": "working-tree",
@@ -760,6 +775,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "side-effect-auditor": {
+      "hash": "e08787566ab1a984478e8b59b69bc0ec294f1b9d49b884abc7a69321ebba8380",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "skill-audit": {
       "hash": "2dda01ec00c574a7863499b6d2bed0b3a9327687d9eb1287f6db3d69d6f05fad",
       "revision": "working-tree",
@@ -787,6 +807,11 @@
     },
     "skill-promoter": {
       "hash": "f0e6660666ef8790fad8303242fa678b9cf5702d6aabd321bd3c17e22f5326ec",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "skill-quality-gate": {
+      "hash": "23529afd655710debf1238a3fe14ac4120773aff9432ad62349a3fc41c83386e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -897,6 +922,11 @@
     },
     "work-item-router": {
       "hash": "e6c9bc0c4caa67125501f6402c7dbcdd450d2364e7916d079402e768f851c2fd",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "workflow-fixture-author": {
+      "hash": "ba11455a72b582cf3bcd55881f2aad56da325a3eba858d42b33c10235da45ebd",
       "revision": "working-tree",
       "sourceType": "local"
     },
