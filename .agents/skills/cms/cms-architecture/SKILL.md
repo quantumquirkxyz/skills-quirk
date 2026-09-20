@@ -59,6 +59,14 @@ A CMS architecture with:
 6. **Design delivery API** — query, filter, personalize
 7. **Plan migration** — content mapping, transformation scripts
 
+## Rules
+
+- Rule: model content for reuse and governance before page rendering.
+- Rule: keep editorial workflow, access control, and publishing pipeline explicit.
+- Rule: plan schema evolution and migration paths before locking field names.
+- Rule: include localization, preview, rollback, and scheduled publishing needs when relevant.
+- Rule: define API delivery contracts separately from authoring UI behavior.
+
 ## References
 - `../backend/backend-architecture/SKILL.md` — API design
 - `../../frontend/frontend-design/SKILL.md` — content rendering

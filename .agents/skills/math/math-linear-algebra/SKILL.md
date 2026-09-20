@@ -47,3 +47,11 @@ Apply **linear algebra** — decompositions, solving systems, transformations �
 5. Validate — residual ||Ax−b||, orthogonality of eigenvectors, singular values non-negative, backward error.
 6. Interpret — in the problem domain (e.g. SVD: principal components, condition number → sensitivity; eigenvalues: stability of dynamical system).
 7. Deliver — artifact with matrix properties, decomposition chosen, computation, residual/validation, and domain interpretation.
+
+## Rules
+
+- Rule: inspect matrix shape, rank, symmetry, sparsity, and conditioning before selecting a method.
+- Rule: prefer numerically stable decompositions over explicit matrix inversion.
+- Rule: report residuals, condition number, or backward error when solving numerically.
+- Rule: separate exact symbolic reasoning from floating-point computation.
+- Rule: interpret the result in the original problem domain, not only as matrix algebra.

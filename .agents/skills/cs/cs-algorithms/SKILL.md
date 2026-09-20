@@ -47,3 +47,11 @@ Design, analyse, and verify an **algorithm** — its correctness, complexity, st
 5. Complexity analysis — time (best/average/worst), space; use Big-O with justification (count operations, recursion depth).
 6. Stability — if numerical, numerical stability; if combinatorial, output stability.
 7. Deliver — artifact: problem, design, code/pseudocode, correctness proof, complexity, stability note.
+
+## Rules
+
+- Rule: define inputs, outputs, and preconditions before proposing the algorithm.
+- Rule: prove correctness with an invariant, induction, exchange argument, or contradiction that matches the strategy.
+- Rule: analyze time and space separately and name all size parameters.
+- Rule: test the algorithm against edge cases and adversarial inputs.
+- Rule: state when a simpler baseline is preferable to a more complex optimization.

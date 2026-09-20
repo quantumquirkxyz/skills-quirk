@@ -91,7 +91,7 @@
       "sourceType": "local"
     },
     "cms-architecture": {
-      "hash": "ccedfa3d4a4f01f0ba5af198ca7110466ef08464ecfd50fa5d91596c9fff15de",
+      "hash": "7108eb65da7f35b7ddce30f039f60f64bdf937faa9e7c0b3c810116c38283c9c",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -136,7 +136,7 @@
       "sourceType": "local"
     },
     "cs-algorithms": {
-      "hash": "38153fd9b78f0da6b7838a885beed36aa043cc445e259717371ec48858dbc81a",
+      "hash": "26f3a7b6b3c1457cec043679bd6c9e6da260b08a1c9730ed2ea46b6d8d6e647b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -281,7 +281,7 @@
       "sourceType": "local"
     },
     "finance-portfolio-theory": {
-      "hash": "e38bfba7634285100c25a0c2d52410aacf01c9654e5bb26c5e5e37141cba897b",
+      "hash": "3548279c1642b0fbb69d93c5a1097266d777f6a8f783a636b84ba2171afd5caf",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -351,7 +351,7 @@
       "sourceType": "local"
     },
     "localization": {
-      "hash": "375f30a44a9feede67b17189d04cf43ada232cb53683ffb5d497f6043c61c06b",
+      "hash": "dc5eb506f563701618d35266cf0a77815c5ae3df79584d0fe207b8806478fd19",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -371,7 +371,7 @@
       "sourceType": "local"
     },
     "math-cryptography": {
-      "hash": "338ec19fb20872964c3ed0f5b11baea4b7ecac745763c103f040bf8df2f61ff5",
+      "hash": "b7ff55f63cc8b625b48f9fb83c1df541a63b1f1c90d0cbbeced2a4bb5232dc0f",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -386,7 +386,7 @@
       "sourceType": "local"
     },
     "math-linear-algebra": {
-      "hash": "326fe169b13a7d0591811142df129ac802e79ff310ad1e197706521228523d99",
+      "hash": "ff33bc29f8b05981e1e244be03e9e2a38fe5a0226fff12551d8fd8a34d277b43",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -501,7 +501,7 @@
       "sourceType": "local"
     },
     "physics-classical": {
-      "hash": "62dca75af9b436b4795ee5d6b78cc256131fa4ff718a2c4f0d4e3913de3895aa",
+      "hash": "6ff6f5a1afd4ef82a315c50694d3e13c282ab3e881a23c3f289e6e345d121e34",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -641,7 +641,7 @@
       "sourceType": "local"
     },
     "quant-market-micro": {
-      "hash": "78130b69251aa721e1129736ed4cb5c281db2a991b5f0e9585303e7c8cbd54f2",
+      "hash": "6fd27436717c6d2c30b62f8fa728ab22da6d83806d0e3f3fbe4eb4dd1d20ab56",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -711,7 +711,7 @@
       "sourceType": "local"
     },
     "se-architecture-decisions": {
-      "hash": "4513ce5ac0a086c2c3a84c87b60913aa7e7a8ba27eafa0c012f68407ddeebd9f",
+      "hash": "326b88dab70ce269f712a7277dbfde82851a3c3532d916483e6f9d2fdb4f6561",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -871,7 +871,7 @@
       "sourceType": "local"
     },
     "web3-governance": {
-      "hash": "d4752843ffc59d59744290b1ba6b433853b46ab4721ba7451ae505add4397993",
+      "hash": "5b35e61fb6c76581743a4cef77fa0cf0983f8820a60327493f6b7261848d3351",
       "revision": "working-tree",
       "sourceType": "local"
     },

@@ -47,3 +47,11 @@ Analyse **market microstructure** — order book, price formation, execution cos
 5. Optimal execution — Almgren-Chriss framework (minimise expected cost + variance of execution); VWAP, TWAP, POV benchmarks.
 6. Data requirements — tick data, order log, trade reporting; NO OHLCV-only backtests for microstructure claims.
 7. Deliver — artifact: venue model, spread decomposition, cost estimate (bps), and optimal execution schedule.
+
+## Rules
+
+- Rule: do not infer microstructure behavior from OHLCV-only data.
+- Rule: identify venue rules, tick size, fees, queue priority, and latency assumptions.
+- Rule: separate spread, slippage, market impact, and timing risk.
+- Rule: model temporary and permanent impact separately when estimating execution cost.
+- Rule: validate execution assumptions against tick, quote, or order-book data.

@@ -48,3 +48,11 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 6. Dimensional check — verify [force]=[mass][acceleration]; no hidden unit mismatches.
 7. Physical limits — check limiting cases (small angle, large mass, friction → 0).
 8. Deliver — artifact: diagram, formulation, equations, solution, dimensional check, and limiting cases.
+
+## Rules
+
+- Rule: define coordinate system, sign conventions, and constraints before writing equations.
+- Rule: account for every force, torque, or generalized coordinate.
+- Rule: check units and limiting cases after deriving the solution.
+- Rule: state when approximations such as small angle, massless string, or frictionless contact are used.
+- Rule: prefer conservation laws when they simplify the problem without hiding assumptions.

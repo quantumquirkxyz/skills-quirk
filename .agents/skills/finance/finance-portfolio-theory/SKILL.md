@@ -47,3 +47,11 @@ Apply **Modern Portfolio Theory** — efficient frontier, CAPM, APT, performance
 5. Performance attribution — Brinson-Hood-Beebower: allocation, selection, interaction effects.
 6. Regime analysis — does the factor model / efficient frontier hold across economic regimes?
 7. Deliver — artifact: efficient frontier, CAPM betas / APT factor exposures, attribution decomposition, and a note on model assumptions and regime robustness.
+
+## Rules
+
+- Rule: state that outputs are analytical and not personalized financial advice.
+- Rule: define universe, benchmark, horizon, currency, and rebalancing assumptions before optimizing.
+- Rule: treat expected return estimates as fragile and show sensitivity to assumptions.
+- Rule: check covariance stability, concentration, turnover, and transaction-cost impact.
+- Rule: distinguish ex ante risk modeling from realized performance attribution.

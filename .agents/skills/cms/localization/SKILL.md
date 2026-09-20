@@ -58,6 +58,14 @@ A localization specification with:
 6. **Integrate translations** — TMS integration, glossary, placeholders
 7. **Test** — pseudolocalization, native speaker review
 
+## Rules
+
+- Rule: externalize all user-facing strings and preserve placeholders with translator context.
+- Rule: handle pluralization, gender, date/time, currency, number, and collation rules by locale.
+- Rule: design for text expansion, RTL, bidirectional text, and locale-specific layouts.
+- Rule: separate source-language content governance from per-locale adaptation.
+- Rule: include pseudolocalization and native-speaker review in validation.
+
 ## References
 - `../cms-architecture/SKILL.md` — content localization
 - `../../frontend/frontend-design/SKILL.md` — RTL design

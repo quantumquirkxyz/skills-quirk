@@ -48,3 +48,11 @@ Document and evaluate a **software architecture decision** using the ADR format 
 6. Alternatives considered — with brief evaluation of each.
 7. Review — adversarial pass: what assumption could turn wrong? What is the rollback / change path if the decision is superseded?
 8. Deliver — artifact: ADR document with all sections present; no vague language.
+
+## Rules
+
+- Rule: record one architecture decision per ADR.
+- Rule: state the decision positively and concretely.
+- Rule: list alternatives and explain why they were rejected.
+- Rule: include consequences across operability, cost, performance, security, and maintainability when relevant.
+- Rule: define a review trigger or supersession condition for decisions likely to age.

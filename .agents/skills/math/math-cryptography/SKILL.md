@@ -46,3 +46,11 @@ Analyse or design a **cryptographic construction** with explicit hardness assump
 4. Attack analysis — birthday (hash), meet-in-the-middle, side-channel, replay, forward secrecy, oracle attacks.
 5. Protocol design — if designing: use a well-known construction; do not invent primitives. Specify parties, messages, randomness sources, and secrets.
 6. Deliver — artifact: primitive, hardness assumption, security goal, attack surface, and a security verdict (strong / moderate / weak / broken).
+
+## Rules
+
+- Rule: prefer standard, reviewed constructions over invented primitives.
+- Rule: state security goals and attacker capabilities before evaluating a scheme.
+- Rule: name hardness assumptions and estimated security level.
+- Rule: include randomness, key management, side-channel, and replay considerations.
+- Rule: mark any informal proof or missing reduction as a limitation.

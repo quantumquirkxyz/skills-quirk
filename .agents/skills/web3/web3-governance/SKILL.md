@@ -47,3 +47,11 @@ Design or audit a **Web3 governance system** — token voting, delegation, on-ch
 5. Attack vectors — vote buying, plutocracy, low turnout, plutocratic capture, executive attack (multisig override).
 6. Resilience — fork rights, constitutional clauses, guardian roles; how can the community override bad governance?
 7. Deliver — artifact: governance type, actors, proposal lifecycle, token distribution, attack vectors, and resilience assessment.
+
+## Rules
+
+- Rule: define who can propose, vote, veto, execute, and emergency-pause decisions.
+- Rule: analyze token concentration, delegation, turnout, and quorum together.
+- Rule: include timelock, upgrade, multisig, and guardian powers in the threat model.
+- Rule: separate social legitimacy from on-chain enforceability.
+- Rule: identify capture, bribery, apathy, and rushed-execution risks.
