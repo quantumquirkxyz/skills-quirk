@@ -13,7 +13,7 @@ flowchart TD
     E --> F[Start normal work]
 ```
 
-1. Copy or sync `.agents/skills/`, `.claude/skills/`, `docs/agents/`, `docs/adr/README.md`, `CONTEXT.md`, and `skills-lock.json` into the target repo.
+1. Copy or sync `.agents/skills/`, `.claude/skills/`, `docs/agents/`, `.agents/adr/README.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, `.env.template` into the target repo.
 2. Run `setup-quirk-skills` once in the target repo.
 3. Configure `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, and `docs/agents/domain.md` for the project's real tracker and domain layout.
 4. Update `CONTEXT.md` with project-specific language. Do not copy domain vocabulary from another repo.
@@ -36,6 +36,10 @@ The repository `README.md` contains two AI-agnostic prompts:
 | `.agents/skills/` | Canonical skill definitions |
 | `.claude/skills/` | Compatibility symlinks to canonical skills |
 | `skills-lock.json` | SHA-256 hashes for canonical `SKILL.md` files |
+| `.agents/adr/README.md` | ADR entry point (mandatory; design decisions must be recorded) |
+| `skills.json` | Skills manifest for `` / `npx skills` compatibility |
+| `.env.template` | Reproducible environment configuration |
+| `CONTEXT.md` | Repository-local domain vocabulary (mandatory; references `.agents/adr/`) |
 | `docs/agents/index.md` | Governance index for work-item skills |
 | `docs/agents/quirk-method.md` | Method vocabulary and quality bar |
 | `docs/agents/provenance.md` | Origin, redesign, retired-name record |
@@ -104,7 +108,8 @@ flowchart LR
 ## Readiness Checklist
 
 - [ ] `setup-quirk-skills` has run or equivalent docs exist.
-- [ ] `CONTEXT.md` names only this repo's domain.
+- [ ] `.agents/adr/` exists with at least one ADR recording a design decision
+- [ ] `CONTEXT.md` exists, names only this repo's domain, and references `.agents/adr/`
 - [ ] `docs/agents/issue-tracker.md` reflects the actual tracker.
 - [ ] `docs/agents/triage-labels.md` matches actual label strings.
 - [ ] `skills-lock.json` matches all local `SKILL.md` hashes.

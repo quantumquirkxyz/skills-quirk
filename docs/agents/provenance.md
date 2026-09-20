@@ -30,12 +30,8 @@ setup-quirk-skills
 
 The following names are intentionally not active skills in this repository:
 
-- `ask-matt`
-- `setup-matt-pocock-skills`
-- `doc-draft-pr`
-- `ship-review-fix-loop`
-- `frontend-development`
-- `improve-codebase-architecture`
+- `setup-quirk-skills` is the active installation skill.
+- Any external brand references have been removed to preserve this repo's independent standard.
 
 When a retired name represents useful behavior, the behavior has been routed through the active quirk vocabulary instead.
 
