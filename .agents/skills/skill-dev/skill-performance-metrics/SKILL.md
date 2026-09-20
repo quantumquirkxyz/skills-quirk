@@ -37,3 +37,16 @@ maxIterations: 6
 - Boundary: report only available evidence; missing duration data is not zero.
 
 Run `node .agents/skills/platform/skill-lab.mjs metrics`. Use enough execution records to avoid drawing conclusions from one run; report missing duration data instead of treating it as zero.
+
+## Rules
+
+- Rule: report sample size before averages or rates.
+- Rule: separate missing duration data from zero-duration executions.
+- Rule: group results by Skill, status, and tool where the records allow it.
+- Rule: do not infer quality from speed alone.
+
+## Completion Criteria
+
+- sample size and missing-data caveats are explicit
+- success and failure counts are reported
+- duration metrics are based only on records that contain duration evidence

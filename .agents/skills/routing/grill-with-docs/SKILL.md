@@ -29,3 +29,24 @@ maxIterations: 6
 
 
 Run a `/grilling` session, using the `/domain-modeling` skill.
+
+## Rules
+
+- Rule: ask one question at a time and recommend a concrete answer.
+- Rule: capture durable terminology, decisions, and disagreements as documentation candidates.
+- Rule: use domain-modeling when names, boundaries, or concepts are unstable.
+- Rule: do not write ADRs or glossary entries until the user has confirmed the decision or definition.
+
+## Steps
+
+1. Identify the plan or design to grill and the documentation artifacts likely to emerge.
+2. Question assumptions, terms, boundaries, and decision criteria.
+3. Convert stable answers into ADR, glossary, or context-pack notes.
+4. Keep unresolved disagreements visible instead of documenting them as settled.
+5. Summarize the refined plan and docs to create or update.
+
+## Completion Criteria
+
+- critical assumptions have been challenged
+- candidate docs are tied to confirmed decisions or terms
+- unresolved questions are separated from settled guidance

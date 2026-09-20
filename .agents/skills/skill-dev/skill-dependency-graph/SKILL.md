@@ -37,3 +37,16 @@ maxIterations: 6
 - Boundary: analyze declared dependencies only; do not rewrite Skill contracts.
 
 Run `node .agents/skills/platform/skill-lab.mjs graph --format mermaid` for a diagram or `--format json` for analysis input. Use incoming-edge counts to identify central Skills and inspect every cycle before adding another dependency.
+
+## Rules
+
+- Rule: analyze declared dependencies, not informal mentions, unless the task explicitly asks for soft links.
+- Rule: treat cycles as review findings until proven intentional.
+- Rule: distinguish central reusable primitives from accidental coupling.
+- Rule: recommend dependency removal only when an alternate contract is clear.
+
+## Completion Criteria
+
+- graph format and source directory are explicit
+- cycles and central nodes are listed
+- modularity findings include a maintenance recommendation

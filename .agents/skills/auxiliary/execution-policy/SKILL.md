@@ -51,3 +51,19 @@ Use this skill before any risky state change.
 - the action is allowed or blocked with reason
 - the approval requirement is clear
 - rollback is named
+
+## Rules
+
+- Rule: classify the action before considering convenience or urgency.
+- Rule: treat destructive, external, credential-bearing, and irreversible actions as higher scrutiny.
+- Rule: approval requirements must name the exact action and target.
+- Rule: if rollback is impossible or unproven, say so explicitly.
+
+## Decision Output
+
+Return a concise decision with:
+
+- classification: read, write, delete, network, external write, or destructive
+- decision: allow, require approval, or stop
+- reason: the specific policy concern
+- rollback: how to recover or why recovery is unavailable

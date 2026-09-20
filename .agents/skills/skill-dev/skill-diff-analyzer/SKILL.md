@@ -37,3 +37,16 @@ maxIterations: 6
 - Boundary: compare files without editing either version.
 
 Run `node .agents/skills/platform/skill-lab.mjs diff <old>/SKILL.md <new>/SKILL.md`. Treat changes to dependencies, side effects, or risk as review-required, and inspect additions/removals for accidental contract drift.
+
+## Rules
+
+- Rule: compare frontmatter, contract, rules, steps, references, and side-effect policy separately.
+- Rule: treat risk, trust tier, dependencies, outputs, and stop condition changes as behavior changes.
+- Rule: distinguish editorial expansion from routing or execution drift.
+- Rule: recommend review when a change broadens authority or changes external side effects.
+
+## Completion Criteria
+
+- frontmatter and body changes are summarized separately
+- behavior-impacting changes are called out
+- review recommendation is explicit

@@ -39,3 +39,16 @@ maxIterations: 6
 Use `node .agents/skills/platform/skill-lab.mjs template <name> --domain <domain>` to create a safe starting point in `.skill-sandbox/`. Ask for the problem, users, capabilities, outputs, dependencies, and risk before generating; never overwrite an existing template.
 
 Validate the result with `node .agents/skills/platform/skill-lab.mjs validate .skill-sandbox/<name> --json`, then promote only after the sandbox checks pass.
+
+## Rules
+
+- Rule: generate into `.skill-sandbox/` only.
+- Rule: ask for problem, users, capabilities, outputs, dependencies, side effects, and risk before scaffolding.
+- Rule: include a concrete stop condition and at least one validation path in the template.
+- Rule: never overwrite an existing sandbox Skill without explicit user direction.
+
+## Completion Criteria
+
+- sandbox path is created or identified safely
+- generated frontmatter is complete enough for validation
+- validation command and promotion checklist are provided

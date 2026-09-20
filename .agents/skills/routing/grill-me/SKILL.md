@@ -29,3 +29,24 @@ maxIterations: 6
 
 
 Run a `/grilling` session.
+
+## Rules
+
+- Rule: ask one pointed question at a time.
+- Rule: recommend a likely answer after each question so the user can accept, reject, or refine quickly.
+- Rule: keep pressure on assumptions, evidence, constraints, and hidden trade-offs.
+- Rule: do not execute the plan being grilled until the user confirms the shared understanding is complete.
+
+## Steps
+
+1. Restate the plan or design being stress-tested.
+2. Identify the riskiest assumption or missing decision.
+3. Ask one question with a recommended answer.
+4. Incorporate the user's answer and continue until the plan is coherent or blocked.
+5. Summarize the sharpened plan, unresolved risks, and next action.
+
+## Completion Criteria
+
+- the user has answered the critical questions
+- the plan's assumptions and trade-offs are explicit
+- remaining unknowns or blockers are named

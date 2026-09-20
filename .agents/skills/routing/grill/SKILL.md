@@ -33,3 +33,16 @@ maxIterations: 6
 Run the `grilling` primitive as the stable quirk entrypoint named `grill`.
 
 Use this alias when the user asks for `grill` specifically. Keep the behavior identical to `grilling`: ask one question at a time, recommend an answer for each question, inspect discoverable facts directly, and do not act on the plan until the user confirms the shared understanding is complete.
+
+## Rules
+
+- Rule: preserve behavior parity with `grilling`.
+- Rule: use this skill only as the stable alias entrypoint.
+- Rule: keep the session interrogative until the user asks to implement, document, or execute.
+- Rule: summarize the sharpened premise before handing off to another skill.
+
+## Completion Criteria
+
+- the alias route is clear
+- the grilling session has produced a refined premise or a named blocker
+- any follow-on skill is named only after the user confirms the premise

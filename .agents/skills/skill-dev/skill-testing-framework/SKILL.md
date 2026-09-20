@@ -37,3 +37,16 @@ maxIterations: 6
 - Boundary: use existing repository validators; do not silently mutate canonical Skills.
 
 Run the shared validator with `node .agents/skills/platform/skill-lab.mjs validate <path> --json`, then run the existing sandbox and behavioral validators for execution evidence. Treat unknown dependencies, missing outputs, placeholder text, and contradictory risk declarations as failures or warnings rather than silently accepting them.
+
+## Rules
+
+- Rule: run structural validation before behavioral or sandbox validation.
+- Rule: treat placeholder bodies and generic outputs as quality risks even when schemas pass.
+- Rule: preserve validator output as evidence, but add human interpretation for impact.
+- Rule: do not promote a Skill when dependencies, side effects, or stop condition are ambiguous.
+
+## Completion Criteria
+
+- structural validator result is captured
+- behavioral or sandbox evidence is captured when applicable
+- promotion recommendation names blockers and warnings separately
