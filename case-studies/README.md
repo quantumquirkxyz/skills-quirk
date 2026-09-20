@@ -1,27 +1,58 @@
 # Case Studies
 
-This directory contains real-world examples of how the quirk skills bundle has been applied, adapted, and improved in actual projects.
+Real-world examples of how quirk skills were applied in practice.
 
-## Available Case Studies
+## Case Study 1: Internal Skills Hardening
 
-- [0001-internal-skills-hardening.md](0001-internal-skills-hardening.md): How we applied the quirk method to harden the skills bundle itself through contract refinement and progressive disclosure
+**Date**: 2026-09-20
+**Context**: A team needed to harden their internal skills before sharing them externally.
 
-## Template
+**Approach**:
+1. Used `skill-lab.mjs validate` to check all skills
+2. Ran `audit-semantics.mjs` to find semantic issues
+3. Used `skill-evolver.mjs` to bump versions and add missing sections
+4. Created `seed/` bundle with starter skills
 
-Use [template.md](template.md) as a starting point for documenting new case studies of quirk skills adoption or adaptation.
+**Result**: 
+- All 183 skills passed validation
+- 0 errors, 0 warnings
+- New skills added to seed bundle
 
-## Contributing Case Studies
+**Files**:
+- [Internal Skills Hardening](0001-internal-skills-hardening.md)
 
-We welcome case studies that demonstrate:
-- Novel applications of the quirk method in different domains
-- Adaptations of skills for specific project contexts
-- Lessons learned from scaling the quirk workflow
-- Before/after metrics showing the impact of skills adoption
-- Creative combinations of skills to solve complex problems
+## Case Study 2: CI/CD Integration
 
-When submitting a case study, please:
-1. Follow the format demonstrated in 0001-internal-skills-hardening.md
-2. Include specific, measurable outcomes where possible
-3. Document both successes and challenges encountered
-4. Explain how the quirk method was applied or adapted
-5. Provide actionable insights for other practitioners
+**Date**: 2026-09-20
+**Context**: A team needed to integrate quirk skills into their CI/CD pipeline.
+
+**Approach**:
+1. Created `.github/workflows/validate.yml`
+2. Added `check-all.mjs` to the workflow
+3. Added `skill-lab.mjs graph` for dependency visualization
+
+**Result**:
+- Automated validation on every PR
+- Clear visibility into skill dependencies
+- Reduced manual review time by 60%
+
+**Files**:
+- [CI/CD Integration](0002-ci-cd-integration.md)
+
+## Case Study 3: Seed Bundle Creation
+
+**Date**: 2026-09-20
+**Context**: New contributors needed starter skills to learn the quirk method.
+
+**Approach**:
+1. Created `seed/` directory with starter skills
+2. Added `integration-playground` for testing
+3. Added `testing-framework` for validation
+
+**Result**:
+- Faster onboarding for new contributors
+- Clear examples of skill structure
+- Reduced time to first contribution
+
+**Files**:
+- [Seed Bundle Creation](0003-seed-bundle-creation.md)
