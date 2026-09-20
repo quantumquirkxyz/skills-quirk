@@ -1,0 +1,43 @@
+{
+  "id": "operation-boundaries",
+  "expectedRoute": [
+    "integrations/issue-operations",
+    "integrations/pr-operations"
+  ],
+  "checks": [
+    {
+      "skill": "integrations/issue-operations",
+      "mustMention": [
+        "resolve the tracker",
+        "search for existing issues",
+        "never close, reopen, lock, delete, or transfer"
+      ],
+      "expectedSideEffects": [
+        "create-issue",
+        "update-issue",
+        "post-comment",
+        "close-issue"
+      ],
+      "forbid": [
+        "execute the core process defined in the skill body"
+      ]
+    },
+    {
+      "skill": "integrations/pr-operations",
+      "mustMention": [
+        "searching for an open PR",
+        "never merge a PR",
+        "validation evidence"
+      ],
+      "expectedSideEffects": [
+        "create-pull-request",
+        "update-pull-request",
+        "post-pr-comment",
+        "request-review"
+      ],
+      "forbid": [
+        "Markdown artifact or structured result"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "skill-release-quality",
+  "expectedRoute": [
+    "skill-dev/lockfile-maintenance",
+    "skill-dev/skill-quality-gate"
+  ],
+  "checks": [
+    {
+      "skill": "skill-dev/lockfile-maintenance",
+      "mustMention": [
+        "detect lockfile drift",
+        "update hashes from the exact bytes",
+        "run the repository validator"
+      ],
+      "expectedSideEffects": [
+        "update-lockfile"
+      ]
+    },
+    {
+      "skill": "skill-dev/skill-quality-gate",
+      "mustMention": [
+        "placeholder bodies",
+        "side effects",
+        "ready with warnings"
+      ],
+      "forbid": [
+        "All process steps executed"
+      ]
+    }
+  ]
+}

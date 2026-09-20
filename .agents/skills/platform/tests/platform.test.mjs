@@ -12,7 +12,7 @@ test('scenario evaluator passes on repository fixtures', () => {
   assert.equal(result.status, 0, result.stderr || result.stdout);
   const payload = JSON.parse(result.stdout);
   assert.equal(payload.status, 'pass');
-  assert.equal(payload.scenarios, 5);
+  assert.equal(payload.scenarios, 8);
 });
 
 test('semantic audit passes without warnings', () => {

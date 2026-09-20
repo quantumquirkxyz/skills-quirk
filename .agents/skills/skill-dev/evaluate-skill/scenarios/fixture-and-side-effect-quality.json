@@ -1,0 +1,31 @@
+{
+  "id": "fixture-and-side-effect-quality",
+  "expectedRoute": [
+    "skill-dev/workflow-fixture-author",
+    "skill-dev/side-effect-auditor"
+  ],
+  "checks": [
+    {
+      "skill": "skill-dev/workflow-fixture-author",
+      "mustMention": [
+        "happy path",
+        "boundary or refusal path",
+        "deterministic"
+      ],
+      "expectedSideEffects": [
+        "write-files"
+      ]
+    },
+    {
+      "skill": "skill-dev/side-effect-auditor",
+      "mustMention": [
+        "under-declared side effects",
+        "over-declared side effects",
+        "exact frontmatter field changes"
+      ],
+      "forbid": [
+        "problem or task defined by the skill body"
+      ]
+    }
+  ]
+}
