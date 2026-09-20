@@ -66,3 +66,11 @@ Provide 80% / 95% intervals — not just point forecasts.
 Best model with evidence; limitations (exogenous availability, structural breaks, seasonality change); re-training frequency.
 
 **Completion criterion:** recommendation with conditions.
+
+## Rules
+
+- Rule: preserve time order in every split, feature, and validation step.
+- Rule: include naive, seasonal naive, or simple baseline models before complex models.
+- Rule: use only exogenous variables known at forecast time.
+- Rule: evaluate with rolling or expanding backtests, not random splits.
+- Rule: report uncertainty intervals and structural-break limitations with the forecast.

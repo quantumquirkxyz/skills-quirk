@@ -49,3 +49,11 @@ Design a **relational database schema** — entities, relations, keys, indexes, 
 6. Migration plan: backward-compatible steps (add column, backfill, change constraint, drop old column / table); rollback steps.
 7. Performance: explain plan for critical queries; estimate size and growth.
 8. Deliver — artifact: schema diagram (text/table), entity descriptions, index justification, constraints, and migration script sequence.
+
+## Rules
+
+- Rule: model entities, relationships, and cardinality before choosing indexes.
+- Rule: normalize by default and denormalize only with workload evidence.
+- Rule: use constraints to protect invariants that the database can enforce.
+- Rule: design indexes from concrete query patterns and write-cost trade-offs.
+- Rule: sequence migrations so application and schema remain compatible.

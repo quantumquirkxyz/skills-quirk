@@ -47,3 +47,11 @@ Model an **astrophysical system** — stellar, galactic, cosmological — with p
 5. Estimate numerically — order-of-magnitude before exact calculation; use the scaling to catch errors.
 6. Check against observations — known values for comparable objects (e.g. Sun, Jupiter, Milky Way mass).
 7. Deliver — artifact: regime, scales, governing physics, scaling laws applied, numerical estimate, observational check.
+
+## Rules
+
+- Rule: establish physical scale and regime before choosing equations.
+- Rule: run an order-of-magnitude estimate before detailed computation.
+- Rule: state units, constants, and cosmological parameters explicitly.
+- Rule: compare estimates against known astrophysical objects or observed values.
+- Rule: flag where Newtonian, relativistic, fluid, or radiative assumptions dominate.

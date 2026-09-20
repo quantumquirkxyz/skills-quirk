@@ -36,7 +36,7 @@
       "sourceType": "local"
     },
     "ai-time-series-forecasting": {
-      "hash": "cfdb7ab900c22c63a149c7d83a40929ef77d7982dbe84649e0cdf0cb69f19ffd",
+      "hash": "8e5e44f521e34f6a7ac55277d52d3ef36cdf2a28c8a02f968f2b4b0e787d8e34",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -81,7 +81,7 @@
       "sourceType": "local"
     },
     "capability-router": {
-      "hash": "6baef8ba4b95ce885782b6514fb720690baef3f0c1895297c5eac97d9f0eb84c",
+      "hash": "4d89a4b95e9cee2630c4e3e0bfe8a354659472a5cace7f3279519ed1bcbbb7a8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -121,7 +121,7 @@
       "sourceType": "local"
     },
     "compilers": {
-      "hash": "98e5ee58bf86c3fc034107746d2e5e324366c8c98e5b2ccdeea1c12fd07b68ca",
+      "hash": "97780e668c8223536d7b6000c73892a6cfeb16e22b7d005d0a457fd53f69e40a",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -181,7 +181,7 @@
       "sourceType": "local"
     },
     "db-nosql-modeling": {
-      "hash": "4f0090183ea9e60cf1fc0e3dc602aab16785d66bbd44a7a5825587ebaa73c6fd",
+      "hash": "98b12470b19ab64b111ed46dd3f4b0ba79dbb8934a309d325225adddbf7245f4",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -191,7 +191,7 @@
       "sourceType": "local"
     },
     "db-relational-design": {
-      "hash": "51eab457c7f0e336f232d4330eb08b7534fc38233107245ef0b41f651d2e8376",
+      "hash": "258e0edabf05f1b92f5e01b114564e586e637433733a8f0f37666e923f591a04",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -331,7 +331,7 @@
       "sourceType": "local"
     },
     "interaction-design": {
-      "hash": "477faa7e205064f3b1e2247588ed2cfbbd7efacc9f702fa4dc0f927bed4b0ae5",
+      "hash": "301cca17195a47cf4b24fa06b65bb7d4c54f61df990f924378469d6abe80e91b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -486,12 +486,12 @@
       "sourceType": "local"
     },
     "performance-testing": {
-      "hash": "de7a5f0aa6ca3c9423a1f82fd9e16fa67462e2f3e63ca6dedfa1d38dfb284642",
+      "hash": "2a2eafeac0694bf7b0183d9c421c65a70f09824152546fcdfb6329ec66ada04e",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-astro": {
-      "hash": "76a01c16f59f282357d2856244dbddf148f968efa720f176a982920f86c28230",
+      "hash": "b197f6b1448688891743fa059ad5dbccf26dbf7d2de25d6b8a6501bf16034eaa",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -606,7 +606,7 @@
       "sourceType": "local"
     },
     "qa-automation": {
-      "hash": "c9f7db163b5ea1b3f07dc01f7c9e6fb25d423a9b4506be614a2d274376eae7f0",
+      "hash": "96356ec0d66b52b10e50a4e268614140e0bda4daf4ecfa6fd0e1283c3a03d832",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -626,7 +626,7 @@
       "sourceType": "local"
     },
     "quant-credit-risk": {
-      "hash": "e316e9a636a39568f14d3f9372ad3450b09f75dc58379d582268821dd92765a6",
+      "hash": "0acc57178fa046f3dcca4651a505547268905dfe535823c44d88d6edc6feb3a7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -846,7 +846,7 @@
       "sourceType": "local"
     },
     "ux-research": {
-      "hash": "d8c747d0e9eaa599050e40520c26ef03e1a00961bb7a897a567c2771cd45c53c",
+      "hash": "7eeac070675e500b1afdd2502108c13220b056ca7e2a2d7ae0bb970c96b365dd",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -876,7 +876,7 @@
       "sourceType": "local"
     },
     "web3-l2-scaling": {
-      "hash": "b4957b5de221fcea18f45a78c67d744f45a1a9fa823fde14b569611eb1d54570",
+      "hash": "f51fecc2648ec675cdb3dede3007843c4d165d47e5432f44cc0eec3721459cf2",
       "revision": "working-tree",
       "sourceType": "local"
     },

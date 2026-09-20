@@ -59,6 +59,14 @@ A research report with:
 6. **Synthesize** — personas, journey maps, insights
 7. **Share** — present to stakeholders with evidence
 
+## Rules
+
+- Rule: define the research question before selecting methods.
+- Rule: recruit participants who match the target behavior or decision context.
+- Rule: separate observed behavior, direct quotes, interpretation, and recommendations.
+- Rule: protect participant privacy and avoid collecting unnecessary sensitive data.
+- Rule: tie design implications back to evidence strength and sample limits.
+
 ## References
 - `../interaction-design/SKILL.md` — design from research
 - `../../frontend/frontend-design/SKILL.md` — translating research to UI

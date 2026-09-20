@@ -50,4 +50,13 @@ Design a **NoSQL data model** — document, key-value, wide-column, graph, time-
 3. Design data layout — document structure, key design (partition + sort), column families, graph topology.
 4. Consistency model — strong vs eventual; how does this affect correctness of reads?
 5. Schema evolution — how are new fields / relationships added without downtime?
-6. Scalability — partition/shard key; replication factor; read replicas;
+6. Scalability — partition/shard key; replication factor; read replicas; hot-key mitigation; backup and restore behavior.
+7. Deliver — artifact with access patterns, selected store type, data layout, consistency model, schema evolution plan, and scaling risks.
+
+## Rules
+
+- Rule: design from access patterns before choosing a NoSQL product.
+- Rule: state partition keys, sort keys, document boundaries, or graph traversal anchors explicitly.
+- Rule: account for consistency, conflict resolution, and read-your-writes expectations.
+- Rule: plan schema evolution and backfill paths for existing records.
+- Rule: identify hot partitions, fan-out, and query patterns that the model cannot serve.

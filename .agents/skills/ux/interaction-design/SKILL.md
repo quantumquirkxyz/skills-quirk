@@ -58,6 +58,14 @@ An interaction design specification with:
 5. **Design feedback** — what does the user see at each step
 6. **Review** — walk through the interaction as a user
 
+## Rules
+
+- Rule: map happy path, alternatives, errors, empty states, and recovery paths.
+- Rule: provide feedback for every user action and async state change.
+- Rule: make destructive or irreversible actions deliberate and recoverable where possible.
+- Rule: keep state transitions predictable across keyboard, pointer, touch, and assistive technology.
+- Rule: validate interactions against realistic user goals, not isolated screens.
+
 ## References
 - `../ux-research/SKILL.md` — grounding design in research
 - `../../frontend/frontend-design/SKILL.md` — visual and interaction system

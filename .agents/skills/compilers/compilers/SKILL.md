@@ -62,6 +62,14 @@ Source → Lexer → Tokens → Parser → AST
 7. **Add optimization passes** — dead code elimination, constant folding
 8. **Write tests** — golden tests, fuzzing, property-based testing
 
+## Rules
+
+- Rule: define grammar and semantics before selecting parser or IR implementation details.
+- Rule: keep lexer, parser, semantic analysis, and code generation boundaries explicit.
+- Rule: validate each phase with a narrow oracle before testing the full pipeline.
+- Rule: preserve source spans and diagnostics through transformations.
+- Rule: do not add optimization passes until correctness and observability are stable.
+
 ## References
 - `../os/SKILL.md` — system calls for code execution
 - `../../cs/cs-algorithms/SKILL.md` — parsing algorithms

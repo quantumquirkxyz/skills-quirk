@@ -48,3 +48,11 @@ Model **credit risk** at the instrument and portfolio level — PD, LGD, EAD, EL
 6. Default correlation — Basel rho formula (equity-based), or copula (Gaussian, t-copula). Aggregate portfolio loss distribution.
 7. Stress testing — PD + 2 grades, LGD × 1.5, portfolio loss at 99.9%.
 8. Deliver — artifact: PD/LGD/EAD estimates with methodology, EL/UL, correlation, stress test, and regulatory compliance note (Basel III / IFRS 9).
+
+## Rules
+
+- Rule: state that outputs are analytical and not lending, investment, or regulatory advice.
+- Rule: define horizon, exposure type, rating system, and portfolio scope before estimating risk.
+- Rule: keep PD, LGD, EAD, expected loss, and unexpected loss conceptually separate.
+- Rule: document calibration data, default definition, and downturn assumptions.
+- Rule: stress-test correlation, concentration, and macro scenarios.

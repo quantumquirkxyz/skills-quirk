@@ -47,3 +47,11 @@ Analyse a **Layer-2 scaling solution** — rollups, validiums, state channels �
 5. Throughput & cost — TPS ceiling; cost per transaction (L1 settlement vs L2 execution); compare to L1.
 6. Composability — can L2 contracts call each other? Is cross-L2 communication needed?
 7. Deliver — artifact: L2 type, architecture, security assumptions, throughput/cost, and a recommendation based on use case (high security = ZK, high throughput = validium, maximum compatibility = optimistic).
+
+## Rules
+
+- Rule: classify the L2 before comparing cost, trust, or security assumptions.
+- Rule: state data-availability model and sequencer trust explicitly.
+- Rule: include withdrawal, bridge, fraud-proof, validity-proof, and upgrade risks.
+- Rule: separate throughput claims from finality and settlement guarantees.
+- Rule: match recommendation to use-case priorities rather than generic L2 rankings.

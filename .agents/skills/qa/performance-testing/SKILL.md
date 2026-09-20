@@ -65,6 +65,14 @@ A performance test report with:
 6. **Analyze results** — find bottlenecks, graph correlations
 7. **Set regression thresholds** — gate CI on performance
 
+## Rules
+
+- Rule: define SLIs, targets, workload model, and environment before running tests.
+- Rule: separate load, stress, soak, spike, and smoke test goals.
+- Rule: report p50, p95, p99, throughput, error rate, and resource saturation together.
+- Rule: avoid conclusions from non-representative data, cold caches, or shared noisy environments.
+- Rule: turn findings into thresholds or follow-up diagnostics.
+
 ## References
 - `../qa-automation/SKILL.md` — test infrastructure
 - `../../platform/monitoring-alerting/SKILL.md` — metrics collection

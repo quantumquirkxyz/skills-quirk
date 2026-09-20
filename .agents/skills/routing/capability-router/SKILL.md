@@ -34,11 +34,11 @@ Use this skill to choose the right Skill from the registry instead of relying on
 
 ## Contract
 
-- Route from declared capabilities, inputs, outputs, and side effects.
-- Choose the thinnest Skill that can complete the work end to end.
-- Prefer one primary Skill; add a second only when the task truly crosses a seam.
-- If the choice is ambiguous, state the competing Skills and the reason for the final pick.
-- Do not route on name similarity or past habit when the registry says otherwise.
+- Rule: route from declared capabilities, inputs, outputs, and side effects.
+- Rule: choose the thinnest Skill that can complete the work end to end.
+- Rule: prefer one primary Skill; add a second only when the task truly crosses a seam.
+- Rule: if the choice is ambiguous, state the competing Skills and the reason for the final pick.
+- Rule: do not route on name similarity or past habit when the registry says otherwise.
 
 ## Steps
 

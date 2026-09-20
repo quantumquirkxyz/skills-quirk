@@ -60,6 +60,14 @@ A testing strategy with:
 6. **Integrate with CI** — gate on test results, report coverage
 7. **Maintain** — review test suite regularly, remove dead tests
 
+## Rules
+
+- Rule: choose the test seam from risk and feedback speed, not from tooling habit.
+- Rule: keep unit tests deterministic and integration tests explicit about external boundaries.
+- Rule: make flaky tests actionable by fixing isolation, data setup, or timing assumptions.
+- Rule: gate CI on meaningful failures and preserve useful diagnostics.
+- Rule: review tests as product behavior changes so coverage does not become stale ceremony.
+
 ## References
 - `../../delivery/tdd/SKILL.md` — test-first development
 - `../../delivery/testing/SKILL.md` — test strategy
