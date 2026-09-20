@@ -1,7 +1,7 @@
 {
   "skills": {
     "accessibility": {
-      "hash": "29af5ca01a22827270d58184d102e9d6c07755ad490ff89c260e53e82fff92d0",
+      "hash": "89d04a482ded3c9f2faa427255a1606f5875a78c746eb09643e075ded28e7d85",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -126,7 +126,7 @@
       "sourceType": "local"
     },
     "context-pack": {
-      "hash": "b08d0a23b0c8595c70b364d1bb92751263a1ecbc0ad66f0b1064e520e40f81db",
+      "hash": "4fe1f051f684d9c083193a86cd6987c3870e4b62188ec9a70273b945ef20ceeb",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -206,7 +206,7 @@
       "sourceType": "local"
     },
     "devops-ci-cd-pipeline": {
-      "hash": "22724ddc25e34f03cc6c2559f2c3b1a4315ec2c89f6fbd3f9b8fd55881c869e4",
+      "hash": "ff9500b8397650d81550c4badc6ce8bcf85525f596466fa90290fab3c287d4e2",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -226,7 +226,7 @@
       "sourceType": "local"
     },
     "devops-terraform-iac": {
-      "hash": "83f01b2d667f7ca304355161e5a40723caf1f2419fbbbda627c3676d5266e06d",
+      "hash": "b9b4472ee8462845224d04eb3aa04ae739d3769b438f98a2c1706137e5395051",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -261,7 +261,7 @@
       "sourceType": "local"
     },
     "evaluate-skill": {
-      "hash": "8b226bf6b110cf746dcce00b35d3787dcb8132693c48c56a428ccda5cfcfdd58",
+      "hash": "d9ca7eb9e42ecbbc3a50b1f84f02161fc1c8da1b58b11e78d8ec5c6d4ee5ce18",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -341,7 +341,7 @@
       "sourceType": "local"
     },
     "iot-embedded": {
-      "hash": "9743fafb48ab3498c3b820e1c40ba293637a2ab4a2d01155d20c42cc03fc0c89",
+      "hash": "d40c8c3f409d76297144230242eb2ea58cf1c1f07f8d6e17c9c245d7bfba5dba",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -441,7 +441,7 @@
       "sourceType": "local"
     },
     "networking": {
-      "hash": "5ba9e68685484ed5aa16f58f9f224618acabb0f4406b915b0f47961eb9851c2f",
+      "hash": "bb4b61dc4302d8bbc04db925ebd5a033d937006fc6041e2639783209e5257cc1",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -466,7 +466,7 @@
       "sourceType": "local"
     },
     "os-kernel": {
-      "hash": "c75fbeb2b47e30537375b49836bc6509ab11a55ef1ceb1d8ca5f477bd4b48b06",
+      "hash": "962bc4afd4f21eb4c7850aa381e273c7fa1f46390675ebff758b7da516ef4866",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -506,7 +506,7 @@
       "sourceType": "local"
     },
     "physics-data-analysis-root": {
-      "hash": "c7b0d31293bf0a42b8f32902d91519e90ab23e003ee25875fb17b9c9af8f3baf",
+      "hash": "feadd6886d26f9dbfc368a57b638b5d7098d607817f172da0aade73b49c418bc",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -686,7 +686,7 @@
       "sourceType": "local"
     },
     "resolving-merge-conflicts": {
-      "hash": "8f71634c9d0d2788562d3e3cde5e2265b8d8fef789da106fc3c639c76b79a9d6",
+      "hash": "8fb014eda5ea0d7acfde68b0cf73e89ea5406da41384ab92bb69f3a88cdb7389",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -746,7 +746,7 @@
       "sourceType": "local"
     },
     "sec-threat-modeling": {
-      "hash": "5a408cb7f91b6dcd74266bbee249bc80356b969bcb094ca61e1a6e792e5fd87f",
+      "hash": "e58b389ad7f7ec2488c79806c92a4ff3a6adfae8b965d500c03fa5ba39ab714f",
       "revision": "working-tree",
       "sourceType": "local"
     },

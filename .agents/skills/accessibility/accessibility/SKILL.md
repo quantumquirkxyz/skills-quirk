@@ -71,6 +71,14 @@ An accessibility audit with:
 5. **Fix by severity** — A first, then AA
 6. **Document** — accessibility statement and test results
 
+## Rules
+
+- Rule: combine automated checks with manual keyboard and screen-reader testing.
+- Rule: prioritize blockers to task completion before cosmetic compliance issues.
+- Rule: use semantic HTML before ARIA when native controls can satisfy the interaction.
+- Rule: verify focus order, visible focus, labels, errors, contrast, and reduced-motion behavior.
+- Rule: document residual barriers and retest criteria after remediation.
+
 ## References
 - `../../ux/interaction-design/SKILL.md` — interaction patterns
 - `../../frontend/frontend-design/SKILL.md` — visual design

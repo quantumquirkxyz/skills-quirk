@@ -51,6 +51,14 @@ node .agents/skills/platform/evaluate-behavioral-fixtures.mjs
 5. Check that the skill's contract matches the shape of its actual effects: routing-only skills should not write, write-capable skills should declare their side effects, and read-only skills should stay read-only.
 6. Record the failures as regression cases by adding or updating a scenario or behavioral fixture.
 
+## Rules
+
+- Rule: separate routing failures, artifact-shape failures, and contract mismatches.
+- Rule: preserve deterministic runner output as evidence.
+- Rule: add or update fixtures when a failure represents a regression class.
+- Rule: do not promote a Skill whose declared side effects differ from observed behavior.
+- Rule: treat missing stop conditions or vague outputs as evaluability defects.
+
 ## Completion criteria
 
 - the Skill passes or fails against a fixed scenario set

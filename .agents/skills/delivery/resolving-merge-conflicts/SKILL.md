@@ -39,3 +39,11 @@ maxIterations: 6
 5. **Finish the branch-state resolution.** Stage everything and commit. If rebasing, continue the rebase process until all commits are rebased.
 
 6. **Do not merge the PR here.** This skill resolves the branch-side problem only; PR merge/close happens in the dedicated ship workflow after the branch is clean.
+
+## Rules
+
+- Rule: inspect branch state and conflict source before editing files.
+- Rule: preserve both intents where compatible and document trade-offs where they are not.
+- Rule: never discard unrelated user changes while resolving conflicts.
+- Rule: run the relevant checks after resolution and before committing.
+- Rule: finish the merge or rebase process completely; do not leave the branch half-resolved.

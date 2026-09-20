@@ -34,13 +34,13 @@ Use this skill to select the minimum repo context needed for a task.
 
 ## Contract
 
-- Build the pack before reading broadly.
-- Keep the read set minimal and ordered from durable context to task-specific evidence.
-- Record why each read is included, how fresh it is, and what it should answer.
-- Prefer authoritative repo docs, then the smallest relevant evidence.
-- Stop when the pack is sufficient to start work; do not over-collect.
-- Include enough provenance that a later skill can tell which facts came from durable docs and which came from runtime state.
-- Prefer one pack per task, not one pack per skill hop.
+- Rule: build the pack before reading broadly.
+- Rule: keep the read set minimal and ordered from durable context to task-specific evidence.
+- Rule: record why each read is included, how fresh it is, and what it should answer.
+- Rule: prefer authoritative repo docs, then the smallest relevant evidence.
+- Rule: stop when the pack is sufficient to start work; do not over-collect.
+- Rule: include enough provenance that a later skill can tell which facts came from durable docs and which came from runtime state.
+- Rule: prefer one pack per task, not one pack per skill hop.
 
 ## Steps
 

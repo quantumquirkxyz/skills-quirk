@@ -65,6 +65,14 @@ An IoT architecture with:
 - [ ] OTA updates with rollback capability
 - [ ] No hardcoded credentials
 
+## Rules
+
+- Rule: design from device constraints: CPU, memory, storage, power, and connectivity.
+- Rule: choose protocol and QoS based on latency, bandwidth, reliability, and power budget.
+- Rule: require secure boot, signed firmware, device identity, and OTA rollback for managed fleets.
+- Rule: define offline behavior, retry policy, and data buffering explicitly.
+- Rule: include fleet observability: health, firmware version, connectivity, and error telemetry.
+
 ## References
 - `../../networking/networking/SKILL.md` — network protocols
 - `../../sec/sec-cryptography-applied/SKILL.md` — device security

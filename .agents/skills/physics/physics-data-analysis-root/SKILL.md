@@ -78,3 +78,11 @@ Record the calibration constants with their uncertainties.
 - **Reproducibility:** script saved; data file linked by DOI or path.
 
 **Completion criterion:** plots saved; result summary present; script linked.
+
+## Rules
+
+- Rule: preserve raw data and write analysis outputs separately.
+- Rule: record provenance, run conditions, calibration constants, and software environment.
+- Rule: propagate statistical and systematic uncertainties separately.
+- Rule: label plots with units, selections, and fit/model assumptions.
+- Rule: make scripts reproducible from a clean checkout or documented environment.

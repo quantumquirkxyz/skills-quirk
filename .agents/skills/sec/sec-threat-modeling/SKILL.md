@@ -73,3 +73,11 @@ For each threat-vulnerability pair: what control (preventive / detective / corre
 After mitigations: is risk acceptable? If not, add more controls or accept with justification.
 
 **Completion criterion:** residual risk stated; justification if accepted.
+
+## Rules
+
+- Rule: define assets, actors, trust boundaries, and data flows before listing threats.
+- Rule: evaluate threats per component or flow, not only as a generic checklist.
+- Rule: separate vulnerability, threat, impact, likelihood, mitigation, and residual risk.
+- Rule: assign owners or follow-up actions for non-accepted risks.
+- Rule: include abuse cases and operational controls such as logging, alerting, backup, and recovery.

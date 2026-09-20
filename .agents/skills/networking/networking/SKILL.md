@@ -66,6 +66,14 @@ A network design document with:
 5. **Plan for failure** — redundancy, failover, disaster recovery
 6. **Document** — topology, IP ranges, DNS, routing rules
 
+## Rules
+
+- Rule: map who talks to whom before choosing protocols or appliances.
+- Rule: state latency, bandwidth, reliability, and security assumptions.
+- Rule: separate topology, routing, DNS, load balancing, and firewall concerns.
+- Rule: include redundancy, failover, and monitoring for critical paths.
+- Rule: document IP ranges, ownership, and change-control expectations.
+
 ## References
 - `../os/SKILL.md` — network stack in OS
 - `../../devops/devops-k8s-orchestration/SKILL.md` — k8s networking

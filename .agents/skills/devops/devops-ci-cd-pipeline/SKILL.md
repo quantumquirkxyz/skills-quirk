@@ -70,3 +70,11 @@ Design a **CI/CD pipeline** — build, test, security, deploy, rollback — with
 
 ### 5. Deliver
 Pipeline file (YAML / JSON / script), gate rules, rollback plan, environment parity checklist.
+
+## Rules
+
+- Rule: make build, test, security, deploy, and rollback stages explicit.
+- Rule: use reproducible dependencies, pinned tool versions, and consistent runtime images.
+- Rule: block promotion on failing tests, critical security findings, or missing artifacts.
+- Rule: deploy to lower environments before production and define approval gates.
+- Rule: include rollback triggers, rollback target, and expected recovery time.

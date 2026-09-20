@@ -58,6 +58,14 @@ A design or analysis document with:
 5. **Consider security** — privilege levels, isolation, capability model
 6. **Test edge cases** — race conditions, deadlock, resource exhaustion
 
+## Rules
+
+- Rule: define the OS abstraction and resource ownership before discussing implementation.
+- Rule: compare fairness, throughput, latency, power, and complexity trade-offs.
+- Rule: include concurrency, race, deadlock, and resource-exhaustion failure modes.
+- Rule: state privilege, isolation, and capability boundaries explicitly.
+- Rule: ground claims in real kernel designs when possible.
+
 ## References
 - `../networking/networking/SKILL.md` — OS networking stack
 - `../compilers/compilers/SKILL.md` — code generation for OS targets

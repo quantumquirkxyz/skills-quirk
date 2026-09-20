@@ -70,3 +70,11 @@ Design **reproducible infrastructure** â€” compute, network, storage, identity â
 
 ### 5. Deliver
 Module definitions (HCL / TypeScript / YAML) + state rules + policy checklist + plan example (terraform plan output or equivalent).
+
+## Rules
+
+- Rule: separate module design from apply/execution; production changes require explicit approval.
+- Rule: keep state remote, encrypted, locked, versioned, and isolated by environment.
+- Rule: design least-privilege IAM and default-deny network posture.
+- Rule: require plan/dry-run review before apply.
+- Rule: document drift detection, rollback, import, and destroy safeguards.
