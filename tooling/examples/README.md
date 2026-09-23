@@ -11,5 +11,5 @@ external services.
 | `feature-development.md` | specification through publication |
 | `refactoring.md` | dependency-aware safe change |
 
-Try the lab commands from [the Skill Lab guide](../docs/agents/skill-lab.md)
+Try the lab commands from [the Skill Lab guide](../../docs/agents/skill-lab.md)
 against any example's referenced Skill.
