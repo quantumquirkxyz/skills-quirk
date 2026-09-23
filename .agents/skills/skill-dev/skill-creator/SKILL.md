@@ -1,292 +1,284 @@
 ---
 name: skill-creator
 category: skill-dev
-maturity: stable
-version: 3
-description: Enhanced guide for creating effective quirk skills with structured worksheets, validation integration, and template gene
+maturity: estable
+version: 4
+description: Transformado de guía estática a herramienta interactiva de entrevista y diseño colaborativo que entrevista a los usuarios para entender qué skill quieren crear, propone y refina funcionalidades, investiga para complementar el diseño, sugiere nombres y genera skills completas con SKILL.md, scripts/, references/, assets/, ADRs y validación
 capabilities:
-  - apply skill creator workflow
-  - produce skill creator artifact
-  - validate skill creator completion criteria
+  - realizar entrevista interactiva de creación de skill
+  - proponer arquitecturas y recursos de skill basados en la entrada del usuario
+  - realizar investigación asistida para enriquecer el diseño de la skill
+  - sugerir nombres de skill basados en palabras clave y categoría
+  - generar estructura completa de skill desde los resultados de la entrevista
+  - validar skills contra estándares de calidad
+  - mantener compatibilidad con los scripts existentes init_skill.py y package_skill.py
 outputs:
-  - Skill Creator artifact with findings, decisions, recommendations, and validation notes
+  - Artefacto de creador de skill interactivo con hallazgos de entrevista, propuestas de diseño, resultados de investigación y skill generada
+  - Estructura completa de skill lista para usar
+  - Informe de validación y verificación de criterios de completado
 sideEffects: []
 dependencies: []
-stopCondition: Enhanced guide for creating effective quirk skills with structured worksheets, validation integration, and template gene complete; artifact saved; completion criteria checked.
+stopCondition: El usuario ha completado la entrevista interactiva y generado una estructura de skill válida, o ha validado una skill existente usando métodos tradicionales
 risk: low
 trustTier: 1
-maxIterations: 6
+maxIterations: 10
 ---
 
-## Operating Contract
+## Contrato de Operación
 
-- **Input:** Skill Creator request, relevant context, constraints, and source evidence.
-- **Output:** Skill Creator artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Enhanced guide for creating effective quirk skills with structured worksheets, validation integration, and template gene is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Entrada:** Solicitud de creación de skill, respuestas del usuario durante la entrevista, archivo opcional de resultados de entrevista, parámetros de validación
+- **Salida:** Artefacto de creación interactiva de skill o resultados de validación
+- **Efectos secundarios:** seguir la declaración del frontmatter; no ampliar el alcance sin dirección explícita del usuario.
+- **Dependencias:** dependencias declaradas, habilidades referenciadas y materiales de origen requeridos por la tarea.
+- **Condición de parada:** El usuario ha completado la entrevista interactiva y generado una estructura de skill válida, o ha validado una skill existente usando métodos tradicionales.
+- **Riesgo:** use la clasificación de riesgo del frontmatter y señale cualquier escalada.
+- **Límite:** manténgase dentro del alcance declarado de la skill, el nivel de confianza y la política de efectos secundarios.
 
-# Enhanced Skill Creator for quirk Skills
+# Creador Interactivo de Skills para quirk Skills
 
-This skill provides a structured, worksheet-based approach to creating effective quirk skills that integrate seamlessly with the existing skills bundle, evaluation system, and validation infrastructure.
+Esta skill ha sido transformada de una guía estática basada en worksheets en una **herramienta de entrevista interactiva y diseño colaborativo** que guía a los usuarios a través de la creación de nuevas skills mediante conversación. Soporta tanto el modo interactivo (basado en chat) como el modo no interactivo (basado en script) para flexibilidad en diferentes contextos de uso.
 
-## Contract
+## 🆕 Nuevo: Modo de Entrevista Interactiva
 
-- Input: raw skill concept, target domain, intended users
-- Output: completed skill design worksheet, validated skill concept, generated skill template, validation integration plan, and documentation outline
-- Scope: structured skill creation process specifically for the quirk skills ecosystem
-- Rule: all generated skills must be compatible with the quirk method and validation system
-- Rule: skills must follow the progressive disclosure principle and explicit contract design
-- Rule: generated skills should be testable using the evaluate-skill system
+La skill ahora cuenta con un protocolo de entrevista conversacional que:
 
-## Structured Skill Creation Process
+1. **Descubre** las necesidades de skill del usuario a través de preguntas específicas
+2. **Diseña colaborativamente** la arquitectura y los recursos de la skill
+3. **Realiza investigación asistida** para enriquecer el diseño con las mejores prácticas actuales
+4. **Sugiere nombres apropiados** basados en palabras clave y categoría
+5. **Genera una estructura completa de skill** con todos los archivos necesarios
+6. **Valida el resultado** contra los estándares de calidad
 
-This skill guides you through creating a skill using fill-in-the-blank worksheets that ensure you address all critical aspects of skill design.
+## 🔄 Modo Tradicional (Legacy)
 
-### Phase 1: Skill Conception Worksheet
+Para mantener la compatibilidad hacia atrás, la skill aún soporta el enfoque tradicional basado en worksheets a través de su documentación. Los usuarios que prefieran el método estructurado de worksheets pueden seguir la sección "Proceso Tradicional de Creación de Skill" abajo.
 
-Complete this worksheet to explore and validate your skill concept.
+## 🎯 Selección de Modos
 
-#### Worksheet 1.1: Core Concept Definition
-```
-Skill Name (proposed): ________________________________
-One-sentence description: ________________________________________________________
-________________________________________________________
+- **Modo Interactivo**: Use cuando desee una conversación guiada para explorar su idea de skill
+- **Modo Tradicional**: Use cuando prefiera completar worksheets a su propio ritmo
+- **Modo de Script No Interactivo**: Use `interview_skill.py` para uso automatizado o en CI/CD
 
-What specific problem does this solve? ___________________________________________
-________________________________________________________
+## 📋 Protocolo de Entrevista Interactiva
 
-Is this a new capability or improvement to existing? [ ] New  [ ] Improvement
-If improvement, which existing skill(s) does it relate to? ________________________
-________________________________________________________
-```
+La entrevista sigue un proceso estructurado de 5 fases:
 
-#### Worksheet 1.2: Use Case Validation
-```
-List 3 concrete use cases where this skill would be valuable:
-1. _________________________________________________________________
-2. _________________________________________________________________
-3. _________________________________________________________________
+### Fase 1: Descubrimiento (5-7 preguntas)
+Comprender el problema central, casos de uso, dominio, entradas/salidas, skills similares existentes y experiencia requerida.
 
-Who are the primary users/agent types that would benefit?
-_________________________________________________________
+### Fase 2: Diseño Colaborativo (Iterativo)
+El agente propone arquitectura, recursos y flujos de trabajo basados en las respuestas de descubrimiento; el usuario refina e itera.
 
-What would happen if this skill didn't exist? (Describe the workaround complexity)
-_________________________________________________________
-_________________________________________________________
+### Fase 3: Investigación Asistida (Opcional)
+El agente y el usuario pueden solicitar investigación sobre mejores prácticas, patrones existentes y conocimiento específico del dominio.
 
-How do you know this addresses a repeatedly useful behavior?
-_________________________________________________________
-```
+### Fase 4: Nombramiento
+El agente sugiere 3-5 nombres de skill basados en palabras clave y categoría; el usuario elige, modifica o propone su propio nombre.
 
-#### Worksheet 1.3: Capability Definition
-```
-List the specific capabilities this skill will provide (use - capability-name format):
-- _________________________________________________
-- _________________________________________________
-- _________________________________________________
+### Fase 5: Generación
+El agente crea una estructura completa de skill: SKILL.md, scripts/, references/, assets/, adrs/, y ejecuta validación inicial.
 
-For each capability, specify:
-Capability: ________________________
-  Inputs required: ________________________________________
-  Outputs produced: _______________________________________
-  
-Capability: ________________________
-  Inputs required: ________________________________________
-  Outputs produced: _______________________________________
-```
+## 🧩 Proceso Tradicional de Creación de Skill (Legacy)
 
-### Phase 2: Skill Design Worksheets
+Para los usuarios que prefieren el enfoque original basado en worksheets, esta skill aún apoya la metodología estructurada:
 
-#### Worksheet 2.1: Skill Contract Design
-```
-Description (following quirk skill-style-guide):
-_________________________________________________________
-_________________________________________________________
-_________________________________________________________
+### Fase 1: Worksheet de Concepción de Skill
+Explore y valide su concepto de skill a través de worksheets estructurados que cubren concepto central, casos de uso y capacidades.
 
-Explicit Inputs (what the skill consumes):
-- ________________________________________
-- ________________________________________
-- ________________________________________
+### Fase 2: Worksheets de Diseño de Skill
+Diseñe el contrato, estructura corporal y evaluabilidad de su skill a través de worksheets guiados.
 
-Explicit Outputs (what the skill produces):
-- ________________________________________
-- ________________________________________
-- ________________________________________
+### Fase 3: Generación y Validación de Skill
+Genere su skill en el sandbox y cree artefactos de validación.
 
-Dependencies (minimal and intentional):
-- ________________________________________ (why: ____________________)
-- ________________________________________ (why: ____________________)
+## 🛠️ Scripts Asociados
 
-Side Effects (honest repository modifications):
-- ________________________________________
-- ________________________________________
+Esta skill funciona con varios scripts complementarios:
 
-Stop Condition (clear, checkable completion criteria):
-_________________________________________________________
-_________________________________________________________
+### `interview_skill.py`
+Herramienta de línea de comandos interactiva (o no interactiva) que ejecuta el protocolo de entrevista:
+```bash
+# Modo interactivo
+python interview_skill.py
 
-Risk Level (honest assessment): [ ] low  [ ] medium  [ ] high
-Justification: ___________________________________________
+# Modo no interactivo (para CI/automatización)
+python interview_skill.py --no-interactivo --directorio-salida ./mis-skills
+
+# Especificar directorio de salida
+python interview_skill.py --directorio-salida ./skills/personalizado
 ```
 
-#### Worksheet 2.2: Skill Body Structure Plan
-```
-Approach: [ ] step-based  [ ] reference-based  [ ] hybrid
+### `research_helpers.py`
+Biblioteca de funciones reutilizables para investigación:
+```python
+from research_helpers import (
+    buscar_patrones_github,
+    buscar_mejores_practicas_web, 
+    analizar_skills_existentes,
+    sugerir_nombre_skill
+)
 
-What goes in SKILL.md (essential procedural instructions):
-_________________________________________________________
-_________________________________________________________
+# Buscar patrones en skills existentes
+patrones = buscar_patrones_github("versionado de api")
 
-What goes in references/ (detailed reference material):
-_________________________________________________________
-_________________________________________________________
-
-How does this skill integrate with work-item system (if relevant):
-_________________________________________________________
-_________________________________________________________
-```
-
-#### Worksheet 2.3: Evaluatability Design Plan
-```
-How will this skill be tested with evaluate-skill system?
-
-Scenario Fixtures needed (describe expected routes):
-_________________________________________________________
-_________________________________________________________
-
-Behavioral Fixtures needed (expected output formats):
-_________________________________________________________
-_________________________________________________________
+# Obtener sugerencias de nombres
+nombres = sugerir_nombre_skill(["api", "version"], "devops")
 ```
 
-### Phase 3: Skill Generation and Validation
+### `init_skill.py` (Actualizado)
+Crea estructura de skill desde cero o desde resultados de entrevista:
+```bash
+# Desde cero
+python init_skill.py mi-nueva-skill
 
-#### Worksheet 3.1: Skill Generation
-```
-Follow these steps to generate your skill:
-1. Create directory: .skill-sandbox/<your-skill-name>/
-2. Create SKILL.md with proper YAML frontmatter from Worksheet 2.1
-3. Create references/ directory and add any needed templates
-4. Set up basic scripts/ and assets/ directories if needed
-5. Add helpful TODO comments guiding completion
-
-Use the templates in this skill's references/ as starting points.
+# Desde resultados de entrevista
+python init_skill.py mi-nueva-skill --desde-entrevista resultados_entrevista.json
 ```
 
-#### Worksheet 3.2: Validation Integration
-```
-Create validation artifacts for your skill:
+### `package_skill.py` (Actualizado)
+Valida skills para completitud y conformidad:
+```bash
+# Validación básica
+python package_skill.py ./mi-skill
 
-Scenario Fixtures (in .skill-sandbox/<skill-name>/scenarios/):
-- [ ] Basic functionality test scenario
-- [ ] Edge case scenario  
-- [ ] Error condition scenario
-
-Behavioral Fixtures (in .skill-sandbox/<skill-name>/behavioral-fixtures/):
-- [ ] Expected output format for primary artifact
-- [ ] Expected output format for secondary artifact (if applicable)
-
-Run validation:
-- node .skill-sandbox/validations/validate-sandbox-skills.mjs
-- node .agents/skills/platform/evaluate-scenarios.mjs (when scenarios ready)
-- node .agents/skills/platform/evaluate-behavioral-fixtures.mjs (when fixtures ready)
+# Omitir verificaciones específicas (útil durante desarrollo)
+python package_skill.py ./mi-skill --no-verificar-entrevista --no-verificar-adr
 ```
 
-## Skill Template Structure
+## 📁 Estructura de Skill Generada
 
-When generating a new skill using the worksheets, this structure is produced:
+Al crear una skill a través de cualquiera de los modos, se genera la siguiente estructura:
 
 ```
-.skill-sandbox/<skill-name>/
-├── SKILL.md
-├── references/
-│   ├── [artifact-templates-as-needed]
-│   └── [example-outputs-as-needed]
+<nombre-de-skill>/
+├── SKILL.md                  # Documentación completa de skill con frontmatter YAML
 ├── scripts/
-│   └── [helper-scripts-as-needed]
-└── assets/
-    └── [output-assets-as-needed]
+│   └── main.py              # Script ejecutable de skill con registro y argumentos
+├── references/
+│   └── domain.md            # Conocimiento y referencias específicas del dominio
+├── assets/
+│   └── README.md            # Marcador de posición para activos estáticos
+└── adrs/
+    └── 0001-initial-design.md # Registro inicial de decisión de arquitectura
 ```
 
-## Worksheet Templates and Examples
+## 📝 Estructura de Plantilla de Skill
 
-This skill provides templates and examples to help you fill out the worksheets effectively.
+El `SKILL.md` generado sigue el estándar de skill de quirk con:
 
-### Example: Completed Worksheet 1.1 (for a hypothetical "api-versioner" skill)
+- **Frontmatter YAML**: Metadatos estándar incluyendo nombre, categoría, madurez, versión, descripción, capacidades, salidas, efectosSecundarios, dependencias, condiciónDeParada, riesgo, nivelDeConfianza, maxIteraciones
+- **Contrato de Operación**: Definición clara de entradas, salidas, efectos secundarios, dependencias, condición de parada, riesgo y límites
+- **Documentación de Skill**: Secciones completas que cubren contrato, proceso de diseño, ejemplos, integración con evaluación, criterios de completado y principios rectores
+- **Rastreabilidad**: Sección que documenta cómo se creó la skill (proceso de entrevista o worksheets tradicionales)
+
+## 🔑 Principios de Diseño
+
+Las skills creadas con esta herramienta deberían seguir estos principios:
+
+1. **Contratos Explícitos**: Definir claramente lo que la skill consume y produce
+2. **Divulgación Progresiva**: Revelar la complejidad gradualmente según sea necesario
+3. **Enfoque Mínimo**: Preferir múltiples skills pequeñas sobre una skill grande monolítica
+4. **Capacidad de Prueba**: Diseñar skills para que puedan validadas usando el sistema evaluate-skill
+5. **Rastreabilidad**: Documentar cómo y por qué se creó la skill
+6. **Reproducibilidad**: Asegurar que las skills produzcan resultados consistentes dados los mismos inputs
+7. **Compatibilidad**: Mantener compatibilidad con otras skills y herramientas quirk existentes
+
+## 🧪 Integración con el Sistema de Evaluación
+
+Todas las skills deberían diseñarse para funcionar con el sistema evaluate-skill:
+
+### Fixturas de Escenario
+Crear archivos JSON de escenario que definan rutas esperadas a través de skills para tareas comunes, incluyendo aserciones estáticas para validación.
+
+### Fixturas de Comportamiento
+Crear archivos markdown que definan los formatos de salida esperados, requiriendo secciones específicas y prohibiendo texto de marcador de posición.
+
+## ✅ Criterios de Completado
+
+### Completado en Modo Interactivo
+El usuario ha completado el proceso interactivo de creación de skill cuando:
+
+- Han pasado por las 5 fases de la entrevista (descubrimiento, diseño, investigación, nombramiento, generación)
+- Han revisado y confirmado la estructura de skill generada
+- La skill generada pasa la validación básica con `package_skill.py`
+
+### Completado en Modo Tradicional  
+El usuario ha completado el proceso tradicional de creación de skill cuando:
+
+- Han completado todos los worksheets con información específica y accionable
+- Han generado una plantilla completa de skill en el sandbox desde sus worksheets completadas
+- Han validado el concepto de skill utilizando las herramientas de validación del sandbox
+- Han delineado cómo la skill se integra con el sistema de evaluación
+- Tienen un plan claro para iterar sobre la skill basado en los comentarios de validación
+
+### Completado en Modo de Script
+El script no interactivo ha completado cuando:
+
+- Ha procesado todas las entradas requeridas (ya sea respuestas interactivas o JSON de entrevista)
+- Ha generado una estructura completa de skill
+- Ha ejecutado las verificaciones de validación
+- Ha salido con un código de estado de éxito
+
+## 🛡️ Principios Rectores
+
+- Siempre valide los conceptos de skill contra skills existentes para prevenir duplicación
+- Diseñe skills para que sean mínimas y enfocadas - prefiera crear múltiples skills pequeñas sobre una grande
+- Asegúrese de que las skills puedan ser testeadas en aislamiento usando el entorno de sandbox
+- Siga los principios del método quirk rigurosamente en el diseño de skills
+- Considere cómo la skill encaja en flujos de trabajo más grandes antes de crearla
+- Recuerde que la predecibilidad es la virtud raíz - diseña para comportamiento consistente
+- Use el proceso de entrevista para asegurar decisiones explícitas y verificables en cada paso
+- Mantenga la compatibilidad hacia atrás con los scripts existentes `init_skill.py` y `package_skill.py`
+
+## 📚 Referencias
+
+Para referencias detalladas sobre principios de diseño de skills, consulte:
+- `references/skill_design_principles.md` - Directrices para crear skills efectivas
+- Skills existentes en `.agents/skills/` para patrones e inspiración
+- La documentación del método quirk para principios fundamentales
+
+## 📖 Ejemplos
+
+Vea el directorio `templates/` para:
+- Plantillas de esqueleto de skill utilizadas durante la generación
+- Banco de preguntas de entrevista (`interview_questions.yaml`)
+- Plantillas de propuestas para diseño colaborativo (`proposal_templates.yaml`)
+- Plantillas de script para skills generadas
+
+## 🔧 Desarrollo y Mantenimiento
+
+Esta skill mantiene compatibilidad con herramientas existentes mientras agrega nuevas capacidades interactivas:
+
+### Compatibilidad Hacia Atrás
+- Todas las invocaciones existentes de `init_skill.py` y `package_skill.py` continúan funcionando
+- El enfoque tradicional basado en worksheets permanece documentado y utilizable
+- Las skills generadas siguen la misma estructura y estándares que antes
+
+### Nuevas Características
+- Protocolo de entrevista interactiva con 5 fases distintas
+- Capacidades de investigación asistida mediante búsqueda web y análisis de skills
+- Algoritmos inteligentes de sugerencia de nombres
+- Generación completa de skill con todos los componentes necesarios
+- Validación mejorada incluyendo rastreabilidad y evidencia de entrevista
+
+## 🎉 Primeros Pasos
+
+Para crear una nueva skill de forma interactiva:
+```bash
+python interview_skill.py
 ```
-Skill Name (proposed): api-versioner
-One-sentence description: Analyzes API changes to recommend appropriate versioning strategy based on semantic versioning principles.
 
-What specific problem does this solve? Helps developers determine when to make breaking changes vs backward-compatible changes in APIs by analyzing diffs and providing explicit versioning recommendations.
-
-Is this a new capability or improvement to existing? [x] New  [ ] Improvement
-If improvement, which existing skill(s) does it relate to? N/A
+Para crear una skill no interactivamente (para automatización):
+```bash
+python interview_skill.py --no-interactivo --directorio-salida ./skills
 ```
 
-### Example: Completed Worksheet 2.1 (for the same skill)
-```
-Description (following quirk skill-style-guide):
-This skill analyzes API diffs to determine appropriate versioning strategy following semantic versioning principles. Use when you need to understand the impact of API changes and get explicit guidance on version numbers.
-
-Explicit Inputs (what the skill consumes):
-- API diff or change description
-- Current API version
-- Documentation of breaking change guidelines
-
-Explicit Outputs (what the skill produces):
-- Recommended version number (major/minor/patch)
-- List of breaking changes detected
-- List of backward-compatible changes
-- Versioning rationale explanation
-
-Dependencies (minimal and intentional):
-- codebase-design (why: to understand API seams and interfaces)
-- domain-modeling (why: to use correct domain terminology in explanations)
-
-Side Effects (honest repository modifications):
-- write-docs (creates versioning recommendation document)
-
-Stop Condition (clear, checkable completion criteria):
-The user has received a specific version recommendation with clear rationale explaining which changes are breaking vs compatible, and understands the semantic versioning implications.
-
-Risk Level (honest assessment): [x] low  [ ] medium  [ ] high
-Justification: This skill only reads code and writes documentation - no repository modifications that could cause harm.
+Para validar una skill existente:
+```bash
+package_skill.py ./ruta/a/skill
 ```
 
-## Integration with Evaluation System
-
-All skills created with this creator should be designed to work with the evaluate-skill system:
-
-### Scenario Fixtures
-- Create JSON scenario files that define expected routes through skills for common API versioning tasks
-- Include static assertions for validating that the skill produces correct versioning recommendations
-- Follow the format used in evaluate-skill/scenarios/
-
-### Behavioral Fixtures
-- Create markdown files defining expected output formats for versioning recommendations
-- Include required sections (recommendation, rationale, change analysis) and forbid placeholder text
-- Follow the format used in evaluate-skill/behavioral-fixtures/
-
-## Completion Criteria
-
-The user has completed this skill when:
-
-- They have filled out all worksheets with specific, actionable information
-- They have generated a complete skill template in the sandbox from their completed worksheets
-- They have validated the skill concept using sandbox validation tools
-- They have outlined how the skill integrates with the evaluation system
-- They have a clear plan for iterating on the skill based on validation feedback
-
-## Guardrails
-
-- Always validate skill concepts against existing skills to prevent duplication
-- Design skills to be minimal and focused - prefer creating multiple small skills over one large one
-- Ensure skills can be tested in isolation using the sandbox environment
-- Follow the quirk method principles rigorously in skill design
-- Consider how the skill fits into larger workflows before creating it
-- Remember that predictability is the root virtue - design for consistent behavior
-- Use the worksheets to ensure explicit, checkable decisions at each step
+Para crear una skill desde resultados de entrevista:
+```bash
+python init_skill.py mi-skill --desde-entrevista resultados_entrevista.json
+```
