@@ -1,7 +1,7 @@
 ---
 name: mcp-server
 category: foundation
-maturity: experimental
+maturity: stable
 description: Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.
 version: 1
 capabilities:

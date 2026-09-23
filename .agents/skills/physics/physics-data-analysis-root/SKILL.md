@@ -1,7 +1,7 @@
 ---
 name: physics-data-analysis-root
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: grill-with-docs
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: ai-ml-pipeline
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: skill-diff-analyzer
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.
 capabilities:

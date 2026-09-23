@@ -1,7 +1,7 @@
 ---
 name: physics-quantum
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.
 capabilities:

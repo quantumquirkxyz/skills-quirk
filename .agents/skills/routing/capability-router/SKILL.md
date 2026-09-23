@@ -1,7 +1,7 @@
 ---
 name: capability-router
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.
 capabilities:

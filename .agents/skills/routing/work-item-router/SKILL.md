@@ -1,7 +1,7 @@
 ---
 name: work-item-router
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.
 capabilities:

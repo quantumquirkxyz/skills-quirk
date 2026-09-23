@@ -1,7 +1,7 @@
 ---
 name: context-engine
 category: foundation
-maturity: experimental
+maturity: stable
 description: Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).
 version: 1
 capabilities:

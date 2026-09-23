@@ -1,7 +1,7 @@
 ---
 name: db-relational-design
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.
 capabilities:

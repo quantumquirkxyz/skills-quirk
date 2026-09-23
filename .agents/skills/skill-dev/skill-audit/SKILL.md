@@ -1,7 +1,7 @@
 ---
 name: skill-audit
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.
 capabilities:

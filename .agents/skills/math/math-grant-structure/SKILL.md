@@ -1,7 +1,7 @@
 ---
 name: math-grant-structure
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.
 capabilities:

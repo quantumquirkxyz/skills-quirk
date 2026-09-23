@@ -1,7 +1,7 @@
 ---
 name: sec-security-audit
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.
 capabilities:

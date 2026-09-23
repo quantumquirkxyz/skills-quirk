@@ -1,7 +1,7 @@
 ---
 name: skill-template-generator
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: quant-risk-modeling
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.
 capabilities:

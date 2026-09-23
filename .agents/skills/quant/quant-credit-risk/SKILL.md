@@ -1,7 +1,7 @@
 ---
 name: quant-credit-risk
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.
 capabilities:

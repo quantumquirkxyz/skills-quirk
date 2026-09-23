@@ -1,7 +1,7 @@
 ---
 name: physics-classical
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.
 capabilities:

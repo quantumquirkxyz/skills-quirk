@@ -1,7 +1,7 @@
 ---
 name: data-etl-pipeline
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: execution-policy
 category: auxiliary
-maturity: experimental
+maturity: stable
 description: Decide whether a Skill action is allowed, requires approval, or must stop.
 disable-model-invocation: true
 version: 1

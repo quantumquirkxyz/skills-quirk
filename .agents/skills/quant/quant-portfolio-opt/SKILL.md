@@ -1,7 +1,7 @@
 ---
 name: quant-portfolio-opt
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.
 capabilities:

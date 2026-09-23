@@ -1,7 +1,7 @@
 ---
 name: physics-career-postdoc
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.
 capabilities:

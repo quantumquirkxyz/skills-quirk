@@ -1,7 +1,7 @@
 ---
 name: math-pure-proofs
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: devops-feature-flags
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.
 capabilities:

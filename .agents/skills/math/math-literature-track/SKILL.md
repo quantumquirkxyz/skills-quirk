@@ -1,7 +1,7 @@
 ---
 name: math-literature-track
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.
 capabilities:

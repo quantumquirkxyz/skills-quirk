@@ -1,7 +1,7 @@
 ---
 name: context-pack
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.
 capabilities:

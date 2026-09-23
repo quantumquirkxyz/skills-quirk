@@ -1,7 +1,7 @@
 ---
 name: skill-performance-metrics
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.
 capabilities:

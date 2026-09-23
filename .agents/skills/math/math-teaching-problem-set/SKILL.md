@@ -1,7 +1,7 @@
 ---
 name: math-teaching-problem-set
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.
 capabilities:

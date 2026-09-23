@@ -1,42 +1,34 @@
 ---
 name: web3-defi
-category: skill-dev/sandbox
-maturity: experimental
-version: 1
-description: Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives — across protocol mechanics, economic security, and composability risks.
+category: web3
+maturity: stable
+version: 2
+description: Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.
 capabilities:
-  - apply web3 defi workflow
-  - produce web3 defi analysis artifact
-  - validate web3 defi completion criteria
+  - classify DeFi protocols (AMM, lending, stablecoin, derivatives, intents, LST, LRT)
+  - analyse core mechanics (invariants, parameters, oracles, liquidation)
+  - assess economic security (TVL, collateral ratios, solvency, liquidity risk)
+  - evaluate MEV, intents, solver networks, and composability risks
 outputs:
-  - Web3 Defi artifact with completed sections, evidence, and limitations
+  - DeFi analysis report (protocol mechanics, economic security, MEV/intents, attack surface, recommendation)
 sideEffects: []
 dependencies: []
-stopCondition: Analyse DeFi protocols complete; required sections present; completion criteria checked.
+stopCondition: Protocol classified; mechanics and economic security documented; recommendation tied to risk profile.
 risk: low
 trustTier: 1
 maxIterations: 6
 ---
 
-## Operating Contract
-
-- **Input:** Web3 Defi request, problem context, constraints, and available evidence.
-- **Output:** Web3 Defi artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Analyse DeFi protocols is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
-
 # DeFi Protocol Analysis
 
-Analyse a **DeFi protocol** — AMM, lending, stablecoin, or derivative — for mechanics, economic security, composability, and regulatory posture.
+Analyse a **DeFi protocol** — AMM, lending, stablecoin, derivative, intents, or restaking — for mechanics, economic security, MEV protection, composability, and regulatory posture.
 
 ## When to use
 
 - The user wants to understand, build on, or invest in a DeFi protocol.
 - A protocol needs an economic or security due-diligence pass.
 - A quant or portfolio strategy involves DeFi as an asset class or venue.
+- Intents-based trading (Anoma, Essential, UniswapX) or solver networks need evaluation.
 
 ## Process
 
@@ -44,20 +36,21 @@ Analyse a **DeFi protocol** — AMM, lending, stablecoin, or derivative — for 
 
 Name the category and specific protocol:
 
-- **AMM:** Uniswap, Curve, Balancer; bonding curve, fee tiers, concentrated liquidity.
-- **Lending / borrowing:** Aave, Compound, Morpho; supply / borrow rates, utilisation curves.
-- **Stablecoins:** over-collateralised (DAI), partially (LUSD), algorithmic (logic vs reserve).
-- **Derivatives / structured:** GMX, dYdX, Perp; synthetic vs physically-settled.
-- **Yield aggregators:** Yearn, Convex; strategy composition, fee sharing.
+- **AMM:** Uniswap v4 (hooks, concentrated liquidity), Curve (stableSwap, CRV), Balancer (weighted pools).
+- **Lending / borrowing:** Aave v3 (isolated markets, GHO), Compound v3 (isolated risk), Morpho (peer-to-pool).
+- **Stablecoins:** over-collateralised (DAI, USDS), algorithmic (not recommended), LST (stETH, rETH), LRT (eigenLayer, Renzo).
+- **Derivatives / structured:** GMX v2 (GLP), dYdX v4 (off-chain order book), Synthetix (perps).
+- **Intents / solver networks:** UniswapX, 1inch Fusion, Anoma, Essential; solver competition, Dutch auctions, MEV capture.
+- **Restaking / AVS:** eigenLayer, Symbiotic, Puffer; slashing conditions, operator economics.
 
 **Completion criterion:** category and protocol named; brief mechanism described.
 
 ### 2. Core mechanics
 
-- **State variables:** what state does the protocol hold? (Reserves, collateral, positions.)
+- **State variables:** what state does the protocol hold? (Reserves, collateral, positions, intents.)
 - **Invariant:** what mathematical invariant holds? (x·y=k, utilisation U = borrows/supply, etc.)
 - **Mechanisms:** arbitrage, liquidation, fee distribution — state each with its trigger.
-- **Parameters:** fee tiers, collateral factors, liquidation thresholds, rate models.
+- **Parameters:** fee tiers, collateral factors, liquidation thresholds, rate models, solver fees.
 
 **Completion criterion:** invariant, mechanisms, and parameters all stated.
 
@@ -66,12 +59,54 @@ Name the category and specific protocol:
 - **TVL:** total value locked; source and meaning (TVL ≠ value; can be inflated).
 - **Collateral:** over-collateralisation ratio; worst-case if collateral drops 50%.
 - **Oracle:** how is price obtained? Chainlink? TWAP? Univ3? What if it fails?
-- **Attack surface:** oracle manipulation, insolvency cascade, liquidation spiral, governance attack.
+- **Solvency:** can the protocol cover all liabilities under stress? Run a health factor simulation.
+- **Liquidity:** TVL / daily volume; slippage at size; liquidity provider concentration.
 
-**Completion criterion:** TVL, collateral ratio, oracle, and at least one attack surface documented.
+**Completion criterion:** TVL, collateral ratio, oracle, solvency assessment, and liquidity documented.
 
-### 4. Composability and systemic risk
+### 4. MEV, intents, and solver networks
+
+If the protocol uses intents or solver networks:
+
+- **Intent flow:** user signs intent → solver network competes → best solution executed.
+- **Solver competition:** how are solvers incentivised? Fee model, priority, reputation.
+- **MEV capture:** who captures MEV? Users, solvers, protocol? Is it transparent?
+- **Censorship:** can solvers censor certain transactions? Is there a fallback?
+- **Latency:** intent-to-execution time; timeouts and expiration.
+
+**Completion criterion:** intent/solver mechanics and MEV dynamics documented.
+
+### 5. Composability and systemic risk
 
 - **Composability:** does it call other protocols? Can a reentrancy or price-manipulation cascade occur?
 - **Contagion:** if one major protocol fails (UST-style), what is the contagion path?
-- **Fee sustainability:** are
+- **Fee sustainability:** are protocol fees sufficient to cover operations, insurance, and growth?
+- **Shared risk:** does the protocol share collateral, liquidity, or oracles with other protocols?
+
+**Completion criterion:** composability constraints and systemic risks named.
+
+### 6. Regulatory posture
+
+- **KYC / AML:** does the protocol restrict by jurisdiction? IP blocking, KYC gating.
+- **Securities law:** does any token qualify as a security? How is compliance handled?
+- **Sanctions:** does the protocol screen addresses against OFAC or other sanctions lists?
+
+**Completion criterion:** regulatory risk and compliance posture documented.
+
+### 7. Recommendation
+
+Assess overall risk / reward:
+
+- **Green:** deploy or integrate with standard risk mitigations.
+- **Yellow:** proceed with caution; specific mitigations required.
+- **Red:** do not deploy; fundamental design or economic flaws.
+
+**Completion criterion:** recommendation tied to explicit risk factors.
+
+## Rules
+
+- Rule: classify the protocol before comparing mechanics or economics.
+- Rule: state oracle, liquidation, and upgrade risks explicitly.
+- Rule: include MEV, intents, and solver dynamics when relevant.
+- Rule: separate protocol risk from token / governance risk.
+- Rule: prefer protocols with transparent solvency, non-custodial design, and audited code.

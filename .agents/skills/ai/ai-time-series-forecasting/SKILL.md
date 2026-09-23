@@ -1,7 +1,7 @@
 ---
 name: ai-time-series-forecasting
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.
 capabilities:

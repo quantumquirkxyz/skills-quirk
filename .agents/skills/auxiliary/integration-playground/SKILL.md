@@ -1,7 +1,7 @@
 ---
 name: integration-playground
 category: auxiliary
-maturity: experimental
+maturity: stable
 description: Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.
 version: 1
 capabilities:

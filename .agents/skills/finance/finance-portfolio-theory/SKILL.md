@@ -1,7 +1,7 @@
 ---
 name: finance-portfolio-theory
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.
 capabilities:

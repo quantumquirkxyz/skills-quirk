@@ -1,7 +1,7 @@
 ---
 name: db-nosql-modeling
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.
 capabilities:

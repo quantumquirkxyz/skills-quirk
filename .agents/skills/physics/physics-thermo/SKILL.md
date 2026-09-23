@@ -1,7 +1,7 @@
 ---
 name: physics-thermo
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.
 capabilities:

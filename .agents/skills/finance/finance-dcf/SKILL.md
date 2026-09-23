@@ -1,7 +1,7 @@
 ---
 name: finance-dcf
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.
 capabilities:

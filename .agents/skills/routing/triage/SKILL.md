@@ -1,7 +1,7 @@
 ---
 name: triage
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag
 capabilities:

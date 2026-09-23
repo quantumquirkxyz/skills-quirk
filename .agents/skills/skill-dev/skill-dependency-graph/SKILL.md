@@ -1,7 +1,7 @@
 ---
 name: skill-dependency-graph
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.
 capabilities:

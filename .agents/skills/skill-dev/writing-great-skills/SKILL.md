@@ -1,7 +1,7 @@
 ---
 name: writing-great-skills
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
 capabilities:

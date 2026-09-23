@@ -1,7 +1,7 @@
 ---
 name: improve-codebase-architecture
 category: engineering
-maturity: experimental
+maturity: stable
 description: Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
 version: 1
 capabilities:

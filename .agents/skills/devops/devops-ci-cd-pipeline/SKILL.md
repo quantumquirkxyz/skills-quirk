@@ -1,7 +1,7 @@
 ---
 name: devops-ci-cd-pipeline
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.
 capabilities:

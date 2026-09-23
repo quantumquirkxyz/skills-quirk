@@ -1,7 +1,7 @@
 ---
 name: math-optimization
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.
 capabilities:

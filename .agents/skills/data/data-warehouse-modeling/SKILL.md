@@ -1,7 +1,7 @@
 ---
 name: data-warehouse-modeling
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.
 capabilities:

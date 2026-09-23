@@ -1,7 +1,7 @@
 ---
 name: physics-literature-search
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.
 capabilities:

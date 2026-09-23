@@ -1,7 +1,7 @@
 ---
 name: data-streaming
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.
 capabilities:

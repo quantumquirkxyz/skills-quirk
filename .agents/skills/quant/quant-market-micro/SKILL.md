@@ -1,7 +1,7 @@
 ---
 name: quant-market-micro
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.
 capabilities:

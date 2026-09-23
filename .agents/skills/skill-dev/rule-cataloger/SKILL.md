@@ -1,7 +1,7 @@
 ---
 name: rule-cataloger
 category: skill-dev
-maturity: experimental
+maturity: stable
 description: Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.
 version: 1
 capabilities:

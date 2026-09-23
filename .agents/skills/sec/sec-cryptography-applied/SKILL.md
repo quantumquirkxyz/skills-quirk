@@ -1,7 +1,7 @@
 ---
 name: sec-cryptography-applied
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.
 capabilities:

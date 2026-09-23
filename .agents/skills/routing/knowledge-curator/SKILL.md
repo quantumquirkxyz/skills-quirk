@@ -1,7 +1,7 @@
 ---
 name: knowledge-curator
 category: routing
-maturity: experimental
+maturity: stable
 version: 1
 description: Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.
 capabilities:

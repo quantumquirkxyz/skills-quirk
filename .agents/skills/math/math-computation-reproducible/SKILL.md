@@ -1,7 +1,7 @@
 ---
 name: math-computation-reproducible
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.
 capabilities:

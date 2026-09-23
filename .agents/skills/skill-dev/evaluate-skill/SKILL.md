@@ -1,7 +1,7 @@
 ---
 name: evaluate-skill
 category: skill-dev
-maturity: experimental
+maturity: stable
 version: 1
 description: Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.
 capabilities:

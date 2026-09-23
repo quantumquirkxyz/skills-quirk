@@ -1,7 +1,7 @@
 ---
 name: math-paper-collaboration
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: cs-algorithms
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.
 capabilities:

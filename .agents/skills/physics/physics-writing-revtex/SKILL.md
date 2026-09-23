@@ -1,7 +1,7 @@
 ---
 name: physics-writing-revtex
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.
 capabilities:

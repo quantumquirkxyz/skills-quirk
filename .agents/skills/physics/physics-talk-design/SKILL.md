@@ -1,7 +1,7 @@
 ---
 name: physics-talk-design
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.
 capabilities:

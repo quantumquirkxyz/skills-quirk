@@ -1,7 +1,7 @@
 ---
 name: agent-canvas
 category: foundation
-maturity: experimental
+maturity: stable
 description: Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
 version: 1
 capabilities:

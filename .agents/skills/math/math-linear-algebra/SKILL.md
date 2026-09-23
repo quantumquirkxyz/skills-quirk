@@ -1,7 +1,7 @@
 ---
 name: math-linear-algebra
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.
 capabilities:

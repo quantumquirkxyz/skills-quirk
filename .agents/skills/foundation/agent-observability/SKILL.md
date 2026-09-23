@@ -1,7 +1,7 @@
 ---
 name: agent-observability
 category: foundation
-maturity: experimental
+maturity: stable
 description: Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
 version: 1
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: physics-experimental-notebook
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.
 capabilities:

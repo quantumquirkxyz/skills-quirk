@@ -1,7 +1,7 @@
 ---
 name: ai-model-evaluation
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.
 capabilities:

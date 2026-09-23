@@ -1,15 +1,15 @@
 ---
 name: web3-smart-contracts
-category: skill-dev/sandbox
-maturity: experimental
-version: 1
-description: Design and review smart contracts — security, gas optimization, upgradeability, access control — with an adversarial review step.
+category: web3
+maturity: stable
+version: 2
+description: Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.
 capabilities:
-  - review smart contract security (reentrancy, access, arithmetic, gas)
-  - audit upgradeability and governance mechanisms
-  - perform adversarial review
+  - review smart contract security (reentrancy, access, arithmetic, gas, MEV)
+  - audit upgradeability, AA (ERC-4337), and EIP-7702 delegation patterns
+  - perform adversarial review and formal verification assessment
 outputs:
-  - Markdown artifact: requirements, security review, gas audit, adversarial scenarios, deployment recommendation
+  - Markdown artifact: requirements, security review, gas audit, AA/EIP-7702 review, adversarial scenarios, deployment recommendation
 sideEffects: []
 dependencies: []
 stopCondition: Artifact present with deployment recommendation.
@@ -18,26 +18,16 @@ trustTier: 3
 maxIterations: 6
 ---
 
-## Contract
-
-- **Input:** smart contract code / requirements.
-- **Output:** review artifact.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** deployment recommendation explicit.
-- **Risk:** medium — security-sensitive; careful review required.
-- **Boundary:** design/review only; no deployment execution.
----
-
 # Smart Contract Design & Review
 
-Design or review a **smart contract** — state, access control, gas, upgrade path — and subject it to an adversarial review before any deployment recommendation.
+Design or review a **smart contract** — state, access control, gas, upgrade path, account abstraction — and subject it to an adversarial review before any deployment recommendation.
 
 ## When to use
 
 - The user wants to design a smart contract architecture or review existing code.
 - A DeFi protocol, token, NFT, or governance contract needs security analysis.
-- Another skill (`web3-tokenomics`, `quant-factors` for crypto) needs contract-level grounding.
+- Account abstraction (ERC-4337) or EIP-7702 delegation needs implementation review.
+- A Foundry / Solmate-based project needs gas and security audit.
 
 ## Process
 
@@ -58,6 +48,9 @@ Check each item; do not skip:
 - **Upgradeability:** proxy pattern (UUPS, transparent) — what is the upgrade logic? Who triggers it?
 - **Pull vs push:** payments pulled by recipients reduce reentrancy risk.
 - **External dependencies:** oracles, other contracts, libraries — what if they fail?
+- **MEV / sandwiching:** does the contract expose price-sensitive operations? Can front-running extract value?
+- **Account abstraction (ERC-4337):** if using AA, review bundler, paymaster, validation logic, and signature aggregation.
+- **EIP-7702 delegation:** if using delegation, review delegation lifecycle, revocation, and security boundaries.
 
 **Completion criterion:** each checklist item addressed explicitly; missing protections named.
 
@@ -69,12 +62,14 @@ Identify gas hotspots:
 - Loops over arrays or mappings.
 - Redundant computations.
 - Unused variables / dead code.
+- Calldata vs memory for function arguments.
+- Assembly optimisations (only where correctness is provable).
 
 Suggest optimisations that don't compromise security.
 
 **Completion criterion:** top gas costs identified; at least one cost-reducing recommendation.
 
-### 4. Upgrade / governance path
+### 4. Upgrade / governance / AA path
 
 If upgradeable:
 
@@ -87,6 +82,15 @@ If immutable:
 - How are bugs handled?
 - What is the migration path?
 
+If using ERC-4337:
+- How are user operations validated?
+- Who pays gas (paymaster)?
+- What is the bundler strategy?
+
+If using EIP-7702:
+- How are delegated authorities scoped?
+- What happens if the delegated contract is malicious?
+
 **Completion criterion:** upgrade mechanism and governance fully described.
 
 ### 5. Adversarial review
@@ -97,6 +101,7 @@ Write the contract from an attacker's perspective:
 - What happens at extreme inputs (zero, max, empty state)?
 - What happens if the owner key is lost / stolen?
 - What happens if an external dependency fails?
+- Can a malicious bundler or paymaster exploit the AA flow?
 
 Document each attack path; state whether it is mitigated, unmitigated, or out of scope.
 
@@ -104,6 +109,14 @@ Document each attack path; state whether it is mitigated, unmitigated, or out of
 
 ### 6. Deliver
 
-Markdown artifact: requirements, security review, gas audit, upgrade/governance, adversarial scenarios, and a **deployment recommendation** — deploy, deploy with fixes listed, or do not deploy.
+Markdown artifact: requirements, security review, gas audit, upgrade/governance/AA, adversarial scenarios, and a **deployment recommendation** — deploy, deploy with fixes listed, or do not deploy.
 
 **Completion criterion:** artifact present; deployment recommendation is explicit.
+
+## Rules
+
+- Rule: never deploy without an adversarial review.
+- Rule: separate security findings from gas optimisations.
+- Rule: state trust assumptions for every external call.
+- Rule: document upgrade, AA, and delegation mechanisms explicitly.
+- Rule: prefer minimal, audited libraries (Solmate, OpenZeppelin) over custom implementations.

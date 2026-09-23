@@ -1,7 +1,7 @@
 ---
 name: finance-corporate-val
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.
 capabilities:

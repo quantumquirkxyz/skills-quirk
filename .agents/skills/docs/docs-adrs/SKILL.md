@@ -1,7 +1,7 @@
 ---
 name: docs-adrs
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.
 capabilities:

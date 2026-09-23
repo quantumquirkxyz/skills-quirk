@@ -1,7 +1,7 @@
 ---
 name: devops-k8s-orchestration
 category: skill-dev/sandbox
-maturity: experimental
+maturity: stable
 version: 1
 description: Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.
 capabilities:

@@ -1,7 +1,7 @@
 ---
 name: subagent-swarm
 category: foundation
-maturity: experimental
+maturity: stable
 description: Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.
 version: 1
 capabilities:
