@@ -1,5 +1,7 @@
 ---
 name: agent-canvas
+category: foundation
+maturity: experimental
 description: Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
 version: 1
 capabilities:
@@ -12,9 +14,12 @@ inputs:
   - session-goals: explicit finish lines per session
   - agent-roles: which roles are active
 outputs:
-  - workspace-state: current state of workspace
-  - session-report: summary of what was completed
-  - export-package: portable workspace bundle
+  - "workspace-state: current state of workspace"
+  - "session-report: summary of what was completed"
+  - "export-package: portable workspace bundle"
+sideEffects:
+  - write-files
+dependencies: []
 stopCondition: Workspace defined, session has explicit finish line, and state is recorded.
 risk: low
 trustTier: 2

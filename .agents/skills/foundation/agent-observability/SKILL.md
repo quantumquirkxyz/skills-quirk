@@ -1,5 +1,7 @@
 ---
 name: agent-observability
+category: foundation
+maturity: experimental
 description: Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
 version: 1
 capabilities:
@@ -8,14 +10,17 @@ capabilities:
   - capture-quality-signals
   - generate-trace-report
 inputs:
-  - skill-run: The execution being observed (optional)
-  - trace-level: basic, detailed, full (default: detailed)
-  - signal-types: latency, token-usage, error-rate, evidence-quality (default: all)
+  - "skill-run: The execution being observed (optional)"
+  - "trace-level: basic, detailed, full (default: detailed)"
+  - "signal-types: latency, token-usage, error-rate, evidence-quality (default: all)"
 outputs:
-  - execution-trace: Structured trace with timestamps and decisions
-  - quality-signals: Metrics for execution quality
-  - trace-report: Human-readable summary of execution
-  - audit-log: Redacted audit for review
+  - "execution-trace: Structured trace with timestamps and decisions"
+  - "quality-signals: Metrics for execution quality"
+  - "trace-report: Human-readable summary of execution"
+  - "audit-log: Redacted audit for review"
+sideEffects:
+  - write-files
+dependencies: []
 stopCondition: Trace recorded, signals captured, and report generated with explicit evidence.
 risk: low
 trustTier: 2

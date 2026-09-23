@@ -15,7 +15,7 @@ sideEffects:
   - commit-git
   - continue-merge-or-rebase
 dependencies: []
-stopCondition: Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution complete; artifact saved; completion criteria checked.
+stopCondition: "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution complete; artifact saved; completion criteria checked."
 risk: medium
 trustTier: 3
 maxIterations: 6

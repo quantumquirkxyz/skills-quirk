@@ -12,7 +12,7 @@ Usar el enfoque de entrevista interactiva para diseñar y crear la skill
 ## Consequences
 ### Positive
 - Diseño centrado en las necesidades reales del usuario
-- Reducción de riesgos de建设错方向
+- Reducción de riesgos de construir en la dirección equivocada
 - Mejor comprensión del problema antes de construir
 
 ### Negative

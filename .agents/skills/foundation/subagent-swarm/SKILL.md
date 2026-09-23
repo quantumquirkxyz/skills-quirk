@@ -1,5 +1,7 @@
 ---
 name: subagent-swarm
+category: foundation
+maturity: experimental
 description: Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.
 version: 1
 capabilities:
@@ -9,15 +11,17 @@ capabilities:
   - merge-subagent-outputs
   - resolve-subagent-conflicts
 inputs:
-  - swarm-mode: parallel or sequential (default: sequential)
-  - roles: architect, implementer, reviewer, tester (default: implementer, reviewer)
-  - task-spec: The spec or ticket being processed
-  - handoff-contract: Requirements for evidence between roles
+  - "swarm-mode: parallel or sequential (default: sequential)"
+  - "roles: architect, implementer, reviewer, tester (default: implementer, reviewer)"
+  - "task-spec: The spec or ticket being processed"
+  - "handoff-contract: Requirements for evidence between roles"
 outputs:
-  - swarm-plan: Task assignment and sequence
-  - subagent-evidence: Evidence from each subagent
-  - merged-output: Final result combining all subagent contributions
-  - conflict-resolution: Any conflicts and their resolution
+  - "swarm-plan: Task assignment and sequence"
+  - "subagent-evidence: Evidence from each subagent"
+  - "merged-output: Final result combining all subagent contributions"
+  - "conflict-resolution: Any conflicts and their resolution"
+sideEffects: []
+dependencies: []
 stopCondition: All roles completed with valid evidence, conflicts resolved, and merged output validated.
 risk: medium
 trustTier: 3

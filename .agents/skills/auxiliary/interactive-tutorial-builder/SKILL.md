@@ -1,5 +1,7 @@
 ---
 name: interactive-tutorial-builder
+category: auxiliary
+maturity: experimental
 description: Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.
 version: 1
 capabilities:

@@ -1,5 +1,7 @@
 ---
 name: execution-policy
+category: auxiliary
+maturity: experimental
 description: Decide whether a Skill action is allowed, requires approval, or must stop.
 disable-model-invocation: true
 version: 1
@@ -15,11 +17,10 @@ outputs:
   - approval requirement
   - rollback path
 dependencies: []
-sideEffects:
-  - read-only
+sideEffects: []
 stopCondition: The action is allowed or blocked with reason, approval requirement is clear, and rollback is named.
 risk: low
-trustTier: 2
+trustTier: 1
 ---
 
 ## Operating Contract

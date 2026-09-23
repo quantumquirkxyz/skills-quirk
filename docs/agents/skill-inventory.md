@@ -1,14 +1,18 @@
 # Skill Inventory
 
-Generated from `.agents/skills/` on September 20, 2026.
+Generated from `.agents/skills/` on September 23, 2026.
 
-Total canonical skills: 183.
+Total canonical skills: 188.
 
 | Skill | Canonical path | Flat alias | Category | Risk | Trust Tier | Maturity | Status |
 |---|---|---|---|---|---|---|---|
 | `accessibility` | `.agents/skills/accessibility/accessibility/SKILL.md` | `accessibility` | `accessibility` | `low` | `1` | `stable` | ok |
 | `accessibility-design` | `.agents/skills/accessibility/accessibility-design/SKILL.md` | `accessibility-design` | `accessibility` | `low` | `1` | `stable` | ok |
 | `accessibility-testing` | `.agents/skills/accessibility/accessibility-testing/SKILL.md` | `accessibility-testing` | `accessibility` | `low` | `1` | `stable` | ok |
+| `execution-policy` | `.agents/skills/auxiliary/execution-policy/SKILL.md` | `execution-policy` | `auxiliary` | `low` | `1` | `experimental` | ok |
+| `integration-playground` | `.agents/skills/auxiliary/integration-playground/SKILL.md` | `integration-playground` | `auxiliary` | `low` | `2` | `experimental` | ok |
+| `interactive-tutorial-builder` | `.agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md` | `interactive-tutorial-builder` | `auxiliary` | `low` | `2` | `experimental` | ok |
+| `setup-quirk-skills` | `.agents/skills/auxiliary/setup-quirk-skills/SKILL.md` | `setup-quirk-skills` | `auxiliary` | `medium` | `3` | `stable` | ok |
 | `backend-architecture` | `.agents/skills/backend/backend-architecture/SKILL.md` | `backend-architecture` | `backend` | `low` | `1` | `stable` | ok |
 | `backend-caching` | `.agents/skills/backend/backend-caching/SKILL.md` | `backend-caching` | `backend` | `low` | `1` | `stable` | ok |
 | `backend-queues` | `.agents/skills/backend/backend-queues/SKILL.md` | `backend-queues` | `backend` | `low` | `1` | `stable` | ok |
@@ -41,10 +45,16 @@ Total canonical skills: 183.
 | `webapp-testing` | `.agents/skills/delivery/webapp-testing/SKILL.md` | `webapp-testing` | `delivery` | `low` | `1` | `stable` | ok |
 | `docs-knowledge-base` | `.agents/skills/docs/docs-knowledge-base/SKILL.md` | `docs-knowledge-base` | `docs` | `low` | `1` | `stable` | ok |
 | `docs-technical-writing` | `.agents/skills/docs/docs-technical-writing/SKILL.md` | `docs-technical-writing` | `docs` | `low` | `1` | `stable` | ok |
+| `improve-codebase-architecture` | `.agents/skills/engineering/improve-codebase-architecture/SKILL.md` | `improve-codebase-architecture` | `engineering` | `low` | `2` | `experimental` | ok |
+| `agent-canvas` | `.agents/skills/foundation/agent-canvas/SKILL.md` | `agent-canvas` | `foundation` | `low` | `2` | `experimental` | ok |
+| `agent-observability` | `.agents/skills/foundation/agent-observability/SKILL.md` | `agent-observability` | `foundation` | `low` | `2` | `experimental` | ok |
 | `api-design` | `.agents/skills/foundation/api-design/SKILL.md` | `api-design` | `foundation` | `low` | `1` | `stable` | ok |
 | `codebase-design` | `.agents/skills/foundation/codebase-design/SKILL.md` | `codebase-design` | `foundation` | `low` | `1` | `stable` | ok |
+| `context-engine` | `.agents/skills/foundation/context-engine/SKILL.md` | `context-engine` | `foundation` | `low` | `2` | `experimental` | ok |
 | `domain-modeling` | `.agents/skills/foundation/domain-modeling/SKILL.md` | `domain-modeling` | `foundation` | `low` | `1` | `stable` | ok |
+| `mcp-server` | `.agents/skills/foundation/mcp-server/SKILL.md` | `mcp-server` | `foundation` | `medium` | `3` | `experimental` | ok |
 | `observability` | `.agents/skills/foundation/observability/SKILL.md` | `observability` | `foundation` | `low` | `1` | `stable` | ok |
+| `subagent-swarm` | `.agents/skills/foundation/subagent-swarm/SKILL.md` | `subagent-swarm` | `foundation` | `medium` | `3` | `experimental` | ok |
 | `design-system` | `.agents/skills/frontend/design-system/SKILL.md` | `design-system` | `frontend` | `low` | `1` | `stable` | ok |
 | `frontend-design` | `.agents/skills/frontend/frontend-design/SKILL.md` | `frontend-design` | `frontend` | `low` | `1` | `stable` | ok |
 | `mobile` | `.agents/skills/frontend/mobile/SKILL.md` | `mobile` | `frontend` | `low` | `1` | `stable` | ok |
@@ -95,18 +105,19 @@ Total canonical skills: 183.
 | `se-system-design` | `.agents/skills/se/se-system-design/SKILL.md` | `se-system-design` | `se` | `low` | `1` | `stable` | ok |
 | `evaluate-skill` | `.agents/skills/skill-dev/evaluate-skill/SKILL.md` | `evaluate-skill` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `lockfile-maintenance` | `.agents/skills/skill-dev/lockfile-maintenance/SKILL.md` | `lockfile-maintenance` | `skill-dev` | `low` | `2` | `stable` | ok |
+| `rule-cataloger` | `.agents/skills/skill-dev/rule-cataloger/SKILL.md` | `rule-cataloger` | `skill-dev` | `low` | `2` | `experimental` | ok |
 | `side-effect-auditor` | `.agents/skills/skill-dev/side-effect-auditor/SKILL.md` | `side-effect-auditor` | `skill-dev` | `low` | `1` | `stable` | ok |
 | `skill-audit` | `.agents/skills/skill-dev/skill-audit/SKILL.md` | `skill-audit` | `skill-dev` | `low` | `1` | `experimental` | ok |
-| `skill-creator` | `.agents/skills/skill-dev/skill-creator/SKILL.md` | `skill-creator` | `skill-dev` | `low` | `1` | `stable` | ok |
+| `skill-creator` | `.agents/skills/skill-dev/skill-creator/SKILL.md` | `skill-creator` | `skill-dev` | `medium` | `3` | `stable` | ok |
 | `skill-dependency-graph` | `.agents/skills/skill-dev/skill-dependency-graph/SKILL.md` | `skill-dependency-graph` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `skill-diff-analyzer` | `.agents/skills/skill-dev/skill-diff-analyzer/SKILL.md` | `skill-diff-analyzer` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `skill-performance-metrics` | `.agents/skills/skill-dev/skill-performance-metrics/SKILL.md` | `skill-performance-metrics` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `skill-promoter` | `.agents/skills/skill-dev/skill-promoter/SKILL.md` | `skill-promoter` | `skill-dev` | `medium` | `3` | `stable` | ok |
 | `skill-quality-gate` | `.agents/skills/skill-dev/skill-quality-gate/SKILL.md` | `skill-quality-gate` | `skill-dev` | `low` | `1` | `stable` | ok |
 | `skill-sandbox` | `.agents/skills/skill-dev/skill-sandbox/SKILL.md` | `skill-sandbox` | `skill-dev` | `low` | `1` | `stable` | ok |
-| `skill-template-generator` | `.agents/skills/skill-dev/skill-template-generator/SKILL.md` | `skill-template-generator` | `skill-dev` | `low` | `2` | `sandbox` | ok |
+| `skill-template-generator` | `.agents/skills/skill-dev/skill-template-generator/SKILL.md` | `skill-template-generator` | `skill-dev` | `low` | `2` | `experimental` | ok |
 | `skill-testing-framework` | `.agents/skills/skill-dev/skill-testing-framework/SKILL.md` | `skill-testing-framework` | `skill-dev` | `low` | `1` | `stable` | ok |
-| `skill-tutor` | `.agents/skills/skill-dev/skill-tutor/SKILL.md` | `skill-tutor` | `skill-dev` | `unknown` | `unset` | `stable` | metadata sparse |
+| `skill-tutor` | `.agents/skills/skill-dev/skill-tutor/SKILL.md` | `skill-tutor` | `skill-dev` | `low` | `2` | `stable` | ok |
 | `workflow-fixture-author` | `.agents/skills/skill-dev/workflow-fixture-author/SKILL.md` | `workflow-fixture-author` | `skill-dev` | `low` | `2` | `stable` | ok |
 | `writing-great-skills` | `.agents/skills/skill-dev/writing-great-skills/SKILL.md` | `writing-great-skills` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `ai-ml-pipeline` | `.agents/skills/ai/ai-ml-pipeline/SKILL.md` | `ai-ml-pipeline` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
@@ -176,12 +187,6 @@ Total canonical skills: 183.
 | `web3-l2-scaling` | `.agents/skills/web3/web3-l2-scaling/SKILL.md` | `web3-l2-scaling` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `web3-smart-contracts` | `.agents/skills/web3/web3-smart-contracts/SKILL.md` | `web3-smart-contracts` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `web3-tokenomics` | `.agents/skills/web3/web3-tokenomics/SKILL.md` | `web3-tokenomics` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
-| `agent-observability` | `.agents/skills/foundation/agent-observability/SKILL.md` | `agent-observability` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `execution-policy` | `.agents/skills/auxiliary/execution-policy/SKILL.md` | `execution-policy` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `integration-playground` | `.agents/skills/auxiliary/integration-playground/SKILL.md` | `integration-playground` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `interactive-tutorial-builder` | `.agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md` | `interactive-tutorial-builder` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `rule-cataloger` | `.agents/skills/skill-dev/rule-cataloger/SKILL.md` | `rule-cataloger` | `unspecified` | `low` | `2` | `unspecified` | metadata sparse |
-| `setup-quirk-skills` | `.agents/skills/auxiliary/setup-quirk-skills/SKILL.md` | `setup-quirk-skills` | `unspecified` | `medium` | `3` | `unspecified` | metadata sparse |
 | `interaction-design` | `.agents/skills/ux/interaction-design/SKILL.md` | `interaction-design` | `ux` | `low` | `1` | `stable` | ok |
 | `ux-accessibility` | `.agents/skills/ux/ux-accessibility/SKILL.md` | `ux-accessibility` | `ux` | `low` | `1` | `stable` | ok |
 | `ux-prototyping` | `.agents/skills/ux/ux-prototyping/SKILL.md` | `ux-prototyping` | `ux` | `low` | `1` | `stable` | ok |

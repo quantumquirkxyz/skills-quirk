@@ -1,5 +1,7 @@
 ---
 name: rule-cataloger
+category: skill-dev
+maturity: experimental
 description: Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.
 version: 1
 capabilities:
@@ -17,6 +19,7 @@ sideEffects: []
 stopCondition: Every discovered rule is listed with its source Skill, type, and frequency.
 risk: low
 trustTier: 2
+maxIterations: 3
 ---
 
 # Rule Cataloger

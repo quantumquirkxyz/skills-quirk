@@ -16,7 +16,7 @@ sideEffects:
   - commit-git
   - push-branch
 dependencies: []
-stopCondition: Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked complete; artifact saved; completion criteria checked.
+stopCondition: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked complete; artifact saved; completion criteria checked."
 risk: medium
 trustTier: 3
 maxIterations: 6

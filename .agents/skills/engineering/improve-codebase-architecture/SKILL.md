@@ -1,5 +1,7 @@
 ---
 name: improve-codebase-architecture
+category: engineering
+maturity: experimental
 description: Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
 version: 1
 capabilities:
@@ -8,13 +10,16 @@ capabilities:
   - generate-html-report
   - grill-candidate
 inputs:
-  - target: Path to repository or directory
-  - depth-threshold: Minimum depth metric to flag (default: 3)
-  - output-format: html or json (default: html)
+  - "target: Path to repository or directory"
+  - "depth-threshold: Minimum depth metric to flag (default: 3)"
+  - "output-format: html or json (default: html)"
 outputs:
-  - html-report: Visual report of architecture candidates
-  - candidates: List of modules/files with deepening recommendations
-  - selected-candidate: The module chosen for improvement
+  - "html-report: Visual report of architecture candidates"
+  - "candidates: List of modules/files with deepening recommendations"
+  - "selected-candidate: The module chosen for improvement"
+sideEffects:
+  - write-files
+dependencies: []
 stopCondition: Report generated and a candidate is selected or explicitly deferred.
 risk: low
 trustTier: 2

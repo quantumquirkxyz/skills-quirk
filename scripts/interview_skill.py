@@ -805,7 +805,7 @@ class SkillCreatorInterview:
             "{{STATUS}}": "Accepted",
             "{{CONTEXT}}": f"Se está creando la skill {skill_name} mediante el proceso de entrevista interactiva",
             "{{DECISION}}": "Usar el enfoque de entrevista interactiva para diseñar y crear la skill",
-            "{{#POSITIVE_CONSEQUENCES}}\n- {{.}}\n{{/POSITIVE_CONSEQUENCES}}": "- Diseño centrado en las necesidades reales del usuario\n- Reducción de riesgos de建设错方向\n- Mejor comprensión del problema antes de construir",
+            "{{#POSITIVE_CONSEQUENCES}}\n- {{.}}\n{{/POSITIVE_CONSEQUENCES}}": "- Diseño centrado en las necesidades reales del usuario\n- Reducción de riesgos de construir en la dirección equivocada\n- Mejor comprensión del problema antes de construir",
             "{{#NEGATIVE_CONSEQUENCES}}\n- {{.}}\n{{/NEGATIVE_CONSEQUENCES}}": "- Requiere más tiempo inicial en la fase de descubrimiento\n- Dependencia de la disponibilidad y claridad del usuario durante la entrevista"
         }
         

@@ -1,5 +1,7 @@
 ---
 name: context-engine
+category: foundation
+maturity: experimental
 description: Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).
 version: 1
 capabilities:
@@ -8,14 +10,16 @@ capabilities:
   - update-context
   - query-context
 inputs:
-  - query: The context needed (topic, domain, recent changes)
-  - sources: List of sources to index (files, issues, PR descriptions, traces)
-  - refresh-interval: How often to re-index (default: per session)
+  - "query: The context needed (topic, domain, recent changes)"
+  - "sources: List of sources to index (files, issues, PR descriptions, traces)"
+  - "refresh-interval: How often to re-index (default: per session)"
 outputs:
-  - context-result: Retrieved and synthesized context
-  - context-index: Updated index of sources
-  - context-changes: Changes detected since last update
-  - query-answer: Direct answer to query from synthesized context
+  - "context-result: Retrieved and synthesized context"
+  - "context-index: Updated index of sources"
+  - "context-changes: Changes detected since last update"
+  - "query-answer: Direct answer to query from synthesized context"
+sideEffects: []
+dependencies: []
 stopCondition: Context retrieved, indexed, and answer provided with explicit source attribution.
 risk: low
 trustTier: 2

@@ -4,6 +4,22 @@ category: skill-dev
 maturity: stable
 version: 1
 description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+capabilities:
+  - teach skill fundamentals
+  - guide first skill creation
+  - validate learner understanding
+outputs:
+  - completed tutorial worksheet
+  - sandbox skill draft
+  - learning validation notes
+sideEffects:
+  - write-files
+dependencies:
+  - skill-creator
+stopCondition: The learner has created a valid sandbox skill, reflected on the process, and identified next steps.
+risk: low
+trustTier: 2
+maxIterations: 5
 ---
 
 # Skill Tutor: Interactive Guide to Creating Your First quirk Skill

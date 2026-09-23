@@ -16,12 +16,12 @@
       "sourceType": "local"
     },
     "agent-canvas": {
-      "hash": "a8479bc9a4449061ea17de5976a84f6c5c26ba928e23b2cff8ca77e16bf9dd30",
+      "hash": "e81c0ffb8d30bb8504907f28d6833aaaa16907b656e50d6c27e4b13c7e5f3cd4",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "agent-observability": {
-      "hash": "f131c44027f4d14195d01d5b96cf4ec3fea22cc080ace80401700599c8a24b1e",
+      "hash": "29fe12a949356580e301fd57d737c9375ff6b39c6c165d3929306b9e351d0eee",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -131,7 +131,7 @@
       "sourceType": "local"
     },
     "context-engine": {
-      "hash": "1d4dd60c2d7969cc0798f15d556c62689d2411ed4ff9a0acccadba208ae0bb83",
+      "hash": "9846140cd7a4baac268526212ca0606451f4be71827016eea7c54aed6e42f791",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -276,7 +276,7 @@
       "sourceType": "local"
     },
     "execution-policy": {
-      "hash": "422e30838f00bedb4c06c011cc9bc3b18cd86cc6de002badd8acf215e73d00e4",
+      "hash": "1592740d5bd6fe924968013a204739934d22a60bb961c61d9c0a732fe4854719",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -336,12 +336,12 @@
       "sourceType": "local"
     },
     "improve-codebase-architecture": {
-      "hash": "72574d4577402d657ab61725e3c34846f23bf63eb62e1bd347d276f6c0609b73",
+      "hash": "23836aa30188b617b479e45da2a41f57bc70477c824d669a49d584e888f2169f",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "integration-playground": {
-      "hash": "7ca4e284dce9ac7d0f9bc4b1482e873cbf910471345b1862c2e3a90566c3e046",
+      "hash": "33c9cb5855b84ccfafbd7c7649d4bd1df33fa5b0e519d3df33f469eeda5e2487",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -351,7 +351,7 @@
       "sourceType": "local"
     },
     "interactive-tutorial-builder": {
-      "hash": "8278593e9cbd048ccb40de9e2dcc8a85c9c9b1c5e8acb8674e2913b2de5ee087",
+      "hash": "450e575821687f32fbaab3738e5acf5a8a163b7299c829c5c0535432a409a0c5",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -451,7 +451,7 @@
       "sourceType": "local"
     },
     "mcp-server": {
-      "hash": "a7e6745ec64873f83b4da11e83f00eaffcfdb06028491ca17ca694bd4dd41ff4",
+      "hash": "0392180dcaf279401d568a5049127993cabcf509e61dc53f895f83040a574fbf",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -721,12 +721,12 @@
       "sourceType": "local"
     },
     "resolving-merge-conflicts": {
-      "hash": "2076717ab153ca711e88212117e12866be52f90169662e80c3acac1cea6b1c02",
+      "hash": "b53f2bf7c18d43442b93ff2d1bad4c3660286ce5f1e1ab7d76f073e9164f53e0",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "review-fix-loop": {
-      "hash": "6f34041ca81d2ef29a56f6ccb3c9e8e660f1a2bf9feddfe52b8e9e837d696954",
+      "hash": "999f01bcffa7a0f4c060ea4e62587f3d8efb0c6d9964974cc86f5e56e8a19284",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -736,7 +736,7 @@
       "sourceType": "local"
     },
     "rule-cataloger": {
-      "hash": "a7cb75a372f01b707e3729d5b1dfc356a82c4a579d1bbe4e9e73fd746d978786",
+      "hash": "9ab5a0a3d056bd850fb481e3dca59f4a760b0de489c25092577bf82f895e03c3",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -786,7 +786,7 @@
       "sourceType": "local"
     },
     "setup-quirk-skills": {
-      "hash": "f80381c397dab48cc0a254306e538df93b70a924cd641d5b63d8a608d38d5a7d",
+      "hash": "5b4ec2d09a5120076bc62e97f717f9de1761a84544791720948a250260f0d7c3",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -841,7 +841,7 @@
       "sourceType": "local"
     },
     "skill-template-generator": {
-      "hash": "a4dbf3d3d8dfb67c705b8be952279a5c301ed31ce8635e2d8984ee370bcb87fc",
+      "hash": "6732c8db7b2e4ff0c272194a16e7878213b05a566d326584f61a3d02485271cf",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -851,12 +851,12 @@
       "sourceType": "local"
     },
     "skill-tutor": {
-      "hash": "4f76e0aa54a100e6c91d1b0d9fd134aeee18b662e836bf6cdaaaa0a15df586d6",
+      "hash": "4f7047d3477bb945457efe3468dd2e068642a2a69fc6322bb02aaed96828b2e7",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "subagent-swarm": {
-      "hash": "033f3f5b0bae1a2744f856707d1d3f3b5546657f002ba1c8f3c241027742b175",
+      "hash": "c059f7a7a36cff73f044871e8481bd2beb542d9af09fdebaad971772981e224d",
       "revision": "working-tree",
       "sourceType": "local"
     },
