@@ -590,12 +590,14 @@ def main():
     )
     parser.add_argument(
         '--output-dir',
+        '--directorio-salida',
         type=str,
         default='./skills',
         help='Directorio donde crear la skill (default: ./skills)'
     )
     parser.add_argument(
         '--from-interview',
+        '--desde-entrevista',
         type=str,
         help='Archivo JSON con resultados de entrevista para usar como entrada'
     )

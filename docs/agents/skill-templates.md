@@ -49,7 +49,7 @@ flowchart TD
 | `ask-to` | routing guidance in `SKILL.md` | Choose the next skill path | the user and downstream skill |
 | `evaluate-skill` | `scenarios/` and `behavioral-fixtures/` | Prove route behavior and representative artifact shape | `audit-semantics`, `check-all` |
 | `writing-great-skills` | glossary and authoring guidance files | Maintain the style and vocabulary of the bundle | skill authors and reviewers |
-| `skill-creator` | generated skill skeletons, scenarios, and behavioral fixtures | Scaffold new skills with the correct artifact split | `skill-sandbox`, `skill-testing-framework` |
+| `skill-creator` | interview results, generated skill skeletons, scenarios, and behavioral fixtures | Scaffold new skills with the correct artifact split from guided interview, script mode, or worksheets | `skill-sandbox`, `skill-testing-framework` |
 
 ## Operating rule
 

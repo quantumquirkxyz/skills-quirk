@@ -173,8 +173,7 @@ _________________________________________________________
 ```
 Now that you've created a skill manually, let's see how the skill-creator skill can help.
 
-The skill-creator skill provides worksheets to help you design skills more systematically.
-Try running it with a different skill concept to see how it works.
+The skill-creator skill now provides a guided interview as the primary path, while still preserving worksheets for users who prefer the traditional flow. Try running the interactive flow with a different skill concept to see how it works.
 
 What did you notice about the skill-creator approach vs. creating manually?
 _________________________________________________________
@@ -209,7 +208,7 @@ This tutorial connects to the broader quirk learning ecosystem:
 - You know how to validate skills using sandbox tools
 
 ### Recommended Next Steps:
-1. **Use skill-creator for your next skill**: Try the structured worksheets approach
+1. **Use skill-creator for your next skill**: Try the guided interview, or fall back to worksheets when you want a slower written pass
 2. **Explore the learning path**: Review `docs/agents/learning-path/01-fundamentals.md` and `02-writing-effective-skills.md`
 3. **Try creating a skill that solves a real problem**: Apply what you learned to an actual need in your workflow
 4. **Learn about skill composition**: Study how skills work together in workflows (see wayfinder, to-spec, to-tickets, etc.)

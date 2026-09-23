@@ -105,10 +105,11 @@ def check_adr_presence(skill_path: Path) -> Tuple[bool, List[str]]:
         issues.append("No ADR files found in adrs/ directory")
         return False, issues
     
-    # Check for initial ADR
-    initial_adr = adr_dir / "0001-initial-design.md"
-    if not initial_adr.exists():
-        issues.append("Initial ADR (0001-initial-design.md) not found")
+    # Check for an initial design ADR. Existing skills may use a descriptive
+    # 0001-* name, while newly generated skills use 0001-initial-design.md.
+    initial_adrs = [path for path in adr_files if path.name.startswith("0001-")]
+    if not initial_adrs:
+        issues.append("Initial ADR (0001-*.md) not found")
     
     return len(issues) == 0, issues
 
@@ -260,21 +261,25 @@ def main():
     )
     parser.add_argument(
         '--no-interview-check',
+        '--no-verificar-entrevista',
         action='store_true',
         help='Skip interview completeness check'
     )
     parser.add_argument(
         '--no-adr-check',
+        '--no-verificar-adr',
         action='store_true',
         help='Skip ADR presence check'
     )
     parser.add_argument(
         '--no-test-check',
+        '--no-verificar-pruebas',
         action='store_true',
         help='Skip test template check'
     )
     parser.add_argument(
         '--no-traceability-check',
+        '--no-verificar-trazabilidad',
         action='store_true',
         help='Skip traceability section check'
     )

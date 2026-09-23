@@ -1,7 +1,7 @@
 ---
 name: skill-creator
 category: skill-dev
-maturity: estable
+maturity: stable
 version: 4
 description: Transformado de guía estática a herramienta interactiva de entrevista y diseño colaborativo que entrevista a los usuarios para entender qué skill quieren crear, propone y refina funcionalidades, investiga para complementar el diseño, sugiere nombres y genera skills completas con SKILL.md, scripts/, references/, assets/, ADRs y validación
 capabilities:
@@ -16,11 +16,12 @@ outputs:
   - Artefacto de creador de skill interactivo con hallazgos de entrevista, propuestas de diseño, resultados de investigación y skill generada
   - Estructura completa de skill lista para usar
   - Informe de validación y verificación de criterios de completado
-sideEffects: []
+sideEffects:
+  - write-files
 dependencies: []
 stopCondition: El usuario ha completado la entrevista interactiva y generado una estructura de skill válida, o ha validado una skill existente usando métodos tradicionales
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 10
 ---
 
@@ -99,13 +100,13 @@ Esta skill funciona con varios scripts complementarios:
 Herramienta de línea de comandos interactiva (o no interactiva) que ejecuta el protocolo de entrevista:
 ```bash
 # Modo interactivo
-python interview_skill.py
+python scripts/interview_skill.py
 
 # Modo no interactivo (para CI/automatización)
-python interview_skill.py --no-interactivo --directorio-salida ./mis-skills
+python scripts/interview_skill.py --non-interactive --output-dir ./mis-skills
 
 # Especificar directorio de salida
-python interview_skill.py --directorio-salida ./skills/personalizado
+python scripts/interview_skill.py --output-dir ./skills/personalizado
 ```
 
 ### `research_helpers.py`
@@ -129,20 +130,20 @@ nombres = sugerir_nombre_skill(["api", "version"], "devops")
 Crea estructura de skill desde cero o desde resultados de entrevista:
 ```bash
 # Desde cero
-python init_skill.py mi-nueva-skill
+python scripts/init_skill.py mi-nueva-skill
 
 # Desde resultados de entrevista
-python init_skill.py mi-nueva-skill --desde-entrevista resultados_entrevista.json
+python scripts/init_skill.py mi-nueva-skill --from-interview resultados_entrevista.json
 ```
 
 ### `package_skill.py` (Actualizado)
 Valida skills para completitud y conformidad:
 ```bash
 # Validación básica
-python package_skill.py ./mi-skill
+python scripts/package_skill.py ./mi-skill
 
 # Omitir verificaciones específicas (útil durante desarrollo)
-python package_skill.py ./mi-skill --no-verificar-entrevista --no-verificar-adr
+python scripts/package_skill.py ./mi-skill --no-interview-check --no-adr-check
 ```
 
 ## 📁 Estructura de Skill Generada
@@ -166,7 +167,7 @@ Al crear una skill a través de cualquiera de los modos, se genera la siguiente 
 
 El `SKILL.md` generado sigue el estándar de skill de quirk con:
 
-- **Frontmatter YAML**: Metadatos estándar incluyendo nombre, categoría, madurez, versión, descripción, capacidades, salidas, efectosSecundarios, dependencias, condiciónDeParada, riesgo, nivelDeConfianza, maxIteraciones
+- **Frontmatter YAML**: Metadatos estándar usando las claves canónicas `name`, `category`, `maturity`, `version`, `description`, `capabilities`, `outputs`, `sideEffects`, `dependencies`, `stopCondition`, `risk`, `trustTier` y `maxIterations`
 - **Contrato de Operación**: Definición clara de entradas, salidas, efectos secundarios, dependencias, condición de parada, riesgo y límites
 - **Documentación de Skill**: Secciones completas que cubren contrato, proceso de diseño, ejemplos, integración con evaluación, criterios de completado y principios rectores
 - **Rastreabilidad**: Sección que documenta cómo se creó la skill (proceso de entrevista o worksheets tradicionales)
@@ -234,6 +235,8 @@ El script no interactivo ha completado cuando:
 
 Para referencias detalladas sobre principios de diseño de skills, consulte:
 - `references/skill_design_principles.md` - Directrices para crear skills efectivas
+- `scripts/README.md` - Mapa de los scripts ejecutables del repo que soportan esta skill
+- `assets/README.md` - Convenciones para activos estáticos generados por nuevas skills
 - Skills existentes en `.agents/skills/` para patrones e inspiración
 - La documentación del método quirk para principios fundamentales
 
@@ -265,20 +268,24 @@ Esta skill mantiene compatibilidad con herramientas existentes mientras agrega n
 
 Para crear una nueva skill de forma interactiva:
 ```bash
-python interview_skill.py
+python scripts/interview_skill.py
 ```
 
 Para crear una skill no interactivamente (para automatización):
 ```bash
-python interview_skill.py --no-interactivo --directorio-salida ./skills
+python scripts/interview_skill.py --non-interactive --output-dir ./skills
 ```
 
 Para validar una skill existente:
 ```bash
-package_skill.py ./ruta/a/skill
+python scripts/package_skill.py ./ruta/a/skill
 ```
 
 Para crear una skill desde resultados de entrevista:
 ```bash
-python init_skill.py mi-skill --desde-entrevista resultados_entrevista.json
+python scripts/init_skill.py mi-skill --from-interview resultados_entrevista.json
 ```
+
+## Cómo se creó esta skill
+
+La versión interactiva se diseñó a partir de una revisión del flujo legacy basado en worksheets y quedó registrada en `adrs/0001-interactive-interview-redesign.md`. La actualización preserva el modo tradicional, añade entrevista guiada, mantiene scripts compatibles en `scripts/`, y deja artefactos de validación locales para que `package_skill.py` pueda comprobar estructura, ADR, pruebas y trazabilidad.

@@ -814,7 +814,7 @@ class SkillCreatorInterview:
         
         # Handle list sections
         content = content.replace("{{#POSITIVE_CONSEQUENCES}}\n- {{.}}\n{{/POSITIVE_CONSEQUENCES}}", 
-                                 "- Diseño centrado en las necesidades reales del usuario\n- Reducción de riesgos de建设错方向\n- Mejor comprensión del problema antes de construir")
+                                 "- Diseño centrado en las necesidades reales del usuario\n- Reducción de riesgos de construir en la dirección equivocada\n- Mejor comprensión del problema antes de construir")
         content = content.replace("{{#NEGATIVE_CONSEQUENCES}}\n- {{.}}\n{{/NEGATIVE_CONSEQUENCES}}", 
                                  "- Requiere más tiempo inicial en la fase de descubrimiento\n- Dependencia de la disponibilidad y claridad del usuario durante la entrevista")
         
@@ -829,14 +829,14 @@ class SkillCreatorInterview:
         assets_dir = output_dir / "assets"
         assets_dir.mkdir(exist_ok=True)
         
-        # Create a basic README or placeholder
-        placeholder_file = assets_dir / "placeholder.txt"
-        placeholder_file.write_text(
-            f"Assets for {self.interview_state['skill_name']} skill\n"
-            f"Add icons, styles, templates, and other assets here as needed.\n",
+        readme_file = assets_dir / "README.md"
+        readme_file.write_text(
+            f"# Assets for {self.interview_state['skill_name'].replace('-', ' ').title()}\n\n"
+            f"Place icons, styles, templates, and other static assets here as needed for the "
+            f"{self.interview_state['skill_name']} skill.\n",
             encoding='utf-8'
         )
-        print(f"  ✓ assets/placeholder.txt creado")
+        print(f"  ✓ assets/README.md creado")
     
     def run_interview(self) -> bool:
         """Run the complete interview process"""
@@ -880,13 +880,15 @@ def main():
         description="Herramienta interactiva para crear nuevas skills mediante entrevista conversacional"
     )
     parser.add_argument(
-        '--output-dir', 
-        type=str, 
+        '--output-dir',
+        '--directorio-salida',
+        type=str,
         default='./skills',
         help='Directorio donde crear la skill (default: ./skills)'
     )
     parser.add_argument(
-        '--non-interactive', 
+        '--non-interactive',
+        '--no-interactivo',
         action='store_true',
         help='Ejecutar en modo no interactivo (para testing o CI)'
     )

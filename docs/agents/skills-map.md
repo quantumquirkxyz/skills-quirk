@@ -119,6 +119,7 @@ Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing 
 
 ## Skill Lab
 
+- `skill-creator`
 - `skill-template-generator`
 - `skill-testing-framework`
 - `skill-dependency-graph`
