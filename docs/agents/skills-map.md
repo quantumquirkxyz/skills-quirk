@@ -45,17 +45,18 @@ mindmap
             auth
             deployment
             release-management
-            monitoring-alerting
             observability
             testing
-            database-migrations
+            performance
+            system-design
+            db-migrations
         Stack specializations
             nextjs
             react
             vercel
             postgres
             search
-            queueing
+            backend-queues
             mobile
             payments
         Support
@@ -166,10 +167,11 @@ These skills include reusable references for issue/PR operation summaries, provi
 | `auth` | Authentication and authorization seam |
 | `deployment` | Build, release, and rollback seam |
 | `release-management` | Release train and CI handoff |
-| `monitoring-alerting` | Alerts, dashboards, runtime signals |
-| `observability` | Logs, metrics, traces, and alerts |
+| `observability` | Logs, metrics, traces, SLIs, SLOs, dashboards, alerts, runbooks |
+| `performance` | Latency, throughput, bottlenecks, capacity planning |
+| `system-design` | End-to-end system architecture, scaling, reliability |
 | `testing` | Test strategy and seams |
-| `database-migrations` | Safe schema change sequencing |
+| `db-migrations` | Safe schema change sequencing |
 
 ## Stack specializations
 
@@ -180,7 +182,7 @@ These skills include reusable references for issue/PR operation summaries, provi
 | `vercel` | Vercel deployment and runtime |
 | `postgres` | PostgreSQL schema and queries |
 | `search` | Search indexing and relevance |
-| `queueing` | Background processing and message flow |
+| `backend-queues` | Background jobs, queues, retries, idempotency |
 | `mobile` | Device constraints, offline behavior |
 | `payments` | Payment flows, reconciliation, rollback |
 
@@ -218,7 +220,6 @@ Validated via `skill-lab.mjs validate --json` (33 PASS, 2 FAIL excluded) and pro
 | `web3-governance` | On-chain / off-chain governance, voting, attacks |
 | `db-relational-design` | Schema, keys, indexes, normalisation, migrations |
 | `db-nosql-modeling` | Document / key-value / wide-column / graph / time-series |
-| `se-architecture-decisions` | ADR creation, trade-off documentation |
 | `cs-algorithms` | Algorithm design, correctness, complexity analysis |
 | `scientific-hypothesis` | Hypothesis formulation, variables, statistical plan |
 | `docs-adrs` | Architecture Decision Records |
@@ -289,12 +290,11 @@ Validated via `skill-lab.mjs validate --json` (19 PASS, 0 FAIL) and promoted to 
 | `sec-privacy-engineering` | GDPR / CCPA / HIPAA compliance design |
 | `sec-cryptography-applied` | Encryption, signatures, key management, TLS |
 
-### DevOps (5)
+### DevOps (4)
 | Skill | Subfield |
 |---|---|
 | `devops-k8s-orchestration` | Kubernetes architecture & policies |
 | `devops-ci-cd-pipeline` | CI/CD pipeline design & rollback |
-| `devops-sre-observability` | SLIs, SLOs, dashboards, alerts, runbooks |
 | `devops-terraform-iac` | Infrastructure as Code |
 | `devops-feature-flags` | Feature flags, rollouts, kill switches |
 

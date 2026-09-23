@@ -102,8 +102,8 @@ Total canonical skills: 189.
 | `triage` | `.agents/skills/routing/triage/SKILL.md` | `triage` | `routing` | `medium` | `3` | `experimental` | ok |
 | `wayfinder` | `.agents/skills/routing/wayfinder/SKILL.md` | `wayfinder` | `routing` | `low` | `1` | `experimental` | ok |
 | `work-item-router` | `.agents/skills/routing/work-item-router/SKILL.md` | `work-item-router` | `routing` | `low` | `1` | `experimental` | ok |
-| `se-performance` | `.agents/skills/se/se-performance/SKILL.md` | `se-performance` | `se` | `low` | `1` | `stable` | ok |
-| `se-system-design` | `.agents/skills/se/se-system-design/SKILL.md` | `se-system-design` | `se` | `low` | `1` | `stable` | ok |
+| `performance` | `.agents/skills/platform/performance/performance/SKILL.md` | `performance` | `platform` | `low` | `1` | `stable` | ok |
+| `system-design` | `.agents/skills/platform/system-design/system-design/SKILL.md` | `system-design` | `platform` | `low` | `1` | `stable` | ok |
 | `evaluate-skill` | `.agents/skills/skill-dev/evaluate-skill/SKILL.md` | `evaluate-skill` | `skill-dev` | `low` | `1` | `experimental` | ok |
 | `lockfile-maintenance` | `.agents/skills/skill-dev/lockfile-maintenance/SKILL.md` | `lockfile-maintenance` | `skill-dev` | `low` | `2` | `stable` | ok |
 | `rule-cataloger` | `.agents/skills/skill-dev/rule-cataloger/SKILL.md` | `rule-cataloger` | `skill-dev` | `low` | `2` | `experimental` | ok |
@@ -134,7 +134,6 @@ Total canonical skills: 189.
 | `devops-ci-cd-pipeline` | `.agents/skills/devops/devops-ci-cd-pipeline/SKILL.md` | `devops-ci-cd-pipeline` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `devops-feature-flags` | `.agents/skills/devops/devops-feature-flags/SKILL.md` | `devops-feature-flags` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `devops-k8s-orchestration` | `.agents/skills/devops/devops-k8s-orchestration/SKILL.md` | `devops-k8s-orchestration` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
-| `devops-sre-observability` | `.agents/skills/devops/devops-sre-observability/SKILL.md` | `devops-sre-observability` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `devops-terraform-iac` | `.agents/skills/devops/devops-terraform-iac/SKILL.md` | `devops-terraform-iac` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `docs-adrs` | `.agents/skills/docs/docs-adrs/SKILL.md` | `docs-adrs` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `finance-corporate-val` | `.agents/skills/finance/finance-corporate-val/SKILL.md` | `finance-corporate-val` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
@@ -166,9 +165,9 @@ Total canonical skills: 189.
 | `physics-thermo` | `.agents/skills/physics/physics-thermo/SKILL.md` | `physics-thermo` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `physics-writing-revtex` | `.agents/skills/physics/physics-writing-revtex/SKILL.md` | `physics-writing-revtex` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `pro-market-analysis` | `.agents/skills/professional/pro-market-analysis/SKILL.md` | `pro-market-analysis` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
-| `prod-ab-testing` | `.agents/skills/prod/prod-ab-testing/SKILL.md` | `prod-ab-testing` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
-| `prod-okr-planning` | `.agents/skills/prod/prod-okr-planning/SKILL.md` | `prod-okr-planning` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
-| `prod-prd-writing` | `.agents/skills/prod/prod-prd-writing/SKILL.md` | `prod-prd-writing` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
+| `prod-ab-testing` | `.agents/skills/product/prod-ab-testing/SKILL.md` | `prod-ab-testing` | `product` | `medium` | `3` | `experimental` | ok |
+| `prod-okr-planning` | `.agents/skills/product/prod-okr-planning/SKILL.md` | `prod-okr-planning` | `product` | `low` | `1` | `experimental` | ok |
+| `prod-prd-writing` | `.agents/skills/product/prod-prd-writing/SKILL.md` | `prod-prd-writing` | `product` | `low` | `1` | `experimental` | ok |
 | `quant-backtest` | `.agents/skills/quant/quant-backtest/SKILL.md` | `quant-backtest` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `quant-credit-risk` | `.agents/skills/quant/quant-credit-risk/SKILL.md` | `quant-credit-risk` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `quant-derivatives-pricing` | `.agents/skills/quant/quant-derivatives-pricing/SKILL.md` | `quant-derivatives-pricing` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
@@ -177,7 +176,6 @@ Total canonical skills: 189.
 | `quant-portfolio-opt` | `.agents/skills/quant/quant-portfolio-opt/SKILL.md` | `quant-portfolio-opt` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `quant-risk-modeling` | `.agents/skills/quant/quant-risk-modeling/SKILL.md` | `quant-risk-modeling` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `scientific-hypothesis` | `.agents/skills/research/scientific-hypothesis/SKILL.md` | `scientific-hypothesis` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
-| `se-architecture-decisions` | `.agents/skills/se/se-architecture-decisions/SKILL.md` | `se-architecture-decisions` | `skill-dev/sandbox` | `low` | `1` | `experimental` | ok |
 | `sec-cryptography-applied` | `.agents/skills/sec/sec-cryptography-applied/SKILL.md` | `sec-cryptography-applied` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `sec-privacy-engineering` | `.agents/skills/sec/sec-privacy-engineering/SKILL.md` | `sec-privacy-engineering` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
 | `sec-security-audit` | `.agents/skills/sec/sec-security-audit/SKILL.md` | `sec-security-audit` | `skill-dev/sandbox` | `medium` | `3` | `experimental` | ok |
