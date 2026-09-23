@@ -1,54 +1,53 @@
-# Interview questions for skill creation
-# Organized by phase of the interview process
+# Interview questions for skill creation.
 
 discovery:
-  - question: "¿Qué problema resuelve la skill?"
-    purpose: "Entender el propósito central y la motivación detrás de la skill"
-    follow_up: "¿Podrías darme un ejemplo específico de cuándo alguien necesitaría usar esta skill?"
-    
-  - question: "Dame 3 ejemplos concretos de cómo un usuario la invocaría"
-    purpose: "Obtener casos de uso reales y específicos"
-    follow_up: "¿Cuál de estos casos de uso crees que sería el más común o importante?"
-    
-  - question: "¿Qué dominio/área cubre?"
-    purpose: "Categorizar la skill dentro de un área específica de conocimiento"
-    follow_up: "¿Hay subdominios o especializaciones dentro de este área que deba considerar?"
-    
-  - question: "¿Qué inputs recibe y qué outputs produce?"
-    purpose: "Definir claramente la interfaz de la skill"
-    follow_up: "¿Hay diferentes tipos de inputs o outputs que deba soportar?"
-    
-  - question: "¿Hay skills existentes similares?"
-    purpose: "Evitar duplicación y construir sobre trabajos previos"
-    follow_up: "Si existen skills similares, ¿en qué se diferenciaría la tuya?"
-    
-  - question: "¿Qué conocimientos especializados necesita?"
-    purpose: "Identificar referencias y dependencias necesarias"
-    follow_up: "¿Necesitas acceso a bases de datos específicas, APIs o documentación especializada?"
+  - question: "What problem should this skill solve?"
+    purpose: "Identify the core purpose and motivation for the skill."
+    follow_up: "Give one concrete situation where someone would use this skill."
+
+  - question: "Give three concrete examples of how a user would invoke it."
+    purpose: "Capture realistic usage patterns."
+    follow_up: "Which example is the most common or important?"
+
+  - question: "What domain or area does it cover?"
+    purpose: "Place the skill in a useful category."
+    follow_up: "Are there subdomains or special cases the skill should handle?"
+
+  - question: "What inputs does it receive and what outputs should it produce?"
+    purpose: "Define the skill interface."
+    follow_up: "Are there alternate input or output formats to support?"
+
+  - question: "Are there existing skills that are similar?"
+    purpose: "Avoid duplication and reuse established patterns."
+    follow_up: "If similar skills exist, how should this one be different?"
+
+  - question: "What specialized knowledge does it need?"
+    purpose: "Identify references, constraints, dependencies, or source material."
+    follow_up: "Does it require a specific database, API, documentation set, or standard?"
 
 design:
-  - question: "Basándonos en lo que me has contado, propongo una arquitectura básica con [DESCRIPCIÓN DE ARQUITECTURA]. ¿Qué te parece?"
-    purpose: "Proponer una arquitectura inicial basada en las respuestas de descubrimiento"
-    follow_up: "¿Qué componentes agregarías, eliminarías o modificarías en esta propuesta?"
-    
-  - question: "Para los recursos necesarios, sugiero crear los siguientes scripts/references/assets: [LISTA DE RECURSOS]. ¿Crees que esto cubre lo necesario?"
-    purpose: "Definir los recursos concretos que la skill necesitará"
-    follow_up: "¿Qué recursos adicionales considerarías importantes?"
-    
-  - question: "El flujo de trabajo que imagino sería: [DESCRIPCIÓN DEL FLUJO]. ¿Este flujo tiene sentido para ti?"
-    purpose: "Definir cómo la skill guiará al usuario a través de sus pasos"
-    follow_up: "¿Hay pasos adicionales que considerarías o algún paso que reorganizarías?"
+  - question: "Based on your answers, I propose a focused architecture. Does that fit the work?"
+    purpose: "Review an initial architecture before files are generated."
+    follow_up: "What components would you add, remove, or change?"
+
+  - question: "I suggest creating scripts, references, assets, and ADRs. Does that cover the needed resources?"
+    purpose: "Define concrete supporting files."
+    follow_up: "What other resources would make the skill easier to use or validate?"
+
+  - question: "The workflow I imagine has discovery, execution, validation, and handoff steps. Does it make sense?"
+    purpose: "Define how the skill guides the user."
+    follow_up: "Which steps should be reordered, split, or removed?"
 
 research:
-  - question: "¿Te gustaría que investigue algunas mejores prácticas actuales para [TEMA DE INVESTIGACIÓN]?"
-    purpose: "Ofrecer investigación asistida para enriquecer el diseño"
-    follow_up: "¿Hay algún aspecto particular de este tema que te gustaría que enfocara en la investigación?"
-    
-  - question: "Basándome en mi investigación, encontré que [HALLAZGO DE INVESTIGACIÓN]. ¿Cómo crees que esto debería influir en el diseño de la skill?"
-    purpose: "Integrar resultados de investigación en el diseño"
-    follow_up: "¿Hay otros fuentes o enfoques que deberíamos considerar?"
+  - question: "Would you like supporting research for the skill topic?"
+    purpose: "Improve the design with existing patterns and quality constraints."
+    follow_up: "What part of the topic should the research emphasize?"
+
+  - question: "How should the research findings influence the skill design?"
+    purpose: "Translate research into concrete decisions."
+    follow_up: "Are there sources or approaches that should be weighted more heavily?"
 
 naming:
-  - question: "Basándome en las palabras clave que hemos discutido ([PALABRAS_CLAVE]) y la categoría [CATEGORÍA], aquí tienes algunas sugerencias de nombres: [LISTA DE NOMBRES]"
-    purpose: "Proponer nombres basados en el análisis de la conversación"
-    follow_up: "¿Te gusta alguno de estos nombres? ¿Tienes alguna sugerencia alternativa o modificarías alguno?"
+  - question: "Which suggested name should I use, or what custom name do you prefer?"
+    purpose: "Choose a stable directory and skill name."
+    follow_up: "Should the name emphasize the domain, the action, or the artifact?"

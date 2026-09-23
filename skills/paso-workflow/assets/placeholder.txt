@@ -1,2 +1,0 @@
-Assets for paso-workflow skill
-Add icons, styles, templates, and other assets here as needed.

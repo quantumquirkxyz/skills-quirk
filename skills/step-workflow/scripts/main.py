@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-paso-workflow - Skill creada mediante entrevista interactiva
+step-workflow - Skill created through an interactive interview
 """
 
 import argparse
@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 def main():
     """Main entry point for the skill."""
     parser = argparse.ArgumentParser(
-        description="Skill creada mediante entrevista interactiva"
+        description="Skill created through an interactive interview"
     )
     parser.add_argument(
         '--version', 
@@ -40,12 +40,12 @@ def main():
     args = parser.parse_args()
     
     try:
-        logger.info("Starting paso-workflow")
+        logger.info("Starting step-workflow")
         # TODO: Implement skill logic here
         logger.info("Skill execution completed successfully")
         return 0
     except Exception as e:
-        logger.error(f"Error executing paso-workflow: {e}")
+        logger.error(f"Error executing step-workflow: {e}")
         return 1
 
 if __name__ == "__main__":
