@@ -1,0 +1,24 @@
+# Domain Reference for {{SKILL_NAME}}
+
+## Overview
+This document provides domain-specific knowledge and references for the {{SKILL_NAME}} skill.
+
+## Key Concepts
+- {{KEY_CONCEPT_1}}
+- {{KEY_CONCEPT_2}}
+- {{KEY_CONCEPT_3}}
+
+## Best Practices
+- {{BEST_PRACTICE_1}}
+- {{BEST_PRACTICE_2}}
+- {{BEST_PRACTICE_3}}
+
+## Common Patterns
+- {{PATTERN_1}}
+- {{PATTERN_2}}
+- {{PATTERN_3}}
+
+## References
+- [Reference 1]({{REFERENCE_1_URL}})
+- [Reference 2]({{REFERENCE_2_URL}})
+- [Reference 3]({{REFERENCE_3_URL}})

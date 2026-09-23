@@ -1,0 +1,113 @@
+# Proposal templates for skill creator agent
+# Templates for proposing architecture, resources, and workflows
+
+architecture_templates:
+  - name: "workflow-multipas"
+    description: "Workflow multi-paso con scripts especializados"
+    template: "Basado en tus respuestas, propongo un enfoque de workflow multi-paso donde cada paso es manejado por un script especializado. Esto permite mejor testeabilidad, reutilización y mantenimiento."
+    when_to_use: ["La skill involucra múltiples pasos secuenciales", "Cada paso tiene lógica compleja que puede reutilizarse", "Necesidad de paralelismo o ejecución condicional"]
+    
+  - name: "reference-based"
+    description: "Enfoque basado en referencias con guiado procedural mínimo"
+    template: "Propongo un enfoque basado en referencias donde la skill principalmente proporciona acceso a información estructurada y plantillas, con un guiado procedural mínimo en SKILL.md."
+    when_to_use: ["La skill es principalmente informativa o de referencia", "Los usuarios necesitan acceso a datos o plantillas más que guiado paso a paso", "La información beneficiarse de organización estructurada"]
+    
+  - name: "interactive-guidance"
+    description: "Skill interactiva con guiado paso a paso y validación"
+    template: "Basado en tu descripción, sugiero una skill interactiva que guíe al usuario paso a paso a través del proceso, validando entradas y proporcionando retroalimentación inmediata."
+    when_to_use: ["El proceso beneficia de validación en tiempo real", "Los usuarios pueden cometer errores que necesitan corrección inmediata", "Se requiere aprendizaje guiado o capacitación"]
+    
+  - name: "hybrid-approach"
+    description: "Enfoque híbrido combinando workflow y referencia"
+    template: "Propongo un enfoque híbrido que combine elementos de workflow para los procesos activos y referencias para la información de soporte y plantillas."
+    when_to_use: ["La skill tiene tanto componentes activos como informativos", "Necesidad de guiar procesos mientras se proporciona información de referencia", "Los usuarios se benefician tanto de acción como de consulta"]
+
+resource_templates:
+  - name: "helper-scripts"
+    description: "Scripts auxiliares para tareas comunes"
+    items:
+      - "scripts/main.py - Script principal con lógica de ejecución"
+      - "scripts/utils.py - Funciones auxiliares y helpers"
+      - "scripts/validators.py - Funciones de validación de inputs"
+      - "scripts/formatters.py - Funciones de formateo de outputs"
+    justification: "Separar la lógica en scripts especializados mejora la mantenibilidad y permite reutilización de componentes"
+    
+  - name: "reference-templates"
+    description: "Plantillas de referencia para outputs comunes"
+    items:
+      - "references/templates/ - Plantillas para outputs generados"
+      - "references/examples/ - Ejemplos de uso y outputs esperados"
+      - "references/best-practices/ - Guías de mejores prácticas del dominio"
+      - "references/troubleshooting/ - Guías de solución de problemas comunes"
+    justification: "Proporcionar recursos de referencia reduce la carga cognitiva en los usuarios y mejora la consistencia de los outputs"
+    
+  - name: "asset-collection"
+    description: "Colección de assets para enriquecer la experiencia"
+    items:
+      - "assets/icons/ - Iconos visuales para outputs"
+      - "assets/styles/ - CSS o estilos para formatting"
+      - "assets/templates/ - Plantillas de documentos o archivos"
+      - "assets/examples/ - Ejemplos ricos en formato multimedia"
+    justification: "Los assets visuales y de formato pueden mejorar significativamente la usabilidad y atractivo de la skill"
+
+workflow_templates:
+  - name: "linear-process"
+    description: "Flujo lineal paso a paso"
+    steps:
+      - "Paso 1: Preparación y validación de inputs"
+      - "Paso 2: Procesamiento principal"
+      - "Paso 3: Generación de outputs"
+      - "Paso 4: Post-procesamiento y limpieza"
+      - "Paso 5: Reporte de resultados y siguiente acción"
+    description: "Flujo secuencial simple donde cada paso depende del anterior"
+    when_to_use: ["Procesos con dependencias claras y secuenciales", "Cuando cada paso debe completarse antes de pasar al siguiente", "Flujos de transformación de datos simples"]
+    
+  - name: "iterative-refinement"
+    description: "Flujo iterativo con retroalimentación"
+    steps:
+      - "Paso 1: Análisis inicial y planificación"
+      - "Paso 2: Ejecución preliminar"
+      - "Paso 3: Revisión y ajuste basado en resultados"
+      - "Paso 4: Refinamiento y mejora continua"
+      - "Paso 5: Validación final y entrega"
+    description: "Flujo que permite ajustes y mejoras basados en resultados intermedios"
+    when_to_use: ["Cuando los resultados iniciales pueden necesitar refinamiento", "Procesos creativos o de diseño", "Situaciones donde se beneficia de la experimentación"]
+    
+  - name: "conditional-branching"
+    description: "Flujo con ramas condicionales"
+    steps:
+      - "Paso 1: Evaluación inicial y clasificación"
+      - "Paso 2A: Rama A - Procesamiento para tipo de caso 1"
+      - "Paso 2B: Rama B - Procesamiento para tipo de caso 2"
+      - "Paso 2C: Rama C - Procesamiento para tipo de caso 3"
+      - "Paso 3: Convergencia y consolidación de resultados"
+      - "Paso 4: Outputs finales según el camino tomado"
+    description: "Flujo que se divide en diferentes paths basado en condiciones o inputs"
+    when_to_use: ["Cuando diferentes tipos de inputs requieren procesamiento diferente", "Cuando hay casos especiales que necesitan manejo distinto", "Procesos con lógica de decisión compleja"]
+
+naming_algorithms:
+  - name: "keyword-category-suffix"
+    description: "Combinación de palabras clave + categoría + sufijos comunes"
+    pattern: "[keywords]-[category]-[suffix]"
+    examples:
+      - "api-versioner (api + versioner + ''), data-validator-py (data + validator + -py), skill-assistant-ai (skill + assistant + -ai)"
+    suffixes: ["-helper", "-utils", "-assistant", "-tool", "-py", "-js", "-ai", "-ml", "-bot"]
+    
+  - name: "descriptive-phrase"
+    description: "Frase descriptiva que captura la esencia"
+    pattern: "[verb]-[noun]-[context]"
+    examples:
+      - "analyze-api-changes"
+      - "validate-data-inputs"
+      - "generate-skill-docs"
+    connectors: ["-", "_"]
+    
+  - name: "domain-specific"
+    description: "Nombre específico del dominio con contexto"
+    pattern: "[domain]-[function]-[specialization]"
+    examples:
+      - "web-accessibility-checker"
+      - "security-vulnerability-scanner"
+      - "performance-bottleneck-finder"
+    domains: ["web", "security", "performance", "data", "api", "skill", "devops"]
+    functions: ["checker", "scanner", "finder", "analyzer", "validator", "generator", "converter"]
