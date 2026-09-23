@@ -41,7 +41,7 @@ Then sync the bundle into the target repo and start with `ask-to` or the relevan
 The bundle includes 189 canonical skills and supports:
 
 - **Setup automation** (`scripts/setup-quirk-skills.sh` to install in target repos)
-- **Seed bundle** (`seed/` with `integration-playground` and `testing-framework` starter skills, plus new foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`)
+- **Seed bundle** (`tooling/seed/` with `integration-playground` and `testing-framework` starter skills, plus new foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`)
 - **CI validation** (`.github/workflows/validate.yml` and legacy `skills-ci.yml`)
 - **Skill evolution** (`skill-lab.mjs` with graph, metrics, rules, diff, tutorial, playground, pr-check, work-item; `skill-evolver.mjs` for version management)
 - **Skills manifest** (`skills.json` for portable bundle definition and `npx skills` compatibility)
