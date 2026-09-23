@@ -46,7 +46,7 @@ The bundle includes 189 canonical skills and supports:
 - **Skill evolution** (`skill-lab.mjs` with graph, metrics, rules, diff, tutorial, playground, pr-check, work-item; `skill-evolver.mjs` for version management)
 - **Skills manifest** (`skills.json` for portable bundle definition and `npx skills` compatibility)
 - **Work-item routing** (`work-item-router.mjs` for keyword-based skill selection)
-- **Video tutorials** (`docs/videos/README.md` with links following framework pattern)
+- **Video tutorials** (`tooling/videos/README.md` with links following framework pattern)
 
 ## Table of Contents
 
