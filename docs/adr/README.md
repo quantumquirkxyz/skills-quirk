@@ -7,7 +7,7 @@ This directory (`docs/adr/`) mirrors the repository-level design records.
 
 Rules from `.agents/adr/README.md`:
 - Must be created when using `/grill-with-docs`.
-- Must reference `CONTEXT.md` vocabulary (now in `docs/`).
+- Must reference `CONTEXT.md` vocabulary (now in repo root).
 - Must not contain placeholders after publication.
 - Must be reviewed before shipping.
 
