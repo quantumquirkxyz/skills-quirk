@@ -38,4 +38,4 @@ This creates the sandbox, installs skills, and creates seed skills.
 
 ## Contributing
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](../../CONTRIBUTING.md) for guidelines.
