@@ -32,6 +32,7 @@ mindmap
             writing-great-skills
             execution-policy
             docs-management
+            project-viability
             triage
             make-project
             setup-quirk-skills
@@ -113,6 +114,7 @@ Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing 
 | `writing-great-skills` | Vocabulary and principles for skills |
 | `execution-policy` | Decide whether a skill action is allowed |
 | `docs-management` | Keep docs aligned with project shape |
+| `project-viability` | Evaluate viability, functionality, and scalability against CONTEXT.md and ADRs |
 | `triage` | Classify issues and PRs into durable states |
 | `make-project` | Create and configure GitHub Projects |
 | `setup-quirk-skills` | Configure repo for quirk workflows |

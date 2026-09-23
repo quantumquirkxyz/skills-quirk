@@ -21,6 +21,7 @@ This project follows semantic versioning once releases are cut:
 - Added `CONTRIBUTING.md` - contribution guidelines with development workflow and quality gates.
 - Added `.generated-notes.md` - tracking document for skill creation decisions and improvements.
 - Added `skill-evolver.mjs` - skill evolution tool with version management and section analysis.
+- Added `project-viability` skill - evaluates project viability, functionality, and scalability against CONTEXT.md and ADRs with parallel sub-agents.
 
 ### Changed
 

@@ -48,6 +48,12 @@ apply to the same request.
 | `evaluate-skill` | `skill-testing-framework` | Both validate skills | `evaluate-skill` checks behavioral fixtures and scenario routes. `skill-testing-framework` runs structural, contract, anti-pattern, and isolated-execution checks. Run both before promotion; `skill-testing-framework` is the stricter gate. | resolved |
 | `skill-audit` | `audit-semantics` | Both audit the bundle | `skill-audit` checks bundle parity and lock coverage. `audit-semantics` checks semantic drift, retired names, weak templates, links, and risk signals. `check-all.mjs` runs both in sequence; neither replaces the other. | resolved |
 
+## Project assessment family
+
+| Primary | Competitor | Overlap | Rule | Status |
+|---|---|---|---|---|
+| `project-development` | `project-viability` | Both assess a project | `project-development` classifies project shape and chooses the first workflow seam. `project-viability` performs a read-only layered assessment of viability, functionality, and scalability against `CONTEXT.md` and ADRs, producing a `.reports/` artifact. Use `project-development` to start work; use `project-viability` to decide whether the project is worth continuing. | resolved |
+
 ## Cross-cutting concerns
 
 | Primary | Competitor | Overlap | Rule | Status |

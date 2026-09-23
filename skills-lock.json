@@ -630,6 +630,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "project-viability": {
+      "hash": "e2870c737aec841d501317fe15a68be32ed9bce979c1416bb11e9fd533cceab0",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "prototype": {
       "hash": "72997187ec36376fcb924e0711cb90ccda2da5ef4da22370a2cda26147aa3a27",
       "revision": "working-tree",

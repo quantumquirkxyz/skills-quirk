@@ -2,7 +2,7 @@
 
 Generated from `.agents/skills/` on September 23, 2026.
 
-Total canonical skills: 188.
+Total canonical skills: 189.
 
 | Skill | Canonical path | Flat alias | Category | Risk | Trust Tier | Maturity | Status |
 |---|---|---|---|---|---|---|---|
@@ -78,6 +78,7 @@ Total canonical skills: 188.
 | `docs-management` | `.agents/skills/project/docs-management/SKILL.md` | `docs-management` | `project` | `low` | `1` | `stable` | ok |
 | `make-project` | `.agents/skills/project/make-project/SKILL.md` | `make-project` | `project` | `medium` | `3` | `stable` | ok |
 | `project-development` | `.agents/skills/project/project-development/SKILL.md` | `project-development` | `project` | `low` | `1` | `stable` | ok |
+| `project-viability` | `.agents/skills/project/project-viability/SKILL.md` | `project-viability` | `project` | `low` | `1` | `stable` | ok |
 | `to-spec` | `.agents/skills/project/to-spec/SKILL.md` | `to-spec` | `project` | `medium` | `3` | `stable` | ok |
 | `to-tickets` | `.agents/skills/project/to-tickets/SKILL.md` | `to-tickets` | `project` | `medium` | `3` | `stable` | ok |
 | `performance-testing` | `.agents/skills/qa/performance-testing/SKILL.md` | `performance-testing` | `qa` | `low` | `1` | `stable` | ok |

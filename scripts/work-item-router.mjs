@@ -52,6 +52,8 @@ function routeWorkItem(description) {
     'release': ['release-management', 'deployment', 'monitoring-alerting'],
     'skill': ['skill-template-generator', 'skill-testing-framework', 'agent-observability'],
     'setup': ['integration-playground', 'setup-quirk-skills'],
+    'project': ['project-development', 'project-viability', 'docs-management', 'codebase-design'],
+    'viability': ['project-viability', 'codebase-design', 'docs-management'],
     'default': ['ask-to', 'capability-router'],
   };
   

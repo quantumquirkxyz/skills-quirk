@@ -38,7 +38,7 @@ node .agents/skills/platform/check-all.mjs
 
 Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
 
-The bundle includes 195 canonical skills and supports:
+The bundle includes 189 canonical skills and supports:
 
 - **Setup automation** (`scripts/setup-quirk-skills.sh` to install in target repos)
 - **Seed bundle** (`seed/` with `integration-playground` and `testing-framework` starter skills, plus new foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`)

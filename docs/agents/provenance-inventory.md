@@ -19,6 +19,7 @@ This file classifies active skills by provenance status. Use `docs/agents/proven
 - `side-effect-auditor`
 - `knowledge-curator`
 - `docs-management`
+- `project-viability`
 
 ## quirk Delivery Workflow
 

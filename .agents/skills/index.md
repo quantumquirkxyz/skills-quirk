@@ -1,6 +1,6 @@
 # Skills — Índice Plano
 
-> Índice de entrada para aliases planos | 195 skills canónicas
+> Índice de entrada para aliases planos | 189 skills canónicas
 
 ---
 

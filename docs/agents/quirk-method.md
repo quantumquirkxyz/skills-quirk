@@ -61,6 +61,7 @@ flowchart TD
 | Skill | When to use |
 |---|---|
 | `project-development` | Project shape or stack is not yet clear |
+| `project-viability` | Need a structured assessment of project health, architecture, and scalability before committing further |
 | `wayfinder` | Effort is too large for one session |
 | `triage` | Raw issues or external PRs need classification |
 | `diagnosing-bugs` | Failure needs a tight reproduction loop |
