@@ -117,7 +117,7 @@ flowchart LR
 - [ ] Scenario evaluation passes.
 - [ ] Semantic audit passes.
 - [ ] Behavioral fixtures pass.
-- [ ] Any real use of the bundle is captured under `case-studies/` when it changes the method.
+- [ ] Any real use of the bundle is captured under `tooling/case-studies/` when it changes the method.
 
 ## Maintenance Cadence
 
