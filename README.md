@@ -53,6 +53,7 @@ The bundle includes 189 canonical skills and supports:
 - [What This Is](#what-this-is)
 - [Quick Start](#quick-start)
 - [Core Flow](#core-flow)
+- [Architecture](#architecture)
 - [Method](#method)
 - [Official Documentation](#official-documentation)
 - [Validate](#validate)
@@ -73,8 +74,11 @@ The bundle includes 189 canonical skills and supports:
 
 | Location | Role |
 |---|---|
-| `.agents/skills/` | Canonical skill definitions |
-| `.claude/skills/` | Compatibility view (symlinks) |
+| `.agents/skills/` | Skills canónicas (`SKILL.md` + lockfile) |
+| `.claude/skills/` | Vista de compatibilidad (symlinks) |
+| `skills-lock.json` | Hash canónico de cada skill |
+| `CONTEXT.md` | Vocabulario local del repo |
+| `docs/agents/` | Documentación de método, provenance y adoption |
 
 
 ---
@@ -100,14 +104,47 @@ flowchart TD
     K --> I
     J -->|no| L[ship-subissue]
 ```
-
 ---
+
+
+<a id="architecture"></a>
+
+```text
+[ ARCH  ] ARCHITECTURE
+```
+
+El bundle se organiza en capas:
+
+```mermaid
+flowchart TD
+    A[Canonical skill] --> B[SKILL.md]
+    A --> C[skills-lock.json]
+    D[Compatibility view] --> E[.claude/skills/ symlinks]
+    E --> A
+```
+
+### Capa de skills
+- `.agents/skills/`: skills canónicas con `SKILL.md` y lockfile
+- `.claude/skills/`: symlinks de compatibilidad
+- `skills-lock.json`: hashes de integridad
+
+### Capa de método
+- `CONTEXT.md`: vocabulario y convenciones locales
+- `docs/agents/`: ADRs, provenance, adoption guide, skill templates
+
+### Capa de ejecución
+- Scripts de validación: `.agents/skills/platform/check-all.mjs`
+- Scripts de sync: `.agents/skills/platform/sync-bundle.mjs`
+- Router: `work-item-router.mjs`
+
 
 <a id="method"></a>
 
 ```text
 [ RULES ] METHOD
 ```
+
+El quirk method prescribe: clarificar antes de construir, preservar contexto, dividir el trabajo en slices reclamables, revisar contra los ejes Standards y Spec por separado, reparar con un plan explícito, y hacer merge solo con evidencia limpia.
 
 The method is documented in:
 
@@ -142,28 +179,6 @@ For a portable, AI-agnostic installation path, start here:
 | [Adoption guide](docs/agents/adoption-guide.md) | Installation and sync |
 | [Skill templates](docs/agents/skill-templates.md) | Scaffolding reference |
 | [Skills map](docs/agents/skills-map.md) | Full inventory |
-
-### Installation Flow
-
-```mermaid
-flowchart TD
-    A[Clone or sync bundle] --> B[Run setup-quirk-skills]
-    B --> C[Configure issue tracker and domain docs]
-    C --> D[Run check-all]
-    D --> E[Start with ask-to]
-```
-
-### Review and Shipping Flow
-
-```mermaid
-flowchart TD
-    A[review-pr] -->|findings| B[plan-review-fixes]
-    B --> C[implement-review-fixes]
-    C --> D[review-pr again]
-    D -->|clean| E[ship-subissue]
-    C -->|branch conflicted| F[resolving-merge-conflicts]
-    F --> D
-```
 
 ### Standard Feature Flow
 
@@ -336,19 +351,21 @@ Update the skills implementation so it matches the upstream bundle while preserv
 bash scripts/install-quirk-skills.sh
 ```
 
-### One-line installer
+### Installer options
+
+**One-line installer:**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh
 ```
 
-If you already have a local checkout of this bundle:
+**From an existing local checkout:**
 
 ```bash
 bash scripts/install-quirk-skills.sh
 ```
 
-If you prefer to inspect first, then install from a clone:
+**From a fresh clone:**
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
