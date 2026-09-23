@@ -77,4 +77,4 @@ An IoT architecture with:
 ## References
 - `../../networking/networking/SKILL.md` — network protocols
 - `../../sec/sec-cryptography-applied/SKILL.md` — device security
-- `../../platform/monitoring-alerting/SKILL.md` — device observability
+- `../../foundation/observability/SKILL.md` — device observability

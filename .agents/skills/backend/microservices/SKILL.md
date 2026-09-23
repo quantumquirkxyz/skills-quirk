@@ -66,6 +66,6 @@ A microservices decomposition with:
 
 ## References
 - `../backend-architecture/SKILL.md` — service design
-- `../../platform/queueing/SKILL.md` — async messaging
-- `../../platform/monitoring-alerting/SKILL.md` — observability
+- `../../backend/backend-queues/SKILL.md` — async messaging
+- `../../foundation/observability/SKILL.md` — observability
 - `../../devops/devops-k8s-orchestration/SKILL.md` — deployment

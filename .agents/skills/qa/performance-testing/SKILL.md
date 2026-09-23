@@ -76,5 +76,5 @@ A performance test report with:
 
 ## References
 - `../qa-automation/SKILL.md` — test infrastructure
-- `../../platform/monitoring-alerting/SKILL.md` — metrics collection
+- `../../foundation/observability/SKILL.md` — metrics collection
 - `../../delivery/webapp-testing/SKILL.md` — e2e testing
