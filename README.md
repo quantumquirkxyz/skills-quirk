@@ -22,13 +22,11 @@ It follows the `quirk` method: clarify before building, preserve context, split 
 
 If a PR branch is conflicted, resolve branch state first with `resolving-merge-conflicts`, then return to `review-pr` and `review-fix-loop` before shipping.
 
+[Quick Start](#quick-start) · [Flow](#core-flow) · [Architecture](#architecture) · [Docs](#documentation) · [Quality](#quality--validation) · [Install](#installation--sync) · [Contribute](#contributing) · [License](#license)
+
 <a id="quick-start"></a>
 
-```text
-[ START ] QUICK START
-```
-
-Use this flow to validate the bundle before syncing it into another repository.
+## 🚀 Quick Start
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
@@ -38,37 +36,35 @@ node .agents/skills/platform/check-all.mjs
 
 Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
 
-The bundle includes 189 canonical skills and supports:
+<details>
+<summary>What the bundle includes</summary>
 
-- **Setup automation** (`scripts/setup-quirk-skills.sh` to install in target repos)
-- **Seed bundle** (`tooling/seed/` with `integration-playground` and `testing-framework` starter skills, plus new foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`)
-- **CI validation** (`.github/workflows/validate.yml` and legacy `skills-ci.yml`)
-- **Skill evolution** (`skill-lab.mjs` with graph, metrics, rules, diff, tutorial, playground, pr-check, work-item; `skill-evolver.mjs` for version management)
-- **Skills manifest** (`skills.json` for portable bundle definition and `npx skills` compatibility)
-- **Work-item routing** (`work-item-router.mjs` for keyword-based skill selection)
-- **Video tutorials** (`tooling/videos/README.md` with links following framework pattern)
+- **Setup automation** — `scripts/setup-quirk-skills.sh` to install in target repos
+- **Seed bundle** — `tooling/seed/` with `integration-playground`, `testing-framework`, and foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`
+- **CI validation** — `.github/workflows/validate.yml`
+- **Skill evolution** — `skill-lab.mjs` and `skill-evolver.mjs`
+- **Skills manifest** — `skills.json` for portable bundle definition and `npx skills` compatibility
+- **Work-item routing** — `work-item-router.mjs` for keyword-based skill selection
+- **Video tutorials** — `tooling/videos/README.md`
+
+</details>
 
 ## Table of Contents
 
-- [What This Is](#what-this-is)
-- [Quick Start](#quick-start)
+- [About](#about)
 - [Core Flow](#core-flow)
 - [Architecture](#architecture)
 - [Method](#method)
-- [Official Documentation](#official-documentation)
-- [Validate](#validate)
-- [Versioning](#versioning)
+- [Documentation](#documentation)
+- [Quality & Validation](#quality--validation)
 - [Distribution](#distribution)
-- [Install In Any Repo](#install-in-any-repo)
-- [Authorship](#authorship)
+- [Installation & Sync](#installation--sync)
+- [Contributing](#contributing)
+- [License](#license)
 
----
+<a id="about"></a>
 
-<a id="what-this-is"></a>
-
-```text
-[ INFO  ] WHAT THIS IS
-```
+## About
 
 > A portable skills stack for standard project development. Install it into a repository, then specialize it through that repo's own `CONTEXT.md`, ADRs, issue tracker configuration, validation commands, and stack-specific skills.
 
@@ -80,14 +76,11 @@ The bundle includes 189 canonical skills and supports:
 | `CONTEXT.md` | Vocabulario local del repo |
 | `docs/agents/` | Documentación de método, provenance y adoption |
 
-
 ---
 
 <a id="core-flow"></a>
 
-```text
-[ FLOW  ] CORE FLOW
-```
+## Core Flow
 
 ```mermaid
 flowchart TD
@@ -104,109 +97,6 @@ flowchart TD
     K --> I
     J -->|no| L[ship-subissue]
 ```
----
-
-
-<a id="architecture"></a>
-
-```text
-[ ARCH  ] ARCHITECTURE
-```
-
-El bundle se organiza en capas:
-
-```mermaid
-flowchart TD
-    A[Canonical skill] --> B[SKILL.md]
-    A --> C[skills-lock.json]
-    D[Compatibility view] --> E[.claude/skills/ symlinks]
-    E --> A
-```
-
-### Capa de skills
-- `.agents/skills/`: skills canónicas con `SKILL.md` y lockfile
-- `.claude/skills/`: symlinks de compatibilidad
-- `skills-lock.json`: hashes de integridad
-
-### Capa de método
-- `CONTEXT.md`: vocabulario y convenciones locales
-- `docs/agents/`: ADRs, provenance, adoption guide, skill templates
-
-### Capa de ejecución
-- Scripts de validación: `.agents/skills/platform/check-all.mjs`
-- Scripts de sync: `.agents/skills/platform/sync-bundle.mjs`
-- Router: `work-item-router.mjs`
-
-### Capa de calidad
-- **Quality scoring**: `quality-scorer.mjs` — puntuación 0-100 con grade A-F y tier BASIC/STANDARD/POWERFUL
-- **Security scanner**: `security-scanner.mjs` — detección de credential leakage, command injection, prompt injection
-- **Dependency graph**: `dependency-graph.mjs` — DAG de dependencias, cycle detection, central skills
-- **Evaluation fixtures**: `evaluate-fixtures.mjs` — behavioral, regression, y security fixtures con thresholds
-
-### Capa de registry y distribución
-- **Registry**: `registry.yaml` — source-of-truth con schema JSON
-- **Marketplace**: `.claude-plugin/marketplace.json` — generado automáticamente para Claude Code
-- **Catalog**: `CATALOG.md` — catálogo auto-generado de skills
-- **LLMS**: `llms.txt` — entrypoint para descubrimiento por agentes
-- **Plugins**: `plugins/fullstack/`, `plugins/devops/`, `plugins/ai-ml/` — bundles namespaceados
-
-### Capa de runtime
-- **MCP server**: `mcp-server/mcp-skills-server.mjs` — expone skills como MCP tools (stdio o HTTP)
-- **OTEL instrumentation**: `otel-skill-instrumentation.mjs` — traces de skill execution
-- **Execution analytics**: `record-execution.mjs` — métricas estructuradas de invocación
-
-### Capa de governance
-- **Evidence-gated updates**: `skill-evolver.mjs` — requiere evidence types según change category
-- **Audit trail**: `audit-trail.mjs` — JSONL inmutable de lifecycle events
-- **Versioning**: dist-tags `stable` / `beta` / `canary` en registry.yaml
-
-### Capa de plataforma
-- **NPX CLI**: `bin/skills-quirk.js` — comando `npx skills-quirk <command>`
-- **Discovery site**: `site/` — Vite + React app para exploración visual
-- **Plugin system**: `.claude-plugin/plugin.json` — skills, agents, commands, hooks, MCP servers
-
-
-<a id="method"></a>
-
-```text
-[ RULES ] METHOD
-```
-
-El quirk method prescribe: clarificar antes de construir, preservar contexto, dividir el trabajo en slices reclamables, revisar contra los ejes Standards y Spec por separado, reparar con un plan explícito, y hacer merge solo con evidencia limpia.
-
-The method is documented in:
-
-| Document | Purpose |
-|---|---|
-| [AUTHORSHIP.md](AUTHORSHIP.md) | Authorship and integrity |
-| [quirk method](docs/agents/quirk-method.md) | Method vocabulary and quality bar |
-| [provenance](docs/agents/provenance.md) | Origin and redesign status |
-| [adoption guide](docs/agents/adoption-guide.md) | Installation and sync |
-| [skill templates](docs/agents/skill-templates.md) | Artifact templates map |
-| [stack matrix](docs/agents/stack-matrix.md) | Stack-specific skills |
-| [skill style guide](docs/agents/skill-style-guide.md) | Editing and authoring rules |
-| [Skill Lab toolkit](docs/agents/skill-lab.md) | Skill lab reference |
-| [release checklist](docs/agents/release-checklist.md) | Pre/post-release gates |
-| [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
-| [skill inventory](docs/agents/skill-inventory.md) | Generated per-skill status table |
-
----
-
-<a id="official-documentation"></a>
-
-```text
-[ DOCS  ] OFFICIAL DOCUMENTATION
-```
-
-For a portable, AI-agnostic installation path, start here:
-
-> Installation entry point, templates, and inventory map.
-
-| Document | Purpose |
-|---|---|
-| [Adoption guide](docs/agents/adoption-guide.md) | Installation and sync |
-| [Skill templates](docs/agents/skill-templates.md) | Scaffolding reference |
-| [Skills map](docs/agents/skills-map.md) | Full inventory |
 
 ### Standard Feature Flow
 
@@ -237,36 +127,157 @@ sequenceDiagram
 
 ---
 
-<a id="validate"></a>
+<a id="architecture"></a>
 
-```text
-[ CHECK ] VALIDATE
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Canonical skill] --> B[SKILL.md]
+    A --> C[skills-lock.json]
+    D[Compatibility view] --> E[.claude/skills/ symlinks]
+    E --> A
 ```
 
-Run the local gate from the repo root:
+<details>
+<summary>Skill layer</summary>
+
+- `.agents/skills/` — skills canónicas con `SKILL.md` y lockfile
+- `.claude/skills/` — symlinks de compatibilidad
+- `skills-lock.json` — hashes de integridad
+
+</details>
+
+<details>
+<summary>Method layer</summary>
+
+- `CONTEXT.md` — vocabulario y convenciones locales
+- `docs/agents/` — ADRs, provenance, adoption guide, skill templates
+
+</details>
+
+<details>
+<summary>Execution layer</summary>
+
+- Scripts de validación: `.agents/skills/platform/check-all.mjs`
+- Scripts de sync: `.agents/skills/platform/sync-bundle.mjs`
+- Router: `work-item-router.mjs`
+
+</details>
+
+<details>
+<summary>Quality layer</summary>
+
+- **Quality scoring** — `quality-scorer.mjs`
+- **Security scanner** — `security-scanner.mjs`
+- **Dependency graph** — `dependency-graph.mjs`
+- **Evaluation fixtures** — `evaluate-fixtures.mjs`
+
+</details>
+
+<details>
+<summary>Registry & distribution layer</summary>
+
+- **Registry** — `registry.yaml`
+- **Marketplace** — `.claude-plugin/marketplace.json`
+- **Catalog** — `CATALOG.md`
+- **LLMS** — `llms.txt`
+- **Plugins** — `plugins/fullstack/`, `plugins/devops/`, `plugins/ai-ml/`
+
+</details>
+
+<details>
+<summary>Runtime layer</summary>
+
+- **MCP server** — `mcp-server/mcp-skills-server.mjs`
+- **OTEL instrumentation** — `otel-skill-instrumentation.mjs`
+- **Execution analytics** — `record-execution.mjs`
+
+</details>
+
+<details>
+<summary>Governance layer</summary>
+
+- **Evidence-gated updates** — `skill-evolver.mjs`
+- **Audit trail** — `audit-trail.mjs`
+- **Versioning** — dist-tags `stable` / `beta` / `canary`
+
+</details>
+
+<details>
+<summary>Platform layer</summary>
+
+- **NPX CLI** — `bin/skills-quirk.js`
+- **Discovery site** — `site/`
+- **Plugin system** — `.claude-plugin/plugin.json`
+
+</details>
+
+---
+
+<a id="method"></a>
+
+## Method
+
+> [!NOTE]
+> The full method vocabulary and quality bar are documented at [docs/agents/quirk-method.md](docs/agents/quirk-method.md).
+
+| Principle | Rule |
+|---|---|
+| Context before action | Build a fresh context pack before broad work |
+| Questions before commitments | Use `grill` or `grill-with-docs` when work is ambiguous |
+| Artifacts over vibes | Specs, tickets, PR bodies, review plans must be durable |
+| Vertical slices | Tickets should be narrow, complete paths |
+| Measurement before repair | Review Standards and Spec separately |
+| Branch-state before repair | Resolve conflicts first, then review |
+| Repo-local specialization | Each project owns its domain language and risk boundaries |
+| Fail closed on uncertainty | Missing fixed points must be surfaced |
+
+---
+
+<a id="documentation"></a>
+
+## Documentation
+
+> [!NOTE]
+> For installation and sync, start with [docs/agents/adoption-guide.md](docs/agents/adoption-guide.md).
+
+| Document | Purpose |
+|---|---|
+| [AUTHORSHIP.md](AUTHORSHIP.md) | Authorship and integrity |
+| [quirk method](docs/agents/quirk-method.md) | Method vocabulary and quality bar |
+| [provenance](docs/agents/provenance.md) | Origin and redesign status |
+| [adoption guide](docs/agents/adoption-guide.md) | Installation and sync |
+| [skill templates](docs/agents/skill-templates.md) | Artifact templates map |
+| [stack matrix](docs/agents/stack-matrix.md) | Stack-specific skills |
+| [skill style guide](docs/agents/skill-style-guide.md) | Editing and authoring rules |
+| [Skill Lab toolkit](docs/agents/skill-lab.md) | Skill lab reference |
+| [release checklist](docs/agents/release-checklist.md) | Pre/post-release gates |
+| [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
+| [skill inventory](docs/agents/skill-inventory.md) | Generated per-skill status table |
+
+---
+
+<a id="quality--validation"></a>
+
+## Quality & Validation
+
+> Run the local gate from the repo root. Expected result: `status: "pass"`.
 
 ```bash
 node .agents/skills/platform/check-all.mjs
 ```
 
-Expected result: `status: "pass"`.
+> [!TIP]
+> The full gate covers structure, semantic health, scenario fixtures, behavioral fixtures, syntax checks, shell template checks, and platform tests.
 
-The full gate currently covers structure, semantic health, 8 scenario fixtures, 4 behavioral fixtures, syntax checks, shell template checks, and platform tests.
-
-<a id="quality"></a>
-
-```text
-[ QUALITY ] QUALITY SCORING & SECURITY
-```
-
-### Quality score
+### Quality scoring
 
 ```bash
 node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator
-node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator --minimum-score 60
 ```
 
-Scores each skill 0-100 across 6 dimensions: frontmatter completeness, body depth, required sections, assets, behavioral spec, and safety. Returns grade A-F and tier BASIC/STANDARD/POWERFUL.
+Scores each skill 0-100 across 6 dimensions. Returns grade A-F and tier BASIC/STANDARD/POWERFUL.
 
 ### Security scan
 
@@ -295,52 +306,9 @@ Runs behavioral, regression, and security fixtures with configurable pass thresh
 
 ---
 
-<a id="versioning"></a>
-
-```text
-[ SAVE  ] VERSIONING
-```
-
-The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
-
-<a id="governance"></a>
-
-```text
-[ GOVERN ] LIFECYCLE & GOVERNANCE
-```
-
-### Evidence-gated updates
-
-```bash
-node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --target-version 2
-node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --dry-run --evidence quality-score,security-scan
-```
-
-Skill evolution now requires evidence before merge. Evidence types are selected based on change category:
-
-- `metadata` → quality-score
-- `operational-spec` → behavioral-fixture + quality-score
-- `behavioral-constraint` → behavioral-fixture + security-scan
-- `knowledge` → quality-score
-- `compatibility` → dependency-check + regression-test
-
-### Audit trail
-
-```bash
-node .agents/skills/platform/audit-trail.mjs record evolution-approved --skill skill-creator --detail '{"version":"1->2"}'
-node .agents/skills/platform/audit-trail.mjs query --skill skill-creator
-node .agents/skills/platform/audit-trail.mjs stats
-```
-
-Immutable JSONL append-only log of skill lifecycle events in `.agents/skills/platform/audit/`.
-
----
-
 <a id="distribution"></a>
 
-```text
-[ SYNC  ] DISTRIBUTION
-```
+## Distribution
 
 ### NPX CLI
 
@@ -358,7 +326,7 @@ npx skills-quirk sync --write
 - `.claude-plugin/marketplace.json` — generated Claude Code marketplace manifest
 - `CATALOG.md` — auto-generated skill catalog
 - `llms.txt` — agent-discovery entrypoint
-- `plugins/` — namespace plugin bundles (fullstack, devops, ai-ml)
+- `plugins/` — namespace plugin bundles
 
 ### MCP server
 
@@ -368,25 +336,31 @@ node .agents/skills/platform/mcp-server/mcp-skills-server.mjs --stdio
 
 Exposes skills as MCP tools: `list_skills`, `get_skill`, `search_skills`, `resolve_skill_for_task`, `validate_skill`, `score_skill`.
 
-### Dry-run sync
+### Sync
+
+<details>
+<summary>Dry-run sync</summary>
 
 ```bash
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
 ```
 
-### Apply sync
+</details>
+
+<details>
+<summary>Apply sync</summary>
 
 ```bash
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
+</details>
+
 ---
 
-<a id="install-in-any-repo"></a>
+<a id="installation--sync"></a>
 
-```text
-[ PORT  ] INSTALL IN ANY REPO
-```
+## Installation & Sync
 
 The bundle is designed to be copied into another repository and specialized there.
 
@@ -395,6 +369,9 @@ The bundle is designed to be copied into another repository and specialized ther
 ```
 
 Use one of these prompts when you want an AI-agnostic IDE to install or sync this skills bundle into another repository.
+
+> [!IMPORTANT]
+> These prompts are preserved verbatim. Use them as-is when installing or syncing.
 
 ### 1. Greenfield repository, no prior context
 
@@ -470,13 +447,12 @@ Update the skills implementation so it matches the upstream bundle while preserv
 - If any protected path changes, revert only that part before finishing.
 ```
 
-### Quick start
+<details>
+<summary>Quick install</summary>
 
 ```bash
 bash scripts/install-quirk-skills.sh
 ```
-
-### Installer options
 
 **One-line installer:**
 
@@ -484,50 +460,83 @@ bash scripts/install-quirk-skills.sh
 curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh
 ```
 
-**From an existing local checkout:**
+</details>
 
-```bash
-bash scripts/install-quirk-skills.sh
-```
-
-**From a fresh clone:**
-
-```bash
-git clone https://github.com/quantumquirkxyz/skills-quirk.git
-cd skills-quirk
-bash scripts/install-quirk-skills.sh
-```
-
-The installer copies these bundle files:
-
-| File | Purpose |
-|---|---|
-| `.agents/skills/` | Canonical skill definitions |
-| `.claude/skills/` | Compatibility symlinks |
-| `docs/agents/` | Governance and method docs |
-| `.agents/adr/README.md` | ADR entry point (mandatory, per  standard) |
-| `CONTEXT.md` | Repository-local vocabulary |
-| `skills-lock.json` | Canonical skill hashes |
-
-### After installation
+<details>
+<summary>After installation</summary>
 
 1. Run `setup-quirk-skills` in the target repo.
 2. Follow the [adoption guide](docs/agents/adoption-guide.md) to set the issue tracker, domain docs, and validation commands.
 3. Use `ask-to` or the standard flow to route work.
 
+</details>
+
 ---
 
-<a id="authorship"></a>
+<a id="governance"></a>
 
-```text
-[ END   ] AUTHORSHIP
+## Governance
+
+> [!NOTE]
+> Evidence-gated updates require specific evidence types depending on the change category.
+
+### Versioning
+
+The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
+
+### Evidence-gated updates
+
+```bash
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --target-version 2
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --dry-run --evidence quality-score,security-scan
 ```
 
-<p align="center">
-  <img alt="level complete" src="https://img.shields.io/badge/LEVEL%20COMPLETE-quirk%20skills-22c55e?style=for-the-badge&labelColor=0f172a" />
-  <img alt="next quest" src="https://img.shields.io/badge/NEXT%20QUEST-ask--to%20%7C%20review%20%7C%20ship-facc15?style=for-the-badge&labelColor=0f172a" />
-</p>
+| Change category | Required evidence |
+|---|---|
+| `metadata` | quality-score |
+| `operational-spec` | behavioral-fixture + quality-score |
+| `behavioral-constraint` | behavioral-fixture + security-scan |
+| `knowledge` | quality-score |
+| `compatibility` | dependency-check + regression-test |
+
+### Audit trail
+
+```bash
+node .agents/skills/platform/audit-trail.mjs record evolution-approved --skill skill-creator --detail '{"version":"1->2"}'
+node .agents/skills/platform/audit-trail.mjs query --skill skill-creator
+node .agents/skills/platform/audit-trail.mjs stats
+```
+
+Immutable JSONL append-only log of skill lifecycle events in `.agents/skills/platform/audit/`.
+
+---
+
+<a id="contributing"></a>
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow.
+
+Quick checklist before submitting:
+
+1. Run `node .agents/skills/platform/check-all.mjs`
+2. Verify `node .agents/skills/platform/validate-skills.mjs`
+3. Check `node .agents/skills/platform/audit-semantics.mjs`
+4. Confirm `node .agents/skills/platform/evaluate-scenarios.mjs`
+
+> [!IMPORTANT]
+> Follow [docs/agents/skill-style-guide.md](docs/agents/skill-style-guide.md) when editing or authoring skills.
+
+Questions? Check `docs/agents/` for more documentation.
+
+## License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+## Authorship
 
 Copyright (c) 2026 Jhuomar Boskoll Quintero.
 
 The project is MIT licensed. See [LICENSE](LICENSE).
+
+[Back to top](#)
