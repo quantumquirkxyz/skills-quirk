@@ -137,6 +137,34 @@ flowchart TD
 - Scripts de sync: `.agents/skills/platform/sync-bundle.mjs`
 - Router: `work-item-router.mjs`
 
+### Capa de calidad
+- **Quality scoring**: `quality-scorer.mjs` — puntuación 0-100 con grade A-F y tier BASIC/STANDARD/POWERFUL
+- **Security scanner**: `security-scanner.mjs` — detección de credential leakage, command injection, prompt injection
+- **Dependency graph**: `dependency-graph.mjs` — DAG de dependencias, cycle detection, central skills
+- **Evaluation fixtures**: `evaluate-fixtures.mjs` — behavioral, regression, y security fixtures con thresholds
+
+### Capa de registry y distribución
+- **Registry**: `registry.yaml` — source-of-truth con schema JSON
+- **Marketplace**: `.claude-plugin/marketplace.json` — generado automáticamente para Claude Code
+- **Catalog**: `CATALOG.md` — catálogo auto-generado de skills
+- **LLMS**: `llms.txt` — entrypoint para descubrimiento por agentes
+- **Plugins**: `plugins/fullstack/`, `plugins/devops/`, `plugins/ai-ml/` — bundles namespaceados
+
+### Capa de runtime
+- **MCP server**: `mcp-server/mcp-skills-server.mjs` — expone skills como MCP tools (stdio o HTTP)
+- **OTEL instrumentation**: `otel-skill-instrumentation.mjs` — traces de skill execution
+- **Execution analytics**: `record-execution.mjs` — métricas estructuradas de invocación
+
+### Capa de governance
+- **Evidence-gated updates**: `skill-evolver.mjs` — requiere evidence types según change category
+- **Audit trail**: `audit-trail.mjs` — JSONL inmutable de lifecycle events
+- **Versioning**: dist-tags `stable` / `beta` / `canary` en registry.yaml
+
+### Capa de plataforma
+- **NPX CLI**: `bin/skills-quirk.js` — comando `npx skills-quirk <command>`
+- **Discovery site**: `site/` — Vite + React app para exploración visual
+- **Plugin system**: `.claude-plugin/plugin.json` — skills, agents, commands, hooks, MCP servers
+
 
 <a id="method"></a>
 
@@ -225,6 +253,46 @@ Expected result: `status: "pass"`.
 
 The full gate currently covers structure, semantic health, 8 scenario fixtures, 4 behavioral fixtures, syntax checks, shell template checks, and platform tests.
 
+<a id="quality"></a>
+
+```text
+[ QUALITY ] QUALITY SCORING & SECURITY
+```
+
+### Quality score
+
+```bash
+node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator
+node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator --minimum-score 60
+```
+
+Scores each skill 0-100 across 6 dimensions: frontmatter completeness, body depth, required sections, assets, behavioral spec, and safety. Returns grade A-F and tier BASIC/STANDARD/POWERFUL.
+
+### Security scan
+
+```bash
+node .agents/skills/platform/security-scanner.mjs .agents/skills/skill-dev/skill-creator
+```
+
+Detects credential leakage, command injection, prompt injection, missing approval gates, and typosquatting risks. Returns blocked / review-required / pass.
+
+### Dependency graph
+
+```bash
+node .agents/skills/platform/dependency-graph.mjs --format mermaid
+node .agents/skills/platform/dependency-graph.mjs --format json
+```
+
+Produces a DAG of skill dependencies, detects cycles, and identifies central skills.
+
+### Fixtures
+
+```bash
+node .agents/skills/platform/evaluate-fixtures.mjs --threshold 0.8
+```
+
+Runs behavioral, regression, and security fixtures with configurable pass threshold.
+
 ---
 
 <a id="versioning"></a>
@@ -235,6 +303,37 @@ The full gate currently covers structure, semantic health, 8 scenario fixtures, 
 
 The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
+<a id="governance"></a>
+
+```text
+[ GOVERN ] LIFECYCLE & GOVERNANCE
+```
+
+### Evidence-gated updates
+
+```bash
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --target-version 2
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --dry-run --evidence quality-score,security-scan
+```
+
+Skill evolution now requires evidence before merge. Evidence types are selected based on change category:
+
+- `metadata` → quality-score
+- `operational-spec` → behavioral-fixture + quality-score
+- `behavioral-constraint` → behavioral-fixture + security-scan
+- `knowledge` → quality-score
+- `compatibility` → dependency-check + regression-test
+
+### Audit trail
+
+```bash
+node .agents/skills/platform/audit-trail.mjs record evolution-approved --skill skill-creator --detail '{"version":"1->2"}'
+node .agents/skills/platform/audit-trail.mjs query --skill skill-creator
+node .agents/skills/platform/audit-trail.mjs stats
+```
+
+Immutable JSONL append-only log of skill lifecycle events in `.agents/skills/platform/audit/`.
+
 ---
 
 <a id="distribution"></a>
@@ -242,6 +341,32 @@ The current version is recorded in [VERSION](VERSION). Release changes are recor
 ```text
 [ SYNC  ] DISTRIBUTION
 ```
+
+### NPX CLI
+
+```bash
+npx skills-quirk list
+npx skills-quirk search "react testing"
+npx skills-quirk score skill-creator
+npx skills-quirk security implement
+npx skills-quirk sync --write
+```
+
+### Registry and marketplace
+
+- `registry.yaml` — source of truth with JSON Schema validation
+- `.claude-plugin/marketplace.json` — generated Claude Code marketplace manifest
+- `CATALOG.md` — auto-generated skill catalog
+- `llms.txt` — agent-discovery entrypoint
+- `plugins/` — namespace plugin bundles (fullstack, devops, ai-ml)
+
+### MCP server
+
+```bash
+node .agents/skills/platform/mcp-server/mcp-skills-server.mjs --stdio
+```
+
+Exposes skills as MCP tools: `list_skills`, `get_skill`, `search_skills`, `resolve_skill_for_task`, `validate_skill`, `score_skill`.
 
 ### Dry-run sync
 

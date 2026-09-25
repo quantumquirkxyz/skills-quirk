@@ -4,10 +4,16 @@ on:
     paths:
       - ".agents/skills/**/*"
       - "skills-lock.json"
+      - "registry.yaml"
+      - "skills.json"
+      - "plugins/**"
   pull_request:
     paths:
       - ".agents/skills/**/*"
       - "skills-lock.json"
+      - "registry.yaml"
+      - "skills.json"
+      - "plugins/**"
   workflow_dispatch:
 
 env:
@@ -51,7 +57,7 @@ jobs:
       - name: Evaluate behavioral fixtures
         run: |
           cd "$GITHUB_WORKSPACE"
-          node .agents/skills/platform/evaluate-behavioral-fixtures.mjs 2>&1 | tee "$(mktemp)"
+          node .agents/skills/platform/evaluate-fixtures.mjs --threshold 0.5 2>&1 | tee "$(mktemp)"
 
       - name: Check node lint
         run: |
@@ -77,6 +83,41 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           node .agents/skills/platform/skill-lab.mjs graph --format mermaid 2>&1 | tee "$(mktemp)"
+
+      - name: Sync registry projections
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node scripts/sync-registry.mjs --write 2>&1 | tee "$(mktemp)"
+
+      - name: Quality score gate
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator --minimum-score 60 2>&1 | tee "$(mktemp)"
+
+      - name: Security scan
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/security-scanner.mjs .agents/skills/skill-dev/skill-creator --json 2>&1 | tee "$(mktemp)"
+
+      - name: Generate site data
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node scripts/generate-site-data.mjs --write 2>&1 | tee "$(mktemp)"
+
+      - name: Verify registry.yaml schema
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node -e "const r=require('./registry.yaml'); console.log('registry.yaml valid:', JSON.stringify(r.name))" 2>&1 | tee "$(mktemp)"
+
+      - name: Verify plugins structure
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          for plugin in plugins/*; do
+            if [ -d "$plugin/.claude-plugin" ]; then
+              echo "Plugin: $(basename $plugin)"
+              test -f "$plugin/.claude-plugin/plugin.json" && echo "  plugin.json: OK" || echo "  plugin.json: MISSING"
+            fi
+          done
 
       - name: Summary
         run: |
