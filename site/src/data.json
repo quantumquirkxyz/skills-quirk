@@ -1,0 +1,5 @@
+{
+  "skills": [
+    { "name": "skill-creator", "category": "skill-dev", "description": "Create effective skills that extend agent capabilities", "path": ".agents/skills/skill-dev/skill-creator", "trustTier": "1", "risk": "low", "maturity": "stable" }
+  ]
+}

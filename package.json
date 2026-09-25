@@ -1,0 +1,54 @@
+{
+  "name": "skills-quirk",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
+  "bin": {
+    "skills-quirk": "./bin/skills-quirk.js"
+  },
+  "scripts": {
+    "test": "node --test .agents/skills/platform/tests/*.test.mjs",
+    "validate": "node .agents/skills/platform/validate-skills.mjs",
+    "audit": "node .agents/skills/platform/audit-semantics.mjs",
+    "score": "node .agents/skills/platform/quality-scorer.mjs",
+    "security": "node .agents/skills/platform/security-scanner.mjs",
+    "graph": "node .agents/skills/platform/dependency-graph.mjs",
+    "test:fixtures": "node .agents/skills/platform/evaluate-fixtures.mjs",
+    "mcp": "node .agents/skills/platform/mcp-server/mcp-skills-server.mjs",
+    "evolve": "node .agents/skills/platform/skill-evolver.mjs",
+    "audit-trail": "node .agents/skills/platform/audit-trail.mjs",
+    "metrics": "node .agents/skills/platform/skill-lab.mjs metrics",
+    "sync": "node scripts/sync-registry.mjs",
+    "catalog": "node scripts/generate-site-data.mjs",
+    "site:dev": "cd site && vite",
+    "site:build": "cd site && vite build"
+  },
+  "keywords": [
+    "skills",
+    "agents",
+    "claude-code",
+    "codex",
+    "ai",
+    "coding-agent",
+    "prompts",
+    "workflows"
+  ],
+  "author": "quantumquirkxyz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quantumquirkxyz/skills-quirk.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    ".agents/skills/",
+    "registry.yaml",
+    "schema/",
+    "scripts/",
+    "plugins/",
+    "site/"
+  ]
+}

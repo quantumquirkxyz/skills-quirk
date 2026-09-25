@@ -1,0 +1,3932 @@
+{
+  "generatedAt": "2026-09-25T04:37:50.241Z",
+  "totalSkills": 229,
+  "categories": [
+    "accessibility",
+    "ai",
+    "auxiliary",
+    "backend",
+    "cms",
+    "compilers",
+    "cs",
+    "data",
+    "db",
+    "delivery",
+    "docs",
+    "engineering",
+    "foundation",
+    "frontend",
+    "integrations",
+    "iot",
+    "networking",
+    "os",
+    "product",
+    "professional",
+    "project",
+    "qa",
+    "research",
+    "routing",
+    "sec",
+    "skill-dev",
+    "skill-dev/sandbox",
+    "uncategorized",
+    "ux",
+    "web3",
+    "xr"
+  ],
+  "skills": [
+    {
+      "name": "accessibility",
+      "category": "accessibility",
+      "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply accessibility workflow",
+        "produce accessibility artifact",
+        "validate accessibility completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/accessibility/accessibility"
+    },
+    {
+      "name": "accessibility-design",
+      "category": "accessibility",
+      "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design accessible interaction patterns",
+        "review semantics, focus, and contrast",
+        "propose remediation for accessibility barriers"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/accessibility/accessibility-design"
+    },
+    {
+      "name": "accessibility-testing",
+      "category": "accessibility",
+      "description": "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply accessibility testing workflow",
+        "produce accessibility testing artifact",
+        "validate accessibility testing completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/accessibility/accessibility-testing"
+    },
+    {
+      "name": "agent-orchestration",
+      "category": "skill-dev/sandbox",
+      "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design multi-agent patterns (supervisor, peer, pipeline, router)",
+        "specify tool use contracts and capabilities per agent",
+        "design memory architecture (short-term, long-term, shared, episodic)",
+        "define handoff contracts between agents and escalation paths",
+        "design evaluation framework for agent coordination quality"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/agent-orchestration"
+    },
+    {
+      "name": "ai-ml-pipeline",
+      "category": "skill-dev/sandbox",
+      "description": "Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design data ingestion and preprocessing pipelines",
+        "select model architecture, training regimen, evaluation metrics",
+        "implement reproducible training with versioned data and code",
+        "deploy to staging/production with monitoring"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/ai-ml-pipeline"
+    },
+    {
+      "name": "ai-model-evaluation",
+      "category": "skill-dev/sandbox",
+      "description": "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "compute standard metrics (precision, recall, F1, ROC-AUC, MAE, RMSE, MAPE, log-loss)",
+        "analyse fairness across subgroups (demographic parity, equalised odds, calibration)",
+        "test robustness (adversarial examples, noise, distribution shift)",
+        "generate explainability (feature importance, SHAP, LIME, counterfactuals)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/ai-model-evaluation"
+    },
+    {
+      "name": "ai-prompt-engineering",
+      "category": "skill-dev/sandbox",
+      "description": "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "structure prompts with system, user, context, output-format instructions",
+        "apply chain-of-thought, few-shot, RAG, and tool-use patterns",
+        "evaluate prompts with metrics (accuracy, consistency, latency, cost)",
+        "iterate with A/B testing of prompt variants"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/ai-prompt-engineering"
+    },
+    {
+      "name": "ai-time-series-forecasting",
+      "category": "skill-dev/sandbox",
+      "description": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "analyse stationarity (ADF, KPSS) and seasonality (decomposition, autocorrelation)",
+        "select model family (classical / boosted / deep learning / ensemble)",
+        "build forecast pipeline respecting time-order split",
+        "evaluate with time-series metrics (MAPE, sMAPE, MASE, RMSE) and rolling backtest"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/ai-time-series-forecasting"
+    },
+    {
+      "name": "llm-eval",
+      "category": "skill-dev/sandbox",
+      "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design benchmark tasks (question answering, summarisation, coding, reasoning)",
+        "define scoring rubrics (exact match, LLM-as-judge, human-in-the-loop)",
+        "configure model comparison protocols (paired, blind, A/B)",
+        "automate evaluation pipelines with CI integration"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/llm-eval"
+    },
+    {
+      "name": "llm-fine-tuning",
+      "category": "skill-dev/sandbox",
+      "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design fine-tuning strategies (LoRA, QLoRA, full fine-tuning)",
+        "prepare and curate training datasets (prompt/response, instruction tuning, preference data)",
+        "configure training hyperparameters, adapters, and quantization",
+        "evaluate fine-tuned models against base models and benchmarks",
+        "plan deployment serving strategy (vLLM, TGI, LoRAX, adapters)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/llm-fine-tuning"
+    },
+    {
+      "name": "llmops",
+      "category": "ai",
+      "description": "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "deploy LLM applications to staging and production with rollback discipline",
+        "configure monitoring for latency, error rate, token usage, and cost",
+        "design A/B testing experiments for prompt variants and model swaps",
+        "manage prompt and chain versions with promotion rules and rollback",
+        "optimize cost through token budgets, model routing, and caching",
+        "implement evaluation pipelines with regression detection and canary checks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/llmops"
+    },
+    {
+      "name": "mlops",
+      "category": "ai",
+      "description": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design and operate feature stores with point-in-time correctness",
+        "manage model registry with promotion, validation, and rollback",
+        "version data with lineage and reproducibility",
+        "orchestrate training and retraining pipelines",
+        "configure model monitoring for drift and performance decay",
+        "define retraining triggers and backfill discipline"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/mlops"
+    },
+    {
+      "name": "multimodal-prompting",
+      "category": "ai",
+      "description": "Multimodal prompting (vision, audio, video, image generation, vision-language models)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design vision prompts with image, OCR, diagram, and chart understanding",
+        "craft audio and video prompts with transcription, captioning, and event understanding",
+        "implement image generation with composition, style, and batch discipline",
+        "combine modalities with chain-of-thought, cot, and RAG",
+        "define acceptance criteria for each modality with human and machine checks",
+        "specify fallback and escalation for modality failures"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/multimodal-prompting"
+    },
+    {
+      "name": "prompt-template-library",
+      "category": "ai",
+      "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "manage versioned templates with promotion and rollback",
+        "design A/B tests for templates with acceptance criteria",
+        "compose templates with partials, conditionals, and loops",
+        "evaluate templates with acceptance, property, and regression checks",
+        "define fallback and escalation for template failures"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/prompt-template-library"
+    },
+    {
+      "name": "rag-pipeline",
+      "category": "skill-dev/sandbox",
+      "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design retrieval architecture (vector, keyword, hybrid)",
+        "define chunking strategy (size, overlap, document-aware splitting)",
+        "select embedding model and dimension budget",
+        "configure reranking (cross-encoder, late interaction, LLM rerank)",
+        "orchestrate generation with grounded prompts and citation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/rag-pipeline"
+    },
+    {
+      "name": "structured-output",
+      "category": "ai",
+      "description": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design JSON mode prompts with schema, examples, and format instructions",
+        "implement function and tool calling with contracts and retry discipline",
+        "apply constrained decoding with grammars, regex, or stop tokens",
+        "validate structured output with schema, type, and business rule checks",
+        "define fallback, retry, and escalation discipline for parse failures"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/structured-output"
+    },
+    {
+      "name": "execution-policy",
+      "category": "auxiliary",
+      "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "classify-action",
+        "check-approval-threshold",
+        "require-approval"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/execution-policy"
+    },
+    {
+      "name": "integration-playground",
+      "category": "auxiliary",
+      "description": "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "create-isolated-fixtures",
+        "run-sandboxed-command",
+        "preserve-playground-evidence"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/auxiliary/integration-playground"
+    },
+    {
+      "name": "interactive-tutorial-builder",
+      "category": "auxiliary",
+      "description": "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "generate-skill-tutorial",
+        "derive-learning-goals",
+        "create-tutorial-checkpoints"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
+    },
+    {
+      "name": "setup-quirk-skills",
+      "category": "auxiliary",
+      "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "configure-repo-skills",
+        "establish-issue-tracker",
+        "establish-domain-doc-layout"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/auxiliary/setup-quirk-skills"
+    },
+    {
+      "name": "api-gateway",
+      "category": "backend",
+      "description": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design API gateway architecture",
+        "configure rate limiting and auth",
+        "plan request routing and transformation",
+        "define gateway observability"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/api-gateway"
+    },
+    {
+      "name": "backend-architecture",
+      "category": "backend",
+      "description": "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply backend architecture workflow",
+        "produce backend architecture artifact",
+        "validate backend architecture completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/backend-architecture"
+    },
+    {
+      "name": "backend-caching",
+      "category": "backend",
+      "description": "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design cache strategy",
+        "choose keys, TTLs, and invalidation rules",
+        "evaluate consistency and failure trade-offs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/backend-caching"
+    },
+    {
+      "name": "backend-queues",
+      "category": "backend",
+      "description": "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design queue-backed workflows",
+        "define retry and idempotency strategy",
+        "plan backpressure and observability"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/backend-queues"
+    },
+    {
+      "name": "caching-advanced",
+      "category": "backend",
+      "description": "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design advanced cache architectures",
+        "configure Redis and Memcached",
+        "optimize CDN strategies",
+        "implement stampede prevention and cache invalidation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/caching-advanced"
+    },
+    {
+      "name": "distributed-tracing",
+      "category": "backend",
+      "description": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design distributed tracing architecture",
+        "configure OpenTelemetry instrumentation",
+        "plan sampling and trace storage",
+        "define trace-based observability"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/distributed-tracing"
+    },
+    {
+      "name": "event-driven-architecture",
+      "category": "backend",
+      "description": "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design event-driven system architecture",
+        "choose messaging pattern and broker",
+        "plan choreography and orchestration flows",
+        "define event schema and contract strategy"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/event-driven-architecture"
+    },
+    {
+      "name": "grpc-connect",
+      "category": "backend",
+      "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design gRPC service contracts",
+        "configure protobuf schemas",
+        "plan streaming and unary APIs",
+        "design ConnectRPC and grpc-gateway integration"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/grpc-connect"
+    },
+    {
+      "name": "microservices",
+      "category": "backend",
+      "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply microservices workflow",
+        "produce microservices artifact",
+        "validate microservices completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/microservices"
+    },
+    {
+      "name": "rate-limiting",
+      "category": "backend",
+      "description": "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design rate limiting systems",
+        "configure token bucket and sliding window algorithms",
+        "implement distributed rate limiting",
+        "protect APIs with throttling strategies"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/rate-limiting"
+    },
+    {
+      "name": "serverless",
+      "category": "backend",
+      "description": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design serverless architecture",
+        "define event-driven flows",
+        "optimize cold starts and scaling",
+        "evaluate cost and resource allocation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/serverless"
+    },
+    {
+      "name": "service-mesh",
+      "category": "backend",
+      "description": "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design service mesh architecture",
+        "configure mTLS and zero trust",
+        "plan traffic splitting and routing",
+        "define mesh observability"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/service-mesh"
+    },
+    {
+      "name": "websockets",
+      "category": "backend",
+      "description": "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design real-time communication architecture",
+        "configure WebSocket and SSE protocols",
+        "plan scaling and reconnection strategies",
+        "implement pub/sub and backpressure handling"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/websockets"
+    },
+    {
+      "name": "cms-access-control",
+      "category": "cms",
+      "description": "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design CMS roles and permissions",
+        "define publishing and review gates",
+        "assess auditability and least privilege"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cms/cms-access-control"
+    },
+    {
+      "name": "cms-architecture",
+      "category": "cms",
+      "description": "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply cms architecture workflow",
+        "produce cms architecture artifact",
+        "validate cms architecture completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cms/cms-architecture"
+    },
+    {
+      "name": "cms-content-strategy",
+      "category": "cms",
+      "description": "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "model content types and taxonomies",
+        "define editorial lifecycle and governance",
+        "plan multi-channel publishing rules"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cms/cms-content-strategy"
+    },
+    {
+      "name": "localization",
+      "category": "cms",
+      "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply localization workflow",
+        "produce localization artifact",
+        "validate localization completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cms/localization"
+    },
+    {
+      "name": "compiler-design",
+      "category": "compilers",
+      "description": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design compiler pipeline stages",
+        "choose AST, type, and IR boundaries",
+        "reason about diagnostics and code generation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/compilers/compiler-design"
+    },
+    {
+      "name": "compiler-testing",
+      "category": "compilers",
+      "description": "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design compiler test suites",
+        "define parser, semantic, and IR oracles",
+        "create regression and negative test strategy"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/compilers/compiler-testing"
+    },
+    {
+      "name": "compilers",
+      "category": "compilers",
+      "description": "Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply compilers workflow",
+        "produce compilers artifact",
+        "validate compilers completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/compilers/compilers"
+    },
+    {
+      "name": "cs-algorithms",
+      "category": "skill-dev/sandbox",
+      "description": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply cs algorithms workflow",
+        "produce cs algorithms analysis artifact",
+        "validate cs algorithms completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cs/cs-algorithms"
+    },
+    {
+      "name": "cs-complexity-analysis",
+      "category": "cs",
+      "description": "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "analyze asymptotic complexity",
+        "compare algorithmic trade-offs",
+        "justify bounds with assumptions"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cs/cs-complexity-analysis"
+    },
+    {
+      "name": "cs-computability",
+      "category": "cs",
+      "description": "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "classify computability problems",
+        "construct reductions and recognizers",
+        "explain decidability proofs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cs/cs-computability"
+    },
+    {
+      "name": "cs-data-structures",
+      "category": "cs",
+      "description": "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "select data structures for access patterns",
+        "compare operation costs and invariants",
+        "design data-structure APIs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/cs/cs-data-structures"
+    },
+    {
+      "name": "data-catalog",
+      "category": "data",
+      "description": "Data catalog (metadata management, discovery, classification, data mesh, governance).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "manage metadata for datasets, tables, and streams",
+        "enable data discovery with search and lineage",
+        "classify data assets (PII, sensitivity, domain)",
+        "design data mesh domain ownership"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-catalog"
+    },
+    {
+      "name": "data-contracts",
+      "category": "skill-dev/sandbox",
+      "description": "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define producer-consumer agreements (schema, semantics, SLAs, ownership)",
+        "design schema evolution policies (additive, backward-compatible, breaking changes)",
+        "configure schema registry and versioning (Confluent, AWS Glue, internal registry)",
+        "implement breaking change detection and enforcement"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-contracts"
+    },
+    {
+      "name": "data-etl-pipeline",
+      "category": "skill-dev/sandbox",
+      "description": "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design extraction from sources (database, API, file, stream)",
+        "define transformations (filter, aggregate, join, enrich, clean, deduplicate)",
+        "design load into target (warehouse, lake, database)",
+        "implement quality checks (null rate, out-of-range, duplicates, referential integrity)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-etl-pipeline"
+    },
+    {
+      "name": "data-lineage",
+      "category": "data",
+      "description": "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "trace end-to-end data flow from source to consumption",
+        "perform impact analysis for schema or pipeline changes",
+        "map column-level lineage across transformations",
+        "support data governance and compliance audits"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-lineage"
+    },
+    {
+      "name": "data-quality",
+      "category": "skill-dev/sandbox",
+      "description": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define data quality dimensions (freshness, volume, distribution, referential integrity)",
+        "design check suites (expectations, thresholds, anomaly detection)",
+        "implement observability (metrics, alerts, dashboards)",
+        "define data contracts between producers and consumers"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-quality"
+    },
+    {
+      "name": "data-streaming",
+      "category": "skill-dev/sandbox",
+      "description": "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design event schemas and stream topology",
+        "configure producers / consumers / stream processors",
+        "handle backpressure, ordering, exactly-once semantics",
+        "design real-time analytics and alerting"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-streaming"
+    },
+    {
+      "name": "data-versioning",
+      "category": "data",
+      "description": "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "version datasets and ML assets with DVC or lakeFS",
+        "design delta table versioning and time travel",
+        "implement snapshotting for reproducibility",
+        "manage branching and merging for data"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-versioning"
+    },
+    {
+      "name": "data-warehouse-modeling",
+      "category": "skill-dev/sandbox",
+      "description": "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design star / snowflake / OBT schemas for analytical workloads",
+        "define dimensions (time, geography, product, customer) and facts (events, transactions)",
+        "design partitioning (by date, region, category) and clustering",
+        "optimise queries (materialised views, indexes, partition pruning)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/data-warehouse-modeling"
+    },
+    {
+      "name": "feature-store",
+      "category": "data",
+      "description": "Feature store (online/offline, feature engineering, serving, monitoring, drift).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design online and offline feature stores",
+        "manage feature engineering and transformation logic",
+        "serve features with low latency for inference",
+        "monitor feature drift and data quality"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/feature-store"
+    },
+    {
+      "name": "semantic-layer",
+      "category": "skill-dev/sandbox",
+      "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "define business metrics and measures (formulas, aggregations, grain, filters)",
+        "model dimensions and attributes for consistent slicing and filtering",
+        "design dbt models and transformations (staging, intermediate, marts)",
+        "configure Cube metrics server or equivalent for self-service analytics",
+        "govern metric definitions, ownership, and data lineage"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/semantic-layer"
+    },
+    {
+      "name": "stream-processing",
+      "category": "data",
+      "description": "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design stream processing topologies (Flink, Kafka Streams, RisingWave)",
+        "define windowing strategies (tumbling, sliding, session, global)",
+        "manage state ( RocksDB, in-memory, tiered storage)",
+        "implement exactly-once semantics and fault tolerance"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/stream-processing"
+    },
+    {
+      "name": "db-migrations",
+      "category": "db",
+      "description": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "plan schema migrations",
+        "sequence backfills safely",
+        "define rollback and compatibility windows"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/db/db-migrations"
+    },
+    {
+      "name": "db-nosql-modeling",
+      "category": "skill-dev/sandbox",
+      "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply db nosql modeling workflow",
+        "produce db nosql modeling analysis artifact",
+        "validate db nosql modeling completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/db/db-nosql-modeling"
+    },
+    {
+      "name": "db-query-optimization",
+      "category": "db",
+      "description": "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "analyze query performance",
+        "interpret execution plans",
+        "recommend indexing and rewrite strategies"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/db/db-query-optimization"
+    },
+    {
+      "name": "db-relational-design",
+      "category": "skill-dev/sandbox",
+      "description": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "identify entities, relationships, and cardinality",
+        "design relational schemas with keys, indexes, constraints",
+        "plan migrations with rollback steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/db/db-relational-design"
+    },
+    {
+      "name": "code-review",
+      "category": "delivery",
+      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply code review workflow",
+        "produce code review artifact",
+        "validate code review completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/code-review"
+    },
+    {
+      "name": "contribution-workflow-optimizer",
+      "category": "delivery",
+      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply contribution workflow optimizer workflow",
+        "produce contribution workflow optimizer artifact",
+        "validate contribution workflow optimizer completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/contribution-workflow-optimizer"
+    },
+    {
+      "name": "diagnosing-bugs",
+      "category": "delivery",
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply diagnosing bugs workflow",
+        "produce diagnosing bugs artifact",
+        "validate diagnosing bugs completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/diagnosing-bugs"
+    },
+    {
+      "name": "implement",
+      "category": "delivery",
+      "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply implement workflow",
+        "produce implement artifact",
+        "validate implement completion criteria"
+      ],
+      "sideEffects": [
+        "write-code",
+        "commit-git",
+        "push-branch"
+      ],
+      "path": ".agents/skills/delivery/implement"
+    },
+    {
+      "name": "implement-review-fixes",
+      "category": "delivery",
+      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply implement review fixes workflow",
+        "produce implement review fixes artifact",
+        "validate implement review fixes completion criteria"
+      ],
+      "sideEffects": [
+        "write-code",
+        "commit-git",
+        "push-branch"
+      ],
+      "path": ".agents/skills/delivery/implement-review-fixes"
+    },
+    {
+      "name": "plan-review-fixes",
+      "category": "delivery",
+      "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after ",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply plan review fixes workflow",
+        "produce plan review fixes artifact",
+        "validate plan review fixes completion criteria"
+      ],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
+      "path": ".agents/skills/delivery/plan-review-fixes"
+    },
+    {
+      "name": "prototype",
+      "category": "delivery",
+      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply prototype workflow",
+        "produce prototype artifact",
+        "validate prototype completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/prototype"
+    },
+    {
+      "name": "research",
+      "category": "delivery",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply research workflow",
+        "produce research artifact",
+        "validate research completion criteria"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/delivery/research"
+    },
+    {
+      "name": "resolving-merge-conflicts",
+      "category": "delivery",
+      "description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply resolving merge conflicts workflow",
+        "produce resolving merge conflicts artifact",
+        "validate resolving merge conflicts completion criteria"
+      ],
+      "sideEffects": [
+        "write-code",
+        "commit-git",
+        "continue-merge-or-rebase"
+      ],
+      "path": ".agents/skills/delivery/resolving-merge-conflicts"
+    },
+    {
+      "name": "review-fix-loop",
+      "category": "delivery",
+      "description": "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply review fix loop workflow",
+        "produce review fix loop artifact",
+        "validate review fix loop completion criteria"
+      ],
+      "sideEffects": [
+        "write-code",
+        "post-pr-comment",
+        "commit-git",
+        "push-branch"
+      ],
+      "path": ".agents/skills/delivery/review-fix-loop"
+    },
+    {
+      "name": "review-pr",
+      "category": "delivery",
+      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply review pr workflow",
+        "produce review pr artifact",
+        "validate review pr completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/review-pr"
+    },
+    {
+      "name": "tdd",
+      "category": "delivery",
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply tdd workflow",
+        "produce tdd artifact",
+        "validate tdd completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/tdd"
+    },
+    {
+      "name": "testing",
+      "category": "delivery",
+      "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply testing workflow",
+        "produce testing artifact",
+        "validate testing completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/testing"
+    },
+    {
+      "name": "webapp-testing",
+      "category": "delivery",
+      "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply webapp testing workflow",
+        "produce webapp testing artifact",
+        "validate webapp testing completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/webapp-testing"
+    },
+    {
+      "name": "backup-disaster-recovery",
+      "category": "skill-dev/sandbox",
+      "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define recovery objectives (RPO, RTO, RSL, RPO per service)",
+        "design backup strategies (full, incremental, differential, continuous)",
+        "plan cross-region and multi-cloud disaster recovery",
+        "design restore testing procedures and cadence",
+        "document failover and fallback runbooks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/backup-disaster-recovery"
+    },
+    {
+      "name": "chaos-engineering",
+      "category": "skill-dev/sandbox",
+      "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define steady-state hypotheses and SLO-based guardrails",
+        "design fault injection experiments (network, compute, dependency)",
+        "run GameDays with controlled blast radius",
+        "validate resilience and produce remediation recommendations"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/chaos-engineering"
+    },
+    {
+      "name": "cost-optimization",
+      "category": "skill-dev/sandbox",
+      "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design cost visibility and reporting architecture",
+        "perform rightsizing recommendations (CPU, memory, storage, network)",
+        "design spot instance and preemptible workload strategies",
+        "design committed use and reserved capacity planning",
+        "implement budgets, alerts, showback, and chargeback"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/cost-optimization"
+    },
+    {
+      "name": "devops-ci-cd-pipeline",
+      "category": "skill-dev/sandbox",
+      "description": "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design pipeline stages (build, test, security, deploy, rollback)",
+        "configure environment parity (dev/staging/prod with same tool versions)",
+        "define deployment gates (tests pass, security scan clean, approval required)",
+        "document rollback procedures"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/devops-ci-cd-pipeline"
+    },
+    {
+      "name": "devops-feature-flags",
+      "category": "skill-dev/sandbox",
+      "description": "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design flag lifecycle (create → gradual rollout → full → remove)",
+        "configure targeting rules (user segment, percentage, environment)",
+        "design kill switches and emergency rollback",
+        "manage flag inventory and technical debt"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/devops-feature-flags"
+    },
+    {
+      "name": "devops-k8s-orchestration",
+      "category": "skill-dev/sandbox",
+      "description": "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design cluster topology (control plane, nodes, namespaces, RBAC)",
+        "configure deployment strategies (rolling, blue/green, canary, A/B)",
+        "set up service mesh (Istio, Linkerd) for traffic management",
+        "implement auto-scaling (HPA, VPA, cluster-autoscaler)",
+        "define pod security and network policies"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/devops-k8s-orchestration"
+    },
+    {
+      "name": "devops-terraform-iac",
+      "category": "skill-dev/sandbox",
+      "description": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define infrastructure modules (compute, network, storage, identity)",
+        "manage state (remote backend, state locking, state encryption)",
+        "design environment isolation (dev/staging/prod via workspaces / separate states)",
+        "enforce policies (IAM least-privilege, network rules, encryption at rest / in transit)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/devops-terraform-iac"
+    },
+    {
+      "name": "gitops",
+      "category": "skill-dev/sandbox",
+      "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design GitOps architecture (Git as source of truth, declarative manifests, automated reconciliation)",
+        "configure ArgoCD or Flux for cluster sync",
+        "implement drift detection and remediation policies",
+        "design progressive delivery (canary, blue/green, feature flags, traffic shifting)",
+        "document rollback and disaster recovery procedures"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/gitops"
+    },
+    {
+      "name": "incident-response",
+      "category": "skill-dev/sandbox",
+      "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define severity taxonomy and escalation paths",
+        "author runbooks for known failure modes",
+        "design war room and incident command procedures",
+        "write postmortems with root cause and remediation tracking"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/incident-response"
+    },
+    {
+      "name": "secret-management",
+      "category": "skill-dev/sandbox",
+      "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design secret management architecture (Vault, cloud KMS, sealed secrets)",
+        "configure access policies and authentication methods",
+        "design secret rotation and lifecycle management",
+        "integrate secrets with CI/CD and runtime workloads",
+        "document audit logging and compliance requirements"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/secret-management"
+    },
+    {
+      "name": "docs-adrs",
+      "category": "skill-dev/sandbox",
+      "description": "Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply docs adrs workflow",
+        "produce docs adrs analysis artifact",
+        "validate docs adrs completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/docs/docs-adrs"
+    },
+    {
+      "name": "docs-knowledge-base",
+      "category": "docs",
+      "description": "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "organize knowledge-base content",
+        "design durable navigation",
+        "identify stale or missing references"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/docs/docs-knowledge-base"
+    },
+    {
+      "name": "docs-technical-writing",
+      "category": "docs",
+      "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "structure technical documentation",
+        "clarify procedural guidance",
+        "align docs with audience needs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/docs/docs-technical-writing"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "category": "engineering",
+      "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "scan-codebase",
+        "detect-deepening-opportunities",
+        "generate-html-report",
+        "grill-candidate"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/engineering/improve-codebase-architecture"
+    },
+    {
+      "name": "finance-corporate-val",
+      "category": "skill-dev/sandbox",
+      "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply finance corporate val workflow",
+        "produce finance corporate val analysis artifact",
+        "validate finance corporate val completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/finance/finance-corporate-val"
+    },
+    {
+      "name": "finance-dcf",
+      "category": "skill-dev/sandbox",
+      "description": "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply finance dcf workflow",
+        "produce finance dcf analysis artifact",
+        "validate finance dcf completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/finance/finance-dcf"
+    },
+    {
+      "name": "finance-portfolio-theory",
+      "category": "skill-dev/sandbox",
+      "description": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply finance portfolio theory workflow",
+        "produce finance portfolio theory analysis artifact",
+        "validate finance portfolio theory completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/finance/finance-portfolio-theory"
+    },
+    {
+      "name": "agent-canvas",
+      "category": "foundation",
+      "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "define-workspace",
+        "persist-session",
+        "manage-multi-agent-state",
+        "export-workspace"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/agent-canvas"
+    },
+    {
+      "name": "agent-observability",
+      "category": "foundation",
+      "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "record-execution",
+        "trace-decisions",
+        "capture-quality-signals",
+        "generate-trace-report"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/agent-observability"
+    },
+    {
+      "name": "api-design",
+      "category": "foundation",
+      "description": "Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply api design workflow",
+        "produce api design artifact",
+        "validate api design completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/api-design"
+    },
+    {
+      "name": "codebase-design",
+      "category": "foundation",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply codebase design workflow",
+        "produce codebase design artifact",
+        "validate codebase design completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/codebase-design"
+    },
+    {
+      "name": "context-engine",
+      "category": "foundation",
+      "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "retrieve-context",
+        "index-context",
+        "update-context",
+        "query-context"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/context-engine"
+    },
+    {
+      "name": "domain-modeling",
+      "category": "foundation",
+      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply domain modeling workflow",
+        "produce domain modeling artifact",
+        "validate domain modeling completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/domain-modeling"
+    },
+    {
+      "name": "mcp-server",
+      "category": "foundation",
+      "description": "Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define-mcp-server",
+        "connect-context-sources",
+        "index-dynamic-data",
+        "expose-tools-to-agent"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/mcp-server"
+    },
+    {
+      "name": "observability",
+      "category": "foundation",
+      "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "define SLIs and SLOs for critical user journeys",
+        "design dashboards for metrics, logs, traces, and alerts",
+        "create alert rules with thresholds, routing, and escalation",
+        "write incident response runbooks",
+        "apply observability workflow",
+        "validate observability completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/observability"
+    },
+    {
+      "name": "subagent-swarm",
+      "category": "foundation",
+      "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define-subagent-roles",
+        "assign-tasks-to-subagents",
+        "collect-subagent-evidence",
+        "merge-subagent-outputs",
+        "resolve-subagent-conflicts"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/subagent-swarm"
+    },
+    {
+      "name": "astro",
+      "category": "frontend",
+      "description": "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design astro project structure",
+        "apply islands architecture",
+        "configure SSR and SSG rendering modes",
+        "design view transitions"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/astro"
+    },
+    {
+      "name": "design-system",
+      "category": "frontend",
+      "description": "Define and evolve reusable UI tokens, components, and usage rules as a coherent system.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply design system workflow",
+        "produce design system artifact",
+        "validate design system completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/design-system"
+    },
+    {
+      "name": "frontend-design",
+      "category": "frontend",
+      "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply frontend design workflow",
+        "produce frontend design artifact",
+        "validate frontend design completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/frontend-design"
+    },
+    {
+      "name": "frontend-testing",
+      "category": "frontend",
+      "description": "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design frontend test strategy",
+        "configure unit and integration tests",
+        "design end-to-end test suites",
+        "plan visual testing and Storybook workflows"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/frontend-testing"
+    },
+    {
+      "name": "mobile",
+      "category": "frontend",
+      "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design mobile architecture (React Native, Expo, Capacitor, native)",
+        "plan offline-first sync, local storage, and conflict resolution",
+        "design push notifications, deep linking, and app lifecycle",
+        "evaluate platform-specific UX and performance trade-offs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/mobile"
+    },
+    {
+      "name": "nextjs",
+      "category": "frontend",
+      "description": "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply nextjs workflow",
+        "produce nextjs artifact",
+        "validate nextjs completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/nextjs"
+    },
+    {
+      "name": "react",
+      "category": "frontend",
+      "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply react workflow",
+        "produce react artifact",
+        "validate react completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/react"
+    },
+    {
+      "name": "remix",
+      "category": "frontend",
+      "description": "Remix framework (loaders, actions, nested routes, progressive enhancement).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design remix route structure",
+        "apply loaders and actions",
+        "implement progressive enhancement",
+        "plan nested route boundaries"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/remix"
+    },
+    {
+      "name": "state-management",
+      "category": "frontend",
+      "description": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design client state architecture",
+        "choose state management primitive",
+        "plan server state and caching",
+        "define state boundaries and ownership"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/state-management"
+    },
+    {
+      "name": "styling",
+      "category": "frontend",
+      "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design styling architecture",
+        "configure utility-first and component CSS",
+        "create design token system",
+        "plan CVA and variant patterns"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/styling"
+    },
+    {
+      "name": "api-contracts",
+      "category": "integrations",
+      "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design request/response contracts (REST, GraphQL, gRPC, WebSocket)",
+        "define versioning strategies (URL, header, content negotiation)",
+        "apply OpenAPI 3.1, JSON Schema, or GraphQL SDL",
+        "plan breaking change detection, deprecation, and migration paths"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/api-contracts"
+    },
+    {
+      "name": "auth",
+      "category": "integrations",
+      "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design auth flows (OAuth2, OIDC, SAML, session, JWT, passkeys)",
+        "define authorization models (RBAC, ABAC, ReBAC, permissions)",
+        "plan MFA, passwordless, and session management",
+        "assess auth security (token theft, CSRF, session fixation, brute force)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/auth"
+    },
+    {
+      "name": "issue-operations",
+      "category": "integrations",
+      "description": "Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "resolve issue tracker targets",
+        "create scoped issues from concrete work items",
+        "update issue metadata and discussion safely",
+        "capture mutation evidence and follow-up state"
+      ],
+      "sideEffects": [
+        "create-issue",
+        "update-issue",
+        "post-comment",
+        "label-issue",
+        "assign-issue",
+        "close-issue"
+      ],
+      "path": ".agents/skills/integrations/issue-operations"
+    },
+    {
+      "name": "payments",
+      "category": "integrations",
+      "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design payment flows (authorization, capture, void, refund, dispute)",
+        "plan webhooks, idempotency, reconciliation, and retry behavior",
+        "evaluate PCI DSS scope, fraud detection, and compliance",
+        "assess payment provider lock-in and migration paths"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/payments"
+    },
+    {
+      "name": "pr-operations",
+      "category": "integrations",
+      "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "resolve pull request targets",
+        "create pull requests from validated branches",
+        "update PR metadata and discussion",
+        "request reviews and apply labels safely",
+        "report publication and review readiness evidence"
+      ],
+      "sideEffects": [
+        "create-pull-request",
+        "update-pull-request",
+        "post-pr-comment",
+        "request-review",
+        "label-pull-request"
+      ],
+      "path": ".agents/skills/integrations/pr-operations"
+    },
+    {
+      "name": "search",
+      "category": "integrations",
+      "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design search architecture (full-text, vector, hybrid)",
+        "plan indexing, synonyms, language analysis, and relevance tuning",
+        "define ranking, boosting, personalization, and business rules",
+        "evaluate search observability, analytics, and A/B testing"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/search"
+    },
+    {
+      "name": "iot-embedded",
+      "category": "iot",
+      "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply iot embedded workflow",
+        "produce iot embedded artifact",
+        "validate iot embedded completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/iot/iot-embedded"
+    },
+    {
+      "name": "math-computation-reproducible",
+      "category": "skill-dev/sandbox",
+      "description": "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "capture a computation in a script (SymPy / Mathematica / Magma / Sage / Julia)",
+        "pin the environment (library versions, OS, RNG seeds)",
+        "containerise with Docker / Apptainer / Nix",
+        "archive inputs, scripts, outputs, and environment"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-computation-reproducible"
+    },
+    {
+      "name": "math-computational",
+      "category": "skill-dev/sandbox",
+      "description": "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "select numerical algorithms suited to problem type and regime",
+        "implement or execute numerical methods with error and stability analysis",
+        "cross-verify results against independent methods",
+        "deliver numerical results with explicit uncertainty bounds"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-computational"
+    },
+    {
+      "name": "math-cryptography",
+      "category": "skill-dev/sandbox",
+      "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply math cryptography workflow",
+        "produce math cryptography analysis artifact",
+        "validate math cryptography completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-cryptography"
+    },
+    {
+      "name": "math-formal-proof",
+      "category": "skill-dev/sandbox",
+      "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "represent mathematical statements in a proof assistant's type system",
+        "build proofs using tactics, lemmas, and libraries (mathlib)",
+        "verify proofs with the assistant's kernel",
+        "produce literate proofs (Lean + LaTeX, Coq + LaTeX) for publication"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-formal-proof"
+    },
+    {
+      "name": "math-grant-structure",
+      "category": "skill-dev/sandbox",
+      "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "align proposal with agency call (NSF / ERC / Simons / MSCA / NSERC)",
+        "articulate intellectual merit and broader impacts (or equivalents)",
+        "structure aims, work plan, deliverables, timeline",
+        "draft budget justifications and data-management plans"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-grant-structure"
+    },
+    {
+      "name": "math-linear-algebra",
+      "category": "skill-dev/sandbox",
+      "description": "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply math linear algebra workflow",
+        "produce math linear algebra analysis artifact",
+        "validate math linear algebra completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-linear-algebra"
+    },
+    {
+      "name": "math-literature-track",
+      "category": "skill-dev/sandbox",
+      "description": "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "monitor arXiv categories (math.AG, math.NT, math.AP, math.PR, math.CO, math.OC) and filter by author/keyword",
+        "pull MathSciNet / zbMATH metadata and citation graph",
+        "build a personal digest of new papers with relevance ranking",
+        "track references, forward citations, and reviews of a given theorem/paper"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-literature-track"
+    },
+    {
+      "name": "math-optimization",
+      "category": "skill-dev/sandbox",
+      "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply math optimization workflow",
+        "produce math optimization analysis artifact",
+        "validate math optimization completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-optimization"
+    },
+    {
+      "name": "math-paper-collaboration",
+      "category": "skill-dev/sandbox",
+      "description": "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "set up a shared repository (Overleaf or GitHub) for a paper",
+        "manage citation database (BibTeX / Zotero / Mendeley) with collaboration rules",
+        "link reproducible computation artifacts (see math-computation-reproducible)",
+        "coordinate co-author edits, comments, revisions, and arXiv submission"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-paper-collaboration"
+    },
+    {
+      "name": "math-presentation-beamer",
+      "category": "skill-dev/sandbox",
+      "description": "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design Beamer slides with semantic structure (section, subsection, theorem, proof)",
+        "build TikZ diagrams and figures with consistent colour/style",
+        "adjust depth for audience (grad student / researcher / public / high school)",
+        "prepare speaker notes with timing and transition cues"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-presentation-beamer"
+    },
+    {
+      "name": "math-probability-models",
+      "category": "skill-dev/sandbox",
+      "description": "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply math probability models workflow",
+        "produce math probability models analysis artifact",
+        "validate math probability models completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-probability-models"
+    },
+    {
+      "name": "math-pure-proofs",
+      "category": "skill-dev/sandbox",
+      "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "parse a mathematical statement into shape and domain",
+        "select the proof strategy that fits the claim type",
+        "construct a step-by-step proof with explicit logical rules",
+        "verify the proof by substitution, adversarial pass, and limit checks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-pure-proofs"
+    },
+    {
+      "name": "math-teaching-problem-set",
+      "category": "skill-dev/sandbox",
+      "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design problem sets with difficulty progression",
+        "generate multiple variants for exam integrity",
+        "write grading rubrics with partial credit rules",
+        "produce accessible LaTeX output (alt-text, screen-reader friendly)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/math/math-teaching-problem-set"
+    },
+    {
+      "name": "networking",
+      "category": "networking",
+      "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply networking workflow",
+        "produce networking artifact",
+        "validate networking completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/networking/networking"
+    },
+    {
+      "name": "networking-protocols",
+      "category": "networking",
+      "description": "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "analyze protocol behavior",
+        "reason about handshakes and packet flow",
+        "diagnose timing and failure modes"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/networking/networking-protocols"
+    },
+    {
+      "name": "networking-security",
+      "category": "networking",
+      "description": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design network trust boundaries",
+        "review segmentation and firewall posture",
+        "identify exposure and control gaps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/networking/networking-security"
+    },
+    {
+      "name": "os-kernel",
+      "category": "os",
+      "description": "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply os kernel workflow",
+        "produce os kernel artifact",
+        "validate os kernel completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/os/os-kernel"
+    },
+    {
+      "name": "os-memory",
+      "category": "os",
+      "description": "Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "analyze memory management behavior",
+        "reason about virtual memory and allocation",
+        "diagnose locality, paging, and protection issues"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/os/os-memory"
+    },
+    {
+      "name": "os-processes",
+      "category": "os",
+      "description": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "analyze process lifecycle",
+        "reason about scheduling and IPC",
+        "diagnose concurrency and isolation issues"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/os/os-processes"
+    },
+    {
+      "name": "physics-astro",
+      "category": "skill-dev/sandbox",
+      "description": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply physics astro workflow",
+        "produce physics astro analysis artifact",
+        "validate physics astro completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-astro"
+    },
+    {
+      "name": "physics-career-postdoc",
+      "category": "skill-dev/sandbox",
+      "description": "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "structure postdoc and faculty applications (research statement, teaching statement, diversity statement)",
+        "coordinate letters of recommendation",
+        "prepare grant applications (NSF CAREER, DOE, ERC Starting Grant, Simons, HFPO)",
+        "analyse job-market position (fit, timeline, market data)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-career-postdoc"
+    },
+    {
+      "name": "physics-classical",
+      "category": "skill-dev/sandbox",
+      "description": "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply physics classical workflow",
+        "produce physics classical analysis artifact",
+        "validate physics classical completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-classical"
+    },
+    {
+      "name": "physics-data-analysis-root",
+      "category": "skill-dev/sandbox",
+      "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "load experimental data (ROOT / HDF5 / CSV / binary) with schema validation",
+        "apply calibration corrections (energy scale, efficiency, acceptance)",
+        "propagate statistical and systematic errors (covariance matrix or bootstrap)",
+        "perform statistical inference (fit, hypothesis test, confidence interval)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-data-analysis-root"
+    },
+    {
+      "name": "physics-experimental-notebook",
+      "category": "skill-dev/sandbox",
+      "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "structure a lab notebook (experiment description, setup, measurements, analysis, conclusion)",
+        "record calibration procedures with traceability",
+        "propagate measurement errors (systematic + statistical)",
+        "apply FAIR data principles (Findable, Accessible, Interoperable, Reusable)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-experimental-notebook"
+    },
+    {
+      "name": "physics-literature-search",
+      "category": "skill-dev/sandbox",
+      "description": "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "monitor arXiv categories relevant to physics (hep-th, cond-mat, astro-ph, quant-ph, gr-qc, nucl-th, physics.*)",
+        "pull INSPIRE-HEP / NASA ADS / Web of Science metadata",
+        "filter by author, institution, keyword, citation graph",
+        "build a digest with relevance scores"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-literature-search"
+    },
+    {
+      "name": "physics-quantum",
+      "category": "skill-dev/sandbox",
+      "description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply physics quantum workflow",
+        "produce physics quantum analysis artifact",
+        "validate physics quantum completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-quantum"
+    },
+    {
+      "name": "physics-reproducibility-archive",
+      "category": "skill-dev/sandbox",
+      "description": "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "prepare data, code, and environments for archival",
+        "containerise (Docker / Apptainer) with exact versions and dependencies",
+        "upload to Zenodo with metadata (title, authors, licence, keywords)",
+        "prepare supplemental material for journal submission"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-reproducibility-archive"
+    },
+    {
+      "name": "physics-simulation-setup",
+      "category": "skill-dev/sandbox",
+      "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "select simulation tool appropriate to the physical system",
+        "configure parameters (potential, boundary conditions, initial state, timestep)",
+        "containerise the environment (Docker / Apptainer) with exact versions",
+        "verify simulation against analytical limits or benchmarks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-simulation-setup"
+    },
+    {
+      "name": "physics-talk-design",
+      "category": "skill-dev/sandbox",
+      "description": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design talk structure (introduction, result, conclusion) for audience and duration",
+        "prepare figures consistent with physics conventions (units, error bars, axis labels)",
+        "design posters (layout, colour, font, figure arrangement) for conferences",
+        "prepare speaker notes with timing cues"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-talk-design"
+    },
+    {
+      "name": "physics-thermo",
+      "category": "skill-dev/sandbox",
+      "description": "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply physics thermo workflow",
+        "produce physics thermo analysis artifact",
+        "validate physics thermo completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-thermo"
+    },
+    {
+      "name": "physics-writing-revtex",
+      "category": "skill-dev/sandbox",
+      "description": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "format papers with RevTeX (APS) or IOP / AIP templates",
+        "prepare figures consistent with journal conventions (line thickness, font size, colour rules)",
+        "manage citations with BibTeX / BibLaTeX and journal-specific styles",
+        "prepare submission package (source + compiled PDF + figures + metadata)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/physics/physics-writing-revtex"
+    },
+    {
+      "name": "prod-ab-testing",
+      "category": "product",
+      "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "formulate testable hypotheses",
+        "design treatment and control with randomisation",
+        "compute sample size / power / minimum detectable effect",
+        "define success and guardrail metrics",
+        "design rollback / escalation rules"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/product/prod-ab-testing"
+    },
+    {
+      "name": "prod-okr-planning",
+      "category": "product",
+      "description": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "define Objectives that are ambitious and qualitative",
+        "define Key Results that are measurable and time-bound",
+        "align team OKRs to company and department OKRs",
+        "track progress and run retrospectives at end of cycle"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/product/prod-okr-planning"
+    },
+    {
+      "name": "prod-prd-writing",
+      "category": "product",
+      "description": "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "frame problem and user need",
+        "write measurable goals and success metrics",
+        "structure user stories with acceptance criteria",
+        "define timeline, dependencies, and risks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/product/prod-prd-writing"
+    },
+    {
+      "name": "pro-market-analysis",
+      "category": "skill-dev/sandbox",
+      "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply pro market analysis workflow",
+        "produce pro market analysis analysis artifact",
+        "validate pro market analysis completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/professional/pro-market-analysis"
+    },
+    {
+      "name": "professional-communication",
+      "category": "professional",
+      "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "draft stakeholder messages",
+        "sharpen status updates and escalations",
+        "adapt tone to audience and risk"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/professional/professional-communication"
+    },
+    {
+      "name": "professional-project-management",
+      "category": "professional",
+      "description": "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "structure project plans",
+        "identify risks, dependencies, and milestones",
+        "prepare stakeholder tracking artifacts"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/professional/professional-project-management"
+    },
+    {
+      "name": "docs-management",
+      "category": "project",
+      "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply docs management workflow",
+        "produce docs management artifact",
+        "validate docs management completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/project/docs-management"
+    },
+    {
+      "name": "make-project",
+      "category": "project",
+      "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply make project workflow",
+        "produce make project artifact",
+        "validate make project completion criteria"
+      ],
+      "sideEffects": [
+        "create-project",
+        "create-project-fields",
+        "link-repositories"
+      ],
+      "path": ".agents/skills/project/make-project"
+    },
+    {
+      "name": "project-development",
+      "category": "project",
+      "description": "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply project development workflow",
+        "produce project development artifact",
+        "validate project development completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/project/project-development"
+    },
+    {
+      "name": "project-viability",
+      "category": "uncategorized",
+      "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply project viability workflow",
+        "produce viability assessment artifact",
+        "validate project viability completion criteria",
+        "produce structured JSON artifact for tooling"
+      ],
+      "sideEffects": [
+        "write report file to .reports/ only if quality gate passes",
+        "write JSON artifact to .reports/ only if quality gate passes"
+      ],
+      "path": ".agents/skills/project/project-viability"
+    },
+    {
+      "name": "to-spec",
+      "category": "project",
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply to spec workflow",
+        "produce to spec artifact",
+        "validate to spec completion criteria"
+      ],
+      "sideEffects": [
+        "create-issue"
+      ],
+      "path": ".agents/skills/project/to-spec"
+    },
+    {
+      "name": "to-tickets",
+      "category": "project",
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply to tickets workflow",
+        "produce to tickets artifact",
+        "validate to tickets completion criteria"
+      ],
+      "sideEffects": [
+        "create-issues",
+        "write-files"
+      ],
+      "path": ".agents/skills/project/to-tickets"
+    },
+    {
+      "name": "performance-testing",
+      "category": "qa",
+      "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply performance testing workflow",
+        "produce performance testing artifact",
+        "validate performance testing completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/qa/performance-testing"
+    },
+    {
+      "name": "qa-automation",
+      "category": "qa",
+      "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply qa automation workflow",
+        "produce qa automation artifact",
+        "validate qa automation completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/qa/qa-automation"
+    },
+    {
+      "name": "qa-manual-testing",
+      "category": "qa",
+      "description": "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "plan exploratory test sessions",
+        "document reproducible findings",
+        "assess user-visible regressions"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/qa/qa-manual-testing"
+    },
+    {
+      "name": "qa-security-testing",
+      "category": "qa",
+      "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design security test charters",
+        "probe auth and authorization boundaries",
+        "document security findings responsibly"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/qa/qa-security-testing"
+    },
+    {
+      "name": "quant-backtest",
+      "category": "skill-dev/sandbox",
+      "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "specify a trading strategy with signal, universe, sizing, and cost model",
+        "audit data for survivorship bias, look-ahead, and delisting handling",
+        "run backtest with out-of-sample split and transaction costs",
+        "validate coverage and stress-test across market regimes"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-backtest"
+    },
+    {
+      "name": "quant-credit-risk",
+      "category": "skill-dev/sandbox",
+      "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply quant credit risk workflow",
+        "produce quant credit risk analysis artifact",
+        "validate quant credit risk completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-credit-risk"
+    },
+    {
+      "name": "quant-derivatives-pricing",
+      "category": "skill-dev/sandbox",
+      "description": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply quant derivatives pricing workflow",
+        "produce quant derivatives pricing analysis artifact",
+        "validate quant derivatives pricing completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-derivatives-pricing"
+    },
+    {
+      "name": "quant-factors",
+      "category": "skill-dev/sandbox",
+      "description": "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "define a factor signal with universe and rebalance rules",
+        "run a backtest with cost model and out-of-sample split",
+        "stress-test across subperiods, sectors, and turnover",
+        "report statistics with significance tests"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-factors"
+    },
+    {
+      "name": "quant-market-micro",
+      "category": "skill-dev/sandbox",
+      "description": "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply quant market micro workflow",
+        "produce quant market micro analysis artifact",
+        "validate quant market micro completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-market-micro"
+    },
+    {
+      "name": "quant-portfolio-opt",
+      "category": "skill-dev/sandbox",
+      "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply quant portfolio opt workflow",
+        "produce quant portfolio opt analysis artifact",
+        "validate quant portfolio opt completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-portfolio-opt"
+    },
+    {
+      "name": "quant-risk-modeling",
+      "category": "skill-dev/sandbox",
+      "description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply quant risk modeling workflow",
+        "produce quant risk modeling analysis artifact",
+        "validate quant risk modeling completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/quant/quant-risk-modeling"
+    },
+    {
+      "name": "research-data-archiving",
+      "category": "research",
+      "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design research data archives",
+        "define metadata and provenance requirements",
+        "plan preservation, access, and reuse"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/research/research-data-archiving"
+    },
+    {
+      "name": "research-literature-review",
+      "category": "research",
+      "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design literature search protocols",
+        "screen and synthesize evidence",
+        "track citations, provenance, and evidence quality"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/research/research-literature-review"
+    },
+    {
+      "name": "scientific-hypothesis",
+      "category": "skill-dev/sandbox",
+      "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply scientific hypothesis workflow",
+        "produce scientific hypothesis analysis artifact",
+        "validate scientific hypothesis completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/research/scientific-hypothesis"
+    },
+    {
+      "name": "artifact-handoff",
+      "category": "routing",
+      "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply artifact handoff workflow",
+        "produce artifact handoff artifact",
+        "validate artifact handoff completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/artifact-handoff"
+    },
+    {
+      "name": "ask-to",
+      "category": "routing",
+      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply ask to workflow",
+        "produce ask to artifact",
+        "validate ask to completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/ask-to"
+    },
+    {
+      "name": "capability-router",
+      "category": "routing",
+      "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply capability router workflow",
+        "produce capability router artifact",
+        "validate capability router completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/capability-router"
+    },
+    {
+      "name": "context-pack",
+      "category": "routing",
+      "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply context pack workflow",
+        "produce context pack artifact",
+        "validate context pack completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/context-pack"
+    },
+    {
+      "name": "grill",
+      "category": "routing",
+      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply grill workflow",
+        "produce grill artifact",
+        "validate grill completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/grill"
+    },
+    {
+      "name": "grill-me",
+      "category": "routing",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply grill me workflow",
+        "produce grill me artifact",
+        "validate grill me completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/grill-me"
+    },
+    {
+      "name": "grill-with-docs",
+      "category": "routing",
+      "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply grill with docs workflow",
+        "produce grill with docs artifact",
+        "validate grill with docs completion criteria"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/routing/grill-with-docs"
+    },
+    {
+      "name": "grilling",
+      "category": "routing",
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply grilling workflow",
+        "produce grilling artifact",
+        "validate grilling completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/grilling"
+    },
+    {
+      "name": "handoff",
+      "category": "routing",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply handoff workflow",
+        "produce handoff artifact",
+        "validate handoff completion criteria"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/routing/handoff"
+    },
+    {
+      "name": "knowledge-curator",
+      "category": "routing",
+      "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply knowledge curator workflow",
+        "produce knowledge curator artifact",
+        "validate knowledge curator completion criteria"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/routing/knowledge-curator"
+    },
+    {
+      "name": "publish-open-pr",
+      "category": "routing",
+      "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply publish open pr workflow",
+        "produce publish open pr artifact",
+        "validate publish open pr completion criteria"
+      ],
+      "sideEffects": [
+        "push-branch",
+        "create-pull-request"
+      ],
+      "path": ".agents/skills/routing/publish-open-pr"
+    },
+    {
+      "name": "ship-subissue",
+      "category": "routing",
+      "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "apply ship subissue workflow",
+        "produce ship subissue artifact",
+        "validate ship subissue completion criteria"
+      ],
+      "sideEffects": [
+        "merge-pull-request",
+        "close-issue",
+        "update-project"
+      ],
+      "path": ".agents/skills/routing/ship-subissue"
+    },
+    {
+      "name": "triage",
+      "category": "routing",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply triage workflow",
+        "produce triage artifact",
+        "validate triage completion criteria"
+      ],
+      "sideEffects": [
+        "label-issue",
+        "post-comment",
+        "close-issue",
+        "write-files"
+      ],
+      "path": ".agents/skills/routing/triage"
+    },
+    {
+      "name": "wayfinder",
+      "category": "routing",
+      "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply wayfinder workflow",
+        "produce wayfinder artifact",
+        "validate wayfinder completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/wayfinder"
+    },
+    {
+      "name": "work-item-router",
+      "category": "routing",
+      "description": "Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply work item router workflow",
+        "produce work item router artifact",
+        "validate work item router completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/work-item-router"
+    },
+    {
+      "name": "cloud-security",
+      "category": "sec",
+      "description": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design IAM policies and roles (least-privilege, service accounts, cross-account)",
+        "configure KMS / key management (envelope encryption, rotation, access policies)",
+        "audit security groups, NACLs, firewalls, and network segmentation",
+        "map cloud controls to compliance frameworks (SOC 2, PCI-DSS, HIPAA, FedRAMP, CIS)",
+        "set up cloud security posture management (CSPM) and continuous compliance",
+        "design cloud-native monitoring, alerting, and incident response"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/cloud-security"
+    },
+    {
+      "name": "compliance",
+      "category": "skill-dev/sandbox",
+      "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "map controls to SOC2, ISO27001, GDPR, HIPAA, PCI DSS requirements",
+        "collect and organise audit evidence (policies, logs, configurations, access reviews)",
+        "identify gaps between current state and required controls",
+        "produce remediation plans with owners, timelines, and verification steps",
+        "prepare for external audits and respond to auditor requests"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/compliance"
+    },
+    {
+      "name": "container-security",
+      "category": "sec",
+      "description": "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design secure container images (minimal base, non-root, read-only filesystem, no privileged mode)",
+        "implement image scanning (vulnerability, secret, malware, SBOM) in CI/CD",
+        "configure Kubernetes Pod Security Standards (restricted / baseline / privileged)",
+        "set up runtime security (Falco, Seccomp, AppArmor, seccomp profiles)",
+        "design Kubernetes RBAC and network policies for least-privilege access",
+        "manage container secrets (external secrets operator, CSI drivers, KMS integration)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/container-security"
+    },
+    {
+      "name": "incident-forensics",
+      "category": "skill-dev/sandbox",
+      "description": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "preserve digital evidence without alteration (chain of custody, write blockers, hashing)",
+        "reconstruct event timelines from logs, artifacts, and system states",
+        "identify root cause and contributing factors",
+        "document findings in a formal forensic report suitable for legal, regulatory, or insurance use"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/incident-forensics"
+    },
+    {
+      "name": "sec-cryptography-applied",
+      "category": "skill-dev/sandbox",
+      "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "select cryptographic primitives (AES-GCM, ChaCha20-Poly1305, Ed25519, RSA-OAEP)",
+        "design key management (generation, rotation, storage, HSM, KMS)",
+        "implement TLS / mTLS correctly (certificate chain, TLS 1.3, cipher suites)",
+        "audit cryptographic usage for weaknesses"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/sec-cryptography-applied"
+    },
+    {
+      "name": "sec-privacy-engineering",
+      "category": "skill-dev/sandbox",
+      "description": "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "assess data classification (PII, sensitive, public)",
+        "apply data minimisation and purpose limitation",
+        "design anonymisation / pseudonymisation / encryption at rest / in transit",
+        "manage consent, retention, deletion, and breach notification"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/sec-privacy-engineering"
+    },
+    {
+      "name": "sec-security-audit",
+      "category": "skill-dev/sandbox",
+      "description": "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "review code for security vulnerabilities (OWASP, CWE, SANS)",
+        "scan dependencies (SAST, DAST, dependency-check, Semgrep)",
+        "audit access control and secrets management",
+        "document findings with severity and remediation priority"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/sec-security-audit"
+    },
+    {
+      "name": "sec-threat-modeling",
+      "category": "skill-dev/sandbox",
+      "description": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "identify assets and trust boundaries",
+        "apply STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)",
+        "apply ATT&CK (tactics, techniques, procedures) for adversarial analysis",
+        "document mitigations and residual risk"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/sec-threat-modeling"
+    },
+    {
+      "name": "secret-management-security",
+      "category": "sec",
+      "description": "Secrets management (Vault, KMS, rotation, injection, external secrets operator)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design secrets management architecture (Vault, cloud KMS, hybrid)",
+        "implement secrets rotation (database credentials, API keys, certificates)",
+        "design secrets injection (environment, volume, CSI driver, workload identity)",
+        "configure External Secrets Operator (ESO) for Kubernetes",
+        "audit secrets usage and detect hardcoded or leaked credentials",
+        "design encryption at rest for secrets stores (etcd encryption, KMS envelope)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/secret-management-security"
+    },
+    {
+      "name": "supply-chain-security",
+      "category": "skill-dev/sandbox",
+      "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "generate and maintain SBOM (SPDX, CycloneDX)",
+        "implement artifact signing and verification (Sigstore, Cosign)",
+        "define SLSA build tiers and provenance attestations",
+        "design dependency vulnerability response and patching SLA"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/supply-chain-security"
+    },
+    {
+      "name": "zero-trust",
+      "category": "skill-dev/sandbox",
+      "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design identity fabric (IAM, IdP, MFA, SSO)",
+        "define per-request authentication and authorisation policies",
+        "design microsegmentation (network, workload, data)",
+        "implement policy engine (OPA, Rego, ABAC, PBAC)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/zero-trust"
+    },
+    {
+      "name": "evaluate-skill",
+      "category": "skill-dev",
+      "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply evaluate skill workflow",
+        "produce evaluate skill artifact",
+        "validate evaluate skill completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/evaluate-skill"
+    },
+    {
+      "name": "lockfile-maintenance",
+      "category": "skill-dev",
+      "description": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "detect lockfile drift",
+        "update skill content hashes",
+        "reconcile missing and extra lock entries",
+        "validate lockfile consistency"
+      ],
+      "sideEffects": [
+        "update-lockfile"
+      ],
+      "path": ".agents/skills/skill-dev/lockfile-maintenance"
+    },
+    {
+      "name": "rule-cataloger",
+      "category": "skill-dev",
+      "description": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "extract-skill-rules",
+        "classify-rule-types",
+        "rank-rule-frequency"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/rule-cataloger"
+    },
+    {
+      "name": "side-effect-auditor",
+      "category": "skill-dev",
+      "description": "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "compare declared side effects to workflow behavior",
+        "identify understated or overstated risk metadata",
+        "check trust tier consistency",
+        "recommend metadata repairs for mutating skills"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/side-effect-auditor"
+    },
+    {
+      "name": "skill-audit",
+      "category": "skill-dev",
+      "description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill audit workflow",
+        "produce skill audit artifact",
+        "validate skill audit completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-audit"
+    },
+    {
+      "name": "skill-creator",
+      "category": "skill-dev",
+      "description": "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.",
+      "version": "4",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "run an interactive skill-creation interview",
+        "propose skill architecture, resources, and workflow from user input",
+        "gather lightweight research signals to improve the skill design",
+        "suggest skill names from keywords and category",
+        "generate a complete skill structure from interview results",
+        "validate skills against repository quality standards",
+        "keep compatibility with init_skill.py and package_skill.py"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/skill-dev/skill-creator"
+    },
+    {
+      "name": "skill-dependency-graph",
+      "category": "skill-dev",
+      "description": "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill dependency graph workflow",
+        "produce skill dependency graph artifact",
+        "validate skill dependency graph completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-dependency-graph"
+    },
+    {
+      "name": "skill-diff-analyzer",
+      "category": "skill-dev",
+      "description": "Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill diff analyzer workflow",
+        "produce skill diff analyzer artifact",
+        "validate skill diff analyzer completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-diff-analyzer"
+    },
+    {
+      "name": "skill-performance-metrics",
+      "category": "skill-dev",
+      "description": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill performance metrics workflow",
+        "produce skill performance metrics artifact",
+        "validate skill performance metrics completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-performance-metrics"
+    },
+    {
+      "name": "skill-promoter",
+      "category": "skill-dev",
+      "description": "Promote validated experimental skills from the sandbox to the canonical skills bundle.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply skill promoter workflow",
+        "produce skill promoter artifact",
+        "validate skill promoter completion criteria"
+      ],
+      "sideEffects": [
+        "write-files",
+        "create-symlink",
+        "update-lockfile"
+      ],
+      "path": ".agents/skills/skill-dev/skill-promoter"
+    },
+    {
+      "name": "skill-quality-gate",
+      "category": "skill-dev",
+      "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "run skill bundle validators",
+        "interpret semantic audit findings",
+        "identify placeholder and generic metadata risks",
+        "verify side-effect declarations against skill behavior",
+        "produce release readiness summaries"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-quality-gate"
+    },
+    {
+      "name": "skill-sandbox",
+      "category": "skill-dev",
+      "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill sandbox workflow",
+        "produce skill sandbox artifact",
+        "validate skill sandbox completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-sandbox"
+    },
+    {
+      "name": "skill-template-generator",
+      "category": "skill-dev",
+      "description": "Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply skill template generator workflow",
+        "produce skill template generator artifact",
+        "validate skill template generator completion criteria"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/skill-dev/skill-template-generator"
+    },
+    {
+      "name": "skill-testing-framework",
+      "category": "skill-dev",
+      "description": "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply skill testing framework workflow",
+        "produce skill testing framework artifact",
+        "validate skill testing framework completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/skill-testing-framework"
+    },
+    {
+      "name": "skill-tutor",
+      "category": "skill-dev",
+      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "teach skill fundamentals",
+        "guide first skill creation",
+        "validate learner understanding"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/skill-dev/skill-tutor"
+    },
+    {
+      "name": "workflow-fixture-author",
+      "category": "skill-dev",
+      "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "design skill evaluation scenarios",
+        "write behavioral fixture expectations",
+        "cover happy path, edge case, and refusal behavior",
+        "align fixtures with skill contracts and validation scripts"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/skill-dev/workflow-fixture-author"
+    },
+    {
+      "name": "writing-great-skills",
+      "category": "skill-dev",
+      "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply writing great skills workflow",
+        "produce writing great skills artifact",
+        "validate writing great skills completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/writing-great-skills"
+    },
+    {
+      "name": "interaction-design",
+      "category": "ux",
+      "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply interaction design workflow",
+        "produce interaction design artifact",
+        "validate interaction design completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ux/interaction-design"
+    },
+    {
+      "name": "ux-accessibility",
+      "category": "ux",
+      "description": "Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design accessible UX flows",
+        "identify task-level accessibility barriers",
+        "recommend inclusive interaction changes"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ux/ux-accessibility"
+    },
+    {
+      "name": "ux-prototyping",
+      "category": "ux",
+      "description": "Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "scope UX prototypes",
+        "choose fidelity and validation method",
+        "plan feedback loops and iteration criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ux/ux-prototyping"
+    },
+    {
+      "name": "ux-research",
+      "category": "ux",
+      "description": "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply ux research workflow",
+        "produce ux research artifact",
+        "validate ux research completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ux/ux-research"
+    },
+    {
+      "name": "web3-consensus",
+      "category": "web3",
+      "description": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "classify consensus mechanisms (Nakamoto, BFT, PoS, DAG, DA layers, based sequencers)",
+        "evaluate safety, liveness, finality, and censorship resistance",
+        "compare PoS slashing, MEV, and decentralisation economics",
+        "assess data availability and shared sequencing trade-offs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-consensus"
+    },
+    {
+      "name": "web3-defi",
+      "category": "web3",
+      "description": "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "classify DeFi protocols (AMM, lending, stablecoin, derivatives, intents, LST, LRT)",
+        "analyse core mechanics (invariants, parameters, oracles, liquidation)",
+        "assess economic security (TVL, collateral ratios, solvency, liquidity risk)",
+        "evaluate MEV, intents, solver networks, and composability risks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-defi"
+    },
+    {
+      "name": "web3-governance",
+      "category": "web3",
+      "description": "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design on-chain / off-chain governance flows (Governor Bravo v2, oSnap, Zodiac)",
+        "analyse token concentration, delegation markets, and quorum mechanics",
+        "audit timelock, multisig, guardian, and emergency pause patterns",
+        "model capture, bribery, apathy, and rushed-execution risks"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-governance"
+    },
+    {
+      "name": "web3-l2-scaling",
+      "category": "web3",
+      "description": "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "classify L2 architectures (optimistic, ZK, validium, based, shared sequencer)",
+        "evaluate data availability and sequencing trust models",
+        "compare ZK-EVM implementations (Scroll, zkSync, Polygon zkEVM, StarkNet)",
+        "assess throughput, finality, cost, and composability trade-offs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-l2-scaling"
+    },
+    {
+      "name": "web3-smart-contracts",
+      "category": "web3",
+      "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "review smart contract security (reentrancy, access, arithmetic, gas, MEV)",
+        "audit upgradeability, AA (ERC-4337), and EIP-7702 delegation patterns",
+        "perform adversarial review and formal verification assessment"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-smart-contracts"
+    },
+    {
+      "name": "web3-tokenomics",
+      "category": "web3",
+      "description": "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design supply mechanics (emission, vesting, burn, buyback, mint/burn)",
+        "model incentive alignment (staking, liquidity, restaking, points)",
+        "evaluate governance tokenomics (voting, quorum, delegation, capture)",
+        "stress-test sustainability (demand shock, inflation, regulatory risk)"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/web3/web3-tokenomics"
+    },
+    {
+      "name": "xr-development",
+      "category": "xr",
+      "description": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply xr development workflow",
+        "produce xr development artifact",
+        "validate xr development completion criteria"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/xr/xr-development"
+    },
+    {
+      "name": "xr-interaction-design",
+      "category": "xr",
+      "description": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "design spatial interaction models",
+        "evaluate locomotion and comfort trade-offs",
+        "plan XR input feedback and validation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/xr/xr-interaction-design"
+    },
+    {
+      "name": "xr-performance",
+      "category": "xr",
+      "description": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "define XR performance budgets",
+        "diagnose frame, latency, and thermal issues",
+        "plan comfort-aware optimization"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/xr/xr-performance"
+    }
+  ]
+}

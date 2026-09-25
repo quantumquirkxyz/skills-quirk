@@ -1,0 +1,17 @@
+{
+  "name": "quirk-ai-ml",
+  "version": "1.0.0",
+  "description": "AI/ML skills for Quirk: prompt engineering, RAG, LLM eval, fine-tuning, MLOps",
+  "author": {
+    "name": "quantumquirkxyz",
+    "url": "https://github.com/quantumquirkxyz/skills-quirk"
+  },
+  "skills": [
+    "ai-prompt-engineering", "rag-pipeline", "llm-eval",
+    "llm-fine-tuning", "mlops", "ai-model-evaluation"
+  ],
+  "agents": [],
+  "commands": [],
+  "hooks": [],
+  "mcpServers": []
+}
