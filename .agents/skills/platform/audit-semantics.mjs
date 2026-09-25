@@ -65,6 +65,7 @@ async function walk(dir, predicate = () => true) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     const filePath = path.join(dir, entry.name);
     if (filePath.includes(`${path.sep}platform${path.sep}runs${path.sep}`)) continue;
+    if (entry.name === 'node_modules') continue;
     if (entry.isDirectory()) out.push(...await walk(filePath, predicate));
     else if (entry.isFile() && predicate(filePath)) out.push(filePath);
   }
