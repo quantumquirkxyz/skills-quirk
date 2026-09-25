@@ -1,0 +1,275 @@
+# Quirk Skills - Agent Discovery Entrypoint
+
+> 229 skills for AI coding agents. Source: undefined
+
+## Quick Install
+
+```bash
+npx skills-quirk add quirk-skills
+```
+
+## Skills Index
+
+- [accessibility](./.agents/skills/accessibility/accessibility/SKILL.md) — Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.
+- [accessibility-design](./.agents/skills/accessibility/accessibility-design/SKILL.md) — Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.
+- [accessibility-testing](./.agents/skills/accessibility/accessibility-testing/SKILL.md) — Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.
+- [agent-canvas](./.agents/skills/foundation/agent-canvas/SKILL.md) — Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
+- [agent-observability](./.agents/skills/foundation/agent-observability/SKILL.md) — Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
+- [agent-orchestration](./.agents/skills/ai/agent-orchestration/SKILL.md) — Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.
+- [ai-ml-pipeline](./.agents/skills/ai/ai-ml-pipeline/SKILL.md) — Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.
+- [ai-model-evaluation](./.agents/skills/ai/ai-model-evaluation/SKILL.md) — Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.
+- [ai-prompt-engineering](./.agents/skills/ai/ai-prompt-engineering/SKILL.md) — Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.
+- [ai-time-series-forecasting](./.agents/skills/ai/ai-time-series-forecasting/SKILL.md) — Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.
+- [api-contracts](./.agents/skills/integrations/api-contracts/SKILL.md) — Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.
+- [api-design](./.agents/skills/foundation/api-design/SKILL.md) — Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.
+- [api-gateway](./.agents/skills/backend/api-gateway/SKILL.md) — API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).
+- [artifact-handoff](./.agents/skills/routing/artifact-handoff/SKILL.md) — Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.
+- [ask-to](./.agents/skills/routing/ask-to/SKILL.md) — Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.
+- [astro](./.agents/skills/frontend/astro/SKILL.md) — Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).
+- [auth](./.agents/skills/integrations/auth/SKILL.md) — Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.
+- [backend-architecture](./.agents/skills/backend/backend-architecture/SKILL.md) — Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
+- [backend-caching](./.agents/skills/backend/backend-caching/SKILL.md) — Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.
+- [backend-queues](./.agents/skills/backend/backend-queues/SKILL.md) — Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
+- [backup-disaster-recovery](./.agents/skills/devops/backup-disaster-recovery/SKILL.md) — Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.
+- [caching-advanced](./.agents/skills/backend/caching-advanced/SKILL.md) — Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).
+- [capability-router](./.agents/skills/routing/capability-router/SKILL.md) — Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.
+- [chaos-engineering](./.agents/skills/devops/chaos-engineering/SKILL.md) — Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.
+- [cloud-security](./.agents/skills/sec/cloud-security/SKILL.md) — Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)
+- [cms-access-control](./.agents/skills/cms/cms-access-control/SKILL.md) — Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability.
+- [cms-architecture](./.agents/skills/cms/cms-architecture/SKILL.md) — Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.
+- [cms-content-strategy](./.agents/skills/cms/cms-content-strategy/SKILL.md) — Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership.
+- [code-review](./.agents/skills/delivery/code-review/SKILL.md) — Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
+- [codebase-design](./.agents/skills/foundation/codebase-design/SKILL.md) — Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.
+- [compiler-design](./.agents/skills/compilers/compiler-design/SKILL.md) — Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.
+- [compiler-testing](./.agents/skills/compilers/compiler-testing/SKILL.md) — Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.
+- [compilers](./.agents/skills/compilers/compilers/SKILL.md) — Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.
+- [compliance](./.agents/skills/sec/compliance/SKILL.md) — Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)
+- [container-security](./.agents/skills/sec/container-security/SKILL.md) — Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)
+- [context-engine](./.agents/skills/foundation/context-engine/SKILL.md) — Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).
+- [context-pack](./.agents/skills/routing/context-pack/SKILL.md) — Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.
+- [contribution-workflow-optimizer](./.agents/skills/delivery/contribution-workflow-optimizer/SKILL.md) — Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva
+- [cost-optimization](./.agents/skills/devops/cost-optimization/SKILL.md) — Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.
+- [cs-algorithms](./.agents/skills/cs/cs-algorithms/SKILL.md) — Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.
+- [cs-complexity-analysis](./.agents/skills/cs/cs-complexity-analysis/SKILL.md) — Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.
+- [cs-computability](./.agents/skills/cs/cs-computability/SKILL.md) — Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.
+- [cs-data-structures](./.agents/skills/cs/cs-data-structures/SKILL.md) — Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.
+- [data-catalog](./.agents/skills/data/data-catalog/SKILL.md) — Data catalog (metadata management, discovery, classification, data mesh, governance).
+- [data-contracts](./.agents/skills/data/data-contracts/SKILL.md) — Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.
+- [data-etl-pipeline](./.agents/skills/data/data-etl-pipeline/SKILL.md) — Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.
+- [data-lineage](./.agents/skills/data/data-lineage/SKILL.md) — Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance).
+- [data-quality](./.agents/skills/data/data-quality/SKILL.md) — Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.
+- [data-streaming](./.agents/skills/data/data-streaming/SKILL.md) — Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.
+- [data-versioning](./.agents/skills/data/data-versioning/SKILL.md) — Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility).
+- [data-warehouse-modeling](./.agents/skills/data/data-warehouse-modeling/SKILL.md) — Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.
+- [db-migrations](./.agents/skills/db/db-migrations/SKILL.md) — Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.
+- [db-nosql-modeling](./.agents/skills/db/db-nosql-modeling/SKILL.md) — Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.
+- [db-query-optimization](./.agents/skills/db/db-query-optimization/SKILL.md) — Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.
+- [db-relational-design](./.agents/skills/db/db-relational-design/SKILL.md) — Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.
+- [design-system](./.agents/skills/frontend/design-system/SKILL.md) — Define and evolve reusable UI tokens, components, and usage rules as a coherent system.
+- [devops-ci-cd-pipeline](./.agents/skills/devops/devops-ci-cd-pipeline/SKILL.md) — Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.
+- [devops-feature-flags](./.agents/skills/devops/devops-feature-flags/SKILL.md) — Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.
+- [devops-k8s-orchestration](./.agents/skills/devops/devops-k8s-orchestration/SKILL.md) — Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.
+- [devops-terraform-iac](./.agents/skills/devops/devops-terraform-iac/SKILL.md) — Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.
+- [diagnosing-bugs](./.agents/skills/delivery/diagnosing-bugs/SKILL.md) — Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
+- [distributed-tracing](./.agents/skills/backend/distributed-tracing/SKILL.md) — Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).
+- [docs-adrs](./.agents/skills/docs/docs-adrs/SKILL.md) — Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.
+- [docs-knowledge-base](./.agents/skills/docs/docs-knowledge-base/SKILL.md) — Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.
+- [docs-management](./.agents/skills/project/docs-management/SKILL.md) — Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.
+- [docs-technical-writing](./.agents/skills/docs/docs-technical-writing/SKILL.md) — Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.
+- [domain-modeling](./.agents/skills/foundation/domain-modeling/SKILL.md) — Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.
+- [evaluate-skill](./.agents/skills/skill-dev/evaluate-skill/SKILL.md) — Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.
+- [event-driven-architecture](./.agents/skills/backend/event-driven-architecture/SKILL.md) — Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).
+- [execution-policy](./.agents/skills/auxiliary/execution-policy/SKILL.md) — Decide whether a Skill action is allowed, requires approval, or must stop.
+- [feature-store](./.agents/skills/data/feature-store/SKILL.md) — Feature store (online/offline, feature engineering, serving, monitoring, drift).
+- [finance-corporate-val](./.agents/skills/finance/finance-corporate-val/SKILL.md) — Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.
+- [finance-dcf](./.agents/skills/finance/finance-dcf/SKILL.md) — Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.
+- [finance-portfolio-theory](./.agents/skills/finance/finance-portfolio-theory/SKILL.md) — Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.
+- [frontend-design](./.agents/skills/frontend/frontend-design/SKILL.md) — Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.
+- [frontend-testing](./.agents/skills/frontend/frontend-testing/SKILL.md) — Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).
+- [gitops](./.agents/skills/devops/gitops/SKILL.md) — Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.
+- [grill](./.agents/skills/routing/grill/SKILL.md) — Alias for the quirk grilling flow. Use when the user says "grill" and wants a relentless interview to sharpen a plan, decision, or design.
+- [grill-me](./.agents/skills/routing/grill-me/SKILL.md) — A relentless interview to sharpen a plan or design.
+- [grill-with-docs](./.agents/skills/routing/grill-with-docs/SKILL.md) — A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
+- [grilling](./.agents/skills/routing/grilling/SKILL.md) — Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.
+- [grpc-connect](./.agents/skills/backend/grpc-connect/SKILL.md) — gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).
+- [handoff](./.agents/skills/routing/handoff/SKILL.md) — Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.
+- [implement](./.agents/skills/delivery/implement/SKILL.md) — Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.
+- [implement-review-fixes](./.agents/skills/delivery/implement-review-fixes/SKILL.md) — Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor
+- [improve-codebase-architecture](./.agents/skills/engineering/improve-codebase-architecture/SKILL.md) — Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
+- [incident-forensics](./.agents/skills/sec/incident-forensics/SKILL.md) — Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)
+- [incident-response](./.agents/skills/devops/incident-response/SKILL.md) — Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.
+- [integration-playground](./.agents/skills/auxiliary/integration-playground/SKILL.md) — Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.
+- [interaction-design](./.agents/skills/ux/interaction-design/SKILL.md) — Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.
+- [interactive-tutorial-builder](./.agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md) — Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.
+- [iot-embedded](./.agents/skills/iot/iot-embedded/SKILL.md) — Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.
+- [issue-operations](./.agents/skills/integrations/issue-operations/SKILL.md) — Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions.
+- [knowledge-curator](./.agents/skills/routing/knowledge-curator/SKILL.md) — Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.
+- [llm-eval](./.agents/skills/ai/llm-eval/SKILL.md) — Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.
+- [llm-fine-tuning](./.agents/skills/ai/llm-fine-tuning/SKILL.md) — Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.
+- [llmops](./.agents/skills/ai/llmops/SKILL.md) — LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)
+- [localization](./.agents/skills/cms/localization/SKILL.md) — Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.
+- [lockfile-maintenance](./.agents/skills/skill-dev/lockfile-maintenance/SKILL.md) — Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.
+- [make-project](./.agents/skills/project/make-project/SKILL.md) — Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.
+- [math-computation-reproducible](./.agents/skills/math/math-computation-reproducible/SKILL.md) — Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.
+- [math-computational](./.agents/skills/math/math-computational/SKILL.md) — Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.
+- [math-cryptography](./.agents/skills/math/math-cryptography/SKILL.md) — Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.
+- [math-formal-proof](./.agents/skills/math/math-formal-proof/SKILL.md) — Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.
+- [math-grant-structure](./.agents/skills/math/math-grant-structure/SKILL.md) — Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.
+- [math-linear-algebra](./.agents/skills/math/math-linear-algebra/SKILL.md) — Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.
+- [math-literature-track](./.agents/skills/math/math-literature-track/SKILL.md) — Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.
+- [math-optimization](./.agents/skills/math/math-optimization/SKILL.md) — Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.
+- [math-paper-collaboration](./.agents/skills/math/math-paper-collaboration/SKILL.md) — Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.
+- [math-presentation-beamer](./.agents/skills/math/math-presentation-beamer/SKILL.md) — Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.
+- [math-probability-models](./.agents/skills/math/math-probability-models/SKILL.md) — Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.
+- [math-pure-proofs](./.agents/skills/math/math-pure-proofs/SKILL.md) — Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.
+- [math-teaching-problem-set](./.agents/skills/math/math-teaching-problem-set/SKILL.md) — Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.
+- [mcp-server](./.agents/skills/foundation/mcp-server/SKILL.md) — Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.
+- [microservices](./.agents/skills/backend/microservices/SKILL.md) — Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.
+- [mlops](./.agents/skills/ai/mlops/SKILL.md) — MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)
+- [mobile](./.agents/skills/frontend/mobile/SKILL.md) — Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.
+- [multimodal-prompting](./.agents/skills/ai/multimodal-prompting/SKILL.md) — Multimodal prompting (vision, audio, video, image generation, vision-language models)
+- [networking](./.agents/skills/networking/networking/SKILL.md) — Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.
+- [networking-protocols](./.agents/skills/networking/networking-protocols/SKILL.md) — Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.
+- [networking-security](./.agents/skills/networking/networking-security/SKILL.md) — Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.
+- [nextjs](./.agents/skills/frontend/nextjs/SKILL.md) — Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.
+- [observability](./.agents/skills/foundation/observability/SKILL.md) — Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.
+- [os-kernel](./.agents/skills/os/os-kernel/SKILL.md) — Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.
+- [os-memory](./.agents/skills/os/os-memory/SKILL.md) — Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.
+- [os-processes](./.agents/skills/os/os-processes/SKILL.md) — Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.
+- [payments](./.agents/skills/integrations/payments/SKILL.md) — Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.
+- [performance-testing](./.agents/skills/qa/performance-testing/SKILL.md) — Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.
+- [physics-astro](./.agents/skills/physics/physics-astro/SKILL.md) — Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.
+- [physics-career-postdoc](./.agents/skills/physics/physics-career-postdoc/SKILL.md) — Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.
+- [physics-classical](./.agents/skills/physics/physics-classical/SKILL.md) — Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.
+- [physics-data-analysis-root](./.agents/skills/physics/physics-data-analysis-root/SKILL.md) — Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.
+- [physics-experimental-notebook](./.agents/skills/physics/physics-experimental-notebook/SKILL.md) — Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.
+- [physics-literature-search](./.agents/skills/physics/physics-literature-search/SKILL.md) — Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.
+- [physics-quantum](./.agents/skills/physics/physics-quantum/SKILL.md) — Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.
+- [physics-reproducibility-archive](./.agents/skills/physics/physics-reproducibility-archive/SKILL.md) — Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.
+- [physics-simulation-setup](./.agents/skills/physics/physics-simulation-setup/SKILL.md) — Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.
+- [physics-talk-design](./.agents/skills/physics/physics-talk-design/SKILL.md) — Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.
+- [physics-thermo](./.agents/skills/physics/physics-thermo/SKILL.md) — Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.
+- [physics-writing-revtex](./.agents/skills/physics/physics-writing-revtex/SKILL.md) — Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.
+- [plan-review-fixes](./.agents/skills/delivery/plan-review-fixes/SKILL.md) — Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after
+- [pr-operations](./.agents/skills/integrations/pr-operations/SKILL.md) — Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.
+- [pro-market-analysis](./.agents/skills/professional/pro-market-analysis/SKILL.md) — Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.
+- [prod-ab-testing](./.agents/skills/product/prod-ab-testing/SKILL.md) — Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.
+- [prod-okr-planning](./.agents/skills/product/prod-okr-planning/SKILL.md) — Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.
+- [prod-prd-writing](./.agents/skills/product/prod-prd-writing/SKILL.md) — Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.
+- [professional-communication](./.agents/skills/professional/professional-communication/SKILL.md) — Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.
+- [professional-project-management](./.agents/skills/professional/professional-project-management/SKILL.md) — Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts.
+- [project-development](./.agents/skills/project/project-development/SKILL.md) — Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins.
+- [project-viability](./.agents/skills/project/project-viability/SKILL.md) — Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.
+- [prompt-template-library](./.agents/skills/ai/prompt-template-library/SKILL.md) — Prompt template library (versioned templates, A/B testing, composition, evaluation)
+- [prototype](./.agents/skills/delivery/prototype/SKILL.md) — Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.
+- [publish-open-pr](./.agents/skills/routing/publish-open-pr/SKILL.md) — Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.
+- [qa-automation](./.agents/skills/qa/qa-automation/SKILL.md) — Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
+- [qa-manual-testing](./.agents/skills/qa/qa-manual-testing/SKILL.md) — Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.
+- [qa-security-testing](./.agents/skills/qa/qa-security-testing/SKILL.md) — Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.
+- [quant-backtest](./.agents/skills/quant/quant-backtest/SKILL.md) — Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.
+- [quant-credit-risk](./.agents/skills/quant/quant-credit-risk/SKILL.md) — Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.
+- [quant-derivatives-pricing](./.agents/skills/quant/quant-derivatives-pricing/SKILL.md) — Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.
+- [quant-factors](./.agents/skills/quant/quant-factors/SKILL.md) — Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.
+- [quant-market-micro](./.agents/skills/quant/quant-market-micro/SKILL.md) — Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.
+- [quant-portfolio-opt](./.agents/skills/quant/quant-portfolio-opt/SKILL.md) — Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.
+- [quant-risk-modeling](./.agents/skills/quant/quant-risk-modeling/SKILL.md) — Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.
+- [rag-pipeline](./.agents/skills/ai/rag-pipeline/SKILL.md) — Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.
+- [rate-limiting](./.agents/skills/backend/rate-limiting/SKILL.md) — Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).
+- [react](./.agents/skills/frontend/react/SKILL.md) — Design React component structure and state seams — with composability, testability, and clear data flow.
+- [remix](./.agents/skills/frontend/remix/SKILL.md) — Remix framework (loaders, actions, nested routes, progressive enhancement).
+- [research](./.agents/skills/delivery/research/SKILL.md) — Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w
+- [research-data-archiving](./.agents/skills/research/research-data-archiving/SKILL.md) — Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.
+- [research-literature-review](./.agents/skills/research/research-literature-review/SKILL.md) — Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.
+- [resolving-merge-conflicts](./.agents/skills/delivery/resolving-merge-conflicts/SKILL.md) — "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution."
+- [review-fix-loop](./.agents/skills/delivery/review-fix-loop/SKILL.md) — "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only."
+- [review-pr](./.agents/skills/delivery/review-pr/SKILL.md) — Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
+- [rule-cataloger](./.agents/skills/skill-dev/rule-cataloger/SKILL.md) — Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.
+- [scientific-hypothesis](./.agents/skills/research/scientific-hypothesis/SKILL.md) — Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.
+- [search](./.agents/skills/integrations/search/SKILL.md) — Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.
+- [sec-cryptography-applied](./.agents/skills/sec/sec-cryptography-applied/SKILL.md) — Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.
+- [sec-privacy-engineering](./.agents/skills/sec/sec-privacy-engineering/SKILL.md) — Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.
+- [sec-security-audit](./.agents/skills/sec/sec-security-audit/SKILL.md) — Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.
+- [sec-threat-modeling](./.agents/skills/sec/sec-threat-modeling/SKILL.md) — Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.
+- [secret-management](./.agents/skills/devops/secret-management/SKILL.md) — Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.
+- [secret-management-security](./.agents/skills/sec/secret-management-security/SKILL.md) — Secrets management (Vault, KMS, rotation, injection, external secrets operator)
+- [semantic-layer](./.agents/skills/data/semantic-layer/SKILL.md) — Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.
+- [serverless](./.agents/skills/backend/serverless/SKILL.md) — Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).
+- [service-mesh](./.agents/skills/backend/service-mesh/SKILL.md) — Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).
+- [setup-quirk-skills](./.agents/skills/auxiliary/setup-quirk-skills/SKILL.md) — Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
+- [ship-subissue](./.agents/skills/routing/ship-subissue/SKILL.md) — Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.
+- [side-effect-auditor](./.agents/skills/skill-dev/side-effect-auditor/SKILL.md) — Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.
+- [skill-audit](./.agents/skills/skill-dev/skill-audit/SKILL.md) — Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.
+- [skill-creator](./.agents/skills/skill-dev/skill-creator/SKILL.md) — Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.
+- [skill-dependency-graph](./.agents/skills/skill-dev/skill-dependency-graph/SKILL.md) — Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.
+- [skill-diff-analyzer](./.agents/skills/skill-dev/skill-diff-analyzer/SKILL.md) — Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.
+- [skill-performance-metrics](./.agents/skills/skill-dev/skill-performance-metrics/SKILL.md) — Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.
+- [skill-promoter](./.agents/skills/skill-dev/skill-promoter/SKILL.md) — Promote validated experimental skills from the sandbox to the canonical skills bundle.
+- [skill-quality-gate](./.agents/skills/skill-dev/skill-quality-gate/SKILL.md) — Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.
+- [skill-sandbox](./.agents/skills/skill-dev/skill-sandbox/SKILL.md) — Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.
+- [skill-template-generator](./.agents/skills/skill-dev/skill-template-generator/SKILL.md) — Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.
+- [skill-testing-framework](./.agents/skills/skill-dev/skill-testing-framework/SKILL.md) — Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.
+- [skill-tutor](./.agents/skills/skill-dev/skill-tutor/SKILL.md) — Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+- [state-management](./.agents/skills/frontend/state-management/SKILL.md) — Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
+- [stream-processing](./.agents/skills/data/stream-processing/SKILL.md) — Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).
+- [structured-output](./.agents/skills/ai/structured-output/SKILL.md) — Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)
+- [styling](./.agents/skills/frontend/styling/SKILL.md) — Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).
+- [subagent-swarm](./.agents/skills/foundation/subagent-swarm/SKILL.md) — Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.
+- [supply-chain-security](./.agents/skills/sec/supply-chain-security/SKILL.md) — Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.
+- [tdd](./.agents/skills/delivery/tdd/SKILL.md) — Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor"
+- [testing](./.agents/skills/delivery/testing/SKILL.md) — Shape the test strategy for a project so behavior is verified at the right seams and at the right level.
+- [to-spec](./.agents/skills/project/to-spec/SKILL.md) — Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.
+- [to-tickets](./.agents/skills/project/to-tickets/SKILL.md) — Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.
+- [triage](./.agents/skills/routing/triage/SKILL.md) — Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag
+- [ux-accessibility](./.agents/skills/ux/ux-accessibility/SKILL.md) — Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.
+- [ux-prototyping](./.agents/skills/ux/ux-prototyping/SKILL.md) — Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.
+- [ux-research](./.agents/skills/ux/ux-research/SKILL.md) — Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.
+- [wayfinder](./.agents/skills/routing/wayfinder/SKILL.md) — Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.
+- [web3-consensus](./.agents/skills/web3/web3-consensus/SKILL.md) — Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.
+- [web3-defi](./.agents/skills/web3/web3-defi/SKILL.md) — Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.
+- [web3-governance](./.agents/skills/web3/web3-governance/SKILL.md) — Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.
+- [web3-l2-scaling](./.agents/skills/web3/web3-l2-scaling/SKILL.md) — Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.
+- [web3-smart-contracts](./.agents/skills/web3/web3-smart-contracts/SKILL.md) — Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.
+- [web3-tokenomics](./.agents/skills/web3/web3-tokenomics/SKILL.md) — Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests.
+- [webapp-testing](./.agents/skills/delivery/webapp-testing/SKILL.md) — Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.
+- [websockets](./.agents/skills/backend/websockets/SKILL.md) — WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).
+- [work-item-router](./.agents/skills/routing/work-item-router/SKILL.md) — Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.
+- [workflow-fixture-author](./.agents/skills/skill-dev/workflow-fixture-author/SKILL.md) — Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.
+- [writing-great-skills](./.agents/skills/skill-dev/writing-great-skills/SKILL.md) — Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
+- [xr-development](./.agents/skills/xr/xr-development/SKILL.md) — Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.
+- [xr-interaction-design](./.agents/skills/xr/xr-interaction-design/SKILL.md) — Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.
+- [xr-performance](./.agents/skills/xr/xr-performance/SKILL.md) — Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.
+- [zero-trust](./.agents/skills/sec/zero-trust/SKILL.md) — Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.
+
+## Categories
+
+- accessibility: 3 skills
+- ai: 5 skills
+- auxiliary: 4 skills
+- backend: 13 skills
+- cms: 4 skills
+- compilers: 3 skills
+- cs: 3 skills
+- data: 5 skills
+- db: 2 skills
+- delivery: 14 skills
+- docs: 2 skills
+- engineering: 1 skills
+- foundation: 9 skills
+- frontend: 10 skills
+- integrations: 6 skills
+- iot: 1 skills
+- networking: 3 skills
+- os: 3 skills
+- product: 3 skills
+- professional: 2 skills
+- project: 5 skills
+- qa: 4 skills
+- research: 2 skills
+- routing: 15 skills
+- sec: 3 skills
+- skill-dev: 17 skills
+- skill-dev/sandbox: 73 skills
+- uncategorized: 1 skills
+- ux: 4 skills
+- web3: 6 skills
+- xr: 3 skills

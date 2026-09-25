@@ -1,0 +1,3369 @@
+{
+  "owner": {},
+  "metadata": {},
+  "plugins": [
+    {
+      "name": "quirk-accessibility",
+      "description": "Quirk accessibility skills",
+      "skillsDir": ".agents/skills/accessibility",
+      "skills": [
+        {
+          "name": "accessibility",
+          "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
+          "category": "accessibility",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/accessibility/accessibility"
+        },
+        {
+          "name": "accessibility-design",
+          "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
+          "category": "accessibility",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/accessibility/accessibility-design"
+        },
+        {
+          "name": "accessibility-testing",
+          "description": "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.",
+          "category": "accessibility",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/accessibility/accessibility-testing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-skill-dev/sandbox",
+      "description": "Quirk skill-dev/sandbox skills",
+      "skillsDir": ".agents/skills/skill-dev/sandbox",
+      "skills": [
+        {
+          "name": "agent-orchestration",
+          "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/agent-orchestration"
+        },
+        {
+          "name": "ai-ml-pipeline",
+          "description": "Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/ai-ml-pipeline"
+        },
+        {
+          "name": "ai-model-evaluation",
+          "description": "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/ai-model-evaluation"
+        },
+        {
+          "name": "ai-prompt-engineering",
+          "description": "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/ai-prompt-engineering"
+        },
+        {
+          "name": "ai-time-series-forecasting",
+          "description": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/ai-time-series-forecasting"
+        },
+        {
+          "name": "llm-eval",
+          "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/llm-eval"
+        },
+        {
+          "name": "llm-fine-tuning",
+          "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/llm-fine-tuning"
+        },
+        {
+          "name": "rag-pipeline",
+          "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/rag-pipeline"
+        },
+        {
+          "name": "cs-algorithms",
+          "description": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cs/cs-algorithms"
+        },
+        {
+          "name": "data-contracts",
+          "description": "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-contracts"
+        },
+        {
+          "name": "data-etl-pipeline",
+          "description": "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-etl-pipeline"
+        },
+        {
+          "name": "data-quality",
+          "description": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-quality"
+        },
+        {
+          "name": "data-streaming",
+          "description": "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-streaming"
+        },
+        {
+          "name": "data-warehouse-modeling",
+          "description": "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-warehouse-modeling"
+        },
+        {
+          "name": "semantic-layer",
+          "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/semantic-layer"
+        },
+        {
+          "name": "db-nosql-modeling",
+          "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/db/db-nosql-modeling"
+        },
+        {
+          "name": "db-relational-design",
+          "description": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/db/db-relational-design"
+        },
+        {
+          "name": "backup-disaster-recovery",
+          "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/backup-disaster-recovery"
+        },
+        {
+          "name": "chaos-engineering",
+          "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/chaos-engineering"
+        },
+        {
+          "name": "cost-optimization",
+          "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/cost-optimization"
+        },
+        {
+          "name": "devops-ci-cd-pipeline",
+          "description": "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/devops-ci-cd-pipeline"
+        },
+        {
+          "name": "devops-feature-flags",
+          "description": "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/devops-feature-flags"
+        },
+        {
+          "name": "devops-k8s-orchestration",
+          "description": "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/devops-k8s-orchestration"
+        },
+        {
+          "name": "devops-terraform-iac",
+          "description": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/devops-terraform-iac"
+        },
+        {
+          "name": "gitops",
+          "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/gitops"
+        },
+        {
+          "name": "incident-response",
+          "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/incident-response"
+        },
+        {
+          "name": "secret-management",
+          "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/devops/secret-management"
+        },
+        {
+          "name": "docs-adrs",
+          "description": "Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/docs/docs-adrs"
+        },
+        {
+          "name": "finance-corporate-val",
+          "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/finance/finance-corporate-val"
+        },
+        {
+          "name": "finance-dcf",
+          "description": "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/finance/finance-dcf"
+        },
+        {
+          "name": "finance-portfolio-theory",
+          "description": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/finance/finance-portfolio-theory"
+        },
+        {
+          "name": "math-computation-reproducible",
+          "description": "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-computation-reproducible"
+        },
+        {
+          "name": "math-computational",
+          "description": "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-computational"
+        },
+        {
+          "name": "math-cryptography",
+          "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-cryptography"
+        },
+        {
+          "name": "math-formal-proof",
+          "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-formal-proof"
+        },
+        {
+          "name": "math-grant-structure",
+          "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-grant-structure"
+        },
+        {
+          "name": "math-linear-algebra",
+          "description": "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-linear-algebra"
+        },
+        {
+          "name": "math-literature-track",
+          "description": "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-literature-track"
+        },
+        {
+          "name": "math-optimization",
+          "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-optimization"
+        },
+        {
+          "name": "math-paper-collaboration",
+          "description": "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-paper-collaboration"
+        },
+        {
+          "name": "math-presentation-beamer",
+          "description": "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-presentation-beamer"
+        },
+        {
+          "name": "math-probability-models",
+          "description": "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-probability-models"
+        },
+        {
+          "name": "math-pure-proofs",
+          "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-pure-proofs"
+        },
+        {
+          "name": "math-teaching-problem-set",
+          "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/math/math-teaching-problem-set"
+        },
+        {
+          "name": "physics-astro",
+          "description": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-astro"
+        },
+        {
+          "name": "physics-career-postdoc",
+          "description": "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-career-postdoc"
+        },
+        {
+          "name": "physics-classical",
+          "description": "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-classical"
+        },
+        {
+          "name": "physics-data-analysis-root",
+          "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-data-analysis-root"
+        },
+        {
+          "name": "physics-experimental-notebook",
+          "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-experimental-notebook"
+        },
+        {
+          "name": "physics-literature-search",
+          "description": "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-literature-search"
+        },
+        {
+          "name": "physics-quantum",
+          "description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-quantum"
+        },
+        {
+          "name": "physics-reproducibility-archive",
+          "description": "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-reproducibility-archive"
+        },
+        {
+          "name": "physics-simulation-setup",
+          "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-simulation-setup"
+        },
+        {
+          "name": "physics-talk-design",
+          "description": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-talk-design"
+        },
+        {
+          "name": "physics-thermo",
+          "description": "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-thermo"
+        },
+        {
+          "name": "physics-writing-revtex",
+          "description": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/physics/physics-writing-revtex"
+        },
+        {
+          "name": "pro-market-analysis",
+          "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/professional/pro-market-analysis"
+        },
+        {
+          "name": "quant-backtest",
+          "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-backtest"
+        },
+        {
+          "name": "quant-credit-risk",
+          "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-credit-risk"
+        },
+        {
+          "name": "quant-derivatives-pricing",
+          "description": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-derivatives-pricing"
+        },
+        {
+          "name": "quant-factors",
+          "description": "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-factors"
+        },
+        {
+          "name": "quant-market-micro",
+          "description": "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-market-micro"
+        },
+        {
+          "name": "quant-portfolio-opt",
+          "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-portfolio-opt"
+        },
+        {
+          "name": "quant-risk-modeling",
+          "description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/quant/quant-risk-modeling"
+        },
+        {
+          "name": "scientific-hypothesis",
+          "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/research/scientific-hypothesis"
+        },
+        {
+          "name": "compliance",
+          "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/compliance"
+        },
+        {
+          "name": "incident-forensics",
+          "description": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/incident-forensics"
+        },
+        {
+          "name": "sec-cryptography-applied",
+          "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/sec-cryptography-applied"
+        },
+        {
+          "name": "sec-privacy-engineering",
+          "description": "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/sec-privacy-engineering"
+        },
+        {
+          "name": "sec-security-audit",
+          "description": "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/sec-security-audit"
+        },
+        {
+          "name": "sec-threat-modeling",
+          "description": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/sec-threat-modeling"
+        },
+        {
+          "name": "supply-chain-security",
+          "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/supply-chain-security"
+        },
+        {
+          "name": "zero-trust",
+          "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
+          "category": "skill-dev/sandbox",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/zero-trust"
+        }
+      ]
+    },
+    {
+      "name": "quirk-ai",
+      "description": "Quirk ai skills",
+      "skillsDir": ".agents/skills/ai",
+      "skills": [
+        {
+          "name": "llmops",
+          "description": "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)",
+          "category": "ai",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/llmops"
+        },
+        {
+          "name": "mlops",
+          "description": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)",
+          "category": "ai",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/mlops"
+        },
+        {
+          "name": "multimodal-prompting",
+          "description": "Multimodal prompting (vision, audio, video, image generation, vision-language models)",
+          "category": "ai",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/multimodal-prompting"
+        },
+        {
+          "name": "prompt-template-library",
+          "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
+          "category": "ai",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/prompt-template-library"
+        },
+        {
+          "name": "structured-output",
+          "description": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)",
+          "category": "ai",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ai/structured-output"
+        }
+      ]
+    },
+    {
+      "name": "quirk-auxiliary",
+      "description": "Quirk auxiliary skills",
+      "skillsDir": ".agents/skills/auxiliary",
+      "skills": [
+        {
+          "name": "execution-policy",
+          "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
+          "category": "auxiliary",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/auxiliary/execution-policy"
+        },
+        {
+          "name": "integration-playground",
+          "description": "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.",
+          "category": "auxiliary",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/auxiliary/integration-playground"
+        },
+        {
+          "name": "interactive-tutorial-builder",
+          "description": "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.",
+          "category": "auxiliary",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
+        },
+        {
+          "name": "setup-quirk-skills",
+          "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+          "category": "auxiliary",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/auxiliary/setup-quirk-skills"
+        }
+      ]
+    },
+    {
+      "name": "quirk-backend",
+      "description": "Quirk backend skills",
+      "skillsDir": ".agents/skills/backend",
+      "skills": [
+        {
+          "name": "api-gateway",
+          "description": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/api-gateway"
+        },
+        {
+          "name": "backend-architecture",
+          "description": "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/backend-architecture"
+        },
+        {
+          "name": "backend-caching",
+          "description": "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/backend-caching"
+        },
+        {
+          "name": "backend-queues",
+          "description": "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/backend-queues"
+        },
+        {
+          "name": "caching-advanced",
+          "description": "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/caching-advanced"
+        },
+        {
+          "name": "distributed-tracing",
+          "description": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/distributed-tracing"
+        },
+        {
+          "name": "event-driven-architecture",
+          "description": "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/event-driven-architecture"
+        },
+        {
+          "name": "grpc-connect",
+          "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/grpc-connect"
+        },
+        {
+          "name": "microservices",
+          "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/microservices"
+        },
+        {
+          "name": "rate-limiting",
+          "description": "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/rate-limiting"
+        },
+        {
+          "name": "serverless",
+          "description": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/serverless"
+        },
+        {
+          "name": "service-mesh",
+          "description": "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/service-mesh"
+        },
+        {
+          "name": "websockets",
+          "description": "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).",
+          "category": "backend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/backend/websockets"
+        }
+      ]
+    },
+    {
+      "name": "quirk-cms",
+      "description": "Quirk cms skills",
+      "skillsDir": ".agents/skills/cms",
+      "skills": [
+        {
+          "name": "cms-access-control",
+          "description": "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability.",
+          "category": "cms",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cms/cms-access-control"
+        },
+        {
+          "name": "cms-architecture",
+          "description": "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.",
+          "category": "cms",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cms/cms-architecture"
+        },
+        {
+          "name": "cms-content-strategy",
+          "description": "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership.",
+          "category": "cms",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cms/cms-content-strategy"
+        },
+        {
+          "name": "localization",
+          "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
+          "category": "cms",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cms/localization"
+        }
+      ]
+    },
+    {
+      "name": "quirk-compilers",
+      "description": "Quirk compilers skills",
+      "skillsDir": ".agents/skills/compilers",
+      "skills": [
+        {
+          "name": "compiler-design",
+          "description": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.",
+          "category": "compilers",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/compilers/compiler-design"
+        },
+        {
+          "name": "compiler-testing",
+          "description": "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.",
+          "category": "compilers",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/compilers/compiler-testing"
+        },
+        {
+          "name": "compilers",
+          "description": "Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.",
+          "category": "compilers",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/compilers/compilers"
+        }
+      ]
+    },
+    {
+      "name": "quirk-cs",
+      "description": "Quirk cs skills",
+      "skillsDir": ".agents/skills/cs",
+      "skills": [
+        {
+          "name": "cs-complexity-analysis",
+          "description": "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.",
+          "category": "cs",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cs/cs-complexity-analysis"
+        },
+        {
+          "name": "cs-computability",
+          "description": "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.",
+          "category": "cs",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cs/cs-computability"
+        },
+        {
+          "name": "cs-data-structures",
+          "description": "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.",
+          "category": "cs",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/cs/cs-data-structures"
+        }
+      ]
+    },
+    {
+      "name": "quirk-data",
+      "description": "Quirk data skills",
+      "skillsDir": ".agents/skills/data",
+      "skills": [
+        {
+          "name": "data-catalog",
+          "description": "Data catalog (metadata management, discovery, classification, data mesh, governance).",
+          "category": "data",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-catalog"
+        },
+        {
+          "name": "data-lineage",
+          "description": "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance).",
+          "category": "data",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-lineage"
+        },
+        {
+          "name": "data-versioning",
+          "description": "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility).",
+          "category": "data",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/data-versioning"
+        },
+        {
+          "name": "feature-store",
+          "description": "Feature store (online/offline, feature engineering, serving, monitoring, drift).",
+          "category": "data",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/feature-store"
+        },
+        {
+          "name": "stream-processing",
+          "description": "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).",
+          "category": "data",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/data/stream-processing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-db",
+      "description": "Quirk db skills",
+      "skillsDir": ".agents/skills/db",
+      "skills": [
+        {
+          "name": "db-migrations",
+          "description": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.",
+          "category": "db",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/db/db-migrations"
+        },
+        {
+          "name": "db-query-optimization",
+          "description": "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.",
+          "category": "db",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/db/db-query-optimization"
+        }
+      ]
+    },
+    {
+      "name": "quirk-delivery",
+      "description": "Quirk delivery skills",
+      "skillsDir": ".agents/skills/delivery",
+      "skills": [
+        {
+          "name": "code-review",
+          "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/code-review"
+        },
+        {
+          "name": "contribution-workflow-optimizer",
+          "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/contribution-workflow-optimizer"
+        },
+        {
+          "name": "diagnosing-bugs",
+          "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/diagnosing-bugs"
+        },
+        {
+          "name": "implement",
+          "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/implement"
+        },
+        {
+          "name": "implement-review-fixes",
+          "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/implement-review-fixes"
+        },
+        {
+          "name": "plan-review-fixes",
+          "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/plan-review-fixes"
+        },
+        {
+          "name": "prototype",
+          "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/prototype"
+        },
+        {
+          "name": "research",
+          "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/research"
+        },
+        {
+          "name": "resolving-merge-conflicts",
+          "description": "\"Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.\"",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/resolving-merge-conflicts"
+        },
+        {
+          "name": "review-fix-loop",
+          "description": "\"Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.\"",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/delivery/review-fix-loop"
+        },
+        {
+          "name": "review-pr",
+          "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/review-pr"
+        },
+        {
+          "name": "tdd",
+          "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\"",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/tdd"
+        },
+        {
+          "name": "testing",
+          "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/testing"
+        },
+        {
+          "name": "webapp-testing",
+          "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/delivery/webapp-testing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-docs",
+      "description": "Quirk docs skills",
+      "skillsDir": ".agents/skills/docs",
+      "skills": [
+        {
+          "name": "docs-knowledge-base",
+          "description": "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.",
+          "category": "docs",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/docs/docs-knowledge-base"
+        },
+        {
+          "name": "docs-technical-writing",
+          "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
+          "category": "docs",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/docs/docs-technical-writing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-engineering",
+      "description": "Quirk engineering skills",
+      "skillsDir": ".agents/skills/engineering",
+      "skills": [
+        {
+          "name": "improve-codebase-architecture",
+          "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
+          "category": "engineering",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/engineering/improve-codebase-architecture"
+        }
+      ]
+    },
+    {
+      "name": "quirk-foundation",
+      "description": "Quirk foundation skills",
+      "skillsDir": ".agents/skills/foundation",
+      "skills": [
+        {
+          "name": "agent-canvas",
+          "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/foundation/agent-canvas"
+        },
+        {
+          "name": "agent-observability",
+          "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/foundation/agent-observability"
+        },
+        {
+          "name": "api-design",
+          "description": "Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/api-design"
+        },
+        {
+          "name": "codebase-design",
+          "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/codebase-design"
+        },
+        {
+          "name": "context-engine",
+          "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/context-engine"
+        },
+        {
+          "name": "domain-modeling",
+          "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/domain-modeling"
+        },
+        {
+          "name": "mcp-server",
+          "description": "Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/foundation/mcp-server"
+        },
+        {
+          "name": "observability",
+          "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
+          "category": "foundation",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/observability"
+        },
+        {
+          "name": "subagent-swarm",
+          "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/foundation/subagent-swarm"
+        }
+      ]
+    },
+    {
+      "name": "quirk-frontend",
+      "description": "Quirk frontend skills",
+      "skillsDir": ".agents/skills/frontend",
+      "skills": [
+        {
+          "name": "astro",
+          "description": "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/astro"
+        },
+        {
+          "name": "design-system",
+          "description": "Define and evolve reusable UI tokens, components, and usage rules as a coherent system.",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/design-system"
+        },
+        {
+          "name": "frontend-design",
+          "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/frontend-design"
+        },
+        {
+          "name": "frontend-testing",
+          "description": "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/frontend-testing"
+        },
+        {
+          "name": "mobile",
+          "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
+          "category": "frontend",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/mobile"
+        },
+        {
+          "name": "nextjs",
+          "description": "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/nextjs"
+        },
+        {
+          "name": "react",
+          "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/react"
+        },
+        {
+          "name": "remix",
+          "description": "Remix framework (loaders, actions, nested routes, progressive enhancement).",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/remix"
+        },
+        {
+          "name": "state-management",
+          "description": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/state-management"
+        },
+        {
+          "name": "styling",
+          "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
+          "category": "frontend",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/frontend/styling"
+        }
+      ]
+    },
+    {
+      "name": "quirk-integrations",
+      "description": "Quirk integrations skills",
+      "skillsDir": ".agents/skills/integrations",
+      "skills": [
+        {
+          "name": "api-contracts",
+          "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
+          "category": "integrations",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/integrations/api-contracts"
+        },
+        {
+          "name": "auth",
+          "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
+          "category": "integrations",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/integrations/auth"
+        },
+        {
+          "name": "issue-operations",
+          "description": "Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions.",
+          "category": "integrations",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/integrations/issue-operations"
+        },
+        {
+          "name": "payments",
+          "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+          "category": "integrations",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/integrations/payments"
+        },
+        {
+          "name": "pr-operations",
+          "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
+          "category": "integrations",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/integrations/pr-operations"
+        },
+        {
+          "name": "search",
+          "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
+          "category": "integrations",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/integrations/search"
+        }
+      ]
+    },
+    {
+      "name": "quirk-iot",
+      "description": "Quirk iot skills",
+      "skillsDir": ".agents/skills/iot",
+      "skills": [
+        {
+          "name": "iot-embedded",
+          "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
+          "category": "iot",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/iot/iot-embedded"
+        }
+      ]
+    },
+    {
+      "name": "quirk-networking",
+      "description": "Quirk networking skills",
+      "skillsDir": ".agents/skills/networking",
+      "skills": [
+        {
+          "name": "networking",
+          "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
+          "category": "networking",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/networking/networking"
+        },
+        {
+          "name": "networking-protocols",
+          "description": "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.",
+          "category": "networking",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/networking/networking-protocols"
+        },
+        {
+          "name": "networking-security",
+          "description": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.",
+          "category": "networking",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/networking/networking-security"
+        }
+      ]
+    },
+    {
+      "name": "quirk-os",
+      "description": "Quirk os skills",
+      "skillsDir": ".agents/skills/os",
+      "skills": [
+        {
+          "name": "os-kernel",
+          "description": "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.",
+          "category": "os",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/os/os-kernel"
+        },
+        {
+          "name": "os-memory",
+          "description": "Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.",
+          "category": "os",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/os/os-memory"
+        },
+        {
+          "name": "os-processes",
+          "description": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.",
+          "category": "os",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/os/os-processes"
+        }
+      ]
+    },
+    {
+      "name": "quirk-product",
+      "description": "Quirk product skills",
+      "skillsDir": ".agents/skills/product",
+      "skills": [
+        {
+          "name": "prod-ab-testing",
+          "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
+          "category": "product",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/product/prod-ab-testing"
+        },
+        {
+          "name": "prod-okr-planning",
+          "description": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.",
+          "category": "product",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/product/prod-okr-planning"
+        },
+        {
+          "name": "prod-prd-writing",
+          "description": "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.",
+          "category": "product",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/product/prod-prd-writing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-professional",
+      "description": "Quirk professional skills",
+      "skillsDir": ".agents/skills/professional",
+      "skills": [
+        {
+          "name": "professional-communication",
+          "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
+          "category": "professional",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/professional/professional-communication"
+        },
+        {
+          "name": "professional-project-management",
+          "description": "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts.",
+          "category": "professional",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/professional/professional-project-management"
+        }
+      ]
+    },
+    {
+      "name": "quirk-project",
+      "description": "Quirk project skills",
+      "skillsDir": ".agents/skills/project",
+      "skills": [
+        {
+          "name": "docs-management",
+          "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
+          "category": "project",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/project/docs-management"
+        },
+        {
+          "name": "make-project",
+          "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
+          "category": "project",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/project/make-project"
+        },
+        {
+          "name": "project-development",
+          "description": "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins.",
+          "category": "project",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/project/project-development"
+        },
+        {
+          "name": "to-spec",
+          "description": "Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.",
+          "category": "project",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/project/to-spec"
+        },
+        {
+          "name": "to-tickets",
+          "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.",
+          "category": "project",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/project/to-tickets"
+        }
+      ]
+    },
+    {
+      "name": "quirk-uncategorized",
+      "description": "Quirk uncategorized skills",
+      "skillsDir": ".agents/skills/uncategorized",
+      "skills": [
+        {
+          "name": "project-viability",
+          "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
+          "category": "uncategorized",
+          "version": "1.0.0",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/project/project-viability"
+        }
+      ]
+    },
+    {
+      "name": "quirk-qa",
+      "description": "Quirk qa skills",
+      "skillsDir": ".agents/skills/qa",
+      "skills": [
+        {
+          "name": "performance-testing",
+          "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
+          "category": "qa",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/qa/performance-testing"
+        },
+        {
+          "name": "qa-automation",
+          "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
+          "category": "qa",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/qa/qa-automation"
+        },
+        {
+          "name": "qa-manual-testing",
+          "description": "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.",
+          "category": "qa",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/qa/qa-manual-testing"
+        },
+        {
+          "name": "qa-security-testing",
+          "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+          "category": "qa",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/qa/qa-security-testing"
+        }
+      ]
+    },
+    {
+      "name": "quirk-research",
+      "description": "Quirk research skills",
+      "skillsDir": ".agents/skills/research",
+      "skills": [
+        {
+          "name": "research-data-archiving",
+          "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
+          "category": "research",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/research/research-data-archiving"
+        },
+        {
+          "name": "research-literature-review",
+          "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
+          "category": "research",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/research/research-literature-review"
+        }
+      ]
+    },
+    {
+      "name": "quirk-routing",
+      "description": "Quirk routing skills",
+      "skillsDir": ".agents/skills/routing",
+      "skills": [
+        {
+          "name": "artifact-handoff",
+          "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/artifact-handoff"
+        },
+        {
+          "name": "ask-to",
+          "description": "Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/ask-to"
+        },
+        {
+          "name": "capability-router",
+          "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/capability-router"
+        },
+        {
+          "name": "context-pack",
+          "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/context-pack"
+        },
+        {
+          "name": "grill",
+          "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/grill"
+        },
+        {
+          "name": "grill-me",
+          "description": "A relentless interview to sharpen a plan or design.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/grill-me"
+        },
+        {
+          "name": "grill-with-docs",
+          "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/grill-with-docs"
+        },
+        {
+          "name": "grilling",
+          "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/grilling"
+        },
+        {
+          "name": "handoff",
+          "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/handoff"
+        },
+        {
+          "name": "knowledge-curator",
+          "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/knowledge-curator"
+        },
+        {
+          "name": "publish-open-pr",
+          "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/publish-open-pr"
+        },
+        {
+          "name": "ship-subissue",
+          "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "high",
+          "trustTier": "4",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/ship-subissue"
+        },
+        {
+          "name": "triage",
+          "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/routing/triage"
+        },
+        {
+          "name": "wayfinder",
+          "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/wayfinder"
+        },
+        {
+          "name": "work-item-router",
+          "description": "Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/routing/work-item-router"
+        }
+      ]
+    },
+    {
+      "name": "quirk-sec",
+      "description": "Quirk sec skills",
+      "skillsDir": ".agents/skills/sec",
+      "skills": [
+        {
+          "name": "cloud-security",
+          "description": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)",
+          "category": "sec",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/cloud-security"
+        },
+        {
+          "name": "container-security",
+          "description": "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)",
+          "category": "sec",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/container-security"
+        },
+        {
+          "name": "secret-management-security",
+          "description": "Secrets management (Vault, KMS, rotation, injection, external secrets operator)",
+          "category": "sec",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/sec/secret-management-security"
+        }
+      ]
+    },
+    {
+      "name": "quirk-skill-dev",
+      "description": "Quirk skill-dev skills",
+      "skillsDir": ".agents/skills/skill-dev",
+      "skills": [
+        {
+          "name": "evaluate-skill",
+          "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/evaluate-skill"
+        },
+        {
+          "name": "lockfile-maintenance",
+          "description": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/lockfile-maintenance"
+        },
+        {
+          "name": "rule-cataloger",
+          "description": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/rule-cataloger"
+        },
+        {
+          "name": "side-effect-auditor",
+          "description": "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/side-effect-auditor"
+        },
+        {
+          "name": "skill-audit",
+          "description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-audit"
+        },
+        {
+          "name": "skill-creator",
+          "description": "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.",
+          "category": "skill-dev",
+          "version": "4",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/skill-creator"
+        },
+        {
+          "name": "skill-dependency-graph",
+          "description": "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-dependency-graph"
+        },
+        {
+          "name": "skill-diff-analyzer",
+          "description": "Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-diff-analyzer"
+        },
+        {
+          "name": "skill-performance-metrics",
+          "description": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-performance-metrics"
+        },
+        {
+          "name": "skill-promoter",
+          "description": "Promote validated experimental skills from the sandbox to the canonical skills bundle.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/skill-promoter"
+        },
+        {
+          "name": "skill-quality-gate",
+          "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-quality-gate"
+        },
+        {
+          "name": "skill-sandbox",
+          "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-sandbox"
+        },
+        {
+          "name": "skill-template-generator",
+          "description": "Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/skill-template-generator"
+        },
+        {
+          "name": "skill-testing-framework",
+          "description": "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/skill-testing-framework"
+        },
+        {
+          "name": "skill-tutor",
+          "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/skill-tutor"
+        },
+        {
+          "name": "workflow-fixture-author",
+          "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/workflow-fixture-author"
+        },
+        {
+          "name": "writing-great-skills",
+          "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/skill-dev/writing-great-skills"
+        }
+      ]
+    },
+    {
+      "name": "quirk-ux",
+      "description": "Quirk ux skills",
+      "skillsDir": ".agents/skills/ux",
+      "skills": [
+        {
+          "name": "interaction-design",
+          "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+          "category": "ux",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ux/interaction-design"
+        },
+        {
+          "name": "ux-accessibility",
+          "description": "Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.",
+          "category": "ux",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ux/ux-accessibility"
+        },
+        {
+          "name": "ux-prototyping",
+          "description": "Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.",
+          "category": "ux",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ux/ux-prototyping"
+        },
+        {
+          "name": "ux-research",
+          "description": "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.",
+          "category": "ux",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/ux/ux-research"
+        }
+      ]
+    },
+    {
+      "name": "quirk-web3",
+      "description": "Quirk web3 skills",
+      "skillsDir": ".agents/skills/web3",
+      "skills": [
+        {
+          "name": "web3-consensus",
+          "description": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-consensus"
+        },
+        {
+          "name": "web3-defi",
+          "description": "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-defi"
+        },
+        {
+          "name": "web3-governance",
+          "description": "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-governance"
+        },
+        {
+          "name": "web3-l2-scaling",
+          "description": "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-l2-scaling"
+        },
+        {
+          "name": "web3-smart-contracts",
+          "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-smart-contracts"
+        },
+        {
+          "name": "web3-tokenomics",
+          "description": "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests.",
+          "category": "web3",
+          "version": "2",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/web3/web3-tokenomics"
+        }
+      ]
+    },
+    {
+      "name": "quirk-xr",
+      "description": "Quirk xr skills",
+      "skillsDir": ".agents/skills/xr",
+      "skills": [
+        {
+          "name": "xr-development",
+          "description": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.",
+          "category": "xr",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/xr/xr-development"
+        },
+        {
+          "name": "xr-interaction-design",
+          "description": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.",
+          "category": "xr",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/xr/xr-interaction-design"
+        },
+        {
+          "name": "xr-performance",
+          "description": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.",
+          "category": "xr",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/xr/xr-performance"
+        }
+      ]
+    }
+  ]
+}

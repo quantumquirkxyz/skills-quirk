@@ -1,0 +1,15 @@
+{
+  "name": "quirk-skills",
+  "owner": {
+    "name": "quantumquirkxyz",
+    "url": "https://github.com/quantumquirkxyz/skills-quirk"
+  },
+  "metadata": {
+    "description": "A portable, validated skills bundle for standard project development with fixtures, quality gates, and multi-agent support.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/quantumquirkxyz/skills-quirk"
+  },
+  "plugins": [],
+  "skillsDir": ".agents/skills"
+}

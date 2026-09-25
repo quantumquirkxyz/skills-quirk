@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quirk Skills Registry",
+  "type": "object",
+  "required": ["name", "version", "skillsDir", "installCommand"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "maxLength": 64
+    },
+    "displayName": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bundleVersion": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string"
+    },
+    "skillsDir": {
+      "type": "string"
+    },
+    "installCommand": {
+      "type": "string"
+    },
+    "pluginName": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "supportsAgents": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "agents_compatible": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "standards": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "session_memory": {
+      "type": "string"
+    },
+    "mcp_support": {
+      "type": "boolean"
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "scoringEnabled": {"type": "boolean"},
+        "minScore": {"type": "number", "minimum": 0, "maximum": 100},
+        "tiers": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["BASIC", "STANDARD", "POWERFUL"]}
+        },
+        "securityScanEnabled": {"type": "boolean"},
+        "mutationTesting": {"type": "boolean"}
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "properties": {
+        "npmPackage": {"type": "string"},
+        "npxCommand": {"type": "string"},
+        "marketplaces": {
+          "type": "object",
+          "properties": {
+            "claudeCode": {"type": "boolean"},
+            "opencode": {"type": "boolean"},
+            "codex": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["stable", "beta", "canary"]}
+        },
+        "defaultChannel": {"type": "string", "enum": ["stable", "beta", "canary"]},
+        "evidenceGatedUpdates": {"type": "boolean"}
+      }
+    }
+  }
+}
