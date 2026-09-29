@@ -23,6 +23,7 @@ When installing or syncing this bundle in another repository, prefer the AI-agno
 | **MCP Server** | External data connection (`mcp-server`) for issues, PRs, traces |
 | **Subagent Swarm** | Coordinated sub-agent roles (`subagent-swarm`) with handoff contracts |
 | **Work Item Router** | Routing script (`work-item-router.mjs`) that maps descriptions to skills |
+| **Graphic Design** | The discipline of visual communication through composition, color, typography, and imagery for print, digital, and environmental media |
 
 ```mermaid
 flowchart LR
@@ -39,6 +40,7 @@ flowchart LR
 - Use **Canonical skill** when distinguishing real skills from compatibility symlinks.
 - Use **Compatibility view** when discussing installation or parity.
 - Use **Provenance** when discussing authorship, influence, retired aliases, or renamed skills.
+- Use **Graphic Design** when discussing visual communication artifacts, brand identity, design systems, or tool integrations for graphic production.
 - Use the README prompts as the operational entry point for AI-agnostic installation or sync tasks.
 
 ## Maintenance Rule

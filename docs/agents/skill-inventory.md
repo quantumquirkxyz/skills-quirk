@@ -60,6 +60,14 @@ Total canonical skills: 189.
 | `mobile` | `.agents/skills/frontend/mobile/SKILL.md` | `mobile` | `frontend` | `low` | `1` | `stable` | ok |
 | `nextjs` | `.agents/skills/frontend/nextjs/SKILL.md` | `nextjs` | `frontend` | `low` | `1` | `experimental` | ok |
 | `react` | `.agents/skills/frontend/react/SKILL.md` | `react` | `frontend` | `low` | `1` | `stable` | ok |
+### graphic-design
+
+| `graphic-design-foundations` | `.agents/skills/graphic-design/graphic-design-foundations/SKILL.md` | `graphic-design-foundations` | `graphic-design` | `low` | `1` | `stable` | ok |
+| `brand-identity` | `.agents/skills/graphic-design/brand-identity/SKILL.md` | `brand-identity` | `graphic-design` | `low` | `1` | `stable` | ok |
+| `design-system-visual` | `.agents/skills/graphic-design/design-system-visual/SKILL.md` | `design-system-visual` | `graphic-design` | `low` | `1` | `stable` | ok |
+| `graphic-design-tools` | `.agents/skills/graphic-design/graphic-design-tools/SKILL.md` | `graphic-design-tools` | `graphic-design` | `medium` | `2` | `experimental` | ok |
+| `graphic-design-project-management` | `.agents/skills/graphic-design/graphic-design-project-management/SKILL.md` | `graphic-design-project-management` | `graphic-design` | `low` | `2` | `experimental` | ok |
+
 | `api-contracts` | `.agents/skills/integrations/api-contracts/SKILL.md` | `api-contracts` | `integrations` | `low` | `1` | `stable` | ok |
 | `auth` | `.agents/skills/integrations/auth/SKILL.md` | `auth` | `integrations` | `low` | `1` | `stable` | ok |
 | `issue-operations` | `.agents/skills/integrations/issue-operations/SKILL.md` | `issue-operations` | `integrations` | `medium` | `3` | `stable` | ok |

@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from undefined vundefined
-> 229 skills across 31 categories
+> 234 skills across 32 categories
 
 ## Skills by Category
 
@@ -152,6 +152,16 @@
 | [remix](.agents/skills/frontend/remix) | 1 | stable | low | 1 | Remix framework (loaders, actions, nested routes, progressive enhancement). |
 | [state-management](.agents/skills/frontend/state-management) | 1 | stable | low | 1 | Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state). |
 | [styling](.agents/skills/frontend/styling) | 1 | stable | low | 1 | Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens). |
+
+### graphic-design
+
+| Skill | Version | Maturity | Risk | Trust Tier | Description |
+|-------|---------|----------|------|------------|-------------|
+| [brand-identity](.agents/skills/graphic-design/brand-identity) | 1 | stable | low | 1 | Design brand identity systems — logo, color, typography, imagery, iconography... |
+| [design-system-visual](.agents/skills/graphic-design/design-system-visual) | 1 | stable | low | 1 | Design visual design systems — tokens, components, patterns, and documentatio... |
+| [graphic-design-foundations](.agents/skills/graphic-design/graphic-design-foundations) | 1 | stable | low | 1 | Design graphic artifacts — posters, social graphics, editorial layouts, packa... |
+| [graphic-design-project-management](.agents/skills/graphic-design/graphic-design-project-management) | 1 | experimental | low | 2 | Manage graphic design projects — briefs, iterations, reviews, asset handoff, ... |
+| [graphic-design-tools](.agents/skills/graphic-design/graphic-design-tools) | 1 | experimental | medium | 3 | Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local ... |
 
 ### integrations
 

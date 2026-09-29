@@ -1174,6 +1174,31 @@
       "hash": "4f0bf9f49bda9416c24cacfc3ab502f06ad37b1c39dbe92cb2fe276407eb9ba0",
       "revision": "working-tree",
       "sourceType": "local"
+    },
+    "graphic-design-foundations": {
+      "hash": "750a3d20949c602915a468a30fb253905c12d448d1f856c4c8379ed829a04f28",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "brand-identity": {
+      "hash": "03726eac2a8e494582c3846c47fe1f8deff520e9182531e16badc23154fd027d",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "design-system-visual": {
+      "hash": "df44ef17132ab8e11bf7f26eedf80207d715fe18bd57d1760cba4823cb0ac055",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-tools": {
+      "hash": "40e4f5be6cda0bb9f611431bc3da77f75d4272ef6d0ea240fe9cea2a464f5f4f",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-project-management": {
+      "hash": "0d87c8fe5e5f2721fce8228fd84bab5b65ecc8ff688d4fd5f7c09b32ee1fefe6",
+      "revision": "working-tree",
+      "sourceType": "local"
     }
   }
 }

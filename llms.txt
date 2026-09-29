@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 229 skills for AI coding agents. Source: undefined
+> 234 skills for AI coding agents. Source: undefined
 
 ## Quick Install
 
@@ -31,6 +31,7 @@ npx skills-quirk add quirk-skills
 - [backend-caching](./.agents/skills/backend/backend-caching/SKILL.md) — Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.
 - [backend-queues](./.agents/skills/backend/backend-queues/SKILL.md) — Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
 - [backup-disaster-recovery](./.agents/skills/devops/backup-disaster-recovery/SKILL.md) — Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.
+- [brand-identity](./.agents/skills/graphic-design/brand-identity/SKILL.md) — Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.
 - [caching-advanced](./.agents/skills/backend/caching-advanced/SKILL.md) — Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).
 - [capability-router](./.agents/skills/routing/capability-router/SKILL.md) — Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.
 - [chaos-engineering](./.agents/skills/devops/chaos-engineering/SKILL.md) — Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.
@@ -66,6 +67,7 @@ npx skills-quirk add quirk-skills
 - [db-query-optimization](./.agents/skills/db/db-query-optimization/SKILL.md) — Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.
 - [db-relational-design](./.agents/skills/db/db-relational-design/SKILL.md) — Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.
 - [design-system](./.agents/skills/frontend/design-system/SKILL.md) — Define and evolve reusable UI tokens, components, and usage rules as a coherent system.
+- [design-system-visual](./.agents/skills/graphic-design/design-system-visual/SKILL.md) — Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.
 - [devops-ci-cd-pipeline](./.agents/skills/devops/devops-ci-cd-pipeline/SKILL.md) — Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.
 - [devops-feature-flags](./.agents/skills/devops/devops-feature-flags/SKILL.md) — Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.
 - [devops-k8s-orchestration](./.agents/skills/devops/devops-k8s-orchestration/SKILL.md) — Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.
@@ -87,6 +89,9 @@ npx skills-quirk add quirk-skills
 - [frontend-design](./.agents/skills/frontend/frontend-design/SKILL.md) — Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.
 - [frontend-testing](./.agents/skills/frontend/frontend-testing/SKILL.md) — Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).
 - [gitops](./.agents/skills/devops/gitops/SKILL.md) — Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.
+- [graphic-design-foundations](./.agents/skills/graphic-design/graphic-design-foundations/SKILL.md) — Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.
+- [graphic-design-project-management](./.agents/skills/graphic-design/graphic-design-project-management/SKILL.md) — Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.
+- [graphic-design-tools](./.agents/skills/graphic-design/graphic-design-tools/SKILL.md) — Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.
 - [grill](./.agents/skills/routing/grill/SKILL.md) — Alias for the quirk grilling flow. Use when the user says "grill" and wants a relentless interview to sharpen a plan, decision, or design.
 - [grill-me](./.agents/skills/routing/grill-me/SKILL.md) — A relentless interview to sharpen a plan or design.
 - [grill-with-docs](./.agents/skills/routing/grill-with-docs/SKILL.md) — A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
@@ -256,6 +261,7 @@ npx skills-quirk add quirk-skills
 - engineering: 1 skills
 - foundation: 9 skills
 - frontend: 10 skills
+- graphic-design: 5 skills
 - integrations: 6 skills
 - iot: 1 skills
 - networking: 3 skills

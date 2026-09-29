@@ -2198,6 +2198,79 @@
       ]
     },
     {
+      "name": "quirk-graphic-design",
+      "description": "Quirk graphic-design skills",
+      "skillsDir": ".agents/skills/graphic-design",
+      "skills": [
+        {
+          "name": "brand-identity",
+          "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/graphic-design/brand-identity"
+        },
+        {
+          "name": "design-system-visual",
+          "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/graphic-design/design-system-visual"
+        },
+        {
+          "name": "graphic-design-foundations",
+          "description": "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [],
+          "sideEffects": [
+            ""
+          ],
+          "path": ".agents/skills/graphic-design/graphic-design-foundations"
+        },
+        {
+          "name": "graphic-design-project-management",
+          "description": "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-project-management"
+        },
+        {
+          "name": "graphic-design-tools",
+          "description": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-tools"
+        }
+      ]
+    },
+    {
       "name": "quirk-integrations",
       "description": "Quirk integrations skills",
       "skillsDir": ".agents/skills/integrations",

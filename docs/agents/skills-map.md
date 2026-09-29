@@ -173,6 +173,16 @@ These skills include reusable references for issue/PR operation summaries, provi
 | `testing` | Test strategy and seams |
 | `db-migrations` | Safe schema change sequencing |
 
+## Graphic design
+
+| Skill | Purpose |
+|---|---|
+| `graphic-design-foundations` | Composition, color, typography, and production requirements for graphic artifacts |
+| `brand-identity` | Brand identity systems — logo, color, typography, imagery, iconography, and usage rules |
+| `design-system-visual` | Visual design systems — tokens, components, patterns, and accessibility |
+| `graphic-design-tools` | Connect Figma, Adobe CC, Canva, and local tools to agent workflows |
+| `graphic-design-project-management` | Manage graphic design projects — briefs, iterations, reviews, handoff, versioning |
+
 ## Stack specializations
 
 | Skill | Surface |
