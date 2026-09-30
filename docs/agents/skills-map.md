@@ -182,6 +182,13 @@ These skills include reusable references for issue/PR operation summaries, provi
 | `design-system-visual` | Visual design systems — tokens, components, patterns, and accessibility |
 | `graphic-design-tools` | Connect Figma, Adobe CC, Canva, and local tools to agent workflows |
 | `graphic-design-project-management` | Manage graphic design projects — briefs, iterations, reviews, handoff, versioning |
+| `graphic-design-data-viz` | Charts, infographics, dashboards with accessibility and production rules |
+| `graphic-design-motion` | Motion graphics, UI animations, Lottie, CSS animations with timing and performance rules |
+| `graphic-design-packaging` | Physical packaging design — dielines, structure, materials, regulatory labels, and production specifications |
+| `graphic-design-editorial` | Editorial layouts — magazines, books, reports, long-form content with grid systems, typography hierarchy, and production-ready pagination |
+| `graphic-design-photo-direction` | Photography art direction and image retouching — lighting, composition, color grading, and post-production workflows for brand and product imagery |
+| `graphic-design-advertising` | Advertising creatives — social ads, display ads, email banners, campaign visuals with brand consistency and conversion-focused layout rules |
+| `graphic-design-accessibility` | Inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts |
 
 ## Stack specializations
 

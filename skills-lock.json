@@ -1199,6 +1199,41 @@
       "hash": "0d87c8fe5e5f2721fce8228fd84bab5b65ecc8ff688d4fd5f7c09b32ee1fefe6",
       "revision": "working-tree",
       "sourceType": "local"
+    },
+    "graphic-design-data-viz": {
+      "hash": "c9f1b2d97eaf6d802b680b0c42b3f0ef2703079b9041b5c254980f20a5419aa4",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-motion": {
+      "hash": "9df666256f91e96d8ebbed05ce35c157b150f192f463d7d17c3ed01fc27e1e87",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-packaging": {
+      "hash": "47678d352470ab043cb626ba01164c6c1e05b89eadf34da362cb19c0a3d7e259",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-editorial": {
+      "hash": "b36305fd8ae94d0e29a64fe0ddfaa9ca1d451f6a484a966a3b59b5942baea188",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-photo-direction": {
+      "hash": "ca9495de061d8f2a6746737c43f6aba3e0aa386c950c6bf1681ff2e922432617",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-advertising": {
+      "hash": "e9e81032effde858081415e1c26b4d81a17ba798a5664ea41c9c760a87e4d111",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "graphic-design-accessibility": {
+      "hash": "5a132742d846326a177f1854d40e780f4e68a3721289616ff3d553acc8ef7c53",
+      "revision": "working-tree",
+      "sourceType": "local"
     }
   }
 }

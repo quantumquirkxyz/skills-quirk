@@ -9,7 +9,7 @@
       "skills": [
         {
           "name": "accessibility",
-          "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
+          "description": "Design inclusive products \u2014 WCAG compliance, assistive technology support, keyboard navigation, color contrast \u2014 with explicit user access guarantees.",
           "category": "accessibility",
           "version": "1",
           "maturity": "stable",
@@ -23,7 +23,7 @@
         },
         {
           "name": "accessibility-design",
-          "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
+          "description": "Design accessible interfaces \u2014 semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility \u2014 with inclusive interaction patterns.",
           "category": "accessibility",
           "version": "1",
           "maturity": "stable",
@@ -37,7 +37,7 @@
         },
         {
           "name": "accessibility-testing",
-          "description": "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.",
+          "description": "Test web interfaces for accessibility compliance \u2014 automated scans, manual keyboard navigation, screen reader validation \u2014 with explicit barrier detection and remediation evidence.",
           "category": "accessibility",
           "version": "1",
           "maturity": "stable",
@@ -58,7 +58,7 @@
       "skills": [
         {
           "name": "agent-orchestration",
-          "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+          "description": "Design agent orchestration \u2014 multi-agent patterns, tool use, memory, handoffs, evaluation \u2014 with explicit coordination boundaries and observability.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -72,7 +72,7 @@
         },
         {
           "name": "ai-ml-pipeline",
-          "description": "Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.",
+          "description": "Design ML pipelines \u2014 data ingestion, preprocessing, training, evaluation, deployment, monitoring \u2014 with reproducibility, fairness, and version control.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -86,7 +86,7 @@
         },
         {
           "name": "ai-model-evaluation",
-          "description": "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.",
+          "description": "Evaluate ML / LLM models \u2014 accuracy, fairness, robustness, explainability, drift \u2014 with explicit metrics, subgroup analysis, and failure-mode reporting.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -114,7 +114,7 @@
         },
         {
           "name": "ai-time-series-forecasting",
-          "description": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.",
+          "description": "Design and evaluate time-series forecasting \u2014 ARIMA, Prophet, NeuralProphet, LSTM, Transformer \u2014 with stationarity analysis, seasonality, exogenous variables, and backtest.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -128,7 +128,7 @@
         },
         {
           "name": "llm-eval",
-          "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
+          "description": "Design LLM evaluation harnesses \u2014 benchmark design, model comparison, automated evals \u2014 with reproducible scoring, confidence intervals, and regression detection.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -142,7 +142,7 @@
         },
         {
           "name": "llm-fine-tuning",
-          "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
+          "description": "Fine-tune LLMs \u2014 LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment \u2014 with reproducibility, efficiency, and safety controls.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -156,7 +156,7 @@
         },
         {
           "name": "rag-pipeline",
-          "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
+          "description": "Design RAG pipelines \u2014 retrieval, chunking, embedding, reranking, generation \u2014 with explicit data flow, latency budgets, and evaluation seams.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -170,7 +170,7 @@
         },
         {
           "name": "cs-algorithms",
-          "description": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.",
+          "description": "Design and analyse algorithms \u2014 correctness proof, complexity analysis (time and space), and stability \u2014 with explicit proof of invariants and termination.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -184,7 +184,7 @@
         },
         {
           "name": "data-contracts",
-          "description": "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.",
+          "description": "Design data contracts \u2014 schema evolution, producer-consumer agreements, schema registry, breaking change detection \u2014 with explicit compatibility rules and versioning.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -198,7 +198,7 @@
         },
         {
           "name": "data-etl-pipeline",
-          "description": "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.",
+          "description": "Design ETL / ELT pipelines \u2014 extraction, transformation, load \u2014 with reproducible steps, schema evolution, quality checks, and observability.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -212,7 +212,7 @@
         },
         {
           "name": "data-quality",
-          "description": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.",
+          "description": "Design data quality frameworks \u2014 Great Expectations, Soda, checks, observability, contracts \u2014 with explicit SLAs, freshness rules, and incident response for bad data.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -226,7 +226,7 @@
         },
         {
           "name": "data-streaming",
-          "description": "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.",
+          "description": "Design streaming data pipelines \u2014 Kafka, Kinesis, Pub/Sub, Flink \u2014 with event schemas, stream processing, and real-time analytics.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -240,7 +240,7 @@
         },
         {
           "name": "data-warehouse-modeling",
-          "description": "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.",
+          "description": "Design analytical warehouse schemas \u2014 star / snowflake / OBT \u2014 with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -254,7 +254,7 @@
         },
         {
           "name": "semantic-layer",
-          "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
+          "description": "Design a semantic layer \u2014 dbt, Cube, metrics, dimensions, measures, self-service analytics \u2014 with explicit business logic, governance, and query optimization.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -268,7 +268,7 @@
         },
         {
           "name": "db-nosql-modeling",
-          "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
+          "description": "Design NoSQL data models \u2014 document, key-value, wide-column, graph, time-series \u2014 with access pattern analysis, consistency requirements, and schema evolution.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -282,7 +282,7 @@
         },
         {
           "name": "db-relational-design",
-          "description": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.",
+          "description": "Design relational schemas \u2014 entities, relations, keys, indexes, constraints \u2014 with normalisation, performance, and migration planning.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -296,7 +296,7 @@
         },
         {
           "name": "backup-disaster-recovery",
-          "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
+          "description": "Design backup and disaster recovery \u2014 RPO/RTO, backup strategies, restore testing, cross-region \u2014 with explicit recovery objectives and validation.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -310,7 +310,7 @@
         },
         {
           "name": "chaos-engineering",
-          "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
+          "description": "Design chaos engineering \u2014 fault injection, GameDays, resilience validation \u2014 with explicit steady-state hypotheses, blast radius controls, and safety rails.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -324,7 +324,7 @@
         },
         {
           "name": "cost-optimization",
-          "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
+          "description": "Design FinOps strategies \u2014 rightsizing, spot instances, committed use, budgets, showback/chargeback \u2014 with cost visibility and optimisation guardrails.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -338,7 +338,7 @@
         },
         {
           "name": "devops-ci-cd-pipeline",
-          "description": "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.",
+          "description": "Design CI/CD pipelines \u2014 build, test, security scan, deploy, rollback \u2014 with reproducible steps, environment parity, and deployment gates.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -352,7 +352,7 @@
         },
         {
           "name": "devops-feature-flags",
-          "description": "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.",
+          "description": "Design feature flag systems \u2014 gradual rollouts, A/B experiments, kill switches, targeting rules \u2014 with lifecycle management and operational runbooks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -366,7 +366,7 @@
         },
         {
           "name": "devops-k8s-orchestration",
-          "description": "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.",
+          "description": "Design and configure Kubernetes orchestration \u2014 cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies \u2014 with reproducible infrastructure.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -380,7 +380,7 @@
         },
         {
           "name": "devops-terraform-iac",
-          "description": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.",
+          "description": "Design infrastructure as code \u2014 Terraform / Pulumi / CloudFormation \u2014 for reproducible, version-controlled, auditable cloud infrastructure.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -394,7 +394,7 @@
         },
         {
           "name": "gitops",
-          "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
+          "description": "Design GitOps workflows \u2014 ArgoCD, Flux, declarative sync, drift detection, progressive delivery \u2014 with explicit reconciliation and safety boundaries.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -408,7 +408,7 @@
         },
         {
           "name": "incident-response",
-          "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
+          "description": "Design incident response \u2014 runbooks, war rooms, postmortems, blameless culture \u2014 with explicit severity taxonomy, escalation paths, and communication rules.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -422,7 +422,7 @@
         },
         {
           "name": "secret-management",
-          "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
+          "description": "Design secret management \u2014 Vault, SOPS, SealedSecrets, rotation, external secrets \u2014 with encryption, access control, and auditability.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -436,7 +436,7 @@
         },
         {
           "name": "docs-adrs",
-          "description": "Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.",
+          "description": "Create and maintain Architecture Decision Records \u2014 context, decision, consequences, alternatives, status \u2014 with periodic review.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -450,7 +450,7 @@
         },
         {
           "name": "finance-corporate-val",
-          "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
+          "description": "Corporate valuation \u2014 DCF, multiples, sum-of-parts, scenario analysis \u2014 with explicit assumptions, sensitivity, and cross-checks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -464,7 +464,7 @@
         },
         {
           "name": "finance-dcf",
-          "description": "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.",
+          "description": "Discounted Cash Flow \u2014 forecast, WACC, terminal value, sensitivity \u2014 with explicit assumptions, cross-check against multiples, and a valuation range.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -478,7 +478,7 @@
         },
         {
           "name": "finance-portfolio-theory",
-          "description": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.",
+          "description": "Modern Portfolio Theory \u2014 efficient frontier, CAPM, APT, risk attribution, and performance measurement \u2014 with explicit assumptions and regime analysis.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -492,7 +492,7 @@
         },
         {
           "name": "math-computation-reproducible",
-          "description": "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
+          "description": "Make mathematical computations reproducible \u2014 SymPy, Mathematica, Magma, Sage, Julia \u2014 with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -520,7 +520,7 @@
         },
         {
           "name": "math-cryptography",
-          "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
+          "description": "Analyse cryptographic constructions \u2014 symmetric, asymmetric, hashing, MACs, zero-knowledge \u2014 with security reductions, hardness assumptions, and attack analysis.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -548,7 +548,7 @@
         },
         {
           "name": "math-grant-structure",
-          "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.",
+          "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) \u2014 aims, broader impacts, budget, timeline, reviewer expectations \u2014 with concrete templates.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -562,7 +562,7 @@
         },
         {
           "name": "math-linear-algebra",
-          "description": "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
+          "description": "Solve and analyse linear algebra problems \u2014 matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -590,7 +590,7 @@
         },
         {
           "name": "math-optimization",
-          "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.",
+          "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) \u2014 model, choose solver, verify optimality, report sensitivity.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -604,7 +604,7 @@
         },
         {
           "name": "math-paper-collaboration",
-          "description": "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
+          "description": "Manage mathematical paper collaboration \u2014 Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -618,7 +618,7 @@
         },
         {
           "name": "math-presentation-beamer",
-          "description": "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.",
+          "description": "Design mathematics presentations \u2014 Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments \u2014 for seminars, conferences, or lectures.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -632,7 +632,7 @@
         },
         {
           "name": "math-probability-models",
-          "description": "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.",
+          "description": "Build probability models \u2014 distributions, stochastic processes (Markov, Brownian, Poisson), inference \u2014 with explicit assumptions and sanity checks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -660,7 +660,7 @@
         },
         {
           "name": "math-teaching-problem-set",
-          "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
+          "description": "Design and grade math problem sets and exams \u2014 difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -674,7 +674,7 @@
         },
         {
           "name": "physics-astro",
-          "description": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.",
+          "description": "Model astrophysical systems \u2014 stellar structure, orbital dynamics, cosmology, gravitational waves \u2014 with physical scales, order-of-magnitude estimates, and scaling laws.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -688,7 +688,7 @@
         },
         {
           "name": "physics-career-postdoc",
-          "description": "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
+          "description": "Navigate physics career transitions \u2014 postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -702,7 +702,7 @@
         },
         {
           "name": "physics-classical",
-          "description": "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.",
+          "description": "Solve classical mechanics problems \u2014 Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital \u2014 with free-body diagrams, energy accounting, and dimensional checks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -716,7 +716,7 @@
         },
         {
           "name": "physics-data-analysis-root",
-          "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
+          "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy \u2014 calibration, systematic errors, statistical inference, result archival \u2014 with reproducible scripts.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -730,7 +730,7 @@
         },
         {
           "name": "physics-experimental-notebook",
-          "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
+          "description": "Maintain experimental physics lab notebooks \u2014 measurements, calibration, error analysis, FAIR data principles, reproducibility \u2014 with digital and physical structure.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -744,7 +744,7 @@
         },
         {
           "name": "physics-literature-search",
-          "description": "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.",
+          "description": "Track physics literature \u2014 arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts \u2014 with domain filters.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -772,7 +772,7 @@
         },
         {
           "name": "physics-reproducibility-archive",
-          "description": "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
+          "description": "Make physics research reproducible and archive it \u2014 Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -786,7 +786,7 @@
         },
         {
           "name": "physics-simulation-setup",
-          "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+          "description": "Set up reproducible physics simulations \u2014 Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) \u2014 with containers, parameter files, and verification.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -800,7 +800,7 @@
         },
         {
           "name": "physics-talk-design",
-          "description": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.",
+          "description": "Design physics talks \u2014 seminars, conference presentations, posters, public outreach \u2014 with audience-level adjustments, timing, visual conventions, and accessibility.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -814,7 +814,7 @@
         },
         {
           "name": "physics-thermo",
-          "description": "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.",
+          "description": "Model thermodynamic systems \u2014 first and second law, heat engines, entropy, phase transitions \u2014 with energy accounting and efficiency bounds.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -842,7 +842,7 @@
         },
         {
           "name": "pro-market-analysis",
-          "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
+          "description": "Conduct professional market research \u2014 TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting \u2014 with source citation, data quality checks, and decision framing.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -856,7 +856,7 @@
         },
         {
           "name": "quant-backtest",
-          "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+          "description": "Run a backtest with full audit hygiene \u2014 biases, costs, out-of-sample, regime splits \u2014 and produce a verdict on whether a strategy is robust.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -870,7 +870,7 @@
         },
         {
           "name": "quant-credit-risk",
-          "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
+          "description": "Model credit risk \u2014 PD, LGD, EAD, expected loss, loss distribution, credit VaR \u2014 with default correlation and portfolio-level risk aggregation.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -884,7 +884,7 @@
         },
         {
           "name": "quant-derivatives-pricing",
-          "description": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.",
+          "description": "Price and calibrate derivatives (options, exotics, structured products) \u2014 Black-Scholes, trees, Monte Carlo \u2014 with Greeks, model risk, and calibration validation.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -912,7 +912,7 @@
         },
         {
           "name": "quant-market-micro",
-          "description": "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
+          "description": "Analyse market microstructure \u2014 order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -926,7 +926,7 @@
         },
         {
           "name": "quant-portfolio-opt",
-          "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
+          "description": "Construct and optimise portfolios \u2014 mean-variance, Black-Litterman, risk-parity, factor \u2014 with explicit objectives, constraints, and robustness checks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -954,7 +954,7 @@
         },
         {
           "name": "scientific-hypothesis",
-          "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
+          "description": "Formulate testable scientific hypotheses \u2014 null/alternative, variables, controls, falsifiability \u2014 with explicit variables and statistical plan.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -996,7 +996,7 @@
         },
         {
           "name": "sec-cryptography-applied",
-          "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
+          "description": "Apply cryptography \u2014 encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves \u2014 with implementation guidance and anti-patterns.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1010,7 +1010,7 @@
         },
         {
           "name": "sec-privacy-engineering",
-          "description": "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.",
+          "description": "Design privacy-protecting systems \u2014 GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification \u2014 with explicit privacy impact assessments.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1024,7 +1024,7 @@
         },
         {
           "name": "sec-security-audit",
-          "description": "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.",
+          "description": "Audit software/security posture \u2014 code review, dependency scanning, secret detection, access control, audit logging \u2014 with explicit findings and remediation priorities.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1038,7 +1038,7 @@
         },
         {
           "name": "sec-threat-modeling",
-          "description": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.",
+          "description": "Design and document threat models for software / systems \u2014 assets, threats, vulnerabilities, mitigations \u2014 using STRIDE or ATT&CK frameworks.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1052,7 +1052,7 @@
         },
         {
           "name": "supply-chain-security",
-          "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
+          "description": "Design supply chain security \u2014 SBOM, Sigstore, SLSA, provenance, signing \u2014 with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1066,7 +1066,7 @@
         },
         {
           "name": "zero-trust",
-          "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
+          "description": "Design zero trust architecture \u2014 identity, per-request auth, microsegmentation, policy \u2014 with explicit trust tiers, continuous verification, and least-privilege enforcement.",
           "category": "skill-dev/sandbox",
           "version": "1",
           "maturity": "stable",
@@ -1204,7 +1204,7 @@
         },
         {
           "name": "setup-quirk-skills",
-          "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+          "description": "Configure this repo for the engineering skills \u2014 set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
           "category": "auxiliary",
           "version": "1",
           "maturity": "stable",
@@ -1237,7 +1237,7 @@
         },
         {
           "name": "backend-architecture",
-          "description": "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.",
+          "description": "Shape backend systems \u2014 REST/gRPC APIs, service contracts, data flow, state management, error handling \u2014 with explicit seams and caller responsibilities.",
           "category": "backend",
           "version": "1",
           "maturity": "stable",
@@ -1251,7 +1251,7 @@
         },
         {
           "name": "backend-caching",
-          "description": "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.",
+          "description": "Design backend caching strategies \u2014 cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence \u2014 with explicit consistency and failure trade-offs.",
           "category": "backend",
           "version": "1",
           "maturity": "stable",
@@ -1265,7 +1265,7 @@
         },
         {
           "name": "backend-queues",
-          "description": "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.",
+          "description": "Design backend queues and background job systems \u2014 durability, retries, ordering, idempotency, and backpressure \u2014 with explicit delivery guarantees.",
           "category": "backend",
           "version": "1",
           "maturity": "stable",
@@ -1335,7 +1335,7 @@
         },
         {
           "name": "microservices",
-          "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
+          "description": "Design microservice architectures \u2014 service decomposition, inter-service communication, data ownership, resilience patterns \u2014 with explicit boundaries and failure isolation.",
           "category": "backend",
           "version": "1",
           "maturity": "stable",
@@ -1412,7 +1412,7 @@
       "skills": [
         {
           "name": "cms-access-control",
-          "description": "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability.",
+          "description": "Design CMS access control \u2014 roles, permissions, editorial workflows, and publishing boundaries \u2014 with explicit least-privilege and auditability.",
           "category": "cms",
           "version": "1",
           "maturity": "stable",
@@ -1426,7 +1426,7 @@
         },
         {
           "name": "cms-architecture",
-          "description": "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.",
+          "description": "Design content management systems \u2014 content models, editorial workflows, publishing pipelines, localization \u2014 with schema evolution and multi-channel delivery.",
           "category": "cms",
           "version": "1",
           "maturity": "stable",
@@ -1440,7 +1440,7 @@
         },
         {
           "name": "cms-content-strategy",
-          "description": "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership.",
+          "description": "Design CMS content strategy \u2014 content models, taxonomy, governance, lifecycle, and multi-channel publishing \u2014 with explicit editorial ownership.",
           "category": "cms",
           "version": "1",
           "maturity": "stable",
@@ -1454,7 +1454,7 @@
         },
         {
           "name": "localization",
-          "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
+          "description": "Design internationalization (i18n) and localization (l10n) \u2014 string management, locale handling, RTL support, cultural adaptation \u2014 so the product works across languages and regions.",
           "category": "cms",
           "version": "1",
           "maturity": "stable",
@@ -1475,7 +1475,7 @@
       "skills": [
         {
           "name": "compiler-design",
-          "description": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.",
+          "description": "Design compiler pipelines \u2014 lexing, parsing, ASTs, type checking, IR, optimization, and code generation \u2014 with correctness and modularity.",
           "category": "compilers",
           "version": "1",
           "maturity": "stable",
@@ -1489,7 +1489,7 @@
         },
         {
           "name": "compiler-testing",
-          "description": "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.",
+          "description": "Test compilers and interpreters \u2014 parser tests, semantic tests, IR validation, golden tests, and regression checks \u2014 with explicit oracle design.",
           "category": "compilers",
           "version": "1",
           "maturity": "stable",
@@ -1503,7 +1503,7 @@
         },
         {
           "name": "compilers",
-          "description": "Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.",
+          "description": "Design and implement compilers and interpreters \u2014 lexer, parser, AST, type checking, code generation, optimization \u2014 with correctness and modularity.",
           "category": "compilers",
           "version": "1",
           "maturity": "stable",
@@ -1524,7 +1524,7 @@
       "skills": [
         {
           "name": "cs-complexity-analysis",
-          "description": "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.",
+          "description": "Analyze algorithmic complexity \u2014 time, space, amortized cost, and lower bounds \u2014 with explicit assumptions and proof sketches.",
           "category": "cs",
           "version": "1",
           "maturity": "stable",
@@ -1538,7 +1538,7 @@
         },
         {
           "name": "cs-computability",
-          "description": "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.",
+          "description": "Analyze computability questions \u2014 decidability, reductions, recognizability, and undecidability proofs \u2014 with formal problem transformations.",
           "category": "cs",
           "version": "1",
           "maturity": "stable",
@@ -1552,7 +1552,7 @@
         },
         {
           "name": "cs-data-structures",
-          "description": "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.",
+          "description": "Design and analyze data structures \u2014 arrays, trees, heaps, hash tables, graphs, and balanced variants \u2014 with operation costs and invariants.",
           "category": "cs",
           "version": "1",
           "maturity": "stable",
@@ -1650,7 +1650,7 @@
       "skills": [
         {
           "name": "db-migrations",
-          "description": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.",
+          "description": "Plan database migrations \u2014 schema changes, backfills, compatibility windows, and rollback strategy \u2014 with explicit application and data safety checks.",
           "category": "db",
           "version": "1",
           "maturity": "stable",
@@ -1664,7 +1664,7 @@
         },
         {
           "name": "db-query-optimization",
-          "description": "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.",
+          "description": "Optimize database queries \u2014 indexing, query plans, cardinality, joins, and execution trade-offs \u2014 with explainable reasoning and measurement.",
           "category": "db",
           "version": "1",
           "maturity": "stable",
@@ -1876,7 +1876,7 @@
       "skills": [
         {
           "name": "docs-knowledge-base",
-          "description": "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.",
+          "description": "Maintain a repository knowledge base \u2014 glossary, durable references, indexed guidance, and consumer-oriented navigation \u2014 with explicit update rules.",
           "category": "docs",
           "version": "1",
           "maturity": "stable",
@@ -1890,7 +1890,7 @@
         },
         {
           "name": "docs-technical-writing",
-          "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
+          "description": "Write technical documentation \u2014 clear explanations, examples, warnings, and procedural guidance \u2014 with audience-aware structure and maintenance rules.",
           "category": "docs",
           "version": "1",
           "maturity": "stable",
@@ -1930,7 +1930,7 @@
       "skills": [
         {
           "name": "agent-canvas",
-          "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
+          "description": "Reference skill for agent workspace control \u2014 multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
           "category": "foundation",
           "version": "1",
           "maturity": "stable",
@@ -1954,7 +1954,7 @@
         },
         {
           "name": "api-design",
-          "description": "Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.",
+          "description": "Design a small, durable API seam \u2014 with a deep backend and explicit caller contract boundaries.",
           "category": "foundation",
           "version": "1",
           "maturity": "stable",
@@ -2022,7 +2022,7 @@
         },
         {
           "name": "observability",
-          "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
+          "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production \u2014 with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
           "category": "foundation",
           "version": "2",
           "maturity": "stable",
@@ -2085,7 +2085,7 @@
         },
         {
           "name": "frontend-design",
-          "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
+          "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam \u2014 with explicit state and motion boundaries.",
           "category": "frontend",
           "version": "1",
           "maturity": "stable",
@@ -2113,7 +2113,7 @@
         },
         {
           "name": "mobile",
-          "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
+          "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications \u2014 with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
           "category": "frontend",
           "version": "2",
           "maturity": "stable",
@@ -2141,7 +2141,7 @@
         },
         {
           "name": "react",
-          "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
+          "description": "Design React component structure and state seams \u2014 with composability, testability, and clear data flow.",
           "category": "frontend",
           "version": "1",
           "maturity": "stable",
@@ -2204,7 +2204,7 @@
       "skills": [
         {
           "name": "brand-identity",
-          "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
+          "description": "Design brand identity systems \u2014 logo, color, typography, imagery, iconography, voice, and usage rules \u2014 with explicit consistency, scalability, and governance.",
           "category": "graphic-design",
           "version": "1",
           "maturity": "stable",
@@ -2218,7 +2218,7 @@
         },
         {
           "name": "design-system-visual",
-          "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
+          "description": "Design visual design systems \u2014 tokens, components, patterns, and documentation \u2014 with explicit hierarchy, accessibility, and cross-channel consistency.",
           "category": "graphic-design",
           "version": "1",
           "maturity": "stable",
@@ -2232,7 +2232,7 @@
         },
         {
           "name": "graphic-design-foundations",
-          "description": "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.",
+          "description": "Design graphic artifacts \u2014 posters, social graphics, editorial layouts, packaging, signage \u2014 with explicit composition, color, typography, and production constraints.",
           "category": "graphic-design",
           "version": "1",
           "maturity": "stable",
@@ -2246,7 +2246,7 @@
         },
         {
           "name": "graphic-design-project-management",
-          "description": "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.",
+          "description": "Manage graphic design projects \u2014 briefs, iterations, reviews, asset handoff, versioning, and delivery \u2014 with explicit scope, timelines, and quality gates.",
           "category": "graphic-design",
           "version": "1",
           "maturity": "experimental",
@@ -2258,7 +2258,7 @@
         },
         {
           "name": "graphic-design-tools",
-          "description": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.",
+          "description": "Connect graphic design tools \u2014 Figma, Adobe Creative Cloud, Canva, and local production tools \u2014 to agent workflows with explicit authentication, scopes, and safety boundaries.",
           "category": "graphic-design",
           "version": "1",
           "maturity": "experimental",
@@ -2267,6 +2267,90 @@
           "capabilities": [],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-tools"
+        },
+        {
+          "name": "graphic-design-data-viz",
+          "description": "Design data visualizations \u2014 charts, infographics, dashboards \u2014 with explicit readability, accessibility, color, typography, and production rules.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": 2,
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-data-viz"
+        },
+        {
+          "name": "graphic-design-motion",
+          "description": "Design motion graphics and UI animations \u2014 microinteractions, transitions, Lottie, CSS animations \u2014 with explicit timing, easing, choreography, and performance rules.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": 2,
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-motion"
+        },
+        {
+          "name": "graphic-design-packaging",
+          "description": "Design physical packaging \u2014 dielines, structure, materials, regulatory labels \u2014 with production-ready specifications.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": 2,
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-packaging"
+        },
+        {
+          "name": "graphic-design-editorial",
+          "description": "Design editorial layouts \u2014 magazines, books, reports, long-form content \u2014 with explicit grid systems, typography hierarchy, and production-ready pagination.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-editorial"
+        },
+        {
+          "name": "graphic-design-photo-direction",
+          "description": "Direct photography and image retouching \u2014 art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-photo-direction"
+        },
+        {
+          "name": "graphic-design-advertising",
+          "description": "Design advertising creatives \u2014 social ads, display ads, email banners, campaign visuals \u2014 with explicit brand consistency, format specifications, and conversion-focused layout rules.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-advertising"
+        },
+        {
+          "name": "graphic-design-accessibility",
+          "description": "Design inclusive graphic artifacts \u2014 WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital.",
+          "category": "graphic-design",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [],
+          "sideEffects": [],
+          "path": ".agents/skills/graphic-design/graphic-design-accessibility"
         }
       ]
     },
@@ -2277,7 +2361,7 @@
       "skills": [
         {
           "name": "api-contracts",
-          "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
+          "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs \u2014 with explicit consumer obligations.",
           "category": "integrations",
           "version": "2",
           "maturity": "stable",
@@ -2291,7 +2375,7 @@
         },
         {
           "name": "auth",
-          "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
+          "description": "Design authentication and authorization as a small, explicit seam \u2014 with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
           "category": "integrations",
           "version": "2",
           "maturity": "stable",
@@ -2317,7 +2401,7 @@
         },
         {
           "name": "payments",
-          "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+          "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture \u2014 with Stripe, Adyen, or equivalent.",
           "category": "integrations",
           "version": "2",
           "maturity": "stable",
@@ -2343,7 +2427,7 @@
         },
         {
           "name": "search",
-          "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
+          "description": "Design search behavior, indexing, relevance, and retrieval seams \u2014 with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
           "category": "integrations",
           "version": "2",
           "maturity": "stable",
@@ -2364,7 +2448,7 @@
       "skills": [
         {
           "name": "iot-embedded",
-          "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
+          "description": "Design embedded/IoT systems \u2014 firmware, sensors, edge computing, device connectivity, OTA updates \u2014 with reliability, security, and constrained resource awareness.",
           "category": "iot",
           "version": "1",
           "maturity": "stable",
@@ -2385,7 +2469,7 @@
       "skills": [
         {
           "name": "networking",
-          "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
+          "description": "Design and analyze network infrastructure \u2014 TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security \u2014 with explicit assumptions about latency, bandwidth, and failure modes.",
           "category": "networking",
           "version": "1",
           "maturity": "stable",
@@ -2399,7 +2483,7 @@
         },
         {
           "name": "networking-protocols",
-          "description": "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.",
+          "description": "Analyze network protocols \u2014 packet formats, handshakes, congestion control, routing, and transport behavior \u2014 with explicit timing and failure assumptions.",
           "category": "networking",
           "version": "1",
           "maturity": "stable",
@@ -2413,7 +2497,7 @@
         },
         {
           "name": "networking-security",
-          "description": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.",
+          "description": "Design network security \u2014 segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries \u2014 with explicit trust zones.",
           "category": "networking",
           "version": "1",
           "maturity": "stable",
@@ -2434,7 +2518,7 @@
       "skills": [
         {
           "name": "os-kernel",
-          "description": "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.",
+          "description": "Design and analyze operating system internals \u2014 process management, memory management, file systems, scheduling, system calls, concurrency \u2014 with explicit resource accounting and failure boundaries.",
           "category": "os",
           "version": "1",
           "maturity": "stable",
@@ -2448,7 +2532,7 @@
         },
         {
           "name": "os-memory",
-          "description": "Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.",
+          "description": "Design operating system memory systems \u2014 virtual memory, paging, allocation, swapping, and protection \u2014 with explicit resource accounting and locality assumptions.",
           "category": "os",
           "version": "1",
           "maturity": "stable",
@@ -2462,7 +2546,7 @@
         },
         {
           "name": "os-processes",
-          "description": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.",
+          "description": "Design operating system process management \u2014 scheduling, signals, process states, concurrency, and inter-process communication \u2014 with explicit isolation boundaries.",
           "category": "os",
           "version": "1",
           "maturity": "stable",
@@ -2483,7 +2567,7 @@
       "skills": [
         {
           "name": "prod-ab-testing",
-          "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
+          "description": "Design A/B tests \u2014 hypothesis, control/treatment, randomization, metrics, statistical power, duration \u2014 with valid inference and rollback rules.",
           "category": "product",
           "version": "1",
           "maturity": "stable",
@@ -2497,7 +2581,7 @@
         },
         {
           "name": "prod-okr-planning",
-          "description": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.",
+          "description": "Design OKR cycles \u2014 Objectives, Key Results, initiatives \u2014 with measurable outcomes, quarterly cadences, and team alignment.",
           "category": "product",
           "version": "1",
           "maturity": "stable",
@@ -2511,7 +2595,7 @@
         },
         {
           "name": "prod-prd-writing",
-          "description": "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.",
+          "description": "Write Product Requirement Documents (PRDs) \u2014 problem statement, goals, user stories, acceptance criteria, success metrics, timeline \u2014 with stakeholder alignment.",
           "category": "product",
           "version": "1",
           "maturity": "stable",
@@ -2532,7 +2616,7 @@
       "skills": [
         {
           "name": "professional-communication",
-          "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
+          "description": "Improve professional communication \u2014 status updates, stakeholder messages, expectations, and escalation \u2014 with clarity and precision.",
           "category": "professional",
           "version": "1",
           "maturity": "stable",
@@ -2546,7 +2630,7 @@
         },
         {
           "name": "professional-project-management",
-          "description": "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts.",
+          "description": "Manage professional projects \u2014 scope, milestones, risks, dependencies, and stakeholder alignment \u2014 with explicit planning and tracking artifacts.",
           "category": "professional",
           "version": "1",
           "maturity": "stable",
@@ -2567,7 +2651,7 @@
       "skills": [
         {
           "name": "docs-management",
-          "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
+          "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape \u2014 with explicit consumer rules.",
           "category": "project",
           "version": "1",
           "maturity": "stable",
@@ -2581,7 +2665,7 @@
         },
         {
           "name": "make-project",
-          "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
+          "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one \u2014 create the project, wire its fields, and preserve tracker semantics.",
           "category": "project",
           "version": "1",
           "maturity": "stable",
@@ -2593,7 +2677,7 @@
         },
         {
           "name": "project-development",
-          "description": "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins.",
+          "description": "Evaluate a project's shape, agent fit, and architectural starting point \u2014 before the main workflow begins.",
           "category": "project",
           "version": "1",
           "maturity": "stable",
@@ -2657,7 +2741,7 @@
       "skills": [
         {
           "name": "performance-testing",
-          "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
+          "description": "Design and execute performance tests \u2014 load, stress, soak, spike \u2014 to validate latency, throughput, and resource consumption under realistic conditions.",
           "category": "qa",
           "version": "1",
           "maturity": "stable",
@@ -2671,7 +2755,7 @@
         },
         {
           "name": "qa-automation",
-          "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
+          "description": "Design and implement automated test suites \u2014 unit, integration, e2e \u2014 with proper coverage, maintainability, and CI integration.",
           "category": "qa",
           "version": "1",
           "maturity": "stable",
@@ -2685,7 +2769,7 @@
         },
         {
           "name": "qa-manual-testing",
-          "description": "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.",
+          "description": "Perform manual test sessions \u2014 exploratory checks, edge cases, accessibility, and user-visible regressions \u2014 with explicit reproduction notes.",
           "category": "qa",
           "version": "1",
           "maturity": "stable",
@@ -2699,7 +2783,7 @@
         },
         {
           "name": "qa-security-testing",
-          "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+          "description": "Test security posture \u2014 auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks \u2014 with adversarial scenarios.",
           "category": "qa",
           "version": "1",
           "maturity": "stable",
@@ -2720,7 +2804,7 @@
       "skills": [
         {
           "name": "research-data-archiving",
-          "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
+          "description": "Archive research data \u2014 metadata, storage, preservation, provenance, and reuse planning \u2014 with reproducibility and access controls.",
           "category": "research",
           "version": "1",
           "maturity": "stable",
@@ -2734,7 +2818,7 @@
         },
         {
           "name": "research-literature-review",
-          "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
+          "description": "Review research literature \u2014 search strategy, screening, synthesis, citation tracking, and evidence grading \u2014 with transparent inclusion criteria.",
           "category": "research",
           "version": "1",
           "maturity": "stable",
@@ -2755,7 +2839,7 @@
       "skills": [
         {
           "name": "artifact-handoff",
-          "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
+          "description": "Transfer structured artifacts between Skills and sessions \u2014 with explicit provenance and consumer expectations.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2783,7 +2867,7 @@
         },
         {
           "name": "capability-router",
-          "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
+          "description": "Route work to the best matching Skill using declared capabilities and compatibility \u2014 with explicit selection rules.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2797,7 +2881,7 @@
         },
         {
           "name": "context-pack",
-          "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
+          "description": "Build a minimal fresh context pack with ordered reads and provenance \u2014 for scoped, high-signal handoff.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2865,7 +2949,7 @@
         },
         {
           "name": "handoff",
-          "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
+          "description": "Compact the current conversation into a handoff document for another agent to pick up \u2014 with explicit continuity and ownership notes.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2877,7 +2961,7 @@
         },
         {
           "name": "knowledge-curator",
-          "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
+          "description": "Keep context, ADRs, registry entries, and research coherent over time \u2014 with refresh and provenance discipline.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2889,7 +2973,7 @@
         },
         {
           "name": "publish-open-pr",
-          "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
+          "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch \u2014 with scoped, auditable publication.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2901,7 +2985,7 @@
         },
         {
           "name": "ship-subissue",
-          "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
+          "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue \u2014 with release discipline.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2913,7 +2997,7 @@
         },
         {
           "name": "triage",
-          "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+          "description": "Move issues and external PRs through a state machine of triage roles \u2014 categorise, verify, grill if needed, and write ag",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -2925,7 +3009,7 @@
         },
         {
           "name": "wayfinder",
-          "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
+          "description": "Plan a huge chunk of work \u2014 more than one agent session can hold \u2014 as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
           "category": "routing",
           "version": "1",
           "maturity": "stable",
@@ -3063,7 +3147,7 @@
         },
         {
           "name": "skill-audit",
-          "description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.",
+          "description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift \u2014 with actionable maintenance output.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3089,7 +3173,7 @@
         },
         {
           "name": "skill-dependency-graph",
-          "description": "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.",
+          "description": "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling \u2014 use when analyzing Skill modularity.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3103,7 +3187,7 @@
         },
         {
           "name": "skill-diff-analyzer",
-          "description": "Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.",
+          "description": "Compare Skill versions and explain contract, dependency, and behavior impact \u2014 use when assessing changes between two Skills.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3117,7 +3201,7 @@
         },
         {
           "name": "skill-performance-metrics",
-          "description": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.",
+          "description": "Summarize Skill execution duration, success rate, and available run evidence \u2014 use when measuring Skill performance from logs and records.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3171,7 +3255,7 @@
         },
         {
           "name": "skill-template-generator",
-          "description": "Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.",
+          "description": "Generate an interactive, contract-complete Skill template in the sandbox \u2014 use when starting a new Skill with the lab's scaffolding.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3183,7 +3267,7 @@
         },
         {
           "name": "skill-testing-framework",
-          "description": "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.",
+          "description": "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution \u2014 use when checking a Skill before promotion.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3221,7 +3305,7 @@
         },
         {
           "name": "writing-great-skills",
-          "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+          "description": "Reference for writing and editing skills well \u2014 the vocabulary and principles that make a skill predictable.",
           "category": "skill-dev",
           "version": "1",
           "maturity": "stable",
@@ -3242,7 +3326,7 @@
       "skills": [
         {
           "name": "interaction-design",
-          "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+          "description": "Design user interactions \u2014 task flows, screen states, transitions, error states, feedback patterns \u2014 so the interface guides users predictably.",
           "category": "ux",
           "version": "1",
           "maturity": "stable",
@@ -3256,7 +3340,7 @@
         },
         {
           "name": "ux-accessibility",
-          "description": "Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.",
+          "description": "Design accessible UX \u2014 keyboard navigation, focus order, semantics, contrast, and assistive-technology support \u2014 with inclusive interaction patterns.",
           "category": "ux",
           "version": "1",
           "maturity": "stable",
@@ -3270,7 +3354,7 @@
         },
         {
           "name": "ux-prototyping",
-          "description": "Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.",
+          "description": "Prototype user experiences \u2014 wireframes, interactive mockups, and rapid validation \u2014 with explicit experiment goals and iteration criteria.",
           "category": "ux",
           "version": "1",
           "maturity": "stable",
@@ -3284,7 +3368,7 @@
         },
         {
           "name": "ux-research",
-          "description": "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.",
+          "description": "Conduct user research \u2014 interviews, surveys, usability testing, personas, journey mapping \u2014 to ground design decisions in real user behavior.",
           "category": "ux",
           "version": "1",
           "maturity": "stable",
@@ -3305,7 +3389,7 @@
       "skills": [
         {
           "name": "web3-consensus",
-          "description": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.",
+          "description": "Analyse and compare consensus mechanisms \u2014 PoW, PoS, BFT, DA, based sequencing \u2014 with security properties, finality guarantees, MEV, and economic incentive alignment.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3319,7 +3403,7 @@
         },
         {
           "name": "web3-defi",
-          "description": "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.",
+          "description": "Analyse DeFi protocols \u2014 AMMs, lending, stablecoins, derivatives, intents, solver networks \u2014 across protocol mechanics, economic security, MEV protection, and composability risks.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3333,7 +3417,7 @@
         },
         {
           "name": "web3-governance",
-          "description": "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.",
+          "description": "Design and audit on-chain and off-chain governance \u2014 token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation \u2014 with attack vectors and resilience analysis.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3347,7 +3431,7 @@
         },
         {
           "name": "web3-l2-scaling",
-          "description": "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.",
+          "description": "Analyse Layer-2 scaling solutions \u2014 Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing \u2014 with security assumptions, data availability, and cost trade-offs.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3361,7 +3445,7 @@
         },
         {
           "name": "web3-smart-contracts",
-          "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+          "description": "Design and review smart contracts \u2014 security, gas optimization, upgradeability, account abstraction, EIP-7702 \u2014 with an adversarial review step.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3375,7 +3459,7 @@
         },
         {
           "name": "web3-tokenomics",
-          "description": "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests.",
+          "description": "Design token economics \u2014 supply, emission, incentives, governance, LST/LRT, restaking, points systems \u2014 with economic sustainability checks and adversarial stress tests.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
@@ -3396,7 +3480,7 @@
       "skills": [
         {
           "name": "xr-development",
-          "description": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.",
+          "description": "Design and build extended reality (AR/VR/MR) experiences \u2014 3D interaction, spatial computing, headset development, immersive UX \u2014 with performance, comfort, and accessibility as first-class concerns.",
           "category": "xr",
           "version": "1",
           "maturity": "stable",
@@ -3410,7 +3494,7 @@
         },
         {
           "name": "xr-interaction-design",
-          "description": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.",
+          "description": "Design XR interactions \u2014 spatial input, comfort, locomotion, hand tracking, and feedback \u2014 with clear constraints on immersion and usability.",
           "category": "xr",
           "version": "1",
           "maturity": "stable",
@@ -3424,7 +3508,7 @@
         },
         {
           "name": "xr-performance",
-          "description": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.",
+          "description": "Optimize XR performance \u2014 frame rate, motion-to-photon latency, asset budgets, and thermal constraints \u2014 with comfort-aware trade-offs.",
           "category": "xr",
           "version": "1",
           "maturity": "stable",

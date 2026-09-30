@@ -67,6 +67,13 @@ Total canonical skills: 189.
 | `design-system-visual` | `.agents/skills/graphic-design/design-system-visual/SKILL.md` | `design-system-visual` | `graphic-design` | `low` | `1` | `stable` | ok |
 | `graphic-design-tools` | `.agents/skills/graphic-design/graphic-design-tools/SKILL.md` | `graphic-design-tools` | `graphic-design` | `medium` | `2` | `experimental` | ok |
 | `graphic-design-project-management` | `.agents/skills/graphic-design/graphic-design-project-management/SKILL.md` | `graphic-design-project-management` | `graphic-design` | `low` | `2` | `experimental` | ok |
+| `graphic-design-data-viz` | `.agents/skills/graphic-design/graphic-design-data-viz/SKILL.md` | `graphic-design-data-viz` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-motion` | `.agents/skills/graphic-design/graphic-design-motion/SKILL.md` | `graphic-design-motion` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-packaging` | `.agents/skills/graphic-design/graphic-design-packaging/SKILL.md` | `graphic-design-packaging` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-editorial` | `.agents/skills/graphic-design/graphic-design-editorial/SKILL.md` | `graphic-design-editorial` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-photo-direction` | `.agents/skills/graphic-design/graphic-design-photo-direction/SKILL.md` | `graphic-design-photo-direction` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-advertising` | `.agents/skills/graphic-design/graphic-design-advertising/SKILL.md` | `graphic-design-advertising` | `graphic-design` | `low` | `1` | `experimental` | ok |
+| `graphic-design-accessibility` | `.agents/skills/graphic-design/graphic-design-accessibility/SKILL.md` | `graphic-design-accessibility` | `graphic-design` | `low` | `1` | `experimental` | ok |
 
 | `api-contracts` | `.agents/skills/integrations/api-contracts/SKILL.md` | `api-contracts` | `integrations` | `low` | `1` | `stable` | ok |
 | `auth` | `.agents/skills/integrations/auth/SKILL.md` | `auth` | `integrations` | `low` | `1` | `stable` | ok |

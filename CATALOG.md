@@ -162,6 +162,13 @@
 | [graphic-design-foundations](.agents/skills/graphic-design/graphic-design-foundations) | 1 | stable | low | 1 | Design graphic artifacts — posters, social graphics, editorial layouts, packa... |
 | [graphic-design-project-management](.agents/skills/graphic-design/graphic-design-project-management) | 1 | experimental | low | 2 | Manage graphic design projects — briefs, iterations, reviews, asset handoff, ... |
 | [graphic-design-tools](.agents/skills/graphic-design/graphic-design-tools) | 1 | experimental | medium | 3 | Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local ... |
+| [graphic-design-data-viz](.agents/skills/graphic-design/graphic-design-data-viz) | 1 | experimental | low | 2 | Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules. |
+| [graphic-design-motion](.agents/skills/graphic-design/graphic-design-motion) | 1 | experimental | low | 2 | Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules. |
+| [graphic-design-packaging](.agents/skills/graphic-design/graphic-design-packaging) | 1 | experimental | low | 2 | Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications. |
+| [graphic-design-editorial](.agents/skills/graphic-design/graphic-design-editorial) | 1 | experimental | low | 2 | Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination. |
+| [graphic-design-photo-direction](.agents/skills/graphic-design/graphic-design-photo-direction) | 1 | experimental | low | 2 | Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery. |
+| [graphic-design-advertising](.agents/skills/graphic-design/graphic-design-advertising) | 1 | experimental | low | 2 | Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules. |
+| [graphic-design-accessibility](.agents/skills/graphic-design/graphic-design-accessibility) | 1 | experimental | low | 2 | Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital. |
 
 ### integrations
 
