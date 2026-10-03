@@ -13,13 +13,15 @@ flowchart TD
     E --> F[Start normal work]
 ```
 
-1. Copy or sync `.agents/skills/`, `.claude/skills/`, `docs/agents/`, `.agents/adr/README.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, `.env.template` into the target repo.
-2. Run `setup-quirk-skills` once in the target repo.
-3. Configure `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, and `docs/agents/domain.md` for the project's real tracker and domain layout.
-4. Update `CONTEXT.md` with project-specific language. Do not copy domain vocabulary from another repo.
-5. Run `work-item-router` before any workflow skill whenever tracker governance or ownership may have changed.
-6. Run the validation commands in this guide.
-7. Start normal work through `ask-to` for ambiguous routing or the canonical feature flow for a claimed work item.
+1. Validate the source checkout with `node .agents/skills/platform/check-all.mjs`.
+2. For a new target, preview `node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo`, inspect the file plan, then repeat with `--write`. This copies documentation and recreates compatibility symlinks.
+3. For an existing target, use the README's existing-repository prompt to update only the skills tree, compatibility symlinks, and lockfile. The sync utility also copies `README.md`, `CONTEXT.md`, and documentation; it is not a skills-only updater. Differing files block by default. `--force` permits overwriting them.
+4. Configure `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, and `docs/agents/domain.md` for the project's actual tracker and domain layout.
+5. For a new target, specialize `CONTEXT.md` with project-specific language; preserve existing context during synchronization.
+6. Invoke `setup-quirk-skills` through the coding agent for repository setup. The similarly named shell script copies files and prompts interactively; it is a separate operation.
+7. Run the validation commands below from the target root, then start through `ask-to` or the relevant work-item skill. Run `work-item-router` when tracker governance or ownership changes.
+
+The shell installers copy `.agents/skills/`, `.claude/skills/`, `docs/agents/`, `docs/adr/README.md`, `CONTEXT.md`, and `skills-lock.json`. They replace these target paths and do not copy `skills.json` or `.env.template`. Add optional manifests or environment configuration deliberately when needed.
 
 ## Installation Prompts
 
@@ -36,16 +38,15 @@ The repository `README.md` contains two AI-agnostic prompts:
 | `.agents/skills/` | Canonical skill definitions |
 | `.claude/skills/` | Compatibility symlinks to canonical skills |
 | `skills-lock.json` | SHA-256 hashes for canonical `SKILL.md` files |
-| `.agents/adr/README.md` | ADR entry point (mandatory; design decisions must be recorded) |
-| `skills.json` | Skills manifest for `` / `npx skills` compatibility |
-| `.env.template` | Reproducible environment configuration |
-| `CONTEXT.md` | Repository-local domain vocabulary (mandatory; references `.agents/adr/`) |
+| `docs/adr/README.md` | ADR entry point copied by the installation scripts |
+| `skills.json` | Optional distribution manifest; not copied by the installers |
+| `.env.template` | Optional environment configuration; not copied by the installers |
+| `CONTEXT.md` | Repository-local domain vocabulary and project conventions |
 | `docs/agents/index.md` | Governance index for work-item skills |
 | `docs/agents/quirk-method.md` | Method vocabulary and quality bar |
 | `docs/agents/provenance.md` | Origin, redesign, retired-name record |
 | `docs/agents/work-item-format.md` | Metadata shape for specs, tickets, PRs |
 | `docs/agents/skill-templates.md` | Artifact template map |
-| `CONTEXT.md` | Repository-local domain vocabulary |
 
 ## Validation Commands
 
@@ -62,7 +63,7 @@ Expected result: `status: "pass"`.
 ### Standard feature
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[ask-to] --> B[grill-with-docs]
     B --> C[to-spec]
     C --> D[to-tickets]
@@ -78,7 +79,7 @@ flowchart LR
 ### Bug fix
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[ask-to] --> B[diagnosing-bugs]
     B --> C[tdd]
     C --> D[implement]
@@ -89,7 +90,7 @@ flowchart LR
 ### Operations
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[release-management] --> B[deployment]
     B --> C[observability]
     C --> D[monitoring-alerting]
@@ -108,8 +109,8 @@ flowchart LR
 ## Readiness Checklist
 
 - [ ] `setup-quirk-skills` has run or equivalent docs exist.
-- [ ] `.agents/adr/` exists with at least one ADR recording a design decision
-- [ ] `CONTEXT.md` exists, names only this repo's domain, and references `.agents/adr/`
+- [ ] The project ADR directory exists and records relevant design decisions
+- [ ] `CONTEXT.md` exists, names only this repo's domain, and references the project ADR directory
 - [ ] `docs/agents/issue-tracker.md` reflects the actual tracker.
 - [ ] `docs/agents/triage-labels.md` matches actual label strings.
 - [ ] `skills-lock.json` matches all local `SKILL.md` hashes.

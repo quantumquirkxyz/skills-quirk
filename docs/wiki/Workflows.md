@@ -516,7 +516,7 @@ If an artifact cannot answer these questions, improve the artifact before routin
 ## Navigation
 
 - [Back to documentation index](../README.md)
-- [quirk Method](quirk-method.md)
+- [quirk Method](../agents/quirk-method.md)
 - [Skills Map](../agents/skills-map.md)
 - [Agent Skills Index](../agents/index.md)
 - [Adoption Guide](../agents/adoption-guide.md)

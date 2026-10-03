@@ -11,9 +11,9 @@
 </p>
 
 <p align="center">
-  <img alt="status panel" src="https://img.shields.io/badge/status-ready-22c55e?style=for-the-badge&labelColor=0f172a" />
+  <img alt="status panel" src="https://img.shields.io/badge/status-development-22c55e?style=for-the-badge&labelColor=0f172a" />
   <img alt="flow panel" src="https://img.shields.io/badge/flow-clarify%20%7C%20review%20%7C%20ship-facc15?style=for-the-badge&labelColor=0f172a" />
-  <img alt="sync panel" src="https://img.shields.io/badge/sync-validated-38bdf8?style=for-the-badge&labelColor=0f172a" />
+  <img alt="sync panel" src="https://img.shields.io/badge/sync-check%20locally-38bdf8?style=for-the-badge&labelColor=0f172a" />
 </p>
 
 `quirk Skills` is a repository-local workflow system for moving software work from intent to validated delivery.
@@ -31,10 +31,20 @@ If a PR branch is conflicted, resolve branch state first with `resolving-merge-c
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
+# Node.js 18+ and Bash are required; CI uses Node.js 20.
 node .agents/skills/platform/check-all.mjs
 ```
 
-Then sync the bundle into the target repo and start with `ask-to` or the relevant work-item skill.
+Run commands from the repository root. The core validation tools use Node.js built-ins and do not require `npm install`. A successful validation prints `status: "pass"`; resolve reported failures before treating the bundle as ready.
+
+Preview installation into a new target repository, then apply it:
+
+```bash
+node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo
+node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo --write
+```
+
+Follow the [adoption guide](docs/agents/adoption-guide.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
 
 <details>
 <summary>What the bundle includes</summary>
@@ -59,6 +69,7 @@ Then sync the bundle into the target repo and start with `ask-to` or the relevan
 - [Quality & Validation](#quality--validation)
 - [Distribution](#distribution)
 - [Installation & Sync](#installation--sync)
+- [Governance](#governance)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -70,11 +81,11 @@ Then sync the bundle into the target repo and start with `ask-to` or the relevan
 
 | Location | Role |
 |---|---|
-| `.agents/skills/` | Skills canónicas (`SKILL.md` + lockfile) |
-| `.claude/skills/` | Vista de compatibilidad (symlinks) |
-| `skills-lock.json` | Hash canónico de cada skill |
-| `CONTEXT.md` | Vocabulario local del repo |
-| `docs/agents/` | Documentación de método, provenance y adoption |
+| `.agents/skills/` | Canonical skill definitions (`SKILL.md`) |
+| `.claude/skills/` | Compatibility view (symlinks) |
+| `skills-lock.json` | SHA-256 integrity hashes for canonical skills |
+| `CONTEXT.md` | Repository-local vocabulary |
+| `docs/agents/` | Method, provenance, and adoption documentation |
 
 ---
 
@@ -100,30 +111,13 @@ flowchart TD
 
 ### Standard Feature Flow
 
-```mermaid
-sequenceDiagram
-    participant U as User or AI agent
-    participant A as ask-to
-    participant G as grill-with-docs
-    participant S as to-spec
-    participant T as to-tickets
-    participant I as implement
-    participant P as publish-open-pr
-    participant R as review-pr
-    participant F as review-fix-loop
-    participant M as ship-subissue
-
-    U->>A: Ask what to do next
-    A->>G: Route to plan sharpening
-    G->>S: Publish spec
-    S->>T: Split into tickets
-    T->>I: Implement each ticket
-    I->>P: Open PR
-    P->>R: Review PR
-    R-->>F: If fixes are needed
-    F->>R: Re-review until clean
-    R-->>M: When clean
-```
+| Stage | Skills | Result |
+|---|---|---|
+| Clarify | `ask-to`, `grill-with-docs` | Agreed scope and durable context |
+| Plan | `to-spec`, `to-tickets` | Specification and claimable work items |
+| Build | `implement`, `publish-open-pr` | Validated change and pull request |
+| Review | `review-pr`, `review-fix-loop` | Findings resolved with evidence |
+| Deliver | `ship-subissue` | Delivery after the review gate |
 
 ---
 
@@ -142,25 +136,25 @@ flowchart LR
 <details>
 <summary>Skill layer</summary>
 
-- `.agents/skills/` — skills canónicas con `SKILL.md` y lockfile
-- `.claude/skills/` — symlinks de compatibilidad
-- `skills-lock.json` — hashes de integridad
+- `.agents/skills/` — canonical skills with `SKILL.md` and integrity hashes
+- `.claude/skills/` — compatibility symlinks
+- `skills-lock.json` — integrity hashes
 
 </details>
 
 <details>
 <summary>Method layer</summary>
 
-- `CONTEXT.md` — vocabulario y convenciones locales
-- `docs/agents/` — ADRs, provenance, adoption guide, skill templates
+- `CONTEXT.md` — local vocabulary and conventions
+- `docs/agents/` — ADRs, provenance, adoption guide, and skill templates
 
 </details>
 
 <details>
 <summary>Execution layer</summary>
 
-- Scripts de validación: `.agents/skills/platform/check-all.mjs`
-- Scripts de sync: `.agents/skills/platform/sync-bundle.mjs`
+- Validation scripts: `.agents/skills/platform/check-all.mjs`
+- Bundle synchronization script: `.agents/skills/platform/sync-bundle.mjs`
 - Router: `work-item-router.mjs`
 
 </details>
@@ -262,7 +256,7 @@ flowchart LR
 
 ## Quality & Validation
 
-> Run the local gate from the repo root. Expected result: `status: "pass"`.
+> Run the local gate from the repo root. A successful run reports `status: "pass"`; badges are descriptive and do not prove a passing gate.
 
 ```bash
 node .agents/skills/platform/check-all.mjs
@@ -270,6 +264,10 @@ node .agents/skills/platform/check-all.mjs
 
 > [!TIP]
 > The full gate covers structure, semantic health, scenario fixtures, behavioral fixtures, syntax checks, shell template checks, and platform tests.
+
+### Current validation limitations
+
+The documentation review found missing flat Claude compatibility links for seven graphic-design skills and semantic warnings for four graphic-design skills without explicit Rule lines. The platform test requires a warning-free semantic audit, so the full gate remains blocked until these bundle issues are resolved. Run the gate to obtain the current results rather than assuming readiness from the version or badges.
 
 ### Quality scoring
 
@@ -294,7 +292,7 @@ node .agents/skills/platform/dependency-graph.mjs --format mermaid
 node .agents/skills/platform/dependency-graph.mjs --format json
 ```
 
-Produces a DAG of skill dependencies, detects cycles, and identifies central skills.
+Produces a dependency graph, reports cycles, and identifies central skills. The graph is a DAG only when it contains no cycles.
 
 ### Fixtures
 
@@ -310,19 +308,25 @@ Runs behavioral, regression, and security fixtures with configurable pass thresh
 
 ## Distribution
 
-### NPX CLI
+### Local CLI and platform scripts
+
+The CLI resolves scripts relative to the current working directory, so use it from this checkout. Several commands currently have dispatch limitations: `list`, `search`, and `metrics` combine a script path with a subcommand, while `score` and `security` require a skill directory rather than a bare skill name. Use the direct scripts for these operations:
 
 ```bash
-npx skills-quirk list
-npx skills-quirk search "react testing"
-npx skills-quirk score skill-creator
-npx skills-quirk security implement
-npx skills-quirk sync --write
+node bin/skills-quirk.js help
+node .agents/skills/platform/skill-lab.mjs list
+node .agents/skills/platform/skill-lab.mjs search "react testing"
+node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator
+node .agents/skills/platform/security-scanner.mjs .agents/skills/delivery/implement
+node scripts/sync-registry.mjs
+node scripts/sync-registry.mjs --write
 ```
+
+`package.json` names the package `skills-quirk`. Package publication and npm release channels must be verified separately; the source checkout is the reproducible entry point documented here.
 
 ### Registry and marketplace
 
-- `registry.yaml` — source of truth with JSON Schema validation
+- `registry.yaml` — bundle metadata; schema defined in `schema/registry.schema.json`
 - `.claude-plugin/marketplace.json` — generated Claude Code marketplace manifest
 - `CATALOG.md` — auto-generated skill catalog
 - `llms.txt` — agent-discovery entrypoint
@@ -336,7 +340,9 @@ node .agents/skills/platform/mcp-server/mcp-skills-server.mjs --stdio
 
 Exposes skills as MCP tools: `list_skills`, `get_skill`, `search_skills`, `resolve_skill_for_task`, `validate_skill`, `score_skill`.
 
-### Sync
+### Bundle sync
+
+This copies bundle files into another repository. It is separate from `scripts/sync-registry.mjs`, which regenerates discovery artifacts in this repository. Bundle sync also includes `README.md`, `CONTEXT.md`, and documentation; existing differing files block the operation unless `--force` is supplied. Review the dry run and preserve target-local documentation before applying changes. Use the existing-repository prompt below for a skills-only update.
 
 <details>
 <summary>Dry-run sync</summary>
@@ -451,14 +457,16 @@ Update the skills implementation so it matches the upstream bundle while preserv
 <summary>Quick install</summary>
 
 ```bash
-bash scripts/install-quirk-skills.sh
+bash scripts/install-quirk-skills.sh /path/to/new-target-repo
 ```
 
-**One-line installer:**
+**Download the installer for inspection:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh
+curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh -o /tmp/install-quirk-skills.sh
 ```
+
+The shell installer requires a local source checkout and replaces the target skills directories, `docs/agents/`, `docs/adr/README.md`, and `CONTEXT.md`. Use it for new targets; use the preservation prompt for existing projects. Downloading the script alone does not download the bundle.
 
 </details>
 
@@ -482,13 +490,15 @@ curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/s
 
 ### Versioning
 
+Channel names in registry metadata do not establish that npm dist-tags have been published.
+
 The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ### Evidence-gated updates
 
 ```bash
-node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --target-version 2
-node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --dry-run --evidence quality-score,security-scan
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --target-version=2 --dry-run --evidence=quality-score
+node .agents/skills/platform/skill-evolver.mjs .agents/skills/skill-dev/skill-creator --dry-run --evidence=quality-score,security-scan
 ```
 
 | Change category | Required evidence |
@@ -507,7 +517,7 @@ node .agents/skills/platform/audit-trail.mjs query --skill skill-creator
 node .agents/skills/platform/audit-trail.mjs stats
 ```
 
-Immutable JSONL append-only log of skill lifecycle events in `.agents/skills/platform/audit/`.
+JSONL append-only log of skill lifecycle events in `.agents/skills/platform/audit/`.
 
 ---
 

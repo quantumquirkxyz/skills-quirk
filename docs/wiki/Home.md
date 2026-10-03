@@ -10,7 +10,7 @@
 |---|---|
 | [Home](Home.md) | Main wiki page |
 | [Method](Method.md) | The quirk method: principles, vocabulary and canonical flow |
-| [Skills-Catalog](Skills-Catalog.md) | Complete catalog of skills by category |
+| [Skills-Catalog](../../CATALOG.md) | Complete catalog of skills by category |
 | [Installation](Installation.md) | Installation and synchronization guide |
 | [Architecture](Architecture.md) | Overview of bundle architecture |
 | [Governance](Governance.md) | Lifecycle, auditing and quality gates |

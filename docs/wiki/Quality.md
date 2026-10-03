@@ -264,7 +264,7 @@ node .agents/skills/platform/evaluate-fixtures.mjs --fixture-dir ./custom-fixtur
       type: behavioral,
       expected: {
         outputContains: [## Contract, ## Guardrails],
-        doesNotContain: [TODO, point 1]
+        doesNotContain: [TODO, placeholder-text]
       }
     },
     {
