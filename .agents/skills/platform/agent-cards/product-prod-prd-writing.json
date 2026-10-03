@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "prod-prd-writing",
       "description": "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.",
       "tags": [
-        "product"
+        "\"product\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "pull-request"
       }
     }
   ]

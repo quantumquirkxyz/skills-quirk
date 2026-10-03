@@ -21,7 +21,7 @@
       "sourceType": "local"
     },
     "agent-card": {
-      "hash": "fb5cb6698805a374f37eac51af0564c0e596dc28352009ff4efbfe7f3616f276",
+      "hash": "e9ede9f5c187da7c60629b80ec832f87cfbd3c4274b911a067dabe8797ab6617",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -81,7 +81,7 @@
       "sourceType": "local"
     },
     "astro": {
-      "hash": "d6927110ee03bc417295b124e8b553e8be29f6105057cc5593ce1b72b4c34439",
+      "hash": "b77e2724ead48f08973ceebf1701f5d9566619eae560a13f0f09afae527d12e6",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -91,17 +91,17 @@
       "sourceType": "local"
     },
     "backend-architecture": {
-      "hash": "6f686608c7f78d4be3d44ebe504b7fd33a52bbfcfc4be6ce8f327ad302325c64",
+      "hash": "77bfb94fbbba0fdec2f494b82f445b61fea40b7805a29fe09a8f8a3e70f26bd5",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "backend-caching": {
-      "hash": "828594d1e0ae1a1fe501ad35d61e56e1792bc0d3700c3d06d0cb7bbe8e98bda4",
+      "hash": "c522197b35e6d6d646e8fffca8b6a645758562c706f293fd10a7d4209c4ff9f2",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "backend-queues": {
-      "hash": "35901d5725d544f0412f29b4053fa3a1a082789e90745a45f3ae2c73c14f191a",
+      "hash": "c0cfdd2dc228cc4237824995591bdb863718779407f0d6b73feb5d6295018410",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -291,7 +291,7 @@
       "sourceType": "local"
     },
     "design-system": {
-      "hash": "e53e81600b483a395d6f1d1ff4d028b45ef6a41a0934bca2af6386a9a71d0c6a",
+      "hash": "1ece3e0a563da8583ccfa5a4a9b79cb3dc7f5ba641e28a57ac9f19388520d6f9",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -351,7 +351,7 @@
       "sourceType": "local"
     },
     "domain-modeling": {
-      "hash": "56c2ead927b43a390c3576562427a14bad29294f9d2ed73d0e87d76427189715",
+      "hash": "7446bed6cd60384f2f8c854b888df3583cf8dc102b9109a01674f046fbceb990",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -396,7 +396,7 @@
       "sourceType": "local"
     },
     "frontend-design": {
-      "hash": "c8c0563f36c275871b618d310af15d046f4004597dedaa1a4ae75f197602afc2",
+      "hash": "be887d4b53ebe3ac78b230998791edd6f7547eff09b6815ff10ee68ad2e99a2d",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -666,7 +666,7 @@
       "sourceType": "local"
     },
     "microservices": {
-      "hash": "66bb1f315de80d2c0d404517b83fb9d470025f0df27858a02f51819880178a66",
+      "hash": "c25bd6393635d7f823a1cb08ec98a82f0af6a4a9210184eeccc0bcc5e1093508",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -701,7 +701,7 @@
       "sourceType": "local"
     },
     "nextjs": {
-      "hash": "093de197a5151f59d27ce091268fb717b62ca4c094f801677ade489d73044f59",
+      "hash": "149721cff5bf5278e54036cb0b827f43b6468f54c68f40f0063ecc7c44f2cfd7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -931,7 +931,7 @@
       "sourceType": "local"
     },
     "react": {
-      "hash": "82106359892c21f337faafd2a8b85a3311cfafbdfe0ee908d880ddc185844966",
+      "hash": "615fc5a24eec026d3ea641433f28951d129aea03dacecbd6a894970418aebc4b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -941,7 +941,7 @@
       "sourceType": "local"
     },
     "remix": {
-      "hash": "e1f413bf9aefbba5c5824c54773916e567b4214ba03d33db9f50675b5c2a6619",
+      "hash": "47c1ee2e78fb7e32a620da169d016c39cbe6e6d5dd393e7ce3cf3dde53306408",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1121,7 +1121,7 @@
       "sourceType": "local"
     },
     "styling": {
-      "hash": "899766a0190d57fce4467dfe41e3b153b67e9085bde8aa10690ba5015af2d0ed",
+      "hash": "147a8c7a265c69297cc7d24e4a17f62bbb1b0f6dfc6a5193cde94027b399bc0f",
       "revision": "working-tree",
       "sourceType": "local"
     },

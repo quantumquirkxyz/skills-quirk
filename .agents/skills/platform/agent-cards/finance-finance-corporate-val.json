@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "finance-corporate-val",
       "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
       "tags": [
-        "finance"
+        "\"finance\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "finance"
       }
     }
   ]

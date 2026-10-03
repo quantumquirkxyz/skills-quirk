@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "qa-manual-testing",
       "description": "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.",
       "tags": [
-        "qa"
+        "\"qa\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "test-strategy"
       }
     }
   ]

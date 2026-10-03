@@ -5,7 +5,15 @@ maturity: "stable"
 version: "1"
 description: "Define and evolve reusable UI tokens, components, and usage rules as a coherent system."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: UI requirements, component inventory, brand context, and accessibility constraints.
+inputs:
+  - type: object
+    description: UI requirements, component inventory, brand context, and accessibility constraints.
+outputs:
+  - type: object
+    description: Token definitions, component guidance, and usage rules.
 sideEffects: []
 dependencies: []
 stopCondition: "Define and evolve reusable UI tokens, components, and usage rules as a coherent system complete; artifact saved; completion criteria checked."
@@ -58,12 +66,16 @@ Emit `DesignSystemArtifact` as both:
 Use this skill when UI work starts to repeat and needs a shared system rather than one-off styling. It should define the reusable tokens, components, and usage rules that keep the frontend coherent as it grows.
 
 
+## Why
+
+A design system prevents drift by making the shared token and component decisions explicit and reviewable. Without it, teams repeat patterns, diverge on spacing and color, and accessibility regresses silently.
+
 ## Steps
 
 1. Find repeated UI patterns and naming collisions.
 2. Define the minimum token set that carries the brand.
 3. Identify which components should be shared and which should stay local.
-4. Write the rules that keep the system coherent over time.
+4. Write the rules that keep the system coherent over time. Record the design decision traceId and link the artifact to the originating issue so reviewers can replay the rationale.
 
 ## Completion
 

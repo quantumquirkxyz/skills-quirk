@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "localization",
       "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
       "tags": [
-        "cms"
+        "\"cms\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "cms"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "search",
       "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
       "tags": [
-        "integrations"
+        "\"integrations\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "integrations"
       }
     }
   ]

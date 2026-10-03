@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "prompt-template-library",
       "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
       "tags": [
-        "ai"
+        "\"ai\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "pull-request"
       }
     }
   ]

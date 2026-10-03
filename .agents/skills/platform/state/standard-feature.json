@@ -1,17 +1,12 @@
 {
   "workflow": "standard-feature",
   "version": "2.0",
-  "currentState": "grill-with-docs",
+  "currentState": "ask-to",
   "history": [
     {
       "state": "ask-to",
-      "enteredAt": "2026-10-01T21:41:41.942Z",
+      "enteredAt": "2026-10-03T06:06:09.481Z",
       "event": null
-    },
-    {
-      "state": "grill-with-docs",
-      "enteredAt": "2026-10-01T21:41:48.746Z",
-      "event": "AMBIGUOUS"
     }
   ],
   "context": {}

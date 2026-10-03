@@ -5,8 +5,8 @@
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "web3-defi",
       "description": "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.",
       "tags": [
-        "web3"
+        "\"web3\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "web3"
       }
     }
   ]

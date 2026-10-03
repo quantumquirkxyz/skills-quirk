@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Job or event type, producer and consumer behavior, ordering needs, durability requirements, and failure cases.
+outputs:
+  - type: object
+    description: Queue architecture, delivery guarantees, retry policy, idempotency plan, and observability checklist.
 sideEffects: []
 dependencies: []
 stopCondition: "Queue behavior, recovery paths, and operator signals are explicit."
@@ -66,6 +71,10 @@ Use this skill when designing background jobs, event consumers, message queues, 
 - Rule: separate transient failures, poison messages, and permanent business rejections.
 - Rule: include backpressure behavior for producer overload and worker lag.
 - Rule: expose queue depth, age, retry count, dead-letter count, and worker error rate.
+
+## Why
+
+Explicit queue semantics prevent data loss and duplicate work. Without them, retries and ordering assumptions diverge across producers and consumers.
 
 ## Steps
 

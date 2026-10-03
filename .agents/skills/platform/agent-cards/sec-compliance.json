@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "compliance",
       "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
       "tags": [
-        "sec"
+        "\"sec\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "sec"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "api-gateway",
       "description": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).",
       "tags": [
-        "backend"
+        "\"backend\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "plan"
       }
     }
   ]

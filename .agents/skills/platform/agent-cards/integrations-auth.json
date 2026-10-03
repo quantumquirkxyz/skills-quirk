@@ -5,8 +5,8 @@
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "auth",
       "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
       "tags": [
-        "integrations"
+        "\"integrations\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "authentication"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "payments",
       "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
       "tags": [
-        "integrations"
+        "\"integrations\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "payment"
       }
     }
   ]

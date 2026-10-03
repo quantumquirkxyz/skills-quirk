@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "devops-k8s-orchestration",
       "description": "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.",
       "tags": [
-        "devops"
+        "\"devops\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "devops"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,9 +19,12 @@
       "name": "graphic-design-data-viz",
       "description": "Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules.",
       "tags": [
-        "graphic-design"
+        "\"graphic-design\""
       ],
-      "parameters": {}
+      "parameters": {
+        "modelTier": "reasoning",
+        "artifactType": "plan"
+      }
     }
   ]
 }

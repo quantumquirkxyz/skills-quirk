@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Remix framework (loaders, actions, nested routes, progressive enhancement)."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Route map, data requirements, mutation patterns, and user interaction flows.
+outputs:
+  - type: object
+    description: Remix route design, loader/action plan, data flow, and progressive enhancement strategy.
 sideEffects: []
 dependencies: []
 stopCondition: "Remix design complete; artifact saved; completion criteria checked."
@@ -55,7 +60,7 @@ Emit `RemixArtifact` as both:
 # 
 # Remix
 
-Use this skill when designing or reviewing Remix applications — loaders, actions, nested routes, mutations, and progressive enhancement.
+Use this skill when designing or reviewing Remix applications. Record the execution traceId and link the artifact to the originating issue for review replay. — loaders, actions, nested routes, mutations, and progressive enhancement.
 
 
 ## Process

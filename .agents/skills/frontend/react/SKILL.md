@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Design React component structure and state seams — with composability, testability, and clear data flow."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: React brief, component tree, state shape, and interaction requirements.
+outputs:
+  - type: object
+    description: React seam proposal, component guidance, state boundary guidance, and test hooks.
 sideEffects: []
 dependencies: []
 stopCondition: "Design React component structure and state seams complete; artifact saved; completion criteria checked."
@@ -55,8 +60,12 @@ Emit `ReactArtifact` as both:
 # 
 # React
 
-Use this skill when React components or state need to be shaped deliberately. Keep the component graph shallow where possible, and make the state seam explicit so the UI remains testable and refactor-friendly.
+Use this skill when React components or state need to be shaped deliberately. Record the execution traceId and link the artifact to the originating issue for review replay. Keep the component graph shallow where possible, and make the state seam explicit so the UI remains testable and refactor-friendly.
 
+
+## Why
+
+A clean component seam keeps the UI refactor-friendly and testable. Without it, state leaks across boundaries and changes ripple unpredictably.
 
 ## Steps
 

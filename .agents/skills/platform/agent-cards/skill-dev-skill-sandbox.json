@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "skill-sandbox",
       "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
       "tags": [
-        "skill-dev"
+        "\"skill-dev\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "skill-dev"
       }
     }
   ]

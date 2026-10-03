@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "frontend-design",
       "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
       "tags": [
-        "frontend"
+        "\"frontend\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "plan"
       }
     }
   ]

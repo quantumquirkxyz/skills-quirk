@@ -7,6 +7,7 @@ import path from 'node:path';
 const root = process.cwd();
 const skillsRoot = path.join(root, '.agents', 'skills');
 const schemasDir = path.join(root, '.agents', 'skills', 'platform', 'schemas');
+const agentCardsDir = path.join(root, '.agents', 'skills', 'platform', 'agent-cards');
 
 const EXCLUDED = new Set(['platform', 'prompts', 'agent-cards', 'node_modules', '.git', '.generated-notes.md']);
 
@@ -60,6 +61,7 @@ async function collectSkills(dir, out = []) {
         inputs: Array.isArray(fm.inputs) ? fm.inputs : [],
         outputs: Array.isArray(fm.outputs) ? fm.outputs : [],
         artifactType: fm.artifactType || '',
+        modelTier: fm.modelTier || '',
         path: path.relative(root, dir),
       });
     }
@@ -69,9 +71,27 @@ async function collectSkills(dir, out = []) {
 
 let skillsCache = [];
 let schemasCache = {};
+let agentCardsCache = [];
+let skillSchemasCache = {};
 
+
+async function loadAgentCards() {
+  const cards = [];
+  if (!(await exists(agentCardsDir))) return cards;
+  const files = await fs.readdir(agentCardsDir);
+  for (const f of files) {
+    if (!f.endsWith('.json')) continue;
+    try {
+      const content = await fs.readFile(path.join(agentCardsDir, f), 'utf8');
+      const card = JSON.parse(content);
+      cards.push(card);
+    } catch {}
+  }
+  return cards;
+}
 async function refreshCache() {
   skillsCache = await collectSkills(skillsRoot);
+  agentCardsCache = await loadAgentCards();
   try {
     const files = await fs.readdir(schemasDir);
     for (const f of files) {
@@ -84,6 +104,15 @@ async function refreshCache() {
       }
     }
   } catch {}
+
+  for (const skill of skillsCache) {
+    const schemaPath = path.join(schemasDir, `${skill.name}-schema.json`);
+    try {
+      const content = await fs.readFile(schemaPath, 'utf8');
+      const schema = JSON.parse(content);
+      skillSchemasCache[skill.name] = schema;
+    } catch {}
+  }
 }
 
 function snakeCase(name) {
@@ -158,11 +187,15 @@ function handleToolsList() {
   const tools = [];
   for (const skill of skillsCache) {
     const toolName = `skill_${snakeCase(skill.name)}`;
-    const inputSchema = buildInputSchemaFromInputs(skill.inputs);
+    const schema = skillSchemasCache[skill.name];
+    const inputSchema = schema && schema.properties
+      ? { type: 'object', properties: schema.properties, required: schema.required || [] }
+      : buildInputSchemaFromInputs(skill.inputs);
     const outputSchema = buildOutputSchemaFromOutputs(skill.outputs);
+    const description = `${skill.description} Model tier: ${skill.modelTier || 'reasoning'}, Artifact type: ${skill.artifactType || 'general'}`;
     tools.push({
       name: toolName,
-      description: skill.description,
+      description,
       inputSchema,
       outputSchema,
     });
@@ -184,6 +217,42 @@ function handleToolsList() {
     description: 'Get JSON schema for a skill artifact type',
     inputSchema: { type: 'object', properties: { skillName: { type: 'string' } }, required: ['skillName'] },
     outputSchema: { type: 'object', properties: { skill: { type: 'string' }, artifactType: { type: 'string' }, schema: { type: 'object' } } },
+  });
+  tools.push({
+    name: 'a2a_discover',
+    description: 'A2A endpoint: discover Agent Cards filtered by capability',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        capability: { type: 'string', description: 'Capability to filter by (skillInvocation, artifactProduction, workflowOrchestration)' }
+      },
+      required: []
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        agentCards: { type: 'array', items: { type: 'object' } },
+        total: { type: 'number' }
+      }
+    },
+  });
+  tools.push({
+    name: 'a2a_invoke',
+    description: 'A2A endpoint: invoke a skill by agent card name and return its tool definition',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        agentCardName: { type: 'string', description: 'Name of the agent card (skill name) to invoke' }
+      },
+      required: ['agentCardName']
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        agentCard: { type: 'object' },
+        toolDefinition: { type: 'object' }
+      }
+    },
   });
   return tools;
 }
@@ -208,6 +277,32 @@ async function handleToolCall(name, args) {
     const key = mapArtifactTypeToSchemaKey(skill.artifactType);
     const schema = schemasCache[key] || schemasCache['artifact_schema'] || buildDefaultOutputSchema();
     return { skill: skill.name, artifactType: skill.artifactType, schema };
+  }
+  if (name === 'a2a_discover') {
+    let cards = agentCardsCache;
+    if (args.capability) {
+      cards = cards.filter(card => {
+        const caps = card.capabilities || {};
+        return caps[args.capability] === true;
+      });
+    }
+    return { agentCards: cards, total: cards.length };
+  }
+  if (name === 'a2a_invoke') {
+    const card = agentCardsCache.find(c => c.name === args.agentCardName);
+    if (!card) throw new Error(`Agent Card not found: ${args.agentCardName}`);
+    const skill = skillsCache.find(s => s.name === args.agentCardName);
+    if (!skill) throw new Error(`Skill not found for agent card: ${args.agentCardName}`);
+    const toolName = `skill_${snakeCase(skill.name)}`;
+    const inputSchema = buildInputSchemaFromInputs(skill.inputs);
+    const outputSchema = buildOutputSchemaFromOutputs(skill.outputs);
+    const toolDefinition = {
+      name: toolName,
+      description: skill.description,
+      inputSchema,
+      outputSchema,
+    };
+    return { agentCard: card, toolDefinition };
   }
   const skill = skillsCache.find(s => `skill_${snakeCase(s.name)}` === name);
   if (!skill) throw new Error(`Tool not found: ${name}`);
@@ -288,7 +383,7 @@ async function handleJsonRpc(request) {
 
 async function main() {
   await refreshCache();
-  console.error(`[mcp-server] Loaded ${skillsCache.length} skills, ${Object.keys(schemasCache).length} schemas`);
+  console.error(`[mcp-server] Loaded ${skillsCache.length} skills, ${Object.keys(schemasCache).length} schemas, ${agentCardsCache.length} agent cards`);
 
   const stdin = process.stdin;
   const stdout = process.stdout;

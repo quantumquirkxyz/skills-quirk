@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "ux-prototyping",
       "description": "Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.",
       "tags": [
-        "ux"
+        "\"ux\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "pull-request"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "professional-communication",
       "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
       "tags": [
-        "professional"
+        "\"professional\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "pull-request"
       }
     }
   ]

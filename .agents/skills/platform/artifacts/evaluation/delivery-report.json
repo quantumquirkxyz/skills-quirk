@@ -1,84 +1,84 @@
 {
   "category": "delivery",
-  "generatedAt": "2026-10-02T20:31:31.160Z",
+  "generatedAt": "2026-10-03T06:04:57.596Z",
   "totalSkills": 14,
-  "avgScore": 46,
+  "avgScore": 72,
   "gradeDistribution": {
     "A": 0,
     "B": 3,
-    "C": 1,
-    "D": 0,
-    "F": 10
+    "C": 5,
+    "D": 6,
+    "F": 0
   },
   "skillsByScore": [
     {
-      "skill": "resolving-merge-conflicts",
-      "path": ".agents/skills/delivery/resolving-merge-conflicts",
-      "score": 24,
-      "grade": "F",
-      "tier": "BASIC"
-    },
-    {
-      "skill": "prototype",
-      "path": ".agents/skills/delivery/prototype",
-      "score": 26,
-      "grade": "F",
-      "tier": "BASIC"
-    },
-    {
-      "skill": "research",
-      "path": ".agents/skills/delivery/research",
-      "score": 28,
-      "grade": "F",
-      "tier": "BASIC"
-    },
-    {
-      "skill": "plan-review-fixes",
-      "path": ".agents/skills/delivery/plan-review-fixes",
-      "score": 30,
-      "grade": "F",
-      "tier": "BASIC"
-    },
-    {
-      "skill": "implement-review-fixes",
-      "path": ".agents/skills/delivery/implement-review-fixes",
-      "score": 31,
-      "grade": "F",
-      "tier": "BASIC"
-    },
-    {
       "skill": "testing",
       "path": ".agents/skills/delivery/testing",
-      "score": 34,
-      "grade": "F",
+      "score": 65,
+      "grade": "D",
       "tier": "BASIC"
     },
     {
       "skill": "webapp-testing",
       "path": ".agents/skills/delivery/webapp-testing",
-      "score": 34,
-      "grade": "F",
+      "score": 65,
+      "grade": "D",
+      "tier": "BASIC"
+    },
+    {
+      "skill": "prototype",
+      "path": ".agents/skills/delivery/prototype",
+      "score": 66,
+      "grade": "D",
+      "tier": "BASIC"
+    },
+    {
+      "skill": "research",
+      "path": ".agents/skills/delivery/research",
+      "score": 66,
+      "grade": "D",
       "tier": "BASIC"
     },
     {
       "skill": "contribution-workflow-optimizer",
       "path": ".agents/skills/delivery/contribution-workflow-optimizer",
-      "score": 36,
-      "grade": "F",
+      "score": 67,
+      "grade": "D",
+      "tier": "BASIC"
+    },
+    {
+      "skill": "implement-review-fixes",
+      "path": ".agents/skills/delivery/implement-review-fixes",
+      "score": 69,
+      "grade": "D",
       "tier": "BASIC"
     },
     {
       "skill": "review-fix-loop",
       "path": ".agents/skills/delivery/review-fix-loop",
-      "score": 36,
-      "grade": "F",
+      "score": 70,
+      "grade": "C",
       "tier": "BASIC"
     },
     {
       "skill": "diagnosing-bugs",
       "path": ".agents/skills/delivery/diagnosing-bugs",
-      "score": 37,
-      "grade": "F",
+      "score": 72,
+      "grade": "C",
+      "tier": "BASIC"
+    },
+    {
+      "skill": "plan-review-fixes",
+      "path": ".agents/skills/delivery/plan-review-fixes",
+      "score": 72,
+      "grade": "C",
+      "tier": "BASIC"
+    },
+    {
+      "skill": "resolving-merge-conflicts",
+      "path": ".agents/skills/delivery/resolving-merge-conflicts",
+      "score": 72,
+      "grade": "C",
       "tier": "BASIC"
     },
     {
@@ -113,57 +113,9 @@
   "recommendations": [
     {
       "priority": "HIGH",
-      "dimension": "Contract section",
-      "finding": "6 skill(s) missing Contract section",
-      "action": "Add \"## Contract\" section to SKILL.md describing caller obligations and guarantees."
-    },
-    {
-      "priority": "HIGH",
-      "dimension": "Provenance section",
-      "finding": "10 skill(s) missing Provenance section",
-      "action": "Add \"## Provenance\" section documenting authorship, influences, and redesign status."
-    },
-    {
-      "priority": "HIGH",
-      "dimension": "Artifact section",
-      "finding": "10 skill(s) missing Artifact section",
-      "action": "Add \"## Artifact\" section describing outputs, schemas, and handoff contracts."
-    },
-    {
-      "priority": "HIGH",
       "dimension": "Completion section",
-      "finding": "4 skill(s) missing Completion section",
+      "finding": "1 skill(s) missing Completion section",
       "action": "Add \"## Completion\" section with explicit completion criteria and stop conditions."
-    },
-    {
-      "priority": "MEDIUM",
-      "dimension": "promptVersion",
-      "finding": "10 skill(s) without promptVersion frontmatter",
-      "action": "Add promptVersion to frontmatter (e.g., promptVersion: 2) to enable regression tracking."
-    },
-    {
-      "priority": "MEDIUM",
-      "dimension": "modelTier",
-      "finding": "10 skill(s) without modelTier frontmatter",
-      "action": "Add modelTier to frontmatter (reasoning|code|fast|router) aligned with trustTier."
-    },
-    {
-      "priority": "MEDIUM",
-      "dimension": "artifactType",
-      "finding": "10 skill(s) without artifactType frontmatter",
-      "action": "Add artifactType to frontmatter to declare the primary output artifact shape."
-    },
-    {
-      "priority": "MEDIUM",
-      "dimension": "fixturesPath",
-      "finding": "10 skill(s) without fixturesPath frontmatter",
-      "action": "Add fixturesPath pointing to behavioral fixtures for regression testing."
-    },
-    {
-      "priority": "HIGH",
-      "dimension": "overall quality",
-      "finding": "10 skill(s) scored below 60/100",
-      "action": "Review low-scoring skills and address issues in body depth, sections, and frontmatter completeness."
     }
   ],
   "details": [
@@ -218,32 +170,30 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 6,
-        "sections": 5,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
+        "promptVersioning": 5,
+        "modelTierAlignment": 5,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
         "diataxisCompleteness": 4
       },
-      "total": 36,
-      "grade": "F",
+      "total": 67,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "modelTier mismatch: trustTier=1, modelTier=reasoning",
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/contribution-workflow-optimizer.json"
       ],
       "metrics": {
-        "tokens": 316,
-        "lines": 43,
-        "headers": 6,
+        "tokens": 345,
+        "lines": 57,
+        "headers": 8,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -251,7 +201,11 @@
         "name": "contribution-workflow-optimizer",
         "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "workflow",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/contribution-workflow-optimizer.json"
       }
     },
     {
@@ -260,33 +214,30 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 10,
-        "sections": 3,
+        "sections": 10,
         "assets": 3,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 2,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "promptVersioning": 5,
+        "modelTierAlignment": 5,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 4,
+        "regressionCoverage": 5,
+        "diataxisCompleteness": 2
       },
-      "total": 37,
-      "grade": "F",
+      "total": 72,
+      "grade": "C",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "modelTier mismatch: trustTier=1, modelTier=reasoning",
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/diagnosing-bugs.json"
       ],
       "metrics": {
-        "tokens": 1422,
-        "lines": 140,
-        "headers": 14,
+        "tokens": 1530,
+        "lines": 166,
+        "headers": 18,
         "scripts": 1,
         "scriptLoc": 0
       },
@@ -294,7 +245,11 @@
         "name": "diagnosing-bugs",
         "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "diagnosis",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/diagnosing-bugs.json"
       }
     },
     {
@@ -344,33 +299,29 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 7,
-        "sections": 3,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "promptVersioning": 5,
+        "modelTierAlignment": 8,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
+        "diataxisCompleteness": 2
       },
-      "total": 31,
-      "grade": "F",
+      "total": 69,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/implement-review-fixes.json"
       ],
       "metrics": {
-        "tokens": 635,
-        "lines": 72,
-        "headers": 6,
+        "tokens": 661,
+        "lines": 86,
+        "headers": 8,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -378,7 +329,11 @@
         "name": "implement-review-fixes",
         "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "code",
+        "artifactType": "review",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/implement-review-fixes.json"
       }
     },
     {
@@ -386,43 +341,42 @@
       "path": ".agents/skills/delivery/plan-review-fixes",
       "scores": {
         "frontmatterCompleteness": 10,
-        "bodyDepth": 7,
-        "sections": 0,
+        "bodyDepth": 8,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 2,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "promptVersioning": 5,
+        "modelTierAlignment": 8,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 4,
+        "regressionCoverage": 5,
+        "diataxisCompleteness": 2
       },
-      "total": 30,
-      "grade": "F",
+      "total": 72,
+      "grade": "C",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section",
-        "missing ## Completion section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/plan-review-fixes.json"
       ],
       "metrics": {
-        "tokens": 644,
-        "lines": 69,
-        "headers": 6,
+        "tokens": 739,
+        "lines": 95,
+        "headers": 10,
         "scripts": 0,
         "scriptLoc": 0
       },
       "frontmatter": {
         "name": "plan-review-fixes",
-        "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after ",
+        "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "review",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/plan-review-fixes.json"
       }
     },
     {
@@ -430,35 +384,31 @@
       "path": ".agents/skills/delivery/prototype",
       "scores": {
         "frontmatterCompleteness": 10,
-        "bodyDepth": 5,
-        "sections": 0,
+        "bodyDepth": 7,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "promptVersioning": 5,
+        "modelTierAlignment": 5,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
+        "diataxisCompleteness": 2
       },
-      "total": 26,
-      "grade": "F",
+      "total": 66,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section",
-        "missing ## Completion section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "modelTier mismatch: trustTier=1, modelTier=reasoning",
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/prototype.json"
       ],
       "metrics": {
-        "tokens": 520,
-        "lines": 32,
-        "headers": 4,
+        "tokens": 629,
+        "lines": 58,
+        "headers": 8,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -466,7 +416,11 @@
         "name": "prototype",
         "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "pull-request",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/prototype.json"
       }
     },
     {
@@ -474,34 +428,30 @@
       "path": ".agents/skills/delivery/research",
       "scores": {
         "frontmatterCompleteness": 10,
-        "bodyDepth": 2,
-        "sections": 3,
+        "bodyDepth": 4,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
+        "promptVersioning": 5,
+        "modelTierAlignment": 8,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
         "observability": 2,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "regressionCoverage": 5,
+        "diataxisCompleteness": 2
       },
-      "total": 28,
-      "grade": "F",
+      "total": 66,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/research.json"
       ],
       "metrics": {
-        "tokens": 287,
-        "lines": 33,
-        "headers": 3,
+        "tokens": 268,
+        "lines": 44,
+        "headers": 6,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -509,7 +459,11 @@
         "name": "research",
         "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "fast",
+        "artifactType": "research",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/research.json"
       }
     },
     {
@@ -517,35 +471,28 @@
       "path": ".agents/skills/delivery/resolving-merge-conflicts",
       "scores": {
         "frontmatterCompleteness": 10,
-        "bodyDepth": 3,
-        "sections": 0,
+        "bodyDepth": 4,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
-        "diataxisCompleteness": 0
+        "promptVersioning": 5,
+        "modelTierAlignment": 8,
+        "artifactSchema": 5,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 8,
+        "diataxisCompleteness": 2
       },
-      "total": 24,
-      "grade": "F",
+      "total": 72,
+      "grade": "C",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Contract section",
-        "missing ## Provenance section",
-        "missing ## Artifact section",
-        "missing ## Completion section"
-      ],
-      "warnings": [
-        "Operating Contract block still present — should be externalized"
-      ],
+      "issues": [],
+      "warnings": [],
       "metrics": {
-        "tokens": 379,
-        "lines": 30,
-        "headers": 2,
+        "tokens": 269,
+        "lines": 44,
+        "headers": 6,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -553,7 +500,11 @@
         "name": "resolving-merge-conflicts",
         "description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "delivery",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/resolving-merge-conflicts.json"
       }
     },
     {
@@ -562,32 +513,29 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 8,
-        "sections": 5,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
+        "promptVersioning": 5,
+        "modelTierAlignment": 8,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
         "diataxisCompleteness": 2
       },
-      "total": 36,
-      "grade": "F",
+      "total": 70,
+      "grade": "C",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/review-fix-loop.json"
       ],
       "metrics": {
-        "tokens": 834,
-        "lines": 96,
-        "headers": 10,
+        "tokens": 745,
+        "lines": 99,
+        "headers": 11,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -595,7 +543,11 @@
         "name": "review-fix-loop",
         "description": "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "review",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/review-fix-loop.json"
       }
     },
     {
@@ -690,32 +642,30 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 4,
-        "sections": 5,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
+        "promptVersioning": 5,
+        "modelTierAlignment": 5,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
         "diataxisCompleteness": 4
       },
-      "total": 34,
-      "grade": "F",
+      "total": 65,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "modelTier mismatch: trustTier=1, modelTier=reasoning",
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/testing.json"
       ],
       "metrics": {
-        "tokens": 254,
-        "lines": 36,
-        "headers": 5,
+        "tokens": 283,
+        "lines": 49,
+        "headers": 7,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -723,7 +673,11 @@
         "name": "testing",
         "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "test-strategy",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/testing.json"
       }
     },
     {
@@ -732,32 +686,30 @@
       "scores": {
         "frontmatterCompleteness": 10,
         "bodyDepth": 4,
-        "sections": 5,
+        "sections": 10,
         "assets": 2,
-        "behavioralSpec": 4,
+        "behavioralSpec": 3,
         "safety": 5,
-        "promptVersioning": 0,
-        "modelTierAlignment": 0,
-        "artifactSchema": 0,
-        "progressiveDisclosure": 0,
-        "observability": 0,
-        "regressionCoverage": 0,
+        "promptVersioning": 5,
+        "modelTierAlignment": 5,
+        "artifactSchema": 2,
+        "progressiveDisclosure": 8,
+        "observability": 2,
+        "regressionCoverage": 5,
         "diataxisCompleteness": 4
       },
-      "total": 34,
-      "grade": "F",
+      "total": 65,
+      "grade": "D",
       "tier": "BASIC",
-      "issues": [
-        "missing ## Provenance section",
-        "missing ## Artifact section"
-      ],
+      "issues": [],
       "warnings": [
-        "Operating Contract block still present — should be externalized"
+        "modelTier mismatch: trustTier=1, modelTier=reasoning",
+        "fixturesPath declared but file missing: .agents/skills/platform/fixtures/behavioral/webapp-testing.json"
       ],
       "metrics": {
-        "tokens": 283,
-        "lines": 36,
-        "headers": 5,
+        "tokens": 297,
+        "lines": 49,
+        "headers": 7,
         "scripts": 0,
         "scriptLoc": 0
       },
@@ -765,7 +717,11 @@
         "name": "webapp-testing",
         "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
         "category": "delivery",
-        "version": "1"
+        "version": "1",
+        "promptVersion": "2.0",
+        "modelTier": "reasoning",
+        "artifactType": "test-strategy",
+        "fixturesPath": ".agents/skills/platform/fixtures/behavioral/webapp-testing.json"
       }
     }
   ],

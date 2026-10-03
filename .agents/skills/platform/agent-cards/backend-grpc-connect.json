@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "grpc-connect",
       "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
       "tags": [
-        "backend"
+        "\"backend\""
       ],
       "parameters": {
-        "trustTier": "3"
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "backend"
       }
     }
   ]

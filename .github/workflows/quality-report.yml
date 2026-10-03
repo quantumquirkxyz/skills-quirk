@@ -1,0 +1,54 @@
+name: Quality Report
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  quality-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run quality gates
+        id: gates
+        run: |
+          node .agents/skills/platform/check-all.mjs > report.json || true
+      - name: Format PR comment
+        run: |
+          cat > format-report.mjs << 'JSEOF'
+          import fs from 'fs';
+          const report = JSON.parse(fs.readFileSync('report.json', 'utf8'));
+          let body = '## Quality Gates Report\n\n';
+          body += '| Check | Status | Errors | Warnings |\n';
+          body += '|-------|--------|--------|----------|\n';
+          for (const check of report.checks) {
+            const status = check.status === 'pass' ? '✅' : '❌';
+            body += `| ${check.command} | ${status} | ${check.errors ?? 0} | ${check.warnings ?? 0} |\n`;
+          }
+          body += `\n**Summary:** ${report.summary.passed}/${report.summary.totalChecks} passed, ${report.summary.failed} failed, ${report.summary.totalWarnings} warnings, ${report.summary.totalErrors} errors\n`;
+          fs.writeFileSync('comment.md', body);
+          JSEOF
+          node format-report.mjs
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('comment.md', 'utf8');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            })

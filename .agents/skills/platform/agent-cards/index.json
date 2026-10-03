@@ -1,6 +1,6 @@
 {
   "totalCards": 241,
-  "generatedAt": "2026-10-02T19:35:51.894Z",
+  "generatedAt": "2026-10-03T06:01:24.481Z",
   "cards": [
     {
       "name": "accessibility",
@@ -9,8 +9,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -23,10 +23,12 @@
           "name": "accessibility",
           "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
           "tags": [
-            "accessibility"
+            "\"accessibility\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "accessibility"
           }
         }
       ]
@@ -38,8 +40,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -52,10 +54,12 @@
           "name": "accessibility-design",
           "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
           "tags": [
-            "accessibility"
+            "\"accessibility\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -67,8 +71,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -81,10 +85,12 @@
           "name": "accessibility-testing",
           "description": "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.",
           "tags": [
-            "accessibility"
+            "\"accessibility\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -96,8 +102,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -110,10 +116,12 @@
           "name": "agent-orchestration",
           "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "agent"
           }
         }
       ]
@@ -125,8 +133,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -139,10 +147,12 @@
           "name": "ai-ml-pipeline",
           "description": "Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -154,8 +164,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -168,10 +178,12 @@
           "name": "ai-model-evaluation",
           "description": "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "model"
           }
         }
       ]
@@ -183,8 +195,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -197,10 +209,12 @@
           "name": "ai-prompt-engineering",
           "description": "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -212,8 +226,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -226,10 +240,12 @@
           "name": "ai-time-series-forecasting",
           "description": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -241,8 +257,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -255,10 +271,12 @@
           "name": "llm-eval",
           "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -270,8 +288,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -284,10 +302,12 @@
           "name": "llm-fine-tuning",
           "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -299,8 +319,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -313,10 +333,12 @@
           "name": "llmops",
           "description": "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -328,8 +350,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -342,10 +364,12 @@
           "name": "mlops",
           "description": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -357,8 +381,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -371,10 +395,12 @@
           "name": "multimodal-prompting",
           "description": "Multimodal prompting (vision, audio, video, image generation, vision-language models)",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -386,8 +412,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -400,10 +426,12 @@
           "name": "prompt-template-library",
           "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -415,8 +443,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -429,10 +457,12 @@
           "name": "rag-pipeline",
           "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -444,8 +474,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -458,10 +488,12 @@
           "name": "structured-output",
           "description": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)",
           "tags": [
-            "ai"
+            "\"ai\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "ai"
           }
         }
       ]
@@ -473,8 +505,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -487,10 +519,12 @@
           "name": "execution-policy",
           "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
           "tags": [
-            "auxiliary"
+            "\"auxiliary\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "auxiliary"
           }
         }
       ]
@@ -502,8 +536,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -516,10 +550,12 @@
           "name": "integration-playground",
           "description": "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.",
           "tags": [
-            "auxiliary"
+            "\"auxiliary\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "auxiliary"
           }
         }
       ]
@@ -531,8 +567,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -545,10 +581,12 @@
           "name": "interactive-tutorial-builder",
           "description": "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.",
           "tags": [
-            "auxiliary"
+            "\"auxiliary\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "auxiliary"
           }
         }
       ]
@@ -560,8 +598,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -574,10 +612,12 @@
           "name": "setup-quirk-skills",
           "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
           "tags": [
-            "auxiliary"
+            "\"auxiliary\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "auxiliary"
           }
         }
       ]
@@ -589,8 +629,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -603,10 +643,12 @@
           "name": "api-gateway",
           "description": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -618,8 +660,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -632,10 +674,12 @@
           "name": "backend-architecture",
           "description": "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -647,8 +691,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -661,10 +705,12 @@
           "name": "backend-caching",
           "description": "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -676,8 +722,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -690,10 +736,12 @@
           "name": "backend-queues",
           "description": "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "queue-design"
           }
         }
       ]
@@ -705,8 +753,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -719,10 +767,12 @@
           "name": "caching-advanced",
           "description": "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -734,8 +784,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -748,10 +798,12 @@
           "name": "distributed-tracing",
           "description": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -763,8 +815,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -777,10 +829,12 @@
           "name": "event-driven-architecture",
           "description": "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -792,8 +846,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -806,10 +860,12 @@
           "name": "grpc-connect",
           "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -821,8 +877,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -835,10 +891,12 @@
           "name": "microservices",
           "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -850,8 +908,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -864,10 +922,12 @@
           "name": "rate-limiting",
           "description": "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -879,8 +939,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -893,10 +953,12 @@
           "name": "serverless",
           "description": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -908,8 +970,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -922,10 +984,12 @@
           "name": "service-mesh",
           "description": "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -937,8 +1001,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -951,10 +1015,12 @@
           "name": "websockets",
           "description": "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).",
           "tags": [
-            "backend"
+            "\"backend\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "backend"
           }
         }
       ]
@@ -966,8 +1032,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -980,10 +1046,12 @@
           "name": "cms-access-control",
           "description": "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability.",
           "tags": [
-            "cms"
+            "\"cms\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cms"
           }
         }
       ]
@@ -995,8 +1063,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1009,10 +1077,12 @@
           "name": "cms-architecture",
           "description": "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.",
           "tags": [
-            "cms"
+            "\"cms\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cms"
           }
         }
       ]
@@ -1024,8 +1094,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1038,10 +1108,12 @@
           "name": "cms-content-strategy",
           "description": "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership.",
           "tags": [
-            "cms"
+            "\"cms\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cms"
           }
         }
       ]
@@ -1053,8 +1125,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1067,10 +1139,12 @@
           "name": "localization",
           "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
           "tags": [
-            "cms"
+            "\"cms\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cms"
           }
         }
       ]
@@ -1082,8 +1156,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1096,10 +1170,12 @@
           "name": "compiler-design",
           "description": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.",
           "tags": [
-            "compilers"
+            "\"compilers\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -1111,8 +1187,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1125,10 +1201,12 @@
           "name": "compiler-testing",
           "description": "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.",
           "tags": [
-            "compilers"
+            "\"compilers\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -1140,8 +1218,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1154,10 +1232,12 @@
           "name": "compilers",
           "description": "Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.",
           "tags": [
-            "compilers"
+            "\"compilers\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "compilers"
           }
         }
       ]
@@ -1169,8 +1249,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1183,10 +1263,12 @@
           "name": "cs-algorithms",
           "description": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.",
           "tags": [
-            "cs"
+            "\"cs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cs"
           }
         }
       ]
@@ -1198,8 +1280,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1212,10 +1294,12 @@
           "name": "cs-complexity-analysis",
           "description": "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.",
           "tags": [
-            "cs"
+            "\"cs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cs"
           }
         }
       ]
@@ -1227,8 +1311,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1241,10 +1325,12 @@
           "name": "cs-computability",
           "description": "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.",
           "tags": [
-            "cs"
+            "\"cs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "cs"
           }
         }
       ]
@@ -1256,8 +1342,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1270,10 +1356,12 @@
           "name": "cs-data-structures",
           "description": "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.",
           "tags": [
-            "cs"
+            "\"cs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1285,8 +1373,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1299,10 +1387,12 @@
           "name": "data-catalog",
           "description": "Data catalog (metadata management, discovery, classification, data mesh, governance).",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1314,8 +1404,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1328,10 +1418,12 @@
           "name": "data-contracts",
           "description": "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1343,8 +1435,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1357,10 +1449,12 @@
           "name": "data-etl-pipeline",
           "description": "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1372,8 +1466,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1386,10 +1480,12 @@
           "name": "data-lineage",
           "description": "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance).",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1401,8 +1497,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1415,10 +1511,12 @@
           "name": "data-quality",
           "description": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1430,8 +1528,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1444,10 +1542,12 @@
           "name": "data-streaming",
           "description": "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1459,8 +1559,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1473,10 +1573,12 @@
           "name": "data-versioning",
           "description": "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility).",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1488,8 +1590,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1502,10 +1604,12 @@
           "name": "data-warehouse-modeling",
           "description": "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1517,8 +1621,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1531,10 +1635,12 @@
           "name": "feature-store",
           "description": "Feature store (online/offline, feature engineering, serving, monitoring, drift).",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1546,8 +1652,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1560,10 +1666,12 @@
           "name": "semantic-layer",
           "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -1575,8 +1683,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1589,10 +1697,12 @@
           "name": "stream-processing",
           "description": "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).",
           "tags": [
-            "data"
+            "\"data\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -1604,8 +1714,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1618,10 +1728,12 @@
           "name": "db-migrations",
           "description": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.",
           "tags": [
-            "db"
+            "\"db\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "db"
           }
         }
       ]
@@ -1633,8 +1745,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1647,10 +1759,12 @@
           "name": "db-nosql-modeling",
           "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
           "tags": [
-            "db"
+            "\"db\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "model"
           }
         }
       ]
@@ -1662,8 +1776,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1676,10 +1790,12 @@
           "name": "db-query-optimization",
           "description": "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement.",
           "tags": [
-            "db"
+            "\"db\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "db"
           }
         }
       ]
@@ -1691,8 +1807,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1705,10 +1821,12 @@
           "name": "db-relational-design",
           "description": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.",
           "tags": [
-            "db"
+            "\"db\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -1755,8 +1873,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1769,10 +1887,12 @@
           "name": "contribution-workflow-optimizer",
           "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "workflow"
           }
         }
       ]
@@ -1784,8 +1904,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1798,10 +1918,12 @@
           "name": "diagnosing-bugs",
           "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "diagnosis"
           }
         }
       ]
@@ -1847,8 +1969,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1861,10 +1983,12 @@
           "name": "implement-review-fixes",
           "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "code",
+            "artifactType": "review"
           }
         }
       ]
@@ -1876,8 +2000,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1890,10 +2014,12 @@
           "name": "plan-review-fixes",
           "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "review"
           }
         }
       ]
@@ -1905,8 +2031,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1919,10 +2045,12 @@
           "name": "prototype",
           "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -1934,8 +2062,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1948,10 +2076,12 @@
           "name": "research",
           "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "research"
           }
         }
       ]
@@ -1963,8 +2093,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -1977,10 +2107,12 @@
           "name": "resolving-merge-conflicts",
           "description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "delivery"
           }
         }
       ]
@@ -1992,8 +2124,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2006,10 +2138,12 @@
           "name": "review-fix-loop",
           "description": "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "review"
           }
         }
       ]
@@ -2090,8 +2224,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2104,10 +2238,12 @@
           "name": "testing",
           "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -2119,8 +2255,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2133,10 +2269,12 @@
           "name": "webapp-testing",
           "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
           "tags": [
-            "delivery"
+            "\"delivery\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -2148,8 +2286,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2162,10 +2300,12 @@
           "name": "backup-disaster-recovery",
           "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2177,8 +2317,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2191,10 +2331,12 @@
           "name": "chaos-engineering",
           "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2206,8 +2348,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2220,10 +2362,12 @@
           "name": "cost-optimization",
           "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2235,8 +2379,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2249,10 +2393,12 @@
           "name": "devops-ci-cd-pipeline",
           "description": "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2264,8 +2410,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2278,10 +2424,12 @@
           "name": "devops-feature-flags",
           "description": "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "feature-flag"
           }
         }
       ]
@@ -2293,8 +2441,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2307,10 +2455,12 @@
           "name": "devops-k8s-orchestration",
           "description": "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2322,8 +2472,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2336,10 +2486,12 @@
           "name": "devops-terraform-iac",
           "description": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2351,8 +2503,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2365,10 +2517,12 @@
           "name": "gitops",
           "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2380,8 +2534,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2394,10 +2548,12 @@
           "name": "incident-response",
           "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2409,8 +2565,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2423,10 +2579,12 @@
           "name": "secret-management",
           "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
           "tags": [
-            "devops"
+            "\"devops\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "devops"
           }
         }
       ]
@@ -2472,8 +2630,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2486,10 +2644,12 @@
           "name": "docs-knowledge-base",
           "description": "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.",
           "tags": [
-            "docs"
+            "\"docs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "adr"
           }
         }
       ]
@@ -2501,8 +2661,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2515,10 +2675,12 @@
           "name": "docs-technical-writing",
           "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
           "tags": [
-            "docs"
+            "\"docs\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "adr"
           }
         }
       ]
@@ -2530,8 +2692,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2544,10 +2706,12 @@
           "name": "improve-codebase-architecture",
           "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
           "tags": [
-            "engineering"
+            "\"engineering\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -2559,8 +2723,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2573,10 +2737,12 @@
           "name": "finance-corporate-val",
           "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
           "tags": [
-            "finance"
+            "\"finance\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "finance"
           }
         }
       ]
@@ -2588,8 +2754,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2602,10 +2768,12 @@
           "name": "finance-dcf",
           "description": "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.",
           "tags": [
-            "finance"
+            "\"finance\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "finance"
           }
         }
       ]
@@ -2617,8 +2785,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2631,10 +2799,12 @@
           "name": "finance-portfolio-theory",
           "description": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.",
           "tags": [
-            "finance"
+            "\"finance\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "finance"
           }
         }
       ]
@@ -2646,8 +2816,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2660,10 +2830,12 @@
           "name": "agent-canvas",
           "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "agent"
           }
         }
       ]
@@ -2709,8 +2881,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2723,10 +2895,12 @@
           "name": "agent-observability",
           "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "agent"
           }
         }
       ]
@@ -2806,8 +2980,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2820,23 +2994,25 @@
           "name": "context-engine",
           "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "foundation"
           }
         }
       ]
     },
     {
       "name": "domain-modeling",
-      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
+      "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/domain-modeling/SKILL.md",
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2847,12 +3023,14 @@
         {
           "id": "foundation/domain-modeling",
           "name": "domain-modeling",
-          "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
+          "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "model"
           }
         }
       ]
@@ -2864,8 +3042,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2878,10 +3056,12 @@
           "name": "observability",
           "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "foundation"
           }
         }
       ]
@@ -2893,8 +3073,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2907,10 +3087,12 @@
           "name": "subagent-swarm",
           "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
           "tags": [
-            "foundation"
+            "\"foundation\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "agent"
           }
         }
       ]
@@ -2922,8 +3104,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2936,10 +3118,12 @@
           "name": "astro",
           "description": "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -2951,8 +3135,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2965,10 +3149,12 @@
           "name": "design-system",
           "description": "Define and evolve reusable UI tokens, components, and usage rules as a coherent system.",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -2980,8 +3166,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -2994,10 +3180,12 @@
           "name": "frontend-design",
           "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3009,8 +3197,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3023,10 +3211,12 @@
           "name": "frontend-testing",
           "description": "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -3038,8 +3228,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3052,10 +3242,12 @@
           "name": "mobile",
           "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3067,8 +3259,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3081,10 +3273,12 @@
           "name": "nextjs",
           "description": "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3096,8 +3290,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3110,10 +3304,12 @@
           "name": "react",
           "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3125,8 +3321,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3139,10 +3335,12 @@
           "name": "remix",
           "description": "Remix framework (loaders, actions, nested routes, progressive enhancement).",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3154,8 +3352,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3168,10 +3366,12 @@
           "name": "state-management",
           "description": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3183,8 +3383,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3197,10 +3397,12 @@
           "name": "styling",
           "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
           "tags": [
-            "frontend"
+            "\"frontend\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "frontend"
           }
         }
       ]
@@ -3212,8 +3414,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3226,10 +3428,12 @@
           "name": "brand-identity",
           "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "graphic-design"
           }
         }
       ]
@@ -3241,8 +3445,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3255,10 +3459,12 @@
           "name": "design-system-visual",
           "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3270,8 +3476,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3284,9 +3490,12 @@
           "name": "graphic-design-accessibility",
           "description": "Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3297,8 +3506,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3311,9 +3520,12 @@
           "name": "graphic-design-advertising",
           "description": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3324,8 +3536,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3338,9 +3550,12 @@
           "name": "graphic-design-data-viz",
           "description": "Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3351,8 +3566,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3365,9 +3580,12 @@
           "name": "graphic-design-editorial",
           "description": "Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3378,8 +3596,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3392,10 +3610,12 @@
           "name": "graphic-design-foundations",
           "description": "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3407,8 +3627,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3421,9 +3641,12 @@
           "name": "graphic-design-motion",
           "description": "Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3434,8 +3657,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3448,9 +3671,12 @@
           "name": "graphic-design-packaging",
           "description": "Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3461,8 +3687,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3475,9 +3701,12 @@
           "name": "graphic-design-photo-direction",
           "description": "Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
-          "parameters": {}
+          "parameters": {
+            "modelTier": "reasoning",
+            "artifactType": "plan"
+          }
         }
       ]
     },
@@ -3488,8 +3717,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3502,10 +3731,12 @@
           "name": "graphic-design-project-management",
           "description": "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3517,8 +3748,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3531,10 +3762,12 @@
           "name": "graphic-design-tools",
           "description": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.",
           "tags": [
-            "graphic-design"
+            "\"graphic-design\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3546,8 +3779,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3560,10 +3793,12 @@
           "name": "api-contracts",
           "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -3575,8 +3810,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3589,10 +3824,12 @@
           "name": "auth",
           "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "authentication"
           }
         }
       ]
@@ -3604,8 +3841,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3618,10 +3855,12 @@
           "name": "issue-operations",
           "description": "Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "integrations"
           }
         }
       ]
@@ -3633,8 +3872,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3647,10 +3886,12 @@
           "name": "payments",
           "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "payment"
           }
         }
       ]
@@ -3662,8 +3903,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3676,10 +3917,12 @@
           "name": "pr-operations",
           "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -3691,8 +3934,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3705,10 +3948,12 @@
           "name": "search",
           "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
           "tags": [
-            "integrations"
+            "\"integrations\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "integrations"
           }
         }
       ]
@@ -3720,8 +3965,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3734,10 +3979,12 @@
           "name": "iot-embedded",
           "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
           "tags": [
-            "iot"
+            "\"iot\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "iot"
           }
         }
       ]
@@ -3749,8 +3996,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3763,10 +4010,12 @@
           "name": "math-computation-reproducible",
           "description": "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -3778,8 +4027,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3792,10 +4041,12 @@
           "name": "math-computational",
           "description": "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3807,8 +4058,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3821,10 +4072,12 @@
           "name": "math-cryptography",
           "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3836,8 +4089,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3850,10 +4103,12 @@
           "name": "math-formal-proof",
           "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -3865,8 +4120,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3879,10 +4134,12 @@
           "name": "math-grant-structure",
           "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3894,8 +4151,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3908,10 +4165,12 @@
           "name": "math-linear-algebra",
           "description": "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3923,8 +4182,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3937,10 +4196,12 @@
           "name": "math-literature-track",
           "description": "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3952,8 +4213,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3966,10 +4227,12 @@
           "name": "math-optimization",
           "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -3981,8 +4244,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -3995,10 +4258,12 @@
           "name": "math-paper-collaboration",
           "description": "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "math"
           }
         }
       ]
@@ -4010,8 +4275,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4024,10 +4289,12 @@
           "name": "math-presentation-beamer",
           "description": "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4039,8 +4306,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4053,10 +4320,12 @@
           "name": "math-probability-models",
           "description": "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4068,8 +4337,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4082,10 +4351,12 @@
           "name": "math-pure-proofs",
           "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4097,8 +4368,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4111,10 +4382,12 @@
           "name": "math-teaching-problem-set",
           "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
           "tags": [
-            "math"
+            "\"math\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4126,8 +4399,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4140,10 +4413,12 @@
           "name": "networking",
           "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
           "tags": [
-            "networking"
+            "\"networking\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "networking"
           }
         }
       ]
@@ -4155,8 +4430,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4169,10 +4444,12 @@
           "name": "networking-protocols",
           "description": "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.",
           "tags": [
-            "networking"
+            "\"networking\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4184,8 +4461,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4198,10 +4475,12 @@
           "name": "networking-security",
           "description": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.",
           "tags": [
-            "networking"
+            "\"networking\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -4213,8 +4492,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4227,10 +4506,12 @@
           "name": "os-kernel",
           "description": "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.",
           "tags": [
-            "os"
+            "\"os\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "os"
           }
         }
       ]
@@ -4242,8 +4523,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4256,10 +4537,12 @@
           "name": "os-memory",
           "description": "Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.",
           "tags": [
-            "os"
+            "\"os\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "os"
           }
         }
       ]
@@ -4271,8 +4554,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4285,10 +4568,12 @@
           "name": "os-processes",
           "description": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.",
           "tags": [
-            "os"
+            "\"os\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4300,8 +4585,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4314,10 +4599,12 @@
           "name": "physics-astro",
           "description": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4329,8 +4616,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4343,10 +4630,12 @@
           "name": "physics-career-postdoc",
           "description": "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4358,8 +4647,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4372,10 +4661,12 @@
           "name": "physics-classical",
           "description": "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4387,8 +4678,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4401,10 +4692,12 @@
           "name": "physics-data-analysis-root",
           "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "data"
           }
         }
       ]
@@ -4416,8 +4709,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4430,10 +4723,12 @@
           "name": "physics-experimental-notebook",
           "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4445,8 +4740,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4459,10 +4754,12 @@
           "name": "physics-literature-search",
           "description": "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4474,8 +4771,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4488,10 +4785,12 @@
           "name": "physics-quantum",
           "description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4503,8 +4802,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4517,10 +4816,12 @@
           "name": "physics-reproducibility-archive",
           "description": "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4532,8 +4833,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4546,10 +4847,12 @@
           "name": "physics-simulation-setup",
           "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4561,8 +4864,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4575,10 +4878,12 @@
           "name": "physics-talk-design",
           "description": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -4590,8 +4895,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4604,10 +4909,12 @@
           "name": "physics-thermo",
           "description": "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4619,8 +4926,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4633,10 +4940,12 @@
           "name": "physics-writing-revtex",
           "description": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.",
           "tags": [
-            "physics"
+            "\"physics\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "physics"
           }
         }
       ]
@@ -4648,8 +4957,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4662,10 +4971,12 @@
           "name": "prod-ab-testing",
           "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
           "tags": [
-            "product"
+            "\"product\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4677,8 +4988,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4691,10 +5002,12 @@
           "name": "prod-okr-planning",
           "description": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.",
           "tags": [
-            "product"
+            "\"product\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -4706,8 +5019,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4720,10 +5033,12 @@
           "name": "prod-prd-writing",
           "description": "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment.",
           "tags": [
-            "product"
+            "\"product\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4735,8 +5050,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4749,10 +5064,12 @@
           "name": "pro-market-analysis",
           "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
           "tags": [
-            "professional"
+            "\"professional\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4764,8 +5081,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4778,10 +5095,12 @@
           "name": "professional-communication",
           "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
           "tags": [
-            "professional"
+            "\"professional\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4793,8 +5112,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4807,10 +5126,12 @@
           "name": "professional-project-management",
           "description": "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts.",
           "tags": [
-            "professional"
+            "\"professional\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4822,8 +5143,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4836,10 +5157,12 @@
           "name": "docs-management",
           "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
           "tags": [
-            "project"
+            "\"project\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "adr"
           }
         }
       ]
@@ -4851,8 +5174,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4865,10 +5188,12 @@
           "name": "make-project",
           "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
           "tags": [
-            "project"
+            "\"project\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4880,8 +5205,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4894,10 +5219,12 @@
           "name": "project-development",
           "description": "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins.",
           "tags": [
-            "project"
+            "\"project\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -4909,8 +5236,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -4923,10 +5250,12 @@
           "name": "project-viability",
           "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
           "tags": [
-            "project"
+            "\"project\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -5006,8 +5335,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5020,10 +5349,12 @@
           "name": "performance-testing",
           "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
           "tags": [
-            "qa"
+            "\"qa\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -5035,8 +5366,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5049,10 +5380,12 @@
           "name": "qa-automation",
           "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
           "tags": [
-            "qa"
+            "\"qa\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "qa"
           }
         }
       ]
@@ -5064,8 +5397,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5078,10 +5411,12 @@
           "name": "qa-manual-testing",
           "description": "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.",
           "tags": [
-            "qa"
+            "\"qa\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -5093,8 +5428,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5107,10 +5442,12 @@
           "name": "qa-security-testing",
           "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
           "tags": [
-            "qa"
+            "\"qa\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -5122,8 +5459,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5136,10 +5473,12 @@
           "name": "quant-backtest",
           "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -5151,8 +5490,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5165,10 +5504,12 @@
           "name": "quant-credit-risk",
           "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "quant"
           }
         }
       ]
@@ -5180,8 +5521,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5194,10 +5535,12 @@
           "name": "quant-derivatives-pricing",
           "description": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -5209,8 +5552,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5223,10 +5566,12 @@
           "name": "quant-factors",
           "description": "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "quant"
           }
         }
       ]
@@ -5238,8 +5583,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5252,10 +5597,12 @@
           "name": "quant-market-micro",
           "description": "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "quant"
           }
         }
       ]
@@ -5267,8 +5614,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5281,10 +5628,12 @@
           "name": "quant-portfolio-opt",
           "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "quant"
           }
         }
       ]
@@ -5296,8 +5645,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5310,10 +5659,12 @@
           "name": "quant-risk-modeling",
           "description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.",
           "tags": [
-            "quant"
+            "\"quant\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "model"
           }
         }
       ]
@@ -5325,8 +5676,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5339,10 +5690,12 @@
           "name": "research-data-archiving",
           "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
           "tags": [
-            "research"
+            "\"research\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "research"
           }
         }
       ]
@@ -5354,8 +5707,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5368,10 +5721,12 @@
           "name": "research-literature-review",
           "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
           "tags": [
-            "research"
+            "\"research\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "review"
           }
         }
       ]
@@ -5383,8 +5738,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5397,10 +5752,12 @@
           "name": "scientific-hypothesis",
           "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
           "tags": [
-            "research"
+            "\"research\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "research"
           }
         }
       ]
@@ -5412,8 +5769,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5426,10 +5783,12 @@
           "name": "artifact-handoff",
           "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5472,8 +5831,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5486,10 +5845,12 @@
           "name": "capability-router",
           "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "plan"
           }
         }
       ]
@@ -5501,8 +5862,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5515,10 +5876,12 @@
           "name": "context-pack",
           "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5530,8 +5893,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5544,10 +5907,12 @@
           "name": "grill",
           "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5559,8 +5924,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5573,10 +5938,12 @@
           "name": "grill-me",
           "description": "A relentless interview to sharpen a plan or design.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5588,8 +5955,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5602,10 +5969,12 @@
           "name": "grill-with-docs",
           "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "router",
+            "artifactType": "adr"
           }
         }
       ]
@@ -5617,8 +5986,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5631,10 +6000,12 @@
           "name": "grilling",
           "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5646,8 +6017,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5660,10 +6031,12 @@
           "name": "handoff",
           "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5675,8 +6048,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5689,10 +6062,12 @@
           "name": "knowledge-curator",
           "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5738,8 +6113,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5752,10 +6127,12 @@
           "name": "ship-subissue",
           "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "4"
+            "trustTier": "4",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5767,8 +6144,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5781,10 +6158,12 @@
           "name": "triage",
           "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5796,8 +6175,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5810,10 +6189,12 @@
           "name": "wayfinder",
           "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
           "tags": [
-            "routing"
+            "\"routing\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "routing"
           }
         }
       ]
@@ -5859,8 +6240,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5873,10 +6254,12 @@
           "name": "cloud-security",
           "description": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -5888,8 +6271,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5902,10 +6285,12 @@
           "name": "compliance",
           "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "sec"
           }
         }
       ]
@@ -5917,8 +6302,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5931,10 +6316,12 @@
           "name": "container-security",
           "description": "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -5946,8 +6333,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5960,10 +6347,12 @@
           "name": "incident-forensics",
           "description": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "sec"
           }
         }
       ]
@@ -5975,8 +6364,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -5989,10 +6378,12 @@
           "name": "sec-cryptography-applied",
           "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "sec"
           }
         }
       ]
@@ -6004,8 +6395,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6018,10 +6409,12 @@
           "name": "sec-privacy-engineering",
           "description": "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -6033,8 +6426,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6047,10 +6440,12 @@
           "name": "sec-security-audit",
           "description": "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -6062,8 +6457,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6076,10 +6471,12 @@
           "name": "sec-threat-modeling",
           "description": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "model"
           }
         }
       ]
@@ -6091,8 +6488,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6105,10 +6502,12 @@
           "name": "secret-management-security",
           "description": "Secrets management (Vault, KMS, rotation, injection, external secrets operator)",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -6120,8 +6519,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6134,10 +6533,12 @@
           "name": "supply-chain-security",
           "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "security"
           }
         }
       ]
@@ -6149,8 +6550,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6163,10 +6564,12 @@
           "name": "zero-trust",
           "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
           "tags": [
-            "sec"
+            "\"sec\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "sec"
           }
         }
       ]
@@ -6178,8 +6581,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6192,10 +6595,12 @@
           "name": "evaluate-skill",
           "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6207,8 +6612,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6221,10 +6626,12 @@
           "name": "lockfile-maintenance",
           "description": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6236,8 +6643,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6250,10 +6657,12 @@
           "name": "rule-cataloger",
           "description": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6265,8 +6674,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6279,10 +6688,12 @@
           "name": "side-effect-auditor",
           "description": "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6294,8 +6705,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6308,10 +6719,12 @@
           "name": "skill-audit",
           "description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6323,8 +6736,8 @@
       "version": "4",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6337,10 +6750,12 @@
           "name": "skill-creator",
           "description": "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6352,8 +6767,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6366,10 +6781,12 @@
           "name": "skill-dependency-graph",
           "description": "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6381,8 +6798,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6395,10 +6812,12 @@
           "name": "skill-diff-analyzer",
           "description": "Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6410,8 +6829,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6424,10 +6843,12 @@
           "name": "skill-performance-metrics",
           "description": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6439,8 +6860,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6453,10 +6874,12 @@
           "name": "skill-promoter",
           "description": "Promote validated experimental skills from the sandbox to the canonical skills bundle.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -6468,8 +6891,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6482,10 +6905,12 @@
           "name": "skill-quality-gate",
           "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6497,8 +6922,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6511,10 +6936,12 @@
           "name": "skill-sandbox",
           "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6526,8 +6953,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6540,10 +6967,12 @@
           "name": "skill-template-generator",
           "description": "Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6555,8 +6984,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6569,10 +6998,12 @@
           "name": "skill-testing-framework",
           "description": "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "test-strategy"
           }
         }
       ]
@@ -6584,8 +7015,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6598,10 +7029,12 @@
           "name": "skill-tutor",
           "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6613,8 +7046,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6627,10 +7060,12 @@
           "name": "workflow-fixture-author",
           "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "2"
+            "trustTier": "2",
+            "modelTier": "fast",
+            "artifactType": "authentication"
           }
         }
       ]
@@ -6642,8 +7077,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6656,10 +7091,12 @@
           "name": "writing-great-skills",
           "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
           "tags": [
-            "skill-dev"
+            "\"skill-dev\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
           }
         }
       ]
@@ -6671,8 +7108,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6685,10 +7122,12 @@
           "name": "interaction-design",
           "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
           "tags": [
-            "ux"
+            "\"ux\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -6700,8 +7139,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6714,10 +7153,12 @@
           "name": "ux-accessibility",
           "description": "Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.",
           "tags": [
-            "ux"
+            "\"ux\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "ux"
           }
         }
       ]
@@ -6729,8 +7170,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6743,10 +7184,12 @@
           "name": "ux-prototyping",
           "description": "Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.",
           "tags": [
-            "ux"
+            "\"ux\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "pull-request"
           }
         }
       ]
@@ -6758,8 +7201,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6772,10 +7215,12 @@
           "name": "ux-research",
           "description": "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.",
           "tags": [
-            "ux"
+            "\"ux\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "research"
           }
         }
       ]
@@ -6787,8 +7232,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6801,10 +7246,12 @@
           "name": "web3-consensus",
           "description": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6816,8 +7263,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6830,10 +7277,12 @@
           "name": "web3-defi",
           "description": "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6845,8 +7294,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6859,10 +7308,12 @@
           "name": "web3-governance",
           "description": "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6874,8 +7325,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6888,10 +7339,12 @@
           "name": "web3-l2-scaling",
           "description": "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6903,8 +7356,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6917,10 +7370,12 @@
           "name": "web3-smart-contracts",
           "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "3"
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6932,8 +7387,8 @@
       "version": "2",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6946,10 +7401,12 @@
           "name": "web3-tokenomics",
           "description": "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests.",
           "tags": [
-            "web3"
+            "\"web3\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "web3"
           }
         }
       ]
@@ -6961,8 +7418,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -6975,10 +7432,12 @@
           "name": "xr-development",
           "description": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.",
           "tags": [
-            "xr"
+            "\"xr\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "xr"
           }
         }
       ]
@@ -6990,8 +7449,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -7004,10 +7463,12 @@
           "name": "xr-interaction-design",
           "description": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.",
           "tags": [
-            "xr"
+            "\"xr\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "plan"
           }
         }
       ]
@@ -7019,8 +7480,8 @@
       "version": "1",
       "capabilities": {
         "skillInvocation": true,
-        "artifactProduction": false,
-        "workflowOrchestration": false
+        "artifactProduction": true,
+        "workflowOrchestration": true
       },
       "authentication": {
         "schemes": [
@@ -7033,10 +7494,12 @@
           "name": "xr-performance",
           "description": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.",
           "tags": [
-            "xr"
+            "\"xr\""
           ],
           "parameters": {
-            "trustTier": "1"
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "xr"
           }
         }
       ]

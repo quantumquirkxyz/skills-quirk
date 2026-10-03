@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "research-data-archiving",
       "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
       "tags": [
-        "research"
+        "\"research\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "research"
       }
     }
   ]

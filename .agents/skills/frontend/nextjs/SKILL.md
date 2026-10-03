@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Next.js brief, route map, rendering constraints, and deployment target.
+outputs:
+  - type: object
+    description: Next.js seam proposal, route guidance, server/client split guidance, and data-flow diagram.
 sideEffects: []
 dependencies: []
 stopCondition: "Shape Next complete; artifact saved; completion criteria checked."
@@ -55,8 +60,12 @@ Emit `NextjsArtifact` as both:
 # 
 # Next.js
 
-Use this skill when the project is built on Next.js and the route tree or rendering model needs to be shaped with intent. Keep the route surface small, the server/client split explicit, and the data flow easy to reason about.
+Use this skill when the project is built on Next.js and the route tree or rendering model needs to be shaped with intent. Record the execution traceId and link the artifact to the originating issue for review replay. Keep the route surface small, the server/client split explicit, and the data flow easy to reason about.
 
+
+## Why
+
+Explicit server/client seams and route boundaries keep Next.js apps from devolving into tangled data fetching and hydration bugs.
 
 ## Steps
 

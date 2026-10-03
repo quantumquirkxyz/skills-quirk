@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,9 +19,12 @@
       "name": "graphic-design-motion",
       "description": "Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules.",
       "tags": [
-        "graphic-design"
+        "\"graphic-design\""
       ],
-      "parameters": {}
+      "parameters": {
+        "modelTier": "reasoning",
+        "artifactType": "plan"
+      }
     }
   ]
 }

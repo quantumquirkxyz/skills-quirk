@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "research-literature-review",
       "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
       "tags": [
-        "research"
+        "\"research\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "review"
       }
     }
   ]

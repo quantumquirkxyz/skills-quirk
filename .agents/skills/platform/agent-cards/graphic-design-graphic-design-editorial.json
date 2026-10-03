@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,9 +19,12 @@
       "name": "graphic-design-editorial",
       "description": "Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination.",
       "tags": [
-        "graphic-design"
+        "\"graphic-design\""
       ],
-      "parameters": {}
+      "parameters": {
+        "modelTier": "reasoning",
+        "artifactType": "plan"
+      }
     }
   ]
 }

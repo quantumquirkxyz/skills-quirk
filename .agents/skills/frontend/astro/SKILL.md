@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions)."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Site content model, rendering requirements, interactivity needs, and deployment target.
+outputs:
+  - type: object
+    description: Astro project design, island strategy, rendering mode decisions, and routing plan.
 sideEffects: []
 dependencies: []
 stopCondition: "Astro design complete; artifact saved; completion criteria checked."
@@ -55,7 +60,7 @@ Emit `AstroArtifact` as both:
 # 
 # Astro
 
-Use this skill when designing or reviewing Astro projects — content-focused sites, islands architecture, SSR/SSG hybrid rendering, and view transitions.
+Use this skill when designing or reviewing Astro projects. Record the execution traceId and link the artifact to the originating issue for review replay. — content-focused sites, islands architecture, SSR/SSG hybrid rendering, and view transitions.
 
 
 ## Process

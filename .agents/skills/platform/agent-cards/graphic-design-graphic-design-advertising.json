@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,9 +19,12 @@
       "name": "graphic-design-advertising",
       "description": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.",
       "tags": [
-        "graphic-design"
+        "\"graphic-design\""
       ],
-      "parameters": {}
+      "parameters": {
+        "modelTier": "reasoning",
+        "artifactType": "plan"
+      }
     }
   ]
 }

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "workflow-fixture-author",
       "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
       "tags": [
-        "skill-dev"
+        "\"skill-dev\""
       ],
       "parameters": {
-        "trustTier": "2"
+        "trustTier": "2",
+        "modelTier": "fast",
+        "artifactType": "authentication"
       }
     }
   ]

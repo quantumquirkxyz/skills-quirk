@@ -5,8 +5,8 @@
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "web3-l2-scaling",
       "description": "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs.",
       "tags": [
-        "web3"
+        "\"web3\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "web3"
       }
     }
   ]

@@ -44,7 +44,7 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo
 node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo --write
 ```
 
-Follow the [adoption guide](docs/agents/adoption-guide.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
+Follow the [adoption guide](docs/how-to/adoption.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
 
 <details>
 <summary>What the bundle includes</summary>

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "context-pack",
       "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
       "tags": [
-        "routing"
+        "\"routing\""
       ],
       "parameters": {
-        "trustTier": "1"
+        "trustTier": "1",
+        "modelTier": "router",
+        "artifactType": "routing"
       }
     }
   ]

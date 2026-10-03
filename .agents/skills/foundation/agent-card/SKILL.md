@@ -57,7 +57,7 @@ evaluators:
 fixturesPath: .agents/skills/platform/fixtures/behavioral/agent-card.json
 diataxis: how-to
 tags: [agent-card, a2a, discovery, metadata]
-compatibility: [mcp-server, skill-audit, skill-dependency-graph]
+compatibility: [mcp-server, a2a-router, skill-audit, skill-dependency-graph]
 approvalRequired: false
 approvalFor: []
 ---
@@ -71,6 +71,13 @@ approvalFor: []
 - **Rule:** keep the card idempotent — identical input produces identical output.
 - **Rule:** do not invent capability flags not grounded in frontmatter.
 - Rule: validate against the corresponding JSON schema before emitting the artifact.
+
+## A2A Runtime
+
+Agent Cards emitted by this skill are consumable by the A2A runtime at runtime:
+
+- **a2a-router.mjs**: `.agents/skills/platform/a2a-router.mjs` reads Agent Cards from `.agents/skills/platform/agent-cards/` and routes requests to the appropriate skill tool. Supports `list`, `discover <capability>`, and `invoke <agentCardName>` commands.
+- **mcp-server**: `.agents/skills/platform/mcp-server/server.mjs` exposes `a2a/discover` and `a2a/invoke` endpoints that filter Agent Cards by capability and return skill tool definitions in A2A-compatible format.
 
 ## Provenance
 

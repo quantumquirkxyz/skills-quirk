@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Validate skill structure
         run: node .agents/skills/platform/validate-skills.mjs
       - name: Audit semantics
@@ -40,12 +44,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Generate quality report
         run: |
+          GATE_IDE="${{ needs.gate-ide.result }}"
+          GATE_CI="${{ needs.gate-ci.result }}"
           echo "## Quality Gates Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Gate | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| validate-skills | ✅ |" >> $GITHUB_STEP_SUMMARY
-          echo "| audit-semantics | ✅ |" >> $GITHUB_STEP_SUMMARY
-          echo "| evaluate-scenarios | ✅ |" >> $GITHUB_STEP_SUMMARY
-          echo "| evaluate-fixtures | ✅ |" >> $GITHUB_STEP_SUMMARY
-          echo "| check-all | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| gate-ide | $GATE_IDE |" >> $GITHUB_STEP_SUMMARY
+          echo "| gate-ci | $GATE_CI |" >> $GITHUB_STEP_SUMMARY

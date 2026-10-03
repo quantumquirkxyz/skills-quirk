@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "agent-observability",
       "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
       "tags": [
-        "foundation"
+        "\"foundation\""
       ],
       "parameters": {
-        "trustTier": "2"
+        "trustTier": "2",
+        "modelTier": "fast",
+        "artifactType": "agent"
       }
     }
   ]

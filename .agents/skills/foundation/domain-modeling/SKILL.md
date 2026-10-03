@@ -3,9 +3,14 @@ name: "domain-modeling"
 category: "foundation"
 maturity: "stable"
 version: "1"
-description: "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary."
+description: "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Domain context, existing terminology, business rules, and stakeholder constraints.
+outputs:
+  - type: object
+    description: Domain model artifact with entities, value objects, aggregates, and ubiquitous language glossary.
 sideEffects: []
 dependencies: []
 stopCondition: "Build and sharpen a project's domain model complete; artifact saved; completion criteria checked."

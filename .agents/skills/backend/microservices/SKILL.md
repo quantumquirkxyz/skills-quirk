@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Domain context, team boundaries, scaling requirements, and communication constraints.
+outputs:
+  - type: object
+    description: Service decomposition map, communication plan, data ownership matrix, and resilience strategy.
 sideEffects: []
 dependencies: []
 stopCondition: "Design microservice architectures complete; artifact saved; completion criteria checked."
@@ -63,6 +68,10 @@ Design microservice architectures — service decomposition, inter-service commu
 - Plan synchronous and asynchronous communication
 - Design for resilience and observability
 
+
+## Why
+
+Clear boundaries keep services independently deployable. Without them, coupling creates cascading failures and ownership ambiguity.
 
 ## Steps
 

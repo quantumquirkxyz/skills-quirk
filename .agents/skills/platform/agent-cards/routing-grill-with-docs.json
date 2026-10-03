@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,10 +19,12 @@
       "name": "grill-with-docs",
       "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
       "tags": [
-        "routing"
+        "\"routing\""
       ],
       "parameters": {
-        "trustTier": "2"
+        "trustTier": "2",
+        "modelTier": "router",
+        "artifactType": "adr"
       }
     }
   ]

@@ -5,8 +5,8 @@
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
-    "artifactProduction": false,
-    "workflowOrchestration": false
+    "artifactProduction": true,
+    "workflowOrchestration": true
   },
   "authentication": {
     "schemes": [
@@ -19,9 +19,12 @@
       "name": "graphic-design-photo-direction",
       "description": "Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.",
       "tags": [
-        "graphic-design"
+        "\"graphic-design\""
       ],
-      "parameters": {}
+      "parameters": {
+        "modelTier": "reasoning",
+        "artifactType": "plan"
+      }
     }
   ]
 }

@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: API requirements, data model, transport constraints, and caller obligations.
+outputs:
+  - type: object
+    description: Backend architecture proposal, API contract, service seam definition, and error-handling plan.
 sideEffects: []
 dependencies: []
 stopCondition: "Shape backend systems complete; artifact saved; completion criteria checked."
@@ -63,6 +68,10 @@ Shape backend systems — REST/gRPC APIs, service contracts, data flow, state ma
 - Separate business logic from transport layer
 - Plan for versioning and backward compatibility
 
+
+## Why
+
+Explicit seams make the backend evolvable. Without them, transport concerns leak inward and callers cannot rely on stable contracts.
 
 ## Steps
 

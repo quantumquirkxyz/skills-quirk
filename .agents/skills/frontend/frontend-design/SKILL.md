@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: UI brief, current interface, brand context, and accessibility constraints.
+outputs:
+  - type: object
+    description: Frontend seam proposal, interaction model, visual system guidance, and motion boundaries.
 sideEffects: []
 dependencies: []
 stopCondition: "Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked."
@@ -55,8 +60,12 @@ Emit `FrontendDesignArtifact` as both:
 # 
 # Frontend Design
 
-Use this skill when the project needs a clear frontend shape before implementation. It should decide what the user sees first, which interactions matter, and where the seam should sit so the rest of the UI can stay deep rather than shallow.
+Use this skill when the project needs a clear frontend shape before implementation. Record the execution traceId and link the artifact to the originating issue for review replay. It should decide what the user sees first, which interactions matter, and where the seam should sit so the rest of the UI can stay deep rather than shallow.
 
+
+## Why
+
+Frontend design is the interface contract. Making it explicit prevents one-off styling from diverging and keeps motion and accessibility consistent.
 
 ## Steps
 

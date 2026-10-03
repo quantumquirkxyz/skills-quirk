@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Data source, read/write pattern, freshness requirements, traffic profile, and failure tolerance.
+outputs:
+  - type: object
+    description: Cache strategy, key design, TTL plan, invalidation rules, consistency trade-offs, and monitoring plan.
 sideEffects: []
 dependencies: []
 stopCondition: "Cache purpose, freshness, invalidation, and failure behavior are explicit."
@@ -66,6 +71,10 @@ Use this skill when adding, reviewing, or debugging a backend cache, memoization
 - Rule: state freshness guarantees and what stale data can harm.
 - Rule: choose explicit invalidation, TTL, write-through, write-behind, or stale-while-revalidate behavior.
 - Rule: include fallback behavior for cache outage, stampede, and cold start.
+
+## Why
+
+Caching changes latency and consistency boundaries. Making those trade-offs explicit prevents hidden stale-data bugs and cache storms.
 
 ## Steps
 

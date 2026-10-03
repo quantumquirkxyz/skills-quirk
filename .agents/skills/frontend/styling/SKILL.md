@@ -5,7 +5,12 @@ maturity: "stable"
 version: "1"
 description: "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens)."
 capabilities: ""
-outputs: ""
+inputs:
+  - type: object
+    description: Brand system, component library, design requirements, and team conventions.
+outputs:
+  - type: object
+    description: Styling architecture, token definitions, component variant strategy, and theme plan.
 sideEffects: []
 dependencies: []
 stopCondition: "Styling design complete; artifact saved; completion criteria checked."
@@ -55,8 +60,12 @@ Emit `StylingArtifact` as both:
 # 
 # Styling
 
-Use this skill when designing the styling architecture for a frontend project — utility-first CSS, CSS modules, component variants, design tokens, and theme systems.
+Use this skill when designing the styling architecture for a frontend project. Record the execution traceId and link the artifact to the originating issue for review replay. — utility-first CSS, CSS modules, component variants, design tokens, and theme systems.
 
+
+## Why
+
+Styling is the visual interface contract. Making token, variant, and theme decisions explicit prevents drift, accessibility regressions, and bundle bloat.
 
 ## Process
 
