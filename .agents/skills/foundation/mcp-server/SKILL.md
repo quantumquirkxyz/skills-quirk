@@ -50,7 +50,7 @@ modelTier: router
 promptVersion: "2.0"
 artifactType: plan
 evaluators: [behavioral, traceability]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/mcp-server.json
+fixturesPath: .agents/skills/platform/fixtures/regression/mcp-server.json
 diataxis: how-to
 tags:
   - mcp
@@ -66,6 +66,10 @@ approvalFor: []
 ---
 
 # MCP Server
+
+## Why
+
+The Model Context Protocol (MCP) enables agent interoperability by providing a standardized contract between AI agents and external capabilities. Without a shared protocol, each agent runtime would require custom adapters for every tool, resource, and prompt source. MCP eliminates this fragmentation by defining a single discovery and invocation surface that any compliant agent can consume. This means quirk Skills can be exposed once and consumed by Claude Code, Kilo, or any future MCP-compatible runtime without rewriting skill logic.
 
 ## Contract
 
@@ -96,6 +100,10 @@ Emit `McpServerArtifact` as both:
 - JSON: `.agents/skills/foundation/mcp-server/artifacts/{request-id}.json`
 - Markdown view: same filename with `.md` extension
 
+Observability: the artifact must include a `traceId` field for correlating MCP server invocations with downstream skill executions. Each tool entry must record the `skillName` it maps to, enabling downstream metrics to attribute latency and errors to specific skills.
+
+
+The `traceId` in each artifact entry lets operators trace a single MCP session through multiple tool calls and downstream skill executions. This makes it possible to measure per-skill latency and error rates in production observability tools.
 The artifact must include the typed schema for `McpServerArtifact`:
 
 - `tools`: array of MCP tool definitions generated from skill frontmatter capabilities. Each tool must include `name`, `description`, `inputSchema`, and `outputSchema`.
@@ -144,3 +152,15 @@ Write the server configuration to disk and validate the transport connection. De
 - completion criteria are checked
 
 @include .agents/skills/platform/contract-base.xml
+
+## Reference
+
+- `references/mcp-spec.md` — MCP protocol overview, transport mechanisms, message types, and security boundaries.
+- `references/tool-design.md` — tool definition best practices for naming, schemas, versioning, and side-effect declaration.
+- `scripts/validate-schema.mjs` — minimal JSON Schema validator used during artifact emission.
+
+## Validation
+
+Before emitting the artifact, run `scripts/validate-schema.mjs` against the generated JSON to ensure the artifact conforms to the declared schema. If validation fails, fix the artifact generation logic rather than suppressing errors.
+This skill follows the Model Context Protocol specification and integrates with the quirk Skills bundle without modifying source files.
+

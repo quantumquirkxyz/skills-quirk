@@ -8,6 +8,10 @@ capabilities:
   - apply to spec workflow
   - produce to spec artifact
   - validate to spec completion criteria
+inputs:
+  - current conversation context
+  - codebase understanding
+  - repo conventions
 outputs:
   - type: object
     description: To Spec artifact with findings, decisions, recommendations, and validation notes
@@ -86,6 +90,14 @@ trustTier: 3
 maxIterations: 6
 ---
 
+## Why
+
+A spec is the boundary between "we think we know what to build" and "we know what to build." Without an explicit spec, scope creep arrives through small additions: "while we're at it," "it would be nice if," and "can we also." Each addition seems reasonable in isolation. Together they change the project's shape without anyone noticing.
+
+A written spec prevents this by making boundaries explicit before implementation starts. Non-goals are as important as goals — they say what the team will not do, which protects the delivery timeline and the seam choices. Acceptance criteria create a shared definition of "done" that the implementation and review stages can point to without renegotiation.
+
+Publishing the spec to the issue tracker makes it durable and linkable. Tickets created from the spec inherit its scope guardrails. When a change request arrives, the team can check the spec before deciding whether it is a new feature or scope creep.
+
 ## Contract
 
 - **Input:** current conversation context, codebase understanding, and repo conventions.
@@ -110,6 +122,8 @@ maxIterations: 6
 
 This skill emits a structured spec artifact (JSON) and a Markdown spec body. The JSON is the machine-readable contract; the Markdown is the published tracker issue. Both are emitted atomically so they stay in sync.
 
+The spec artifact includes the traceId of the session that produced it, enabling correlation between the published issue and the execution record. The Markdown body records which seams were selected and why, so the implementation stage inherits the rationale without re-deriving it. Both outputs are versioned with the artifact schema version so downstream consumers can validate compatibility.
+
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know. Write the published issue body in English, and use the this repo's vocabulary consistently.
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-quirk-skills` if not.
@@ -117,13 +131,17 @@ The canonical work-item metadata shape is documented in [`docs/agents/work-item-
 
 ## Process
 
-1. Build a minimal fresh context pack before broad exploration. Route the task against declared capabilities so the work shape is explicit before you draft the spec. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
+### 1. Build context and confirm seams
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+Build a minimal fresh context pack before broad exploration. Route the task against declared capabilities so the work shape is explicit before you draft the spec. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
+
+Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better — the ideal number is one.
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using `references/spec-template.md`, then publish it to the project issue tracker. Apply the repo defaults from `docs/agents/issue-tracker.md`: for this repo that means labels `spec` plus `ready-for-agent` - no need for additional triage. The entire published issue, including headings, user stories, and notes, must be in English. Also apply the work-item format defaults: set the milestone when one is known, add the issue to the matching project board when relevant, and keep the todo/acceptance content aligned with the metadata.
+### 2. Draft the spec
+
+Write the spec using [`references/spec-template.md`](references/spec-template.md) as the canonical shape. Apply the repo defaults from `docs/agents/issue-tracker.md`: for this repo that means labels `spec` plus `ready-for-agent` — no need for additional triage. The entire published issue, including headings, user stories, and notes, must be in English. Also apply the work-item format defaults: set the milestone when one is known, add the issue to the matching project board when relevant, and keep the todo/acceptance content aligned with the metadata.
 
 The template shape still needs the familiar sections that make specs ticket-ready:
 
@@ -134,15 +152,26 @@ The template shape still needs the familiar sections that make specs ticket-read
 
 Professional spec standard: the template must be compact, traceable, and ticket-ready. Do not leave placeholder text in the published issue. Use `TBD` only when the unknown is explicitly accepted as an open question.
 
-## Completion criteria
+### 3. Review against completion criteria
+
+Before publishing, verify each criterion is satisfied. If any criterion cannot be met, record the gap in `validationNotes` and explain what is missing.
+
+### 4. Publish
+
+Publish the spec to the configured tracker with the canonical metadata shape from [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md). Emit the `SpecArtifact` JSON atomically with the published issue so the machine-readable contract and the Markdown stay in sync.
+
+## Completion Criteria
+
+The spec is complete when all of the following are true:
 
 - the problem and solution are stated from the user's perspective
 - implementation decisions are concrete enough to guide ticketing
 - testing decisions identify external behavior and the intended seam
 - scope and out-of-scope items are explicit
 - the spec is published with the tracker defaults applied
+- the artifact JSON is emitted and its schema version matches the declared `artifactType`
 
-See `references/spec-template.md` for the canonical shape.
+See [`references/spec-template.md`](references/spec-template.md) for the canonical shape.
 
 ---
 @include .agents/skills/platform/contract-base.xml

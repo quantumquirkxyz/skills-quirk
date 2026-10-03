@@ -21,7 +21,7 @@
       "sourceType": "local"
     },
     "agent-card": {
-      "hash": "e9ede9f5c187da7c60629b80ec832f87cfbd3c4274b911a067dabe8797ab6617",
+      "hash": "8d91d2923caa5669bbe598e0bc9a00233388b1eff456967fcad2120bb37a84be",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -76,7 +76,7 @@
       "sourceType": "local"
     },
     "ask-to": {
-      "hash": "72327bb6fac90f1f864cf619e14c49c2eaefe98b4b3e5877d2c6d8da21e18fd7",
+      "hash": "1c0079a6e54f296844ea99cc772f88b3507989095b6861f8f7925e9e3017fd31",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -151,7 +151,7 @@
       "sourceType": "local"
     },
     "code-review": {
-      "hash": "e8d79fb2e0477b18c13e4f017e170369af6063d337564e37246236de4ace066b",
+      "hash": "b076caed42ccb23d40984a9164bdffc795c7b31496b65203b1a22de80dced7a7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -371,7 +371,7 @@
       "sourceType": "local"
     },
     "feature-flag": {
-      "hash": "ea0397f09f5d694108d9201ecc2a3668d122cf3cd350eef5bcd43f721cd4e02e",
+      "hash": "b7ea083414b33f05e84fd7bb4644fee93d701cab6b1ce7dd955d7b950cb49d4c",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -511,7 +511,7 @@
       "sourceType": "local"
     },
     "implement": {
-      "hash": "9d3349de4724fe828345e37d06bb9b5cdf89541c8ebb358916bfb092eee6ccc5",
+      "hash": "998fc8e1db7f5d2b3afd835a14e1d8a9aea16cb2e7788030f661cad5d055cadf",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -661,7 +661,7 @@
       "sourceType": "local"
     },
     "mcp-server": {
-      "hash": "dd68dc67a7b2cf32055f0480dcbc371b11a003e1b4ca096933f8fce2996f32bc",
+      "hash": "2268100341870879763d73fccb0ff5bc2a3b16683dacb2712753efc3236d4985",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -971,7 +971,7 @@
       "sourceType": "local"
     },
     "review-pr": {
-      "hash": "5dfbdb93488f3bb47c7f36ee6d191763425344d3cbaa426b45573579095e79dc",
+      "hash": "d84bb544b1a845928e5b6a6e6e1bf2eb141aa010868b11bdf7e6420ebb5c5251",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1141,7 +1141,7 @@
       "sourceType": "local"
     },
     "tdd": {
-      "hash": "e0b8245aad36e1ea8291af25dbcb75c2715480b47c5a734eb9a9f3a3c5be2b67",
+      "hash": "cce6a37be86bb505d68cd96f4128407fc1b7d7971c2dfdf44ddc4abc39012ea1",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1151,12 +1151,12 @@
       "sourceType": "local"
     },
     "to-spec": {
-      "hash": "65f137a411d29020b29cc68e2e89ce1161f3886c5785537eda046f7fd6238c4e",
+      "hash": "1d67674ec55e6460caedaa605edaf7a3dbed1c15cb3bb660815dd29b666008fa",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-tickets": {
-      "hash": "ad5ad71c4ef0384b8c30433c3fdc972879ca2e0a9418fa70a3c797f5dfb9508d",
+      "hash": "aaf374991404bd0ccd372117e2fe84e90c631bf33b3deb6fdb995dfecd6bbcd5",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1166,7 +1166,7 @@
       "sourceType": "local"
     },
     "trunk-based-workflow": {
-      "hash": "886cdc35c70fec50237dd30626bf70bf15560487d91162e921d0f941ebe0f72e",
+      "hash": "e900cc35be08d8d918d35034448d4fe8fe1ad315811e12c6051a952350a93821",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1236,7 +1236,7 @@
       "sourceType": "local"
     },
     "work-item-router": {
-      "hash": "0f7490437680899ba6478a7eaf607e983a30554b287908844915b0059ac75188",
+      "hash": "a17567455a38d69e43baa180ce65f8896893257920e9bf41561f02752d441df5",
       "revision": "working-tree",
       "sourceType": "local"
     },

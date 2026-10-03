@@ -19,14 +19,20 @@ dependencies:
 stopCondition: Trunk-based workflow validation complete; artifact emitted; completion criteria checked.
 risk: low
 trustTier: 1
-modelTier: router
 maxIterations: 4
+modelTier: router
+promptVersion: "2.0"
 artifactType: plan
+fixturesPath: .agents/skills/platform/fixtures/regression/trunk-based-workflow.json
 tags: [git, trunk-based, branching, ci, workflow]
 compatibility: [implement, publish-open-pr, gate-ci, gate-pre-commit]
 ---
 
 # Trunk-Based Workflow
+
+## Why
+
+Trunk-based development reduces merge hell by keeping branches short-lived and small. When every branch is merged within 24 hours and every PR stays under 400 lines, the cumulative diff against main remains reviewable and the blast radius of any conflict is bounded. Long-lived feature branches accumulate hidden conflicts, diverge from trunk behavior, and force large, brittle merges. Trunk-based discipline makes merges routine, reviews fast, and rollbacks safe because every commit is a small, reversible change on a shared baseline.
 
 Use this skill when the project needs to enforce trunk-based development discipline. It validates that every change follows short-lived branch and small PR rules before merge, emits a structured artifact, and records completion evidence.
 
@@ -58,6 +64,8 @@ Use this skill when the project needs to enforce trunk-based development discipl
 ## Artifact
 
 Emit `TrunkBasedWorkflowArtifact` as both JSON and Markdown.
+
+Observability: emit a `traceId` and record validation step durations so downstream dashboards can measure branch-age check latency, PR-size check latency, and CI-gate wait time. Each violation entry must include a `rule` and `severity` so alerting rules can fire on repeated policy breaches.
 
 ### TrunkBasedWorkflowArtifact (typed schema)
 

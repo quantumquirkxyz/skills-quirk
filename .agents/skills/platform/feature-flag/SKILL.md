@@ -3,7 +3,7 @@ name: feature-flag
 category: platform
 description: Design and manage feature flags with short-lived flags, gradual rollouts, kill switches, A/B testing, and cleanup discipline.
 artifactType: plan
-modelTier: reasoning
+modelTier: router
 tags:
   - feature-flags
   - rollout
@@ -49,9 +49,14 @@ stopCondition: Feature flag design and management complete; FeatureFlagArtifact 
 risk: low
 trustTier: 1
 maxIterations: 4
+fixturesPath: .agents/skills/platform/fixtures/regression/feature-flag.json
 ---
 
 # Feature Flag
+
+## Why
+
+Short-lived flags prevent tech debt because they force the team to retire the switch at the same time the feature ships. A flag with a 4-week cleanup deadline is a contract, not a suggestion. When flags outlive their purpose they become zombie switches: hidden branching logic that bloats code paths, complicates testing, and obscures intent. By tying every flag to a cleanup deadline and an owner, the team maintains a tight feedback loop between rollout and retirement, keeping the codebase navigable and the deployment pipeline honest.
 
 Use this skill when a project needs to introduce a new feature flag, plan a safe rollout, or retire an existing flag. It keeps flags short-lived, well-targeted, and observable so the codebase does not accumulate dead switches.
 
@@ -80,6 +85,8 @@ Use this skill when a project needs to introduce a new feature flag, plan a safe
 ## Artifact
 
 Emit a `FeatureFlagArtifact` as JSON and a human-readable Markdown summary.
+
+Observability: the artifact must include `traceId`, `owner`, and `cleanupOwner` fields so that flag state changes are auditable. Each flag state transition must emit a record to the observability pipeline with timestamp, actor, and previous state.
 
 ### FeatureFlagArtifact Schema
 

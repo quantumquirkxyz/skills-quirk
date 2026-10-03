@@ -8,29 +8,10 @@ capabilities:
   - apply ask to workflow
   - produce ask to artifact
   - validate ask to completion criteria
-modelTier: router
-promptVersion: "2.0"
-artifactType: plan
-evaluators:
-  - behavioral
-  - traceability
-fixturesPath: .agents/skills/platform/fixtures/behavioral/ask-to.json
-diataxis: how-to
-tags:
-  - routing
-  - orchestration
-  - workflow
-  - state-machine
-compatibility:
-  - grill-with-docs
-  - to-spec
-  - diagnosing-bugs
-  - project-development
-  - project-viability
-  - wayfinder
-  - observability
-approvalRequired: false
-approvalFor: []
+inputs:
+  - ambiguous work request
+  - available workflows
+  - current project context
 outputs:
   - type: object
     name: RoutingArtifact
@@ -60,6 +41,29 @@ stopCondition: Ask which skill or flow fits your situation complete; artifact sa
 risk: low
 trustTier: 1
 maxIterations: 6
+modelTier: router
+promptVersion: "2.0"
+artifactType: plan
+evaluators:
+  - behavioral
+  - traceability
+fixturesPath: .agents/skills/platform/fixtures/regression/ask-to.json
+diataxis: how-to
+tags:
+  - routing
+  - orchestration
+  - workflow
+  - state-machine
+compatibility:
+  - grill-with-docs
+  - to-spec
+  - diagnosing-bugs
+  - project-development
+  - project-viability
+  - wayfinder
+  - observability
+approvalRequired: false
+approvalFor: []
 ---
 
 ## Contract
@@ -88,7 +92,9 @@ Emit `RoutingArtifact` as both:
 - JSON: `.agents/skills/platform/artifacts/routing/{request-id}.json`
 - Markdown view: same filename with `.md` extension
 
-Workflow state is managed by `.agents/skills/platform/workflow-state-machine.mjs`.
+Workflow state is managed by `.agents/skills/platform/workflow-state-machine.mjs`. Every routing decision emits a trace via `record-execution.mjs` with the selected transition and next skill.
+
+For state machine mechanics, see `references/workflow-state-machine.md`. For decision rules, see `references/routing-rules.md`.
 
 # Ask To
 
@@ -99,6 +105,15 @@ Start by building a minimal fresh context pack and then route against declared c
 ## Purpose
 
 This skill is the entry point for ambiguous work requests. It reads the workflow state machine, evaluates available transitions from the current state, and selects the thinnest downstream skill that can finish the work.
+
+## Why
+
+Routing through the state machine prevents context drift by keeping every decision traceable to a declared transition instead of an ad-hoc memory recall. Without a governed entry point, agents drift toward preferred familiar skills or skip necessary governance steps like `work-item-router`. The state machine acts as a circuit breaker: it forces the agent to name the current state, list valid transitions, and choose one — making blind jumps and missing prerequisites visible before work begins.
+
+## Reference
+
+- `references/workflow-state-machine.md` — how to load, read, and transition workflow states.
+- `references/routing-rules.md` — selection criteria, fallback policy, and governance preflight rules.
 
 ## The main flow: idea → ship
 

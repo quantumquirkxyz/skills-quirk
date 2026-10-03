@@ -54,13 +54,19 @@ evaluators:
   - regression
   - traceability
   - quality-bar
-fixturesPath: .agents/skills/platform/fixtures/behavioral/agent-card.json
+fixturesPath: .agents/skills/platform/fixtures/regression/agent-card.json
 diataxis: how-to
 tags: [agent-card, a2a, discovery, metadata]
 compatibility: [mcp-server, a2a-router, skill-audit, skill-dependency-graph]
 approvalRequired: false
 approvalFor: []
 ---
+
+# Agent Card
+
+## Why
+
+Agent cards enable discovery by giving every agent a self-describing, machine-readable identity document. Without a standard card format, a consumer agent would need custom parsing logic for each provider, and providers would need to publish bespoke documentation for every consumer. A2A Agent Cards solve this by declaring capabilities, authentication requirements, and endpoints in a single schema that any compliant runtime can index, filter, and trust. This makes the agent ecosystem composable: an agent can be discovered by capability, validated by schema, and invoked by URL without prior bilateral agreement.
 
 ## Contract
 
@@ -92,7 +98,9 @@ Agent Cards emitted by this skill are consumable by the A2A runtime at runtime:
 
 ## Artifact
 
-This skill emits a structured AgentCard JSON and a Markdown card. The JSON is the machine-readable A2A discovery record; the Markdown is the human-readable card summary. Both are emitted together so the index and skill registry stay consistent.
+This skill emits a structured AgentCard JSON and a Markdown card. Observability: each emitted card must include a `traceId` and `generatedAt` timestamp so that card regeneration can be correlated with skill frontmatter changes. The Markdown summary must include a `validationStatus` field indicating whether the card passed schema validation.
+
+The JSON is the machine-readable A2A discovery record; the Markdown is the human-readable card summary. Both are emitted together so the index and skill registry stay consistent.
 
 ## Process
 
@@ -108,5 +116,4 @@ This skill emits a structured AgentCard JSON and a Markdown card. The JSON is th
 - the index is updated with the new card
 - completion criteria are explicitly checked
 
----
 @include .agents/skills/platform/contract-base.xml

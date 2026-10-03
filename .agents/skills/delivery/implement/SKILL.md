@@ -8,6 +8,11 @@ capabilities:
   - apply implement workflow
   - produce implement artifact
   - validate implement completion criteria
+inputs:
+  - spec or ticket with concrete acceptance criteria
+  - current repo state
+  - explicit seams
+  - optional feature flags
 outputs:
   - type: object
     name: ImplementArtifact
@@ -58,6 +63,8 @@ approvalFor: []
 - Rule: do not proceed to `publish-open-pr` until `gate-ci` passes.
 - Rule: do not open or merge PR here; stop at validated branch.
 
+See `.agents/skills/prompts/implement/v2.md` for the canonical prompt.
+
 Implement the work described by the user in the spec or tickets.
 
 Follow the issue workflow in `AGENTS.md` for branch creation and publication handoff.
@@ -66,6 +73,12 @@ When the work comes from a spec or ticket set that expects a dedicated issue bra
 Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
+
+## Why
+
+Artifact-first design keeps the handoff machine-readable. A typed `ImplementArtifact` lets downstream skills (`publish-open-pr`, `tdd`, `review-pr`) consume status, branch, commitSha, and qualityGateResults without parsing natural language. Typed outputs also make regression testing deterministic: fixtures can assert on exact fields rather than substring matches.
+
+The process stops at the validated branch because merge decisions belong to `publish-open-pr`, which owns reviewer assignment, label strategy, and release metadata. Separating implementation from publication keeps each skill small and auditable.
 
 ## Provenance
 
@@ -80,6 +93,29 @@ Every artifact this skill produces must answer the quality bar:
 | What evidence proves it is done? | Passing tests + quality gates + validated branch |
 | What risk remains? | Any skipped validation, legacy shims, or flagged technical debt |
 
+## Process
+
+### Tracer-Bullet Execution
+
+1. Read the spec or ticket and confirm acceptance criteria are concrete.
+2. Identify the seam and create the issue branch.
+3. For each vertical slice:
+   - Write a failing test (red).
+   - Implement the minimal code to pass (green).
+   - Run quality gates (validate).
+   - Commit with a conventional message.
+4. Run the full test suite and gate-ci.
+
+### Quality Gate Sequence
+
+Quality gates run at three scopes. See `references/quality-gates.md` for full details.
+
+| Gate | Trigger | Scope |
+|------|---------|-------|
+| gate-ide | file-save | changed files only |
+| gate-pre-commit | git-commit | changed files only |
+| gate-ci | push-to-PR | full suite |
+
 ## Artifact
 
 Emit `ImplementArtifact` as both:
@@ -89,6 +125,17 @@ Emit `ImplementArtifact` as both:
 Validate the JSON against `.agents/skills/platform/schemas/implement-schema.json` before saving.
 
 Quality gate results are included in `ImplementArtifact.qualityGateResults`.
+
+## Observability
+
+Every execution is traced via `record-execution.mjs`. The trace includes traceId, spanId, model tier, duration, tool calls, and quality score.
+
+## Reference
+
+- Vertical slicing rules: `references/vertical-slicing.md`
+- Quality gates reference: `references/quality-gates.md`
+- Validation script: `scripts/validate-implementation.sh`
+- Canonical prompt: `.agents/skills/prompts/implement/v2.md`
 
 ## Completion criteria
 

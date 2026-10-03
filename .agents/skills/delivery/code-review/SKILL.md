@@ -8,6 +8,11 @@ capabilities:
   - apply code review workflow
   - produce code review artifact
   - validate code review completion criteria
+inputs:
+  - fixed point reference (commit, branch, tag, or merge-base)
+  - diff command
+  - standards sources
+  - spec source
 outputs:
   - type: object
     name: ReviewArtifact
@@ -30,7 +35,7 @@ modelTier: reasoning
 promptVersion: "2.0"
 artifactType: review
 evaluators: [behavioral, regression, review-effectiveness]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/code-review.json
+fixturesPath: .agents/skills/platform/fixtures/regression/code-review.json
 diataxis: how-to
 tags: [delivery, review, standards, spec, quality]
 compatibility: [review-pr, plan-review-fixes, ship-subissue]
@@ -75,7 +80,17 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
 The issue tracker should have been provided to you — run `/setup-quirk-skills` if `docs/agents/issue-tracker.md` is missing.
+Traces record sub-agent parallelism and finding counts via `record-execution.mjs`.
 
+
+## Completion
+
+- fixed point is pinned and diff is non-empty
+- Standards findings cite documented standards or smell names
+- Spec findings quote the spec line for each requirement
+- review is published to the PR or returned as structured output
+- no source files are changed, fixed, or merged
+- `ReviewArtifact` emitted and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
 ## Process
 
 ### 1. Pin the fixed point
@@ -99,7 +114,7 @@ Look for the originating spec, in this order:
 
 Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`.
 
-On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below — a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
+On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below (see `references/smell-baseline.md` and `references/review-axes.md`) — a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
 
 - **The repo overrides.** A documented repo standard always wins; where it endorses something the baseline would flag, suppress the smell.
 - **Always a judgement call.** Each smell is a labelled heuristic ("possible Feature Envy"), never a hard violation — and, like any standard here, skip anything tooling already enforces.
@@ -145,7 +160,7 @@ End with a one-line summary: total findings per axis, and the worst issue _withi
 
 Emit a `ReviewArtifact` JSON/Markdown pair as described in the `## Artifact` section above. Populate `fixedPoint`, `diffCommand`, `standardsFindings`, `specFindings`, `summary` (with per-axis counts and worst-issue strings), `nextConsumer` (`plan-review-fixes` or `ship-subissue`), and `blockedBy` (empty array if no blockers; otherwise e.g. `["resolving-merge-conflicts"]`). Validate against the schema before saving.
 
-## Why two axes
+## Why
 
 A change can pass one axis and fail the other:
 

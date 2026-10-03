@@ -8,6 +8,9 @@ capabilities:
   - apply work item router workflow
   - produce work item router artifact
   - validate work item router completion criteria
+inputs:
+  - work item request description
+  - request type classification
 outputs:
   - type: object
     description: Routing decision artifact identifying downstream skill and governance documents
@@ -75,9 +78,21 @@ This skill emits a structured routing decision (JSON) and a Markdown routing not
 
 This skill routes only. It does not create issues, tickets, PRs, or project items.
 
+Every routing decision emits a trace via `record-execution.mjs` with the selected transition and next skill.
+
+For governance index contents, see `references/governance-index.md`.
+
 # Work Item Router
 
 Use this skill before `to-spec`, `to-tickets`, or `make-project` when the task involves tracker metadata, project boards, or publication flow.
+
+## Why
+
+Governance preflight prevents tracker drift by forcing every work-item request to read the canonical index before action. Without this gate, agents invent or drift toward ad-hoc metadata, ignore required fields, and bypass tracker state rules. The index acts as the single source of truth for workflow roles, metadata shape, and triage labels, so reading it first ensures downstream skills produce consistent, mergeable artifacts rather than diverging tracker records.
+
+## Reference
+
+- `references/governance-index.md` — what the governance index contains, how to consume it, and which configuration documents are in scope.
 
 ## Workflow
 
@@ -85,12 +100,34 @@ Use this skill before `to-spec`, `to-tickets`, or `make-project` when the task i
 2. Identify whether the request is a spec, ticket, spec completion audit, ticket coverage audit, corrective ticket publication, project board, PR publication, review-fix plan, or closeout.
 3. Route to the thinnest downstream skill that can finish the work.
 4. If metadata is involved, preserve the canonical shape from `docs/agents/work-item-format.md`.
+5. Emit the routing decision as a structured artifact and save it for auditability.
+
+## Request types
+
+| Type | Typical downstream skill |
+|---|---|
+| spec | `to-spec` |
+| ticket | `to-tickets` |
+| spec-audit | `review-pr` |
+| ticket-audit | `review-pr` |
+| corrective-ticket | `implement-review-fixes` |
+| project-board | `make-project` |
+| pr-publication | `publish-open-pr` |
+| review-fix-plan | `plan-review-fixes` |
+| closeout | `ship-subissue` |
+
+## Examples
+
+- User says "draft a spec for the new auth flow" → `requestType: spec`, `downstreamSkill: to-spec`, `requiredMetadataContracts: [work-item-format]`.
+- User says "split the approved spec into tickets" → `requestType: ticket`, `downstreamSkill: to-tickets`, `requiredMetadataContracts: [work-item-format]`.
+- User says "this PR conflicts, resolve it" → `requestType: pr-publication`, `downstreamSkill: resolving-merge-conflicts`, `requiredMetadataContracts: [work-item-format]`.
 
 ## Completion criteria
 
 - the governance index has been read
 - the downstream skill is named
 - any required metadata contract is explicit
+- the routing artifact is saved and the trace is emitted
 
 ---
 @include .agents/skills/platform/contract-base.xml

@@ -65,6 +65,27 @@ node .agents/skills/platform/check-all.mjs
 
 Expected result: 10/10 checks passing, 0 warnings, 0 errors.
 
+## [2.1.0] - 2026-10-03
+
+### Added
+
+- ADR-005: skills grade elevation via references, scripts, Why sections, observability, and regression fixtures
+- 12 skills elevated to grade A/B:
+  - Grade A (10): implement (97), code-review (91), review-pr (91), ask-to (90), mcp-server (92), to-spec (93), to-tickets (92), tdd (92)
+  - Grade B (2): work-item-router (86), agent-card (89), trunk-based-workflow (89), feature-flag (85)
+- 12 new regression fixtures in `.agents/skills/platform/fixtures/regression/`
+- 12 new reference files across skills (workflow rules, quality gates, routing, MCP spec, A2A, vertical slicing)
+- 4 new script templates (validate-implementation, validate-routing-artifact, validate-schema, validate-router-decision)
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs
+```
+
+Expected result: 10/10 checks passing, 0 warnings, 0 errors.
+
+
 ## [1.0.0] - 2026-08-27
 
 Initial quirk-owned skills bundle baseline.

@@ -8,6 +8,10 @@ capabilities:
   - apply to tickets workflow
   - produce to tickets artifact
   - validate to tickets completion criteria
+inputs:
+  - a plan
+  - a spec
+  - conversation context
 outputs:
   - type: array
     description: Ordered set of published tickets with explicit blockers
@@ -52,6 +56,14 @@ trustTier: 3
 maxIterations: 6
 ---
 
+## Why
+
+Horizontal task dumps organize work by layer — all the models, then all the APIs, then all the UI. The problem is that nothing is demoable until every layer is complete. The team ships nothing until the last ticket lands, and when something breaks in an earlier layer, every downstream ticket is blocked by a vague "fix the models" dependency.
+
+Vertical slices solve this by cutting a narrow but complete path through every layer for one piece of functionality. Each ticket delivers a demoable or verifiable increment. The frontier is explicit: any ticket whose blockers are all done can start immediately. Scope creep is bounded because each slice has a clear boundary — it delivers one slice of behavior, nothing more.
+
+Tracer bullets also surface design problems early. The first slice reveals the seams. Subsequent slices follow the same path. If the first slice was painful, the design needs refactoring before the team commits to building the remaining slices on a broken foundation.
+
 ## Contract
 
 - **Input:** a plan, a spec, or conversation context.
@@ -78,12 +90,7 @@ maxIterations: 6
 
 This skill emits a structured ticket array (JSON) and individual Markdown ticket files. The JSON is the machine-readable dependency graph; the Markdown files are the published tracker issues. Both are emitted together so blocker edges stay consistent.
 
-# To Tickets
-
-Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet vertical slices, each declaring the tickets that **block** it.
-
-The issue tracker and triage label vocabulary should have been provided to you — run `/setup-quirk-skills` if not.
-The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md); follow it so tickets, labels, milestones, and project fields stay aligned with specs and boards.
+The ticket array includes a traceId linking the decomposition session to the execution record. Each ticket entry records its blocking edges as issue numbers, making the dependency graph traceable in the tracker without manual cross-referencing. The artifact schema version is recorded in each ticket object so the implementation stage can validate compatibility before reading.
 
 ## Process
 
@@ -99,16 +106,9 @@ Look for opportunities to prefactor the code to make the implementation easier. 
 
 ### 3. Draft vertical slices
 
-Break the work into **tracer bullet** tickets.
+Break the work into **tracer bullet** tickets using the rules in [`references/vertical-slice-rules.md`](references/vertical-slice-rules.md).
 
-<vertical-slice-rules>
-
-- Each slice cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests) — vertical, NOT a horizontal slice of one layer
-- A completed slice is demoable or verifiable on its own
-- Each slice is sized to fit in a single fresh context window
-- Any prefactoring should be done first
-
-</vertical-slice-rules>
+Each slice cuts a narrow but complete path through every layer — vertical, NOT a horizontal slice of one layer. A completed slice is demoable or verifiable on its own. Each slice is sized to fit in a single fresh context window. Any prefactoring should be done first.
 
 Give each ticket its **blocking edges** — the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
 
@@ -134,19 +134,20 @@ Iterate until the user approves the breakdown.
 
 For corrective inputs, the user approval step may be skipped only when the audit explicitly marked the recommendation as ready for handoff and the user already asked to publish corrections.
 
-## Completion criteria
+## Completion Criteria
 
 - every ticket cuts a narrow but complete path through the work
 - each ticket has an explicit blocker set or none
 - the frontier can be taken without guessing about order
 - the user has approved the granularity before publication
 - the published tickets follow the canonical metadata shape in `docs/agents/work-item-format.md`
+- the `TicketArtifact` JSON is emitted with valid blocking edges and traceId
 
-### 5. Publish the tickets to the configured tracker
+## Publish
 
 Publish the approved tickets. **How** depends on the tracker `/setup-quirk-skills` configured — the tickets are the same either way, only the shape of the blocking edges changes:
 
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use `references/issue-template.md` for the per-ticket shape — one ticket per file, never a single combined file.
+- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use [`references/issue-template.md`](references/issue-template.md) for the per-ticket shape — one ticket per file, never a single combined file.
 - **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. When the input came from `/to-spec`, create the tickets as subissues of that spec issue so the execution tree stays attached to the published spec. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the tracker defaults from `docs/agents/issue-tracker.md`: for this repo that means `ready-for-agent` plus any justified area or priority labels inherited from the source spec or parent issue. The ticket body itself must also be written in English and should preserve this repo's vocabulary rather than backsliding to generic trading wording.
 
 The ticket template still needs the familiar sections that keep slices actionable:
@@ -159,7 +160,7 @@ Work the **frontier**: any ticket whose blockers are all done. For a purely line
 
 Do NOT close or modify any parent issue.
 
-See `references/issue-template.md` for the canonical ticket shape.
+See [`references/issue-template.md`](references/issue-template.md) for the canonical ticket shape.
 
 ---
 @include .agents/skills/platform/contract-base.xml
