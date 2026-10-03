@@ -1,33 +1,57 @@
 ---
-name: evaluate-skill
-category: skill-dev
-maturity: stable
-version: 1
-description: Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.
-capabilities:
-  - apply evaluate skill workflow
-  - produce evaluate skill artifact
-  - validate evaluate skill completion criteria
-outputs:
-  - Evaluate Skill artifact with findings, decisions, recommendations, and validation notes
+name: "evaluate-skill"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/evaluate-skill.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Evaluate Skill request, relevant context, constraints, and source evidence.
-- **Output:** Evaluate Skill artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `EvaluateSkillArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/evaluate-skill/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Evaluate Skill
 
 Use this skill to check whether a Skill behaves predictably.
@@ -59,10 +83,11 @@ node .agents/skills/platform/evaluate-behavioral-fixtures.mjs
 - Rule: do not promote a Skill whose declared side effects differ from observed behavior.
 - Rule: treat missing stop conditions or vague outputs as evaluability defects.
 
-## Completion criteria
+## Completion
 
-- the Skill passes or fails against a fixed scenario set
-- regressions are captured in writing
-- contract mismatches are called out separately from scenario failures
-- the scenario runner result is captured when the deterministic runner applies
-- behavioral fixture output is captured when templates or artifact formats changed
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,59 @@
 ---
-name: grill-with-docs
-category: routing
-maturity: stable
-version: 1
-description: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
-capabilities:
-  - apply grill with docs workflow
-  - produce grill with docs artifact
-  - validate grill with docs completion criteria
-outputs:
-  - Grill With Docs artifact with findings, decisions, recommendations, and validation notes
+name: "grill-with-docs"
+category: "routing"
+maturity: "stable"
+version: "1"
+description: "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go."
+capabilities: ""
+outputs: ""
 sideEffects:
   - write-docs
+
 dependencies: []
-stopCondition: A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 2
-maxIterations: 6
+stopCondition: "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "2"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "adr"
+modelTier: "router"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/grill-with-docs.json"
+diataxis: "how-to"
+tags: ["routing"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Grill With Docs request, relevant context, constraints, and source evidence.
-- **Output:** Grill With Docs artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
-Run a `/grilling` session, using the `/domain-modeling` skill.
+## Provenance
 
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GrillWithDocsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/grill-with-docs/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: ask one question at a time and recommend a concrete answer.
@@ -46,8 +69,11 @@ Run a `/grilling` session, using the `/domain-modeling` skill.
 4. Keep unresolved disagreements visible instead of documenting them as settled.
 5. Summarize the refined plan and docs to create or update.
 
-## Completion Criteria
+## Completion
 
-- critical assumptions have been challenged
-- candidate docs are tied to confirmed decisions or terms
-- unresolved questions are separated from settled guidance
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,23 +1,58 @@
 ---
-name: microservices
-category: backend
-maturity: stable
-version: 1
-description: Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.
-capabilities:
-  - apply microservices workflow
-  - produce microservices artifact
-  - validate microservices completion criteria
-outputs:
-  - Microservices artifact with findings, decisions, recommendations, and validation notes
+name: "microservices"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design microservice architectures complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design microservice architectures complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/microservices.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MicroservicesArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/microservices/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # microservices
 
 Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.
@@ -28,17 +63,6 @@ Design microservice architectures — service decomposition, inter-service commu
 - Plan synchronous and asynchronous communication
 - Design for resilience and observability
 
-## Contract
-
-### Input
-A description of the system to decompose: domain model, current architecture, scaling needs.
-
-### Output
-A microservices decomposition with:
-- Service map and ownership boundaries
-- Communication patterns (sync/async)
-- Data replication strategy
-- Resilience patterns (retry, circuit breaker, timeout)
 
 ## Steps
 
@@ -57,15 +81,11 @@ A microservices decomposition with:
 - Rule: include timeout, retry, idempotency, and circuit-breaker behavior for every cross-service call.
 - Rule: account for distributed tracing, correlation IDs, and operational ownership from the start.
 
-## Completion Criteria
+## Completion
 
-- service boundaries and data ownership are explicit
-- communication patterns include failure behavior
-- consistency trade-offs are documented
-- observability and deployment implications are addressed
-
-## References
-- `../backend-architecture/SKILL.md` — service design
-- `../../backend/backend-queues/SKILL.md` — async messaging
-- `../../foundation/observability/SKILL.md` — observability
-- `../../devops/devops-k8s-orchestration/SKILL.md` — deployment
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -12,12 +12,6 @@
         "search for existing issues",
         "never close, reopen, lock, delete, or transfer"
       ],
-      "expectedSideEffects": [
-        "create-issue",
-        "update-issue",
-        "post-comment",
-        "close-issue"
-      ],
       "requiredReferences": [
         "references/operation-summary-template.md",
         "references/tracker-provider-guidelines.md"
@@ -32,12 +26,6 @@
         "searching for an open PR",
         "never merge a PR",
         "validation evidence"
-      ],
-      "expectedSideEffects": [
-        "create-pull-request",
-        "update-pull-request",
-        "post-pr-comment",
-        "request-review"
       ],
       "requiredReferences": [
         "references/pr-operation-summary-template.md",

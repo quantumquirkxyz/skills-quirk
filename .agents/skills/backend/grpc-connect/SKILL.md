@@ -1,36 +1,62 @@
 ---
-name: grpc-connect
-category: backend
-maturity: stable
-version: 1
-description: gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).
-capabilities:
-  - design gRPC service contracts
-  - configure protobuf schemas
-  - plan streaming and unary APIs
-  - design ConnectRPC and grpc-gateway integration
-outputs:
-  - gRPC/Connect artifact with findings, decisions, recommendations, and validation notes
+name: "grpc-connect"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: gRPC/Connect design complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "gRPC/Connect design complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/grpc-connect.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# gRPC and Connect
-
-Use this skill when designing gRPC services, ConnectRPC APIs, or gRPC-to-REST gateway layers — protobuf contracts, streaming patterns, code generation, and cross-language compatibility.
 
 ## Contract
 
 - Input: service interface requirements, data shapes, transport constraints, and client ecosystems.
 - Output: service contract design with proto definitions, streaming plan, and gateway configuration.
-- Scope: design protobuf contracts and API structure; not infrastructure deployment unless explicitly requested.
-- Rule: define the contract before implementation; protobuf is the single source of truth for the API.
-- Rule: keep messages flat and version-friendly; avoid deep nesting that resists field addition.
-- Rule: document error codes, retry behavior, and timeout expectations per method.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GrpcConnectArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/grpc-connect/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# gRPC and Connect
+
+Use this skill when designing gRPC services, ConnectRPC APIs, or gRPC-to-REST gateway layers — protobuf contracts, streaming patterns, code generation, and cross-language compatibility.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing gRPC services, ConnectRPC APIs, or gRPC-to-REST ga
 - Rule: enable reflection and health checking for operational visibility.
 - Rule: validate proto files in CI with linter, breaking-change detector, and code generation check.
 
-## Completion Criteria
+## Completion
 
-- service surface is documented with method semantics
-- proto schema is documented with field numbering and type choices
-- versioning and compatibility rules are documented
-- streaming design includes flow control and timeout behavior
-- transport and gateway configuration are documented
-- code generation pipeline and CI integration are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

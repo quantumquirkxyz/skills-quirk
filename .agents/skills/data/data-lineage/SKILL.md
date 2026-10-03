@@ -1,36 +1,59 @@
 ---
-name: data-lineage
-category: data
-maturity: stable
-version: 1
-description: Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance).
-capabilities:
-  - trace end-to-end data flow from source to consumption
-  - perform impact analysis for schema or pipeline changes
-  - map column-level lineage across transformations
-  - support data governance and compliance audits
-outputs:
-  - Lineage graph (source → transformation → target)
-  - Impact analysis report
-  - Column-level mapping documentation
+name: "data-lineage"
+category: "data"
+maturity: "stable"
+version: "1"
+description: "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Lineage graph saved; impact analysis complete; column mappings documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Lineage graph saved; impact analysis complete; column mappings documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-lineage.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** source systems, transformation logic, target systems, governance requirements.
-- **Output:** lineage graph + impact analysis + column-level mapping.
-- **Side effects:** may query metadata stores or pipeline registries (read-only).
-- **Dependencies:** access to metadata stores, pipeline configuration, data dictionaries.
-- **Stop condition:** lineage graph saved; impact analysis complete.
-- **Risk:** medium — incomplete lineage can mask compliance gaps; requires validation.
-- **Boundary:** traces lineage; does not modify pipelines.
+- Input: source systems, transformation logic, target systems, governance requirements.
+- Output: lineage graph + impact analysis + column-level mapping.
+- Scope: traces lineage; does not modify pipelines.
+- Rule: traces lineage; does not modify pipelines.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataLineageArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-lineage/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Data Lineage
 
 Design **data lineage** — end-to-end tracing, impact analysis, column-level lineage, and governance support.
@@ -86,3 +109,12 @@ Design **data lineage** — end-to-end tracing, impact analysis, column-level li
 - Rule: separate technical lineage (ETL jobs, queries) from business lineage (reports, dashboards).
 - Rule: require owner and steward consent for schema or ownership changes.
 - Rule: make lineage queries auditable and retention-aligned with compliance windows.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

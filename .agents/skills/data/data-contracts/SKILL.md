@@ -1,37 +1,59 @@
 ---
-name: data-contracts
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.
-capabilities:
-  - define producer-consumer agreements (schema, semantics, SLAs, ownership)
-  - design schema evolution policies (additive, backward-compatible, breaking changes)
-  - configure schema registry and versioning (Confluent, AWS Glue, internal registry)
-  - implement breaking change detection and enforcement
-outputs:
-  - Data contract specification (schema, semantics, SLAs)
-  - Schema evolution policy and compatibility matrix
-  - Registry configuration and governance workflow
-  - Breaking change detection plan
+name: "data-contracts"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Contract specification saved; evolution policy defined; registry configuration documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Contract specification saved; evolution policy defined; registry configuration documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-contracts.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** data producer/consumer inventory, schema definitions, quality requirements, regulatory constraints.
-- **Output:** data contract specification + schema evolution policy + registry configuration.
-- **Side effects:** none.
-- **Dependencies:** schema registry (Confluent Schema Registry, AWS Glue Data Catalog, Apicurio, etc.), CI/CD pipeline, data catalog.
-- **Stop condition:** contract specification saved; evolution policy defined; registry configuration documented.
-- **Risk:** medium — contract violations cause downstream failures; requires testing and enforcement.
-- **Boundary:** designs contracts and evolution policy; does not modify production registry or execute data pipelines unless explicitly instructed.
+- Input: data producer/consumer inventory, schema definitions, quality requirements, regulatory constraints.
+- Output: data contract specification + schema evolution policy + registry configuration.
+- Scope: designs contracts and evolution policy; does not modify production registry or execute data pipelines unless explicitly instructed.
+- Rule: designs contracts and evolution policy; does not modify production registry or execute data pipelines unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataContractsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-contracts/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Data Contracts
 
 Design **data contracts** — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.
@@ -89,3 +111,12 @@ Design **data contracts** — schema evolution, producer-consumer agreements, sc
 - Rule: enforce schema validation at the boundary (producer write, consumer read).
 - Rule: maintain a schema registry as the single source of truth for dataset schemas.
 - Rule: require explicit migration plans and consumer sign-off before deploying breaking changes.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

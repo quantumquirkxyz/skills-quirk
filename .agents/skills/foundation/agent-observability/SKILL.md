@@ -1,44 +1,63 @@
 ---
-name: agent-observability
-category: foundation
-maturity: stable
-description: Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
-version: 1
-capabilities:
-  - record-execution
-  - trace-decisions
-  - capture-quality-signals
-  - generate-trace-report
-inputs:
-  - "skill-run: The execution being observed (optional)"
-  - "trace-level: basic, detailed, full (default: detailed)"
-  - "signal-types: latency, token-usage, error-rate, evidence-quality (default: all)"
-outputs:
-  - "execution-trace: Structured trace with timestamps and decisions"
-  - "quality-signals: Metrics for execution quality"
-  - "trace-report: Human-readable summary of execution"
-  - "audit-log: Redacted audit for review"
-sideEffects:
-  - write-files
+name: "agent-observability"
+category: "foundation"
+maturity: "stable"
+description: "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution."
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Trace recorded, signals captured, and report generated with explicit evidence.
-risk: low
-trustTier: 2
-maxIterations: 3
+stopCondition: "Trace recorded, signals captured, and report generated with explicit evidence."
+risk: "low"
+trustTier: "2"
+maxIterations: "3"
+promptVersion: "2.0"
+artifactType: "agent"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/agent-observability.json"
+diataxis: "how-to"
+tags: ["foundation"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Agent Observability
-
-Use this skill to make Skill runs observable without leaking sensitive data, while providing structured data for later analysis.
 
 ## Contract
 
 - Input: skill execution context and raw execution data
 - Output: redacted execution record, structured analysis data, and traceability links
-- Scope: observation of skill execution for quality improvement and debugging
-- Rule: all personally identifiable information, secrets, and sensitive data must be redacted
-- Rule: structured data must enable analysis of patterns without compromising privacy
-- Rule: outputs must link to validation evidence when available
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AgentObservabilityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/agent-observability/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Agent Observability
+
+Use this skill to make Skill runs observable without leaking sensitive data, while providing structured data for later analysis.
+
 
 ## Steps
 
@@ -70,35 +89,11 @@ Use this skill to make Skill runs observable without leaking sensitive data, whi
 - Preserve causality chains for debugging and root cause analysis
 - Enable skills to be understood in the context of larger workflows
 
-## Completion Criteria
+## Completion
 
-- the execution record is thoroughly redacted of all sensitive data
-- the data is structured in a consistent format suitable for analysis
-- the record maintains traceability to skill inputs, execution, and outputs
-- validation evidence is linked when available
-- the record enables retrospective analysis without compromising security
-
-## Data Usage Guidelines
-
-This skill provides observability data that can be used for:
-
-### Quality Improvement
-- Identifying frequently failing skills or patterns
-- Understanding skill performance characteristics
-- Detecting regressions in skill behavior over time
-
-### Learning and Training
-- Providing examples of successful skill executions
-- Showing common patterns of skill composition
-- Illustrating effective use of skill combinations
-
-### System Health
-- Monitoring overall skill ecosystem health
-- Identifying bottlenecks or resource-intensive operations
-- Tracking adoption and usage patterns of different skills
-
-### Important Limitations
-- This skill does NOT perform analysis itself - it only provides data
-- Analysis must be performed separately using appropriate tools
-- The data represents observations, not guarantees or predictions
-- Privacy protection takes precedence over analytical completeness
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

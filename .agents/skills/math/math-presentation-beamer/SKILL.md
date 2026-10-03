@@ -1,36 +1,59 @@
 ---
-name: math-presentation-beamer
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.
-capabilities:
-  - design Beamer slides with semantic structure (section, subsection, theorem, proof)
-  - build TikZ diagrams and figures with consistent colour/style
-  - adjust depth for audience (grad student / researcher / public / high school)
-  - prepare speaker notes with timing and transition cues
-outputs:
-  - LaTeX Beamer source (.tex + .sty)
-  - Speaker notes (Markdown or Beamer notes)
-  - Accessibility checklist (colour, font size, alt text for figures)
+name: "math-presentation-beamer"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Source compiles; speaker notes saved; accessibility checklist completed; audience-level stated.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Source compiles; speaker notes saved; accessibility checklist completed; audience-level stated."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-presentation-beamer.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** talk content (topic, audience, duration), and any figures.
-- **Output:** Beamer source + speaker notes + accessibility checklist.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** source compiles with figures and notes.
-- **Risk:** low.
-- **Boundary:** produces presentation artifacts; does not deliver the talk.
+- Input: talk content (topic, audience, duration), and any figures.
+- Output: Beamer source + speaker notes + accessibility checklist.
+- Scope: produces presentation artifacts; does not deliver the talk.
+- Rule: produces presentation artifacts; does not deliver the talk.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathPresentationBeamerArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-presentation-beamer/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Math Presentation — Beamer and Design
 
 Build a **Beamer presentation** that communicates the mathematics clearly to the audience, with accessible design and speaker-ready notes.
@@ -94,3 +117,12 @@ For each slide, write:
 
 - Pair with `math-paper-collaboration` for sharing .tex source.
 - Use `math-formal-proof` for appendix slides that cite a verified proof.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

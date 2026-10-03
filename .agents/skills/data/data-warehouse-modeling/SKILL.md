@@ -1,36 +1,59 @@
 ---
-name: data-warehouse-modeling
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization.
-capabilities:
-  - design star / snowflake / OBT schemas for analytical workloads
-  - define dimensions (time, geography, product, customer) and facts (events, transactions)
-  - design partitioning (by date, region, category) and clustering
-  - optimise queries (materialised views, indexes, partition pruning)
-outputs:
-  - Schema diagram (ASCII / Mermaid / diagram)
-  - Dimension and fact definitions
-  - Query optimisation notes
+name: "data-warehouse-modeling"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Schema design saved; dimensions and facts defined; optimisation notes present.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Schema design saved; dimensions and facts defined; optimisation notes present."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-warehouse-modeling.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** source data descriptions, analytical questions, query patterns.
-- **Output:** warehouse schema design + query optimisation notes.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** schema saved; dimensions/facts defined.
-- **Risk:** low.
-- **Boundary:** designs schema; does not create warehouse resources.
+- Input: source data descriptions, analytical questions, query patterns.
+- Output: warehouse schema design + query optimisation notes.
+- Scope: designs schema; does not create warehouse resources.
+- Rule: designs schema; does not create warehouse resources.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataWarehouseModelingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-warehouse-modeling/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Data Warehouse Modeling
 
 Design an **analytical warehouse schema** — star / snowflake / OBT — with dimensions, facts, and query optimisation.
@@ -74,3 +97,12 @@ Design an **analytical warehouse schema** — star / snowflake / OBT — with di
 - **Indexes:** primary keys, foreign keys, frequently queried columns.
 
 **Completion criterion:** optimisation notes saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

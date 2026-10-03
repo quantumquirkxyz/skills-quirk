@@ -1,34 +1,59 @@
 ---
-name: db-relational-design
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.
-capabilities:
-  - identify entities, relationships, and cardinality
-  - design relational schemas with keys, indexes, constraints
-  - plan migrations with rollback steps
-outputs:
-  - Markdown artifact: schema diagram/text, index justification, migration script sequence
+name: "db-relational-design"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Artifact complete with schema, indexes, constraints, and migration sequence.
-risk: low
-trustTier: 1
-maxIterations: 8
+stopCondition: "Artifact complete with schema, indexes, constraints, and migration sequence."
+risk: "low"
+trustTier: "1"
+maxIterations: "8"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/db-relational-design.json"
+diataxis: "how-to"
+tags: ["db"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** domain requirements and access patterns.
-- **Output:** schema and migration artifact.
-- **Side effects:** none (design only; no DB writes during skill run unless user explicitly runs migration scripts separately).
-- **Dependencies:** none.
-- **Stop condition:** schema and migration plan complete.
-- **Risk:** low.
-- **Boundary:** schema design and migration plan; no direct DB changes unless user executes scripts separately.
----
+- Input: domain requirements and access patterns.
+- Output: schema and migration artifact.
+- Scope: schema design and migration plan; no direct DB changes unless user executes scripts separately.
+- Rule: schema design and migration plan; no direct DB changes unless user executes scripts separately.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DbRelationalDesignArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/db-relational-design/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Relational DB Design
 
 Design a **relational database schema** — entities, relations, keys, indexes, constraints — with normalisation, query patterns, and migration planning.
@@ -57,3 +82,12 @@ Design a **relational database schema** — entities, relations, keys, indexes, 
 - Rule: use constraints to protect invariants that the database can enforce.
 - Rule: design indexes from concrete query patterns and write-cost trade-offs.
 - Rule: sequence migrations so application and schema remain compatible.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

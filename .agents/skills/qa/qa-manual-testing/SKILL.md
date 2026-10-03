@@ -1,33 +1,63 @@
 ---
-name: qa-manual-testing
-category: qa
-maturity: stable
-version: 1
-description: Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.
-capabilities:
-  - plan exploratory test sessions
-  - document reproducible findings
-  - assess user-visible regressions
-outputs:
-  - manual test plan or session notes with coverage, findings, and repro steps
+name: "qa-manual-testing"
+category: "qa"
+maturity: "stable"
+version: "1"
+description: "Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Tested paths, environment, findings, and residual risks are documented.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Tested paths, environment, findings, and residual risks are documented."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-manual-testing.json"
+diataxis: "how-to"
+tags: ["qa"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# qa-manual-testing
-
-Use this skill when manually testing a feature, reproducing a user-visible issue, or running an exploratory session that needs evidence and coverage notes.
 
 ## Contract
 
 - Input: feature or bug scope, environment, build/version, target users, and known risk areas.
 - Output: test charter, executed paths, findings, reproduction notes, and residual risk.
-- Scope: manual and exploratory testing; automated test implementation belongs to QA automation or webapp testing.
-- Boundary: report observed behavior and evidence without assuming root cause unless independently verified.
+- Scope: report observed behavior and evidence without assuming root cause unless independently verified.
+- Rule: report observed behavior and evidence without assuming root cause unless independently verified.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `QaManualTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/qa-manual-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# qa-manual-testing
+
+Use this skill when manually testing a feature, reproducing a user-visible issue, or running an exploratory session that needs evidence and coverage notes.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when manually testing a feature, reproducing a user-visible issue
 5. Document findings with reproduction steps and severity rationale.
 6. Summarize coverage, untested areas, and follow-up recommendations.
 
-## Completion Criteria
+## Completion
 
-- test scope and environment are documented
-- core path and risk paths were exercised
-- findings include reproducible steps
-- residual risk and untested areas are explicit
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

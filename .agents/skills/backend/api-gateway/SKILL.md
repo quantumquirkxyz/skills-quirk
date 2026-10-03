@@ -1,36 +1,62 @@
 ---
-name: api-gateway
-category: backend
-maturity: stable
-version: 1
-description: API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).
-capabilities:
-  - design API gateway architecture
-  - configure rate limiting and auth
-  - plan request routing and transformation
-  - define gateway observability
-outputs:
-  - API gateway artifact with findings, decisions, recommendations, and validation notes
+name: "api-gateway"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: API gateway design complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "API gateway design complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/api-gateway.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# API Gateway
-
-Use this skill when designing or reviewing an API gateway layer — Kong, Envoy, AWS API Gateway, or similar — for routing, rate limiting, authentication, and observability.
 
 ## Contract
 
 - Input: backend service inventory, traffic profile, auth requirements, and SLA targets.
 - Output: gateway architecture with route rules, policies, auth configuration, and observability plan.
-- Scope: design gateway configuration and policies; not infrastructure provisioning unless explicitly requested.
-- Rule: the gateway is the public surface; all external traffic must pass through it.
-- Rule: define service ownership and route precedence explicitly to avoid shadow routes.
-- Rule: enforce auth, rate limits, and schema validation at the edge.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ApiGatewayArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/api-gateway/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# API Gateway
+
+Use this skill when designing or reviewing an API gateway layer — Kong, Envoy, AWS API Gateway, or similar — for routing, rate limiting, authentication, and observability.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing or reviewing an API gateway layer — Kong, Envoy,
 - Rule: define health check endpoints and upstream failure behavior explicitly.
 - Rule: test gateway config changes in staging with production-like traffic before deploy.
 
-## Completion Criteria
+## Completion
 
-- service catalog is documented with routes, versions, and owners
-- routing rules are defined with precedence and fallback behavior
-- rate limit matrix is documented with enforcement strategy
-- auth strategy per route is documented with token handling
-- transformation and caching rules are documented
-- observability and operational runbook are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

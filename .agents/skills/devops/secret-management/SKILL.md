@@ -1,38 +1,59 @@
 ---
-name: secret-management
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.
-capabilities:
-  - design secret management architecture (Vault, cloud KMS, sealed secrets)
-  - configure access policies and authentication methods
-  - design secret rotation and lifecycle management
-  - integrate secrets with CI/CD and runtime workloads
-  - document audit logging and compliance requirements
-outputs:
-  - Secret management architecture diagram (text/Markdown)
-  - Access policy and authentication matrix
-  - Secret rotation and lifecycle runbook
-  - Integration and audit logging plan
+name: "secret-management"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; access policy documented; rotation runbook complete; integration plan filled.
-risk: medium
-trustTier: 3
-maxIterations: 7
+stopCondition: "Architecture diagram saved; access policy documented; rotation runbook complete; integration plan filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "7"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/secret-management.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** application secrets inventory, compliance requirements, infrastructure environment, team structure.
-- **Output:** secret management architecture + access policy + rotation runbook + integration plan.
-- **Side effects:** may create or modify Vault policies, Kubernetes secrets, or cloud KMS keys when executed.
-- **Dependencies:** secret store (Vault / cloud KMS / sealed secrets), Kubernetes (if applicable), CI/CD platform.
-- **Stop condition:** architecture documented; access policy defined; rotation runbook complete; integration plan saved.
-- **Risk:** medium — secrets are high-value targets; misconfiguration causes data breaches or outages.
-- **Boundary:** designs secret management; does not provision production secrets or policies unless explicitly instructed.
+- Input: application secrets inventory, compliance requirements, infrastructure environment, team structure.
+- Output: secret management architecture + access policy + rotation runbook + integration plan.
+- Scope: designs secret management; does not provision production secrets or policies unless explicitly instructed.
+- Rule: designs secret management; does not provision production secrets or policies unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecretManagementArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/secret-management/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Secret Management
 
 Design a **secret management** strategy using HashiCorp Vault, SOPS, SealedSecrets, or cloud KMS with encryption, access control, rotation, and auditability.
@@ -86,3 +107,12 @@ Design a **secret management** strategy using HashiCorp Vault, SOPS, SealedSecre
 - Rule: implement automated rotation for all long-lived secrets; document zero-downtime rotation procedure.
 - Rule: enable audit logging for all secret access; retain logs per compliance requirement; alert on anomalous access patterns.
 - Rule: separate dev, staging, and production secrets; never reuse production secrets in lower environments.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

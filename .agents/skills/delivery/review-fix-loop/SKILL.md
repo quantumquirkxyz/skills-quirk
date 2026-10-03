@@ -1,54 +1,71 @@
 ---
-name: review-fix-loop
-category: delivery
-maturity: stable
-version: 1
+name: "review-fix-loop"
+category: "delivery"
+maturity: "stable"
+version: "1"
 description: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only."
-capabilities:
-  - apply review fix loop workflow
-  - produce review fix loop artifact
-  - validate review fix loop completion criteria
-outputs:
-  - Review Fix Loop artifact with findings, decisions, recommendations, and validation notes
+capabilities: ""
+outputs: ""
 sideEffects:
   - write-code
   - post-pr-comment
   - commit-git
   - push-branch
+
 dependencies: []
 stopCondition: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked complete; artifact saved; completion criteria checked."
-risk: medium
-trustTier: 3
-maxIterations: 6
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "review"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/review-fix-loop.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Review Fix Loop request, relevant context, constraints, and source evidence.
-- **Output:** Review Fix Loop artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-Do not merge, close, or delete branches here; this skill coordinates the loop only.
-
-# Review Fix Loop
-
-## Overview
-
-Coordinate review, planning, and implementation without diluting any one skill's responsibility. The review remains the measurement instrument; this skill decides whether to plan fixes, implement them, repeat, or hand off to ship-subissue.
-Use the canonical work-item metadata format in [`docs/agents/work-item-format.md`](../../../../docs/agents/work-item-format.md) as the source of truth for labels, milestone, and project metadata when preserving the loop state in comments or handoffs.
-Keep the loop tight: if the same review-fix plan would be posted again without a new finding, stop rather than restating the same repair in different words.
 
 ## Contract
 
 - Input: one PR, one fixed point, and one spec source when needed.
 - Output: either a clean review state or a blocked repair loop with a documented cause.
-- Scope: repair review findings only; do not expand into unrelated refactors.
-- Rule: re-enter the loop only when the latest plan is current and the next fix is still scoped.
-- Rule: if the same blocker repeats, stop rather than churn.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ReviewFixLoopArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/review-fix-loop/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Review Fix Loop
+
+## Overview
+
+Coordinate review, planning, and implementation without diluting any one skill's responsibility. The review remains the measurement instrument; this skill decides whether to plan fixes, implement them, repeat, or hand off to ship-subissue.
+Use the canonical work-item metadata format in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) as the source of truth for labels, milestone, and project metadata when preserving the loop state in comments or handoffs.
+Keep the loop tight: if the same review-fix plan would be posted again without a new finding, stop rather than restating the same repair in different words.
+
 
 ## Inputs
 
@@ -103,17 +120,11 @@ Track these facts in the working response or PR comments:
 - **Blocked:** missing PR, missing fixed point, stale or contradictory plan, failing validation without an obvious scoped fix, or the same findings recurring after three passes.
 - **User stop:** user pauses or redirects the loop.
 
-## Completion criteria
+## Completion
 
-- the latest review state is preserved accurately
-- the next action is either a scoped fix, a re-review, or a stop
-- validation evidence exists for the most recent implementation pass
-- the loop does not attempt to merge or close the PR
-- the loop does not continue past the repeat threshold for the same blocker
-
-## Guardrails
-
-- Do not merge, close, or delete branches; ship-subissue owns that.
-- Do not hide review findings by reclassifying them as planned work.
-- Do not keep looping when the next action needs user judgement.
-- Do not change the fixed point mid-loop unless the user explicitly changes it.
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,33 +1,57 @@
 ---
-name: physics-classical
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.
-capabilities:
-  - apply physics classical workflow
-  - produce physics classical analysis artifact
-  - validate physics classical completion criteria
-outputs:
-  - Physics Classical artifact with completed sections, evidence, and limitations
+name: "physics-classical"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Solve classical mechanics problems complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Solve classical mechanics problems complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-classical.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Physics Classical request, problem context, constraints, and available evidence.
-- **Output:** Physics Classical artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Solve classical mechanics problems is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsClassicalArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-classical/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Classical Mechanics
 
 Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltonian, or orbital — with free-body analysis, energy accounting, and dimensional checks.
@@ -56,3 +80,12 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 - Rule: check units and limiting cases after deriving the solution.
 - Rule: state when approximations such as small angle, massless string, or frictionless contact are used.
 - Rule: prefer conservation laws when they simplify the problem without hiding assumptions.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

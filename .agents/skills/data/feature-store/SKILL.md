@@ -1,36 +1,59 @@
 ---
-name: feature-store
-category: data
-maturity: stable
-version: 1
-description: Feature store (online/offline, feature engineering, serving, monitoring, drift).
-capabilities:
-  - design online and offline feature stores
-  - manage feature engineering and transformation logic
-  - serve features with low latency for inference
-  - monitor feature drift and data quality
-outputs:
-  - Feature store architecture diagram
-  - Feature definitions and schemas
-  - Monitoring and drift detection plan
+name: "feature-store"
+category: "data"
+maturity: "stable"
+version: "1"
+description: "Feature store (online/offline, feature engineering, serving, monitoring, drift)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; feature definitions documented; monitoring plan present.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Architecture diagram saved; feature definitions documented; monitoring plan present."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/feature-store.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** ML use cases, feature candidates, latency requirements, SLA.
-- **Output:** feature store architecture + feature definitions + monitoring plan.
-- **Side effects:** may read from and write to feature stores when executed.
-- **Dependencies:** storage (online: Redis, DynamoDB; offline: S3, warehouse), compute.
-- **Stop condition:** architecture saved; features defined; monitoring planned.
-- **Risk:** medium — stale or drifting features degrade model performance; requires testing.
-- **Boundary:** designs feature store; execution requires approval.
+- Input: ML use cases, feature candidates, latency requirements, SLA.
+- Output: feature store architecture + feature definitions + monitoring plan.
+- Scope: designs feature store; execution requires approval.
+- Rule: designs feature store; execution requires approval.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `FeatureStoreArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/feature-store/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Feature Store
 
 Design a **feature store** — online/offline, feature engineering, serving, monitoring, and drift detection.
@@ -82,3 +105,12 @@ Design a **feature store** — online/offline, feature engineering, serving, mon
 - Model impact: link feature drift to model performance degradation.
 
 **Completion criterion:** monitoring and drift plan saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

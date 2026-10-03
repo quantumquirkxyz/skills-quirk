@@ -1,45 +1,62 @@
 ---
-name: docs-management
-category: project
-maturity: stable
-version: 1
-description: Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.
-capabilities:
-  - apply docs management workflow
-  - produce docs management artifact
-  - validate docs management completion criteria
-outputs:
-  - Docs Management artifact with findings, decisions, recommendations, and validation notes
+name: "docs-management"
+category: "project"
+maturity: "stable"
+version: "1"
+description: "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Keep repository documentation, ADRs, and durable context aligned with the current project shape complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Keep repository documentation, ADRs, and durable context aligned with the current project shape complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "adr"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-management.json"
+diataxis: "how-to"
+tags: ["project"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Docs Management request, relevant context, constraints, and source evidence.
-- **Output:** Docs Management artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Keep repository documentation, ADRs, and durable context aligned with the current project shape is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Docs Management
-
-Use this skill when the repository needs durable documentation discipline: what belongs in `CONTEXT.md`, when to write an ADR, and how to keep docs from drifting away from the code.
 
 ## Contract
 
 - Input: docs brief, repository context, and change scope.
 - Output: docs guidance, ADR guidance, and context coherence notes.
-- Scope: decide what durable docs should say; do not write implementation code here.
-- Rule: keep `CONTEXT.md` glossary-like and implementation-free.
-- Rule: write an ADR only when the decision is hard to reverse and the trade-off is real.
-- Rule: reject stale or duplicate documentation unless it is explicitly resolved.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DocsManagementArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/docs-management/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Docs Management
+
+Use this skill when the repository needs durable documentation discipline: what belongs in `CONTEXT.md`, when to write an ADR, and how to keep docs from drifting away from the code.
+
 
 ## Steps
 
@@ -48,8 +65,11 @@ Use this skill when the repository needs durable documentation discipline: what 
 3. Note what needs to stay coherent across future changes.
 4. Flag any stale or contradictory material that should be removed or revised.
 
-## Completion criteria
+## Completion
 
-- the durable doc surface is named
-- the ADR threshold is explicit
-- the coherence risk is described
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

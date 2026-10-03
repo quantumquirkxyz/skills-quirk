@@ -1,33 +1,57 @@
 ---
-name: artifact-handoff
-category: routing
-maturity: stable
-version: 1
-description: Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.
-capabilities:
-  - apply artifact handoff workflow
-  - produce artifact handoff artifact
-  - validate artifact handoff completion criteria
-outputs:
-  - Artifact Handoff artifact with findings, decisions, recommendations, and validation notes
+name: "artifact-handoff"
+category: "routing"
+maturity: "stable"
+version: "1"
+description: "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Transfer structured artifacts between Skills and sessions complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Transfer structured artifacts between Skills and sessions complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "routing"
+modelTier: "router"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/artifact-handoff.json"
+diataxis: "how-to"
+tags: ["routing"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Artifact Handoff request, relevant context, constraints, and source evidence.
-- **Output:** Artifact Handoff artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Transfer structured artifacts between Skills and sessions is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ArtifactHandoffArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/artifact-handoff/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Artifact Handoff
 
 Use this skill to move a result from one Skill to another without flattening it into prose.
@@ -46,8 +70,11 @@ Use this skill to move a result from one Skill to another without flattening it 
 - Rule: name the intended consumer Skill and the exact next action it should take.
 - Rule: include validation status and known caveats when the artifact is partial.
 
-## Completion criteria
+## Completion
 
-- the artifact validates against the shared envelope
-- the next consumer is explicit
-- provenance, evidence, and redaction status are recorded
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

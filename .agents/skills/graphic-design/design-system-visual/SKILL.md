@@ -1,47 +1,62 @@
 ---
-name: design-system-visual
-category: graphic-design
-maturity: stable
-version: 1
-description: Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.
-capabilities:
-  - define design tokens and token taxonomy
-  - specify component patterns and states
-  - document accessibility requirements per component
-  - define cross-channel adaptation rules
-  - produce visual design system artifact
-outputs:
-  - Visual Design System artifact with token taxonomy, component patterns, accessibility rules, and cross-channel guidelines
+name: "design-system-visual"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
+description: "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Visual design system design complete; tokens, components, accessibility, and adaptation rules explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Visual design system design complete; tokens, components, accessibility, and adaptation rules explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/design-system-visual.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Visual design system request, brand constraints, platform targets, and accessibility requirements.
-- **Output:** Visual Design System artifact with token taxonomy, component patterns, accessibility rules, and cross-channel guidelines.
-- **Side effects:** none; this skill is read-only analysis and documentation.
-- **Dependencies:** none.
-- **Stop condition:** Visual design system design complete; tokens, components, accessibility, and adaptation rules explicit.
-- **Risk:** low.
-- **Boundary:** designs the visual system and rules; does not implement components or connect to external tools.
-
-# Design System Visual
-
-Use this skill when a product or brand needs a coherent visual design system. It should translate brand and accessibility requirements into explicit design tokens, component patterns, and cross-channel adaptation rules.
 
 ## Contract
 
 - Input: brand constraints, platform targets (web, mobile, print, outdoor), accessibility requirements, and existing visual assets.
 - Output: visual design system artifact with token taxonomy, component patterns, accessibility rules, and cross-channel guidelines.
-- Scope: define the visual system and rules; do not implement production components.
-- Rule: start from brand tokens before defining component-specific values.
-- Rule: define component states explicitly: default, hover, focus, active, disabled, error, loading, empty.
-- Rule: specify accessibility requirements for each component and token where interaction or readability matters.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DesignSystemVisualArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/design-system-visual/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Design System Visual
+
+Use this skill when a product or brand needs a coherent visual design system. It should translate brand and accessibility requirements into explicit design tokens, component patterns, and cross-channel adaptation rules.
+
 
 ## Steps
 
@@ -104,20 +119,11 @@ Use this skill when a product or brand needs a coherent visual design system. It
 
 **Completion criterion:** cross-channel adaptation rules saved.
 
-## Completion criteria
+## Completion
 
-- token taxonomy is defined with examples
-- color system is defined with values and formats
-- typography scale is defined with values and formats
-- spacing and layout system is defined
-- component patterns with states are documented
-- accessibility requirements are documented per component and token
-- cross-channel adaptation rules are defined
-
-## References
-
-- `../../frontend/design-system/SKILL.md` — reusable UI tokens and component systems
-- `../../accessibility/accessibility-design/SKILL.md` — inclusive visual design
-- `../../graphic-design/graphic-design-foundations/SKILL.md` — composition, color, typography foundations
-- `references/domain.md` — design token taxonomy and component pattern libraries
-- `references/token-formats.md` — design token interchange formats
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

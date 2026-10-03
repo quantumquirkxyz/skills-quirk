@@ -1,49 +1,68 @@
 ---
-name: make-project
-category: project
-maturity: stable
-version: 1
-description: Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.
-capabilities:
-  - apply make project workflow
-  - produce make project artifact
-  - validate make project completion criteria
-outputs:
-  - Make Project artifact with findings, decisions, recommendations, and validation notes
+name: "make-project"
+category: "project"
+maturity: "stable"
+version: "1"
+description: "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics."
+capabilities: ""
+outputs: ""
 sideEffects:
   - create-project
   - create-project-fields
   - link-repositories
+
 dependencies: []
-stopCondition: Use when the user wants a new board in GitHub Projects, or another skill needs one complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Use when the user wants a new board in GitHub Projects, or another skill needs one complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/make-project.json"
+diataxis: "how-to"
+tags: ["project"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Make Project request, relevant context, constraints, and source evidence.
-- **Output:** Make Project artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Use when the user wants a new board in GitHub Projects, or another skill needs one is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: an owner, a title, and the agreed scope (repos, fields, views, items).
+- Output: a live board URL, confirmed by verification.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MakeProjectArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/make-project/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Make Project
 
 Make a GitHub Projects (V2) **board** from scratch: create it, wire its fields and views, link the repositories it tracks, and populate it with items. Run the full setup every time.
 
 The exact queries and mutations live in [`references/graphql.md`](references/graphql.md) — load it before the first step and use the snippet named in each step.
 
-## Contract
-
-- Input: an owner, a title, and the agreed scope (repos, fields, views, items).
-- Output: a live board URL, confirmed by verification.
-- Scope: full setup — create, configure, link, populate. Not a quick create-and-done.
-- Rule: never create a board that already exists under the same title.
-- Rule: item field values are set only after the item is added — you cannot add and update an item in one call.
 
 ## Repo Context
 
@@ -134,3 +153,12 @@ Completion: verification matches the agreement on every axis, and the URL is rep
 - `updateProjectV2ItemFieldValue` cannot change Assignees, Labels, Milestone, or Repository — those are properties of the issue or PR itself, set through the issue/PR APIs, not the project item.
 - Adding an item that's already on the board returns the existing item — no duplicate.
 - Global node IDs are required everywhere; never pass REST numeric IDs.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,62 @@
 ---
-name: distributed-tracing
-category: backend
-maturity: stable
-version: 1
-description: Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).
-capabilities:
-  - design distributed tracing architecture
-  - configure OpenTelemetry instrumentation
-  - plan sampling and trace storage
-  - define trace-based observability
-outputs:
-  - Distributed tracing artifact with findings, decisions, recommendations, and validation notes
+name: "distributed-tracing"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Distributed tracing design complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Distributed tracing design complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/distributed-tracing.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Distributed Tracing
-
-Use this skill when designing distributed tracing for a service-oriented system — OpenTelemetry, W3C TraceContext, sampling strategies, instrumentation, and trace-based debugging.
 
 ## Contract
 
 - Input: service inventory, request topology, observability requirements, and privacy constraints.
 - Output: tracing architecture with instrumentation plan, sampling strategy, and backend configuration.
-- Scope: design tracing strategy and instrumentation; not infrastructure deployment unless explicitly requested.
-- Rule: traces explain latency and failure paths across service boundaries; they are not logs.
-- Rule: instrument at the seam where requests enter and leave each service.
-- Rule: redact sensitive data from spans before export.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DistributedTracingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/distributed-tracing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Distributed Tracing
+
+Use this skill when designing distributed tracing for a service-oriented system — OpenTelemetry, W3C TraceContext, sampling strategies, instrumentation, and trace-based debugging.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing distributed tracing for a service-oriented system 
 - Rule: define span ownership: one team owns instrumentation for each service; do not silently drop spans.
 - Rule: validate trace completeness in CI using synthetic traffic or integration tests.
 
-## Completion Criteria
+## Completion
 
-- request topology is documented with critical paths and ownership model
-- context propagation rules are documented per transport and boundary
-- instrumentation plan is documented per service and transport
-- sampling strategy is documented with rates and environment overrides
-- backend configuration and retention policy are documented
-- trace-based alerting rules and root cause analysis procedure are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -8,8 +8,52 @@ capabilities:
   - apply ask to workflow
   - produce ask to artifact
   - validate ask to completion criteria
+modelTier: router
+promptVersion: "2.0"
+artifactType: plan
+evaluators:
+  - behavioral
+  - traceability
+fixturesPath: .agents/skills/platform/fixtures/behavioral/ask-to.json
+diataxis: how-to
+tags:
+  - routing
+  - orchestration
+  - workflow
+  - state-machine
+compatibility:
+  - grill-with-docs
+  - to-spec
+  - diagnosing-bugs
+  - project-development
+  - project-viability
+  - wayfinder
+  - observability
+approvalRequired: false
+approvalFor: []
 outputs:
-  - Ask To artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    name: RoutingArtifact
+    properties:
+      currentState:
+        type: string
+      availableTransitions:
+        type: array
+        items:
+          type: string
+      selectedTransition:
+        type: string
+      nextSkill:
+        type: string
+      workflow:
+        type: string
+      context:
+        type: object
+    required:
+      - currentState
+      - selectedTransition
+      - nextSkill
+      - workflow
 sideEffects: []
 dependencies: []
 stopCondition: Ask which skill or flow fits your situation complete; artifact saved; completion criteria checked.
@@ -18,15 +62,33 @@ trustTier: 1
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Ask To request, relevant context, constraints, and source evidence.
-- **Output:** Ask To artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Ask which skill or flow fits your situation is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: ambiguous work request, available workflows, current project context.
+- Output: `RoutingArtifact` with current state, available transitions, selected next skill, and workflow name.
+- Scope: routing only — do not create issues, tickets, PRs, or project items.
+- Rule: always read the workflow state machine before routing.
+- Rule: prefer the thinnest downstream skill that can finish the work.
+- Rule: if the current state has no matching transition, route to `escalate`.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight. |
+| **Input** | ambiguous work request, available workflows, current project context. |
+| **Output** | `RoutingArtifact` with current state, available transitions, selected next skill, and workflow name. |
+| **Side effects** | none. |
+| **Boundaries** | routing only — do not create issues, tickets, PRs, or project items. |
+| **Completion criteria** | exactly one primary skill path is recommended; the rationale distinguishes the chosen path from the nearest alternative; any fallback path is actionable and named; missing-context cases are explicit rather than implied. |
+
+## Artifact
+
+Emit `RoutingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/routing/{request-id}.json`
+- Markdown view: same filename with `.md` extension
+
+Workflow state is managed by `.agents/skills/platform/workflow-state-machine.mjs`.
 
 # Ask To
 
@@ -34,16 +96,9 @@ Use this skill to choose the next step when the route is unclear or the request 
 
 Start by building a minimal fresh context pack and then route against declared capabilities instead of memory. If the request may affect work-item metadata or tracker state, run `work-item-router` first.
 
-## Contract
+## Purpose
 
-- Input: one user intent, the current repo state, and the available skills registry.
-- Output: one recommended skill path, one rationale, and one fallback path only when the choice is genuinely ambiguous.
-- Scope: recommend the next skill, not the implementation plan.
-- Rule: if the answer is "insufficient context," say what is missing instead of guessing.
-- Rule: the recommendation must be grounded in declared capabilities and side effects, not recall.
-- Rule: do not draft the spec, issue, PR, or code here; only recommend the next skill path.
-
-A **flow** is a path through the skills. Most paths run along one **main flow**, and two **on-ramps** merge onto it. Everything else is standalone, or a vocabulary layer that runs underneath.
+This skill is the entry point for ambiguous work requests. It reads the workflow state machine, evaluates available transitions from the current state, and selects the thinnest downstream skill that can finish the work.
 
 ## The main flow: idea → ship
 
@@ -55,7 +110,7 @@ The route most work travels. You have an idea and want it built.
    - **`/prototype`** to answer the question with throwaway code,
    - **`/handoff`** back what you learned, and reference it from the original idea thread.
 3. **Branch — is this a multi-session build?**
-    - **Yes** → **`/to-spec`** (turn the thread into a spec using that skill's spec template), then **`/to-tickets`** to split it into tracer-bullet tickets using that skill's ticket template, each declaring its **blocking edges** and, on a real tracker, as subissues of the spec issue. On a local tracker that's one file per ticket under `.scratch/<feature>/issues/`, worked blockers-first by hand; on a real tracker the edges become native blocking links, so any ticket whose blockers are done can be grabbed — kick off **`/implement`** per ticket, **clearing context between each one**.
+   - **Yes** → **`/to-spec`** (turn the thread into a spec using that skill's spec template), then **`/to-tickets`** to split it into tracer-bullet tickets using that skill's ticket template, each declaring its **blocking edges** and, on a real tracker, as subissues of the spec issue. On a local tracker that's one file per ticket under `.scratch/<feature>/issues/`, worked blockers-first by hand; on a real tracker the edges become native blocking links, so any ticket whose blockers are done can be grabbed — kick off **`/implement`** per ticket, **clearing context between each one**.
    - **No** → **`/implement`** right here, in the same context window.
 
    Either way, **`/implement`** builds each issue by driving **`/tdd`** internally — one red-green slice at a time — then follows the issue workflow in `AGENTS.md`. When the branch should ship, **`/publish-open-pr`** opens the PR, **`/review-pr`** reviews the PR, and then **`/ship-subissue`** finishes the merge, issue closure, and tracker sync once review is clean. If review finds problems, use **`/review-fix-loop`** to run `/review-pr` -> `/plan-review-fixes` -> `/implement-review-fixes` until Standards and Spec are clean or blocked. Reach for **`/tdd`** on its own when you just want to build a concrete behaviour test-first without a full spec, **`/review-pr`** when a GitHub PR needs a published review, and **`/code-review`** when you want a local branch or working diff reviewed against a fixed point without the PR repair workflow.
@@ -120,3 +175,6 @@ Off the main flow entirely.
 ## Precondition
 
 **`/setup-quirk-skills`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
+
+---
+@include .agents/skills/platform/contract-base.xml

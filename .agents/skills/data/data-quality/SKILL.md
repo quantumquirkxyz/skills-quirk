@@ -1,37 +1,59 @@
 ---
-name: data-quality
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.
-capabilities:
-  - define data quality dimensions (freshness, volume, distribution, referential integrity)
-  - design check suites (expectations, thresholds, anomaly detection)
-  - implement observability (metrics, alerts, dashboards)
-  - define data contracts between producers and consumers
-outputs:
-  - Data quality framework (dimensions, SLAs, ownership)
-  - Check suite configuration (Great Expectations / Soda)
-  - Observability and alerting rules
-  - Data contract specification
+name: "data-quality"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Framework defined; check suite configured; observability and contract rules documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Framework defined; check suite configured; observability and contract rules documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-quality.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** data inventory, producer/consumer map, SLAs, freshness requirements.
-- **Output:** data quality framework + check suite + observability + data contract.
-- **Side effects:** none.
-- **Dependencies:** data quality tooling (Great Expectations, Soda, Monte Carlo), monitoring stack, data catalog.
-- **Stop condition:** framework defined; check suite configured; observability and contract rules documented.
-- **Risk:** medium — bad data propagates to downstream systems; requires proactive detection.
-- **Boundary:** designs quality framework; does not execute data pipelines or modify production data unless explicitly instructed.
+- Input: data inventory, producer/consumer map, SLAs, freshness requirements.
+- Output: data quality framework + check suite + observability + data contract.
+- Scope: designs quality framework; does not execute data pipelines or modify production data unless explicitly instructed.
+- Rule: designs quality framework; does not execute data pipelines or modify production data unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataQualityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-quality/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Data Quality
 
 Design a **data quality framework** — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.
@@ -95,3 +117,12 @@ Design a **data quality framework** — Great Expectations, Soda, checks, observ
 - Rule: run checks as close to the source as possible; fail fast and loud.
 - Rule: version expectation suites alongside data models and pipeline code.
 - Rule: require data contracts for any cross-team or cross-service data exchange.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

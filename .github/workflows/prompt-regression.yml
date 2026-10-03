@@ -1,0 +1,24 @@
+name: Prompt Regression Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test-prompts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run prompt regression tests
+        run: |
+          for skill in implement code-review to-spec to-tickets tdd api-design codebase-design docs-adrs review-pr work-item-router ask-to publish-open-pr; do
+            echo "Testing $skill..."
+            node .agents/skills/platform/scripts/test-prompt-regression.mjs $skill v2 || exit 1
+          done
+          echo "All prompt regression tests passed"

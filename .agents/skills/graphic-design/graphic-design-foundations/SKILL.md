@@ -1,47 +1,62 @@
 ---
-name: graphic-design-foundations
-category: graphic-design
-maturity: stable
-version: 1
-description: Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.
-capabilities:
-  - analyze brief and audience constraints
-  - define composition, hierarchy, and visual flow
-  - select color systems and typography pairs
-  - specify print and digital production requirements
-  - produce graphic design artifact with rationale
-outputs:
-  - Graphic Design Foundations artifact with layout directions, color palette, typography system, and production notes
+name: "graphic-design-foundations"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
+description: "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Graphic design foundations complete; layout, color, and typography decisions explicit; production requirements named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Graphic design foundations complete; layout, color, and typography decisions explicit; production requirements named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/graphic-design-foundations.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Graphic design request, brief, audience, channel, and brand constraints.
-- **Output:** Graphic Design Foundations artifact with layout directions, color palette, typography system, and production notes.
-- **Side effects:** none; this skill is read-only analysis and documentation.
-- **Dependencies:** none.
-- **Stop condition:** Graphic design foundations complete; layout, color, and typography decisions explicit; production requirements named.
-- **Risk:** low.
-- **Boundary:** designs visual direction and production requirements; does not execute production files or connect to external tools.
-
-# Graphic Design Foundations
-
-Use this skill when a visual artifact needs a deliberate graphic design foundation before production. It should translate brief, audience, and channel into explicit layout, color, typography, and production decisions.
 
 ## Contract
 
 - Input: visual brief, audience description, distribution channel, and any brand constraints.
 - Output: graphic design artifact covering composition, hierarchy, color, typography, and production requirements.
-- Scope: define the visual direction and constraints; do not produce final production files.
-- Rule: anchor every decision to the brief and audience, not generic aesthetic trends.
-- Rule: separate digital and print production constraints explicitly.
-- Rule: call out accessibility requirements such as contrast, readability, and color-blind-safe palettes when relevant.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GraphicDesignFoundationsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/graphic-design-foundations/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Graphic Design Foundations
+
+Use this skill when a visual artifact needs a deliberate graphic design foundation before production. It should translate brief, audience, and channel into explicit layout, color, typography, and production decisions.
+
 
 ## Steps
 
@@ -89,16 +104,11 @@ Use this skill when a visual artifact needs a deliberate graphic design foundati
 
 **Completion criterion:** production requirements and handoff notes saved.
 
-## Completion criteria
+## Completion
 
-- brief and constraints are explicit
-- composition and hierarchy are described
-- color palette is defined with accessibility notes
-- typography system is defined with licensing notes
-- production requirements are explicit for the chosen channel
-
-## References
-
-- `../../frontend/styling/SKILL.md` — design tokens and CSS color systems
-- `../../accessibility/accessibility-design/SKILL.md` — inclusive visual design
-- `references/domain.md` — graphic design terminology, color science, and production standards
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

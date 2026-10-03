@@ -1,36 +1,59 @@
 ---
-name: data-streaming
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics.
-capabilities:
-  - design event schemas and stream topology
-  - configure producers / consumers / stream processors
-  - handle backpressure, ordering, exactly-once semantics
-  - design real-time analytics and alerting
-outputs:
-  - Stream topology diagram
-  - Event schema (Avro / Protobuf / JSON Schema)
-  - Processing rules and backpressure plan
+name: "data-streaming"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Topology diagram saved; event schema defined; processing rules documented.
-risk: medium
-trustTier: 3
-maxIterations: 5
+stopCondition: "Topology diagram saved; event schema defined; processing rules documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-streaming.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** stream source descriptions, processing requirements, latency/throughput targets.
-- **Output:** topology design + event schema + processing rules.
-- **Side effects:** may deploy stream resources when executed.
-- **Dependencies:** streaming platform access (Kafka / Kinesis / Pub/Sub / Flink).
-- **Stop condition:** design saved; rules documented.
-- **Risk:** medium — stream errors propagate quickly; requires testing.
-- **Boundary:** designs stream; executes only with explicit approval.
+- Input: stream source descriptions, processing requirements, latency/throughput targets.
+- Output: topology design + event schema + processing rules.
+- Scope: designs stream; executes only with explicit approval.
+- Rule: designs stream; executes only with explicit approval.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataStreamingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-streaming/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Streaming Pipeline Design
 
 Design a **streaming pipeline** — event producers, stream processors, consumers — with schema, processing rules, and reliability.
@@ -75,3 +98,12 @@ Design a **streaming pipeline** — event producers, stream processors, consumer
 - Alert: lag > threshold; error rate > threshold; partition unassigned.
 
 **Completion criterion:** reliability rules saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

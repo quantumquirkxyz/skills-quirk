@@ -1,41 +1,57 @@
 ---
-name: pr-operations
-category: integrations
-maturity: stable
-version: 1
-description: Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.
-capabilities:
-  - resolve pull request targets
-  - create pull requests from validated branches
-  - update PR metadata and discussion
-  - request reviews and apply labels safely
-  - report publication and review readiness evidence
-outputs:
-  - Pull request operation summary with PR URLs, branch names, diff scope, validation evidence, actions taken, and remaining review risks
-sideEffects:
-  - create-pull-request
-  - update-pull-request
-  - post-pr-comment
-  - request-review
-  - label-pull-request
-dependencies:
-  - execution-policy
-stopCondition: Requested PR actions are completed or explicitly skipped, target PRs are identified, and validation or readiness evidence is reported.
-risk: medium
-trustTier: 3
-maxIterations: 6
+name: "pr-operations"
+category: "integrations"
+maturity: "stable"
+version: "1"
+description: "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit."
+capabilities: ""
+outputs: ""
+sideEffects: ""
+dependencies: ""
+stopCondition: "Requested PR actions are completed or explicitly skipped, target PRs are identified, and validation or readiness evidence is reported."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/pr-operations.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** pull request request, repository context, branch names, target base, diff or validation evidence, and any desired metadata changes.
-- **Output:** pull request operation summary with PR URL, branch/base pair, title/body/comment changes, reviewer or label changes, and validation evidence.
-- **Side effects:** create or update PRs, comment on PRs, request reviews, or change labels only within the requested repository and target branch pair.
-- **Dependencies:** use `execution-policy` when merge, publication, reviewer notification, or external coordination authority is unclear.
-- **Stop condition:** the requested PR operation is completed or blocked with a precise reason and the current PR state is known.
-- **Risk:** medium because PR operations affect review queues and can notify collaborators.
-- **Boundary:** do not merge, close, delete branches, force-push, or change protected-branch settings unless another explicit workflow authorizes it.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PrOperationsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/pr-operations/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: resolve the repository, head branch, base branch, and target PR before applying any PR mutation.
@@ -63,10 +79,11 @@ maxIterations: 6
 - `references/pr-operation-summary-template.md` - reusable PR operation summary format.
 - `references/pr-provider-guidelines.md` - provider-specific mapping notes and merge-safety boundaries.
 
-## Completion Criteria
+## Completion
 
-- the PR target is resolved to a stable URL or a clear skipped reason
-- branch pair, title/body/comment changes, labels, and reviewer changes are listed
-- validation evidence is included or explicitly marked unavailable
-- no merge or destructive branch action occurred unless separately authorized
-- follow-up review risks are concise and actionable
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

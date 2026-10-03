@@ -1,36 +1,59 @@
 ---
-name: ai-prompt-engineering
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.
-capabilities:
-  - structure prompts with system, user, context, output-format instructions
-  - apply chain-of-thought, few-shot, RAG, and tool-use patterns
-  - evaluate prompts with metrics (accuracy, consistency, latency, cost)
-  - iterate with A/B testing of prompt variants
-outputs:
-  - Prompt library (Markdown with variants and performance notes)
-  - Evaluation report (metrics per variant, failure mode analysis)
-  - Recommendation (best variant + justification)
+name: "ai-prompt-engineering"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Best prompt identified with evaluation report; failure modes documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Best prompt identified with evaluation report; failure modes documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/ai-prompt-engineering.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** task description, target LLM, evaluation criteria.
-- **Output:** prompt library + evaluation report + recommendation.
-- **Side effects:** may call LLM APIs (cost, data privacy).
-- **Dependencies:** LLM API access (OpenAI, Anthropic, local model server).
-- **Stop condition:** best variant selected with evaluation evidence.
-- **Risk:** medium — LLM outputs can be unreliable; requires validation; data privacy concerns.
-- **Boundary:** evaluates and selects prompts; does not deploy to production without additional validation.
+- Input: task description, target LLM, evaluation criteria.
+- Output: prompt library + evaluation report + recommendation.
+- Scope: evaluates and selects prompts; does not deploy to production without additional validation.
+- Rule: evaluates and selects prompts; does not deploy to production without additional validation.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AiPromptEngineeringArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/ai-prompt-engineering/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Prompt Engineering
 
 Design **LLM prompts** that produce correct, consistent, and useful outputs — with evaluation, iteration, and failure-mode analysis.
@@ -86,3 +109,12 @@ State the best variant with evidence; document when it fails; provide fallback r
 
 - Pair with `ai-ml-pipeline` when the prompt feeds into a model pipeline.
 - Use `ai-model-evaluation` for deeper evaluation (fairness, robustness, cross-model comparison).
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

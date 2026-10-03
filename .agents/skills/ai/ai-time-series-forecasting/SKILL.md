@@ -1,36 +1,59 @@
 ---
-name: ai-time-series-forecasting
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.
-capabilities:
-  - analyse stationarity (ADF, KPSS) and seasonality (decomposition, autocorrelation)
-  - select model family (classical / boosted / deep learning / ensemble)
-  - build forecast pipeline respecting time-order split
-  - evaluate with time-series metrics (MAPE, sMAPE, MASE, RMSE) and rolling backtest
-outputs:
-  - Forecast plot with prediction intervals
-  - Model comparison table (metrics per model)
-  - Backtest report with holdout validation
+name: "ai-time-series-forecasting"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Forecast plot saved; backtest complete; best model recommendation made.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Forecast plot saved; backtest complete; best model recommendation made."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/ai-time-series-forecasting.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** time-series data (date + target; optional exogenous variables).
-- **Output:** forecast plot + comparison + recommendation.
-- **Side effects:** none.
-- **Dependencies:** time-series data source.
-- **Stop condition:** backtest complete; recommendation made.
-- **Risk:** medium — forecast affects planning; requires validation.
-- **Boundary:** designs forecasting pipeline; does not make business decisions.
+- Input: time-series data (date + target; optional exogenous variables).
+- Output: forecast plot + comparison + recommendation.
+- Scope: designs forecasting pipeline; does not make business decisions.
+- Rule: designs forecasting pipeline; does not make business decisions.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AiTimeSeriesForecastingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/ai-time-series-forecasting/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Time-Series Forecasting
 
 Build a **time-series forecast** — with stationarity analysis, seasonality, exogenous variables, and backtest — and recommend the best model.
@@ -74,3 +97,12 @@ Best model with evidence; limitations (exogenous availability, structural breaks
 - Rule: use only exogenous variables known at forecast time.
 - Rule: evaluate with rolling or expanding backtests, not random splits.
 - Rule: report uncertainty intervals and structural-break limitations with the forecast.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

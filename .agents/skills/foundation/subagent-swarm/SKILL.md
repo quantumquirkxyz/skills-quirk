@@ -1,39 +1,62 @@
 ---
-name: subagent-swarm
-category: foundation
-maturity: stable
-description: Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.
-version: 1
-capabilities:
-  - define-subagent-roles
-  - assign-tasks-to-subagents
-  - collect-subagent-evidence
-  - merge-subagent-outputs
-  - resolve-subagent-conflicts
-inputs:
-  - "swarm-mode: parallel or sequential (default: sequential)"
-  - "roles: architect, implementer, reviewer, tester (default: implementer, reviewer)"
-  - "task-spec: The spec or ticket being processed"
-  - "handoff-contract: Requirements for evidence between roles"
-outputs:
-  - "swarm-plan: Task assignment and sequence"
-  - "subagent-evidence: Evidence from each subagent"
-  - "merged-output: Final result combining all subagent contributions"
-  - "conflict-resolution: Any conflicts and their resolution"
+name: "subagent-swarm"
+category: "foundation"
+maturity: "stable"
+description: "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording."
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: All roles completed with valid evidence, conflicts resolved, and merged output validated.
-risk: medium
-trustTier: 3
-maxIterations: 3
+stopCondition: "All roles completed with valid evidence, conflicts resolved, and merged output validated."
+risk: "medium"
+trustTier: "3"
+maxIterations: "3"
+promptVersion: "2.0"
+artifactType: "agent"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/subagent-swarm.json"
+diataxis: "how-to"
+tags: ["foundation"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-# Subagent Swarm
-
 ## Contract
+
 - Input: swarm mode, roles, task spec, handoff contract
 - Output: swarm plan, subagent evidence, merged output, conflict resolution
-- Boundary: does not replace individual skills; orchestrates them with roles
+- Scope: does not replace individual skills; orchestrates them with roles
+- Rule: does not replace individual skills; orchestrates them with roles
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SubagentSwarmArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/subagent-swarm/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Subagent Swarm
+
 
 ## Process
 1. Define roles and mode (parallel/sequential).
@@ -75,3 +98,12 @@ maxIterations: 3
 - Input: implementation + test assertions
 - Output: test suite, coverage report, execution log
 - Boundary: does not modify source beyond fixtures; surfaces failures with evidence
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

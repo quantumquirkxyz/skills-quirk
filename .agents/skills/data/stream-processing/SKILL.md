@@ -1,36 +1,59 @@
 ---
-name: stream-processing
-category: data
-maturity: stable
-version: 1
-description: Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).
-capabilities:
-  - design stream processing topologies (Flink, Kafka Streams, RisingWave)
-  - define windowing strategies (tumbling, sliding, session, global)
-  - manage state ( RocksDB, in-memory, tiered storage)
-  - implement exactly-once semantics and fault tolerance
-outputs:
-  - Stream topology diagram
-  - Windowing and state design
-  - Exactly-once semantics plan
+name: "stream-processing"
+category: "data"
+maturity: "stable"
+version: "1"
+description: "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Topology diagram saved; windowing strategy defined; exactly-once plan documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Topology diagram saved; windowing strategy defined; exactly-once plan documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/stream-processing.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** stream sources, processing logic, state requirements, delivery guarantees.
-- **Output:** stream topology + windowing design + exactly-once plan.
-- **Side effects:** may consume from and produce to streams when executed.
-- **Dependencies:** streaming platform (Kafka, Pulsar, Kinesis), state store.
-- **Stop condition:** topology saved; windowing defined; exactly-once plan documented.
-- **Risk:** medium — state corruption or duplicate processing risks; requires testing.
-- **Boundary:** designs stream jobs; execution requires approval.
+- Input: stream sources, processing logic, state requirements, delivery guarantees.
+- Output: stream topology + windowing design + exactly-once plan.
+- Scope: designs stream jobs; execution requires approval.
+- Rule: designs stream jobs; execution requires approval.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `StreamProcessingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/stream-processing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Stream Processing
 
 Design **stream processing** — Flink, Kafka Streams, RisingWave, windowing, state management, and exactly-once semantics.
@@ -89,3 +112,12 @@ Design **stream processing** — Flink, Kafka Streams, RisingWave, windowing, st
 - Rule: separate stateless processing from stateful processing so scaling is explicit.
 - Rule: require idempotent sinks or deduplication for sensitive downstream systems.
 - Rule: monitor backpressure, checkpoint lag, and state size as primary operational signals.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

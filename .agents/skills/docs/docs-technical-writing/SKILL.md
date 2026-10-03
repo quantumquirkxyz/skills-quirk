@@ -1,33 +1,63 @@
 ---
-name: docs-technical-writing
-category: docs
-maturity: stable
-version: 1
-description: Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.
-capabilities:
-  - structure technical documentation
-  - clarify procedural guidance
-  - align docs with audience needs
-outputs:
-  - technical document plan or draft with audience, scope, and maintenance notes
+name: "docs-technical-writing"
+category: "docs"
+maturity: "stable"
+version: "1"
+description: "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: The document is clear for its audience, complete for its scope, and maintainable.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "The document is clear for its audience, complete for its scope, and maintainable."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "adr"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-technical-writing.json"
+diataxis: "how-to"
+tags: ["docs"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# docs-technical-writing
-
-Use this skill when drafting, editing, or restructuring documentation for developers, operators, researchers, or technical stakeholders.
 
 ## Contract
 
 - Input: documentation goal, audience, source material, and expected reader task.
 - Output: outline, edited document, or review notes with gaps and maintenance concerns.
-- Scope: technical clarity, structure, examples, warnings, and upkeep; not marketing copy.
-- Boundary: preserve technical accuracy and mark unknowns instead of smoothing over missing facts.
+- Scope: preserve technical accuracy and mark unknowns instead of smoothing over missing facts.
+- Rule: preserve technical accuracy and mark unknowns instead of smoothing over missing facts.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DocsTechnicalWritingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/docs-technical-writing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# docs-technical-writing
+
+Use this skill when drafting, editing, or restructuring documentation for developers, operators, researchers, or technical stakeholders.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when drafting, editing, or restructuring documentation for develo
 5. Check for missing prerequisites, ambiguous pronouns, stale commands, and unsupported claims.
 6. Add maintenance notes when the document depends on changing systems.
 
-## Completion Criteria
+## Completion
 
-- audience and reader task are explicit
-- steps, examples, and warnings are placed where they are needed
-- unknowns or assumptions are marked
-- the document has a clear update path
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

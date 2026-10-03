@@ -1,35 +1,59 @@
 ---
-name: sec-security-audit
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.
-capabilities:
-  - review code for security vulnerabilities (OWASP, CWE, SANS)
-  - scan dependencies (SAST, DAST, dependency-check, Semgrep)
-  - audit access control and secrets management
-  - document findings with severity and remediation priority
-outputs:
-  - Security audit report (findings, severity, recommendations)
-  - Remediation checklist (prioritised by risk)
+name: "sec-security-audit"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Audit report complete; findings classified by severity; recommendations made.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Audit report complete; findings classified by severity; recommendations made."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "security"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-security-audit.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** code repository or system description, threat model (optional).
-- **Output:** audit report with severity-classified findings.
-- **Side effects:** may run scanners (SAST, dependency-check); may read secrets (never expose in output).
-- **Dependencies:** scanner tools, access to repo.
-- **Stop condition:** report complete; all findings have severity + recommendation.
-- **Risk:** medium — security findings can be sensitive; report should be handled confidentially.
-- **Boundary:** finds and classifies; does not patch or deploy fixes (remediation is separate).
+- Input: code repository or system description, threat model (optional).
+- Output: audit report with severity-classified findings.
+- Scope: finds and classifies; does not patch or deploy fixes (remediation is separate).
+- Rule: finds and classifies; does not patch or deploy fixes (remediation is separate).
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecSecurityAuditArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/sec-security-audit/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Security Audit
 
 Audit a **system or codebase** for security vulnerabilities — with explicit findings, severity, and remediation priorities.
@@ -75,3 +99,12 @@ Prioritise by: severity × likelihood × business impact. Suggest quick wins (lo
 
 ### 7. Report
 Markdown artifact with: scope, methodology, findings table, recommendations, and a note on limitations (what was not tested).
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

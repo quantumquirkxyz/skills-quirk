@@ -1,41 +1,59 @@
 ---
-name: mlops
-category: ai
-maturity: stable
-version: 1
-description: MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)
-capabilities:
-  - design and operate feature stores with point-in-time correctness
-  - manage model registry with promotion, validation, and rollback
-  - version data with lineage and reproducibility
-  - orchestrate training and retraining pipelines
-  - configure model monitoring for drift and performance decay
-  - define retraining triggers and backfill discipline
-outputs:
-  - Feature store contract (schema, point-in-time rules, window specs)
-  - Model registry manifest (run, model, validation, promotion state)
-  - Data version manifest (hash, lineage, reproduction steps)
-  - Pipeline manifest (schedule, image, secrets, rollback, alert)
-  - Monitoring config (drift, latency, error, regression gate)
-  - Retraining trigger policy (metric, threshold, window, approval)
+name: "mlops"
+category: "ai"
+maturity: "stable"
+version: "1"
+description: "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Registry green; pipelines passing; model validated; monitoring active.
-risk: medium
-trustTier: 3
-maxIterations: 8
+stopCondition: "Registry green; pipelines passing; model validated; monitoring active."
+risk: "medium"
+trustTier: "3"
+maxIterations: "8"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/mlops.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** dataset description, model class, performance target, operational constraint.
-- **Output:** feature store contract + model registry + data version + pipeline manifest + monitoring + trigger policy.
-- **Side effects:** may write to feature store, model registry, and cloud storage.
-- **Dependencies:** feature store, model registry, container registry, orchestration, secret store, monitoring stack.
-- **Stop condition:** feature store live; model registered; pipelines passing; monitoring green.
-- **Risk:** medium — production models depend on correct data and training; drift and decay possible.
-- **Boundary:** manages ML operations; does not build model weights from scratch.
+- Input: dataset description, model class, performance target, operational constraint.
+- Output: feature store contract + model registry + data version + pipeline manifest + monitoring + trigger policy.
+- Scope: manages ML operations; does not build model weights from scratch.
+- Rule: manages ML operations; does not build model weights from scratch.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MlopsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/mlops/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # MLOps
 
 Operate ML systems with reproducibility, validation, and monitoring.
@@ -95,3 +113,12 @@ Backfill: retrain from scratch or incremental; lineage preserved.
 - No retrain without data QA and model QA green.
 - No backfill without lineage preserved and validation green.
 - No drift ignored without regression gate and rollback tested.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

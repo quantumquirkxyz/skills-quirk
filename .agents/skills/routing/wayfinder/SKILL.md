@@ -1,47 +1,58 @@
 ---
-name: wayfinder
-category: routing
-maturity: stable
-version: 1
-description: Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.
-capabilities:
-  - apply wayfinder workflow
-  - produce wayfinder artifact
-  - validate wayfinder completion criteria
-outputs:
-  - Wayfinder artifact with findings, decisions, recommendations, and validation notes
+name: "wayfinder"
+category: "routing"
+maturity: "stable"
+version: "1"
+description: "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Plan a huge chunk of work complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Plan a huge chunk of work complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "routing"
+modelTier: "router"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/wayfinder.json"
+diataxis: "how-to"
+tags: ["routing"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Wayfinder request, relevant context, constraints, and source evidence.
-- **Output:** Wayfinder artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Plan a huge chunk of work is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-A loose idea has arrived — too big for one agent session, and wrapped in fog: the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **map** on the repo's issue tracker, then works its **decision tickets** — questions whose resolution is a decision, not slices of a build to execute — one at a time until the route is clear.
-
-Start each map by resolving a minimal fresh context pack, then route the first question against declared capabilities so the map stays anchored in the current repo state.
 
 ## Contract
 
 - Input: one destination, one foggy effort, and the tracker configuration.
 - Output: a map, decision tickets, and a clear route for the next build step.
-- Scope: produce decisions, not deliverables.
-- Rule: only ticket questions that are already sharp enough to state precisely.
-- Rule: resolve at most one ticket per session unless the ticket is research.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
-The destination varies per effort, and naming it is the first act of charting — it shapes every ticket. It might be a spec to hand off and iterate on, a decision to lock before planning starts, or a change made in place like a data-structure migration. The map is domain-agnostic — engineering work, course content, whatever fits the shape.
+## Provenance
 
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `WayfinderArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/wayfinder/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Plan, don't do
 
 Wayfinder is **planning** by default: each ticket resolves a decision, and the map is done when the way is clear — nothing left to decide before someone goes and does the thing. The pull to just do the work is usually the signal you've reached the edge of the map and it's time to hand off. An effort can override this in its **Notes** — carrying execution into the map itself — but absent that, produce decisions, not deliverables.
@@ -149,21 +160,11 @@ User invokes with a loose idea.
 5. **Fire the research subagents.** For each `research` ticket you just created, spin up a `/research` subagent to resolve it in parallel, capturing its findings on a throwaway `research/<name>` branch with a context pointer from the ticket.
 6. Stop — charting is one session's work; it hand-resolves nothing.
 
-## Completion criteria
+## Completion
 
-- the destination is named and scoped
-- the frontier is separated from the fog
-- every live ticket is decision-sized and claimable
-- the handoff into spec or implementation is explicit
-
-### Work through the map
-
-User invokes with a map (URL or number). A ticket is **optional** — without one, you pick the next decision, not the user.
-
-1. Load the **map** — the low-res view, not every ticket body.
-2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it**: assign it to yourself before any work.
-3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`.
-4. Record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
-5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals a ticket — this one or another — sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
-
-The user may run unblocked tickets in parallel, so expect other sessions to be editing the tracker concurrently.
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

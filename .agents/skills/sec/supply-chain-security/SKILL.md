@@ -1,37 +1,59 @@
 ---
-name: supply-chain-security
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.
-capabilities:
-  - generate and maintain SBOM (SPDX, CycloneDX)
-  - implement artifact signing and verification (Sigstore, Cosign)
-  - define SLSA build tiers and provenance attestations
-  - design dependency vulnerability response and patching SLA
-outputs:
-  - SBOM policy (format, generation, storage, update cadence)
-  - Signing and verification policy (keys, tooling, enforcement)
-  - SLSA target and build provenance attestation
-  - Vulnerability response SLA and runbook
+name: "supply-chain-security"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: SBOM policy defined; signing policy defined; SLSA target and attestation documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "SBOM policy defined; signing policy defined; SLSA target and attestation documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "security"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/supply-chain-security.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** software bill of materials (existing or target), build system, deployment pipeline, threat model.
-- **Output:** SBOM policy + signing policy + SLSA target + vulnerability response runbook.
-- **Side effects:** none.
-- **Dependencies:** signing tooling (Sigstore / Cosign), SBOM generation (Syft, Trivy), CI/CD integration.
-- **Stop condition:** SBOM policy defined; signing policy defined; SLSA target and attestation documented.
-- **Risk:** medium — supply chain attacks compromise build and deploy; requires proactive verification.
-- **Boundary:** designs security policy; does not patch dependencies or re-sign artifacts unless explicitly instructed.
+- Input: software bill of materials (existing or target), build system, deployment pipeline, threat model.
+- Output: SBOM policy + signing policy + SLSA target + vulnerability response runbook.
+- Scope: designs security policy; does not patch dependencies or re-sign artifacts unless explicitly instructed.
+- Rule: designs security policy; does not patch dependencies or re-sign artifacts unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SupplyChainSecurityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/supply-chain-security/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Supply Chain Security
 
 Design **supply chain security** — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.
@@ -94,3 +116,12 @@ Design **supply chain security** — SBOM, Sigstore, SLSA, provenance, signing �
 - Rule: target SLSA L3 for production artifacts; document exceptions with risk acceptance.
 - Rule: automate dependency updates and vulnerability scanning; manual review only for exceptions.
 - Rule: maintain an incident response runbook for supply chain compromise.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

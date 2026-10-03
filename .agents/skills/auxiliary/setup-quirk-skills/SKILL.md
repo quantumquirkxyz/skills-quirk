@@ -1,40 +1,58 @@
 ---
-name: setup-quirk-skills
-category: auxiliary
-maturity: stable
-description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
-disable-model-invocation: true
-version: 1
-capabilities:
-  - configure-repo-skills
-  - establish-issue-tracker
-  - establish-domain-doc-layout
-inputs:
-  - repo root
-  - remote configuration
-  - tracker preferences
-outputs:
-  - issue tracker docs
-  - domain docs docs
-  - triage labels docs
+name: "setup-quirk-skills"
+category: "auxiliary"
+maturity: "stable"
+description: "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills."
+disable-model-invocation: "true"
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
 dependencies: []
-sideEffects:
-  - write-docs
-stopCondition: The repo-specific skill configuration is written and consistent.
-risk: medium
-trustTier: 3
+sideEffects: ""
+stopCondition: "The repo-specific skill configuration is written and consistent."
+risk: "medium"
+trustTier: "3"
+promptVersion: "2.0"
+artifactType: "auxiliary"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/setup-quirk-skills.json"
+diataxis: "how-to"
+tags: ["auxiliary"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Setup Quirk Skills request, relevant context, constraints, and source evidence.
-- **Output:** Setup Quirk Skills artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Configure this repo for the engineering skills is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SetupQuirkSkillsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/setup-quirk-skills/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Setup Quirk Skills
 
 Scaffold the per-repo configuration that the quirk engineering skills assume for the current repository:
@@ -145,3 +163,12 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 ### 5. Done
 
 Tell the user the setup is complete and which engineering skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

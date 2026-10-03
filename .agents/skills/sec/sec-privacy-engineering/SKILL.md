@@ -1,36 +1,59 @@
 ---
-name: sec-privacy-engineering
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments.
-capabilities:
-  - assess data classification (PII, sensitive, public)
-  - apply data minimisation and purpose limitation
-  - design anonymisation / pseudonymisation / encryption at rest / in transit
-  - manage consent, retention, deletion, and breach notification
-outputs:
-  - Privacy Impact Assessment (PIA)
-  - Data-flow map with privacy controls
-  - Compliance checklist per regulation
+name: "sec-privacy-engineering"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: PIA saved; data-flow map complete; compliance checklist filled.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "PIA saved; data-flow map complete; compliance checklist filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-privacy-engineering.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** system architecture, data types, users, jurisdictions.
-- **Output:** Privacy Impact Assessment + data-flow map + compliance checklist.
-- **Side effects:** may require legal review (not done by skill alone).
-- **Dependencies:** legal / compliance expert for final approval.
-- **Stop condition:** PIA and checklist complete; legal review noted.
-- **Risk:** medium — privacy violations have legal / reputation consequences; requires expert validation.
-- **Boundary:** designs privacy controls and documents compliance gaps; does not provide legal advice.
+- Input: system architecture, data types, users, jurisdictions.
+- Output: Privacy Impact Assessment + data-flow map + compliance checklist.
+- Scope: designs privacy controls and documents compliance gaps; does not provide legal advice.
+- Rule: designs privacy controls and documents compliance gaps; does not provide legal advice.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecPrivacyEngineeringArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/sec-privacy-engineering/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Privacy Engineering
 
 Design **privacy-protecting systems** — GDPR / CCPA / HIPAA — with explicit data minimisation, anonymisation, consent, and breach-notification controls.
@@ -78,3 +101,12 @@ Identify high-risk processing (systematic profiling, large-scale sensitive data,
 - HIPAA: PHI safeguards (administrative, physical, technical), business associate agreements.
 
 **Completion criterion:** checklist filled; gaps flagged for legal review.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,37 +1,59 @@
 ---
-name: incident-forensics
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)
-capabilities:
-  - preserve digital evidence without alteration (chain of custody, write blockers, hashing)
-  - reconstruct event timelines from logs, artifacts, and system states
-  - identify root cause and contributing factors
-  - document findings in a formal forensic report suitable for legal, regulatory, or insurance use
-outputs:
-  - Forensic evidence inventory (hashes, collection method, chain of custody)
-  - Timeline of events (chronological, sourced, attributed)
-  - Root cause analysis with contributing factors
-  - Forensic report (executive summary, technical findings, appendices)
+name: "incident-forensics"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Evidence collected and hashed; timeline complete; root cause identified; report reviewed.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Evidence collected and hashed; timeline complete; root cause identified; report reviewed."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "sec"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/incident-forensics.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** incident description, affected systems, time window, evidence sources.
-- **Output:** evidence inventory + timeline + root cause analysis + forensic report.
-- **Side effects:** none (analysis only; does not modify systems or notify parties — notification is separate).
-- **Dependencies:** access to systems, logs, disk images, network captures, and authorised personnel.
-- **Stop condition:** evidence integrity verified; timeline sourced; root cause documented; report complete.
-- **Risk:** medium — forensic findings may be used in legal, regulatory, or insurance proceedings; integrity and impartiality are critical.
-- **Boundary:** investigates and documents; does not remediate, contain, or communicate the incident.
+- Input: incident description, affected systems, time window, evidence sources.
+- Output: evidence inventory + timeline + root cause analysis + forensic report.
+- Scope: investigates and documents; does not remediate, contain, or communicate the incident.
+- Rule: investigates and documents; does not remediate, contain, or communicate the incident.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `IncidentForensicsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/incident-forensics/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Incident Forensics
 
 Conduct a **digital forensic investigation** — evidence collection, timeline reconstruction, root cause analysis, and formal reporting — with integrity and chain-of-custody discipline.
@@ -116,3 +138,12 @@ Produce a forensic report:
 - Rule: do not remediate or alter production systems during investigation unless authorised for containment; document any changes separately.
 - Rule: extract IOCs in machine-readable form (STIX, JSON, Sigma, YARA) to enable automated detection and sharing.
 - Rule: report findings with explicit evidence citations (log line, artifact hash, screenshot timestamp) so reviewers can verify independently.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

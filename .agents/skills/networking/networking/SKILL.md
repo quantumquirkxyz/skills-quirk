@@ -1,23 +1,58 @@
 ---
-name: networking
-category: networking
-maturity: stable
-version: 1
-description: Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.
-capabilities:
-  - apply networking workflow
-  - produce networking artifact
-  - validate networking completion criteria
-outputs:
-  - Networking artifact with findings, decisions, recommendations, and validation notes
+name: "networking"
+category: "networking"
+maturity: "stable"
+version: "1"
+description: "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design and analyze network infrastructure complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design and analyze network infrastructure complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "networking"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/networking.json"
+diataxis: "how-to"
+tags: ["networking"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `NetworkingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/networking/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # networking
 
 Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.
@@ -28,17 +63,6 @@ Design and analyze network infrastructure — TCP/IP, routing, DNS, load balanci
 - Plan for network security (segmentation, firewalls, monitoring)
 - Diagnose connectivity issues systematically
 
-## Contract
-
-### Input
-A system to design or diagnose: topology, protocols, traffic patterns, security requirements.
-
-### Output
-A network design document with:
-- Topology diagram (physical and logical)
-- Protocol selection rationale
-- Security controls
-- Monitoring and failure response plan
 
 ## Layers
 
@@ -79,3 +103,12 @@ A network design document with:
 - `../os/SKILL.md` — network stack in OS
 - `../../devops/devops-k8s-orchestration/SKILL.md` — k8s networking
 - `../../sec/sec-threat-modeling/SKILL.md` — network threats
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

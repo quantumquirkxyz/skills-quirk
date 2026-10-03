@@ -1,34 +1,59 @@
 ---
-name: quant-backtest
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.
-capabilities:
-  - specify a trading strategy with signal, universe, sizing, and cost model
-  - audit data for survivorship bias, look-ahead, and delisting handling
-  - run backtest with out-of-sample split and transaction costs
-  - validate coverage and stress-test across market regimes
-outputs:
-  - Backtest audit report (strategy spec, data audit, performance statistics, stress tests, verdict)
+name: "quant-backtest"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Audit report complete with strategy spec, data audit, statistics, stress tests, and verdict.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Audit report complete with strategy spec, data audit, statistics, stress tests, and verdict."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/quant-backtest.json"
+diataxis: "how-to"
+tags: ["quant"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** trading strategy definition (signal, universe, sizing, costs).
-- **Output:** backtest audit report with strategy spec, data audit, statistics, stress tests, and verdict.
-- **Side effects:** none.
-- **Dependencies:** data source access.
-- **Stop condition:** audit report complete with verdict.
-- **Risk:** low.
-- **Boundary:** produces audit report; does not execute live trading.
+- Input: trading strategy definition (signal, universe, sizing, costs).
+- Output: backtest audit report with strategy spec, data audit, statistics, stress tests, and verdict.
+- Scope: produces audit report; does not execute live trading.
+- Rule: produces audit report; does not execute live trading.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `QuantBacktestArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/quant-backtest/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Quant Backtest Audit
 
 Take a **strategy** and produce a **backtest result you can defend**. A backtest that can't survive audit is decoration.
@@ -103,3 +128,12 @@ Deliver the verdict:
 Markdown artifact: strategy spec, data audit, backtest statistics, stress tests, coverage validation, and verdict with explicit conditions.
 
 **Completion criterion:** report complete; all sections present; verdict honest.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

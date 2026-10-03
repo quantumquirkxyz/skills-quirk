@@ -1,37 +1,57 @@
 ---
-name: writing-great-skills
-category: skill-dev
-maturity: stable
-version: 1
-description: Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
-capabilities:
-  - apply writing great skills workflow
-  - produce writing great skills artifact
-  - validate writing great skills completion criteria
-outputs:
-  - Writing Great Skills artifact with findings, decisions, recommendations, and validation notes
+name: "writing-great-skills"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Reference for writing and editing skills well complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Reference for writing and editing skills well complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/writing-great-skills.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Writing Great Skills request, relevant context, constraints, and source evidence.
-- **Output:** Writing Great Skills artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Reference for writing and editing skills well is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
-A skill exists to wrangle determinism out of a stochastic system. **Predictability** — the agent taking the same _process_ every run, not producing the same output — is the root virtue; every lever below serves it.
+## Provenance
 
-**Bold terms** are defined in [`GLOSSARY.md`](GLOSSARY.md); look them up there for the full meaning.
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
+
+## Artifact
+
+Emit `WritingGreatSkillsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/writing-great-skills/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Invocation
 
 Two choices, trading different costs:
@@ -104,3 +124,12 @@ Use these to diagnose issues the user may be having with the skill.
 - **Sprawl** — a skill simply too long, even when every line is live and unique. Hurts readability and maintainability and wastes tokens. The cure is the ladder: disclose **reference** behind pointers, and split by **branch** or sequence so each path carries only what it needs.
 - **No-op** — a line the model already obeys by default, so you pay load to say nothing. The test: does it change behaviour versus the default? A weak leading word (_be thorough_ when the agent is already thorough-ish) is a no-op; the fix is a stronger word (_relentless_), not a different technique.
 - **Negation** — steering by prohibition backfires: _don't think of an elephant_ names the elephant and makes it more available, not less. Prompt the **positive** — state the target behaviour so the banned one is never spoken; keep a prohibition only as a hard guardrail you can't phrase positively, and even then pair it with what to do instead.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

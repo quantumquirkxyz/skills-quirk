@@ -1,23 +1,58 @@
 ---
-name: qa-automation
-category: qa
-maturity: stable
-version: 1
-description: Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
-capabilities:
-  - apply qa automation workflow
-  - produce qa automation artifact
-  - validate qa automation completion criteria
-outputs:
-  - Qa Automation artifact with findings, decisions, recommendations, and validation notes
+name: "qa-automation"
+category: "qa"
+maturity: "stable"
+version: "1"
+description: "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design and implement automated test suites complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design and implement automated test suites complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "qa"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-automation.json"
+diataxis: "how-to"
+tags: ["qa"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `QaAutomationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/qa-automation/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # qa-automation
 
 Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
@@ -28,16 +63,6 @@ Design and implement automated test suites — unit, integration, e2e — with p
 - Keep tests fast, reliable, and deterministic
 - Integrate testing into the CI/CD pipeline
 
-## Contract
-
-### Input
-A codebase or feature to test: architecture, entry points, risk areas.
-
-### Output
-A testing strategy with:
-- Test pyramid (unit/integration/e2e proportions)
-- Automated test suite with coverage report
-- CI integration and failure handling
 
 ## Test Pyramid
 
@@ -74,3 +99,12 @@ A testing strategy with:
 - `../../delivery/testing/SKILL.md` — test strategy
 - `../../delivery/webapp-testing/SKILL.md` — web app testing patterns
 - `../../devops/devops-ci-cd-pipeline/SKILL.md` — CI integration
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

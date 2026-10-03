@@ -1,39 +1,62 @@
 ---
-name: skill-tutor
-category: skill-dev
-maturity: stable
-version: 1
-description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
-capabilities:
-  - teach skill fundamentals
-  - guide first skill creation
-  - validate learner understanding
-outputs:
-  - completed tutorial worksheet
-  - sandbox skill draft
-  - learning validation notes
-sideEffects:
-  - write-files
-dependencies:
-  - skill-creator
-stopCondition: The learner has created a valid sandbox skill, reflected on the process, and identified next steps.
-risk: low
-trustTier: 2
-maxIterations: 5
+name: "skill-tutor"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on"
+capabilities: ""
+outputs: ""
+sideEffects: ""
+dependencies: ""
+stopCondition: "The learner has created a valid sandbox skill, reflected on the process, and identified next steps."
+risk: "low"
+trustTier: "2"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/skill-tutor.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Skill Tutor: Interactive Guide to Creating Your First quirk Skill
-
-This skill provides an interactive, worksheet-based tutorial that guides you through creating your first quirk skill using hands-on practice and structured learning.
 
 ## Contract
 
 - Input: learning goal, preferred skill type, available time
 - Output: completed tutorial worksheet, created skill in sandbox, learning validation, personalized learning path
-- Scope: guided first experience creating a quirk skill
-- Rule: learning by doing - you will create an actual skill during the tutorial
-- Rule: all skills created follow the quirk method and can be validated using existing tools
-- Rule: tutorial adapts to your background and goals while teaching core concepts
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SkillTutorArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/skill-tutor/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Skill Tutor: Interactive Guide to Creating Your First quirk Skill
+
+This skill provides an interactive, worksheet-based tutorial that guides you through creating your first quirk skill using hands-on practice and structured learning.
+
 
 ## Interactive Tutorial Process
 
@@ -229,20 +252,11 @@ This tutorial connects to the broader quirk learning ecosystem:
 3. **Try creating a skill that solves a real problem**: Apply what you learned to an actual need in your workflow
 4. **Learn about skill composition**: Study how skills work together in workflows (see wayfinder, to-spec, to-tickets, etc.)
 
-## Completion Criteria
+## Completion
 
-The user has completed this skill when:
-
-- They have filled out all worksheets with thoughtful responses
-- They have created a valid skill in the .skill-sandbox/ directory
-- They have successfully validated their skill using the sandbox validation tools
-- They have reflected on their learning experience and identified next steps
-- They can explain the basic concepts of skills in the quirk method
-
-## Guardrails
-
-- Focus on learning by doing - the goal is to create an actual skill, not just theory
-- Keep your first skill small and focused - better to do one thing well than many things poorly
-- Be honest in your self-assessment - identify what you don't know as well as what you do
-- Remember that the first skill doesn't need to be perfect - it needs to be a learning experience
-- Use the validation tools to check your work, but don't rely on them exclusively for learning
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

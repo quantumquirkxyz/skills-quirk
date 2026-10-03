@@ -1,33 +1,63 @@
 ---
-name: db-migrations
-category: db
-maturity: stable
-version: 1
-description: Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.
-capabilities:
-  - plan schema migrations
-  - sequence backfills safely
-  - define rollback and compatibility windows
-outputs:
-  - migration plan with phases, compatibility risks, validation, and rollback notes
+name: "db-migrations"
+category: "db"
+maturity: "stable"
+version: "1"
+description: "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: The migration sequence, compatibility window, validation, and rollback posture are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "The migration sequence, compatibility window, validation, and rollback posture are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "db"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/db-migrations.json"
+diataxis: "how-to"
+tags: ["db"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# db-migrations
-
-Use this skill when changing a database schema, moving data, adding constraints, backfilling fields, or coordinating application and database compatibility.
 
 ## Contract
 
 - Input: current schema, target schema, application readers/writers, data volume, deployment process, and rollback constraints.
 - Output: phased migration plan with forward/backward compatibility, validation queries, and rollback posture.
-- Scope: database schema and data migrations; broader release coordination belongs to release management.
-- Boundary: avoid single-step migrations that require app and database changes to land atomically unless downtime is explicitly accepted.
+- Scope: avoid single-step migrations that require app and database changes to land atomically unless downtime is explicitly accepted.
+- Rule: avoid single-step migrations that require app and database changes to land atomically unless downtime is explicitly accepted.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DbMigrationsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/db-migrations/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# db-migrations
+
+Use this skill when changing a database schema, moving data, adding constraints, backfilling fields, or coordinating application and database compatibility.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when changing a database schema, moving data, adding constraints,
 5. Write validation checks for counts, nullability, referential integrity, and application behavior.
 6. Document rollback or forward-fix actions for each phase.
 
-## Completion Criteria
+## Completion
 
-- phased migration order is explicit
-- app/database compatibility is addressed
-- backfill and validation plans are defined
-- rollback or forward-fix posture is documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

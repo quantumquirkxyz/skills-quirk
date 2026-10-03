@@ -1,39 +1,59 @@
 ---
-name: prompt-template-library
-category: ai
-maturity: stable
-version: 1
-description: Prompt template library (versioned templates, A/B testing, composition, evaluation)
-capabilities:
-  - manage versioned templates with promotion and rollback
-  - design A/B tests for templates with acceptance criteria
-  - compose templates with partials, conditionals, and loops
-  - evaluate templates with acceptance, property, and regression checks
-  - define fallback and escalation for template failures
-outputs:
-  - Template manifest (version, spec, promotion, rollback)
-  - A/B experiment spec (hypothesis, variants, success criteria, duration)
-  - Composition library (partials, conditionals, loops)
-  - Evaluation suite (acceptance, property, regression, report)
-  - Fallback and escalation discipline (code, circuit breaker, pager)
+name: "prompt-template-library"
+category: "ai"
+maturity: "stable"
+version: "1"
+description: "Prompt template library (versioned templates, A/B testing, composition, evaluation)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Templates green on acceptance suite with evaluation and fallback.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Templates green on acceptance suite with evaluation and fallback."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/prompt-template-library.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** task description, template spec, acceptance criteria, edge cases.
-- **Output:** template manifest + A/B spec + composition library + evaluation suite + fallback discipline.
-- **Side effects:** may call LLM APIs during validation.
-- **Dependencies:** LLM with JSON or function calling support.
-- **Stop condition:** templates green on acceptance suite with evaluation and fallback.
-- **Risk:** low — design and validation only; no production traffic.
-- **Boundary:** designs and validates templates; does not deploy to production.
+- Input: task description, template spec, acceptance criteria, edge cases.
+- Output: template manifest + A/B spec + composition library + evaluation suite + fallback discipline.
+- Scope: designs and validates templates; does not deploy to production.
+- Rule: designs and validates templates; does not deploy to production.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PromptTemplateLibraryArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/prompt-template-library/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Prompt Template Library
 
 Manage, compose, test, and evaluate prompt templates with discipline.
@@ -83,3 +103,12 @@ Retry: exponential backoff, retry budget, circuit breaker, pager.
 - No composition accepted without property checks green.
 - No A/B lift accepted without guardrail metrics green.
 - No fallback accepted without escalation path tested.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

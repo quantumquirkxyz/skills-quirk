@@ -1,33 +1,57 @@
 ---
-name: physics-astro
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.
-capabilities:
-  - apply physics astro workflow
-  - produce physics astro analysis artifact
-  - validate physics astro completion criteria
-outputs:
-  - Physics Astro artifact with completed sections, evidence, and limitations
+name: "physics-astro"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Model astrophysical systems complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Model astrophysical systems complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-astro.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Physics Astro request, problem context, constraints, and available evidence.
-- **Output:** Physics Astro artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Model astrophysical systems is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsAstroArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-astro/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Astrophysics Modeling
 
 Model an **astrophysical system** — stellar, galactic, cosmological — with physical scales, order-of-magnitude estimates, and known scaling laws.
@@ -55,3 +79,12 @@ Model an **astrophysical system** — stellar, galactic, cosmological — with p
 - Rule: state units, constants, and cosmological parameters explicitly.
 - Rule: compare estimates against known astrophysical objects or observed values.
 - Rule: flag where Newtonian, relativistic, fluid, or radiative assumptions dominate.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,33 +1,57 @@
 ---
-name: quant-credit-risk
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.
-capabilities:
-  - apply quant credit risk workflow
-  - produce quant credit risk analysis artifact
-  - validate quant credit risk completion criteria
-outputs:
-  - Quant Credit Risk artifact with completed sections, evidence, and limitations
+name: "quant-credit-risk"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Model credit risk complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Model credit risk complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "quant"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/quant-credit-risk.json"
+diataxis: "how-to"
+tags: ["quant"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Quant Credit Risk request, problem context, constraints, and available evidence.
-- **Output:** Quant Credit Risk artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Model credit risk is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `QuantCreditRiskArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/quant-credit-risk/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Credit Risk Modeling
 
 Model **credit risk** at the instrument and portfolio level — PD, LGD, EAD, EL, UL — with default correlation and aggregation.
@@ -56,3 +80,12 @@ Model **credit risk** at the instrument and portfolio level — PD, LGD, EAD, EL
 - Rule: keep PD, LGD, EAD, expected loss, and unexpected loss conceptually separate.
 - Rule: document calibration data, default definition, and downturn assumptions.
 - Rule: stress-test correlation, concentration, and macro scenarios.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,38 +1,59 @@
 ---
-name: rag-pipeline
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.
-capabilities:
-  - design retrieval architecture (vector, keyword, hybrid)
-  - define chunking strategy (size, overlap, document-aware splitting)
-  - select embedding model and dimension budget
-  - configure reranking (cross-encoder, late interaction, LLM rerank)
-  - orchestrate generation with grounded prompts and citation
-outputs:
-  - RAG architecture document (components, data flow, latency budget)
-  - Chunking and embedding configuration
-  - Reranking and generation configuration
-  - Evaluation plan (retrieval recall, answer faithfulness, latency)
+name: "rag-pipeline"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture documented; chunking and embedding config defined; evaluation plan complete.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Architecture documented; chunking and embedding config defined; evaluation plan complete."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/rag-pipeline.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** corpus description, query patterns, quality requirements, latency target.
-- **Output:** RAG architecture + chunking config + reranking config + evaluation plan.
-- **Side effects:** none.
-- **Dependencies:** vector store, embedding model, reranker, LLM.
-- **Stop condition:** architecture saved; chunking and embedding config defined; evaluation plan complete.
-- **Risk:** medium — retrieval and generation quality directly affect user trust; requires validation.
-- **Boundary:** designs pipeline; does not index data or run inference unless explicitly executed.
+- Input: corpus description, query patterns, quality requirements, latency target.
+- Output: RAG architecture + chunking config + reranking config + evaluation plan.
+- Scope: designs pipeline; does not index data or run inference unless explicitly executed.
+- Rule: designs pipeline; does not index data or run inference unless explicitly executed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `RagPipelineArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/rag-pipeline/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # RAG Pipeline Design
 
 Design a **Retrieval-Augmented Generation (RAG) pipeline** — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.
@@ -101,3 +122,12 @@ Design a **Retrieval-Augmented Generation (RAG) pipeline** — retrieval, chunki
 - Rule: measure retrieval recall before adding reranking; reranking improves precision but not recall.
 - Rule: expose provenance (document, section, page) at every stage for auditability.
 - Rule: define fallback behaviour for empty retrieval, failed reranking, and generation errors.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

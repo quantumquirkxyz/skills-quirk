@@ -1,36 +1,62 @@
 ---
-name: astro
-category: frontend
-maturity: stable
-version: 1
-description: Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).
-capabilities:
-  - design astro project structure
-  - apply islands architecture
-  - configure SSR and SSG rendering modes
-  - design view transitions
-outputs:
-  - Astro artifact with findings, decisions, recommendations, and validation notes
+name: "astro"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Astro design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Astro design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/astro.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Astro
-
-Use this skill when designing or reviewing Astro projects — content-focused sites, islands architecture, SSR/SSG hybrid rendering, and view transitions.
 
 ## Contract
 
 - Input: site content model, rendering requirements, interactivity needs, and deployment target.
 - Output: Astro project design with island strategy, rendering mode decisions, and routing plan.
-- Scope: design Astro architecture and component boundaries; not full implementation.
-- Rule: default to static rendering unless interactivity or personalization demands SSR/SSR.
-- Rule: isolate interactive components as islands to minimize client-side JavaScript.
-- Rule: keep content collections typed and validated at build time.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AstroArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/astro/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Astro
+
+Use this skill when designing or reviewing Astro projects — content-focused sites, islands architecture, SSR/SSG hybrid rendering, and view transitions.
+
 
 ## Process
 
@@ -78,10 +104,11 @@ Use this skill when designing or reviewing Astro projects — content-focused si
 - Rule: define caching and revalidation strategy at the route level.
 - Rule: separate data-fetching logic from UI components to keep islands shallow.
 
-## Completion Criteria
+## Completion
 
-- content map and route strategy are documented
-- island boundaries and hydration strategies are defined
-- rendering mode is chosen per route with rationale
-- view transitions are mapped with fallback behavior
-- content collections and integrations are planned
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

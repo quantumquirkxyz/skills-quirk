@@ -1,24 +1,57 @@
 ---
-name: web3-consensus
-category: web3
-maturity: stable
-version: 2
-description: Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.
-capabilities:
-  - classify consensus mechanisms (Nakamoto, BFT, PoS, DAG, DA layers, based sequencers)
-  - evaluate safety, liveness, finality, and censorship resistance
-  - compare PoS slashing, MEV, and decentralisation economics
-  - assess data availability and shared sequencing trade-offs
-outputs:
-  - Consensus analysis report (classification, security properties, economics, DA model, recommendation)
+name: "web3-consensus"
+category: "web3"
+maturity: "stable"
+version: "2"
+description: "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Consensus classified; security properties and economics assessed; recommendation tied to threat model.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Consensus classified; security properties and economics assessed; recommendation tied to threat model."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "web3"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/web3-consensus.json"
+diataxis: "how-to"
+tags: ["web3"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `Web3ConsensusArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/web3-consensus/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Consensus Mechanism Analysis
 
 Analyse a **consensus mechanism** — its security model, finality, liveness, MEV, and economic incentives — and compare it against alternatives for a given threat model.
@@ -101,3 +134,12 @@ Markdown artifact: classification, security properties, economic incentives, DA/
 - Rule: include MEV extraction and censorship resistance in the threat model.
 - Rule: compare at least one meaningful alternative.
 - Rule: tie recommendation to use-case priorities rather than generic rankings.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,59 @@
 ---
-name: sec-cryptography-applied
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.
-capabilities:
-  - select cryptographic primitives (AES-GCM, ChaCha20-Poly1305, Ed25519, RSA-OAEP)
-  - design key management (generation, rotation, storage, HSM, KMS)
-  - implement TLS / mTLS correctly (certificate chain, TLS 1.3, cipher suites)
-  - audit cryptographic usage for weaknesses
-outputs:
-  - Cryptographic design document
-  - Implementation checklist (key length, mode, IV, padding, rotation)
-  - Anti-patterns identified and corrected
+name: "sec-cryptography-applied"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design document saved; anti-patterns corrected or documented; checklist complete.
-risk: medium
-trustTier: 3
-maxIterations: 5
+stopCondition: "Design document saved; anti-patterns corrected or documented; checklist complete."
+risk: "medium"
+trustTier: "3"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "sec"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-cryptography-applied.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** data to protect, threat model, regulatory requirements.
-- **Output:** cryptographic design + implementation checklist.
-- **Side effects:** none (design only).
-- **Dependencies:** none.
-- **Stop condition:** design saved; anti-patterns identified; checklist complete.
-- **Risk:** medium — weak cryptography has severe consequences.
-- **Boundary:** designs cryptographic system; does not deploy unless explicitly executed.
+- Input: data to protect, threat model, regulatory requirements.
+- Output: cryptographic design + implementation checklist.
+- Scope: designs cryptographic system; does not deploy unless explicitly executed.
+- Rule: designs cryptographic system; does not deploy unless explicitly executed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecCryptographyAppliedArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/sec-cryptography-applied/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Applied Cryptography
 
 Apply **cryptography** correctly — encryption, signatures, key management, TLS — with implementation guidance and anti-pattern detection.
@@ -76,3 +99,12 @@ Check for: hardcoded keys, password-based encryption (use KDF: Argon2id / scrypt
 
 ### 6. Deliver
 Cryptographic design document + implementation checklist (key lengths, modes, rotation schedule) + anti-pattern corrections.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,62 @@
 ---
-name: serverless
-category: backend
-maturity: stable
-version: 1
-description: Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).
-capabilities:
-  - design serverless architecture
-  - define event-driven flows
-  - optimize cold starts and scaling
-  - evaluate cost and resource allocation
-outputs:
-  - Serverless design note with function boundaries, event sources, cold start strategy, scaling policy, cost model, and failure handling
+name: "serverless"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Serverless architecture, event sources, scaling behavior, and cost model are explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Serverless architecture, event sources, scaling behavior, and cost model are explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/serverless.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Serverless
-
-Use this skill when designing, reviewing, or refactoring serverless systems — Lambda, Azure Functions, Google Cloud Functions, FaaS platforms, event-driven workflows, cold start mitigation, auto-scaling, and cost optimization.
 
 ## Contract
 
 - Input: workload inventory, event sources, traffic profile, latency requirements, cost constraints, and failure cases.
 - Output: serverless architecture with function boundaries, event source mapping, cold start strategy, scaling policy, cost model, and failure handling.
-- Scope: serverless architecture design; not infrastructure provisioning unless explicitly requested.
-- Rule: prefer event-driven boundaries that match business lifecycle events.
-- Rule: keep functions small, focused, and independently deployable.
-- Rule: make cold start, concurrency, and timeout behavior explicit for every function.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ServerlessArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/serverless/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Serverless
+
+Use this skill when designing, reviewing, or refactoring serverless systems — Lambda, Azure Functions, Google Cloud Functions, FaaS platforms, event-driven workflows, cold start mitigation, auto-scaling, and cost optimization.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing, reviewing, or refactoring serverless systems — 
 - Rule: version function artifacts and keep deployment immutable.
 - Rule: test locally with production-like event payloads and cold start conditions.
 
-## Completion Criteria
+## Completion
 
-- workload inventory and event sources are documented
-- function boundaries and triggers are explicit
-- cold start mitigation and scaling limits are defined
-- state management and integration strategy are documented
-- observability and operational runbook are covered
-- cost model and budget controls are defined
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

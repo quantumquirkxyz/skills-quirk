@@ -1,39 +1,62 @@
 ---
-name: agent-canvas
-category: foundation
-maturity: stable
-description: Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
-version: 1
-capabilities:
-  - define-workspace
-  - persist-session
-  - manage-multi-agent-state
-  - export-workspace
-inputs:
-  - workspace-config: session mode (local, remote, shared)
-  - session-goals: explicit finish lines per session
-  - agent-roles: which roles are active
-outputs:
-  - "workspace-state: current state of workspace"
-  - "session-report: summary of what was completed"
-  - "export-package: portable workspace bundle"
-sideEffects:
-  - write-files
+name: "agent-canvas"
+category: "foundation"
+maturity: "stable"
+description: "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework."
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Workspace defined, session has explicit finish line, and state is recorded.
-risk: low
-trustTier: 2
-maxIterations: 3
+stopCondition: "Workspace defined, session has explicit finish line, and state is recorded."
+risk: "low"
+trustTier: "2"
+maxIterations: "3"
+promptVersion: "2.0"
+artifactType: "agent"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/agent-canvas.json"
+diataxis: "how-to"
+tags: ["foundation"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-# Agent Canvas
-
 ## Contract
+
 - Input: workspace config, session goals, agent roles
 - Output: workspace state, session report, export package
-- Boundary: manages session metadata and state; does not modify source code
-- Caller responsibility: declare the active workspace, the desired continuity horizon, and which agents may read or update shared state.
-- Operator responsibility: keep session state compact, current, and explicit about ownership.
+- Scope: manages session metadata and state; does not modify source code
+- Rule: manages session metadata and state; does not modify source code
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AgentCanvasArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/agent-canvas/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Agent Canvas
+
 
 ## Process
 1. Define workspace and session goals.
@@ -56,3 +79,12 @@ maxIterations: 3
 - Workspace identity: repository path, branch or target, active issue or goal, and validation commands.
 - Agent roster: role, scope, current status, and evidence expected at completion.
 - Continuity record: open questions, blockers, decisions made, and next safe action.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

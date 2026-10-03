@@ -1,40 +1,62 @@
 ---
-name: auth
-category: integrations
-maturity: stable
-version: 2
-description: Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.
-capabilities:
-  - design auth flows (OAuth2, OIDC, SAML, session, JWT, passkeys)
-  - define authorization models (RBAC, ABAC, ReBAC, permissions)
-  - plan MFA, passwordless, and session management
-  - assess auth security (token theft, CSRF, session fixation, brute force)
-outputs:
-  - Auth design document (flows, protocols, token model, authorization, MFA, security assessment)
+name: "auth"
+category: "integrations"
+maturity: "stable"
+version: "2"
+description: "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Auth design complete; flows documented; security assessment explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Auth design complete; flows documented; security assessment explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "authentication"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/auth.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Auth
-
-Use this skill when a project needs authentication or authorization defined before implementation. Keep the seam small and the responsibilities explicit: who is the user, who can act, and where the trust boundary sits. Treat identity as untrusted input until the project has verified it at the declared boundary.
 
 ## Contract
 
 - Input: auth brief, identity context, and security constraints.
 - Output: an auth design document covering flows, protocols, token model, authorization, MFA, and security assessment.
-- Scope: design the auth shape, not the full implementation.
-- Rule: distinguish authentication from authorization.
-- Rule: make the trust boundary explicit before choosing providers or protocols.
-- Rule: keep the caller contract small enough that backend refactors do not leak into user-facing flows.
-- Rule: default to deny when identity, session state, tenant context, or required permission is missing or stale.
-- Rule: define session/token lifetime, revocation behavior, and credential or secret handling at the level needed to prevent accidental persistence.
-- Rule: separate resource ownership, roles, and service-to-service identity when they are different decisions.
-- Rule: identify security-sensitive events that require an audit trail without logging credentials or raw tokens.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AuthArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/auth/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Auth
+
+Use this skill when a project needs authentication or authorization defined before implementation. Keep the seam small and the responsibilities explicit: who is the user, who can act, and where the trust boundary sits. Treat identity as untrusted input until the project has verified it at the declared boundary.
+
 
 ## Process
 
@@ -103,13 +125,11 @@ Select flows appropriate to the client type:
 
 **Completion criterion:** provider choice justified; lock-in risks named.
 
-## Completion criteria
+## Completion
 
-- the trust boundary is named
-- the identity contract includes freshness and failure behavior
-- authentication flows are selected per client type
-- the authorization model and default-deny behavior are explicit
-- MFA/passwordless and session management are designed
-- token/session lifecycle and revocation are explicit
-- security threats are assessed with mitigations
-- lifecycle, audit, and lock-in risks are recorded
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

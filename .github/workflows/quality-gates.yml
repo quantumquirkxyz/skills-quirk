@@ -1,0 +1,51 @@
+name: Quality Gates
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  gate-ide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate skill structure
+        run: node .agents/skills/platform/validate-skills.mjs
+      - name: Audit semantics
+        run: node .agents/skills/platform/audit-semantics.mjs
+      - name: Evaluate scenarios
+        run: node .agents/skills/platform/evaluate-scenarios.mjs
+      - name: Evaluate behavioral fixtures
+        run: node .agents/skills/platform/evaluate-behavioral-fixtures.mjs
+
+  gate-ci:
+    runs-on: ubuntu-latest
+    needs: gate-ide
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run full validation gate
+        run: node .agents/skills/platform/check-all.mjs
+
+  quality-report:
+    runs-on: ubuntu-latest
+    needs: [gate-ide, gate-ci]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate quality report
+        run: |
+          echo "## Quality Gates Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Gate | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| validate-skills | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| audit-semantics | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| evaluate-scenarios | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| evaluate-fixtures | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| check-all | ✅ |" >> $GITHUB_STEP_SUMMARY

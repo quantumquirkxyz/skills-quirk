@@ -1,37 +1,59 @@
 ---
-name: zero-trust
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.
-capabilities:
-  - design identity fabric (IAM, IdP, MFA, SSO)
-  - define per-request authentication and authorisation policies
-  - design microsegmentation (network, workload, data)
-  - implement policy engine (OPA, Rego, ABAC, PBAC)
-outputs:
-  - Zero trust architecture document (pillars, trust model, maturity roadmap)
-  - Identity and access model (IAM policies, MFA requirements, service identity)
-  - Microsegmentation policy (network zones, workload boundaries)
-  - Policy engine rules and enforcement points
+name: "zero-trust"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture documented; identity model defined; segmentation and policy rules documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Architecture documented; identity model defined; segmentation and policy rules documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "sec"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/zero-trust.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** current architecture, identity provider, network topology, compliance requirements.
-- **Output:** zero trust architecture + identity model + segmentation policy + policy rules.
-- **Side effects:** none.
-- **Dependencies:** IAM provider (Okta, Auth0, Keycloak), policy engine (OPA, Cloud IAM), network controls.
-- **Stop condition:** architecture documented; identity model defined; segmentation and policy rules documented.
-- **Risk:** medium — misconfigured zero trust blocks legitimate access or leaves gaps; requires staged rollout.
-- **Boundary:** designs architecture and policy; does not modify production auth or network config unless explicitly instructed.
+- Input: current architecture, identity provider, network topology, compliance requirements.
+- Output: zero trust architecture + identity model + segmentation policy + policy rules.
+- Scope: designs architecture and policy; does not modify production auth or network config unless explicitly instructed.
+- Rule: designs architecture and policy; does not modify production auth or network config unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ZeroTrustArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/zero-trust/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Zero Trust Architecture
 
 Design a **zero trust architecture** — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.
@@ -94,3 +116,12 @@ Design a **zero trust architecture** — identity, per-request auth, microsegmen
 - Rule: encrypt all traffic (mTLS east-west, TLS north-south); verify certificates at every hop.
 - Rule: log every auth decision and policy evaluation; make logs queryable for incident response.
 - Rule: phase rollout by workload criticality; never deploy all-or-nothing zero trust.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

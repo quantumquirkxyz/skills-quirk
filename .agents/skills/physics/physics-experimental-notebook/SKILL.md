@@ -1,36 +1,59 @@
 ---
-name: physics-experimental-notebook
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.
-capabilities:
-  - structure a lab notebook (experiment description, setup, measurements, analysis, conclusion)
-  - record calibration procedures with traceability
-  - propagate measurement errors (systematic + statistical)
-  - apply FAIR data principles (Findable, Accessible, Interoperable, Reusable)
-outputs:
-  - Digital notebook entry (Markdown or Jupyter with embedded figures and data links)
-  - Calibration record with traceability
-  - FAIR data checklist (metadata, access policy, formats)
+name: "physics-experimental-notebook"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Notebook entry saved with all sections; calibration and error analysis complete; FAIR checklist filled.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Notebook entry saved with all sections; calibration and error analysis complete; FAIR checklist filled."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-experimental-notebook.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** experiment setup, measurements, calibration data.
-- **Output:** digital notebook entry + FAIR checklist.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** entry complete; FAIR checklist filled.
-- **Risk:** low.
-- **Boundary:** produces documentation artifacts; no changes to equipment.
+- Input: experiment setup, measurements, calibration data.
+- Output: digital notebook entry + FAIR checklist.
+- Scope: produces documentation artifacts; no changes to equipment.
+- Rule: produces documentation artifacts; no changes to equipment.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsExperimentalNotebookArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-experimental-notebook/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Experimental Physics Notebook
 
 Build an **experimental lab notebook** — structured, reproducible, FAIR-compliant — that another physicist could use to reproduce the measurement.
@@ -101,3 +124,12 @@ Distinguish:
 Markdown entry with: description, setup, calibration, measurements, error analysis, FAIR checklist, and linked data. The entry should be readable by another physicist without the original experimenter.
 
 **Completion criterion:** entry saved; all links active; FAIR checklist complete.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

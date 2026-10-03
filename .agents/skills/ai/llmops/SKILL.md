@@ -1,40 +1,59 @@
 ---
-name: llmops
-category: ai
-maturity: stable
-version: 1
-description: LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)
-capabilities:
-  - deploy LLM applications to staging and production with rollback discipline
-  - configure monitoring for latency, error rate, token usage, and cost
-  - design A/B testing experiments for prompt variants and model swaps
-  - manage prompt and chain versions with promotion rules and rollback
-  - optimize cost through token budgets, model routing, and caching
-  - implement evaluation pipelines with regression detection and canary checks
-outputs:
-  - Deployment manifest (image, environment, canary thresholds)
-  - Monitoring config (latency, error, token, cost metrics, alerts)
-  - A/B experiment spec (hypothesis, variants, success criteria, duration)
-  - Prompt registry (versioned, validated, promoted)
-  - Evaluation pipeline (dataset, metrics, regression gate, report)
+name: "llmops"
+category: "ai"
+maturity: "stable"
+version: "1"
+description: "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Deployment published; monitoring active; evaluation pipeline green.
-risk: medium
-trustTier: 3
-maxIterations: 8
+stopCondition: "Deployment published; monitoring active; evaluation pipeline green."
+risk: "medium"
+trustTier: "3"
+maxIterations: "8"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/llmops.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** LLM application, deployment target, acceptance criteria.
-- **Output:** deployment manifest + monitoring config + A/B spec + prompt registry + evaluation pipeline.
-- **Side effects:** deploy containers, provision cloud resources, run inference at scale.
-- **Dependencies:** container registry, Kubernetes, Terraform, CI/CD, model endpoint, secret store, monitoring stack.
-- **Stop condition:** deployment live; alerts configured; evaluation pipeline green.
-- **Risk:** medium — production traffic depends on correct deploy and monitoring; cost overruns possible.
-- **Boundary:** deploys and configures LLM operations; does not build model weights.
+- Input: LLM application, deployment target, acceptance criteria.
+- Output: deployment manifest + monitoring config + A/B spec + prompt registry + evaluation pipeline.
+- Scope: deploys and configures LLM operations; does not build model weights.
+- Rule: deploys and configures LLM operations; does not build model weights.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `LlmopsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/llmops/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # LLMOps
 
 Deploy, monitor, and operate LLM applications in production with discipline.
@@ -89,3 +108,12 @@ Promote or rollback based on canary result; report saved to run log.
 - No A/B lift accepted without guardrail metrics green.
 - No cost optimization accepted without error budget intact.
 - No prompt promoted without evaluation green.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

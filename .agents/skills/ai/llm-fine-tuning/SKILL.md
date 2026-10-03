@@ -1,38 +1,59 @@
 ---
-name: llm-fine-tuning
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.
-capabilities:
-  - design fine-tuning strategies (LoRA, QLoRA, full fine-tuning)
-  - prepare and curate training datasets (prompt/response, instruction tuning, preference data)
-  - configure training hyperparameters, adapters, and quantization
-  - evaluate fine-tuned models against base models and benchmarks
-  - plan deployment serving strategy (vLLM, TGI, LoRAX, adapters)
-outputs:
-  - Fine-tuning plan (method, data, hyperparameters, compute estimate)
-  - Dataset curation report (sources, splits, quality checks, prompt templates)
-  - Evaluation report (benchmarks, human eval design, safety checks)
-  - Deployment manifest (serving config, adapter registry, monitoring rules)
+name: "llm-fine-tuning"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Fine-tuning plan saved; dataset report complete; evaluation report generated; deployment manifest filled.
-risk: medium
-trustTier: 3
-maxIterations: 8
+stopCondition: "Fine-tuning plan saved; dataset report complete; evaluation report generated; deployment manifest filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "8"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/llm-fine-tuning.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** base model, task description, dataset description, compute constraints, performance target.
-- **Output:** fine-tuning plan + dataset curation report + evaluation report + deployment manifest.
-- **Side effects:** may trigger training jobs, consume compute, write artifacts when executed.
-- **Dependencies:** ML framework (PyTorch), fine-tuning library (PEFT, bitsandbytes, TRL), dataset tooling, serving infrastructure.
-- **Stop condition:** plan documented; dataset validated; evaluation criteria set; deployment config ready.
-- **Risk:** medium — training costs are significant; model quality affects downstream users; safety and bias risks exist.
-- **Boundary:** designs fine-tuning workflow; does not execute production training jobs unless explicitly instructed.
+- Input: base model, task description, dataset description, compute constraints, performance target.
+- Output: fine-tuning plan + dataset curation report + evaluation report + deployment manifest.
+- Scope: designs fine-tuning workflow; does not execute production training jobs unless explicitly instructed.
+- Rule: designs fine-tuning workflow; does not execute production training jobs unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `LlmFineTuningArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/llm-fine-tuning/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # LLM Fine-Tuning
 
 Fine-tune a **large language model** using efficient methods (LoRA, QLoRA, full fine-tuning) with reproducible data pipelines and safety controls.
@@ -98,3 +119,12 @@ Fine-tune a **large language model** using efficient methods (LoRA, QLoRA, full 
 - Rule: run safety and bias evaluation before promoting any fine-tuned model to production.
 - Rule: compare fine-tuned model against base model on held-out test set; report delta metrics.
 - Rule: implement monitoring for output quality and safety flags in production serving.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

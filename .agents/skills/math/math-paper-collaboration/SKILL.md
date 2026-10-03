@@ -1,36 +1,59 @@
 ---
-name: math-paper-collaboration
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.
-capabilities:
-  - set up a shared repository (Overleaf or GitHub) for a paper
-  - manage citation database (BibTeX / Zotero / Mendeley) with collaboration rules
-  - link reproducible computation artifacts (see math-computation-reproducible)
-  - coordinate co-author edits, comments, revisions, and arXiv submission
-outputs:
-  - Shared source repository (Git tag per version) with citation database
-  - Collaboration rules document (who edits what, review cycle)
-  - ArXiv submission package (source + compiled PDF + metadata)
+name: "math-paper-collaboration"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Source repository has version tags; collaboration rules saved; arXiv package complete.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Source repository has version tags; collaboration rules saved; arXiv package complete."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "math"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-paper-collaboration.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** paper title, co-authors, citation database, computation artifacts.
-- **Output:** shared repo + collaboration rules + arXiv package.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** repository tagged; rules saved; package complete.
-- **Risk:** low.
-- **Boundary:** manages collaboration artifacts; does not write the mathematics.
+- Input: paper title, co-authors, citation database, computation artifacts.
+- Output: shared repo + collaboration rules + arXiv package.
+- Scope: manages collaboration artifacts; does not write the mathematics.
+- Rule: manages collaboration artifacts; does not write the mathematics.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathPaperCollaborationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-paper-collaboration/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Math Paper Collaboration
 
 Coordinate a **mathematical paper** from first draft to arXiv submission — with version control, citation tracking, reproducible computation links, and co-author rules.
@@ -108,3 +131,12 @@ Prepare:
 - Pair with `math-computation-reproducible` for the computation appendix.
 - Pair with `math-formal-proof` for a formal proof appendix.
 - For co-authors using different tools, agree on `.bib` format early.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

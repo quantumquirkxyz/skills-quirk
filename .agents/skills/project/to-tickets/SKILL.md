@@ -9,7 +9,39 @@ capabilities:
   - produce to tickets artifact
   - validate to tickets completion criteria
 outputs:
-  - To Tickets artifact with findings, decisions, recommendations, and validation notes
+  - type: array
+    description: Ordered set of published tickets with explicit blockers
+    items:
+      type: object
+      properties:
+        title:
+          type: string
+        blockedBy:
+          type: array
+          items:
+            type: integer
+        acceptanceCriteria:
+          type: array
+          items:
+            type: string
+        validation:
+          type: string
+        completionCriteriaMet:
+          type: boolean
+modelTier: reasoning
+promptVersion: "2.0"
+artifactType: ticket
+evaluators:
+  - behavioral
+  - regression
+  - traceability
+  - quality-bar
+fixturesPath: .agents/skills/platform/fixtures/behavioral/to-tickets.json
+diataxis: how-to
+tags: [project, tickets, planning, decomposition]
+compatibility: [implement, to-spec]
+approvalRequired: false
+approvalFor: []
 sideEffects:
   - create-issues
   - write-files
@@ -20,33 +52,38 @@ trustTier: 3
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** To Tickets request, relevant context, constraints, and source evidence.
-- **Output:** To Tickets artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Input:** a plan, a spec, or conversation context.
+- **Output:** an ordered set of published tickets with explicit blockers.
+- **Scope:** produce tracer bullets, not a horizontal task dump.
+- **Rule:** frame slices in this repo's terms where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
+- **Rule:** every ticket must be independently understandable and claimable.
+- **Rule:** every blocking edge must correspond to a genuine prerequisite.
+- **Rule:** every published ticket must carry the canonical metadata from `docs/agents/work-item-format.md` for labels, milestone, project item, and project fields.
+- **Rule:** when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices. |
+| **Input** | a plan, a spec, or conversation context. |
+| **Output** | an ordered set of published tickets with explicit blockers. |
+| **Side effects** | create-issues, write-files. |
+| **Boundaries** | produce tracer bullets, not a horizontal task dump. |
+| **Completion criteria** | every ticket cuts a narrow but complete path through the work; each ticket has an explicit blocker set or none; the frontier can be taken without guessing about order; user approved granularity before publication; published tickets follow canonical metadata shape. |
+
+## Artifact
+
+This skill emits a structured ticket array (JSON) and individual Markdown ticket files. The JSON is the machine-readable dependency graph; the Markdown files are the published tracker issues. Both are emitted together so blocker edges stay consistent.
 
 # To Tickets
 
 Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet vertical slices, each declaring the tickets that **block** it.
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-quirk-skills` if not.
-The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/agents/work-item-format.md); follow it so tickets, labels, milestones, and project fields stay aligned with specs and boards.
-
-## Contract
-
-- Input: a plan, a spec, or conversation context.
-- Output: an ordered set of published tickets with explicit blockers.
-- Scope: produce tracer bullets, not a horizontal task dump.
-- Rule: frame slices in this repo's terms where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
-- Rule: every ticket must be independently understandable and claimable.
-- Rule: every blocking edge must correspond to a genuine prerequisite.
-- Rule: every published ticket must carry the canonical metadata from `docs/agents/work-item-format.md` for labels, milestone, project item, and project fields.
-- Rule: when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
+The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md); follow it so tickets, labels, milestones, and project fields stay aligned with specs and boards.
 
 ## Process
 
@@ -123,3 +160,6 @@ Work the **frontier**: any ticket whose blockers are all done. For a purely line
 Do NOT close or modify any parent issue.
 
 See `references/issue-template.md` for the canonical ticket shape.
+
+---
+@include .agents/skills/platform/contract-base.xml

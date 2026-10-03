@@ -1,36 +1,59 @@
 ---
-name: ai-model-evaluation
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.
-capabilities:
-  - compute standard metrics (precision, recall, F1, ROC-AUC, MAE, RMSE, MAPE, log-loss)
-  - analyse fairness across subgroups (demographic parity, equalised odds, calibration)
-  - test robustness (adversarial examples, noise, distribution shift)
-  - generate explainability (feature importance, SHAP, LIME, counterfactuals)
-outputs:
-  - Evaluation report (metrics, subgroup tables, robustness tests, explainability notes)
-  - Failure-mode analysis (confusion matrix, worst cases, out-of-distribution detection)
-  - Recommendation (deploy / revise / do not deploy)
+name: "ai-model-evaluation"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Report saved; subgroup analysis complete; failure modes documented; recommendation made.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Report saved; subgroup analysis complete; failure modes documented; recommendation made."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "model"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/ai-model-evaluation.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** model predictions, ground truth, subgroup labels, feature data.
-- **Output:** evaluation report with recommendation.
-- **Side effects:** none (analysis only; does not deploy).
-- **Dependencies:** model artifacts, test set, subgroup metadata.
-- **Stop condition:** report complete with subgroup analysis.
-- **Risk:** medium — recommendations affect deployment; requires validation.
-- **Boundary:** evaluates; does not deploy.
+- Input: model predictions, ground truth, subgroup labels, feature data.
+- Output: evaluation report with recommendation.
+- Scope: evaluates; does not deploy.
+- Rule: evaluates; does not deploy.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AiModelEvaluationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/ai-model-evaluation/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Model Evaluation
 
 Evaluate a **machine-learning or LLM model** with metrics, subgroup fairness, robustness, and explainability — and recommend deployment or revision.
@@ -87,3 +110,12 @@ From confusion matrix or error set:
 - Do not deploy if: large fairness gap; brittle to shift; failure modes dangerous.
 
 **Completion criterion:** recommendation with explicit conditions.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

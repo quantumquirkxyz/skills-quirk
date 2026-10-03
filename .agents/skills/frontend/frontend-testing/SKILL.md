@@ -1,36 +1,62 @@
 ---
-name: frontend-testing
-category: frontend
-maturity: stable
-version: 1
-description: Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).
-capabilities:
-  - design frontend test strategy
-  - configure unit and integration tests
-  - design end-to-end test suites
-  - plan visual testing and Storybook workflows
-outputs:
-  - Frontend testing artifact with findings, decisions, recommendations, and validation notes
+name: "frontend-testing"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Frontend testing design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Frontend testing design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/frontend-testing.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Frontend Testing
-
-Use this skill when designing the test strategy for a frontend application — unit tests, integration tests, end-to-end tests, visual regression, and Storybook workflows.
 
 ## Contract
 
 - Input: component library, user flows, CI environment, and quality requirements.
 - Output: test strategy with test tiers, tool configuration, coverage targets, and execution plan.
-- Scope: design testing architecture and conventions; not writing all test cases.
-- Rule: test user-visible behavior, not implementation details.
-- Rule: prioritize tests that catch regressions in critical user journeys.
-- Rule: keep tests fast, isolated, and deterministic.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `FrontendTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/frontend-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Frontend Testing
+
+Use this skill when designing the test strategy for a frontend application — unit tests, integration tests, end-to-end tests, visual regression, and Storybook workflows.
+
 
 ## Process
 
@@ -79,10 +105,11 @@ Use this skill when designing the test strategy for a frontend application — u
 - Rule: quarantine and fix flaky tests immediately; never accept flakiness as normal.
 - Rule: pair visual testing with behavior tests; screenshots alone do not prove correctness.
 
-## Completion Criteria
+## Completion
 
-- test tiers are defined with scope and ownership
-- test runner configuration is documented with CI integration
-- testing conventions are documented with examples
-- visual testing workflow is documented with toolchain
-- coverage targets, quality gates, and test data strategy are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

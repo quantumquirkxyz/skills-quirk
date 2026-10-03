@@ -1,37 +1,59 @@
 ---
-name: physics-talk-design
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.
-capabilities:
-  - design talk structure (introduction, result, conclusion) for audience and duration
-  - prepare figures consistent with physics conventions (units, error bars, axis labels)
-  - design posters (layout, colour, font, figure arrangement) for conferences
-  - prepare speaker notes with timing cues
-outputs:
-  - Beamer / PowerPoint / Keynote source
-  - Poster PDF (A0 / A1 / conference size)
-  - Speaker notes (Markdown or slide annotations)
-  - Accessibility checklist (colour, font, alt text)
+name: "physics-talk-design"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Source compiled; notes saved; checklist completed.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Source compiled; notes saved; checklist completed."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-talk-design.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** talk/poster topic, audience, duration / size.
-- **Output:** source + notes + checklist.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** compiled; checklist complete.
-- **Risk:** low.
-- **Boundary:** prepares talk/poster; does not deliver it.
+- Input: talk/poster topic, audience, duration / size.
+- Output: source + notes + checklist.
+- Scope: prepares talk/poster; does not deliver it.
+- Rule: prepares talk/poster; does not deliver it.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsTalkDesignArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-talk-design/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Physics Talk Design
 
 Build a **physics talk or poster** — seminar, conference talk, public outreach — with audience-appropriate depth and visual conventions.
@@ -94,3 +116,12 @@ Physics conventions:
 - **Transitions:** state what the next slide answers.
 
 **Completion criterion:** notes saved for each slide; practice timing recorded.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

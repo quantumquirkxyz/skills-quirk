@@ -1,36 +1,62 @@
 ---
-name: search
-category: integrations
-maturity: stable
-version: 2
-description: Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.
-capabilities:
-  - design search architecture (full-text, vector, hybrid)
-  - plan indexing, synonyms, language analysis, and relevance tuning
-  - define ranking, boosting, personalization, and business rules
-  - evaluate search observability, analytics, and A/B testing
-outputs:
-  - Search design document (architecture, indexing, ranking, synonyms, analytics, observability)
+name: "search"
+category: "integrations"
+maturity: "stable"
+version: "2"
+description: "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Search design complete; indexing and ranking strategy explicit; analytics plan named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Search design complete; indexing and ranking strategy explicit; analytics plan named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "integrations"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/search.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Search
-
-Use this skill when the system needs retrieval that users can trust. It should define the retrieval seam, indexing shape, relevance controls, and observability so search stays understandable and adjustable.
 
 ## Contract
 
 - Input: search brief, retrieval context, corpus characteristics, and relevance constraints.
 - Output: search design covering architecture, indexing, ranking, synonyms, analytics, and observability.
-- Scope: design search behavior, not the full implementation.
-- Rule: keep retrieval and presentation concerns separate.
-- Rule: make indexing and ranking tradeoffs explicit.
-- Rule: note how relevance can be tuned without rewriting the whole flow.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SearchArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/search/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Search
+
+Use this skill when the system needs retrieval that users can trust. It should define the retrieval seam, indexing shape, relevance controls, and observability so search stays understandable and adjustable.
+
 
 ## Process
 
@@ -97,18 +123,11 @@ Use this skill when the system needs retrieval that users can trust. It should d
 
 **Completion criterion:** scalability and resilience strategy named.
 
-## Completion criteria
+## Completion
 
-- the search architecture is named
-- the indexing and field mapping strategy is explicit
-- ranking and relevance controls are named
-- query features (autocomplete, facets, typo tolerance) are designed
-- synonym and language strategy is explicit
-- analytics, A/B testing, and monitoring are planned
-- scalability and resilience strategy is named
-
-## References
-
-- `../../backend/backend-architecture/SKILL.md` — API design for search endpoints
-- `../../data/data-warehouse-modeling/SKILL.md` — data modeling for search
-- `../../qa/qa-automation/SKILL.md` — search testing strategy
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

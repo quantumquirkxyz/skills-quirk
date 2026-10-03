@@ -214,7 +214,7 @@ flowchart LR
 ## Method
 
 > [!NOTE]
-> The full method vocabulary and quality bar are documented at [docs/agents/quirk-method.md](docs/agents/quirk-method.md).
+> The full method vocabulary and quality bar are documented at [docs/explanation/quirk-method.md](docs/explanation/quirk-method.md).
 
 | Principle | Rule |
 |---|---|
@@ -234,21 +234,21 @@ flowchart LR
 ## Documentation
 
 > [!NOTE]
-> For installation and sync, start with [docs/agents/adoption-guide.md](docs/agents/adoption-guide.md).
+> For installation and sync, start with [docs/how-to/adoption.md](docs/how-to/adoption.md).
 
 | Document | Purpose |
 |---|---|
 | [AUTHORSHIP.md](AUTHORSHIP.md) | Authorship and integrity |
-| [quirk method](docs/agents/quirk-method.md) | Method vocabulary and quality bar |
-| [provenance](docs/agents/provenance.md) | Origin and redesign status |
-| [adoption guide](docs/agents/adoption-guide.md) | Installation and sync |
-| [skill templates](docs/agents/skill-templates.md) | Artifact templates map |
-| [stack matrix](docs/agents/stack-matrix.md) | Stack-specific skills |
-| [skill style guide](docs/agents/skill-style-guide.md) | Editing and authoring rules |
-| [Skill Lab toolkit](docs/agents/skill-lab.md) | Skill lab reference |
-| [release checklist](docs/agents/release-checklist.md) | Pre/post-release gates |
-| [multi-agent protocol](docs/agents/multi-agent-protocol.md) | Multi-session handoff rules |
-| [skill inventory](docs/agents/skill-inventory.md) | Generated per-skill status table |
+| [quirk method](docs/explanation/quirk-method.md) | Method vocabulary and quality bar |
+| [provenance](docs/explanation/provenance.md) | Origin and redesign status |
+| [adoption guide](docs/how-to/adoption.md) | Installation and sync |
+| [skill templates](docs/reference/agents/skill-templates.md) | Artifact templates map |
+| [stack matrix](docs/reference/agents/stack-matrix.md) | Stack-specific skills |
+| [skill style guide](docs/how-to/skill-style.md) | Editing and authoring rules |
+| [Skill Lab toolkit](docs/how-to/skill-lab.md) | Skill lab reference |
+| [release checklist](docs/how-to/release.md) | Pre/post-release gates |
+| [multi-agent protocol](docs/reference/agents/multi-agent-protocol.md) | Multi-session handoff rules |
+| [skill inventory](docs/reference/agents/skill-inventory.md) | Generated per-skill status table |
 
 ---
 
@@ -474,7 +474,7 @@ The shell installer requires a local source checkout and replaces the target ski
 <summary>After installation</summary>
 
 1. Run `setup-quirk-skills` in the target repo.
-2. Follow the [adoption guide](docs/agents/adoption-guide.md) to set the issue tracker, domain docs, and validation commands.
+2. Follow the [adoption guide](docs/how-to/adoption.md) to set the issue tracker, domain docs, and validation commands.
 3. Use `ask-to` or the standard flow to route work.
 
 </details>
@@ -535,7 +535,7 @@ Quick checklist before submitting:
 4. Confirm `node .agents/skills/platform/evaluate-scenarios.mjs`
 
 > [!IMPORTANT]
-> Follow [docs/agents/skill-style-guide.md](docs/agents/skill-style-guide.md) when editing or authoring skills.
+> Follow [docs/how-to/skill-style.md](docs/how-to/skill-style.md) when editing or authoring skills.
 
 Questions? Check `docs/agents/` for more documentation.
 

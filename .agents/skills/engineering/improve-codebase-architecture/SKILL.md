@@ -1,39 +1,62 @@
 ---
-name: improve-codebase-architecture
-category: engineering
-maturity: stable
-description: Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
-version: 1
-capabilities:
-  - scan-codebase
-  - detect-deepening-opportunities
-  - generate-html-report
-  - grill-candidate
-inputs:
-  - "target: Path to repository or directory"
-  - "depth-threshold: Minimum depth metric to flag (default: 3)"
-  - "output-format: html or json (default: html)"
-outputs:
-  - "html-report: Visual report of architecture candidates"
-  - "candidates: List of modules/files with deepening recommendations"
-  - "selected-candidate: The module chosen for improvement"
-sideEffects:
-  - write-files
+name: "improve-codebase-architecture"
+category: "engineering"
+maturity: "stable"
+description: "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one."
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Report generated and a candidate is selected or explicitly deferred.
-risk: low
-trustTier: 2
-maxIterations: 3
+stopCondition: "Report generated and a candidate is selected or explicitly deferred."
+risk: "low"
+trustTier: "2"
+maxIterations: "3"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/improve-codebase-architecture.json"
+diataxis: "how-to"
+tags: ["engineering"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-# Improve Codebase Architecture
-
 ## Contract
+
 - Input: codebase path and depth threshold
 - Output: HTML/JSON report with deepening candidates, plus selected candidate
-- Boundary: analysis only; no automatic rewrites
-- Caller responsibility: provide the repository path, any scope exclusions, and whether generated reports may be written to disk.
-- Operator responsibility: explain the scoring signals and keep recommendations traceable to concrete files or modules.
+- Scope: analysis only; no automatic rewrites
+- Rule: analysis only; no automatic rewrites
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ImproveCodebaseArchitectureArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/improve-codebase-architecture/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Improve Codebase Architecture
+
 
 ## Process
 1. Scan the target directory for module structures.
@@ -57,3 +80,12 @@ maxIterations: 3
 - Include the files or modules inspected, the heuristic used, and the reason each candidate matters.
 - Separate confirmed problems from suspected deepening opportunities.
 - Preserve enough evidence for a reviewer to reproduce the candidate list without rerunning the full scan.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

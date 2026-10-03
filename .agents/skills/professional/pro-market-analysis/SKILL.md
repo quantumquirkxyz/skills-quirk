@@ -1,33 +1,57 @@
 ---
-name: pro-market-analysis
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.
-capabilities:
-  - apply pro market analysis workflow
-  - produce pro market analysis analysis artifact
-  - validate pro market analysis completion criteria
-outputs:
-  - Pro Market Analysis artifact with completed sections, evidence, and limitations
+name: "pro-market-analysis"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Conduct professional market research complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Conduct professional market research complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/pro-market-analysis.json"
+diataxis: "how-to"
+tags: ["professional"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Pro Market Analysis request, problem context, constraints, and available evidence.
-- **Output:** Pro Market Analysis artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Conduct professional market research is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ProMarketAnalysisArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/pro-market-analysis/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Professional Market Research
 
 Conduct **market analysis** — TAM/SAM/SOM, competitor mapping, pricing analysis, trend forecasting — with explicit sources and data quality checks.
@@ -54,9 +78,11 @@ Conduct **market analysis** — TAM/SAM/SOM, competitor mapping, pricing analysi
 - Rule: include direct competitors, substitutes, and non-consumption alternatives.
 - Rule: state confidence level and missing data instead of overfitting a precise number.
 
-## Completion Criteria
+## Completion
 
-- market scope and geography are explicit
-- sizing assumptions and sources are traceable
-- competitor and pricing analysis are included
-- recommendation is tied to evidence quality
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

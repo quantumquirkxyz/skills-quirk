@@ -1,23 +1,58 @@
 ---
-name: backend-architecture
-category: backend
-maturity: stable
-version: 1
-description: Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
-capabilities:
-  - apply backend architecture workflow
-  - produce backend architecture artifact
-  - validate backend architecture completion criteria
-outputs:
-  - Backend Architecture artifact with findings, decisions, recommendations, and validation notes
+name: "backend-architecture"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Shape backend systems complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Shape backend systems complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/backend-architecture.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BackendArchitectureArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/backend-architecture/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # backend-architecture
 
 Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
@@ -28,17 +63,6 @@ Shape backend systems — REST/gRPC APIs, service contracts, data flow, state ma
 - Separate business logic from transport layer
 - Plan for versioning and backward compatibility
 
-## Contract
-
-### Input
-A description of the backend problem: service type, data model, integration points.
-
-### Output
-A backend architecture design with:
-- API endpoints and contracts
-- Data flow diagram
-- Error handling strategy
-- Service boundaries
 
 ## Steps
 
@@ -57,14 +81,11 @@ A backend architecture design with:
 - Rule: include data ownership, persistence boundaries, and transaction assumptions.
 - Rule: document operational concerns such as observability, rollout, and backward compatibility.
 
-## Completion Criteria
+## Completion
 
-- domain model and service boundaries are named
-- API contracts and error semantics are explicit
-- data ownership and state transitions are documented
-- versioning and operational concerns are addressed
-
-## References
-- `../api-design/SKILL.md` — API seam design
-- `../api-contracts/SKILL.md` — contract versioning
-- `../../platform/postgres/SKILL.md` — data persistence
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

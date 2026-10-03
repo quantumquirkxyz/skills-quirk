@@ -1,33 +1,57 @@
 ---
-name: diagnosing-bugs
-category: delivery
-maturity: stable
-version: 1
-description: Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
-capabilities:
-  - apply diagnosing bugs workflow
-  - produce diagnosing bugs artifact
-  - validate diagnosing bugs completion criteria
-outputs:
-  - Diagnosing Bugs artifact with findings, decisions, recommendations, and validation notes
+name: "diagnosing-bugs"
+category: "delivery"
+maturity: "stable"
+version: "1"
+description: "Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Diagnosis loop for hard bugs and performance regressions complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Diagnosis loop for hard bugs and performance regressions complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "diagnosis"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/diagnosing-bugs.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Diagnosing Bugs request, relevant context, constraints, and source evidence.
-- **Output:** Diagnosing Bugs artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Diagnosis loop for hard bugs and performance regressions is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DiagnosingBugsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/diagnosing-bugs/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Diagnosing Bugs
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
@@ -157,3 +181,12 @@ Required before declaring done:
 - [ ] The hypothesis that turned out correct is stated in the commit / PR message — so the next debugger learns
 
 **Then ask: what would have prevented this bug?** If the answer involves architectural change (no good test seam, tangled callers, hidden coupling) hand off to the `/codebase-design` skill with the specifics. Make the recommendation **after** the fix is in, not before — you have more information now than when you started.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

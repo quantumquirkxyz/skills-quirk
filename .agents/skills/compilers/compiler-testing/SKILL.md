@@ -1,33 +1,63 @@
 ---
-name: compiler-testing
-category: compilers
-maturity: stable
-version: 1
-description: Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design.
-capabilities:
-  - design compiler test suites
-  - define parser, semantic, and IR oracles
-  - create regression and negative test strategy
-outputs:
-  - compiler testing plan with fixture matrix, oracles, and regression coverage
+name: "compiler-testing"
+category: "compilers"
+maturity: "stable"
+version: "1"
+description: "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Test oracles, fixture classes, and regression checks are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Test oracles, fixture classes, and regression checks are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/compiler-testing.json"
+diataxis: "how-to"
+tags: ["compilers"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# compiler-testing
-
-Use this skill when planning tests for a compiler, interpreter, transpiler, parser, type checker, optimizer, or code generator.
 
 ## Contract
 
 - Input: language surface, compiler stages, existing fixtures, known bugs, and target runtime behavior.
 - Output: test matrix with fixture types, expected oracles, golden strategy, and regression checks.
-- Scope: compiler and interpreter correctness testing; implementation architecture belongs to compiler-design.
-- Boundary: do not rely on golden files alone when structural invariants or diagnostics need stronger oracles.
+- Scope: do not rely on golden files alone when structural invariants or diagnostics need stronger oracles.
+- Rule: do not rely on golden files alone when structural invariants or diagnostics need stronger oracles.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CompilerTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/compiler-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# compiler-testing
+
+Use this skill when planning tests for a compiler, interpreter, transpiler, parser, type checker, optimizer, or code generator.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when planning tests for a compiler, interpreter, transpiler, pars
 5. Tie known bugs to regression fixtures.
 6. Define minimization, naming, and update rules for fixtures.
 
-## Completion Criteria
+## Completion
 
-- compiler stages and fixture classes are covered
-- oracles are explicit for each test type
-- invalid input and regressions are included
-- golden-file update rules are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

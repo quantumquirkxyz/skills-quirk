@@ -1,23 +1,58 @@
 ---
-name: iot-embedded
-category: iot
-maturity: stable
-version: 1
-description: Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.
-capabilities:
-  - apply iot embedded workflow
-  - produce iot embedded artifact
-  - validate iot embedded completion criteria
-outputs:
-  - Iot Embedded artifact with findings, decisions, recommendations, and validation notes
+name: "iot-embedded"
+category: "iot"
+maturity: "stable"
+version: "1"
+description: "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design embedded/IoT systems complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design embedded/IoT systems complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "iot"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/iot-embedded.json"
+diataxis: "how-to"
+tags: ["iot"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `IotEmbeddedArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/iot-embedded/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # iot-embedded
 
 Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.
@@ -28,17 +63,6 @@ Design embedded/IoT systems — firmware, sensors, edge computing, device connec
 - Define edge vs. cloud processing split
 - Ensure observability of distributed devices
 
-## Contract
-
-### Input
-An IoT system to design: device type, connectivity, processing requirements.
-
-### Output
-An IoT architecture with:
-- Device hardware profile and constraints
-- Communication protocol (MQTT, CoAP, HTTP)
-- Edge/cloud processing split
-- Security model and update strategy
 
 ## Device Constraints
 
@@ -78,3 +102,12 @@ An IoT architecture with:
 - `../../networking/networking/SKILL.md` — network protocols
 - `../../sec/sec-cryptography-applied/SKILL.md` — device security
 - `../../foundation/observability/SKILL.md` — device observability
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

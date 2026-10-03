@@ -1,33 +1,63 @@
 ---
-name: backend-caching
-category: backend
-maturity: stable
-version: 1
-description: Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.
-capabilities:
-  - design cache strategy
-  - choose keys, TTLs, and invalidation rules
-  - evaluate consistency and failure trade-offs
-outputs:
-  - cache design note with keys, freshness, invalidation, and fallback behavior
+name: "backend-caching"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Cache purpose, freshness, invalidation, and failure behavior are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Cache purpose, freshness, invalidation, and failure behavior are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/backend-caching.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# backend-caching
-
-Use this skill when adding, reviewing, or debugging a backend cache, memoization layer, CDN-backed response cache, read-through cache, or stale-while-revalidate design.
 
 ## Contract
 
 - Input: data source, read/write pattern, freshness requirements, traffic profile, failure tolerance, and invalidation triggers.
 - Output: cache strategy with keys, TTLs, consistency trade-offs, invalidation rules, and monitoring.
-- Scope: backend caching decisions; database query optimization belongs to the query optimization skill.
-- Boundary: do not introduce caching until the source of latency or load is understood.
+- Scope: do not introduce caching until the source of latency or load is understood.
+- Rule: do not introduce caching until the source of latency or load is understood.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BackendCachingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/backend-caching/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# backend-caching
+
+Use this skill when adding, reviewing, or debugging a backend cache, memoization layer, CDN-backed response cache, read-through cache, or stale-while-revalidate design.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when adding, reviewing, or debugging a backend cache, memoization
 5. Add observability: hit rate, latency, eviction, stale responses, and backend load.
 6. Document rollout, rollback, and cache-warming considerations.
 
-## Completion Criteria
+## Completion
 
-- cache purpose and placement are justified
-- keys, TTLs, and invalidation rules are explicit
-- stale-data risks and fallback behavior are documented
-- monitoring and rollout concerns are covered
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

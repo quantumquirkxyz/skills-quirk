@@ -1,36 +1,59 @@
 ---
-name: devops-terraform-iac
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.
-capabilities:
-  - define infrastructure modules (compute, network, storage, identity)
-  - manage state (remote backend, state locking, state encryption)
-  - design environment isolation (dev/staging/prod via workspaces / separate states)
-  - enforce policies (IAM least-privilege, network rules, encryption at rest / in transit)
-outputs:
-  - Terraform / Pulumi module definitions (HCL / TypeScript / YAML)
-  - State management rules
-  - Policy / compliance checklist
+name: "devops-terraform-iac"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Module definitions saved; state rules saved; policy checklist filled.
-risk: medium
-trustTier: 3
-maxIterations: 5
+stopCondition: "Module definitions saved; state rules saved; policy checklist filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/devops-terraform-iac.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** infrastructure requirements (compute, storage, network, identity, policies).
-- **Output:** IAC module definitions + state rules + policy checklist.
-- **Side effects:** may create resources when executed (plan/apply).
-- **Dependencies:** cloud provider access (AWS / GCP / Azure / local).
-- **Stop condition:** definitions and rules saved.
-- **Risk:** medium — IAC errors cause outages or data loss; requires testing (terraform plan / dry-run).
-- **Boundary:** defines infrastructure; execution requires explicit approval and testing.
+- Input: infrastructure requirements (compute, storage, network, identity, policies).
+- Output: IAC module definitions + state rules + policy checklist.
+- Scope: defines infrastructure; execution requires explicit approval and testing.
+- Rule: defines infrastructure; execution requires explicit approval and testing.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DevopsTerraformIacArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/devops-terraform-iac/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Infrastructure as Code Design
 
 Design **reproducible infrastructure** — compute, network, storage, identity — with version control, state management, and policy enforcement.
@@ -78,3 +101,12 @@ Module definitions (HCL / TypeScript / YAML) + state rules + policy checklist + 
 - Rule: design least-privilege IAM and default-deny network posture.
 - Rule: require plan/dry-run review before apply.
 - Rule: document drift detection, rollback, import, and destroy safeguards.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

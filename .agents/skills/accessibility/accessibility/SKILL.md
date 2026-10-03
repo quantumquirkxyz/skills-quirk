@@ -1,23 +1,58 @@
 ---
-name: accessibility
-category: accessibility
-maturity: stable
-version: 1
-description: Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.
-capabilities:
-  - apply accessibility workflow
-  - produce accessibility artifact
-  - validate accessibility completion criteria
-outputs:
-  - Accessibility artifact with findings, decisions, recommendations, and validation notes
+name: "accessibility"
+category: "accessibility"
+maturity: "stable"
+version: "1"
+description: "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design inclusive products complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design inclusive products complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "accessibility"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/accessibility.json"
+diataxis: "how-to"
+tags: ["accessibility"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AccessibilityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/accessibility/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # accessibility
 
 Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — so all users can access the product regardless of ability.
@@ -28,16 +63,6 @@ Design inclusive products — WCAG compliance, assistive technology support, key
 - Ensure keyboard-only navigation
 - Design for cognitive and motor accessibility
 
-## Contract
-
-### Input
-A UI component, page, or product to audit for accessibility.
-
-### Output
-An accessibility audit with:
-- WCAG compliance checklist (perceivable, operable, understandable, robust)
-- Issues ranked by severity (A, AA, AAA)
-- Fix recommendations with code examples
 
 ## WCAG 2.1 Principles
 
@@ -83,3 +108,12 @@ An accessibility audit with:
 ## References
 - `../../ux/interaction-design/SKILL.md` — interaction patterns
 - `../../frontend/frontend-design/SKILL.md` — visual design
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

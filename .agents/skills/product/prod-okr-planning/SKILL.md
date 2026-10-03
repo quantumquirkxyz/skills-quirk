@@ -1,36 +1,59 @@
 ---
-name: prod-okr-planning
-category: product
-maturity: stable
-version: 1
-description: Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.
-capabilities:
-  - define Objectives that are ambitious and qualitative
-  - define Key Results that are measurable and time-bound
-  - align team OKRs to company and department OKRs
-  - track progress and run retrospectives at end of cycle
-outputs:
-  - OKR document (quarterly cycle with Objectives and Key Results)
-  - Initiative list linked to KRs
-  - Progress tracker template
+name: "prod-okr-planning"
+category: "product"
+maturity: "stable"
+version: "1"
+description: "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: OKR document saved; initiatives mapped to KRs; progress tracker template ready.
-risk: low
-trustTier: 1
-maxIterations: 4
+stopCondition: "OKR document saved; initiatives mapped to KRs; progress tracker template ready."
+risk: "low"
+trustTier: "1"
+maxIterations: "4"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/prod-okr-planning.json"
+diataxis: "how-to"
+tags: ["product"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** team mission, company OKRs, current quarter / cycle.
-- **Output:** team OKR document + initiative mapping.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** OKR document saved; KRs measurable; initiatives mapped.
-- **Risk:** low.
-- **Boundary:** designs OKRs; does not execute initiatives.
+- Input: team mission, company OKRs, current quarter / cycle.
+- Output: team OKR document + initiative mapping.
+- Scope: designs OKRs; does not execute initiatives.
+- Rule: designs OKRs; does not execute initiatives.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ProdOkrPlanningArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/prod-okr-planning/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # OKR Planning
 
 Design a **quarterly OKR cycle** — Objectives, Key Results, initiatives — with measurable outcomes and team alignment.
@@ -80,3 +103,12 @@ Define: how often (weekly / biweekly), who updates, what format (score 0–1.0 p
 At end of cycle: score each KR (0.0–1.0); write retrospective: what worked, what didn't, what to carry forward.
 
 **Completion criterion:** retro template saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

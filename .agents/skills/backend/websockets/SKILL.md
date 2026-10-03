@@ -1,36 +1,62 @@
 ---
-name: websockets
-category: backend
-maturity: stable
-version: 1
-description: WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).
-capabilities:
-  - design real-time communication architecture
-  - configure WebSocket and SSE protocols
-  - plan scaling and reconnection strategies
-  - implement pub/sub and backpressure handling
-outputs:
-  - Real-time architecture design with connection strategy, scaling approach, reconnection logic, pub/sub topology, backpressure handling, and monitoring
+name: "websockets"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: WebSocket/SSE architecture, connection lifecycle, scaling topology, and failure handling are explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "WebSocket/SSE architecture, connection lifecycle, scaling topology, and failure handling are explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/websockets.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# WebSockets and Real-Time
-
-Use this skill when designing, reviewing, or debugging real-time systems — WebSockets (WS), Server-Sent Events (SSE), Socket.IO, pub/sub messaging, connection scaling, reconnection logic, backpressure, and long-lived connection management.
 
 ## Contract
 
 - Input: real-time use case, message rate, client count, latency requirements, scaling constraints, and failure tolerance.
 - Output: real-time architecture with connection strategy, scaling topology, reconnection logic, pub/sub design, backpressure handling, and monitoring.
-- Scope: real-time communication architecture; not infrastructure provisioning unless explicitly requested.
-- Rule: classify real-time traffic by direction, frequency, and payload size before choosing transport.
-- Rule: design for connection churn, partial failures, and partition tolerance from the start.
-- Rule: make backpressure and overload behavior explicit to prevent cascading failures.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `WebsocketsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/websockets/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# WebSockets and Real-Time
+
+Use this skill when designing, reviewing, or debugging real-time systems — WebSockets (WS), Server-Sent Events (SSE), Socket.IO, pub/sub messaging, connection scaling, reconnection logic, backpressure, and long-lived connection management.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing, reviewing, or debugging real-time systems — Web
 - Rule: log connection lifecycle events and message metadata, not sensitive payload content.
 - Rule: test scaling behavior with production-like connection counts and message rates.
 
-## Completion Criteria
+## Completion
 
-- real-time requirements and traffic profile are documented
-- transport and protocol selection are justified
-- connection lifecycle and reconnection logic are defined
-- scaling topology and broker selection are documented
-- pub/sub design and backpressure behavior are explicit
-- observability and operational runbook are covered
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

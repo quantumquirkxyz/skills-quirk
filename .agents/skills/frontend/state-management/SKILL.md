@@ -1,36 +1,62 @@
 ---
-name: state-management
-category: frontend
-maturity: stable
-version: 1
-description: Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
-capabilities:
-  - design client state architecture
-  - choose state management primitive
-  - plan server state and caching
-  - define state boundaries and ownership
-outputs:
-  - State management artifact with findings, decisions, recommendations, and validation notes
+name: "state-management"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: State management design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "State management design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/state-management.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# State Management
-
-Use this skill when designing state architecture for modern frontend applications — client state, server state, derived signals, and cache boundaries.
 
 ## Contract
 
 - Input: application data flow, component tree, read/write patterns, and server interaction needs.
 - Output: state architecture with primitive choices, state boundaries, and data flow diagram.
-- Scope: design state management shape and boundaries; not full implementation.
-- Rule: minimize global state; prefer local state, URL state, or server cache first.
-- Rule: separate server state from client state; they have different lifecycles and invalidation rules.
-- Rule: name the owner of each piece of state and its update authority.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `StateManagementArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/state-management/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# State Management
+
+Use this skill when designing state architecture for modern frontend applications — client state, server state, derived signals, and cache boundaries.
+
 
 ## Process
 
@@ -77,10 +103,11 @@ Use this skill when designing state architecture for modern frontend application
 - Rule: avoid normalized stores unless the data shape justifies the complexity.
 - Rule: document state hydration, rehydration, and hydration mismatch handling.
 
-## Completion Criteria
+## Completion
 
-- state inventory is classified by type, lifetime, and owner
-- primitive selected per state type with rationale
-- state boundary map defines ownership and update paths
-- server state strategy documents caching and invalidation rules
-- async and derived state patterns are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,62 @@
 ---
-name: api-contracts
-category: integrations
-maturity: stable
-version: 2
-description: Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.
-capabilities:
-  - design request/response contracts (REST, GraphQL, gRPC, WebSocket)
-  - define versioning strategies (URL, header, content negotiation)
-  - apply OpenAPI 3.1, JSON Schema, or GraphQL SDL
-  - plan breaking change detection, deprecation, and migration paths
-outputs:
-  - API contract document (endpoints, schemas, versioning, breaking change policy, consumer obligations)
+name: "api-contracts"
+category: "integrations"
+maturity: "stable"
+version: "2"
+description: "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: API contracts defined; versioning strategy explicit; breaking change policy and migration path named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "API contracts defined; versioning strategy explicit; breaking change policy and migration path named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/api-contracts.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# API Contracts
-
-Use this skill when the request and response surfaces need to be pinned down precisely. It should define what callers send, what they receive, how the contract can evolve, and what consumers must do to stay compatible.
 
 ## Contract
 
 - Input: API contract brief, consumer context, compatibility constraints, and versioning goals.
 - Output: contract design covering endpoints, schemas, versioning, breaking change policy, and consumer obligations.
-- Scope: define the contract, not the implementation.
-- Rule: keep the request and response shapes minimal and explicit.
-- Rule: call out backward compatibility expectations before the first change lands.
-- Rule: name the versioning strategy when the contract is expected to evolve.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ApiContractsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/api-contracts/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# API Contracts
+
+Use this skill when the request and response surfaces need to be pinned down precisely. It should define what callers send, what they receive, how the contract can evolve, and what consumers must do to stay compatible.
+
 
 ## Process
 
@@ -103,19 +129,11 @@ Use this skill when the request and response surfaces need to be pinned down pre
 
 **Completion criterion:** documentation plan named.
 
-## Completion criteria
+## Completion
 
-- the consumer jobs and constraints are named
-- request and response schemas are defined
-- the contract format is chosen
-- the versioning strategy and deprecation policy are named
-- compatibility rules and breaking change policy are explicit
-- error handling and retry conventions are named
-- security and auth requirements are explicit
-- documentation and discoverability plan is named
-
-## References
-
-- `../../foundation/api-design/SKILL.md` — API seam design
-- `../../backend/backend-architecture/SKILL.md` — backend architecture
-- `../../devops/devops-ci-cd-pipeline/SKILL.md` — contract validation in CI
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -9,7 +9,76 @@ capabilities:
   - produce codebase design artifact
   - validate codebase design completion criteria
 outputs:
-  - Codebase Design artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    description: Codebase design plan with seam proposal and depth analysis
+    properties:
+      seam:
+        type: object
+        properties:
+          name:
+            type: string
+          location:
+            type: string
+          rationale:
+            type: string
+          depthScore:
+            type: object
+            properties:
+              interfaceComplexity:
+                type: string
+              implementationComplexity:
+                type: string
+              leverageRatio:
+                type: string
+      interfaceGuidance:
+        type: object
+        properties:
+          methods:
+            type: array
+            items:
+              type: string
+          invariants:
+            type: array
+            items:
+              type: string
+          errorModes:
+            type: array
+            items:
+              type: string
+      depthAnalysis:
+        type: object
+        properties:
+          currentDepth:
+            type: string
+          recommendedDepth:
+            type: string
+          reasoning:
+            type: string
+      adapterRoles:
+        type: array
+        items:
+          type: object
+          properties:
+            role:
+              type: string
+            satisfies:
+              type: string
+      completionCriteriaMet:
+        type: boolean
+modelTier: reasoning
+promptVersion: "2.0"
+artifactType: plan
+evaluators:
+  - behavioral
+  - regression
+  - traceability
+  - quality-bar
+fixturesPath: .agents/skills/platform/fixtures/behavioral/codebase-design.json
+diataxis: how-to
+tags: [architecture, design, modules, seams]
+compatibility: [api-design, implement, improve-codebase-architecture]
+approvalRequired: false
+approvalFor: []
 sideEffects: []
 dependencies: []
 stopCondition: Shared vocabulary for designing deep modules complete; artifact saved; completion criteria checked.
@@ -18,29 +87,34 @@ trustTier: 1
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Codebase Design request, relevant context, constraints, and source evidence.
-- **Output:** Codebase Design artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Shared vocabulary for designing deep modules is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Input:** module shape, interface constraints, and architecture context.
+- **Output:** a seam proposal, interface guidance, and a depth analysis.
+- **Scope:** design the shape of the module, not the full implementation.
+- **Rule:** prefer one external seam and make its responsibility explicit.
+- **Rule:** do not add a seam unless something actually varies across it.
+- **Rule:** distinguish the external seam from any internal helper seams the implementation may use.
+- **Rule:** if the recommended seam would force callers to know too much, the module is too shallow.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam. |
+| **Input** | module shape, interface constraints, and architecture context. |
+| **Output** | a seam proposal, interface guidance, and a depth analysis. |
+| **Side effects** | none. |
+| **Boundaries** | design the shape of the module, not the full implementation. |
+| **Completion criteria** | module interface is described in terms callers can use; seam choice is justified by depth, leverage, and locality; any adapter role is explicit; recommendation is concrete enough to test against; recommendation names what stays hidden behind the interface. |
+
+## Artifact
+
+This skill emits a structured design plan (JSON) and a Markdown design document. The JSON is the machine-readable seam proposal; the Markdown is the human-readable design narrative with glossary and principles. Both are emitted together so the seam stays traceable across discussion and implementation.
 
 # Codebase Design
 
 Design **deep modules**: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface. Use this language and these principles wherever code is being designed or restructured. The aim is leverage for callers, locality for maintainers, and testability for everyone. Prefer this repo's vocabulary from `CONTEXT.md` when the module participates in the data plane, execution plane, harnesses, loops, graphs, or observability.
-
-## Contract
-
-- Input: module shape, interface constraints, and architecture context.
-- Output: a seam proposal, interface guidance, and a depth analysis.
-- Scope: design the shape of the module, not the full implementation.
-- Rule: prefer one external seam and make its responsibility explicit.
-- Rule: do not add a seam unless something actually varies across it.
-- Rule: distinguish the external seam from any internal helper seams the implementation may use.
-- Rule: if the recommended seam would force callers to know too much, the module is too shallow.
 
 ## Glossary
 
@@ -105,27 +179,27 @@ Good interfaces make testing natural:
 
 1. **Accept dependencies, don't create them.**
 
-   ```typescript
-   // Testable
-   function processOrder(order, paymentGateway) {}
+    ```typescript
+    // Testable
+    function processOrder(order, paymentGateway) {}
 
-   // Hard to test
-   function processOrder(order) {
-     const gateway = new StripeGateway();
-   }
-   ```
+    // Hard to test
+    function processOrder(order) {
+      const gateway = new StripeGateway();
+    }
+    ```
 
 2. **Return results, don't produce side effects.**
 
-   ```typescript
-   // Testable
-   function calculateDiscount(cart): Discount {}
+    ```typescript
+    // Testable
+    function calculateDiscount(cart): Discount {}
 
-   // Hard to test
-   function applyDiscount(cart): void {
-     cart.total -= discount;
-   }
-   ```
+    // Hard to test
+    function applyDiscount(cart): void {
+      cart.total -= discount;
+    }
+    ```
 
 3. **Small surface area.** Fewer methods = fewer tests needed. Fewer params = simpler test setup.
 
@@ -155,3 +229,6 @@ Good interfaces make testing natural:
 - any adapter role is explicit
 - the recommendation is concrete enough to test against
 - the recommendation names what stays hidden behind the interface
+
+---
+@include .agents/skills/platform/contract-base.xml
