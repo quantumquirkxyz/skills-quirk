@@ -1,35 +1,59 @@
 ---
-name: physics-literature-search
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.
-capabilities:
-  - monitor arXiv categories relevant to physics (hep-th, cond-mat, astro-ph, quant-ph, gr-qc, nucl-th, physics.*)
-  - pull INSPIRE-HEP / NASA ADS / Web of Science metadata
-  - filter by author, institution, keyword, citation graph
-  - build a digest with relevance scores
-outputs:
-  - Markdown digest (weekly / monthly) with papers grouped by subfield
-  - Optional BibTeX / CSV of new entries
+name: "physics-literature-search"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Digest saved; papers grouped; sources cited.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Digest saved; papers grouped; sources cited."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-literature-search.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** physics subfield, authors, keywords, time window.
-- **Output:** digest + optional BibTeX.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** digest saved with groups and sources.
-- **Risk:** low.
-- **Boundary:** monitors and summarises; makes no scientific claim.
+- Input: physics subfield, authors, keywords, time window.
+- Output: digest + optional BibTeX.
+- Scope: monitors and summarises; makes no scientific claim.
+- Rule: monitors and summarises; makes no scientific claim.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsLiteratureSearchArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-literature-search/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Physics Literature Search
 
 Track the **front of physics** — arXiv, INSPIRE, NASA ADS, citation graphs — with explicit subfield filters and a relevance score.
@@ -90,3 +114,12 @@ Group by:
 Deliver a Markdown digest with groups, abstract summaries, citation counts, and a **reading priority** (most relevant first).
 
 **Completion criterion:** digest saved; priority stated; sources cited.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

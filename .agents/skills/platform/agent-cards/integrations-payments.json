@@ -1,0 +1,29 @@
+{
+  "name": "payments",
+  "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+  "url": "https://github.com/quirk/example/blob/main/.agents/skills/integrations/payments/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": false,
+    "workflowOrchestration": false
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "integrations/payments",
+      "name": "payments",
+      "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+      "tags": [
+        "integrations"
+      ],
+      "parameters": {
+        "trustTier": "3"
+      }
+    }
+  ]
+}

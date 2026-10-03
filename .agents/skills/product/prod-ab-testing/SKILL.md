@@ -1,37 +1,59 @@
 ---
-name: prod-ab-testing
-category: product
-maturity: stable
-version: 1
-description: Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.
-capabilities:
-  - formulate testable hypotheses
-  - design treatment and control with randomisation
-  - compute sample size / power / minimum detectable effect
-  - define success and guardrail metrics
-  - design rollback / escalation rules
-outputs:
-  - Test design document (hypothesis, metrics, duration, sample size)
-  - Analysis plan (statistical test, segmentation, interaction)
-  - Rollback / escalation rules
+name: "prod-ab-testing"
+category: "product"
+maturity: "stable"
+version: "1"
+description: "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Test design saved; analysis plan saved; rollback rules defined; statistical power computed.
-risk: medium
-trustTier: 3
-maxIterations: 5
+stopCondition: "Test design saved; analysis plan saved; rollback rules defined; statistical power computed."
+risk: "medium"
+trustTier: "3"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/prod-ab-testing.json"
+diataxis: "how-to"
+tags: ["product"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** feature change, user segment, metric of interest.
-- **Output:** test design with power analysis and rollback rules.
-- **Side effects:** none (design only; execution requires deployment and user exposure).
-- **Dependencies:** analytics platform (for measurement), experiment platform (for assignment).
-- **Stop condition:** design complete; power computed; rollback rules defined.
-- **Risk:** medium — bad test design leads to false conclusions; exposure to users requires ethical review.
-- **Boundary:** designs experiment; does not expose users to unapproved changes.
+- Input: feature change, user segment, metric of interest.
+- Output: test design with power analysis and rollback rules.
+- Scope: designs experiment; does not expose users to unapproved changes.
+- Rule: designs experiment; does not expose users to unapproved changes.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ProdAbTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/prod-ab-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # A/B Testing Design
 
 Design an **A/B test** — hypothesis, randomisation, metrics, statistical power — with valid inference.
@@ -85,3 +107,12 @@ Compute:
 - **Rollback:** revert treatment for all users if success criteria not met by end of planned duration, or if guardrail fails.
 
 **Completion criterion:** rollback and escalation rules saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

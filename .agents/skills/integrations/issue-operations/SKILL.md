@@ -1,41 +1,57 @@
 ---
-name: issue-operations
-category: integrations
-maturity: stable
-version: 1
-description: Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions.
-capabilities:
-  - resolve issue tracker targets
-  - create scoped issues from concrete work items
-  - update issue metadata and discussion safely
-  - capture mutation evidence and follow-up state
-outputs:
-  - Issue operation summary with target IDs, URLs, actions taken, skipped actions, and validation notes
-sideEffects:
-  - create-issue
-  - update-issue
-  - post-comment
-  - label-issue
-  - assign-issue
-  - close-issue
-dependencies:
-  - execution-policy
-stopCondition: Requested issue tracker actions are completed or explicitly skipped, each target issue is identified, and the user receives evidence for every mutation.
-risk: medium
-trustTier: 3
-maxIterations: 6
+name: "issue-operations"
+category: "integrations"
+maturity: "stable"
+version: "1"
+description: "Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions."
+capabilities: ""
+outputs: ""
+sideEffects: ""
+dependencies: ""
+stopCondition: "Requested issue tracker actions are completed or explicitly skipped, each target issue is identified, and the user receives evidence for every mutation."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "integrations"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/issue-operations.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** issue tracker request, repository or project context, target issue references, requested action, and any text or metadata to apply.
-- **Output:** issue operation summary with issue IDs, links, action results, validation notes, and unresolved questions.
-- **Side effects:** create, update, comment on, label, assign, link, or close issues only when the requested action is clear.
-- **Dependencies:** use `execution-policy` when the requested mutation, target, or authority is ambiguous.
-- **Stop condition:** each requested issue action is either applied and evidenced, or skipped with a concrete reason.
-- **Risk:** medium because issue tracker mutations affect shared coordination state.
-- **Boundary:** do not invent tracker state, do not change unrelated issues, and do not close or reopen issues without a stated reason.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `IssueOperationsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/issue-operations/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: resolve the tracker, repository or project, and exact issue target before mutating anything.
@@ -63,10 +79,11 @@ maxIterations: 6
 - `references/operation-summary-template.md` - reusable issue operation summary format.
 - `references/tracker-provider-guidelines.md` - provider-specific mapping notes and safety checks.
 
-## Completion Criteria
+## Completion
 
-- every requested issue action has an applied/skipped status
-- created or updated issues have stable identifiers and links
-- duplicate and target-resolution checks are noted when issue creation or closure was in scope
-- risky state changes include the reason for the change
-- any remaining manual follow-up is specific enough for another agent or human to execute
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

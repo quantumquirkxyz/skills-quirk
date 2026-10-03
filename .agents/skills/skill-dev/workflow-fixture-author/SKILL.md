@@ -1,37 +1,57 @@
 ---
-name: workflow-fixture-author
-category: skill-dev
-maturity: stable
-version: 1
-description: Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.
-capabilities:
-  - design skill evaluation scenarios
-  - write behavioral fixture expectations
-  - cover happy path, edge case, and refusal behavior
-  - align fixtures with skill contracts and validation scripts
-outputs:
-  - Workflow fixture plan or fixture files with scenario coverage, expected assertions, and validation notes
-sideEffects:
-  - write-files
-dependencies:
-  - evaluate-skill
-  - skill-testing-framework
-stopCondition: Fixtures cover the requested skill behavior and either pass the relevant validator or list exact follow-up fixes.
-risk: low
-trustTier: 2
-maxIterations: 6
+name: "workflow-fixture-author"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion."
+capabilities: ""
+outputs: ""
+sideEffects: ""
+dependencies: ""
+stopCondition: "Fixtures cover the requested skill behavior and either pass the relevant validator or list exact follow-up fixes."
+risk: "low"
+trustTier: "2"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "authentication"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/workflow-fixture-author.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** target skill, intended behavior, existing evaluation format, and examples of acceptable and unacceptable outputs.
-- **Output:** scenario fixtures, behavioral fixtures, or a fixture plan with coverage rationale and validation evidence.
-- **Side effects:** create or edit fixture files only within the repository's evaluation or sandbox fixture locations.
-- **Dependencies:** use `evaluate-skill` for scenario intent and `skill-testing-framework` for validation expectations.
-- **Stop condition:** target behavior is represented by deterministic fixtures that can be run by repository tooling.
-- **Risk:** low because fixtures are test assets, but misleading fixtures can institutionalize incorrect skill behavior.
-- **Boundary:** do not weaken existing fixtures to make failures pass; update expectations only when the skill contract intentionally changed.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `WorkflowFixtureAuthorArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/workflow-fixture-author/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: read the target skill contract before writing fixtures so expected behavior matches declared inputs, outputs, side effects, and stop condition.
@@ -59,10 +79,11 @@ maxIterations: 6
 - `references/scenario-fixture-template.json` - scenario fixture skeleton for route, phrase, side-effect, and reference checks.
 - `references/behavioral-fixture-template.md` - behavioral fixture skeleton for required sections and forbidden placeholder checks.
 
-## Completion Criteria
+## Completion
 
-- each fixture maps to a specific skill rule or contract obligation
-- mutation-capable skills have safety or refusal coverage
-- fixture files follow repository conventions
-- validation ran or a precise blocker is reported
-- no existing regression fixture was weakened without explicit rationale
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

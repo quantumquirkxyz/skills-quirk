@@ -1,48 +1,62 @@
 ---
-name: graphic-design-project-management
-category: graphic-design
-maturity: experimental
-version: 1
-description: Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.
-capabilities:
-  - define project scope, timeline, and deliverables
-  - manage design iterations and feedback cycles
-  - coordinate reviews and stakeholder approvals
-  - define asset handoff and versioning standards
-  - produce graphic design project management artifact
-outputs:
-  - Graphic Design Project Management artifact with project plan, iteration schedule, review gates, and handoff standards
-sideEffects:
-  - write-files
+name: "graphic-design-project-management"
+category: "graphic-design"
+maturity: "experimental"
+version: "1"
+description: "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates."
+capabilities: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Graphic design project management plan complete; scope, timeline, iterations, reviews, and handoff standards explicit.
-risk: low
-trustTier: 2
-maxIterations: 6
+stopCondition: "Graphic design project management plan complete; scope, timeline, iterations, reviews, and handoff standards explicit."
+risk: "low"
+trustTier: "2"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/graphic-design-project-management.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Graphic design project request, stakeholder map, deliverable list, and timeline constraints.
-- **Output:** Graphic Design Project Management artifact with project plan, iteration schedule, review gates, and handoff standards.
-- **Side effects:** writes project plans and management documentation to local files.
-- **Dependencies:** none.
-- **Stop condition:** Graphic design project management plan complete; scope, timeline, iterations, reviews, and handoff standards explicit.
-- **Risk:** low because this skill writes local project documentation only.
-- **Boundary:** plans and documents the project; does not execute project management tools or modify external systems.
-
-# Graphic Design Project Management
-
-Use this skill when a graphic design project needs explicit scope, timeline, iteration cycles, review gates, and asset handoff standards. It should translate stakeholder expectations into a durable project plan that keeps quality, feedback, and delivery visible.
 
 ## Contract
 
 - Input: project brief, stakeholder map, deliverable list, timeline constraints, and quality requirements.
 - Output: graphic design project management artifact with project plan, iteration schedule, review gates, and handoff standards.
-- Scope: plan and document the project; do not execute external project management tools.
-- Rule: define one owner per deliverable and one approver per review gate.
-- Rule: separate creative iteration from stakeholder approval.
-- Rule: define acceptance criteria and quality gates before work begins.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GraphicDesignProjectManagementArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/graphic-design-project-management/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Graphic Design Project Management
+
+Use this skill when a graphic design project needs explicit scope, timeline, iteration cycles, review gates, and asset handoff standards. It should translate stakeholder expectations into a durable project plan that keeps quality, feedback, and delivery visible.
+
 
 ## Steps
 
@@ -110,20 +124,11 @@ Use this skill when a graphic design project needs explicit scope, timeline, ite
 
 **Completion criterion:** stakeholder communication plan saved.
 
-## Completion criteria
+## Completion
 
-- project scope and deliverables are explicit
-- timeline with milestones and critical path is defined
-- iteration schedule with feedback rules is defined
-- review gates with owners and approvers are defined
-- asset handoff standards are defined
-- quality gate checklist is defined
-- stakeholder communication plan is defined
-
-## References
-
-- `../../professional/professional-project-management/SKILL.md` — project scope, milestones, risks, dependencies
-- `../../project/to-tickets/SKILL.md` — tracer-bullet ticket decomposition
-- `references/domain.md` — graphic design project management terminology and frameworks
-- `references/brief-templates.md` — design brief structures and examples
-- `references/handoff-standards.md` — asset handoff formats and versioning patterns
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

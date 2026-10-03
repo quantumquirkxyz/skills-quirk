@@ -1,36 +1,62 @@
 ---
-name: mobile
-category: frontend
-maturity: stable
-version: 2
-description: Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.
-capabilities:
-  - design mobile architecture (React Native, Expo, Capacitor, native)
-  - plan offline-first sync, local storage, and conflict resolution
-  - design push notifications, deep linking, and app lifecycle
-  - evaluate platform-specific UX and performance trade-offs
-outputs:
-  - Mobile architecture document (platform choice, offline model, sync, notifications, platform UX)
+name: "mobile"
+category: "frontend"
+maturity: "stable"
+version: "2"
+description: "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Mobile design complete; offline and notification behavior explicit; platform trade-offs named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Mobile design complete; offline and notification behavior explicit; platform trade-offs named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/mobile.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Mobile
-
-Use this skill when the product needs to respect device constraints, offline behavior, platform-specific UX, or push notifications. It should keep the seam explicit so the app can remain reliable across different device conditions.
 
 ## Contract
 
 - Input: mobile brief, device constraints, platform targets, and interaction context.
 - Output: mobile architecture covering platform choice, offline model, sync, notifications, deep linking, and platform UX.
-- Scope: design the mobile shape, not the full implementation.
-- Rule: account for small screens, interruptions, connectivity loss, and battery constraints.
-- Rule: make offline behavior explicit when it matters.
-- Rule: keep platform-specific quirks visible rather than hidden behind generic advice.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MobileArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/mobile/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Mobile
+
+Use this skill when the product needs to respect device constraints, offline behavior, platform-specific UX, or push notifications. It should keep the seam explicit so the app can remain reliable across different device conditions.
+
 
 ## Process
 
@@ -96,18 +122,11 @@ Use this skill when the product needs to respect device constraints, offline beh
 
 **Completion criterion:** security controls named.
 
-## Completion criteria
+## Completion
 
-- the platform strategy is named
-- the app architecture is described
-- the offline-first model and sync strategy are explicit
-- push notifications and deep linking are designed
-- platform UX and performance targets are named
-- build, deploy, and update strategy is named
-- security controls are explicit
-
-## References
-
-- `../../frontend/nextjs/SKILL.md` — Next.js mobile considerations
-- `../../backend/backend-architecture/SKILL.md` — API design for mobile
-- `../../qa/qa-security-testing/SKILL.md` — mobile security testing
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

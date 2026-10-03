@@ -1,23 +1,58 @@
 ---
-name: accessibility-testing
-category: accessibility
-maturity: stable
-version: 1
-description: Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.
-capabilities:
-  - apply accessibility testing workflow
-  - produce accessibility testing artifact
-  - validate accessibility testing completion criteria
-outputs:
-  - Accessibility Testing artifact with findings, decisions, recommendations, and validation notes
+name: "accessibility-testing"
+category: "accessibility"
+maturity: "stable"
+version: "1"
+description: "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Test web interfaces for accessibility compliance complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Test web interfaces for accessibility compliance complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/accessibility-testing.json"
+diataxis: "how-to"
+tags: ["accessibility"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AccessibilityTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/accessibility-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # accessibility-testing
 
 Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — so barriers are found and fixed before users encounter them.
@@ -28,18 +63,6 @@ Test web interfaces for accessibility compliance — automated scans, manual key
 - Produce a ranked issue list by severity (A, AA, AAA)
 - Verify fixes with re-testing and regression checks
 
-## Contract
-
-### Input
-A URL, local path, or component to test. Optionally: target WCAG level (AA default), list of known patterns to skip.
-
-### Output
-An accessibility test report with:
-- Automated scan results (violations, warnings, passes)
-- Manual test results (keyboard, screen reader, contrast)
-- Issues ranked by severity with element selectors
-- Fix suggestions with code examples
-- Re-test checklist for each fixed issue
 
 ## Tools
 
@@ -112,20 +135,11 @@ Build the issue list:
 
 Fix A first, then AA. Track each fix with a re-test step.
 
-## Completion Criteria
+## Completion
 
-- Automated scan run with ≥2 tools
-- Keyboard navigation tested across all flows
-- Screen reader tested on ≥1 platform
-- Contrast ratios checked for all text/background pairs
-- Issues ranked by severity (A → AA → AAA)
-- Each issue has a fix suggestion with code
-- Each fixed issue has a re-test step
-
-## References
-
-- `../accessibility-design/SKILL.md` — design patterns that prevent issues
-- `../../frontend/frontend-design/SKILL.md` — visual design integration
-- `../../ux/interaction-design/SKILL.md` — interaction patterns
-- WCAG 2.1: https://www.w3.org/WAI/WCAG21/quickref/
-- axe API: https://github.com/dequelabs/axe-core
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

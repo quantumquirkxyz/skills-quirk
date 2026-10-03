@@ -1,36 +1,62 @@
 ---
-name: remix
-category: frontend
-maturity: stable
-version: 1
-description: Remix framework (loaders, actions, nested routes, progressive enhancement).
-capabilities:
-  - design remix route structure
-  - apply loaders and actions
-  - implement progressive enhancement
-  - plan nested route boundaries
-outputs:
-  - Remix artifact with findings, decisions, recommendations, and validation notes
+name: "remix"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Remix framework (loaders, actions, nested routes, progressive enhancement)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Remix design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Remix design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/remix.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Remix
-
-Use this skill when designing or reviewing Remix applications — loaders, actions, nested routes, mutations, and progressive enhancement.
 
 ## Contract
 
 - Input: route map, data requirements, mutation patterns, and user interaction flows.
 - Output: Remix route design with loader/action plan, data flow, and progressive enhancement strategy.
-- Scope: design Remix routing and data-fetching architecture; not full implementation.
-- Rule: every route owns its data via loaders; avoid shared mutable client state for server-owned data.
-- Rule: actions handle mutations; loaders handle reads — keep the separation explicit.
-- Rule: design for progressive enhancement so the app works without JavaScript.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `RemixArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/remix/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Remix
+
+Use this skill when designing or reviewing Remix applications — loaders, actions, nested routes, mutations, and progressive enhancement.
+
 
 ## Process
 
@@ -78,10 +104,11 @@ Use this skill when designing or reviewing Remix applications — loaders, actio
 - Rule: cache loader responses explicitly; avoid over-fetching or under-fetching per route.
 - Rule: keep mutations idempotent and side-effect-free on revalidation.
 
-## Completion Criteria
+## Completion
 
-- nested route tree is documented with boundaries marked
-- loader plan per route includes dependencies and caching strategy
-- mutation map documents action responsibilities and error handling
-- progressive enhancement strategy is verified with non-JS fallback
-- auth, session, and deployment configuration are planned
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

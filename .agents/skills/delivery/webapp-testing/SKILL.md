@@ -1,45 +1,62 @@
 ---
-name: webapp-testing
-category: delivery
-maturity: stable
-version: 1
-description: Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.
-capabilities:
-  - apply webapp testing workflow
-  - produce webapp testing artifact
-  - validate webapp testing completion criteria
-outputs:
-  - Webapp Testing artifact with findings, decisions, recommendations, and validation notes
+name: "webapp-testing"
+category: "delivery"
+maturity: "stable"
+version: "1"
+description: "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/webapp-testing.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Webapp Testing request, relevant context, constraints, and source evidence.
-- **Output:** Webapp Testing artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Webapp Testing
-
-Use this skill when the project needs guidance on how to test a frontend or full-stack web app. The goal is to select the right seam and keep each test level honest about what it proves.
 
 ## Contract
 
 - Input: web app surface, behavior under test, and test stack.
 - Output: a test seam recommendation, verification plan, and coverage boundaries.
-- Scope: choose testing strategy, not implementation details.
-- Rule: keep unit, integration, and end-to-end tests distinct in purpose.
-- Rule: avoid testing private UI internals when the public seam can prove the behavior.
-- Rule: identify the smallest observable check that proves the user-facing contract.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `WebappTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/webapp-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Webapp Testing
+
+Use this skill when the project needs guidance on how to test a frontend or full-stack web app. The goal is to select the right seam and keep each test level honest about what it proves.
+
 
 ## Steps
 
@@ -48,8 +65,11 @@ Use this skill when the project needs guidance on how to test a frontend or full
 3. Decide which level owns the check: unit, integration, or end-to-end.
 4. Define the boundary so tests do not overreach into internals.
 
-## Completion criteria
+## Completion
 
-- the best test seam is named
-- the test level is named
-- the observable behavior is clear enough to automate
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

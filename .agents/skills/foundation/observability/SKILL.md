@@ -1,51 +1,62 @@
 ---
-name: observability
-category: foundation
-maturity: stable
-version: 2
-description: Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.
-capabilities:
-  - define SLIs and SLOs for critical user journeys
-  - design dashboards for metrics, logs, traces, and alerts
-  - create alert rules with thresholds, routing, and escalation
-  - write incident response runbooks
-  - apply observability workflow
-  - validate observability completion criteria
-outputs:
-  - Observability artifact with SLI/SLO spec, dashboard design, alert rules, runbook, and validation notes
+name: "observability"
+category: "foundation"
+maturity: "stable"
+version: "2"
+description: "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Observability design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Observability design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "foundation"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/observability.json"
+diataxis: "how-to"
+tags: ["foundation"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Observability request, relevant context, constraints, and source evidence.
-- **Output:** Observability artifact with SLI/SLO spec, dashboard design, alert rules, runbook, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Observability design is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Observability
-
-Use this skill when a system needs to be understood in production, not just in tests. Design operational signals — SLIs, SLOs, dashboards, alerts, and runbooks — so the system stays understandable under load.
 
 ## Contract
 
 - Input: system surface, production risk, operational context, and available telemetry.
 - Output: SLI/SLO spec, dashboard design, alert rules, incident runbook, and signal ownership.
-- Scope: design observability and operational signals; not the monitoring stack implementation.
-- Rule: prioritize signals that explain user-visible failures first.
-- Rule: avoid noisy telemetry that does not help diagnosis.
-- Rule: connect signals to the seam where the system actually fails or slows down.
-- Rule: every paging alert needs a threshold, owner, severity, response target, and first diagnostic action.
-- Rule: define retention, sampling, cardinality, and redaction constraints for signals that may contain user or secret data.
-- Rule: state how deploy markers correlate with alerts so regressions can be attributed.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ObservabilityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/observability/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Observability
+
+Use this skill when a system needs to be understood in production, not just in tests. Design operational signals — SLIs, SLOs, dashboards, alerts, and runbooks — so the system stays understandable under load.
+
 
 ## Process
 
@@ -99,17 +110,11 @@ For each critical alert: what to check first? (metrics, logs, traces, recent dep
 
 **Completion criterion:** ownership and safety constraints are explicit.
 
-## Completion Criteria
+## Completion
 
-- critical user journeys are named
-- SLIs and SLOs are defined with error budgets
-- alert rules include thresholds, routing, escalation, and severity
-- dashboard structure covers overview, detail, trace, and historical views
-- incident runbooks exist for each critical alert
-- signal ownership, retention, sampling, and redaction are documented
-- diagnostic path is concrete enough to operate under load
-
-## References
-- `../../backend/backend-queues/SKILL.md` — background job observability
-- `../../devops/devops-ci-cd-pipeline/SKILL.md` — deploy marker correlation
-- `../../qa/performance-testing/SKILL.md` — performance signal design
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

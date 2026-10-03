@@ -12,9 +12,6 @@
         "boundary or refusal path",
         "deterministic"
       ],
-      "expectedSideEffects": [
-        "write-files"
-      ],
       "requiredReferences": [
         "references/scenario-fixture-template.json",
         "references/behavioral-fixture-template.md"

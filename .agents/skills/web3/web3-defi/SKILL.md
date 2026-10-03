@@ -1,24 +1,57 @@
 ---
-name: web3-defi
-category: web3
-maturity: stable
-version: 2
-description: Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.
-capabilities:
-  - classify DeFi protocols (AMM, lending, stablecoin, derivatives, intents, LST, LRT)
-  - analyse core mechanics (invariants, parameters, oracles, liquidation)
-  - assess economic security (TVL, collateral ratios, solvency, liquidity risk)
-  - evaluate MEV, intents, solver networks, and composability risks
-outputs:
-  - DeFi analysis report (protocol mechanics, economic security, MEV/intents, attack surface, recommendation)
+name: "web3-defi"
+category: "web3"
+maturity: "stable"
+version: "2"
+description: "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Protocol classified; mechanics and economic security documented; recommendation tied to risk profile.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Protocol classified; mechanics and economic security documented; recommendation tied to risk profile."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "web3"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/web3-defi.json"
+diataxis: "how-to"
+tags: ["web3"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `Web3DefiArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/web3-defi/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # DeFi Protocol Analysis
 
 Analyse a **DeFi protocol** — AMM, lending, stablecoin, derivative, intents, or restaking — for mechanics, economic security, MEV protection, composability, and regulatory posture.
@@ -110,3 +143,12 @@ Assess overall risk / reward:
 - Rule: include MEV, intents, and solver dynamics when relevant.
 - Rule: separate protocol risk from token / governance risk.
 - Rule: prefer protocols with transparent solvency, non-custodial design, and audited code.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

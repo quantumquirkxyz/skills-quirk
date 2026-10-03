@@ -1,35 +1,59 @@
 ---
-name: math-literature-track
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.
-capabilities:
-  - monitor arXiv categories (math.AG, math.NT, math.AP, math.PR, math.CO, math.OC) and filter by author/keyword
-  - pull MathSciNet / zbMATH metadata and citation graph
-  - build a personal digest of new papers with relevance ranking
-  - track references, forward citations, and reviews of a given theorem/paper
-outputs:
-  - Markdown digest (weekly / monthly) with grouped papers, abstracts, citations, and a relevance verdict
-  - optional CSV / BibTeX of new entries
+name: "math-literature-track"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: digest artifact saved with grouped papers and relevance scores; all sources cited.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "digest artifact saved with grouped papers and relevance scores; all sources cited."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "math"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-literature-track.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** researcher's keywords, authors, categories, and time window.
-- **Output:** Markdown digest and optional BibTeX/CSV.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** digest saved with grouped papers, citations, and relevance notes.
-- **Risk:** low.
-- **Boundary:** reads and summarises; no new mathematical claims.
+- Input: researcher's keywords, authors, categories, and time window.
+- Output: Markdown digest and optional BibTeX/CSV.
+- Scope: reads and summarises; no new mathematical claims.
+- Rule: reads and summarises; no new mathematical claims.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathLiteratureTrackArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-literature-track/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Math Literature Tracking
 
 Track the **front of mathematics** that matters to the researcher, with explicit sources and a personal relevance signal.
@@ -94,3 +118,12 @@ Markdown artifact with: header (window), groups, scored items, follow-ups (paper
 
 - This is **monitoring**, not **review** — for deep analysis use `research` or `scientific-literature-review`.
 - Maintain a persistent `digest/` folder indexed by date.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,35 +1,59 @@
 ---
-name: quant-factors
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.
-capabilities:
-  - define a factor signal with universe and rebalance rules
-  - run a backtest with cost model and out-of-sample split
-  - stress-test across subperiods, sectors, and turnover
-  - report statistics with significance tests
-outputs:
-  - Markdown artifact: signal definition, biases, backtest setup, stress tests, statistics, verdict
+name: "quant-factors"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Artifact present with all six sections; verdict is honest and grounded.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Artifact present with all six sections; verdict is honest and grounded."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "quant"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/quant-factors.json"
+diataxis: "how-to"
+tags: ["quant"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** factor concept and universe definition.
-- **Output:** Markdown backtest artifact.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** artifact complete with verdict.
-- **Risk:** low.
-- **Boundary:** reasoning and optional code; no system changes.
----
+- Input: factor concept and universe definition.
+- Output: Markdown backtest artifact.
+- Scope: reasoning and optional code; no system changes.
+- Rule: reasoning and optional code; no system changes.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `QuantFactorsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/quant-factors/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Quant Factors
 
 Build a **factor** — a signal that explains cross-sectional returns — and test it with discipline. A factor without a robust test is a story.
@@ -103,3 +127,12 @@ Report with discipline:
 Markdown artifact with: signal definition, biases mitigated, backtest setup, stress tests, statistics, and a **verdict** — "robust", "weak", "fragile", or "fails".
 
 **Completion criterion:** artifact present; verdict is honest and grounded in the numbers, not in narrative.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

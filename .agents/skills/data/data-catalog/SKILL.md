@@ -1,36 +1,59 @@
 ---
-name: data-catalog
-category: data
-maturity: stable
-version: 1
-description: Data catalog (metadata management, discovery, classification, data mesh, governance).
-capabilities:
-  - manage metadata for datasets, tables, and streams
-  - enable data discovery with search and lineage
-  - classify data assets (PII, sensitivity, domain)
-  - design data mesh domain ownership
-outputs:
-  - Catalog schema and metadata model
-  - Search and discovery interface design
-  - Classification and governance policy
+name: "data-catalog"
+category: "data"
+maturity: "stable"
+version: "1"
+description: "Data catalog (metadata management, discovery, classification, data mesh, governance)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Catalog schema saved; discovery interface designed; governance policy defined.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Catalog schema saved; discovery interface designed; governance policy defined."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-catalog.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** data asset inventory, domain boundaries, governance requirements.
-- **Output:** catalog schema + discovery design + governance policy.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** catalog schema saved; discovery designed.
-- **Risk:** low.
-- **Boundary:** designs catalog; does not ingest metadata automatically.
+- Input: data asset inventory, domain boundaries, governance requirements.
+- Output: catalog schema + discovery design + governance policy.
+- Scope: designs catalog; does not ingest metadata automatically.
+- Rule: designs catalog; does not ingest metadata automatically.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataCatalogArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-catalog/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Data Catalog
 
 Design a **data catalog** — metadata management, discovery, classification, data mesh, and governance.
@@ -86,3 +109,12 @@ Design a **data catalog** — metadata management, discovery, classification, da
 - Rule: separate technical metadata from business metadata so each can evolve independently.
 - Rule: require approval workflows for restricted data and sensitive PII.
 - Rule: make catalog entries deletable only with audit trail and steward consent.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

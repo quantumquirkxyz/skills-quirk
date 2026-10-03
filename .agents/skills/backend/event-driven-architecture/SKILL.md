@@ -1,36 +1,62 @@
 ---
-name: event-driven-architecture
-category: backend
-maturity: stable
-version: 1
-description: Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).
-capabilities:
-  - design event-driven system architecture
-  - choose messaging pattern and broker
-  - plan choreography and orchestration flows
-  - define event schema and contract strategy
-outputs:
-  - Event-driven architecture artifact with findings, decisions, recommendations, and validation notes
+name: "event-driven-architecture"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Event-driven architecture design complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Event-driven architecture design complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/event-driven-architecture.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Event-Driven Architecture
-
-Use this skill when designing event-driven systems — Kafka, NATS, EventBridge, SQS/SNS — with choreography, orchestration, event schemas, and delivery guarantees.
 
 ## Contract
 
 - Input: business workflows, service boundaries, data change frequency, and consistency requirements.
 - Output: event architecture with topic/stream design, schema registry plan, and flow diagrams.
-- Scope: design event topology and contracts; not broker provisioning unless explicitly requested.
-- Rule: events describe what happened, not what to do; keep them immutable and past-tense.
-- Rule: define schema before topic creation; version schemas explicitly.
-- Rule: choose choreography for loose coupling; choose orchestration for explicit control flow.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `EventDrivenArchitectureArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/event-driven-architecture/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Event-Driven Architecture
+
+Use this skill when designing event-driven systems — Kafka, NATS, EventBridge, SQS/SNS — with choreography, orchestration, event schemas, and delivery guarantees.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing event-driven systems — Kafka, NATS, EventBridge,
 - Rule: set retention and compaction policies based on replay and debugging needs, not unlimited storage.
 - Rule: avoid chatty event topologies; prefer fewer, richer events over many tiny events.
 
-## Completion Criteria
+## Completion
 
-- event inventory and workflow map are documented
-- messaging pattern and broker are chosen with rationale
-- topic/stream design includes partition, retention, and DLQ strategy
-- schema format, compatibility rules, and versioning policy are documented
-- delivery guarantee matrix and idempotency strategy are documented
-- observability strategy and operational runbook are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

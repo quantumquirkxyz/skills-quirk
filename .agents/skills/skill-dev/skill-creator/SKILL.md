@@ -1,30 +1,57 @@
 ---
-name: skill-creator
-category: skill-dev
-maturity: stable
-version: 4
-description: Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.
-capabilities:
-  - run an interactive skill-creation interview
-  - propose skill architecture, resources, and workflow from user input
-  - gather lightweight research signals to improve the skill design
-  - suggest skill names from keywords and category
-  - generate a complete skill structure from interview results
-  - validate skills against repository quality standards
-  - keep compatibility with init_skill.py and package_skill.py
-outputs:
-  - Skill creation artifact with interview findings, design proposals, research notes, and generated files
-  - Complete skill directory ready for review and use
-  - Validation report with completion criteria
-sideEffects:
-  - write-files
+name: "skill-creator"
+category: "skill-dev"
+maturity: "stable"
+version: "4"
+description: "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability."
+capabilities: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: The user has completed the interview and generated a valid skill structure, or an existing skill has been validated with the supported tooling.
-risk: medium
-trustTier: 3
-maxIterations: 10
+stopCondition: "The user has completed the interview and generated a valid skill structure, or an existing skill has been validated with the supported tooling."
+risk: "medium"
+trustTier: "3"
+maxIterations: "10"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/skill-creator.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SkillCreatorArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/skill-creator/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Operational Contract
 
 - **Input:** Skill creation request, user interview answers, optional interview JSON, and validation parameters.
@@ -157,3 +184,12 @@ This skill was updated from an earlier worksheet-style guide into an interactive
 - `assets/README.md` for static asset conventions.
 - `templates/interview_questions.yaml` for interview prompts.
 - `templates/proposal_templates.yaml` for design proposal patterns.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

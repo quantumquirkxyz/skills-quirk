@@ -1,38 +1,59 @@
 ---
-name: compliance
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)
-capabilities:
-  - map controls to SOC2, ISO27001, GDPR, HIPAA, PCI DSS requirements
-  - collect and organise audit evidence (policies, logs, configurations, access reviews)
-  - identify gaps between current state and required controls
-  - produce remediation plans with owners, timelines, and verification steps
-  - prepare for external audits and respond to auditor requests
-outputs:
-  - Compliance gap analysis report
-  - Evidence pack (per control / per framework)
-  - Remediation roadmap with priorities and deadlines
-  - Audit-ready control matrix
+name: "compliance"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Gap analysis complete; evidence pack assembled; remediation roadmap accepted.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Gap analysis complete; evidence pack assembled; remediation roadmap accepted."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "sec"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/compliance.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** system description, applicable frameworks, existing policies and evidence.
-- **Output:** gap analysis + evidence pack + remediation roadmap + control matrix.
-- **Side effects:** none (assessment only; does not implement fixes or certify compliance).
-- **Dependencies:** access to systems, policies, logs, and stakeholders for evidence gathering.
-- **Stop condition:** all applicable controls mapped; gaps documented with remediation steps; evidence catalogued.
-- **Risk:** medium — compliance findings may have legal, regulatory, and reputational consequences; requires expert validation before certification.
-- **Boundary:** assesses readiness and documents evidence; does not perform certification or legal attestation.
+- Input: system description, applicable frameworks, existing policies and evidence.
+- Output: gap analysis + evidence pack + remediation roadmap + control matrix.
+- Scope: assesses readiness and documents evidence; does not perform certification or legal attestation.
+- Rule: assesses readiness and documents evidence; does not perform certification or legal attestation.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ComplianceArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/compliance/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Compliance
 
 Assess **compliance posture** across SOC2, ISO27001, GDPR, HIPAA, and PCI DSS — with explicit control mapping, evidence collection, gap analysis, and remediation planning.
@@ -119,3 +140,12 @@ Assemble final package:
 - Rule: assign a single owner to every remediation item; no unowned items in the roadmap.
 - Rule: separate "control exists but undocumented" from "control does not exist" — they require different remediation.
 - Rule: verify remediation effectiveness with objective evidence (re-scan, re-test, re-attest), not self-declaration alone.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

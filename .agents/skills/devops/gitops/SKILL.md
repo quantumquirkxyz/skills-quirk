@@ -1,38 +1,59 @@
 ---
-name: gitops
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.
-capabilities:
-  - design GitOps architecture (Git as source of truth, declarative manifests, automated reconciliation)
-  - configure ArgoCD or Flux for cluster sync
-  - implement drift detection and remediation policies
-  - design progressive delivery (canary, blue/green, feature flags, traffic shifting)
-  - document rollback and disaster recovery procedures
-outputs:
-  - GitOps architecture diagram (text/Markdown)
-  - Reconciliation policy and sync configuration
-  - Drift detection and remediation runbook
-  - Progressive delivery strategy and rollback plan
+name: "gitops"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; sync configuration documented; drift runbook complete; progressive delivery strategy defined.
-risk: medium
-trustTier: 3
-maxIterations: 7
+stopCondition: "Architecture diagram saved; sync configuration documented; drift runbook complete; progressive delivery strategy defined."
+risk: "medium"
+trustTier: "3"
+maxIterations: "7"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/gitops.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** Kubernetes cluster configuration, Git repository structure, deployment requirements, compliance constraints.
-- **Output:** GitOps architecture + sync policy + drift runbook + progressive delivery strategy.
-- **Side effects:** may modify cluster state when executed; GitOps controllers reconcile continuously.
-- **Dependencies:** Kubernetes cluster, Git provider, GitOps tool (ArgoCD / Flux), container registry.
-- **Stop condition:** architecture documented; sync policy defined; drift runbook complete; progressive delivery strategy saved.
-- **Risk:** medium — GitOps automation changes cluster state; misconfiguration can cause outages.
-- **Boundary:** designs GitOps workflow; does not apply configuration to production clusters unless explicitly instructed.
+- Input: Kubernetes cluster configuration, Git repository structure, deployment requirements, compliance constraints.
+- Output: GitOps architecture + sync policy + drift runbook + progressive delivery strategy.
+- Scope: designs GitOps workflow; does not apply configuration to production clusters unless explicitly instructed.
+- Rule: designs GitOps workflow; does not apply configuration to production clusters unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GitopsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/gitops/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # GitOps
 
 Design a **GitOps** workflow using ArgoCD or Flux with declarative sync, drift detection, and progressive delivery.
@@ -87,3 +108,12 @@ Design a **GitOps** workflow using ArgoCD or Flux with declarative sync, drift d
 - Rule: implement drift detection with clear remediation policy; investigate root cause before auto-remediating.
 - Rule: use progressive delivery for production changes; do not deploy directly to production without canary or approval gate.
 - Rule: keep secrets out of Git; use sealed secrets or external secrets operator with audit logging.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

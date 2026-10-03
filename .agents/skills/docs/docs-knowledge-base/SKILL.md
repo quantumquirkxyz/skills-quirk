@@ -1,33 +1,63 @@
 ---
-name: docs-knowledge-base
-category: docs
-maturity: stable
-version: 1
-description: Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.
-capabilities:
-  - organize knowledge-base content
-  - design durable navigation
-  - identify stale or missing references
-outputs:
-  - knowledge-base structure or maintenance plan with owners and update rules
+name: "docs-knowledge-base"
+category: "docs"
+maturity: "stable"
+version: "1"
+description: "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Knowledge-base entries are findable, scoped, owned, and linked to durable sources.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Knowledge-base entries are findable, scoped, owned, and linked to durable sources."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "adr"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-knowledge-base.json"
+diataxis: "how-to"
+tags: ["docs"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# docs-knowledge-base
-
-Use this skill when building or maintaining a repository knowledge base, glossary, handbook, or indexed guidance set that multiple agents or contributors rely on.
 
 ## Contract
 
 - Input: existing docs, target audiences, repeated questions, and source-of-truth locations.
 - Output: information architecture, index entries, glossary rules, and maintenance plan.
-- Scope: durable knowledge organization; not one-off task notes unless they should become reusable references.
-- Boundary: link to source material rather than duplicating details that will drift quickly.
+- Scope: link to source material rather than duplicating details that will drift quickly.
+- Rule: link to source material rather than duplicating details that will drift quickly.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DocsKnowledgeBaseArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/docs-knowledge-base/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# docs-knowledge-base
+
+Use this skill when building or maintaining a repository knowledge base, glossary, handbook, or indexed guidance set that multiple agents or contributors rely on.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when building or maintaining a repository knowledge base, glossar
 5. Add maintenance rules for owners, review cadence, and drift triggers.
 6. Validate the structure by tracing common lookup paths.
 
-## Completion Criteria
+## Completion
 
-- target audiences and common lookup paths are named
-- canonical sources and duplicated content are distinguished
-- ownership or review cadence is explicit
-- stale or missing entries are called out
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

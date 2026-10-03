@@ -1,36 +1,57 @@
 ---
-name: lockfile-maintenance
-category: skill-dev
-maturity: stable
-version: 1
-description: Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.
-capabilities:
-  - detect lockfile drift
-  - update skill content hashes
-  - reconcile missing and extra lock entries
-  - validate lockfile consistency
-outputs:
-  - Lockfile maintenance report with changed entries, removed entries, hash evidence, and validation command results
-sideEffects:
-  - update-lockfile
-dependencies:
-  - skill-quality-gate
-stopCondition: Lockfile entries match the current skill tree or every drift item has a stated blocker and recommended repair.
-risk: low
-trustTier: 2
-maxIterations: 5
+name: "lockfile-maintenance"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved."
+capabilities: ""
+outputs: ""
+sideEffects: ""
+dependencies: ""
+stopCondition: "Lockfile entries match the current skill tree or every drift item has a stated blocker and recommended repair."
+risk: "low"
+trustTier: "2"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "fast"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/lockfile-maintenance.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** current skill tree, `skills-lock.json`, and the set of intended skill additions, moves, deletions, or edits.
-- **Output:** lockfile maintenance report listing added, updated, removed, and unchanged entries plus validation evidence.
-- **Side effects:** update the lockfile only; do not edit skill behavior while performing lock maintenance.
-- **Dependencies:** use `skill-quality-gate` after lockfile changes so structural drift does not pass unnoticed.
-- **Stop condition:** the lockfile reflects the current canonical skill set, or unresolved drift is isolated with exact paths.
-- **Risk:** low because the lockfile is metadata, but incorrect hashes can hide real skill drift.
-- **Boundary:** do not normalize, rewrite, or reorder unrelated repository files while maintaining the lockfile.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `LockfileMaintenanceArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/lockfile-maintenance/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: enumerate canonical `SKILL.md` files from `.agents/skills` before changing lock data.
@@ -62,10 +83,11 @@ node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs -
 
 The dry run reports added, updated, and removed lock entries without changing files. The write mode preserves the lockfile schema, sorts skill names, and writes hashes from the exact current `SKILL.md` bytes.
 
-## Completion Criteria
+## Completion
 
-- every canonical skill has a lock entry with a current hash
-- deleted or moved skills are reflected intentionally
-- validation commands ran and their result is reported
-- unrelated lockfile churn is avoided
-- remaining drift, if any, includes exact skill names and paths
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,36 +1,62 @@
 ---
-name: styling
-category: frontend
-maturity: stable
-version: 1
-description: Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).
-capabilities:
-  - design styling architecture
-  - configure utility-first and component CSS
-  - create design token system
-  - plan CVA and variant patterns
-outputs:
-  - Styling artifact with findings, decisions, recommendations, and validation notes
+name: "styling"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Styling design complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Styling design complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/styling.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Styling
-
-Use this skill when designing the styling architecture for a frontend project — utility-first CSS, CSS modules, component variants, design tokens, and theme systems.
 
 ## Contract
 
 - Input: brand system, component library, design requirements, and team conventions.
 - Output: styling architecture with tool choices, token definitions, and component styling strategy.
-- Scope: design styling system and conventions; not pixel-perfect component implementation.
-- Rule: define design tokens as the single source of truth for colors, spacing, typography, and motion.
-- Rule: prefer scoped styles to prevent leakage; keep specificity predictable.
-- Rule: align utility classes and component variants to the same token set.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `StylingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/styling/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Styling
+
+Use this skill when designing the styling architecture for a frontend project — utility-first CSS, CSS modules, component variants, design tokens, and theme systems.
+
 
 ## Process
 
@@ -78,10 +104,11 @@ Use this skill when designing the styling architecture for a frontend project �
 - Rule: verify contrast ratios for text and interactive elements in all themes.
 - Rule: avoid deep selector nesting; keep specificity flat and predictable.
 
-## Completion Criteria
+## Completion
 
-- styling approach is selected with rationale
-- design token catalog is defined with format and theme strategy
-- build tooling is configured with content sources documented
-- variant API is designed for key components
-- theme, responsive, and accessibility styling strategy is documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

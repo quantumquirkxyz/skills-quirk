@@ -8,12 +8,9 @@
     {
       "skill": "skill-dev/lockfile-maintenance",
       "mustMention": [
-        "detect lockfile drift",
+        "distinguish content hash drift from path drift",
         "update hashes from the exact bytes",
         "run the repository validator"
-      ],
-      "expectedSideEffects": [
-        "update-lockfile"
       ],
       "requiredReferences": [
         "scripts/update-lockfile.mjs"

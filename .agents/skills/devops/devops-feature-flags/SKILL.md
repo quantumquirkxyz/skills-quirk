@@ -1,36 +1,59 @@
 ---
-name: devops-feature-flags
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.
-capabilities:
-  - design flag lifecycle (create → gradual rollout → full → remove)
-  - configure targeting rules (user segment, percentage, environment)
-  - design kill switches and emergency rollback
-  - manage flag inventory and technical debt
-outputs:
-  - Feature flag lifecycle document
-  - Targeting rules template
-  - Flag inventory with owners and retirement dates
+name: "devops-feature-flags"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Lifecycle documented; targeting rules defined; flag inventory saved.
-risk: medium
-trustTier: 3
-maxIterations: 4
+stopCondition: "Lifecycle documented; targeting rules defined; flag inventory saved."
+risk: "medium"
+trustTier: "3"
+maxIterations: "4"
+promptVersion: "2.0"
+artifactType: "feature-flag"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/devops-feature-flags.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** features to control, rollout requirements, environments.
-- **Output:** flag lifecycle + targeting rules + inventory.
-- **Side effects:** none (design only; execution requires flag platform).
-- **Dependencies:** feature flag platform (LaunchDarkly / Split / Unleash / Flagsmith / in-house).
-- **Stop condition:** lifecycle and targeting rules documented.
-- **Risk:** medium — flag mishandling can expose unready features or cause outages.
-- **Boundary:** designs flag system; does not deploy flags unless explicitly instructed.
+- Input: features to control, rollout requirements, environments.
+- Output: flag lifecycle + targeting rules + inventory.
+- Scope: designs flag system; does not deploy flags unless explicitly instructed.
+- Rule: designs flag system; does not deploy flags unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DevopsFeatureFlagsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/devops-feature-flags/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Feature Flag System Design
 
 Design a **feature flag system** — rollouts, targeting, kill switches — with lifecycle management and operational runbooks.
@@ -76,3 +99,12 @@ Per flag: name, owner, purpose, type, created date, retirement date, dependencie
 
 ### 6. Deliver
 Flag lifecycle document + targeting rules template + flag inventory.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

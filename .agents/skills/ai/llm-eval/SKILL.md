@@ -1,36 +1,59 @@
 ---
-name: llm-eval
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.
-capabilities:
-  - design benchmark tasks (question answering, summarisation, coding, reasoning)
-  - define scoring rubrics (exact match, LLM-as-judge, human-in-the-loop)
-  - configure model comparison protocols (paired, blind, A/B)
-  - automate evaluation pipelines with CI integration
-outputs:
-  - Benchmark suite (tasks, prompts, golden answers, scoring rules)
-  - Model comparison report (leaderboard, statistical significance, cost/latency)
-  - Evaluation harness configuration (runner, scorer, CI integration)
+name: "llm-eval"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Benchmark suite defined; comparison protocol documented; harness configuration complete.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Benchmark suite defined; comparison protocol documented; harness configuration complete."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "ai"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/llm-eval.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** model list or candidate, task description, quality bar, budget constraints.
-- **Output:** benchmark suite + comparison report + harness configuration.
-- **Side effects:** may invoke models for evaluation runs; may create eval artifacts.
-- **Dependencies:** LLM API access, eval harness framework (promptfoo, LangSmith, custom).
-- **Stop condition:** benchmark suite defined; comparison protocol documented; harness configuration complete.
-- **Risk:** medium — eval results drive model selection; requires reproducibility and statistical rigour.
-- **Boundary:** designs and documents evaluation; does not approve production model changes unless explicitly instructed.
+- Input: model list or candidate, task description, quality bar, budget constraints.
+- Output: benchmark suite + comparison report + harness configuration.
+- Scope: designs and documents evaluation; does not approve production model changes unless explicitly instructed.
+- Rule: designs and documents evaluation; does not approve production model changes unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `LlmEvalArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/llm-eval/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # LLM Evaluation Harness
 
 Design an **LLM evaluation harness** — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.
@@ -92,3 +115,12 @@ Design an **LLM evaluation harness** — benchmark design, model comparison, aut
 - Rule: track cost and latency as first-class metrics, not afterthoughts.
 - Rule: version prompts, datasets, and model snapshots together for reproducibility.
 - Rule: define regression thresholds before running experiments to avoid p-hacking.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

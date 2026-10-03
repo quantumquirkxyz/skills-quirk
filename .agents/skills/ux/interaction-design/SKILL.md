@@ -1,23 +1,58 @@
 ---
-name: interaction-design
-category: ux
-maturity: stable
-version: 1
-description: Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.
-capabilities:
-  - apply interaction design workflow
-  - produce interaction design artifact
-  - validate interaction design completion criteria
-outputs:
-  - Interaction Design artifact with findings, decisions, recommendations, and validation notes
+name: "interaction-design"
+category: "ux"
+maturity: "stable"
+version: "1"
+description: "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Design user interactions complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Design user interactions complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/interaction-design.json"
+diataxis: "how-to"
+tags: ["ux"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `InteractionDesignArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/interaction-design/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # interaction-design
 
 Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.
@@ -28,17 +63,6 @@ Design user interactions — task flows, screen states, transitions, error state
 - Design graceful error recovery
 - Create consistent interaction patterns across the product
 
-## Contract
-
-### Input
-A feature or screen to design: user goal, primary flow, error scenarios.
-
-### Output
-An interaction design specification with:
-- Happy path and alternative paths
-- Screen states (empty, loading, error, success)
-- Transition and feedback patterns
-- Accessibility requirements
 
 ## Patterns
 
@@ -71,3 +95,12 @@ An interaction design specification with:
 - `../ux-research/SKILL.md` — grounding design in research
 - `../../frontend/frontend-design/SKILL.md` — visual and interaction system
 - `../../accessibility/accessibility/SKILL.md` — inclusive interactions
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

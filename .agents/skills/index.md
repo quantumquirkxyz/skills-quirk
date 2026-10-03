@@ -6,8 +6,8 @@
 
 | Recurso | Uso |
 |---|---|
-| [`docs/agents/skill-inventory.md`](../../docs/agents/skill-inventory.md) | Inventario por skill con estado de lockfile, compatibilidad y descripción |
-| [`docs/agents/skills-map.md`](../../docs/agents/skills-map.md) | Mapa conceptual de flujos, gobierno, plataforma y especializaciones |
+| [`docs/agents/skill-inventory.md`](../../docs/reference/agents/skill-inventory.md) | Inventario por skill con estado de lockfile, compatibilidad y descripción |
+| [`docs/agents/skills-map.md`](../../docs/reference/agents/skills-map.md) | Mapa conceptual de flujos, gobierno, plataforma y especializaciones |
 | [`skills-lock.json`](../../skills-lock.json) | Lista canónica de nombres y hashes actuales |
 | [`.claude/skills/`](../../.claude/skills/) | Vista de compatibilidad mediante symlinks planos por nombre de skill |
 

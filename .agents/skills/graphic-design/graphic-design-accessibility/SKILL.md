@@ -1,8 +1,47 @@
 ---
-name: graphic-design-accessibility
+name: "graphic-design-accessibility"
 description: "Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital."
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/graphic-design-accessibility.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: design brief, visual content requirements, WCAG level target, and accessibility constraints.
+- Output: accessible design specification with compliance report and remediation guidance.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GraphicDesignAccessibilityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/graphic-design-accessibility/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Graphic Design Accessibility
 
 ## Purpose
@@ -25,6 +64,8 @@ Ensure graphic design is accessible to people with disabilities by applying WCAG
 5. **Validate** with `scripts/validate_accessibility.py`
 6. **Deliver accessible design specification** with compliance report
 
+
+
 ## Bundled Resources
 
 - `references/wcag-criteria.md` — WCAG 2.1/2.2 Level AA requirements for visual design
@@ -34,3 +75,12 @@ Ensure graphic design is accessible to people with disabilities by applying WCAG
 - `references/inclusive-patterns.md` — Inclusive design patterns for various disabilities
 - `assets/accessible-templates/` — HTML templates demonstrating accessible design
 - `scripts/validate_accessibility.py` — Automated WCAG compliance checker
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

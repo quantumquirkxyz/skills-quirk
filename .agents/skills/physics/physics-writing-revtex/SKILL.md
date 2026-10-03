@@ -1,36 +1,59 @@
 ---
-name: physics-writing-revtex
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.
-capabilities:
-  - format papers with RevTeX (APS) or IOP / AIP templates
-  - prepare figures consistent with journal conventions (line thickness, font size, colour rules)
-  - manage citations with BibTeX / BibLaTeX and journal-specific styles
-  - prepare submission package (source + compiled PDF + figures + metadata)
-outputs:
-  - Compiled PDF in journal format
-  - Source .tex + .bib + figure files
-  - Figure checklist (resolution, format, colour mode, font size)
+name: "physics-writing-revtex"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: PDF compiled in journal format; figure checklist complete; submission package ready.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "PDF compiled in journal format; figure checklist complete; submission package ready."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-writing-revtex.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** paper content, journal choice.
-- **Output:** compiled PDF + source package + figure checklist.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** PDF compiled; checklist complete.
-- **Risk:** low.
-- **Boundary:** formats and prepares; does not write scientific content.
+- Input: paper content, journal choice.
+- Output: compiled PDF + source package + figure checklist.
+- Scope: formats and prepares; does not write scientific content.
+- Rule: formats and prepares; does not write scientific content.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsWritingRevtexArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-writing-revtex/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Physics Paper Writing — RevTeX and Formats
 
 Prepare a **physics paper** in the target journal format — RevTeX (APS), IOP, AIP — with figures meeting conventions and a submission package.
@@ -102,3 +125,12 @@ Prepare:
 - `README.md` describing file structure.
 
 **Completion criterion:** package saved; all files present.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

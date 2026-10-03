@@ -1,35 +1,57 @@
 ---
-name: side-effect-auditor
-category: skill-dev
-maturity: stable
-version: 1
-description: Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.
-capabilities:
-  - compare declared side effects to workflow behavior
-  - identify understated or overstated risk metadata
-  - check trust tier consistency
-  - recommend metadata repairs for mutating skills
-outputs:
-  - Side-effect audit report with mismatches, severity, exact frontmatter fields, and recommended corrections
+name: "side-effect-auditor"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly."
+capabilities: ""
+outputs: ""
 sideEffects: []
-dependencies:
-  - skill-quality-gate
-stopCondition: Side-effect mismatches are classified with recommended frontmatter changes or the audited skills are confirmed consistent.
-risk: low
-trustTier: 1
-maxIterations: 5
+dependencies: ""
+stopCondition: "Side-effect mismatches are classified with recommended frontmatter changes or the audited skills are confirmed consistent."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/side-effect-auditor.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** one or more skills, their frontmatter, body instructions, referenced workflows, and recent validation findings.
-- **Output:** side-effect audit report with mismatches, severity, rationale, and recommended metadata changes.
-- **Side effects:** none; this skill audits and recommends but does not edit metadata.
-- **Dependencies:** use `skill-quality-gate` when the side-effect audit is part of a broader release check.
-- **Stop condition:** every audited skill is classified as consistent, over-declared, under-declared, or blocked by missing evidence.
-- **Risk:** low because this is a diagnostic workflow; the main risk is misclassifying operational authority.
-- **Boundary:** do not assume a skill is safe because it has `sideEffects: []`; compare the full body and referenced files to the declaration.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SideEffectAuditorArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/side-effect-auditor/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+## 
+## 
 ## Rules
 
 - Rule: inspect both frontmatter and body instructions before deciding whether side effects are accurate.
@@ -54,10 +76,11 @@ maxIterations: 5
 
 - `references/side-effect-matrix.md` - expected metadata for common mutating and diagnostic operations.
 
-## Completion Criteria
+## Completion
 
-- every audited skill has a consistency classification
-- blockers name the missing or incorrect side-effect declaration
-- recommendations include exact field-level edits
-- risk and trust tier mismatches are explained from skill text evidence
-- the audit result can be fed directly into an implementation pass
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

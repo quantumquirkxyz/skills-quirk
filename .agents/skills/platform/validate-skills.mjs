@@ -43,7 +43,18 @@ function parseFrontmatter(text) {
     const key = line.match(/^([A-Za-z][A-Za-z0-9-]*):\s*(.*)$/);
     if (key) {
       active = key[1];
-      out[active] = key[2] === '' || key[2] === '[]' ? [] : key[2].replace(/^["']|["']$/g, '');
+      let raw = key[2].replace(/^["']|["']$/g, '');
+      if (raw === '') {
+        out[active] = [];
+      } else if (raw.startsWith('[') && raw.endsWith(']')) {
+        try {
+          out[active] = JSON.parse(raw);
+        } catch {
+          out[active] = raw.slice(1, -1).split(',').map((s) => s.trim()).filter(Boolean);
+        }
+      } else {
+        out[active] = raw;
+      }
       continue;
     }
     const item = line.match(/^\s+-\s+(.+)$/);

@@ -1,36 +1,62 @@
 ---
-name: caching-advanced
-category: backend
-maturity: stable
-version: 1
-description: Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).
-capabilities:
-  - design advanced cache architectures
-  - configure Redis and Memcached
-  - optimize CDN strategies
-  - implement stampede prevention and cache invalidation
-outputs:
-  - Advanced caching design with store selection, key strategy, invalidation policy, stampede prevention, consistency model, and operational runbook
+name: "caching-advanced"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Cache architecture, invalidation strategy, stampede prevention, and consistency model are explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Cache architecture, invalidation strategy, stampede prevention, and consistency model are explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/caching-advanced.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Advanced Caching
-
-Use this skill when designing, reviewing, or optimizing advanced caching systems — Redis, Memcached, CDN, cache invalidation patterns, stampede prevention, consistency models, and multi-tier cache hierarchies.
 
 ## Contract
 
 - Input: data access patterns, read/write ratio, latency requirements, consistency needs, traffic profile, and failure tolerance.
 - Output: advanced caching design with store selection, key strategy, invalidation policy, stampede prevention, consistency model, and operational runbook.
-- Scope: advanced caching architecture; not infrastructure provisioning unless explicitly requested.
-- Rule: classify data by access frequency, mutability, and consistency tolerance before selecting stores.
-- Rule: treat the cache as a performance optimization, not a source of truth.
-- Rule: make invalidation, consistency, and failure behavior explicit and testable.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CachingAdvancedArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/caching-advanced/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Advanced Caching
+
+Use this skill when designing, reviewing, or optimizing advanced caching systems — Redis, Memcached, CDN, cache invalidation patterns, stampede prevention, consistency models, and multi-tier cache hierarchies.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing, reviewing, or optimizing advanced caching systems
 - Rule: encrypt sensitive cache data at rest and in transit.
 - Rule: treat cache configuration as code; version control and review changes.
 
-## Completion Criteria
+## Completion
 
-- data catalog and consistency requirements are documented
-- store selection and tier hierarchy are justified
-- key format, value shape, and serialization strategy are explicit
-- invalidation strategy and consistency model are documented
-- stampede prevention mechanism is defined
-- observability and operational runbook are covered
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

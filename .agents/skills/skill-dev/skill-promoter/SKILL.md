@@ -1,48 +1,66 @@
 ---
-name: skill-promoter
-category: skill-dev
-maturity: stable
-version: 1
-description: Promote validated experimental skills from the sandbox to the canonical skills bundle.
-capabilities:
-  - apply skill promoter workflow
-  - produce skill promoter artifact
-  - validate skill promoter completion criteria
-outputs:
-  - Skill Promoter artifact with findings, decisions, recommendations, and validation notes
+name: "skill-promoter"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Promote validated experimental skills from the sandbox to the canonical skills bundle."
+capabilities: ""
+outputs: ""
 sideEffects:
   - write-files
   - create-symlink
   - update-lockfile
+
 dependencies: []
-stopCondition: Promote validated experimental skills from the sandbox to the canonical skills bundle complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Promote validated experimental skills from the sandbox to the canonical skills bundle complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/skill-promoter.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Skill Promoter request, relevant context, constraints, and source evidence.
-- **Output:** Skill Promoter artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Promote validated experimental skills from the sandbox to the canonical skills bundle is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Skill Promoter
-
-Use this skill to promote validated experimental skills from the sandbox to the canonical skills bundle.
 
 ## Contract
 
 - Input: skill name, validation report, and promotion criteria
 - Output: promoted skill in canonical bundle, updated symlinks, updated lockfile, and promotion report
-- Scope: promotion of skills that have passed sandbox validation
-- Rule: skills can only be promoted after passing all validation checks in the sandbox
-- Rule: promotion includes updating .agents/skills/, .claude/skills/, and skills-lock.json
-- Rule: promotion requires maintaining backward compatibility and following provenance guidelines
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SkillPromoterArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/skill-promoter/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Skill Promoter
+
+Use this skill to promote validated experimental skills from the sandbox to the canonical skills bundle.
+
 
 ## Process
 
@@ -87,31 +105,11 @@ Confirm the promotion was successful:
 - Check that the .claude/skills/ symlink works properly
 - Confirm that the skill appears in the skills registry
 
-## Completion Criteria
+## Completion
 
-- The skill has been copied to .agents/skills/<skill-name>/
-- The symlink has been created in .claude/skills/<skill-name>
-- The skills-lock.json has been updated with the skill's information
-- The full validation suite passes (check-all.mjs returns status: "pass")
-- The skill has been documented in provenance.md
-- A promotion report has been generated with the outcome and rationale
-
-## Promotion Criteria
-
-A skill should only be promoted when:
-
-1. **Clear Need**: The skill addresses a repeatedly useful behavior not adequately covered by existing skills
-2. **Distinct Boundaries**: The skill has clear boundaries and doesn't significantly overlap with existing skills
-3. **Quality Standard**: The skill passes all validation checks with no errors
-4. **Documentation**: The skill includes proper documentation following the skill-style-guide
-5. **Testability**: The skill can be tested and validated using the existing evaluation framework
-6. **Provenance**: The skill's origins and development process are documented
-
-## Guardrails
-
-- Never promote a skill that has not passed sandbox validation
-- Always run the full validation suite after promotion
-- Document promotion decisions in provenance.md
-- Do not promote skills that would break backward compatibility
-- If promotion fails, provide explicit rationale for denial
-- Keep the sandbox clean by removing promoted or abandoned skills
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

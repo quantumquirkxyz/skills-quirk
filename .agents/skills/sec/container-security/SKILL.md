@@ -1,39 +1,59 @@
 ---
-name: container-security
-category: sec
-maturity: stable
-version: 1
-description: Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)
-capabilities:
-  - design secure container images (minimal base, non-root, read-only filesystem, no privileged mode)
-  - implement image scanning (vulnerability, secret, malware, SBOM) in CI/CD
-  - configure Kubernetes Pod Security Standards (restricted / baseline / privileged)
-  - set up runtime security (Falco, Seccomp, AppArmor, seccomp profiles)
-  - design Kubernetes RBAC and network policies for least-privilege access
-  - manage container secrets (external secrets operator, CSI drivers, KMS integration)
-outputs:
-  - Container security baseline document
-  - Image scan policy and CI/CD gate
-  - Runtime security rules (Falco / Seccomp / AppArmor)
-  - Kubernetes security policy (Pod Security, RBAC, NetworkPolicy)
+name: "container-security"
+category: "sec"
+maturity: "stable"
+version: "1"
+description: "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Container baseline saved; image scan policy defined; runtime rules documented; K8s security policies complete.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Container baseline saved; image scan policy defined; runtime rules documented; K8s security policies complete."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "security"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/container-security.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** container runtime (Docker, Kubernetes, ECS, GKE), workload architecture, compliance requirements.
-- **Output:** container security baseline + image scan policy + runtime rules + K8s security policies.
-- **Side effects:** none.
-- **Dependencies:** container registry access; cluster access for policy validation.
-- **Stop condition:** baseline and policies documented; scan gates defined; runtime rules applied.
-- **Risk:** medium — container breaches can lead to full cluster compromise and lateral movement.
-- **Boundary:** designs and audits container security; does not deploy or patch workloads.
+- Input: container runtime (Docker, Kubernetes, ECS, GKE), workload architecture, compliance requirements.
+- Output: container security baseline + image scan policy + runtime rules + K8s security policies.
+- Scope: designs and audits container security; does not deploy or patch workloads.
+- Rule: designs and audits container security; does not deploy or patch workloads.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ContainerSecurityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/container-security/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Container Security
 
 Secure **container workloads** — image hygiene, runtime protection, Kubernetes policies, and orchestration controls — for Docker and Kubernetes.
@@ -109,3 +129,12 @@ Secure **container workloads** — image hygiene, runtime protection, Kubernetes
 - Rule: store secrets in external secret stores (Vault, KMS, cloud secret manager); never embed secrets in images, ConfigMaps, or env vars.
 - Rule: enable runtime security (Falco, Seccomp, AppArmor) and admission control for production clusters.
 - Rule: apply least-privilege RBAC; review role bindings and service accounts quarterly; remove unused permissions.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

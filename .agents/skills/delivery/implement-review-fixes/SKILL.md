@@ -1,36 +1,60 @@
 ---
-name: implement-review-fixes
-category: delivery
-maturity: stable
-version: 1
-description: Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor
-capabilities:
-  - apply implement review fixes workflow
-  - produce implement review fixes artifact
-  - validate implement review fixes completion criteria
-outputs:
-  - Implement Review Fixes artifact with findings, decisions, recommendations, and validation notes
+name: "implement-review-fixes"
+category: "delivery"
+maturity: "stable"
+version: "1"
+description: "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor"
+capabilities: ""
+outputs: ""
 sideEffects:
   - write-code
   - commit-git
   - push-branch
 dependencies: []
-stopCondition: Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "review"
+modelTier: "code"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/implement-review-fixes.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Implement Review Fixes request, relevant context, constraints, and source evidence.
-- **Output:** Implement Review Fixes artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ImplementReviewFixesArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/implement-review-fixes/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Implement Review Fixes
 
 ## Overview
@@ -42,7 +66,7 @@ The completion note still needs the familiar closing sections that make the hand
 - Status: implemented
 - Scope Notes
 If the planned fixes are blocked by a conflicted branch state, hand off to `resolving-merge-conflicts` first, then resume the review-fix plan on the clean branch state.
-When the fix plan references tracker metadata, use [`docs/agents/work-item-format.md`](../../../../docs/agents/work-item-format.md) so labels, milestone, and project context remain consistent with the linked issue.
+When the fix plan references tracker metadata, use [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) so labels, milestone, and project context remain consistent with the linked issue.
 If a planned item no longer matches the diff, stop and refresh the plan instead of improvising around it.
 
 ## Workflow
@@ -81,14 +105,11 @@ If a planned item no longer matches the diff, stop and refresh the plan instead 
    - Include completed items, validation commands, failures or skipped checks, and any remaining blockers.
    - Do not mark the PR clean; only a later review-pr pass can do that.
 
-## Completion Comment Format
+## Completion
 
-Use the structure in `references/implementation-note.md`.
-
-## Guardrails
-
-- Never implement without a current Review Fix Plan.
-- Never broaden scope beyond review findings unless the user explicitly asks.
-- Never merge or close the PR.
-- If implementation changes the intended behavior beyond the original spec, stop and send the PR back through review-pr.
-- Never introduce tracker metadata that conflicts with the linked issue's labels or milestone.
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

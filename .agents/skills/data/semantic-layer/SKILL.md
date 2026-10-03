@@ -1,38 +1,59 @@
 ---
-name: semantic-layer
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.
-capabilities:
-  - define business metrics and measures (formulas, aggregations, grain, filters)
-  - model dimensions and attributes for consistent slicing and filtering
-  - design dbt models and transformations (staging, intermediate, marts)
-  - configure Cube metrics server or equivalent for self-service analytics
-  - govern metric definitions, ownership, and data lineage
-outputs:
-  - Semantic layer specification (metrics, dimensions, measures, business logic)
-  - dbt model structure and transformation rules
-  - Cube (or equivalent) configuration and access patterns
-  - Governance and lineage documentation
+name: "semantic-layer"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Semantic layer specification saved; dbt/Cube structure defined; governance rules documented.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Semantic layer specification saved; dbt/Cube structure defined; governance rules documented."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/semantic-layer.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** analytical questions, source data inventory, business glossary, reporting requirements, user personas.
-- **Output:** semantic layer specification + dbt/Cube structure + governance documentation.
-- **Side effects:** none.
-- **Dependencies:** dbt, Cube, LookML, or equivalent semantic layer tooling; data warehouse or lakehouse.
-- **Stop condition:** semantic layer specification saved; dbt/Cube structure defined; governance rules documented.
-- **Risk:** low.
-- **Boundary:** designs semantic layer; does not execute transformations or modify warehouse data unless explicitly instructed.
+- Input: analytical questions, source data inventory, business glossary, reporting requirements, user personas.
+- Output: semantic layer specification + dbt/Cube structure + governance documentation.
+- Scope: designs semantic layer; does not execute transformations or modify warehouse data unless explicitly instructed.
+- Rule: designs semantic layer; does not execute transformations or modify warehouse data unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SemanticLayerArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/semantic-layer/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Semantic Layer
 
 Design a **semantic layer** — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.
@@ -99,3 +120,12 @@ Design a **semantic layer** — dbt, Cube, metrics, dimensions, measures, self-s
 - Rule: require metric owner sign-off before promoting a metric to certified status.
 - Rule: document lineage from raw source to metric for auditability and debugging.
 - Rule: enforce row-level and column-level security at the semantic layer boundary.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,44 +1,62 @@
 ---
-name: domain-modeling
-category: foundation
-maturity: stable
-version: 1
-description: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.
-capabilities:
-  - apply domain modeling workflow
-  - produce domain modeling artifact
-  - validate domain modeling completion criteria
-outputs:
-  - Domain Modeling artifact with findings, decisions, recommendations, and validation notes
+name: "domain-modeling"
+category: "foundation"
+maturity: "stable"
+version: "1"
+description: "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Build and sharpen a project's domain model complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Build and sharpen a project's domain model complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "model"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/domain-modeling.json"
+diataxis: "how-to"
+tags: ["foundation"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Domain Modeling request, relevant context, constraints, and source evidence.
-- **Output:** Domain Modeling artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Build and sharpen a project's domain model is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Domain Modeling
-
-Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
 
 ## Contract
 
 - Input: one overloaded or uncertain term, the current codebase context, and the existing glossary.
 - Output: one resolved term, or one ADR-ready decision with the glossary updated to match.
-- Scope: change the model, not the implementation.
-- Rule: if the term is still ambiguous after challenge, say so and keep it unresolved.
-- Rule: only propose an ADR when the decision is hard to reverse, surprising, and the result of a real trade-off.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DomainModelingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/domain-modeling/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Domain Modeling
+
+Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
+
 
 ## File structure
 
@@ -106,9 +124,11 @@ Only offer to create an ADR when all three are true:
 
 If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
 
-## Completion criteria
+## Completion
 
-- the term has a canonical meaning or is explicitly left unresolved
-- the glossary reflects the resolved meaning without implementation detail
-- any ADR candidate is either drafted or consciously skipped
-- edge cases that affect the meaning are recorded clearly
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

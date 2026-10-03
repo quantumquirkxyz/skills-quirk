@@ -1,38 +1,58 @@
 ---
-name: execution-policy
-category: auxiliary
-maturity: stable
-description: Decide whether a Skill action is allowed, requires approval, or must stop.
-disable-model-invocation: true
-version: 1
-capabilities:
-  - classify-action
-  - check-approval-threshold
-  - require-approval
-inputs:
-  - requested action
-  - skill manifest
-outputs:
-  - allow/block decision
-  - approval requirement
-  - rollback path
+name: "execution-policy"
+category: "auxiliary"
+maturity: "stable"
+description: "Decide whether a Skill action is allowed, requires approval, or must stop."
+disable-model-invocation: "true"
+version: "1"
+capabilities: ""
+inputs: ""
+outputs: ""
 dependencies: []
 sideEffects: []
-stopCondition: The action is allowed or blocked with reason, approval requirement is clear, and rollback is named.
-risk: low
-trustTier: 1
+stopCondition: "The action is allowed or blocked with reason, approval requirement is clear, and rollback is named."
+risk: "low"
+trustTier: "1"
+promptVersion: "2.0"
+artifactType: "auxiliary"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/execution-policy.json"
+diataxis: "how-to"
+tags: ["auxiliary"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Execution Policy request, relevant context, constraints, and source evidence.
-- **Output:** Execution Policy artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Decide whether a Skill action is allowed, requires approval, or must stop is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ExecutionPolicyArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/execution-policy/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Execution Policy
 
 This skill is advisory only. It does not change repository state or perform the action it judges.
@@ -46,24 +66,11 @@ Use this skill before any risky state change.
 3. Require explicit approval for destructive or irreversible actions.
 4. Record the decision and rollback path.
 
-## Completion criteria
+## Completion
 
-- the action is allowed or blocked with reason
-- the approval requirement is clear
-- rollback is named
-
-## Rules
-
-- Rule: classify the action before considering convenience or urgency.
-- Rule: treat destructive, external, credential-bearing, and irreversible actions as higher scrutiny.
-- Rule: approval requirements must name the exact action and target.
-- Rule: if rollback is impossible or unproven, say so explicitly.
-
-## Decision Output
-
-Return a concise decision with:
-
-- classification: read, write, delete, network, external write, or destructive
-- decision: allow, require approval, or stop
-- reason: the specific policy concern
-- rollback: how to recover or why recovery is unavailable
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

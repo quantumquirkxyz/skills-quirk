@@ -1,39 +1,59 @@
 ---
-name: cloud-security
-category: sec
-maturity: stable
-version: 1
-description: Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)
-capabilities:
-  - design IAM policies and roles (least-privilege, service accounts, cross-account)
-  - configure KMS / key management (envelope encryption, rotation, access policies)
-  - audit security groups, NACLs, firewalls, and network segmentation
-  - map cloud controls to compliance frameworks (SOC 2, PCI-DSS, HIPAA, FedRAMP, CIS)
-  - set up cloud security posture management (CSPM) and continuous compliance
-  - design cloud-native monitoring, alerting, and incident response
-outputs:
-  - Cloud security architecture document
-  - IAM policy review (least-privilege findings)
-  - Compliance matrix (control × cloud service × framework)
-  - Posture management runbook
+name: "cloud-security"
+category: "sec"
+maturity: "stable"
+version: "1"
+description: "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Security architecture saved; IAM reviewed; compliance matrix complete; posture runbook documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Security architecture saved; IAM reviewed; compliance matrix complete; posture runbook documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "security"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/cloud-security.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** cloud provider (AWS / GCP / Azure), workload architecture, compliance requirements.
-- **Output:** cloud security architecture + IAM review + compliance matrix + CSPM runbook.
-- **Side effects:** none.
-- **Dependencies:** cloud provider access for validation; compliance framework definitions.
-- **Stop condition:** architecture and controls documented; IAM least-privilege verified; compliance mapped.
-- **Risk:** medium — misconfigured cloud controls lead to data exposure and regulatory violations.
-- **Boundary:** designs and audits cloud security; does not provision resources.
+- Input: cloud provider (AWS / GCP / Azure), workload architecture, compliance requirements.
+- Output: cloud security architecture + IAM review + compliance matrix + CSPM runbook.
+- Scope: designs and audits cloud security; does not provision resources.
+- Rule: designs and audits cloud security; does not provision resources.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CloudSecurityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/cloud-security/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Cloud Security
 
 Design and audit **cloud security** for AWS, GCP, and Azure — IAM, KMS, network controls, compliance, and posture management.
@@ -108,3 +128,12 @@ Design and audit **cloud security** for AWS, GCP, and Azure — IAM, KMS, networ
 - Rule: never grant cloud admin / owner role to service accounts or CI/CD pipelines without explicit approval and just-in-time access.
 - Rule: enable multi-factor authentication (MFA) for all human identities; use workload identity for machines.
 - Rule: implement network segmentation and private connectivity for all internal traffic; public exposure must be explicitly justified.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

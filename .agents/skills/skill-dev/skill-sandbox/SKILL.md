@@ -1,45 +1,62 @@
 ---
-name: skill-sandbox
-category: skill-dev
-maturity: stable
-version: 1
-description: Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.
-capabilities:
-  - apply skill sandbox workflow
-  - produce skill sandbox artifact
-  - validate skill sandbox completion criteria
-outputs:
-  - Skill Sandbox artifact with findings, decisions, recommendations, and validation notes
+name: "skill-sandbox"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/skill-sandbox.json"
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Skill Sandbox request, relevant context, constraints, and source evidence.
-- **Output:** Skill Sandbox artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Skill Sandbox
-
-Use this skill to safely experiment with creating new skills or modifying existing ones without risking the integrity of the canonical skills bundle.
 
 ## Contract
 
 - Input: skill concept, desired capabilities, test scenarios, and validation criteria
 - Output: experimental skill directory, test results, validation report, and promotion recommendation
-- Scope: isolated experimentation that does not affect .agents/skills/ or .claude/skills/
-- Rule: all experimentation occurs in a dedicated sandbox directory structure
-- Rule: skills can only be promoted to canonical after passing all validation checks
-- Rule: experimental skills follow the same naming conventions and structure as canonical skills
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SkillSandboxArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/skill-sandbox/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Skill Sandbox
+
+Use this skill to safely experiment with creating new skills or modifying existing ones without risking the integrity of the canonical skills bundle.
+
 
 ## Process
 
@@ -88,32 +105,11 @@ Determine if the skill is ready for the canonical bundle:
 - If skill includes proper documentation and examples
 - If skill follows the principle of progressive disclosure
 
-## Completion Criteria
+## Completion
 
-- The experimental skill has been created in `.skill-sandbox/<skill-name>/`
-- The skill has been tested using isolated validation scripts
-- A validation report has been generated showing pass/fail status
-- A promotion recommendation has been made with explicit rationale
-- If promoted, the skill has been moved to `.agents/skills/` and `.claude/skills/` updated
-- If not promoted, feedback has been provided for improvement
-
-## Sandbox Directory Structure
-
-```
-.skill-sandbox/
-├── <skill-name>/
-│   ├── SKILL.md
-│   ├── references/          # Optional: skill-owned artifact templates
-│   └── scripts/             # Optional: skill-specific helper scripts
-├── validations/             # Copies of validation scripts configured for sandbox
-├── scenarios/               # Test scenarios for evaluating the skill
-└── behavioral-fixtures/     # Expected output formats for the skill
-```
-
-## Guardrails
-
-- Never modify `.agents/skills/` or `.claude/skills/` directly from this skill
-- Always use the isolated validation scripts when testing experimental skills
-- Clear the sandbox directory after promotion or abandonment to prevent clutter
-- Do not promote skills that duplicate existing functionality without clear improvement
-- Experimental skills must declare their experimental nature in documentation until promoted
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

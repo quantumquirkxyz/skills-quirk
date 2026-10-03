@@ -1,36 +1,59 @@
 ---
-name: math-grant-structure
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.
-capabilities:
-  - align proposal with agency call (NSF / ERC / Simons / MSCA / NSERC)
-  - articulate intellectual merit and broader impacts (or equivalents)
-  - structure aims, work plan, deliverables, timeline
-  - draft budget justifications and data-management plans
-outputs:
-  - Markdown outline + per-section draft
-  - Reviewer-perspective critique
-  - Submission checklist
+name: "math-grant-structure"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: All sections drafted; reviewer-perspective critique complete; submission checklist filled.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "All sections drafted; reviewer-perspective critique complete; submission checklist filled."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "math"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-grant-structure.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** research programme + target agency.
-- **Output:** structured proposal draft + reviewer critique.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** draft + critique + checklist.
-- **Risk:** low.
-- **Boundary:** produces draft text; the human submits.
+- Input: research programme + target agency.
+- Output: structured proposal draft + reviewer critique.
+- Scope: produces draft text; the human submits.
+- Rule: produces draft text; the human submits.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathGrantStructureArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-grant-structure/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Math Grant Proposal Structuring
 
 Turn a **research programme** into a grant proposal that matches the agency's review criteria — and stress-test it from the reviewer's chair.
@@ -114,3 +137,12 @@ Write the critique as if reviewing:
 Markdown artifact with: call analysis, programme, aims mapping, budget, timeline, reviewer critique (strengths/weaknesses/questions/verdict), submission checklist.
 
 **Completion criterion:** deliverable complete and reviewed by at least one co-author or mentor before submission.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

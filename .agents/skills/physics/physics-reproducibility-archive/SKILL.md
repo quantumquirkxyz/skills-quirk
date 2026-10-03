@@ -1,36 +1,59 @@
 ---
-name: physics-reproducibility-archive
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.
-capabilities:
-  - prepare data, code, and environments for archival
-  - containerise (Docker / Apptainer) with exact versions and dependencies
-  - upload to Zenodo with metadata (title, authors, licence, keywords)
-  - prepare supplemental material for journal submission
-outputs:
-  - Zenodo DOI badge and URL
-  - GitHub release / tag with container image hash
-  - Archive checklist (data, code, environment, license)
+name: "physics-reproducibility-archive"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Zenodo DOI assigned; GitHub tag created; checklist complete.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Zenodo DOI assigned; GitHub tag created; checklist complete."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-reproducibility-archive.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** physics result, data, and code.
-- **Output:** Zenodo DOI + GitHub release + checklist.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** DOI assigned; tag created; checklist complete.
-- **Risk:** low.
-- **Boundary:** archives and links; does not execute long computations.
+- Input: physics result, data, and code.
+- Output: Zenodo DOI + GitHub release + checklist.
+- Scope: archives and links; does not execute long computations.
+- Rule: archives and links; does not execute long computations.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsReproducibilityArchiveArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-reproducibility-archive/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Physics Reproducibility and Archival
 
 Make a **physics result** reproducible and archive it with a DOI — data, code, and environment — for compliance with journals and funders.
@@ -108,3 +131,12 @@ Create a Zenodo deposit:
 - Pair with `physics-simulation-setup` for simulation containerization.
 - Pair with `physics-experimental-notebook` for experimental data archival.
 - Pair with `physics-writing-revtex` for journal submission.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

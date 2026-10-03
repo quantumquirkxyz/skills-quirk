@@ -1,47 +1,62 @@
 ---
-name: brand-identity
-category: graphic-design
-maturity: stable
-version: 1
-description: Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.
-capabilities:
-  - define brand strategy and positioning
-  - design logo system and variations
-  - establish color palette and typography system
-  - document imagery and iconography style
-  - produce brand identity artifact with governance rules
-outputs:
-  - Brand Identity artifact with strategy, logo system, color palette, typography, imagery rules, and usage governance
+name: "brand-identity"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
+description: "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Brand identity design complete; strategy, visual system, and usage rules explicit; governance named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Brand identity design complete; strategy, visual system, and usage rules explicit; governance named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "graphic-design"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/brand-identity.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Brand strategy brief, audience, market context, and any existing visual assets.
-- **Output:** Brand Identity artifact with strategy, logo system, color palette, typography, imagery rules, and usage governance.
-- **Side effects:** none; this skill is read-only analysis and documentation.
-- **Dependencies:** none.
-- **Stop condition:** Brand identity design complete; strategy, visual system, and usage rules explicit; governance named.
-- **Risk:** low.
-- **Boundary:** designs the identity system and rules; does not produce final brand assets or connect to external tools.
-
-# Brand Identity
-
-Use this skill when a brand needs a coherent visual and verbal identity system. It should translate strategy into explicit logo, color, typography, imagery, iconography, and usage rules that scale across channels.
 
 ## Contract
 
 - Input: brand strategy brief, audience, market context, and existing visual assets.
 - Output: brand identity artifact covering strategy, logo system, color, typography, imagery, iconography, and usage governance.
-- Scope: design the identity system and rules; do not produce final production assets.
-- Rule: anchor the identity to strategy first, aesthetics second.
-- Rule: define minimum clear space, sizing, and context rules for every logo variation.
-- Rule: specify prohibited uses and common misuse patterns explicitly.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BrandIdentityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/brand-identity/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Brand Identity
+
+Use this skill when a brand needs a coherent visual and verbal identity system. It should translate strategy into explicit logo, color, typography, imagery, iconography, and usage rules that scale across channels.
+
 
 ## Steps
 
@@ -102,19 +117,11 @@ Use this skill when a brand needs a coherent visual and verbal identity system. 
 
 **Completion criterion:** usage governance and approval workflow saved.
 
-## Completion criteria
+## Completion
 
-- brand strategy and positioning are explicit
-- logo system with variations and clear-space rules is defined
-- color palette with values and formats is defined
-- typography system with scale and licensing is defined
-- imagery and iconography style is documented
-- usage governance and approval workflow are named
-
-## References
-
-- `../../foundation/codebase-design/SKILL.md` — durable module and seam design
-- `../../frontend/design-system/SKILL.md` — design tokens and component systems
-- `references/domain.md` — brand identity terminology and frameworks
-- `references/logo-systems.md` — logo classification and variation patterns
-- `references/brand-governance.md` — approval workflows and governance structures
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

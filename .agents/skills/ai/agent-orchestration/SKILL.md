@@ -1,38 +1,59 @@
 ---
-name: agent-orchestration
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.
-capabilities:
-  - design multi-agent patterns (supervisor, peer, pipeline, router)
-  - specify tool use contracts and capabilities per agent
-  - design memory architecture (short-term, long-term, shared, episodic)
-  - define handoff contracts between agents and escalation paths
-  - design evaluation framework for agent coordination quality
-outputs:
-  - Agent orchestration architecture diagram (text/Markdown)
-  - Agent capability matrix and tool registry
-  - Handoff contracts and escalation policy
-  - Evaluation rubric and observability plan
+name: "agent-orchestration"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; capability matrix complete; handoff contracts defined; evaluation rubric present.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Architecture diagram saved; capability matrix complete; handoff contracts defined; evaluation rubric present."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "agent"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/agent-orchestration.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** task description requiring multiple agents, available tools, quality requirements, latency constraints.
-- **Output:** orchestration architecture + capability matrix + handoff contracts + evaluation rubric.
-- **Side effects:** none — design artifact only.
-- **Dependencies:** task context and constraints; references to `subagent-swarm` and `context-engine` for coordination patterns.
-- **Stop condition:** architecture documented; agent roles defined; handoff contracts complete; evaluation rubric saved.
-- **Risk:** low — design artifact; no infrastructure changes.
-- **Boundary:** designs orchestration patterns; does not execute multi-agent workflows unless explicitly instructed.
+- Input: task description requiring multiple agents, available tools, quality requirements, latency constraints.
+- Output: orchestration architecture + capability matrix + handoff contracts + evaluation rubric.
+- Scope: designs orchestration patterns; does not execute multi-agent workflows unless explicitly instructed.
+- Rule: designs orchestration patterns; does not execute multi-agent workflows unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `AgentOrchestrationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/agent-orchestration/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Agent Orchestration
 
 Design a **multi-agent orchestration** system with clear coordination boundaries, tool use contracts, memory architecture, and observability.
@@ -87,3 +108,12 @@ Design a **multi-agent orchestration** system with clear coordination boundaries
 - Rule: include circuit breakers and escalation paths for agent failures and ambiguous outputs.
 - Rule: instrument every agent run with tracing, structured logging, and quality metrics.
 - Rule: document memory access policies (read/write permissions, retention, summarisation) for each memory tier.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,39 +1,59 @@
 ---
-name: multimodal-prompting
-category: ai
-maturity: stable
-version: 1
-description: Multimodal prompting (vision, audio, video, image generation, vision-language models)
-capabilities:
-  - design vision prompts with image, OCR, diagram, and chart understanding
-  - craft audio and video prompts with transcription, captioning, and event understanding
-  - implement image generation with composition, style, and batch discipline
-  - combine modalities with chain-of-thought, cot, and RAG
-  - define acceptance criteria for each modality with human and machine checks
-  - specify fallback and escalation for modality failures
-outputs:
-  - Prompt library (text, image, audio, video with specs)
-  - Generation contract (pipeline, batch, retry, approval)
-  - Validation suite (acceptance, edge, fallback, escalation)
-  - Fallback and escalation discipline (code, circuit breaker, pager)
+name: "multimodal-prompting"
+category: "ai"
+maturity: "stable"
+version: "1"
+description: "Multimodal prompting (vision, audio, video, image generation, vision-language models)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Each modality green on acceptance suite with validation and fallback.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Each modality green on acceptance suite with validation and fallback."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/multimodal-prompting.json"
+diataxis: "how-to"
+tags: ["ai"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** task description, modality specs, acceptance criteria, edge cases.
-- **Output:** prompt library + generation contract + validation suite + fallback discipline.
-- **Side effects:** may call LLM or generation APIs during validation.
-- **Dependencies:** multimodal model endpoints, generation APIs.
-- **Stop condition:** each modality green on acceptance suite with validation and fallback.
-- **Risk:** low — design and validation only; no production traffic.
-- **Boundary:** designs and validates multimodal prompts; does not deploy to production.
+- Input: task description, modality specs, acceptance criteria, edge cases.
+- Output: prompt library + generation contract + validation suite + fallback discipline.
+- Scope: designs and validates multimodal prompts; does not deploy to production.
+- Rule: designs and validates multimodal prompts; does not deploy to production.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MultimodalPromptingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/multimodal-prompting/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Multimodal Prompting
 
 Compose prompts and contracts for vision, audio, video, and image generation with discipline.
@@ -84,3 +104,12 @@ Retry: exponential backoff, retry budget, circuit breaker, pager.
 - No generation contract accepted without edge cases green.
 - No fallback accepted without escalation path tested.
 - No human check omitted for high-stakes or safety-critical modalities.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

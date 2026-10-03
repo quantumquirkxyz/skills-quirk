@@ -1,37 +1,59 @@
 ---
-name: devops-k8s-orchestration
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.
-capabilities:
-  - design cluster topology (control plane, nodes, namespaces, RBAC)
-  - configure deployment strategies (rolling, blue/green, canary, A/B)
-  - set up service mesh (Istio, Linkerd) for traffic management
-  - implement auto-scaling (HPA, VPA, cluster-autoscaler)
-  - define pod security and network policies
-outputs:
-  - Kubernetes manifests (YAML) for deployment and services
-  - Architecture diagram with namespace and service layout
-  - Monitoring and alerting rules (Prometheus / Grafana / Jaeger)
+name: "devops-k8s-orchestration"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Manifests saved; architecture documented; monitoring rules defined.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Manifests saved; architecture documented; monitoring rules defined."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/devops-k8s-orchestration.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** application architecture, traffic patterns, availability target, resource constraints.
-- **Output:** Kubernetes manifests + architecture documentation + monitoring rules.
-- **Side effects:** may create resources when executed (deployment, service, configmap).
-- **Dependencies:** Kubernetes cluster access (if execution required).
-- **Stop condition:** manifests saved; architecture documented.
-- **Risk:** medium — production deployment can cause outages; design-only by default.
-- **Boundary:** produces manifests and design; deployment only when explicitly executed.
+- Input: application architecture, traffic patterns, availability target, resource constraints.
+- Output: Kubernetes manifests + architecture documentation + monitoring rules.
+- Scope: produces manifests and design; deployment only when explicitly executed.
+- Rule: produces manifests and design; deployment only when explicitly executed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DevopsK8sOrchestrationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/devops-k8s-orchestration/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Kubernetes Orchestration Design
 
 Design a **Kubernetes deployment** — architecture, deployment strategy, service mesh, observability — with reproducible manifests.
@@ -84,3 +106,12 @@ State which fits the service (stateless / stateful / critical / experimental).
 ### 6. Deliver
 
 Manifests (YAML) + architecture diagram + monitoring rules + deployment runbook (how to roll back).
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

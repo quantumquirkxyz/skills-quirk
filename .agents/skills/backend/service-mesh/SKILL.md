@@ -1,36 +1,62 @@
 ---
-name: service-mesh
-category: backend
-maturity: stable
-version: 1
-description: Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).
-capabilities:
-  - design service mesh architecture
-  - configure mTLS and zero trust
-  - plan traffic splitting and routing
-  - define mesh observability
-outputs:
-  - Service mesh artifact with findings, decisions, recommendations, and validation notes
+name: "service-mesh"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Service mesh design complete; artifact saved; completion criteria checked.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Service mesh design complete; artifact saved; completion criteria checked."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/service-mesh.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Service Mesh
-
-Use this skill when designing or reviewing a service mesh — Istio, Linkerd, Cilium, or similar — for mTLS, traffic management, observability, and zero-trust networking.
 
 ## Contract
 
 - Input: service inventory, traffic topology, security requirements, and observability needs.
 - Output: mesh architecture with trust model, traffic policies, and observability configuration.
-- Scope: design mesh policies and topology; not cluster provisioning unless explicitly requested.
-- Rule: the mesh secures east-west traffic; north-south traffic should still pass through gateway policies.
-- Rule: define a clear trust boundary: which services are in-mesh, which are external, and how they connect.
-- Rule: keep mesh configuration declarative and version-controlled.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ServiceMeshArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/service-mesh/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Service Mesh
+
+Use this skill when designing or reviewing a service mesh — Istio, Linkerd, Cilium, or similar — for mTLS, traffic management, observability, and zero-trust networking.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing or reviewing a service mesh — Istio, Linkerd, Ci
 - Rule: instrument mesh metadata carefully; avoid logging request/response bodies in production.
 - Rule: validate mesh config in staging with production traffic mirrors before promoting.
 
-## Completion Criteria
+## Completion
 
-- service topology is documented with critical paths and mesh boundary
-- mTLS and authorization policy is documented with migration strategy
-- traffic management rules are documented with rollout and rollback behavior
-- RED metrics, tracing, and access log policy are documented
-- ingress/egress policy is documented with TLS and access control
-- rollout and rollback procedure is documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,38 +1,59 @@
 ---
-name: cost-optimization
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.
-capabilities:
-  - design cost visibility and reporting architecture
-  - perform rightsizing recommendations (CPU, memory, storage, network)
-  - design spot instance and preemptible workload strategies
-  - design committed use and reserved capacity planning
-  - implement budgets, alerts, showback, and chargeback
-outputs:
-  - FinOps architecture diagram (text/Markdown)
-  - Cost visibility and reporting design
-  - Rightsizing and instance strategy recommendations
-  - Budget, alert, and showback/chargeback plan
+name: "cost-optimization"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; visibility design documented; rightsizing recommendations complete; budget and showback plan filled.
-risk: medium
-trustTier: 3
-maxIterations: 7
+stopCondition: "Architecture diagram saved; visibility design documented; rightsizing recommendations complete; budget and showback plan filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "7"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/cost-optimization.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** current cloud spend, workload inventory, performance requirements, budget constraints, team structure.
-- **Output:** FinOps architecture + cost visibility design + rightsizing recommendations + budget and showback plan.
-- **Side effects:** may modify instance types, purchase committed use discounts, or adjust autoscaling when executed.
-- **Dependencies:** cloud provider (AWS / GCP / Azure), monitoring tooling (CloudWatch, Prometheus, Grafana), cost management API.
-- **Stop condition:** architecture documented; visibility design saved; rightsizing recommendations complete; budget plan filled.
-- **Risk:** medium — cost changes affect service performance and budget; misconfiguration can cause outages or overspend.
-- **Boundary:** designs FinOps strategy; does not execute infrastructure changes or purchases unless explicitly instructed.
+- Input: current cloud spend, workload inventory, performance requirements, budget constraints, team structure.
+- Output: FinOps architecture + cost visibility design + rightsizing recommendations + budget and showback plan.
+- Scope: designs FinOps strategy; does not execute infrastructure changes or purchases unless explicitly instructed.
+- Rule: designs FinOps strategy; does not execute infrastructure changes or purchases unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CostOptimizationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/cost-optimization/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Cost Optimization (FinOps)
 
 Design a **FinOps** strategy for cloud cost visibility, rightsizing, spot instances, committed use, budgets, and showback/chargeback.
@@ -86,3 +107,12 @@ Design a **FinOps** strategy for cloud cost visibility, rightsizing, spot instan
 - Rule: use spot instances only for fault-tolerant workloads with checkpoint and retry; never for stateful or latency-critical workloads without fallback.
 - Rule: committed use discounts should cover baseline load; variable load should stay on spot or on-demand.
 - Rule: alert on budget thresholds before overspend; implement approval workflow for large or anomalous purchases.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

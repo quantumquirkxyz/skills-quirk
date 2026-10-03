@@ -1,48 +1,61 @@
 ---
-name: project-viability
-description: Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.
-capabilities:
-  - apply project viability workflow
-  - produce viability assessment artifact
-  - validate project viability completion criteria
-  - produce structured JSON artifact for tooling
-outputs:
-  - Viability Assessment artifact with findings, decisions, recommendations, and validation notes
-  - Structured JSON artifact for downstream consumption
-sideEffects:
-  - write report file to .reports/ only if quality gate passes
-  - write JSON artifact to .reports/ only if quality gate passes
+name: "project-viability"
+description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work."
+capabilities: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON artifact saved; completion criteria verified; user asked how to proceed.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON artifact saved; completion criteria verified; user asked how to proceed."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/project-viability.json"
+diataxis: "how-to"
+tags: ["project"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Project viability request, repository context, CONTEXT.md, ADRs, source evidence, and automated baseline.
-- **Output:** Viability Assessment artifact with findings, decisions, recommendations, and validation notes, saved to `.reports/`. Structured JSON artifact saved to `.reports/`.
-- **Side effects:** write report and JSON files to `.reports/` only if quality gate passes; do not edit source code or docs without explicit user direction.
-- **Dependencies:** none beyond repository access.
-- **Stop condition:** pre-flight checks resolved; automated baseline completed; quality gate passed; artifacts saved; completion criteria checked; user asked how to proceed.
-- **Risk:** low — read-only analysis with at most two report writes.
-- **Boundary:** stay within the declared scope; do not implement fixes, draft specs, or modify tracker state.
+- Input: repository with `CONTEXT.md`, ADRs, source code, and automated baseline.
+- Output: one Markdown report under `.reports/` and one JSON artifact under `.reports/`, both with layered findings and a prompt for the user.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ProjectViabilityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/project-viability/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Project Viability
 
 Analyze whether the project is viable, functional, and scalable across logic, architecture, technical capacity, team maintainability, and domain growth. Ground every finding in `CONTEXT.md`, the ADRs under `docs/adr/`, and actual code evidence. Complement subjective findings with an automated baseline of objective health signals.
 
 Three parallel sub-agents evaluate each dimension independently so findings do not pollute each other's context. This skill aggregates their outputs into a single Markdown report and a structured JSON artifact.
 
-## Contract
-
-- Input: repository with `CONTEXT.md`, ADRs, source code, and automated baseline.
-- Output: one Markdown report under `.reports/` and one JSON artifact under `.reports/`, both with layered findings and a prompt for the user.
-- Scope: assess viability; do not refactor, implement, or alter project state beyond writing reports.
-- Rule: every claim must cite `CONTEXT.md`, an ADR path, or a concrete code location.
-- Rule: separate "missing" from "wrong" — distinguish undocumented behavior from contradicted behavior.
-- Rule: after delivering the report, ask the user what to do next; do not take action autonomously.
 
 ## Confidence Criteria
 
@@ -192,17 +205,11 @@ Read this file when the repository deviates from the standard shape (missing CON
 
 Read this file after writing the report to decide which follow-up skill to recommend. It maps dimension ratings to the most effective next action, considering numeric scores and risk levels.
 
-## Completion Criteria
+## Completion
 
-- Pre-flight check completed; gaps recorded if present.
-- Automated baseline completed; signals recorded.
-- The Markdown report exists at `.reports/<YYYYMMDD>-viability.md`.
-- The JSON artifact exists at `.reports/<YYYYMMDD>-viability.json`.
-- All three layers (viability, functionality, scalability) are assessed with categorical ratings and numeric scores.
-- Every finding cites `CONTEXT.md`, an ADR, or a concrete code location.
-- Confidence and risk levels are assigned to all findings.
-- Quality gate passed before writing the reports.
-- Validation notes are included in the report.
-- Delta from previous assessment recorded if applicable.
-- The user has been asked how to proceed.
-- No source files were modified.
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

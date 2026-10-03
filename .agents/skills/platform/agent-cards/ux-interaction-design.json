@@ -1,0 +1,29 @@
+{
+  "name": "interaction-design",
+  "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+  "url": "https://github.com/quirk/example/blob/main/.agents/skills/ux/interaction-design/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": false,
+    "workflowOrchestration": false
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "ux/interaction-design",
+      "name": "interaction-design",
+      "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+      "tags": [
+        "ux"
+      ],
+      "parameters": {
+        "trustTier": "1"
+      }
+    }
+  ]
+}

@@ -1,33 +1,57 @@
 ---
-name: scientific-hypothesis
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.
-capabilities:
-  - apply scientific hypothesis workflow
-  - produce scientific hypothesis analysis artifact
-  - validate scientific hypothesis completion criteria
-outputs:
-  - Scientific Hypothesis artifact with completed sections, evidence, and limitations
+name: "scientific-hypothesis"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Formulate testable scientific hypotheses complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Formulate testable scientific hypotheses complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "research"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/scientific-hypothesis.json"
+diataxis: "how-to"
+tags: ["research"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Scientific Hypothesis request, problem context, constraints, and available evidence.
-- **Output:** Scientific Hypothesis artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Formulate testable scientific hypotheses is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ScientificHypothesisArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/scientific-hypothesis/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Scientific Hypothesis Design
 
 Formulate a **scientific hypothesis** that is testable, falsifiable, and tied to measurable variables with controls.
@@ -53,9 +77,11 @@ Formulate a **scientific hypothesis** that is testable, falsifiable, and tied to
 - Rule: distinguish exploratory analysis from confirmatory hypothesis testing.
 - Rule: include limitations, ethical constraints, and data-quality risks.
 
-## Completion Criteria
+## Completion
 
-- H0 and H1 are stated clearly
-- variables and measurement methods are defined
-- study design and statistical test are justified
-- limitations and confounders are explicit
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

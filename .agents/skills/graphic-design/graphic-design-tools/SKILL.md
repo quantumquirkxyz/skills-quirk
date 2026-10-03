@@ -1,48 +1,62 @@
 ---
-name: graphic-design-tools
-category: graphic-design
-maturity: experimental
-version: 1
-description: Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.
-capabilities:
-  - evaluate tool integration options and scopes
-  - define authentication and access policy
-  - specify tool use cases and data flow
-  - document safety boundaries and fallback behavior
-  - produce graphic design tools integration artifact
-outputs:
-  - Graphic Design Tools artifact with tool selection, authentication design, use-case mapping, and safety boundaries
-sideEffects:
-  - write-files
+name: "graphic-design-tools"
+category: "graphic-design"
+maturity: "experimental"
+version: "1"
+description: "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries."
+capabilities: ""
+outputs: ""
+sideEffects: ""
 dependencies: []
-stopCondition: Graphic design tools integration plan complete; tool selection, authentication, use cases, and safety boundaries explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Graphic design tools integration plan complete; tool selection, authentication, use cases, and safety boundaries explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "plan"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/graphic-design-tools.json"
+diataxis: "how-to"
+tags: ["graphic-design"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Graphic design tool integration request, tool inventory, team workflow, and security constraints.
-- **Output:** Graphic Design Tools artifact with tool selection, authentication design, use-case mapping, and safety boundaries.
-- **Side effects:** writes integration plans and configuration documentation to local files.
-- **Dependencies:** none.
-- **Stop condition:** Graphic design tools integration plan complete; tool selection, authentication, use cases, and safety boundaries explicit.
-- **Risk:** medium because this skill proposes tool connections that may require API access and credentials.
-- **Boundary:** designs the integration plan and documentation; does not provision API keys or execute external tool calls.
-
-# Graphic Design Tools
-
-Use this skill when the workflow needs to connect graphic design tools to agent or team automation. It should evaluate Figma, Adobe Creative Cloud, Canva, and local production tools against the team workflow, then define explicit authentication, scopes, data flow, and safety boundaries before any integration is built.
 
 ## Contract
 
 - Input: tool inventory, team workflow, security constraints, and integration goals.
 - Output: graphic design tools artifact covering tool selection, authentication, use-case mapping, data flow, and safety boundaries.
-- Scope: design the integration plan and documentation; do not provision credentials or execute external API calls.
-- Rule: start with the smallest useful integration, not the broadest possible API access.
-- Rule: require explicit owner approval before any integration writes, publishes, or modifies files in external systems.
-- Rule: document fallback behavior when the external tool is unavailable.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `GraphicDesignToolsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/graphic-design-tools/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Graphic Design Tools
+
+Use this skill when the workflow needs to connect graphic design tools to agent or team automation. It should evaluate Figma, Adobe Creative Cloud, Canva, and local production tools against the team workflow, then define explicit authentication, scopes, data flow, and safety boundaries before any integration is built.
+
 
 ## Steps
 
@@ -100,20 +114,11 @@ For each tool, document:
 
 **Completion criterion:** implementation path with validation and rollback saved.
 
-## Completion criteria
+## Completion
 
-- tool inventory and current workflow are documented
-- integration options per tool are documented
-- authentication and access policy are defined
-- use cases and data flow are mapped
-- safety boundaries and fallback behavior are defined
-- implementation path with validation and rollback is defined
-
-## References
-
-- `../../foundation/mcp-server/SKILL.md` — MCP server design and tool exposure
-- `../../integrations/api-contracts/SKILL.md` — API contracts and versioning
-- `references/domain.md` — graphic design tool landscape and API patterns
-- `references/figma-integration.md` — Figma plugin API, REST API, and MCP patterns
-- `references/adobe-integration.md` — Adobe I/O, UXP, and Creative Cloud APIs
-- `references/canva-integration.md` — Canva API, MCP server, and brand kit patterns
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

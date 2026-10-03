@@ -1,33 +1,57 @@
 ---
-name: finance-dcf
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.
-capabilities:
-  - apply finance dcf workflow
-  - produce finance dcf analysis artifact
-  - validate finance dcf completion criteria
-outputs:
-  - Finance Dcf artifact with completed sections, evidence, and limitations
+name: "finance-dcf"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Discounted Cash Flow complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Discounted Cash Flow complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "finance"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/finance-dcf.json"
+diataxis: "how-to"
+tags: ["finance"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Finance Dcf request, problem context, constraints, and available evidence.
-- **Output:** Finance Dcf artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Discounted Cash Flow is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `FinanceDcfArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/finance-dcf/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Discounted Cash Flow
 
 Run a **DCF** — forecast FCF, choose WACC, compute terminal value — and deliver a valuation range with cross-checks and sensitivity.
@@ -96,3 +120,12 @@ Build a sensitivity table: WACC (rows) × terminal growth (cols). Also run:
 Markdown artifact: forecast, WACC, terminal value, sensitivity, scenarios, cross-check, and **valuation range** with a note on reliability.
 
 **Completion criterion:** range delivered; reliability and TV dominance flagged.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

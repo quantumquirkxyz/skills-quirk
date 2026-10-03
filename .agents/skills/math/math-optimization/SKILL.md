@@ -1,33 +1,57 @@
 ---
-name: math-optimization
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.
-capabilities:
-  - apply math optimization workflow
-  - produce math optimization analysis artifact
-  - validate math optimization completion criteria
-outputs:
-  - Math Optimization artifact with completed sections, evidence, and limitations
+name: "math-optimization"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) complete; required sections present; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) complete; required sections present; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "math"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-optimization.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Math Optimization request, problem context, constraints, and available evidence.
-- **Output:** Math Optimization artifact with completed analysis, decisions, recommendations, and limitations.
-- **Side effects:** follow the frontmatter declaration; do not change systems unless explicitly authorized.
-- **Dependencies:** declared dependencies, source material, and domain references required by the task.
-- **Stop condition:** Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) is complete, required sections are present, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope and side-effect policy.
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathOptimizationArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-optimization/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Mathematical Optimization
 
 Turn a real problem into a **mathematical program**, solve it with an appropriate solver, and report what was found — including the gap to optimality when the optimum is not proven.
@@ -100,3 +124,12 @@ Run the solver; for non-trivial models:
 Markdown artifact with: model formulation, hardness, solver, trace summary, optimal (or best-known) solution, gap, sensitivity, and a sanity check against intuition.
 
 **Completion criterion:** all six sections present; solution reproducible from the code shown.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

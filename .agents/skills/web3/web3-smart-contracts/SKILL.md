@@ -1,23 +1,57 @@
 ---
-name: web3-smart-contracts
-category: web3
-maturity: stable
-version: 2
-description: Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.
-capabilities:
-  - review smart contract security (reentrancy, access, arithmetic, gas, MEV)
-  - audit upgradeability, AA (ERC-4337), and EIP-7702 delegation patterns
-  - perform adversarial review and formal verification assessment
-outputs:
-  - Markdown artifact: requirements, security review, gas audit, AA/EIP-7702 review, adversarial scenarios, deployment recommendation
+name: "web3-smart-contracts"
+category: "web3"
+maturity: "stable"
+version: "2"
+description: "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Artifact present with deployment recommendation.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Artifact present with deployment recommendation."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "web3"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/web3-smart-contracts.json"
+diataxis: "how-to"
+tags: ["web3"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `Web3SmartContractsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/web3-smart-contracts/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Smart Contract Design & Review
 
 Design or review a **smart contract** — state, access control, gas, upgrade path, account abstraction — and subject it to an adversarial review before any deployment recommendation.
@@ -120,3 +154,12 @@ Markdown artifact: requirements, security review, gas audit, upgrade/governance/
 - Rule: state trust assumptions for every external call.
 - Rule: document upgrade, AA, and delegation mechanisms explicitly.
 - Rule: prefer minimal, audited libraries (Solmate, OpenZeppelin) over custom implementations.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

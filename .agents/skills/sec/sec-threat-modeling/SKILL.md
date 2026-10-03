@@ -1,35 +1,59 @@
 ---
-name: sec-threat-modeling
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.
-capabilities:
-  - identify assets and trust boundaries
-  - apply STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)
-  - apply ATT&CK (tactics, techniques, procedures) for adversarial analysis
-  - document mitigations and residual risk
-outputs:
-  - Threat model document (diagram + table)
-  - Risk register (asset × threat × vulnerability × mitigation)
+name: "sec-threat-modeling"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Threat model saved; all assets mapped; risk register complete.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Threat model saved; all assets mapped; risk register complete."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "model"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-threat-modeling.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** system architecture, data flows, users, deployment environment.
-- **Output:** threat model document + risk register.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** all assets mapped; risk register filled.
-- **Risk:** low.
-- **Boundary:** designs threat model; does not implement mitigations.
+- Input: system architecture, data flows, users, deployment environment.
+- Output: threat model document + risk register.
+- Scope: designs threat model; does not implement mitigations.
+- Rule: designs threat model; does not implement mitigations.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecThreatModelingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/sec-threat-modeling/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Threat Modeling
 
 Build a **threat model** — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK.
@@ -81,3 +105,12 @@ After mitigations: is risk acceptable? If not, add more controls or accept with 
 - Rule: separate vulnerability, threat, impact, likelihood, mitigation, and residual risk.
 - Rule: assign owners or follow-up actions for non-accepted risks.
 - Rule: include abuse cases and operational controls such as logging, alerting, backup, and recovery.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

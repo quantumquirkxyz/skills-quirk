@@ -1,45 +1,62 @@
 ---
-name: nextjs
-category: frontend
-maturity: stable
-version: 1
-description: Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.
-capabilities:
-  - apply nextjs workflow
-  - produce nextjs artifact
-  - validate nextjs completion criteria
-outputs:
-  - Nextjs artifact with findings, decisions, recommendations, and validation notes
+name: "nextjs"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Shape Next complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Shape Next complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/nextjs.json"
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Nextjs request, relevant context, constraints, and source evidence.
-- **Output:** Nextjs artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Shape Next is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Next.js
-
-Use this skill when the project is built on Next.js and the route tree or rendering model needs to be shaped with intent. Keep the route surface small, the server/client split explicit, and the data flow easy to reason about.
 
 ## Contract
 
 - Input: Next.js brief, route map, and rendering constraints.
 - Output: a Next.js seam proposal, route guidance, and server/client split guidance.
-- Scope: design the route and rendering shape, not the full implementation.
-- Rule: identify which logic belongs on the server and which must stay client-side.
-- Rule: keep route structure aligned with the primary user paths.
-- Rule: avoid shallow wrappers that only move data around.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `NextjsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/nextjs/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Next.js
+
+Use this skill when the project is built on Next.js and the route tree or rendering model needs to be shaped with intent. Keep the route surface small, the server/client split explicit, and the data flow easy to reason about.
+
 
 ## Steps
 
@@ -48,8 +65,11 @@ Use this skill when the project is built on Next.js and the route tree or render
 3. Note any data-fetching or rendering constraints.
 4. Describe the smallest route structure that still fits the flow.
 
-## Completion criteria
+## Completion
 
-- the route shape is named
-- the server/client seam is named
-- the rendering constraints are explicit
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

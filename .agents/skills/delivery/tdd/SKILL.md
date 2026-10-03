@@ -9,7 +9,58 @@ capabilities:
   - produce tdd artifact
   - validate tdd completion criteria
 outputs:
-  - Tdd artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    description: TDD implementation artifact with tests and validation notes
+    properties:
+      tests:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            seam:
+              type: string
+            status:
+              type: string
+              enum: [red, green]
+            assertionCount:
+              type: integer
+      implementation:
+        type: object
+        properties:
+          seam:
+            type: string
+          changes:
+            type: array
+            items:
+              type: object
+              properties:
+                file:
+                  type: string
+                changeType:
+                  type: string
+                  enum: [added, modified]
+      validationNotes:
+        type: array
+        items:
+          type: string
+      completionCriteriaMet:
+        type: boolean
+modelTier: code
+promptVersion: "2.0"
+artifactType: implementation
+evaluators:
+  - behavioral
+  - regression
+  - traceability
+  - quality-bar
+fixturesPath: .agents/skills/platform/fixtures/behavioral/tdd.json
+diataxis: how-to
+tags: [tdd, testing, delivery, implementation]
+compatibility: [implement, code-review]
+approvalRequired: false
+approvalFor: []
 sideEffects: []
 dependencies: []
 stopCondition: Test-driven development complete; artifact saved; completion criteria checked.
@@ -18,15 +69,36 @@ trustTier: 1
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Tdd request, relevant context, constraints, and source evidence.
-- **Output:** Tdd artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Test-driven development is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Input:** feature or bug request, current codebase state, and seam list.
+- **Output:** a red→green implementation trace: failing tests, minimal passing code, and refactor notes.
+- **Scope:** one test at a time; no speculative implementation.
+- **Rule:** write the failing test first, then only enough code to pass it.
+- **Rule:** test only at pre-agreed seams — confirm them before writing any test.
+- **Rule:** refactoring belongs to the review stage, not the red→green cycle.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor" |
+| **Input** | feature or bug request, current codebase state, and seam list. |
+| **Output** | a red→green implementation trace: failing tests, minimal passing code, and refactor notes. |
+| **Side effects** | none. |
+| **Boundaries** | one test at a time; no speculative implementation. |
+| **Completion criteria** | each test fails before implementation; each test passes with minimal code; tests survive refactor; no implementation-coupled or tautological tests. |
+
+## Artifact
+
+This skill emits a structured implementation artifact (JSON) capturing the red→green cycle state, and the test and implementation files themselves. The JSON is the machine-readable cycle log; the code files are the persistent artifact. Both are emitted together so the cycle stays auditable.
+
+## Completion
+
+- all cycles follow the red → green → refactor discipline
+- every test is at a pre-agreed seam and survives refactors
+- no implementation-coupled or tautological tests remain
+- `TddArtifact` emitted and validated
 
 # Test-Driven Development
 
@@ -60,3 +132,6 @@ Ask: "What's the public interface, and which seams should we test?"
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
 - **Rule: after each red-green cycle (one test → one implementation), commit the changes with a conventional commit message.**
 - **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.
+
+---
+@include .agents/skills/platform/contract-base.xml

@@ -1,34 +1,59 @@
 ---
-name: math-pure-proofs
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.
-capabilities:
-  - parse a mathematical statement into shape and domain
-  - select the proof strategy that fits the claim type
-  - construct a step-by-step proof with explicit logical rules
-  - verify the proof by substitution, adversarial pass, and limit checks
-outputs:
-  - Markdown artifact containing: statement, strategy, numbered steps, verification, and cited theorems
+name: "math-pure-proofs"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Markdown artifact exists with all five sections (statement, strategy, steps, verification, cited theorems); every proof step is justified with a named rule.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Markdown artifact exists with all five sections (statement, strategy, steps, verification, cited theorems); every proof step is justified with a named rule."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-pure-proofs.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** a mathematical statement to prove (or a set of statements to evaluate).
-- **Output:** a Markdown proof artifact saved to the repo, with statement, strategy, steps, verification, and theorem citations.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** all proof steps justified; verification passed; artifact saved.
-- **Risk:** low — reasoning-only, no code execution.
-- **Boundary:** generates reasoning only; no code execution, no file system writes beyond the Markdown artifact.
+- Input: a mathematical statement to prove (or a set of statements to evaluate).
+- Output: a Markdown proof artifact saved to the repo, with statement, strategy, steps, verification, and theorem citations.
+- Scope: generates reasoning only; no code execution, no file system writes beyond the Markdown artifact.
+- Rule: generates reasoning only; no code execution, no file system writes beyond the Markdown artifact.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathPureProofsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-pure-proofs/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Pure-Math Proofs
 
 Construct a **proof** — an airtight argument from accepted axioms to a stated statement — using the strategy that fits the shape of the claim.
@@ -83,3 +108,12 @@ Sanity-check the proof three ways:
 Produce the proof in a Markdown file with: statement, strategy, steps, verification notes, and any assumptions called out. Cite definitions or theorems used by name.
 
 **Completion criterion:** Markdown artifact exists; statement, strategy, steps, verification all present; no step is unjustified.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

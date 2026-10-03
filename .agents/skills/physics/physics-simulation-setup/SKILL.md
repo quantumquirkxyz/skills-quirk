@@ -1,36 +1,59 @@
 ---
-name: physics-simulation-setup
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.
-capabilities:
-  - select simulation tool appropriate to the physical system
-  - configure parameters (potential, boundary conditions, initial state, timestep)
-  - containerise the environment (Docker / Apptainer) with exact versions
-  - verify simulation against analytical limits or benchmarks
-outputs:
-  - Simulation source / parameter files
-  - Container definition
-  - Verification report (benchmark comparison, convergence test)
+name: "physics-simulation-setup"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Container builds; parameters saved; verification report shows agreement with benchmark.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Container builds; parameters saved; verification report shows agreement with benchmark."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "physics"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-simulation-setup.json"
+diataxis: "how-to"
+tags: ["physics"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** physical system description and simulation goal.
-- **Output:** parameter files + container + verification.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** verification complete.
-- **Risk:** low.
-- **Boundary:** produces simulation setup; does not run long computations unless user executes container.
+- Input: physical system description and simulation goal.
+- Output: parameter files + container + verification.
+- Scope: produces simulation setup; does not run long computations unless user executes container.
+- Rule: produces simulation setup; does not run long computations unless user executes container.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PhysicsSimulationSetupArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/physics-simulation-setup/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Physics Simulation Setup
 
 Prepare a **reproducible simulation** for a physics system — Monte Carlo, molecular dynamics, DFT, quantum dynamics — with exact parameters and a verification step.
@@ -91,3 +114,12 @@ Compare against:
 Report agreement (percentage difference) and note any discrepancy.
 
 **Completion criterion:** verification report saved; agreement stated.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

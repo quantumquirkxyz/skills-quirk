@@ -2,33 +2,70 @@
 name: code-review
 category: delivery
 maturity: stable
-version: 1
+version: 2
 description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
 capabilities:
   - apply code review workflow
   - produce code review artifact
   - validate code review completion criteria
 outputs:
-  - Code Review artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    name: ReviewArtifact
+    properties:
+      fixedPoint: { type: string }
+      diffCommand: { type: string }
+      standardsFindings: { type: array, items: { type: object } }
+      specFindings: { type: array, items: { type: object } }
+      summary: { type: object }
+      nextConsumer: { type: string }
+      blockedBy: { type: array, items: { type: string } }
+    required: [fixedPoint, standardsFindings, specFindings, summary, nextConsumer]
 sideEffects: []
 dependencies: []
 stopCondition: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; artifact saved; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
+modelTier: reasoning
+promptVersion: "2.0"
+artifactType: review
+evaluators: [behavioral, regression, review-effectiveness]
+fixturesPath: .agents/skills/platform/fixtures/behavioral/code-review.json
+diataxis: how-to
+tags: [delivery, review, standards, spec, quality]
+compatibility: [review-pr, plan-review-fixes, ship-subissue]
+approvalRequired: false
+approvalFor: []
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Code Review request, relevant context, constraints, and source evidence.
-- **Output:** Code Review artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- Input: fixed point (commit/branch/tag/merge-base), diff command, standards sources, spec source.
+- Output: `ReviewArtifact` with Standards and Spec findings separated. See `.agents/skills/platform/schemas/review-findings-schema.json`.
+- Scope: review only — do not edit source files, rewrite history, or repair the branch.
+- Rule: both axes (Standards and Spec) run as parallel sub-agents so they don't pollute each other's context.
+- Rule: always use three-dot diff (`git diff <fixed-point>...HEAD`) against merge-base.
+- Rule: documented repo standards override the smell baseline; smells are always judgement calls.
+- Rule: if the branch is in conflict, stop and route to `resolving-merge-conflicts` first.
 
-Do not edit source files, rewrite history, or repair the branch in this skill; review only.
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The fixed point diff + originating spec/issue |
+| What is in scope? | The diff between fixed point and HEAD |
+| What is explicitly out of scope? | Files outside the diff, history before fixed point |
+| Who or what consumes this artifact afterward? | `plan-review-fixes` or `ship-subissue` |
+| What evidence proves it is done? | Complete Standards + Spec reports, one-line summary per axis |
+| What risk remains? | Subjective smells, missing spec, ambiguous standards |
+
+## Artifact
+
+Emit `ReviewArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/code-review/{pr-or-branch-id}.json`
+- Markdown view: same filename with `.md` extension
+
+Validate against `.agents/skills/platform/schemas/review-findings-schema.json` before saving.
 
 Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
@@ -106,6 +143,8 @@ Present the two reports under `## Standards` and `## Spec` headings, verbatim or
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes — that's the reranking the separation exists to prevent.
 
+Emit a `ReviewArtifact` JSON/Markdown pair as described in the `## Artifact` section above. Populate `fixedPoint`, `diffCommand`, `standardsFindings`, `specFindings`, `summary` (with per-axis counts and worst-issue strings), `nextConsumer` (`plan-review-fixes` or `ship-subissue`), and `blockedBy` (empty array if no blockers; otherwise e.g. `["resolving-merge-conflicts"]`). Validate against the schema before saving.
+
 ## Why two axes
 
 A change can pass one axis and fail the other:
@@ -114,3 +153,6 @@ A change can pass one axis and fail the other:
 - Code that does exactly what the issue asked but breaks the project's conventions → **Spec pass, Standards fail.**
 
 Reporting them separately stops one axis from masking the other.
+
+---
+@include .agents/skills/platform/contract-base.xml

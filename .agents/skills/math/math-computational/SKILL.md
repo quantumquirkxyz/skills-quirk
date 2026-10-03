@@ -1,34 +1,59 @@
 ---
-name: math-computational
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.
-capabilities:
-  - select numerical algorithms suited to problem type and regime
-  - implement or execute numerical methods with error and stability analysis
-  - cross-verify results against independent methods
-  - deliver numerical results with explicit uncertainty bounds
-outputs:
-  - Markdown artifact with: problem, algorithm, error/stability/cost analysis, code or computation, verification, and final answer with uncertainty
+name: "math-computational"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Artifact contains algorithm, error bounds, verification, and final answer; solution is reproducible from the code shown.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Artifact contains algorithm, error bounds, verification, and final answer; solution is reproducible from the code shown."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "math"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-computational.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** a numerical or symbolic mathematical problem.
-- **Output:** Markdown artifact with algorithm choice, error analysis, computation, and verification.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** artifact complete with error bounds and verification.
-- **Risk:** low — computation only, no system changes.
-- **Boundary:** may execute code for numerical work but only in-memory, no file writes.
+- Input: a numerical or symbolic mathematical problem.
+- Output: Markdown artifact with algorithm choice, error analysis, computation, and verification.
+- Scope: may execute code for numerical work but only in-memory, no file writes.
+- Rule: may execute code for numerical work but only in-memory, no file writes.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathComputationalArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-computational/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Computational Math
 
 Solve a mathematical problem **numerically or symbolically** with an algorithm whose error, stability, and cost are explicit. Never ship a black-box answer.
@@ -100,3 +125,12 @@ Cross-check by at least one independent path:
 Markdown artifact with: problem, algorithm choice, error/stability/cost, code or computation, verification, and final answer with stated uncertainty (e.g. "to 6 significant digits").
 
 **Completion criterion:** artifact contains algorithm, error bounds, verification, and a final answer whose precision is justified.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

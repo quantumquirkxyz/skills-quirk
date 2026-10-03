@@ -1,36 +1,59 @@
 ---
-name: chaos-engineering
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.
-capabilities:
-  - define steady-state hypotheses and SLO-based guardrails
-  - design fault injection experiments (network, compute, dependency)
-  - run GameDays with controlled blast radius
-  - validate resilience and produce remediation recommendations
-outputs:
-  - Chaos experiment plan (hypothesis, scope, fault type, success criteria)
-  - Fault injection configuration (tool, parameters, safety constraints)
-  - Resilience report (findings, blast radius, remediation backlog)
+name: "chaos-engineering"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Experiment plan defined; fault injection config documented; resilience report produced.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Experiment plan defined; fault injection config documented; resilience report produced."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/chaos-engineering.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** service inventory, SLOs, dependency graph, production traffic patterns.
-- **Output:** chaos experiment plan + fault injection config + resilience report.
-- **Side effects:** may simulate faults in production-like environments; requires safety controls.
-- **Dependencies:** chaos platform (Chaos Monkey, Gremlin, Litmus, custom scripts), monitoring stack.
-- **Stop condition:** experiment plan defined; fault injection config documented; resilience report produced.
-- **Risk:** medium — fault injection can degrade service; requires blast radius limits and abort conditions.
-- **Boundary:** designs experiments and documents results; does not execute production chaos without explicit authorisation and safety review.
+- Input: service inventory, SLOs, dependency graph, production traffic patterns.
+- Output: chaos experiment plan + fault injection config + resilience report.
+- Scope: designs experiments and documents results; does not execute production chaos without explicit authorisation and safety review.
+- Rule: designs experiments and documents results; does not execute production chaos without explicit authorisation and safety review.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ChaosEngineeringArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/chaos-engineering/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Chaos Engineering
 
 Design **chaos engineering** — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.
@@ -92,3 +115,12 @@ Design **chaos engineering** — fault injection, GameDays, resilience validatio
 - Rule: require live monitoring and on-call readiness before any fault injection.
 - Rule: stop immediately if abort conditions are met; do not push through to prove a point.
 - Rule: treat every finding as a product risk item, not a one-off engineering curiosity.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

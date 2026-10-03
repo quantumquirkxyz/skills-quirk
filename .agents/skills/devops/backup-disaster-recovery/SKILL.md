@@ -1,38 +1,59 @@
 ---
-name: backup-disaster-recovery
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.
-capabilities:
-  - define recovery objectives (RPO, RTO, RSL, RPO per service)
-  - design backup strategies (full, incremental, differential, continuous)
-  - plan cross-region and multi-cloud disaster recovery
-  - design restore testing procedures and cadence
-  - document failover and fallback runbooks
-outputs:
-  - Backup and DR architecture diagram (text/Markdown)
-  - Recovery objectives matrix per service
-  - Backup strategy and retention policy
-  - Restore testing plan and failover runbook
+name: "backup-disaster-recovery"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Architecture diagram saved; recovery objectives matrix complete; backup strategy documented; restore testing plan filled.
-risk: medium
-trustTier: 3
-maxIterations: 7
+stopCondition: "Architecture diagram saved; recovery objectives matrix complete; backup strategy documented; restore testing plan filled."
+risk: "medium"
+trustTier: "3"
+maxIterations: "7"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/backup-disaster-recovery.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** service inventory, data criticality, compliance requirements, current backup posture, recovery time targets.
-- **Output:** backup and DR architecture + recovery objectives matrix + backup strategy + restore testing plan.
-- **Side effects:** may schedule backups, configure replication, or initiate failover when executed.
-- **Dependencies:** storage provider, backup tooling, cloud provider (cross-region), monitoring.
-- **Stop condition:** architecture documented; recovery objectives defined; backup strategy saved; restore testing plan complete.
-- **Risk:** medium — DR failures cause extended outages and data loss; backup misconfiguration leads to unrecoverable data.
-- **Boundary:** designs backup and DR strategy; does not execute production failover or data deletion unless explicitly instructed.
+- Input: service inventory, data criticality, compliance requirements, current backup posture, recovery time targets.
+- Output: backup and DR architecture + recovery objectives matrix + backup strategy + restore testing plan.
+- Scope: designs backup and DR strategy; does not execute production failover or data deletion unless explicitly instructed.
+- Rule: designs backup and DR strategy; does not execute production failover or data deletion unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BackupDisasterRecoveryArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/backup-disaster-recovery/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Backup and Disaster Recovery
 
 Design a **backup and disaster recovery** strategy with explicit recovery objectives (RPO/RTO), backup strategies, restore testing, and cross-region resilience.
@@ -97,3 +118,12 @@ Design a **backup and disaster recovery** strategy with explicit recovery object
 - Rule: test restores regularly; untested backups are not backups.
 - Rule: automate backup verification with integrity checks and synthetic post-restore validation.
 - Rule: document failover and rollback runbooks with explicit triggers, steps, and communication plans.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

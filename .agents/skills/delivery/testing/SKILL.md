@@ -1,45 +1,62 @@
 ---
-name: testing
-category: delivery
-maturity: stable
-version: 1
-description: Shape the test strategy for a project so behavior is verified at the right seams and at the right level.
-capabilities:
-  - apply testing workflow
-  - produce testing artifact
-  - validate testing completion criteria
-outputs:
-  - Testing artifact with findings, decisions, recommendations, and validation notes
+name: "testing"
+category: "delivery"
+maturity: "stable"
+version: "1"
+description: "Shape the test strategy for a project so behavior is verified at the right seams and at the right level."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Shape the test strategy for a project so behavior is verified at the right seams and at the right level complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Shape the test strategy for a project so behavior is verified at the right seams and at the right level complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/testing.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Testing request, relevant context, constraints, and source evidence.
-- **Output:** Testing artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Shape the test strategy for a project so behavior is verified at the right seams and at the right level is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Testing
-
-Use this skill when the project needs a testing strategy beyond a single feature slice. It should make the seams, levels, and coverage boundaries explicit so tests stay behavior-focused and maintainable.
 
 ## Contract
 
 - Input: testing brief, system surface, and test stack.
 - Output: a test strategy, seam guidance, and coverage boundaries.
-- Scope: design test strategy, not implementation details.
-- Rule: test the public seam first, not the internals.
-- Rule: distinguish unit, integration, and end-to-end ownership clearly.
-- Rule: avoid speculative coverage that does not prove user-visible behavior.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `TestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Testing
+
+Use this skill when the project needs a testing strategy beyond a single feature slice. It should make the seams, levels, and coverage boundaries explicit so tests stay behavior-focused and maintainable.
+
 
 ## Steps
 
@@ -48,8 +65,11 @@ Use this skill when the project needs a testing strategy beyond a single feature
 3. Assign the right test level to each behavior slice.
 4. State what is intentionally not covered.
 
-## Completion criteria
+## Completion
 
-- the test seam is named
-- the test level is named
-- the coverage boundary is explicit
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

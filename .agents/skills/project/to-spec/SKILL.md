@@ -9,7 +9,74 @@ capabilities:
   - produce to spec artifact
   - validate to spec completion criteria
 outputs:
-  - To Spec artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    description: To Spec artifact with findings, decisions, recommendations, and validation notes
+    properties:
+      spec:
+        type: object
+        properties:
+          title:
+            type: string
+          goals:
+            type: array
+            items:
+              type: string
+          nonGoals:
+            type: array
+            items:
+              type: string
+          acceptanceCriteria:
+            type: array
+            items:
+              type: string
+          risks:
+            type: array
+            items:
+              type: string
+          decisions:
+            type: array
+            items:
+              type: object
+              properties:
+                decision:
+                  type: string
+                rationale:
+                  type: string
+          validationNotes:
+            type: array
+            items:
+              type: string
+        required:
+          - title
+          - goals
+          - acceptanceCriteria
+      trackerMeta:
+        type: object
+        properties:
+          issueNumber:
+            type: integer
+          labels:
+            type: array
+            items:
+              type: string
+          milestone:
+            type: string
+      completionCriteriaMet:
+        type: boolean
+modelTier: reasoning
+promptVersion: "2.0"
+artifactType: spec
+evaluators:
+  - behavioral
+  - regression
+  - traceability
+  - quality-bar
+fixturesPath: .agents/skills/platform/fixtures/behavioral/to-spec.json
+diataxis: how-to
+tags: [project, spec, planning, documentation]
+compatibility: [to-tickets, grill-with-docs]
+approvalRequired: false
+approvalFor: []
 sideEffects:
   - create-issue
 dependencies: []
@@ -19,29 +86,34 @@ trustTier: 3
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** To Spec request, relevant context, constraints, and source evidence.
-- **Output:** To Spec artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Input:** current conversation context, codebase understanding, and repo conventions.
+- **Output:** one published spec issue plus the implementation and testing decisions that make the work buildable.
+- **Scope:** synthesize what is already known; do not reopen discovery interviews.
+- **Rule:** prefer one seam, and make any seam choice explicit before publishing.
+- **Rule:** frame the work in terms of this repo's concepts where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
+- **Rule:** if the spec cannot be made concrete enough to hand off, stop and say what is still missing.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known. |
+| **Input** | current conversation context, codebase understanding, and repo conventions. |
+| **Output** | one published spec issue plus the implementation and testing decisions that make the work buildable. |
+| **Side effects** | create-issue. |
+| **Boundaries** | synthesize what is already known; do not reopen discovery interviews. |
+| **Completion criteria** | problem and solution stated from the user's perspective; implementation decisions concrete enough to guide ticketing; testing decisions identify external behavior and intended seam; scope and out-of-scope items explicit; spec published with tracker defaults applied. |
+
+## Artifact
+
+This skill emits a structured spec artifact (JSON) and a Markdown spec body. The JSON is the machine-readable contract; the Markdown is the published tracker issue. Both are emitted atomically so they stay in sync.
 
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know. Write the published issue body in English, and use the this repo's vocabulary consistently.
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-quirk-skills` if not.
-The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/agents/work-item-format.md); follow it for labels, milestone, project, fields, and todo/acceptance structure.
-
-## Contract
-
-- Input: current conversation context, codebase understanding, and repo conventions.
-- Output: one published spec issue plus the implementation and testing decisions that make the work buildable.
-- Scope: synthesize what is already known; do not reopen discovery interviews.
-- Rule: prefer one seam, and make any seam choice explicit before publishing.
-- Rule: frame the work in terms of this repo's concepts where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
-- Rule: if the spec cannot be made concrete enough to hand off, stop and say what is still missing.
+The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md); follow it for labels, milestone, project, fields, and todo/acceptance structure.
 
 ## Process
 
@@ -71,3 +143,6 @@ Professional spec standard: the template must be compact, traceable, and ticket-
 - the spec is published with the tracker defaults applied
 
 See `references/spec-template.md` for the canonical shape.
+
+---
+@include .agents/skills/platform/contract-base.xml

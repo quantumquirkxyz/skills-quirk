@@ -1,60 +1,146 @@
 ---
 name: mcp-server
 category: foundation
-maturity: stable
-description: Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.
-version: 1
+maturity: beta
+version: 2
+description: Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.
 capabilities:
-  - define-mcp-server
-  - connect-context-sources
-  - index-dynamic-data
-  - expose-tools-to-agent
+  - expose-skills-as-mcp-tools
+  - generate-skill-resources
+  - generate-workflow-prompts
+  - configure-transport
 inputs:
-  - "server-config: MCP server configuration (name, endpoint)"
-  - "sources: List of external sources (github issues, PR descriptions, docs, traces)"
-  - "access-policy: Read-only or supervised-write"
+  - "skill-registry-paths: .agents/skills/ and .claude/skills/"
+  - "transport: stdio or sse"
+  - "endpoint: for sse transport"
 outputs:
-  - "mcp-server-definition: Configured server spec"
-  - "context-index: Index of available sources"
-  - "tool-list: Tools exposed to agent"
-  - "connection-test: Validation of connection"
+  - type: object
+    name: McpServerArtifact
+    properties:
+      tools:
+        type: array
+        items:
+          type: object
+      resources:
+        type: array
+        items:
+          type: object
+      prompts:
+        type: array
+        items:
+          type: object
+      transport:
+        type: string
+        enum: [stdio, sse]
+      endpoint:
+        type: string
+      skillsExposed:
+        type: array
+        items:
+          type: string
+    required: [tools, resources, prompts, transport, skillsExposed]
 sideEffects:
   - write-files
 dependencies: []
-stopCondition: Server configured, sources indexed, and agent can query context through MCP tools.
-risk: medium
-trustTier: 3
-maxIterations: 3
+stopCondition: MCP server configured with tools, resources, and prompts generated; transport exposed; artifact saved; completion criteria checked.
+risk: low
+trustTier: 1
+maxIterations: 5
+modelTier: router
+promptVersion: "2.0"
+artifactType: plan
+evaluators: [behavioral, traceability]
+fixturesPath: .agents/skills/platform/fixtures/behavioral/mcp-server.json
+diataxis: how-to
+tags:
+  - mcp
+  - protocol
+  - tools
+  - resources
+  - prompts
+  - agent-discovery
+compatibility:
+  - all skills
+approvalRequired: false
+approvalFor: []
 ---
 
 # MCP Server
 
 ## Contract
-- Input: server config, source list, access policy
-- Output: server definition, index, tools, connection test
-- Boundary: defines connection; does not write to external sources
-- Caller responsibility: name the target MCP client, allowed tools, source credentials owner, and whether writes are forbidden or supervised.
-- Operator responsibility: document trust boundaries, authentication assumptions, and the validation command for the server definition.
+
+- Input: skill registry paths (`.agents/skills/` and `.claude/skills/`), transport selection (`stdio` or `sse`), optional endpoint for `sse`.
+- Output: `McpServerArtifact` with typed schema for `tools`, `resources`, `prompts`, `transport`, `endpoint`, and `skillsExposed`.
+- Scope: expose quirk Skills via Model Context Protocol; do not modify skill source files or consume external data sources.
+- Rule: every exposed tool maps to a skill capability with explicit input and output schemas.
+- Rule: resources must point to static skill documentation; do not expose mutable state.
+- Rule: prompts must be versioned and tied to specific workflow combinations.
+- Rule: transport selection must match the deployment context — `stdio` for local, `sse` for remote.
+- Rule: exclude skills with `trustTier > 3` from automatic exposure; require explicit allow-list.
+- Rule: do not expose secrets, credentials, or environment variable values in any generated artifact.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol. |
+| **Input** | skill registry paths, transport selection, endpoint configuration. |
+| **Output** | `McpServerArtifact` with typed schema for `tools`, `resources`, `prompts`, `transport`, `endpoint`, and `skillsExposed`. |
+| **Side effects** | writes server configuration files to disk. |
+| **Boundaries** | exposes skills via MCP; does not modify skill source files or consume external data sources. |
+| **Completion criteria** | all discovered skills are mapped to MCP tools, resources, and prompts; transport is configured and validated; artifact is saved; completion criteria are checked. |
+
+## Artifact
+
+Emit `McpServerArtifact` as both:
+- JSON: `.agents/skills/foundation/mcp-server/artifacts/{request-id}.json`
+- Markdown view: same filename with `.md` extension
+
+The artifact must include the typed schema for `McpServerArtifact`:
+
+- `tools`: array of MCP tool definitions generated from skill frontmatter capabilities. Each tool must include `name`, `description`, `inputSchema`, and `outputSchema`.
+- `resources`: array of MCP resource definitions pointing to skill documentation. Each resource must include `uri`, `name`, `description`, and `mimeType`.
+- `prompts`: array of MCP prompt templates for common workflows. Each prompt must include `name`, `description`, `arguments`, and `messages`.
+- `transport`: enum `[stdio, sse]`
+- `endpoint`: string (required for `sse` transport)
+- `skillsExposed`: array of skill names exposed through the server
 
 ## Process
-1. Define server name and endpoint.
-2. List and validate sources.
-3. Configure access (read-only default).
-4. Index sources.
-5. Expose tools to agent.
-6. Test connection.
 
-## Guardrails
-- Default to read-only access.
-- Verify source authenticity.
-- Preserve provenance of indexed data.
-- Never expose secrets in server definition.
-- Rule: Treat every exposed tool as an API contract with explicit inputs, outputs, and side effects.
-- Rule: Do not grant write-capable tools unless the access policy names the approval path.
-- Rule: Keep credentials outside committed config and reference only their expected environment variable names.
-- Rule: Include a connection test that proves both positive access and denied access for out-of-scope sources.
+### Step 1: Load skill registry from `.agents/skills/` and `.claude/skills/`
 
-## Security Checklist
-- Define who operates the server and who consumes its tools.
-- Separate read-only context retrieval from mutating integrations.
-- Log tool invocation metadata without logging secret values or private payloads.
+Scan both canonical and compatibility view directories for `SKILL.md` files. Build a registry of available skills with their names, categories, capabilities, and frontmatter metadata. Validate each skill's frontmatter before inclusion. Skip skills missing required fields and log warnings for incomplete entries.
+
+### Step 2: Generate MCP tool definitions from skill frontmatter
+
+For each skill in the registry, generate an MCP tool definition using the format in `references/tool-schema.md`. Map skill capabilities to tool names. Include `inputSchema` and `outputSchema` based on the skill's inputs and outputs. Enforce the rule that tools with side effects require explicit allow-list.
+
+### Step 3: Generate MCP resource definitions for skill documentation
+
+For each skill, generate an MCP resource definition that exposes the `SKILL.md` content. Resources should be read-only and point to the canonical skill path. Include the skill name, description, and MIME type `text/markdown`. Do not expose mutable state through resources.
+
+### Step 4: Generate MCP prompt templates for common workflows
+
+Generate prompt templates for common workflow combinations:
+- skill discovery: list and filter available skills by category or tag
+- skill execution: invoke a skill by name with arguments
+- workflow chaining: combine multiple skills in sequence
+
+Each prompt template must include a version, description, and argument schema. Version all prompts to support future updates without breaking existing consumers.
+
+### Step 5: Expose via stdio or SSE transport
+
+Configure the MCP server transport based on deployment context:
+- `stdio`: for local agent integration, reads from stdin and writes to stdout
+- `sse`: for remote agent integration, requires endpoint configuration and HTTP server
+
+Write the server configuration to disk and validate the transport connection. Default to `stdio` when transport is unspecified. For `sse`, ensure the endpoint is reachable and returns valid MCP handshake responses.
+
+## Completion Criteria
+
+- all discovered skills are mapped to MCP tools, resources, and prompts
+- transport is configured and validated
+- artifact is saved
+- completion criteria are checked
+
+@include .agents/skills/platform/contract-base.xml

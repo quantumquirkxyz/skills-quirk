@@ -1,39 +1,59 @@
 ---
-name: secret-management-security
-category: sec
-maturity: stable
-version: 1
-description: Secrets management (Vault, KMS, rotation, injection, external secrets operator)
-capabilities:
-  - design secrets management architecture (Vault, cloud KMS, hybrid)
-  - implement secrets rotation (database credentials, API keys, certificates)
-  - design secrets injection (environment, volume, CSI driver, workload identity)
-  - configure External Secrets Operator (ESO) for Kubernetes
-  - audit secrets usage and detect hardcoded or leaked credentials
-  - design encryption at rest for secrets stores (etcd encryption, KMS envelope)
-outputs:
-  - Secrets management architecture document
-  - Rotation schedule and playbook
-  - Secrets injection design (method × runtime)
-  - Audit findings and remediation plan
+name: "secret-management-security"
+category: "sec"
+maturity: "stable"
+version: "1"
+description: "Secrets management (Vault, KMS, rotation, injection, external secrets operator)"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Secrets architecture saved; rotation schedule defined; injection design documented; audit complete.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Secrets architecture saved; rotation schedule defined; injection design documented; audit complete."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "security"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/secret-management-security.json"
+diataxis: "how-to"
+tags: ["sec"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** secret types (API keys, database credentials, certificates, tokens), runtime environments (Kubernetes, VMs, serverless), compliance requirements.
-- **Output:** secrets management architecture + rotation schedule + injection design + audit findings.
-- **Side effects:** may require access to secret stores for validation; audit may scan code for leaked secrets.
-- **Dependencies:** Vault / cloud KMS / secret manager availability; Kubernetes cluster for ESO validation.
-- **Stop condition:** architecture documented; rotation automated; injection method selected; audit complete.
-- **Risk:** medium — compromised secrets lead to data breaches and lateral movement.
-- **Boundary:** designs and audits secrets management; does not rotate live production secrets without explicit approval.
+- Input: secret types (API keys, database credentials, certificates, tokens), runtime environments (Kubernetes, VMs, serverless), compliance requirements.
+- Output: secrets management architecture + rotation schedule + injection design + audit findings.
+- Scope: designs and audits secrets management; does not rotate live production secrets without explicit approval.
+- Rule: designs and audits secrets management; does not rotate live production secrets without explicit approval.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SecretManagementSecurityArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/secret-management-security/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Secret Management Security
 
 Design and audit **secrets management** — Vault, KMS, rotation, injection, and External Secrets Operator — with explicit lifecycle controls and leakage prevention.
@@ -112,3 +132,12 @@ Design and audit **secrets management** — Vault, KMS, rotation, injection, and
 - Rule: scan all code, IaC, and images for hardcoded secrets before merge; block if critical secrets found.
 - Rule: rotate all static secrets on a defined schedule; emergency rotation runbook tested quarterly.
 - Rule: avoid IMDSv1 and metadata service access from containers; use workload identity and short-lived tokens instead.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

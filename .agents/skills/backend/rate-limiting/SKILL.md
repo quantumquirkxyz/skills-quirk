@@ -1,36 +1,62 @@
 ---
-name: rate-limiting
-category: backend
-maturity: stable
-version: 1
-description: Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).
-capabilities:
-  - design rate limiting systems
-  - configure token bucket and sliding window algorithms
-  - implement distributed rate limiting
-  - protect APIs with throttling strategies
-outputs:
-  - Rate limiting design with algorithm selection, limit configuration, distributed coordination, API protection strategy, and operational monitoring
+name: "rate-limiting"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection)."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Rate limiting algorithms, limit tiers, distributed coordination, and API protection rules are explicit.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Rate limiting algorithms, limit tiers, distributed coordination, and API protection rules are explicit."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/rate-limiting.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Rate Limiting and Throttling
-
-Use this skill when designing, reviewing, or implementing rate limiting and throttling systems — token bucket, sliding window, distributed rate limiting, API protection, and overload prevention.
 
 ## Contract
 
 - Input: API inventory, traffic profile, client tiers, SLA targets, abuse patterns, and infrastructure capacity.
 - Output: rate limiting design with algorithm selection, limit tiers, distributed coordination, API protection rules, graceful degradation, and monitoring.
-- Scope: rate limiting architecture; not infrastructure provisioning unless explicitly requested.
-- Rule: rate limiting protects service health; it is not a substitute for capacity planning or auth.
-- Rule: classify traffic by client, endpoint, and intent before applying limits.
-- Rule: make limit breach behavior explicit: reject, delay, queue, or degrade.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `RateLimitingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/rate-limiting/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Rate Limiting and Throttling
+
+Use this skill when designing, reviewing, or implementing rate limiting and throttling systems — token bucket, sliding window, distributed rate limiting, API protection, and overload prevention.
+
 
 ## Process
 
@@ -85,11 +111,11 @@ Use this skill when designing, reviewing, or implementing rate limiting and thro
 - Rule: document emergency override procedures for false positives or incidents.
 - Rule: apply rate limiting at the edge when possible to protect downstream services.
 
-## Completion Criteria
+## Completion
 
-- API inventory and client classification are documented
-- algorithm selection and enforcement layer are justified
-- limit tier matrix is documented with enforcement granularity
-- distributed coordination design is explicit
-- error handling and degradation strategy are defined
-- observability and operational runbook are covered
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

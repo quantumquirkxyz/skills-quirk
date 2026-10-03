@@ -1,33 +1,63 @@
 ---
-name: networking-protocols
-category: networking
-maturity: stable
-version: 1
-description: Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions.
-capabilities:
-  - analyze protocol behavior
-  - reason about handshakes and packet flow
-  - diagnose timing and failure modes
-outputs:
-  - protocol analysis with message flow, assumptions, timing, and failure cases
+name: "networking-protocols"
+category: "networking"
+maturity: "stable"
+version: "1"
+description: "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Protocol state, message flow, and failure assumptions are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Protocol state, message flow, and failure assumptions are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/networking-protocols.json"
+diataxis: "how-to"
+tags: ["networking"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# networking-protocols
-
-Use this skill when analyzing packet formats, handshakes, transport behavior, routing interactions, congestion control, or protocol-level failure scenarios.
 
 ## Contract
 
 - Input: protocol, actors, message sequence, network assumptions, captures/logs if available, and observed behavior.
 - Output: protocol explanation, state machine or flow, timing assumptions, and likely failure modes.
-- Scope: protocol mechanics and network behavior; infrastructure design belongs to the networking skill.
-- Boundary: distinguish what the protocol guarantees from what an implementation happens to do.
+- Scope: distinguish what the protocol guarantees from what an implementation happens to do.
+- Rule: distinguish what the protocol guarantees from what an implementation happens to do.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `NetworkingProtocolsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/networking-protocols/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# networking-protocols
+
+Use this skill when analyzing packet formats, handshakes, transport behavior, routing interactions, congestion control, or protocol-level failure scenarios.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when analyzing packet formats, handshakes, transport behavior, ro
 5. Analyze failure cases: loss, reordering, MTU, DNS, routing, TLS, and connection resets.
 6. Summarize root cause candidates or design implications.
 
-## Completion Criteria
+## Completion
 
-- message flow and state transitions are clear
-- timing and retry assumptions are documented
-- observed evidence is tied to protocol behavior
-- failure modes and security assumptions are explicit
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

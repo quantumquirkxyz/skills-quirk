@@ -1,33 +1,63 @@
 ---
-name: os-processes
-category: os
-maturity: stable
-version: 1
-description: Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.
-capabilities:
-  - analyze process lifecycle
-  - reason about scheduling and IPC
-  - diagnose concurrency and isolation issues
-outputs:
-  - process-system analysis with states, scheduling, IPC, and isolation assumptions
+name: "os-processes"
+category: "os"
+maturity: "stable"
+version: "1"
+description: "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Process states, scheduling assumptions, IPC, and failure behavior are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Process states, scheduling assumptions, IPC, and failure behavior are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/os-processes.json"
+diataxis: "how-to"
+tags: ["os"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# os-processes
-
-Use this skill when reasoning about process lifecycle, scheduling, signals, forks, exec, IPC, synchronization, process isolation, or OS-level concurrency behavior.
 
 ## Contract
 
 - Input: OS context, process model, workload, synchronization needs, and observed symptoms or design goal.
 - Output: process-state analysis, scheduling/IPC design, and failure or race-condition notes.
-- Scope: process and IPC reasoning; memory-specific issues belong to os-memory.
-- Boundary: distinguish process behavior, thread behavior, and application-level task scheduling.
+- Scope: distinguish process behavior, thread behavior, and application-level task scheduling.
+- Rule: distinguish process behavior, thread behavior, and application-level task scheduling.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `OsProcessesArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/os-processes/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# os-processes
+
+Use this skill when reasoning about process lifecycle, scheduling, signals, forks, exec, IPC, synchronization, process isolation, or OS-level concurrency behavior.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when reasoning about process lifecycle, scheduling, signals, fork
 5. Recommend design or diagnostic steps.
 6. Define tests or observations that would confirm the process behavior.
 
-## Completion Criteria
+## Completion
 
-- lifecycle and ownership boundaries are explicit
-- scheduling and IPC assumptions are documented
-- failure modes such as leaks, races, and zombies are considered
-- verification or diagnostic steps are provided
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

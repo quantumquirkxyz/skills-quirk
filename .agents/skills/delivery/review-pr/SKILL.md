@@ -9,7 +9,70 @@ capabilities:
   - produce review pr artifact
   - validate review pr completion criteria
 outputs:
-  - Review Pr artifact with findings, decisions, recommendations, and validation notes
+  - type: object
+    description: Review findings artifact with Standards and Spec axes
+    properties:
+      fixedPoint:
+        type: string
+      diffCommand:
+        type: string
+      standards:
+        type: array
+        items:
+          type: object
+          properties:
+            file:
+              type: string
+            line:
+              type: integer
+            hunk:
+              type: string
+            smellName:
+              type: string
+            severity:
+              type: string
+              enum: [hard-violation, judgement-call]
+            explanation:
+              type: string
+      spec:
+        type: array
+        items:
+          type: object
+          properties:
+            requirement:
+              type: string
+            status:
+              type: string
+              enum: [missing, partial, scope-creep, implemented-incorrectly]
+            evidence:
+              type: string
+      summary:
+        type: object
+        properties:
+          standardsFindings:
+            type: integer
+          specFindings:
+            type: integer
+          worstStandard:
+            type: string
+          worstSpec:
+            type: string
+      completionCriteriaMet:
+        type: boolean
+modelTier: reasoning
+promptVersion: "2.0"
+artifactType: review
+evaluators:
+  - behavioral
+  - regression
+  - traceability
+  - quality-bar
+fixturesPath: .agents/skills/platform/fixtures/behavioral/review-pr.json
+diataxis: how-to
+tags: [delivery, review, standards, spec, quality]
+compatibility: [plan-review-fixes, ship-subissue, resolving-merge-conflicts]
+approvalRequired: false
+approvalFor: []
 sideEffects: []
 dependencies: []
 stopCondition: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax complete; artifact saved; completion criteria checked.
@@ -18,19 +81,42 @@ trustTier: 1
 maxIterations: 6
 ---
 
-## Operating Contract
+## Contract
 
-- **Input:** Review Pr request, relevant context, constraints, and source evidence.
-- **Output:** Review Pr artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
+- **Input:** a PR, diff, fixed point reference, and the originating spec if available.
+- **Output:** a two-axis review report (Standards + Spec) with per-file findings and a summary line.
+- **Scope:** publish findings only — do not change source files, fix the PR, or merge it.
+- **Rule:** keep Standards and Spec axes separate so neither masks the other.
+- **Rule:** every finding must include exact file/line, the rule or smell that justifies it, and a concrete explanation of what breaks.
+- **Rule:** documented-standard breaches are hard; baseline smells are always judgement calls.
+
+## Provenance
+
+| Quality-Bar Question | Evidence |
+|---|---|
+| **Intent** | Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes. |
+| **Input** | a PR, diff, fixed point reference, and the originating spec if available. |
+| **Output** | a two-axis review report (Standards + Spec) with per-file findings and a summary line. |
+| **Side effects** | none (findings published as PR comments only). |
+| **Boundaries** | publish findings only — do not change source files, fix the PR, or merge it. |
+| **Completion criteria** | fixed point pinned and diff non-empty; Standards findings cite documented standards or smell names; Spec findings quote the spec; if target is a GitHub PR, review published; no merging or fixing. |
+
+## Artifact
+
+This skill emits a structured review report (JSON) and a Markdown review body. The JSON is the machine-readable findings artifact; the Markdown is the published PR review body. Both are emitted together so the axes stay separated and the review trail is auditable.
 
 Do not change source files, fix the PR, or merge it in this skill; publish findings only.
 
 Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
+
+## Completion
+
+- fixed point is pinned and diff is non-empty
+- Standards findings cite documented standards or smell names
+- Spec findings quote the spec line for each requirement
+- review is published to the PR (if GitHub) or returned as structured output
+- no source files are changed, fixed, or merged
+- `ReviewArtifact` emitted and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
 
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / PRD / spec?
@@ -138,7 +224,7 @@ A change can pass one axis and fail the other:
 Reporting them separately stops one axis from masking the other.
 
 When reviewing a spec or ADR, keep the spec axis aligned to `CONTEXT.md` and the repo's ADRs so findings use the project's canonical architecture and domain vocabulary.
-When the review is attached to a tracker-backed PR, treat the linked issue metadata as part of the review surface: the published review should preserve traceability to the issue labels and milestone, following [`docs/agents/work-item-format.md`](../../../../docs/agents/work-item-format.md) for any metadata references you include in the PR review body.
+When the review is attached to a tracker-backed PR, treat the linked issue metadata as part of the review surface: the published review should preserve traceability to the issue labels and milestone, following [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) for any metadata references you include in the PR review body.
 
 ## Review quality bar
 
@@ -146,3 +232,6 @@ When the review is attached to a tracker-backed PR, treat the linked issue metad
 - If a standards finding is only a smell, say so explicitly.
 - If a spec finding is really a missing requirement from the spec source, say that instead of upgrading it into a bug.
 - If a PR is already obviously broken by compile or test failure, name the failing command or observable symptom first.
+
+---
+@include .agents/skills/platform/contract-base.xml

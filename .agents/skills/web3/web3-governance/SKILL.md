@@ -1,24 +1,57 @@
 ---
-name: web3-governance
-category: web3
-maturity: stable
-version: 2
-description: Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis.
-capabilities:
-  - design on-chain / off-chain governance flows (Governor Bravo v2, oSnap, Zodiac)
-  - analyse token concentration, delegation markets, and quorum mechanics
-  - audit timelock, multisig, guardian, and emergency pause patterns
-  - model capture, bribery, apathy, and rushed-execution risks
-outputs:
-  - Governance design or audit report (actors, lifecycle, token distribution, attack vectors, resilience)
+name: "web3-governance"
+category: "web3"
+maturity: "stable"
+version: "2"
+description: "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Governance model documented; attack vectors assessed; resilience recommendations made.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Governance model documented; attack vectors assessed; resilience recommendations made."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "web3"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/web3-governance.json"
+diataxis: "how-to"
+tags: ["web3"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `Web3GovernanceArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/web3-governance/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Web3 Governance Design
 
 Design or audit a **Web3 governance system** — token voting, delegation, on-chain execution, oSnap, Zodiac, EIP-7702 — with attack vectors and resilience analysis.
@@ -108,3 +141,12 @@ Artifact: governance type, actors, proposal lifecycle, token distribution, attac
 - Rule: separate social legitimacy from on-chain enforceability.
 - Rule: identify capture, bribery, apathy, and rushed-execution risks.
 - Rule: document EIP-7702 delegation if used for governance accounts.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

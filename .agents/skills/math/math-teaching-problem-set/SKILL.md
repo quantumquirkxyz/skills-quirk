@@ -1,36 +1,59 @@
 ---
-name: math-teaching-problem-set
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.
-capabilities:
-  - design problem sets with difficulty progression
-  - generate multiple variants for exam integrity
-  - write grading rubrics with partial credit rules
-  - produce accessible LaTeX output (alt-text, screen-reader friendly)
-outputs:
-  - LaTeX problem-set source with multiple variants
-  - Rubric table (Markdown or LaTeX)
-  - Grader's checklist with point allocations
+name: "math-teaching-problem-set"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Problem-set + rubric + variants saved; difficulty progression documented.
-risk: low
-trustTier: 1
-maxIterations: 5
+stopCondition: "Problem-set + rubric + variants saved; difficulty progression documented."
+risk: "low"
+trustTier: "1"
+maxIterations: "5"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-teaching-problem-set.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** topic(s), audience level, problem count.
-- **Output:** LaTeX problem set + rubric + variants.
-- **Side effects:** none.
-- **Dependencies:** none.
-- **Stop condition:** artifacts saved; variants distinct.
-- **Risk:** low.
-- **Boundary:** produces teaching artifacts; no live grading.
+- Input: topic(s), audience level, problem count.
+- Output: LaTeX problem set + rubric + variants.
+- Scope: produces teaching artifacts; no live grading.
+- Rule: produces teaching artifacts; no live grading.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathTeachingProblemSetArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-teaching-problem-set/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Math Teaching — Problem Sets and Exams
 
 Design a **problem set or exam** that tests the right concepts at the right difficulty, with grading rules and exam-ready variants.
@@ -101,3 +124,12 @@ For each problem, write a rubric:
 
 - Pair with `math-paper-collaboration` for sharing and versioning.
 - Use Overleaf for collaborative editing; tag each term's set.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

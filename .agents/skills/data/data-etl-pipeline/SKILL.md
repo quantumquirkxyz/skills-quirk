@@ -1,36 +1,59 @@
 ---
-name: data-etl-pipeline
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability.
-capabilities:
-  - design extraction from sources (database, API, file, stream)
-  - define transformations (filter, aggregate, join, enrich, clean, deduplicate)
-  - design load into target (warehouse, lake, database)
-  - implement quality checks (null rate, out-of-range, duplicates, referential integrity)
-outputs:
-  - Pipeline architecture (diagram + configuration)
-  - Data quality rules and checks
-  - Schema evolution plan
+name: "data-etl-pipeline"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Pipeline architecture saved; quality rules defined; schema evolution plan present.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Pipeline architecture saved; quality rules defined; schema evolution plan present."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "data"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-etl-pipeline.json"
+diataxis: "how-to"
+tags: ["data"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** source data descriptions, target schema, quality requirements.
-- **Output:** pipeline architecture + quality rules + schema evolution.
-- **Side effects:** may process data when executed (read-only or write to target).
-- **Dependencies:** source access, target access.
-- **Stop condition:** architecture saved; quality rules defined.
-- **Risk:** medium — data corruption risks; requires testing.
-- **Boundary:** defines pipeline; execution requires approval.
+- Input: source data descriptions, target schema, quality requirements.
+- Output: pipeline architecture + quality rules + schema evolution.
+- Scope: defines pipeline; execution requires approval.
+- Rule: defines pipeline; execution requires approval.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `DataEtlPipelineArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/data-etl-pipeline/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # ETL Pipeline Design
 
 Design an **ETL / ELT pipeline** — extraction, transformation, load — with reproducible steps, schema evolution, and data quality checks.
@@ -78,3 +101,12 @@ Design an **ETL / ELT pipeline** — extraction, transformation, load — with r
 - Versioning: schema registry (e.g. Confluent Schema Registry, AWS Glue Data Catalog).
 
 **Completion criterion:** evolution plan saved.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

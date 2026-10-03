@@ -1,37 +1,59 @@
 ---
-name: incident-response
-category: skill-dev/sandbox
-maturity: stable
-version: 1
-description: Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.
-capabilities:
-  - define severity taxonomy and escalation paths
-  - author runbooks for known failure modes
-  - design war room and incident command procedures
-  - write postmortems with root cause and remediation tracking
-outputs:
-  - Incident response plan (severity, roles, escalation, communication)
-  - Runbook library (per-service or per-failure-mode)
-  - Postmortem template and process
-  - Blameless culture guidelines
+name: "incident-response"
+category: "skill-dev/sandbox"
+maturity: "stable"
+version: "1"
+description: "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Incident response plan complete; runbook library defined; postmortem process documented.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Incident response plan complete; runbook library defined; postmortem process documented."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "devops"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/incident-response.json"
+diataxis: "how-to"
+tags: ["devops"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
 
-- **Input:** service inventory, on-call structure, communication channels, past incident history (optional).
-- **Output:** incident response plan + runbook library + postmortem process.
-- **Side effects:** none.
-- **Dependencies:** on-call tooling, communication platform, incident management system.
-- **Stop condition:** plan complete; runbooks defined; postmortem process documented.
-- **Risk:** medium — poor incident response increases outage duration and customer impact.
-- **Boundary:** designs response process; does not execute incident command unless explicitly instructed.
+- Input: service inventory, on-call structure, communication channels, past incident history (optional).
+- Output: incident response plan + runbook library + postmortem process.
+- Scope: designs response process; does not execute incident command unless explicitly instructed.
+- Rule: designs response process; does not execute incident command unless explicitly instructed.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `IncidentResponseArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/incident-response/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Incident Response
 
 Design **incident response** — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.
@@ -95,3 +117,12 @@ Design **incident response** — runbooks, war rooms, postmortems, blameless cul
 - Rule: require a postmortem for every SEV1 / SEV2; optional for lower severities.
 - Rule: track remediation items in the same system as product work so they are visible and ship.
 - Rule: conduct GameDays for critical runbooks so they stay fresh and accurate.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

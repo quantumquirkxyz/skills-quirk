@@ -1,33 +1,63 @@
 ---
-name: backend-queues
-category: backend
-maturity: stable
-version: 1
-description: Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
-capabilities:
-  - design queue-backed workflows
-  - define retry and idempotency strategy
-  - plan backpressure and observability
-outputs:
-  - queue design note with delivery guarantees, failure handling, and operational signals
+name: "backend-queues"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Queue behavior, recovery paths, and operator signals are explicit.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Queue behavior, recovery paths, and operator signals are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "queue-design"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/backend-queues.json"
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# backend-queues
-
-Use this skill when designing background jobs, event consumers, message queues, worker pools, scheduled tasks, or asynchronous workflow boundaries.
 
 ## Contract
 
 - Input: job/event type, producer and consumer behavior, ordering needs, durability requirements, expected volume, and failure cases.
 - Output: queue architecture, delivery guarantees, retry policy, idempotency plan, and observability checklist.
-- Scope: backend queue and worker design; not full stream-processing architecture unless queue semantics are the main decision.
-- Boundary: make at-least-once, at-most-once, and exactly-once claims explicit and conservative.
+- Scope: make at-least-once, at-most-once, and exactly-once claims explicit and conservative.
+- Rule: make at-least-once, at-most-once, and exactly-once claims explicit and conservative.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BackendQueuesArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/backend-queues/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# backend-queues
+
+Use this skill when designing background jobs, event consumers, message queues, worker pools, scheduled tasks, or asynchronous workflow boundaries.
+
 
 ## Rules
 
@@ -46,9 +76,11 @@ Use this skill when designing background jobs, event consumers, message queues, 
 5. Plan scaling, backpressure, rate limits, and worker shutdown behavior.
 6. Specify logs, metrics, alerts, and runbook checks.
 
-## Completion Criteria
+## Completion
 
-- delivery guarantee and ordering needs are named
-- retry and dead-letter behavior are specified
-- idempotency or duplicate safety is addressed
-- operational signals and recovery paths are documented
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

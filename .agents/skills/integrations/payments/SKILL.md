@@ -1,36 +1,62 @@
 ---
-name: payments
-category: integrations
-maturity: stable
-version: 2
-description: Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.
-capabilities:
-  - design payment flows (authorization, capture, void, refund, dispute)
-  - plan webhooks, idempotency, reconciliation, and retry behavior
-  - evaluate PCI DSS scope, fraud detection, and compliance
-  - assess payment provider lock-in and migration paths
-outputs:
-  - Payments design document (flows, webhooks, idempotency, reconciliation, PCI, fraud, provider evaluation)
+name: "payments"
+category: "integrations"
+maturity: "stable"
+version: "2"
+description: "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Payment design complete; flows, webhooks, and reconciliation explicit; PCI and fraud controls named.
-risk: medium
-trustTier: 3
-maxIterations: 6
+stopCondition: "Payment design complete; flows, webhooks, and reconciliation explicit; PCI and fraud controls named."
+risk: "medium"
+trustTier: "3"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "payment"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/payments.json"
+diataxis: "how-to"
+tags: ["integrations"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Payments
-
-Use this skill when money moves through the system. It should keep the seam small, the trust boundary explicit, and the failure, reconciliation, and compliance story visible before implementation begins.
 
 ## Contract
 
 - Input: payments brief, money flow, provider options, and compliance constraints.
 - Output: payment design covering flows, webhooks, idempotency, reconciliation, PCI, fraud, and provider evaluation.
-- Scope: design the money-flow shape, not the full implementation.
-- Rule: make settlement, retries, and reconciliation explicit.
-- Rule: prefer the narrowest seam that still respects financial correctness.
-- Rule: call out where manual review or operator intervention is required.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `PaymentsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/payments/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Payments
+
+Use this skill when money moves through the system. It should keep the seam small, the trust boundary explicit, and the failure, reconciliation, and compliance story visible before implementation begins.
+
 
 ## Process
 
@@ -107,18 +133,11 @@ Use this skill when money moves through the system. It should keep the seam smal
 
 **Completion criterion:** rollback and compensation posture explicit.
 
-## Completion criteria
+## Completion
 
-- the payment flow is diagrammed
-- the provider choice is justified with lock-in analysis
-- webhooks and idempotency are designed
-- reconciliation and operator workflow are named
-- PCI scope and controls are explicit
-- fraud and dispute controls are named
-- rollback and compensation posture is explicit
-
-## References
-
-- `../../sec/sec-privacy-engineering/SKILL.md` — PCI and data protection
-- `../../backend/backend-architecture/SKILL.md` — API design for payment endpoints
-- `../../qa/qa-security-testing/SKILL.md` — payment security testing
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

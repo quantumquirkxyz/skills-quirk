@@ -1,42 +1,61 @@
 ---
-name: contribution-workflow-optimizer
-category: delivery
-maturity: stable
-version: 1
-description: Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva
-capabilities:
-  - apply contribution workflow optimizer workflow
-  - produce contribution workflow optimizer artifact
-  - validate contribution workflow optimizer completion criteria
-outputs:
-  - Contribution Workflow Optimizer artifact with findings, decisions, recommendations, and validation notes
+name: "contribution-workflow-optimizer"
+category: "delivery"
+maturity: "stable"
+version: "1"
+description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva"
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "workflow"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/contribution-workflow-optimizer.json"
+diataxis: "how-to"
+tags: ["delivery"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Contribution Workflow Optimizer request, relevant context, constraints, and source evidence.
-- **Output:** Contribution Workflow Optimizer artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Contribution Workflow Optimizer
 
 ## Contract
 
 - Input: a pull-request base reference and changed Skill files.
 - Output: prioritized checks for contract, documentation, dependencies, tests, and examples.
-- Boundary: recommend changes only; implementation and merge remain separate workflows.
+- Scope: recommend changes only; implementation and merge remain separate workflows.
+- Rule: recommend changes only; implementation and merge remain separate workflows.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
-Run `node .agents/skills/platform/skill-lab.mjs pr-check --base main`. Use its changed-file list as the scope, then validate each changed Skill and check for documentation and examples before recommending merge.
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ContributionWorkflowOptimizerArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/contribution-workflow-optimizer/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Contribution Workflow Optimizer
+
 
 ## Rules
 
@@ -54,9 +73,11 @@ Run `node .agents/skills/platform/skill-lab.mjs pr-check --base main`. Use its c
 4. Check examples, references, and tests for drift.
 5. Produce prioritized recommendations with evidence and owner-friendly wording.
 
-## Completion Criteria
+## Completion
 
-- changed-file scope is explicit
-- validation evidence is captured
-- findings are prioritized by merge impact
-- recommendation states whether the contribution is ready
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

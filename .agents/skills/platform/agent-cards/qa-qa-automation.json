@@ -1,0 +1,29 @@
+{
+  "name": "qa-automation",
+  "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
+  "url": "https://github.com/quirk/example/blob/main/.agents/skills/qa/qa-automation/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": false,
+    "workflowOrchestration": false
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "qa/qa-automation",
+      "name": "qa-automation",
+      "description": "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.",
+      "tags": [
+        "qa"
+      ],
+      "parameters": {
+        "trustTier": "1"
+      }
+    }
+  ]
+}
