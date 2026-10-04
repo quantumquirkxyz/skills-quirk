@@ -8,7 +8,7 @@ capabilities: ""
 outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels complete; artifact saved; completion criteria checked."
+stopCondition: "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels complete; structured result returned; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -40,15 +40,13 @@ approvalFor: []
 | What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
 | What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
 | Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
-| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What evidence proves it is done? | Completion criteria met, structured result returned, validation passed |
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
 ## Artifact
 
-Emit `WebappTestingArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/webapp-testing/{identifier}.json`
-- Markdown view: same filename with `.md` extension
+Return `WebappTestingArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
 # 
@@ -68,7 +66,7 @@ Use this skill when the project needs guidance on how to test a frontend or full
 ## Completion
 
 - the skill's completion criteria are explicitly checked
-- the artifact is saved and validated
+- the structured result is returned and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---

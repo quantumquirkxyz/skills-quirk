@@ -78,11 +78,12 @@ tags: [delivery, review, standards, spec, quality]
 compatibility: [plan-review-fixes, ship-subissue, resolving-merge-conflicts]
 approvalRequired: false
 approvalFor: []
-sideEffects: []
+sideEffects:
+  - post-pr-comment
 dependencies: []
-stopCondition: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+stopCondition: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax complete; structured result returned; completion criteria checked.
+risk: medium
+trustTier: 3
 maxIterations: 6
 ---
 
@@ -102,18 +103,18 @@ maxIterations: 6
 | **Intent** | Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes. |
 | **Input** | a PR, diff, fixed point reference, and the originating spec if available. |
 | **Output** | a two-axis review report (Standards + Spec) with per-file findings and a summary line. |
-| **Side effects** | none (findings published as PR comments only). |
+| **Side effects** | may post PR review comments; no local files are written. |
 | **Boundaries** | publish findings only — do not change source files, fix the PR, or merge it. |
 | **Completion criteria** | fixed point pinned and diff non-empty; Standards findings cite documented standards or smell names; Spec findings quote the spec; if target is a GitHub PR, review published; no merging or fixing. |
 
 ## Artifact
 
-This skill emits a structured review report (JSON) and a Markdown review body. The JSON is the machine-readable findings artifact; the Markdown is the published PR review body. Both are emitted together so the axes stay separated and the review trail is auditable.
+This skill returns a structured review report and, when reviewing a GitHub PR, publishes the review body to the PR. Do not write local JSON or Markdown artifact files unless the user explicitly asks for an export.
 
 Do not change source files, fix the PR, or merge it in this skill; publish findings only.
 
 Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
-Traces record sub-agent parallelism and finding counts via `record-execution.mjs`.
+Traces record sub-agent parallelism and finding counts via `record-execution.mjs`; include the resulting `traceId` in the `ReviewArtifact` metadata and Markdown review footer.
 
 ## Completion
 
@@ -122,7 +123,7 @@ Traces record sub-agent parallelism and finding counts via `record-execution.mjs
 - Spec findings quote the spec line for each requirement
 - review is published to the PR (if GitHub) or returned as structured output
 - no source files are changed, fixed, or merged
-- `ReviewArtifact` emitted and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
+- `ReviewArtifact` returned as structured output and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
 
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / PRD / spec?

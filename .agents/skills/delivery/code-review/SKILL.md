@@ -25,11 +25,12 @@ outputs:
       nextConsumer: { type: string }
       blockedBy: { type: array, items: { type: string } }
     required: [fixedPoint, standardsFindings, specFindings, summary, nextConsumer]
-sideEffects: []
+sideEffects:
+  - post-pr-comment
 dependencies: []
-stopCondition: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
+stopCondition: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; structured result returned; completion criteria checked.
+risk: medium
+trustTier: 3
 maxIterations: 6
 modelTier: reasoning
 promptVersion: "2.0"
@@ -62,15 +63,13 @@ approvalFor: []
 | What is explicitly out of scope? | Files outside the diff, history before fixed point |
 | Who or what consumes this artifact afterward? | `plan-review-fixes` or `ship-subissue` |
 | What evidence proves it is done? | Complete Standards + Spec reports, one-line summary per axis |
-| What risk remains? | Subjective smells, missing spec, ambiguous standards |
+| What risk remains? | Subjective smells, missing spec, ambiguous standards, or PR comment noise |
 
 ## Artifact
 
-Emit `ReviewArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/code-review/{pr-or-branch-id}.json`
-- Markdown view: same filename with `.md` extension
+Return `ReviewArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
-Validate against `.agents/skills/platform/schemas/review-findings-schema.json` before saving.
+Validate the structured result against `.agents/skills/platform/schemas/review-findings-schema.json` before returning it.
 
 Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
@@ -80,7 +79,7 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
 The issue tracker should have been provided to you — run `/setup-quirk-skills` if `docs/agents/issue-tracker.md` is missing.
-Traces record sub-agent parallelism and finding counts via `record-execution.mjs`.
+Traces record sub-agent parallelism and finding counts via `record-execution.mjs`; include the resulting `traceId` in the `ReviewArtifact` metadata and Markdown review footer.
 
 
 ## Completion
@@ -90,7 +89,7 @@ Traces record sub-agent parallelism and finding counts via `record-execution.mjs
 - Spec findings quote the spec line for each requirement
 - review is published to the PR or returned as structured output
 - no source files are changed, fixed, or merged
-- `ReviewArtifact` emitted and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
+- `ReviewArtifact` returned as structured output and validated against `.agents/skills/platform/schemas/review-findings-schema.json`
 ## Process
 
 ### 1. Pin the fixed point
@@ -158,7 +157,7 @@ Present the two reports under `## Standards` and `## Spec` headings, verbatim or
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes — that's the reranking the separation exists to prevent.
 
-Emit a `ReviewArtifact` JSON/Markdown pair as described in the `## Artifact` section above. Populate `fixedPoint`, `diffCommand`, `standardsFindings`, `specFindings`, `summary` (with per-axis counts and worst-issue strings), `nextConsumer` (`plan-review-fixes` or `ship-subissue`), and `blockedBy` (empty array if no blockers; otherwise e.g. `["resolving-merge-conflicts"]`). Validate against the schema before saving.
+Return a `ReviewArtifact` as described in the `## Artifact` section above. Populate `fixedPoint`, `diffCommand`, `standardsFindings`, `specFindings`, `summary` (with per-axis counts and worst-issue strings), `nextConsumer` (`plan-review-fixes` or `ship-subissue`), and `blockedBy` (empty array if no blockers; otherwise e.g. `["resolving-merge-conflicts"]`). Validate the structured result against the schema before returning it.
 
 ## Why
 

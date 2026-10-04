@@ -41,6 +41,8 @@ const sideEffectExpectations = new Map([
   ['publish-open-pr', { effects: ['push-branch', 'create-pull-request'], risk: 'medium' }],
   ['research', { effects: ['write-docs'], risk: 'low' }],
   ['resolving-merge-conflicts', { effects: ['write-code', 'commit-git', 'continue-merge-or-rebase'], risk: 'medium' }],
+  ['review-pr', { effects: ['post-pr-comment'], risk: 'medium' }],
+  ['code-review', { effects: ['post-pr-comment'], risk: 'medium' }],
   ['review-fix-loop', { effects: ['write-code', 'post-pr-comment', 'commit-git', 'push-branch'], risk: 'medium' }],
   ['ship-subissue', { effects: ['merge-pull-request', 'close-issue', 'update-project'], risk: 'high' }],
   ['skill-promoter', { effects: ['write-files', 'create-symlink', 'update-lockfile'], risk: 'medium' }],
@@ -49,6 +51,15 @@ const sideEffectExpectations = new Map([
   ['to-tickets', { effects: ['create-issues', 'write-files'], risk: 'medium' }],
   ['triage', { effects: ['label-issue', 'post-comment', 'close-issue', 'write-files'], risk: 'medium' }],
 ]);
+
+const localWriteEffects = new Set(['write-files', 'write-docs', 'write-code', 'write-temp-file']);
+const localArtifactWritePatterns = [
+  /\.agents\/skills\/platform\/artifacts/,
+  /Emit `[^`]+` as both:\s*\n- JSON:/,
+  /Markdown view: same filename/,
+];
+const workflowSkillPathPattern = /(?:^|\/)\.agents\/skills\/(?:delivery|routing|project)\//;
+const qualityGatePathPattern = /(?:^|\/)\.agents\/skills\/platform\/quality-gates\//;
 
 async function exists(filePath) {
   try {
@@ -195,6 +206,18 @@ async function main() {
         if (!actualEffects.has(effect)) warnings.push(`${name}: expected side effect ${effect}`);
       }
       if (fm.risk !== expected.risk) warnings.push(`${name}: expected risk ${expected.risk} for declared side effects`);
+    }
+    const sideEffects = listValue(fm.sideEffects);
+    const hasLocalWrite = sideEffects.some((effect) => localWriteEffects.has(effect));
+    const relativeSkillPath = path.relative(repoRoot, file).replaceAll(path.sep, '/');
+    const isWorkflowSkill = workflowSkillPathPattern.test(relativeSkillPath) || qualityGatePathPattern.test(relativeSkillPath);
+    if (isWorkflowSkill && !hasLocalWrite) {
+      for (const pattern of localArtifactWritePatterns) {
+        if (pattern.test(body)) {
+          errors.push(`${name}: local artifact write instruction without local write sideEffect`);
+          break;
+        }
+      }
     }
     for (const dependency of fm.dependencies ?? []) {
       if (!skillNames.has(dependency)) errors.push(`${name}: dependency missing ${dependency}`);

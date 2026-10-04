@@ -5,7 +5,7 @@ capabilities: ""
 outputs: ""
 sideEffects: ""
 dependencies: []
-stopCondition: "Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON artifact saved; completion criteria verified; user asked how to proceed."
+stopCondition: "Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON structured result returned; completion criteria verified; user asked how to proceed."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -37,15 +37,13 @@ approvalFor: []
 | What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
 | What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
 | Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
-| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What evidence proves it is done? | Completion criteria met, structured result returned, validation passed |
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
 ## Artifact
 
-Emit `ProjectViabilityArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/project-viability/{identifier}.json`
-- Markdown view: same filename with `.md` extension
+Return `ProjectViabilityArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
 # 
@@ -208,7 +206,7 @@ Read this file after writing the report to decide which follow-up skill to recom
 ## Completion
 
 - the skill's completion criteria are explicitly checked
-- the artifact is saved and validated
+- the structured result is returned and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---

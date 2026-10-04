@@ -31,7 +31,7 @@ outputs:
     required: [trigger, checks, maxDuration, blockOnFailure, coverageThreshold, result]
 sideEffects: []
 dependencies: []
-stopCondition: Shift-left quality gate that runs on push-to-PR events complete; artifact saved; completion criteria checked.
+stopCondition: Shift-left quality gate that runs on push-to-PR events complete; structured result returned; completion criteria checked.
 risk: medium
 trustTier: 1
 maxIterations: 3
@@ -55,7 +55,7 @@ approvalFor: []
 - Output: `GateCiArtifact` with full suite results, coverage data, and terminal state.
 - Scope: CI-level checks — unit, integration, contract, security scan, performance regression, coverage.
 - Rule: enforce 80% line coverage threshold for new/modified lines.
-- Rule: max duration 30 minutes; fail the gate if exceeded.
+- Rule: max duration 30min (30 minutes); fail the gate if exceeded.
 - Rule: block on failure; PR cannot be merged until gate passes.
 
 ## Provenance
@@ -66,14 +66,12 @@ approvalFor: []
 | What is in scope? | Full unit suite, integration tests, contract tests, security scan, performance regression, coverage |
 | What is explicitly out of scope? | E2E tests, manual QA, production canary |
 | Who or what consumes this artifact afterward? | `review-pr` or merge gate |
-| What evidence proves it is done? | All checks completed, coverage threshold met, artifact saved |
+| What evidence proves it is done? | All checks completed, coverage threshold met, structured result returned |
 | What risk remains? | Flaky tests; security scan false positives; performance regression baselines may need tuning |
 
 ## Artifact
 
-Emit `GateCiArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/quality-gates/gate-ci/{pr-number}.json`
-- Markdown view: same filename with `.md` extension
+Return `GateCiArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 ## Process
 
@@ -96,7 +94,7 @@ Execute performance test suite (k6, Gatling) against baseline. Flag regressions 
 Measure line coverage for new/modified lines. Enforce 80% threshold. If below threshold, mark check as failed.
 
 ### 7. Enforce time budget
-Track elapsed time. If approaching 30 minutes, skip remaining non-critical checks and mark as `skipped` with reason `time-budget-exceeded`.
+Track elapsed time. If approaching 30min (30 minutes), skip remaining non-critical checks and mark as `skipped` with reason `time-budget-exceeded`.
 
 ### 8. Aggregate and block
 Compile all results into `GateCiArtifact`. Terminal state:
@@ -112,5 +110,5 @@ Compile all results into `GateCiArtifact`. Terminal state:
 - security scan completed
 - performance regression executed
 - coverage threshold enforced (80% lines)
-- artifact saved at canonical path
+- structured result returned
 - PR blocked if any check failed

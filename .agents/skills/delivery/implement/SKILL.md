@@ -59,6 +59,7 @@ approvalFor: []
 - Rule: use TDD at pre-agreed seams (see `tdd` skill).
 - Rule: when implementing incomplete features, use feature flags via `feature-flag` skill and document the flag in the artifact.
 - Rule: trunk-based workflow — short-lived branches (< 24h), push to origin, feature flags for incomplete features.
+- Rule: side effects that change repository state (`write-code`, `commit-git`, `push-branch`) require an explicit user request or prior workflow approval before execution.
 - Rule: run quality gates after each slice — gate-ide on file-save, gate-pre-commit before commit, gate-ci before PR.
 - Rule: do not proceed to `publish-open-pr` until `gate-ci` passes.
 - Rule: do not open or merge PR here; stop at validated branch.
@@ -129,6 +130,7 @@ Quality gate results are included in `ImplementArtifact.qualityGateResults`.
 ## Observability
 
 Every execution is traced via `record-execution.mjs`. The trace includes traceId, spanId, model tier, duration, tool calls, and quality score.
+Set `nextConsumer` to the next workflow skill (`publish-open-pr`, `tdd`, or a named handoff) so downstream automation can route the `ImplementArtifact` without parsing prose.
 
 ## Reference
 

@@ -46,7 +46,7 @@ approvalRequired: false
 approvalFor: []
 sideEffects: []
 dependencies: []
-stopCondition: Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows complete; artifact saved; completion criteria checked.
+stopCondition: Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
@@ -74,7 +74,7 @@ maxIterations: 6
 
 ## Artifact
 
-This skill emits a structured routing decision (JSON) and a Markdown routing note. The JSON is the machine-readable decision record; the Markdown is the human-readable routing narrative. Both are emitted together so the routing trail is auditable.
+This skill returns a structured routing decision and a human-readable routing note in the current response. Do not write local JSON or Markdown artifact files unless the user explicitly asks for an export.
 
 This skill routes only. It does not create issues, tickets, PRs, or project items.
 
@@ -100,7 +100,7 @@ Governance preflight prevents tracker drift by forcing every work-item request t
 2. Identify whether the request is a spec, ticket, spec completion audit, ticket coverage audit, corrective ticket publication, project board, PR publication, review-fix plan, or closeout.
 3. Route to the thinnest downstream skill that can finish the work.
 4. If metadata is involved, preserve the canonical shape from `docs/agents/work-item-format.md`.
-5. Emit the routing decision as a structured artifact and save it for auditability.
+5. Return the routing decision as structured output in the current response; rely on execution traces for auditability.
 
 ## Request types
 
@@ -127,7 +127,7 @@ Governance preflight prevents tracker drift by forcing every work-item request t
 - the governance index has been read
 - the downstream skill is named
 - any required metadata contract is explicit
-- the routing artifact is saved and the trace is emitted
+- the routing result is returned and the trace is emitted
 
 ---
 @include .agents/skills/platform/contract-base.xml

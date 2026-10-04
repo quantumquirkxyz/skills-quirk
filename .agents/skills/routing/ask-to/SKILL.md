@@ -37,7 +37,7 @@ outputs:
       - workflow
 sideEffects: []
 dependencies: []
-stopCondition: Ask which skill or flow fits your situation complete; artifact saved; completion criteria checked.
+stopCondition: Ask which skill or flow fits your situation complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6
@@ -88,9 +88,7 @@ approvalFor: []
 
 ## Artifact
 
-Emit `RoutingArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/routing/{request-id}.json`
-- Markdown view: same filename with `.md` extension
+Return `RoutingArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 Workflow state is managed by `.agents/skills/platform/workflow-state-machine.mjs`. Every routing decision emits a trace via `record-execution.mjs` with the selected transition and next skill.
 

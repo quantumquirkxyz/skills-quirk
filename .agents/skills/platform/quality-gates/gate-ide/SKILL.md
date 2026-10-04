@@ -29,7 +29,7 @@ outputs:
     required: [trigger, checks, blockOnFailure, reportTo, result]
 sideEffects: []
 dependencies: []
-stopCondition: Shift-left quality gate triggered on file-save events complete; artifact saved; completion criteria checked.
+stopCondition: Shift-left quality gate triggered on file-save events complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 3
@@ -64,14 +64,12 @@ approvalFor: []
 | What is in scope? | Changed files since last save; IDE-level checks only |
 | What is explicitly out of scope? | Full test suite, dependency audit, security scan, performance tests |
 | Who or what consumes this artifact afterward? | `gate-pre-commit` or agent context for immediate feedback |
-| What evidence proves it is done? | All checks completed, results reported, artifact saved |
+| What evidence proves it is done? | All checks completed, results reported, structured result returned |
 | What risk remains? | False positives from spellchecker; secret scan is lightweight and may miss obfuscated secrets |
 
 ## Artifact
 
-Emit `GateIdeArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/quality-gates/gate-ide/{session-id}.json`
-- Markdown view: same filename with `.md` extension
+Return `GateIdeArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 ## Process
 
@@ -105,6 +103,6 @@ Publish a concise summary to agent context so the user sees results immediately.
 ## Completion
 
 - all 5 checks have run or been explicitly skipped with reason
-- artifact saved at the canonical path
+- structured result returned
 - results reported to agent context
 - terminal state correctly reflects `blockOnFailure` policy

@@ -6,7 +6,8 @@ version: "4"
 description: "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability."
 capabilities: ""
 outputs: ""
-sideEffects: ""
+sideEffects:
+  - write-files
 dependencies: []
 stopCondition: "The user has completed the interview and generated a valid skill structure, or an existing skill has been validated with the supported tooling."
 risk: "medium"
@@ -30,6 +31,7 @@ approvalFor: []
 - Output: a structured artifact or guidance aligned to the skill's declared outputs.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: follow the skill's completion criteria and stop condition exactly.
+- Rule: generated or modified skill files require an explicit user request or prior workflow approval before writing to the repository.
 
 ## Provenance
 

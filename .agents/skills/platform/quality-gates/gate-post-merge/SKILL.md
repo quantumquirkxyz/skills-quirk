@@ -29,7 +29,7 @@ outputs:
     required: [trigger, checks, blockOnFailure, alertOnFailure, result]
 sideEffects: []
 dependencies: []
-stopCondition: Post-deployment quality gate triggered on merge-to-main events complete; artifact saved; completion criteria checked.
+stopCondition: Post-deployment quality gate triggered on merge-to-main events complete; structured result returned; completion criteria checked.
 risk: medium
 trustTier: 1
 maxIterations: 3
@@ -64,14 +64,12 @@ approvalFor: []
 | What is in scope? | Canary smoke test, production health check, feature flag verification |
 | What is explicitly out of scope? | Full regression suite, load tests, manual QA |
 | Who or what consumes this artifact afterward? | `observability` or incident-response if failures detected |
-| What evidence proves it is done? | All checks completed, alerts sent if failures, artifact saved |
+| What evidence proves it is done? | All checks completed, alerts sent if failures, structured result returned |
 | What risk remains? | Canary may not catch all issues; health checks are surface-level; feature flags may have incomplete rollout |
 
 ## Artifact
 
-Emit `GatePostMergeArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/quality-gates/gate-post-merge/{merge-sha}.json`
-- Markdown view: same filename with `.md` extension
+Return `GatePostMergeArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 ## Process
 
@@ -101,4 +99,4 @@ Compile all check results into `GatePostMergeArtifact`. Terminal state:
 - production health check completed
 - feature flag verification completed
 - alerts sent if any check failed
-- artifact saved at canonical path
+- structured result returned

@@ -67,7 +67,7 @@ approvalRequired: false
 approvalFor: []
 sideEffects: []
 dependencies: []
-stopCondition: Test-driven development complete; artifact saved; completion criteria checked.
+stopCondition: Test-driven development complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 6

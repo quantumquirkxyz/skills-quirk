@@ -26,7 +26,7 @@ sideEffects:
   - push-branch
   - create-pull-request
 dependencies: []
-stopCondition: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch complete; artifact saved; completion criteria checked.
+stopCondition: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch complete; structured result returned; completion criteria checked.
 risk: medium
 trustTier: 3
 maxIterations: 6
@@ -48,7 +48,7 @@ approvalFor: []
 ## Contract
 
 - Input: validated issue branch, linked issue metadata, PR bundle metadata, and quality gate results.
-- Output: `PublishOpenPrArtifact` (JSON schema + Markdown view). See `.agents/skills/platform/schemas/publish-open-pr-schema.json`.
+- Output: `PublishOpenPrArtifact` as structured output in the response. See `.agents/skills/platform/schemas/publish-open-pr-schema.json`.
 - Scope: package, push, and publish a completed branch as an open PR; do not reopen implementation decisions.
 - Rule: never open a PR before `gate-ci` has passed on the pushed branch.
 - Rule: never create or amend commits here; that belongs to `implement`.
@@ -63,14 +63,12 @@ approvalFor: []
 | What is in scope? | Packaging, pushing, and opening the PR |
 | What is explicitly out of scope? | Implementation, review, merge, issue completion |
 | Who or what consumes this artifact afterward? | `review-pr` |
-| What evidence proves it is done? | Open PR exists, gate-ci passed, artifact saved |
+| What evidence proves it is done? | Open PR exists, gate-ci passed, structured result returned |
 | What risk remains? | Reviewer rejection; failing post-publish checks |
 
 ## Artifact
 
-Emit `PublishOpenPrArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/routing/publish-open-pr/{pr-number}.json`
-- Markdown view: same filename with `.md` extension
+Return `PublishOpenPrArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 ## Process
 
@@ -91,7 +89,7 @@ Emit `PublishOpenPrArtifact` as both:
 
 - Execute `gate-ci` against the current branch state.
 - If `gate-ci` fails, stop and report the failure rather than opening a PR.
-- Attach the `GateCiArtifact` result to the PR metadata.
+- Summarize the gate-ci result in the PR body or PR metadata; do not write a local gate artifact.
 
 ### 4. Run the smallest relevant validation
 
@@ -102,7 +100,7 @@ Emit `PublishOpenPrArtifact` as both:
 
 - Follow [PR Body](references/pr-body.md).
 - Run `scripts/render_pr_bundle.py` to materialize the title, body, and metadata from the current branch, latest commit, validation results, and linked issue.
-- Write the title, body, and metadata to explicit temp files before opening the PR.
+- Use explicit temporary files only when required by `gh pr create --body-file`; delete or ignore them after the PR is opened.
 - If the repository already has a PR template, fill it in rather than replacing it.
 
 ### 6. Push the branch and open a PR
@@ -132,7 +130,7 @@ Emit `PublishOpenPrArtifact` as both:
 - PR bundle prepared from linked issue metadata
 - branch pushed to origin
 - open PR created with title, body, assignee, labels, milestone, and reviewers
-- `PublishOpenPrArtifact` emitted and saved
+- `PublishOpenPrArtifact` returned as structured output
 - handoff to `review-pr` is explicit
 
 ---

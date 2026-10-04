@@ -29,7 +29,7 @@ outputs:
     required: [trigger, checks, maxDuration, blockOnFailure, result]
 sideEffects: []
 dependencies: []
-stopCondition: Shift-left quality gate triggered on git-commit events complete; artifact saved; completion criteria checked.
+stopCondition: Shift-left quality gate triggered on git-commit events complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
 maxIterations: 3
@@ -64,14 +64,12 @@ approvalFor: []
 | What is in scope? | Changed files since last commit; lint, typecheck, unit tests, dependency vuln check |
 | What is explicitly out of scope? | Full integration suite, security scan, performance tests, E2E tests |
 | Who or what consumes this artifact afterward? | `gate-ci` or commit process |
-| What evidence proves it is done? | All checks completed within 10s budget, artifact saved, terminal state determined |
+| What evidence proves it is done? | All checks completed within 10s budget, structured result returned, terminal state determined |
 | What risk remains? | Skipped checks due to time budget; lightweight vuln check may miss transitive vulnerabilities |
 
 ## Artifact
 
-Emit `GatePreCommitArtifact` as both:
-- JSON: `.agents/skills/platform/artifacts/quality-gates/gate-pre-commit/{commit-sha}.json`
-- Markdown view: same filename with `.md` extension
+Return `GatePreCommitArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 ## Process
 
@@ -103,5 +101,5 @@ If terminal state is `blocked`, return exit code 1 to prevent the commit.
 
 - all applicable checks have run or been skipped with reason
 - total duration within 10s budget
-- artifact saved at canonical path
+- structured result returned
 - commit blocked if any check failed
