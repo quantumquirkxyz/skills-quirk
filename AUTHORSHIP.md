@@ -36,7 +36,7 @@ Stable names such as `grill`, `grill-with-docs`, `implement`, `review-pr`, `plan
 - Do not claim external ideas as invented here.
 - Do not keep stale branding, examples, or repository-specific language from another project.
 - Do not copy one project's domain vocabulary into another.
-- Record meaningful influences and redesign decisions in `docs/agents/provenance.md`.
+- Record meaningful influences and redesign decisions in `docs/explanation/provenance.md` and `docs/reference/agents/provenance-inventory.md`.
 - Validate the bundle before publishing or installing it elsewhere.
 
 ## License

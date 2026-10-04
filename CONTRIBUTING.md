@@ -6,8 +6,8 @@ This document outlines how to contribute to the quirk Skills bundle.
 
 1. Clone the repository
 2. Run `bash scripts/setup-quirk-skills.sh .`
-3. Read `docs/agents/adoption-guide.md`
-4. Check `docs/agents/skill-style-guide.md`
+3. Read `docs/how-to/adoption.md`
+4. Check `docs/how-to/skill-style.md`
 
 ## Development Workflow
 
@@ -67,5 +67,5 @@ node .agents/skills/platform/skill-evolver.mjs <skill-name>
 
 ## Questions?
 
-Check `docs/agents/` for more documentation.
-See `docs/videos/` for tutorials.
+Check `docs/reference/agents/` and `docs/how-to/` for more documentation.
+See `tooling/videos/` for tutorials.

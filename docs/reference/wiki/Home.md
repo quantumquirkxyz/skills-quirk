@@ -236,7 +236,9 @@ cp -r .agents/skills /path/to/target-repo/.agents/skills
 cp -r .claude/skills /path/to/target-repo/.claude/skills
 cp skills-lock.json /path/to/target-repo/skills-lock.json
 cp CONTEXT.md /path/to/target-repo/CONTEXT.md
-cp -r docs/agents /path/to/target-repo/docs/agents
+cp -r docs/reference/agents /path/to/target-repo/docs/reference/agents
+cp -r docs/how-to /path/to/target-repo/docs/how-to
+cp -r docs/explanation /path/to/target-repo/docs/explanation
 ```
 
 ### Validation

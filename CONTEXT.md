@@ -2,7 +2,7 @@
 
 This repository contains the canonical quirk Skills bundle in `.agents/skills/`.
 
-Use the repository-local docs in `docs/agents/` to understand issue tracking, work-item format, domain-doc layout, and triage labels before using the workflow skills.
+Use the repository-local docs in `docs/reference/agents/` and `docs/how-to/` to understand issue tracking, work-item format, domain-doc layout, triage labels, and adoption workflows before using the workflow skills.
 
 When installing or syncing this bundle in another repository, prefer the AI-agnostic prompts in `README.md`:
 

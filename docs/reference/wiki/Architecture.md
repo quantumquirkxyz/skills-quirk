@@ -86,7 +86,9 @@ Defines the local vocabulary, conventions, ADRs, and method documentation that g
 | Path | Role |
 |---|---|
 | `CONTEXT.md` | Local vocabulary, project boundaries, and naming conventions. |
-| `docs/reference/agents/` | Method documentation, provenance, adoption guide, skill templates, stack matrix, etc. |
+| `docs/reference/agents/` | Work-item, issue-tracker, provenance inventory, routing, and skill-template reference. |
+| `docs/how-to/` | Adoption, installation, release, workflow, and skill-style guidance. |
+| `docs/explanation/` | Method, provenance, and explanatory material. |
 | `docs/reference/adr/` | Architecture Decision Records. |
 | `AUTHORSHIP.md` | Authorship and integrity of the bundle. |
 
@@ -96,15 +98,9 @@ Defines the local vocabulary, conventions, ADRs, and method documentation that g
 
 > **Maintenance Rule:** This file is required. It must name the domain's local vocabulary, the project boundaries, and the naming conventions. Skills should reference this context and avoid vocabulary from unrelated repositories.
 - `docs/reference/agents/` contains:
-  - `quirk-method.md`: method vocabulary and quality bar.
-  - `context-engine`: dynamic context retrieval via RAG from issues, docs, and traces.
-  - `provenance.md`: origin and redesign status of skills.
-  - `adoption-guide.md`: installation and sync guide.
+  - `provenance-inventory.md`: active skill provenance inventory.
   - `skill-templates.md`: artifact template map.
   - `stack-matrix.md`: skills by technology stack.
-  - `skill-style-guide.md`: editing and authoring rules.
-  - `skill-lab.md`: skill lab toolkit reference.
-  - `release-checklist.md`: pre/post release gates.
   - `multi-agent-protocol.md`: multi-session handoff rules.
   - `skill-inventory.md`: generated status table per skill.
   - `skills-map.md`: complete skill inventory.
@@ -113,6 +109,8 @@ Defines the local vocabulary, conventions, ADRs, and method documentation that g
   - `work-item-format.md`: metadata shape for specs, tickets, and PRs.
   - `triage-labels.md`: triage label vocabulary.
   - `slash-command-map.md`: flat alias map.
+- `docs/how-to/` contains adoption, installation, release, workflow, skill-style, and skill-lab guidance.
+- `docs/explanation/` contains method and provenance explanations.
   - `provenance-inventory.md`: provenance records.
 - `docs/reference/adr/` contains ADRs documenting architectural decisions.
 
@@ -299,16 +297,22 @@ skills-quirk/
 │   └── skills-quirk.js               # NPX CLI
 ├── docs/
 │   ├── adr/                          # Project ADRs
-│   ├── agents/                       # Method documentation
+│   ├── explanation/                  # Method and provenance explanations
 │   │   ├── quirk-method.md
 │   │   ├── provenance.md
-│   │   ├── adoption-guide.md
+│   ├── how-to/                       # Adoption, install, workflow, and release guides
+│   │   ├── adoption.md
+│   │   ├── installation.md
+│   │   ├── skill-style.md
+│   │   ├── skill-lab.md
+│   │   ├── release.md
+│   │   └── workflows.md
+│   ├── reference/
+│   │   ├── agents/                   # Work-item and routing reference
 │   │   ├── skill-templates.md
 │   │   ├── skills-map.md
 │   │   ├── skill-inventory.md
 │   │   ├── stack-matrix.md
-│   │   ├── skill-style-guide.md
-│   │   ├── release-checklist.md
 │   │   ├── multi-agent-protocol.md
 │   │   ├── conflict-matrix.md
 │   │   ├── issue-tracker.md

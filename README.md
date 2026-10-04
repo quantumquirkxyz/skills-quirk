@@ -85,7 +85,7 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 | `.claude/skills/` | Compatibility view (symlinks) |
 | `skills-lock.json` | SHA-256 integrity hashes for canonical skills |
 | `CONTEXT.md` | Repository-local vocabulary |
-| `docs/agents/` | Method, provenance, and adoption documentation |
+| `docs/reference/agents/` | Work-item, routing, issue-tracker, and provenance reference |
 
 ---
 
@@ -146,7 +146,8 @@ flowchart LR
 <summary>Method layer</summary>
 
 - `CONTEXT.md` — local vocabulary and conventions
-- `docs/agents/` — ADRs, provenance, adoption guide, and skill templates
+- `docs/reference/agents/` — work-item, issue-tracker, provenance, routing, and skill-template reference
+- `docs/how-to/` — adoption, installation, release, and workflow guidance
 
 </details>
 
@@ -400,11 +401,11 @@ Bring this repository into a valid quirk Skills state with the canonical bundle 
 3. `skills-lock.json`
 4. `CONTEXT.md`
 5. `README.md` only if needed to add a short install or usage entry point
-6. `docs/agents/**` only if the repository does not already have the quirk documentation surface and it must be created as part of the bootstrap
+6. `docs/reference/agents/**` and `docs/how-to/**` only if the repository does not already have the quirk documentation surface and it must be created as part of the bootstrap
 
 ## Steps
 1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
-2. Verify that the upstream contains `.agents/skills/**`, `.claude/skills/**`, `skills-lock.json`, and the expected docs surface.
+2. Verify that the upstream contains `.agents/skills/**`, `.claude/skills/**`, `skills-lock.json`, and the expected docs surface under `docs/reference/agents/` and `docs/how-to/`.
 3. Compare the local repo with the upstream bundle and identify any missing skills, renamed skills, or local-only additions.
 4. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
 5. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
@@ -466,7 +467,7 @@ bash scripts/install-quirk-skills.sh /path/to/new-target-repo
 curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh -o /tmp/install-quirk-skills.sh
 ```
 
-The shell installer requires a local source checkout and replaces the target skills directories, `docs/agents/`, `docs/adr/README.md`, and `CONTEXT.md`. Use it for new targets; use the preservation prompt for existing projects. Downloading the script alone does not download the bundle.
+The shell installer requires a local source checkout and replaces the target skills directories, `docs/reference/agents/`, `docs/how-to/`, `docs/adr/README.md`, and `CONTEXT.md`. Use it for new targets; use the preservation prompt for existing projects. Downloading the script alone does not download the bundle.
 
 </details>
 
@@ -537,7 +538,7 @@ Quick checklist before submitting:
 > [!IMPORTANT]
 > Follow [docs/how-to/skill-style.md](docs/how-to/skill-style.md) when editing or authoring skills.
 
-Questions? Check `docs/agents/` for more documentation.
+Questions? Check `docs/reference/agents/` and `docs/how-to/` for more documentation.
 
 ## License
 
