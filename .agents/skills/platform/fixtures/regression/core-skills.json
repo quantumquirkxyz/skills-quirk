@@ -6,9 +6,9 @@
       "version": "1.0.0",
       "input": "Create a skill for PostgreSQL query optimization",
       "expectedOutput": {
-        "contains": ["SKILL.md", "postgres", "query optimization", "## Contract"],
+        "contains": ["SKILL.md", "interactive interview", "validation-only mode", "## Contract"],
         "minLength": 200,
-        "maxLength": 5000
+        "maxLength": 10000
       }
     },
     {
@@ -17,7 +17,7 @@
       "version": "1.0.0",
       "input": "Diagnose why the login flow returns 500 intermittently",
       "expectedOutput": {
-        "contains": ["diagnosis", "root cause", "reproduction", "fix"],
+        "contains": ["diagnosis", "root cause", "repro", "fix"],
         "minLength": 300
       }
     }

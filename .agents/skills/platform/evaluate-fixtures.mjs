@@ -75,12 +75,15 @@ async function collectSkillDirs(dir, out = []) {
 }
 
 async function runFixture(fixture) {
+  fixture.type ??= 'regression';
+
   const skillFile = await resolveSkillPath(fixture.skill);
   if (!skillFile) {
     return { id: fixture.id, status: 'error', reason: `Skill not found: ${fixture.skill}` };
   }
 
   const text = await fs.readFile(skillFile, 'utf8');
+  const frontmatter = text.match(/^---[\s\S]*?---/)?.[0] ?? '';
   const body = text.replace(/^---[\s\S]*?---\s*/, '').toLowerCase();
 
   if (fixture.type === 'behavioral') {
@@ -99,6 +102,11 @@ async function runFixture(fixture) {
     if (expected.doesNotContain) {
       for (const phrase of expected.doesNotContain) {
         if (body.includes(phrase.toLowerCase())) { passes = false; details.push(`should not contain: ${phrase}`); }
+      }
+    }
+    if (expected.frontmatterContains) {
+      for (const phrase of expected.frontmatterContains) {
+        if (!frontmatter.includes(phrase)) { passes = false; details.push(`frontmatter missing phrase: ${phrase}`); }
       }
     }
     return { id: fixture.id, skill: fixture.skill, type: 'behavioral', status: passes ? 'pass' : 'fail', details };

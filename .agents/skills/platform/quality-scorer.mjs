@@ -6,6 +6,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
+const DEFAULT_SKILL_PATH = '.agents/skills/skill-dev/skill-creator';
 
 function parseFrontmatter(text) {
   if (!text.startsWith('---')) return {};
@@ -281,14 +282,9 @@ async function scoreSkill(skillPath) {
 
 async function main() {
   const args = process.argv.slice(2);
-  const skillPath = args.find(a => !a.startsWith('--'));
+  const skillPath = args.find(a => !a.startsWith('--')) ?? DEFAULT_SKILL_PATH;
   const json = args.includes('--json');
   const minScore = parseInt(args.find(a => a.startsWith('--minimum-score='))?.split('=')[1]);
-
-  if (!skillPath) {
-    console.error('Usage: node quality-scorer.mjs <skill-path> [--json] [--minimum-score=N]');
-    process.exit(1);
-  }
 
   const result = await scoreSkill(skillPath);
 

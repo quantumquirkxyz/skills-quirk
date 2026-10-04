@@ -20,8 +20,8 @@
     "metrics": "node .agents/skills/platform/skill-lab.mjs metrics",
     "sync": "node scripts/sync-registry.mjs",
     "catalog": "node scripts/generate-site-data.mjs",
-    "site:dev": "cd site && vite",
-    "site:build": "cd site && vite build"
+    "site:dev": "npm --prefix site run dev",
+    "site:build": "npm --prefix site run build"
   },
   "keywords": [
     "skills",

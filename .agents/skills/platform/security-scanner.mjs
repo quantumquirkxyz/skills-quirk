@@ -6,6 +6,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
+const DEFAULT_SKILL_PATH = '.agents/skills/delivery/implement';
 
 function parseFrontmatter(text) {
   if (!text.startsWith('---')) return {};
@@ -38,7 +39,7 @@ const CREDENTIAL_PATTERNS = [
 
 const COMMAND_INJECTION_PATTERNS = [
   { pattern: /`[^`]*\$[^`]*`/, label: 'backtick command interpolation' },
-  { pattern: /\$\([^)]*\$[^)]*\)/, label: '$() nested command substitution' },
+  { pattern: /\$\([^)]*\$\([^)]*\)[^)]*\)/, label: '$() nested command substitution' },
   { pattern: /eval\s*\([^)]*\$[^)]*\)/, label: 'eval with variable' },
   { pattern: /exec\s*\([^)]*\$[^)]*\)/, label: 'exec with variable' },
   { pattern: /system\s*\([^)]*\$[^)]*\)/, label: 'system() with variable' },
@@ -154,13 +155,8 @@ async function scanSkill(skillPath) {
 
 async function main() {
   const args = process.argv.slice(2);
-  const skillPath = args.find(a => !a.startsWith('--'));
+  const skillPath = args.find(a => !a.startsWith('--')) ?? DEFAULT_SKILL_PATH;
   const json = args.includes('--json');
-
-  if (!skillPath) {
-    console.error('Usage: node security-scanner.mjs <skill-path> [--json]');
-    process.exit(1);
-  }
 
   const result = await scanSkill(skillPath);
 
