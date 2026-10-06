@@ -1,49 +1,62 @@
 ---
-name: release-management
-category: platform
-maturity: stable
-version: 1
-description: Plan the release train, CI handoff, and rollback posture for a project — so shipping stays controlled.
-capabilities:
-  - apply release management workflow
-  - produce release management artifact
-  - validate release management completion criteria
-outputs:
-  - Release Management artifact with findings, decisions, recommendations, and validation notes
+name: "release-management"
+category: "platform"
+maturity: "stable"
+version: "1"
+description: "Plan the release train, CI handoff, and rollback posture for a project — so shipping stays controlled."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Plan the release train, CI handoff, and rollback posture for a project complete; artifact saved; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Plan the release train, CI handoff, and rollback posture for a project complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "platform"
+modelTier: "router"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/release-management.json"
+diataxis: "how-to"
+tags: ["platform"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-## Operating Contract
-
-- **Input:** Release Management request, relevant context, constraints, and source evidence.
-- **Output:** Release Management artifact with findings, decisions, recommendations, and validation notes.
-- **Side effects:** follow the frontmatter declaration; do not broaden scope without explicit user direction.
-- **Dependencies:** declared dependencies, referenced skills, and source materials required by the task.
-- **Stop condition:** Plan the release train, CI handoff, and rollback posture for a project is complete, evidence is captured, and completion criteria are checked.
-- **Risk:** use the frontmatter risk classification and call out any escalation.
-- **Boundary:** stay within the skill's declared scope, trust tier, and side-effect policy.
-
-# Release Management
-
-Use this skill when a project needs governance for getting changes into production without turning shipping into guesswork. It should define the release train, the CI handoff, approvals, and the conditions for backing out. It decides when a release may advance; `deployment` decides how the runtime promotion works.
 
 ## Contract
 
 - Input: release brief, delivery context, and pipeline constraints.
 - Output: release train guidance, CI handoff guidance, rollback posture, and a release decision record.
-- Scope: shape release mechanics, not the actual pipeline implementation.
-- Rule: keep the release path explicit enough that a failed build or bad deploy has a named recovery path.
-- Rule: prefer predictable release trains over ad hoc shipping.
-- Rule: call out which checks must pass before the release can advance.
-- Rule: distinguish required gates from advisory signals and record who owns each decision.
-- Rule: define the release candidate, its provenance, and the change set included; avoid silently mixing unrelated work.
-- Rule: make approval, freeze, emergency-release, and rollback authority explicit.
-- Rule: require post-release verification and a decision to continue, pause, roll back, or forward-fix.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ReleaseManagementArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/release-management/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Release Management
+
+Use this skill when a project needs governance for getting changes into production without turning shipping into guesswork. It should define the release train, the CI handoff, approvals, and the conditions for backing out. It decides when a release may advance; `deployment` decides how the runtime promotion works.
+
 
 ## Steps
 
@@ -53,9 +66,11 @@ Use this skill when a project needs governance for getting changes into producti
 4. Describe post-release verification, evidence retention, and the decision owner for each outcome.
 5. Note coordination required across repositories, runtime, operators, or external dependencies.
 
-## Completion criteria
+## Completion
 
-- the release cadence is named
-- the release candidate and required CI gates are named
-- approval and rollback authority are named
-- post-release verification and evidence are named
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

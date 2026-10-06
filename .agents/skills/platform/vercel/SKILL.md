@@ -1,36 +1,62 @@
 ---
-name: vercel
-category: platform
-maturity: stable
-version: 2
-description: Shape Vercel deployment and runtime concerns into a clear operational seam — with Next.js, edge functions, ISR, middleware, environment, security, and observability constraints.
-capabilities:
-  - design Vercel deployment shape (Next.js, static, serverless, edge)
-  - plan edge functions, middleware, ISR, and streaming
-  - define environment, secrets, domains, and security headers
-  - evaluate Vercel lock-in vs portability trade-offs
-outputs:
-  - Vercel deployment design (runtime shape, edge strategy, ISR, middleware, environment, security, observability)
+name: "vercel"
+category: "platform"
+maturity: "stable"
+version: "2"
+description: "Shape Vercel deployment and runtime concerns into a clear operational seam — with Next.js, edge functions, ISR, middleware, environment, security, and observability constraints."
+capabilities: ""
+outputs: ""
 sideEffects: []
 dependencies: []
-stopCondition: Vercel design complete; runtime seam and edge strategy explicit; lock-in trade-offs named.
-risk: low
-trustTier: 1
-maxIterations: 6
+stopCondition: "Vercel design complete; runtime seam and edge strategy explicit; lock-in trade-offs named."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "platform"
+modelTier: "router"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/vercel.json"
+diataxis: "how-to"
+tags: ["platform"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
 ---
-
-# Vercel
-
-Use this skill when a project runs on Vercel and the deployment/runtime seam needs to be clear. It should define what Vercel owns, what the app owns, and where operational expectations live.
 
 ## Contract
 
 - Input: Vercel brief, runtime constraints, and deployment target.
 - Output: a Vercel deployment design covering runtime shape, edge strategy, ISR, middleware, environment, security, and observability.
-- Scope: design the Vercel shape, not the full deployment implementation.
-- Rule: make runtime expectations explicit before choosing platform features.
-- Rule: keep platform-specific coupling visible.
-- Rule: describe rollback, monitoring, and cost boundaries in the same pass as the runtime seam.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `VercelArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/vercel/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
+# Vercel
+
+Use this skill when a project runs on Vercel and the deployment/runtime seam needs to be clear. It should define what Vercel owns, what the app owns, and where operational expectations live.
+
 
 ## Process
 
@@ -89,18 +115,11 @@ Use this skill when a project runs on Vercel and the deployment/runtime seam nee
 
 **Completion criterion:** lock-in trade-offs named.
 
-## Completion criteria
+## Completion
 
-- the runtime shape is named
-- edge and middleware strategy is explicit
-- caching and rendering approach is named
-- environment and secret handling are explicit
-- security controls are named
-- observability and cost boundaries are explicit
-- lock-in trade-offs are named
-
-## References
-
-- `../../foundation/observability/SKILL.md` — signal design
-- `../../backend/backend-architecture/SKILL.md` — API and service seams
-- `../../devops/devops-ci-cd-pipeline/SKILL.md` — deployment pipeline
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

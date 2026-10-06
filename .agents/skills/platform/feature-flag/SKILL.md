@@ -1,57 +1,53 @@
 ---
-name: feature-flag
-category: platform
-description: Design and manage feature flags with short-lived flags, gradual rollouts, kill switches, A/B testing, and cleanup discipline.
-artifactType: plan
-modelTier: router
-tags:
-  - feature-flags
-  - rollout
-  - experimentation
-  - kill-switch
-compatibility:
-  - implement
-  - publish-open-pr
-  - gate-post-merge
-  - observability
-outputs:
-  - type: object
-    description: FeatureFlagArtifact
-    schema:
-      type: object
-      properties:
-        name:
-          type: string
-        purpose:
-          type: string
-        type:
-          type: string
-          enum: [release, experiment, kill-switch]
-        targetingRules:
-          type: array
-          items:
-            type: string
-        rolloutPercentage:
-          type: integer
-          minimum: 0
-          maximum: 100
-        cleanupDeadline:
-          type: string
-          format: date
-        status:
-          type: string
-          enum: [draft, active, completed, cleaned]
-        dependencies:
-          type: array
-          items:
-            type: string
-stopCondition: Feature flag design and management complete; FeatureFlagArtifact emitted; completion criteria checked.
-risk: low
-trustTier: 1
-maxIterations: 4
-fixturesPath: .agents/skills/platform/fixtures/regression/feature-flag.json
+name: "feature-flag"
+category: "platform"
+description: "Design and manage feature flags with short-lived flags, gradual rollouts, kill switches, A/B testing, and cleanup discipline."
+artifactType: "feature-flag"
+modelTier: "router"
+tags: ["platform"]
+compatibility: []
+outputs: ""
+stopCondition: "Feature flag design and management complete; FeatureFlagArtifact emitted; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "4"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/feature-flag.json"
+promptVersion: "2.0"
+evaluators: ["behavioral", "regression"]
+diataxis: "how-to"
+approvalRequired: "false"
+approvalFor: []
 ---
 
+## Contract
+
+- Input: feature request, rollout constraints, targeting context, and operational requirements.
+- Output: FeatureFlagArtifact in JSON and Markdown.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `FeatureFlagArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/feature-flag/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# 
+# 
 # Feature Flag
 
 ## Why
@@ -60,17 +56,6 @@ Short-lived flags prevent tech debt because they force the team to retire the sw
 
 Use this skill when a project needs to introduce a new feature flag, plan a safe rollout, or retire an existing flag. It keeps flags short-lived, well-targeted, and observable so the codebase does not accumulate dead switches.
 
-## Contract
-
-- Input: feature request, rollout constraints, targeting context, and operational requirements.
-- Output: FeatureFlagArtifact in JSON and Markdown.
-- Scope: design the flag, its targeting rules, and its lifecycle; execution and verification belong to the consuming pipeline.
-- Rule: every flag must have a cleanup deadline of at most 4 weeks.
-- Rule: flags default to off for all users; explicit targeting rules are required for any exposure.
-- Rule: kill switches must be independently reversible without a redeploy.
-- Rule: flag state changes must be observable and auditable.
-- Rule: experiment flags must define success metrics and sample size before rollout.
-- Rule: no flag may be promoted to production without a named owner and cleanup owner.
 
 ## Provenance
 
@@ -176,13 +161,11 @@ Observability: the artifact must include `traceId`, `owner`, and `cleanupOwner` 
 4. Document flag in registry: emit FeatureFlagArtifact with JSON schema and Markdown summary.
 5. Verify flag state in gate-post-merge: confirm flag default is off, targeting rules are enforced, and observability is wired.
 
-## Completion criteria
+## Completion
 
-- the flag purpose is classified (release, experiment, or kill-switch)
-- targeting rules and rollout percentage are explicit
-- cleanup deadline is set and does not exceed 4 weeks
-- FeatureFlagArtifact JSON is valid and emitted
-- flag is observable and reversible without a redeploy
-- gate-post-merge verification confirms flag state and default safety
-
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
 @include .agents/skills/platform/contract-base.xml

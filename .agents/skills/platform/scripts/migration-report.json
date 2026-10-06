@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-02T20:36:43.908Z",
+  "generatedAt": "2026-10-06T05:36:08.028Z",
   "DRY_RUN": false,
   "categoryFilter": "all",
   "FORCE": false,
   "summary": {
-    "total": 241,
-    "v2": 13,
-    "migrated": 228,
+    "total": 249,
+    "v2": 247,
+    "migrated": 2,
     "skipped": 0,
     "errors": 0
   },
@@ -14,356 +14,297 @@
     {
       "category": "accessibility",
       "name": "accessibility",
-      "status": "migrated",
-      "skill": "accessibility/accessibility"
+      "status": "v2"
     },
     {
       "category": "accessibility",
       "name": "accessibility-design",
-      "status": "migrated",
-      "skill": "accessibility/accessibility-design"
+      "status": "v2"
     },
     {
       "category": "accessibility",
       "name": "accessibility-testing",
-      "status": "migrated",
-      "skill": "accessibility/accessibility-testing"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "agent-orchestration",
-      "status": "migrated",
-      "skill": "ai/agent-orchestration"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "ai-ml-pipeline",
-      "status": "migrated",
-      "skill": "ai/ai-ml-pipeline"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "ai-model-evaluation",
-      "status": "migrated",
-      "skill": "ai/ai-model-evaluation"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "ai-prompt-engineering",
-      "status": "migrated",
-      "skill": "ai/ai-prompt-engineering"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "ai-time-series-forecasting",
-      "status": "migrated",
-      "skill": "ai/ai-time-series-forecasting"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "llm-eval",
-      "status": "migrated",
-      "skill": "ai/llm-eval"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "llm-fine-tuning",
-      "status": "migrated",
-      "skill": "ai/llm-fine-tuning"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "llmops",
-      "status": "migrated",
-      "skill": "ai/llmops"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "mlops",
-      "status": "migrated",
-      "skill": "ai/mlops"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "multimodal-prompting",
-      "status": "migrated",
-      "skill": "ai/multimodal-prompting"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "prompt-template-library",
-      "status": "migrated",
-      "skill": "ai/prompt-template-library"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "rag-pipeline",
-      "status": "migrated",
-      "skill": "ai/rag-pipeline"
+      "status": "v2"
     },
     {
       "category": "ai",
       "name": "structured-output",
-      "status": "migrated",
-      "skill": "ai/structured-output"
+      "status": "v2"
     },
     {
       "category": "auxiliary",
       "name": "execution-policy",
-      "status": "migrated",
-      "skill": "auxiliary/execution-policy"
+      "status": "v2"
     },
     {
       "category": "auxiliary",
       "name": "integration-playground",
-      "status": "migrated",
-      "skill": "auxiliary/integration-playground"
+      "status": "v2"
     },
     {
       "category": "auxiliary",
       "name": "interactive-tutorial-builder",
-      "status": "migrated",
-      "skill": "auxiliary/interactive-tutorial-builder"
+      "status": "v2"
     },
     {
       "category": "auxiliary",
       "name": "setup-quirk-skills",
-      "status": "migrated",
-      "skill": "auxiliary/setup-quirk-skills"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "api-gateway",
-      "status": "migrated",
-      "skill": "backend/api-gateway"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "backend-architecture",
-      "status": "migrated",
-      "skill": "backend/backend-architecture"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "backend-caching",
-      "status": "migrated",
-      "skill": "backend/backend-caching"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "backend-queues",
-      "status": "migrated",
-      "skill": "backend/backend-queues"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "caching-advanced",
-      "status": "migrated",
-      "skill": "backend/caching-advanced"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "distributed-tracing",
-      "status": "migrated",
-      "skill": "backend/distributed-tracing"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "event-driven-architecture",
-      "status": "migrated",
-      "skill": "backend/event-driven-architecture"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "grpc-connect",
-      "status": "migrated",
-      "skill": "backend/grpc-connect"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "microservices",
-      "status": "migrated",
-      "skill": "backend/microservices"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "rate-limiting",
-      "status": "migrated",
-      "skill": "backend/rate-limiting"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "serverless",
-      "status": "migrated",
-      "skill": "backend/serverless"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "service-mesh",
-      "status": "migrated",
-      "skill": "backend/service-mesh"
+      "status": "v2"
     },
     {
       "category": "backend",
       "name": "websockets",
-      "status": "migrated",
-      "skill": "backend/websockets"
+      "status": "v2"
     },
     {
       "category": "cms",
       "name": "cms-access-control",
-      "status": "migrated",
-      "skill": "cms/cms-access-control"
+      "status": "v2"
     },
     {
       "category": "cms",
       "name": "cms-architecture",
-      "status": "migrated",
-      "skill": "cms/cms-architecture"
+      "status": "v2"
     },
     {
       "category": "cms",
       "name": "cms-content-strategy",
-      "status": "migrated",
-      "skill": "cms/cms-content-strategy"
+      "status": "v2"
     },
     {
       "category": "cms",
       "name": "localization",
-      "status": "migrated",
-      "skill": "cms/localization"
+      "status": "v2"
     },
     {
       "category": "compilers",
       "name": "compiler-design",
-      "status": "migrated",
-      "skill": "compilers/compiler-design"
+      "status": "v2"
     },
     {
       "category": "compilers",
       "name": "compiler-testing",
-      "status": "migrated",
-      "skill": "compilers/compiler-testing"
+      "status": "v2"
     },
     {
       "category": "compilers",
       "name": "compilers",
-      "status": "migrated",
-      "skill": "compilers/compilers"
+      "status": "v2"
     },
     {
       "category": "cs",
       "name": "cs-algorithms",
-      "status": "migrated",
-      "skill": "cs/cs-algorithms"
+      "status": "v2"
     },
     {
       "category": "cs",
       "name": "cs-complexity-analysis",
-      "status": "migrated",
-      "skill": "cs/cs-complexity-analysis"
+      "status": "v2"
     },
     {
       "category": "cs",
       "name": "cs-computability",
-      "status": "migrated",
-      "skill": "cs/cs-computability"
+      "status": "v2"
     },
     {
       "category": "cs",
       "name": "cs-data-structures",
-      "status": "migrated",
-      "skill": "cs/cs-data-structures"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-catalog",
-      "status": "migrated",
-      "skill": "data/data-catalog"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-contracts",
-      "status": "migrated",
-      "skill": "data/data-contracts"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-etl-pipeline",
-      "status": "migrated",
-      "skill": "data/data-etl-pipeline"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-lineage",
-      "status": "migrated",
-      "skill": "data/data-lineage"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-quality",
-      "status": "migrated",
-      "skill": "data/data-quality"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-streaming",
-      "status": "migrated",
-      "skill": "data/data-streaming"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-versioning",
-      "status": "migrated",
-      "skill": "data/data-versioning"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "data-warehouse-modeling",
-      "status": "migrated",
-      "skill": "data/data-warehouse-modeling"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "feature-store",
-      "status": "migrated",
-      "skill": "data/feature-store"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "semantic-layer",
-      "status": "migrated",
-      "skill": "data/semantic-layer"
+      "status": "v2"
     },
     {
       "category": "data",
       "name": "stream-processing",
-      "status": "migrated",
-      "skill": "data/stream-processing"
+      "status": "v2"
     },
     {
       "category": "db",
       "name": "db-migrations",
-      "status": "migrated",
-      "skill": "db/db-migrations"
+      "status": "v2"
     },
     {
       "category": "db",
       "name": "db-nosql-modeling",
-      "status": "migrated",
-      "skill": "db/db-nosql-modeling"
+      "status": "v2"
     },
     {
       "category": "db",
       "name": "db-query-optimization",
-      "status": "migrated",
-      "skill": "db/db-query-optimization"
+      "status": "v2"
     },
     {
       "category": "db",
       "name": "db-relational-design",
-      "status": "migrated",
-      "skill": "db/db-relational-design"
+      "status": "v2"
     },
     {
       "category": "delivery",
@@ -373,14 +314,12 @@
     {
       "category": "delivery",
       "name": "contribution-workflow-optimizer",
-      "status": "migrated",
-      "skill": "delivery/contribution-workflow-optimizer"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "diagnosing-bugs",
-      "status": "migrated",
-      "skill": "delivery/diagnosing-bugs"
+      "status": "v2"
     },
     {
       "category": "delivery",
@@ -390,38 +329,32 @@
     {
       "category": "delivery",
       "name": "implement-review-fixes",
-      "status": "migrated",
-      "skill": "delivery/implement-review-fixes"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "plan-review-fixes",
-      "status": "migrated",
-      "skill": "delivery/plan-review-fixes"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "prototype",
-      "status": "migrated",
-      "skill": "delivery/prototype"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "research",
-      "status": "migrated",
-      "skill": "delivery/research"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "resolving-merge-conflicts",
-      "status": "migrated",
-      "skill": "delivery/resolving-merge-conflicts"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "review-fix-loop",
-      "status": "migrated",
-      "skill": "delivery/review-fix-loop"
+      "status": "v2"
     },
     {
       "category": "delivery",
@@ -436,74 +369,62 @@
     {
       "category": "delivery",
       "name": "testing",
-      "status": "migrated",
-      "skill": "delivery/testing"
+      "status": "v2"
     },
     {
       "category": "delivery",
       "name": "webapp-testing",
-      "status": "migrated",
-      "skill": "delivery/webapp-testing"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "backup-disaster-recovery",
-      "status": "migrated",
-      "skill": "devops/backup-disaster-recovery"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "chaos-engineering",
-      "status": "migrated",
-      "skill": "devops/chaos-engineering"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "cost-optimization",
-      "status": "migrated",
-      "skill": "devops/cost-optimization"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "devops-ci-cd-pipeline",
-      "status": "migrated",
-      "skill": "devops/devops-ci-cd-pipeline"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "devops-feature-flags",
-      "status": "migrated",
-      "skill": "devops/devops-feature-flags"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "devops-k8s-orchestration",
-      "status": "migrated",
-      "skill": "devops/devops-k8s-orchestration"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "devops-terraform-iac",
-      "status": "migrated",
-      "skill": "devops/devops-terraform-iac"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "gitops",
-      "status": "migrated",
-      "skill": "devops/gitops"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "incident-response",
-      "status": "migrated",
-      "skill": "devops/incident-response"
+      "status": "v2"
     },
     {
       "category": "devops",
       "name": "secret-management",
-      "status": "migrated",
-      "skill": "devops/secret-management"
+      "status": "v2"
     },
     {
       "category": "docs",
@@ -513,44 +434,37 @@
     {
       "category": "docs",
       "name": "docs-knowledge-base",
-      "status": "migrated",
-      "skill": "docs/docs-knowledge-base"
+      "status": "v2"
     },
     {
       "category": "docs",
       "name": "docs-technical-writing",
-      "status": "migrated",
-      "skill": "docs/docs-technical-writing"
+      "status": "v2"
     },
     {
       "category": "engineering",
       "name": "improve-codebase-architecture",
-      "status": "migrated",
-      "skill": "engineering/improve-codebase-architecture"
+      "status": "v2"
     },
     {
       "category": "finance",
       "name": "finance-corporate-val",
-      "status": "migrated",
-      "skill": "finance/finance-corporate-val"
+      "status": "v2"
     },
     {
       "category": "finance",
       "name": "finance-dcf",
-      "status": "migrated",
-      "skill": "finance/finance-dcf"
+      "status": "v2"
     },
     {
       "category": "finance",
       "name": "finance-portfolio-theory",
-      "status": "migrated",
-      "skill": "finance/finance-portfolio-theory"
+      "status": "v2"
     },
     {
       "category": "foundation",
       "name": "agent-canvas",
-      "status": "migrated",
-      "skill": "foundation/agent-canvas"
+      "status": "v2"
     },
     {
       "category": "foundation",
@@ -560,8 +474,7 @@
     {
       "category": "foundation",
       "name": "agent-observability",
-      "status": "migrated",
-      "skill": "foundation/agent-observability"
+      "status": "v2"
     },
     {
       "category": "foundation",
@@ -576,446 +489,402 @@
     {
       "category": "foundation",
       "name": "context-engine",
-      "status": "migrated",
-      "skill": "foundation/context-engine"
+      "status": "v2"
     },
     {
       "category": "foundation",
       "name": "domain-modeling",
-      "status": "migrated",
-      "skill": "foundation/domain-modeling"
+      "status": "v2"
     },
     {
       "category": "foundation",
       "name": "observability",
-      "status": "migrated",
-      "skill": "foundation/observability"
+      "status": "v2"
     },
     {
       "category": "foundation",
       "name": "subagent-swarm",
-      "status": "migrated",
-      "skill": "foundation/subagent-swarm"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "astro",
-      "status": "migrated",
-      "skill": "frontend/astro"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "design-system",
-      "status": "migrated",
-      "skill": "frontend/design-system"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "frontend-design",
-      "status": "migrated",
-      "skill": "frontend/frontend-design"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "frontend-testing",
-      "status": "migrated",
-      "skill": "frontend/frontend-testing"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "mobile",
-      "status": "migrated",
-      "skill": "frontend/mobile"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "nextjs",
-      "status": "migrated",
-      "skill": "frontend/nextjs"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "react",
-      "status": "migrated",
-      "skill": "frontend/react"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "remix",
-      "status": "migrated",
-      "skill": "frontend/remix"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "state-management",
-      "status": "migrated",
-      "skill": "frontend/state-management"
+      "status": "v2"
     },
     {
       "category": "frontend",
       "name": "styling",
-      "status": "migrated",
-      "skill": "frontend/styling"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "brand-identity",
-      "status": "migrated",
-      "skill": "graphic-design/brand-identity"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "design-system-visual",
-      "status": "migrated",
-      "skill": "graphic-design/design-system-visual"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-accessibility",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-accessibility"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-advertising",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-advertising"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-data-viz",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-data-viz"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-editorial",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-editorial"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-foundations",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-foundations"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-motion",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-motion"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-packaging",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-packaging"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-photo-direction",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-photo-direction"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-project-management",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-project-management"
+      "status": "v2"
     },
     {
       "category": "graphic-design",
       "name": "graphic-design-tools",
-      "status": "migrated",
-      "skill": "graphic-design/graphic-design-tools"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "api-contracts",
-      "status": "migrated",
-      "skill": "integrations/api-contracts"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "auth",
-      "status": "migrated",
-      "skill": "integrations/auth"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "issue-operations",
-      "status": "migrated",
-      "skill": "integrations/issue-operations"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "payments",
-      "status": "migrated",
-      "skill": "integrations/payments"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "pr-operations",
-      "status": "migrated",
-      "skill": "integrations/pr-operations"
+      "status": "v2"
     },
     {
       "category": "integrations",
       "name": "search",
-      "status": "migrated",
-      "skill": "integrations/search"
+      "status": "v2"
     },
     {
       "category": "iot",
       "name": "iot-embedded",
-      "status": "migrated",
-      "skill": "iot/iot-embedded"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-computation-reproducible",
-      "status": "migrated",
-      "skill": "math/math-computation-reproducible"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-computational",
-      "status": "migrated",
-      "skill": "math/math-computational"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-cryptography",
-      "status": "migrated",
-      "skill": "math/math-cryptography"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-formal-proof",
-      "status": "migrated",
-      "skill": "math/math-formal-proof"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-grant-structure",
-      "status": "migrated",
-      "skill": "math/math-grant-structure"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-linear-algebra",
-      "status": "migrated",
-      "skill": "math/math-linear-algebra"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-literature-track",
-      "status": "migrated",
-      "skill": "math/math-literature-track"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-optimization",
-      "status": "migrated",
-      "skill": "math/math-optimization"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-paper-collaboration",
-      "status": "migrated",
-      "skill": "math/math-paper-collaboration"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-presentation-beamer",
-      "status": "migrated",
-      "skill": "math/math-presentation-beamer"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-probability-models",
-      "status": "migrated",
-      "skill": "math/math-probability-models"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-pure-proofs",
-      "status": "migrated",
-      "skill": "math/math-pure-proofs"
+      "status": "v2"
     },
     {
       "category": "math",
       "name": "math-teaching-problem-set",
-      "status": "migrated",
-      "skill": "math/math-teaching-problem-set"
+      "status": "v2"
     },
     {
       "category": "networking",
       "name": "networking",
-      "status": "migrated",
-      "skill": "networking/networking"
+      "status": "v2"
     },
     {
       "category": "networking",
       "name": "networking-protocols",
-      "status": "migrated",
-      "skill": "networking/networking-protocols"
+      "status": "v2"
     },
     {
       "category": "networking",
       "name": "networking-security",
-      "status": "migrated",
-      "skill": "networking/networking-security"
+      "status": "v2"
     },
     {
       "category": "os",
       "name": "os-kernel",
-      "status": "migrated",
-      "skill": "os/os-kernel"
+      "status": "v2"
     },
     {
       "category": "os",
       "name": "os-memory",
-      "status": "migrated",
-      "skill": "os/os-memory"
+      "status": "v2"
     },
     {
       "category": "os",
       "name": "os-processes",
-      "status": "migrated",
-      "skill": "os/os-processes"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-astro",
-      "status": "migrated",
-      "skill": "physics/physics-astro"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-career-postdoc",
-      "status": "migrated",
-      "skill": "physics/physics-career-postdoc"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-classical",
-      "status": "migrated",
-      "skill": "physics/physics-classical"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-data-analysis-root",
-      "status": "migrated",
-      "skill": "physics/physics-data-analysis-root"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-experimental-notebook",
-      "status": "migrated",
-      "skill": "physics/physics-experimental-notebook"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-literature-search",
-      "status": "migrated",
-      "skill": "physics/physics-literature-search"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-quantum",
-      "status": "migrated",
-      "skill": "physics/physics-quantum"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-reproducibility-archive",
-      "status": "migrated",
-      "skill": "physics/physics-reproducibility-archive"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-simulation-setup",
-      "status": "migrated",
-      "skill": "physics/physics-simulation-setup"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-talk-design",
-      "status": "migrated",
-      "skill": "physics/physics-talk-design"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-thermo",
-      "status": "migrated",
-      "skill": "physics/physics-thermo"
+      "status": "v2"
     },
     {
       "category": "physics",
       "name": "physics-writing-revtex",
-      "status": "migrated",
-      "skill": "physics/physics-writing-revtex"
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "deployment",
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "feature-flag",
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "postgres",
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "release-management",
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "trunk-based-workflow",
+      "status": "v2"
+    },
+    {
+      "category": "platform",
+      "name": "vercel",
+      "status": "v2"
     },
     {
       "category": "product",
       "name": "prod-ab-testing",
-      "status": "migrated",
-      "skill": "product/prod-ab-testing"
+      "status": "v2"
     },
     {
       "category": "product",
       "name": "prod-okr-planning",
-      "status": "migrated",
-      "skill": "product/prod-okr-planning"
+      "status": "v2"
     },
     {
       "category": "product",
       "name": "prod-prd-writing",
-      "status": "migrated",
-      "skill": "product/prod-prd-writing"
+      "status": "v2"
     },
     {
       "category": "professional",
       "name": "pro-market-analysis",
-      "status": "migrated",
-      "skill": "professional/pro-market-analysis"
+      "status": "v2"
     },
     {
       "category": "professional",
       "name": "professional-communication",
-      "status": "migrated",
-      "skill": "professional/professional-communication"
+      "status": "v2"
     },
     {
       "category": "professional",
       "name": "professional-project-management",
-      "status": "migrated",
-      "skill": "professional/professional-project-management"
+      "status": "v2"
     },
     {
       "category": "project",
       "name": "docs-management",
-      "status": "migrated",
-      "skill": "project/docs-management"
+      "status": "v2"
     },
     {
       "category": "project",
       "name": "make-project",
-      "status": "migrated",
-      "skill": "project/make-project"
+      "status": "v2"
     },
     {
       "category": "project",
       "name": "project-development",
-      "status": "migrated",
-      "skill": "project/project-development"
+      "status": "v2"
     },
     {
       "category": "project",
       "name": "project-viability",
-      "status": "migrated",
-      "skill": "project/project-viability"
+      "status": "v2"
     },
     {
       "category": "project",
@@ -1030,92 +899,77 @@
     {
       "category": "qa",
       "name": "performance-testing",
-      "status": "migrated",
-      "skill": "qa/performance-testing"
+      "status": "v2"
     },
     {
       "category": "qa",
       "name": "qa-automation",
-      "status": "migrated",
-      "skill": "qa/qa-automation"
+      "status": "v2"
     },
     {
       "category": "qa",
       "name": "qa-manual-testing",
-      "status": "migrated",
-      "skill": "qa/qa-manual-testing"
+      "status": "v2"
     },
     {
       "category": "qa",
       "name": "qa-security-testing",
-      "status": "migrated",
-      "skill": "qa/qa-security-testing"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-backtest",
-      "status": "migrated",
-      "skill": "quant/quant-backtest"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-credit-risk",
-      "status": "migrated",
-      "skill": "quant/quant-credit-risk"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-derivatives-pricing",
-      "status": "migrated",
-      "skill": "quant/quant-derivatives-pricing"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-factors",
-      "status": "migrated",
-      "skill": "quant/quant-factors"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-market-micro",
-      "status": "migrated",
-      "skill": "quant/quant-market-micro"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-portfolio-opt",
-      "status": "migrated",
-      "skill": "quant/quant-portfolio-opt"
+      "status": "v2"
     },
     {
       "category": "quant",
       "name": "quant-risk-modeling",
-      "status": "migrated",
-      "skill": "quant/quant-risk-modeling"
+      "status": "v2"
     },
     {
       "category": "research",
       "name": "research-data-archiving",
-      "status": "migrated",
-      "skill": "research/research-data-archiving"
+      "status": "v2"
     },
     {
       "category": "research",
       "name": "research-literature-review",
-      "status": "migrated",
-      "skill": "research/research-literature-review"
+      "status": "v2"
     },
     {
       "category": "research",
       "name": "scientific-hypothesis",
-      "status": "migrated",
-      "skill": "research/scientific-hypothesis"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "artifact-handoff",
-      "status": "migrated",
-      "skill": "routing/artifact-handoff"
+      "status": "v2"
     },
     {
       "category": "routing",
@@ -1125,50 +979,42 @@
     {
       "category": "routing",
       "name": "capability-router",
-      "status": "migrated",
-      "skill": "routing/capability-router"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "context-pack",
-      "status": "migrated",
-      "skill": "routing/context-pack"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "grill",
-      "status": "migrated",
-      "skill": "routing/grill"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "grill-me",
-      "status": "migrated",
-      "skill": "routing/grill-me"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "grill-with-docs",
-      "status": "migrated",
-      "skill": "routing/grill-with-docs"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "grilling",
-      "status": "migrated",
-      "skill": "routing/grilling"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "handoff",
-      "status": "migrated",
-      "skill": "routing/handoff"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "knowledge-curator",
-      "status": "migrated",
-      "skill": "routing/knowledge-curator"
+      "status": "v2"
     },
     {
       "category": "routing",
@@ -1178,20 +1024,17 @@
     {
       "category": "routing",
       "name": "ship-subissue",
-      "status": "migrated",
-      "skill": "routing/ship-subissue"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "triage",
-      "status": "migrated",
-      "skill": "routing/triage"
+      "status": "v2"
     },
     {
       "category": "routing",
       "name": "wayfinder",
-      "status": "migrated",
-      "skill": "routing/wayfinder"
+      "status": "v2"
     },
     {
       "category": "routing",
@@ -1201,248 +1044,219 @@
     {
       "category": "sec",
       "name": "cloud-security",
-      "status": "migrated",
-      "skill": "sec/cloud-security"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "compliance",
-      "status": "migrated",
-      "skill": "sec/compliance"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "container-security",
-      "status": "migrated",
-      "skill": "sec/container-security"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "incident-forensics",
-      "status": "migrated",
-      "skill": "sec/incident-forensics"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "sec-cryptography-applied",
-      "status": "migrated",
-      "skill": "sec/sec-cryptography-applied"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "sec-privacy-engineering",
-      "status": "migrated",
-      "skill": "sec/sec-privacy-engineering"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "sec-security-audit",
-      "status": "migrated",
-      "skill": "sec/sec-security-audit"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "sec-threat-modeling",
-      "status": "migrated",
-      "skill": "sec/sec-threat-modeling"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "secret-management-security",
-      "status": "migrated",
-      "skill": "sec/secret-management-security"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "supply-chain-security",
-      "status": "migrated",
-      "skill": "sec/supply-chain-security"
+      "status": "v2"
     },
     {
       "category": "sec",
       "name": "zero-trust",
-      "status": "migrated",
-      "skill": "sec/zero-trust"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "evaluate-skill",
-      "status": "migrated",
-      "skill": "skill-dev/evaluate-skill"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "lockfile-maintenance",
-      "status": "migrated",
-      "skill": "skill-dev/lockfile-maintenance"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "rule-cataloger",
-      "status": "migrated",
-      "skill": "skill-dev/rule-cataloger"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "side-effect-auditor",
-      "status": "migrated",
-      "skill": "skill-dev/side-effect-auditor"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-audit",
-      "status": "migrated",
-      "skill": "skill-dev/skill-audit"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-creator",
-      "status": "migrated",
-      "skill": "skill-dev/skill-creator"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-dependency-graph",
-      "status": "migrated",
-      "skill": "skill-dev/skill-dependency-graph"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-diff-analyzer",
-      "status": "migrated",
-      "skill": "skill-dev/skill-diff-analyzer"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-performance-metrics",
-      "status": "migrated",
-      "skill": "skill-dev/skill-performance-metrics"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-promoter",
-      "status": "migrated",
-      "skill": "skill-dev/skill-promoter"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-quality-gate",
-      "status": "migrated",
-      "skill": "skill-dev/skill-quality-gate"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-sandbox",
-      "status": "migrated",
-      "skill": "skill-dev/skill-sandbox"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-template-generator",
-      "status": "migrated",
-      "skill": "skill-dev/skill-template-generator"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-testing-framework",
-      "status": "migrated",
-      "skill": "skill-dev/skill-testing-framework"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "skill-tutor",
-      "status": "migrated",
-      "skill": "skill-dev/skill-tutor"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "workflow-fixture-author",
-      "status": "migrated",
-      "skill": "skill-dev/workflow-fixture-author"
+      "status": "v2"
     },
     {
       "category": "skill-dev",
       "name": "writing-great-skills",
-      "status": "migrated",
-      "skill": "skill-dev/writing-great-skills"
+      "status": "v2"
     },
     {
       "category": "ux",
       "name": "interaction-design",
-      "status": "migrated",
-      "skill": "ux/interaction-design"
+      "status": "v2"
     },
     {
       "category": "ux",
       "name": "ux-accessibility",
-      "status": "migrated",
-      "skill": "ux/ux-accessibility"
+      "status": "v2"
     },
     {
       "category": "ux",
       "name": "ux-prototyping",
-      "status": "migrated",
-      "skill": "ux/ux-prototyping"
+      "status": "v2"
     },
     {
       "category": "ux",
       "name": "ux-research",
-      "status": "migrated",
-      "skill": "ux/ux-research"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-consensus",
-      "status": "migrated",
-      "skill": "web3/web3-consensus"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-defi",
-      "status": "migrated",
-      "skill": "web3/web3-defi"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-governance",
-      "status": "migrated",
-      "skill": "web3/web3-governance"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-l2-scaling",
-      "status": "migrated",
-      "skill": "web3/web3-l2-scaling"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-smart-contracts",
-      "status": "migrated",
-      "skill": "web3/web3-smart-contracts"
+      "status": "v2"
     },
     {
       "category": "web3",
       "name": "web3-tokenomics",
-      "status": "migrated",
-      "skill": "web3/web3-tokenomics"
+      "status": "v2"
     },
     {
       "category": "xr",
       "name": "xr-development",
-      "status": "migrated",
-      "skill": "xr/xr-development"
+      "status": "v2"
     },
     {
       "category": "xr",
       "name": "xr-interaction-design",
-      "status": "migrated",
-      "skill": "xr/xr-interaction-design"
+      "status": "v2"
     },
     {
       "category": "xr",
       "name": "xr-performance",
+      "status": "v2"
+    },
+    {
+      "category": "platform/system-design",
+      "name": "system-design",
       "status": "migrated",
-      "skill": "xr/xr-performance"
+      "skill": "platform/system-design/system-design"
+    },
+    {
+      "category": "platform/performance",
+      "name": "performance",
+      "status": "migrated",
+      "skill": "platform/performance/performance"
     }
   ]
 }
