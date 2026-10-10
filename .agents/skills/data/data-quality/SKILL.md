@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

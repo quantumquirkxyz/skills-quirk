@@ -4,6 +4,7 @@ category: "physics"
 maturity: "stable"
 version: "1"
 description: "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

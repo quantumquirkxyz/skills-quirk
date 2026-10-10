@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

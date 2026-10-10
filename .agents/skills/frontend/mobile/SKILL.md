@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "2"
 description: "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

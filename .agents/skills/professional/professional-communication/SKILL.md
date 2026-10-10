@@ -4,6 +4,7 @@ category: "professional"
 maturity: "stable"
 version: "1"
 description: "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

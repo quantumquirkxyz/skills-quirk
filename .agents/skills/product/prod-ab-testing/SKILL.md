@@ -4,6 +4,7 @@ category: "product"
 maturity: "stable"
 version: "1"
 description: "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

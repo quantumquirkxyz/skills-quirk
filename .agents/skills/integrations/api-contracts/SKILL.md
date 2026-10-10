@@ -4,6 +4,7 @@ category: "integrations"
 maturity: "stable"
 version: "2"
 description: "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

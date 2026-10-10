@@ -4,6 +4,7 @@ category: "db"
 maturity: "stable"
 version: "1"
 description: "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

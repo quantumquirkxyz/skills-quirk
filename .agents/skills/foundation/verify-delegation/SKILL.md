@@ -3,6 +3,7 @@ name: "verify-delegation"
 category: "foundation"
 maturity: "experimental"
 description: "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative."
+license: "MIT"
 version: "1"
 capabilities:
   - decompose delegated work into a canonical delegation brief

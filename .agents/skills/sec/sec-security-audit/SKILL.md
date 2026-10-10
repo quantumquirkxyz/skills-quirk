@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

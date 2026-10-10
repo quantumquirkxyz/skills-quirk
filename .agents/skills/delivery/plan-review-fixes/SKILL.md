@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

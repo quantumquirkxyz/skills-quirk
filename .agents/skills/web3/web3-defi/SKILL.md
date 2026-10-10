@@ -4,6 +4,7 @@ category: "web3"
 maturity: "stable"
 version: "2"
 description: "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

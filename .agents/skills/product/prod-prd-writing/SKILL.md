@@ -4,6 +4,7 @@ category: "product"
 maturity: "stable"
 version: "1"
 description: "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

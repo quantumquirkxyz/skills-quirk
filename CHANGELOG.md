@@ -8,6 +8,119 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.3.0] - 2026-10-10
+
+Wave 2 — guard-gated workflows, idempotent side effects, graph routing, and spec alignment.
+Four implementation streams landed concurrently and were integrated on `main`.
+
+### Added
+
+- **Guard-gated workflow transitions** (`workflow-state-machine.mjs`) — a guard is a transition
+  predicate, not a prompt instruction: declared per state as `guards: {EVENT: "<expression>"}`
+  keyed by the leaving event, and evaluated by a small recursive-descent interpreter
+  (no `eval`, no `Function`) over `==`, `!=`, `>=`, `<=`, `>`, `<`, `&&`, `||`, `!`, parentheses,
+  string/number/bool literals, dotted context paths, and `len(array) >= n`. Unresolved context
+  paths fail closed, so a guard over missing context rejects the event instead of opening it.
+  A rejected event returns `{ok:false, reason:"rejected-by-guard", event, legalEvents, guard}`
+  with exit code 2, records the rejection plus the remaining legal move set in the state history,
+  and re-offers the legal alternatives to the caller. Guards are pure functions of
+  (state, context), so a persisted snapshot plus the event log replays to identical decisions.
+  The four workflow YAMLs declare the guards and their `context:` defaults; persisted context is
+  merged over the YAML defaults on load, so snapshots written before a workflow declared defaults
+  still evaluate against a complete context.
+- **`platform/idempotency.mjs`** — write intent before executing the effect, commit the outcome
+  after: an append-only ledger of intents with claim → execute → commit outcome states,
+  re-entrant claim detection, and no silent re-execution of a side effect. Paired with a new
+  **effect-sandwich clause** in `contract-base.xml` so any mutating skill records its side effects
+  on both sides of the effect.
+- **`skill-graph.mjs` + graph-driven routing** — materializes the edges implicit in the flat bundle
+  (`dependencies` → depends-on, `compatibility` → compatible, body handoffs → handoff, shared
+  capability tokens → capability) and ranks over them with a two-tier scheme: tier-1
+  exact/keyword seed hits always outrank tier-2 Personalized PageRank neighborhood activation
+  (HippoRAG specificity `1/df(token)` as local IDF; HippoRAG 2's regression on pure-graph retrieval
+  is why tier 1 stays primary). `rank`, `neighbors`, and `--compare` commands, plus a `--graph`
+  flag on `work-item-router`. The built artifact lives at
+  `.agents/skills/platform/graph/skill-graph.json` (246 nodes / 60 edges).
+- **`skill-optimizer` skill** — a propose-only GEPA-style reflective loop over a skill's
+  model-facing description against routing fixtures: emits a diff-shaped proposal carrying
+  `(skill, version, fixture)` evidence, and the human applies it. Never edits bodies, metadata,
+  or the lockfile.
+- **`analyze-artifacts` skill** — a read-only cross-artifact analyzer for one work item's spec,
+  plan, and tickets: reports conflicts, gaps, ambiguities, and dead references, each marked
+  `[NEEDS CLARIFICATION]` when the artifacts alone cannot resolve it.
+- **Spec-checklist + `[NEEDS-CLARIFICATION]` markers in `to-spec`** — a checklist reference and
+  explicit markers instead of invented answers when input is missing.
+- **`validate-spec-compliance.mjs`** — an agentskills.io spec-alignment validator over the six
+  spec-portable frontmatter fields (`name`, `description`, `license`, `compatibility`,
+  `metadata`, `allowed-tools`), a 500-line body-length budget, and a documented divergence note
+  for the bundle's own extensions. Registered in CI, npm (`audit:spec`), and `check-all.mjs`
+  as a report-only check.
+
+### Changed
+
+- **`license: MIT` on every skill** — 258 SKILL.md files now declare the spec-portable license
+  field (239 quoted, 19 plain, matching each file's local frontmatter dialect).
+- **`knowledge-curator` and `docs-management`** — memory and knowledge conventions, including
+  commit-boundary discipline (what belongs in a commit versus in working memory) and
+  flag-and-excise handling that marks stale durable context for removal instead of
+  quietly rewriting it.
+- **`review-fix-loop`** — a deferred-work section so out-of-scope findings are recorded instead
+  of silently dropped.
+- **Counts and projections** — the bundle is now 246 consumer-facing skills (plus the 12 platform
+  skills, 258 in the repository); `CATALOG.md`, `llms.txt`, `.claude-plugin/marketplace.json`, and
+  `site/src/skills.json` regenerated, and `tests/projection-consistency.test.mjs` re-pinned
+  from 244/256 to 246/258.
+- **`check-all.mjs`** — report-only registrations for the spec-compliance validator and the
+  skill-graph build (following the context-budget-auditor pattern), with the graph's node count
+  surfaced in the report detail.
+- **CI (`.github/workflows/validate.yml`)** — new spec-compliance and skill-routing-graph steps;
+  npm scripts `audit:spec` and `graph:skills`.
+- **Version unification**: 2.3.0 in `VERSION`, `package.json`, `registry.yaml` (`version` +
+  `bundleVersion`), and the README badge.
+
+### Fixed
+
+- **`tests/delegation-brief.test.mjs`** — the frontmatter guard's sanctioned exception list now
+  covers the wave-2 `license` key alongside the wave-1 `clauses` / `reloadPolicy` keys, so the
+  two body-only skills could take the license field without tripping the pin (17/17 pass).
+- **`tests/workflow-state-machine.test.mjs`** — the state-machine tests ran against the ambient
+  `.agents/skills/platform/state/` directory, rewriting (and briefly deleting) a tracked runtime
+  artifact on every suite run — a known side effect recorded in
+  `.opencode/orchestrator/learnings.md`. Each test now gets its own state directory through the
+  environment override the machine documents, so the ambient state is never written by tests.
+- **`record-execution.mjs` trace timestamps** — the default `execution` argument took two
+  independent clock reads for `startedAt`/`completedAt`, so under load the pair could straddle a
+  millisecond boundary and `durationMs` (derived from the same pair) disagreed with the recorded
+  timestamps. The default pair now comes from a single read; caller-supplied timestamps are
+  untouched. This was an intermittent failure of `telemetry.test.mjs` under a loaded full-suite run.
+- `skills-lock.json` re-locked at 258 entries (2 new skills, 256 refreshed hashes); the
+  stale-hash backlog in `validate-skills.mjs` / `audit-semantics.mjs` is back to zero.
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # status pass, 10/10 gating checks, 0 errors, 73 warnings (68 + 5), 4 report-only, 1 skipped with reason
+node .agents/skills/platform/validate-skills.mjs      # 246 skills, 0 errors, 68 advisory warnings
+node .agents/skills/platform/audit-semantics.mjs      # 258 skills, 5 load-bearing heuristic warnings, 0 errors
+node .agents/skills/platform/security-scan-skills.mjs # clean, 0 findings
+node .agents/skills/platform/security-scan-skills.mjs --strict  # clean, 0 findings
+node .agents/skills/platform/validate-spec-compliance.mjs  # 258 skills, 0 errors, 0 warnings, bodies within 500 lines
+node .agents/skills/platform/validate-traceability.mjs     # exit 0 - 60 clauses, 3 resolved, 50 manual, 7 pending, 0 errors
+node evals/run-routing.mjs --check                    # 10 fixtures, 151 rows, 41 negative controls, 0 errors
+node evals/run-behavioral.mjs --all                   # 5 fixtures, 0 broken schema, 0 crashed (mock judge)
+node --test tests/*.test.mjs                          # 6/6 pass
+node --test .agents/skills/platform/tests/*.test.mjs  # 176/176 pass
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60  # 82/100 (skill-creator)
+node .agents/skills/platform/dependency-graph.mjs     # 246 skills, 1 dependency edge, 0 cycles
+node .agents/skills/platform/skill-graph.mjs build    # 246 nodes / 60 edges (depends-on 1, compatible 49, handoff 10)
+node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs --dry-run  # clean, 258 entries
+```
+
+Remaining advisory backlog (never blocks the general gate; blocks promotion): 68 medium/high-risk
+skills still lack a `behavioral-fixtures` directory, 5 skills carry the load-bearing-position
+heuristic warning, and 7 `evals/behavioral` fixtures are not yet landed, so their clauses are
+recorded as `pending` warnings by the traceability validator.
+
 ## [2.2.0] - 2026-10-10
 
 Wave 1 — behavioral evidence, loop budgets, and traceability. Six work streams landed

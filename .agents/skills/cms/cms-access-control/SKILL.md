@@ -4,6 +4,7 @@ category: "cms"
 maturity: "stable"
 version: "1"
 description: "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

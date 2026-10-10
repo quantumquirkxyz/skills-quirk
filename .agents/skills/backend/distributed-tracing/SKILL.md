@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

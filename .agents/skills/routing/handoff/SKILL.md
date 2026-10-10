@@ -4,6 +4,7 @@ category: "routing"
 maturity: "stable"
 version: "1"
 description: "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

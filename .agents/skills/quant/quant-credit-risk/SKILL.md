@@ -4,6 +4,7 @@ category: "quant"
 maturity: "stable"
 version: "1"
 description: "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

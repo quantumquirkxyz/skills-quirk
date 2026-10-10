@@ -58,6 +58,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           node .agents/skills/platform/audit-semantics.mjs 2>&1 | tee "$(mktemp)"
 
+      - name: Validate agentskills.io spec compliance
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/validate-spec-compliance.mjs 2>&1 | tee "$(mktemp)"
+
       - name: Evaluate scenarios
         run: |
           cd "$GITHUB_WORKSPACE"
@@ -102,6 +107,11 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           node scripts/sync-registry.mjs --write 2>&1 | tee "$(mktemp)"
+
+      - name: Build skill routing graph
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/skill-graph.mjs build 2>&1 | tee "$(mktemp)"
 
       - name: Quality score gate
         run: |

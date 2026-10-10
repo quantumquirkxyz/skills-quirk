@@ -4,6 +4,7 @@ category: "accessibility"
 maturity: "stable"
 version: "1"
 description: "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

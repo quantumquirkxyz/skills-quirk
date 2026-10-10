@@ -4,6 +4,7 @@ category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

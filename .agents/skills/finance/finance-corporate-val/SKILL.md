@@ -4,6 +4,7 @@ category: "finance"
 maturity: "stable"
 version: "1"
 description: "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "accessibility"
 maturity: "stable"
 version: "1"
 description: "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

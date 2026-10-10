@@ -4,6 +4,7 @@ category: "qa"
 maturity: "stable"
 version: "1"
 description: "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

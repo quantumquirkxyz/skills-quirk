@@ -4,6 +4,7 @@ category: delivery
 maturity: stable
 version: 2
 description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
+license: MIT
 capabilities:
   - apply code review workflow
   - produce code review artifact

@@ -4,6 +4,7 @@ category: "physics"
 maturity: "stable"
 version: "1"
 description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

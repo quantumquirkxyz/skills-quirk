@@ -4,6 +4,7 @@ category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

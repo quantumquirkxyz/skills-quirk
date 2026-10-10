@@ -4,6 +4,7 @@ category: "ai"
 maturity: "stable"
 version: "1"
 description: "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

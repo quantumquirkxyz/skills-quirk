@@ -4,6 +4,7 @@ category: "db"
 maturity: "stable"
 version: "1"
 description: "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

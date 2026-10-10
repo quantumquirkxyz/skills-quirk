@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:
@@ -130,6 +131,18 @@ Track these facts in the working response or PR comments:
 - **Clean:** review-pr reports no Standards findings and no Spec findings. Say that ship-subissue may proceed when the user wants merge/close/project updates or when a separate ship step will handle them.
 - **Blocked:** missing PR, missing fixed point, stale or contradictory plan, failing validation without an obvious scoped fix, or the same findings recurring after three passes.
 - **User stop:** user pauses or redirects the loop.
+
+## Deferred Work
+
+Some valid findings are not this PR's job: a real defect that belongs to another work item. Deferring one is allowed; dropping one is not, because a dropped finding turns into a surprise later.
+
+- Rule: a finding may only be deferred with a named owner and a follow-up ticket. "Later", "backlog", and "someone" are not owners.
+- Rule: record the deferred finding, its owner, and the follow-up ticket in the loop state and in the PR comment, so the next pass reads what was deferred instead of rediscovering it.
+- Rule: a deferred finding that is missing either the owner or the ticket keeps the loop blocked, not clean.
+- Rule: only out-of-scope findings may be deferred. A Standards finding that blocks the PR is repaired in the PR or the PR stays open.
+- Rule: confirm on re-review that the deferral still holds: the follow-up ticket exists, is still open, and still describes the original finding.
+- Rule: a follow-up ticket closed without the work being done, or an owner who no longer holds it, converts the deferral back into an open finding for the next pass.
+- Rule: the exit summary reports the deferred list, so shipping the PR never hides what was postponed.
 
 ## Completion
 

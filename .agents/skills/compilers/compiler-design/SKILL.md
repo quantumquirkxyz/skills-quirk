@@ -4,6 +4,7 @@ category: "compilers"
 maturity: "stable"
 version: "1"
 description: "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

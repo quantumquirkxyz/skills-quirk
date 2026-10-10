@@ -4,6 +4,7 @@ category: "ai"
 maturity: "stable"
 version: "1"
 description: "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

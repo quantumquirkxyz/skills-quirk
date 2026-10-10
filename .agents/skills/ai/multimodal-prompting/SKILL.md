@@ -4,6 +4,7 @@ category: "ai"
 maturity: "stable"
 version: "1"
 description: "Multimodal prompting (vision, audio, video, image generation, vision-language models)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

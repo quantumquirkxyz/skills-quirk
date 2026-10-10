@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

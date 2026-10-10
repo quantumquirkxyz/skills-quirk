@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Define and evolve reusable UI tokens, components, and usage rules as a coherent system."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

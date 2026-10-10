@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

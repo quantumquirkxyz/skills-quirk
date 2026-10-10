@@ -4,6 +4,7 @@ category: "xr"
 maturity: "stable"
 version: "1"
 description: "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

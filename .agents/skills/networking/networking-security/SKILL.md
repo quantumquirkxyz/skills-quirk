@@ -4,6 +4,7 @@ category: "networking"
 maturity: "stable"
 version: "1"
 description: "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

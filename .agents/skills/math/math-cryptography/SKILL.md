@@ -4,6 +4,7 @@ category: "math"
 maturity: "stable"
 version: "1"
 description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

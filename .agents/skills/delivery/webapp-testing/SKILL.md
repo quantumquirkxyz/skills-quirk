@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

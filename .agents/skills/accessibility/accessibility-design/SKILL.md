@@ -4,6 +4,7 @@ category: "accessibility"
 maturity: "stable"
 version: "1"
 description: "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

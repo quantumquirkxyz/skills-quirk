@@ -4,6 +4,7 @@ category: "os"
 maturity: "stable"
 version: "1"
 description: "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "math"
 maturity: "stable"
 version: "1"
 description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

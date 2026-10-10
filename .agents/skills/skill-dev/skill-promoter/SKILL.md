@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Promote validated experimental skills from the sandbox to the canonical skills bundle."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

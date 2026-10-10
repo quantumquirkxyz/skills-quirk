@@ -4,6 +4,7 @@ category: "compilers"
 maturity: "stable"
 version: "1"
 description: "Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

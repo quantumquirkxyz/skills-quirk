@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens)."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

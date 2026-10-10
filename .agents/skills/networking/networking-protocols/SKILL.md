@@ -4,6 +4,7 @@ category: "networking"
 maturity: "stable"
 version: "1"
 description: "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Design React component structure and state seams — with composability, testability, and clear data flow."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

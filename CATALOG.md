@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v2.2.0
-> 244 skills across 35 categories
+> 246 skills across 35 categories
 
 ## Skills by Category
 
@@ -302,6 +302,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
+| [analyze-artifacts](.agents/skills/project/analyze-artifacts) | 1 | experimental | low | 2 | Analyze the spec, plan, and ticket artifacts of one work item for consistency... |
 | [docs-management](.agents/skills/project/docs-management) | 1 | stable | low | 1 | Keep repository documentation, ADRs, and durable context aligned with the cur... |
 | [make-project](.agents/skills/project/make-project) | 1 | stable | medium | 3 | Use when the user wants a new board in GitHub Projects, or another skill need... |
 | [project-development](.agents/skills/project/project-development) | 1 | stable | low | 1 | Evaluate a project's shape, agent fit, and architectural starting point — bef... |
@@ -386,6 +387,7 @@
 | [skill-creator](.agents/skills/skill-dev/skill-creator) | 4 | stable | medium | 3 | Interactive interview and collaborative design tool that helps users define, ... |
 | [skill-dependency-graph](.agents/skills/skill-dev/skill-dependency-graph) | 1 | stable | low | 1 | Build a dependency graph that exposes central Skills, cycles, and unnecessary... |
 | [skill-diff-analyzer](.agents/skills/skill-dev/skill-diff-analyzer) | 1 | stable | low | 1 | Compare Skill versions and explain contract, dependency, and behavior impact ... |
+| [skill-optimizer](.agents/skills/skill-dev/skill-optimizer) | 1 | experimental | low | 2 | Optimize a quirk Skill's model-facing description against routing fixtures wi... |
 | [skill-performance-metrics](.agents/skills/skill-dev/skill-performance-metrics) | 1 | stable | low | 1 | Summarize Skill execution duration, success rate, and available run evidence ... |
 | [skill-promoter](.agents/skills/skill-dev/skill-promoter) | 1 | stable | medium | 3 | Promote validated experimental skills from the sandbox to the canonical skill... |
 | [skill-quality-gate](.agents/skills/skill-dev/skill-quality-gate) | 1 | stable | low | 1 | Run and interpret the skill bundle quality gate across schema, lockfile, sema... |

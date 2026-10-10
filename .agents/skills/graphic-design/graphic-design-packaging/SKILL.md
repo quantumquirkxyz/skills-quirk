@@ -1,6 +1,7 @@
 ---
 name: "graphic-design-packaging"
 description: "Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications."
+license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "reasoning"

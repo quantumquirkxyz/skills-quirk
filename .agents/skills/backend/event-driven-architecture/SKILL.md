@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

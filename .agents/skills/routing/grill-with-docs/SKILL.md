@@ -4,6 +4,7 @@ category: "routing"
 maturity: "stable"
 version: "1"
 description: "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

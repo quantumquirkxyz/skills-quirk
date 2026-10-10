@@ -4,6 +4,7 @@ category: "research"
 maturity: "stable"
 version: "1"
 description: "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

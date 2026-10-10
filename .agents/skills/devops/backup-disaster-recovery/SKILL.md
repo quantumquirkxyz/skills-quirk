@@ -4,6 +4,7 @@ category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

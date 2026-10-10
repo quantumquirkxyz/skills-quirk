@@ -4,6 +4,7 @@ category: "physics"
 maturity: "stable"
 version: "1"
 description: "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

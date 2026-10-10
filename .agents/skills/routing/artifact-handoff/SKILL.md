@@ -4,6 +4,7 @@ category: "routing"
 maturity: "stable"
 version: "1"
 description: "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

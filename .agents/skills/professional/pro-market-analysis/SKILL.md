@@ -4,6 +4,7 @@ category: "professional"
 maturity: "stable"
 version: "1"
 description: "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

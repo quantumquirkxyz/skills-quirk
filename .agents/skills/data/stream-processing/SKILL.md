@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

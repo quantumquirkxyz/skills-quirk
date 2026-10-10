@@ -4,6 +4,7 @@ category: "finance"
 maturity: "stable"
 version: "1"
 description: "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

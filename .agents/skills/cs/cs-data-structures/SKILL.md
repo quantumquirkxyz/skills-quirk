@@ -4,6 +4,7 @@ category: "cs"
 maturity: "stable"
 version: "1"
 description: "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

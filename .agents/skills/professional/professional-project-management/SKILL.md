@@ -4,6 +4,7 @@ category: "professional"
 maturity: "stable"
 version: "1"
 description: "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

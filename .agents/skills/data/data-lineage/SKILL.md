@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

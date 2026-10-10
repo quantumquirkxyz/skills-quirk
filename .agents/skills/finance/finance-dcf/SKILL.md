@@ -4,6 +4,7 @@ category: "finance"
 maturity: "stable"
 version: "1"
 description: "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

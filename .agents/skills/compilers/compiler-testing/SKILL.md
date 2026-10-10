@@ -4,6 +4,7 @@ category: "compilers"
 maturity: "stable"
 version: "1"
 description: "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

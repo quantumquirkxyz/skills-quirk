@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

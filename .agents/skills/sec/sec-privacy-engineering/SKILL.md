@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

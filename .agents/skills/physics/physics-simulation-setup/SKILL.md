@@ -4,6 +4,7 @@ category: "physics"
 maturity: "stable"
 version: "1"
 description: "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

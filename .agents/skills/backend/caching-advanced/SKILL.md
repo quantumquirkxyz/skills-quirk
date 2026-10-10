@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

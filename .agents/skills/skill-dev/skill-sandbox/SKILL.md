@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

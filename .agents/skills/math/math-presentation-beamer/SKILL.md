@@ -4,6 +4,7 @@ category: "math"
 maturity: "stable"
 version: "1"
 description: "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

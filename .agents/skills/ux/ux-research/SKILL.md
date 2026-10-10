@@ -4,6 +4,7 @@ category: "ux"
 maturity: "stable"
 version: "1"
 description: "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

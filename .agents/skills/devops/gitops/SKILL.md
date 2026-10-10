@@ -4,6 +4,7 @@ category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

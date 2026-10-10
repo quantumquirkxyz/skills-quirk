@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

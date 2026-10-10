@@ -3,6 +3,7 @@
 // This integrates the work-item routing system with the skill lab.
 
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 
 const root = process.cwd();
@@ -76,10 +77,32 @@ function routeWorkItem(description) {
   };
 }
 
+function graphCandidates(description) {
+  const graphScript = join(root, '.agents', 'skills', 'platform', 'skill-graph.mjs');
+  const run = spawnSync(process.execPath, [graphScript, 'rank', description, '--json', '--root', root], { encoding: 'utf8' });
+  if (run.status !== 0) {
+    return { graphCandidates: [], graphError: (run.stderr || 'skill-graph rank failed').trim() };
+  }
+  try {
+    const payload = JSON.parse(run.stdout);
+    const candidates = (payload.candidates || []).slice(0, 5).map((candidate) => ({
+      name: candidate.name,
+      score: candidate.score,
+      tier: candidate.tier,
+      reason: candidate.reason,
+    }));
+    return { graphCandidates: candidates };
+  } catch {
+    return { graphCandidates: [], graphError: 'skill-graph rank returned invalid JSON' };
+  }
+}
+
 function main() {
   const args = process.argv.slice(2);
-  const description = args.join(' ') || process.env.WORK_ITEM_DESCRIPTION || 'default routing';
+  const useGraph = args.includes('--graph');
+  const description = args.filter((arg) => arg !== '--graph').join(' ') || process.env.WORK_ITEM_DESCRIPTION || 'default routing';
   const result = routeWorkItem(description);
+  if (useGraph) Object.assign(result, graphCandidates(description));
   console.log(JSON.stringify(result, null, 2));
 }
 

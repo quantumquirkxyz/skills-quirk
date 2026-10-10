@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions)."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

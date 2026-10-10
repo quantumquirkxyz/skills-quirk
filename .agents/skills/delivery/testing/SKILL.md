@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Shape the test strategy for a project so behavior is verified at the right seams and at the right level."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

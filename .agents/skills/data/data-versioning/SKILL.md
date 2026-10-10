@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

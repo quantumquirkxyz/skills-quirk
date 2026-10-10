@@ -4,6 +4,7 @@ category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

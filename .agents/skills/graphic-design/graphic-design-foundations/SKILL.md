@@ -4,6 +4,7 @@ category: "graphic-design"
 maturity: "stable"
 version: "1"
 description: "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

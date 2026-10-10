@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

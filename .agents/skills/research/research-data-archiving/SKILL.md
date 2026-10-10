@@ -4,6 +4,7 @@ category: "research"
 maturity: "stable"
 version: "1"
 description: "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

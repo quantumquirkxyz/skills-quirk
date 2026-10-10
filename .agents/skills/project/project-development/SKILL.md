@@ -4,6 +4,7 @@ category: "project"
 maturity: "stable"
 version: "1"
 description: "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

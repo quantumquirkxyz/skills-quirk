@@ -2313,6 +2313,22 @@
       "skillsDir": ".agents/skills/project",
       "skills": [
         {
+          "name": "analyze-artifacts",
+          "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.",
+          "category": "project",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [
+            "index requirements across spec plan and ticket artifacts",
+            "classify consistency findings by evidence",
+            "emit a read-only artifact consistency report"
+          ],
+          "sideEffects": [],
+          "path": ".agents/skills/project/analyze-artifacts"
+        },
+        {
           "name": "docs-management",
           "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
           "category": "project",
@@ -3056,6 +3072,22 @@
           "capabilities": [],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-diff-analyzer"
+        },
+        {
+          "name": "skill-optimizer",
+          "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.",
+          "category": "skill-dev",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [
+            "score skill description routing evidence",
+            "evolve description candidates reflectively",
+            "emit an apply-ready description proposal"
+          ],
+          "sideEffects": [],
+          "path": ".agents/skills/skill-dev/skill-optimizer"
         },
         {
           "name": "skill-performance-metrics",

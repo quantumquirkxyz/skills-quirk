@@ -25,6 +25,20 @@ flowchart LR
   - Tier 4 — autonomous remote writes (`publish-open-pr`, `ship-subissue`, `review-fix-loop`)
 - `maxIterations` is required on any skill whose body contains an explicit or implicit repeat/loop. Omit it only when the skill is `disable-model-invocation: true` or the body contains no loop at all.
 
+## agentskills.io alignment
+
+The bundle targets the agentskills.io open spec (governed at `agentskills/agentskills`, with the `skills-ref` reference validator and 30+ client implementations), not only Claude Code. Alignment rules for every skill:
+
+- **Six fields are portable cross-harness:** `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`. Everything else in the frontmatter (`category`, `capabilities`, `risk`, `trustTier`, `diataxis`, ...) is bundle-specific.
+- **Bundle fields are stripped, not understood.** Outside Claude Code, spec-strict packagers hard-fail on non-spec frontmatter (`Unexpected key(s) in SKILL.md frontmatter`), and lenient clients strip unknown fields. Quirk tooling reads the bundle fields, so they must never carry load-bearing semantics alone: anything a foreign client needs has to be visible in `name`, `description`, `license`, or `metadata`.
+- **`compatibility` is a bundle field, not the spec field.** In this bundle it lists the ADJACENT SKILLS of a route; in the spec it is a <=500-character string of environment requirements (intended product, system packages, network access). Same name, different meaning: the divergence is documented, not renamed, with its canonical record in `../reference/agents/skill-templates.md`. New skills must not rely on `compatibility` for environment requirements; use `metadata` if that need ever appears.
+- **`name` must equal the folder name** and match `^[a-z0-9]+(-[a-z0-9]+)*$`: lowercase letters, digits, single hyphens, no `anthropic`/`claude`, at most 64 characters.
+- **`description` discipline:** non-empty, at most 1024 characters, no XML tags. The description is the trigger surface, so state what the skill does and when to use it, in the third person, and never assume a bundle-only field is present to interpret it.
+- **`license`:** every skill declares `license: MIT`, quoted or plain to match the file's local frontmatter dialect. The two skills pinned by the wave-0 frontmatter guard (`code-review`, `subagent-swarm`) declared it once the guard's sanction list was extended with `license`.
+- **Body budget:** keep `SKILL.md` under 500 lines (spec recommendation) and `references/` one level deep. Wave-1 exception: philosophy-carrying skills may legitimately exceed the budget; keep load-bearing content near the top anyway, because compaction keeps the start of a re-injected body.
+
+Gate the alignment with `node .agents/skills/platform/validate-spec-compliance.mjs`: name and description violations exit 1, while body-length, truncation, and backslash findings are warnings.
+
 ## Body Shape
 
 - Start with the purpose and boundary.

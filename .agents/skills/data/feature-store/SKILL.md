@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Feature store (online/offline, feature engineering, serving, monitoring, drift)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "math"
 maturity: "stable"
 version: "1"
 description: "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

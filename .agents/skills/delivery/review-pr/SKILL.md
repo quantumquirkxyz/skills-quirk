@@ -4,6 +4,7 @@ category: delivery
 maturity: stable
 version: 1
 description: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
+license: MIT
 capabilities:
   - apply review pr workflow
   - produce review pr artifact

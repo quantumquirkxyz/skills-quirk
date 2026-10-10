@@ -4,6 +4,7 @@ category: "docs"
 maturity: "stable"
 version: "1"
 description: "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

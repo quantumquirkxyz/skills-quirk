@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

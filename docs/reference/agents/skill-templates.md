@@ -19,6 +19,12 @@ flowchart TD
     D --> F[Index stays as map, not contract]
 ```
 
+## agentskills.io alignment
+
+The canonical skills are cross-harness artifacts, so the bundle targets the agentskills.io open spec (governed at `agentskills/agentskills`). Only six frontmatter fields are portable: `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`. Bundle-specific fields (`category`, `capabilities`, `risk`, `trustTier`, `diataxis`, ...) are read by quirk tooling and stripped by spec-strict packagers, so they must never carry load-bearing semantics alone.
+
+**Recorded divergence - `compatibility`:** in this bundle, `compatibility` lists the ADJACENT SKILLS of a route. In the spec, `compatibility` is a 1-500 character string of environment requirements (intended product, system packages, network access). The name collision is documented, not renamed: renaming the bundle field would churn every skill and break quirk's validators. New skills must not rely on `compatibility` for environment requirements; use `metadata` if that need ever appears. Alignment is enforced by `.agents/skills/platform/validate-spec-compliance.mjs`, and authoring guidance lives in `../../how-to/skill-style.md`.
+
 ## Current template ownership
 
 ### Work items and review

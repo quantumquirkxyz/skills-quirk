@@ -4,6 +4,7 @@ category: "project"
 maturity: "stable"
 version: "1"
 description: "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

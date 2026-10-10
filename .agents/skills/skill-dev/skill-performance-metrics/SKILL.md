@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "1"
 description: "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

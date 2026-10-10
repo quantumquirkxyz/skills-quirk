@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

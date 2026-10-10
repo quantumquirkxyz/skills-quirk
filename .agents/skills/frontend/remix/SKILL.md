@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Remix framework (loaders, actions, nested routes, progressive enhancement)."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

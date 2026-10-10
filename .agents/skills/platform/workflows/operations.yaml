@@ -3,6 +3,9 @@ description: Continuous release, deployment, and monitoring flow
 entryPoint: release-management
 version: "2.0"
 
+context:
+  gateCI: "pending"
+
 states:
   release-management:
     type: planner
@@ -19,6 +22,8 @@ states:
       DEPLOYED: observability
       FAILED: deployment
       ROLLED_BACK: release-management
+    guards:
+      DEPLOYED: gateCI == "passed"
 
   observability:
     type: designer

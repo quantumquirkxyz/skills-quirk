@@ -17,6 +17,8 @@ const checks = [
 const reportOnlyChecks = [
   ['node', ['.agents/skills/platform/context-budget-auditor.mjs', '--json', '--no-write']],
   ['node', ['.agents/skills/platform/cost-ledger.mjs', '--json']],
+  ['node', ['.agents/skills/platform/validate-spec-compliance.mjs', '--json']],
+  ['node', ['.agents/skills/platform/skill-graph.mjs', 'build', '--json']],
 ];
 
 const dagFile = defaultDagFile();
@@ -81,7 +83,7 @@ const reportChecks = reportResults.map((result) => {
     fixtures: parsed?.fixtures ?? null,
     warnings: parsed?.warnings?.length ?? 0,
     errors: parsed?.errors?.length ?? 0,
-    detail: parsed?.totalTokens ?? null,
+    detail: parsed?.totalTokens ?? parsed?.nodes ?? null,
   };
 });
 

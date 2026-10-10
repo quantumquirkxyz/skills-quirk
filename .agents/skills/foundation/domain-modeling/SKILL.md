@@ -4,6 +4,7 @@ category: "foundation"
 maturity: "stable"
 version: "1"
 description: "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

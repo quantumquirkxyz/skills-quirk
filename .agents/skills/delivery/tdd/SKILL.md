@@ -4,6 +4,7 @@ category: delivery
 maturity: stable
 version: 1
 description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor"
+license: MIT
 capabilities:
   - apply tdd workflow
   - produce tdd artifact

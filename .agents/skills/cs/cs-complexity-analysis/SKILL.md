@@ -4,6 +4,7 @@ category: "cs"
 maturity: "stable"
 version: "1"
 description: "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

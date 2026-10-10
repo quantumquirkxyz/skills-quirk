@@ -4,6 +4,7 @@ category: "docs"
 maturity: "stable"
 version: "1"
 description: "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

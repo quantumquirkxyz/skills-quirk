@@ -4,6 +4,7 @@ category: "quant"
 maturity: "stable"
 version: "1"
 description: "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

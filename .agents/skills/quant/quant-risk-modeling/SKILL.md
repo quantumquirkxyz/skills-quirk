@@ -4,6 +4,7 @@ category: "quant"
 maturity: "stable"
 version: "1"
 description: "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

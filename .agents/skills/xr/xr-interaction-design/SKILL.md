@@ -4,6 +4,7 @@ category: "xr"
 maturity: "stable"
 version: "1"
 description: "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

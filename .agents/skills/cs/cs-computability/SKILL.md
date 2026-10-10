@@ -4,6 +4,7 @@ category: "cs"
 maturity: "stable"
 version: "1"
 description: "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

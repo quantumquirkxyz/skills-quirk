@@ -4,6 +4,7 @@ category: "math"
 maturity: "stable"
 version: "1"
 description: "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

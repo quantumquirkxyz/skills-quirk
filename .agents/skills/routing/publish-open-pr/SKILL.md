@@ -4,6 +4,7 @@ category: routing
 maturity: stable
 version: 2
 description: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.
+license: MIT
 capabilities:
   - apply publish open pr workflow
   - produce publish open pr artifact

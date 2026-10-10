@@ -240,7 +240,7 @@ export async function recordExecution({
   model = { provider: "anthropic", model: "claude-sonnet-4-20250514", tier: "code" },
   input = { artifactType: "unknown", sizeTokens: 0, contextRefs: [] },
   output = { artifactType: "unknown", sizeTokens: 0, schemaValid: false },
-  execution = { startedAt: new Date().toISOString(), completedAt: new Date().toISOString(), durationMs: 0, iterations: 1, retries: 0 },
+  execution = {},
   tools = [],
   quality = { artifactPassedQualityBar: false, artifactScore: null, evaluators: [], findingsCount: 0 },
   result = "completed",
@@ -253,9 +253,19 @@ export async function recordExecution({
   const traceId = crypto.randomUUID();
   const spanId = crypto.randomUUID();
 
+  // One clock read for the default start/end pair. Two independent reads can
+  // straddle a millisecond boundary under load, which leaves the recorded
+  // timestamps a millisecond apart while normalizeExecution derives durationMs
+  // from the same pair - the two then disagree. Caller-supplied timestamps are
+  // always honoured untouched.
+  const recordedAt = new Date().toISOString();
+  const executionInput = execution.startedAt === undefined && execution.completedAt === undefined
+    ? { ...execution, startedAt: recordedAt, completedAt: recordedAt }
+    : execution;
+
   let normalizedInput = input;
   let normalizedOutput = output;
-  let normalizedExecution = normalizeExecution(execution);
+  let normalizedExecution = normalizeExecution(executionInput);
   let normalizedQuality = normalizeQuality(quality);
 
   try {

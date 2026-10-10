@@ -241,9 +241,10 @@ test('an empty criteria array fails', () => {
 });
 
 // Wave-1 traceability added `clauses` and `reloadPolicy` to the frontmatter of these
-// files while the bodies themselves were edited. Those two keys are the sanctioned
+// files while the bodies themselves were edited, and wave-2 added the spec-portable
+// `license` field to every skill in the bundle. Those three keys are the sanctioned
 // exception; every other frontmatter field must stay byte-identical.
-const wave1FrontmatterExceptions = ['clauses', 'reloadPolicy'];
+const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license'];
 
 // A key line plus its block: the "key:" line and every indented continuation or
 // list item that belongs to it, up to the next top-level frontmatter key.
@@ -279,9 +280,9 @@ test('the body-only skills kept their frontmatter untouched', async () => {
     const baseline = head(file);
     assert.ok(baseline.length > 0, `${file}: baseline commit ${wave0Baseline} must be reachable`);
     assert.equal(
-      frontmatterWithout(current, wave1FrontmatterExceptions),
-      frontmatterWithout(baseline, wave1FrontmatterExceptions),
-      `${file}: frontmatter must not change (outside ${wave1FrontmatterExceptions.join(' and ')})`,
+      frontmatterWithout(current, frontmatterExceptions),
+      frontmatterWithout(baseline, frontmatterExceptions),
+      `${file}: frontmatter must not change (outside ${frontmatterExceptions.join(' and ')})`,
     );
     assert.notEqual(current, baseline, `${file}: body-only edit expected a change`);
   }

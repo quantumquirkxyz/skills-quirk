@@ -4,6 +4,7 @@ category: "quant"
 maturity: "stable"
 version: "1"
 description: "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

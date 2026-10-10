@@ -4,6 +4,7 @@ category: "ai"
 maturity: "stable"
 version: "1"
 description: "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

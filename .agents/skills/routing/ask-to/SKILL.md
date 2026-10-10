@@ -4,6 +4,7 @@ category: routing
 maturity: stable
 version: 1
 description: Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.
+license: MIT
 capabilities:
   - apply ask to workflow
   - produce ask to artifact

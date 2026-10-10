@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

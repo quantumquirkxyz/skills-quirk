@@ -1,6 +1,6 @@
 {
   "name": "skills-quirk",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
   "bin": {
@@ -10,9 +10,11 @@
     "test": "node --test .agents/skills/platform/tests/*.test.mjs",
     "validate": "node .agents/skills/platform/validate-skills.mjs",
     "audit": "node .agents/skills/platform/audit-semantics.mjs",
+    "audit:spec": "node .agents/skills/platform/validate-spec-compliance.mjs",
     "score": "node .agents/skills/platform/quality-scorer.mjs",
     "security": "node .agents/skills/platform/security-scanner.mjs",
     "graph": "node .agents/skills/platform/dependency-graph.mjs",
+    "graph:skills": "node .agents/skills/platform/skill-graph.mjs build",
     "test:fixtures": "node .agents/skills/platform/evaluate-fixtures.mjs",
     "evals:routing:check": "node evals/run-routing.mjs --check",
     "evals:behavioral:mock": "node evals/run-behavioral.mjs --all",

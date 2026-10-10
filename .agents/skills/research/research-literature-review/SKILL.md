@@ -4,6 +4,7 @@ category: "research"
 maturity: "stable"
 version: "1"
 description: "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

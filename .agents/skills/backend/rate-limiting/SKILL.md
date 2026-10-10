@@ -4,6 +4,7 @@ category: "backend"
 maturity: "stable"
 version: "1"
 description: "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

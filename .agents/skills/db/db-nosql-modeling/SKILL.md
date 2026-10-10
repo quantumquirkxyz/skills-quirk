@@ -4,6 +4,7 @@ category: "db"
 maturity: "stable"
 version: "1"
 description: "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

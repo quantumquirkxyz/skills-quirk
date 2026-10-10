@@ -4,6 +4,7 @@ category: "ai"
 maturity: "stable"
 version: "1"
 description: "Prompt template library (versioned templates, A/B testing, composition, evaluation)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: foundation
 maturity: stable
 version: 1
 description: Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.
+license: MIT
 capabilities:
   - generate-agent-card
   - validate-agent-card

@@ -4,6 +4,7 @@ category: "delivery"
 maturity: "stable"
 version: "1"
 description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

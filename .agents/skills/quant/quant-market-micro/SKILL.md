@@ -4,6 +4,7 @@ category: "quant"
 maturity: "stable"
 version: "1"
 description: "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

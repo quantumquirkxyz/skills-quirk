@@ -3,6 +3,7 @@ name: "loop-budget"
 category: "delivery"
 maturity: "experimental"
 description: "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}."
+license: "MIT"
 version: "1"
 capabilities:
   - declare loop budgets up front

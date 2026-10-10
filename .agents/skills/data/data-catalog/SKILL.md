@@ -4,6 +4,7 @@ category: "data"
 maturity: "stable"
 version: "1"
 description: "Data catalog (metadata management, discovery, classification, data mesh, governance)."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

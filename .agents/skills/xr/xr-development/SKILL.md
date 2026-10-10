@@ -4,6 +4,7 @@ category: "xr"
 maturity: "stable"
 version: "1"
 description: "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

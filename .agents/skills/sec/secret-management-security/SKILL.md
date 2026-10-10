@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Secrets management (Vault, KMS, rotation, injection, external secrets operator)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

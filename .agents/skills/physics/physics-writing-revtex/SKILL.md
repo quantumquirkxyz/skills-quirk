@@ -4,6 +4,7 @@ category: "physics"
 maturity: "stable"
 version: "1"
 description: "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "foundation"
 maturity: "stable"
 version: "2"
 description: "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

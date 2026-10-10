@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

@@ -4,6 +4,7 @@ category: "os"
 maturity: "stable"
 version: "1"
 description: "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

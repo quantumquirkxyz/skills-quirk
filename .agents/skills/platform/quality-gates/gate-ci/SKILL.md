@@ -4,6 +4,7 @@ category: platform
 maturity: stable
 version: 1
 description: Shift-left quality gate that runs on push-to-PR events. Executes the full unit suite, integration tests, contract tests, security scan (semgrep, snyk), performance regression (k6), and enforces an 80% line coverage threshold. Blocks on failure. Max duration: 30min.
+license: MIT
 capabilities:
   - apply ci quality gate
   - run full test suite

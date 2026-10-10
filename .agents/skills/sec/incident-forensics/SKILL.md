@@ -4,6 +4,7 @@ category: "sec"
 maturity: "stable"
 version: "1"
 description: "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)"
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

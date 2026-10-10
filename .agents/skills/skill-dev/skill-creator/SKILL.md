@@ -4,6 +4,7 @@ category: "skill-dev"
 maturity: "stable"
 version: "4"
 description: "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects:

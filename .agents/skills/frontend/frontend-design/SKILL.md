@@ -4,6 +4,7 @@ category: "frontend"
 maturity: "stable"
 version: "1"
 description: "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries."
+license: "MIT"
 capabilities: ""
 inputs:
   - type: object

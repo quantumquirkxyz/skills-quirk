@@ -4,6 +4,7 @@ category: "ux"
 maturity: "stable"
 version: "1"
 description: "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably."
+license: "MIT"
 capabilities: ""
 outputs: ""
 sideEffects: []

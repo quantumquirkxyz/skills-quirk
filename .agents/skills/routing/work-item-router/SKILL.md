@@ -4,6 +4,7 @@ category: routing
 maturity: stable
 version: 1
 description: Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.
+license: MIT
 capabilities:
   - apply work item router workflow
   - produce work item router artifact
