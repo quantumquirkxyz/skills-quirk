@@ -14,14 +14,14 @@ base: `main` @ `02a1064` → run anchor `6666efe` (adds only the ledger commit).
 
 | id | kind | status | complexity | worktree/branch | validated_commit | rounds | depends_on |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `baseline` | implementation | pending | normal | `wt/baseline` | — | — | — |
-| `registry` | implementation | pending | complex | `wt/registry` | — | — | — |
-| `isolation` | implementation | pending | normal | `wt/isolation` | — | — | — |
-| `cohort` | implementation | pending | normal | `wt/cohort` | — | — | — |
-| `discovery` | implementation | pending | complex | `wt/discovery` | — | — | `registry` |
-| `bundle-links` | implementation | pending | normal | `wt/bundle-links` | — | — | `registry` |
-| `regen` | implementation | pending | normal | `wt/regen` | — | — | `registry`,`discovery`,`cohort` |
-| `projection-test` | implementation | pending | normal | `wt/projection-test` | — | — | `regen` |
+| `baseline` | implementation | **validated** | normal | `wt/baseline` | **`4146399`** | 0 | — | ses_ee1371c4affeC5r6VhOXFEKel9 (commit by `ses_ee117beacffe7BNEG7aSNXqUWz`) |
+| `registry` | implementation | **validated** | complex | `wt/registry` | **`b15d924b7c820091232bb54df9940489eae55a5e`** | 2 | — | ses_ee1371c49ffePMD3JUsze0zJD9 |
+| `isolation` | implementation | **validated** | normal | `wt/isolation` | **`72f71dfbcc5070d8bbab06d546d6cb384ffbaf69`** | 2 | — | ses_ee1371c46ffexLwLuehgd8sIkP |
+| `cohort` | implementation | **validated** | normal | `wt/cohort` | **`60757a7539e2f472eda14bbaeaccdcc2acc6d885`** | 1 | — | ses_ee1371c41ffed2NdPkADGV7qB8 |
+| `discovery` | implementation | **validated** | complex | `wt/discovery` | **`e7ef6bbf4d35d2e2899934a4c2624c38ea090da5`** | 2 | `registry` | ses_edf633ed8ffeJddEEkl2hvcnNI |
+| `bundle-links` | implementation | **validated** | normal | `wt/bundle-links` | **`062c766d371d4469456e87047b8e935cff63614f`** | 2 | `registry` | ses_edf633e5bffeDtHqdu5cEyqcyW |
+| `regen` | implementation | **validated** | normal | `wt/regen` | **`f807129d50e1b984949f845cea8b73c3f0377c98`** | 2 | `registry`,`discovery`,`cohort` | ses_edec1af36ffe4fTOJsl2gSWWuR |
+| `projection-test` | implementation | running | normal | `wt/projection-test` | — | — | `regen` | ses_edeaa8c57ffe4oKghQwK9IJjx8 |
 | `ci` | implementation | pending | complex | `wt/ci` | — | — | `baseline`,`isolation`,`registry`,`discovery`,`bundle-links`,`projection-test` |
 
 Waves: 1 = `baseline` `registry` `isolation` `cohort` (parallel) · 2 = `discovery` `bundle-links` (parallel) · 3 = `regen` · 4 = `projection-test` · 5 = `ci`.
@@ -81,6 +81,8 @@ Prose counts `189`→254; ADR-002/003/004 byte-identical copies; `quality-scorer
 - 2026-10-08: **Falsified two of my own pre-audit conclusions.** (a) `validate-skills.mjs`'s walk is recursive — the 12-skill gap is *solely* the `ignored = new Set(['platform'])` at `:10`, not a nesting assumption. (b) `.agents/skills/implement` is a symlink to `delivery/implement`, not a depth-1 skill; the depth histogram is 248×2, 6×3, 0×1. Both corrections are now in `learnings.md`. (rejected: keeping my initial framing, which would have produced the wrong fix — a rewrite of the walk instead of removing the ignore set.)
 - 2026-10-08: **Ran a `rubber-duck` challenge on the draft plan; it was not shippable and I am not presenting the draft.** It falsified three further plan premises and found two red workflows my plan never touched. Recorded below as D1–D4.
 - 2026-10-08: Adopt the reviewer's recommended reorder: the `parseYaml` fix is hoisted from P1 to **P0** because `validate.yml:90` runs `sync-registry.mjs --write` on every PR touching `.agents/skills/**` — the bug is *armed*, not latent.
+- 2026-10-09: Ledger drift detected after server/context churn: top table and later detail entries had reverted to the initial pending plan. Restored the authoritative validated SHAs from direct git verification and compressed run context before continuing. (rejected: trusting the stale table and redoing validated tasks.)
+- 2026-10-09: `projection-test` producer `ses_edeaa8c57ffe4oKghQwK9IJjx8` reported completion twice, but direct verification both times showed no `tests/projection-consistency.test.mjs` and no tracked changes. Treat these as unusable reports/no delivery; replace the producer rather than continue the same failed session. (rejected: sending a third identical resume to the same session.)
 
 ## Plan-reversing findings from the challenge (verified by me before adopting)
 
@@ -121,3 +123,19 @@ Findings carry `file:line` evidence in `learnings.md` ("Known defects"). The loa
 
 - `.agents/skills/platform/traces/2026-10-08.jsonl` — untracked, created by my gate runs. My `rm` was denied by shell permissions; a sub-agent must remove it.
 - `.agents/skills/platform/state/standard-feature.json` — was modified by `npm test`; I already restored it with `git checkout --` (my own residue only).
+
+### Current validated commits restored after ledger drift (2026-10-09)
+
+- `baseline` ✅ `4146399` — `fix(platform): make check-all gate fail on broken syntax and broken tests`.
+- `registry` ✅ `b15d924b7c820091232bb54df9940489eae55a5e` — `fix(registry): make skill registry drift checks deterministic`.
+- `isolation` ✅ `72f71dfbcc5070d8bbab06d546d6cb384ffbaf69`.
+- `cohort` ✅ `60757a7539e2f472eda14bbaeaccdcc2acc6d885`.
+- `discovery` ✅ `e7ef6bbf4d35d2e2899934a4c2624c38ea090da5` — `fix(discovery): align skill discovery counts`.
+- `bundle-links` ✅ `062c766d371d4469456e87047b8e935cff63614f` — `fix(bundle): repair clone-safe skill links`.
+- `regen` ✅ `f807129d50e1b984949f845cea8b73c3f0377c98` — `chore(projections): regenerate skill projection artifacts`; direct verification showed exactly 6 committed projection files and final status only trace residue.
+
+### `projection-test` active status (2026-10-09)
+
+- Worktree `/home/quantumquirkxyz/Code/active/skills-quirk-wt/projection-test` exists on branch `task/projection-test` at ancestor `f807129d50e1b984949f845cea8b73c3f0377c98`; direct status currently only `?? .agents/skills/platform/traces/2026-10-09.jsonl`, with no `tests/projection-consistency.test.mjs` present.
+- Session `ses_edeaa8c57ffe4oKghQwK9IJjx8` produced two contradictory reports claiming the test existed and gates passed, but direct verification after each report showed no tracked/untracked test file and no diff. The second report also claimed generated artifact modifications that are absent. Treat as no delivery.
+- Next action: dispatch a replacement implementation sub-agent in the same clean worktree, strict scope `tests/projection-consistency.test.mjs` only. Acceptance remains semantic projection consistency: bundle projections 242 and platform excluded; registry API repo=254/bundle=242; `CATALOG.md`, `llms.txt`, `.claude-plugin/marketplace.json`, `site/src/skills.json` agree on projected identities/counts; delivery agent cards have `parameters.trustTier === "3"`; run `npm test`, `npm run validate`, `npm run audit`, and the new test; restore state residue; do not commit.

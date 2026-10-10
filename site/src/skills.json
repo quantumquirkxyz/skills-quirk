@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-25T04:37:50.241Z",
-  "totalSkills": 229,
+  "generatedAt": "2026-10-09T16:29:43.399Z",
+  "totalSkills": 242,
   "categories": [
     "accessibility",
     "ai",
@@ -16,6 +16,7 @@
     "engineering",
     "foundation",
     "frontend",
+    "graphic-design",
     "integrations",
     "iot",
     "networking",
@@ -43,11 +44,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply accessibility workflow",
-        "produce accessibility artifact",
-        "validate accessibility completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/accessibility/accessibility"
     },
@@ -59,11 +56,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design accessible interaction patterns",
-        "review semantics, focus, and contrast",
-        "propose remediation for accessibility barriers"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/accessibility/accessibility-design"
     },
@@ -75,11 +68,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply accessibility testing workflow",
-        "produce accessibility testing artifact",
-        "validate accessibility testing completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/accessibility/accessibility-testing"
     },
@@ -91,13 +80,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design multi-agent patterns (supervisor, peer, pipeline, router)",
-        "specify tool use contracts and capabilities per agent",
-        "design memory architecture (short-term, long-term, shared, episodic)",
-        "define handoff contracts between agents and escalation paths",
-        "design evaluation framework for agent coordination quality"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/agent-orchestration"
     },
@@ -109,12 +92,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design data ingestion and preprocessing pipelines",
-        "select model architecture, training regimen, evaluation metrics",
-        "implement reproducible training with versioned data and code",
-        "deploy to staging/production with monitoring"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/ai-ml-pipeline"
     },
@@ -126,12 +104,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "compute standard metrics (precision, recall, F1, ROC-AUC, MAE, RMSE, MAPE, log-loss)",
-        "analyse fairness across subgroups (demographic parity, equalised odds, calibration)",
-        "test robustness (adversarial examples, noise, distribution shift)",
-        "generate explainability (feature importance, SHAP, LIME, counterfactuals)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/ai-model-evaluation"
     },
@@ -143,12 +116,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "structure prompts with system, user, context, output-format instructions",
-        "apply chain-of-thought, few-shot, RAG, and tool-use patterns",
-        "evaluate prompts with metrics (accuracy, consistency, latency, cost)",
-        "iterate with A/B testing of prompt variants"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/ai-prompt-engineering"
     },
@@ -160,12 +128,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "analyse stationarity (ADF, KPSS) and seasonality (decomposition, autocorrelation)",
-        "select model family (classical / boosted / deep learning / ensemble)",
-        "build forecast pipeline respecting time-order split",
-        "evaluate with time-series metrics (MAPE, sMAPE, MASE, RMSE) and rolling backtest"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/ai-time-series-forecasting"
     },
@@ -177,12 +140,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design benchmark tasks (question answering, summarisation, coding, reasoning)",
-        "define scoring rubrics (exact match, LLM-as-judge, human-in-the-loop)",
-        "configure model comparison protocols (paired, blind, A/B)",
-        "automate evaluation pipelines with CI integration"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/llm-eval"
     },
@@ -194,13 +152,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design fine-tuning strategies (LoRA, QLoRA, full fine-tuning)",
-        "prepare and curate training datasets (prompt/response, instruction tuning, preference data)",
-        "configure training hyperparameters, adapters, and quantization",
-        "evaluate fine-tuned models against base models and benchmarks",
-        "plan deployment serving strategy (vLLM, TGI, LoRAX, adapters)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/llm-fine-tuning"
     },
@@ -212,14 +164,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "deploy LLM applications to staging and production with rollback discipline",
-        "configure monitoring for latency, error rate, token usage, and cost",
-        "design A/B testing experiments for prompt variants and model swaps",
-        "manage prompt and chain versions with promotion rules and rollback",
-        "optimize cost through token budgets, model routing, and caching",
-        "implement evaluation pipelines with regression detection and canary checks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/llmops"
     },
@@ -231,14 +176,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design and operate feature stores with point-in-time correctness",
-        "manage model registry with promotion, validation, and rollback",
-        "version data with lineage and reproducibility",
-        "orchestrate training and retraining pipelines",
-        "configure model monitoring for drift and performance decay",
-        "define retraining triggers and backfill discipline"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/mlops"
     },
@@ -250,14 +188,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design vision prompts with image, OCR, diagram, and chart understanding",
-        "craft audio and video prompts with transcription, captioning, and event understanding",
-        "implement image generation with composition, style, and batch discipline",
-        "combine modalities with chain-of-thought, cot, and RAG",
-        "define acceptance criteria for each modality with human and machine checks",
-        "specify fallback and escalation for modality failures"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/multimodal-prompting"
     },
@@ -269,13 +200,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "manage versioned templates with promotion and rollback",
-        "design A/B tests for templates with acceptance criteria",
-        "compose templates with partials, conditionals, and loops",
-        "evaluate templates with acceptance, property, and regression checks",
-        "define fallback and escalation for template failures"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/prompt-template-library"
     },
@@ -287,13 +212,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design retrieval architecture (vector, keyword, hybrid)",
-        "define chunking strategy (size, overlap, document-aware splitting)",
-        "select embedding model and dimension budget",
-        "configure reranking (cross-encoder, late interaction, LLM rerank)",
-        "orchestrate generation with grounded prompts and citation"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/rag-pipeline"
     },
@@ -305,13 +224,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design JSON mode prompts with schema, examples, and format instructions",
-        "implement function and tool calling with contracts and retry discipline",
-        "apply constrained decoding with grammars, regex, or stop tokens",
-        "validate structured output with schema, type, and business rule checks",
-        "define fallback, retry, and escalation discipline for parse failures"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ai/structured-output"
     },
@@ -323,11 +236,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "classify-action",
-        "check-approval-threshold",
-        "require-approval"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/auxiliary/execution-policy"
     },
@@ -339,14 +248,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "create-isolated-fixtures",
-        "run-sandboxed-command",
-        "preserve-playground-evidence"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/auxiliary/integration-playground"
     },
     {
@@ -357,11 +260,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "generate-skill-tutorial",
-        "derive-learning-goals",
-        "create-tutorial-checkpoints"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
     },
@@ -373,14 +272,8 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "configure-repo-skills",
-        "establish-issue-tracker",
-        "establish-domain-doc-layout"
-      ],
-      "sideEffects": [
-        "write-docs"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/auxiliary/setup-quirk-skills"
     },
     {
@@ -391,12 +284,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design API gateway architecture",
-        "configure rate limiting and auth",
-        "plan request routing and transformation",
-        "define gateway observability"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/api-gateway"
     },
@@ -408,11 +296,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply backend architecture workflow",
-        "produce backend architecture artifact",
-        "validate backend architecture completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/backend-architecture"
     },
@@ -424,11 +308,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design cache strategy",
-        "choose keys, TTLs, and invalidation rules",
-        "evaluate consistency and failure trade-offs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/backend-caching"
     },
@@ -440,11 +320,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design queue-backed workflows",
-        "define retry and idempotency strategy",
-        "plan backpressure and observability"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/backend-queues"
     },
@@ -456,12 +332,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design advanced cache architectures",
-        "configure Redis and Memcached",
-        "optimize CDN strategies",
-        "implement stampede prevention and cache invalidation"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/caching-advanced"
     },
@@ -473,12 +344,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design distributed tracing architecture",
-        "configure OpenTelemetry instrumentation",
-        "plan sampling and trace storage",
-        "define trace-based observability"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/distributed-tracing"
     },
@@ -490,12 +356,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design event-driven system architecture",
-        "choose messaging pattern and broker",
-        "plan choreography and orchestration flows",
-        "define event schema and contract strategy"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/event-driven-architecture"
     },
@@ -507,12 +368,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design gRPC service contracts",
-        "configure protobuf schemas",
-        "plan streaming and unary APIs",
-        "design ConnectRPC and grpc-gateway integration"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/grpc-connect"
     },
@@ -524,11 +380,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply microservices workflow",
-        "produce microservices artifact",
-        "validate microservices completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/microservices"
     },
@@ -540,12 +392,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design rate limiting systems",
-        "configure token bucket and sliding window algorithms",
-        "implement distributed rate limiting",
-        "protect APIs with throttling strategies"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/rate-limiting"
     },
@@ -557,12 +404,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design serverless architecture",
-        "define event-driven flows",
-        "optimize cold starts and scaling",
-        "evaluate cost and resource allocation"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/serverless"
     },
@@ -574,12 +416,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design service mesh architecture",
-        "configure mTLS and zero trust",
-        "plan traffic splitting and routing",
-        "define mesh observability"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/service-mesh"
     },
@@ -591,12 +428,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design real-time communication architecture",
-        "configure WebSocket and SSE protocols",
-        "plan scaling and reconnection strategies",
-        "implement pub/sub and backpressure handling"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/backend/websockets"
     },
@@ -608,11 +440,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design CMS roles and permissions",
-        "define publishing and review gates",
-        "assess auditability and least privilege"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cms/cms-access-control"
     },
@@ -624,11 +452,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply cms architecture workflow",
-        "produce cms architecture artifact",
-        "validate cms architecture completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cms/cms-architecture"
     },
@@ -640,11 +464,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "model content types and taxonomies",
-        "define editorial lifecycle and governance",
-        "plan multi-channel publishing rules"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cms/cms-content-strategy"
     },
@@ -656,11 +476,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply localization workflow",
-        "produce localization artifact",
-        "validate localization completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cms/localization"
     },
@@ -672,11 +488,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design compiler pipeline stages",
-        "choose AST, type, and IR boundaries",
-        "reason about diagnostics and code generation"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/compilers/compiler-design"
     },
@@ -688,11 +500,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design compiler test suites",
-        "define parser, semantic, and IR oracles",
-        "create regression and negative test strategy"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/compilers/compiler-testing"
     },
@@ -704,11 +512,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply compilers workflow",
-        "produce compilers artifact",
-        "validate compilers completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/compilers/compilers"
     },
@@ -720,11 +524,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply cs algorithms workflow",
-        "produce cs algorithms analysis artifact",
-        "validate cs algorithms completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cs/cs-algorithms"
     },
@@ -736,11 +536,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "analyze asymptotic complexity",
-        "compare algorithmic trade-offs",
-        "justify bounds with assumptions"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cs/cs-complexity-analysis"
     },
@@ -752,11 +548,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "classify computability problems",
-        "construct reductions and recognizers",
-        "explain decidability proofs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cs/cs-computability"
     },
@@ -768,11 +560,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "select data structures for access patterns",
-        "compare operation costs and invariants",
-        "design data-structure APIs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/cs/cs-data-structures"
     },
@@ -784,12 +572,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "manage metadata for datasets, tables, and streams",
-        "enable data discovery with search and lineage",
-        "classify data assets (PII, sensitivity, domain)",
-        "design data mesh domain ownership"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-catalog"
     },
@@ -801,12 +584,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define producer-consumer agreements (schema, semantics, SLAs, ownership)",
-        "design schema evolution policies (additive, backward-compatible, breaking changes)",
-        "configure schema registry and versioning (Confluent, AWS Glue, internal registry)",
-        "implement breaking change detection and enforcement"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-contracts"
     },
@@ -818,12 +596,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design extraction from sources (database, API, file, stream)",
-        "define transformations (filter, aggregate, join, enrich, clean, deduplicate)",
-        "design load into target (warehouse, lake, database)",
-        "implement quality checks (null rate, out-of-range, duplicates, referential integrity)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-etl-pipeline"
     },
@@ -835,12 +608,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "trace end-to-end data flow from source to consumption",
-        "perform impact analysis for schema or pipeline changes",
-        "map column-level lineage across transformations",
-        "support data governance and compliance audits"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-lineage"
     },
@@ -852,12 +620,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define data quality dimensions (freshness, volume, distribution, referential integrity)",
-        "design check suites (expectations, thresholds, anomaly detection)",
-        "implement observability (metrics, alerts, dashboards)",
-        "define data contracts between producers and consumers"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-quality"
     },
@@ -869,12 +632,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design event schemas and stream topology",
-        "configure producers / consumers / stream processors",
-        "handle backpressure, ordering, exactly-once semantics",
-        "design real-time analytics and alerting"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-streaming"
     },
@@ -886,12 +644,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "version datasets and ML assets with DVC or lakeFS",
-        "design delta table versioning and time travel",
-        "implement snapshotting for reproducibility",
-        "manage branching and merging for data"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-versioning"
     },
@@ -903,12 +656,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design star / snowflake / OBT schemas for analytical workloads",
-        "define dimensions (time, geography, product, customer) and facts (events, transactions)",
-        "design partitioning (by date, region, category) and clustering",
-        "optimise queries (materialised views, indexes, partition pruning)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/data-warehouse-modeling"
     },
@@ -920,12 +668,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design online and offline feature stores",
-        "manage feature engineering and transformation logic",
-        "serve features with low latency for inference",
-        "monitor feature drift and data quality"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/feature-store"
     },
@@ -937,13 +680,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "define business metrics and measures (formulas, aggregations, grain, filters)",
-        "model dimensions and attributes for consistent slicing and filtering",
-        "design dbt models and transformations (staging, intermediate, marts)",
-        "configure Cube metrics server or equivalent for self-service analytics",
-        "govern metric definitions, ownership, and data lineage"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/semantic-layer"
     },
@@ -955,12 +692,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design stream processing topologies (Flink, Kafka Streams, RisingWave)",
-        "define windowing strategies (tumbling, sliding, session, global)",
-        "manage state ( RocksDB, in-memory, tiered storage)",
-        "implement exactly-once semantics and fault tolerance"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/data/stream-processing"
     },
@@ -972,11 +704,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "plan schema migrations",
-        "sequence backfills safely",
-        "define rollback and compatibility windows"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/db/db-migrations"
     },
@@ -988,11 +716,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply db nosql modeling workflow",
-        "produce db nosql modeling analysis artifact",
-        "validate db nosql modeling completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/db/db-nosql-modeling"
     },
@@ -1004,11 +728,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "analyze query performance",
-        "interpret execution plans",
-        "recommend indexing and rewrite strategies"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/db/db-query-optimization"
     },
@@ -1020,11 +740,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "identify entities, relationships, and cardinality",
-        "design relational schemas with keys, indexes, constraints",
-        "plan migrations with rollback steps"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/db/db-relational-design"
     },
@@ -1032,16 +748,18 @@
       "name": "code-review",
       "category": "delivery",
       "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
-      "version": "1",
+      "version": "2",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "apply code review workflow",
         "produce code review artifact",
         "validate code review completion criteria"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
       "path": ".agents/skills/delivery/code-review"
     },
     {
@@ -1052,11 +770,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply contribution workflow optimizer workflow",
-        "produce contribution workflow optimizer artifact",
-        "validate contribution workflow optimizer completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/delivery/contribution-workflow-optimizer"
     },
@@ -1068,11 +782,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply diagnosing bugs workflow",
-        "produce diagnosing bugs artifact",
-        "validate diagnosing bugs completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/delivery/diagnosing-bugs"
     },
@@ -1080,7 +790,7 @@
       "name": "implement",
       "category": "delivery",
       "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
-      "version": "1",
+      "version": "2",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
@@ -1104,11 +814,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply implement review fixes workflow",
-        "produce implement review fixes artifact",
-        "validate implement review fixes completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-code",
         "commit-git",
@@ -1119,16 +825,12 @@
     {
       "name": "plan-review-fixes",
       "category": "delivery",
-      "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after ",
+      "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply plan review fixes workflow",
-        "produce plan review fixes artifact",
-        "validate plan review fixes completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "post-pr-comment"
       ],
@@ -1142,11 +844,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply prototype workflow",
-        "produce prototype artifact",
-        "validate prototype completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/delivery/prototype"
     },
@@ -1158,11 +856,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "apply research workflow",
-        "produce research artifact",
-        "validate research completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-docs"
       ],
@@ -1176,11 +870,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply resolving merge conflicts workflow",
-        "produce resolving merge conflicts artifact",
-        "validate resolving merge conflicts completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-code",
         "commit-git",
@@ -1196,11 +886,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply review fix loop workflow",
-        "produce review fix loop artifact",
-        "validate review fix loop completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-code",
         "post-pr-comment",
@@ -1215,14 +901,16 @@
       "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "apply review pr workflow",
         "produce review pr artifact",
         "validate review pr completion criteria"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
       "path": ".agents/skills/delivery/review-pr"
     },
     {
@@ -1249,11 +937,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply testing workflow",
-        "produce testing artifact",
-        "validate testing completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/delivery/testing"
     },
@@ -1265,11 +949,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply webapp testing workflow",
-        "produce webapp testing artifact",
-        "validate webapp testing completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/delivery/webapp-testing"
     },
@@ -1281,13 +961,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define recovery objectives (RPO, RTO, RSL, RPO per service)",
-        "design backup strategies (full, incremental, differential, continuous)",
-        "plan cross-region and multi-cloud disaster recovery",
-        "design restore testing procedures and cadence",
-        "document failover and fallback runbooks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/backup-disaster-recovery"
     },
@@ -1299,12 +973,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define steady-state hypotheses and SLO-based guardrails",
-        "design fault injection experiments (network, compute, dependency)",
-        "run GameDays with controlled blast radius",
-        "validate resilience and produce remediation recommendations"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/chaos-engineering"
     },
@@ -1316,13 +985,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design cost visibility and reporting architecture",
-        "perform rightsizing recommendations (CPU, memory, storage, network)",
-        "design spot instance and preemptible workload strategies",
-        "design committed use and reserved capacity planning",
-        "implement budgets, alerts, showback, and chargeback"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/cost-optimization"
     },
@@ -1334,12 +997,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design pipeline stages (build, test, security, deploy, rollback)",
-        "configure environment parity (dev/staging/prod with same tool versions)",
-        "define deployment gates (tests pass, security scan clean, approval required)",
-        "document rollback procedures"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/devops-ci-cd-pipeline"
     },
@@ -1351,12 +1009,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design flag lifecycle (create → gradual rollout → full → remove)",
-        "configure targeting rules (user segment, percentage, environment)",
-        "design kill switches and emergency rollback",
-        "manage flag inventory and technical debt"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/devops-feature-flags"
     },
@@ -1368,13 +1021,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design cluster topology (control plane, nodes, namespaces, RBAC)",
-        "configure deployment strategies (rolling, blue/green, canary, A/B)",
-        "set up service mesh (Istio, Linkerd) for traffic management",
-        "implement auto-scaling (HPA, VPA, cluster-autoscaler)",
-        "define pod security and network policies"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/devops-k8s-orchestration"
     },
@@ -1386,12 +1033,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define infrastructure modules (compute, network, storage, identity)",
-        "manage state (remote backend, state locking, state encryption)",
-        "design environment isolation (dev/staging/prod via workspaces / separate states)",
-        "enforce policies (IAM least-privilege, network rules, encryption at rest / in transit)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/devops-terraform-iac"
     },
@@ -1403,13 +1045,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design GitOps architecture (Git as source of truth, declarative manifests, automated reconciliation)",
-        "configure ArgoCD or Flux for cluster sync",
-        "implement drift detection and remediation policies",
-        "design progressive delivery (canary, blue/green, feature flags, traffic shifting)",
-        "document rollback and disaster recovery procedures"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/gitops"
     },
@@ -1421,12 +1057,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define severity taxonomy and escalation paths",
-        "author runbooks for known failure modes",
-        "design war room and incident command procedures",
-        "write postmortems with root cause and remediation tracking"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/incident-response"
     },
@@ -1438,13 +1069,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design secret management architecture (Vault, cloud KMS, sealed secrets)",
-        "configure access policies and authentication methods",
-        "design secret rotation and lifecycle management",
-        "integrate secrets with CI/CD and runtime workloads",
-        "document audit logging and compliance requirements"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/devops/secret-management"
     },
@@ -1472,11 +1097,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "organize knowledge-base content",
-        "design durable navigation",
-        "identify stale or missing references"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/docs/docs-knowledge-base"
     },
@@ -1488,11 +1109,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "structure technical documentation",
-        "clarify procedural guidance",
-        "align docs with audience needs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/docs/docs-technical-writing"
     },
@@ -1504,15 +1121,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "scan-codebase",
-        "detect-deepening-opportunities",
-        "generate-html-report",
-        "grill-candidate"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/engineering/improve-codebase-architecture"
     },
     {
@@ -1523,11 +1133,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply finance corporate val workflow",
-        "produce finance corporate val analysis artifact",
-        "validate finance corporate val completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/finance/finance-corporate-val"
     },
@@ -1539,11 +1145,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply finance dcf workflow",
-        "produce finance dcf analysis artifact",
-        "validate finance dcf completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/finance/finance-dcf"
     },
@@ -1555,11 +1157,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply finance portfolio theory workflow",
-        "produce finance portfolio theory analysis artifact",
-        "validate finance portfolio theory completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/finance/finance-portfolio-theory"
     },
@@ -1571,16 +1169,28 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/agent-canvas"
+    },
+    {
+      "name": "agent-card",
+      "category": "foundation",
+      "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
       "capabilities": [
-        "define-workspace",
-        "persist-session",
-        "manage-multi-agent-state",
-        "export-workspace"
+        "generate-agent-card",
+        "validate-agent-card",
+        "emit-agent-card-json",
+        "update-agent-card-index"
       ],
       "sideEffects": [
         "write-files"
       ],
-      "path": ".agents/skills/foundation/agent-canvas"
+      "path": ".agents/skills/foundation/agent-card"
     },
     {
       "name": "agent-observability",
@@ -1590,15 +1200,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "record-execution",
-        "trace-decisions",
-        "capture-quality-signals",
-        "generate-trace-report"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/foundation/agent-observability"
     },
     {
@@ -1641,44 +1244,35 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "retrieve-context",
-        "index-context",
-        "update-context",
-        "query-context"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/foundation/context-engine"
     },
     {
       "name": "domain-modeling",
       "category": "foundation",
-      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
+      "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply domain modeling workflow",
-        "produce domain modeling artifact",
-        "validate domain modeling completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/foundation/domain-modeling"
     },
     {
       "name": "mcp-server",
       "category": "foundation",
-      "description": "Define an MCP server to connect dynamic context (issues, PRs, traces, docs) to the quirk flow, enabling agent access to external data sources securely.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
+      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "version": "2",
+      "maturity": "beta",
+      "risk": "low",
+      "trustTier": "1",
       "capabilities": [
-        "define-mcp-server",
-        "connect-context-sources",
-        "index-dynamic-data",
-        "expose-tools-to-agent"
+        "expose-skills-as-mcp-tools",
+        "generate-skill-resources",
+        "generate-workflow-prompts",
+        "configure-transport"
       ],
       "sideEffects": [
         "write-files"
@@ -1693,14 +1287,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "define SLIs and SLOs for critical user journeys",
-        "design dashboards for metrics, logs, traces, and alerts",
-        "create alert rules with thresholds, routing, and escalation",
-        "write incident response runbooks",
-        "apply observability workflow",
-        "validate observability completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/foundation/observability"
     },
@@ -1712,13 +1299,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "define-subagent-roles",
-        "assign-tasks-to-subagents",
-        "collect-subagent-evidence",
-        "merge-subagent-outputs",
-        "resolve-subagent-conflicts"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/foundation/subagent-swarm"
     },
@@ -1730,12 +1311,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design astro project structure",
-        "apply islands architecture",
-        "configure SSR and SSG rendering modes",
-        "design view transitions"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/astro"
     },
@@ -1747,11 +1323,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply design system workflow",
-        "produce design system artifact",
-        "validate design system completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/design-system"
     },
@@ -1763,11 +1335,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply frontend design workflow",
-        "produce frontend design artifact",
-        "validate frontend design completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/frontend-design"
     },
@@ -1779,12 +1347,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design frontend test strategy",
-        "configure unit and integration tests",
-        "design end-to-end test suites",
-        "plan visual testing and Storybook workflows"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/frontend-testing"
     },
@@ -1796,12 +1359,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design mobile architecture (React Native, Expo, Capacitor, native)",
-        "plan offline-first sync, local storage, and conflict resolution",
-        "design push notifications, deep linking, and app lifecycle",
-        "evaluate platform-specific UX and performance trade-offs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/mobile"
     },
@@ -1813,11 +1371,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply nextjs workflow",
-        "produce nextjs artifact",
-        "validate nextjs completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/nextjs"
     },
@@ -1829,11 +1383,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply react workflow",
-        "produce react artifact",
-        "validate react completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/react"
     },
@@ -1845,12 +1395,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design remix route structure",
-        "apply loaders and actions",
-        "implement progressive enhancement",
-        "plan nested route boundaries"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/remix"
     },
@@ -1862,12 +1407,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design client state architecture",
-        "choose state management primitive",
-        "plan server state and caching",
-        "define state boundaries and ownership"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/state-management"
     },
@@ -1879,14 +1419,153 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design styling architecture",
-        "configure utility-first and component CSS",
-        "create design token system",
-        "plan CVA and variant patterns"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/frontend/styling"
+    },
+    {
+      "name": "brand-identity",
+      "category": "graphic-design",
+      "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/brand-identity"
+    },
+    {
+      "name": "design-system-visual",
+      "category": "graphic-design",
+      "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/design-system-visual"
+    },
+    {
+      "name": "graphic-design-accessibility",
+      "category": "uncategorized",
+      "description": "Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-accessibility"
+    },
+    {
+      "name": "graphic-design-advertising",
+      "category": "uncategorized",
+      "description": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-advertising"
+    },
+    {
+      "name": "graphic-design-data-viz",
+      "category": "uncategorized",
+      "description": "Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-data-viz"
+    },
+    {
+      "name": "graphic-design-editorial",
+      "category": "uncategorized",
+      "description": "Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-editorial"
+    },
+    {
+      "name": "graphic-design-foundations",
+      "category": "graphic-design",
+      "description": "Design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-foundations"
+    },
+    {
+      "name": "graphic-design-motion",
+      "category": "uncategorized",
+      "description": "Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-motion"
+    },
+    {
+      "name": "graphic-design-packaging",
+      "category": "uncategorized",
+      "description": "Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-packaging"
+    },
+    {
+      "name": "graphic-design-photo-direction",
+      "category": "uncategorized",
+      "description": "Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.",
+      "version": "1.0.0",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-photo-direction"
+    },
+    {
+      "name": "graphic-design-project-management",
+      "category": "graphic-design",
+      "description": "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-project-management"
+    },
+    {
+      "name": "graphic-design-tools",
+      "category": "graphic-design",
+      "description": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/graphic-design-tools"
     },
     {
       "name": "api-contracts",
@@ -1896,12 +1575,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design request/response contracts (REST, GraphQL, gRPC, WebSocket)",
-        "define versioning strategies (URL, header, content negotiation)",
-        "apply OpenAPI 3.1, JSON Schema, or GraphQL SDL",
-        "plan breaking change detection, deprecation, and migration paths"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/integrations/api-contracts"
     },
@@ -1913,12 +1587,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design auth flows (OAuth2, OIDC, SAML, session, JWT, passkeys)",
-        "define authorization models (RBAC, ABAC, ReBAC, permissions)",
-        "plan MFA, passwordless, and session management",
-        "assess auth security (token theft, CSRF, session fixation, brute force)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/integrations/auth"
     },
@@ -1930,20 +1599,8 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "resolve issue tracker targets",
-        "create scoped issues from concrete work items",
-        "update issue metadata and discussion safely",
-        "capture mutation evidence and follow-up state"
-      ],
-      "sideEffects": [
-        "create-issue",
-        "update-issue",
-        "post-comment",
-        "label-issue",
-        "assign-issue",
-        "close-issue"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/integrations/issue-operations"
     },
     {
@@ -1954,12 +1611,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design payment flows (authorization, capture, void, refund, dispute)",
-        "plan webhooks, idempotency, reconciliation, and retry behavior",
-        "evaluate PCI DSS scope, fraud detection, and compliance",
-        "assess payment provider lock-in and migration paths"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/integrations/payments"
     },
@@ -1971,20 +1623,8 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "resolve pull request targets",
-        "create pull requests from validated branches",
-        "update PR metadata and discussion",
-        "request reviews and apply labels safely",
-        "report publication and review readiness evidence"
-      ],
-      "sideEffects": [
-        "create-pull-request",
-        "update-pull-request",
-        "post-pr-comment",
-        "request-review",
-        "label-pull-request"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/integrations/pr-operations"
     },
     {
@@ -1995,12 +1635,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design search architecture (full-text, vector, hybrid)",
-        "plan indexing, synonyms, language analysis, and relevance tuning",
-        "define ranking, boosting, personalization, and business rules",
-        "evaluate search observability, analytics, and A/B testing"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/integrations/search"
     },
@@ -2012,11 +1647,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply iot embedded workflow",
-        "produce iot embedded artifact",
-        "validate iot embedded completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/iot/iot-embedded"
     },
@@ -2028,12 +1659,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "capture a computation in a script (SymPy / Mathematica / Magma / Sage / Julia)",
-        "pin the environment (library versions, OS, RNG seeds)",
-        "containerise with Docker / Apptainer / Nix",
-        "archive inputs, scripts, outputs, and environment"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-computation-reproducible"
     },
@@ -2045,12 +1671,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "select numerical algorithms suited to problem type and regime",
-        "implement or execute numerical methods with error and stability analysis",
-        "cross-verify results against independent methods",
-        "deliver numerical results with explicit uncertainty bounds"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-computational"
     },
@@ -2062,11 +1683,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply math cryptography workflow",
-        "produce math cryptography analysis artifact",
-        "validate math cryptography completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-cryptography"
     },
@@ -2078,12 +1695,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "represent mathematical statements in a proof assistant's type system",
-        "build proofs using tactics, lemmas, and libraries (mathlib)",
-        "verify proofs with the assistant's kernel",
-        "produce literate proofs (Lean + LaTeX, Coq + LaTeX) for publication"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-formal-proof"
     },
@@ -2095,12 +1707,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "align proposal with agency call (NSF / ERC / Simons / MSCA / NSERC)",
-        "articulate intellectual merit and broader impacts (or equivalents)",
-        "structure aims, work plan, deliverables, timeline",
-        "draft budget justifications and data-management plans"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-grant-structure"
     },
@@ -2112,11 +1719,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply math linear algebra workflow",
-        "produce math linear algebra analysis artifact",
-        "validate math linear algebra completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-linear-algebra"
     },
@@ -2128,12 +1731,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "monitor arXiv categories (math.AG, math.NT, math.AP, math.PR, math.CO, math.OC) and filter by author/keyword",
-        "pull MathSciNet / zbMATH metadata and citation graph",
-        "build a personal digest of new papers with relevance ranking",
-        "track references, forward citations, and reviews of a given theorem/paper"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-literature-track"
     },
@@ -2145,11 +1743,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply math optimization workflow",
-        "produce math optimization analysis artifact",
-        "validate math optimization completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-optimization"
     },
@@ -2161,12 +1755,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "set up a shared repository (Overleaf or GitHub) for a paper",
-        "manage citation database (BibTeX / Zotero / Mendeley) with collaboration rules",
-        "link reproducible computation artifacts (see math-computation-reproducible)",
-        "coordinate co-author edits, comments, revisions, and arXiv submission"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-paper-collaboration"
     },
@@ -2178,12 +1767,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design Beamer slides with semantic structure (section, subsection, theorem, proof)",
-        "build TikZ diagrams and figures with consistent colour/style",
-        "adjust depth for audience (grad student / researcher / public / high school)",
-        "prepare speaker notes with timing and transition cues"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-presentation-beamer"
     },
@@ -2195,11 +1779,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply math probability models workflow",
-        "produce math probability models analysis artifact",
-        "validate math probability models completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-probability-models"
     },
@@ -2211,12 +1791,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "parse a mathematical statement into shape and domain",
-        "select the proof strategy that fits the claim type",
-        "construct a step-by-step proof with explicit logical rules",
-        "verify the proof by substitution, adversarial pass, and limit checks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-pure-proofs"
     },
@@ -2228,12 +1803,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design problem sets with difficulty progression",
-        "generate multiple variants for exam integrity",
-        "write grading rubrics with partial credit rules",
-        "produce accessible LaTeX output (alt-text, screen-reader friendly)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/math/math-teaching-problem-set"
     },
@@ -2245,11 +1815,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply networking workflow",
-        "produce networking artifact",
-        "validate networking completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/networking/networking"
     },
@@ -2261,11 +1827,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "analyze protocol behavior",
-        "reason about handshakes and packet flow",
-        "diagnose timing and failure modes"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/networking/networking-protocols"
     },
@@ -2277,11 +1839,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design network trust boundaries",
-        "review segmentation and firewall posture",
-        "identify exposure and control gaps"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/networking/networking-security"
     },
@@ -2293,11 +1851,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply os kernel workflow",
-        "produce os kernel artifact",
-        "validate os kernel completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/os/os-kernel"
     },
@@ -2309,11 +1863,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "analyze memory management behavior",
-        "reason about virtual memory and allocation",
-        "diagnose locality, paging, and protection issues"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/os/os-memory"
     },
@@ -2325,11 +1875,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "analyze process lifecycle",
-        "reason about scheduling and IPC",
-        "diagnose concurrency and isolation issues"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/os/os-processes"
     },
@@ -2341,11 +1887,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply physics astro workflow",
-        "produce physics astro analysis artifact",
-        "validate physics astro completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-astro"
     },
@@ -2357,12 +1899,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "structure postdoc and faculty applications (research statement, teaching statement, diversity statement)",
-        "coordinate letters of recommendation",
-        "prepare grant applications (NSF CAREER, DOE, ERC Starting Grant, Simons, HFPO)",
-        "analyse job-market position (fit, timeline, market data)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-career-postdoc"
     },
@@ -2374,11 +1911,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply physics classical workflow",
-        "produce physics classical analysis artifact",
-        "validate physics classical completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-classical"
     },
@@ -2390,12 +1923,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "load experimental data (ROOT / HDF5 / CSV / binary) with schema validation",
-        "apply calibration corrections (energy scale, efficiency, acceptance)",
-        "propagate statistical and systematic errors (covariance matrix or bootstrap)",
-        "perform statistical inference (fit, hypothesis test, confidence interval)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-data-analysis-root"
     },
@@ -2407,12 +1935,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "structure a lab notebook (experiment description, setup, measurements, analysis, conclusion)",
-        "record calibration procedures with traceability",
-        "propagate measurement errors (systematic + statistical)",
-        "apply FAIR data principles (Findable, Accessible, Interoperable, Reusable)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-experimental-notebook"
     },
@@ -2424,12 +1947,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "monitor arXiv categories relevant to physics (hep-th, cond-mat, astro-ph, quant-ph, gr-qc, nucl-th, physics.*)",
-        "pull INSPIRE-HEP / NASA ADS / Web of Science metadata",
-        "filter by author, institution, keyword, citation graph",
-        "build a digest with relevance scores"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-literature-search"
     },
@@ -2441,11 +1959,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply physics quantum workflow",
-        "produce physics quantum analysis artifact",
-        "validate physics quantum completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-quantum"
     },
@@ -2457,12 +1971,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "prepare data, code, and environments for archival",
-        "containerise (Docker / Apptainer) with exact versions and dependencies",
-        "upload to Zenodo with metadata (title, authors, licence, keywords)",
-        "prepare supplemental material for journal submission"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-reproducibility-archive"
     },
@@ -2474,12 +1983,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "select simulation tool appropriate to the physical system",
-        "configure parameters (potential, boundary conditions, initial state, timestep)",
-        "containerise the environment (Docker / Apptainer) with exact versions",
-        "verify simulation against analytical limits or benchmarks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-simulation-setup"
     },
@@ -2491,12 +1995,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design talk structure (introduction, result, conclusion) for audience and duration",
-        "prepare figures consistent with physics conventions (units, error bars, axis labels)",
-        "design posters (layout, colour, font, figure arrangement) for conferences",
-        "prepare speaker notes with timing cues"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-talk-design"
     },
@@ -2508,11 +2007,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply physics thermo workflow",
-        "produce physics thermo analysis artifact",
-        "validate physics thermo completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-thermo"
     },
@@ -2524,12 +2019,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "format papers with RevTeX (APS) or IOP / AIP templates",
-        "prepare figures consistent with journal conventions (line thickness, font size, colour rules)",
-        "manage citations with BibTeX / BibLaTeX and journal-specific styles",
-        "prepare submission package (source + compiled PDF + figures + metadata)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/physics/physics-writing-revtex"
     },
@@ -2541,13 +2031,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "formulate testable hypotheses",
-        "design treatment and control with randomisation",
-        "compute sample size / power / minimum detectable effect",
-        "define success and guardrail metrics",
-        "design rollback / escalation rules"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/product/prod-ab-testing"
     },
@@ -2559,12 +2043,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "define Objectives that are ambitious and qualitative",
-        "define Key Results that are measurable and time-bound",
-        "align team OKRs to company and department OKRs",
-        "track progress and run retrospectives at end of cycle"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/product/prod-okr-planning"
     },
@@ -2576,12 +2055,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "frame problem and user need",
-        "write measurable goals and success metrics",
-        "structure user stories with acceptance criteria",
-        "define timeline, dependencies, and risks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/product/prod-prd-writing"
     },
@@ -2593,11 +2067,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply pro market analysis workflow",
-        "produce pro market analysis analysis artifact",
-        "validate pro market analysis completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/professional/pro-market-analysis"
     },
@@ -2609,11 +2079,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "draft stakeholder messages",
-        "sharpen status updates and escalations",
-        "adapt tone to audience and risk"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/professional/professional-communication"
     },
@@ -2625,11 +2091,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "structure project plans",
-        "identify risks, dependencies, and milestones",
-        "prepare stakeholder tracking artifacts"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/professional/professional-project-management"
     },
@@ -2641,11 +2103,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply docs management workflow",
-        "produce docs management artifact",
-        "validate docs management completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/project/docs-management"
     },
@@ -2657,11 +2115,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply make project workflow",
-        "produce make project artifact",
-        "validate make project completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "create-project",
         "create-project-fields",
@@ -2677,11 +2131,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply project development workflow",
-        "produce project development artifact",
-        "validate project development completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/project/project-development"
     },
@@ -2693,16 +2143,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply project viability workflow",
-        "produce viability assessment artifact",
-        "validate project viability completion criteria",
-        "produce structured JSON artifact for tooling"
-      ],
-      "sideEffects": [
-        "write report file to .reports/ only if quality gate passes",
-        "write JSON artifact to .reports/ only if quality gate passes"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/project/project-viability"
     },
     {
@@ -2750,11 +2192,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply performance testing workflow",
-        "produce performance testing artifact",
-        "validate performance testing completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/qa/performance-testing"
     },
@@ -2766,11 +2204,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply qa automation workflow",
-        "produce qa automation artifact",
-        "validate qa automation completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/qa/qa-automation"
     },
@@ -2782,11 +2216,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "plan exploratory test sessions",
-        "document reproducible findings",
-        "assess user-visible regressions"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/qa/qa-manual-testing"
     },
@@ -2798,11 +2228,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design security test charters",
-        "probe auth and authorization boundaries",
-        "document security findings responsibly"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/qa/qa-security-testing"
     },
@@ -2814,12 +2240,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "specify a trading strategy with signal, universe, sizing, and cost model",
-        "audit data for survivorship bias, look-ahead, and delisting handling",
-        "run backtest with out-of-sample split and transaction costs",
-        "validate coverage and stress-test across market regimes"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-backtest"
     },
@@ -2831,11 +2252,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply quant credit risk workflow",
-        "produce quant credit risk analysis artifact",
-        "validate quant credit risk completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-credit-risk"
     },
@@ -2847,11 +2264,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply quant derivatives pricing workflow",
-        "produce quant derivatives pricing analysis artifact",
-        "validate quant derivatives pricing completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-derivatives-pricing"
     },
@@ -2863,12 +2276,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "define a factor signal with universe and rebalance rules",
-        "run a backtest with cost model and out-of-sample split",
-        "stress-test across subperiods, sectors, and turnover",
-        "report statistics with significance tests"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-factors"
     },
@@ -2880,11 +2288,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply quant market micro workflow",
-        "produce quant market micro analysis artifact",
-        "validate quant market micro completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-market-micro"
     },
@@ -2896,11 +2300,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply quant portfolio opt workflow",
-        "produce quant portfolio opt analysis artifact",
-        "validate quant portfolio opt completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-portfolio-opt"
     },
@@ -2912,11 +2312,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply quant risk modeling workflow",
-        "produce quant risk modeling analysis artifact",
-        "validate quant risk modeling completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-risk-modeling"
     },
@@ -2928,11 +2324,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design research data archives",
-        "define metadata and provenance requirements",
-        "plan preservation, access, and reuse"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/research/research-data-archiving"
     },
@@ -2944,11 +2336,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design literature search protocols",
-        "screen and synthesize evidence",
-        "track citations, provenance, and evidence quality"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/research/research-literature-review"
     },
@@ -2960,11 +2348,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply scientific hypothesis workflow",
-        "produce scientific hypothesis analysis artifact",
-        "validate scientific hypothesis completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/research/scientific-hypothesis"
     },
@@ -2976,11 +2360,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply artifact handoff workflow",
-        "produce artifact handoff artifact",
-        "validate artifact handoff completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/artifact-handoff"
     },
@@ -3008,11 +2388,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply capability router workflow",
-        "produce capability router artifact",
-        "validate capability router completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/capability-router"
     },
@@ -3024,11 +2400,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply context pack workflow",
-        "produce context pack artifact",
-        "validate context pack completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/context-pack"
     },
@@ -3040,11 +2412,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply grill workflow",
-        "produce grill artifact",
-        "validate grill completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/grill"
     },
@@ -3056,11 +2424,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply grill me workflow",
-        "produce grill me artifact",
-        "validate grill me completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/grill-me"
     },
@@ -3072,11 +2436,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "apply grill with docs workflow",
-        "produce grill with docs artifact",
-        "validate grill with docs completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-docs"
       ],
@@ -3090,11 +2450,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply grilling workflow",
-        "produce grilling artifact",
-        "validate grilling completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/grilling"
     },
@@ -3106,11 +2462,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "apply handoff workflow",
-        "produce handoff artifact",
-        "validate handoff completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-temp-file"
       ],
@@ -3124,11 +2476,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "apply knowledge curator workflow",
-        "produce knowledge curator artifact",
-        "validate knowledge curator completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-docs"
       ],
@@ -3138,7 +2486,7 @@
       "name": "publish-open-pr",
       "category": "routing",
       "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
-      "version": "1",
+      "version": "2",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
@@ -3161,11 +2509,7 @@
       "maturity": "stable",
       "risk": "high",
       "trustTier": "4",
-      "capabilities": [
-        "apply ship subissue workflow",
-        "produce ship subissue artifact",
-        "validate ship subissue completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "merge-pull-request",
         "close-issue",
@@ -3181,11 +2525,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply triage workflow",
-        "produce triage artifact",
-        "validate triage completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "label-issue",
         "post-comment",
@@ -3202,11 +2542,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply wayfinder workflow",
-        "produce wayfinder artifact",
-        "validate wayfinder completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/routing/wayfinder"
     },
@@ -3234,14 +2570,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design IAM policies and roles (least-privilege, service accounts, cross-account)",
-        "configure KMS / key management (envelope encryption, rotation, access policies)",
-        "audit security groups, NACLs, firewalls, and network segmentation",
-        "map cloud controls to compliance frameworks (SOC 2, PCI-DSS, HIPAA, FedRAMP, CIS)",
-        "set up cloud security posture management (CSPM) and continuous compliance",
-        "design cloud-native monitoring, alerting, and incident response"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/cloud-security"
     },
@@ -3253,13 +2582,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "map controls to SOC2, ISO27001, GDPR, HIPAA, PCI DSS requirements",
-        "collect and organise audit evidence (policies, logs, configurations, access reviews)",
-        "identify gaps between current state and required controls",
-        "produce remediation plans with owners, timelines, and verification steps",
-        "prepare for external audits and respond to auditor requests"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/compliance"
     },
@@ -3271,14 +2594,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design secure container images (minimal base, non-root, read-only filesystem, no privileged mode)",
-        "implement image scanning (vulnerability, secret, malware, SBOM) in CI/CD",
-        "configure Kubernetes Pod Security Standards (restricted / baseline / privileged)",
-        "set up runtime security (Falco, Seccomp, AppArmor, seccomp profiles)",
-        "design Kubernetes RBAC and network policies for least-privilege access",
-        "manage container secrets (external secrets operator, CSI drivers, KMS integration)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/container-security"
     },
@@ -3290,12 +2606,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "preserve digital evidence without alteration (chain of custody, write blockers, hashing)",
-        "reconstruct event timelines from logs, artifacts, and system states",
-        "identify root cause and contributing factors",
-        "document findings in a formal forensic report suitable for legal, regulatory, or insurance use"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/incident-forensics"
     },
@@ -3307,12 +2618,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "select cryptographic primitives (AES-GCM, ChaCha20-Poly1305, Ed25519, RSA-OAEP)",
-        "design key management (generation, rotation, storage, HSM, KMS)",
-        "implement TLS / mTLS correctly (certificate chain, TLS 1.3, cipher suites)",
-        "audit cryptographic usage for weaknesses"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/sec-cryptography-applied"
     },
@@ -3324,12 +2630,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "assess data classification (PII, sensitive, public)",
-        "apply data minimisation and purpose limitation",
-        "design anonymisation / pseudonymisation / encryption at rest / in transit",
-        "manage consent, retention, deletion, and breach notification"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/sec-privacy-engineering"
     },
@@ -3341,12 +2642,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "review code for security vulnerabilities (OWASP, CWE, SANS)",
-        "scan dependencies (SAST, DAST, dependency-check, Semgrep)",
-        "audit access control and secrets management",
-        "document findings with severity and remediation priority"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/sec-security-audit"
     },
@@ -3358,12 +2654,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "identify assets and trust boundaries",
-        "apply STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)",
-        "apply ATT&CK (tactics, techniques, procedures) for adversarial analysis",
-        "document mitigations and residual risk"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/sec-threat-modeling"
     },
@@ -3375,14 +2666,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design secrets management architecture (Vault, cloud KMS, hybrid)",
-        "implement secrets rotation (database credentials, API keys, certificates)",
-        "design secrets injection (environment, volume, CSI driver, workload identity)",
-        "configure External Secrets Operator (ESO) for Kubernetes",
-        "audit secrets usage and detect hardcoded or leaked credentials",
-        "design encryption at rest for secrets stores (etcd encryption, KMS envelope)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/secret-management-security"
     },
@@ -3394,12 +2678,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "generate and maintain SBOM (SPDX, CycloneDX)",
-        "implement artifact signing and verification (Sigstore, Cosign)",
-        "define SLSA build tiers and provenance attestations",
-        "design dependency vulnerability response and patching SLA"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/supply-chain-security"
     },
@@ -3411,12 +2690,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "design identity fabric (IAM, IdP, MFA, SSO)",
-        "define per-request authentication and authorisation policies",
-        "design microsegmentation (network, workload, data)",
-        "implement policy engine (OPA, Rego, ABAC, PBAC)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/sec/zero-trust"
     },
@@ -3428,11 +2702,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply evaluate skill workflow",
-        "produce evaluate skill artifact",
-        "validate evaluate skill completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/evaluate-skill"
     },
@@ -3444,15 +2714,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "detect lockfile drift",
-        "update skill content hashes",
-        "reconcile missing and extra lock entries",
-        "validate lockfile consistency"
-      ],
-      "sideEffects": [
-        "update-lockfile"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/skill-dev/lockfile-maintenance"
     },
     {
@@ -3463,11 +2726,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "extract-skill-rules",
-        "classify-rule-types",
-        "rank-rule-frequency"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/rule-cataloger"
     },
@@ -3479,12 +2738,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "compare declared side effects to workflow behavior",
-        "identify understated or overstated risk metadata",
-        "check trust tier consistency",
-        "recommend metadata repairs for mutating skills"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/side-effect-auditor"
     },
@@ -3496,11 +2750,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill audit workflow",
-        "produce skill audit artifact",
-        "validate skill audit completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-audit"
     },
@@ -3512,15 +2762,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "run an interactive skill-creation interview",
-        "propose skill architecture, resources, and workflow from user input",
-        "gather lightweight research signals to improve the skill design",
-        "suggest skill names from keywords and category",
-        "generate a complete skill structure from interview results",
-        "validate skills against repository quality standards",
-        "keep compatibility with init_skill.py and package_skill.py"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-files"
       ],
@@ -3534,11 +2776,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill dependency graph workflow",
-        "produce skill dependency graph artifact",
-        "validate skill dependency graph completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-dependency-graph"
     },
@@ -3550,11 +2788,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill diff analyzer workflow",
-        "produce skill diff analyzer artifact",
-        "validate skill diff analyzer completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-diff-analyzer"
     },
@@ -3566,11 +2800,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill performance metrics workflow",
-        "produce skill performance metrics artifact",
-        "validate skill performance metrics completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-performance-metrics"
     },
@@ -3582,11 +2812,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "apply skill promoter workflow",
-        "produce skill promoter artifact",
-        "validate skill promoter completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-files",
         "create-symlink",
@@ -3602,13 +2828,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "run skill bundle validators",
-        "interpret semantic audit findings",
-        "identify placeholder and generic metadata risks",
-        "verify side-effect declarations against skill behavior",
-        "produce release readiness summaries"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-quality-gate"
     },
@@ -3620,11 +2840,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill sandbox workflow",
-        "produce skill sandbox artifact",
-        "validate skill sandbox completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-sandbox"
     },
@@ -3636,11 +2852,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "apply skill template generator workflow",
-        "produce skill template generator artifact",
-        "validate skill template generator completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [
         "write-files"
       ],
@@ -3654,11 +2866,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply skill testing framework workflow",
-        "produce skill testing framework artifact",
-        "validate skill testing framework completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-testing-framework"
     },
@@ -3670,14 +2878,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "teach skill fundamentals",
-        "guide first skill creation",
-        "validate learner understanding"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-tutor"
     },
     {
@@ -3688,15 +2890,8 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
-      "capabilities": [
-        "design skill evaluation scenarios",
-        "write behavioral fixture expectations",
-        "cover happy path, edge case, and refusal behavior",
-        "align fixtures with skill contracts and validation scripts"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "capabilities": [],
+      "sideEffects": [],
       "path": ".agents/skills/skill-dev/workflow-fixture-author"
     },
     {
@@ -3707,11 +2902,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply writing great skills workflow",
-        "produce writing great skills artifact",
-        "validate writing great skills completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/writing-great-skills"
     },
@@ -3723,11 +2914,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply interaction design workflow",
-        "produce interaction design artifact",
-        "validate interaction design completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ux/interaction-design"
     },
@@ -3739,11 +2926,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design accessible UX flows",
-        "identify task-level accessibility barriers",
-        "recommend inclusive interaction changes"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ux/ux-accessibility"
     },
@@ -3755,11 +2938,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "scope UX prototypes",
-        "choose fidelity and validation method",
-        "plan feedback loops and iteration criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ux/ux-prototyping"
     },
@@ -3771,11 +2950,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply ux research workflow",
-        "produce ux research artifact",
-        "validate ux research completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/ux/ux-research"
     },
@@ -3787,12 +2962,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "classify consensus mechanisms (Nakamoto, BFT, PoS, DAG, DA layers, based sequencers)",
-        "evaluate safety, liveness, finality, and censorship resistance",
-        "compare PoS slashing, MEV, and decentralisation economics",
-        "assess data availability and shared sequencing trade-offs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-consensus"
     },
@@ -3804,12 +2974,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "classify DeFi protocols (AMM, lending, stablecoin, derivatives, intents, LST, LRT)",
-        "analyse core mechanics (invariants, parameters, oracles, liquidation)",
-        "assess economic security (TVL, collateral ratios, solvency, liquidity risk)",
-        "evaluate MEV, intents, solver networks, and composability risks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-defi"
     },
@@ -3821,12 +2986,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design on-chain / off-chain governance flows (Governor Bravo v2, oSnap, Zodiac)",
-        "analyse token concentration, delegation markets, and quorum mechanics",
-        "audit timelock, multisig, guardian, and emergency pause patterns",
-        "model capture, bribery, apathy, and rushed-execution risks"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-governance"
     },
@@ -3838,12 +2998,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "classify L2 architectures (optimistic, ZK, validium, based, shared sequencer)",
-        "evaluate data availability and sequencing trust models",
-        "compare ZK-EVM implementations (Scroll, zkSync, Polygon zkEVM, StarkNet)",
-        "assess throughput, finality, cost, and composability trade-offs"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-l2-scaling"
     },
@@ -3855,11 +3010,7 @@
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
-      "capabilities": [
-        "review smart contract security (reentrancy, access, arithmetic, gas, MEV)",
-        "audit upgradeability, AA (ERC-4337), and EIP-7702 delegation patterns",
-        "perform adversarial review and formal verification assessment"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-smart-contracts"
     },
@@ -3871,12 +3022,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design supply mechanics (emission, vesting, burn, buyback, mint/burn)",
-        "model incentive alignment (staking, liquidity, restaking, points)",
-        "evaluate governance tokenomics (voting, quorum, delegation, capture)",
-        "stress-test sustainability (demand shock, inflation, regulatory risk)"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/web3/web3-tokenomics"
     },
@@ -3888,11 +3034,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "apply xr development workflow",
-        "produce xr development artifact",
-        "validate xr development completion criteria"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/xr/xr-development"
     },
@@ -3904,11 +3046,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "design spatial interaction models",
-        "evaluate locomotion and comfort trade-offs",
-        "plan XR input feedback and validation"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/xr/xr-interaction-design"
     },
@@ -3920,11 +3058,7 @@
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
-      "capabilities": [
-        "define XR performance budgets",
-        "diagnose frame, latency, and thermal issues",
-        "plan comfort-aware optimization"
-      ],
+      "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/xr/xr-performance"
     }
