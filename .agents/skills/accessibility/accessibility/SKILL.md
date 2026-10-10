@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "accessibility"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/accessibility.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["accessibility"]
 compatibility: []

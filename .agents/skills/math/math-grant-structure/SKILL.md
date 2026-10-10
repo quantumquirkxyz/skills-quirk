@@ -1,6 +1,6 @@
 ---
 name: "math-grant-structure"
-category: "skill-dev/sandbox"
+category: "math"
 maturity: "stable"
 version: "1"
 description: "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-grant-structure.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

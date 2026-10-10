@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "auxiliary"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/integration-playground.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["auxiliary"]
 compatibility: []

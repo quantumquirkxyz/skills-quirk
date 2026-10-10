@@ -1,6 +1,6 @@
 ---
 name: "physics-career-postdoc"
-category: "skill-dev/sandbox"
+category: "physics"
 maturity: "stable"
 version: "1"
 description: "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-career-postdoc.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

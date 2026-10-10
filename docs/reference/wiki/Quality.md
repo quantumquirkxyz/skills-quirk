@@ -220,7 +220,7 @@ graph TD
 
 ```json
 {
-  totalSkills: 189,
+  totalSkills: 242,
   totalDependencies: 42,
   cycles: [],
   centralSkills: [
@@ -323,7 +323,7 @@ Failed fixtures:
 {
   status: pass,
   checks: [
-    { command: node .agents/skills/platform/validate-skills.mjs, status: pass, code: 0, skills: 189 },
+    { command: node .agents/skills/platform/validate-skills.mjs, status: pass, code: 0, skills: 242 },
     { command: node .agents/skills/platform/evaluate-scenarios.mjs, status: pass, code: 0, scenarios: 8 },
     { command: node .agents/skills/platform/evaluate-behavioral-fixtures.mjs, status: pass, code: 0, fixtures: 4 }
   ],
@@ -331,7 +331,7 @@ Failed fixtures:
     totalChecks: 10,
     passed: 10,
     failed: 0,
-    skillsEvaluated: 189,
+    skillsEvaluated: 242,
     totalWarnings: 0,
     totalErrors: 0
   }
@@ -498,7 +498,7 @@ node .agents/skills/platform/audit-trail.mjs stats
 ## References
 
 - README.md — Section [ QUALITY ] QUALITY SCORING & SECURITY
-- ../reference/agents/skill-inventory.md — Inventory of 189 canonical skills
+- ../reference/agents/skill-inventory.md — Inventory of 254 canonical skills
 - ../../how-to/release.md — Pre/post-release checklist
 - .agents/skills/platform/README.md — Shared platform resources
 - .agents/skills/platform/quality-scorer.mjs — Scorer implementation

@@ -21,7 +21,7 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/domain-modeling.json"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/foundation-domain-modeling.json"
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []

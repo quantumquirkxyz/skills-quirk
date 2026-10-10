@@ -1,6 +1,6 @@
 ---
 name: "sec-privacy-engineering"
-category: "skill-dev/sandbox"
+category: "sec"
 maturity: "stable"
 version: "1"
 description: "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-privacy-engineering.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

@@ -18,7 +18,7 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/handoff.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

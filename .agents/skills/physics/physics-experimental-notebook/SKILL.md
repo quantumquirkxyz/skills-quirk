@@ -1,6 +1,6 @@
 ---
 name: "physics-experimental-notebook"
-category: "skill-dev/sandbox"
+category: "physics"
 maturity: "stable"
 version: "1"
 description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-experimental-notebook.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

@@ -79,8 +79,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/to-spec.json
 diataxis: how-to
 tags: [project, spec, planning, documentation]
 compatibility: [to-tickets, grill-with-docs]
-approvalRequired: false
-approvalFor: []
+approvalRequired: true
+approvalFor: ["create-issue"]
 sideEffects:
   - create-issue
 dependencies: []

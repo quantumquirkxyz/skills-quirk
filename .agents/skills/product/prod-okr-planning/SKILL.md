@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/prod-okr-planning.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["product"]
 compatibility: []

@@ -1,6 +1,6 @@
 ---
 name: "quant-risk-modeling"
-category: "skill-dev/sandbox"
+category: "quant"
 maturity: "stable"
 version: "1"
 description: "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/quant-risk-modeling.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["quant"]
 compatibility: []

@@ -20,12 +20,12 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/ship-subissue.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["merge-pull-request", "close-issue", "update-project"]
 ---
 
 ## Contract

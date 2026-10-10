@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "security"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/cloud-security.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

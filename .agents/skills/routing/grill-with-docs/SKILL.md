@@ -18,7 +18,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/grill-with-docs.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

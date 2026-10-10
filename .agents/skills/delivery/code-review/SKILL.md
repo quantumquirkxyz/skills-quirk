@@ -40,8 +40,8 @@ fixturesPath: .agents/skills/platform/fixtures/regression/code-review.json
 diataxis: how-to
 tags: [delivery, review, standards, spec, quality]
 compatibility: [review-pr, plan-review-fixes, ship-subissue]
-approvalRequired: false
-approvalFor: []
+approvalRequired: true
+approvalFor: ["post-pr-comment"]
 ---
 
 ## Contract

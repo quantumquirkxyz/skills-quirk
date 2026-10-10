@@ -1,6 +1,6 @@
 ---
 name: "db-nosql-modeling"
-category: "skill-dev/sandbox"
+category: "db"
 maturity: "stable"
 version: "1"
 description: "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/db-nosql-modeling.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["db"]
 compatibility: []

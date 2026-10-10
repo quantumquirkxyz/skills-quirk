@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "ai"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/llmops.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

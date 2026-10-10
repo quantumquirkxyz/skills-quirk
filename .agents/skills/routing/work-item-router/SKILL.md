@@ -57,7 +57,7 @@ maxIterations: 6
 - **Input:** a request involving specs, tickets, spec/ticket audits, projects, PR metadata, or review-fix comments.
 - **Output:** a routing note that identifies the downstream skill and the relevant governance documents.
 - **Scope:** routing only. Do not draft the artifact here.
-- **Rule:** always read `docs/agents/index.md` first.
+- **Rule:** always read `docs/reference/agents/index.md` first.
 - **Rule:** prefer the canonical work-item format over ad hoc tracker metadata.
 - **Rule:** route to the thinnest downstream skill that can finish the work.
 
@@ -96,10 +96,10 @@ Governance preflight prevents tracker drift by forcing every work-item request t
 
 ## Workflow
 
-1. Read `docs/agents/index.md`.
+1. Read `docs/reference/agents/index.md`.
 2. Identify whether the request is a spec, ticket, spec completion audit, ticket coverage audit, corrective ticket publication, project board, PR publication, review-fix plan, or closeout.
 3. Route to the thinnest downstream skill that can finish the work.
-4. If metadata is involved, preserve the canonical shape from `docs/agents/work-item-format.md`.
+4. If metadata is involved, preserve the canonical shape from `docs/reference/agents/work-item-format.md`.
 5. Return the routing decision as structured output in the current response; rely on execution traces for auditability.
 
 ## Request types

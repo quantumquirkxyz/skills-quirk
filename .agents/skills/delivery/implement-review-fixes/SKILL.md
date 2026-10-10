@@ -19,12 +19,12 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "code"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/implement-review-fixes.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-code", "commit-git", "push-branch"]
 ---
 
 ## Contract

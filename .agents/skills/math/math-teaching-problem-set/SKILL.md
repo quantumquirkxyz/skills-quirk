@@ -1,6 +1,6 @@
 ---
 name: "math-teaching-problem-set"
-category: "skill-dev/sandbox"
+category: "math"
 maturity: "stable"
 version: "1"
 description: "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-teaching-problem-set.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

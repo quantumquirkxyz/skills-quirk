@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "agent"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/agent-observability.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []

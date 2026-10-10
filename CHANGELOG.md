@@ -8,6 +8,52 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.1.0] - 2026-10-10
+
+Wave-0 modernization debt cleanup, integrated on `main`.
+
+### Added
+
+- `tests/version-consistency.test.mjs` — pins `VERSION`, `package.json`, `registry.yaml` (`version` + `bundleVersion`), and the README badge to one semver value
+- Root `AGENTS.md` — repository-level operating rules for coding agents, complementing `.agents/AGENTS.md` (bundle scope)
+- `wayfinder` completion flow — "Work through the map" section covering ticket claiming, resolution by type, decision recording, fog graduation, and hand-off to `to-spec`
+- `skill-evolver` `--verified-evidence <type>:<note>` flag — records human sign-off that upgrades an evidence check from `pending-verification` to `passed` with an audit trail
+
+### Changed
+
+- **Version unification**: `package.json` and `registry.yaml` aligned from `1.0.0` to `2.0.0`, matching `VERSION` and the README badge
+- **Manifest schema fix**: `manifest.schema.json` rewritten to the bundle's real frontmatter contract — `name`/`description`/`category` required, quoted scalars, empty strings, inline and block sequences, numeric-or-string versions and trust tiers accepted
+- **marketplace / sync-registry fixes**: `scripts/sync-registry.mjs` now parses the registry's actual YAML subset (quoted scalars, inline arrays, block sequences, JSON passthrough), derives each skill's `category` from its real domain folder instead of frontmatter, and reports category mismatches
+- **Telemetry fixes**: `record-execution.mjs` / `otel-skill-instrumentation.mjs` now emit real span durations (`startSpan`/`endSpan` with wall-clock timing, idempotent end), estimate token size from artifact content, and give `artifactScore` explicit null semantics
+- `skills-lock.json` re-hashed for all 236 modified skills (254 entries total); `CATALOG.md`, `llms.txt`, and `.claude-plugin/marketplace.json` regenerated from the corrected categories
+- `approvalRequired` / `model-rules.yaml` parity repaired across the bundle
+- Stale documentation paths repaired in `docs/how-to/installation.md`, `docs/reference/agents/skill-inventory.md`, and the `docs/reference/wiki/` pages
+
+### Fixed
+
+- `fixturesPath` resolution: 221 skills that declared nonexistent central fixture paths now carry null semantics (`fixturesPath: ""`), and `validate-skills.mjs` gained a check that any declared `fixturesPath` must resolve to an existing file
+- `skill-evolver` version-bump regex handled only unquoted `version: N` and never matched the bundle's quoted `version: "1"`, so real evolutions wrote byte-identical files while reporting success — the regex now preserves the original quoting style
+- `quality-scorer.mjs` CLI accepted only `--minimum-score=N`; the space-separated `--minimum-score N` form silently treated the score as the skill path and crashed — both spellings now work, and a missing skill path exits cleanly
+- Category cleanup: 65 skills outside `ai/` still declared `category: "skill-dev/sandbox"`; each now declares its real domain folder (`sec`, `quant`, `physics`, `math`, `finance`, `cs`, `data`, `devops`, `db`, `research`, `docs`, `professional`)
+- Stray committed build artifact `.agents/skills/project/dist/project-viability.zip` removed from the index and working tree; `*.zip`, `__pycache__/`, and `*.pyc` added to `.gitignore`
+- Six platform skills missing from the `.claude/skills/` compatibility view gained symlinks: `feature-flag`, `gate-ci`, `gate-ide`, `gate-post-merge`, `gate-pre-commit`, `trunk-based-workflow`
+- `tests/projection-consistency.test.mjs` invariant 1 aligned with the warning contract: validator warnings are advisory (they block promotion via `skill-promoter`, never the general gate), so the test now fails only on unexpected warning categories instead of any advisory backlog
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # 10/10 pass, 68 warnings, 0 errors
+node .agents/skills/platform/validate-skills.mjs      # 242 skills, 0 errors, 68 advisory warnings
+node .agents/skills/platform/audit-semantics.mjs      # 254 skills, 0 warnings, 0 errors
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60   # 82/100 (skill-creator)
+node .agents/skills/platform/security-scanner.mjs     # pass, 0 findings
+node --test tests/*.test.mjs                          # 6/6 pass
+node --test .agents/skills/platform/tests/*.test.mjs  # 20/20 pass
+node .agents/skills/platform/dependency-graph.mjs     # 242 skills, 0 cycles
+```
+
+Open advisory backlog (blocks promotion, never the general gate): 68 medium/high-risk skills lack a `behavioral-fixtures` directory — owner suggestion: `skill-dev/` domain owners authoring behavioral fixtures per ADR-005.
+
 ## [2.0.0] - 2026-10-03
 
 ### Added

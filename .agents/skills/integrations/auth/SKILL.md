@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "authentication"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/auth.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["integrations"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

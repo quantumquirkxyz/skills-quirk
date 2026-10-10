@@ -1,6 +1,6 @@
 ---
 name: "physics-literature-search"
-category: "skill-dev/sandbox"
+category: "physics"
 maturity: "stable"
 version: "1"
 description: "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-literature-search.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

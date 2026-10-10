@@ -16,27 +16,53 @@ const agentsSkillsDir = path.join(repoRoot, '.agents', 'skills');
 const write = process.argv.includes('--write');
 const dryRun = !write;
 
+function unquote(value) {
+  return value.replace(/^(["'])([\s\S]*)\1$/, '$2');
+}
+
+function parseScalar(value) {
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  if (value.startsWith('[') && value.endsWith(']')) {
+    const inner = value.slice(1, -1).trim();
+    return inner === '' ? [] : inner.split(',').map(v => unquote(v.trim()));
+  }
+  return unquote(value);
+}
+
+// registry.yaml is JSON-formatted; frontmatter is the YAML subset the bundle
+// actually uses (quoted scalars, inline arrays, block sequences). Support both.
 function parseYaml(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    // fall through to the line-based YAML subset parser
+  }
   const data = {};
+  let active = null;
   for (const line of text.split(/\r?\n/)) {
-    const match = line.match(/^([A-Za-z][A-Za-z0-9_-]*):\s*(.*)$/);
-    if (!match) continue;
-    const key = match[1];
-    let value = match[2].trim();
-    if (value === '') value = null;
-    else if (value === 'true') value = true;
-    else if (value === 'false') value = false;
-    else if (value.startsWith('[') && value.endsWith(']')) {
-      value = value.slice(1, -1).split(',').map(v => v.trim().replace(/^["']|["']$/g, ''));
+    const keyValue = line.match(/^([A-Za-z][A-Za-z0-9_-]*):\s*(.*)$/);
+    if (keyValue) {
+      active = keyValue[1];
+      const value = keyValue[2].trim();
+      data[active] = value === '' ? null : parseScalar(value);
+      continue;
     }
-    data[key] = value;
+    const item = line.match(/^\s+-\s*(.*)$/);
+    if (item && active) {
+      if (!Array.isArray(data[active])) data[active] = [];
+      const value = item[1].trim();
+      if (value !== '') data[active].push(parseScalar(value));
+    }
   }
   return data;
 }
 
 async function exists(p) { try { await fs.access(p); return true; } catch { return false; } }
 
-async function collectSkills(dir, out = []) {
+const categoryMismatches = [];
+
+async function collectSkills(dir, out = [], domain = null) {
   if (!(await exists(dir))) return out;
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     if (!entry.isDirectory() || entry.name === 'platform') continue;
@@ -46,9 +72,16 @@ async function collectSkills(dir, out = []) {
       const text = await fs.readFile(skillMd, 'utf8');
       const fmMatch = text.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
       const fm = fmMatch ? parseYaml(fmMatch[1]) : {};
+      // Category is the real domain folder the skill lives in; frontmatter
+      // category is advisory (quoted, "skill-dev/sandbox", or absent) and is
+      // reported when it disagrees instead of silently regrouping skills.
+      const category = domain ?? entry.name;
+      if (fm.category && fm.category !== category) {
+        categoryMismatches.push(`${entry.name}: frontmatter says "${fm.category}", lives in "${category}"`);
+      }
       out.push({
         name: entry.name,
-        category: fm.category || 'uncategorized',
+        category,
         description: fm.description || '',
         capabilities: Array.isArray(fm.capabilities) ? fm.capabilities : [],
         maturity: fm.maturity || 'stable',
@@ -59,7 +92,7 @@ async function collectSkills(dir, out = []) {
         path: path.relative(repoRoot, child),
       });
     } else {
-      await collectSkills(child, out);
+      await collectSkills(child, out, domain ?? entry.name);
     }
   }
   return out;
@@ -73,6 +106,12 @@ async function main() {
 
   const skills = await collectSkills(agentsSkillsDir);
   console.log(`[sync-registry] Discovered ${skills.length} skills`);
+  if (categoryMismatches.length) {
+    console.log(`[sync-registry] Category mismatches (frontmatter vs domain folder): ${categoryMismatches.length}`);
+    for (const mismatch of categoryMismatches.slice(0, 5)) {
+      console.log(`[sync-registry]   ${mismatch}`);
+    }
+  }
 
   // Group by category
   const byCategory = {};

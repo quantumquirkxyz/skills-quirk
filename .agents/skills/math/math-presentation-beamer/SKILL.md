@@ -1,6 +1,6 @@
 ---
 name: "math-presentation-beamer"
-category: "skill-dev/sandbox"
+category: "math"
 maturity: "stable"
 version: "1"
 description: "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-presentation-beamer.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

@@ -1,6 +1,6 @@
 ---
 name: "data-streaming"
-category: "skill-dev/sandbox"
+category: "data"
 maturity: "stable"
 version: "1"
 description: "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-streaming.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["data"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

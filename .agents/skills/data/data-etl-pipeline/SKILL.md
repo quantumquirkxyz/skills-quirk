@@ -1,6 +1,6 @@
 ---
 name: "data-etl-pipeline"
-category: "skill-dev/sandbox"
+category: "data"
 maturity: "stable"
 version: "1"
 description: "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/data-etl-pipeline.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["data"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

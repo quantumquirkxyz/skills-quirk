@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "cs"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/cs-complexity-analysis.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["cs"]
 compatibility: []

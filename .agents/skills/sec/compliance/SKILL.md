@@ -1,6 +1,6 @@
 ---
 name: "compliance"
-category: "skill-dev/sandbox"
+category: "sec"
 maturity: "stable"
 version: "1"
 description: "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)"
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "sec"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/compliance.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

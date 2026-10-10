@@ -38,8 +38,8 @@ copy_path() {
 mkdir -p "$target_repo"
 copy_path "$source_repo/.agents/skills" "$target_repo/.agents/skills"
 copy_path "$source_repo/.claude/skills" "$target_repo/.claude/skills"
-copy_path "$source_repo/docs/agents" "$target_repo/docs/agents"
-copy_path "$source_repo/docs/adr/README.md" "$target_repo/docs/adr/README.md"
+copy_path "$source_repo/docs/reference/agents" "$target_repo/docs/reference/agents"
+copy_path "$source_repo/docs/reference/adr/README.md" "$target_repo/docs/reference/adr/README.md"
 copy_path "$source_repo/CONTEXT.md" "$target_repo/CONTEXT.md"
 copy_path "$source_repo/skills-lock.json" "$target_repo/skills-lock.json"
 
@@ -187,9 +187,9 @@ echo -n "Triangulation labels (comma-separated) [bug,feature,refactor]: "
 read LABELS
 LABELS=${LABELS:-bug,feature,refactor}
 
-echo -n "Where to save docs? (docs/agent-notes) [docs/agents]: "
+echo -n "Where to save docs? (docs/reference/agents) [docs/reference/agents]: "
 read DOCS_DIR
-DOCS_DIR=${DOCS_DIR:-docs/agents}
+DOCS_DIR=${DOCS_DIR:-docs/reference/agents}
 
 echo ""
 echo "Configured: tracker=$TRACKER, labels=$LABELS, docs=$DOCS_DIR"

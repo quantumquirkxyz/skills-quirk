@@ -1,6 +1,6 @@
 ---
 name: "math-probability-models"
-category: "skill-dev/sandbox"
+category: "math"
 maturity: "stable"
 version: "1"
 description: "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-probability-models.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

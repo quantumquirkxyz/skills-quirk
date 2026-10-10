@@ -41,8 +41,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/publish-open-pr.json
 diataxis: how-to
 tags: [routing, pr, publication, quality-gate]
 compatibility: [review-pr, ship-subissue]
-approvalRequired: false
-approvalFor: []
+approvalRequired: true
+approvalFor: ["push-branch", "create-pull-request"]
 ---
 
 ## Contract

@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/prompt-template-library.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []

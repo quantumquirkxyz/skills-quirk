@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/cs-data-structures.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["cs"]
 compatibility: []

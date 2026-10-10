@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "diagnosis"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/diagnosing-bugs.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []

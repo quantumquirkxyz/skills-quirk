@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/graphic-design-project-management.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "db"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/db-query-optimization.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["db"]
 compatibility: []

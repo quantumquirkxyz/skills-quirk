@@ -1,6 +1,6 @@
 ---
 name: "incident-response"
-category: "skill-dev/sandbox"
+category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/incident-response.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

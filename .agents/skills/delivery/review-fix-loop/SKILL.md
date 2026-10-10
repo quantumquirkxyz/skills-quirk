@@ -21,12 +21,12 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/review-fix-loop.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-code", "post-pr-comment", "commit-git", "push-branch"]
 ---
 
 ## Contract

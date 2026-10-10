@@ -1,6 +1,6 @@
 {
   "name": "skills-quirk",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
   "bin": {

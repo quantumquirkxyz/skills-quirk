@@ -1,6 +1,6 @@
 ---
 name: "ai-model-evaluation"
-category: "skill-dev/sandbox"
+category: "ai"
 maturity: "stable"
 version: "1"
 description: "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/ai-model-evaluation.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: "devops-k8s-orchestration"
-category: "skill-dev/sandbox"
+category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/devops-k8s-orchestration.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

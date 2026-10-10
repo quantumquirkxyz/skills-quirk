@@ -1,6 +1,6 @@
 ---
 name: "math-linear-algebra"
-category: "skill-dev/sandbox"
+category: "math"
 maturity: "stable"
 version: "1"
 description: "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/math-linear-algebra.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

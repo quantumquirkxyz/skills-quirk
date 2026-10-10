@@ -1,6 +1,6 @@
 ---
 name: "physics-classical"
-category: "skill-dev/sandbox"
+category: "physics"
 maturity: "stable"
 version: "1"
 description: "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-classical.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

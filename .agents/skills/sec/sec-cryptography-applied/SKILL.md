@@ -1,6 +1,6 @@
 ---
 name: "sec-cryptography-applied"
-category: "skill-dev/sandbox"
+category: "sec"
 maturity: "stable"
 version: "1"
 description: "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "sec"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/sec-cryptography-applied.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: "devops-feature-flags"
-category: "skill-dev/sandbox"
+category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "feature-flag"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/devops-feature-flags.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

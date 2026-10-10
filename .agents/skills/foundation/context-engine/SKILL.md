@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "foundation"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/context-engine.json"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/foundation-context-engine.json"
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []

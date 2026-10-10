@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "integrations"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/issue-operations.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["integrations"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

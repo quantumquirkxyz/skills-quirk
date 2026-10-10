@@ -1,6 +1,6 @@
 ---
 name: "physics-writing-revtex"
-category: "skill-dev/sandbox"
+category: "physics"
 maturity: "stable"
 version: "1"
 description: "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation."
@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/physics-writing-revtex.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

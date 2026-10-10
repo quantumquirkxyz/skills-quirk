@@ -1,6 +1,6 @@
 ---
 name: "cost-optimization"
-category: "skill-dev/sandbox"
+category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/cost-optimization.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

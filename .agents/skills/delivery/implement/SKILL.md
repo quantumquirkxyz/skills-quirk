@@ -44,8 +44,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/implement.json
 diataxis: how-to
 tags: [tdd, delivery, implementation, testing]
 compatibility: [to-tickets, publish-open-pr, tdd, gate-ci]
-approvalRequired: false
-approvalFor: []
+approvalRequired: true
+approvalFor: ["write-code", "commit-git", "push-branch"]
 ---
 
 ## Contract

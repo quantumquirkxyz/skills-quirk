@@ -1,6 +1,6 @@
 ---
 name: "gitops"
-category: "skill-dev/sandbox"
+category: "devops"
 maturity: "stable"
 version: "1"
 description: "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/gitops.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

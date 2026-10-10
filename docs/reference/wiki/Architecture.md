@@ -70,7 +70,7 @@ This is the domain layer. It contains the canonical skill catalog, the integrity
 
 ### Detail
 
-- `.agents/skills/` contains 189 skills organized into categories such as `ai`, `backend`, `frontend`, `devops`, `sec`, `platform`, `routing`, etc.
+- `.agents/skills/` contains 254 skills organized into categories such as `ai`, `backend`, `frontend`, `devops`, `sec`, `platform`, `routing`, etc.
 - Foundation skills like `agent-canvas` provide workspace/session control for multi-agent persistence.
 - `.claude/skills/` contains symlinks pointing to `.agents/skills/`, maintaining parity with tools that read skills from `.claude/skills/`.
 - `skills-lock.json` is a ~41 KB JSON that records the hash of each skill to detect unauthorized modifications.
@@ -262,7 +262,7 @@ Provides the NPX CLI, the discovery site, and the plugin system for distribution
 skills-quirk/
 ├── .agents/
 │   ├── adr/                          # Bundle ADRs
-│   └── skills/                       # Canonical skills (189 skills)
+│   └── skills/                       # Canonical skills (254 skills)
 │       ├── <category>/               # Categories: ai, backend, frontend, etc.
 │       │   └── <skill-name>/
 │       │       └── SKILL.md          # Skill entrypoint

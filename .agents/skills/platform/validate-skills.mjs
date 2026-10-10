@@ -86,6 +86,7 @@ function jaccardSimilarity(a, b) {
 async function main() {
   const skillDirs = await collectSkillDirs(agentsSkillsDir);
   const errors = [];
+  const warnings = [];
   const lock = JSON.parse(await fs.readFile(lockPath, 'utf8'));
   const lockSkills = new Set(Object.keys(lock.skills ?? {}));
   const skillNames = new Set(skillDirs.map((dir) => path.basename(dir)));
@@ -125,7 +126,15 @@ async function main() {
       const fixturesDir = path.join(skillDir, 'behavioral-fixtures');
       const hasFixtures = await exists(fixturesDir) && (await fs.readdir(fixturesDir)).length > 0;
       if (!hasFixtures) {
-        // intentionally silent: lack of fixtures is not a gate here
+        warnings.push(`${name}: ${fm.risk} risk skill has no behavioral-fixtures directory`);
+      }
+    }
+
+    const declaredFixturesPath = Array.isArray(fm.fixturesPath) ? '' : fm.fixturesPath;
+    if (declaredFixturesPath !== undefined && declaredFixturesPath !== '' && declaredFixturesPath !== '[]') {
+      const fixturesFullPath = path.resolve(repoRoot, String(declaredFixturesPath));
+      if (!(await exists(fixturesFullPath))) {
+        errors.push(`${name}: fixturesPath does not resolve to an existing file (${declaredFixturesPath})`);
       }
     }
 
@@ -134,7 +143,7 @@ async function main() {
     }
     for (const effect of fm.sideEffects ?? []) {
       if (effect === 'write-code' && fm.risk === 'low') {
-        // intentionally silent
+        warnings.push(`${name}: write-code skill marked low risk`);
       }
     }
 
@@ -168,7 +177,7 @@ async function main() {
       if (sharedCapabilities.length === 0) continue;
       const descOverlap = jaccardSimilarity(a.description, b.description);
       if (descOverlap > 0.5) {
-        // intentionally silent
+        warnings.push(`${a.name}/${b.name}: duplicate capability overlap ${descOverlap.toFixed(2)} over shared capabilities [${sharedCapabilities.join(', ')}]`);
       }
     }
   }
@@ -180,12 +189,13 @@ async function main() {
     contextPack: 'platform-default',
     status: errors.length ? 'fail' : 'pass',
     errors,
-    extra: { skills: skillDirs.length },
+    warnings,
+    extra: { skills: skillDirs.length, warnings: warnings.length },
   });
 
   console.log(JSON.stringify({
     skills: skillDirs.length,
-    warnings: [],
+    warnings,
     errors,
     status: errors.length ? 'fail' : 'pass',
     executionRecord: path.relative(repoRoot, runPath)

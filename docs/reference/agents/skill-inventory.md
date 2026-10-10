@@ -2,7 +2,7 @@
 
 Generated from `.agents/skills/` on September 23, 2026.
 
-Total canonical skills: 189.
+Total canonical skills: 254.
 
 | Skill | Canonical path | Flat alias | Category | Risk | Trust Tier | Maturity | Status |
 |---|---|---|---|---|---|---|---|

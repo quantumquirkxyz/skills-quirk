@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "compilers"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/compilers.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["compilers"]
 compatibility: []

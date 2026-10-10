@@ -22,7 +22,7 @@
 
 `quirk Skills` is a portable workflow system for moving software work from intent to validated delivery. It is designed for repositories where work must move from ambiguous intent to reviewed delivery without losing context, expanding scope, or hiding risks.
 
-The bundle contains **189 canonical skills** distributed across categories such as backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3 and more. It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against Standards and Spec axes separately, repair with an explicit plan, and merge only with clean evidence.
+The bundle contains **254 canonical skills** distributed across categories such as backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3 and more. It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against Standards and Spec axes separately, repair with an explicit plan, and merge only with clean evidence.
 
 ---
 
@@ -45,7 +45,7 @@ A **skill** is a unit of specialized instruction packaged as a `SKILL.md` file w
 
 | Feature | Description |
 |---|---|
-| **Canonical skills** | 189 skills in `.agents/skills/` with SHA-256 hash lockfile |
+| **Canonical skills** | 254 skills in `.agents/skills/` with SHA-256 hash lockfile |
 | **Compatibility view** | Symlinks in `.claude/skills/` for consumers expecting that layout |
 | **Local vocabulary** | `CONTEXT.md` defines repo-specific domain terms |
 | **Explicit method** | Flow: clarify → preserve → split → review → repair → send |
@@ -132,7 +132,7 @@ mindmap
 
 | Metric | Value |
 |---|---|
-| **Canonical skills** | 189 |
+| **Canonical skills** | 254 |
 | **Main categories** | 20+ (backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3, UX, etc.) |
 | **Stable skills** | Majority of bundle (see `../../reference/agents/../../reference/agents/skill-inventory.md`) |
 | **Experimental skills** | Sandbox of new skills under evaluation |
@@ -372,7 +372,7 @@ This wiki is part of the `quirk Skills` bundle. To contribute:
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/status-ready-22c55e?style=for-the-badge&labelColor=0f172a" />
-  <img alt="skills" src="https://img.shields.io/badge/skills-189-facc15?style=for-the-badge&labelColor=0f172a" />
+  <img alt="skills" src="https://img.shields.io/badge/skills-254-facc15?style=for-the-badge&labelColor=0f172a" />
   <img alt="method" src="https://img.shields.io/badge/method-quirk-38bdf8?style=for-the-badge&labelColor=0f172a" />
 </p>
 

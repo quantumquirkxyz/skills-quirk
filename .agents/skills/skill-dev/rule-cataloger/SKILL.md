@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "skill-dev"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/rule-cataloger.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []

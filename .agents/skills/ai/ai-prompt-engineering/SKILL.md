@@ -1,6 +1,6 @@
 ---
 name: "ai-prompt-engineering"
-category: "skill-dev/sandbox"
+category: "ai"
 maturity: "stable"
 version: "1"
 description: "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics."
@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/ai-prompt-engineering.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

@@ -16,11 +16,11 @@ promptVersion: "2.0"
 artifactType: "backend"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/rate-limiting.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["backend"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: "true"
 approvalFor: []
 ---
 

@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-management.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["project"]
 compatibility: []

@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/capability-router.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

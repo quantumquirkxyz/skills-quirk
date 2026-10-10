@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "web3"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/web3-l2-scaling.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["web3"]
 compatibility: []

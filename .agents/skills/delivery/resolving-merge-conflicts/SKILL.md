@@ -24,8 +24,8 @@ fixturesPath: ".agents/skills/platform/fixtures/behavioral/resolving-merge-confl
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-code", "commit-git", "continue-merge-or-rebase"]
 ---
 
 ## Contract

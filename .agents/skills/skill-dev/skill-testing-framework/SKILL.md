@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "test-strategy"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/skill-testing-framework.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []

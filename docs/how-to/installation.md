@@ -14,7 +14,7 @@ Installation places three fundamental elements in the target repository:
 
 | Element | Description |
 |---|---|
-| **Canonical skills** | 189 skills packaged as SKILL.md with SHA-256 lockfile hashes |
+| **Canonical skills** | 254 skills packaged as SKILL.md with SHA-256 lockfile hashes |
 | **Compatibility view** | Symlinks in .claude/skills/ for consumers expecting that layout |
 | **Method documentation** | CONTEXT.md, docs/reference/agents/, AUTHORSHIP.md, and ADRs to specialize the bundle |
 
@@ -91,7 +91,7 @@ The installer copies the following files and directories to the target repositor
 
 | File / Directory | Purpose |
 |---|---|
-| .agents/skills/ | Canonical skills with SKILL.md and lockfile. Contains 189 skills organized by category. |
+| .agents/skills/ | Canonical skills with SKILL.md and lockfile. Contains 254 skills organized by category. |
 | .claude/skills/ | Compatibility view. Symlinks exposing canonical skills to consumers expecting that layout. |
 | docs/reference/agents/ | Method documentation, provenance, adoption guide, skill templates, stack matrix, etc. |
 | ../reference/adr/README.md | ADR entry point (required for documenting architectural decisions). |

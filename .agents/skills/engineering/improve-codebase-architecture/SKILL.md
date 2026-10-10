@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/improve-codebase-architecture.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["engineering"]
 compatibility: []

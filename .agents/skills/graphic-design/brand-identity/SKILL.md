@@ -16,7 +16,7 @@ promptVersion: "2.0"
 artifactType: "graphic-design"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/brand-identity.json"
+fixturesPath: ""
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

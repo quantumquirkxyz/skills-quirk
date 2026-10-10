@@ -44,8 +44,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/to-tickets.json
 diataxis: how-to
 tags: [project, tickets, planning, decomposition]
 compatibility: [implement, to-spec]
-approvalRequired: false
-approvalFor: []
+approvalRequired: true
+approvalFor: ["create-issues", "write-files"]
 sideEffects:
   - create-issues
   - write-files
