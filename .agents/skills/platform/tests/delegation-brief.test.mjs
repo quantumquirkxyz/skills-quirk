@@ -262,16 +262,22 @@ const frontmatterWithout = (text, keys) => {
 };
 
 test('the body-only skills kept their frontmatter untouched', async () => {
+  // The baseline is pinned to the wave-0 integration commit rather than HEAD: the
+  // wave-1 delegation work is now committed on main, so a HEAD-based baseline
+  // would compare the files against themselves and the guard would pass vacuously.
+  // Pinning keeps the guard meaningful for every later commit.
+  const wave0Baseline = '6934cfd489253ae3e92c2849bd53ab03deacad79';
   const bodyOnlySkills = [
     '.agents/skills/foundation/subagent-swarm/SKILL.md',
     '.agents/skills/delivery/code-review/SKILL.md',
     '.agents/skills/project/project-viability/references/subagent-prompts.md',
   ];
   const head = (file) =>
-    execFileSync('git', ['show', `HEAD:${file}`], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    execFileSync('git', ['show', `${wave0Baseline}:${file}`], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
   for (const file of bodyOnlySkills) {
     const current = await fs.readFile(path.join(root, file), 'utf8');
     const baseline = head(file);
+    assert.ok(baseline.length > 0, `${file}: baseline commit ${wave0Baseline} must be reachable`);
     assert.equal(
       frontmatterWithout(current, wave1FrontmatterExceptions),
       frontmatterWithout(baseline, wave1FrontmatterExceptions),
