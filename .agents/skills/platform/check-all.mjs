@@ -1,5 +1,6 @@
 import { spawn } from 'node:child_process';
 import { defaultDagFile } from './dag-scheduler.mjs';
+import { defaultMemoryDirArg } from './memory-index.mjs';
 
 const checks = [
   ['node', ['.agents/skills/platform/validate-skills.mjs']],
@@ -14,11 +15,18 @@ const checks = [
   ['node', ['--test', '.agents/skills/platform/tests/*.test.mjs']],
 ];
 
+const memoryDir = defaultMemoryDirArg();
+const memoryReportChecks = memoryDir
+  ? [['node', ['.agents/skills/platform/memory-index.mjs', 'check', memoryDir, '--json']]]
+  : [];
+const memorySkipReason = 'no memory directory at .agents/memory (the layout is a shipped convention, not a runtime store)';
+
 const reportOnlyChecks = [
   ['node', ['.agents/skills/platform/context-budget-auditor.mjs', '--json', '--no-write']],
   ['node', ['.agents/skills/platform/cost-ledger.mjs', '--json']],
   ['node', ['.agents/skills/platform/validate-spec-compliance.mjs', '--json']],
   ['node', ['.agents/skills/platform/skill-graph.mjs', 'build', '--json']],
+  ...memoryReportChecks,
 ];
 
 const dagFile = defaultDagFile();
@@ -87,18 +95,31 @@ const reportChecks = reportResults.map((result) => {
   };
 });
 
-const skippedChecks = dagFile ? [] : [{
-  command: 'node .agents/skills/platform/dag-scheduler.mjs --check',
-  status: 'skip',
-  code: null,
-  mode: 'skipped',
-  skills: null,
-  scenarios: null,
-  fixtures: null,
-  warnings: 0,
-  errors: 0,
-  reason: dagSkipReason,
-}];
+function skippedCheck(command, reason) {
+  return {
+    command,
+    status: 'skip',
+    code: null,
+    mode: 'skipped',
+    skills: null,
+    scenarios: null,
+    fixtures: null,
+    warnings: 0,
+    errors: 0,
+    reason,
+  };
+}
+
+const skippedChecks = [
+  ...(dagFile ? [] : [skippedCheck(
+    'node .agents/skills/platform/dag-scheduler.mjs --check',
+    dagSkipReason,
+  )]),
+  ...(memoryDir ? [] : [skippedCheck(
+    'node .agents/skills/platform/memory-index.mjs check .agents/memory',
+    memorySkipReason,
+  )]),
+];
 
 const allChecks = [...structuredChecks, ...reportChecks, ...skippedChecks];
 const skillsCount = structuredChecks.find((check, index) => parsedResults[index]?.skills !== undefined)?.skills

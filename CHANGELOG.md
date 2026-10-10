@@ -8,6 +8,94 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.4.0] - 2026-10-10
+
+Wave 3 — time-travel over workflows, a memory layout convention, and opt-in signed agent cards.
+Three implementation streams landed concurrently and were integrated on `main`.
+
+### Added
+
+- **Workflow checkpoint journal, replay, and fork** (`workflow-state-machine.mjs`) — every
+  state-changing command appends a record to
+  `.agents/skills/platform/checkpoints/<workflow>.jsonl`, and `replay` walks that journal from
+  the beginning to re-derive each decision from the persisted snapshot plus the event log, so a
+  run that is restored from state alone reproduces the same guards, the same legal move set, and
+  the same history. `fork` starts a new branch from any recorded checkpoint instead of editing
+  history in place. Replay-stability verification compares the replayed decisions with the
+  recorded ones and reports drift as a failure rather than silently accepting it. A run that
+  predates the journal replays as `no-journal` and names the snapshot that stays authoritative.
+  The journal is created on demand by the tool and is tracked in git via `.gitkeep`.
+- **`memory-index.mjs` + T0/T1 memory layout convention** — a root `MEMORY.md` index over a
+  memory tree: root files are T0 (always loaded, with a one-line purpose each), every
+  subdirectory is T1 (loaded only when its pointer is followed) and must either carry its own
+  `MEMORY.md` or be listed in the root index as unindexed. `build` writes or refreshes the
+  generated region between `<!-- memory-index:begin -->` and `<!-- memory-index:end -->`
+  markers, preserving everything a curator writes below them; `check` validates the tree and
+  reports findings (unindexed root file, orphan index entry, subdir-unaccounted, unbalanced
+  markers, token and index-line budget breaches). The convention ships with the bundle as
+  documentation and a validator only — it never creates or implies a runtime memory store.
+- **Opt-in Ed25519-signed A2A agent cards** (`scripts/generate-agent-cards.mjs`) — signing
+  follows the A2A v1.0 protocol: the card is canonicalized with an RFC 8785 subset
+  (recursive key sort, no insignificant whitespace, implemented with JSON only — no external
+  dependency), the canonical bytes are signed with Ed25519, and the base64url signature is
+  embedded as `metadata.signature = {alg, keyId, value, canonicalization, signedAt}`.
+  Verification re-canonicalizes the card *without* the signature field, so a re-serialized or
+  key-reordered card still verifies while any tampered field fails and names the card. Keys are
+  generated with `--gen-key` and are only ever written to explicitly given paths; no key material
+  lands in the repository. Default generation remains unsigned and byte-identical, so the
+  checked-in corpus never gains a signature field by accident. Trust is by fingerprint: a
+  verifier compares `keyId` (`sha256:<16 hex>` of the public key) against a fingerprint it
+  already trusts, never against a signature that merely parses.
+- **Signed-workflow documentation in `agent-card`** — the skill body documents the signing
+  workflow (key generation, `--sign`, `--verify`, trust-by-fingerprint) and states that signing
+  is opt-in and that an unsigned card is not a broken card.
+
+### Changed
+
+- `check-all.mjs` registers `memory-index.mjs check .agents/memory` as a report-only check that
+  reports `status: skip` with a reason when no memory directory exists, following the same skip
+  pattern the gate already uses for `dag-scheduler.mjs`.
+- npm scripts `memory:index`, `memory:check`, and `checkpoints:replay` expose the new tools.
+
+### Fixed
+
+- `check-all.mjs` no longer declares a check whose command list is built after the array that
+  spreads it, so the gate starts instead of failing on a temporal-dead-zone `ReferenceError`.
+- `tests/generate-agent-cards.test.mjs` regenerates cards inside a throwaway corpus copy
+  instead of wiping and rewriting the tracked `agent-cards/` directory in place, which raced
+  with any concurrent suite reading the same cards (reproduced as an `ENOENT` on
+  `agent-cards/README.md` and a missing `delivery-code-review.json` when the two required
+  `node --test` commands ran in parallel).
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # status pass, 10/10 gating checks, 0 errors, 73 warnings (68 + 5), 4 report-only, 2 skipped with reason
+node .agents/skills/platform/validate-skills.mjs      # 246 skills, 0 errors, 68 advisory warnings
+node .agents/skills/platform/audit-semantics.mjs      # 258 skills, 5 load-bearing heuristic warnings, 0 errors
+node .agents/skills/platform/security-scanner.mjs     # pass, 0 findings
+node .agents/skills/platform/security-scan-skills.mjs # clean, 0 findings
+node .agents/skills/platform/security-scan-skills.mjs --strict  # clean, 0 findings
+node .agents/skills/platform/validate-spec-compliance.mjs  # 258 skills, 0 errors, 0 warnings, bodies within 500 lines
+node .agents/skills/platform/validate-traceability.mjs     # exit 0 - 60 clauses, 3 resolved, 50 manual, 7 pending, 0 errors
+node evals/run-routing.mjs --check                    # 10 fixtures, 151 rows, 41 negative controls, 0 errors
+node evals/run-behavioral.mjs --all                   # 5 fixtures, 0 broken schema, 0 crashed (mock judge)
+node --test tests/*.test.mjs                          # 6/6 pass
+node --test .agents/skills/platform/tests/*.test.mjs  # 211/211 pass
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60  # pass
+node .agents/skills/platform/dependency-graph.mjs     # 246 skills, 1 dependency edge, 0 cycles
+node .agents/skills/platform/skill-graph.mjs build    # 246 nodes / 60 edges (depends-on 1, compatible 49, handoff 10)
+node .agents/skills/platform/skill-lab.mjs cost       # report, exit 0
+node .agents/skills/platform/context-budget-auditor.mjs  # report, exit 0
+node .agents/skills/platform/workflow-state-machine.mjs replay standard-feature  # no-journal (legacy run: snapshot in state/ stays authoritative)
+node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs --dry-run  # clean, 258 entries, foundation/agent-card relocked
+```
+
+Remaining advisory backlog (never blocks the general gate; blocks promotion): 68 medium/high-risk
+skills still lack a `behavioral-fixtures` directory, 5 skills carry the load-bearing-position
+heuristic warning, and 7 `evals/behavioral` fixtures are not yet landed, so their clauses are
+recorded as `pending` warnings by the traceability validator.
+
 ## [2.3.0] - 2026-10-10
 
 Wave 2 — guard-gated workflows, idempotent side effects, graph routing, and spec alignment.

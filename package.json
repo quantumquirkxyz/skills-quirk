@@ -1,6 +1,6 @@
 {
   "name": "skills-quirk",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
   "bin": {
@@ -27,6 +27,9 @@
     "audit-trail": "node .agents/skills/platform/audit-trail.mjs",
     "metrics": "node .agents/skills/platform/skill-lab.mjs metrics",
     "sync": "node scripts/sync-registry.mjs",
+    "memory:index": "node .agents/skills/platform/memory-index.mjs build",
+    "memory:check": "node .agents/skills/platform/memory-index.mjs check",
+    "checkpoints:replay": "node .agents/skills/platform/workflow-state-machine.mjs replay standard-feature",
     "catalog": "node scripts/generate-site-data.mjs",
     "site:dev": "npm --prefix site run dev",
     "site:build": "npm --prefix site run build"

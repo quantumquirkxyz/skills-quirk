@@ -1,9 +1,9 @@
 {
   "date": "2026-10-10",
-  "totalTokens": 11121,
-  "skillCount": 256,
+  "totalTokens": 11360,
+  "skillCount": 258,
   "perDomain": {
-    "skill-dev": 716,
+    "skill-dev": 835,
     "delivery": 704,
     "physics": 615,
     "graphic-design": 604,
@@ -15,11 +15,11 @@
     "devops": 452,
     "backend": 437,
     "sec": 436,
+    "project": 411,
     "data": 392,
     "quant": 314,
     "frontend": 308,
     "integrations": 295,
-    "project": 291,
     "web3": 291,
     "auxiliary": 179,
     "cms": 179,
@@ -41,6 +41,18 @@
     "engineering": 43
   },
   "topSkills": [
+    {
+      "skill": "analyze-artifacts",
+      "domain": "project",
+      "tokens": 120,
+      "layerChars": 472
+    },
+    {
+      "skill": "skill-optimizer",
+      "domain": "skill-dev",
+      "tokens": 119,
+      "layerChars": 471
+    },
     {
       "skill": "loop-budget",
       "domain": "delivery",
@@ -88,18 +100,6 @@
       "domain": "platform",
       "tokens": 60,
       "layerChars": 237
-    },
-    {
-      "skill": "review-fix-loop",
-      "domain": "delivery",
-      "tokens": 60,
-      "layerChars": 237
-    },
-    {
-      "skill": "physics-simulation-setup",
-      "domain": "physics",
-      "tokens": 59,
-      "layerChars": 232
     }
   ]
 }

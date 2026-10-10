@@ -5,38 +5,50 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 
-const SCRIPT = '.agents/skills/platform/scripts/generate-agent-cards.mjs';
-const CARDS_DIR = '.agents/skills/platform/agent-cards';
+const SCRIPT = path.resolve('.agents/skills/platform/scripts/generate-agent-cards.mjs');
 
-function run(args) {
-  return spawnSync('node', [SCRIPT, ...args], { encoding: 'utf8' });
+// The generator resolves its repo root from process.cwd(), so the test runs it
+// inside a throwaway copy of the bundle instead of regenerating the tracked
+// .agents/skills/platform/agent-cards/ corpus in place. Mutating the tracked
+// directory raced with concurrent suites that read the same cards.
+let CARDS_DIR = path.join('.agents', 'skills', 'platform', 'agent-cards');
+let tmpRoot = null;
+
+function run(args, cwd) {
+  return spawnSync('node', [SCRIPT, ...args], { encoding: 'utf8', cwd });
 }
 
 describe('generate-agent-cards.mjs', () => {
-  let backupDir;
-
   before(() => {
-    backupDir = fs.mkdtempSync(path.join(os.tmpdir(), 'agent-cards-backup-'));
-    fs.cpSync(CARDS_DIR, backupDir, { recursive: true });
-    
-    const entries = fs.readdirSync(CARDS_DIR);
-    for (const entry of entries) {
-      fs.rmSync(path.join(CARDS_DIR, entry), { recursive: true, force: true });
-    }
-    
-    const result = run([]);
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'agent-cards-hermetic-'));
+    fs.cpSync(path.join('.agents', 'skills'), path.join(tmpRoot, '.agents', 'skills'), {
+      recursive: true,
+      filter: (src) => {
+        const rel = path.relative(path.join('.agents', 'skills'), src);
+        if (!rel) return true;
+        if (rel === 'platform') return true;
+        if (rel.startsWith(`platform${path.sep}`)) {
+          const rest = rel.slice('platform'.length + 1);
+          return rest === 'agent-cards' || rest.startsWith(`agent-cards${path.sep}`)
+            || rest === 'schemas' || rest.startsWith(`schemas${path.sep}`);
+        }
+        return true;
+      },
+    });
+    CARDS_DIR = path.join(tmpRoot, '.agents', 'skills', 'platform', 'agent-cards');
+    // Generate from an empty directory, so the assertions describe the cards the
+    // tool actually produces and never any stale card left over from the copy.
+    fs.rmSync(CARDS_DIR, { recursive: true, force: true });
+    const result = run([], tmpRoot);
     if (result.status !== 0) {
       throw new Error('Generation failed: ' + result.stderr);
     }
   });
 
   after(() => {
-    const entries = fs.readdirSync(CARDS_DIR);
-    for (const entry of entries) {
-      fs.rmSync(path.join(CARDS_DIR, entry), { recursive: true, force: true });
-    }
-    fs.cpSync(backupDir, CARDS_DIR, { recursive: true });
-    fs.rmSync(backupDir, { recursive: true, force: true });
+    if (tmpRoot) fs.rmSync(tmpRoot, { recursive: true, force: true });
+    tmpRoot = null;
+    CARDS_DIR = path.join('.agents', 'skills', 'platform', 'agent-cards');
   });
 
   test('generates cards for all skills', () => {
