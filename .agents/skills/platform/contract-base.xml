@@ -10,4 +10,14 @@
     Stay within the skill's declared scope, trust tier, and side-effect policy.
     Do not broaden scope without explicit user direction.
   </boundary>
+  <rejection-policy>
+    Validate every artifact against its declared JSON schema before emission.
+    An invalid artifact is rejected and never passed downstream; record the
+    rejection as a structured reason: {artifactType, schemaErrors[], attempt}.
+    Retry a rejected artifact at most 3 attempts. The retry prompt keeps only
+    the first format-error message and omits all prior format errors
+    (SWE-agent ACI retry guardrail).
+    Never drop a result silently: narrate an empty result explicitly
+    ("ran successfully, no output") instead of emitting nothing.
+  </rejection-policy>
 </contract>

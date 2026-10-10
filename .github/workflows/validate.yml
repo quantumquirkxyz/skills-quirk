@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - ".agents/skills/**/*"
+      - "evals/**/*"
+      - "tests/**/*"
       - "skills-lock.json"
       - "registry.yaml"
       - "skills.json"
@@ -10,6 +12,8 @@ on:
   pull_request:
     paths:
       - ".agents/skills/**/*"
+      - "evals/**/*"
+      - "tests/**/*"
       - "skills-lock.json"
       - "registry.yaml"
       - "skills.json"
@@ -44,6 +48,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           node .agents/skills/platform/validate-skills.mjs 2>&1 | tee "$(mktemp)"
 
+      - name: Validate clause traceability
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/validate-traceability.mjs 2>&1 | tee "$(mktemp)"
+
       - name: Audit semantics
         run: |
           cd "$GITHUB_WORKSPACE"
@@ -58,6 +67,11 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           node .agents/skills/platform/evaluate-fixtures.mjs --threshold 0.5 2>&1 | tee "$(mktemp)"
+
+      - name: Check routing eval fixtures
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node evals/run-routing.mjs --check 2>&1 | tee "$(mktemp)"
 
       - name: Check node lint
         run: |
@@ -98,6 +112,11 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           node .agents/skills/platform/security-scanner.mjs .agents/skills/skill-dev/skill-creator --json 2>&1 | tee "$(mktemp)"
+
+      - name: Scan skills supply chain (strict)
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/security-scan-skills.mjs --strict 2>&1 | tee "$(mktemp)"
 
       - name: Generate site data
         run: |

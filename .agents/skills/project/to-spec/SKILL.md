@@ -88,6 +88,17 @@ stopCondition: Turn the current conversation into a spec and publish it to the p
 risk: medium
 trustTier: 3
 maxIterations: 6
+clauses:
+  - id: TO-SPEC-1
+    text: "Prefer one seam, and make any seam choice explicit before publishing."
+    check: "evals/behavioral/to-spec.json#TO-SPEC-1"
+  - id: TO-SPEC-2
+    text: "If the spec cannot be made concrete enough to hand off, stop and say what is still missing."
+    check: "manual"
+  - id: TO-SPEC-3
+    text: "Synthesize what is already known; do not reopen discovery interviews."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Why

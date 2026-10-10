@@ -71,6 +71,17 @@ stopCondition: Test-driven development complete; structured result returned; com
 risk: low
 trustTier: 1
 maxIterations: 6
+clauses:
+  - id: TDD-1
+    text: "Write the failing test first, then only enough code to pass it; no speculative implementation."
+    check: "evals/behavioral/tdd.json#TDD-1"
+  - id: TDD-2
+    text: "Test only at pre-agreed seams; confirm the seams with the user before writing any test."
+    check: "manual"
+  - id: TDD-3
+    text: "Keep refactoring out of the red-to-green cycle; it belongs to the review stage."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Why

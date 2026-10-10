@@ -1,0 +1,228 @@
+{
+  "id": "code-review-paired-v1",
+  "skill": "delivery/code-review",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A feature branch carries three commits since the merge-base with main. The operator asks for a two-axis review of the diff against a fixed point, publishing findings only, with no source edits.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "review whats changed on this branch since the merge-base with main. two axes, parallel sub-agents, findings only \u2014 do not fix anything and do not touch the source. validate the artifact against the review-findings schema before you return it.",
+  "context": [
+    "repo skills-quirk on branch feat/evals-harness",
+    "fixed point is main; the diff command is git diff main...HEAD",
+    "standards sources are AGENTS.md and docs/how-to/skill-style.md",
+    "the originating spec is the wave-1 eval-harness plan",
+    "the ReviewArtifact schema is .agents/skills/platform/schemas/review-findings-schema.json"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/code-review/SKILL.md#Contract (ReviewArtifact with Standards and Spec findings separated)",
+    ".agents/skills/delivery/code-review/SKILL.md#Process steps 1-5 (pin fixed point, identify spec, identify standards, parallel sub-agents, aggregate)",
+    ".agents/skills/delivery/code-review/references/smell-baseline.md",
+    ".agents/skills/delivery/code-review/references/review-axes.md"
+  ],
+  "costBudget": {
+    "costUsd": 0.12,
+    "durationMs": 600000,
+    "inputTokens": 180000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The fixed point is pinned and the diff is captured with the three-dot form against the merge-base, with a non-empty check before any finding is reported.",
+        "levels": {
+          "4": "the fixed point is resolved, git diff <fixed-point>...HEAD is the recorded command, and the non-empty check is reported",
+          "2": "a fixed point is named but the three-dot diff or the non-empty check is missing",
+          "0": "no fixed point is pinned or the diff command is absent"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Both axes run as separate sub-agents and their findings are presented under separate headings without being merged or reranked into a single winner.",
+        "levels": {
+          "4": "two parallel sub-agent runs are evidenced and the report keeps separate Standards and Spec sections with a per-axis summary",
+          "2": "one section covers both axes, or findings are merged and reranked",
+          "0": "no axis structure"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The standards axis carries the documented repo standards plus the Fowler smell baseline, and each smell is labelled as a judgement call while documented-standard breaches are hard.",
+        "levels": {
+          "4": "each standards finding is classified hard-violation or judgement-call and cites its rule or smell name",
+          "2": "findings cite a rule but the hard-versus-judgement distinction is missing",
+          "0": "no rule or smell is cited for any standards finding"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The skill stays review-only: no source file is edited, no branch is fixed, and nothing is merged.",
+        "levels": {
+          "4": "the transcript shows no write or edit tool call and the report states the read-only boundary explicitly",
+          "2": "no writes occur but the boundary is never stated",
+          "0": "a source file is edited or the branch state is changed"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Every finding carries an exact file and line or hunk, the rule or smell that justifies it, and a concrete explanation of what breaks.",
+        "levels": {
+          "4": "all three elements are present for every finding",
+          "2": "location and rule are present but the consequence is missing",
+          "0": "findings without a location or a justification"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The spec axis quotes the spec line for each requirement and separates missing, partial, scope-creep, and implemented-incorrectly outcomes.",
+        "levels": {
+          "4": "each spec finding quotes the requirement and names its status class",
+          "2": "requirements are discussed without quotes or status classes",
+          "0": "no spec findings at all, including when a spec was available"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The ReviewArtifact is returned and validated against the declared schema, with nextConsumer naming plan-review-fixes or ship-subissue and blockedBy populated appropriately.",
+        "levels": {
+          "4": "the artifact names the schema, states the validation result, and sets nextConsumer and blockedBy",
+          "2": "the artifact is returned but schema validation or the consumer fields are missing",
+          "0": "no artifact is returned"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The one-line summary reports totals and the worst issue within each axis, without picking a single winner across axes.",
+        "levels": {
+          "4": "per-axis totals and per-axis worst issue are both reported",
+          "2": "totals only, or a single cross-axis winner is chosen",
+          "0": "no summary"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Standards",
+          "## Spec"
+        ],
+        "note": "the two axes must stay separate in the published report"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "fixedPoint",
+          "diffCommand",
+          "standardsFindings",
+          "specFindings",
+          "nextConsumer"
+        ],
+        "note": "ReviewArtifact fields declared in the contract"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "review-findings-schema.json",
+          "ReviewArtifact"
+        ],
+        "note": "schema validation must be evidenced"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "edit",
+          "write",
+          "str_replace"
+        ],
+        "note": "a review-only skill must not mutate source files"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "...HEAD",
+          "merge-base"
+        ],
+        "note": "clause CODE-REVIEW-1: the three-dot diff against the merge-base must be visible"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Were the Standards and Spec axes run separately and reported without being merged or reranked into one ranking?",
+        "levels": {
+          "pass": "separate axes, no cross-axis reranking",
+          "fail": "axes merged or reranked into a single list"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does every finding carry an exact file and line or hunk, the rule or smell that justifies it, and an explanation of what breaks?",
+        "levels": {
+          "pass": "location, justification, and consequence all present per finding",
+          "fail": "one of the three elements missing"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "style",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Are documented-standard breaches presented as hard violations while baseline smells are explicitly labelled as judgement calls?",
+        "levels": {
+          "pass": "the hard versus judgement-call distinction is explicit per finding",
+          "fail": "everything is presented at the same strength"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

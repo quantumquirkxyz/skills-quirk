@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "A portable, validated skills bundle for standard project development with fixtures, quality gates, and multi-agent support.",
-    "version": "2.0.0",
+    "version": "2.2.0",
     "license": "MIT",
     "repository": "https://github.com/quantumquirkxyz/skills-quirk"
   },
@@ -14,7 +14,7 @@
     {
       "name": "quirk-accessibility",
       "description": "Quirk accessibility skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/accessibility",
       "skills": [
         {
@@ -58,7 +58,7 @@
     {
       "name": "quirk-ai",
       "description": "Quirk ai skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/ai",
       "skills": [
         {
@@ -222,7 +222,7 @@
     {
       "name": "quirk-auxiliary",
       "description": "Quirk auxiliary skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/auxiliary",
       "skills": [
         {
@@ -278,7 +278,7 @@
     {
       "name": "quirk-backend",
       "description": "Quirk backend skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/backend",
       "skills": [
         {
@@ -442,7 +442,7 @@
     {
       "name": "quirk-cms",
       "description": "Quirk cms skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/cms",
       "skills": [
         {
@@ -498,7 +498,7 @@
     {
       "name": "quirk-compilers",
       "description": "Quirk compilers skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/compilers",
       "skills": [
         {
@@ -542,7 +542,7 @@
     {
       "name": "quirk-cs",
       "description": "Quirk cs skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/cs",
       "skills": [
         {
@@ -598,7 +598,7 @@
     {
       "name": "quirk-data",
       "description": "Quirk data skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/data",
       "skills": [
         {
@@ -738,7 +738,7 @@
     {
       "name": "quirk-db",
       "description": "Quirk db skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/db",
       "skills": [
         {
@@ -794,7 +794,7 @@
     {
       "name": "quirk-delivery",
       "description": "Quirk delivery skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/delivery",
       "skills": [
         {
@@ -874,6 +874,24 @@
             "push-branch"
           ],
           "path": ".agents/skills/delivery/implement-review-fixes"
+        },
+        {
+          "name": "loop-budget",
+          "description": "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.",
+          "category": "delivery",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [
+            "declare loop budgets up front",
+            "detect degenerate loops (repeats, ping-pong, format errors)",
+            "record an append-only loop ledger and route on the typed verdict"
+          ],
+          "sideEffects": [
+            "write-temp-file"
+          ],
+          "path": ".agents/skills/delivery/loop-budget"
         },
         {
           "name": "plan-review-fixes",
@@ -1011,7 +1029,7 @@
     {
       "name": "quirk-devops",
       "description": "Quirk devops skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/devops",
       "skills": [
         {
@@ -1139,7 +1157,7 @@
     {
       "name": "quirk-docs",
       "description": "Quirk docs skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/docs",
       "skills": [
         {
@@ -1187,7 +1205,7 @@
     {
       "name": "quirk-engineering",
       "description": "Quirk engineering skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/engineering",
       "skills": [
         {
@@ -1207,7 +1225,7 @@
     {
       "name": "quirk-finance",
       "description": "Quirk finance skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/finance",
       "skills": [
         {
@@ -1251,7 +1269,7 @@
     {
       "name": "quirk-foundation",
       "description": "Quirk foundation skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/foundation",
       "skills": [
         {
@@ -1395,13 +1413,31 @@
           "capabilities": [],
           "sideEffects": [],
           "path": ".agents/skills/foundation/subagent-swarm"
+        },
+        {
+          "name": "verify-delegation",
+          "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+          "category": "foundation",
+          "version": "1",
+          "maturity": "experimental",
+          "risk": "low",
+          "trustTier": "2",
+          "capabilities": [
+            "decompose delegated work into a canonical delegation brief",
+            "verify a delegated artifact against its success criteria without implementation context",
+            "return a bounded DelegationVerdict with evidence, negative tests, and suite status"
+          ],
+          "sideEffects": [
+            "write-temp-file"
+          ],
+          "path": ".agents/skills/foundation/verify-delegation"
         }
       ]
     },
     {
       "name": "quirk-frontend",
       "description": "Quirk frontend skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/frontend",
       "skills": [
         {
@@ -1529,7 +1565,7 @@
     {
       "name": "quirk-graphic-design",
       "description": "Quirk graphic-design skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/graphic-design",
       "skills": [
         {
@@ -1681,7 +1717,7 @@
     {
       "name": "quirk-integrations",
       "description": "Quirk integrations skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/integrations",
       "skills": [
         {
@@ -1761,7 +1797,7 @@
     {
       "name": "quirk-iot",
       "description": "Quirk iot skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/iot",
       "skills": [
         {
@@ -1781,7 +1817,7 @@
     {
       "name": "quirk-math",
       "description": "Quirk math skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/math",
       "skills": [
         {
@@ -1945,7 +1981,7 @@
     {
       "name": "quirk-networking",
       "description": "Quirk networking skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/networking",
       "skills": [
         {
@@ -1989,7 +2025,7 @@
     {
       "name": "quirk-os",
       "description": "Quirk os skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/os",
       "skills": [
         {
@@ -2033,7 +2069,7 @@
     {
       "name": "quirk-physics",
       "description": "Quirk physics skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/physics",
       "skills": [
         {
@@ -2185,7 +2221,7 @@
     {
       "name": "quirk-product",
       "description": "Quirk product skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/product",
       "skills": [
         {
@@ -2229,7 +2265,7 @@
     {
       "name": "quirk-professional",
       "description": "Quirk professional skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/professional",
       "skills": [
         {
@@ -2273,7 +2309,7 @@
     {
       "name": "quirk-project",
       "description": "Quirk project skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/project",
       "skills": [
         {
@@ -2370,7 +2406,7 @@
     {
       "name": "quirk-qa",
       "description": "Quirk qa skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/qa",
       "skills": [
         {
@@ -2426,7 +2462,7 @@
     {
       "name": "quirk-quant",
       "description": "Quirk quant skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/quant",
       "skills": [
         {
@@ -2518,7 +2554,7 @@
     {
       "name": "quirk-research",
       "description": "Quirk research skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/research",
       "skills": [
         {
@@ -2562,7 +2598,7 @@
     {
       "name": "quirk-routing",
       "description": "Quirk routing skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/routing",
       "skills": [
         {
@@ -2780,7 +2816,7 @@
     {
       "name": "quirk-sec",
       "description": "Quirk sec skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/sec",
       "skills": [
         {
@@ -2920,7 +2956,7 @@
     {
       "name": "quirk-skill-dev",
       "description": "Quirk skill-dev skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/skill-dev",
       "skills": [
         {
@@ -3140,7 +3176,7 @@
     {
       "name": "quirk-ux",
       "description": "Quirk ux skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/ux",
       "skills": [
         {
@@ -3196,7 +3232,7 @@
     {
       "name": "quirk-web3",
       "description": "Quirk web3 skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/web3",
       "skills": [
         {
@@ -3276,7 +3312,7 @@
     {
       "name": "quirk-xr",
       "description": "Quirk xr skills",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "skillsDir": ".agents/skills/xr",
       "skills": [
         {

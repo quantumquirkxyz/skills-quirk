@@ -64,6 +64,17 @@ compatibility:
   - observability
 approvalRequired: false
 approvalFor: []
+clauses:
+  - id: ASK-TO-1
+    text: "Read the workflow state machine before routing, then name the current state, the valid transitions, and the selected transition."
+    check: "evals/behavioral/ask-to.json#ASK-TO-1"
+  - id: ASK-TO-2
+    text: "Recommend the thinnest downstream skill that can finish the work and stay routing-only: never create issues, tickets, PRs, or project items."
+    check: "manual"
+  - id: ASK-TO-3
+    text: "When the current state has no matching transition, route to escalate instead of forcing a jump."
+    check: "manual"
+reloadPolicy: always
 ---
 
 ## Contract

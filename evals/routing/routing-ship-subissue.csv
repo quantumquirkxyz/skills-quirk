@@ -1,0 +1,16 @@
+should_trigger,category,prompt
+true,explicit,"use ship-subissue: PR #88 is reviewed clean on both axes — merge, mark 54 complete, close it"
+true,explicit,/ship-subissue for the corrective subissue PR that closes the audited gap
+true,explicit,ship-subissue with the linked issue labels and milestone preserved per docs/reference/agents/work-item-format.md
+true,implicit,the last review-pr pass was clean and the user approved — close out the linked issue now
+true,implicit,"never guess the issue number: confirm the linked reference, then merge and close"
+true,implicit,leave a short note on the PR summarizing the merge and the completion state
+true,contextual,repo skills-quirk. PR #88 still belongs to the current branch and subissue; confirm with gh pr view before merging
+true,contextual,context: the branch shows a conflicted state from the earlier rebase — return to resolving-merge-conflicts before shipping
+true,contextual,the workflow uses an explicit completion state; update it after the merge actually succeeds
+true,explicit,"ship-subissue, approval required for merge-pull-request, close-issue and update-project"
+true,implicit,never delete the branch before the merge has actually succeeded
+false,negative-control,"publish-open-pr: the issue branch is prepared, open the PR with reviewers and labels"
+false,negative-control,"review-pr #88 again — the author pushed a fix, i need fresh findings before merging"
+false,negative-control,"review-fix-loop: review is not clean, run the full repair cycle"
+false,negative-control,pr-operations: add the milestone and linked-issue metadata to PR #88

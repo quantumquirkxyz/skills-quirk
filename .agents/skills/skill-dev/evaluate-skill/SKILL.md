@@ -22,6 +22,17 @@ tags: ["skill-dev"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+clauses:
+  - id: EVALUATE-SKILL-1
+    text: "Separate routing failures, artifact-shape failures, and contract mismatches instead of reporting one blurred verdict."
+    check: "manual"
+  - id: EVALUATE-SKILL-2
+    text: "Never promote a Skill whose declared side effects differ from observed behavior; treat missing stop conditions or vague outputs as evaluability defects."
+    check: "manual"
+  - id: EVALUATE-SKILL-3
+    text: "Preserve deterministic runner output as evidence and add or update a fixture whenever a failure represents a regression class."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Contract
@@ -89,5 +100,55 @@ node .agents/skills/platform/evaluate-behavioral-fixtures.mjs
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Evaluación conductual (protocolo por pares)
+
+The deterministic fixture checks in this skill are **structural**: they prove that documentation,
+frontmatter, and artifact shape are correct. They never invoke a model, so they cannot prove that
+a skill changes what an agent does. That claim needs the Layer 1 behavioural protocol in
+[`evals/`](../../../../evals/README.md), whose full text lives in
+[`references/paired-eval-protocol.md`](../references/paired-eval-protocol.md).
+
+### With skill vs without skill
+
+Evaluate a case twice, in a **fresh isolated session** each time: once with the skill and once
+without it (`baseline`), same model snapshot, same task. Run **at least 3 trials** per arm before
+believing a delta. Author fixtures in a separate session from the one you record in — authoring
+context masks gaps, because a session that already holds the skill text is no longer a baseline.
+
+### Two rubric axes, reported separately
+
+Score and report two axes separately, never blended:
+
+| Axis | Question it answers |
+|---|---|
+| `instructionFollowing` | Did the agent follow the skill's steps, boundaries, and conventions? |
+| `goalCompletion` | Was the task actually done, with the evidence to prove it? |
+
+Keep them separate because the gain from a skill is driven largely by instruction-following
+(arXiv 2606.17819). A skill that raises `instructionFollowing` while leaving `goalCompletion`
+flat is a skill worth keeping only if its cost is near zero.
+
+### pass^k, not pass^1
+
+`pass^1` is "did it work once". For a multi-step workflow, report `pass^k`, the probability that
+`k` consecutive attempts all succeed (τ-bench, arXiv 2406.12045), for `k = 1..trials`. A skill
+with `pass^1 = 0.8` and `pass^5 = 0.33` is not schedulable; a human has to watch it. The estimator
+in `evals/run-behavioral.mjs` averages over size-`k` subsets of the recorded trials and is
+deliberately pessimistic at `k = trials`.
+
+### Cost-aware reporting
+
+Never report a pass rate alone. Report tokens, duration, and cost beside it, per arm, then apply
+the decision rule: positive delta within budget keeps the skill; positive delta over budget
+needs an explicit justification; **zero delta at positive cost is a regression** — the skill
+loads, consumes context and tokens, and changes nothing observable; a negative delta is a
+regression and blocks promotion.
+
+### Recording the triple
+
+Record `(skill, version, fixture)` with every run (arXiv 2609.17394) so a result can be replayed
+against the exact artifact that produced it.
+
 ---
 @include .agents/skills/platform/contract-base.xml

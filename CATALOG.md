@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
-> Generated from quirk-skills v2.0.0
-> 242 skills across 35 categories
+> Generated from quirk-skills v2.2.0
+> 244 skills across 35 categories
 
 ## Skills by Category
 
@@ -118,6 +118,7 @@
 | [diagnosing-bugs](.agents/skills/delivery/diagnosing-bugs) | 1 | stable | low | 1 | Diagnosis loop for hard bugs and performance regressions. Use when the user s... |
 | [implement](.agents/skills/delivery/implement) | 2 | stable | medium | 3 | Implement a piece of work based on a spec or set of tickets, or build a scope... |
 | [implement-review-fixes](.agents/skills/delivery/implement-review-fixes) | 1 | stable | medium | 3 | Read a GitHub PR remediation plan produced by plan-review-fixes, implement th... |
+| [loop-budget](.agents/skills/delivery/loop-budget) | 1 | experimental | low | 2 | Keep an agent loop inside its declared budget and end it with a typed verdict... |
 | [plan-review-fixes](.agents/skills/delivery/plan-review-fixes) | 1 | stable | medium | 3 | Convert review-pr findings on a GitHub PR into a concrete remediation plan an... |
 | [prototype](.agents/skills/delivery/prototype) | 1 | stable | low | 1 | Build a throwaway prototype to answer a design question. Use when the user wa... |
 | [research](.agents/skills/delivery/research) | 1 | stable | low | 2 | Investigate a question against high-trust primary sources and capture the fin... |
@@ -179,6 +180,7 @@
 | [mcp-server](.agents/skills/foundation/mcp-server) | 2 | beta | low | 1 | Define an MCP server that exposes quirk Skills as tools, resources, and promp... |
 | [observability](.agents/skills/foundation/observability) | 2 | stable | low | 1 | Define the logs, metrics, traces, and alerts needed to understand a system in... |
 | [subagent-swarm](.agents/skills/foundation/subagent-swarm) | 1 | stable | medium | 3 | Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester... |
+| [verify-delegation](.agents/skills/foundation/verify-delegation) | 1 | experimental | low | 2 | Blackbox-verify a delegated worker's claim before it is accepted, using the a... |
 
 ### frontend
 

@@ -46,6 +46,20 @@ tags: [tdd, delivery, implementation, testing]
 compatibility: [to-tickets, publish-open-pr, tdd, gate-ci]
 approvalRequired: true
 approvalFor: ["write-code", "commit-git", "push-branch"]
+clauses:
+  - id: IMPLEMENT-1
+    text: "Treat a ticket as executable only when its acceptance criteria are concrete and its blockers are resolved."
+    check: "evals/behavioral/implement.json#IMPLEMENT-1"
+  - id: IMPLEMENT-2
+    text: "Require an explicit user request or prior workflow approval before any repository-mutating side effect (write-code, commit-git, push-branch)."
+    check: "manual"
+  - id: IMPLEMENT-3
+    text: "Do not open or merge a PR here; stop at the validated branch and do not proceed to publish-open-pr until gate-ci passes."
+    check: "manual"
+  - id: IMPLEMENT-4
+    text: "Drive tracer-bullet vertical slices with TDD at pre-agreed seams: implement, validate, commit, per slice."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Contract

@@ -1,0 +1,16 @@
+should_trigger,category,prompt
+true,explicit,"use skill-audit on the bundle: run validate-skills.mjs and audit-semantics.mjs, rank findings by impact"
+true,explicit,"/skill-audit — check the lockfile, symlink parity and contract drift across all 254 skills"
+true,explicit,skill-audit and inspect the inventory for stale aliases and mismatched metadata
+true,implicit,"something drifted after the wave-0 cleanup — check lock hashes, .claude/ links and contract shape"
+true,implicit,"give me a prioritized maintenance report, not a raw dump of warnings"
+true,implicit,which skills declare a local artifact write but no write-files side effect? audit them
+true,contextual,"repo skills-quirk, branch main. i edited two SKILL.md bodies; audit for stale lock hashes and broken links before i publish"
+true,contextual,context: the .claude/skills/ compatibility view was regenerated — verify it is still relative symlinks
+true,contextual,check that every lockfile entry maps to an existing skill and no canonical skill is missing from the lock
+true,explicit,"skill-audit, save the artifact at .agents/skills/platform/artifacts/skill-audit/"
+true,implicit,"the audit must separate missing canonical skills, broken .claude/ links, and lockfile drift"
+false,negative-control,"audita los side-effects declarados de esta skill — esto es side-effect-auditor, no skill-audit"
+false,negative-control,"skill-quality-gate: run the full gate (schema, lockfile, semantic, routing, placeholder, rule, metadata, side-effect) before promotion"
+false,negative-control,lockfile-maintenance: update the stale hashes in skills-lock.json for the skills i edited
+false,negative-control,rule-cataloger: extract and classify rules across skills by type and frequency

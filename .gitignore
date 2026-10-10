@@ -1,4 +1,5 @@
 .agents/skills/platform/runs/
+evals/results/mock/
 node_modules/
 .opencode/goals/
 site/dist/

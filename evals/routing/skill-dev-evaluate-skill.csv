@@ -1,0 +1,17 @@
+should_trigger,category,prompt
+true,explicit,"use evaluate-skill on work-item-router — fixed scenarios for routing, completion and artifact validity"
+true,explicit,/evaluate-skill: run the scenario and behavioral fixture evaluators after my template change
+true,explicit,"evaluate-skill the evaluate-skill skill itself — routing, completion, artifact validity"
+true,implicit,"prove this skill still behaves predictably: routing, output shape, stop condition, safety behavior"
+true,implicit,i changed a template — does the behavioral fixture still pass? run the deterministic runner and keep the output as evidence
+true,implicit,record the failures as regression cases by adding or updating a scenario fixture
+true,contextual,repo skills-quirk. check that a routing-only skill does not write and a write-capable skill declares its side effects
+true,contextual,context: run node evals/run-routing.mjs --check then node evals/run-behavioral.mjs --all in mock mode before claiming done
+true,contextual,a skills declared side effects differ from its observed behavior — treat that as a promotion blocker
+true,explicit,evaluate-skill with the paired with and without protocol on the routing CSVs
+true,implicit,"treat missing stop conditions or vague outputs as evaluability defects, not style nitpicks"
+false,negative-control,"skill-quality-gate: run the schema, lockfile, semantic and routing checks before promotion"
+false,negative-control,"skill-audit: audit the bundle, lockfile and symlink parity for drift"
+false,negative-control,skill-sandbox: create and iterate an experimental skill without touching the canonical bundle
+false,negative-control,workflow-fixture-author: author deterministic scenario fixtures for the routing check
+false,negative-control,skill-testing-framework: validate this new skills structure and contracts before promotion

@@ -22,6 +22,17 @@ tags: ["skill-dev"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+clauses:
+  - id: SKILL-AUDIT-1
+    text: "Run the platform validator and the semantic auditor before reporting, so findings cover structure and contract drift together."
+    check: "manual"
+  - id: SKILL-AUDIT-2
+    text: "Inspect for missing canonical skills, broken .claude symlinks, and lockfile drift, then rank findings by impact."
+    check: "manual"
+  - id: SKILL-AUDIT-3
+    text: "Surface blockers such as missing context or dependencies before proceeding instead of auditing around them."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Contract

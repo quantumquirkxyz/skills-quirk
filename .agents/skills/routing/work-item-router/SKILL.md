@@ -50,6 +50,20 @@ stopCondition: Force reading the canonical work-item governance index before rou
 risk: low
 trustTier: 1
 maxIterations: 6
+clauses:
+  - id: WORK-ITEM-ROUTER-1
+    text: "Always read the canonical work-item governance index at docs/reference/agents/index.md before routing any spec, ticket, board, or publication request."
+    check: "evals/behavioral/work-item-router.json#WORK-ITEM-ROUTER-1"
+  - id: WORK-ITEM-ROUTER-2
+    text: "Route to the thinnest downstream skill that can finish the work, and never draft the routed artifact inside the router."
+    check: "manual"
+  - id: WORK-ITEM-ROUTER-3
+    text: "Preserve the canonical work-item metadata shape from docs/reference/agents/work-item-format.md instead of ad hoc tracker metadata."
+    check: "manual"
+  - id: WORK-ITEM-ROUTER-4
+    text: "Return the routing decision as structured output in the current response and emit a trace with the selected transition and next skill."
+    check: "manual"
+reloadPolicy: always
 ---
 
 ## Contract

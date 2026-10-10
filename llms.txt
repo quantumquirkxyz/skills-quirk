@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 242 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 244 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -122,6 +122,7 @@ npx skills-quirk add quirk-skills
 - [llmops](./.agents/skills/ai/llmops/SKILL.md) — LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)
 - [localization](./.agents/skills/cms/localization/SKILL.md) — Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.
 - [lockfile-maintenance](./.agents/skills/skill-dev/lockfile-maintenance/SKILL.md) — Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.
+- [loop-budget](./.agents/skills/delivery/loop-budget/SKILL.md) — Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.
 - [make-project](./.agents/skills/project/make-project/SKILL.md) — Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.
 - [math-computation-reproducible](./.agents/skills/math/math-computation-reproducible/SKILL.md) — Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.
 - [math-computational](./.agents/skills/math/math-computational/SKILL.md) — Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.
@@ -236,6 +237,7 @@ npx skills-quirk add quirk-skills
 - [ux-accessibility](./.agents/skills/ux/ux-accessibility/SKILL.md) — Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns.
 - [ux-prototyping](./.agents/skills/ux/ux-prototyping/SKILL.md) — Prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria.
 - [ux-research](./.agents/skills/ux/ux-research/SKILL.md) — Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.
+- [verify-delegation](./.agents/skills/foundation/verify-delegation/SKILL.md) — Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.
 - [wayfinder](./.agents/skills/routing/wayfinder/SKILL.md) — Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.
 - [web3-consensus](./.agents/skills/web3/web3-consensus/SKILL.md) — Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.
 - [web3-defi](./.agents/skills/web3/web3-defi/SKILL.md) — Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks.
@@ -264,12 +266,12 @@ npx skills-quirk add quirk-skills
 - cs: 4 skills
 - data: 11 skills
 - db: 4 skills
-- delivery: 14 skills
+- delivery: 15 skills
 - devops: 10 skills
 - docs: 3 skills
 - engineering: 1 skills
 - finance: 3 skills
-- foundation: 10 skills
+- foundation: 11 skills
 - frontend: 10 skills
 - graphic-design: 12 skills
 - integrations: 6 skills

@@ -225,6 +225,32 @@ async function main() {
     for (const effect of fm.sideEffects ?? []) {
       if (effect === 'write-code' && fm.risk === 'low') warnings.push(`${name}: write-code skill marked low risk`);
     }
+    // Heuristic (wave 1 item 1.9), not a contract rule: compaction re-injects a
+    // skill body but keeps only its first ~5000 tokens and drops the oldest
+    // turns first, so stop conditions, hard prohibitions, and completion
+    // criteria that sit late are the ones most easily lost. Count hard
+    // prohibition markers - lines that open with Never/Do not/Don't/Must not,
+    // plus lines inside a Guardrails or Rules section - and warn, never fail,
+    // when more than half of them appear after line 150.
+    const prohibitionPattern = /^\s*[-*\d.]*\s*(Never|Do not|Don't|Must not)\b/i;
+    let inGuardrailSection = false;
+    const prohibitionLines = [];
+    text.split(/\r?\n/).forEach((line, index) => {
+      const heading = line.match(/^(#{1,6})\s+(.*)$/);
+      if (heading) {
+        inGuardrailSection = /^(Guardrails|Rules)\b/i.test(heading[2].trim());
+        return;
+      }
+      if (prohibitionPattern.test(line) || (inGuardrailSection && line.trim() !== '')) {
+        prohibitionLines.push(index + 1);
+      }
+    });
+    if (prohibitionLines.length > 0) {
+      const afterPrefix = prohibitionLines.filter((lineNumber) => lineNumber > 150);
+      if (afterPrefix.length / prohibitionLines.length > 0.5) {
+        warnings.push(`${name}: load-bearing rules appear after line 150 — compaction keeps only the start of re-injected skill bodies`);
+      }
+    }
     const hash = crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex');
     if (lock.skills?.[name]?.hash !== hash) errors.push(`${name}: lock hash is stale`);
   }

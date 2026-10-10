@@ -104,6 +104,7 @@ function usage() {
   diff <old/SKILL.md> <new/SKILL.md>
   tutorial <skill-name|SKILL.md>
   metrics [runs-directory]
+  cost [--by-skill|--by-day] [--since YYYY-MM-DD] [--no-estimate] [--json]
   playground [--output directory] [--fixtures JSON] [--command JSON]
   pr-check [--base ref]
   evolve [skill-path] [--target-version N] [--dry-run]
@@ -405,6 +406,25 @@ async function playground() {
   }
   json(result);
 }
+async function cost() {
+  const { buildCostLedger, printLedger } = await import('./cost-ledger.mjs');
+  const args = process.argv.slice(3);
+  const valueOf = (flag, fallback) => {
+    const index = args.indexOf(flag);
+    return index === -1 ? fallback : (args[index + 1] ?? fallback);
+  };
+  const since = args.includes('--since') ? valueOf('--since', null) : null;
+  if (since && !/^\d{4}-\d{2}-\d{2}$/.test(since)) throw new Error('--since must be YYYY-MM-DD');
+  const ledger = buildCostLedger({
+    tracesDir: path.resolve(root, valueOf('--traces', path.join(skillsRoot, 'platform', 'traces'))),
+    costModelFile: path.resolve(root, valueOf('--cost-model', path.join(skillsRoot, 'platform', 'cost-model.json'))),
+    mode: args.includes('--by-day') ? 'by-day' : 'by-skill',
+    since,
+    estimate: !args.includes('--no-estimate'),
+  });
+  if (args.includes('--json')) json(ledger);
+  else console.log(printLedger(ledger));
+}
 async function prCheck() {
   const { stdout } = await new Promise((resolve, reject) => {
     const child = spawn('git', ['diff', '--name-only', `${optionValue('--base', 'HEAD~1')}...HEAD`], { cwd: root });
@@ -424,6 +444,7 @@ try {
   else if (command === 'diff') await diff();
   else if (command === 'tutorial') await tutorial();
   else if (command === 'metrics') await metrics();
+  else if (command === 'cost') await cost();
   else if (command === 'playground') await playground();
   else if (command === 'pr-check') await prCheck();
   else usage();

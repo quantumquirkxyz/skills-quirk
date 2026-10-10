@@ -1,0 +1,215 @@
+{
+  "id": "implement-paired-v1",
+  "skill": "delivery/implement",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A tracer-bullet ticket asks for the routing CSV validator to be added behind one seam. The agent must implement it, validate it, and stop at the validated branch without opening a PR.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "implement the first slice of evals/routing validation from the wave-1 plan: a csv parser plus a --check mode. one seam, failing test first, run the gates as you go, and stop at the validated branch \u2014 do not open a PR and do not push.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the acceptance criteria are concrete in the wave-1 plan",
+    "quality gates run at three scopes: gate-ide on file-save, gate-pre-commit on git-commit, gate-ci on push-to-PR",
+    "the ImplementArtifact schema is declared at .agents/skills/platform/schemas/implement-schema.json in the skill body"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/implement/SKILL.md#Contract (ImplementArtifact, one seam, tracer bullets, gates, stop at validated branch)",
+    ".agents/skills/delivery/implement/SKILL.md#Process (Tracer-Bullet Execution and Quality Gate Sequence)",
+    ".agents/skills/delivery/implement/SKILL.md#Artifact (.agents/skills/platform/artifacts/implement/{issue-id}.json)",
+    ".agents/skills/delivery/implement/SKILL.md#Completion criteria"
+  ],
+  "costBudget": {
+    "costUsd": 0.2,
+    "durationMs": 900000,
+    "inputTokens": 250000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Work proceeds in tracer-bullet vertical slices where each slice is implemented, validated, and committed before the next begins.",
+        "levels": {
+          "4": "per-slice red, green, validate, commit is evidenced with at least one committed slice",
+          "2": "a single bulk implementation with validation only at the end",
+          "0": "no test or no commit at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The seam is chosen deliberately and stated before coding, with a preference for one seam.",
+        "levels": {
+          "4": "the seam is named explicitly before the first edit and one seam is used",
+          "2": "an implicit seam, or several seams introduced without comment",
+          "0": "no seam reasoning and the change is spread across unrelated surfaces"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Quality gates run at the declared scopes: gate-ide on file-save, gate-pre-commit before commit, gate-ci before any PR.",
+        "levels": {
+          "4": "all three gate results are present in qualityGateResults with their scope",
+          "2": "one or two gates are run and recorded",
+          "0": "no gate is run"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The work stops at the validated branch: no PR is opened, nothing is merged, and no push happens without an explicit request.",
+        "levels": {
+          "4": "the transcript shows no PR creation, no merge, and no push, and the artifact records the stopped state",
+          "2": "no publication happens but the stopped state is not recorded",
+          "0": "a PR is opened, merged, or the branch is pushed"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The acceptance criteria from the plan are satisfied in the repository state, with the validation output showing it.",
+        "levels": {
+          "4": "each acceptance criterion is mapped to a passing test or command output",
+          "2": "validation ran but is not mapped to the acceptance criteria",
+          "0": "the acceptance criteria are not demonstrably satisfied"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The ImplementArtifact is emitted and validated with status, changes, validation, branch, nextConsumer, qualityGateResults, and any blocked approval.",
+        "levels": {
+          "4": "all declared fields are populated and the artifact path is named",
+          "2": "the artifact exists but fields are empty or the path is missing",
+          "0": "no artifact"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Any skipped validation is explicitly justified, and unfinished behaviour is behind a documented feature flag rather than half-shipped.",
+        "levels": {
+          "4": "skips are justified by name and the flag is documented in the artifact",
+          "2": "a skip is mentioned without justification, or a flag exists but is undocumented",
+          "0": "silent skips or undocumented incomplete behaviour"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The work is committed on a dedicated issue branch with conventional commit messages.",
+        "levels": {
+          "4": "branch name follows the issue convention and every commit message is conventional",
+          "2": "commits exist but the branch or messages break convention",
+          "0": "uncommitted work"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_json_has_fields",
+        "fields": [
+          "status",
+          "nextConsumer",
+          "validation",
+          "qualityGateResults"
+        ],
+        "note": "ImplementArtifact fields required by the declared outputs"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "gate-ide",
+          "gate-pre-commit"
+        ],
+        "note": "the quality gate sequence is part of the declared process"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          ".agents/skills/platform/artifacts/implement/"
+        ],
+        "note": "clause IMPLEMENT-1: a ticket is executable only when its acceptance criteria are concrete and its blockers are resolved - the artifact records the stopped state"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh pr create",
+          "gh pr merge"
+        ],
+        "note": "implementation stops before publication"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "transcript_tool_called",
+        "values": [
+          "test",
+          "node --test"
+        ],
+        "note": "a failing test must have been written and run"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did the implementation proceed as tracer-bullet slices with a failing test first, and is each slice validated and committed before the next starts?",
+        "levels": {
+          "pass": "per-slice red, green, validate, commit is evidenced",
+          "fail": "bulk implementation with validation only at the end, or no test at all"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is the ImplementArtifact complete: status, changes, validation, branch, nextConsumer, qualityGateResults, and any blocked approval all populated?",
+        "levels": {
+          "pass": "all declared fields populated with a named artifact path",
+          "fail": "missing fields or missing artifact path"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "efficiency",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Were skipped validations justified explicitly, and was any incomplete behaviour hidden behind a documented feature flag?",
+        "levels": {
+          "pass": "justified skips and documented flags",
+          "fail": "silent skips or undocumented incomplete behaviour"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

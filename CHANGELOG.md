@@ -8,7 +8,107 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.2.0] - 2026-10-10
+
+Wave 1 — behavioral evidence, loop budgets, and traceability. Six work streams landed
+concurrently and were integrated on `main`.
+
+### Added
+
+- **Behavioral eval harness** (`evals/`) — Layer 1 of the evaluation stack, kept strictly
+  separate from Layer 0 structural gates. `evals/run-routing.mjs --check` scores trigger rate
+  against 10 routing CSV fixtures (151 rows, 41 negative controls) with a
+  `--record` mode and an adjacent-skill confusion matrix;
+  `evals/run-behavioral.mjs --all` scores paired with/without-skill runs with a pluggable
+  judge (`evals/judge/grader.md` + `judge.config.json`), deterministic assertion kinds, and a
+  mock fallback that is labelled as smoke-test-only. Both runners are wired into CI and npm.
+  The full protocol is captured in `.agents/skills/skill-dev/references/paired-eval-protocol.md`
+  (fresh session per case, pinned model snapshot, author-in-another-session, held-out split,
+  analyst pass for non-discriminating assertions, record the triple, deterministic before judge).
+  Paired with/without fixtures for `code-review`, `evaluate-skill`, `implement`, `skill-audit`,
+  `to-spec` land as `evals/behavioral/*.json`.
+- **`loop-runner.mjs`** — a typed agent-loop runner: `stepLimit`, `costLimit`, `maxConsecutiveFormatErrors`,
+  `repeatThreshold`, wall-clock budget, degenerate-loop detection (identical action+result repeats,
+  ping-pong), an append-only hashed ledger, escalating nudges (warning → backoff → block), and typed
+  exits (`completed`, `limits-exceeded`, `format-errors`, `repeat-threshold`, `ping-pong`).
+- **`contract-base.xml` ACI rejection policy** — a malformed artifact returns to the agent as a
+  structured reason (`{artifactType, schemaErrors[], attempt}`) rather than a discarded run, citing
+  the SWE-agent agent-computer-interface retry guardrail.
+- **`delivery/loop-budget` skill** — declares step/cost/wall-time budgets up front and ends a loop
+  with a typed verdict instead of a runaway process.
+- **Contract-clause traceability** — `clauses` (stable ids such as `TO-SPEC-1`) plus `reloadPolicy`
+  in SKILL.md frontmatter, a new `validate-traceability.mjs` gate (rules a–f), a CI step, and a
+  `reloadPolicy` of `always` for the four governance skills (`work-item-router`, `ask-to`,
+  `publish-open-pr`, `ship-subissue`). 16 critical skills declare 54 clauses.
+- **`dag-scheduler.mjs`** — ticket DAG scheduling into waves, plus the FLOW over-coupling linter
+  (redundant-transitive-edge detection and fan-in limits).
+- **`context-budget-auditor.mjs`** — measures the L1 (always-loaded) token budget per domain and
+  per skill (11,121 tokens across 256 skills today), with `--compare` against a stored snapshot
+  and a long-description truncation warning.
+- **`cost-ledger.mjs`** + `cost-model.json` — per-skill run, duration, token and estimated cost
+  aggregation that reports **unknown** whenever tokens or tier are unmeasured, never a fabricated
+  zero or price.
+- **`security-scan-skills.mjs`** — a deterministic skill supply-chain scanner (no moderation model
+  in the loop) with a `--strict` mode, a malicious-sample fixture corpus, and a promoter gate.
+  Clean on the real bundle: 0 findings.
+- **`schemas/delegation-brief.schema.json`** + **`foundation/verify-delegation` skill** — a
+  delegation brief declares objective, output format, tool guidance, boundaries, stop condition,
+  effort budget, context isolation, and read-only intent; a verdict must evidence every criterion,
+  record the negative tests run, and run the full suite before it may pass.
+- **OWASP agentic checklist** in `side-effect-auditor` — side effects mapped against the OWASP
+  Agentic Top 10 / Agentic Skills Top 10 before a mutating skill is recommended for promotion.
+- **`skill-promoter` gate** — the deterministic supply-chain scan blocks promotion.
+
+### Changed
+
+- **Version unification**: 2.2.0 in `VERSION`, `package.json`, `registry.yaml` (`version` +
+  `bundleVersion`), and the README badge; `CATALOG.md`, `llms.txt`, `.claude-plugin/marketplace.json`
+  and `site/src/skills.json` regenerated at 244 bundle skills.
+- **`audit-semantics.mjs` load-bearing heuristic** — warns (never fails) when more than half of a
+  skill's hard prohibitions and Guardrails/Rules body lines sit past line 150, because compaction
+  keeps only the start of a re-injected skill body. The five currently affected skills are documented
+  in the validation report below.
+- **`check-all.mjs`** — gained report-only sections for the context budget auditor and cost ledger,
+  and a conditional DAG gate that skips with a stated reason when no default ticket DAG exists.
+- **`skill-lab.mjs`** — `cost` subcommand and the new scripts (`evals:routing:check`,
+  `evals:behavioral:mock`, `audit:context`, `audit:cost`, `scan:skills`, `traceability`).
+- **CI (`.github/workflows/validate.yml`)** — added the routing-fixture check, the strict
+  supply-chain scan, and `evals/**` / `tests/**` path filters alongside the existing
+  traceability step; 22 steps total.
+- **Test contracts aligned with wave 1** — `tests/platform.test.mjs` now fails only on unexpected
+  warning categories instead of any advisory backlog, `tests/delegation-brief.test.mjs` allows the
+  sanctioned `clauses` / `reloadPolicy` frontmatter keys, and `tests/projection-consistency.test.mjs`
+  pins 244 bundle / 256 repo skills.
+
+### Fixed
+
+- Three file-cited clauses (`CODE-REVIEW-1`, `IMPLEMENT-1`, `TO-SPEC-1`) now cite the assertion in
+  their behavioral fixture that enforces them, turning `check-uncited` errors into resolved coverage.
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # status pass, 10/10 gating checks, 0 errors, 73 warnings (68 + 5), 2 report-only, 1 skipped with reason
+node .agents/skills/platform/validate-skills.mjs      # 244 skills, 0 errors, 68 advisory warnings
+node .agents/skills/platform/audit-semantics.mjs      # 256 skills, 5 load-bearing heuristic warnings, 0 errors
+node .agents/skills/platform/security-scan-skills.mjs # clean, 0 findings
+node .agents/skills/platform/validate-traceability.mjs# exit 0 - 54 clauses, 3 resolved, 44 manual, 7 pending, 0 errors
+node evals/run-routing.mjs --check                    # 10 fixtures, 151 rows, 41 negative controls, 0 errors
+node evals/run-behavioral.mjs --all                   # 5 fixtures, 0 broken schema, 0 crashed (mock judge)
+node --test tests/*.test.mjs                          # 6/6 pass
+node --test .agents/skills/platform/tests/*.test.mjs  # 93/93 pass
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60  # 82/100 (skill-creator)
+node .agents/skills/platform/dependency-graph.mjs     # 244 skills, 1 dependency edge, 0 cycles
+node .agents/skills/skill-dev/lockfile-maintenance/scripts/update-lockfile.mjs --dry-run  # clean, 256 entries
+```
+
+Remaining advisory backlog (never blocks the general gate; blocks promotion): 68 medium/high-risk
+skills still lack a `behavioral-fixtures` directory, 5 skills carry the load-bearing-position
+heuristic warning, and 7 `evals/behavioral` fixtures are not yet landed, so their clauses are
+recorded as `pending` warnings by the traceability validator.
+
 ## [2.1.0] - 2026-10-10
+
 
 Wave-0 modernization debt cleanup, integrated on `main`.
 

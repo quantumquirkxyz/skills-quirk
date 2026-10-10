@@ -85,6 +85,20 @@ stopCondition: Review a pull request against the fixed point the user supplies, 
 risk: medium
 trustTier: 3
 maxIterations: 6
+clauses:
+  - id: REVIEW-PR-1
+    text: "Keep the Standards and Spec axes separate; never merge or rerank findings across axes or pick a single winner."
+    check: "evals/behavioral/review-pr.json#REVIEW-PR-1"
+  - id: REVIEW-PR-2
+    text: "Include the exact file and line, the justifying rule or smell, and a concrete explanation of what breaks in every finding."
+    check: "manual"
+  - id: REVIEW-PR-3
+    text: "Publish findings only: never change source files, fix the PR, or merge it."
+    check: "manual"
+  - id: REVIEW-PR-4
+    text: "Documented-standard breaches are hard violations while baseline smells are always judgement calls."
+    check: "manual"
+reloadPolicy: on-trigger
 ---
 
 ## Contract

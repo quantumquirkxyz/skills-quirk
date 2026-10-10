@@ -26,6 +26,17 @@ tags: ["routing"]
 compatibility: []
 approvalRequired: "true"
 approvalFor: ["merge-pull-request", "close-issue", "update-project"]
+clauses:
+  - id: SHIP-SUBISSUE-1
+    text: "Never merge a PR with unresolved Standards or Spec review findings; return to review-fix-loop instead."
+    check: "manual"
+  - id: SHIP-SUBISSUE-2
+    text: "Never mark an issue complete unless the linked issue reference is clear, and never guess the issue number."
+    check: "manual"
+  - id: SHIP-SUBISSUE-3
+    text: "Never delete the branch before the merge has succeeded."
+    check: "manual"
+reloadPolicy: always
 ---
 
 ## Contract

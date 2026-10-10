@@ -1,0 +1,17 @@
+should_trigger,category,prompt
+true,explicit,"use implement on ticket .scratch/eval-harness/issues/01-seams.md — stop at the validated branch, do not open a PR"
+true,explicit,/implement the fix described in issue 42 with the seam choice made explicit before coding
+true,explicit,"implement the spec, one seam only, tracer-bullet slices, commit each slice"
+true,implicit,the csv parser has to exist before the scorer can be scored — build it behind a feature flag and document the flag
+true,implicit,"write the failing test first, then the minimal code, then run the gates — i want the artifact at the end"
+true,implicit,"make the change easy first, then make the easy change: add evals/run-routing.mjs per the plan"
+true,contextual,"repo skills-quirk, branch main, node 24. implement the harness skeleton from the wave-1 plan and run gate-ide plus gate-pre-commit as you go"
+true,contextual,context: the first slice committed green on feat/issue-42-harness. now do the second slice
+true,contextual,"i have no approval to push. implement locally, stop before push-branch, and record the blocked approval in the artifact"
+true,explicit,"implement with qualityGateResults covering gate-ide, gate-pre-commit and gate-ci"
+true,implicit,"if you skip a validation, justify it explicitly in riskRemaining"
+false,negative-control,"use tdd to drive the csv parser test-first, red and green only"
+false,negative-control,"review-pr the branch against origin/main — two axes, findings only"
+false,negative-control,"publish-open-pr: the branch is validated, open the PR now"
+false,negative-control,implement-review-fixes on PR #91 per the remediation plan comment
+false,negative-control,resolving-merge-conflicts: the branch is mid-rebase and conflicted

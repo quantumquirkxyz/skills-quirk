@@ -1,0 +1,11 @@
+{
+  "judgeModel": "claude-sonnet-4-5",
+  "judgeProvider": "anthropic",
+  "apiKeyEnv": "ANTHROPIC_API_KEY",
+  "temperature": 0.1,
+  "pinnedSnapshot": true,
+  "snapshot": "2025-09-01",
+  "endpoint": "https://api.anthropic.com/v1/messages",
+  "maxEvidenceChars": 12000,
+  "notes": "Pinned snapshot for judge calibration. Calibration numbers (TPR/TNR/kappa) belong to this snapshot only; re-calibrate when judgeModel changes. judge.config is read by evals/run-behavioral.mjs --judge; without a key the runner falls back to --mock-judge."
+}

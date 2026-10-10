@@ -1,0 +1,227 @@
+{
+  "id": "to-spec-paired-v1",
+  "skill": "project/to-spec",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A long conversation has settled the shape of the behavioural eval harness. The operator asks for it to be synthesised into a published spec issue without any further interview.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "ok enough discussion \u2014 turn what we agreed in this thread into a spec and publish it. do not interview me again, just synthesise. i want goals, non-goals, acceptance criteria, risks and the seam decisions, with the tracker defaults applied.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "the conversation covered the two-layer eval split, routing CSVs, and the paired protocol",
+    "the canonical work-item metadata shape is docs/reference/agents/work-item-format.md",
+    "the spec template is .agents/skills/project/to-spec/references/spec-template.md",
+    "tracker defaults for this repo are labels spec plus ready-for-agent"
+  ],
+  "grounding": [
+    ".agents/skills/project/to-spec/SKILL.md#Contract (synthesise what is already known; do not reopen discovery interviews)",
+    ".agents/skills/project/to-spec/SKILL.md#Process steps 2-4 (draft against spec-template.md, review against completion criteria, publish)",
+    ".agents/skills/project/to-spec/references/spec-template.md (Goals, Non-Goals, Acceptance Criteria, Risks and Open Questions, Decisions)",
+    "docs/reference/agents/work-item-format.md"
+  ],
+  "costBudget": {
+    "costUsd": 0.07,
+    "durationMs": 300000,
+    "inputTokens": 100000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The skill synthesises instead of interviewing: no new discovery questions are asked of the operator.",
+        "levels": {
+          "4": "the transcript shows zero clarifying questions and the spec is written from the existing conversation",
+          "2": "one or two questions are asked after the spec is otherwise drafted",
+          "0": "an interview is opened and the spec is deferred"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The spec follows the canonical template shape: Goals, Non-Goals, Acceptance Criteria, Risks and Open Questions, and Decisions.",
+        "levels": {
+          "4": "all five sections are present with content in each",
+          "2": "three or four sections are present, or Decisions is empty of seam rationale",
+          "0": "the template shape is not followed"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The published issue carries the tracker defaults and the canonical work-item metadata shape rather than ad hoc labels.",
+        "levels": {
+          "4": "labels spec and ready-for-agent are applied and the milestone or project fields follow work-item-format.md",
+          "2": "defaults are partially applied or the metadata shape is not preserved",
+          "0": "ad hoc labels or no metadata"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The machine-readable spec artifact and the Markdown issue body are emitted together so they cannot drift.",
+        "levels": {
+          "4": "both are emitted and the artifact records the schema version matching the declared artifactType",
+          "2": "one form only, or the versions are not recorded",
+          "0": "no structured artifact"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Non-goals are explicit and specific enough to stop the scope creep that motivated the spec.",
+        "levels": {
+          "4": "each non-goal names a concrete out-of-scope behaviour, including the ones raised and rejected in the conversation",
+          "2": "non-goals are present but generic",
+          "0": "no non-goals"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Acceptance criteria are independently verifiable and concrete enough to guide ticketing and review.",
+        "levels": {
+          "4": "every criterion is observable and testable without interpretation",
+          "2": "criteria are present but some are vague or unverifiable",
+          "0": "no acceptance criteria"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Testing decisions identify the external behaviour and the intended seam, preferring existing seams and naming any new one.",
+        "levels": {
+          "4": "the seam is named, existing-versus-new is stated, and the tested behaviour is external",
+          "2": "a seam is mentioned without the external-behaviour reasoning",
+          "0": "no seam or testing decision"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The spec is ticket-ready: compact, traceable, and free of placeholder text, with gaps recorded in validationNotes instead of being silently smoothed over.",
+        "levels": {
+          "4": "no placeholder text and every unmet criterion appears in validationNotes with what is missing",
+          "2": "mostly clean but one placeholder or an undocumented gap",
+          "0": "placeholder text or undocumented gaps"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Goals",
+          "## Non-Goals",
+          "## Acceptance Criteria",
+          "## Risks and Open Questions",
+          "## Decisions"
+        ],
+        "note": "the canonical template shape from references/spec-template.md"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "ready-for-agent"
+        ],
+        "note": "tracker defaults must be applied"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "seam",
+          "validationNotes"
+        ],
+        "note": "clause TO-SPEC-1: prefer one seam and make the seam choice explicit - seam decisions and validation notes are declared outputs"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "PLACEHOLDER",
+          "<insert"
+        ],
+        "note": "the published spec must not carry placeholder text"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "spec-template.md",
+          "work-item-format.md"
+        ],
+        "note": "the canonical templates must have been consulted"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did the agent synthesise the spec from the existing conversation without opening a new discovery interview?",
+        "levels": {
+          "pass": "no new clarifying questions; the spec was written from what was already known",
+          "fail": "new discovery questions were asked or the spec was deferred"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Are the non-goals explicit and specific enough to stop the scope creep raised in the conversation?",
+        "levels": {
+          "pass": "each non-goal names a concrete rejected behaviour",
+          "fail": "generic or absent non-goals"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-4",
+      "check": {
+        "criterion": "Is the spec ticket-ready and placeholder-free, with any unmet completion criterion recorded in validationNotes?",
+        "levels": {
+          "pass": "no placeholders and gaps are recorded in validationNotes",
+          "fail": "placeholder text present or gaps silently smoothed over"
+        },
+        "strict": false
+      }
+    }
+  ]
+}
