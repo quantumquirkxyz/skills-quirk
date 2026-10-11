@@ -70,7 +70,7 @@ flowchart TD
 | `postgres` | PostgreSQL schema needs sharper constraints |
 | `auth` | Auth boundary needs sharper constraints |
 | `deployment` | Deployment needs sharper constraints |
-| `monitoring-alerting` | Monitoring needs sharper constraints |
+| `observability` | Monitoring needs sharper constraints |
 
 ## Quality Bar
 

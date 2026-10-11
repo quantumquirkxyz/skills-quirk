@@ -498,7 +498,7 @@ node .agents/skills/platform/audit-trail.mjs stats
 ## References
 
 - README.md — Section [ QUALITY ] QUALITY SCORING & SECURITY
-- ../reference/agents/skill-inventory.md — Inventory of 254 canonical skills
+- ../reference/agents/skill-inventory.md — Inventory source pointers and current counts
 - ../../how-to/release.md — Pre/post-release checklist
 - .agents/skills/platform/README.md — Shared platform resources
 - .agents/skills/platform/quality-scorer.mjs — Scorer implementation

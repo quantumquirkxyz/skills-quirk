@@ -17,7 +17,7 @@ export default function SkillCard({ skill }) {
         {skill.maturity && <span className="badge" style={{ background: '#1c1917', color: '#d6d3d1' }}>{skill.maturity}</span>}
       </div>
       <div className="skill-actions">
-        <code className="cmd">npx skills-quirk add {skill.name}</code>
+        <code className="cmd">npx skills-quirk add quirk-skills</code>
       </div>
     </div>
   );

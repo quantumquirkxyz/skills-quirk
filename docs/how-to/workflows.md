@@ -165,7 +165,7 @@ This flow covers release, deployment, and monitoring activities. It is a continu
 flowchart LR
     A[release-management] --> B[deployment]
     B --> C[observability]
-    C --> D[monitoring-alerting]
+    C --> D[observability]
     D --> C
 ```
 
@@ -176,9 +176,9 @@ flowchart LR
 | 1 | `release-management` | Plan the release train and CI handoff | Before each release | Release plan, deployment gates |
 | 2 | `deployment` | Define how the project is built, released, and rolled back | During setup or infrastructure changes | Operational deployment seam |
 | 3 | `observability` | Define logs, metrics, traces, and alerts | During system design | SLIs, SLOs, dashboards, alert rules |
-| 4 | `monitoring-alerting` | Monitor system in production | Continuously | Alerts, runbooks, dashboards |
+| 4 | `observability` | Monitor system in production | Continuously | Alerts, runbooks, dashboards |
 
-> **Note**: This flow is cyclical. `observability` feeds `monitoring-alerting`, which in turn can detect the need for a new `deployment` or `release-management`.
+> **Note**: This flow is cyclical. `observability` detects the need for a new `deployment` or `release-management`.
 
 ---
 
@@ -426,7 +426,7 @@ In addition to the standard feature flow, there are alternative entry points for
 | `postgres` | PostgreSQL schema needs clearer seams | Shape PostgreSQL schema and query decisions |
 | `auth` | Auth boundary needs clearer seams | Design authentication/authorization as an explicit seam |
 | `deployment` | Deployment needs clearer seams | Define how the project is built, released, and rolled back |
-| `monitoring-alerting` | Monitoring needs clearer seams | Production monitoring with alerts and runbooks |
+| `observability` | Monitoring needs clearer seams | Production monitoring with alerts and runbooks |
 
 ### Entry points diagram
 
@@ -490,7 +490,7 @@ flowchart TD
 |---|---|---|
 | **Standard** | `ask-to` → `grill-with-docs` → `to-spec` → `to-tickets` → `implement` → `publish-open-pr` → `review-pr` → `ship-subissue` | Feature merged and delivered |
 | **Bug fix** | `ask-to` → `diagnosing-bugs` → `tdd` → `implement` → `publish-open-pr` → `review-pr` → `ship-subissue` | Bug fixed and delivered |
-| **Operations** | `release-management` → `deployment` → `observability` → `monitoring-alerting` | System operational and monitored |
+| **Operations** | `release-management` → `deployment` → `observability` | System operational and monitored |
 | **Repair** | `review-pr` → `plan-review-fixes` → `implement-review-fixes` → `review-pr` | Clean PR for shipping |
 | **Conflict** | Any flow → `resolving-merge-conflicts` → continue flow | Branch resolved |
 

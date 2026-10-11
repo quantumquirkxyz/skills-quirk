@@ -2,8 +2,9 @@
 
 Shared resources for the repository-local Skills platform.
 
-- `manifest.schema.json` defines the minimum machine-readable contract for a Skill.
-- `artifact.schema.json` defines the shared envelope for cross-skill artifacts.
+- `schemas/implement-schema.json` defines the implementation artifact contract.
+- `schemas/publish-open-pr-schema.json` defines the PR publication artifact contract.
+- `schemas/` contains the remaining cross-skill artifact contracts, including review, handoff, ticket, delegation, and agent-card schemas.
 - `context-packs.md` defines the context-pack concept and read-order rules.
 - `execution-policy.md` defines the side-effect policy surface.
 - `registry.md` defines the canonical registry vocabulary.
@@ -33,5 +34,6 @@ Shared resources for the repository-local Skills platform.
 | --- | --- |
 | `node .agents/skills/platform/check-tool-risk-policy.mjs --json` | The tool-risk policy (`policy/tool-risk.yaml`) evaluated against every shippable skill: unapproved side effects, high-risk skills with approval-gated tools, undocumented untrusted input, MCP exposure allow-lists, allow/deny overlap. It currently reports 84 error-severity findings of real bundle debt, so it reports through the shared manifest instead of gating; its entry keeps the CLI's own exit condition (errors report, warnings never do, because the CLI is not `--strict`). |
 | `node .agents/skills/platform/scripts/generate-adapters.mjs --json` | Adapter drift: all 1484 committed adapters are regenerated in memory and compared byte for byte, and stale generated files are listed. The CLI's dry run always exits 0, so drift is reported through the gate's report-only entry instead of failing it. Repair with `--write`. |
+| `node .agents/skills/platform/fix-compatibility-view.mjs --json` | Compatibility-view drift: `.claude/skills/` is scanned for dangling links and absolute symlink targets. Dry-run mode does not mutate the working tree and normally exits 0, so `check-all.mjs` reports pending repairs without making it a gating subprocess. Repair with `--write`. |
 
 Every report-only entry keeps the command string, exit code, and report shape of its CLI, so the gate's JSON stays comparable with a direct run of the same command.

@@ -50,7 +50,7 @@ function routeWorkItem(description) {
     'review': ['review-pr', 'plan-review-fixes', 'review-fix-loop'],
     'bug': ['diagnosing-bugs', 'tdd', 'implement'],
     'test': ['testing', 'evaluate-skill', 'skill-testing-framework'],
-    'release': ['release-management', 'deployment', 'monitoring-alerting'],
+    'release': ['release-management', 'deployment', 'observability'],
     'skill': ['skill-template-generator', 'skill-testing-framework', 'agent-observability'],
     'setup': ['integration-playground', 'setup-quirk-skills'],
     'project': ['project-development', 'project-viability', 'docs-management', 'codebase-design'],

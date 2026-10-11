@@ -65,17 +65,16 @@ This file classifies active skills by provenance status. Use `../../explanation/
 - `api-design`
 - `api-contracts`
 - `auth`
-- `database-migrations`
+- `db-migrations`
 - `deployment`
 - `release-management`
-- `monitoring-alerting`
 - `observability`
 - `nextjs`
 - `react`
 - `vercel`
 - `postgres`
 - `payments`
-- `queueing`
+- `backend-queues`
 - `search`
 - `mobile`
 

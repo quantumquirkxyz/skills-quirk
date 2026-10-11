@@ -92,7 +92,7 @@ flowchart LR
 flowchart LR
     A[release-management] --> B[deployment]
     B --> C[observability]
-    C --> D[monitoring-alerting]
+    C --> D[observability]
 ```
 
 ## Specialization Rules

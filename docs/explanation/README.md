@@ -5,7 +5,6 @@ Understanding-oriented documentation for quirk Skills. Use these documents to un
 ## Contents
 
 - [quirk Method](quirk-method.md) — Principles, vocabulary, canonical flow, and quality bar
-- [Method](method.md) — Full method documentation
 - [Provenance](provenance.md) — Origin, redesign status, and retired names
 
 ## How to use

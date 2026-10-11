@@ -31,6 +31,9 @@ setup-quirk-skills
 The following names are intentionally not active skills in this repository:
 
 - `setup-quirk-skills` is the active installation skill.
+- `monitoring-alerting` is retired; use `observability` for logs, metrics, traces, alerts, SLIs, SLOs, dashboards, and runbooks.
+- `database-migrations` is retired; use `db-migrations` for database migration planning.
+- `queueing` is retired; use `backend-queues` for queue and background job design.
 - Any external brand references have been removed to preserve this repo's independent standard.
 
 When a retired name represents useful behavior, the behavior has been routed through the active quirk vocabulary instead.

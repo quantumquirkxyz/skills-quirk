@@ -15,5 +15,5 @@ Generated to keep slash-command invocations predictable across IDEs and AI clien
 | `diagnosing-bugs` | `diagnosing-bugs` | `.claude/skills/diagnosing-bugs` |
 
 ## Compatibility rule
-- Use the flat alias only.
-- The bundle no longer publishes categorized aliases.
+- Prefer the flat alias for user-facing slash-command invocations.
+- `.claude/skills/` also includes domain compatibility links for consumers that still inspect categorized views; do not treat those domain links as the primary command surface.

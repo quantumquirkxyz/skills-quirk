@@ -68,4 +68,3 @@ node .agents/skills/platform/skill-evolver.mjs <skill-name>
 ## Questions?
 
 Check `docs/reference/agents/` and `docs/how-to/` for more documentation.
-See `tooling/videos/` for tutorials.

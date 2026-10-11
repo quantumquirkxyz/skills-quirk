@@ -9,8 +9,8 @@
 | Page | Description |
 |---|---|
 | [Home](Home.md) | Main wiki page |
-| [Method](../../explanation/method.md) | The quirk method: principles, vocabulary and canonical flow |
-| [Skills-Catalog](../../reference/agents/skill-inventory.md) | Complete catalog of skills by category |
+| [Method](../../explanation/quirk-method.md) | The quirk method: principles, vocabulary and canonical flow |
+| [Skills-Catalog](../../reference/agents/skill-inventory.md) | Inventory source pointers and current counts |
 | [Installation](../../how-to/installation.md) | Installation and synchronization guide |
 | [Architecture](Architecture.md) | Overview of bundle architecture |
 | [Governance](Governance.md) | Lifecycle, auditing and quality gates |
@@ -22,7 +22,7 @@
 
 `quirk Skills` is a portable workflow system for moving software work from intent to validated delivery. It is designed for repositories where work must move from ambiguous intent to reviewed delivery without losing context, expanding scope, or hiding risks.
 
-The bundle contains **254 canonical skills** distributed across categories such as backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3 and more. It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against Standards and Spec axes separately, repair with an explicit plan, and merge only with clean evidence.
+The bundle contains **258 canonical `SKILL.md` files** distributed across categories such as backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3 and more. It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against Standards and Spec axes separately, repair with an explicit plan, and merge only with clean evidence.
 
 ---
 
@@ -45,7 +45,7 @@ A **skill** is a unit of specialized instruction packaged as a `SKILL.md` file w
 
 | Feature | Description |
 |---|---|
-| **Canonical skills** | 254 skills in `.agents/skills/` with SHA-256 hash lockfile |
+| **Canonical skills** | 258 canonical `SKILL.md` files in `.agents/skills/` with SHA-256 hash lockfile |
 | **Compatibility view** | Symlinks in `.claude/skills/` for consumers expecting that layout |
 | **Local vocabulary** | `CONTEXT.md` defines repo-specific domain terms |
 | **Explicit method** | Flow: clarify → preserve → split → review → repair → send |
@@ -132,8 +132,8 @@ mindmap
 
 | Metric | Value |
 |---|---|
-| **Canonical skills** | 254 |
-| **Main categories** | 20+ (backend, frontend, DevOps, AI/ML, cybersecurity, physics, mathematics, finance, quantitative, Web3, UX, etc.) |
+| **Canonical SKILL.md files** | 258 |
+| **Public projection** | 246 bundle skills excluding 12 platform skills |
 | **Stable skills** | Majority of bundle (see `../../reference/agents/../../reference/agents/skill-inventory.md`) |
 | **Experimental skills** | Sandbox of new skills under evaluation |
 | **Validation scenarios** | 8 scenario fixtures |
@@ -179,7 +179,7 @@ flowchart TD
     Q --> J
     F --> R[deployment]
     R --> S[observability]
-    S --> T[monitoring-alerting]
+    S --> T[observability]
 ```
 
 ### System layers
@@ -304,7 +304,7 @@ flowchart LR
 flowchart LR
     A[release-management] --> B[deployment]
     B --> C[observability]
-    C --> D[monitoring-alerting]
+    C --> D[observability]
 ```
 
 ---
@@ -347,7 +347,7 @@ If an artifact cannot answer these questions, improve the artifact before routin
 
 | Resource | Location |
 |---|---|
-| **Full method** | [../../explanation/method.md](../../explanation/method.md) |
+| **Full method** | [../../explanation/quirk-method.md](../../explanation/quirk-method.md) |
 | **Skills catalog** | [../../reference/agents/../../reference/agents/skill-inventory.md](../../reference/agents/../../reference/agents/skill-inventory.md) |
 | **Skills map** | [../../reference/agents/skills-map.md](../../reference/agents/skills-map.md) |
 | **Adoption guide** | [../../how-to/adoption.md](../../how-to/adoption.md) |
@@ -372,12 +372,12 @@ This wiki is part of the `quirk Skills` bundle. To contribute:
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/status-ready-22c55e?style=for-the-badge&labelColor=0f172a" />
-  <img alt="skills" src="https://img.shields.io/badge/skills-254-facc15?style=for-the-badge&labelColor=0f172a" />
+  <img alt="skills" src="https://img.shields.io/badge/skills-258-facc15?style=for-the-badge&labelColor=0f172a" />
   <img alt="method" src="https://img.shields.io/badge/method-quirk-38bdf8?style=for-the-badge&labelColor=0f172a" />
 </p>
 
 <p align="center">
-  <a href="../../explanation/method.md">Method</a> ·
+  <a href="../../explanation/quirk-method.md">Method</a> ·
   <a href="../../reference/agents/../../reference/agents/skill-inventory.md">Skills</a> ·
   <a href="../../README.md">Repo</a>
 </p>

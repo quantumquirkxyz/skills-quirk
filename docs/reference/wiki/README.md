@@ -9,7 +9,7 @@
 | Page | Description |
 |------|-------------|
 | [Home](Home.md) | General overview, quick start, and system architecture |
-| [Method](../../explanation/method.md) | **quirk method** principles, vocabulary, and quality bar |
+| [Method](../../explanation/quirk-method.md) | **quirk method** principles, vocabulary, and quality bar |
 | [Architecture](Architecture.md) | Repository layers, directory structure, and skills bundle anatomy |
 | [Workflows](../../how-to/workflows.md) | Main flows: standard feature, bug fix, and operations |
 | [Skills](Skills.md) | Skills map, inventory, categories, and Skill Lab |

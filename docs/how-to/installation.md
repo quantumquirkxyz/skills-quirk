@@ -14,7 +14,7 @@ Installation places three fundamental elements in the target repository:
 
 | Element | Description |
 |---|---|
-| **Canonical skills** | 254 skills packaged as SKILL.md with SHA-256 lockfile hashes |
+| **Canonical skills** | 258 canonical `SKILL.md` files with SHA-256 lockfile hashes |
 | **Compatibility view** | Symlinks in .claude/skills/ for consumers expecting that layout |
 | **Method documentation** | CONTEXT.md, docs/reference/agents/, AUTHORSHIP.md, and ADRs to specialize the bundle |
 
@@ -91,7 +91,7 @@ The installer copies the following files and directories to the target repositor
 
 | File / Directory | Purpose |
 |---|---|
-| .agents/skills/ | Canonical skills with SKILL.md and lockfile. Contains 254 skills organized by category. |
+| .agents/skills/ | Canonical skills with SKILL.md and lockfile. Contains 258 canonical `SKILL.md` files organized by domain. Public projections expose 246 bundle skills excluding 12 platform skills. |
 | .claude/skills/ | Compatibility view. Symlinks exposing canonical skills to consumers expecting that layout. |
 | docs/reference/agents/ | Method documentation, provenance, adoption guide, skill templates, stack matrix, etc. |
 | ../reference/adr/README.md | ADR entry point (required for documenting architectural decisions). |
@@ -189,7 +189,7 @@ For bug fixes, diagnosing-bugs is incorporated for problem isolation and tdd for
 flowchart LR
     A[release-management] --> B[deployment]
     B --> C[observability]
-    C --> D[monitoring-alerting]
+    C --> D[observability]
 ```
 
 For release, deployment, and monitoring activities, the operations flow is used with focus on release management, deployment, and observability.
@@ -345,7 +345,7 @@ This shows which files would change without modifying them.
 |---|---|
 | **Adoption guide** | adoption.md |
 | **Bundle architecture** | ../reference/wiki/Architecture.md |
-| **quirk method** | ../explanation/method.md |
+| **quirk method** | ../explanation/quirk-method.md |
 | **Governance** | ../reference/wiki/Governance.md |
 | **Skills catalog** | ../reference/agents/skill-inventory.md |
 | **Skills map** | ../reference/agents/skills-map.md |

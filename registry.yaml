@@ -36,7 +36,6 @@
     "os",
     "physics",
     "platform",
-    "prod",
     "product",
     "professional",
     "project",
@@ -69,7 +68,6 @@
     "quirk",
     "agentskills.io"
   ],
-  "session_memory": ".agents/skills/session/",
   "mcp_support": true,
   "quality": {
     "scoringEnabled": true,

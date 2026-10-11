@@ -42,6 +42,7 @@ flowchart TD
 | [Work item format](work-item-format.md) | Metadata shape for specs, tickets, PRs |
 | [Domain docs](domain.md) | Domain vocabulary layout |
 | [Triage labels](triage-labels.md) | Triage label vocabulary |
+| [Conflict matrix](conflict-matrix.md) | Skill conflict and sequencing reference |
 | [Skills map](skills-map.md) | Full skills inventory |
 | [Skill inventory](skill-inventory.md) | Per-skill status table |
 | [Slash command map](slash-command-map.md) | Flat alias map |
@@ -50,5 +51,6 @@ flowchart TD
 | [Stack matrix](stack-matrix.md) | Stack-specific skills |
 | [Skill style guide](../../how-to/skill-style.md) | Editing and authoring rules |
 | [Release checklist](../../how-to/release.md) | Pre/post-release gates |
+| [Generated views](../../how-to/generated-views.md) | Registry-derived catalogs, projections, and compatibility views |
 | [Multi-agent protocol](multi-agent-protocol.md) | Multi-session handoff rules |
 | [Provenance inventory](provenance-inventory.md) | Provenance records |

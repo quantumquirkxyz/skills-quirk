@@ -50,12 +50,11 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 <summary>What the bundle includes</summary>
 
 - **Setup automation** — `scripts/setup-quirk-skills.sh` to install in target repos
-- **Seed bundle** — `tooling/seed/` with `integration-playground`, `testing-framework`, and foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`
+- **Canonical auxiliary skills** — `.agents/skills/auxiliary/integration-playground`, `.agents/skills/skill-dev/skill-testing-framework`, and foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`
 - **CI validation** — `.github/workflows/validate.yml`
 - **Skill evolution** — `skill-lab.mjs` and `skill-evolver.mjs`
 - **Skills manifest** — `skills.json` for portable bundle definition and `npx skills` compatibility
 - **Work-item routing** — `work-item-router.mjs` for keyword-based skill selection
-- **Video tutorials** — `tooling/videos/README.md`
 
 </details>
 
