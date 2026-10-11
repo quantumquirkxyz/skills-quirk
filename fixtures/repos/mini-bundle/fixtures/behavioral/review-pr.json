@@ -1,0 +1,13 @@
+{
+  "fixtures": [
+    {
+      "id": "mini-bundle-contract-review-pr",
+      "skill": "review-pr",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": ["## Contract", "## Provenance", "## Artifact", "ReviewArtifact", "Standards", "Spec"],
+        "doesNotContain": ["## Operating Contract"]
+      }
+    }
+  ]
+}

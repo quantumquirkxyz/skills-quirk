@@ -8,6 +8,8 @@ import { auditSkills as auditContextBudget } from './context-budget-auditor.mjs'
 import { auditSkills as auditCostLedger } from './cost-ledger.mjs';
 import { auditSkills as auditSpecCompliance } from './validate-spec-compliance.mjs';
 import { auditSkills as auditSkillGraph } from './skill-graph.mjs';
+import { auditSkillTools } from './check-tool-risk-policy.mjs';
+import { auditAdapterDrift } from './scripts/generate-adapters.mjs';
 
 const REPO_ROOT = process.cwd();
 const SKILLS_ROOT = path.join(REPO_ROOT, '.agents', 'skills');
@@ -93,6 +95,9 @@ const checks = [
   ['node', ['.agents/skills/platform/security-scan-skills.mjs', '--strict']],
   ['node', ['evals/run-routing.mjs', '--check']],
   ['node', testArgs(PLATFORM_TESTS_DIR)],
+  ['node', ['.agents/skills/platform/validate-runtime-manifests.mjs', '--check', '--json']],
+  ['node', ['.agents/skills/platform/scripts/run-skill-task.mjs', 'task-lockfile-integrity', '--json']],
+  ['node', ['.agents/skills/platform/scripts/build-skill-index.mjs', '--json']],
 ];
 
 const memoryDir = defaultMemoryDirArg();
@@ -101,9 +106,10 @@ const memoryReportChecks = memoryDir
   : [];
 const memorySkipReason = 'no memory directory at .agents/memory (the layout is a shipped convention, not a runtime store)';
 
-// Report-only audits: run in-process against the one shared manifest. Each
-// entry keeps the command string, exit code, and report shape of its CLI, so
-// the JSON output is unchanged and none of them can flip the gate.
+// Report-only audits: run in-process instead of spawning subprocesses, most
+// of them against the one shared manifest. Each entry keeps the command
+// string, exit code, and report shape of its CLI, so the JSON output is
+// unchanged and none of them can flip the gate.
 const reportOnlyAudits = [
   {
     command: 'node .agents/skills/platform/context-budget-auditor.mjs --json --no-write',
@@ -125,6 +131,23 @@ const reportOnlyAudits = [
     exitCode: () => 0,
     audit: () => auditSkillGraph(manifest, { root: REPO_ROOT }),
   },
+  // The tool-risk checker exposes its real bundle debt (84 error-severity
+  // findings today), so it reports through the manifest instead of failing the
+  // gate, and its entry keeps the CLI's own exit condition (errors fail,
+  // warnings never do: the CLI is not --strict).
+  {
+    command: 'node .agents/skills/platform/check-tool-risk-policy.mjs --json',
+    exitCode: (report) => (report?.counts?.errors ? 1 : 0),
+    audit: () => auditSkillTools(manifest),
+  },
+  // Regenerates the 1484 adapters in memory and compares them with the
+  // committed tree. The CLI always exits 0 in dry-run mode, so drift is
+  // reported here (exit 1 on a non-empty error list) without ever gating.
+  {
+    command: 'node .agents/skills/platform/scripts/generate-adapters.mjs --json',
+    exitCode: (report) => (report?.errors?.length ? 1 : 0),
+    audit: () => auditAdapterDrift(REPO_ROOT),
+  },
 ];
 
 const dagFile = defaultDagFile();
@@ -138,6 +161,14 @@ const rootTestGateChecks = rootTestFiles.length
   ? [['node', testArgs(ROOT_TESTS_DIR)]]
   : [];
 const rootTestSkipReason = `no *.test.mjs files under ${ROOT_TESTS_DIR}/ (root test suite absent)`;
+
+const modeMetadata = {
+  layer: 'Layer 0',
+  mode: 'structural',
+  judge: 'none',
+  modelInvocation: 'none',
+  banner: 'Layer 0 structural gate; no model was invoked',
+};
 
 function run(command, args) {
   return new Promise((resolve) => {
@@ -249,6 +280,7 @@ const skillsCount = structuredChecks.find((check, index) => parsedResults[index]
   ?? structuredChecks.find((check, index) => parsedResults[index]?.skills)?.skills ?? null;
 
 const report = {
+  modeMetadata,
   status: failures.length ? 'fail' : 'pass',
   checks: structuredChecks,
   reportChecks,

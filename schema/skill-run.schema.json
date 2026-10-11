@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quirk Skill Run Record",
+  "description": "One observability event emitted while a quirk skill runs: routing, context loading, tool calls, artifacts, gates, verification, handoffs, failures, and run completion. Append-only sink: .agents/skills/platform/skill-runs/<YYYY-MM-DD>.jsonl.",
+  "type": "object",
+  "required": ["schemaVersion", "traceId", "spanId", "ts", "event", "skill"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Version of the Skill Run Record format."
+    },
+    "traceId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "UUID shared by every event of one skill run."
+    },
+    "spanId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "UUID of this event's span; unique inside its trace."
+    },
+    "parentSpanId": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "UUID of the enclosing span, or null for the root event of the trace."
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of when the event was emitted."
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "route.started",
+        "route.selected",
+        "context.loaded",
+        "tool.called",
+        "artifact.created",
+        "gate.executed",
+        "verification.result",
+        "handoff.created",
+        "failure.classified",
+        "run.completed"
+      ],
+      "description": "Lifecycle event type; the replay order is defined in replay-skill-run.mjs."
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._/-]*$",
+      "maxLength": 120,
+      "description": "Skill identity as <domain>/<skill> (for example delivery/review-pr)."
+    },
+    "skillVersion": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Version of the invoked skill body."
+    },
+    "promptVersion": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Version of the prompt or instruction set the skill ran under."
+    },
+    "inputHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 of the canonicalized skill input; lets a run be replayed without storing the input."
+    },
+    "model": {
+      "type": "object",
+      "required": ["provider", "model", "tier"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "maxLength": 64 },
+        "model": { "type": "string", "maxLength": 128 },
+        "tier": { "type": "string", "enum": ["reasoning", "code", "fast", "router"] }
+      },
+      "description": "Model that produced the run, when a model was invoked."
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 500 },
+      "description": "Why this event happened (routing reasons, decision notes, matched signals)."
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "maxLength": 120 },
+          "inputHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "outputHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "durationMs": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "description": "Tool calls made during this span; never carries tool arguments or findings."
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "maxLength": 400 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "description": "Artifacts produced or read during this span, referenced by path plus content hash."
+    },
+    "sideEffects": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 120 },
+      "description": "Declared side effects of the run (for example write-files); the audit vocabulary, never an execution log."
+    },
+    "durationMs": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Wall-clock duration of the span this event closes."
+    },
+    "cost": {
+      "type": "object",
+      "required": ["inputTokens", "outputTokens", "costUsd"],
+      "additionalProperties": false,
+      "properties": {
+        "inputTokens": { "type": "integer", "minimum": 0 },
+        "outputTokens": { "type": "integer", "minimum": 0 },
+        "costUsd": { "type": "number", "minimum": 0 }
+      },
+      "description": "Token and monetary cost attributed to the run so far."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["pass", "fail", "blocked", "skipped"],
+      "description": "Outcome of the run once it is decided; absent while the run is still open."
+    },
+    "failureMode": {
+      "type": ["string", "null"],
+      "maxLength": 200,
+      "description": "Classified failure mode for failure.classified and for a terminal run that did not pass; null when there is none."
+    }
+  }
+}

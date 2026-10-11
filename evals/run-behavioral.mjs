@@ -20,7 +20,7 @@
  *
  * Deterministic assertions run locally. Judge assertions go through the pluggable judge
  * interface (evals/judge/grader.md + evals/judge/judge.config.json); with no API key present
- * the runner falls back to --mock-judge and says so.
+ * the runner falls back to --mock-judge and says so loudly.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -41,6 +41,19 @@ const DETERMINISTIC_KINDS = new Set([
   'artifact_min_table_rows', 'artifact_json_has_fields', 'transcript_contains_all',
   'transcript_contains_any', 'transcript_tool_called', 'transcript_tool_not_called',
 ]);
+
+function modeMetadata(judge) {
+  const mock = judge.mode === 'mock';
+  return {
+    layer: 'Layer 1',
+    mode: 'behavioral-scorer',
+    judge: mock ? 'mock' : 'real',
+    judgeMode: judge.mode,
+    modelInvocation: 'none',
+    banner: `Layer 1 behavioral scorer; judge: ${mock ? 'mock' : 'real'}; no model was invoked by this runner`,
+    note: 'This runner scores recorded or synthetic transcripts; it does not run an agent model.',
+  };
+}
 
 /* ------------------------------------------------------------------ args */
 
@@ -239,7 +252,7 @@ function resolveJudgeMode(config, requestedMock) {
   if (requestedMock) return { mode: 'mock', reason: '--mock-judge requested', config };
   const envName = config.apiKeyEnv ?? 'JUDGE_API_KEY';
   const key = process.env[envName];
-  if (!key || key.trim() === '') return { mode: 'mock', reason: `$${envName} is not set in the environment, falling back to the mock judge`, config };
+  if (!key || key.trim() === '') return { mode: 'mock', reason: `${envName} is not set in the environment; Phase 1 fallback is mock judge (no model was invoked)`, config };
   if (!config.pinnedSnapshot) console.error(`warn: judge config is not pinned to a snapshot; calibration numbers are void`);
   return { mode: 'live', reason: `judge ${config.judgeProvider}/${config.judgeModel}`, config };
 }
@@ -837,10 +850,13 @@ export function renderMarkdown(report) {
 
   lines.push(`# Behavioral eval report - ${report.fixture.skill}`);
   lines.push('');
+  lines.push(`> ${report.modeMetadata.banner}.`);
+  lines.push('');
   lines.push(`- fixture: \`${report.fixture.file}\``);
   lines.push(`- scenario: ${report.fixture.scenario}`);
   lines.push(`- trials: ${report.fixture.trials} (recorded ${report.with.trials} with-skill${baselineTrials === 0 ? ', no baseline transcript supplied' : `, ${baselineTrials} baseline`})`);
-  lines.push(`- judge: ${report.judge.mode}${report.judge.mock ? ' (mock - not evidence)' : ''} ${report.judge.reason}`);
+  lines.push(`- layer: ${report.modeMetadata.layer}`);
+  lines.push(`- judge: ${report.modeMetadata.judge}${report.judge.mock ? ' (mock - not evidence)' : ''} ${report.judge.reason}`);
   lines.push(`- model snapshot: ${report.modelSnapshot ?? 'not recorded'}`);
   lines.push(`- failed assertions: ${failingAssertionCount} across ${failing.length}/${report.with.assertions.length} assertion(s)`);
   lines.push(`- pass rate: ${fmtRate(report.with.passRate)} (${fmtCi(report.with.passRateCi95)} CI95)${report.baseline ? `; baseline ${fmtRate(report.baseline.passRate)} (${fmtCi(report.baseline.passRateCi95)} CI95)` : ''}`);
@@ -976,6 +992,7 @@ export async function runFixture({ fixture, file, withTranscript, baselineTransc
 
   const report = {
     generatedAt: new Date().toISOString(),
+    modeMetadata: modeMetadata(judge),
     fixture: {
       file: path.relative(repoRoot, file),
       id: fixture.id ?? null,
@@ -984,7 +1001,7 @@ export async function runFixture({ fixture, file, withTranscript, baselineTransc
       scenario: fixture.scenario,
       trials: fixture.trials,
     },
-    judge: { mode: judge.mode, mock: judge.mode === 'mock', reason: judge.reason, model: judge.config.judgeModel, snapshot: judge.config.snapshot ?? null },
+    judge: { mode: judge.mode, mock: judge.mode === 'mock', real: judge.mode === 'live', reason: judge.reason, model: judge.config.judgeModel, snapshot: judge.config.snapshot ?? null },
     modelSnapshot: withTranscript.trials.find((trial) => trial.model)?.model ?? null,
     with: withAggregate,
     baseline: baselineAggregate,
@@ -1139,6 +1156,7 @@ async function modeAll() {
   const judgeConfig = await loadJudgeConfig(args['judge-config']);
   const requestedMock = !args.judge;
   const judge = resolveJudgeMode(judgeConfig, requestedMock);
+  const metadata = modeMetadata(judge);
 
   const rows = [];
   let schemaBroken = 0;
@@ -1205,13 +1223,15 @@ async function modeAll() {
     }
   }
 
+  console.log(metadata.banner);
+  console.log('');
   for (const row of rows) {
     const label = row.status === 'ok' ? 'ok  ' : row.status === 'broken' ? 'FAIL' : 'FAIL';
     console.log(`${label} ${row.file}  ${row.detail}`);
   }
   console.log('');
   console.log(`behavioural fixtures: ${rows.length} file(s), ${schemaBroken} broken schema, ${crashed} crashed`);
-  console.log(`judge mode: ${judge.mode} (${judge.reason}) — mock output is a scorer smoke test, never evidence about a model or a skill`);
+  console.log(`judge mode: ${metadata.judge} (${judge.reason}) — ${judge.mode === 'mock' ? 'mock output is a scorer smoke test, never evidence about a model or a skill; no model was invoked' : 'judge endpoint used for grading only; no agent model was invoked by this runner'}`);
   console.log(schemaBroken + crashed === 0 ? 'status: pass' : 'status: fail');
   process.exit(schemaBroken + crashed === 0 ? 0 : 1);
 }

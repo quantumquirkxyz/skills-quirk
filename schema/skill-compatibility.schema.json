@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quirk Skill Portability Matrix",
+  "description": "Portable compatibility matrix for one bundle skill: which frontmatter fields travel across agent harnesses, which are runtime-specific, and whether the skill stays harness-safe.",
+  "type": "object",
+  "required": ["skill", "portable", "runtimeSpecific", "harnessSafe", "unknownFields"],
+  "properties": {
+    "skill": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*(?:/[a-z0-9][a-z0-9-]*)+$",
+      "maxLength": 120,
+      "description": "Bundle skill identity as <domain>/<skill> (for example delivery/review-pr)."
+    },
+    "portable": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Frontmatter field names that carry the same meaning in every agent harness, per the Agent Skills specification (agentskills.io)."
+    },
+    "runtimeSpecific": {
+      "type": "object",
+      "description": "Frontmatter field names that only one runtime interprets, keyed by runtime name.",
+      "required": ["claude-code", "quirk", "openai-agents", "mcp"],
+      "properties": {
+        "claude-code": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Fields consumed by the Claude Code harness (clauses, reloadPolicy, compatibility, approvalFor)."
+        },
+        "quirk": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Fields consumed by the quirk bundle runtime (fixturesPath, evaluators, maxIterations, maturity, diataxis)."
+        },
+        "openai-agents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Fields consumed by an OpenAI Agents style runtime; empty when the skill declares none."
+        },
+        "mcp": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Fields consumed when the skill is exposed over the Model Context Protocol; empty when the skill declares none."
+        }
+      },
+      "additionalProperties": false
+    },
+    "harnessSafe": {
+      "type": "boolean",
+      "description": "True when the skill keeps a well-defined contract after the runtime-specific fields are stripped."
+    },
+    "unknownFields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Frontmatter field names recognized by no group; decoration that a portable consumer must ignore."
+    }
+  },
+  "additionalProperties": false
+}

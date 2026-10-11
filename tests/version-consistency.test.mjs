@@ -14,6 +14,11 @@ function readPackageVersion() {
   return pkg.version;
 }
 
+function readSkillsJsonVersions() {
+  const skills = JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'skills.json'), 'utf8'));
+  return { version: skills.version, bundleVersion: skills.bundleVersion };
+}
+
 function readRegistryBundleVersion() {
   const text = fs.readFileSync(path.join(REPO_ROOT, 'registry.yaml'), 'utf8');
   try {
@@ -42,17 +47,21 @@ function readReadmeBadgeVersion() {
 
 // scripts/sync-registry.mjs falls back to the inner `version` field when
 // `bundleVersion` is absent (registry.bundleVersion || registry.version), so
-// both fields are load-bearing and both are pinned to VERSION here.
-test('VERSION, package.json, registry.yaml and the README badge agree on one version', () => {
+// both fields are load-bearing and both are pinned to VERSION here. The root
+// skills.json projection carries the same pair for external bundle consumers.
+test('VERSION, package.json, registry.yaml, skills.json and the README badge agree on one version', () => {
   const versionFile = readVersionFile();
   const packageVersion = readPackageVersion();
   const registryVersion = readRegistryBundleVersion();
   const registryInnerVersion = readRegistryVersion();
+  const skillsJsonVersions = readSkillsJsonVersions();
   const badgeVersion = readReadmeBadgeVersion();
 
   assert.match(versionFile, /^\d+\.\d+\.\d+$/, `VERSION must be semver, got "${versionFile}"`);
   assert.equal(packageVersion, versionFile, `package.json version (${packageVersion}) must match VERSION (${versionFile})`);
   assert.equal(registryVersion, versionFile, `registry.yaml bundleVersion (${registryVersion}) must match VERSION (${versionFile})`);
   assert.equal(registryInnerVersion, versionFile, `registry.yaml inner version (${registryInnerVersion}) must match VERSION (${versionFile})`);
+  assert.equal(skillsJsonVersions.version, versionFile, `skills.json version (${skillsJsonVersions.version}) must match VERSION (${versionFile})`);
+  assert.equal(skillsJsonVersions.bundleVersion, versionFile, `skills.json bundleVersion (${skillsJsonVersions.bundleVersion}) must match VERSION (${versionFile})`);
   assert.equal(badgeVersion, versionFile, `README.md version badge (${badgeVersion}) must match VERSION (${versionFile})`);
 });

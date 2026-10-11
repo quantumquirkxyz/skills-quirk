@@ -10,6 +10,7 @@ __pycache__/
 *.pyc
 *.zip
 .agents/skills/platform/traces/*.jsonl
+.agents/skills/platform/skill-runs/*.jsonl
 .agents/skills/platform/state/*.json
 .agents/skills/platform/checkpoints/*.jsonl
 .scratch/

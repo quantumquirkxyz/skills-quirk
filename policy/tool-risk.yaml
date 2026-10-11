@@ -1,0 +1,244 @@
+# Tool risk policy for quirk Skills
+#
+# Declares the risk class of every tool an agent runtime can hand to a skill.
+# Runtime manifests (.agents/skills/platform/manifests/) derive their
+# execution.tools allow and deny lists from skill frontmatter; this policy is
+# the vocabulary those lists are read against, and the rules below are the
+# invariants a skill manifest must satisfy before it may run.
+#
+# The file is plain block-style YAML on purpose: no anchors, no flow
+# collections, no multi-line scalars, one nesting level per section, so a
+# dependency-free parser can read it without a YAML library.
+
+version: 1
+generatedFor: skills-quirk
+
+# Fail closed: a tool that this file does not declare is treated as denied.
+defaultTier: deny
+
+# Risk classes a declared tool can belong to.
+tiers:
+  read-only:
+    description: Observe state without changing it.
+  local-mutating:
+    description: Change local files, processes, or containers.
+  network:
+    description: Reach a remote endpoint or import remote content.
+  orchestration:
+    description: Coordinate other agents, worktrees, messages, or skills.
+
+tools:
+  - name: Read
+    tier: read-only
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: Grep
+    tier: read-only
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: Glob
+    tier: read-only
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: LSP
+    tier: read-only
+    risk: low
+    reversible: true
+    requiresApproval: false
+    notes: Language-server queries and diagnostics; no write path.
+
+  - name: Bash
+    tier: local-mutating
+    risk: high
+    reversible: false
+    requiresApproval: true
+    notes: Shell execution; pair with a command allowlist.
+
+  - name: PowerShell
+    tier: local-mutating
+    risk: high
+    reversible: false
+    requiresApproval: true
+    notes: Windows shell execution; same command allowlist discipline as Bash.
+
+  - name: Edit
+    tier: local-mutating
+    risk: medium
+    reversible: true
+    requiresApproval: false
+
+  - name: Write
+    tier: local-mutating
+    risk: medium
+    reversible: true
+    requiresApproval: false
+
+  - name: NotebookEdit
+    tier: local-mutating
+    risk: medium
+    reversible: true
+    requiresApproval: false
+    notes: Notebook cell edits; same reversibility posture as Edit.
+
+  - name: WebFetch
+    tier: network
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    untrustedInput: true
+
+  - name: WebSearch
+    tier: network
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    untrustedInput: true
+
+  - name: TodoWrite
+    tier: local-mutating
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: Skill
+    tier: orchestration
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    notes: Loads another skill's instructions into the active context.
+
+  - name: ToolSearch
+    tier: orchestration
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: Task
+    tier: orchestration
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    notes: Spawns a sub-agent; named Agent in some runtimes.
+
+  - name: Agent
+    tier: orchestration
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    notes: Alias of Task in Claude Code style runtimes.
+
+  - name: EnterWorktree
+    tier: local-mutating
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: ExitWorktree
+    tier: local-mutating
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: Monitor
+    tier: orchestration
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: TaskStop
+    tier: orchestration
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    notes: Cancels a running task; work already performed is not rolled back.
+
+  - name: SendMessage
+    tier: orchestration
+    risk: medium
+    reversible: false
+    requiresApproval: false
+    notes: Delivers a message to another participant; delivery cannot be recalled.
+
+  - name: Artifact
+    tier: orchestration
+    risk: low
+    reversible: true
+    requiresApproval: false
+
+  - name: "mcp__*"
+    isPattern: true
+    tier: network
+    risk: high
+    reversible: false
+    requiresApproval: true
+    untrustedInput: true
+    notes: Any tool served by an MCP server; concrete scope depends on the server, so resolve per server.
+
+  - name: github
+    tier: network
+    risk: high
+    reversible: false
+    requiresApproval: true
+    untrustedInput: true
+    credentials: true
+    notes: MCP tool set holding stored GitHub credentials; external side effects on issues, PRs, and comments.
+
+  - name: docker
+    tier: local-mutating
+    risk: high
+    reversible: false
+    requiresApproval: true
+    notes: Container and image lifecycle; irreversible in practice because removed images and volumes cannot be restored.
+
+# MCP exposure allow-list, keyed by the trust tier of the exposing skill.
+# A tier-4 skill is never exposed over MCP without an explicit entry here.
+mcpExposure:
+  allowedRiskClassesByTrustTier:
+    1: [read-only]
+    2: [read-only]
+    3: [read-only, local-mutating]
+    4: []
+  requireExplicitAllowListFromTrustTier: 4
+  notes: Class names refer to the tiers section above, not to individual servers.
+
+rules:
+  - id: mutating-skill-must-declare-side-effects
+    statement: A skill whose sideEffects list is non-empty must declare approvalRequired true, or record a written justification for why approval is unnecessary.
+    check: frontmatter
+    severity: error
+
+  - id: high-risk-skill-needs-approval-for-irreversible-tools
+    statement: A skill with risk high may not allow an irreversible tool (Bash, PowerShell, docker, github, or any mcp__ pattern) without approvalRequired true.
+    check: manifest-tools
+    severity: error
+
+  - id: untrusted-input-needs-documented-handling
+    statement: A skill whose allow list carries a tool with untrustedInput true (WebFetch, WebSearch, mcp__ patterns, github) must document in its body how fetched content is treated as untrusted.
+    check: skill-body
+    severity: error
+
+  - id: mcp-tools-follow-trust-tier-allow-list
+    statement: A skill exposing MCP tools must stay inside the mcpExposure allow-list for its trust tier.
+    check: manifest-tools
+    severity: error
+
+  - id: tier4-not-exposed-over-mcp-without-allow-list
+    statement: A skill with trustTier 4 or higher is not exposed over MCP without an explicit allow-list entry.
+    check: mcp-server
+    severity: error
+
+  - id: unknown-tools-are-denied
+    statement: A tool that this policy does not declare is denied by defaultTier deny, so a manifest may only allow tools declared above.
+    check: manifest-tools
+    severity: error
+
+  - id: allow-and-deny-lists-stay-disjoint
+    statement: A manifest whose allow and deny lists share a tool name is inconsistent and must be regenerated.
+    check: manifest-tools
+    severity: error
