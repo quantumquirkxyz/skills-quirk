@@ -57,13 +57,13 @@ clauses:
     check: "evals/behavioral/work-item-router.json#WORK-ITEM-ROUTER-1"
   - id: WORK-ITEM-ROUTER-2
     text: "Route to the thinnest downstream skill that can finish the work, and never draft the routed artifact inside the router."
-    check: "manual"
+    check: evals/behavioral/work-item-router.json#WORK-ITEM-ROUTER-2
   - id: WORK-ITEM-ROUTER-3
     text: "Preserve the canonical work-item metadata shape from docs/reference/agents/work-item-format.md instead of ad hoc tracker metadata."
-    check: "manual"
+    check: evals/behavioral/work-item-router.json#WORK-ITEM-ROUTER-3
   - id: WORK-ITEM-ROUTER-4
     text: "Return the routing decision as structured output in the current response and emit a trace with the selected transition and next skill."
-    check: "manual"
+    check: evals/behavioral/work-item-router.json#WORK-ITEM-ROUTER-4
 reloadPolicy: always
 ---
 

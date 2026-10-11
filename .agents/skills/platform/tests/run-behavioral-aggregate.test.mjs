@@ -280,7 +280,7 @@ test('--all prints the true failure count for every fixture', () => {
   assert.equal(result.status, 0, result.stdout + result.stderr);
 
   const rows = result.stdout.split('\n').filter((line) => line.startsWith('ok  ') || line.startsWith('FAIL'));
-  assert.equal(rows.length, 12, `expected 12 fixture rows, saw:\n${result.stdout}`);
+  assert.equal(rows.length, 20, `expected 20 fixture rows, saw:\n${result.stdout}`);
   for (const row of rows) {
     const match = row.match(/(\d+) trials, (\d+) assertions \((\d+) failed\)/);
     assert.ok(match, `row is missing the failure count: ${row}`);
@@ -291,7 +291,7 @@ test('--all prints the true failure count for every fixture', () => {
     // Every shipped fixture passes its mock assertions, so the truthful count is 0.
     assert.equal(Number(failed), 0, row);
   }
-  assert.match(result.stdout, /behavioural fixtures: 12 file\(s\), 0 broken schema, 0 crashed/);
+  assert.match(result.stdout, /behavioural fixtures: 20 file\(s\), 0 broken schema, 0 crashed/);
   assert.match(result.stdout, /status: pass/);
 });
 
@@ -357,7 +357,7 @@ test('--all reports a non-zero failure count when a fixture asserts missing cont
 
 test('every shipped behavioural fixture passes in mock mode with zero failures', () => {
   const files = fs.readdirSync(FIXTURE_DIR).filter((name) => name.endsWith('.json')).sort();
-  assert.equal(files.length, 12, 'the fixture count is pinned by the wave-1 contract');
+  assert.equal(files.length, 20, 'the fixture count is pinned by the wave-1 contract');
   for (const name of files) {
     const fixture = JSON.parse(fs.readFileSync(path.join(FIXTURE_DIR, name), 'utf8'));
     const assertions = fixture.assertions ?? [];

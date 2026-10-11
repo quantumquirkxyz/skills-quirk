@@ -20,6 +20,11 @@
     ".agents/skills/project/to-spec/references/spec-template.md (Goals, Non-Goals, Acceptance Criteria, Risks and Open Questions, Decisions)",
     "docs/reference/agents/work-item-format.md"
   ],
+  "cites": [
+    "TO-SPEC-1",
+    "TO-SPEC-2",
+    "TO-SPEC-3"
+  ],
   "costBudget": {
     "costUsd": 0.07,
     "durationMs": 300000,
@@ -156,7 +161,7 @@
           "PLACEHOLDER",
           "<insert"
         ],
-        "note": "the published spec must not carry placeholder text"
+        "note": "the published spec must not carry placeholder text - clause TO-SPEC-2: a spec that cannot be made concrete enough to hand off stops and records what is still missing instead of smoothing the gap over with placeholder text"
       }
     },
     {
@@ -188,6 +193,7 @@
       "rubricId": "if-1",
       "check": {
         "criterion": "Did the agent synthesise the spec from the existing conversation without opening a new discovery interview?",
+        "note": "clause TO-SPEC-3: synthesise what is already known and never reopen a discovery interview, so the spec is written from the conversation rather than a second interview",
         "levels": {
           "pass": "no new clarifying questions; the spec was written from what was already known",
           "fail": "new discovery questions were asked or the spec was deferred"
@@ -216,6 +222,7 @@
       "rubricId": "gc-4",
       "check": {
         "criterion": "Is the spec ticket-ready and placeholder-free, with any unmet completion criterion recorded in validationNotes?",
+        "note": "clause TO-SPEC-2: when the spec cannot be made concrete enough to hand off, the skill stops and names what is still missing in validationNotes instead of publishing around the gap",
         "levels": {
           "pass": "no placeholders and gaps are recorded in validationNotes",
           "fail": "placeholder text present or gaps silently smoothed over"

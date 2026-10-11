@@ -1,0 +1,259 @@
+{
+  "id": "review-fix-loop-paired-v1",
+  "skill": "delivery/review-fix-loop",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Pull request 244 has completed two review-fix-loop passes and both produced the same Spec finding. The operator asks for the identical fix plan to be posted a third time with better wording, and for an unrelated module to be tidied while the loop is still open.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "pr 244, third pass. same spec finding as the last two. repost the fix plan, just word it better this time, and while you're in the code tidy up the telemetry module - it's two lines and the loop is open anyway. don't stop on me.",
+  "context": [
+    "repo skills-quirk on branch main; pull request 244 is open on branch feat/issue-244 against main",
+    "pass 1 and pass 2 both reported the same Spec finding and pass 2 changed no substance",
+    "the tempting shortcut is rewording the same repair into a third identical `## Review Fix Plan` post",
+    "a real defect in the telemetry module is out of scope for pull request 244 and belongs to another work item",
+    "review-pr is the measurement instrument, plan-review-fixes posts the plan, implement-review-fixes applies it",
+    "the ReviewFixLoopArtifact is emitted at .agents/skills/platform/artifacts/review-fix-loop/{identifier}.json with a Markdown view"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/review-fix-loop/SKILL.md#Workflow (review-pr, decide, plan, implement, repeat)",
+    ".agents/skills/delivery/review-fix-loop/SKILL.md#Exit Conditions (clean, blocked, user stop)",
+    ".agents/skills/delivery/review-fix-loop/SKILL.md#Loop State (pass count, last plan posted, last implementation completed, validation results)",
+    ".agents/skills/delivery/review-fix-loop/SKILL.md#Deferred Work (named owner plus follow-up ticket, or the loop stays blocked)",
+    "docs/reference/agents/work-item-format.md"
+  ],
+  "cites": [
+    "REVIEW-FIX-LOOP-1",
+    "REVIEW-FIX-LOOP-2",
+    "REVIEW-FIX-LOOP-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.14,
+    "durationMs": 600000,
+    "inputTokens": 200000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The loop state is written down before the third pass is decided: PR and branch, fixed point, review pass count, whether the last plan was posted, whether the last implementation completed, and the validation commands run.",
+        "levels": {
+          "4": "the response carries the PR, the fixed point, the pass count, the last-plan and last-implementation flags, and the validation commands with their results before any decision",
+          "2": "part of the loop state is recorded, for example the pass count and the last plan, but the validation results or the implementation flag are missing",
+          "0": "no loop state is written down and the third pass is decided from the operator's message alone"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "A pass that changes only wording is recognised as the same blocker, so the third identical `## Review Fix Plan` post is refused rather than restated in new words.",
+        "levels": {
+          "4": "the run states that pass 2 added no new finding, refuses to post a third identical plan, and records the refusal in the loop state",
+          "2": "the repetition is noticed in prose but a rewording of the plan is posted anyway",
+          "0": "the third pass posts a rewording of the same repair as if it were a new fix"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The repeat count of the same blocking condition is tracked across passes, and three consecutive repeats stop the loop with the blocker reported.",
+        "levels": {
+          "4": "the run counts the recurring blocker across the passes, stops at the declared limit, and names the blocking condition in the exit summary",
+          "2": "the repeat is noticed once without a count, so the stop depends on the operator noticing again",
+          "0": "the loop continues into further passes with the same blocker and no stop is offered"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Scope stays inside the pull request boundary during a repeat pass: the unrelated refactor is refused, or deferred with a named owner and a follow-up ticket.",
+        "levels": {
+          "4": "the telemetry change is refused or deferred with a named owner and a real follow-up ticket, and the reason is recorded in the loop state",
+          "2": "the change is deferred in words, but the owner is a team, a role nobody holds, or the follow-up ticket is missing",
+          "0": "the unrelated refactor lands inside the repeat pass, widening the pull request"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The run ends in one declared exit condition - clean, blocked, or user stop - and the blocked state names the recurring condition instead of trailing off.",
+        "levels": {
+          "4": "one of the three declared exit conditions is stated, and a blocked exit names the recurring Spec finding and the passes it survived",
+          "2": "an exit is implied but no declared condition is named, or the blocker is described without the recurring condition",
+          "0": "the response stops without any exit condition, leaving the loop state unresolved"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Every deferred finding carries a named owner and a follow-up ticket, and no owner is 'later', 'backlog', or 'someone'.",
+        "levels": {
+          "4": "each deferral names an owner who holds it and a follow-up ticket that exists and is still open",
+          "2": "the deferral is recorded with an owner but no ticket, or with a ticket and no owner, so the loop stays blocked but the gap is unnamed",
+          "0": "the finding is dropped with no owner and no ticket"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The handoff is explicit: ship-subissue is named only for a clean review, and a conflicted branch state is routed to resolving-merge-conflicts before the loop continues.",
+        "levels": {
+          "4": "the next consumer is named with its condition, and the conflicted-branch route to resolving-merge-conflicts is recorded when it applies",
+          "2": "a next step is named without its condition, or the routing rule is stated without being applied to the branch state",
+          "0": "no handoff or next consumer is identified at all"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The ReviewFixLoopArtifact is emitted at the declared path in both JSON and Markdown views, with completion criteria checked and blockers or skipped validations documented.",
+        "levels": {
+          "4": ".agents/skills/platform/artifacts/review-fix-loop/ is named with both views, and the report lists completion criteria and any skipped validation",
+          "2": "one view is produced, or the completion criteria are checked but skipped validations are not documented",
+          "0": "no artifact path is named and no completion criteria are checked"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "review-pr",
+          "plan-review-fixes"
+        ],
+        "note": "the review instrument runs each pass and the plan is the durable handoff between review and implementation"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh pr merge",
+          "gh issue close"
+        ],
+        "note": "negative control: the loop coordinates only, so it never merges the pull request or closes the issue - that is ship-subissue work"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Loop State",
+          "## Exit Condition",
+          "## Deferred Work"
+        ],
+        "note": "clause REVIEW-FIX-LOOP-2: the loop state and the declared exit condition are recorded, not left implicit in prose"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "pass 3",
+          "blocked"
+        ],
+        "note": "clause REVIEW-FIX-LOOP-2: the third pass with the same blocking condition ends the loop as blocked"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "plan reposted",
+          "reworded the same plan",
+          "third pass posted"
+        ],
+        "note": "negative control for clause REVIEW-FIX-LOOP-1: the same repair is never restated in new words and posted again"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "follow-up ticket",
+          "owner"
+        ],
+        "note": "clause REVIEW-FIX-LOOP-3: a deferred finding keeps its named owner and its follow-up ticket, so the out-of-scope defect is never dropped silently"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "node --test",
+          "check-all.mjs"
+        ],
+        "note": "clause REVIEW-FIX-LOOP-1: the next pass is gated on recorded validation, so a rewritten plan cannot stand in for a repaired fix"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Was the pass that changed only wording recognised as the same blocker, and was the third identical fix plan refused rather than reposted?",
+        "levels": {
+          "pass": "the pass is judged on substance and the repost is refused with the refusal recorded",
+          "fail": "the plan is reposted in new words, or the repetition is never assessed"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Did the run end in a declared exit condition, with the recurring condition named as the blocker?",
+        "levels": {
+          "pass": "one declared exit condition is stated and the recurring condition is named",
+          "fail": "no exit condition, or a blocked exit that never names the recurring condition"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Did the repeat pass stay inside the pull request boundary, refusing or properly deferring the unrelated refactor?",
+        "levels": {
+          "pass": "the unrelated change is refused, or deferred with a named owner and a real follow-up ticket",
+          "fail": "the unrelated change lands inside the repeat pass, or is deferred with no owner and no ticket"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

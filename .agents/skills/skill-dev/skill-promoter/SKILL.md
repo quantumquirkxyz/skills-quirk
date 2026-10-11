@@ -30,13 +30,13 @@ approvalFor: ["write-files", "create-symlink", "update-lockfile"]
 clauses:
   - id: SKILL-PROMOTER-1
     text: "Block promotion while any validate-skills.mjs warning is open: no canonical directory, no .claude symlink, no lockfile update."
-    check: "manual"
+    check: "evals/behavioral/skill-promoter.json#SKILL-PROMOTER-1"
   - id: SKILL-PROMOTER-2
     text: "Resume promotion only after every warning is resolved and the validator re-runs clean, or an explicit human sign-off per warning is recorded."
-    check: "manual"
+    check: "evals/behavioral/skill-promoter.json#SKILL-PROMOTER-2"
   - id: SKILL-PROMOTER-3
     text: "Treat validator errors as blocking promotion, and keep warnings blocking for promotion only, never the general gate."
-    check: "manual"
+    check: "evals/behavioral/skill-promoter.json#SKILL-PROMOTER-3"
 reloadPolicy: on-trigger
 ---
 

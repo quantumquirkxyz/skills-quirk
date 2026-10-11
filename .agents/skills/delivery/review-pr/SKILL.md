@@ -92,13 +92,13 @@ clauses:
     check: "evals/behavioral/review-pr.json#REVIEW-PR-1"
   - id: REVIEW-PR-2
     text: "Include the exact file and line, the justifying rule or smell, and a concrete explanation of what breaks in every finding."
-    check: "manual"
+    check: "evals/behavioral/review-pr.json#REVIEW-PR-2"
   - id: REVIEW-PR-3
     text: "Publish findings only: never change source files, fix the PR, or merge it."
-    check: "manual"
+    check: "evals/behavioral/review-pr.json#REVIEW-PR-3"
   - id: REVIEW-PR-4
     text: "Documented-standard breaches are hard violations while baseline smells are always judgement calls."
-    check: "manual"
+    check: "evals/behavioral/review-pr.json#REVIEW-PR-4"
 reloadPolicy: on-trigger
 ---
 

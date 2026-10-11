@@ -31,13 +31,13 @@ approvalFor: ["write-code", "post-pr-comment", "commit-git", "push-branch"]
 clauses:
   - id: REVIEW-FIX-LOOP-1
     text: "Stop instead of restating the same repair when a pass would post the same review-fix plan without a new finding."
-    check: "manual"
+    check: "evals/behavioral/review-fix-loop.json#REVIEW-FIX-LOOP-1"
   - id: REVIEW-FIX-LOOP-2
     text: "Stop and report the blocker when the same blocking condition repeats for three consecutive loop passes."
-    check: "manual"
+    check: "evals/behavioral/review-fix-loop.json#REVIEW-FIX-LOOP-2"
   - id: REVIEW-FIX-LOOP-3
     text: "Never widen scope during a repeat pass unless a new review finding makes it unavoidable."
-    check: "manual"
+    check: "evals/behavioral/review-fix-loop.json#REVIEW-FIX-LOOP-3"
 reloadPolicy: on-trigger
 ---
 

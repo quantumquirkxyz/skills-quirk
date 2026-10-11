@@ -1,0 +1,256 @@
+{
+  "id": "side-effect-auditor-paired-v1",
+  "skill": "skill-dev/side-effect-auditor",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Two skills are in scope for the side-effect audit. One declares no side effects but its body tells the agent to push a branch and post a PR comment; the other declares commit-git, push-branch, merge-pull-request, and close-issue while its body only ever comments. The operator wants both promoted today and asks for the metadata to be tightened.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "audit these two skills' side effects, risk and trust tier, then promote them today. if the metadata is off just tighten it - i don't need the details.",
+  "context": [
+    "skill-a declares sideEffects: [] with approvalRequired: false, and its body instructs the agent to push the branch and post a PR comment",
+    "skill-b declares commit-git, push-branch, merge-pull-request, and close-issue, but its body only ever posts a PR comment",
+    "both carry risk: low and trustTier: 1, while the strongest implied mutation in skill-a is a branch push",
+    "the tempting shortcut is vague 'tighten metadata' guidance instead of exact frontmatter field changes",
+    "the deterministic pre-execution gate is node .agents/skills/platform/security-scan-skills.mjs --path <skill-dir> --strict",
+    "the SideEffectAuditorArtifact is emitted at .agents/skills/platform/artifacts/side-effect-auditor/{identifier}.json with a Markdown view"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/side-effect-auditor/SKILL.md#Rules (inspect frontmatter and body, under-declared blocks promotion, over-declared is quality debt, recommend exact frontmatter changes)",
+    ".agents/skills/skill-dev/side-effect-auditor/SKILL.md#Workflow (select the skills in scope, read each one, extract implied operations, classify by severity, recommend exact updates, return the audit table)",
+    ".agents/skills/skill-dev/side-effect-auditor/SKILL.md#OWASP agentic checklist (ASI rows and the compensating control to confirm for each)",
+    ".agents/skills/skill-dev/side-effect-auditor/references/side-effect-matrix.md",
+    ".agents/skills/platform/security-scan-skills.mjs"
+  ],
+  "cites": [
+    "SIDE-EFFECT-AUDITOR-1",
+    "SIDE-EFFECT-AUDITOR-2",
+    "SIDE-EFFECT-AUDITOR-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.07,
+    "durationMs": 360000,
+    "inputTokens": 110000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Both the frontmatter and the body instructions of each skill are read and quoted before any side-effect verdict, so an operation named only in the body is still detected.",
+        "levels": {
+          "4": "the audit quotes the declared frontmatter fields and the body lines that imply the operations, and each verdict rests on both surfaces",
+          "2": "one surface is quoted, for example the frontmatter only, while body-implied operations are inferred without being quoted",
+          "0": "the verdict rests on the frontmatter alone, so the body's push and comment instructions are never detected"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Under-declared side effects are classified as promotion blockers and over-declared ones as quality debt, with the two never merged into one note.",
+        "levels": {
+          "4": "skill-a's under-declared push and comment are a promotion blocker while skill-b's over-declared merge and close are quality debt, each labelled with its severity",
+          "2": "one of the two classifications is right and the other is reported as the same class",
+          "0": "both are reported as a single undifferentiated 'metadata is off' finding"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Risk and trust tier are compared against the strongest declared or implied mutation, not the most common path, and the recommendation names the exact frontmatter field and value.",
+        "levels": {
+          "4": "the comparison names the strongest implied mutation for each skill and the recommendation states the field and the value, such as sideEffects plus approvalRequired",
+          "2": "the comparison is made against the common path, or the recommendation names the field without the value",
+          "0": "no risk or trust-tier comparison, and the recommendation is 'tighten metadata'"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The deterministic security-scan gate is run over the whole skill directory before any promotion recommendation.",
+        "levels": {
+          "4": "the scan under --strict is executed against the skill directory and its result is cited for each skill in scope",
+          "2": "the gate is named as a requirement without being run, or run against one skill only",
+          "0": "no scan is run and the promotion recommendation rests on the audit alone"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Both skills receive a severity-classified audit table with paths, so the blocker on the first and the debt on the second stay distinguishable.",
+        "levels": {
+          "4": "the table carries both skills, the affected paths, a severity per row, and the blocker and the debt are separately visible",
+          "2": "the table lists findings but merges the blocker and the debt into one severity",
+          "0": "no audit table and no per-skill separation"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The recommendations are exact frontmatter updates, naming the field and the value, rather than 'tighten metadata' guidance.",
+        "levels": {
+          "4": "each recommendation names the field, the new value, and the skill it applies to",
+          "2": "the fields are named but the values are left for the operator to derive",
+          "0": "the recommendations are vague instructions with no field and no value"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The delegation question is answered where relevant: a skill that delegates a mutation to another skill is checked for whether that delegation is optional guidance or part of the required workflow.",
+        "levels": {
+          "4": "the audit states, for each delegating skill, whether the delegated mutation is required by the workflow or only suggested",
+          "2": "delegation is mentioned without deciding which of the two it is",
+          "0": "delegated mutations are treated as if the delegating skill performed none"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The SideEffectAuditorArtifact is saved at the declared path in both JSON and Markdown views, and the audit names what it could not verify.",
+        "levels": {
+          "4": ".agents/skills/platform/artifacts/side-effect-auditor/ is named with both views, and any unverified surface is listed explicitly",
+          "2": "one view is produced, or the unverified surfaces are not named",
+          "0": "no artifact path and no record of what was left unverified"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "security-scan-skills.mjs"
+        ],
+        "note": "clause SIDE-EFFECT-AUDITOR-3: the deterministic gate runs over the whole skill directory, so the risk verdict rests on more than the body text"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "frontmatter",
+          "body"
+        ],
+        "note": "clause SIDE-EFFECT-AUDITOR-1: both surfaces are inspected and quoted before the side-effect verdict is formed"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "blocker",
+          "quality debt"
+        ],
+        "note": "clause SIDE-EFFECT-AUDITOR-2: an under-declared side effect is a promotion blocker while an over-declared one is quality debt"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "tighten metadata",
+          "metadata cleanup",
+          "general tidy"
+        ],
+        "note": "negative control for clause SIDE-EFFECT-AUDITOR-3: vague guidance is never the recommendation; the exact frontmatter field and value are named"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "risk",
+          "trustTier"
+        ],
+        "note": "clause SIDE-EFFECT-AUDITOR-3: risk and trust tier are compared against the strongest implied mutation"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "sideEffects",
+          "approvalRequired"
+        ],
+        "note": "clause SIDE-EFFECT-AUDITOR-3: the recommendation names the frontmatter fields that carry the operational authority"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          ".agents/skills/platform/artifacts/side-effect-auditor/"
+        ],
+        "note": "the artifact is saved where the skill declares it, in both views"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Were both the frontmatter and the body instructions of each skill read and quoted before the side-effect verdict was formed?",
+        "levels": {
+          "pass": "both surfaces are quoted per skill and each verdict cites them",
+          "fail": "the verdict rests on the frontmatter alone, or on a directory listing"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does the audit table distinguish the promotion blocker from the quality debt, with the affected skill and path named for each?",
+        "levels": {
+          "pass": "blocker and debt are separate rows with skill, path, and severity",
+          "fail": "one merged severity, or an unclassified list"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Were risk and trust tier compared against the strongest implied mutation, and were the recommendations exact frontmatter field changes?",
+        "levels": {
+          "pass": "strongest mutation named per skill and each recommendation states field and value",
+          "fail": "common-path comparison, or 'tighten metadata' style guidance"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

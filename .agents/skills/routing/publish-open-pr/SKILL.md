@@ -50,13 +50,13 @@ clauses:
     check: "evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-1"
   - id: PUBLISH-OPEN-PR-2
     text: "Never create or amend commits here, and never merge the PR or close the issue; those belong to implement and ship-subissue."
-    check: "manual"
+    check: evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-2
   - id: PUBLISH-OPEN-PR-3
     text: "Take the linked issue labels and milestone as the source of truth for PR metadata."
-    check: "manual"
+    check: evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-3
   - id: PUBLISH-OPEN-PR-4
     text: "Confirm branch scope and prerequisites first, and stop to ask for clarification when the intended scope is unclear."
-    check: "manual"
+    check: evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-4
 reloadPolicy: always
 ---
 

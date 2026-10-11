@@ -49,13 +49,13 @@ clauses:
     check: "evals/behavioral/code-review.json#CODE-REVIEW-1"
   - id: CODE-REVIEW-2
     text: "Publish findings only: never edit source files, fix the PR, rewrite history, or merge it."
-    check: "manual"
+    check: "evals/behavioral/code-review.json#CODE-REVIEW-2"
   - id: CODE-REVIEW-3
     text: "Run Standards and Spec as parallel sub-agents and never merge or rerank findings across axes."
-    check: "manual"
+    check: "evals/behavioral/code-review.json#CODE-REVIEW-3"
   - id: CODE-REVIEW-4
     text: "Documented repo standards override the smell baseline; every baseline smell stays a labelled judgement call."
-    check: "manual"
+    check: "evals/behavioral/code-review.json#CODE-REVIEW-4"
 reloadPolicy: on-trigger
 ---
 

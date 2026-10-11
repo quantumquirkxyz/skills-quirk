@@ -19,6 +19,12 @@
     ".agents/skills/delivery/implement/SKILL.md#Artifact (.agents/skills/platform/artifacts/implement/{issue-id}.json)",
     ".agents/skills/delivery/implement/SKILL.md#Completion criteria"
   ],
+  "cites": [
+    "IMPLEMENT-1",
+    "IMPLEMENT-2",
+    "IMPLEMENT-3",
+    "IMPLEMENT-4"
+  ],
   "costBudget": {
     "costUsd": 0.2,
     "durationMs": 900000,
@@ -153,7 +159,7 @@
           "gh pr create",
           "gh pr merge"
         ],
-        "note": "implementation stops before publication"
+        "note": "implementation stops before publication - clause IMPLEMENT-3: no pull request is opened or merged here and publish-open-pr is never reached before gate-ci passes"
       }
     },
     {
@@ -166,7 +172,7 @@
           "test",
           "node --test"
         ],
-        "note": "a failing test must have been written and run"
+        "note": "a failing test must have been written and run - clause IMPLEMENT-4: work proceeds as tracer-bullet slices, each one implemented, validated and committed at the pre-agreed seam"
       }
     },
     {
@@ -190,6 +196,7 @@
       "rubricId": "gc-2",
       "check": {
         "criterion": "Is the ImplementArtifact complete: status, changes, validation, branch, nextConsumer, qualityGateResults, and any blocked approval all populated?",
+        "note": "clause IMPLEMENT-2: write-code, commit-git and push-branch are repository-mutating side effects that require an explicit user request or prior workflow approval, so a blocked approval is recorded in the artifact rather than assumed",
         "levels": {
           "pass": "all declared fields populated with a named artifact path",
           "fail": "missing fields or missing artifact path"

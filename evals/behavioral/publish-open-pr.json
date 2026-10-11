@@ -17,7 +17,7 @@
   "grounding": [
     ".agents/skills/routing/publish-open-pr/SKILL.md#Contract (never open a PR before gate-ci has passed on the pushed branch)",
     ".agents/skills/routing/publish-open-pr/SKILL.md#Process step 3 (run gate-ci before opening the PR; stop and report the failure)",
-    ".agents/skills/routing/publish-openpr/SKILL.md#Process step 6 (push the branch, then open the PR from the metadata bundle)",
+    ".agents/skills/routing/publish-open-pr/SKILL.md#Process step 6 (push the branch, then open the PR from the metadata bundle)",
     ".agents/skills/platform/schemas/publish-open-pr-schema.json"
   ],
   "cites": [

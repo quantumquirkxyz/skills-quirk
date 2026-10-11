@@ -78,10 +78,10 @@ clauses:
     check: "evals/behavioral/tdd.json#TDD-1"
   - id: TDD-2
     text: "Test only at pre-agreed seams; confirm the seams with the user before writing any test."
-    check: "manual"
+    check: evals/behavioral/tdd.json#TDD-2
   - id: TDD-3
     text: "Keep refactoring out of the red-to-green cycle; it belongs to the review stage."
-    check: "manual"
+    check: evals/behavioral/tdd.json#TDD-3
 reloadPolicy: on-trigger
 ---
 

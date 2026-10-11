@@ -26,13 +26,13 @@ approvalFor: []
 clauses:
   - id: SIDE-EFFECT-AUDITOR-1
     text: "Inspect both frontmatter and body instructions before deciding whether declared side effects are accurate."
-    check: "manual"
+    check: "evals/behavioral/side-effect-auditor.json#SIDE-EFFECT-AUDITOR-1"
   - id: SIDE-EFFECT-AUDITOR-2
     text: "Classify under-declared side effects as promotion blockers and over-declared side effects as quality debt."
-    check: "manual"
+    check: "evals/behavioral/side-effect-auditor.json#SIDE-EFFECT-AUDITOR-2"
   - id: SIDE-EFFECT-AUDITOR-3
     text: "Compare risk and trust tier against the strongest declared or implied mutation, and recommend exact frontmatter field changes."
-    check: "manual"
+    check: "evals/behavioral/side-effect-auditor.json#SIDE-EFFECT-AUDITOR-3"
 reloadPolicy: on-trigger
 ---
 

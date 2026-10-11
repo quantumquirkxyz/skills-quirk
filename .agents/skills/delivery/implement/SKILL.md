@@ -53,13 +53,13 @@ clauses:
     check: "evals/behavioral/implement.json#IMPLEMENT-1"
   - id: IMPLEMENT-2
     text: "Require an explicit user request or prior workflow approval before any repository-mutating side effect (write-code, commit-git, push-branch)."
-    check: "manual"
+    check: "evals/behavioral/implement.json#IMPLEMENT-2"
   - id: IMPLEMENT-3
     text: "Do not open or merge a PR here; stop at the validated branch and do not proceed to publish-open-pr until gate-ci passes."
-    check: "manual"
+    check: "evals/behavioral/implement.json#IMPLEMENT-3"
   - id: IMPLEMENT-4
     text: "Drive tracer-bullet vertical slices with TDD at pre-agreed seams: implement, validate, commit, per slice."
-    check: "manual"
+    check: "evals/behavioral/implement.json#IMPLEMENT-4"
 reloadPolicy: on-trigger
 ---
 

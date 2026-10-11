@@ -95,10 +95,10 @@ clauses:
     check: "evals/behavioral/to-spec.json#TO-SPEC-1"
   - id: TO-SPEC-2
     text: "If the spec cannot be made concrete enough to hand off, stop and say what is still missing."
-    check: "manual"
+    check: "evals/behavioral/to-spec.json#TO-SPEC-2"
   - id: TO-SPEC-3
     text: "Synthesize what is already known; do not reopen discovery interviews."
-    check: "manual"
+    check: "evals/behavioral/to-spec.json#TO-SPEC-3"
 reloadPolicy: on-trigger
 ---
 

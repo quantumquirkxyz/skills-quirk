@@ -20,6 +20,12 @@
     ".agents/skills/delivery/code-review/references/smell-baseline.md",
     ".agents/skills/delivery/code-review/references/review-axes.md"
   ],
+  "cites": [
+    "CODE-REVIEW-1",
+    "CODE-REVIEW-2",
+    "CODE-REVIEW-3",
+    "CODE-REVIEW-4"
+  ],
   "costBudget": {
     "costUsd": 0.12,
     "durationMs": 600000,
@@ -114,7 +120,7 @@
           "## Standards",
           "## Spec"
         ],
-        "note": "the two axes must stay separate in the published report"
+        "note": "the two axes must stay separate in the published report - clause CODE-REVIEW-3: Standards and Spec run as parallel sub-agents and their findings are never merged or reranked across axes"
       }
     },
     {
@@ -157,7 +163,7 @@
           "write",
           "str_replace"
         ],
-        "note": "a review-only skill must not mutate source files"
+        "note": "a review-only skill must not mutate source files - clause CODE-REVIEW-2: publish findings only, so no source file is edited, the PR is never fixed, history is never rewritten and nothing is merged"
       }
     },
     {
@@ -217,6 +223,7 @@
       "rubricId": "if-3",
       "check": {
         "criterion": "Are documented-standard breaches presented as hard violations while baseline smells are explicitly labelled as judgement calls?",
+        "note": "clause CODE-REVIEW-4: documented repo standards override the smell baseline, so a baseline smell is always a labelled judgement call and never a hard violation",
         "levels": {
           "pass": "the hard versus judgement-call distinction is explicit per finding",
           "fail": "everything is presented at the same strength"

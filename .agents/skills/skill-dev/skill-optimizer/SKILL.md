@@ -85,13 +85,13 @@ approvalFor: []
 clauses:
   - id: SKILL-OPTIMIZER-1
     text: "Never write to the target Skill; emit a proposal and stop, because routing changes must stay reviewable by the skill author."
-    check: "manual"
+    check: "evals/behavioral/skill-optimizer.json#SKILL-OPTIMIZER-1"
   - id: SKILL-OPTIMIZER-2
     text: "Never claim an improvement that was not measured on held-out fixtures the candidate never saw."
-    check: "manual"
+    check: "evals/behavioral/skill-optimizer.json#SKILL-OPTIMIZER-2"
   - id: SKILL-OPTIMIZER-3
     text: "Never propose a description above the 1024-character capacity cap, and never widen the target beyond the description field."
-    check: "manual"
+    check: "evals/behavioral/skill-optimizer.json#SKILL-OPTIMIZER-3"
 reloadPolicy: on-trigger
 ---
 

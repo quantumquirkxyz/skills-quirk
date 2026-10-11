@@ -68,13 +68,13 @@ approvalFor: []
 clauses:
   - id: ANALYZE-ARTIFACTS-1
     text: "Never edit, fix, close, or republish any artifact the analysis reads; the report is the only output."
-    check: "manual"
+    check: "evals/behavioral/analyze-artifacts.json#ANALYZE-ARTIFACTS-1"
   - id: ANALYZE-ARTIFACTS-2
     text: "Never report a finding without the artifact quote or link that proves it, because an unsourced consistency claim is an opinion."
-    check: "manual"
+    check: "evals/behavioral/analyze-artifacts.json#ANALYZE-ARTIFACTS-2"
   - id: ANALYZE-ARTIFACTS-3
     text: "Never resolve an ambiguity by guessing the intended requirement; mark it [NEEDS CLARIFICATION] with the owner and the decision it blocks."
-    check: "manual"
+    check: "evals/behavioral/analyze-artifacts.json#ANALYZE-ARTIFACTS-3"
 reloadPolicy: on-trigger
 ---
 

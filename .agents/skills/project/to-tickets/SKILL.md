@@ -61,13 +61,13 @@ clauses:
     check: "evals/behavioral/to-tickets.json#TO-TICKETS-1"
   - id: TO-TICKETS-2
     text: "Every blocking edge must correspond to a genuine prerequisite so the frontier can be taken without guessing order."
-    check: "manual"
+    check: evals/behavioral/to-tickets.json#TO-TICKETS-2
   - id: TO-TICKETS-3
     text: "Every published ticket must carry the canonical metadata from docs/reference/agents/work-item-format.md, and no parent issue may be closed or modified."
-    check: "manual"
+    check: evals/behavioral/to-tickets.json#TO-TICKETS-3
   - id: TO-TICKETS-4
     text: "When the input is corrective, preserve the parent spec metadata and publish the smallest ticket that closes the audited gap."
-    check: "manual"
+    check: evals/behavioral/to-tickets.json#TO-TICKETS-4
 reloadPolicy: on-trigger
 ---
 

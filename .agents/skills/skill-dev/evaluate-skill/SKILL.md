@@ -26,13 +26,13 @@ approvalFor: []
 clauses:
   - id: EVALUATE-SKILL-1
     text: "Separate routing failures, artifact-shape failures, and contract mismatches instead of reporting one blurred verdict."
-    check: "manual"
+    check: "evals/behavioral/evaluate-skill-clauses.json#EVALUATE-SKILL-1"
   - id: EVALUATE-SKILL-2
     text: "Never promote a Skill whose declared side effects differ from observed behavior; treat missing stop conditions or vague outputs as evaluability defects."
-    check: "manual"
+    check: "evals/behavioral/evaluate-skill-clauses.json#EVALUATE-SKILL-2"
   - id: EVALUATE-SKILL-3
     text: "Preserve deterministic runner output as evidence and add or update a fixture whenever a failure represents a regression class."
-    check: "manual"
+    check: "evals/behavioral/evaluate-skill-clauses.json#EVALUATE-SKILL-3"
 reloadPolicy: on-trigger
 ---
 

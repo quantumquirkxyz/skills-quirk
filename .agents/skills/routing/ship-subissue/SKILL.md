@@ -30,13 +30,13 @@ approvalFor: ["merge-pull-request", "close-issue", "update-project"]
 clauses:
   - id: SHIP-SUBISSUE-1
     text: "Never merge a PR with unresolved Standards or Spec review findings; return to review-fix-loop instead."
-    check: "manual"
+    check: "evals/behavioral/ship-subissue.json#SHIP-SUBISSUE-1"
   - id: SHIP-SUBISSUE-2
     text: "Never mark an issue complete unless the linked issue reference is clear, and never guess the issue number."
-    check: "manual"
+    check: "evals/behavioral/ship-subissue.json#SHIP-SUBISSUE-2"
   - id: SHIP-SUBISSUE-3
     text: "Never delete the branch before the merge has succeeded."
-    check: "manual"
+    check: "evals/behavioral/ship-subissue.json#SHIP-SUBISSUE-3"
 reloadPolicy: always
 ---
 

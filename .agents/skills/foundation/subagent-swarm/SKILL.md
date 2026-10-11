@@ -30,10 +30,10 @@ clauses:
     check: "evals/behavioral/subagent-swarm.json#SUBAGENT-SWARM-1"
   - id: SUBAGENT-SWARM-2
     text: "Keep each subagent inside its declared role boundary; crossing a boundary requires an explicit handoff."
-    check: "manual"
+    check: evals/behavioral/subagent-swarm.json#SUBAGENT-SWARM-2
   - id: SUBAGENT-SWARM-3
     text: "When outputs conflict, preserve both claims plus the evidence used to choose between them, and assign one owner for final integration."
-    check: "manual"
+    check: evals/behavioral/subagent-swarm.json#SUBAGENT-SWARM-3
 reloadPolicy: on-trigger
 ---
 
