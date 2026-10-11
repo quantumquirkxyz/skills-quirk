@@ -9,12 +9,15 @@ on:
 permissions:
   contents: read
   issues: write
+  pull-requests: write
 
 jobs:
   quality-report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -41,6 +44,7 @@ jobs:
           node format-report.mjs
       - name: Post PR comment
         if: github.event_name == 'pull_request'
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           script: |

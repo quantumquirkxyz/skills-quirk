@@ -264,12 +264,26 @@ const frontmatterWithout = (text, keys) => {
   return kept.join('\n');
 };
 
-test('the body-only skills kept their frontmatter untouched', async () => {
+// A pinned baseline commit is reachable only when the checkout carries full history
+// (actions/checkout@v4 with fetch-depth: 0); shallow clones skip instead of failing.
+const commitReachable = (rev) => {
+  try {
+    execFileSync('git', ['cat-file', '-e', rev + '^{commit}'], { cwd: root, stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+};
+test('the body-only skills kept their frontmatter untouched', async (t) => {
   // The baseline is pinned to the wave-0 integration commit rather than HEAD: the
   // wave-1 delegation work is now committed on main, so a HEAD-based baseline
   // would compare the files against themselves and the guard would pass vacuously.
   // Pinning keeps the guard meaningful for every later commit.
   const wave0Baseline = '6934cfd489253ae3e92c2849bd53ab03deacad79';
+  if (!commitReachable(wave0Baseline)) {
+    t.skip(`wave-0 baseline ${wave0Baseline} is unreachable in this checkout (shallow clone) — frontmatter guard skipped`);
+    return;
+  }
   const bodyOnlySkills = [
     '.agents/skills/foundation/subagent-swarm/SKILL.md',
     '.agents/skills/delivery/code-review/SKILL.md',
