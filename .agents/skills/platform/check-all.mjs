@@ -11,6 +11,8 @@ import { auditSkills as auditSkillGraph } from './skill-graph.mjs';
 
 const REPO_ROOT = process.cwd();
 const SKILLS_ROOT = path.join(REPO_ROOT, '.agents', 'skills');
+const PLATFORM_TESTS_DIR = path.join('.agents', 'skills', 'platform', 'tests');
+const ROOT_TESTS_DIR = 'tests';
 
 // Single walk + read of every SKILL.md per check-all run. The report-only
 // audits below consume this manifest in-process (auditSkills) instead of each
@@ -54,6 +56,27 @@ try {
 // the gate leaves no scratch data in the working tree.
 const idempotencyIntentsDir = fsSync.mkdtempSync(path.join(os.tmpdir(), 'quirk-idempotency-demo-'));
 
+// node --test only expanded glob patterns on Node 21+, so the pinned Node 20
+// runner would treat a literal "*.test.mjs" argument as a filename and fail.
+// Expand the test directories here (readdir + filter + sort, no shell, no glob)
+// and hand node --test explicit, existing file paths instead.
+function listTestFiles(dir) {
+  let names;
+  try {
+    names = fsSync.readdirSync(dir);
+  } catch {
+    return [];
+  }
+  return names
+    .filter((name) => name.endsWith('.test.mjs'))
+    .sort()
+    .map((name) => path.join(dir, name));
+}
+
+function testArgs(dir) {
+  return ['--test', ...listTestFiles(dir)];
+}
+
 const checks = [
   ['node', ['.agents/skills/platform/validate-skills.mjs']],
   ['node', ['.agents/skills/platform/validate-traceability.mjs']],
@@ -69,7 +92,7 @@ const checks = [
   ['node', ['.agents/skills/platform/idempotency.mjs', '--demo', '--intents-dir', idempotencyIntentsDir]],
   ['node', ['.agents/skills/platform/security-scan-skills.mjs', '--strict']],
   ['node', ['evals/run-routing.mjs', '--check']],
-  ['node', ['--test', '.agents/skills/platform/tests/*.test.mjs']],
+  ['node', testArgs(PLATFORM_TESTS_DIR)],
 ];
 
 const memoryDir = defaultMemoryDirArg();
@@ -110,6 +133,12 @@ const dagGateChecks = dagFile
   : [];
 const dagSkipReason = 'no default ticket DAG file under .agents/skills/platform/workflows or .agents/skills/platform/artifacts';
 
+const rootTestFiles = listTestFiles(ROOT_TESTS_DIR);
+const rootTestGateChecks = rootTestFiles.length
+  ? [['node', testArgs(ROOT_TESTS_DIR)]]
+  : [];
+const rootTestSkipReason = `no *.test.mjs files under ${ROOT_TESTS_DIR}/ (root test suite absent)`;
+
 function run(command, args) {
   return new Promise((resolve) => {
     const child = spawn(command, args, { cwd: process.cwd(), stdio: ['ignore', 'pipe', 'pipe'] });
@@ -128,7 +157,7 @@ function parseJson(text) {
 }
 
 const gatingResults = [];
-for (const [command, args] of [...checks, ...dagGateChecks]) {
+for (const [command, args] of [...checks, ...dagGateChecks, ...rootTestGateChecks]) {
   gatingResults.push(await run(command, args));
 }
 fsSync.rmSync(idempotencyIntentsDir, { recursive: true, force: true });
@@ -208,6 +237,10 @@ const skippedChecks = [
   ...(memoryDir ? [] : [skippedCheck(
     'node .agents/skills/platform/memory-index.mjs check .agents/memory',
     memorySkipReason,
+  )]),
+  ...(rootTestFiles.length ? [] : [skippedCheck(
+    'node --test tests/*.test.mjs',
+    rootTestSkipReason,
   )]),
 ];
 

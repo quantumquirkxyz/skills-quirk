@@ -97,7 +97,7 @@ jobs:
         run: |
           set -o pipefail
           cd "$GITHUB_WORKSPACE"
-          node -e "const r=require('./registry.yaml'); console.log('registry.yaml valid:', JSON.stringify(r.name))" 2>&1 | tee "$(mktemp)"
+          node -e "const fs=require('fs');let r;try{r=JSON.parse(fs.readFileSync('registry.yaml','utf8'))}catch(e){console.error('registry.yaml unparseable:',e.message);process.exit(1)}console.log('registry.yaml valid:',JSON.stringify(r.name))" 2>&1 | tee "$(mktemp)"
 
       - name: Verify plugins structure
         run: |
