@@ -156,7 +156,7 @@
       "sourceType": "local"
     },
     "code-review": {
-      "hash": "a68f5e14dbc6358b3b7d7fc4d3d6f97348fbc64e50dfe7d68c3ba1e0623b4040",
+      "hash": "e845f5222bbad1d08403be8e026f8c3025fb118c09f5834950ea52c06c21d638",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -601,7 +601,7 @@
       "sourceType": "local"
     },
     "make-project": {
-      "hash": "d50f2c7eed5d0b9acfaddbed7586aa79b39c43e53e4aa1637731fa4214f83ebe",
+      "hash": "14d03a8aced7661c255af117db190ac37f59c93f3c800e13f8de898e0a5e007a",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -981,7 +981,7 @@
       "sourceType": "local"
     },
     "review-pr": {
-      "hash": "0d233d9574459aaf3e85658501372cae1c3620e9c49951327b7077c199cd2ecc",
+      "hash": "d1e634c5152a3f6b01b170b2aff46fb4b0f6a36ffa8c70d229503951b6b390b1",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1046,7 +1046,7 @@
       "sourceType": "local"
     },
     "setup-quirk-skills": {
-      "hash": "5852f5dcd485a2620a547a0e333bae8974f0ff121af06b744f7f80ffb40b0b6a",
+      "hash": "677300b44ded29131b6bdb3b924ae5dee580882ba53fb2a5c404062f2039fd05",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1091,7 +1091,7 @@
       "sourceType": "local"
     },
     "skill-promoter": {
-      "hash": "d8bfe9266ae765c0c165b52f23cbe6a2d9573ba731b1f176d7b42d614bdc7ab5",
+      "hash": "8ae83b1819c5c2384955706e7c38b57a5fc2be43e10d0e9e7df8f45ad70862cb",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1116,7 +1116,7 @@
       "sourceType": "local"
     },
     "skill-tutor": {
-      "hash": "4d056da9082e91c4147379e5e6cc553bec842ac56eaff2b08b523920fd36f90c",
+      "hash": "3df57c1a77067a7a852c6fbf403a5a5f4f888bb08e948c8d8b8dbdbe915fc967",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1141,7 +1141,7 @@
       "sourceType": "local"
     },
     "subagent-swarm": {
-      "hash": "d2e69134fa68a52642bd284afa983f47162536da07644a837e767fd1d38c0542",
+      "hash": "14db83f7d497eb5a1a1db5ec78d2dbbd8934d6bb5a5f2d649804192cb7e3a652",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1166,12 +1166,12 @@
       "sourceType": "local"
     },
     "to-spec": {
-      "hash": "93713688c8a386efcddead93094fd270e2cab69745a5a2842a03309d60094228",
+      "hash": "db45c67cef587d46647d7c207d5c29957e97b3244abcaed171bf0576bab32b0a",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-tickets": {
-      "hash": "8e658daaafea182f3acc7a780f8f92a32fa4147f38a87ea3a56f0834f0b1c586",
+      "hash": "5c57a598b4469be91fffe49a6260a0f5c17c0a7ee988176e5731d6351be937c2",
       "revision": "working-tree",
       "sourceType": "local"
     },
