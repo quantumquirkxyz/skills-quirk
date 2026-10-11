@@ -19,7 +19,12 @@
 //   deterministic gate vs 0.01 for LlamaGuard) - hence deterministic regex gates.
 //
 // Usage:
-//   node security-scan-skills.mjs [--path <dir>] [--json] [--strict]
+//   node security-scan-skills.mjs [--path <dir>] [--json] [--strict] [--deep]
+//
+// Default scan root is the .agents directory, so .agents/AGENTS.md (an active
+// instruction path per OWASP AST02) and the skills tree are both in scope.
+// Skill-bundled working directories (fixtures, tests, evals, agent-cards,
+// traces, artifacts, golden) are skipped unless --deep is passed.
 //
 // Exit codes: 0 = no high/critical finding (default mode reports and exits 0),
 //             1 = --strict with >= 1 high/critical finding,
@@ -31,7 +36,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_PATH = path.resolve(HERE, '..');
+// Default root is .agents (two levels up from platform/): it covers the
+// AGENTS.md instruction path (OWASP AST02) plus the whole skills tree.
+const DEFAULT_PATH = path.resolve(HERE, '..', '..');
 const SELF_PATH = fileURLToPath(import.meta.url);
 
 const SEVERITY_ORDER = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
@@ -40,8 +47,14 @@ const SCANNED_EXTENSIONS = new Set(['.md', '.sh', '.py', '.mjs', '.markdown']);
 
 const SKIP_DIRS = new Set([
   'node_modules', '.git', '.claude', 'dist', 'coverage', '__pycache__',
-  'fixtures', 'tests', '.venv', 'venv', 'runs', 'traces', 'artifacts',
-  'golden', 'evals', 'agent-cards',
+  '.venv', 'venv', 'runs',
+]);
+
+// Skill-bundled working directories hold test fixtures, generated agent cards,
+// and execution traces. They are NOT scanned by default (keeps the default gate
+// deterministic on a clean tree); pass --deep to include them in the scan.
+const DEEP_ONLY_DIRS = new Set([
+  'fixtures', 'tests', 'evals', 'agent-cards', 'traces', 'artifacts', 'golden',
 ]);
 
 const EXECUTABLE_FENCE_LANGS = new Set([
@@ -96,11 +109,12 @@ const VULNERABLE_PINS = [
 ];
 
 function parseArgs(argv) {
-  const args = { path: null, json: false, strict: false, help: false };
+  const args = { path: null, json: false, strict: false, deep: false, help: false };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--json') args.json = true;
     else if (a === '--strict') args.strict = true;
+    else if (a === '--deep') args.deep = true;
     else if (a === '--help' || a === '-h') args.help = true;
     else if (a === '--path') {
       args.path = argv[++i];
@@ -406,8 +420,7 @@ export function scanText(text, filePath) {
   return findings;
 }
 
-export function collectSkillFiles(rootDir) {
-  const rootIsSkill = fsSync.existsSync(path.join(rootDir, 'SKILL.md'));
+export function collectSkillFiles(rootDir, { deep = false } = {}) {
   const out = [];
   const walk = (dir, rel) => {
     let entries;
@@ -416,12 +429,11 @@ export function collectSkillFiles(rootDir) {
       const abs = path.join(dir, e.name);
       const relPath = rel ? `${rel}/${e.name}` : e.name;
       if (e.isDirectory()) {
-        if (SKIP_DIRS.has(e.name)) continue;
+        if (SKIP_DIRS.has(e.name) || (!deep && DEEP_ONLY_DIRS.has(e.name))) continue;
         walk(abs, relPath);
         continue;
       }
       if (abs === SELF_PATH) continue;
-      if (!rel && !rootIsSkill) continue;
       const ext = path.extname(e.name).toLowerCase();
       if (!SCANNED_EXTENSIONS.has(ext)) continue;
       out.push({ abs, rel: relPath, ext });
@@ -472,10 +484,14 @@ function printReport(findings, summary, scopeLabel) {
 export async function main(argv = process.argv.slice(2)) {
   const args = parseArgs(argv);
   if (args.help) {
-    console.log('usage: node security-scan-skills.mjs [--path <dir>] [--json] [--strict]');
-    console.log('  --path <dir>  scan a specific directory instead of the default skills bundle');
+    console.log('usage: node security-scan-skills.mjs [--path <dir>] [--json] [--strict] [--deep]');
+    console.log('  --path <dir>  scan a specific directory instead of the default .agents root');
     console.log('  --json        emit machine-readable JSON');
     console.log('  --strict      exit 1 when any high or critical finding exists');
+    console.log('  --deep        also scan skill-bundled working directories (fixtures, tests,');
+    console.log('                evals, agent-cards, traces, artifacts, golden); skipped by default');
+    console.log('');
+    console.log('Default scope is the .agents directory: AGENTS.md plus the skills tree.');
     return 0;
   }
 
@@ -490,7 +506,7 @@ export async function main(argv = process.argv.slice(2)) {
     return 2;
   }
 
-  const files = collectSkillFiles(root);
+  const files = collectSkillFiles(root, { deep: args.deep });
   const allFindings = [];
   for (const f of files) {
     const got = await scanFile(f.abs);
@@ -507,6 +523,7 @@ export async function main(argv = process.argv.slice(2)) {
     console.log(JSON.stringify({
       tool: 'security-scan-skills.mjs',
       root,
+      deep: args.deep,
       scannedFiles: files.length,
       findings: allFindings,
       byRule,
@@ -533,4 +550,4 @@ if (invokedDirectly) {
   });
 }
 
-export { RULES };
+export { RULES, DEFAULT_PATH };
