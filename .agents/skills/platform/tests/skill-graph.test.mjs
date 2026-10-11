@@ -1,8 +1,10 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { auditSkills } from '../skill-graph.mjs';
 
 const SCRIPT = '.agents/skills/platform/skill-graph.mjs';
 
@@ -46,6 +48,24 @@ function fixtureRoot() {
     fs.writeFileSync(path.join(dir, 'SKILL.md'), `${fm}\n# ${skill.name}\n\n${skill.body}\n`);
   }
   return root;
+}
+
+// The same shape check-all.mjs feeds its in-process report-only audits.
+function fixtureManifest(root) {
+  return FIXTURE_SKILLS.map((skill) => {
+    const dir = path.join('.agents', 'skills', skill.domain, skill.name);
+    return {
+      path: `${dir}/SKILL.md`,
+      dirPath: dir,
+      domain: skill.domain,
+      dirName: skill.name,
+      text: fs.readFileSync(path.join(root, dir, 'SKILL.md'), 'utf8'),
+    };
+  }).sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+}
+
+function graphFileOf(root) {
+  return path.join(root, '.agents', 'skills', 'platform', 'graph', 'skill-graph.json');
 }
 
 function run(args) {
@@ -171,6 +191,57 @@ describe('skill-graph.mjs', () => {
     assert.equal(result.top1Rate, 0.5);
     assert.equal(result.misses.length, 2);
     assert.deepEqual(result.misses.map((m) => m.top1), ['beta-lib', 'alpha-lib']);
+  });
+
+  test('build persists a byte-identical graph file across runs', () => {
+    const root = fixtureRoot();
+    runJson(['build', '--root', root, '--json']);
+    const first = fs.readFileSync(graphFileOf(root));
+    runJson(['build', '--root', root, '--json']);
+    const second = fs.readFileSync(graphFileOf(root));
+    assert.equal(
+      createHash('sha256').update(second).digest('hex'),
+      createHash('sha256').update(first).digest('hex'),
+      'two builds over an unchanged bundle must persist identical bytes',
+    );
+    // The timestamp is stdout telemetry; it must never reach disk.
+    assert.equal('generatedAt' in JSON.parse(first.toString('utf8')), false);
+  });
+
+  test('the build report keeps generatedAt as stdout telemetry', () => {
+    const root = fixtureRoot();
+    const report = runJson(['build', '--root', root, '--json']);
+    assert.match(report.generatedAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
+    assert.equal(report.status, 'written');
+    const persisted = JSON.parse(fs.readFileSync(graphFileOf(root), 'utf8'));
+    assert.equal(persisted.generatedAt, undefined);
+  });
+
+  test('auditSkills defaults to a dry run that writes nothing', () => {
+    const root = fixtureRoot();
+    // No options at all: the check-all report-only path must never dirty a
+    // tracked graph file just by auditing.
+    const report = auditSkills(fixtureManifest(root));
+    assert.equal(report.status, 'dry-run');
+    assert.equal(fs.existsSync(graphFileOf(root)), false);
+    // An explicit opt-in still persists.
+    const saved = auditSkills(fixtureManifest(root), { root, save: true });
+    assert.equal(saved.status, 'written');
+    assert.ok(fs.existsSync(graphFileOf(root)));
+  });
+
+  test('the manifest audit and the directory walk persist identical bytes', () => {
+    const walkRoot = fixtureRoot();
+    runJson(['build', '--root', walkRoot, '--json']);
+    const auditRoot = fixtureRoot();
+    auditSkills(fixtureManifest(auditRoot), { root: auditRoot, save: true });
+    const walked = fs.readFileSync(graphFileOf(walkRoot));
+    const audited = fs.readFileSync(graphFileOf(auditRoot));
+    assert.equal(
+      createHash('sha256').update(audited).digest('hex'),
+      createHash('sha256').update(walked).digest('hex'),
+      'both entry points must converge on the same canonical graph bytes',
+    );
   });
 
   test('rank builds in memory when no persisted graph exists', () => {

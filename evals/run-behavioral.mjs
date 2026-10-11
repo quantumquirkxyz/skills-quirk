@@ -63,6 +63,30 @@ async function exists(filePath) {
   try { await fs.access(filePath); return true; } catch { return false; }
 }
 
+async function isFile(filePath) {
+  try { return (await fs.stat(filePath)).isFile(); } catch { return false; }
+}
+
+// Grounding entries cite bundle material as
+// "<repo-relative path>[#anchor][ (human annotation)]". Only the path part must
+// resolve; the anchor and the annotation are written for readers.
+const KNOWN_FILE_EXTENSIONS = ['.md', '.json', '.jsonl', '.yaml', '.yml', '.mjs', '.js', '.cjs', '.sh', '.txt'];
+
+function looksLikeRepoPath(value) {
+  // A URL or an absolute path is not repo-relative, so it is never resolved
+  // against this checkout.
+  if (/^[a-z][a-z0-9+.-]*:\/\//i.test(value) || value.startsWith('/')) return false;
+  if (value.includes('/')) return true;
+  const lower = value.toLowerCase();
+  return KNOWN_FILE_EXTENSIONS.some((extension) => lower.endsWith(extension));
+}
+
+function groundingTargetPath(entry) {
+  const [pathPart] = entry.split('#');
+  const target = pathPart.replace(/\s*\([^()]*\)\s*$/, '').trim();
+  return looksLikeRepoPath(target) ? target : null;
+}
+
 async function listBundleSkills() {
   const out = [];
   async function walk(dir) {
@@ -79,7 +103,7 @@ async function listBundleSkills() {
 
 /* ------------------------------------------------------- fixture schema */
 
-function validateFixture(fixture, file, bundleSkills) {
+export async function validateFixture(fixture, file, bundleSkills) {
   const errors = [];
   const label = path.basename(file);
 
@@ -165,6 +189,29 @@ function validateFixture(fixture, file, bundleSkills) {
     }
   } else if (fixture.assertions !== undefined) {
     errors.push(`${label}: assertions must be an array`);
+  }
+
+  // Grounding stays optional: a fixture may legitimately cite only external
+  // material, and making the key mandatory would break future fixtures that
+  // do. When present, every repo-relative path in it must resolve, so a dead
+  // citation is caught at validation time instead of silently misdirecting
+  // whoever reads the fixture later.
+  if (fixture.grounding !== undefined) {
+    if (!Array.isArray(fixture.grounding)) {
+      errors.push(`${label}: grounding must be an array of repo-relative paths`);
+    } else {
+      for (const entry of fixture.grounding) {
+        if (typeof entry !== 'string' || entry.trim() === '') {
+          errors.push(`${label}: grounding entries must be non-empty strings`);
+          continue;
+        }
+        const target = groundingTargetPath(entry);
+        if (target === null) continue;
+        if (!(await isFile(path.resolve(repoRoot, target)))) {
+          errors.push(`${label}: grounding path does not resolve to a repo file: "${entry}" (looked for ${target})`);
+        }
+      }
+    }
   }
 
   return errors;
@@ -843,7 +890,7 @@ async function modeSingle() {
   const bundleSkills = await listBundleSkills();
   const { fixture, file, errors } = await loadFixture(path.resolve(repoRoot, String(args.fixture)));
   if (errors.length > 0 || fixture === null) { for (const error of errors) console.error(`ERROR ${error}`); process.exit(1); }
-  const schemaErrors = validateFixture(fixture, file, bundleSkills);
+  const schemaErrors = await validateFixture(fixture, file, bundleSkills);
   if (schemaErrors.length > 0) {
     for (const error of schemaErrors) console.error(`ERROR ${error}`);
     console.error('status: fail (fixture schema)');
@@ -986,7 +1033,7 @@ async function modeAll() {
       schemaBroken += 1;
       continue;
     }
-    const schemaErrors = validateFixture(fixture, file, bundleSkills);
+    const schemaErrors = await validateFixture(fixture, file, bundleSkills);
     if (schemaErrors.length > 0) {
       for (const error of schemaErrors) console.error(`ERROR ${error}`);
       schemaBroken += 1;

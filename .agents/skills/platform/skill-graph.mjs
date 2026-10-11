@@ -214,7 +214,17 @@ export function skillsFromManifest(manifest) {
 }
 
 export function buildGraphFromSkills(skills, options = {}) {
-  const knownNames = new Set(skills.map((skill) => skill.name));
+  // Canonical order by SKILL.md path - the order the shared manifest already
+  // carries - so both entry points (directory walk and manifest audit) persist
+  // identical bytes and the tracked file is a pure function of bundle content.
+  // readdir order varies by filesystem and would leave it drifting between
+  // machines.
+  const ordered = [...skills].sort((a, b) => {
+    const keyA = `${a.path}/SKILL.md`;
+    const keyB = `${b.path}/SKILL.md`;
+    return keyA < keyB ? -1 : keyA > keyB ? 1 : 0;
+  });
+  const knownNames = new Set(ordered.map((skill) => skill.name));
   const resolve = (token) => {
     const candidate = String(token || '').trim().toLowerCase().replace(/^["']|["']$/g, '');
     if (knownNames.has(candidate)) return candidate;
@@ -223,7 +233,7 @@ export function buildGraphFromSkills(skills, options = {}) {
   };
 
   const nodes = {};
-  for (const skill of skills) {
+  for (const skill of ordered) {
     nodes[skill.name] = {
       domain: skill.domain,
       tier: skill.tier,
@@ -243,27 +253,27 @@ export function buildGraphFromSkills(skills, options = {}) {
     edges.push({ from, to, type, weight: Number(weight.toFixed(6)) });
   };
 
-  for (const skill of skills) {
+  for (const skill of ordered) {
     for (const dep of skill.dependencies) {
       const target = resolve(dep);
       if (target) addEdge(skill.name, target, 'depends-on', EDGE_TYPE_WEIGHTS['depends-on']);
     }
   }
 
-  for (const skill of skills) {
+  for (const skill of ordered) {
     for (const entry of skill.compatibility) {
       const target = resolve(entry);
       if (target) addEdge(skill.name, target, 'compatible', EDGE_TYPE_WEIGHTS.compatible);
     }
   }
 
-  for (const skill of skills) {
+  for (const skill of ordered) {
     for (const target of extractHandoffTargets(skill.body, knownNames)) {
       if (target !== skill.name) addEdge(skill.name, target, 'handoff', EDGE_TYPE_WEIGHTS.handoff);
     }
   }
 
-  const withCaps = skills.filter((skill) => skill.capabilities.length > 0);
+  const withCaps = ordered.filter((skill) => skill.capabilities.length > 0);
   for (let i = 0; i < withCaps.length; i++) {
     for (let j = i + 1; j < withCaps.length; j++) {
       const a = new Set(withCaps[i].capabilities);
@@ -279,6 +289,8 @@ export function buildGraphFromSkills(skills, options = {}) {
 
   const graph = {
     version: 1,
+    // In-memory telemetry for the stdout report. saveGraph() strips it, so two
+    // builds over an unchanged bundle persist byte-identical files.
     generatedAt: new Date().toISOString(),
     root: '.',
     damping: DAMPING,
@@ -295,7 +307,7 @@ export function buildGraph(root, options = {}) {
   return buildGraphFromSkills(collectSkills(root), options);
 }
 
-export function auditSkills(manifest, { root = '.', save = true } = {}) {
+export function auditSkills(manifest, { root = '.', save = false } = {}) {
   const graph = buildGraphFromSkills(skillsFromManifest(manifest));
   const file = save ? saveGraph(root, graph) : graphPath(root);
   return {
@@ -314,7 +326,12 @@ export function graphPath(root) {
 export function saveGraph(root, graph) {
   const file = graphPath(root);
   mkdirSync(join(root, '.agents', 'skills', 'platform', 'graph'), { recursive: true });
-  writeFileSync(file, `${JSON.stringify(graph, null, 2)}\n`);
+  // Determinism contract: the persisted file must be a pure function of the
+  // bundle. generatedAt is wall-clock telemetry, so it stays on the in-memory
+  // graph and in the stdout report, never in bytes written to disk.
+  const persisted = { ...graph };
+  delete persisted.generatedAt;
+  writeFileSync(file, `${JSON.stringify(persisted, null, 2)}\n`);
   return file;
 }
 
@@ -649,6 +666,7 @@ function main(argv) {
       console.log(JSON.stringify({
         status: 'written',
         file: relative(root, file),
+        generatedAt: graph.generatedAt,
         nodes: Object.keys(graph.nodes).length,
         edges: graph.edges.length,
         edgeTypes: breakdown,
