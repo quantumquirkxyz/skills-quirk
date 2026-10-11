@@ -1,4 +1,6 @@
+# Generated runtime artifacts
 .agents/skills/platform/runs/
+/memory
 evals/results/mock/
 node_modules/
 .opencode/goals/
