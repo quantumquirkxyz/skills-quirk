@@ -8,7 +8,7 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
-## [Unreleased]
+## [2.4.2] - 2026-10-11
 
 Twelve review findings from the fix round are closed: the CI workflow could not
 fail, the behavioral eval counted failures it never displayed, the traceability
@@ -17,6 +17,13 @@ wrong tree with no way to see the rest, the local gate left four new CLIs
 unwired, three duplicate legacy fixtures and one dead citation survived in the
 bundle, two artifact schemas were missing, and runtime artifacts were tracked
 that belonged to `.gitignore`.
+
+The completeness audit that followed it ran four fix agents concurrently over
+CI, fixtures, graph and traceability. CI is Node-20 clean, the behavioral
+fixture corpus is named and counted consistently, the skill graph rebuilds
+byte-identically, the behavioral runner validates its grounding paths, and the
+traceability manual backlog is closed: every one of the 60 contract clauses now
+resolves to a fixture that literally cites its clause id.
 
 ### Fixed
 
@@ -105,6 +112,77 @@ that belonged to `.gitignore`.
   with no link target at all. It now points at
   `docs/reference/agents/issue-tracker.md`.
 
+### Completeness-audit fixes
+
+- **`validate.yml` registry step no longer uses `require`** — the step called
+  `node -e "const r=require('./registry.yaml')"` on a JSON-content file, which
+  can only work through Node's CommonJS `.yaml`-extension experiment; under the
+  pinned Node 20 runner it is a hard failure. The step now reads the file with
+  `fs.readFileSync` and parses it with `JSON.parse`, failing with an explicit
+  `registry.yaml unparseable:` message when the content is not JSON.
+- **`check-all.mjs` expands its test globs in-process and gates the root
+  suite** — `node --test` only expanded glob patterns from Node 21 onward, so the
+  pinned Node 20 runner treated the literal `*.test.mjs` argument as a filename
+  and the suite never ran. `listTestFiles`/`testArgs` read the directory, filter
+  on `.test.mjs`, sort, and hand `node --test` explicit existing paths, with no
+  shell and no glob dependency. The same helper now wires the **root** test suite
+  (`tests/*.test.mjs`) in as a gating entry — it previously ran only when invoked
+  by hand — reported with a skip reason when the directory is empty so the gate
+  cannot silently lose it.
+- **The behavioral fixture count pin is no longer stale** —
+  `.agents/skills/platform/tests/run-behavioral-aggregate.test.mjs` pinned the
+  corpus at 12 files in three places while the suite had grown to 20. The pin
+  follows the suite and the CLI's own `behavioural fixtures: N file(s)` line.
+- **`skill-graph.mjs` persists deterministically** — the tracked
+  `platform/graph/skill-graph.json` carried a `generatedAt` timestamp, so a
+  `git diff --exit-code` drift gate against it could never be clean. The
+  timestamp is now printed to stdout only and stripped from the file,
+  `auditSkills` defaults to `save: false`, and skills are sorted by path before
+  serialisation, so consecutive rebuilds are byte-identical and the file stays
+  drift-clean. This closes the `generatedAt` known limitation recorded in the
+  round above.
+- **The behavioral runner validates its grounding paths** — a fixture's
+  `grounding` entry cites bundle material as
+  `<repo-relative path>[#anchor][ (annotation)]`; only the path part was ever
+  resolved, and nothing checked it at all outside the CLI. `validateFixture` is
+  now exported and async and resolves every repo-relative grounding path,
+  skipping URLs and absolute paths that are deliberately not repo-relative.
+  A dead grounding path is a fixture schema error instead of a silently
+  misdirecting reference.
+- **The registry's inner `version` is tested** — `scripts/sync-registry.mjs`
+  falls back to the inner `version` field when `bundleVersion` is absent, so
+  both fields are load-bearing, but only `bundleVersion` was pinned.
+  `tests/version-consistency.test.mjs` now asserts the inner `version` as well,
+  so the two fields cannot drift apart or away from `VERSION`.
+
+### Traceability backlog closed
+
+- **The manual-clause backlog goes from 8 to 0** — `validate-traceability.mjs`
+  now reports 60 contract clauses across 18 skills with 60 resolved, 0 manual and
+  0 pending. The eight clauses that were still `manual` (`CODE-REVIEW-2/3/4`,
+  `IMPLEMENT-2/3/4`, `TO-SPEC-2/3`) stayed manual only because their paired
+  fixtures exercised the guardrail without citing the clause id. Each of
+  `evals/behavioral/{code-review,implement,to-spec}.json` now carries a `cites`
+  array naming every clause it exercises plus a citation on the exact assertion
+  or judge that enforces it — axis separation and findings-only for
+  `code-review`, the stop-before-publication and tracer-bullet rules plus the
+  approval gate for `implement`, and placeholder honesty and
+  synthesis-over-interview for `to-spec` — and each clause's `check:` is
+  repointed at `evals/behavioral/<skill>.json#<CLAUSE-ID>`, so the fragment is
+  the clause's own id.
+- **Eight new behavioral fixtures close the same backlog for the skills that
+  had none** — `review-fix-loop`, `analyze-artifacts`, `ship-subissue`,
+  `evaluate-skill-clauses`, `side-effect-auditor`, `skill-audit-clauses`,
+  `skill-optimizer` and `skill-promoter` each declare their contract clauses and
+  cite them from assertions and negative controls. The corpus is 20 fixtures.
+- **The backlog gate now proves the closure instead of documenting it** —
+  `.agents/skills/platform/tests/traceability-manual-backlog.test.mjs` no longer
+  ships an eight-entry `DOCUMENTED_MANUAL_BACKLOG` map that made `manual` the
+  expected outcome. The map is empty, a new test re-reads each of the eight
+  closed citations from its own fixture and asserts both that the fixture still
+  cites the id and that the clause's `check:` is not `manual`, so a fixture edit
+  that drops a citation fails the gate instead of reopening the backlog.
+
 ### Known limitations
 
 - **`security-scan-skills.mjs --deep` reports 5 high findings that are
@@ -128,15 +206,6 @@ that belonged to `.gitignore`.
   `.agents/skills/index.md`** and in several skill bodies. The link *targets* are
   all correct and resolve; only the human-readable label text still names the
   pre-move path. Cosmetic and non-breaking.
-- **`evals/behavioral/publish-open-pr.json:20` cites
-  `.agents/skills/routing/publish-openpr/SKILL.md`** — the directory is
-  `publish-open-pr`. No gate resolves that citation (traceability checks the
-  `#fragment` of a clause's own check, not a fixture's inbound reference), so it
-  does not fail anything, but it is a dead reference.
-- **`platform/graph/skill-graph.json` carries a `generatedAt` timestamp**, so a
-  `git diff --exit-code` drift gate against it can never be clean. Content drift
-  in it has been re-synced this round; the residual difference is the timestamp
-  alone.
 
 ### Changed
 
@@ -145,24 +214,67 @@ that belonged to `.gitignore`.
   `make-project`, `to-spec`, `to-tickets`, `skill-promoter`, `skill-tutor`),
   258 entries matching the 258 canonical `SKILL.md` files, dry-run clean after
   the write.
+- **Seven legacy behavioral fixtures renamed to match their skill field** — the
+  corpus at `.agents/skills/platform/fixtures/behavioral/` carried
+  domain-prefixed filenames that disagreed with the `skill` field of the fixture
+  they held. `backend-microservices`, `foundation-agent-canvas`,
+  `foundation-context-engine`, `foundation-domain-modeling`,
+  `foundation-observability`, `project-project-viability` and
+  `delivery-diagnosing-bugs` are now `microservices`, `agent-canvas`,
+  `context-engine`, `domain-modeling`, `observability`, `project-viability` and
+  `diagnosing-bugs`. A new test pins the rename map so a legacy name cannot come
+  back, and the four affected `fixturesPath` frontmatter values are repointed at
+  the canonical files.
+- **`core-triggers.json` merged into per-skill fixtures and deleted** — the
+  shared multi-skill trigger corpus is gone; its cases live in the per-skill
+  files they exercise. The corpus now carries 219 unique fixture ids with no
+  id shared across files.
+- **The duplicate-skills premise is corrected: depth-1 `implement` and
+  `implement-review-fixes` are symlinks, not duplicates** — the completeness
+  audit recorded two extra skills at the bundle root that would need deletion.
+  Both entries are git symlinks (index mode `120000`) pointing at their
+  `delivery/` counterparts, so they are the same skill reached by two paths and
+  not duplicate content. Nothing was deleted and the skill counts are unchanged
+  at 246 bundle skills and 258 canonical `SKILL.md` files.
+- **`skills-lock.json` re-locked again after the completeness audit** — 22 skills
+  updated (`code-review`, `implement`, `review-fix-loop`, `review-pr`, `tdd`,
+  `agent-canvas`, `context-engine`, `domain-modeling`, `observability`,
+  `subagent-swarm`, `analyze-artifacts`, `to-spec`, `to-tickets`, `ask-to`,
+  `publish-open-pr`, `ship-subissue`, `work-item-router`, `evaluate-skill`,
+  `side-effect-auditor`, `skill-audit`, `skill-optimizer`, `skill-promoter`),
+  no entries added or removed, dry-run clean after the write.
+- **checkpoints runtime is gitignored** — `.gitignore` now also ignores
+  `.agents/skills/platform/checkpoints/*.jsonl`, matching the existing
+  `traces/` and `state/` runtime rules.
 
 ### Validation
 
 ```bash
-node .agents/skills/platform/check-all.mjs            # status pass: 16/16 gating, 4 report-only pass, 1 skip (memory-index)
-node .agents/skills/platform/validate-skills.mjs      # 0 errors, 0 warnings
-node .agents/skills/platform/audit-semantics.mjs      # 0 errors, 0 warnings
-node .agents/skills/platform/validate-traceability.mjs # exit 0
-node .agents/skills/platform/validate-spec-compliance.mjs  # exit 0
+node .agents/skills/platform/check-all.mjs            # status pass: 17/17 gating (root-test suite now gating), 4 report-only pass, 1 skip (memory-index)
+node .agents/skills/platform/validate-skills.mjs      # 0 errors, 0 warnings (246 bundle skills)
+node .agents/skills/platform/audit-semantics.mjs      # 0 errors, 0 warnings (258 skill files, 688 markdown files)
+node .agents/skills/platform/validate-traceability.mjs # 60 clauses, 60 resolved, 0 manual, 0 pending, exit 0
+node .agents/skills/platform/validate-spec-compliance.mjs  # 0 errors
 node .agents/skills/platform/security-scan-skills.mjs      # clean (default and --strict)
+node .agents/skills/platform/security-scanner.mjs          # clean
 node evals/run-routing.mjs --check                            # 0 errors, 0 warnings
-node evals/run-behavioral.mjs --all                           # 12 fixtures, 0 failed
+node evals/run-behavioral.mjs --all                           # 20 fixtures, 0 failed
 node .agents/skills/platform/evaluate-fixtures.mjs            # 243/259 (93.8%) PASS
 node .agents/skills/platform/evaluate-fixtures.mjs --fixture-dir behavioral --threshold 0.8  # 219/219 PASS
+node .agents/skills/platform/evaluate-behavioral-fixtures.mjs  # PASS
+node .agents/skills/platform/evaluate-scenarios.mjs            # PASS
 node --test tests/*.test.mjs                                  # 6/6
-node --test .agents/skills/platform/tests/*.test.mjs          # 264/264
+node --test .agents/skills/platform/tests/*.test.mjs          # 291/291
 node .agents/skills/platform/dag-scheduler.mjs --check .agents/skills/platform/workflows/default-dag.json  # exit 0
+node .agents/skills/platform/dependency-graph.mjs            # exit 0
+node .agents/skills/platform/skill-graph.mjs build           # sha256-identical across two rebuilds; git status clean for the graph file
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60  # exit 0
+node .agents/skills/platform/skill-lab.mjs cost              # exit 0
+node .agents/skills/platform/context-budget-auditor.mjs      # exit 0
 ```
+
+The exact CI registry step (`node -e "const fs=require('fs');let r;try{r=JSON.parse(fs.readFileSync('registry.yaml','utf8'))}..."`)
+exits 0, and `validate.yml` parses as YAML.
 
 ## [2.4.1] - 2026-10-10
 
