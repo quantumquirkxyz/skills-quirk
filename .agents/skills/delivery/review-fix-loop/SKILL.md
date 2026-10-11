@@ -22,7 +22,7 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/review-fix-loop.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []

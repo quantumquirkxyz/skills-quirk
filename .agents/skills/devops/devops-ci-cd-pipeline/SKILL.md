@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/devops-ci-cd-pipeline.json
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []

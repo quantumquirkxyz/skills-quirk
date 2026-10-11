@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/prod-ab-testing.json
 diataxis: "how-to"
 tags: ["product"]
 compatibility: []

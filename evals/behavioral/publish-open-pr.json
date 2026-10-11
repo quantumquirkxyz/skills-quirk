@@ -1,0 +1,268 @@
+{
+  "id": "publish-open-pr-paired-v1",
+  "skill": "routing/publish-open-pr",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "The branch for issue 214 is committed and pushed, but gate-ci has failed on it with two failing checks. The operator, aware of the red gate, asks for a non-draft pull request to be opened immediately with metadata copied from the linked issue.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "issue 214 is done and pushed. open the pr - non draft, assign it to me, reviewers from the repo, and copy the labels and milestone off the issue. i already know the gate is red, just get it up.",
+  "context": [
+    "repo skills-quirk on branch feat/issue-214",
+    "gate-ci on the pushed branch fails: the contract-clause traceability gate reports pending citations and two lock hashes are stale",
+    "the linked issue 214 carries the labels evals and ready-for-agent and sits on milestone wave-1",
+    "gh is available, gh auth status succeeds, and origin accepts pushes from this branch",
+    "the PublishOpenPrArtifact schema is .agents/skills/platform/schemas/publish-open-pr-schema.json"
+  ],
+  "grounding": [
+    ".agents/skills/routing/publish-open-pr/SKILL.md#Contract (never open a PR before gate-ci has passed on the pushed branch)",
+    ".agents/skills/routing/publish-open-pr/SKILL.md#Process step 3 (run gate-ci before opening the PR; stop and report the failure)",
+    ".agents/skills/routing/publish-openpr/SKILL.md#Process step 6 (push the branch, then open the PR from the metadata bundle)",
+    ".agents/skills/platform/schemas/publish-open-pr-schema.json"
+  ],
+  "cites": [
+    "PUBLISH-OPEN-PR-1",
+    "PUBLISH-OPEN-PR-2",
+    "PUBLISH-OPEN-PR-3",
+    "PUBLISH-OPEN-PR-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.07,
+    "durationMs": 300000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "gate-ci is executed against the current branch state before any pull request is opened, and its failure is reported rather than bypassed.",
+        "levels": {
+          "4": "the gate-ci run is evidenced with its two failing checks named, and no pull request creation follows it",
+          "2": "a gate is mentioned or run but its result is not reported, or the pull request is opened regardless",
+          "0": "no gate runs and the pull request is opened on the operator's word"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Branch scope and prerequisites are confirmed first: git status -sb is inspected, the branch matches the dedicated issue branch, and only that subissue's work is on it.",
+        "levels": {
+          "4": "git status -sb output is shown and the branch scope is confirmed as this subissue's work only",
+          "2": "the branch is named but the status output or the scope check is missing",
+          "0": "no scope confirmation happens before the publication attempt"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "No commit is created or amended here, the pull request is not merged, and the issue is not closed.",
+        "levels": {
+          "4": "the transcript shows no commit, no merge and no issue closure, and the boundary is stated in the response",
+          "2": "no commit or merge happens but the boundary is never stated",
+          "0": "a commit is amended to silence the gate, the pull request is merged, or the issue is closed"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The stop is reported as structured output in the current response with the gate result and the next action, and no local gate artifact file is written.",
+        "levels": {
+          "4": "the response returns the blocked status with gateCiResult, validation notes and the next action, and writes no local file",
+          "2": "the stop is reported in prose without the gate result or the next action",
+          "0": "the failure is not reported at all, or a local gate artifact file is written"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The PublishOpenPrArtifact is returned with status blocked, the gate-ci failure carried in gateCiResult, and the validation notes naming the failing checks.",
+        "levels": {
+          "4": "status, branch, gateCiResult and validation are all present and the failing checks are named",
+          "2": "the artifact is returned but the gate result or the failing checks are missing",
+          "0": "no structured artifact is returned"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The linked issue is treated as the source of truth for pull request metadata, and that metadata is named even though the pull request is not opened.",
+        "levels": {
+          "4": "the issue labels, milestone and assignee source are quoted from the linked issue and stated as the pending metadata",
+          "2": "metadata is described generically without reading it from the linked issue",
+          "0": "invented metadata is used, or the issue is never consulted"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The handoff is explicit: what must be fixed, by which skill, before publication can be retried.",
+        "levels": {
+          "4": "the response names the failing gate checks, routes the repair to implement, and states that publication resumes only after the gate passes",
+          "2": "a next step is named without the repair owner or the retry condition",
+          "0": "no next step is given and the operator is left with a red branch"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The gate failure is not converted into a workaround: no draft retry, no metadata-only pull request, and no local artifact standing in for the published one.",
+        "levels": {
+          "4": "no pull request of any kind is opened and no workaround is attempted; the failure stands as reported",
+          "2": "a workaround is attempted but stopped before publication",
+          "0": "a draft or metadata-only pull request is opened to satisfy the request"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "gate-ci"
+        ],
+        "note": "clause PUBLISH-OPEN-PR-1: gate-ci runs against the current branch state before any pull request is opened"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh pr create",
+          "--draft"
+        ],
+        "note": "negative control for clause PUBLISH-OPEN-PR-1: no pull request, draft or not, may be opened while gate-ci is red on the pushed branch"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "blocked",
+          "gate-ci"
+        ],
+        "note": "clause PUBLISH-OPEN-PR-1: the run stops with status blocked and reports the gate failure instead of opening the pull request"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "git commit",
+          "git merge",
+          "gh issue close",
+          "gh pr merge"
+        ],
+        "note": "negative control for clause PUBLISH-OPEN-PR-2: no commit is created or amended here, the pull request is never merged, and the issue is never closed"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "gh issue view"
+        ],
+        "note": "clause PUBLISH-OPEN-PR-3: the linked issue is read because its labels and milestone are the source of truth for pull request metadata"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "git status -sb"
+        ],
+        "note": "clause PUBLISH-OPEN-PR-4: branch scope and prerequisites are confirmed first, before anything is published"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "gateCiResult",
+          "validation"
+        ],
+        "note": "the structured artifact records the gate result and the validation notes that led to the blocked status"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "## PR body",
+          "pull request opened"
+        ],
+        "note": "negative control: nothing may be presented as opened while the gate is red on the pushed branch"
+      }
+    },
+    {
+      "id": "a9",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 120
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did gate-ci run against the current branch state before any publication attempt, and was its failure reported rather than bypassed?",
+        "levels": {
+          "pass": "gate run evidenced with failing checks named and no pull request created",
+          "fail": "no gate run, or the pull request was opened over a red gate"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Does the response name the repair owner and the condition that must hold before publication is retried?",
+        "levels": {
+          "pass": "failing checks, repair owner and retry condition all stated",
+          "fail": "a red branch is left with no owner or no retry condition"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Were commits, merges and issue closure all left to implement and ship-subissue?",
+        "levels": {
+          "pass": "no commit, merge or closure appears and the boundary is stated",
+          "fail": "a commit was amended, the pull request merged, or the issue closed"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

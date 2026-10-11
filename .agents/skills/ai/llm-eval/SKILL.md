@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "ai"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/llm-eval.json
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []

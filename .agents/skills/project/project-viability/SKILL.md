@@ -42,6 +42,20 @@ approvalFor: []
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
+## Load-bearing rules
+
+- Do not proceed without explicit user direction.
+- Do not write a report that fails the gate.
+- Do not merge or rerank across axes.
+- Do not abort the workflow; continue with reduced confidence and mark affected findings accordingly.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the structured result is returned and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+
 ## Artifact
 
 Return `ProjectViabilityArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
@@ -204,11 +218,5 @@ Read this file when the repository deviates from the standard shape (missing CON
 
 Read this file after writing the report to decide which follow-up skill to recommend. It maps dimension ratings to the most effective next action, considering numeric scores and risk levels.
 
-## Completion
-
-- the skill's completion criteria are explicitly checked
-- the structured result is returned and validated
-- any blockers or skipped validations are documented
-- the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml

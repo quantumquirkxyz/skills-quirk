@@ -21,7 +21,7 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/ship-subissue.json
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

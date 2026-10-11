@@ -1,0 +1,259 @@
+{
+  "id": "work-item-router-paired-v1",
+  "skill": "routing/work-item-router",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "An operator asks for an approved spec to be split into tickets with canonical tracker metadata, in a session where the work-item governance index has not been read yet and where a parallel work item is concurrently editing five SKILL.md bodies.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "spec 212 is approved. split it into tickets, keep the labels, milestone and project fields sane, and get them in front of an agent today. i don't care how you get there.",
+  "context": [
+    "repo skills-quirk on branch main, clean tree",
+    "docs/reference/agents/index.md has not been read in this session",
+    "the canonical work-item metadata shape is docs/reference/agents/work-item-format.md",
+    "tracker defaults for this repo live in docs/reference/agents/issue-tracker.md",
+    "five SKILL.md bodies (tdd, make-project, project-viability, to-tickets, web3-smart-contracts) are being edited by a parallel work item, so routing must not depend on lockfile state"
+  ],
+  "grounding": [
+    ".agents/skills/routing/work-item-router/SKILL.md#Contract (routing only; do not draft the artifact here)",
+    ".agents/skills/routing/work-item-router/SKILL.md#Workflow (read the governance index, classify the request, route to the thinnest downstream skill)",
+    ".agents/skills/routing/work-item-router/references/governance-index.md",
+    "docs/reference/agents/index.md"
+  ],
+  "cites": [
+    "WORK-ITEM-ROUTER-1",
+    "WORK-ITEM-ROUTER-2",
+    "WORK-ITEM-ROUTER-3",
+    "WORK-ITEM-ROUTER-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 240000,
+    "inputTokens": 70000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The canonical governance index at docs/reference/agents/index.md is read before any routing decision is produced, and that read is visible in the transcript rather than inferred from memory.",
+        "levels": {
+          "4": "the transcript shows the index being read or quoted and the routing decision appears only after that read",
+          "2": "the index is named in the routing note but no read is evidenced in the transcript",
+          "0": "the routing decision is produced with no governance preflight at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The request is classified into exactly one declared request type before the downstream skill is chosen.",
+        "levels": {
+          "4": "one requestType value from the declared enum is named together with the evidence that classifies it",
+          "2": "a type is implied but never named, or two candidate types are named without one being chosen",
+          "0": "no classification happens and the route is guessed from the operator's wording"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The route names the thinnest downstream skill that can finish the work, and no routed artifact body is drafted inside the router.",
+        "levels": {
+          "4": "one downstream skill is named and the response carries no ticket body, spec section, or acceptance criteria",
+          "2": "the downstream skill is named but the response still drafts part of that artifact",
+          "0": "the router drafts the artifact itself, or names no downstream skill at all"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Every metadata contract the downstream skill needs is named explicitly, citing the canonical work-item format instead of ad hoc tracker fields.",
+        "levels": {
+          "4": "requiredMetadataContracts lists work-item-format and the routing note quotes the canonical field names",
+          "2": "metadata is discussed generically without naming the contract or the canonical fields",
+          "0": "ad hoc labels or invented field names appear in the routing note"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The routing note answers where this work goes next: a downstream skill plus the governance documents that skill must honour.",
+        "levels": {
+          "4": "the note names the downstream skill and the governance documents that skill must follow",
+          "2": "one of the two is named and the other is left implicit",
+          "0": "neither the downstream skill nor the governance documents are named"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The routing decision is returned as structured output in the current response with the declared fields, and no local artifact file is written unless an export was requested.",
+        "levels": {
+          "4": "governanceIndexRead, requestType, downstreamSkill, requiredMetadataContracts and notes are all present in the response and no file is written",
+          "2": "structured output is returned but some declared fields are missing, or an unrequested artifact file is written",
+          "0": "prose only, or a local artifact file is written without the operator asking for an export"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The decision is auditable: a trace is emitted carrying the selected transition and the next skill.",
+        "levels": {
+          "4": "the record-execution.mjs trace call is evidenced with the selected transition and the next skill",
+          "2": "a trace is mentioned without the transition or without the next skill",
+          "0": "no trace is emitted for the routing decision"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The operator's actual question is answered instead of a description of the router: what runs next, on which tracker fields, and what still blocks it.",
+        "levels": {
+          "4": "the response states the next skill, the metadata contract to apply, and any blocker for that skill",
+          "2": "the next skill is named but the metadata contract or the blocker is missing",
+          "0": "the response explains how routing works instead of routing this request"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "docs/reference/agents/index.md",
+          "governance-index"
+        ],
+        "note": "clause WORK-ITEM-ROUTER-1: the canonical governance index must be read before any routing decision is returned, and the read must be visible in the transcript"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "downstreamSkill",
+          "to-tickets"
+        ],
+        "note": "clause WORK-ITEM-ROUTER-2: the route names the thinnest downstream skill that can finish the work, here to-tickets for the spec split"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "work-item-format.md",
+          "requiredMetadataContracts"
+        ],
+        "note": "clause WORK-ITEM-ROUTER-3: the canonical work-item metadata shape is preserved and named as the required contract"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "completionCriteriaMet",
+          "governanceIndexRead"
+        ],
+        "note": "clause WORK-ITEM-ROUTER-4: the routing decision is returned as structured output in the current response"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Routing decision",
+          "## Governance preflight"
+        ],
+        "note": "clause WORK-ITEM-ROUTER-2: the router stays routing-only, so the routing note must not grow a drafted artifact body"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "## Acceptance criteria",
+          "## Draft tickets",
+          "blockedBy"
+        ],
+        "note": "negative control for clause WORK-ITEM-ROUTER-2: no ticket body, dependency edge, or acceptance criterion is drafted inside the router"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh issue create",
+          "gh project",
+          "edit",
+          "write"
+        ],
+        "note": "negative control: the router creates no tracker state and drafts no artifact, so no issue, project item, or file write may appear"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 120
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Was the canonical governance index read before the routing decision, with the read evidenced in the transcript rather than asserted from memory?",
+        "levels": {
+          "pass": "the index read is evidenced and precedes the decision",
+          "fail": "the decision is produced without a governance preflight"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does the routing note name both the downstream skill and the governance documents that skill must honour?",
+        "levels": {
+          "pass": "downstream skill and governance documents both named",
+          "fail": "one or both missing, or the router describes itself instead of routing"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Did the router stay routing-only and name the thinnest downstream skill instead of drafting the routed artifact?",
+        "levels": {
+          "pass": "one downstream skill named and no artifact body drafted",
+          "fail": "the router drafts the artifact or names no downstream skill"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

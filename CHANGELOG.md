@@ -8,6 +8,78 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.4.1] - 2026-10-10
+
+Closing the fixtures-coverage gap. Three remediation streams landed their content (evals
+citations, hoisted load-bearing rules, reproducible agent cards) and a fourth wired the
+canonical behavioral fixtures; the validator still measured fixtures only at the per-skill
+directory, so 68 correctly-covered skills were warned. This release fixes the measurement,
+wires the two stragglers, and hardens the fixture evaluator.
+
+### Fixed
+
+- **`validate-skills.mjs` measures behavioral fixtures at the canonical central location** —
+  the "risk skill has no behavioral-fixtures directory" warning checked only for a non-empty
+  `<skillDir>/behavioral-fixtures/` directory, while the bundle's dominant convention is the
+  central corpus at `.agents/skills/platform/fixtures/behavioral/<skill>.json` (94 files versus
+  a handful of per-skill directories). The warning now fires only when a skill has neither a
+  non-empty local directory nor an existing central fixture file, so 68 correctly-covered
+  skills are no longer warned. The warning category name and message prefix are unchanged.
+- **`evaluate-fixtures.mjs` no longer crashes on the security corpus** — with its default
+  `--fixture-dir`, entries in `fixtures/security/skill-poisoning-baseline.json` carry
+  `files`/`class`/`rule` and no `skill` field, which made `resolveSkillPath` throw
+  `ERR_INVALID_ARG_TYPE` on `path.join(undefined)` before any result was printed. Fixtures
+  without a resolvable `skill` are now skipped with an explicit, surfaced note count
+  (16 entries in the default corpus) and the run completes. The corpus file is unchanged; it is
+  consumed by `security-scan-skills.mjs`, not by this evaluator.
+- **`--fixture-dir` accepts a leaf fixture directory** — pointing it at
+  `.agents/skills/platform/fixtures/behavioral` used to evaluate zero fixtures (the loader only
+  globbed `<dir>/behavioral`, `<dir>/regression`, `<dir>/security` children). The loader now
+  detects a leaf directory that carries fixture JSON directly.
+- **`validate-traceability.mjs --fix-hint` always publishes its remediation vocabulary** — with
+  the evals backlog closed (0 pending citations) the hint mode printed only
+  "No errors - nothing to remediate.", hiding the class catalog. It now prints
+  "Remediation by class:" with the full legend before that line, so the mode stays a usable
+  reference in a clean repository.
+
+### Changed
+
+- **61 canonical behavioral fixtures wired into 60 skills' `fixturesPath`** — the behavioral
+  fixtures corpus now holds 94 files (222 evaluated assertions). 58 skills were pointed at
+  `.agents/skills/platform/fixtures/behavioral/<skill>.json` by the fixtures stream, and the two
+  stragglers left on `fixturesPath: ""` (`make-project`, `web3-smart-contracts`) — both of which
+  do have fixtures — are now wired to the same canonical spelling.
+- **Agent-card corpus made reproducible** — 246/246 cards regenerate byte-identically, 6 stale
+  platform cards pruned, the `mcp-server` card recovered, and `skills.json` aligned to 2.4.0.
+- **`skills-lock.json` re-locked** against the edited tree (258 entries matching 258 canonical
+  `SKILL.md` files; clean dry-run after the write).
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # status pass, 10/10 gating checks, 0 errors, 0 warnings
+node .agents/skills/platform/validate-skills.mjs      # 246 skills, 0 errors, 0 warnings
+node .agents/skills/platform/audit-semantics.mjs      # 258 skills, 0 errors, 0 warnings (no load-bearing findings)
+node .agents/skills/platform/security-scanner.mjs     # pass, 0 findings
+node .agents/skills/platform/security-scan-skills.mjs # clean, 0 findings
+node .agents/skills/platform/security-scan-skills.mjs --strict  # clean, 0 findings
+node .agents/skills/platform/validate-spec-compliance.mjs  # 258 skills, 0 errors, 0 warnings, bodies within 500 lines
+node .agents/skills/platform/validate-traceability.mjs     # exit 0 - 60 clauses, 10 resolved, 50 manual, 0 pending, 0 errors
+node evals/run-routing.mjs --check                    # 10 fixtures, 151 rows, 41 negative controls, 0 errors, 0 warnings
+node evals/run-behavioral.mjs --all                   # 12 fixtures, 0 broken schema, 0 crashed (mock judge)
+node .agents/skills/platform/evaluate-fixtures.mjs    # 246/262 pass (93.9%), 16 skipped without a skill field
+node .agents/skills/platform/evaluate-fixtures.mjs --fixture-dir .agents/skills/platform/fixtures/behavioral --threshold 0.8  # 222/222 pass
+node .agents/skills/platform/evaluate-behavioral-fixtures.mjs  # 4 fixtures, 0 errors, 0 warnings
+node .agents/skills/platform/evaluate-scenarios.mjs   # 8 scenarios, 0 errors, 0 warnings
+node --test tests/*.test.mjs                          # 6/6 pass
+node --test .agents/skills/platform/tests/*.test.mjs  # 217/217 pass
+node .agents/skills/platform/quality-scorer.mjs --minimum-score 60  # pass
+node .agents/skills/platform/dependency-graph.mjs     # 246 skills, 1 dependency edge, 0 cycles
+node .agents/skills/platform/skill-graph.mjs build    # 246 nodes / 60 edges (depends-on 1, compatible 49, handoff 10)
+node .agents/skills/platform/skill-lab.mjs cost       # report, exit 0
+node .agents/skills/platform/context-budget-auditor.mjs  # report, exit 0
+```
+
 ## [2.4.0] - 2026-10-10
 
 Wave 3 — time-travel over workflows, a memory layout convention, and opt-in signed agent cards.

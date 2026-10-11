@@ -1,0 +1,270 @@
+{
+  "id": "to-tickets-paired-v1",
+  "skill": "project/to-tickets",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Spec 212 is approved and the operator hands over a hand-drawn dependency order in which one blocking edge is redundant because a shorter path already covers it, plus one corrective recommendation from the wave-1 review that must be published as the smallest ticket.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "spec 212 is approved - turn it into tickets. i sketched the order already: t1 schema, t2 parser, t3 cli check, t4 docs. t1 blocks t2, t1 blocks t3, t1 blocks t4, t2 blocks t3, and t3 and t4 are the frontier. check my order, publish what's safe, and don't touch the parent issue.",
+  "context": [
+    "repo skills-quirk on branch main, clean tree",
+    "the spec issue 212 carries labels spec and ready-for-agent and milestone wave-1",
+    "the dependency lint is node .agents/skills/platform/dag-scheduler.mjs check <artifact> and the wave plan is dag-scheduler.mjs levels <artifact>",
+    "the canonical ticket shape is .agents/skills/project/to-tickets/references/issue-template.md and the slice rules are references/vertical-slice-rules.md",
+    "the corrective recommendation inherits the parent requirement quote from the wave-1 review-fix plan",
+    "the canonical work-item metadata shape is docs/reference/agents/work-item-format.md"
+  ],
+  "grounding": [
+    ".agents/skills/project/to-tickets/SKILL.md#Contract (tracer bullets, genuine blocking edges, canonical metadata)",
+    ".agents/skills/project/to-tickets/SKILL.md#Process step 4 (compute DAG waves and lint over-coupling with dag-scheduler.mjs)",
+    ".agents/skills/project/to-tickets/SKILL.md#Publish (one issue per ticket in dependency order; do not close or modify any parent issue)",
+    "docs/reference/agents/work-item-format.md"
+  ],
+  "cites": [
+    "TO-TICKETS-1",
+    "TO-TICKETS-2",
+    "TO-TICKETS-3",
+    "TO-TICKETS-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.09,
+    "durationMs": 420000,
+    "inputTokens": 140000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The drafted graph is machine-checked: dag-scheduler levels produces the wave plan and dag-scheduler check is run over the ticket artifact, with every warning discharged.",
+        "levels": {
+          "4": "both commands are evidenced and the wave plan is emitted alongside the artifact, with the operator's frontier claim corrected where the levels disagree",
+          "2": "one command is run, or the wave plan is asserted by hand without running the scheduler",
+          "0": "the hand-drawn order is published as given with no scheduler check"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Each ticket cuts a narrow but complete vertical path through the work and is demoable or verifiable on its own, rather than a horizontal layer of one concern.",
+        "levels": {
+          "4": "every ticket names an end-to-end behaviour it makes work and states which layers it passes through",
+          "2": "some tickets are vertical while others are horizontal layer dumps",
+          "0": "the set is a horizontal dump of one layer per ticket"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The breakdown is presented as a numbered list with title, blockers and delivered behaviour, and the user approves granularity before publication.",
+        "levels": {
+          "4": "the numbered breakdown is presented with all three elements per ticket and approval is requested before anything is published",
+          "2": "the breakdown is presented but publication happens without waiting for approval",
+          "0": "tickets are published with no breakdown and no approval"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Published tickets carry the canonical metadata from work-item-format.md plus this repo's tracker defaults, and no parent issue is closed or modified.",
+        "levels": {
+          "4": "canonical labels, milestone and project fields are applied per ticket and the parent issue is left untouched",
+          "2": "metadata is partially applied or one ticket drifts from the canonical shape",
+          "0": "ad hoc metadata is used, or the parent issue is closed or edited"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Every ticket has an explicit blocker set or none, and the frontier can be taken without guessing the order.",
+        "levels": {
+          "4": "each ticket lists its blockers by title or number and the wave plan makes the claimable set unambiguous",
+          "2": "blockers are stated for some tickets only, or the frontier is left to inference",
+          "0": "blockers are missing or contradictory so the frontier cannot be resolved"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The redundant blocking edge is discharged: it is removed, or recorded as intentional in that ticket's risks, and the chosen treatment is stated.",
+        "levels": {
+          "4": "the redundant edge is named, the level change from removing it is shown to be zero, and the treatment choice is stated",
+          "2": "the redundancy is noticed but neither removed nor recorded as intentional",
+          "0": "the redundant edge is published unchanged with no comment"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The corrective ticket inherits the parent spec metadata and the parent requirement quote, and publishes only the audited gap rather than expanding scope.",
+        "levels": {
+          "4": "the corrective ticket quotes the parent requirement, inherits its metadata, and adds nothing beyond the audited gap",
+          "2": "the corrective ticket covers the gap but widens scope past the audited recommendation",
+          "0": "the corrective recommendation is dropped or turned into a general rework ticket"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The machine-readable ticket array and the published Markdown tickets are emitted together so the blocker edges cannot drift, and the array carries a traceId.",
+        "levels": {
+          "4": "both forms are emitted, the edges agree between them, and the traceId links the decomposition to its execution record",
+          "2": "one form only, or the two forms disagree on the edges",
+          "0": "no structured artifact and no published tickets"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "dag-scheduler.mjs"
+        ],
+        "note": "clause TO-TICKETS-2: the blocking edges are machine-checked with dag-scheduler rather than trusted from the operator's sketch"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "redundant",
+          "intentional"
+        ],
+        "note": "clause TO-TICKETS-2: the redundant edge t1 blocks t3 is removed or recorded as intentional, and the chosen treatment is stated"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Wave plan",
+          "## Tickets"
+        ],
+        "note": "the wave plan is emitted with the ticket artifact so the frontier is machine-checkable instead of a guess about order"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh issue close",
+          "gh issue edit",
+          "gh issue update"
+        ],
+        "note": "negative control for clause TO-TICKETS-3: no parent issue may be closed or modified while publishing the tickets"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "blockedBy",
+          "ready-for-agent"
+        ],
+        "note": "clause TO-TICKETS-3: every published ticket carries the canonical metadata from work-item-format.md plus this repo's tracker defaults"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "parent spec",
+          "parent requirement"
+        ],
+        "note": "clause TO-TICKETS-4: the corrective ticket preserves the parent spec metadata and publishes only the audited gap"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "vertical-slice-rules.md"
+        ],
+        "note": "clause TO-TICKETS-1: the slices are drafted against the declared vertical-slice rules instead of split by layer"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "PLACEHOLDER",
+          "<insert"
+        ],
+        "note": "negative control for clause TO-TICKETS-1: a published ticket must be independently understandable and claimable, with no placeholder body"
+      }
+    },
+    {
+      "id": "a9",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Were the DAG waves computed and the edge lint run with dag-scheduler, with the emitted wave plan correcting the operator's frontier claim?",
+        "levels": {
+          "pass": "both commands evidenced and the wave plan corrects the claimed frontier",
+          "fail": "the hand-drawn order is published without a scheduler check"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Was the redundant blocking edge discharged, with the choice between removal and an intentional record stated?",
+        "levels": {
+          "pass": "edge named, zero level change shown, treatment chosen and stated",
+          "fail": "redundancy ignored, or noticed but neither removed nor recorded"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Did every published ticket carry the canonical metadata while the parent issue stayed untouched?",
+        "levels": {
+          "pass": "canonical metadata per ticket and no parent modification",
+          "fail": "ad hoc metadata, or the parent issue was closed or edited"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

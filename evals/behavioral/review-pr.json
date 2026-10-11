@@ -1,0 +1,271 @@
+{
+  "id": "review-pr-paired-v1",
+  "skill": "delivery/review-pr",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "The branch behind pull request 231 carries unresolved conflict markers from a merge, and the operator asks for a review against main anyway. The run must stop and route that state to resolving-merge-conflicts first, then complete the two-axis review of the resolved diff without reranking the axes.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "review pr 231 against main. it's got a nasty merge in it, just look at the diff and tell me what's wrong with it.",
+  "context": [
+    "repo skills-quirk on branch main; the pull request branch is feat/issue-231",
+    "git status on that branch shows unmerged paths and conflict markers inside the harness runner",
+    "the fixed point the operator supplied is main, so the diff command is git diff main...HEAD",
+    "the originating spec is issue 231 and the standards sources are AGENTS.md plus the review-quality-bar smell baseline",
+    "the resolved diff contains one documented-standard breach and one baseline smell",
+    "the ReviewArtifact schema is .agents/skills/platform/schemas/review-findings-schema.json"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/review-pr/SKILL.md#Contract (Standards and Spec axes stay separate; publish findings only)",
+    ".agents/skills/delivery/review-pr/SKILL.md#Process step 1 (pin the fixed point, stop a conflicted branch state and route it to resolving-merge-conflicts)",
+    ".agents/skills/delivery/review-pr/SKILL.md#Process steps 4-5 (two parallel sub-agents, aggregate without merging or reranking)",
+    ".agents/skills/delivery/review-pr/references/review-quality-bar.md (smell baseline)"
+  ],
+  "cites": [
+    "REVIEW-PR-1",
+    "REVIEW-PR-2",
+    "REVIEW-PR-3",
+    "REVIEW-PR-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.12,
+    "durationMs": 540000,
+    "inputTokens": 180000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The branch state is validated before the sub-agents spawn: a conflicted merge or rebase state is stopped and routed to resolving-merge-conflicts instead of becoming review findings.",
+        "levels": {
+          "4": "the conflicted state is detected, the conflict is explicitly excluded from both axes, and the routing to resolving-merge-conflicts is recorded before the sub-agents spawn",
+          "2": "the conflict is mentioned in the review but no routing is recorded, or the sub-agents are spawned before the branch state is checked",
+          "0": "the conflict markers themselves are reported as Standards or Spec findings"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Both axes run as separate parallel sub-agents and their reports are presented under separate headings, with no merging or reranking between them.",
+        "levels": {
+          "4": "two parallel sub-agent runs are evidenced and the report keeps separate Standards and Spec sections with a per-axis summary",
+          "2": "one section covers both axes, or the findings are merged into a single list",
+          "0": "no axis structure and the two concerns are indistinguishable"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The Standards axis carries the documented repo standards plus the smell baseline, with documented-standard breaches treated as hard and every baseline smell labelled a judgement call.",
+        "levels": {
+          "4": "each standards finding is classified hard-violation or judgement-call and cites its rule or smell name, with repo overrides respected",
+          "2": "findings cite a rule but the hard-versus-judgement distinction is missing",
+          "0": "no rule or smell is cited for any standards finding"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The skill stays publish-only: no source file is edited, the conflicted branch is not fixed, and nothing is merged.",
+        "levels": {
+          "4": "the transcript shows no write or branch-mutating call and the report states the read-only boundary explicitly",
+          "2": "no mutation happens but the boundary is never stated",
+          "0": "the conflict is resolved, a source file is edited, or the pull request is merged"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Every finding carries the exact file and line or hunk, the rule or smell that justifies it, and a concrete explanation of what breaks.",
+        "levels": {
+          "4": "all three elements are present for every finding on both axes",
+          "2": "location and justification are present but the consequence is missing",
+          "0": "findings appear without a location or a justification"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The Spec axis quotes the spec line for each requirement and separates missing, partial, scope-creep and implemented-incorrectly outcomes.",
+        "levels": {
+          "4": "each spec finding quotes the requirement and names its status class",
+          "2": "requirements are discussed without quotes or status classes",
+          "0": "no spec findings are produced although a spec was available"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The one-line summary reports the total findings and the worst issue within each axis, without picking a single winner across axes.",
+        "levels": {
+          "4": "per-axis totals and per-axis worst issue are both reported",
+          "2": "totals only, or a single cross-axis winner is chosen",
+          "0": "no summary is reported"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The review is published to the pull request when the target is a GitHub PR, mirroring the two-axis structure, and the ReviewArtifact is validated against its schema.",
+        "levels": {
+          "4": "the published review mirrors the axis structure and the artifact names the schema with its validation result",
+          "2": "the review is returned in chat only, or the artifact is not validated",
+          "0": "neither a published review nor a validated artifact exists"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "resolving-merge-conflicts"
+        ],
+        "note": "the conflicted branch state is stopped and routed to resolving-merge-conflicts before any finding is produced"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "git add",
+          "git commit",
+          "gh pr merge"
+        ],
+        "note": "negative control for clause REVIEW-PR-3: the conflicted state is never resolved, committed or merged inside the review"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Standards",
+          "## Spec"
+        ],
+        "note": "clause REVIEW-PR-1: the Standards and Spec axes stay separate, each under its own heading"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "## Overall ranking",
+          "single winner",
+          "top finding"
+        ],
+        "note": "negative control for clause REVIEW-PR-1: findings are never merged or reranked across the axes into one winner"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "hard-violation",
+          "judgement-call"
+        ],
+        "note": "clause REVIEW-PR-4: documented-standard breaches are hard violations while baseline smells are always judgement calls"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "file:",
+          "smell"
+        ],
+        "note": "clause REVIEW-PR-2: every finding carries the exact file and line, the justifying rule or smell, and what breaks"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "edit",
+          "write",
+          "str_replace"
+        ],
+        "note": "negative control for clause REVIEW-PR-3: findings only, so no source file is edited or fixed inside the review"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "...HEAD"
+        ],
+        "note": "the three-dot diff against the merge-base of the supplied fixed point is the recorded comparison"
+      }
+    },
+    {
+      "id": "a9",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Was the conflicted branch state detected and routed to resolving-merge-conflicts before the sub-agents spawned, with the conflict kept out of both axes?",
+        "levels": {
+          "pass": "state detected, routed, and excluded from the findings",
+          "fail": "the conflict itself became Standards or Spec findings"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Does the summary report per-axis totals and the worst issue within each axis, without choosing a winner across axes?",
+        "levels": {
+          "pass": "per-axis totals and per-axis worst issue",
+          "fail": "totals only, or a single cross-axis winner"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Did the run stay publish-only, editing no source file, fixing no branch state and merging nothing?",
+        "levels": {
+          "pass": "no mutation and the read-only boundary is stated",
+          "fail": "a source edit, a conflict resolution, or a merge"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

@@ -123,9 +123,13 @@ async function main() {
     }
 
     if ((fm.risk === 'medium' || fm.risk === 'high')) {
+      // Fixtures may live in a per-skill `<skillDir>/behavioral-fixtures/` directory
+      // or at the bundle's canonical central location. Both satisfy the coverage rule.
       const fixturesDir = path.join(skillDir, 'behavioral-fixtures');
-      const hasFixtures = await exists(fixturesDir) && (await fs.readdir(fixturesDir)).length > 0;
-      if (!hasFixtures) {
+      const hasLocalFixtures = await exists(fixturesDir) && (await fs.readdir(fixturesDir)).length > 0;
+      const centralFixture = path.join(repoRoot, '.agents', 'skills', 'platform', 'fixtures', 'behavioral', `${name}.json`);
+      const hasCentralFixture = await exists(centralFixture);
+      if (!hasLocalFixtures && !hasCentralFixture) {
         warnings.push(`${name}: ${fm.risk} risk skill has no behavioral-fixtures directory`);
       }
     }

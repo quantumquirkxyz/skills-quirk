@@ -1,10 +1,18 @@
 #!/usr/bin/env node
 // generate-agent-cards.mjs - Agent Card corpus generator with opt-in Ed25519 signing.
 //
-// Default behavior (no flags) is unchanged: regenerate the corpus from skill
-// frontmatter into .agents/skills/platform/agent-cards/. Signing is strictly
-// opt-in and never runs by default, so the checked-in corpus stays byte-identical
-// across flagless regeneration.
+// Default behavior (no flags) regenerates the corpus from skill frontmatter into
+// .agents/skills/platform/agent-cards/, then prunes every card the run did not
+// generate, so the checked-in corpus can never drift from its source (--no-prune
+// opts out). Signing is strictly opt-in and never runs by default, so the
+// checked-in corpus stays byte-identical across flagless regeneration.
+//
+// Skill discovery mirrors the canonical bundle projection: `platform` is bundle
+// infrastructure, not skill content, so scripts/sync-registry.mjs,
+// scripts/generate-site-data.mjs and .agents/skills/platform/validate-skills.mjs
+// all exclude it and CATALOG.md, llms.txt, .claude-plugin/marketplace.json and
+// site/src/skills.json project the 246 non-platform skills. The corpus cards
+// exactly those 246 skills.
 //
 // Signing protocol (A2A v1.0, a2a-protocol.org; the spec signs Agent Cards with a
 // JWS (RFC 7515) computed over a canonicalized form of the card using the JSON
@@ -44,29 +52,53 @@ const usage = `generate-agent-cards options:
     [--card <file|dir>]            one card file or a directory of cards (default: the corpus dir)
   --gen-key --out <privateKeyPath> --pub-out <publicKeyPath>
                                    generate an Ed25519 keypair (paths are always explicit)
+  --no-prune                       keep cards the current run did not generate
   --json                           machine-readable output for --sign/--verify
   --help                           show this help`;
 
+async function fileExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// Mirrors the canonical bundle projection exactly. `platform` is skipped at any
+// depth, precisely like validate-skills.mjs (ignored at every recursion level)
+// and sync-registry.mjs / generate-site-data.mjs (skipped as a category), so the
+// corpus holds no platform-infrastructure skills. The companion resource
+// directories never hold a SKILL.md and are skipped at any depth as well.
+// foundation/mcp-server is a real bundle skill (listed in CATALOG.md and
+// .claude-plugin/marketplace.json) and is deliberately NOT skipped.
+const SKIPPED_DIRS = new Set([
+  'platform',
+  'node_modules', '.git', 'dist', 'scripts', 'agent-cards', 'artifacts',
+  'fixtures', 'schemas', 'traces', 'state', 'runs', 'evals', 'prompts',
+  'assets', 'references', 'behavioral-fixtures', 'tests', 'audit'
+]);
+
 async function findSkillDirs() {
-  const EXCLUDED_DIRS = new Set([
-    'platform', 'node_modules', '.git', 'dist', 'scripts',
-    'agent-cards', 'artifacts', 'fixtures', 'schemas', 'traces',
-    'state', 'runs', 'evals', 'prompts', 'assets', 'references',
-    'behavioral-fixtures', 'tests', 'mcp-server', 'audit'
-  ]);
-  const categories = await fs.readdir(SKILLS_DIR, { withFileTypes: true });
   const skills = [];
-  for (const cat of categories) {
-    if (!cat.isDirectory()) continue;
-    if (EXCLUDED_DIRS.has(cat.name)) continue;
-    const catPath = path.join(SKILLS_DIR, cat.name);
-    const entries = await fs.readdir(catPath, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isDirectory() && !EXCLUDED_DIRS.has(entry.name)) {
-        skills.push({ category: cat.name, name: entry.name, path: path.join(catPath, entry.name) });
+  const walk = async (dir, category) => {
+    for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory() || SKIPPED_DIRS.has(entry.name)) continue;
+      const child = path.join(dir, entry.name);
+      // A directory holding a SKILL.md is a skill; otherwise it is a category
+      // to descend into, with the first-level directory as the card category.
+      const skillCategory = category ?? entry.name;
+      if (await fileExists(path.join(child, 'SKILL.md'))) {
+        skills.push({ category: skillCategory, name: entry.name, path: child });
+      } else {
+        await walk(child, skillCategory);
       }
     }
-  }
+  };
+  await walk(SKILLS_DIR, null);
+  // Deterministic order: readdir order is filesystem-dependent, and the corpus
+  // (index.json's cards array included) must be byte-stable across machines.
+  skills.sort((a, b) => `${a.category}/${a.name}`.localeCompare(`${b.category}/${b.name}`));
   return skills;
 }
 
@@ -125,7 +157,7 @@ async function generateCard(skill) {
   return card;
 }
 
-// --- generation (default behavior, unchanged) ---
+// --- generation (flagless regeneration, then pruning) ---
 
 async function generateCorpus() {
   const skills = await findSkillDirs();
@@ -140,12 +172,16 @@ async function generateCorpus() {
   return pairs;
 }
 
-async function writeCorpus(pairs, outDir) {
+async function writeCorpus(pairs, outDir, options = {}) {
+  const prune = options.prune !== false;
   await fs.mkdir(outDir, { recursive: true });
   const cards = [];
+  const written = new Set();
   for (const { skill, card } of pairs) {
     try {
-      await fs.writeFile(path.join(outDir, `${skill.category}-${skill.name}.json`), JSON.stringify(card, null, 2) + '\n');
+      const filename = `${skill.category}-${skill.name}.json`;
+      await fs.writeFile(path.join(outDir, filename), JSON.stringify(card, null, 2) + '\n');
+      written.add(filename);
       cards.push(card);
     } catch (err) {
       console.error(`Failed to write card for ${skill.category}/${skill.name}:`, err.message);
@@ -157,14 +193,29 @@ async function writeCorpus(pairs, outDir) {
     cards
   };
   await fs.writeFile(path.join(outDir, INDEX_FILENAME), JSON.stringify(indexDoc, null, 2) + '\n');
-  return cards.length;
+  // Prune drift: every *.json the run did not generate is a card no current run
+  // can reproduce (renamed or removed skill, retired category), so it is stale
+  // by definition and gets removed in deterministic sorted order. index.json is
+  // never a prune candidate, and non-card files (README.md, schemas) are never
+  // touched. --no-prune opts out.
+  let pruned = 0;
+  if (prune) {
+    for (const entry of (await fs.readdir(outDir, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name))) {
+      if (!entry.isFile() || !entry.name.endsWith('.json')) continue;
+      if (entry.name === INDEX_FILENAME || written.has(entry.name)) continue;
+      await fs.rm(path.join(outDir, entry.name));
+      pruned++;
+    }
+  }
+  return { written: cards.length, pruned };
 }
 
-async function generateOnly() {
+async function generateOnly(options = {}) {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   const pairs = await generateCorpus();
-  const written = await writeCorpus(pairs, OUTPUT_DIR);
-  console.log(`Generated ${written} agent cards in ${OUTPUT_DIR}`);
+  const { written, pruned } = await writeCorpus(pairs, OUTPUT_DIR, { prune: options.prune });
+  const pruneNote = pruned ? `, pruned ${pruned} stale card${pruned === 1 ? '' : 's'}` : '';
+  console.log(`Generated ${written} agent cards${pruneNote} in ${OUTPUT_DIR}`);
 }
 
 // --- canonicalization (RFC 8785 subset) ---
@@ -284,7 +335,7 @@ async function signCorpus(options) {
   const pairs = await generateCorpus();
   const signedPairs = pairs.map(({ skill, card }) => ({ skill, card: signCard(card, keyPem, { keyId, signedAt }) }));
   const outDir = path.resolve(process.cwd(), options.out || OUTPUT_DIR);
-  const written = await writeCorpus(signedPairs, outDir);
+  const { written } = await writeCorpus(signedPairs, outDir, { prune: options.prune });
   const report = {
     tool: 'generate-agent-cards',
     command: 'sign',
@@ -393,6 +444,7 @@ export async function main(argv = process.argv.slice(2)) {
     card: valueOf('--card'),
     signedAt: valueOf('--signed-at'),
     json: argv.includes('--json'),
+    prune: !argv.includes('--no-prune'),
   };
 
   if (argv.includes('--gen-key')) return genKeyPair(options);
@@ -411,7 +463,7 @@ export async function main(argv = process.argv.slice(2)) {
     }
     return verifyCorpus(options);
   }
-  await generateOnly();
+  await generateOnly(options);
   return 0;
 }
 

@@ -47,6 +47,7 @@ async function loadFixtures(dir) {
 }
 
 async function resolveSkillPath(skillName) {
+  if (typeof skillName !== 'string' || !skillName.trim()) return null;
   const candidates = [
     path.join(root, '.agents', 'skills', skillName, 'SKILL.md'),
     ...(await collectSkillDirs(path.join(root, '.agents', 'skills')))
@@ -76,6 +77,10 @@ async function collectSkillDirs(dir, out = []) {
 
 async function runFixture(fixture) {
   fixture.type ??= 'regression';
+
+  if (typeof fixture.skill !== 'string' || !fixture.skill.trim()) {
+    return { id: fixture.id, status: 'skip', skippedNoSkill: true, reason: 'no skill field (not a skill-targeted fixture)' };
+  }
 
   const skillFile = await resolveSkillPath(fixture.skill);
   if (!skillFile) {
@@ -154,9 +159,20 @@ async function runFixture(fixture) {
 
 async function main() {
   const results = [];
-  const behavioralFixtures = await loadFixtures(path.join(fixturesDir, 'behavioral'));
-  const regressionFixtures = await loadFixtures(path.join(fixturesDir, 'regression'));
-  const securityFixtures = await loadFixtures(path.join(fixturesDir, 'security'));
+  const leafFixtures = await loadFixtures(fixturesDir);
+  let behavioralFixtures;
+  let regressionFixtures;
+  let securityFixtures;
+  if (leafFixtures.length > 0) {
+    // --fixture-dir points at a leaf fixture directory (e.g. .../fixtures/behavioral).
+    behavioralFixtures = leafFixtures;
+    regressionFixtures = [];
+    securityFixtures = [];
+  } else {
+    behavioralFixtures = await loadFixtures(path.join(fixturesDir, 'behavioral'));
+    regressionFixtures = await loadFixtures(path.join(fixturesDir, 'regression'));
+    securityFixtures = await loadFixtures(path.join(fixturesDir, 'security'));
+  }
 
   const allFixtures = [...behavioralFixtures, ...regressionFixtures, ...securityFixtures];
 
@@ -168,6 +184,7 @@ async function main() {
   const passed = results.filter(r => r.status === 'pass').length;
   const failed = results.filter(r => r.status === 'fail').length;
   const skipped = results.filter(r => r.status === 'skip').length;
+  const skippedNoSkill = results.filter(r => r.skippedNoSkill).length;
   const passRate = results.length > 0 ? passed / results.length : 0;
 
   const summary = {
@@ -175,6 +192,7 @@ async function main() {
     passed,
     failed,
     skipped,
+    skippedNoSkill,
     passRate,
     threshold,
     meetsThreshold: passRate >= threshold,
@@ -187,6 +205,9 @@ async function main() {
     console.log(`\nFixture Evaluation Results`);
     console.log(`Passed: ${passed}/${results.length} (${(passRate * 100).toFixed(1)}%)`);
     console.log(`Threshold: ${(threshold * 100).toFixed(1)}% — ${passRate >= threshold ? 'PASS' : 'FAIL'}`);
+    if (skippedNoSkill > 0) {
+      console.log(`Note: ${skippedNoSkill} fixture entr${skippedNoSkill === 1 ? 'y' : 'ies'} skipped — no resolvable skill field (not consumed by this evaluator)`);
+    }
     if (failed > 0) {
       console.log('\nFailed fixtures:');
       for (const r of results.filter(r => r.status === 'fail')) {

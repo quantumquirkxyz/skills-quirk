@@ -1,0 +1,271 @@
+{
+  "id": "subagent-swarm-paired-v1",
+  "skill": "foundation/subagent-swarm",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A four-role parallel swarm of architect, implementer, reviewer and tester is launched to close the traceability backlog. The reviewer brief arrives without boundaries or a stop condition, and the tester returns a narrative paragraph with no artifact reference, so the merge must stop rather than fabricate completion.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "run a swarm over the traceability backlog: architect proposes the split, implementer does it, reviewer checks it, tester runs the harness. go parallel and just stitch the four results together at the end \u2014 i want it done today.",
+  "context": [
+    "repo skills-quirk on branch main, clean tree",
+    "the DelegationBrief schema is .agents/skills/platform/schemas/delegation-brief.schema.json",
+    "the verification protocol is .agents/skills/foundation/verify-delegation/references/verify-protocol.md",
+    "workers are read-only by default; only the orchestrator may set readOnly false and must name the write scope in boundaries",
+    "the swarm artifact lands at .agents/skills/platform/artifacts/subagent-swarm/{identifier}.json with the Markdown view beside it",
+    "the tester role returns a summary paragraph and no artifact path, so its evidence cannot be verified",
+    "the reviewer and the architect disagree about which slice ships first, and both claims carry supporting evidence"
+  ],
+  "grounding": [
+    ".agents/skills/foundation/subagent-swarm/SKILL.md#Process steps 1-7 (define roles, plan, execute, collect evidence, resolve conflicts, merge, validate)",
+    ".agents/skills/foundation/subagent-swarm/SKILL.md#Guardrails (never merge outputs without validating evidence; stop when evidence is missing)",
+    ".agents/skills/foundation/subagent-swarm/SKILL.md#Canonical delegation brief (objective, outputFormat, toolGuidance, boundaries, stopCondition, effortBudget)",
+    ".agents/skills/platform/schemas/delegation-brief.schema.json"
+  ],
+  "cites": [
+    "SUBAGENT-SWARM-1",
+    "SUBAGENT-SWARM-2",
+    "SUBAGENT-SWARM-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.14,
+    "durationMs": 600000,
+    "inputTokens": 200000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Every spawned role receives a complete DelegationBrief carrying objective, outputFormat, toolGuidance, boundaries, stopCondition and effortBudget, checked against the schema rather than assumed.",
+        "levels": {
+          "4": "each brief is validated against the delegation-brief schema and the incomplete reviewer brief is completed or the role is not spawned",
+          "2": "a brief is drafted but one declared field such as boundaries or stopCondition is missing and the role is spawned anyway",
+          "0": "roles are launched from a one-line instruction with no brief fields at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The declared mode is honoured and each role records its evidence independently on the filesystem, with what returns to the orchestrator being a bounded summary plus a reference.",
+        "levels": {
+          "4": "roles run in the declared parallel mode and each returns a bounded summary with an artifact reference on disk",
+          "2": "roles run in the declared mode but one returns a forwarded transcript or an unreferenced narrative",
+          "0": "mode is ignored, or the orchestrator receives full transcripts instead of references"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "No subagent operates outside its declared role boundary without an explicit handoff, and a role that must mutate the repository is opted in by the orchestrator with the write scope named in boundaries.",
+        "levels": {
+          "4": "every role stays inside its declared boundary and the implementer's write scope is named in its own brief",
+          "2": "one role crosses its boundary with no handoff, or a write scope is granted without being named in the brief",
+          "0": "the reviewer edits code or the implementer acts outside its granted scope with no handoff"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Worker claims are verified against the artifact, the success criteria and the tools rather than against the worker's own narrative.",
+        "levels": {
+          "4": "each claim is checked against the referenced artifact and the verification protocol before it is accepted",
+          "2": "claims are accepted from the summary alone with no artifact check",
+          "0": "the orchestrator trusts the workers' narrative and reports completion"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "When validation evidence is missing for a required role, the swarm stops and reports the blocker instead of fabricating completion.",
+        "levels": {
+          "4": "the missing tester evidence is named, the merge is withheld, and the blocked state is reported with what would unblock it",
+          "2": "the missing evidence is noticed but the swarm continues with a caveat instead of stopping",
+          "0": "the outputs are merged and reported complete with the evidence gap unmentioned"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Conflicting outputs are resolved by preserving both claims plus the evidence used to choose between them, and one owner is assigned for final integration.",
+        "levels": {
+          "4": "both claims are quoted with their evidence, the chosen resolution cites that evidence, and the integration owner is named",
+          "2": "one claim is discarded silently, or a resolution is recorded with no evidence",
+          "0": "the conflict is hidden and one output is presented as uncontested"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The SubagentSwarmArtifact is emitted in both JSON and Markdown views and validated against the handoff contract.",
+        "levels": {
+          "4": "both views are written at the declared path and the validation result against the handoff contract is recorded",
+          "2": "one view only, or both views with no validation recorded",
+          "0": "no artifact is emitted"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The next consumer is identified or the work is handed off, and any blockers or skipped validations are documented.",
+        "levels": {
+          "4": "the next consumer is named, the blocker that stopped the swarm is documented, and no validation is silently skipped",
+          "2": "the consumer is named but the blocker or a skipped validation is undocumented",
+          "0": "neither the consumer nor the blocker is recorded"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "delegation-brief.schema.json"
+        ],
+        "note": "clause SUBAGENT-SWARM-2: each brief is checked against the declared schema so a role cannot be launched without its boundaries"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "boundaries",
+          "stopCondition"
+        ],
+        "note": "clause SUBAGENT-SWARM-2: a brief without boundaries is a guess, not a brief, so the boundaries and stop condition appear per role"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "## Merged output"
+        ],
+        "note": "negative control for clause SUBAGENT-SWARM-1: with the tester evidence missing there is no merged output section at all"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "missing",
+          "blocked"
+        ],
+        "note": "clause SUBAGENT-SWARM-1: the missing evidence is reported and the swarm stops instead of fabricating completion"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "conflict",
+          "owner"
+        ],
+        "note": "clause SUBAGENT-SWARM-3: both conflicting claims and the evidence used to choose between them are preserved, and one owner is named for integration"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "PLACEHOLDER",
+          "<insert"
+        ],
+        "note": "negative control: an incomplete brief or evidence entry is a blocker to report, never a placeholder to publish"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Roles and briefs",
+          "## Evidence per role",
+          "## Conflict resolution",
+          "## Stop condition"
+        ],
+        "note": "the artifact separates the declared roles, the per-role evidence, the conflict resolution and the stop condition"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "bounded summary",
+          "artifact reference"
+        ],
+        "note": "what returns to the orchestrator is a bounded summary plus a reference, not a forwarded transcript"
+      }
+    },
+    {
+      "id": "a9",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did every spawned role carry a complete DelegationBrief validated against the schema, including the incomplete reviewer brief?",
+        "levels": {
+          "pass": "briefs validated per role and the incomplete one completed or the role withheld",
+          "fail": "a role was launched without its declared brief fields"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Did the swarm stop and report the missing evidence instead of merging the outputs and reporting completion?",
+        "levels": {
+          "pass": "merge withheld, blocker named, blocked state reported",
+          "fail": "outputs merged with the evidence gap unmentioned"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Did every role stay inside its declared boundary, with any write scope granted explicitly and named in the brief?",
+        "levels": {
+          "pass": "no unannounced boundary crossing and the write scope is named where granted",
+          "fail": "a role crossed its boundary with no handoff, or a write scope was granted silently"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

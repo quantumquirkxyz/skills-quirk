@@ -19,7 +19,7 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/plan-review-fixes.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []

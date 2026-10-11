@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "payment"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/payments.json
 diataxis: "how-to"
 tags: ["integrations"]
 compatibility: []

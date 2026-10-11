@@ -22,7 +22,7 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/triage.json
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

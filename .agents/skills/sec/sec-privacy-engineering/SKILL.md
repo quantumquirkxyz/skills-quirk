@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/sec-privacy-engineering.json
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []

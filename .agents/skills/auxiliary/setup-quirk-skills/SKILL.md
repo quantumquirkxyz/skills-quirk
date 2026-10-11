@@ -18,7 +18,7 @@ promptVersion: "2.0"
 artifactType: "auxiliary"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/setup-quirk-skills.json
 diataxis: "how-to"
 tags: ["auxiliary"]
 compatibility: []

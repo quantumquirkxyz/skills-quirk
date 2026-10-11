@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "security"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/secret-management-security.json
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []

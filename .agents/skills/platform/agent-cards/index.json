@@ -1,6 +1,6 @@
 {
-  "totalCards": 241,
-  "generatedAt": "2026-10-09T16:29:43.406Z",
+  "totalCards": 246,
+  "generatedAt": "2026-10-10T23:30:15.683Z",
   "cards": [
     {
       "name": "accessibility",
@@ -1994,6 +1994,40 @@
       ]
     },
     {
+      "name": "loop-budget",
+      "description": "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/loop-budget/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "delivery/loop-budget",
+          "name": "loop-budget",
+          "description": "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.",
+          "tags": [
+            "\"delivery\"",
+            "\"loop\"",
+            "\"budget\"",
+            "\"agent-engineering\""
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "modelTier": "reasoning",
+            "artifactType": "loop-budget"
+          }
+        }
+      ]
+    },
+    {
       "name": "plan-review-fixes",
       "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/plan-review-fixes/SKILL.md",
@@ -3036,6 +3070,37 @@
       ]
     },
     {
+      "name": "mcp-server",
+      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/mcp-server/SKILL.md",
+      "version": "2",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": false
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "foundation/mcp-server",
+          "name": "mcp-server",
+          "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+          "tags": [
+            "foundation"
+          ],
+          "parameters": {
+            "trustTier": "1",
+            "modelTier": "router",
+            "artifactType": "plan"
+          }
+        }
+      ]
+    },
+    {
       "name": "observability",
       "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/observability/SKILL.md",
@@ -3091,6 +3156,40 @@
           ],
           "parameters": {
             "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "agent"
+          }
+        }
+      ]
+    },
+    {
+      "name": "verify-delegation",
+      "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/verify-delegation/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "foundation/verify-delegation",
+          "name": "verify-delegation",
+          "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+          "tags": [
+            "\"foundation\"",
+            "\"delegation\"",
+            "\"verification\"",
+            "\"subagent\""
+          ],
+          "parameters": {
+            "trustTier": "2",
             "modelTier": "reasoning",
             "artifactType": "agent"
           }
@@ -5137,6 +5236,40 @@
       ]
     },
     {
+      "name": "analyze-artifacts",
+      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/analyze-artifacts/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "project/analyze-artifacts",
+          "name": "analyze-artifacts",
+          "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.",
+          "tags": [
+            "\"project\"",
+            "\"analysis\"",
+            "\"requirements\"",
+            "\"consistency\""
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "modelTier": "reasoning",
+            "artifactType": "project"
+          }
+        }
+      ]
+    },
+    {
       "name": "docs-management",
       "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/docs-management/SKILL.md",
@@ -6816,6 +6949,39 @@
           ],
           "parameters": {
             "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "skill-dev"
+          }
+        }
+      ]
+    },
+    {
+      "name": "skill-optimizer",
+      "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/skill-optimizer/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "skill-dev/skill-optimizer",
+          "name": "skill-optimizer",
+          "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.",
+          "tags": [
+            "\"skill-dev\"",
+            "\"optimization\"",
+            "\"routing\""
+          ],
+          "parameters": {
+            "trustTier": "2",
             "modelTier": "reasoning",
             "artifactType": "skill-dev"
           }

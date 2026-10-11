@@ -21,7 +21,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/skill-promoter.json
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []

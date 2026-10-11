@@ -101,6 +101,22 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 | **Boundaries** | produce tracer bullets, not a horizontal task dump. |
 | **Completion criteria** | every ticket cuts a narrow but complete path through the work; each ticket has an explicit blocker set or none; the frontier can be taken without guessing about order; user approved granularity before publication; published tickets follow canonical metadata shape. |
 
+## Load-bearing rules
+
+- Do NOT close or modify any parent issue.
+- Don't force it into a tracer bullet; sequence it as **expand–contract**.
+- Do not expand scope beyond the missing requirement; publish the smallest ticket that closes the audited gap.
+
+## Completion Criteria
+
+- every ticket cuts a narrow but complete path through the work
+- each ticket has an explicit blocker set or none
+- the frontier can be taken without guessing about order
+- the user has approved the granularity before publication
+- the published tickets follow the canonical metadata shape in `docs/agents/work-item-format.md`
+- the `TicketArtifact` JSON is emitted with valid blocking edges and traceId
+- the DAG waves are emitted with the artifact and every over-coupling warning is removed or recorded as intentional
+
 ## Artifact
 
 This skill emits a structured ticket array (JSON) and individual Markdown ticket files. The JSON is the machine-readable dependency graph; the Markdown files are the published tracker issues. Both are emitted together so blocker edges stay consistent.
@@ -154,16 +170,6 @@ Ask the user:
 Iterate until the user approves the breakdown.
 
 For corrective inputs, the user approval step may be skipped only when the audit explicitly marked the recommendation as ready for handoff and the user already asked to publish corrections.
-
-## Completion Criteria
-
-- every ticket cuts a narrow but complete path through the work
-- each ticket has an explicit blocker set or none
-- the frontier can be taken without guessing about order
-- the user has approved the granularity before publication
-- the published tickets follow the canonical metadata shape in `docs/agents/work-item-format.md`
-- the `TicketArtifact` JSON is emitted with valid blocking edges and traceId
-- the DAG waves are emitted with the artifact and every over-coupling warning is removed or recorded as intentional
 
 ## Publish
 

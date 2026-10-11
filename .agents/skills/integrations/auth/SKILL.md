@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "authentication"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/auth.json
 diataxis: "how-to"
 tags: ["integrations"]
 compatibility: []

@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/api-gateway.json
 diataxis: "how-to"
 tags: ["backend"]
 compatibility: []

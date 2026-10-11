@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "integrations"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/issue-operations.json
 diataxis: "how-to"
 tags: ["integrations"]
 compatibility: []

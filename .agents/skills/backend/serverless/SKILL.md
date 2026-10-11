@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "backend"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/serverless.json
 diataxis: "how-to"
 tags: ["backend"]
 compatibility: []

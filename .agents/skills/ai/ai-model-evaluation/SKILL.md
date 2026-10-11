@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/ai-model-evaluation.json
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []

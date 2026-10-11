@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "feature-flag"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/devops-feature-flags.json
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []

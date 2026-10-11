@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "devops"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/devops-terraform-iac.json
 diataxis: "how-to"
 tags: ["devops"]
 compatibility: []

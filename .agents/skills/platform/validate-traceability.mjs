@@ -293,6 +293,12 @@ function printFixHints(warnings, errors) {
   }
   console.log('');
   if (classes.size === 0) {
+    // Hint mode always publishes the remediation vocabulary, so operators can
+    // see the available classes even when nothing is currently pending.
+    console.log('Remediation by class:');
+    for (const [code, hint] of Object.entries(fixHints)) {
+      console.log(`  ${code}: ${hint}`);
+    }
     console.log('No errors - nothing to remediate.');
     return;
   }

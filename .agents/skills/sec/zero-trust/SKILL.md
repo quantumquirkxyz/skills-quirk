@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "sec"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/zero-trust.json
 diataxis: "how-to"
 tags: ["sec"]
 compatibility: []

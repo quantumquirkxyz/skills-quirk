@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "code"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/implement-review-fixes.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []

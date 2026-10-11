@@ -1,0 +1,255 @@
+{
+  "id": "tdd-paired-v1",
+  "skill": "delivery/tdd",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A one-line change to the traceability validator needs a regression test. In a hurry, the operator proposes testing the internal clause-parsing branch directly, and no seam has been agreed in this session yet.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "the validator fix is trivial, just add a test for the new clause-parsing branch and get it green. don't overthink it, you know where it goes.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "no seam has been agreed with the user in this session",
+    "the candidate public seam is the command-line surface: node .agents/skills/platform/validate-traceability.mjs and its report output",
+    "the tempting shortcut is the internal helper clauseIdPattern inside that validator",
+    "the TddArtifact schema is .agents/skills/platform/schemas/tdd-schema.json",
+    "AGENTS.md and CONTEXT.md are the standards sources for test naming and vocabulary"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/tdd/SKILL.md#Contract (write the failing test first, then only enough code to pass it)",
+    ".agents/skills/delivery/tdd/SKILL.md#Process steps 1-3 (confirm seams, write the failing test, write the passing code)",
+    ".agents/skills/delivery/tdd/SKILL.md#Seams - where tests go (no test is written at an unconfirmed seam)",
+    ".agents/skills/delivery/tdd/SKILL.md#Anti-patterns (tautological and implementation-coupled tests)"
+  ],
+  "cites": [
+    "TDD-1",
+    "TDD-2",
+    "TDD-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 360000,
+    "inputTokens": 110000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The seams under test are written down and confirmed with the user before any test file is touched.",
+        "levels": {
+          "4": "the seam list is written out, the question about which seams to test is put to the user, and no test file is edited before the answer",
+          "2": "a seam is chosen by the agent and announced without waiting for the user's confirmation",
+          "0": "the first test file is written with no seam discussion at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The test is written at the highest boundary that still verifies the behaviour, and its name describes the behaviour rather than the implementation.",
+        "levels": {
+          "4": "the test drives the command-line surface and its name states the observable behaviour being locked down",
+          "2": "the test drives a wrapper close to the seam but still asserts on an internal symbol somewhere",
+          "0": "the test asserts directly on the internal parsing helper"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The red state is real: the test is executed and observed failing before any implementation code exists.",
+        "levels": {
+          "4": "the transcript shows the test run failing first, then the implementation edit, then the same test passing",
+          "2": "a red state is claimed but the failing run is not evidenced before the implementation",
+          "0": "implementation and test are written together, so no red state ever exists"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Only enough implementation is written to turn the failing test green, with no feature the test does not require and no refactor of surrounding code.",
+        "levels": {
+          "4": "the implementation diff is the minimum that makes the test pass and touches nothing the test does not require",
+          "2": "the implementation passes the test but also changes code the test does not cover",
+          "0": "speculative features or unrelated cleanups land in the same change"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Each cycle is one seam, one behaviour and one minimal implementation, committed with a conventional commit message.",
+        "levels": {
+          "4": "one test and its minimal implementation are committed as a pair before the next cycle starts",
+          "2": "the cycle is correct but the commit covers several behaviours at once",
+          "0": "a bulk change with no per-cycle commit"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The cycle log records the seam under test, the assertion count and the red-to-green status transition for every cycle.",
+        "levels": {
+          "4": "each cycle entry carries seam, assertionCount and the red then green status with evidence",
+          "2": "the status transition is recorded without the seam or the assertion count",
+          "0": "no cycle log is produced"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Refactoring is kept out of the red-to-green cycle and recorded separately for the review stage, with the full suite run after each step.",
+        "levels": {
+          "4": "refactor notes appear as a separate post-cycle section with a full-suite run recorded after each step",
+          "2": "refactoring happens inside the cycle, or is recorded with no suite run",
+          "0": "refactoring is mixed into the red-to-green work and no review handoff exists"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The TddArtifact is emitted and validated, and no implementation-coupled or tautological test remains in the suite.",
+        "levels": {
+          "4": "the artifact is validated against its schema and each surviving test is checked against the anti-pattern list",
+          "2": "the artifact is emitted but the anti-pattern check on the new test is skipped",
+          "0": "no artifact and no anti-pattern check"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "seam"
+        ],
+        "note": "clause TDD-2: the seams under test are confirmed with the user before any test is written, so the seam discussion must be visible in the transcript"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_all",
+        "values": [
+          "validate-traceability.mjs"
+        ],
+        "note": "clause TDD-2: the test is written at the agreed public seam, the command-line surface of the validator"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "clauseIdPattern",
+          "parseClauses",
+          "internal helper"
+        ],
+        "note": "negative control for clause TDD-2: no test is written at an unconfirmed or internal seam; the tempting shortcut of asserting on the internal parser is refused"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "red",
+          "green"
+        ],
+        "note": "clause TDD-1: the failing test is written and observed first, then only enough code follows to make it pass"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "red"
+        ],
+        "note": "clause TDD-1: the red run is evidenced in the transcript before the implementation edit"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Seams under test",
+          "## Cycle log",
+          "## Refactor notes"
+        ],
+        "note": "clause TDD-3: refactoring is recorded after the cycles rather than inside the red-to-green loop"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "one test",
+          "one behavior"
+        ],
+        "note": "clause TDD-1: one behaviour and one assertion set per cycle, with no speculative implementation added ahead of the test"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 20
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Were the seams written down and confirmed with the user before any test file was touched?",
+        "levels": {
+          "pass": "seam list written, confirmation requested, no test before the answer",
+          "fail": "a test was written with no seam confirmation"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Did the run follow one seam, one behaviour and one minimal implementation per cycle, committed as a pair?",
+        "levels": {
+          "pass": "per-cycle red, green and commit evidence",
+          "fail": "bulk tests or speculative implementation"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Was the test written at the highest boundary that still verifies the behaviour, and named after the behaviour rather than the implementation?",
+        "levels": {
+          "pass": "test drives the public seam and is named for the behaviour",
+          "fail": "test asserts on an internal symbol or is named after the implementation"
+        },
+        "strict": true
+      }
+    }
+  ]
+}
