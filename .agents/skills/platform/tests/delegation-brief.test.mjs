@@ -241,10 +241,12 @@ test('an empty criteria array fails', () => {
 });
 
 // Wave-1 traceability added `clauses` and `reloadPolicy` to the frontmatter of these
-// files while the bodies themselves were edited, and wave-2 added the spec-portable
-// `license` field to every skill in the bundle. Those three keys are the sanctioned
-// exception; every other frontmatter field must stay byte-identical.
-const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license'];
+// files while the bodies themselves were edited, wave-2 added the spec-portable
+// `license` field to every skill in the bundle, and the duplicate-fixture cleanup
+// repointed `fixturesPath` on subagent-swarm to the canonical fixture file. Those
+// keys are the sanctioned exception; every other frontmatter field must stay
+// byte-identical.
+const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license', 'fixturesPath'];
 
 // A key line plus its block: the "key:" line and every indented continuation or
 // list item that belongs to it, up to the next top-level frontmatter key.
