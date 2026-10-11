@@ -9,3 +9,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 *.zip
+.agents/skills/platform/traces/*.jsonl
+.agents/skills/platform/state/*.json
+.scratch/

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-11T00:12:15.541Z",
+  "generatedAt": "2026-10-11T02:01:30.960Z",
   "root": ".",
   "damping": 0.85,
   "edgeTypeWeights": {
@@ -10,14 +10,6 @@
     "capability": 0.2
   },
   "nodes": {
-    "accessibility": {
-      "domain": "accessibility",
-      "tier": "1",
-      "artifactType": "accessibility",
-      "capabilities": [],
-      "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
-      "path": ".agents/skills/accessibility/accessibility"
-    },
     "accessibility-design": {
       "domain": "accessibility",
       "tier": "1",
@@ -33,6 +25,14 @@
       "capabilities": [],
       "description": "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.",
       "path": ".agents/skills/accessibility/accessibility-testing"
+    },
+    "accessibility": {
+      "domain": "accessibility",
+      "tier": "1",
+      "artifactType": "accessibility",
+      "capabilities": [],
+      "description": "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees.",
+      "path": ".agents/skills/accessibility/accessibility"
     },
     "agent-orchestration": {
       "domain": "ai",
@@ -510,6 +510,14 @@
       "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
       "path": ".agents/skills/delivery/diagnosing-bugs"
     },
+    "implement-review-fixes": {
+      "domain": "delivery",
+      "tier": "3",
+      "artifactType": "review",
+      "capabilities": [],
+      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+      "path": ".agents/skills/delivery/implement-review-fixes"
+    },
     "implement": {
       "domain": "delivery",
       "tier": "3",
@@ -521,14 +529,6 @@
       ],
       "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
       "path": ".agents/skills/delivery/implement"
-    },
-    "implement-review-fixes": {
-      "domain": "delivery",
-      "tier": "3",
-      "artifactType": "review",
-      "capabilities": [],
-      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
-      "path": ".agents/skills/delivery/implement-review-fixes"
     },
     "loop-budget": {
       "domain": "delivery",
@@ -1208,14 +1208,6 @@
       "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
       "path": ".agents/skills/math/math-teaching-problem-set"
     },
-    "networking": {
-      "domain": "networking",
-      "tier": "1",
-      "artifactType": "networking",
-      "capabilities": [],
-      "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
-      "path": ".agents/skills/networking/networking"
-    },
     "networking-protocols": {
       "domain": "networking",
       "tier": "1",
@@ -1231,6 +1223,14 @@
       "capabilities": [],
       "description": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.",
       "path": ".agents/skills/networking/networking-security"
+    },
+    "networking": {
+      "domain": "networking",
+      "tier": "1",
+      "artifactType": "networking",
+      "capabilities": [],
+      "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
+      "path": ".agents/skills/networking/networking"
     },
     "os-kernel": {
       "domain": "os",
@@ -1616,14 +1616,6 @@
       "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
       "path": ".agents/skills/routing/context-pack"
     },
-    "grill": {
-      "domain": "routing",
-      "tier": "1",
-      "artifactType": "routing",
-      "capabilities": [],
-      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
-      "path": ".agents/skills/routing/grill"
-    },
     "grill-me": {
       "domain": "routing",
       "tier": "1",
@@ -1639,6 +1631,14 @@
       "capabilities": [],
       "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
       "path": ".agents/skills/routing/grill-with-docs"
+    },
+    "grill": {
+      "domain": "routing",
+      "tier": "1",
+      "artifactType": "routing",
+      "capabilities": [],
+      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+      "path": ".agents/skills/routing/grill"
     },
     "grilling": {
       "domain": "routing",
@@ -2367,6 +2367,12 @@
       "weight": 0.8
     },
     {
+      "from": "implement-review-fixes",
+      "to": "resolving-merge-conflicts",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
       "from": "implement",
       "to": "publish-open-pr",
       "type": "handoff",
@@ -2375,12 +2381,6 @@
     {
       "from": "implement",
       "to": "tdd",
-      "type": "handoff",
-      "weight": 0.8
-    },
-    {
-      "from": "implement-review-fixes",
-      "to": "resolving-merge-conflicts",
       "type": "handoff",
       "weight": 0.8
     },

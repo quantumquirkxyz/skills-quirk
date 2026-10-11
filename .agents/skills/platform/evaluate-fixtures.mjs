@@ -159,7 +159,23 @@ async function runFixture(fixture) {
 
 async function main() {
   const results = [];
-  const leafFixtures = await loadFixtures(fixturesDir);
+  // `--fixture-dir behavioral` is a bare leaf name: resolve it against the
+  // fixtures root instead of the caller's cwd, so the documented shorthand and
+  // the full path form both land on the same corpus.
+  let resolvedDir = fixturesDir;
+  if (
+    process.argv.includes('--fixture-dir')
+    && !path.isAbsolute(fixturesDir)
+    && !fixturesDir.includes(path.sep)
+    && !(await exists(path.resolve(root, fixturesDir)))
+  ) {
+    const defaultRoot = path.join(root, '.agents', 'skills', 'platform', 'fixtures');
+    if (await exists(defaultRoot) && await exists(path.join(defaultRoot, fixturesDir))) {
+      resolvedDir = path.join(defaultRoot, fixturesDir);
+      console.error(`resolved --fixture-dir "${fixturesDir}" against the fixtures root: ${resolvedDir}`);
+    }
+  }
+  const leafFixtures = await loadFixtures(resolvedDir);
   let behavioralFixtures;
   let regressionFixtures;
   let securityFixtures;
@@ -169,9 +185,9 @@ async function main() {
     regressionFixtures = [];
     securityFixtures = [];
   } else {
-    behavioralFixtures = await loadFixtures(path.join(fixturesDir, 'behavioral'));
-    regressionFixtures = await loadFixtures(path.join(fixturesDir, 'regression'));
-    securityFixtures = await loadFixtures(path.join(fixturesDir, 'security'));
+    behavioralFixtures = await loadFixtures(path.join(resolvedDir, 'behavioral'));
+    regressionFixtures = await loadFixtures(path.join(resolvedDir, 'regression'));
+    securityFixtures = await loadFixtures(path.join(resolvedDir, 'security'));
   }
 
   const allFixtures = [...behavioralFixtures, ...regressionFixtures, ...securityFixtures];
