@@ -57,6 +57,7 @@ const fixHints = {
   'duplicate-id': 'rename one of the duplicates so each clause id is unique within its skill',
   'check-missing': 'create the cited check file, repoint the clause at a file that cites it, or use check: manual for prose-level rules',
   'check-uncited': 'add the clause id as a citation (assertion, rubric, or comment) inside the cited file so the grep resolves',
+  'check-fragment-mismatch': 'point the citation fragment at this clause\'s own id, e.g. evals/behavioral/<skill>.json#<CLAUSE-ID>',
   'check-pending': 'land the evals/behavioral fixture with assertions citing the id, or switch the clause to check: manual',
   'dead-citation': 'declare the cited id as a clause in the owning SKILL.md frontmatter, or remove the stale citation',
   'critical-min-clauses': 'declare at least 2 contract clauses for critical-set skills',
@@ -201,22 +202,36 @@ export function auditClauseDeclarations(name, clauses, { critical }) {
 }
 
 // Rule (b)/(f): resolve one clause check against the filesystem.
-async function resolveCheck(name, clause) {
+//
+// A citation may carry a fragment: `evals/behavioral/tdd.json#TDD-1`. The
+// fragment is the anchor the citation points at, so the invariant to enforce is
+// that it names THIS clause's id. Without the fragment check a typo'd or
+// copy-pasted anchor resolves as long as the file mentions the clause id
+// somewhere, which makes a wrong anchor undetectable.
+export async function resolveCheck(name, clause) {
   const check = String(clause?.check ?? '').trim();
   if (check === 'manual') return { status: 'manual' };
-  const { path: checkPath } = parseCheckRef(check);
+  const { path: checkPath, fragment } = parseCheckRef(check);
+  const clauseId = String(clause?.id ?? '').trim();
   const fullPath = path.resolve(repoRoot, checkPath);
   if (!(await exists(fullPath))) {
     if (checkPath.startsWith(evalsBehavioralPrefix)) {
       // Rule (f): evals/behavioral fixtures land in a parallel work item, so a
       // missing fixture is a pending warning, not a traceability error.
-      return { status: 'pending', code: 'check-pending', message: `${name}: clause ${clause.id} check ${check} does not exist yet` };
+      return { status: 'pending', code: 'check-pending', message: `${name}: clause ${clauseId} check ${check} does not exist yet` };
     }
-    return { status: 'error', code: 'check-missing', message: `${name}: clause ${clause.id} check file missing: ${checkPath}` };
+    return { status: 'error', code: 'check-missing', message: `${name}: clause ${clauseId} check file missing: ${checkPath}` };
   }
   const content = await fs.readFile(fullPath, 'utf8');
-  if (!content.includes(clause.id)) {
-    return { status: 'error', code: 'check-uncited', message: `${name}: clause ${clause.id} is not cited by ${checkPath}` };
+  if (fragment !== '' && fragment !== clauseId) {
+    return {
+      status: 'error',
+      code: 'check-fragment-mismatch',
+      message: `${name}: clause ${clauseId} cites ${checkPath}#${fragment}, but that fragment is not this clause's id - repoint the citation at #${clauseId}`,
+    };
+  }
+  if (!content.includes(clauseId)) {
+    return { status: 'error', code: 'check-uncited', message: `${name}: clause ${clauseId} is not cited by ${checkPath}` };
   }
   return { status: 'resolved' };
 }
@@ -332,13 +347,17 @@ async function main() {
     const relativeSkillPath = path.relative(repoRoot, file).replaceAll(path.sep, '/');
     const frontmatter = splitFrontmatter(text);
     const clauses = parseClauses(frontmatter);
-    if (clauses.length === 0) continue;
-
+    // The critical-set audit runs before the zero-clause skip: a critical skill
+    // with no clauses is exactly the drift this gate exists to catch, and it must
+    // be counted as present in the tree even when its clause list is empty.
     const critical = criticalSkills.has(name);
     if (critical) criticalCount += 1;
     const declared = auditClauseDeclarations(name, clauses, { critical });
     errors.push(...declared.errors);
     warnings.push(...declared.warnings);
+
+    // Non-critical skills legitimately declare no clauses yet; they keep the skip.
+    if (clauses.length === 0) continue;
 
     let resolved = 0;
     let manual = 0;

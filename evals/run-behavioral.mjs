@@ -273,7 +273,7 @@ async function liveJudge(config, criterion, evidenceText, strict) {
 
 /* ------------------------------------------------------------- transcripts */
 
-async function loadTranscript(file, fallbackTrial) {
+export async function loadTranscript(file, fallbackTrial) {
   const text = await fs.readFile(file, 'utf8');
   const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0);
   const events = [];
@@ -544,7 +544,7 @@ async function scoreArm(fixture, transcript, artifactOverride, judge) {
   return results;
 }
 
-function aggregateArm(trials) {
+export function aggregateArm(trials) {
   const totals = { trials: trials.length, passed: trials.filter((trial) => trial.passed).length };
   const assertions = new Map();
   for (const trial of trials) {
@@ -554,7 +554,10 @@ function aggregateArm(trials) {
       }
       const entry = assertions.get(assertion.id);
       if (assertion.passed) entry.passed += 1;
-      else entry.evidence.push(`trial ${trial.trial}: ${assertion.evidence}`);
+      else {
+        entry.failed += 1;
+        entry.evidence.push(`trial ${trial.trial}: ${assertion.evidence}`);
+      }
       if (assertion.type === 'judge' && typeof assertion.evidence === 'string' && assertion.evidence.startsWith('judge call failed')) {
         entry.notes.push(`trial ${trial.trial}: ${assertion.evidence}`);
       }
@@ -595,7 +598,7 @@ function aggregateArm(trials) {
   };
 }
 
-function buildDelta(withArm, baselineArm) {
+export function buildDelta(withArm, baselineArm) {
   const delta = { assertions: [], categories: {}, axes: {} };
   const baseById = new Map(baselineArm.assertions.map((entry) => [entry.id, entry]));
   for (const entry of withArm.assertions) {
@@ -632,7 +635,7 @@ function buildDelta(withArm, baselineArm) {
   return { ...delta, cost: costDelta, tokens: tokenDelta };
 }
 
-function rateOf(bucket) {
+export function rateOf(bucket) {
   if (!bucket) return null;
   const total = bucket.passed + bucket.failed;
   return total === 0 ? null : Math.round((bucket.passed / total) * 1000) / 1000;
@@ -648,7 +651,7 @@ function sumOrNull(a, b) {
   return (a ?? 0) + (b ?? 0);
 }
 
-function verdictFor(delta, fixture, mode) {
+export function verdictFor(delta, fixture, mode) {
   if (mode === 'mock') {
     return { verdict: 'not-applicable', reason: 'mock run: the scorer was smoke-tested, no model or skill was measured' };
   }
@@ -680,10 +683,12 @@ function verdictFor(delta, fixture, mode) {
 
 /* --------------------------------------------------------------- reporting */
 
-function renderMarkdown(report) {
+export function renderMarkdown(report) {
   const lines = [];
   const delta = report.delta;
   const baselineTrials = report.baseline ? report.baseline.trials : 0;
+  const failing = (report.with.assertions ?? []).filter((entry) => entry.failed > 0);
+  const failingAssertionCount = failing.reduce((sum, entry) => sum + entry.failed, 0);
 
   lines.push(`# Behavioral eval report - ${report.fixture.skill}`);
   lines.push('');
@@ -692,6 +697,7 @@ function renderMarkdown(report) {
   lines.push(`- trials: ${report.fixture.trials} (recorded ${report.with.trials} with-skill${baselineTrials === 0 ? ', no baseline transcript supplied' : `, ${baselineTrials} baseline`})`);
   lines.push(`- judge: ${report.judge.mode}${report.judge.mock ? ' (mock - not evidence)' : ''} ${report.judge.reason}`);
   lines.push(`- model snapshot: ${report.modelSnapshot ?? 'not recorded'}`);
+  lines.push(`- failed assertions: ${failingAssertionCount} across ${failing.length}/${report.with.assertions.length} assertion(s)`);
   lines.push('');
 
   lines.push('## Assertions');
@@ -710,6 +716,19 @@ function renderMarkdown(report) {
       }));
   for (const entry of assertionRows) {
     lines.push(`| ${entry.id} | ${entry.category ?? '-'} | ${entry.type} | ${entry.baseline === null ? 'n/a' : entry.baseline.toFixed(2)} | ${entry.withSkill === null ? 'n/a' : entry.withSkill.toFixed(2)} | ${entry.delta === null ? 'n/a' : entry.delta.toFixed(2)} |`);
+  }
+  lines.push('');
+
+  lines.push('## Failed assertions');
+  lines.push('');
+  if (failing.length === 0) {
+    lines.push('None: every recorded assertion cleared its check.');
+  } else {
+    for (const entry of failing) {
+      lines.push(`- **${entry.id}** (${entry.category ?? '-'} / ${entry.type}): failed ${entry.failed} of ${report.with.trials} trials`);
+      for (const line of entry.evidence) lines.push(`  - ${line}`);
+      for (const note of entry.notes ?? []) lines.push(`  - ${note}`);
+    }
   }
   lines.push('');
 
@@ -783,7 +802,7 @@ async function loadFixture(file) {
   return { file, fixture: parsed, errors: [] };
 }
 
-async function runFixture({ fixture, file, withTranscript, baselineTranscript, artifactOverride, judge, mode }) {
+export async function runFixture({ fixture, file, withTranscript, baselineTranscript, artifactOverride, judge, mode }) {
   const withArm = await scoreArm(fixture, withTranscript, artifactOverride, judge);
   const withAggregate = aggregateArm(withArm);
   const hasBaseline = baselineTranscript !== null && baselineTranscript !== undefined;
@@ -928,6 +947,10 @@ function syntheticTranscript(fixture, mode, trialIndex) {
       .filter((assertion) => assertion.check?.kind === 'artifact_min_words')
       .map((assertion) => assertion.check.min ?? 0)));
     while (countWords(body.join('\n')) < needsWords) body.push('filler content for the word-count assertion.');
+    const needsLines = Math.max(0, ...((fixture.assertions ?? [])
+      .filter((assertion) => assertion.check?.kind === 'artifact_min_lines')
+      .map((assertion) => assertion.check.min ?? 0)));
+    while (body.filter((line) => line.trim() !== '').length < needsLines) body.push('filler line for the line-count assertion.');
     artifactText = `${body.join('\n')}\n`;
   }
 
@@ -1040,15 +1063,26 @@ async function modeList() {
 
 /* ------------------------------------------------------------------ main */
 
-if (args.list) await modeList();
-else if (args.all) await modeAll();
-else if (args.fixture || args.with) await modeSingle();
-else {
-  console.log('usage: node evals/run-behavioral.mjs <mode>');
-  console.log('  --fixture <file.json> --with <transcript.jsonl> [--baseline <transcript.jsonl>]');
-  console.log('                 [--artifact <path>] [--judge | --mock-judge] [--judge-config <file>]');
-  console.log('                 [--out <report.json>] [--quiet]');
-  console.log('  --all          run every fixture in mock mode; non-zero exit only on a broken fixture schema');
-  console.log('  --list         list the fixtures');
-  process.exit(1);
+async function main() {
+  if (args.list) await modeList();
+  else if (args.all) await modeAll();
+  else if (args.fixture || args.with) await modeSingle();
+  else {
+    console.log('usage: node evals/run-behavioral.mjs <mode>');
+    console.log('  --fixture <file.json> --with <transcript.jsonl> [--baseline <transcript.jsonl>]');
+    console.log('                 [--artifact <path>] [--judge | --mock-judge] [--judge-config <file>]');
+    console.log('                 [--out <report.json>] [--quiet]');
+    console.log('  --all          run every fixture in mock mode; non-zero exit only on a broken fixture schema');
+    console.log('  --list         list the fixtures');
+    process.exit(1);
+  }
 }
+
+// Guarded so the scoring internals can be imported by tests without the CLI
+// dispatch firing against the test runner's own argv.
+async function bootstrap() {
+  const isMain = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+  if (isMain) await main();
+}
+
+await bootstrap();
