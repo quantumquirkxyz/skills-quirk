@@ -59,6 +59,9 @@ const DAMPING = 0.85;
 const EDGE_TYPE_WEIGHTS = { 'depends-on': 1.0, compatible: 0.4, handoff: 0.8, capability: 0.2 };
 const UNDIRECTED_TYPES = new Set(['compatible']);
 const MAX_ITERATIONS = 200;
+// collectSkills()'s recursion guard (depth < 4) admits a SKILL.md up to five
+// levels below .agents/skills; the manifest filter mirrors that bound.
+const MAX_SKILL_NESTING = 5;
 const TOLERANCE = 1e-10;
 
 const STOPWORDS = new Set([
@@ -179,8 +182,38 @@ export function collectSkills(root) {
   return out;
 }
 
-export function buildGraph(root, options = {}) {
-  const skills = collectSkills(root);
+// Manifest-driven entry points. The shared manifest (built once per check-all
+// run: { path, dirPath, domain, dirName, text }) is mapped onto the exact skill
+// records collectSkills() produces, then the identical graph assembly runs over
+// them, so a graph built from the manifest equals a graph built from the walk.
+export function skillsFromManifest(manifest) {
+  const skillsRootSegments = 3; // .agents/skills/<first>/...
+  return manifest
+    .filter((entry) => {
+      const segments = entry.path.split('/');
+      const platformExcluded = segments[2] === 'platform';
+      const nesting = segments.length - skillsRootSegments; // path segments between the skills root and SKILL.md
+      return !platformExcluded && nesting <= MAX_SKILL_NESTING;
+    })
+    .map((entry) => {
+      const relSegments = entry.path.split('/');
+      const fm = parseFrontmatter(entry.text);
+      return {
+        name: entry.dirName,
+        domain: relSegments.length === skillsRootSegments + 1 ? 'uncategorized' : entry.domain,
+        tier: fm.trustTier === undefined || fm.trustTier === '' ? '1' : String(fm.trustTier),
+        artifactType: fm.artifactType ? String(fm.artifactType) : '',
+        capabilities: toList(fm.capabilities),
+        dependencies: toList(fm.dependencies),
+        compatibility: toList(fm.compatibility),
+        description: typeof fm.description === 'string' ? fm.description : '',
+        body: bodyOf(entry.text),
+        path: entry.dirPath,
+      };
+    });
+}
+
+export function buildGraphFromSkills(skills, options = {}) {
   const knownNames = new Set(skills.map((skill) => skill.name));
   const resolve = (token) => {
     const candidate = String(token || '').trim().toLowerCase().replace(/^["']|["']$/g, '');
@@ -255,6 +288,23 @@ export function buildGraph(root, options = {}) {
   };
   if (options.meta) Object.assign(graph, options.meta);
   return graph;
+}
+
+// Walk-driven entry point kept for the CLI and every other caller.
+export function buildGraph(root, options = {}) {
+  return buildGraphFromSkills(collectSkills(root), options);
+}
+
+export function auditSkills(manifest, { root = '.', save = true } = {}) {
+  const graph = buildGraphFromSkills(skillsFromManifest(manifest));
+  const file = save ? saveGraph(root, graph) : graphPath(root);
+  return {
+    status: save ? 'written' : 'dry-run',
+    file: relative(root, file),
+    nodes: Object.keys(graph.nodes).length,
+    edges: graph.edges.length,
+    edgeTypes: edgeTypeBreakdown(graph),
+  };
 }
 
 export function graphPath(root) {

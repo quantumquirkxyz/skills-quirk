@@ -30,6 +30,8 @@
     "memory:index": "node .agents/skills/platform/memory-index.mjs build",
     "memory:check": "node .agents/skills/platform/memory-index.mjs check",
     "checkpoints:replay": "node .agents/skills/platform/workflow-state-machine.mjs replay standard-feature",
+    "loop:demo": "node .agents/skills/platform/loop-runner.mjs --demo --json",
+    "idempotency:demo": "node .agents/skills/platform/idempotency.mjs --demo --json",
     "catalog": "node scripts/generate-site-data.mjs",
     "site:dev": "npm --prefix site run dev",
     "site:build": "npm --prefix site run build"

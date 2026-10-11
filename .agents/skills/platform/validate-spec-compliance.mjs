@@ -205,31 +205,81 @@ async function exists(filePath) {
   }
 }
 
-async function collectSkillFiles(dir, out = []) {
+const EXCLUDED_WALK_NAMES = new Set(['node_modules', 'traces', 'runs']);
+
+// Single walk + read producing the shared skill manifest
+// ({ path, dirPath, domain, dirName, text }) every report-only audit consumes.
+// The walk mirrors the validator's historical scan: directories named
+// node_modules/traces/runs are skipped at every level, and a directory that
+// holds a SKILL.md is a leaf.
+async function collectManifest(dir, domain = '', out = []) {
   if (!(await exists(dir))) return out;
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
-    if (entry.name === 'node_modules' || entry.name === 'traces' || entry.name === 'runs') continue;
-    const filePath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (await exists(path.join(filePath, 'SKILL.md'))) out.push(path.join(filePath, 'SKILL.md'));
-      else await collectSkillFiles(filePath, out);
+    if (EXCLUDED_WALK_NAMES.has(entry.name)) continue;
+    const dirPath = path.join(dir, entry.name);
+    if (!entry.isDirectory()) continue;
+    const skillMd = path.join(dirPath, 'SKILL.md');
+    if (await exists(skillMd)) {
+      const text = await fs.readFile(skillMd, 'utf8');
+      out.push({
+        path: path.relative(repoRoot, skillMd).replaceAll(path.sep, '/'),
+        dirPath: path.relative(repoRoot, dirPath).replaceAll(path.sep, '/'),
+        domain,
+        dirName: entry.name,
+        text,
+      });
+    } else {
+      await collectManifest(dirPath, domain || entry.name, out);
     }
   }
   return out;
 }
 
-async function inspectSkill(skillMd) {
-  const text = await fs.readFile(skillMd, 'utf8');
-  const fields = parseFrontmatter(text);
-  const dirName = path.basename(path.dirname(skillMd));
-  return checkSkillSample({
-    dirName,
-    name: typeof fields.name === 'string' && fields.name !== '' ? fields.name : null,
-    description: typeof fields.description === 'string' ? fields.description : null,
-    license: typeof fields.license === 'string' && fields.license !== '' ? fields.license : null,
-    bodyLines: bodyLineCount(text),
-    text,
-  });
+const byPath = (a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0);
+
+// Manifest-driven audit: identical findings to the CLI's own walk because the
+// per-skill checks (checkSkillSample, parseFrontmatter, bodyLineCount) are the
+// same functions applied to the same texts, just read once for every consumer.
+export function auditSkills(manifest, { skillsRoot = defaultSkillsRoot } = {}) {
+  const files = manifest
+    .filter((entry) => !entry.path.split('/').some((segment) => EXCLUDED_WALK_NAMES.has(segment)))
+    .sort(byPath);
+  const perSkill = [];
+  const errorFindings = [];
+  const warningFindings = [];
+  const overBudget = [];
+  for (const entry of files) {
+    const fields = parseFrontmatter(entry.text);
+    const { errors, warnings } = checkSkillSample({
+      dirName: entry.dirName,
+      name: typeof fields.name === 'string' && fields.name !== '' ? fields.name : null,
+      description: typeof fields.description === 'string' ? fields.description : null,
+      license: typeof fields.license === 'string' && fields.license !== '' ? fields.license : null,
+      bodyLines: bodyLineCount(entry.text),
+      text: entry.text,
+    });
+    errorFindings.push(...errors);
+    warningFindings.push(...warnings);
+    if (errors.length || warnings.length) perSkill.push({ skill: entry.dirName, path: entry.path, errors, warnings });
+    const bodyWarning = warnings.find((finding) => finding.code === 'body-too-long');
+    if (bodyWarning) overBudget.push(entry.dirName);
+  }
+
+  const errorMessages = errorFindings.map((finding) => finding.message);
+  const warningMessages = warningFindings.map((finding) => finding.message);
+  const status = errorFindings.length ? 'fail' : 'pass';
+  const relativeRoot = path.relative(repoRoot, skillsRoot) || '.';
+
+  return {
+    skills: files.length,
+    skillsRoot: relativeRoot,
+    specFields: SPEC_PORTABLE_FIELDS,
+    perSkill,
+    warnings: warningMessages,
+    errors: errorMessages,
+    status,
+    overBudget,
+  };
 }
 
 function parseArgs(argv) {
@@ -268,26 +318,10 @@ async function main() {
     process.exit(2);
   }
 
-  const skillFiles = (await collectSkillFiles(skillsRoot)).sort();
-  const perSkill = [];
-  const errorFindings = [];
-  const warningFindings = [];
-  const overBudget = [];
-  for (const skillMd of skillFiles) {
-    const { errors, warnings } = await inspectSkill(skillMd);
-    const relPath = path.relative(repoRoot, skillMd).replaceAll(path.sep, '/');
-    const skill = path.basename(path.dirname(skillMd));
-    errorFindings.push(...errors);
-    warningFindings.push(...warnings);
-    if (errors.length || warnings.length) perSkill.push({ skill, path: relPath, errors, warnings });
-    const bodyWarning = warnings.find((finding) => finding.code === 'body-too-long');
-    if (bodyWarning) overBudget.push(skill);
-  }
-
-  const errorMessages = errorFindings.map((finding) => finding.message);
-  const warningMessages = warningFindings.map((finding) => finding.message);
-  const status = errorFindings.length ? 'fail' : 'pass';
-  const relativeRoot = path.relative(repoRoot, skillsRoot) || '.';
+  const manifest = (await collectManifest(skillsRoot)).sort(byPath);
+  const report = auditSkills(manifest, { skillsRoot });
+  const { perSkill, warnings: warningMessages, errors: errorMessages, status, overBudget } = report;
+  const relativeRoot = report.skillsRoot;
 
   const runPath = await recordExecution({
     repoRoot,
@@ -297,12 +331,12 @@ async function main() {
     status,
     errors: errorMessages,
     warnings: warningMessages,
-    extra: { skills: skillFiles.length, specFields: SPEC_PORTABLE_FIELDS.length },
+    extra: { skills: report.skills, specFields: SPEC_PORTABLE_FIELDS.length },
   });
 
   if (args.json) {
     console.log(JSON.stringify({
-      skills: skillFiles.length,
+      skills: report.skills,
       skillsRoot: relativeRoot,
       specFields: SPEC_PORTABLE_FIELDS,
       perSkill,
@@ -312,7 +346,7 @@ async function main() {
       executionRecord: path.relative(repoRoot, runPath),
     }, null, 2));
   } else {
-    console.log(`agentskills.io spec compliance (${skillFiles.length} skills under ${relativeRoot})`);
+    console.log(`agentskills.io spec compliance (${report.skills} skills under ${relativeRoot})`);
     console.log('='.repeat(60));
     if (perSkill.length === 0) {
       console.log('No findings: every skill satisfies the checked constraints.');
@@ -324,7 +358,7 @@ async function main() {
       }
     }
     console.log('');
-    console.log(`Totals: skills=${skillFiles.length} errors=${errorMessages.length} warnings=${warningMessages.length}`);
+    console.log(`Totals: skills=${report.skills} errors=${errorMessages.length} warnings=${warningMessages.length}`);
     console.log(
       overBudget.length
         ? `Body-length budget: ${overBudget.length} skill(s) exceed ${MAX_BODY_LINES} lines: ${overBudget.join(', ')}`

@@ -216,6 +216,15 @@ export function buildCostLedger({ tracesDir = DEFAULT_TRACES_DIR, costModelFile 
   };
 }
 
+// Manifest-driven entry point for the check-all gate. The cost ledger
+// aggregates traces, not SKILL.md files, so it never walked the bundle in the
+// first place: the shared manifest is accepted for wiring uniformity (every
+// report-only audit receives the same manifest) and carries no data this tool
+// consumes. Avoiding the subprocess spawn is the whole saving here.
+export function auditSkills(manifest, options = {}) {
+  return buildCostLedger(options);
+}
+
 function cell(value) {
   return value === UNKNOWN ? UNKNOWN : String(value);
 }

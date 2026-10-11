@@ -1,9 +1,62 @@
 import { spawn } from 'node:child_process';
+import fsSync from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { defaultDagFile } from './dag-scheduler.mjs';
 import { defaultMemoryDirArg } from './memory-index.mjs';
+import { auditSkills as auditContextBudget } from './context-budget-auditor.mjs';
+import { auditSkills as auditCostLedger } from './cost-ledger.mjs';
+import { auditSkills as auditSpecCompliance } from './validate-spec-compliance.mjs';
+import { auditSkills as auditSkillGraph } from './skill-graph.mjs';
+
+const REPO_ROOT = process.cwd();
+const SKILLS_ROOT = path.join(REPO_ROOT, '.agents', 'skills');
+
+// Single walk + read of every SKILL.md per check-all run. The report-only
+// audits below consume this manifest in-process (auditSkills) instead of each
+// spawning a subprocess that re-walks and re-parses the whole bundle, which
+// used to multiply full traversals of the skills tree.
+function buildSkillManifest(skillsRoot) {
+  const entries = [];
+  const walk = (dir, domain) => {
+    for (const entry of fsSync.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const full = path.join(dir, entry.name);
+      const skillMd = path.join(full, 'SKILL.md');
+      const toPosix = (value) => path.relative(REPO_ROOT, value).split(path.sep).join('/');
+      if (fsSync.existsSync(skillMd)) {
+        entries.push({
+          path: toPosix(skillMd),
+          dirPath: toPosix(full),
+          domain,
+          dirName: entry.name,
+          text: fsSync.readFileSync(skillMd, 'utf8'),
+        });
+      } else {
+        walk(full, domain || entry.name);
+      }
+    }
+  };
+  walk(skillsRoot, '');
+  entries.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+  return entries;
+}
+
+let manifest = null;
+let manifestError = null;
+try {
+  manifest = buildSkillManifest(SKILLS_ROOT);
+} catch (error) {
+  manifestError = `cannot walk the skills bundle at ${SKILLS_ROOT}: ${error?.message ?? error}`;
+}
+
+// The idempotency demo writes its intent ledger; run it against a temp dir so
+// the gate leaves no scratch data in the working tree.
+const idempotencyIntentsDir = fsSync.mkdtempSync(path.join(os.tmpdir(), 'quirk-idempotency-demo-'));
 
 const checks = [
   ['node', ['.agents/skills/platform/validate-skills.mjs']],
+  ['node', ['.agents/skills/platform/validate-traceability.mjs']],
   ['node', ['.agents/skills/platform/audit-semantics.mjs']],
   ['node', ['.agents/skills/platform/evaluate-scenarios.mjs']],
   ['node', ['.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
@@ -12,6 +65,10 @@ const checks = [
   ['node', ['--check', '.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
   ['node', ['--check', '.agents/skills/platform/sync-bundle.mjs']],
   ['bash', ['-n', '.agents/skills/delivery/diagnosing-bugs/scripts/hitl-loop.template.sh']],
+  ['node', ['.agents/skills/platform/loop-runner.mjs', '--demo', '--json']],
+  ['node', ['.agents/skills/platform/idempotency.mjs', '--demo', '--intents-dir', idempotencyIntentsDir]],
+  ['node', ['.agents/skills/platform/security-scan-skills.mjs', '--strict']],
+  ['node', ['evals/run-routing.mjs', '--check']],
   ['node', ['--test', '.agents/skills/platform/tests/*.test.mjs']],
 ];
 
@@ -21,12 +78,30 @@ const memoryReportChecks = memoryDir
   : [];
 const memorySkipReason = 'no memory directory at .agents/memory (the layout is a shipped convention, not a runtime store)';
 
-const reportOnlyChecks = [
-  ['node', ['.agents/skills/platform/context-budget-auditor.mjs', '--json', '--no-write']],
-  ['node', ['.agents/skills/platform/cost-ledger.mjs', '--json']],
-  ['node', ['.agents/skills/platform/validate-spec-compliance.mjs', '--json']],
-  ['node', ['.agents/skills/platform/skill-graph.mjs', 'build', '--json']],
-  ...memoryReportChecks,
+// Report-only audits: run in-process against the one shared manifest. Each
+// entry keeps the command string, exit code, and report shape of its CLI, so
+// the JSON output is unchanged and none of them can flip the gate.
+const reportOnlyAudits = [
+  {
+    command: 'node .agents/skills/platform/context-budget-auditor.mjs --json --no-write',
+    exitCode: () => 0,
+    audit: () => auditContextBudget(manifest),
+  },
+  {
+    command: 'node .agents/skills/platform/cost-ledger.mjs --json',
+    exitCode: () => 0,
+    audit: () => auditCostLedger(manifest),
+  },
+  {
+    command: 'node .agents/skills/platform/validate-spec-compliance.mjs --json',
+    exitCode: (report) => (report?.errors?.length ? 1 : 0),
+    audit: () => auditSpecCompliance(manifest),
+  },
+  {
+    command: 'node .agents/skills/platform/skill-graph.mjs build --json',
+    exitCode: () => 0,
+    audit: () => auditSkillGraph(manifest, { root: REPO_ROOT }),
+  },
 ];
 
 const dagFile = defaultDagFile();
@@ -56,13 +131,28 @@ const gatingResults = [];
 for (const [command, args] of [...checks, ...dagGateChecks]) {
   gatingResults.push(await run(command, args));
 }
+fsSync.rmSync(idempotencyIntentsDir, { recursive: true, force: true });
+
 const reportResults = [];
-for (const [command, args] of reportOnlyChecks) {
+for (const entry of reportOnlyAudits) {
+  let report = null;
+  let error = null;
+  try {
+    if (manifestError) throw new Error(manifestError);
+    report = entry.audit();
+  } catch (auditError) {
+    error = auditError?.stack ?? String(auditError);
+    report = null;
+  }
+  reportResults.push({ ...entry, report, error, code: error ? 2 : entry.exitCode(report) });
+}
+for (const [command, args] of memoryReportChecks) {
   reportResults.push(await run(command, args));
 }
 
 const failures = gatingResults.filter((result) => result.code !== 0);
 const reportFailures = reportResults.filter((result) => result.code !== 0);
+const reportStderr = (result) => (result.error ?? result.stderr ?? '').trim();
 
 const parsedResults = gatingResults.map((result) => parseJson(result.stdout.trim()));
 const structuredChecks = gatingResults.map((result, index) => {
@@ -80,7 +170,7 @@ const structuredChecks = gatingResults.map((result, index) => {
 });
 
 const reportChecks = reportResults.map((result) => {
-  const parsed = parseJson(result.stdout.trim()) ?? {};
+  const parsed = result.report ?? (result.stdout ? parseJson(result.stdout.trim()) : null) ?? {};
   return {
     command: result.command,
     status: result.code === 0 ? 'pass' : 'fail',
@@ -157,6 +247,7 @@ if (reportFailures.length) {
   console.error(`\nreport-only checks reported errors (gate stays ${report.status}):`);
   for (const failure of reportFailures) {
     console.error(`${failure.command}${failure.code === null ? ' (crashed)' : ` (exit ${failure.code})`}`);
-    if (failure.stderr.trim()) console.error(failure.stderr.trim());
+    const detail = reportStderr(failure);
+    if (detail) console.error(detail);
   }
 }

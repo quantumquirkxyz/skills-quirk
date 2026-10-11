@@ -103,31 +103,32 @@ function skillFiles(root) {
   return found.sort();
 }
 
-export function auditContextBudget(skillsRoot = DEFAULT_SKILLS_ROOT, { topN = TOP_SKILLS } = {}) {
-  const files = skillFiles(skillsRoot);
-  const skills = [];
-  for (const file of files) {
-    const text = fsSync.readFileSync(file, 'utf8');
-    const fields = parseL1Fields(text);
-    const domain = path.relative(skillsRoot, file).split(path.sep)[0];
-    const nameDescriptionChars = fields.name.length + fields.description.length;
-    const tokens = LAYER_FIELDS.reduce(
-      (total, field) => total + estimateTokens(Array.isArray(fields[field]) ? fields[field].join(' ') : fields[field]),
-      0,
-    );
-    skills.push({
-      skill: fields.name || path.basename(path.dirname(file)),
-      domain,
-      file: path.relative(repoRoot, file),
-      nameChars: fields.name.length,
-      descriptionChars: fields.description.length,
-      nameDescriptionChars,
-      tagCount: fields.tags.length,
-      layerChars: fields.name.length + fields.description.length + fields.tags.join(' ').length,
-      tokens,
-      approachingTruncation: nameDescriptionChars > WARNING_THRESHOLD_CHARS,
-    });
-  }
+// One measured sample from a skill's L1 layer. Shared by the walk-driven entry
+// point (auditContextBudget) and the manifest-driven entry point (auditSkills),
+// so both produce byte-identical reports for the same bundle.
+function measureSample({ text, file, domain, fallbackName }) {
+  const fields = parseL1Fields(text);
+  const nameDescriptionChars = fields.name.length + fields.description.length;
+  const tokens = LAYER_FIELDS.reduce(
+    (total, field) => total + estimateTokens(Array.isArray(fields[field]) ? fields[field].join(' ') : fields[field]),
+    0,
+  );
+  return {
+    skill: fields.name || fallbackName,
+    domain,
+    file,
+    nameChars: fields.name.length,
+    descriptionChars: fields.description.length,
+    nameDescriptionChars,
+    tagCount: fields.tags.length,
+    layerChars: fields.name.length + fields.description.length + fields.tags.join(' ').length,
+    tokens,
+    approachingTruncation: nameDescriptionChars > WARNING_THRESHOLD_CHARS,
+  };
+}
+
+function reportFromSamples(samples, topN, displayRoot = DEFAULT_SKILLS_ROOT) {
+  const skills = [...samples];
   skills.sort((a, b) => b.tokens - a.tokens || a.skill.localeCompare(b.skill));
 
   const perDomain = {};
@@ -146,7 +147,7 @@ export function auditContextBudget(skillsRoot = DEFAULT_SKILLS_ROOT, { topN = TO
 
   return {
     tool: 'context-budget-auditor',
-    skillsRoot: path.relative(repoRoot, skillsRoot) || '.',
+    skillsRoot: path.relative(repoRoot, displayRoot) || '.',
     skillCount: skills.length,
     totalTokens,
     averageTokens: skills.length ? Math.round(totalTokens / skills.length) : 0,
@@ -155,6 +156,32 @@ export function auditContextBudget(skillsRoot = DEFAULT_SKILLS_ROOT, { topN = TO
     warnings,
     status: warnings.length ? 'warn' : 'pass',
   };
+}
+
+export function auditContextBudget(skillsRoot = DEFAULT_SKILLS_ROOT, { topN = TOP_SKILLS } = {}) {
+  const files = skillFiles(skillsRoot);
+  const samples = files.map((file) => measureSample({
+    text: fsSync.readFileSync(file, 'utf8'),
+    file: path.relative(repoRoot, file),
+    domain: path.relative(skillsRoot, file).split(path.sep)[0],
+    fallbackName: path.basename(path.dirname(file)),
+  }));
+  return reportFromSamples(samples, topN, skillsRoot);
+}
+
+// Manifest-driven entry point for the check-all gate: consumes the skill
+// manifest built once per run (single walk + read of every SKILL.md) instead of
+// re-walking the bundle. Each entry carries { path, dirPath, domain, dirName,
+// text }; the L1 parse is this module's own parseL1Fields, so the report is
+// identical to auditContextBudget over the same bundle.
+export function auditSkills(manifest, { topN = TOP_SKILLS } = {}) {
+  const samples = manifest.map((entry) => measureSample({
+    text: entry.text,
+    file: entry.path,
+    domain: entry.domain,
+    fallbackName: entry.dirName,
+  }));
+  return reportFromSamples(samples, topN);
 }
 
 export function diffSnapshots(previous, current) {
