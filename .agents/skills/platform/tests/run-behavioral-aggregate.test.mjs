@@ -30,6 +30,11 @@ function assertionResult(id, type, category, passed, evidence = 'evidence') {
   return { id, type, category, passed, evidence };
 }
 
+function assertBucketCounts(bucket, expected) {
+  assert.equal(bucket.passed, expected.passed);
+  assert.equal(bucket.failed, expected.failed);
+}
+
 /* ----------------------------------------------------- aggregateArm */
 
 test('aggregateArm counts a failed assertion in failed, not just evidence', () => {
@@ -45,9 +50,9 @@ test('aggregateArm counts a failed assertion in failed, not just evidence', () =
   assert.equal(a2.failed, 1, 'a failed assertion must increment failed');
   assert.deepEqual(a2.evidence, ['trial 1: missing: fixedPoint']);
 
-  assert.deepEqual(aggregate.byType, { deterministic: { passed: 1, failed: 1 } });
-  assert.deepEqual(aggregate.byCategory.process, { passed: 1, failed: 0 });
-  assert.deepEqual(aggregate.byCategory.outcome, { passed: 0, failed: 1 });
+  assertBucketCounts(aggregate.byType.deterministic, { passed: 1, failed: 1 });
+  assertBucketCounts(aggregate.byCategory.process, { passed: 1, failed: 0 });
+  assertBucketCounts(aggregate.byCategory.outcome, { passed: 0, failed: 1 });
 });
 
 test('aggregateArm keeps per-assertion pass and fail counts consistent with trial outcomes', () => {
@@ -63,7 +68,7 @@ test('aggregateArm keeps per-assertion pass and fail counts consistent with tria
   assert.equal(aggregate.trials, 3);
   assert.equal(aggregate.trialsPassed, 1);
   assert.equal(aggregate.passRate, Math.round((1 / 3) * 1000) / 1000);
-  assert.deepEqual(aggregate.byCategory.process, { passed: 1, failed: 2 });
+  assertBucketCounts(aggregate.byCategory.process, { passed: 1, failed: 2 });
 });
 
 test('aggregateArm reports zero failures when every assertion passes', () => {
@@ -72,8 +77,8 @@ test('aggregateArm reports zero failures when every assertion passes', () => {
   ]);
 
   assert.equal(aggregate.assertions[0].failed, 0);
-  assert.deepEqual(aggregate.byType, { deterministic: { passed: 1, failed: 0 } });
-  assert.deepEqual(aggregate.byCategory, { process: { passed: 1, failed: 0 } });
+  assertBucketCounts(aggregate.byType.deterministic, { passed: 1, failed: 0 });
+  assertBucketCounts(aggregate.byCategory.process, { passed: 1, failed: 0 });
 });
 
 test('aggregateArm splits pass rates by assertion type', () => {
@@ -88,10 +93,8 @@ test('aggregateArm splits pass rates by assertion type', () => {
     ], { passed: false }),
   ]);
 
-  assert.deepEqual(aggregate.byType, {
-    deterministic: { passed: 2, failed: 0 },
-    judge: { passed: 1, failed: 1 },
-  });
+  assertBucketCounts(aggregate.byType.deterministic, { passed: 2, failed: 0 });
+  assertBucketCounts(aggregate.byType.judge, { passed: 1, failed: 1 });
 });
 
 /* --------------------------------------------------- rateOf / ratios */
@@ -233,11 +236,9 @@ test('runFixture reports real failure counts end-to-end for a failing arm', asyn
   assert.equal(a2.passed, 2);
   assert.equal(j1.failed, 0, 'the mock judge passes everything');
 
-  assert.deepEqual(report.with.byType, {
-    deterministic: { passed: 2, failed: 2 },
-    judge: { passed: 2, failed: 0 },
-  });
-  assert.deepEqual(report.with.byCategory.process, { passed: 0, failed: 2 });
+  assertBucketCounts(report.with.byType.deterministic, { passed: 2, failed: 2 });
+  assertBucketCounts(report.with.byType.judge, { passed: 2, failed: 0 });
+  assertBucketCounts(report.with.byCategory.process, { passed: 0, failed: 2 });
   assert.equal(report.with.trialsPassed, 0);
   assert.deepEqual(report.failures.map((entry) => entry.id), ['a1']);
 
@@ -261,7 +262,7 @@ test('renderMarkdown states zero failures for a clean arm', async () => {
 
   const report = await runFixture({ fixture, file, withTranscript, baselineTranscript: null, artifactOverride: null, judge, mode: 'mock' });
 
-  assert.deepEqual(report.with.byType, { deterministic: { passed: 1, failed: 0 } });
+  assertBucketCounts(report.with.byType.deterministic, { passed: 1, failed: 0 });
   assert.equal(report.failures.length, 0);
   const markdown = renderMarkdown(report);
   assert.match(markdown, /- failed assertions: 0 across 0\/1 assertion\(s\)/);

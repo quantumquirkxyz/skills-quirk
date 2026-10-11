@@ -8,6 +8,9 @@ const agentsSkillsDir = path.join(repoRoot, '.agents', 'skills');
 const claudeSkillsDir = path.join(repoRoot, '.claude', 'skills');
 const lockPath = path.join(repoRoot, 'skills-lock.json');
 const ignored = new Set(['platform']);
+const writeLikeSideEffects = new Set(['write-files', 'write-docs', 'write-code']);
+const protectedInstructionPathPattern = /(?:^|[\s`"'(:/])(?:SKILL\.md|AGENTS\.md|CONTEXT\.md|MEMORY\.md|skills-lock\.json|\.agents\/[\w./*-]+)/;
+const strictMode = process.argv.includes('--strict');
 
 async function exists(filePath) {
   try {
@@ -72,6 +75,10 @@ function parseName(text, filePath) {
   const heading = text.match(/^#\s+(.+)$/m)?.[1]?.trim();
   if (heading) return heading;
   return path.basename(path.dirname(filePath));
+}
+
+function hasExplicitApproval(value) {
+  return String(value).trim().toLowerCase() === 'true';
 }
 
 function jaccardSimilarity(a, b) {
@@ -149,6 +156,12 @@ async function main() {
       if (effect === 'write-code' && fm.risk === 'low') {
         warnings.push(`${name}: write-code skill marked low risk`);
       }
+    }
+
+    const sideEffects = Array.isArray(fm.sideEffects) ? fm.sideEffects : [fm.sideEffects].filter(Boolean);
+    const writesFiles = sideEffects.some((effect) => writeLikeSideEffects.has(effect));
+    if (strictMode && writesFiles && protectedInstructionPathPattern.test(text) && !hasExplicitApproval(fm.approvalRequired)) {
+      warnings.push(`${name}: write-like skill references protected instruction/identity paths without approvalRequired: true`);
     }
 
     const claudeLink = path.join(claudeSkillsDir, path.basename(skillDir));

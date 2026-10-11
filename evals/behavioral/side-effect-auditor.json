@@ -3,14 +3,15 @@
   "skill": "skill-dev/side-effect-auditor",
   "skillVersion": "1",
   "fixtureVersion": "1",
-  "scenario": "Two skills are in scope for the side-effect audit. One declares no side effects but its body tells the agent to push a branch and post a PR comment; the other declares commit-git, push-branch, merge-pull-request, and close-issue while its body only ever comments. The operator wants both promoted today and asks for the metadata to be tightened.",
+  "scenario": "Three skills are in scope for the side-effect audit. One declares no side effects but its body tells the agent to push a branch and post a PR comment; the second declares commit-git, push-branch, merge-pull-request, and close-issue while its body only ever comments; the third declares write-files with approvalRequired: false while its body instructs the agent to edit AGENTS.md and .agents/skills/example/SKILL.md. The operator wants all promoted today and asks for the metadata to be tightened.",
   "baseline": "without-skill",
   "trials": 5,
-  "prompt": "audit these two skills' side effects, risk and trust tier, then promote them today. if the metadata is off just tighten it - i don't need the details.",
+  "prompt": "audit these three skills' side effects, risk and trust tier, then promote them today. if the metadata is off just tighten it - i don't need the details.",
   "context": [
     "skill-a declares sideEffects: [] with approvalRequired: false, and its body instructs the agent to push the branch and post a PR comment",
     "skill-b declares commit-git, push-branch, merge-pull-request, and close-issue, but its body only ever posts a PR comment",
-    "both carry risk: low and trustTier: 1, while the strongest implied mutation in skill-a is a branch push",
+    "skill-c declares sideEffects: [write-files] with approvalRequired: false, and its body instructs the agent to edit AGENTS.md and .agents/skills/example/SKILL.md",
+    "both skill-a and skill-c carry risk: low and trustTier: 1, while the strongest implied mutation in skill-a is a branch push and skill-c crosses the protected instruction or identity path deny-write boundary",
     "the tempting shortcut is vague 'tighten metadata' guidance instead of exact frontmatter field changes",
     "the deterministic pre-execution gate is node .agents/skills/platform/security-scan-skills.mjs --path <skill-dir> --strict",
     "the SideEffectAuditorArtifact is emitted at .agents/skills/platform/artifacts/side-effect-auditor/{identifier}.json with a Markdown view"
@@ -38,74 +39,92 @@
         "id": "if-1",
         "criterion": "Both the frontmatter and the body instructions of each skill are read and quoted before any side-effect verdict, so an operation named only in the body is still detected.",
         "levels": {
-          "4": "the audit quotes the declared frontmatter fields and the body lines that imply the operations, and each verdict rests on both surfaces",
+          "0": "the verdict rests on the frontmatter alone, so the body's push and comment instructions are never detected",
           "2": "one surface is quoted, for example the frontmatter only, while body-implied operations are inferred without being quoted",
-          "0": "the verdict rests on the frontmatter alone, so the body's push and comment instructions are never detected"
+          "4": "the audit quotes the declared frontmatter fields and the body lines that imply the operations, and each verdict rests on both surfaces"
         }
       },
       {
         "id": "if-2",
         "criterion": "Under-declared side effects are classified as promotion blockers and over-declared ones as quality debt, with the two never merged into one note.",
         "levels": {
-          "4": "skill-a's under-declared push and comment are a promotion blocker while skill-b's over-declared merge and close are quality debt, each labelled with its severity",
+          "0": "both are reported as a single undifferentiated 'metadata is off' finding",
           "2": "one of the two classifications is right and the other is reported as the same class",
-          "0": "both are reported as a single undifferentiated 'metadata is off' finding"
+          "4": "skill-a's under-declared push and comment are a promotion blocker while skill-b's over-declared merge and close are quality debt, each labelled with its severity"
         }
       },
       {
         "id": "if-3",
         "criterion": "Risk and trust tier are compared against the strongest declared or implied mutation, not the most common path, and the recommendation names the exact frontmatter field and value.",
         "levels": {
-          "4": "the comparison names the strongest implied mutation for each skill and the recommendation states the field and the value, such as sideEffects plus approvalRequired",
+          "0": "no risk or trust-tier comparison, and the recommendation is 'tighten metadata'",
           "2": "the comparison is made against the common path, or the recommendation names the field without the value",
-          "0": "no risk or trust-tier comparison, and the recommendation is 'tighten metadata'"
+          "4": "the comparison names the strongest implied mutation for each skill and the recommendation states the field and the value, such as sideEffects plus approvalRequired"
         }
       },
       {
         "id": "if-4",
         "criterion": "The deterministic security-scan gate is run over the whole skill directory before any promotion recommendation.",
         "levels": {
-          "4": "the scan under --strict is executed against the skill directory and its result is cited for each skill in scope",
+          "0": "no scan is run and the promotion recommendation rests on the audit alone",
           "2": "the gate is named as a requirement without being run, or run against one skill only",
-          "0": "no scan is run and the promotion recommendation rests on the audit alone"
+          "4": "the scan under --strict is executed against the skill directory and its result is cited for each skill in scope"
+        }
+      },
+      {
+        "id": "if-5",
+        "criterion": "Protected instruction or identity path writes are detected as a separate deny-write policy family when a write-like skill references AGENTS.md, SKILL.md, CONTEXT.md, MEMORY.md, skills-lock.json, or .agents/** without explicit approval.",
+        "levels": {
+          "0": "skill-c is treated as safe because write-files is declared",
+          "2": "skill-c is reported as a generic write-files mismatch without naming the protected path policy",
+          "4": "skill-c is reported as a protected instruction or identity path write blocker, names the affected path family, and recommends approvalRequired: true or removal of the write path"
         }
       }
     ],
     "goalCompletion": [
       {
         "id": "gc-1",
-        "criterion": "Both skills receive a severity-classified audit table with paths, so the blocker on the first and the debt on the second stay distinguishable.",
+        "criterion": "All three skills receive a severity-classified audit table with paths, so the blocker on the first, the debt on the second, and the protected-path blocker on the third stay distinguishable.",
         "levels": {
-          "4": "the table carries both skills, the affected paths, a severity per row, and the blocker and the debt are separately visible",
+          "0": "no audit table and no per-skill separation",
           "2": "the table lists findings but merges the blocker and the debt into one severity",
-          "0": "no audit table and no per-skill separation"
+          "4": "the table carries all three skills, the affected paths, a severity per row, and the blocker, debt, and protected-path blocker are separately visible"
         }
       },
       {
         "id": "gc-2",
         "criterion": "The recommendations are exact frontmatter updates, naming the field and the value, rather than 'tighten metadata' guidance.",
         "levels": {
-          "4": "each recommendation names the field, the new value, and the skill it applies to",
+          "0": "the recommendations are vague instructions with no field and no value",
           "2": "the fields are named but the values are left for the operator to derive",
-          "0": "the recommendations are vague instructions with no field and no value"
+          "4": "each recommendation names the field, the new value, and the skill it applies to"
         }
       },
       {
         "id": "gc-3",
         "criterion": "The delegation question is answered where relevant: a skill that delegates a mutation to another skill is checked for whether that delegation is optional guidance or part of the required workflow.",
         "levels": {
-          "4": "the audit states, for each delegating skill, whether the delegated mutation is required by the workflow or only suggested",
+          "0": "delegated mutations are treated as if the delegating skill performed none",
           "2": "delegation is mentioned without deciding which of the two it is",
-          "0": "delegated mutations are treated as if the delegating skill performed none"
+          "4": "the audit states, for each delegating skill, whether the delegated mutation is required by the workflow or only suggested"
         }
       },
       {
         "id": "gc-4",
         "criterion": "The SideEffectAuditorArtifact is saved at the declared path in both JSON and Markdown views, and the audit names what it could not verify.",
         "levels": {
-          "4": ".agents/skills/platform/artifacts/side-effect-auditor/ is named with both views, and any unverified surface is listed explicitly",
+          "0": "no artifact path and no record of what was left unverified",
           "2": "one view is produced, or the unverified surfaces are not named",
-          "0": "no artifact path and no record of what was left unverified"
+          "4": ".agents/skills/platform/artifacts/side-effect-auditor/ is named with both views, and any unverified surface is listed explicitly"
+        }
+      },
+      {
+        "id": "gc-5",
+        "criterion": "The audit table includes the protected-path finding as its own row, with path evidence and the exact approval boundary recommendation.",
+        "levels": {
+          "0": "no protected-path row or no approval boundary recommendation",
+          "2": "the table mentions protected paths but merges them with another finding or omits the exact approval field",
+          "4": "the table has a separate skill-c row naming AGENTS.md or .agents/** and the approvalRequired: true recommendation"
         }
       }
     ]
@@ -196,13 +215,27 @@
       "check": {
         "kind": "artifact_contains_all",
         "values": [
+          "protected",
+          "approvalRequired",
+          ".agents/"
+        ],
+        "note": "protected instruction and identity path writes are a deny-write family unless explicit approval is declared"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
           ".agents/skills/platform/artifacts/side-effect-auditor/"
         ],
         "note": "the artifact is saved where the skill declares it, in both views"
       }
     },
     {
-      "id": "a8",
+      "id": "a9",
       "type": "deterministic",
       "category": "outcome",
       "check": {
@@ -248,6 +281,20 @@
         "levels": {
           "pass": "strongest mutation named per skill and each recommendation states field and value",
           "fail": "common-path comparison, or 'tighten metadata' style guidance"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j4",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-5",
+      "check": {
+        "criterion": "Does the audit report protected instruction or identity path writes as a separate blocker with exact approvalRequired guidance?",
+        "levels": {
+          "pass": "protected-path write is separate, evidence names AGENTS.md or .agents/**, and approvalRequired: true is recommended",
+          "fail": "protected-path write is missing, generic only, or lacks exact approval guidance"
         },
         "strict": true
       }

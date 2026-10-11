@@ -540,6 +540,35 @@ function passHatK(outcomes, maxK) {
   return result;
 }
 
+function roundRate(value) {
+  return Math.round(value * 1000) / 1000;
+}
+
+function wilson95(passed, total) {
+  if (total === 0) return null;
+  const z = 1.959963984540054;
+  const p = passed / total;
+  const z2 = z * z;
+  const denominator = 1 + z2 / total;
+  const center = (p + z2 / (2 * total)) / denominator;
+  const margin = (z * Math.sqrt((p * (1 - p) + z2 / (4 * total)) / total)) / denominator;
+  return {
+    level: 0.95,
+    method: 'wilson',
+    passed,
+    total,
+    lower: roundRate(Math.max(0, center - margin)),
+    upper: roundRate(Math.min(1, center + margin)),
+  };
+}
+
+function rateWithCi(bucket) {
+  if (!bucket) return null;
+  const total = bucket.passed + bucket.failed;
+  if (total === 0) return { rate: null, ci95: null };
+  return { rate: roundRate(bucket.passed / total), ci95: wilson95(bucket.passed, total) };
+}
+
 async function scoreArm(fixture, transcript, artifactOverride, judge) {
   const results = [];
   for (const trial of transcript.trials) {
@@ -622,6 +651,19 @@ export function aggregateArm(trials) {
     byType[entry.type].passed += entry.passed;
     byType[entry.type].failed += entry.failed;
   }
+  for (const entry of assertions.values()) {
+    const total = entry.passed + entry.failed;
+    entry.passRate = total === 0 ? null : roundRate(entry.passed / total);
+    entry.passRateCi95 = wilson95(entry.passed, total);
+  }
+  for (const [category, bucket] of Object.entries(byCategory)) {
+    const rate = rateWithCi(bucket);
+    byCategory[category] = { ...bucket, passRate: rate.rate, passRateCi95: rate.ci95 };
+  }
+  for (const [type, bucket] of Object.entries(byType)) {
+    const rate = rateWithCi(bucket);
+    byType[type] = { ...bucket, passRate: rate.rate, passRateCi95: rate.ci95 };
+  }
   const costs = trials.map((trial) => ({
     inputTokens: trial.tokens?.input ?? null,
     outputTokens: trial.tokens?.output ?? null,
@@ -636,6 +678,7 @@ export function aggregateArm(trials) {
     trials: totals.trials,
     trialsPassed: totals.passed,
     passRate: totals.trials === 0 ? null : Math.round((totals.passed / totals.trials) * 1000) / 1000,
+    passRateCi95: wilson95(totals.passed, totals.trials),
     assertions: [...assertions.values()].sort((a, b) => a.id.localeCompare(b.id)),
     byCategory,
     byType,
@@ -686,6 +729,61 @@ export function rateOf(bucket) {
   if (!bucket) return null;
   const total = bucket.passed + bucket.failed;
   return total === 0 ? null : Math.round((bucket.passed / total) * 1000) / 1000;
+}
+
+function ciOverlaps(a, b) {
+  if (!a || !b) return true;
+  return a.lower <= b.upper && b.lower <= a.upper;
+}
+
+function positiveCost(delta) {
+  if (!delta) return false;
+  if (typeof delta.cost?.delta === 'number' && delta.cost.delta > 0) return true;
+  return typeof delta.tokens?.totalDelta === 'number' && delta.tokens.totalDelta > 0;
+}
+
+export function obsolescenceSignal(report) {
+  if (!report.delta || !report.baseline) {
+    return { retirementCandidate: false, signal: 'not-assessed', reason: 'no baseline transcript supplied; material lift cannot be assessed' };
+  }
+  if (report.judge?.mode === 'mock') {
+    return { retirementCandidate: false, signal: 'not-applicable', reason: 'mock run: smoke-test data is not evidence for retirement' };
+  }
+  if (!positiveCost(report.delta)) {
+    return { retirementCandidate: false, signal: 'not-candidate', reason: 'no positive cost or token delta was recorded for the with-skill arm' };
+  }
+
+  const withPass = report.with.passRateCi95;
+  const basePass = report.baseline.passRateCi95;
+  const passLiftMaterial = withPass && basePass && withPass.lower > basePass.upper;
+  const categoryEntries = Object.keys(report.delta.categories ?? {}).map((category) => {
+    const withCategory = report.with.byCategory?.[category]?.passRateCi95 ?? null;
+    const baseCategory = report.baseline.byCategory?.[category]?.passRateCi95 ?? null;
+    return { category, materialLift: Boolean(withCategory && baseCategory && withCategory.lower > baseCategory.upper), overlaps: ciOverlaps(withCategory, baseCategory) };
+  });
+  const anyCategoryLift = categoryEntries.some((entry) => entry.materialLift);
+
+  if (!passLiftMaterial && !anyCategoryLift) {
+    return {
+      retirementCandidate: true,
+      signal: 'retirement-candidate',
+      reason: 'with-skill cost is positive and neither overall pass rate nor category rates show material lift beyond Wilson 95% confidence intervals',
+      evidence: {
+        passRateCiOverlap: ciOverlaps(withPass, basePass),
+        categoryCi: categoryEntries,
+      },
+    };
+  }
+
+  return {
+    retirementCandidate: false,
+    signal: 'not-candidate',
+    reason: 'at least one overall or category rate shows material lift beyond Wilson 95% confidence intervals',
+    evidence: {
+      passRateMaterialLift: Boolean(passLiftMaterial),
+      categoryCi: categoryEntries,
+    },
+  };
 }
 
 function deltaOf(base, withValue) {
@@ -745,12 +843,14 @@ export function renderMarkdown(report) {
   lines.push(`- judge: ${report.judge.mode}${report.judge.mock ? ' (mock - not evidence)' : ''} ${report.judge.reason}`);
   lines.push(`- model snapshot: ${report.modelSnapshot ?? 'not recorded'}`);
   lines.push(`- failed assertions: ${failingAssertionCount} across ${failing.length}/${report.with.assertions.length} assertion(s)`);
+  lines.push(`- pass rate: ${fmtRate(report.with.passRate)} (${fmtCi(report.with.passRateCi95)} CI95)${report.baseline ? `; baseline ${fmtRate(report.baseline.passRate)} (${fmtCi(report.baseline.passRateCi95)} CI95)` : ''}`);
+  lines.push(`- obsolescence signal: ${report.obsolescence?.signal ?? 'not-assessed'}${report.obsolescence?.retirementCandidate ? ' (retirement candidate)' : ''}`);
   lines.push('');
 
   lines.push('## Assertions');
   lines.push('');
-  lines.push('| assertion | category | type | baseline | with skill | delta |');
-  lines.push('|---|---|---|---|---|---|');
+  lines.push('| assertion | category | type | baseline | baseline CI95 | with skill | with skill CI95 | delta |');
+  lines.push('|---|---|---|---|---|---|---|---|');
   const assertionRows = delta
     ? delta.assertions
     : report.with.assertions.map((entry) => ({
@@ -761,8 +861,12 @@ export function renderMarkdown(report) {
         withSkill: entry.passed / Math.max(1, report.with.trials),
         delta: null,
       }));
+  const withAssertionsById = new Map((report.with.assertions ?? []).map((entry) => [entry.id, entry]));
+  const baselineAssertionsById = new Map((report.baseline?.assertions ?? []).map((entry) => [entry.id, entry]));
   for (const entry of assertionRows) {
-    lines.push(`| ${entry.id} | ${entry.category ?? '-'} | ${entry.type} | ${entry.baseline === null ? 'n/a' : entry.baseline.toFixed(2)} | ${entry.withSkill === null ? 'n/a' : entry.withSkill.toFixed(2)} | ${entry.delta === null ? 'n/a' : entry.delta.toFixed(2)} |`);
+    const withAssertion = withAssertionsById.get(entry.id);
+    const baselineAssertion = baselineAssertionsById.get(entry.id);
+    lines.push(`| ${entry.id} | ${entry.category ?? '-'} | ${entry.type} | ${fmtRate(entry.baseline)} | ${fmtCi(baselineAssertion?.passRateCi95 ?? null)} | ${fmtRate(entry.withSkill)} | ${fmtCi(withAssertion?.passRateCi95 ?? null)} | ${entry.delta === null ? 'n/a' : entry.delta.toFixed(2)} |`);
   }
   lines.push('');
 
@@ -781,13 +885,15 @@ export function renderMarkdown(report) {
 
   lines.push('## Success categories');
   lines.push('');
-  lines.push('| category | baseline | with skill | delta |');
-  lines.push('|---|---|---|---|');
+  lines.push('| category | baseline | baseline CI95 | with skill | with skill CI95 | delta |');
+  lines.push('|---|---|---|---|---|---|');
   const categories = delta
     ? Object.entries(delta.categories)
     : Object.entries(report.with.byCategory).map(([name, bucket]) => [name, { baseline: null, withSkill: rateOf(bucket), delta: null }]);
   for (const [category, entry] of categories) {
-    lines.push(`| ${category} | ${entry.baseline === null ? 'n/a' : entry.baseline.toFixed(2)} | ${entry.withSkill === null ? 'n/a' : entry.withSkill.toFixed(2)} | ${entry.delta === null ? 'n/a' : entry.delta.toFixed(2)} |`);
+    const withCategory = report.with.byCategory?.[category] ?? null;
+    const baselineCategory = report.baseline?.byCategory?.[category] ?? null;
+    lines.push(`| ${category} | ${fmtRate(entry.baseline)} | ${fmtCi(baselineCategory?.passRateCi95 ?? null)} | ${fmtRate(entry.withSkill)} | ${fmtCi(withCategory?.passRateCi95 ?? null)} | ${entry.delta === null ? 'n/a' : entry.delta.toFixed(2)} |`);
   }
   lines.push('');
 
@@ -820,6 +926,15 @@ export function renderMarkdown(report) {
   }
   lines.push('');
 
+  lines.push('## Obsolescence');
+  lines.push('');
+  lines.push(`**${report.obsolescence?.signal ?? 'not-assessed'}** - ${report.obsolescence?.reason ?? 'not assessed'}`);
+  if (report.obsolescence?.retirementCandidate) {
+    lines.push('');
+    lines.push('Conservative retirement candidate: no material lift is visible within Wilson 95% confidence intervals while the with-skill arm has positive recorded cost.');
+  }
+  lines.push('');
+
   lines.push('## Verdict');
   lines.push('');
   lines.push(`**${report.verdict.verdict}** - ${report.verdict.reason}`);
@@ -833,6 +948,8 @@ export function renderMarkdown(report) {
 function fmtNumber(value) { return typeof value === 'number' ? value.toLocaleString('en-US') : 'not recorded'; }
 function fmtUsd(value) { return typeof value === 'number' ? `$${value.toFixed(4)}` : 'not recorded'; }
 function fmtDelta(value) { return value === null ? 'not recorded' : (value > 0 ? `+${value}` : String(value)); }
+function fmtRate(value) { return typeof value === 'number' ? value.toFixed(2) : 'n/a'; }
+function fmtCi(ci) { return ci ? `${ci.lower.toFixed(2)}-${ci.upper.toFixed(2)}` : 'n/a'; }
 
 /* ------------------------------------------------------------------ modes */
 
@@ -880,6 +997,7 @@ export async function runFixture({ fixture, file, withTranscript, baselineTransc
     verdict: delta ? verdictFor(delta, fixture, mode) : { verdict: 'no-baseline', reason: 'no baseline transcript supplied; a delta cannot be computed' },
     failures: withAggregate.assertions.filter((entry) => entry.failed > 0),
   };
+  report.obsolescence = obsolescenceSignal(report);
   return report;
 }
 
