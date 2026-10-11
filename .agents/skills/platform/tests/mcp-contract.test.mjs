@@ -369,10 +369,18 @@ test('stdio responses survive a closed stdin', () => {
   assert.equal(result.status, 0, result.stderr);
   const lines = result.stdout.split('\n').filter((line) => line.trim() !== '');
   assert.equal(lines.length, 2, 'both async responses must arrive before the process ends');
-  const first = JSON.parse(lines[0]);
-  assert.ok(first.result, 'get_skill must return a result, not be cut off by the exit');
-  const second = JSON.parse(lines[1]);
-  assert.ok(second.result.contents[0].text.includes('quirk-skills'));
+  const responses = lines.map((line) => JSON.parse(line));
+  // JSON-RPC over stdio does not guarantee that responses arrive in request
+  // order: resources/read does real file I/O and can answer after tools/call.
+  // Pair the responses by id so the regression (a dropped response) is caught
+  // without assuming any particular arrival order.
+  const byId = new Map(responses.map((response) => [response.id, response]));
+  const getSkill = byId.get(1);
+  const registry = byId.get(2);
+  assert.ok(getSkill?.result, 'get_skill must return a result, not be cut off by the exit');
+  assert.ok(getSkill.id === 1 || getSkill.id === 2, 'responses must keep their request ids');
+  assert.ok(Array.isArray(registry?.result?.contents), 'resources/read must return a contents array');
+  assert.ok(registry.result.contents[0].text.includes('quirk-skills'));
 });
 
 test('CLI --demo --json prints the three protocol steps', () => {
