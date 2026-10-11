@@ -8,6 +8,162 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [Unreleased]
+
+Twelve review findings from the fix round are closed: the CI workflow could not
+fail, the behavioral eval counted failures it never displayed, the traceability
+gate audited a set it had already skipped, the supply-chain scanner scanned the
+wrong tree with no way to see the rest, the local gate left four new CLIs
+unwired, three duplicate legacy fixtures and one dead citation survived in the
+bundle, two artifact schemas were missing, and runtime artifacts were tracked
+that belonged to `.gitignore`.
+
+### Fixed
+
+- **`validate.yml` can now actually fail** (review finding 1) — the job declared
+  no shell, so every gate ran under GitHub's default `bash -e {0}` without
+  `pipefail`, and each gate piped through `tee "$(mktemp)"`, whose exit status
+  replaced the command's: a fully red gate reported green. The job now sets
+  `defaults: run: shell: bash`, and every run block that pipes through `tee`
+  opens with `set -o pipefail`, so the pipeline exit status is the command's.
+  The step list is also consolidated: seven overlapping per-tool steps are
+  replaced by one **Run full local gate** step that runs
+  `check-all.mjs`, which is the single authoritative gate.
+- **The behavioral eval reports the failures it counts** (review finding 2) —
+  `aggregateArm` never incremented `entry.failed`, so `rateOf` divided by zero,
+  reported `null`, and the Markdown report showed only passing assertions while
+  a run could in fact contain failed ones. The else branch now increments
+  `failed`, `renderMarkdown` prints a **Failed assertions** section with
+  per-assertion trial evidence and judge notes, and the header line carries the
+  total failed-assertion count. The module is also importable now: the CLI
+  dispatch runs only when the file is the entry point, so
+  `tests/run-behavioral-aggregate.test.mjs` can exercise the scoring internals
+  without re-running the CLI. `syntheticTranscript` honours
+  `artifact_min_lines` as well as `artifact_min_words`.
+- **The traceability gate audits the critical set before skipping it** (review
+  finding 3) — the critical-set audit ran *after* a `clauses.length === 0`
+  `continue`, so a critical skill that declared no clauses at all was skipped
+  before it was ever counted. The audit now runs before the skip, and the skip
+  is narrowed to non-critical skills, which legitimately declare no clauses yet.
+- **A citation fragment must anchor its own clause** (review finding 3) —
+  `evals/behavioral/tdd.json#TDD-1` resolves as long as the file mentions
+  `TDD-1` anywhere, so a typo'd or copy-pasted anchor is undetectable. A fragment
+  that is not the citing clause's own id now fails with the new
+  `check-fragment-mismatch` class, and the remediation vocabulary in
+  `--fix-hint` names the repair.
+- **The supply-chain scanner now scans the tree it claims to** (review finding
+  4) — `DEFAULT_PATH` was `platform/`, so `.agents/AGENTS.md` (an active
+  instruction path under OWASP AST02) was out of scope, and
+  `collectSkillFiles` silently dropped every root-level file of a root without
+  a `SKILL.md`. The default root is now `.agents`, root-level files are scanned,
+  and a new `--deep` flag widens the scan into skill-bundled working
+  directories (`fixtures`, `tests`, `evals`, `agent-cards`, `traces`,
+  `artifacts`, `golden`), which stay skipped by default.
+- **The local gate wires the four CLIs that were left unwired** (review finding
+  5) — `check-all.mjs` now gates on `validate-traceability.mjs`,
+  `security-scan-skills.mjs --strict`, `evals/run-routing.mjs --check`,
+  `loop-runner.mjs --demo`, and `idempotency.mjs --demo` (run against a
+  `mkdtemp` intents directory so no scratch state lands in the tree). The four
+  report-only audits (`context-budget-auditor`, `cost-ledger`,
+  `validate-spec-compliance`, `skill-graph build`) are now consumed in-process
+  from a single shared manifest built with one walk of the skills tree, instead
+  of each spawning a subprocess that re-walked and re-parsed the whole bundle.
+  The DAG gate is active: `dag-scheduler.mjs --check` runs against the
+  committed `workflows/default-dag.json` and is no longer skipped.
+- **Three duplicate legacy fixtures removed** (review finding 6) —
+  `delivery-implement-review-fixes.json`, `foundation-subagent-swarm.json`, and
+  `delivery-plan-review-fixes.json` duplicated canonical fixtures and are gone;
+  `subagent-swarm`'s `fixturesPath` is repointed at the canonical
+  `subagent-swarm.json`, and the `delegation-brief` frontmatter guard's
+  exception list now admits `fixturesPath` alongside `clauses`, `reloadPolicy`,
+  and `license`.
+- **Stale `docs/agents/` citations repointed** (review finding 7) —
+  `to-tickets`, `make-project`, `governance-index.md`, `setup-quirk-skills`,
+  `code-review`, `review-pr`, `skill-tutor`, and `skill-promoter` cited the
+  pre-move paths; their link targets now point into `docs/reference/agents/`.
+- **`implement-schema.json` and `publish-open-pr-schema.json` exist** (review
+  finding 8) — the `implement` and `publish-open-pr` skills emitted structured
+  artifacts with no schema to validate them against. Both schemas are declared
+  with their required properties, and `tests/schemas.test.mjs` pins them with
+  positive and negative cases plus a proof that the skills citing them resolve
+  the paths.
+- **Runtime artifacts are untracked, not committed** (review finding 9) —
+  `.gitignore` now ignores `traces/*.jsonl`, `state/*.json`, and `.scratch/`.
+  The tracked traces and the tracked `state/standard-feature.json` are removed
+  from the index while remaining on disk; `traces/README.md` and
+  `traces/schema.json` stay tracked.
+- **`platform/workflows/default-dag.json` exists** (review finding 10) — the
+  canonical ticket DAG for the standard-feature flow, with blocking edges drawn
+  from the documented transition order and no edge implied by another, so the
+  over-coupling linter has nothing to report. `dag-scheduler --check` on it
+  exits 0.
+- **`loop:demo` and `idempotency:demo` npm scripts exist** (review finding 11) —
+  both demos are now wired as gating entries in `check-all.mjs` as well as in
+  `package.json`.
+- **The last dead citation is closed** (review finding 12) —
+  `project/to-spec/SKILL.md:156` cited `docs/agents/issue-tracker.md` inline
+  with no link target at all. It now points at
+  `docs/reference/agents/issue-tracker.md`.
+
+### Known limitations
+
+- **`security-scan-skills.mjs --deep` reports 5 high findings that are
+  intentional test-fixture true positives.** The scanner has **no inline
+  suppression, exemption, or baseline mechanism** (the only `ignore` pattern in
+  it is the prompt-injection detector's own regex), so the patterns the test
+  files deliberately plant cannot be annotated away. They are:
+  `tests/agent-cards-signing.test.mjs:91` (a `/BEGIN PRIVATE KEY/` assertion
+  that *proves* verification rejects a key block) and
+  `tests/security-scan-skills.test.mjs:142,146,154,177` (`pyyaml==5.3.1` literals
+  and injection sample strings that *prove* the rules fire). This is deliberate
+  and documented, not a regression: `--deep` is not wired into any gate, so the
+  default scan and `--strict` — the gating mode — stay clean at 0 findings, and
+  a new test pins that contract, including the exact count, files, and rules that
+  may fire under `--deep`.
+- **`evaluate-fixtures.mjs --fixture-dir` now accepts a bare leaf name.** A bare
+  name like `behavioral` used to resolve against the caller's working directory
+  and evaluate zero fixtures (a 0/0 FAIL with no diagnostic). It is now resolved
+  against the fixtures root; the full path form and the default are unchanged.
+- **Markdown link text with `docs/agents/` labels survives in
+  `.agents/skills/index.md`** and in several skill bodies. The link *targets* are
+  all correct and resolve; only the human-readable label text still names the
+  pre-move path. Cosmetic and non-breaking.
+- **`evals/behavioral/publish-open-pr.json:20` cites
+  `.agents/skills/routing/publish-openpr/SKILL.md`** — the directory is
+  `publish-open-pr`. No gate resolves that citation (traceability checks the
+  `#fragment` of a clause's own check, not a fixture's inbound reference), so it
+  does not fail anything, but it is a dead reference.
+- **`platform/graph/skill-graph.json` carries a `generatedAt` timestamp**, so a
+  `git diff --exit-code` drift gate against it can never be clean. Content drift
+  in it has been re-synced this round; the residual difference is the timestamp
+  alone.
+
+### Changed
+
+- **`skills-lock.json` re-locked** against the edited tree — 9 skills updated
+  (`setup-quirk-skills`, `code-review`, `review-pr`, `subagent-swarm`,
+  `make-project`, `to-spec`, `to-tickets`, `skill-promoter`, `skill-tutor`),
+  258 entries matching the 258 canonical `SKILL.md` files, dry-run clean after
+  the write.
+
+### Validation
+
+```bash
+node .agents/skills/platform/check-all.mjs            # status pass: 16/16 gating, 4 report-only pass, 1 skip (memory-index)
+node .agents/skills/platform/validate-skills.mjs      # 0 errors, 0 warnings
+node .agents/skills/platform/audit-semantics.mjs      # 0 errors, 0 warnings
+node .agents/skills/platform/validate-traceability.mjs # exit 0
+node .agents/skills/platform/validate-spec-compliance.mjs  # exit 0
+node .agents/skills/platform/security-scan-skills.mjs      # clean (default and --strict)
+node evals/run-routing.mjs --check                            # 0 errors, 0 warnings
+node evals/run-behavioral.mjs --all                           # 12 fixtures, 0 failed
+node .agents/skills/platform/evaluate-fixtures.mjs            # 243/259 (93.8%) PASS
+node .agents/skills/platform/evaluate-fixtures.mjs --fixture-dir behavioral --threshold 0.8  # 219/219 PASS
+node --test tests/*.test.mjs                                  # 6/6
+node --test .agents/skills/platform/tests/*.test.mjs          # 264/264
+node .agents/skills/platform/dag-scheduler.mjs --check .agents/skills/platform/workflows/default-dag.json  # exit 0
+```
+
 ## [2.4.1] - 2026-10-10
 
 Closing the fixtures-coverage gap. Three remediation streams landed their content (evals
