@@ -7,7 +7,7 @@
     "skills-quirk": "./bin/skills-quirk.js"
   },
   "scripts": {
-    "test": "node --test .agents/skills/platform/tests/*.test.mjs",
+    "test": "node --test .agents/skills/platform/tests/*.test.mjs tests/*.test.mjs",
     "validate": "node .agents/skills/platform/validate-skills.mjs",
     "audit": "node .agents/skills/platform/audit-semantics.mjs",
     "audit:spec": "node .agents/skills/platform/validate-spec-compliance.mjs",
@@ -58,10 +58,16 @@
   "files": [
     "bin/",
     ".agents/skills/",
+    ".claude/skills/",
+    "CONTEXT.md",
+    "VERSION",
+    "docs/",
+    "skills-lock.json",
     "registry.yaml",
     "schema/",
     "scripts/",
     "plugins/",
-    "site/"
+    "site/",
+    "tests/"
   ]
 }

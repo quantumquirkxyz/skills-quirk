@@ -7,10 +7,11 @@ citing skills and fixtures in the same change.
 
 ## Unified review-findings-schema.json
 
-The `review-findings-schema.json` file now exists in one location as the
-single source of truth:
+The `review-findings-schema.json` contract has one canonical source and local
+copies for consumers that need repository-local fixtures:
 - `schema/review-findings-schema.json` (repository root) - the canonical schema
-- Symlinked/accessible at `.agents/skills/platform/schemas/review-findings-schema.json`
+- `.agents/skills/platform/schemas/review-findings-schema.json` - regular-file copy for platform-local consumers
+- `fixtures/repos/mini-bundle/schema/review-findings-schema.json` - regular-file fixture copy for task-runner tests
 
 This unified schema uses draft 2020-12 and defines the enveloped, versioned
 durable artifact with `schemaVersion` 2.0 envelope containing:
@@ -22,7 +23,7 @@ durable artifact with `schemaVersion` 2.0 envelope containing:
 This schema is used by:
 - Canonical skills: `.agents/skills/delivery/review-pr/SKILL.md` and `.agents/skills/delivery/code-review/SKILL.md`
 - Behavioral fixtures: `evals/behavioral/review-pr.json` and `evals/behavioral/code-review.json`
-- Test validation: `tests/schemas.test.mjs`
+- Test validation: `.agents/skills/platform/tests/schemas.test.mjs`
 - Task fixtures: `fixtures/repos/mini-bundle/schema/review-findings-schema.json`
 - Runtime validators and platform tooling
 

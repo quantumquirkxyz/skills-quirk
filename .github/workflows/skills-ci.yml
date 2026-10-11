@@ -68,8 +68,8 @@ jobs:
         with:
           node-version: 22
 
-      - name: Verify lockfile against canonical skills
-        run: node .agents/skills/platform/validate-skills.mjs
+      - name: Verify provenance traceability
+        run: node .agents/skills/platform/validate-traceability.mjs
 
   evaluation-coverage:
     runs-on: ubuntu-latest

@@ -103,6 +103,18 @@ const validPublishArtifact = () => ({
   labels: ['ready-for-human'],
 });
 
+test('review-findings schema copies parse and match the canonical schema byte-for-byte', async () => {
+  const canonical = await fs.readFile(path.join(root, 'schema', 'review-findings-schema.json'), 'utf8');
+  const platformCopy = await fs.readFile(path.join(root, '.agents', 'skills', 'platform', 'schemas', 'review-findings-schema.json'), 'utf8');
+  const fixtureCopy = await fs.readFile(path.join(root, 'fixtures', 'repos', 'mini-bundle', 'schema', 'review-findings-schema.json'), 'utf8');
+
+  assert.doesNotThrow(() => JSON.parse(canonical));
+  assert.doesNotThrow(() => JSON.parse(platformCopy));
+  assert.doesNotThrow(() => JSON.parse(fixtureCopy));
+  assert.equal(platformCopy, canonical, 'platform review-findings schema copy must match schema/review-findings-schema.json');
+  assert.equal(fixtureCopy, canonical, 'mini-bundle review-findings schema copy must match schema/review-findings-schema.json');
+});
+
 test('implement-schema.json parses and declares its root contract', () => {
   assert.equal(implementSchema.$schema, 'https://json-schema.org/draft/2020-12/schema');
   assert.equal(implementSchema.title, 'ImplementArtifact');

@@ -105,11 +105,14 @@ const memoryReportChecks = memoryDir
   ? [['node', ['.agents/skills/platform/memory-index.mjs', 'check', memoryDir, '--json']]]
   : [];
 const memorySkipReason = 'no memory directory at .agents/memory (the layout is a shipped convention, not a runtime store)';
+const compatibilityViewReportChecks = [
+  ['node', ['.agents/skills/platform/fix-compatibility-view.mjs', '--json']],
+];
 
 // Report-only audits: run in-process instead of spawning subprocesses, most
 // of them against the one shared manifest. Each entry keeps the command
-// string, exit code, and report shape of its CLI, so the JSON output is
-// unchanged and none of them can flip the gate.
+// string, exit code, and report shape of its CLI. Non-zero report-only results
+// are captured and surfaced, but only gating checks decide check-all's exit code.
 const reportOnlyAudits = [
   {
     command: 'node .agents/skills/platform/context-budget-auditor.mjs --json --no-write',
@@ -206,8 +209,13 @@ for (const entry of reportOnlyAudits) {
   }
   reportResults.push({ ...entry, report, error, code: error ? 2 : entry.exitCode(report) });
 }
-for (const [command, args] of memoryReportChecks) {
-  reportResults.push(await run(command, args));
+for (const [command, args] of [...compatibilityViewReportChecks, ...memoryReportChecks]) {
+  const result = await run(command, args);
+  const parsed = parseJson(result.stdout.trim());
+  if (parsed?.status === 'drift' && parsed?.pending > 0) {
+    result.code = 1;
+  }
+  reportResults.push(result);
 }
 
 const failures = gatingResults.filter((result) => result.code !== 0);

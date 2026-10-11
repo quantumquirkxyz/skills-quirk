@@ -65,6 +65,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           node scripts/sync-registry.mjs --write 2>&1 | tee "$(mktemp)"
 
+      - name: Verify registry projection drift
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git diff --exit-code -- CATALOG.md llms.txt .claude-plugin/marketplace.json .claude/skills
+
       - name: Generate metrics
         run: |
           set -o pipefail
@@ -95,21 +100,51 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           node scripts/generate-site-data.mjs --write 2>&1 | tee "$(mktemp)"
 
-      - name: Verify registry.yaml schema
+      - name: Verify site data drift
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git diff --exit-code -- site/src/skills.json
+
+      - name: Verify registry.yaml structure
         run: |
           set -o pipefail
           cd "$GITHUB_WORKSPACE"
-          node -e "const fs=require('fs');let r;try{r=JSON.parse(fs.readFileSync('registry.yaml','utf8'))}catch(e){console.error('registry.yaml unparseable:',e.message);process.exit(1)}console.log('registry.yaml valid:',JSON.stringify(r.name))" 2>&1 | tee "$(mktemp)"
+          node - <<'NODE' 2>&1 | tee "$(mktemp)"
+          const fs = require('fs');
+          let registry;
+          try {
+            registry = JSON.parse(fs.readFileSync('registry.yaml', 'utf8'));
+          } catch (error) {
+            console.error('registry.yaml unparseable:', error.message);
+            process.exit(1);
+          }
+          const requiredStrings = ['name', 'displayName', 'version', 'bundleVersion', 'repository', 'skillsDir'];
+          const missing = requiredStrings.filter((field) => typeof registry[field] !== 'string' || registry[field].length === 0);
+          if (!Array.isArray(registry.categories) || registry.categories.length === 0) missing.push('categories[]');
+          if (!Array.isArray(registry.supportsAgents) || registry.supportsAgents.length === 0) missing.push('supportsAgents[]');
+          if (missing.length) {
+            console.error('registry.yaml missing required structure:', missing.join(', '));
+            process.exit(1);
+          }
+          console.log('registry.yaml structure valid:', registry.name, registry.version);
+          NODE
 
       - name: Verify plugins structure
         run: |
           cd "$GITHUB_WORKSPACE"
+          missing=0
           for plugin in plugins/*; do
             if [ -d "$plugin/.claude-plugin" ]; then
-              echo "Plugin: $(basename $plugin)"
-              test -f "$plugin/.claude-plugin/plugin.json" && echo "  plugin.json: OK" || echo "  plugin.json: MISSING"
+              echo "Plugin: $(basename "$plugin")"
+              if [ -f "$plugin/.claude-plugin/plugin.json" ]; then
+                echo "  plugin.json: OK"
+              else
+                echo "  plugin.json: MISSING"
+                missing=1
+              fi
             fi
           done
+          exit "$missing"
 
       - name: Summary
         run: |
