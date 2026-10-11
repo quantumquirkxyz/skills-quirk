@@ -1,0 +1,44 @@
+{
+  "skill": "project/analyze-artifacts",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "82484079e3b25eb55a812ee128d10621206fb2111ea2b073b54aa962c5de2656",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

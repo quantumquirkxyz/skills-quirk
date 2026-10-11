@@ -36,6 +36,8 @@ const MIN_NEGATIVE_CONTROLS = 2;
 const TRUTHY = new Set(['true', '1', 'yes', 'y']);
 const FALSY = new Set(['false', '0', 'no', 'n']);
 
+const MODE_BANNER = 'Layer 1 routing eval; judge: mock; no model was invoked by this structural/scorer mode';
+
 /* ------------------------------------------------------------------ args */
 
 function parseArgs(argv) {
@@ -308,6 +310,8 @@ function validateFixtures(fixtures) {
 /* ------------------------------------------------------------ check mode */
 
 async function modeCheck() {
+  console.log(MODE_BANNER);
+  console.log('');
   const fixtures = await loadFixtures();
   const problems = validateFixtures(fixtures);
   let errorCount = 0;
@@ -494,6 +498,7 @@ function printReport({ fixtures, summary, matrix, unknownSelected, warnings, err
   const expectedRows = fixtures.reduce((sum, f) => sum + f.rows.length, 0);
   const recordedRows = summary.reduce((sum, row) => sum + row.recorded, 0);
 
+  console.log(MODE_BANNER);
   console.log(`routing score - source: ${source}`);
   console.log('');
   console.log('per-skill (trigger rate and false-positive rate are never blended)');
@@ -685,7 +690,7 @@ async function modeMock() {
   printReport({ fixtures, ...result, source: `${path.relative(repoRoot, outFile)} (synthetic)` });
   console.log('');
   console.log(`wrote ${lines.length} synthetic decisions to ${path.relative(repoRoot, outFile)}`);
-  console.log('note: mock output is a scorer smoke test, never evidence about a model or a skill');
+  console.log('note: mock output is a scorer smoke test, never evidence about a model or a skill; no model was invoked');
   process.exit(result.errors.length > 0 ? 1 : 0);
 }
 

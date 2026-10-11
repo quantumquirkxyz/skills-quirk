@@ -34,17 +34,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
 
       - name: Install dependencies
         run: |
           cd "$GITHUB_WORKSPACE"
-          echo "{}" > .skill-sandbox/manifest.json
+          mkdir -p "$SANDBOX_DIR"
+          echo "{}" > "$SANDBOX_DIR/manifest.json"
 
       - name: Run full local gate
         run: |
