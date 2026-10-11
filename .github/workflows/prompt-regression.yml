@@ -17,8 +17,20 @@ jobs:
           node-version: '20'
       - name: Run prompt regression tests
         run: |
-          for skill in implement code-review to-spec to-tickets tdd api-design codebase-design docs-adrs review-pr work-item-router ask-to publish-open-pr; do
+          GOLDEN_DIR=.agents/skills/platform/golden
+          # Iterate only over skills that have a golden PROMPT file (*-v2.md).
+          # Skills whose golden is an execution trace (*-v2.json) are skipped,
+          # because comparing the live prompt against a JSON trace yields 0% similarity.
+          tested=0
+          for golden in "$GOLDEN_DIR"/*-v2.md; do
+            [ -f "$golden" ] || continue
+            skill=$(basename "$golden" -v2.md)
+            tested=$((tested + 1))
             echo "Testing $skill..."
-            node .agents/skills/platform/scripts/test-prompt-regression.mjs $skill v2 || exit 1
+            node .agents/skills/platform/scripts/test-prompt-regression.mjs "$skill" v2 || exit 1
           done
-          echo "All prompt regression tests passed"
+          if [ "$tested" -eq 0 ]; then
+            echo "No golden prompt files (*.md) found; nothing to test."
+          else
+            echo "All prompt regression tests passed ($tested skills)"
+          fi
