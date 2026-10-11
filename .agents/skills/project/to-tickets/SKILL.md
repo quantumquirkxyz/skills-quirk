@@ -63,7 +63,7 @@ clauses:
     text: "Every blocking edge must correspond to a genuine prerequisite so the frontier can be taken without guessing order."
     check: "manual"
   - id: TO-TICKETS-3
-    text: "Every published ticket must carry the canonical metadata from docs/agents/work-item-format.md, and no parent issue may be closed or modified."
+    text: "Every published ticket must carry the canonical metadata from docs/reference/agents/work-item-format.md, and no parent issue may be closed or modified."
     check: "manual"
   - id: TO-TICKETS-4
     text: "When the input is corrective, preserve the parent spec metadata and publish the smallest ticket that closes the audited gap."
@@ -87,7 +87,7 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - **Rule:** frame slices in this repo's terms where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
 - **Rule:** every ticket must be independently understandable and claimable.
 - **Rule:** every blocking edge must be a genuine prerequisite — a redundant edge only lowers expected subtask success (FLOW, ICLR 2025), so remove it or record it as intentional in the ticket's risks.
-- **Rule:** every published ticket must carry the canonical metadata from `docs/agents/work-item-format.md` for labels, milestone, project item, and project fields.
+- **Rule:** every published ticket must carry the canonical metadata from `docs/reference/agents/work-item-format.md` for labels, milestone, project item, and project fields.
 - **Rule:** when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
 
 ## Provenance
@@ -113,7 +113,7 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - each ticket has an explicit blocker set or none
 - the frontier can be taken without guessing about order
 - the user has approved the granularity before publication
-- the published tickets follow the canonical metadata shape in `docs/agents/work-item-format.md`
+- the published tickets follow the canonical metadata shape in `docs/reference/agents/work-item-format.md`
 - the `TicketArtifact` JSON is emitted with valid blocking edges and traceId
 - the DAG waves are emitted with the artifact and every over-coupling warning is removed or recorded as intentional
 
@@ -176,7 +176,7 @@ For corrective inputs, the user approval step may be skipped only when the audit
 Publish the approved tickets. **How** depends on the tracker `/setup-quirk-skills` configured — the tickets are the same either way, only the shape of the blocking edges changes:
 
 - **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use [`references/issue-template.md`](references/issue-template.md) for the per-ticket shape — one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. When the input came from `/to-spec`, create the tickets as subissues of that spec issue so the execution tree stays attached to the published spec. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the tracker defaults from `docs/agents/issue-tracker.md`: for this repo that means `ready-for-agent` plus any justified area or priority labels inherited from the source spec or parent issue. The ticket body itself must also be written in English and should preserve this repo's vocabulary rather than backsliding to generic trading wording.
+- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. When the input came from `/to-spec`, create the tickets as subissues of that spec issue so the execution tree stays attached to the published spec. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the tracker defaults from `docs/reference/agents/issue-tracker.md`: for this repo that means `ready-for-agent` plus any justified area or priority labels inherited from the source spec or parent issue. The ticket body itself must also be written in English and should preserve this repo's vocabulary rather than backsliding to generic trading wording.
 
 The ticket template still needs the familiar sections that keep slices actionable:
 

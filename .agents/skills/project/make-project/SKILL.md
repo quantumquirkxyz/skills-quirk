@@ -79,7 +79,7 @@ The exact queries and mutations live in [`references/graphql.md`](references/gra
 
 ## Repo Context
 
-Use the current repository's `CONTEXT.md`, `docs/agents/domain.md`, and issue tracker configuration when naming fields, views, and items. Default to portable project fields unless the repo already declares stronger domain fields:
+Use the current repository's `CONTEXT.md`, `docs/reference/agents/domain.md`, and issue tracker configuration when naming fields, views, and items. Default to portable project fields unless the repo already declares stronger domain fields:
 
 - **Work Type** — feature, bug, chore, docs, research, release, review-fix
 - **Repo Scope** — the repository, package, app, service, or module that owns the item

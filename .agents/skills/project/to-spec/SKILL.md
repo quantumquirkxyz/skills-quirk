@@ -153,7 +153,7 @@ Check with the user that these seams match their expectations.
 
 ### 2. Draft the spec
 
-Write the spec using [`references/spec-template.md`](references/spec-template.md) as the canonical shape, and hold every acceptance criterion to the reviewer-owned unit tests in [`references/spec-checklist.md`](references/spec-checklist.md) before you write it down. Apply the repo defaults from `docs/agents/issue-tracker.md`: for this repo that means labels `spec` plus `ready-for-agent` — no need for additional triage. The entire published issue, including headings, user stories, and notes, must be in English. Also apply the work-item format defaults: set the milestone when one is known, add the issue to the matching project board when relevant, and keep the todo/acceptance content aligned with the metadata.
+Write the spec using [`references/spec-template.md`](references/spec-template.md) as the canonical shape, and hold every acceptance criterion to the reviewer-owned unit tests in [`references/spec-checklist.md`](references/spec-checklist.md) before you write it down. Apply the repo defaults from [`docs/reference/agents/issue-tracker.md`](../../../../docs/reference/agents/issue-tracker.md): for this repo that means labels `spec` plus `ready-for-agent` — no need for additional triage. The entire published issue, including headings, user stories, and notes, must be in English. Also apply the work-item format defaults: set the milestone when one is known, add the issue to the matching project board when relevant, and keep the todo/acceptance content aligned with the metadata.
 
 The template shape still needs the familiar sections that make specs ticket-ready:
 

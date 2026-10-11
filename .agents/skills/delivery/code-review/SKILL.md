@@ -95,7 +95,7 @@ Both axes run as **parallel sub-agents** so they don't pollute each other's cont
 
 Each spawned prompt is a full delegation brief — objective, output format, tool guidance, boundaries, stop condition, and an effort budget — so a sub-agent never has to invent its scope. Sub-agents are read-only: they run no repairs and write no files. Their findings return as bounded summaries that reference the review artifact and the file-plus-line evidence they stand on — never as pasted transcripts, and never as the sub-agent's reasoning, which is context the review does not need and cannot audit.
 
-The issue tracker should have been provided to you — run `/setup-quirk-skills` if `docs/agents/issue-tracker.md` is missing.
+The issue tracker should have been provided to you — run `/setup-quirk-skills` if `docs/reference/agents/issue-tracker.md` is missing.
 Traces record sub-agent parallelism and finding counts via `record-execution.mjs`; include the resulting `traceId` in the `ReviewArtifact` metadata and Markdown review footer.
 
 
@@ -121,7 +121,7 @@ Before going further, confirm the fixed point resolves (`git rev-parse <fixed-po
 
 Look for the originating spec, in this order:
 
-1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.) — fetch via the workflow in `docs/agents/issue-tracker.md`.
+1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.) — fetch via the workflow in `docs/reference/agents/issue-tracker.md`.
 2. A path the user passed as an argument.
 3. A PRD/spec file under `docs/`, `specs/`, or `.scratch/` matching the branch name or feature.
 4. If nothing is found, ask the user where the spec is. If they say there isn't one, the **Spec** sub-agent will skip and report "no spec available".

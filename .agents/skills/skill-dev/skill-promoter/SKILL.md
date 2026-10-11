@@ -125,7 +125,7 @@ Move the skill to its permanent location:
 ### 6. Record Provenance
 
 Document the skill's journey:
-- Add an entry to docs/agents/provenance.md documenting the promotion
+- Add an entry to docs/reference/agents/provenance-inventory.md documenting the promotion
 - Include the skill name, promotion date, and rationale
 - Note any influences from the sandbox experimentation phase
 - Update the skills-map.md if the skill represents a new category
