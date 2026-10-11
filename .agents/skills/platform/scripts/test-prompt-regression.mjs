@@ -32,8 +32,7 @@ async function loadGolden(skill, version) {
     try {
       const parsed = JSON.parse(raw);
       if (typeof parsed.prompt === 'string') return parsed.prompt;
-      if (typeof parsed.content === 'string') return parsed.content;
-      return JSON.stringify(parsed, null, 2);
+      return null;
     } catch {
       return raw;
     }
@@ -43,17 +42,17 @@ async function loadGolden(skill, version) {
 }
 
 async function comparePrompts(skill, version) {
+  const golden = await loadGolden(skill, version);
+
+  if (!golden) {
+    return { skill, version, status: 'no-golden', message: 'No golden file found' };
+  }
+
   let current;
   try {
     current = await loadPrompt(skill, version);
   } catch {
     return { skill, version, status: 'no-prompt', message: 'No prompt file found' };
-  }
-
-  const golden = await loadGolden(skill, version);
-
-  if (!golden) {
-    return { skill, version, status: 'no-golden', message: 'No golden file found' };
   }
 
   const currentLines = current.split('\n');

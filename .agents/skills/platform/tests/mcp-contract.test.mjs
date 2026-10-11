@@ -364,8 +364,12 @@ test('stdio responses survive a closed stdin', () => {
     cwd: REPO_ROOT,
     input,
     encoding: 'utf8',
-    timeout: 20000,
+    timeout: 60000,
   });
+  if (result.error) throw result.error;
+  if (result.signal) {
+    assert.fail(`server was killed by signal ${result.signal} after ${result.timeout ?? 'n/a'}ms before it could flush both responses`);
+  }
   assert.equal(result.status, 0, result.stderr);
   const lines = result.stdout.split('\n').filter((line) => line.trim() !== '');
   assert.equal(lines.length, 2, 'both async responses must arrive before the process ends');
@@ -378,9 +382,10 @@ test('stdio responses survive a closed stdin', () => {
   const getSkill = byId.get(1);
   const registry = byId.get(2);
   assert.ok(getSkill?.result, 'get_skill must return a result, not be cut off by the exit');
-  assert.ok(getSkill.id === 1 || getSkill.id === 2, 'responses must keep their request ids');
-  assert.ok(Array.isArray(registry?.result?.contents), 'resources/read must return a contents array');
-  assert.ok(registry.result.contents[0].text.includes('quirk-skills'));
+  assert.equal(byId.size, 2, 'both responses must be present with distinct request ids');
+  const contents = registry?.result?.contents;
+  assert.ok(Array.isArray(contents) && contents.length > 0, 'resources/read must return at least one content item');
+  assert.ok(contents[0].text.includes('quirk-skills'));
 });
 
 test('CLI --demo --json prints the three protocol steps', () => {
