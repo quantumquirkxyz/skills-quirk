@@ -17,7 +17,7 @@ promptVersion: "2.0"
 artifactType: "foundation"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/foundation-observability.json"
+fixturesPath: .agents/skills/platform/fixtures/behavioral/observability.json
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []

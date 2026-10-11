@@ -18,7 +18,7 @@ promptVersion: "2.0"
 artifactType: "agent"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/foundation-agent-canvas.json"
+fixturesPath: .agents/skills/platform/fixtures/behavioral/agent-canvas.json
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []
