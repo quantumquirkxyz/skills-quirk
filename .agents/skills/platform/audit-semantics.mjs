@@ -76,6 +76,10 @@ async function walk(dir, predicate = () => true) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     const filePath = path.join(dir, entry.name);
     if (filePath.includes(`${path.sep}platform${path.sep}runs${path.sep}`)) continue;
+    // Generated runtime output is not bundle content: the agentskills.io
+    // export carries standalone SKILL.md copies whose relative links
+    // resolve from the canonical tree, not from the export directory.
+    if (filePath.includes(`${path.sep}artifacts${path.sep}agentskills-export${path.sep}`)) continue;
     if (entry.name === 'node_modules') continue;
     if (entry.isDirectory()) out.push(...await walk(filePath, predicate));
     else if (entry.isFile() && predicate(filePath)) out.push(filePath);
@@ -88,6 +92,9 @@ async function collectSkillFiles(dir, out = []) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     const filePath = path.join(dir, entry.name);
     if (filePath.includes(`${path.sep}platform${path.sep}runs${path.sep}`)) continue;
+    // Same generated-output exclusion as walk(): export copies are
+    // not canonical skills.
+    if (filePath.includes(`${path.sep}artifacts${path.sep}agentskills-export${path.sep}`)) continue;
     if (entry.isDirectory()) {
       const skillMd = path.join(filePath, 'SKILL.md');
       if (await exists(skillMd)) out.push(skillMd);

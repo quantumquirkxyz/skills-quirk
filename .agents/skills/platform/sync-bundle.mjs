@@ -19,6 +19,7 @@ const copyEntries = [
   '.agents/skills',
   'docs/agents',
   'docs/adr/README.md',
+  'hooks/hooks.json',
   'tooling/case-studies/README.md',
   'tooling/case-studies/template.md',
   'AUTHORSHIP.md',

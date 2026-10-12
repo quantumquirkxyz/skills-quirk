@@ -10,6 +10,7 @@ import { auditSkills as auditSpecCompliance } from './validate-spec-compliance.m
 import { auditSkills as auditSkillGraph } from './skill-graph.mjs';
 import { auditSkillTools } from './check-tool-risk-policy.mjs';
 import { auditAdapterDrift } from './scripts/generate-adapters.mjs';
+import { auditSkills as auditAgentskillsCompliance } from './agentskills-compliance.mjs';
 
 const REPO_ROOT = process.cwd();
 const SKILLS_ROOT = path.join(REPO_ROOT, '.agents', 'skills');
@@ -134,6 +135,28 @@ const compatibilityViewReportChecks = [
   ['node', ['.agents/skills/platform/fix-compatibility-view.mjs', '--json']],
 ];
 
+// Runtime-evidence report checks: each runs its CLI,
+// emits JSON, and a non-clean status sets the check
+// code to 1. Proposals from trace-improver are
+// informational by design: having improvement
+// proposals is not a gate failure.
+const runtimeEvidenceReportChecks = [
+  ['node', ['.agents/skills/platform/project-agent-paths.mjs', '--json']],
+  ['node', ['.agents/skills/platform/trajectory-eval.mjs', '--json']],
+  ['node', ['.agents/skills/platform/trace-improver.mjs', '--json']],
+  ['node', ['.agents/skills/platform/benchmark-harness.mjs', '--repeats', '1', '--json']],
+];
+
+function runtimeEvidenceExitCode(parsed) {
+  // A report-producing gate must fail closed when its JSON cannot be
+  // parsed; otherwise a crashed evaluator can silently pass the gate.
+  if (!parsed) return 1;
+  if (parsed.status === 'fail' || parsed.status === 'error') return 1;
+  if (parsed.status === 'drift' && Number(parsed.pending ?? 0) > 0) return 1;
+  if (Array.isArray(parsed.violations) && parsed.violations.length > 0) return 1;
+  return 0;
+}
+
 // Report-only audits: run in-process instead of spawning subprocesses, most
 // of them against the one shared manifest. Each entry keeps the command
 // string, exit code, and report shape of its CLI. Non-zero report-only results
@@ -172,6 +195,14 @@ const reportOnlyAudits = [
     },
     budgetStatus: (report) => toolRiskBudgetStatus(report, readJsonFile(TOOL_RISK_BUDGET_PATH)),
     audit: () => auditSkillTools(manifest),
+  },
+  // Agentskills.io open-standard compliance: the bundle
+  // must stay expressible in the form every ecosystem
+  // runtime and community registry ingests.
+  {
+    command: 'node .agents/skills/platform/agentskills-compliance.mjs --json',
+    exitCode: (report) => (report?.violations?.length ? 1 : 0),
+    audit: () => auditAgentskillsCompliance(manifest),
   },
   // Regenerates the 1484 adapters in memory and compares them with the
   // committed tree. The CLI always exits 0 in dry-run mode, so drift is
@@ -239,11 +270,14 @@ for (const entry of reportOnlyAudits) {
   }
   reportResults.push({ ...entry, report, error, code: error ? 2 : entry.exitCode(report) });
 }
-for (const [command, args] of [...compatibilityViewReportChecks, ...memoryReportChecks]) {
+for (const [command, args] of [...compatibilityViewReportChecks, ...memoryReportChecks, ...runtimeEvidenceReportChecks]) {
   const result = await run(command, args);
   const parsed = parseJson(result.stdout.trim());
   if (parsed?.status === 'drift' && parsed?.pending > 0) {
     result.code = 1;
+  }
+  if (runtimeEvidenceReportChecks.some((entry) => entry.join(' ') === [command, ...args].join(' '))) {
+    result.code = runtimeEvidenceExitCode(parsed);
   }
   reportResults.push(result);
 }

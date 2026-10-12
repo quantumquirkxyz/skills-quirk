@@ -1,5 +1,8 @@
 # Generated runtime artifacts
 .agents/skills/platform/runs/
+/artifacts/
+.agents/skills/platform/artifacts/benchmark-history.jsonl
+.agents/skills/platform/artifacts/trace-improvements.json
 /memory
 evals/results/mock/
 node_modules/
