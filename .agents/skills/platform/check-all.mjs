@@ -15,6 +15,31 @@ const REPO_ROOT = process.cwd();
 const SKILLS_ROOT = path.join(REPO_ROOT, '.agents', 'skills');
 const PLATFORM_TESTS_DIR = path.join('.agents', 'skills', 'platform', 'tests');
 const ROOT_TESTS_DIR = 'tests';
+const TOOL_RISK_BUDGET_PATH = path.join(REPO_ROOT, 'policy', 'tool-risk-budget.json');
+
+function readJsonFile(file) {
+  return JSON.parse(fsSync.readFileSync(file, 'utf8'));
+}
+
+function toolRiskBudgetStatus(report, budget) {
+  const counts = report?.counts ?? {};
+  const limits = budget?.budgets ?? {};
+  const errors = Number(counts.errors ?? 0);
+  const warnings = Number(counts.warnings ?? 0);
+  const maxErrors = Number(limits.errors ?? 0);
+  const maxWarnings = Number(limits.warnings ?? 0);
+  const over = [];
+  if (errors > maxErrors) over.push(`errors ${errors} > budget ${maxErrors}`);
+  if (warnings > maxWarnings) over.push(`warnings ${warnings} > budget ${maxWarnings}`);
+  return {
+    pass: over.length === 0,
+    over,
+    counts: { errors, warnings },
+    budgets: { errors: maxErrors, warnings: maxWarnings },
+    budgetSource: path.relative(REPO_ROOT, TOOL_RISK_BUDGET_PATH).split(path.sep).join('/'),
+    phase: budget?.phase ?? null,
+  };
+}
 
 // Single walk + read of every SKILL.md per check-all run. The report-only
 // audits below consume this manifest in-process (auditSkills) instead of each
@@ -134,13 +159,18 @@ const reportOnlyAudits = [
     exitCode: () => 0,
     audit: () => auditSkillGraph(manifest, { root: REPO_ROOT }),
   },
-  // The tool-risk checker exposes its real bundle debt (84 error-severity
-  // findings today), so it reports through the manifest instead of failing the
-  // gate, and its entry keeps the CLI's own exit condition (errors fail,
-  // warnings never do: the CLI is not --strict).
+  // The tool-risk checker exposes real bundle debt and gates it against the
+  // published debt budget in policy/tool-risk-budget.json. Existing debt can be
+  // capped during staged remediation, but any increase over the budget fails the
+  // full local gate.
   {
     command: 'node .agents/skills/platform/check-tool-risk-policy.mjs --json',
-    exitCode: (report) => (report?.counts?.errors ? 1 : 0),
+    mode: 'budgeted-gate',
+    exitCode: (report) => {
+      const budget = readJsonFile(TOOL_RISK_BUDGET_PATH);
+      return toolRiskBudgetStatus(report, budget).pass ? 0 : 1;
+    },
+    budgetStatus: (report) => toolRiskBudgetStatus(report, readJsonFile(TOOL_RISK_BUDGET_PATH)),
     audit: () => auditSkillTools(manifest),
   },
   // Regenerates the 1484 adapters in memory and compares them with the
@@ -220,6 +250,7 @@ for (const [command, args] of [...compatibilityViewReportChecks, ...memoryReport
 
 const failures = gatingResults.filter((result) => result.code !== 0);
 const reportFailures = reportResults.filter((result) => result.code !== 0);
+const budgetedReportFailures = reportResults.filter((result) => result.mode === 'budgeted-gate' && result.code !== 0);
 const reportStderr = (result) => (result.error ?? result.stderr ?? '').trim();
 
 const parsedResults = gatingResults.map((result) => parseJson(result.stdout.trim()));
@@ -239,17 +270,19 @@ const structuredChecks = gatingResults.map((result, index) => {
 
 const reportChecks = reportResults.map((result) => {
   const parsed = result.report ?? (result.stdout ? parseJson(result.stdout.trim()) : null) ?? {};
+  const budget = result.budgetStatus ? result.budgetStatus(parsed) : null;
   return {
     command: result.command,
     status: result.code === 0 ? 'pass' : 'fail',
     code: result.code,
-    mode: 'report-only',
+    mode: result.mode ?? 'report-only',
     skills: parsed?.skills ?? null,
     scenarios: parsed?.scenarios ?? null,
     fixtures: parsed?.fixtures ?? null,
     warnings: parsed?.warnings?.length ?? 0,
     errors: parsed?.errors?.length ?? 0,
     detail: parsed?.totalTokens ?? parsed?.nodes ?? null,
+    budget,
   };
 });
 
@@ -289,7 +322,7 @@ const skillsCount = structuredChecks.find((check, index) => parsedResults[index]
 
 const report = {
   modeMetadata,
-  status: failures.length ? 'fail' : 'pass',
+  status: failures.length || budgetedReportFailures.length ? 'fail' : 'pass',
   checks: structuredChecks,
   reportChecks,
   skippedChecks,
@@ -299,6 +332,7 @@ const report = {
     failed: failures.length,
     skippedChecks: skippedChecks.length,
     reportChecks: reportChecks.length,
+    budgetedGateChecks: reportChecks.filter((check) => check.mode === 'budgeted-gate').length,
     skillsEvaluated: skillsCount,
     totalWarnings: allChecks.reduce((total, check) => total + check.warnings, 0),
     totalErrors: allChecks.reduce((total, check) => total + check.errors, 0),
@@ -317,10 +351,20 @@ if (failures.length) {
 }
 
 if (reportFailures.length) {
-  console.error(`\nreport-only checks reported errors (gate stays ${report.status}):`);
+  console.error(`\nreport-only checks reported errors (gate stays ${report.status} unless the check is budgeted):`);
   for (const failure of reportFailures) {
     console.error(`${failure.command}${failure.code === null ? ' (crashed)' : ` (exit ${failure.code})`}`);
     const detail = reportStderr(failure);
     if (detail) console.error(detail);
   }
+}
+
+if (budgetedReportFailures.length) {
+  console.error(`\nbudgeted report checks exceeded their configured policy (gate fails):`);
+  for (const failure of budgetedReportFailures) {
+    console.error(`${failure.command}${failure.code === null ? ' (crashed)' : ` (exit ${failure.code})`}`);
+    const detail = reportStderr(failure);
+    if (detail) console.error(detail);
+  }
+  process.exit(1);
 }

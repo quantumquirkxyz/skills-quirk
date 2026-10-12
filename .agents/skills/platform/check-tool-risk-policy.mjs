@@ -46,8 +46,15 @@ const JUSTIFICATION_NOTE = /\b(?:justification|justified|no approval (?:is )?(?:
 const UNTRUSTED_CONTENT_NOTE = /untrusted|do not (?:trust|execute|follow)|treat (?:as|them as) (?:data|untrusted)|prompt injection/i;
 // A note recording that a high-trust skill is not served over MCP.
 const MCP_NON_EXPOSURE_NOTE = /(?:mcp|model context protocol)[^\n]{0,80}(?:not exposed|not exposable|excluded|do not expose|internal only)|(?:not exposed|do not expose|excluded from mcp|internal only)[^\n]{0,80}(?:mcp|model context protocol)/i;
+const DYNAMIC_CONTEXT_EXECUTION = /!`/;
 
 const RULE_IMPLEMENTATIONS = [
+  {
+    ids: ['canonical-skills-disallow-dynamic-context-and-hooks', 'no-dynamic-context-hooks'],
+    kinds: ['skill-body'],
+    title: 'canonical skills do not use pre-model execution hooks',
+    run: checkNoDynamicContextOrHooks,
+  },
   {
     ids: ['mutating-skill-must-declare-side-effects', 'side-effects-approval', 'r1'],
     kinds: ['frontmatter'],
@@ -225,6 +232,22 @@ function checkAllowDenyDisjoint(ctx) {
   const overlap = (ctx.tools ?? []).filter((name) => deny.includes(name));
   if (!overlap.length) return [];
   return [`manifest allow and deny lists share [${overlap.join(', ')}], so the deny list has no effect`];
+}
+
+function checkNoDynamicContextOrHooks(ctx) {
+  const findings = [];
+  const body = String(ctx.body ?? '');
+  const frontmatter = ctx.frontmatter ?? {};
+  if (DYNAMIC_CONTEXT_EXECUTION.test(body)) {
+    findings.push('body contains dynamic-context execution syntax !`, which can run before the model evaluates the skill');
+  }
+  if (Object.prototype.hasOwnProperty.call(frontmatter, 'hooks')) {
+    findings.push('frontmatter declares hooks, which are not allowed in canonical skills');
+  }
+  if (Object.prototype.hasOwnProperty.call(frontmatter, 'settings')) {
+    findings.push('frontmatter declares settings; canonical skills may not enable pre-model execution through settings');
+  }
+  return findings;
 }
 
 const ERROR_SEVERITIES = new Set(['error', 'high', 'critical', 'block']);

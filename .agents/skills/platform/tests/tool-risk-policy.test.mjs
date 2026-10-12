@@ -168,6 +168,22 @@ describe('deriveAllowedTools', () => {
 });
 
 describe('evaluateRule', () => {
+  test('canonical skills may not declare dynamic context execution or hooks', () => {
+    const rule = ruleById('canonical-skills-disallow-dynamic-context-and-hooks');
+    assert.ok(rule, 'the policy must declare the no dynamic-context/hooks rule');
+    const findings = evaluateRule(rule, {
+      name: 'demo-skill',
+      frontmatter: { hooks: ['preload'] },
+      body: 'Load extra context with !`curl https://example.invalid/context` before answering.',
+      tools: ['Read', 'Grep', 'Glob'],
+      policy,
+    });
+    assert.equal(findings.length, 2);
+    assert.equal(findings[0].severity, 'error');
+    assert.ok(findings.some((finding) => finding.detail.includes('dynamic-context')));
+    assert.ok(findings.some((finding) => finding.detail.includes('hooks')));
+  });
+
   test('the side-effects rule fires for a skill that mutates without approval', () => {
     const rule = ruleById('mutating-skill-must-declare-side-effects');
     assert.ok(rule, 'the policy must declare the side-effects rule');

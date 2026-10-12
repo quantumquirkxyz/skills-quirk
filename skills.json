@@ -2,8 +2,8 @@
   "name": "quirk-skills",
   "displayName": "Quirk Skills",
   "description": "Portable, validated skills bundle for AI coding agents with quality gates, MCP runtime, and multi-agent orchestration.",
-  "version": "2.4.2",
-  "bundleVersion": "2.4.2",
+  "version": "2.5.0",
+  "bundleVersion": "2.5.0",
   "author": "quantumquirkxyz",
   "repository": "https://github.com/quantumquirkxyz/skills-quirk",
   "skillsDir": ".agents/skills",
@@ -71,7 +71,11 @@
   "quality": {
     "scoringEnabled": true,
     "minScore": 60,
-    "tiers": ["BASIC", "STANDARD", "POWERFUL"],
+    "tiers": [
+      "BASIC",
+      "STANDARD",
+      "POWERFUL"
+    ],
     "securityScanEnabled": true,
     "mutationTesting": false
   },
@@ -85,7 +89,11 @@
     }
   },
   "lifecycle": {
-    "channels": ["stable", "beta", "canary"],
+    "channels": [
+      "stable",
+      "beta",
+      "canary"
+    ],
     "defaultChannel": "stable",
     "evidenceGatedUpdates": true
   }

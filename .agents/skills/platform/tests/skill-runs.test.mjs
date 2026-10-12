@@ -488,21 +488,26 @@ describe('SkillRunSession', () => {
 });
 
 describe('command line surfaces', () => {
-  test('the recorder demo validates its own trace and cleans the temporary directory', () => {
-    const before = new Set(fs.readdirSync(os.tmpdir()).filter((name) => name.startsWith('quirk-skill-runs-demo-')));
-    const result = spawnSync('node', [RECORDER, '--demo', '--json'], { encoding: 'utf8' });
-    assert.equal(result.status, 0, result.stderr || result.stdout);
-    const payload = JSON.parse(result.stdout);
-    assert.equal(payload.events, 5);
-    assert.equal(payload.validation.invalid, 0);
-    assert.equal(payload.status, 'pass');
-    assert.equal(payload.sink, 'tmpdir');
-    assert.deepEqual(payload.eventTypes, [
-      'route.started', 'route.selected', 'context.loaded', 'tool.called', 'run.completed',
-    ]);
-    const created = fs.readdirSync(os.tmpdir()).filter((name) => name.startsWith('quirk-skill-runs-demo-'));
-    assert.deepEqual(created, [...before]);
-    assertSinkUnchanged();
+  test('the recorder demo isolation ignores residual temp dirs and cleans its own trace directory', () => {
+    const residual = fs.mkdtempSync(path.join(os.tmpdir(), 'quirk-skill-runs-demo-residual-'));
+    try {
+      const result = spawnSync('node', [RECORDER, '--demo', '--json'], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr || result.stdout);
+      const payload = JSON.parse(result.stdout);
+      assert.equal(payload.events, 5);
+      assert.equal(payload.validation.invalid, 0);
+      assert.equal(payload.status, 'pass');
+      assert.equal(payload.sink, 'tmpdir');
+      assert.deepEqual(payload.eventTypes, [
+        'route.started', 'route.selected', 'context.loaded', 'tool.called', 'run.completed',
+      ]);
+      assert.ok(payload.written, 'demo payload must expose the trace file it wrote');
+      assert.ok(!fs.existsSync(path.dirname(payload.written)), `demo scratch dir leaked: ${payload.written}`);
+      assert.ok(fs.existsSync(residual), 'the seeded residual dir proves the assertion is scoped to this run');
+      assertSinkUnchanged();
+    } finally {
+      fs.rmSync(residual, { recursive: true, force: true });
+    }
   });
 
   test('--validate exits 1 on an invalid line and 0 on a clean file', () => {

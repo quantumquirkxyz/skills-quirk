@@ -1,6 +1,6 @@
 # Quirk Skills Catalog
 
-> Generated from quirk-skills v2.4.2
+> Generated from quirk-skills v2.5.0
 > 246 skills across 35 categories
 
 ## Skills by Category

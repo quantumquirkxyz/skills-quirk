@@ -8,6 +8,29 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [2.5.0] - 2026-10-12
+
+Implements the first Fase 0 security and quality hardening items from
+`docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/`.
+
+### Added
+
+- Published the tool-risk debt budget in `policy/tool-risk-budget.json`, with a
+  schema and documented decreasing targets from the current 84-error baseline to
+  zero.
+- Added a canonical-skill policy rule that rejects dynamic-context execution
+  syntax, hooks, and settings that could run before the model evaluates a skill.
+- Documented T0–T3 skill risk tiers and the quality debt inventory that drives
+  the D/F remediation backlog.
+
+### Changed
+
+- `check-all.mjs` now treats tool-risk as a budgeted gate: existing measured
+  debt is capped, and any regression over budget fails the full local gate.
+- The recorder demo test now asserts cleanup of the trace directory written by
+  its own run, so unrelated residual `/tmp/quirk-skill-runs-demo-*` directories
+  no longer make the test fail.
+
 ## [2.4.2] - 2026-10-11
 
 Twelve review findings from the fix round are closed: the CI workflow could not

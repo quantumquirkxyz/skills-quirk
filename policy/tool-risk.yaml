@@ -208,6 +208,11 @@ mcpExposure:
   notes: Class names refer to the tiers section above, not to individual servers.
 
 rules:
+  - id: canonical-skills-disallow-dynamic-context-and-hooks
+    statement: Canonical SKILL.md files may not use dynamic-context execution, hooks, or settings that run before the model sees the skill.
+    check: skill-body
+    severity: error
+
   - id: mutating-skill-must-declare-side-effects
     statement: A skill whose sideEffects list is non-empty must declare approvalRequired true, or record a written justification for why approval is unnecessary.
     check: frontmatter
