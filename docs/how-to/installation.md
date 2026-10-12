@@ -14,9 +14,9 @@ Installation places three fundamental elements in the target repository:
 
 | Element | Description |
 |---|---|
-| **Canonical skills** | 258 canonical `SKILL.md` files with SHA-256 lockfile hashes |
+| **Canonical skills** | Canonical `SKILL.md` files with SHA-256 lockfile hashes |
 | **Compatibility view** | Symlinks in .claude/skills/ for consumers expecting that layout |
-| **Method documentation** | CONTEXT.md, docs/reference/agents/, AUTHORSHIP.md, and ADRs to specialize the bundle |
+| **Method documentation** | `CONTEXT.md`, `docs/reference/agents/`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, and ADR references to specialize the bundle |
 
 After installation, the repository is ready to run the canonical flow: ask-to -> grill-with-docs -> to-spec -> to-tickets -> implement -> publish-open-pr -> review-pr -> ship-subissue.
 
@@ -34,41 +34,34 @@ Before installing the bundle, verify that the target repository meets the follow
 
 ## 3. Installation methods
 
-The bundle offers three installation methods depending on the starting point:
+Use the method that matches the target repository's risk profile.
 
-### 3.1 One-liner installer (curl)
+### 3.1 Safe sync from a local checkout (recommended)
 
-Ideal for installing the bundle from the upstream repository without cloning first:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh | bash
-```
-
-This method downloads and runs scripts/install-quirk-skills.sh directly from GitHub, copying the bundle to the current repository.
-
-### 3.2 From an existing local checkout
-
-If you already have a local copy of the skills-quirk repository:
-
-```bash
-bash scripts/install-quirk-skills.sh
-```
-
-By default, the script uses the directory containing it as the source and copies files to the current repository.
-
-### 3.3 From a fresh clone
-
-For clean installs from scratch:
+This is the default path for any real project. The first command is a dry run and writes nothing.
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-bash scripts/install-quirk-skills.sh
+node .agents/skills/platform/check-all.mjs
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
-### 3.4 Advanced installer usage
+If the dry run reports conflicts, inspect them before using `--force`. Existing repositories should preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation unless the user explicitly approves broader adoption changes.
 
-The install-quirk-skills.sh script accepts optional arguments:
+### 3.2 Greenfield installer
+
+Use the shell installer only for a new or disposable target where replacing bundle-managed paths is acceptable:
+
+```bash
+git clone https://github.com/quantumquirkxyz/skills-quirk.git
+bash skills-quirk/scripts/install-quirk-skills.sh /path/to/new-target-repo /path/to/skills-quirk
+```
+
+The installer replaces target paths when they already exist. Do not use it as the default update path for established repositories.
+
+### 3.3 Advanced installer usage
 
 ```bash
 bash scripts/install-quirk-skills.sh <destination-repo-path> [source-repo-path]
@@ -76,77 +69,68 @@ bash scripts/install-quirk-skills.sh <destination-repo-path> [source-repo-path]
 
 | Parameter | Description |
 |---|---|
-| <destination-repo-path> | Path of the repository where the bundle will be installed. |
-| [source-repo-path] | Path of the source repository. If omitted, the script directory is used. |
-
-Example:
-
-```bash
-bash scripts/install-quirk-skills.sh /home/user/my-project /home/user/skills-quirk
-```
+| `<destination-repo-path>` | Path of the repository where the bundle will be installed. |
+| `[source-repo-path]` | Path of the source repository. If omitted, the script directory is used. |
 
 ## 4. Installed files
 
-The installer copies the following files and directories to the target repository:
+The safe sync and greenfield installer copy the bundle-managed files needed for agent discovery and validation:
 
 | File / Directory | Purpose |
 |---|---|
-| .agents/skills/ | Canonical skills with SKILL.md and lockfile. Contains 258 canonical `SKILL.md` files organized by domain. Public projections expose 246 bundle skills excluding 12 platform skills. |
-| .claude/skills/ | Compatibility view. Symlinks exposing canonical skills to consumers expecting that layout. |
-| docs/reference/agents/ | Method documentation, provenance, adoption guide, skill templates, stack matrix, etc. |
-| ../reference/adr/README.md | ADR entry point (required for documenting architectural decisions). |
-| CONTEXT.md | Local repository vocabulary: boundaries, naming conventions, and domain. |
-| skills-lock.json | Canonical SHA-256 hash of each skill for integrity. |
+| `.agents/AGENTS.md` | Local instructions for the Agent Skills bundle directory. |
+| `.agents/skills/` | Canonical skills with `SKILL.md` entrypoints and platform scripts. |
+| `.claude/skills/` | Compatibility view exposing canonical skills to Claude-style consumers. |
+| `docs/reference/agents/` | Work-item, routing, issue-tracker, and provenance reference. |
+| `docs/reference/adr/README.md` | ADR entry point for documenting architectural decisions. |
+| `docs/how-to/` | Adoption, installation, release, and workflow guides. |
+| `docs/explanation/` | quirk Method and provenance explanations. |
+| `AUTHORSHIP.md` | Authorship, naming, and integrity rules. |
+| `CONTEXT.md` | Repository-local vocabulary to specialize after install. |
+| `skills-lock.json` | SHA-256 hashes for canonical skills. |
+| `skills.json` | Portable skills manifest for agent discovery. |
+| `.env.template` | Optional environment template for reproducible setup. |
 
 ### Installed bundle layers
-
-The bundle is organized in layers that interact with each other:
 
 ```mermaid
 flowchart LR
     A[Canonical skill] --> B[SKILL.md]
     A --> C[skills-lock.json]
-    D[Compatibility view] --> E[.claude/skills/ symlinks]
+    D[Compatibility view] --> E[.claude/skills symlinks]
     E --> A
-    F[skills.json] --> G[npx skills compatibility]
-    H[registry.yaml] --> I[marketplace.json]
-    I --> J[Claude Code discovery]
-    K[CONTEXT.md] --> L[Local vocabulary]
-    M[work-item-router.mjs] --> N[Routing governance]
+    F[CONTEXT.md] --> G[Local vocabulary]
+    H[docs/reference/agents] --> I[Work-item governance]
 ```
 
 | Layer | Components | Purpose |
 |---|---|---|
-| **Skills** | .agents/skills/, .claude/skills/, skills-lock.json | Canonical definitions and compatibility view |
-| **Method** | CONTEXT.md, docs/reference/agents/ | Local vocabulary, ADRs, adoption guides |
-| **Execution** | check-all.mjs, sync-bundle.mjs, work-item-router.mjs | Validation, synchronization, and routing |
-| **Quality** | quality-scorer.mjs, security-scanner.mjs, dependency-graph.mjs | Scoring, security, and dependency analysis |
-| **Registry** | registry.yaml, .claude-plugin/marketplace.json, CATALOG.md | Distribution and discovery |
-| **Runtime** | mcp-skills-server.mjs, otel-skill-instrumentation.mjs | Execution as MCP tools and traces |
-| **Governance** | skill-evolver.mjs, audit-trail.mjs | Evidence-gated evolution and auditing |
-| **Platform** | bin/skills-quirk.js, site/, .claude-plugin/ | NPX CLI, discovery site, and plugins |
+| **Skills** | `.agents/skills/`, `.claude/skills/`, `skills-lock.json` | Canonical definitions and compatibility view |
+| **Method** | `CONTEXT.md`, `docs/reference/agents/`, `docs/how-to/`, `docs/explanation/` | Local vocabulary, adoption guides, and governance |
+| **Execution** | `check-all.mjs`, `sync-bundle.mjs`, `work-item-router.mjs` | Validation, synchronization, and routing |
+| **Quality** | `quality-scorer.mjs`, `security-scanner.mjs`, `dependency-graph.mjs` | Scoring, security, and dependency analysis |
 
 ## 5. Adoption flow
 
-After copying the files, the target repository must go through the adoption flow:
+After copying the files, specialize the target repository:
 
 ```mermaid
 flowchart TD
-    A[Copy or sync bundle files] --> B[Run setup-quirk-skills]
-    B --> C[Configure tracker and domain docs]
-    C --> D[Update CONTEXT.md]
+    A[Dry-run or install bundle] --> B[Review changed paths]
+    B --> C[Specialize CONTEXT.md]
+    C --> D[Configure tracker docs]
     D --> E[Run validation]
     E --> F[Start normal work]
 ```
 
 Flow steps:
 
-1. **Copy or synchronize** the bundle files (.agents/skills/, .claude/skills/, docs/reference/agents/, .agents/adr/README.md, CONTEXT.md, skills-lock.json, skills.json, .env.template) into the target repository.
-2. **Run setup-quirk-skills** once in the target repository.
-3. **Configure** ../reference/agents/issue-tracker.md, ../reference/agents/triage-labels.md, and ../reference/agents/domain.md with the project actual tracker and domain.
-4. **Update CONTEXT.md** with repository-specific vocabulary. Do not copy domain vocabulary from another repository.
-5. **Run validation** to confirm the bundle is correctly installed.
-6. **Start normal work** through ask-to for ambiguous routing or the canonical flow for a claimed work-item.
+1. **Copy or synchronize** the bundle files with the safe sync path, or use the installer for greenfield targets.
+2. **Review changed paths** with `git status --short`; established repositories should not lose local docs or ADRs.
+3. **Configure** `docs/reference/agents/issue-tracker.md` and `docs/reference/agents/triage-labels.md` for the project's real tracker and labels.
+4. **Update `CONTEXT.md`** with repository-specific vocabulary. Do not copy domain vocabulary from another repo.
+5. **Run validation** from the target root: `node .agents/skills/platform/check-all.mjs`.
+6. **Start normal work** through `ask-to` for ambiguous routing or the canonical flow for a claimed work item.
 
 ## 6. First execution in the project
 
@@ -201,7 +185,7 @@ Specializing the bundle for a specific repository is governed by the following r
 - **Keep skill names stable** unless the target repository has a strong reason to fork them.
 - **Specialize through CONTEXT.md**, ADRs, issue tracker documentation, validation commands, and stack-specific skills.
 - **Do not embed** domain terms, branch names, issue numbers, or examples from another repository.
-- **Preserve** AUTHORSHIP.md, ../explanation/quirk-method.md, and ../explanation/provenance.md unless intentionally forking the method.
+- **Preserve** AUTHORSHIP.md, docs/explanation/quirk-method.md, and docs/explanation/provenance.md unless intentionally forking the method.
 - **Add new skills** only when the behavior is repeatedly useful and cannot be cleanly expressed through existing skills.
 - **Prefer scenario fixtures** under evaluate-skill/scenarios/ before changing central workflow skills.
 - **Treat compatibility-only skills** as transitional. Keep them only when the alias is still used externally, and add a concrete migration or retirement note in provenance before the next release touching the surrounding area.
@@ -211,10 +195,10 @@ Specializing the bundle for a specific repository is governed by the following r
 Before considering installation complete, verify the following:
 
 - [ ] setup-quirk-skills has run or equivalent documents exist.
-- [ ] .agents/adr/ exists with at least one ADR recording a design decision.
-- [ ] CONTEXT.md exists, names only this repository domain, and references .agents/adr/.
-- [ ] ../reference/agents/issue-tracker.md reflects the project actual tracker.
-- [ ] ../reference/agents/triage-labels.md matches the actual label strings.
+- [ ] docs/reference/adr/ exists with at least one ADR recording a design decision.
+- [ ] CONTEXT.md exists, names only this repository domain, and references docs/reference/adr/.
+- [ ] docs/reference/agents/issue-tracker.md reflects the project actual tracker.
+- [ ] docs/reference/agents/triage-labels.md matches the actual label strings.
 - [ ] skills-lock.json matches all local SKILL.md hashes.
 - [ ] .claude/skills/ has one symlink per canonical skill.
 - [ ] Scenario evaluation passes.
@@ -261,9 +245,9 @@ This script configures the initial bundle structure in the target repository.
 Edit the following files to reflect the project actual configuration:
 
 ```bash
-../reference/agents/issue-tracker.md
-../reference/agents/triage-labels.md
-../reference/agents/domain.md
+docs/reference/agents/issue-tracker.md
+docs/reference/agents/triage-labels.md
+docs/reference/agents/domain.md
 ```
 
 - issue-tracker.md: defines the tracking tool (GitHub Issues, Jira, etc.) and navigation conventions.
@@ -276,7 +260,7 @@ Edit CONTEXT.md to include repository-specific vocabulary:
 
 - Project domain terms.
 - Boundaries and naming conventions.
-- References to .agents/adr/.
+- References to docs/reference/adr/.
 - Any local rules that must be visible to skills.
 
 Do not copy domain vocabulary from another repository. Each project must have its own CONTEXT.md.
@@ -345,11 +329,11 @@ This shows which files would change without modifying them.
 |---|---|
 | **Adoption guide** | adoption.md |
 | **Bundle architecture** | ../reference/wiki/Architecture.md |
-| **quirk method** | ../explanation/quirk-method.md |
+| **quirk method** | docs/explanation/quirk-method.md |
 | **Governance** | ../reference/wiki/Governance.md |
-| **Skills catalog** | ../reference/agents/skill-inventory.md |
-| **Skills map** | ../reference/agents/skills-map.md |
-| **Provenance** | ../explanation/provenance.md |
-| **Issue tracker** | ../reference/agents/issue-tracker.md |
-| **Triage labels** | ../reference/agents/triage-labels.md |
-| **Domain** | ../reference/agents/domain.md
+| **Skills catalog** | docs/reference/agents/skill-inventory.md |
+| **Skills map** | docs/reference/agents/skills-map.md |
+| **Provenance** | docs/explanation/provenance.md |
+| **Issue tracker** | docs/reference/agents/issue-tracker.md |
+| **Triage labels** | docs/reference/agents/triage-labels.md |
+| **Domain** | docs/reference/agents/domain.md

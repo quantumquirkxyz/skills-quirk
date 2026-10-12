@@ -6,6 +6,7 @@ usage() {
 Usage: install-quirk-skills.sh <target-repo-path> [source-repo-path]
 
 Copies the quirk skills bundle into <target-repo-path>.
+This installer replaces bundle-managed paths and is intended for greenfield targets.
 If source-repo-path is omitted, the script uses the directory containing this script.
 EOF
 }
@@ -36,9 +37,14 @@ copy_path() {
 mkdir -p "$target_repo"
 copy_path "$source_repo/.agents/skills" "$target_repo/.agents/skills"
 copy_path "$source_repo/.claude/skills" "$target_repo/.claude/skills"
-copy_path "$source_repo/docs/agents" "$target_repo/docs/agents"
-copy_path "$source_repo/docs/adr/README.md" "$target_repo/docs/adr/README.md"
+copy_path "$source_repo/docs/reference/agents" "$target_repo/docs/reference/agents"
+copy_path "$source_repo/docs/reference/adr/README.md" "$target_repo/docs/reference/adr/README.md"
+copy_path "$source_repo/docs/how-to" "$target_repo/docs/how-to"
+copy_path "$source_repo/docs/explanation" "$target_repo/docs/explanation"
+copy_path "$source_repo/AUTHORSHIP.md" "$target_repo/AUTHORSHIP.md"
 copy_path "$source_repo/CONTEXT.md" "$target_repo/CONTEXT.md"
 copy_path "$source_repo/skills-lock.json" "$target_repo/skills-lock.json"
+copy_path "$source_repo/skills.json" "$target_repo/skills.json"
+copy_path "$source_repo/.env.template" "$target_repo/.env.template"
 
 echo "Installed quirk Skills into $target_repo"

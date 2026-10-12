@@ -37,12 +37,17 @@ node .agents/skills/platform/check-all.mjs
 
 Run commands from the repository root. The core validation tools use Node.js built-ins and do not require `npm install`. A successful validation prints `status: "pass"`; resolve reported failures before treating the bundle as ready.
 
-Preview installation into a new target repository, then apply it:
+Install the bundle into another repository with a dry run first:
 
 ```bash
-node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo
-node .agents/skills/platform/sync-bundle.mjs /path/to/new-target-repo --write
+# Existing repository-safe preview: reports conflicts and writes nothing.
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
+
+# Apply only after reviewing the dry run.
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
+
+For a brand-new target where replacing starter docs is acceptable, use `scripts/install-quirk-skills.sh`. For any repository that already has a `README.md`, `CONTEXT.md`, ADRs, or local docs, prefer the dry-run sync plus the existing-repository prompt in [Installation & Sync](#installation--sync).
 
 Follow the [adoption guide](docs/how-to/adoption.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
 
@@ -273,9 +278,9 @@ node .agents/skills/platform/check-all.mjs
 > [!TIP]
 > The full gate covers structure, semantic health, scenario fixtures, behavioral fixtures, syntax checks, shell template checks, and platform tests.
 
-### Current validation limitations
+### Current validation posture
 
-The documentation review found missing flat Claude compatibility links for seven graphic-design skills and semantic warnings for four graphic-design skills without explicit Rule lines. The platform test requires a warning-free semantic audit, so the full gate remains blocked until these bundle issues are resolved. Run the gate to obtain the current results rather than assuming readiness from the version or badges.
+The full gate is expected to pass before the bundle is treated as ready. At release time, `check-all.mjs` should report `failed: 0`, `totalWarnings: 0`, and `totalErrors: 0`. Run the gate locally rather than relying on badges or version strings.
 
 ### Quality scoring
 
@@ -376,7 +381,55 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 
 ## Installation & Sync
 
-The bundle is designed to be copied into another repository and specialized there.
+The bundle is designed to be copied into another repository and specialized there. Use the path that matches the target repository's state.
+
+### Recommended path: safe sync into any repository
+
+Use `sync-bundle.mjs` from a local checkout. The first command is a dry run: it reports files and conflicts but writes nothing.
+
+```bash
+git clone https://github.com/quantumquirkxyz/skills-quirk.git
+cd skills-quirk
+node .agents/skills/platform/check-all.mjs
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
+```
+
+If the dry run reports conflicts, inspect them before using `--force`. Existing repositories should usually preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation; sync only the skills bundle paths unless the user explicitly approves broader adoption changes.
+
+### Greenfield path: replace starter docs
+
+Use the shell installer only for a new or disposable target where replacing bundle-managed paths is acceptable:
+
+```bash
+git clone https://github.com/quantumquirkxyz/skills-quirk.git
+bash skills-quirk/scripts/install-quirk-skills.sh /path/to/new-target-repo /path/to/skills-quirk
+```
+
+The installer copies `.agents/skills/`, `.claude/skills/`, `docs/reference/agents/`, `docs/reference/adr/README.md`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, and `.env.template`. It replaces those target paths when they already exist.
+
+### What gets installed
+
+| Path | Purpose |
+|---|---|
+| `.agents/skills/` | Canonical skills with `SKILL.md` entrypoints |
+| `.claude/skills/` | Generated compatibility symlinks for Claude-style consumers |
+| `skills-lock.json` | SHA-256 hashes for canonical skills |
+| `docs/reference/agents/` | Work-item, routing, issue-tracker, and provenance reference |
+| `docs/how-to/` | Adoption, installation, release, and workflow guides |
+| `docs/explanation/` | quirk Method and provenance explanations |
+| `CONTEXT.md` | Repository-local vocabulary to specialize after install |
+| `AUTHORSHIP.md` | Authorship and integrity rules |
+
+### Validate in the target repository
+
+After syncing, run from the target root:
+
+```bash
+node .agents/skills/platform/check-all.mjs
+```
+
+Expected summary: `failed: 0`, `totalWarnings: 0`, `totalErrors: 0`.
 
 ```text
 [ PROMPTS ] AI-AGNOSTIC PROMPTS
@@ -398,30 +451,33 @@ REPO_UPSTREAM = <url of the canonical skills repo>  # for example, https://githu
 Bring this repository into a valid quirk Skills state with the canonical bundle installed, local context documented, and the repo ready for normal work.
 
 ## What you must not touch
-- Any existing ADRs or files under `docs/adr/`
+- Any existing ADRs or files under `docs/reference/adr/`
 - Any repository documentation that is already established and unrelated to the bundle bootstrap
 - Anything that is not needed to install, configure, or validate the skills bundle
 
 ## Allowed scope
-1. `.agents/skills/**`
-2. `.claude/skills/**`
-3. `skills-lock.json`
-4. `CONTEXT.md`
-5. `README.md` only if needed to add a short install or usage entry point
-6. `docs/reference/agents/**` and `docs/how-to/**` only if the repository does not already have the quirk documentation surface and it must be created as part of the bootstrap
+1. `.agents/AGENTS.md`
+2. `.agents/skills/**`
+3. `.claude/skills/**`
+4. `skills-lock.json`
+5. `skills.json`
+6. `CONTEXT.md`
+7. `README.md` only if needed to add a short install or usage entry point
+8. `docs/reference/agents/**`, `docs/reference/adr/README.md`, `docs/how-to/**`, and `docs/explanation/**` only if the repository does not already have the quirk documentation surface and it must be created as part of the bootstrap
 
 ## Steps
 1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
-2. Verify that the upstream contains `.agents/skills/**`, `.claude/skills/**`, `skills-lock.json`, and the expected docs surface under `docs/reference/agents/` and `docs/how-to/`.
-3. Compare the local repo with the upstream bundle and identify any missing skills, renamed skills, or local-only additions.
-4. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
-5. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
-6. Update `README.md` only if it needs a short installation or usage entry point for the new repository.
-7. Run the bundle validation commands and confirm the working tree is clean for the intended scope.
+2. Verify that the upstream contains `.agents/skills/**`, `.claude/skills/**`, `skills-lock.json`, and the expected docs surface under `docs/reference/agents/`, `docs/how-to/`, and `docs/explanation/`.
+3. Run the upstream dry run: `node .agents/skills/platform/sync-bundle.mjs <target-repo>`.
+4. Compare the local repo with the upstream bundle and identify any missing skills, renamed skills, conflicts, or local-only additions.
+5. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
+6. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
+7. Update `README.md` only if it needs a short installation or usage entry point for the new repository.
+8. Run `node .agents/skills/platform/check-all.mjs` and confirm the working tree is clean for the intended scope.
 
 ## Final checks
 - `git status` must show only the expected bundle files and the local context/docs files you intentionally changed.
-- No ADR file under `docs/adr/` should be modified unless the user explicitly requested it.
+- No ADR file under `docs/reference/adr/` should be modified unless the user explicitly requested it.
 - The result should be a repository that can be used by an AI-agnostic IDE without extra hidden setup.
 ```
 
@@ -436,54 +492,39 @@ REPO_UPSTREAM = <url of the canonical skills repo>  # for example, https://githu
 Update the skills implementation so it matches the upstream bundle while preserving the repository's own documentation, ADRs, and local context.
 
 ## What you must not touch
-- `docs/adr/**` and any ADR content
+- `docs/adr/**`, `docs/reference/adr/**`, and any ADR content
 - `CONTEXT.md`
 - `README.md`
 - Any repository documentation outside the skills bundle scope
 - Any project files unrelated to the skills bundle
 
 ## Allowed scope
-1. `.agents/skills/**`
-2. `.claude/skills/**`
-3. `skills-lock.json`
-4. Optional: `.agents/AGENTS.md` only if the upstream bundle includes it and it differs
+1. `.agents/AGENTS.md` if the upstream bundle includes it and it differs
+2. `.agents/skills/**`
+3. `.claude/skills/**`
+4. `skills-lock.json`
+5. `skills.json` if present in the target or needed by the local agent tooling
 
 ## Steps
 1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
-2. Inspect the differences between local and upstream before editing anything.
-3. Replace the canonical skills tree, compatibility view, and lockfile with the upstream versions, preserving symlinks.
-4. Do not rewrite repository docs or ADRs to make the sync fit; keep the bundle change narrowly scoped to the skills bundle only.
+2. Run `node .agents/skills/platform/sync-bundle.mjs <target-repo>` from the upstream checkout and inspect the dry-run report before editing anything.
+3. Replace only the canonical skills tree, compatibility view, lockfile, and explicitly allowed bundle metadata with the upstream versions, preserving symlinks.
+4. Do not rewrite repository docs, ADRs, README, or CONTEXT.md to make the sync fit; keep the bundle change narrowly scoped to the skills bundle.
 5. Validate the sync and confirm that only the allowed paths changed.
 
 ## Final checks
-- `git status --short` must show only `.agents/skills/`, `.claude/skills/`, `skills-lock.json`, and any explicitly allowed optional file.
-- `docs/adr/**`, `CONTEXT.md`, and `README.md` must remain untouched.
+- `git status --short` must show only `.agents/AGENTS.md`, `.agents/skills/`, `.claude/skills/`, `skills-lock.json`, `skills.json`, and any explicitly allowed optional file.
+- ADRs, `CONTEXT.md`, `README.md`, and product documentation must remain untouched.
 - If any protected path changes, revert only that part before finishing.
 ```
 
 <details>
-<summary>Quick install</summary>
-
-```bash
-bash scripts/install-quirk-skills.sh /path/to/new-target-repo
-```
-
-**Download the installer for inspection:**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh -o /tmp/install-quirk-skills.sh
-```
-
-The shell installer requires a local source checkout and replaces the target skills directories, `docs/reference/agents/`, `docs/how-to/`, `docs/adr/README.md`, and `CONTEXT.md`. Use it for new targets; use the preservation prompt for existing projects. Downloading the script alone does not download the bundle.
-
-</details>
-
-<details>
 <summary>After installation</summary>
 
-1. Run `setup-quirk-skills` in the target repo.
+1. Specialize `CONTEXT.md` for the target repository.
 2. Follow the [adoption guide](docs/how-to/adoption.md) to set the issue tracker, domain docs, and validation commands.
-3. Use `ask-to` or the standard flow to route work.
+3. Run `node .agents/skills/platform/check-all.mjs` from the target root.
+4. Use `ask-to` or the standard flow to route work.
 
 </details>
 
