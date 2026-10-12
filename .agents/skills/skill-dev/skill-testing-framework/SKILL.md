@@ -7,7 +7,8 @@ description: "Validate Skill structure, contracts, dependencies, anti-patterns, 
 license: "MIT"
 capabilities: ""
 outputs: ""
-sideEffects: []
+sideEffects:
+  - write-files
 dependencies: []
 stopCondition: "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution complete; artifact saved; completion criteria checked."
 risk: "low"
@@ -71,5 +72,6 @@ Emit `SkillTestingFrameworkArtifact` as both:
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- no approval is required for test writes: the framework only writes sandbox and fixture files inside the repository, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml

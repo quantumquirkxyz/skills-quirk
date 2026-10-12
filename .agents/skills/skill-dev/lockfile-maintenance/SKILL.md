@@ -7,7 +7,8 @@ description: "Maintain the skills lockfile by detecting missing, stale, extra, o
 license: "MIT"
 capabilities: ""
 outputs: ""
-sideEffects: ""
+sideEffects:
+  - write-files
 dependencies: ""
 stopCondition: "Lockfile entries match the current skill tree or every drift item has a stated blocker and recommended repair."
 risk: "low"
@@ -90,5 +91,6 @@ The dry run reports added, updated, and removed lock entries without changing fi
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- no approval is required for lockfile writes: the script only updates skills-lock.json hashes for resolved SKILL.md files, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml

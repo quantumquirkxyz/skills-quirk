@@ -7,12 +7,13 @@ description: "Audit the Skills bundle, lockfile, symlink parity, and contract dr
 license: "MIT"
 capabilities: ""
 outputs: ""
-sideEffects: []
+sideEffects:
+  - write-files
 dependencies: []
 stopCondition: "Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
-maxIterations: "6"
+maxIterations: "8"
 promptVersion: "2.0"
 artifactType: "skill-dev"
 modelTier: "reasoning"
@@ -84,5 +85,6 @@ Use this skill to verify the repository-local Skills platform.
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- no approval is required for audit writes: the scripts only update the bundle's own audit, card, and index files, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml
