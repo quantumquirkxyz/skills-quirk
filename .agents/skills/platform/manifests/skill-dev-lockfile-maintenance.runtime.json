@@ -2,7 +2,7 @@
   "skill": "skill-dev/lockfile-maintenance",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c434a0af85778dbb5743398891e11e76e1cb03b7b284d214f434c7c0eeb038e5",
+  "frontmatterHash": "2696bce977983c2e0deb752608568ad83255f72c385ae67de5a48a46674ef3a0",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,7 +11,7 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 5,
     "modelTier": "fast",
     "tools": {
@@ -19,13 +19,17 @@
         "Read",
         "Grep",
         "Glob",
-        "Bash"
+        "Bash",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files"
+    ],
     "approvalRequired": false,
     "approvalFor": [],
     "risk": "low",

@@ -8,6 +8,68 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [Unreleased]
+
+Implements the 2026 ecosystem gap analysis (agentskills.io compliance,
+agent-native primitives, self-improvement, context engineering, and
+ecosystem distribution).
+
+### Added
+
+- `agentskills-compliance.mjs`: validates every shippable SKILL.md
+  against the open Agent Skills specification (name/description rules,
+  license/compatibility/allowed-tools constraints) and the progressive
+  disclosure budgets (~100-token preload, <500-line body). Wired into
+  `check-all.mjs` as a report-only audit.
+- `project-agent-paths.mjs`: generates the native skill views for
+  Cursor (`.cursor/skills/`), Gemini CLI (`.gemini/skills/`), GitHub
+  Copilot (`.github/skills/`), OpenCode (`.opencode/skills/`), and
+  Windsurf (`.windsurf/skills/`) as relative symlink farms, with
+  drift repair, alongside the existing Claude Code view.
+- Runtime hooks: `hooks/tool-risk-guard.mjs` (PreToolUse, enforces
+  `policy/tool-risk.yaml` fail-closed: undeclared tools are denied,
+  approval-gated tools ask) and `hooks/session-context.mjs`
+  (SessionStart navigation layer), registered in `hooks/hooks.json`.
+- `generate-subagents.mjs`: generates the six Claude Code subagent
+  definitions (`.claude/agents/`: architect, explorer, reviewer,
+  tester, implementer, doc-writer) with tool scoping derived from the
+  tool-risk policy.
+- `trace-improver.mjs`: turns recorded execution traces into typed,
+  evidence-carrying skill-improvement proposals (blocked-rate,
+  iteration-pinch, schema-drift, quality-bar, dominant-blocker,
+  slow-tail diagnoses).
+- `trajectory-eval.mjs`: evaluates recorded trajectories against each
+  skill's declared state machine (result enum, maxIterations,
+  duration window, side-effect coverage, model tier, schema flag).
+- `benchmark-harness.mjs`: Terminal-Bench-style measurement layer
+  over the task fixtures - repetition (pass@k), median/p95 duration,
+  and a persistent benchmark history.
+- `trust-registry.mjs`: pre-install trust scoring for third-party
+  skills (provenance, prompt-injection, tool poisoning, obfuscation,
+  signature verification, policy alignment) with trusted /
+  review-required / blocked verdicts.
+- `marketplace-export.mjs`: exports the bundle in the standard
+  agentskills.io form (stringified `metadata` map, joined
+  `compatibility`, derived `allowed-tools`) plus a hash-carrying
+  `index.json` for community registries.
+- Five new skills: `context-compaction` (compaction runbook),
+  `agent-memory` (NOW.md/MEMORY.md external memory),
+  `skill-composition` (producer-consumer chain contracts),
+  `browser-automation` (computer-use with approval gates), and
+  `spec-driven-development` (constitution + specify/plan/tasks,
+  Spec Kit compatible).
+
+### Changed
+
+- `check-all.mjs` runs the agentskills.io compliance audit
+  in-process and the native-view, trajectory, trace-improvement,
+  and benchmark reports as runtime-evidence checks.
+- `lockfile-maintenance` now declares its `write-files` side effect
+  (the trajectory evaluator caught the undeclared lockfile write).
+- `skill-audit` and `skill-testing-framework` declare the
+  `write-files` side effect for the scripts they execute;
+  `skill-audit` raises `maxIterations` to the observed 8.
+
 ## [2.5.0] - 2026-10-12
 
 Implements the first Fase 0 security and quality hardening items from

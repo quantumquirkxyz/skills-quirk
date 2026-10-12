@@ -1308,6 +1308,20 @@
       "exposed": true
     },
     {
+      "skill": "foundation/agent-memory",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/foundation/agent-memory"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "foundation/agent-observability",
       "trustTier": 2,
       "tools": [
@@ -1343,6 +1357,20 @@
       ],
       "resources": [
         "skill://skill/foundation/codebase-design"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "foundation/context-compaction",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/foundation/context-compaction"
       ],
       "prompts": [
         "use_skill"
@@ -1399,6 +1427,20 @@
       ],
       "resources": [
         "skill://skill/foundation/observability"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "foundation/skill-composition",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/foundation/skill-composition"
       ],
       "prompts": [
         "use_skill"
@@ -1763,6 +1805,20 @@
       ],
       "resources": [
         "skill://skill/integrations/auth"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "integrations/browser-automation",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/integrations/browser-automation"
       ],
       "prompts": [
         "use_skill"
@@ -2421,6 +2477,20 @@
       ],
       "resources": [
         "skill://skill/project/project-viability"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "project/spec-driven-development",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/project/spec-driven-development"
       ],
       "prompts": [
         "use_skill"

@@ -21,7 +21,7 @@ When to use: Maintain the skills lockfile by detecting missing, stale, extra, or
 ## Guardrails
 
 - risk: low; trust tier: 2; approval required: no
-- side effects: none
-- isolation: none; model tier: fast
+- side effects: write-files
+- isolation: worktree; model tier: fast
 
 Stop when: Lockfile entries match the current skill tree or every drift item has a stated blocker and recommended repair.

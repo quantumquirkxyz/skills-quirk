@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-11T03:26:05.951Z",
-  "totalSkills": 246,
+  "generatedAt": "2026-10-12T19:37:20.093Z",
+  "totalSkills": 251,
   "categories": [
     "accessibility",
     "ai",
@@ -1215,6 +1215,25 @@
       "path": ".agents/skills/foundation/agent-card"
     },
     {
+      "name": "agent-memory",
+      "category": "foundation",
+      "description": "Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "maintain a NOW.md working thread for the active task",
+        "maintain a MEMORY.md of durable, cross-session facts",
+        "decide what belongs in memory versus in an artifact",
+        "recall memory into a fresh context pack with provenance"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/agent-memory"
+    },
+    {
       "name": "agent-observability",
       "category": "foundation",
       "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
@@ -1257,6 +1276,25 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/foundation/codebase-design"
+    },
+    {
+      "name": "context-compaction",
+      "category": "foundation",
+      "description": "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "diagnose context pressure in a running session",
+        "compact a conversation window with a structured summary",
+        "clear stale tool results and re-derive them on demand",
+        "hand off a session across a compaction boundary"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/foundation/context-compaction"
     },
     {
       "name": "context-engine",
@@ -1312,6 +1350,25 @@
       "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/foundation/observability"
+    },
+    {
+      "name": "skill-composition",
+      "category": "foundation",
+      "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "declare a skill chain as producer-consumer edges",
+        "verify artifact compatibility at each edge before execution",
+        "run a chain inside a declared iteration and cost budget",
+        "report per-edge handoff evidence for the chain"
+      ],
+      "sideEffects": [
+        "orchestration"
+      ],
+      "path": ".agents/skills/foundation/skill-composition"
     },
     {
       "name": "subagent-swarm",
@@ -1630,6 +1687,26 @@
       "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/integrations/auth"
+    },
+    {
+      "name": "browser-automation",
+      "category": "integrations",
+      "description": "Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "turn a page objective into a declarative browser task",
+        "execute browser tasks with Playwright in a sandboxed context",
+        "gate irreversible or account-affecting actions behind approval",
+        "capture screenshots and DOM evidence as verifiable artifacts"
+      ],
+      "sideEffects": [
+        "network",
+        "write-files"
+      ],
+      "path": ".agents/skills/integrations/browser-automation"
     },
     {
       "name": "issue-operations",
@@ -2138,7 +2215,7 @@
     {
       "name": "analyze-artifacts",
       "category": "project",
-      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.",
+      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.",
       "version": "1",
       "maturity": "experimental",
       "risk": "low",
@@ -2202,6 +2279,27 @@
       "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/project/project-viability"
+    },
+    {
+      "name": "spec-driven-development",
+      "category": "project",
+      "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "author and maintain a repository constitution",
+        "produce a spec artifact from intent (specify phase)",
+        "produce a plan artifact with architecture and seams (plan phase)",
+        "decompose the plan into tracer-bullet tasks (tasks phase)",
+        "verify implementation against the spec and plan"
+      ],
+      "sideEffects": [
+        "write-docs",
+        "write-files"
+      ],
+      "path": ".agents/skills/project/spec-driven-development"
     },
     {
       "name": "to-spec",
@@ -2771,7 +2869,9 @@
       "risk": "low",
       "trustTier": "2",
       "capabilities": [],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files"
+      ],
       "path": ".agents/skills/skill-dev/lockfile-maintenance"
     },
     {
@@ -2807,7 +2907,9 @@
       "risk": "low",
       "trustTier": "1",
       "capabilities": [],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files"
+      ],
       "path": ".agents/skills/skill-dev/skill-audit"
     },
     {
@@ -2851,7 +2953,7 @@
     {
       "name": "skill-optimizer",
       "category": "skill-dev",
-      "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.",
+      "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.",
       "version": "1",
       "maturity": "experimental",
       "risk": "low",
@@ -2939,7 +3041,9 @@
       "risk": "low",
       "trustTier": "1",
       "capabilities": [],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files"
+      ],
       "path": ".agents/skills/skill-dev/skill-testing-framework"
     },
     {

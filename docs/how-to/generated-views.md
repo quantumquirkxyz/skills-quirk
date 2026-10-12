@@ -21,8 +21,8 @@ Two counts make the contract checkable:
 
 | Count | Meaning |
 |---|---|
-| 246 | bundle skills, excluding `.agents/skills/platform/**` infrastructure |
-| 258 | repo skills, the 246 above plus platform infrastructure |
+| 251 | bundle skills, excluding `.agents/skills/platform/**` infrastructure |
+| 263 | repo skills, the 251 above plus platform infrastructure |
 
 `tests/projection-consistency.test.mjs` pins the bundle count across every projection, so a hand-edited view fails the gate instead of shipping.
 

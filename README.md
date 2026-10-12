@@ -195,6 +195,11 @@ flowchart LR
 - **Evidence-gated updates** — `skill-evolver.mjs`
 - **Audit trail** — `audit-trail.mjs`
 - **Versioning** — dist-tags `stable` / `beta` / `canary`
+- **Standards compliance** — `agentskills-compliance.mjs` (agentskills.io spec + progressive disclosure budgets)
+- **Self-improvement** — `trace-improver.mjs` (trace-driven proposals), `trajectory-eval.mjs` (state-machine conformance)
+- **Benchmark** — `benchmark-harness.mjs` (pass@k, duration stats, history)
+- **Trust registry** — `trust-registry.mjs` (pre-install scoring for third-party skills)
+- **Marketplace export** — `marketplace-export.mjs` (standard agentskills.io export for community registries)
 
 </details>
 
@@ -204,6 +209,9 @@ flowchart LR
 - **NPX CLI** — `bin/skills-quirk.js`
 - **Discovery site** — `site/`
 - **Plugin system** — `.claude-plugin/plugin.json`
+- **Runtime hooks** — `hooks/hooks.json` (tool-risk PreToolUse guard, session-context)
+- **Subagents** — `.claude/agents/` (architect, explorer, reviewer, tester, implementer, doc-writer)
+- **Native agent views** — `.cursor/`, `.gemini/`, `.github/`, `.opencode/`, `.windsurf/` skill views
 
 </details>
 

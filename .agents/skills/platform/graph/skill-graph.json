@@ -782,6 +782,19 @@
       "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
       "path": ".agents/skills/foundation/agent-card"
     },
+    "agent-memory": {
+      "domain": "foundation",
+      "tier": "2",
+      "artifactType": "memory-state",
+      "capabilities": [
+        "maintain a NOW.md working thread for the active task",
+        "maintain a MEMORY.md of durable, cross-session facts",
+        "decide what belongs in memory versus in an artifact",
+        "recall memory into a fresh context pack with provenance"
+      ],
+      "description": "Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.",
+      "path": ".agents/skills/foundation/agent-memory"
+    },
     "agent-observability": {
       "domain": "foundation",
       "tier": "2",
@@ -813,6 +826,19 @@
       ],
       "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.",
       "path": ".agents/skills/foundation/codebase-design"
+    },
+    "context-compaction": {
+      "domain": "foundation",
+      "tier": "2",
+      "artifactType": "compaction-report",
+      "capabilities": [
+        "diagnose context pressure in a running session",
+        "compact a conversation window with a structured summary",
+        "clear stale tool results and re-derive them on demand",
+        "hand off a session across a compaction boundary"
+      ],
+      "description": "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.",
+      "path": ".agents/skills/foundation/context-compaction"
     },
     "context-engine": {
       "domain": "foundation",
@@ -850,6 +876,19 @@
       "capabilities": [],
       "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
       "path": ".agents/skills/foundation/observability"
+    },
+    "skill-composition": {
+      "domain": "foundation",
+      "tier": "3",
+      "artifactType": "skill-chain-report",
+      "capabilities": [
+        "declare a skill chain as producer-consumer edges",
+        "verify artifact compatibility at each edge before execution",
+        "run a chain inside a declared iteration and cost budget",
+        "report per-edge handoff evidence for the chain"
+      ],
+      "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
+      "path": ".agents/skills/foundation/skill-composition"
     },
     "subagent-swarm": {
       "domain": "foundation",
@@ -1062,6 +1101,19 @@
       "capabilities": [],
       "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
       "path": ".agents/skills/integrations/auth"
+    },
+    "browser-automation": {
+      "domain": "integrations",
+      "tier": "3",
+      "artifactType": "browser-task-report",
+      "capabilities": [
+        "turn a page objective into a declarative browser task",
+        "execute browser tasks with Playwright in a sandboxed context",
+        "gate irreversible or account-affecting actions behind approval",
+        "capture screenshots and DOM evidence as verifiable artifacts"
+      ],
+      "description": "Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.",
+      "path": ".agents/skills/integrations/browser-automation"
     },
     "issue-operations": {
       "domain": "integrations",
@@ -1408,7 +1460,7 @@
         "classify consistency findings by evidence",
         "emit a read-only artifact consistency report"
       ],
-      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.",
+      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.",
       "path": ".agents/skills/project/analyze-artifacts"
     },
     "docs-management": {
@@ -1442,6 +1494,20 @@
       "capabilities": [],
       "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
       "path": ".agents/skills/project/project-viability"
+    },
+    "spec-driven-development": {
+      "domain": "project",
+      "tier": "3",
+      "artifactType": "spec-driven-artifacts",
+      "capabilities": [
+        "author and maintain a repository constitution",
+        "produce a spec artifact from intent (specify phase)",
+        "produce a plan artifact with architecture and seams (plan phase)",
+        "decompose the plan into tracer-bullet tasks (tasks phase)",
+        "verify implementation against the spec and plan"
+      ],
+      "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
+      "path": ".agents/skills/project/spec-driven-development"
     },
     "to-spec": {
       "domain": "project",
@@ -1872,7 +1938,7 @@
         "evolve description candidates reflectively",
         "emit an apply-ready description proposal"
       ],
-      "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.",
+      "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.",
       "path": ".agents/skills/skill-dev/skill-optimizer"
     },
     "skill-performance-metrics": {
@@ -2054,8 +2120,122 @@
   },
   "edges": [
     {
+      "from": "agent-memory",
+      "to": "context-pack",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-memory",
+      "to": "context-compaction",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-memory",
+      "to": "handoff",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-memory",
+      "to": "docs-knowledge-base",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "context-compaction",
+      "to": "context-pack",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "context-compaction",
+      "to": "handoff",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "context-compaction",
+      "to": "loop-budget",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-composition",
+      "to": "artifact-handoff",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-composition",
+      "to": "loop-budget",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-composition",
+      "to": "analyze-artifacts",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-composition",
+      "to": "work-item-router",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "verify-delegation",
       "to": "subagent-swarm",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "browser-automation",
+      "to": "webapp-testing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "browser-automation",
+      "to": "qa-security-testing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "to-spec",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "to-tickets",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "grill-with-docs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "implement",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "analyze-artifacts",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "docs-adrs",
       "type": "depends-on",
       "weight": 1
     },

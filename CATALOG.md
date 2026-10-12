@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v2.5.0
-> 246 skills across 35 categories
+> 251 skills across 35 categories
 
 ## Skills by Category
 
@@ -172,13 +172,16 @@
 |-------|---------|----------|------|------------|-------------|
 | [agent-canvas](.agents/skills/foundation/agent-canvas) | 1 | stable | low | 2 | Reference skill for agent workspace control — multi-agent session management,... |
 | [agent-card](.agents/skills/foundation/agent-card) | 1 | stable | low | 1 | Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery. |
+| [agent-memory](.agents/skills/foundation/agent-memory) | 1 | experimental | low | 2 | Maintain external agent memory: structured notes persisted outside the contex... |
 | [agent-observability](.agents/skills/foundation/agent-observability) | 1 | stable | low | 2 | Capture redacted execution records, traces, and quality signals for skill run... |
 | [api-design](.agents/skills/foundation/api-design) | 1 | stable | low | 1 | Design a small, durable API seam — with a deep backend and explicit caller co... |
 | [codebase-design](.agents/skills/foundation/codebase-design) | 1 | stable | low | 1 | Shared vocabulary for designing deep modules. Use when the user wants to desi... |
+| [context-compaction](.agents/skills/foundation/context-compaction) | 1 | experimental | low | 2 | Run the context compaction discipline for long agent sessions: summarize the ... |
 | [context-engine](.agents/skills/foundation/context-engine) | 1 | stable | low | 2 | Manage dynamic context for agent execution using retrieval-augmented generati... |
 | [domain-modeling](.agents/skills/foundation/domain-modeling) | 1 | stable | low | 1 | Build and sharpen a project's domain model. Record the execution traceId and ... |
 | [mcp-server](.agents/skills/foundation/mcp-server) | 2 | beta | low | 1 | Define an MCP server that exposes quirk Skills as tools, resources, and promp... |
 | [observability](.agents/skills/foundation/observability) | 2 | stable | low | 1 | Define the logs, metrics, traces, and alerts needed to understand a system in... |
+| [skill-composition](.agents/skills/foundation/skill-composition) | 1 | experimental | medium | 3 | Compose skills into chains and workflows with explicit contracts: declare the... |
 | [subagent-swarm](.agents/skills/foundation/subagent-swarm) | 1 | stable | medium | 3 | Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester... |
 | [verify-delegation](.agents/skills/foundation/verify-delegation) | 1 | experimental | low | 2 | Blackbox-verify a delegated worker's claim before it is accepted, using the a... |
 
@@ -220,6 +223,7 @@
 |-------|---------|----------|------|------------|-------------|
 | [api-contracts](.agents/skills/integrations/api-contracts) | 2 | stable | low | 1 | Define the request and response contracts, versioning rules, compatibility bo... |
 | [auth](.agents/skills/integrations/auth) | 2 | stable | medium | 3 | Design authentication and authorization as a small, explicit seam — with OAut... |
+| [browser-automation](.agents/skills/integrations/browser-automation) | 1 | experimental | medium | 3 | Automate browser and computer-use tasks with a safety rail: declarative page ... |
 | [issue-operations](.agents/skills/integrations/issue-operations) | 1 | stable | medium | 3 | Manage issue tracker operations with scoped target resolution, duplicate chec... |
 | [payments](.agents/skills/integrations/payments) | 2 | stable | medium | 3 | Design payment flows as a high-trust seam with explicit failure, reconciliati... |
 | [pr-operations](.agents/skills/integrations/pr-operations) | 1 | stable | medium | 3 | Manage pull request operations with branch, diff, validation, reviewer, label... |
@@ -307,6 +311,7 @@
 | [make-project](.agents/skills/project/make-project) | 1 | stable | medium | 3 | Use when the user wants a new board in GitHub Projects, or another skill need... |
 | [project-development](.agents/skills/project/project-development) | 1 | stable | low | 1 | Evaluate a project's shape, agent fit, and architectural starting point — bef... |
 | [project-viability](.agents/skills/project/project-viability) | 1.0.0 | stable | low | 1 | Evaluate whether a project is viable, functional, and scalable by analyzing i... |
+| [spec-driven-development](.agents/skills/project/spec-driven-development) | 1 | experimental | medium | 3 | Run spec-driven development (SDD): a constitution for repo-local rules, then ... |
 | [to-spec](.agents/skills/project/to-spec) | 1 | stable | medium | 3 | Turn the current conversation into a spec and publish it to the project issue... |
 | [to-tickets](.agents/skills/project/to-tickets) | 1 | stable | medium | 3 | Break a plan, spec, or the current conversation into a set of tracer-bullet t... |
 

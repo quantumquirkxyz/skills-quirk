@@ -1,6 +1,6 @@
 ---
 name: skill-optimizer
-description: "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often,..."
+description: "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill..."
 tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
 ---

@@ -2,7 +2,7 @@
   "skill": "project/analyze-artifacts",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "82484079e3b25eb55a812ee128d10621206fb2111ea2b073b54aa962c5de2656",
+  "frontmatterHash": "c3dd9bb78a4085a1c718e3b776b7b73f934737f04088d9a956a573de0ec6bbac",
   "role": "workflow",
   "router": {
     "positive": [],

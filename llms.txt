@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 246 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 251 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -15,13 +15,14 @@ npx skills-quirk add quirk-skills
 - [accessibility-testing](./.agents/skills/accessibility/accessibility-testing/SKILL.md) — Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence.
 - [agent-canvas](./.agents/skills/foundation/agent-canvas/SKILL.md) — Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
 - [agent-card](./.agents/skills/foundation/agent-card/SKILL.md) — Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.
+- [agent-memory](./.agents/skills/foundation/agent-memory/SKILL.md) — Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.
 - [agent-observability](./.agents/skills/foundation/agent-observability/SKILL.md) — Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
 - [agent-orchestration](./.agents/skills/ai/agent-orchestration/SKILL.md) — Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.
 - [ai-ml-pipeline](./.agents/skills/ai/ai-ml-pipeline/SKILL.md) — Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.
 - [ai-model-evaluation](./.agents/skills/ai/ai-model-evaluation/SKILL.md) — Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.
 - [ai-prompt-engineering](./.agents/skills/ai/ai-prompt-engineering/SKILL.md) — Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.
 - [ai-time-series-forecasting](./.agents/skills/ai/ai-time-series-forecasting/SKILL.md) — Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.
-- [analyze-artifacts](./.agents/skills/project/analyze-artifacts/SKILL.md) — Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.
+- [analyze-artifacts](./.agents/skills/project/analyze-artifacts/SKILL.md) — Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.
 - [api-contracts](./.agents/skills/integrations/api-contracts/SKILL.md) — Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.
 - [api-design](./.agents/skills/foundation/api-design/SKILL.md) — Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.
 - [api-gateway](./.agents/skills/backend/api-gateway/SKILL.md) — API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).
@@ -34,6 +35,7 @@ npx skills-quirk add quirk-skills
 - [backend-queues](./.agents/skills/backend/backend-queues/SKILL.md) — Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
 - [backup-disaster-recovery](./.agents/skills/devops/backup-disaster-recovery/SKILL.md) — Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.
 - [brand-identity](./.agents/skills/graphic-design/brand-identity/SKILL.md) — Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.
+- [browser-automation](./.agents/skills/integrations/browser-automation/SKILL.md) — Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.
 - [caching-advanced](./.agents/skills/backend/caching-advanced/SKILL.md) — Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).
 - [capability-router](./.agents/skills/routing/capability-router/SKILL.md) — Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.
 - [chaos-engineering](./.agents/skills/devops/chaos-engineering/SKILL.md) — Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.
@@ -48,6 +50,7 @@ npx skills-quirk add quirk-skills
 - [compilers](./.agents/skills/compilers/compilers/SKILL.md) — Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.
 - [compliance](./.agents/skills/sec/compliance/SKILL.md) — Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)
 - [container-security](./.agents/skills/sec/container-security/SKILL.md) — Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)
+- [context-compaction](./.agents/skills/foundation/context-compaction/SKILL.md) — Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.
 - [context-engine](./.agents/skills/foundation/context-engine/SKILL.md) — Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).
 - [context-pack](./.agents/skills/routing/context-pack/SKILL.md) — Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.
 - [contribution-workflow-optimizer](./.agents/skills/delivery/contribution-workflow-optimizer/SKILL.md) — Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva
@@ -214,10 +217,11 @@ npx skills-quirk add quirk-skills
 - [ship-subissue](./.agents/skills/routing/ship-subissue/SKILL.md) — Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.
 - [side-effect-auditor](./.agents/skills/skill-dev/side-effect-auditor/SKILL.md) — Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.
 - [skill-audit](./.agents/skills/skill-dev/skill-audit/SKILL.md) — Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.
+- [skill-composition](./.agents/skills/foundation/skill-composition/SKILL.md) — Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.
 - [skill-creator](./.agents/skills/skill-dev/skill-creator/SKILL.md) — Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.
 - [skill-dependency-graph](./.agents/skills/skill-dev/skill-dependency-graph/SKILL.md) — Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.
 - [skill-diff-analyzer](./.agents/skills/skill-dev/skill-diff-analyzer/SKILL.md) — Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.
-- [skill-optimizer](./.agents/skills/skill-dev/skill-optimizer/SKILL.md) — Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.
+- [skill-optimizer](./.agents/skills/skill-dev/skill-optimizer/SKILL.md) — Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.
 - [skill-performance-metrics](./.agents/skills/skill-dev/skill-performance-metrics/SKILL.md) — Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.
 - [skill-promoter](./.agents/skills/skill-dev/skill-promoter/SKILL.md) — Promote validated experimental skills from the sandbox to the canonical skills bundle.
 - [skill-quality-gate](./.agents/skills/skill-dev/skill-quality-gate/SKILL.md) — Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.
@@ -225,6 +229,7 @@ npx skills-quirk add quirk-skills
 - [skill-template-generator](./.agents/skills/skill-dev/skill-template-generator/SKILL.md) — Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.
 - [skill-testing-framework](./.agents/skills/skill-dev/skill-testing-framework/SKILL.md) — Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.
 - [skill-tutor](./.agents/skills/skill-dev/skill-tutor/SKILL.md) — Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+- [spec-driven-development](./.agents/skills/project/spec-driven-development/SKILL.md) — Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.
 - [state-management](./.agents/skills/frontend/state-management/SKILL.md) — Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
 - [stream-processing](./.agents/skills/data/stream-processing/SKILL.md) — Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).
 - [structured-output](./.agents/skills/ai/structured-output/SKILL.md) — Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)
@@ -273,10 +278,10 @@ npx skills-quirk add quirk-skills
 - docs: 3 skills
 - engineering: 1 skills
 - finance: 3 skills
-- foundation: 11 skills
+- foundation: 14 skills
 - frontend: 10 skills
 - graphic-design: 12 skills
-- integrations: 6 skills
+- integrations: 7 skills
 - iot: 1 skills
 - math: 13 skills
 - networking: 3 skills
@@ -284,7 +289,7 @@ npx skills-quirk add quirk-skills
 - physics: 12 skills
 - product: 3 skills
 - professional: 3 skills
-- project: 7 skills
+- project: 8 skills
 - qa: 4 skills
 - quant: 7 skills
 - research: 3 skills

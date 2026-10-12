@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-testing-framework",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "589441dea5d4223cebd0484493dcc859894dd7ae9e27f131ba0e1fab837d4776",
+  "frontmatterHash": "8bbee915ca02b24f918fccc4e7bcf13365df0478dc3abea14c993d38dec2c9ea",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,21 +10,25 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files"
+    ],
     "approvalRequired": false,
     "approvalFor": [],
     "risk": "low",

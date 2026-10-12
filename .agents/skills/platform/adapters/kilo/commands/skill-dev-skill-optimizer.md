@@ -1,9 +1,9 @@
 ---
-description: "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates."
+description: "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair."
 ---
 # skill-optimizer
 
-When to use: Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.
+When to use: Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.
 
 ## Workflow
 

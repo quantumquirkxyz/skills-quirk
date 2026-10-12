@@ -16,7 +16,7 @@ When to use: Validate Skill structure, contracts, dependencies, anti-patterns, a
 ## Guardrails
 
 - risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution complete; artifact saved; completion criteria checked.

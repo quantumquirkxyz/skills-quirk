@@ -20,7 +20,7 @@ When to use: Audit the Skills bundle, lockfile, symlink parity, and contract dri
 ## Guardrails
 
 - risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked.

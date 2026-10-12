@@ -6,8 +6,8 @@
   "handoff_description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked.",
   "runtime": {
     "role": "workflow",
-    "maxTurns": 6,
-    "isolation": "none"
+    "maxTurns": 8,
+    "isolation": "worktree"
   },
   "guardrails": {
     "input": [],

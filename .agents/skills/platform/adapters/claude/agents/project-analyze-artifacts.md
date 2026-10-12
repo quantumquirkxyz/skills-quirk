@@ -1,6 +1,6 @@
 ---
 name: analyze-artifacts
-description: "Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] whe..."
+description: "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve..."
 tools: Read, Grep, Glob
 model: opus
 ---

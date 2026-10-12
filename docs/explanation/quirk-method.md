@@ -62,9 +62,14 @@ flowchart TD
 |---|---|
 | `project-development` | Project shape or stack is not yet clear |
 | `project-viability` | Need a structured assessment of project health, architecture, and scalability before committing further |
+| `spec-driven-development` | A constitution, spec, plan, and task decomposition must exist as durable, traceable artifacts |
 | `wayfinder` | Effort is too large for one session |
 | `triage` | Raw issues or external PRs need classification |
 | `diagnosing-bugs` | Failure needs a tight reproduction loop |
+| `context-compaction` | A long session is nearing its context limit |
+| `agent-memory` | State must survive compaction, reset, or handoff |
+| `skill-composition` | Skills must run as a contracted chain inside a budget |
+| `browser-automation` | A browser page objective needs declarative, evidenced automation with approval gates |
 | `nextjs` | Next.js app surface needs sharper constraints |
 | `react` | React component structure needs sharper constraints |
 | `postgres` | PostgreSQL schema needs sharper constraints |

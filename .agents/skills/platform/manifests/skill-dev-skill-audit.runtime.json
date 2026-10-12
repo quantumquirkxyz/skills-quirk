@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-audit",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2d161dbf9abbed9a8e829b1301cf80b1daa72da0bbadeb67d60bde88e39f5c71",
+  "frontmatterHash": "544c754519f599b03d2a1621499b13d607d8912b51fc102b9d34b546937b1ded",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,21 +10,25 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
-    "maxTurns": 6,
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 8,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files"
+    ],
     "approvalRequired": false,
     "approvalFor": [],
     "risk": "low",

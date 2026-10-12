@@ -24,6 +24,10 @@ When installing or syncing this bundle in another repository, prefer the AI-agno
 | **Subagent Swarm** | Coordinated sub-agent roles (`subagent-swarm`) with handoff contracts |
 | **Work Item Router** | Routing script (`work-item-router.mjs`) that maps descriptions to skills |
 | **Graphic Design** | The discipline of visual communication through composition, color, typography, and imagery for print, digital, and environmental media |
+| **Context Compaction** | The runbook (`context-compaction`) for crossing a context-window boundary: summarize, clear stale tool results, re-initiate fresh |
+| **Agent Memory** | External memory (`agent-memory`) via NOW.md (working thread) and MEMORY.md (durable facts) that survives compaction |
+| **Skill Chain** | Ordered producer-consumer composition of skills (`skill-composition`) with per-edge artifact contracts and a declared budget |
+| **Constitution** | The repo-local rule set (`spec-driven-development`) that specs, plans, and tasks must trace to |
 
 ```mermaid
 flowchart LR
@@ -41,6 +45,10 @@ flowchart LR
 - Use **Compatibility view** when discussing installation or parity.
 - Use **Provenance** when discussing authorship, influence, retired aliases, or renamed skills.
 - Use **Graphic Design** when discussing visual communication artifacts, brand identity, design systems, or tool integrations for graphic production.
+- Use **Context Compaction** when a long session needs a bounded summary and a fresh window.
+- Use **Agent Memory** when state must survive compaction, reset, or handoff across sessions.
+- Use **Skill Chain** when skills execute as an ordered workflow with per-edge artifact contracts.
+- Use **Constitution** when discussing the repo-local rule set that specs, plans, and tasks trace to.
 - Use the README prompts as the operational entry point for AI-agnostic installation or sync tasks.
 
 ## Maintenance Rule
