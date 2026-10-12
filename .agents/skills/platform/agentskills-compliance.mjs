@@ -25,8 +25,8 @@
 //   C5 allowed-tools - optional space-separated string when present
 //   C6 metadata-map - every quirk-specific field must be representable as
 //                    a standard metadata entry (string -> string). Complex
-//                    values are flagged as "needs stringification" by the
-//                    exporter rather than as violations.
+//                    values are recorded as exporter mapping notes rather
+//                    than warnings because they are expected bundle shape.
 //   D1 metadata budget - name + description together stay under ~100 tokens
 //                    (this is what runtimes preload at startup)
 //   D2 body budget - SKILL.md body stays under 500 lines and ~5000 tokens
@@ -42,7 +42,8 @@
 //
 // Report fields: skills counts the audited bundle; compliant counts skills
 // with zero violations; violations lists C-rule failures (blocking); warnings
-// lists D-rule budget overruns and metadata-mapping notes (non-blocking).
+// lists D-rule budget overruns (non-blocking). Metadata-mapping notes are
+// reported separately as informational exporter evidence.
 
 import fsSync from 'node:fs';
 import path from 'node:path';
@@ -130,13 +131,14 @@ function buildManifest(skillsRoot, repoRoot) {
 function auditOne(entry) {
   const violations = [];
   const warnings = [];
+  const metadataNotes = [];
   const label = entry.dirName;
   let meta = {};
   try {
     meta = parseFrontmatter(entry.text);
   } catch {
     violations.push(`${label}: frontmatter is not parseable`);
-    return { name: label, path: entry.path, violations, warnings };
+    return { name: label, path: entry.path, violations, warnings, metadataNotes };
   }
 
   // C1 - name
@@ -185,7 +187,7 @@ function auditOne(entry) {
   const needsStringification = Object.keys(meta)
     .filter((key) => !STANDARD_FIELDS.has(key) && COMPLEX_QUIRK_FIELDS.has(key));
   if (needsStringification.length) {
-    warnings.push(`${label}: quirk fields [${needsStringification.join(', ')}] export as stringified metadata entries`);
+    metadataNotes.push(`${label}: quirk fields [${needsStringification.join(', ')}] export as stringified metadata entries`);
   }
 
   // D1 - preloaded metadata budget (name + description only)
@@ -202,7 +204,7 @@ function auditOne(entry) {
     warnings.push(`${label}: body ${bodyLines} lines / ~${bodyTokens} tokens exceeds the ${BODY_LINE_BUDGET}-line / ~${BODY_TOKEN_BUDGET}-token budget - split into references/`);
   }
 
-  return { name: label, path: entry.path, violations, warnings };
+  return { name: label, path: entry.path, violations, warnings, metadataNotes };
 }
 
 // manifest: array of { path, dirName, text, domain } in the check-all
@@ -212,12 +214,14 @@ export function auditSkills(manifest) {
   const results = shippable.map(auditOne);
   const violations = results.flatMap((r) => r.violations);
   const warnings = results.flatMap((r) => r.warnings);
+  const metadataNotes = results.flatMap((r) => r.metadataNotes);
   return {
     skills: results.length,
     compliant: results.filter((r) => r.violations.length === 0).length,
     overBudget: results.filter((r) => r.warnings.length > 0).length,
     violations,
     warnings,
+    metadataNotes,
     budgets: {
       nameChars: MAX_NAME,
       descriptionChars: MAX_DESCRIPTION,
