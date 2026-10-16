@@ -52,6 +52,14 @@ async function skillFiles(base = skillsRoot, out = []) {
   return out.sort();
 }
 async function manifest(file) { return frontmatter(await read(file)); }
+async function resolveSkillFile(requested) {
+  const candidate = path.resolve(root, requested.endsWith('.md') ? requested : path.join(skillsRoot, requested, 'SKILL.md'));
+  if (await exists(candidate)) return candidate;
+  if (requested.endsWith('.md') || requested.includes(path.sep)) return candidate;
+  const matches = (await skillFiles()).filter((file) => path.basename(path.dirname(file)) === requested);
+  if (matches.length === 1) return matches[0];
+  return candidate;
+}
 function listValue(value) { return Array.isArray(value) ? value : !value || value === '[]' ? [] : [value]; }
 function json(value) { console.log(JSON.stringify(value, null, 2)); }
 function optionValue(name, fallback) {
@@ -387,7 +395,7 @@ async function diff() {
 }
 async function tutorial() {
   const requested = process.argv[3]; if (!requested) throw new Error('tutorial requires a skill name');
-  const file = requested.endsWith('.md') ? path.resolve(root, requested) : path.join(skillsRoot, requested, 'SKILL.md');
+  const file = await resolveSkillFile(requested);
   const fm = normalizedManifest(await manifest(file));
   const learnerContext = optionValue('--learner-context', 'a contributor learning the quirk method');
   console.log(`# Tutorial: ${fm.name}\n\n${fm.description}\n\n## Learner context\n\n${learnerContext}\n\n## Learning goals\n\n${listValue(fm.capabilities).map((x) => `- ${x}`).join('\n')}\n\n## Exercise\n\nProvide an input satisfying: ${listValue(fm.inputs).join(', ') || 'the documented contract'}.\n\n## Expected result\n\n${listValue(fm.outputs).map((x) => `- ${x}`).join('\n')}\n\n## Checkpoint\n\n${fm.stopCondition || 'Confirm the output and validation evidence.'}\n\n## Learner response\n\nRecord the input, output, and validation evidence before continuing.\n`);
