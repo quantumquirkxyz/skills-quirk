@@ -357,7 +357,7 @@ node .agents/skills/platform/check-all.mjs
 | VERSION | Updated. |
 | CHANGELOG.md | Entry added. |
 | ../../explanation/provenance.md | New, renamed, or retired skills documented. |
-| ../reference/agents/skills-map.md | Paths updated if routing changed. |
+| ../agents/skills-map.md | Paths updated if routing changed. |
 | Scenarios | Added or updated for workflow changes. |
 | Behavioral fixtures | Added or updated for artifact template changes. |
 | Full gate | node .agents/skills/platform/check-all.mjs passes. |
@@ -498,7 +498,7 @@ node .agents/skills/platform/audit-trail.mjs stats
 ## References
 
 - README.md — Section [ QUALITY ] QUALITY SCORING & SECURITY
-- ../reference/agents/skill-inventory.md — Inventory source pointers and current counts
+- ../agents/skill-inventory.md — Inventory source pointers and current counts
 - ../../how-to/release.md — Pre/post-release checklist
 - .agents/skills/platform/README.md — Shared platform resources
 - .agents/skills/platform/quality-scorer.mjs — Scorer implementation

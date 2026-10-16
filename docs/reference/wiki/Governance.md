@@ -177,7 +177,7 @@ The quirk method documentation (tracker configuration, work-item format, triage 
 
 ## 6. Governance Index
 
-The ../reference/agents/index.md file is the operational map of the skills bundle and the first stop after work-item-router for any work-item flow or review.
+The ../agents/index.md file is the operational map of the skills bundle and the first stop after work-item-router for any work-item flow or review.
 
 ### 6.1 Work-item flow
 
@@ -253,7 +253,7 @@ flowchart TD
 - Do not merge review, repair, and submission responsibilities into an opaque action.
 - A subagent may investigate or review, but the main agent owns the final synthesis and user-facing status.
 - A work item is not claimable until its owner, scope, and next consumer are registered in the tracker or handoff artifact.
-- If two sessions discover new overlap not covered by the matrix, pause mutation, log the overlap in ../reference/agents/conflict-matrix.md, and resume only after an explicit primary rule exists.
+- If two sessions discover new overlap not covered by the matrix, pause mutation, log the overlap in ../agents/conflict-matrix.md, and resume only after an explicit primary rule exists.
 - If a handoff is incomplete, keep the work with the current owner rather than allow another agent to infer intent from the branch name or issue title.
 
 ### 7.2 Standard Handoffs
@@ -297,7 +297,7 @@ flowchart TD
 
 Work-item routing in quirk Skills follows these rules:
 
-1. **Governance preflight**: Before any action, work-item-router reads the governance index (../reference/agents/index.md) to determine the appropriate skill.
+1. **Governance preflight**: Before any action, work-item-router reads the governance index (../agents/index.md) to determine the appropriate skill.
 2. **Triage as entry gate**: Every new issue or PR passes through triage, which classifies the item into a durable state using canonical labels.
 3. **Spec first**: If the work lacks a clear spec, the flow directs to to-spec to create one.
 4. **Derived tickets**: An approved spec is decomposed into tickets via to-tickets, each with explicit blockers.
@@ -326,4 +326,4 @@ Workflow skills are those that modify state in the issue tracker or repository. 
 
 ---
 
-*Last updated: this document consolidates work-item governance from ../reference/agents/issue-tracker.md, ../reference/agents/work-item-format.md, ../reference/agents/triage-labels.md, ../reference/agents/domain.md, ../reference/agents/index.md, and ../reference/agents/multi-agent-protocol.md.*
+*Last updated: this document consolidates work-item governance from ../agents/issue-tracker.md, ../agents/work-item-format.md, ../agents/triage-labels.md, ../agents/domain.md, ../agents/index.md, and ../agents/multi-agent-protocol.md.*

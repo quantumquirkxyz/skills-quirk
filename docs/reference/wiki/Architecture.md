@@ -70,7 +70,7 @@ This is the domain layer. It contains the canonical skill catalog, the integrity
 
 ### Detail
 
-- `.agents/skills/` contains 258 canonical `SKILL.md` files organized into domains such as `ai`, `backend`, `frontend`, `devops`, `sec`, `platform`, `routing`, etc.
+- `.agents/skills/` contains 265 canonical `SKILL.md` files organized into domains such as `ai`, `backend`, `frontend`, `devops`, `sec`, `platform`, `routing`, etc.
 - Foundation skills like `agent-canvas` provide workspace/session control for multi-agent persistence.
 - `.claude/skills/` contains symlinks pointing to `.agents/skills/`, maintaining parity with tools that read skills from `.claude/skills/`.
 - `skills-lock.json` is a ~41 KB JSON that records the hash of each skill to detect unauthorized modifications.
@@ -131,7 +131,7 @@ Scripts that synchronize, install, configure, and route work through the bundle.
 
 ### Detail
 
-- **Work Item Router** (`work-item-router.mjs`) is the main router. It reads `../reference/agents/index.md` before routing any spec, ticket, board, or publication flow.
+- **Work Item Router** (`work-item-router.mjs`) is the main router. It reads `../agents/index.md` before routing any spec, ticket, board, or publication flow.
 - `setup-quirk-skills.sh` runs the initial setup in the target repository.
 - `sync-registry.mjs` regenerates distribution artifacts from `registry.yaml`.
 - `generate-site-data.mjs` produces `site/src/skills.json` and other data for the discovery site.
@@ -262,7 +262,7 @@ Provides the NPX CLI, the discovery site, and the plugin system for distribution
 skills-quirk/
 ├── .agents/
 │   ├── adr/                          # Bundle ADRs
-│   └── skills/                       # Canonical skills (258 SKILL.md files)
+│   └── skills/                       # Canonical skills (265 SKILL.md files)
 │       ├── <category>/               # Categories: ai, backend, frontend, etc.
 │       │   └── <skill-name>/
 │       │       └── SKILL.md          # Skill entrypoint
@@ -390,7 +390,7 @@ skills-quirk/
 | `scripts/work-item-router.mjs` | Keyword-based work item router. |
 | `scripts/setup-quirk-skills.sh` | Installs the bundle in a target repository. |
 | `scripts/sync-registry.mjs` | Synchronizes `registry.yaml` to `marketplace.json`, `CATALOG.md`, and other artifacts. |
-| `../reference/agents/index.md` | Operating map of the bundle. First stop after `work-item-router`. |
+| `../agents/index.md` | Operating map of the bundle. First stop after `work-item-router`. |
 | `../../explanation/quirk-method.md` | Method vocabulary and quality bar. |
 | `../../explanation/provenance.md` | Origin and redesign status of skills. |
 | `../../how-to/adoption.md` | Installation and sync guide. |
@@ -466,9 +466,9 @@ The `skill-creator` skill in `.agents/skills/skill-dev/skill-creator/` illustrat
 The standard workflow (`quirk Method`) crosses the layers as follows:
 
 1. **setup-quirk-skills** (platform) installs the bundle in the target repository.
-2. **Work Item Router** (execution) reads `../reference/agents/index.md` (method) and routes to **ask-to** (skill).
+2. **Work Item Router** (execution) reads `../agents/index.md` (method) and routes to **ask-to** (skill).
 3. **ask-to** (skill) routes to **grill-with-docs** (skill) to refine the plan.
-4. **to-spec** and **to-tickets** (skills) produce specs and tickets using the format documented in `../reference/agents/work-item-format.md`.
+4. **to-spec** and **to-tickets** (skills) produce specs and tickets using the format documented in `../agents/work-item-format.md`.
 5. **implement** (skill) executes the work.
 6. **publish-open-pr** (skill) opens the PR.
 7. **review-pr** (skill) reviews against Standards and Spec.
