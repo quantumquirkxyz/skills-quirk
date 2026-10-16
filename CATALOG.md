@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v2.5.0
-> 251 skills across 35 categories
+> 253 skills across 35 categories
 
 ## Skills by Category
 
@@ -290,6 +290,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
+| [brainstorming](.agents/skills/product/brainstorming) | 1 | stable | low | 1 | Facilitate structured, inclusive brainstorming that turns an ambiguous proble... |
 | [prod-ab-testing](.agents/skills/product/prod-ab-testing) | 1 | stable | medium | 3 | Design A/B tests — hypothesis, control/treatment, randomization, metrics, sta... |
 | [prod-okr-planning](.agents/skills/product/prod-okr-planning) | 1 | stable | low | 1 | Design OKR cycles — Objectives, Key Results, initiatives — with measurable ou... |
 | [prod-prd-writing](.agents/skills/product/prod-prd-writing) | 1 | stable | low | 1 | Write Product Requirement Documents (PRDs) — problem statement, goals, user s... |
@@ -340,6 +341,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
+| [github-project-analysis](.agents/skills/research/github-project-analysis) | 1 | stable | medium | 3 | Research comparable projects exclusively on GitHub and analyze their structur... |
 | [research-data-archiving](.agents/skills/research/research-data-archiving) | 1 | stable | low | 1 | Archive research data — metadata, storage, preservation, provenance, and reus... |
 | [research-literature-review](.agents/skills/research/research-literature-review) | 1 | stable | low | 1 | Review research literature — search strategy, screening, synthesis, citation ... |
 | [scientific-hypothesis](.agents/skills/research/scientific-hypothesis) | 1 | stable | low | 1 | Formulate testable scientific hypotheses — null/alternative, variables, contr... |

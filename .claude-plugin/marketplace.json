@@ -2302,6 +2302,24 @@
       "skillsDir": ".agents/skills/product",
       "skills": [
         {
+          "name": "brainstorming",
+          "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+          "category": "product",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "low",
+          "trustTier": "1",
+          "capabilities": [
+            "divergent ideation",
+            "reframing",
+            "clustering",
+            "prioritization",
+            "experiment framing"
+          ],
+          "sideEffects": [],
+          "path": ".agents/skills/product/brainstorming"
+        },
+        {
           "name": "prod-ab-testing",
           "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
           "category": "product",
@@ -2671,6 +2689,24 @@
       "version": "2.5.0",
       "skillsDir": ".agents/skills/research",
       "skills": [
+        {
+          "name": "github-project-analysis",
+          "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
+          "category": "research",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [
+            "GitHub discovery",
+            "repository triage",
+            "structure analysis",
+            "comparative synthesis",
+            "adaptation planning"
+          ],
+          "sideEffects": [],
+          "path": ".agents/skills/research/github-project-analysis"
+        },
         {
           "name": "research-data-archiving",
           "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",

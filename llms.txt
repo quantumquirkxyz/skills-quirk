@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 251 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 253 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -34,6 +34,7 @@ npx skills-quirk add quirk-skills
 - [backend-caching](./.agents/skills/backend/backend-caching/SKILL.md) — Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.
 - [backend-queues](./.agents/skills/backend/backend-queues/SKILL.md) — Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
 - [backup-disaster-recovery](./.agents/skills/devops/backup-disaster-recovery/SKILL.md) — Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.
+- [brainstorming](./.agents/skills/product/brainstorming/SKILL.md) — Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.
 - [brand-identity](./.agents/skills/graphic-design/brand-identity/SKILL.md) — Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.
 - [browser-automation](./.agents/skills/integrations/browser-automation/SKILL.md) — Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.
 - [caching-advanced](./.agents/skills/backend/caching-advanced/SKILL.md) — Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).
@@ -93,6 +94,7 @@ npx skills-quirk add quirk-skills
 - [finance-portfolio-theory](./.agents/skills/finance/finance-portfolio-theory/SKILL.md) — Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.
 - [frontend-design](./.agents/skills/frontend/frontend-design/SKILL.md) — Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.
 - [frontend-testing](./.agents/skills/frontend/frontend-testing/SKILL.md) — Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).
+- [github-project-analysis](./.agents/skills/research/github-project-analysis/SKILL.md) — Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.
 - [gitops](./.agents/skills/devops/gitops/SKILL.md) — Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.
 - [graphic-design-accessibility](./.agents/skills/graphic-design/graphic-design-accessibility/SKILL.md) — Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital.
 - [graphic-design-advertising](./.agents/skills/graphic-design/graphic-design-advertising/SKILL.md) — Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.
@@ -287,12 +289,12 @@ npx skills-quirk add quirk-skills
 - networking: 3 skills
 - os: 3 skills
 - physics: 12 skills
-- product: 3 skills
+- product: 4 skills
 - professional: 3 skills
 - project: 8 skills
 - qa: 4 skills
 - quant: 7 skills
-- research: 3 skills
+- research: 4 skills
 - routing: 15 skills
 - sec: 11 skills
 - skill-dev: 18 skills

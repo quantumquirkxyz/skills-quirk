@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-12T19:37:20.093Z",
-  "totalSkills": 251,
+  "generatedAt": "2026-10-16T16:48:15.212Z",
+  "totalSkills": 253,
   "categories": [
     "accessibility",
     "ai",
@@ -2141,6 +2141,18 @@
       "path": ".agents/skills/physics/physics-writing-revtex"
     },
     {
+      "name": "brainstorming",
+      "category": "product",
+      "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/product/brainstorming"
+    },
+    {
       "name": "prod-ab-testing",
       "category": "product",
       "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
@@ -2469,6 +2481,18 @@
       "capabilities": [],
       "sideEffects": [],
       "path": ".agents/skills/quant/quant-risk-modeling"
+    },
+    {
+      "name": "github-project-analysis",
+      "category": "research",
+      "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [],
+      "sideEffects": [],
+      "path": ".agents/skills/research/github-project-analysis"
     },
     {
       "name": "research-data-archiving",

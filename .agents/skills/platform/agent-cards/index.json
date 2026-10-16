@@ -1,6 +1,6 @@
 {
-  "totalCards": 251,
-  "generatedAt": "2026-10-12T19:37:19.622Z",
+  "totalCards": 253,
+  "generatedAt": "2026-10-16T16:48:15.490Z",
   "cards": [
     {
       "name": "accessibility",
@@ -5184,6 +5184,38 @@
       ]
     },
     {
+      "name": "brainstorming",
+      "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/product/brainstorming/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "product/brainstorming",
+          "name": "brainstorming",
+          "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+          "tags": [
+            "\"product\"",
+            "\"ideation\""
+          ],
+          "parameters": {
+            "trustTier": "1",
+            "modelTier": "reasoning",
+            "artifactType": "product-discovery"
+          }
+        }
+      ]
+    },
+    {
       "name": "prod-ab-testing",
       "description": "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/product/prod-ab-testing/SKILL.md",
@@ -5967,6 +5999,39 @@
             "trustTier": "1",
             "modelTier": "reasoning",
             "artifactType": "model"
+          }
+        }
+      ]
+    },
+    {
+      "name": "github-project-analysis",
+      "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/research/github-project-analysis/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "research/github-project-analysis",
+          "name": "github-project-analysis",
+          "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
+          "tags": [
+            "\"research\"",
+            "\"github\"",
+            "\"architecture\""
+          ],
+          "parameters": {
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "research-report"
           }
         }
       ]

@@ -2330,6 +2330,20 @@
       "exposed": true
     },
     {
+      "skill": "product/brainstorming",
+      "trustTier": 1,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/product/brainstorming"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "product/prod-ab-testing",
       "trustTier": 3,
       "tools": [
@@ -2673,6 +2687,20 @@
       ],
       "resources": [
         "skill://skill/quant/quant-risk-modeling"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "research/github-project-analysis",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/research/github-project-analysis"
       ],
       "prompts": [
         "use_skill"

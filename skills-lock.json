@@ -120,6 +120,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "brainstorming": {
+      "hash": "002e36ba717035428ddf481b202a3ee23f10134b543cbbc5ca8e6afd26d37122",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "brand-identity": {
       "hash": "83e09981b5faf75f3b7678ea3d155a2c9f9959ee9345ba04aab8434bf28ef770",
       "revision": "working-tree",
@@ -442,6 +447,11 @@
     },
     "gate-pre-commit": {
       "hash": "d7438819700ddfa3aec0a7266a3804612c76bb5d4a6755b3a23e870fa5f60d85",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "github-project-analysis": {
+      "hash": "9895565d6f064ffa112d359e32145e221d191c62e7d35a17a5261a0d15982d4b",
       "revision": "working-tree",
       "sourceType": "local"
     },
