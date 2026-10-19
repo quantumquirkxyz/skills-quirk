@@ -1300,6 +1300,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "worktree-swarm": {
+      "hash": "01ebb9f84dfa1bd7b0d2f6b1e0489d9dd763bbc8545ec0fc8f5d8b576671e2b7",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "writing-great-skills": {
       "hash": "deeeb35c6171b2e724b9def701d6a1c2dd9c9639e17d89806eed4c6eb2b482a0",
       "revision": "working-tree",
