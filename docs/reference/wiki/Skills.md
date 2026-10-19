@@ -1,6 +1,6 @@
 # Skills — Repository documentation for quirk Skills
 
-This document describes the **quirk Skills** system: what a skill is, how the bundle is structured, how the 265 canonical `SKILL.md` files are organized, how they differ from the compatibility view, and how they evolve from the sandbox to the main branch.
+This document describes the **quirk Skills** system: what a skill is, how the bundle is structured, how the 266 canonical `SKILL.md` files are organized, how they differ from the compatibility view, and how they evolve from the sandbox to the main branch.
 
 > **Note:** Skill names and code snippets remain in English. All explanatory text is in English.
 
@@ -11,7 +11,7 @@ This document describes the **quirk Skills** system: what a skill is, how the bu
 The `skills-quirk` repository contains the **canonical quirk Skills bundle** located in `.agents/skills/`. Each skill is a self-contained folder with a `SKILL.md` file as the main entry point and, where applicable, auxiliary references, templates, and fixtures.
 
 **Key data:**
-- **265 canonical `SKILL.md` files** organized into domains. Public projections expose 253 bundle skills excluding 12 platform skills.
+- **266 canonical `SKILL.md` files** organized into domains. Public projections expose 254 bundle skills excluding 12 platform skills.
 - Each canonical skill has a **flat alias** in `.claude/skills/` for compatibility with consumers expecting that layout.
 - The inventory is validated via `check-all.mjs`, `validate-skills.mjs`, `audit-semantics.mjs`, and `evaluate-scenarios.mjs`.
 - The method that governs the flow is called the **quirk Method** and prioritizes context before action, questions before commitments, and durable artifacts over "good vibes".
@@ -550,7 +550,7 @@ The complete inventory is generated from `.agents/skills/`, `skills-lock.json`, 
 
 **Current counts:**
 - Canonical `SKILL.md` files: 265.
-- Public projection count: 253 bundle skills excluding 12 platform skills.
+- Public projection count: 254 bundle skills excluding 12 platform skills.
 
 Use these sources for the current inventory:
 

@@ -18,6 +18,7 @@ mindmap
             review-pr
             review-fix-loop
             ship-subissue
+            worktree-swarm
         Quality and governance
             authorship
             quirk-method
@@ -95,8 +96,9 @@ mindmap
 | `plan-review-fixes` | Convert review findings into a remediation plan |
 | `implement-review-fixes` | Apply the planned review fixes |
 | `ship-subissue` | Merge clean PR and close linked issue |
+| `worktree-swarm` | Copy open GitHub issues into isolated local worktrees and launch one local agent per issue |
 
-Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing is unclear. For standard feature work, use `grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` -> `publish-open-pr` -> `review-pr`. If the review is dirty, `review-fix-loop` coordinates `plan-review-fixes` and `implement-review-fixes` until the PR is clean or blocked. `ship-subissue` owns merge, issue closure, and tracker completion only after a clean review.
+Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing is unclear. For standard feature work, use `grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` -> `publish-open-pr` -> `review-pr`. If the review is dirty, `review-fix-loop` coordinates `plan-review-fixes` and `implement-review-fixes` until the PR is clean or blocked. `ship-subissue` owns merge, issue closure, and tracker completion only after a clean review. Use `worktree-swarm` only when explicitly requested to fan out open GitHub issues into local worktrees; it hands each item into the same implement-to-ship loop but does not authorize remote publication or merge side effects.
 
 ## Quality and governance
 

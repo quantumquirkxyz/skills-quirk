@@ -47,6 +47,7 @@ flowchart TD
 | `plan-review-fixes` | `implement-review-fixes` | Review Fix Plan PR comment |
 | `implement-review-fixes` | `review-pr` | Implementation note and validation |
 | `review-pr` | `ship-subissue` | Clean review state |
+| `worktree-swarm` | `implement` | Per-issue worktree, issue context, and local agent manifest |
 
 ## Conflict Handling
 

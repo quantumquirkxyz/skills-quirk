@@ -4,8 +4,8 @@ This page records the inventory contract for the quirk Skills bundle without dup
 
 ## Current Counts
 
-- Canonical `SKILL.md` files: 263.
-- Public projection count: 251 bundle skills excluding 12 platform skills.
+- Canonical `SKILL.md` files: 266.
+- Public projection count: 254 bundle skills excluding 12 platform skills.
 - Source of truth: `.agents/skills/`, `skills-lock.json`, `registry.yaml`, and the registry generator.
 
 ## Inventory Sources

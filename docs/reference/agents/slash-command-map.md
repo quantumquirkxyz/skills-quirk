@@ -12,6 +12,7 @@ Generated to keep slash-command invocations predictable across IDEs and AI clien
 | `plan-review-fixes` | `plan-review-fixes` | `.claude/skills/plan-review-fixes` |
 | `implement-review-fixes` | `implement-review-fixes` | `.claude/skills/implement-review-fixes` |
 | `review-fix-loop` | `review-fix-loop` | `.claude/skills/review-fix-loop` |
+| `worktree-swarm` | `worktree-swarm` | `.claude/skills/worktree-swarm` |
 | `diagnosing-bugs` | `diagnosing-bugs` | `.claude/skills/diagnosing-bugs` |
 
 ## Compatibility rule

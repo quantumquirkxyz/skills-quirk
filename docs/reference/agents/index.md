@@ -5,6 +5,7 @@ This repo uses the repository-local quirk Skills bundle in `.agents/skills/`. `.
 ```mermaid
 flowchart TD
     A[work-item-router] --> B[triage]
+    A --> N[worktree-swarm]
     B --> C[to-spec]
     B --> D[to-tickets]
     B --> E[review-pr]
@@ -21,6 +22,7 @@ flowchart TD
     F --> G
     G --> E
     E -->|clean| I
+    N --> M
 ```
 
 ## Work item flow
@@ -31,6 +33,7 @@ flowchart TD
 - `review-pr`, `plan-review-fixes`, `implement-review-fixes`, `publish-open-pr`, and `ship-subissue` preserve the same metadata contract.
 - `ask-to` is the user-facing route selector after governance preflight. Use it when the next step is uncertain or the request is not already a claimed work item.
 - If a PR branch is conflicted while review or repair is in progress, branch-state resolution belongs to `resolving-merge-conflicts` before review or shipping resumes.
+- `worktree-swarm` is opt-in only. It validates a batch of open GitHub issues, creates isolated local worktrees, and launches local agents in parallel; each delegated item follows the implementation/review/publication/shipping handoff loop without granting push, PR, merge, or issue-close authority.
 
 ## Configuration docs
 
