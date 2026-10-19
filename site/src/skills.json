@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-16T16:48:15.212Z",
-  "totalSkills": 253,
+  "generatedAt": "2026-10-19T19:31:41.860Z",
+  "totalSkills": 254,
   "categories": [
     "accessibility",
     "ai",
@@ -2739,6 +2739,27 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/routing/work-item-router"
+    },
+    {
+      "name": "worktree-swarm",
+      "category": "routing",
+      "description": "Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "validate GitHub issue URLs and repository scope",
+        "create isolated issue worktrees atomically",
+        "launch local agents in parallel",
+        "emit a machine-readable worktree manifest"
+      ],
+      "sideEffects": [
+        "create-git-worktrees",
+        "create-git-branches",
+        "launch-local-agents"
+      ],
+      "path": ".agents/skills/routing/worktree-swarm"
     },
     {
       "name": "cloud-security",

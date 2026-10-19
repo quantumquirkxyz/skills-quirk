@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 253 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 254 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -258,6 +258,7 @@ npx skills-quirk add quirk-skills
 - [websockets](./.agents/skills/backend/websockets/SKILL.md) — WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).
 - [work-item-router](./.agents/skills/routing/work-item-router/SKILL.md) — Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.
 - [workflow-fixture-author](./.agents/skills/skill-dev/workflow-fixture-author/SKILL.md) — Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.
+- [worktree-swarm](./.agents/skills/routing/worktree-swarm/SKILL.md) — Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.
 - [writing-great-skills](./.agents/skills/skill-dev/writing-great-skills/SKILL.md) — Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
 - [xr-development](./.agents/skills/xr/xr-development/SKILL.md) — Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.
 - [xr-interaction-design](./.agents/skills/xr/xr-interaction-design/SKILL.md) — Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.
@@ -295,7 +296,7 @@ npx skills-quirk add quirk-skills
 - qa: 4 skills
 - quant: 7 skills
 - research: 4 skills
-- routing: 15 skills
+- routing: 16 skills
 - sec: 11 skills
 - skill-dev: 18 skills
 - ux: 4 skills

@@ -2961,6 +2961,20 @@
       "exposed": true
     },
     {
+      "skill": "routing/worktree-swarm",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/routing/worktree-swarm"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "sec/cloud-security",
       "trustTier": 3,
       "tools": [

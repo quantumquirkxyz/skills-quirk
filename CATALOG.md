@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v2.5.0
-> 253 skills across 35 categories
+> 254 skills across 35 categories
 
 ## Skills by Category
 
@@ -365,6 +365,7 @@
 | [triage](.agents/skills/routing/triage) | 1 | stable | medium | 3 | Move issues and external PRs through a state machine of triage roles — catego... |
 | [wayfinder](.agents/skills/routing/wayfinder) | 1 | stable | low | 1 | Plan a huge chunk of work — more than one agent session can hold — as a map o... |
 | [work-item-router](.agents/skills/routing/work-item-router) | 1 | stable | low | 1 | Force reading the canonical work-item governance index before routing specs, ... |
+| [worktree-swarm](.agents/skills/routing/worktree-swarm) | 1 | stable | medium | 3 | Create isolated local git worktrees and launch one local coding agent per ope... |
 
 ### sec
 

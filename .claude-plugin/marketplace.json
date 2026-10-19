@@ -2960,6 +2960,27 @@
           ],
           "sideEffects": [],
           "path": ".agents/skills/routing/work-item-router"
+        },
+        {
+          "name": "worktree-swarm",
+          "description": "Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.",
+          "category": "routing",
+          "version": "1",
+          "maturity": "stable",
+          "risk": "medium",
+          "trustTier": "3",
+          "capabilities": [
+            "validate GitHub issue URLs and repository scope",
+            "create isolated issue worktrees atomically",
+            "launch local agents in parallel",
+            "emit a machine-readable worktree manifest"
+          ],
+          "sideEffects": [
+            "create-git-worktrees",
+            "create-git-branches",
+            "launch-local-agents"
+          ],
+          "path": ".agents/skills/routing/worktree-swarm"
         }
       ]
     },
