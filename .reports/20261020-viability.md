@@ -117,6 +117,13 @@ Choose one path:
 
 - **Lockfile provenance:** `revision: "working-tree"` turns out to be the correct convention for authored skills (there is no upstream revision; the hash is the pin), so instead of fabricating commit SHAs the shape is now documented in `docs/how-to/release.md#lockfile-provenance` and enforced by `validate-skills.mjs` plus a test.
 - **End-to-end execution:** the task runner already executed one shipped task; the suite now runs *every* shipped task (3) end to end in a sandbox and asserts pass, cleanup, and zero forbidden-path violations.
-- **Growth ceiling:** `policy/platform-growth-budget.json` records a 40,000 LOC ceiling (measured 36,139) with a split-validators-from-runtime remediation, enforced by a test.
+- **Growth ceiling:** `policy/platform-growth-budget.json` records a 40,000 LOC ceiling (measured 36,146) with a split-validators-from-runtime remediation, enforced by a test.
+
+**Follow-up completed:** all 223 skills that declared an `artifactType` without a
+non-empty `outputs` contract were backfilled (156 from their explicit Contract
+output and 67 with a bounded artifact fallback). `validate-skills.mjs --strict`
+now reports `artifactOutputDebt.count: 0`. The growth budget no longer has a
+calendar expiry; it is reviewed on explicit threshold, release-boundary, and
+measurement/remediation-change triggers.
 
 Validation after remediation: `npm test` 479 pass / 0 fail; `check-all.mjs` 22/22, 0 warnings, 0 errors.

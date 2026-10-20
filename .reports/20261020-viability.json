@@ -244,7 +244,9 @@
       "validate-skills.mjs reports artifactOutputDebt (216) and promotes it to errors under --strict",
       "Documented the lockfile provenance convention in docs/how-to/release.md and enforced it in validate-skills.mjs",
       "The suite now executes every shipped task end to end in a sandbox",
-      "Added policy/platform-growth-budget.json with a 40000 LOC ceiling (measured 36139)"
+      "Added policy/platform-growth-budget.json with a 40000 LOC ceiling (measured 36146)",
+      "Backfilled outputs for all 223 skills that declared artifactType without a non-empty output contract; strict artifactOutputDebt is now zero",
+      "Replaced the calendar expiry on the platform growth budget with explicit event-based review triggers"
     ],
     "validation": {
       "tests": "479 pass / 0 fail",
