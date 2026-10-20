@@ -11,7 +11,7 @@
     .subtitle { opacity:0; animation: fade-in 160ms 3.25s linear forwards; }
     .segment { opacity:.2; animation: segment-in 120ms linear forwards; animation-delay:calc(3.52s + var(--i) * 90ms); }
     .status { opacity:0; animation: fade-in 180ms 3.4s linear forwards; }
-    .cursor { animation: fade-in 180ms 4.55s linear forwards, cursor-blink 1.8s 4.75s steps(1,end) infinite; }
+    .cursor { animation: fade-in 180ms 4.55s linear forwards; }
     .rest-node-a { animation: node-in 180ms 1.6s steps(2,end) forwards, node-breathe 4.2s 5s steps(2,end) infinite; }
     .rest-node-b { animation: node-in 180ms 1.95s steps(2,end) forwards, node-breathe 4.2s 6.1s steps(2,end) infinite; }
     @keyframes trace-line { to { stroke-dashoffset:0; } }
@@ -27,6 +27,7 @@
       .trace,.frame { stroke-dashoffset:0; }
       .node,.mark,.wordmark,.subtitle,.segment,.status,.cursor { opacity:1; transform:none; }
       .segment { opacity:.92; }
+      #top-scanner,#pipeline-runner,#node-pulse-left,#node-pulse-right { display:none; }
     }
   </style>
 
@@ -39,6 +40,10 @@
   </g>
 
   <path class="trace" d="M10 10H1270" stroke="#35C5F4" stroke-width="2"/>
+  <rect id="top-scanner" x="10" y="9" width="96" height="2" fill="#F3F5FA" opacity="0">
+    <animate attributeName="x" values="10;83;156;229;302;375;448;521;594;667;740;813;886;959;1032;1105;1174" begin="5s" dur="6.4s" repeatCount="indefinite" calcMode="discrete"/>
+    <animate attributeName="opacity" values="0;.65;.65;0" keyTimes="0;.08;.84;1" begin="5s" dur="6.4s" repeatCount="indefinite"/>
+  </rect>
   <rect class="frame crisp" x="28" y="28" width="1224" height="264" stroke="#273449" stroke-width="2"/>
 
   <g font-family="SFMono-Regular,Consolas,Liberation Mono,Courier New,monospace" font-size="10" letter-spacing="2" fill="#8591A4">
@@ -76,6 +81,13 @@
       <rect class="node" style="--i:1" x="44" y="44" width="10" height="10" fill="#FFD21F"/>
       <rect class="node" style="--i:0" x="66" y="44" width="10" height="10" fill="#273449"/>
     </g>
+
+    <rect id="node-pulse-left" x="200" y="124" width="10" height="10" fill="#20C96B" opacity="0">
+      <animate attributeName="opacity" values="0;.9;0;0" keyTimes="0;.12;.28;1" begin="5s" dur="4.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect id="node-pulse-right" x="1080" y="134" width="10" height="10" fill="#35C5F4" opacity="0">
+      <animate attributeName="opacity" values="0;0;.9;0" keyTimes="0;.35;.5;1" begin="5s" dur="4.8s" repeatCount="indefinite"/>
+    </rect>
 
     <g transform="translate(344 116)">
       <rect class="mark" style="--i:0" width="7" height="7" fill="#35C5F4"/>
@@ -125,11 +137,17 @@
     <rect class="segment" style="--i:9" x="576" width="56" height="8" fill="#FFD21F"/>
     <rect class="segment" style="--i:10" x="640" width="56" height="8" fill="#FFD21F"/>
     <rect class="segment" style="--i:11" x="704" width="56" height="8" fill="#FFD21F"/>
+    <rect id="pipeline-runner" x="0" y="-2" width="8" height="12" fill="#F3F5FA" opacity="0">
+      <animate attributeName="x" values="0;64;128;192;256;320;384;448;512;576;640;704;752" begin="5s" dur="4.8s" repeatCount="indefinite" calcMode="discrete"/>
+      <animate attributeName="opacity" values="0;.82;.82;0" keyTimes="0;.08;.84;1" begin="5s" dur="4.8s" repeatCount="indefinite"/>
+    </rect>
   </g>
 
   <g class="status" font-family="SFMono-Regular,Consolas,Liberation Mono,Courier New,monospace" font-size="10" letter-spacing="2" fill="#778398">
     <text x="182" y="251">EXECUTION</text>
     <text x="1035" y="251">READY</text>
-    <rect class="cursor" x="1080" y="241" width="7" height="11" fill="#20C96B"/>
+    <rect class="cursor" x="1080" y="241" width="7" height="11" fill="#20C96B">
+      <animate attributeName="opacity" values="1;1;.25;.25" keyTimes="0;.64;.65;1" begin="4.75s" dur="1.8s" repeatCount="indefinite"/>
+    </rect>
   </g>
 </svg>
