@@ -1,0 +1,9 @@
+{
+  "$schema": "./platform-growth-budget.schema.json",
+  "description": "Ceiling for platform tooling size. Counts every .mjs file under .agents/skills/platform, tests included. When the measurement exceeds maxLoc, split validators from runtime instead of raising the number.",
+  "maxLoc": 40000,
+  "measuredAt": "2026-10-20",
+  "measuredLoc": 36139,
+  "reviewBy": "2026-12-31",
+  "remediation": "Split .agents/skills/platform into validators/ (read-only audits) and runtime/ (executors, runners, schedulers) before raising maxLoc."
+}

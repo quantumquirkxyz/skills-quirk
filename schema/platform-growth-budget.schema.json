@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "platform-growth-budget.schema.json",
+  "title": "Platform Growth Budget",
+  "description": "Ceiling for .agents/skills/platform tooling size, enforced by platform/tests/platform-growth-budget.test.mjs.",
+  "type": "object",
+  "required": ["maxLoc", "measuredAt", "measuredLoc", "remediation"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "description": { "type": "string" },
+    "maxLoc": { "type": "integer", "minimum": 1 },
+    "measuredAt": { "type": "string", "format": "date" },
+    "measuredLoc": { "type": "integer", "minimum": 0 },
+    "reviewBy": { "type": "string", "format": "date" },
+    "remediation": { "type": "string", "minLength": 1 }
+  }
+}
