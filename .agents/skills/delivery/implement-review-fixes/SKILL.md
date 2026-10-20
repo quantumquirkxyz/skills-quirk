@@ -6,7 +6,7 @@ version: "1"
 description: "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor"
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "review artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-code
   - commit-git

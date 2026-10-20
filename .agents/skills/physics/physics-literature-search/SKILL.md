@@ -6,7 +6,7 @@ version: "1"
 description: "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "digest + optional BibTeX."
 sideEffects: []
 dependencies: []
 stopCondition: "Digest saved; papers grouped; sources cited."

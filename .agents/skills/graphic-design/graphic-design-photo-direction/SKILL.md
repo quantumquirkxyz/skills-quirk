@@ -4,6 +4,7 @@ description: "Direct photography and image retouching — art direction, lightin
 license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"
+outputs: "shot list, lighting and composition specs, and post-production retouching workflow."
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ""

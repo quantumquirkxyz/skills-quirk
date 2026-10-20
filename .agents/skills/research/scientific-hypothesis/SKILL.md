@@ -6,7 +6,7 @@ version: "1"
 description: "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "research artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Formulate testable scientific hypotheses complete; required sections present; completion criteria checked."

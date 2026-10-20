@@ -6,7 +6,7 @@ version: "1"
 description: "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "plan artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design user interactions complete; artifact saved; completion criteria checked."

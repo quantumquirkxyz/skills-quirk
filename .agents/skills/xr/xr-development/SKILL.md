@@ -6,7 +6,7 @@ version: "1"
 description: "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "xr artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design and build extended reality (AR/VR/MR) experiences complete; artifact saved; completion criteria checked."

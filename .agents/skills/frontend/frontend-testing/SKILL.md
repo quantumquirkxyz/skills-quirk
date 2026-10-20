@@ -6,7 +6,7 @@ version: "1"
 description: "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook)."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "test strategy with test tiers, tool configuration, coverage targets, and execution plan."
 sideEffects: []
 dependencies: []
 stopCondition: "Frontend testing design complete; artifact saved; completion criteria checked."

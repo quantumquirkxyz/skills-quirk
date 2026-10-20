@@ -6,7 +6,7 @@ version: "2"
 description: "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Governance model documented; attack vectors assessed; resilience recommendations made."

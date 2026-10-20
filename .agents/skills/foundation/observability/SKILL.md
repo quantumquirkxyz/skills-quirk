@@ -6,7 +6,7 @@ version: "2"
 description: "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "SLI/SLO spec, dashboard design, alert rules, incident runbook, and signal ownership."
 sideEffects: []
 dependencies: []
 stopCondition: "Observability design complete; artifact saved; completion criteria checked."

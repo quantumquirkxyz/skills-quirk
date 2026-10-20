@@ -6,7 +6,7 @@ version: "2"
 description: "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "search design covering architecture, indexing, ranking, synonyms, analytics, and observability."
 sideEffects: []
 dependencies: []
 stopCondition: "Search design complete; indexing and ranking strategy explicit; analytics plan named."

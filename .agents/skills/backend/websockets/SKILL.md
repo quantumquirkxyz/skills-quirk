@@ -6,7 +6,7 @@ version: "1"
 description: "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure)."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "real-time architecture with connection strategy, scaling topology, reconnection logic, pub/sub design, backpressure handling, and monitoring."
 sideEffects: []
 dependencies: []
 stopCondition: "WebSocket/SSE architecture, connection lifecycle, scaling topology, and failure handling are explicit."

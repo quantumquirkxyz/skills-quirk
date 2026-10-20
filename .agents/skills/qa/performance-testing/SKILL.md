@@ -6,7 +6,7 @@ version: "1"
 description: "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "test-strategy artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design and execute performance tests complete; artifact saved; completion criteria checked."

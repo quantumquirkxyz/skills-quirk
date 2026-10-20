@@ -6,7 +6,7 @@ version: "2"
 description: "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "contract design covering endpoints, schemas, versioning, breaking change policy, and consumer obligations."
 sideEffects: []
 dependencies: []
 stopCondition: "API contracts defined; versioning strategy explicit; breaking change policy and migration path named."

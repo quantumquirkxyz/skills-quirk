@@ -7,7 +7,7 @@ license: "MIT"
 version: "1"
 capabilities: ""
 inputs: ""
-outputs: ""
+outputs: "HTML/JSON report with deepening candidates, plus selected candidate"
 sideEffects: ""
 dependencies: []
 stopCondition: "Report generated and a candidate is selected or explicitly deferred."

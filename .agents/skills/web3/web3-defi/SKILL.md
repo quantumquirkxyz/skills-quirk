@@ -6,7 +6,7 @@ version: "2"
 description: "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Protocol classified; mechanics and economic security documented; recommendation tied to risk profile."

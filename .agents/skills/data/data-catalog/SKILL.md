@@ -6,7 +6,7 @@ version: "1"
 description: "Data catalog (metadata management, discovery, classification, data mesh, governance)."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "catalog schema + discovery design + governance policy."
 sideEffects: []
 dependencies: []
 stopCondition: "Catalog schema saved; discovery interface designed; governance policy defined."

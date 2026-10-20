@@ -6,7 +6,7 @@ version: "1"
 description: "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "Markdown digest and optional BibTeX/CSV."
 sideEffects: []
 dependencies: []
 stopCondition: "digest artifact saved with grouped papers and relevance scores; all sources cited."

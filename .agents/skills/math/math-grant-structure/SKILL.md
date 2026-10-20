@@ -6,7 +6,7 @@ version: "1"
 description: "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "structured proposal draft + reviewer critique."
 sideEffects: []
 dependencies: []
 stopCondition: "All sections drafted; reviewer-perspective critique complete; submission checklist filled."

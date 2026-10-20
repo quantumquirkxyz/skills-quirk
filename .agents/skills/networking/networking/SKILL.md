@@ -6,7 +6,7 @@ version: "1"
 description: "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "networking artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design and analyze network infrastructure complete; artifact saved; completion criteria checked."

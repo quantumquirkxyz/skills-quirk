@@ -6,7 +6,7 @@ version: "1"
 description: "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "the minimal durable update that preserves consistency."
 sideEffects:
   - write-docs
 

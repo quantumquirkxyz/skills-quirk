@@ -6,7 +6,7 @@ version: "1"
 description: "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "skill-dev artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: ""
 stopCondition: "Side-effect mismatches are classified with recommended frontmatter changes or the audited skills are confirmed consistent."

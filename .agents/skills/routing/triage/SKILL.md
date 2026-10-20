@@ -6,7 +6,7 @@ version: "1"
 description: "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag"
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - label-issue
   - post-comment

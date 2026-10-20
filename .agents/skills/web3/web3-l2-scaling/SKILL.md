@@ -6,7 +6,7 @@ version: "2"
 description: "Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "L2 type classified; security assumptions explicit; recommendation tied to use case."

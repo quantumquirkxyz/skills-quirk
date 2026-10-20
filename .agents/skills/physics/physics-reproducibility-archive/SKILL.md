@@ -6,7 +6,7 @@ version: "1"
 description: "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Zenodo DOI assigned; GitHub tag created; checklist complete."

@@ -6,7 +6,7 @@ version: "2"
 description: "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Artifact present with deployment recommendation."

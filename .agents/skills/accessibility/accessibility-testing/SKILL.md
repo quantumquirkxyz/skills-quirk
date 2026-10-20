@@ -6,7 +6,7 @@ version: "1"
 description: "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "test-strategy artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Test web interfaces for accessibility compliance complete; artifact saved; completion criteria checked."

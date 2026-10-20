@@ -6,7 +6,7 @@ version: "1"
 description: "Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "research artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Conduct user research complete; artifact saved; completion criteria checked."

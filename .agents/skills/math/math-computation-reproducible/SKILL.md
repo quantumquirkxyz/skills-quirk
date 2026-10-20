@@ -6,7 +6,7 @@ version: "1"
 description: "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "versioned script + container + manifest."
 sideEffects: []
 dependencies: []
 stopCondition: "All artifacts saved; container builds; result reproducible from artifacts alone."

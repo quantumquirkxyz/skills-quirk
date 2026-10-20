@@ -6,7 +6,7 @@ version: "1"
 description: "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "search protocol, screened evidence set, synthesis, limitations, and citation/provenance notes."
 sideEffects: []
 dependencies: []
 stopCondition: "Search strategy, screening criteria, synthesis, and evidence limitations are explicit."

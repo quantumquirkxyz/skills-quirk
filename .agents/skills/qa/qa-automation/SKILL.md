@@ -6,7 +6,7 @@ version: "1"
 description: "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "qa artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design and implement automated test suites complete; artifact saved; completion criteria checked."

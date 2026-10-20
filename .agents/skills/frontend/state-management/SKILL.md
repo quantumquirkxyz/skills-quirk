@@ -6,7 +6,7 @@ version: "1"
 description: "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state)."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "state architecture with primitive choices, state boundaries, and data flow diagram."
 sideEffects: []
 dependencies: []
 stopCondition: "State management design complete; artifact saved; completion criteria checked."

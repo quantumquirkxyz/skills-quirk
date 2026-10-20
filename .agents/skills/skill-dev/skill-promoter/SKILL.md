@@ -6,7 +6,7 @@ version: "1"
 description: "Promote validated experimental skills from the sandbox to the canonical skills bundle."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "promoted skill in canonical bundle, updated symlinks, updated lockfile, and promotion report"
 sideEffects:
   - write-files
   - create-symlink

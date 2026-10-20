@@ -6,7 +6,7 @@ version: "1"
 description: "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation)."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "tracing architecture with instrumentation plan, sampling strategy, and backend configuration."
 sideEffects: []
 dependencies: []
 stopCondition: "Distributed tracing design complete; artifact saved; completion criteria checked."

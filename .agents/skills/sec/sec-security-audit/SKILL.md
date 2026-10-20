@@ -6,7 +6,7 @@ version: "1"
 description: "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "audit report with severity-classified findings."
 sideEffects: []
 dependencies: []
 stopCondition: "Audit report complete; findings classified by severity; recommendations made."

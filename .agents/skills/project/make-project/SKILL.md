@@ -6,7 +6,7 @@ version: "1"
 description: "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "a live board URL, confirmed by verification."
 sideEffects:
   - create-project
   - create-project-fields

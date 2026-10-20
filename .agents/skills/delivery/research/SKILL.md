@@ -6,7 +6,7 @@ version: "1"
 description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w"
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "research artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-docs
 

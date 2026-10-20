@@ -6,7 +6,7 @@ version: "1"
 description: "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)"
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "evidence inventory + timeline + root cause analysis + forensic report."
 sideEffects: []
 dependencies: []
 stopCondition: "Evidence collected and hashed; timeline complete; root cause identified; report reviewed."

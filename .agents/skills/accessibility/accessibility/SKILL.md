@@ -6,7 +6,7 @@ version: "1"
 description: "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "accessibility artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Design inclusive products complete; artifact saved; completion criteria checked."

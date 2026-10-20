@@ -6,7 +6,7 @@ version: "1"
 description: "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "a map, decision tickets, and a clear route for the next build step."
 sideEffects: []
 dependencies: []
 stopCondition: "Plan a huge chunk of work complete; structured result returned; completion criteria checked."

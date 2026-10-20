@@ -6,7 +6,7 @@ version: "1"
 description: "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "archive plan with metadata schema, storage layout, provenance, access policy, retention, and reproducibility checks."
 sideEffects: []
 dependencies: []
 stopCondition: "Data, metadata, provenance, access controls, and preservation plan are explicit."

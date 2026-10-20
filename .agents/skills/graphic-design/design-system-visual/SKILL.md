@@ -6,7 +6,7 @@ version: "1"
 description: "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "visual design system artifact with token taxonomy, component patterns, accessibility rules, and cross-channel guidelines."
 sideEffects: []
 dependencies: []
 stopCondition: "Visual design system design complete; tokens, components, accessibility, and adaptation rules explicit."

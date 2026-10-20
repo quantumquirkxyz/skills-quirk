@@ -6,7 +6,7 @@ version: "1"
 description: "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Build a throwaway prototype to answer a design question complete; structured result returned; completion criteria checked."

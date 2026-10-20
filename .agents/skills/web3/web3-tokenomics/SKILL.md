@@ -6,7 +6,7 @@ version: "2"
 description: "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Tokenomics designed; stress tests completed; sustainability verdict explicit."

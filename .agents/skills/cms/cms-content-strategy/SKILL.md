@@ -6,7 +6,7 @@ version: "1"
 description: "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership."
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "content model, taxonomy, ownership, workflow, lifecycle, and publishing guidance."
 sideEffects: []
 dependencies: []
 stopCondition: "Content model, governance, lifecycle, and publishing rules are explicit."

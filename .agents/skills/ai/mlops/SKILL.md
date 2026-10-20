@@ -6,7 +6,7 @@ version: "1"
 description: "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)"
 license: "MIT"
 capabilities: ""
-outputs: ""
+outputs: "feature store contract + model registry + data version + pipeline manifest + monitoring + trigger policy."
 sideEffects: []
 dependencies: []
 stopCondition: "Registry green; pipelines passing; model validated; monitoring active."
