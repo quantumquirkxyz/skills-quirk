@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0",
+  "repository": "/home/quantumquirkxyz/skills-quirk",
+  "date": "2026-10-20",
+  "preflight": {
+    "context_md": "present",
+    "adr_dir": "present",
+    "gaps": [
+      "ADR-004 status is stale against VERSION 3.0.0 (recorded as a finding, not a blocking gap)",
+      "ADR coverage thin: 5 ADRs for 45 categories / 266 skills"
+    ]
+  },
+  "baseline": {
+    "loc": 41233,
+    "module_count": 266,
+    "dependency_health": "Healthy for the bundle: 0 third-party runtime deps, node: builtins only. site/ uses react 18 + vite with caret ranges (floating).",
+    "test_loc_ratio": 0.24,
+    "ci_present": true,
+    "cross_import_count": 61,
+    "config_drift": "None: git tree clean; /.scratch/ and /artifacts/ are gitignored"
+  },
+  "dimensions": {
+    "viability": {
+      "categorical_rating": "Conditional",
+      "numeric_score": 3,
+      "findings": [
+        {
+          "statement": "ADR-004 records a v2.0 release as Proposed while VERSION, package.json and registry.yaml read 3.0.0",
+          "citation": "docs/adr/ADR-004-release-v2.0.md:3,7; VERSION:1; package.json:3; registry.yaml:7",
+          "confidence": "High",
+          "risk": "High",
+          "type": "contradiction"
+        },
+        {
+          "statement": "docs/reference/adr/ duplicates ADR-001..004 byte-identically and omits ADR-005, creating two sources of truth",
+          "citation": "docs/reference/adr/ vs docs/adr/005-skills-grade-elevation.md",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "contradiction"
+        },
+        {
+          "statement": "ADR-005 claims all 12 core skills score 85+; sampled core skills score 61-96 with four grade D",
+          "citation": "docs/adr/005-skills-grade-elevation.md:22-27; quality-scorer.mjs (grilling 61, skill-audit 62, project-viability 67, improve-codebase-architecture 69)",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "contradiction"
+        },
+        {
+          "statement": "a2a-router.mjs is orphaned: zero references in package.json, check-all.mjs, tests, workflows or docs",
+          "citation": ".agents/skills/platform/a2a-router.mjs:1-12",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "blocker"
+        },
+        {
+          "statement": "The frontmatter contract is mostly empty across the bundle",
+          "citation": "227/266 SKILL.md capabilities:\"\"; 216/266 outputs:\"\"; 166/266 fixturesPath:\"\"; 12/266 sideEffects:\"\"",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "missing"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "Resolve ADR-004: mark superseded by 3.0.0 or restore the v2.0 decision record",
+          "impact": "High",
+          "effort": "Low",
+          "priority": "P0",
+          "risk": "Medium"
+        },
+        {
+          "action": "Delete docs/reference/adr/ or regenerate it from docs/adr/ including ADR-005",
+          "impact": "Medium",
+          "effort": "Low",
+          "priority": "P1",
+          "risk": "Low"
+        },
+        {
+          "action": "Re-verify or soften ADR-005 grade claim against current scorer output",
+          "impact": "Medium",
+          "effort": "Low",
+          "priority": "P1",
+          "risk": "Low"
+        },
+        {
+          "action": "Decide the fate of a2a-router.mjs: wire it into package.json and docs, or delete it",
+          "impact": "Medium",
+          "effort": "Low",
+          "priority": "P1",
+          "risk": "Low"
+        }
+      ]
+    },
+    "functionality": {
+      "categorical_rating": "Partial",
+      "numeric_score": 2,
+      "findings": [
+        {
+          "statement": "ADR-001 states every skill emits a typed JSON artifact; 216/266 skills declare outputs:\"\" and validation tolerates it",
+          "citation": "docs/adr/ADR-001-artifact-first-design.md:7-9; .agents/skills/platform/manifest.schema.json:14",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "contradiction"
+        },
+        {
+          "statement": "ADR-005's elevation touched a 12-skill slice, not the bundle: 21/266 have scripts/, 38/266 references/, 25/266 a ## Why, 10/266 mention record-execution",
+          "citation": "repo-wide directory and content scan under .agents/skills",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "missing"
+        },
+        {
+          "statement": "Scorer output spans two grades across core skills (61 to 96)",
+          "citation": "quality-scorer.mjs: review-pr 96, to-spec 93, ask-to 92, to-tickets 92, improve-codebase-architecture 69, project-viability 67, skill-audit 62, grilling 61",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "positive"
+        },
+        {
+          "statement": "All 266 lockfile entries record revision working-tree, so provenance is never pinned",
+          "citation": "skills-lock.json (266/266 entries)",
+          "confidence": "High",
+          "risk": "Low",
+          "type": "missing"
+        },
+        {
+          "statement": "Tests are structural: no test executes a skill workflow end-to-end",
+          "citation": "tests/ (2 files) and .agents/skills/platform/tests/ (42 files)",
+          "confidence": "Medium",
+          "risk": "Medium",
+          "type": "missing"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "Populate outputs/capabilities for skills claiming artifacts, or amend ADR-001 to scope artifact-first to the core set",
+          "impact": "High",
+          "effort": "Medium",
+          "priority": "P0",
+          "risk": "Medium"
+        },
+        {
+          "action": "Reject empty outputs on skills that declare an artifactType",
+          "impact": "High",
+          "effort": "Low",
+          "priority": "P1",
+          "risk": "Low"
+        },
+        {
+          "action": "Pin a real revision/sourceType for released lockfile entries",
+          "impact": "Medium",
+          "effort": "Low",
+          "priority": "P2",
+          "risk": "Low"
+        },
+        {
+          "action": "Add one end-to-end fixture that executes a skill's steps",
+          "impact": "Medium",
+          "effort": "Medium",
+          "priority": "P2",
+          "risk": "Medium"
+        }
+      ]
+    },
+    "scalability": {
+      "categorical_rating": "Bounded",
+      "numeric_score": 2,
+      "findings": [
+        {
+          "statement": "Empty capability sets produce no graph edges; skill-graph.mjs:30 states this and 227/266 skills are empty",
+          "citation": ".agents/skills/platform/skill-graph.mjs:29-30,276",
+          "confidence": "High",
+          "risk": "High",
+          "type": "blocker"
+        },
+        {
+          "statement": "Platform tooling is 87% of JavaScript LOC and concentrates 61 cross-directory imports in one directory",
+          "citation": ".agents/skills/platform/**/*.mjs (36038 of 41233 LOC)",
+          "confidence": "High",
+          "risk": "Medium",
+          "type": "positive"
+        },
+        {
+          "statement": "Editing a skill requires lockfile plus projection regeneration to keep tests green",
+          "citation": "AGENTS.md commands; tests/projection-consistency.test.mjs; tests/version-consistency.test.mjs",
+          "confidence": "High",
+          "risk": "Low",
+          "type": "positive"
+        },
+        {
+          "statement": "45 categories are governed by 5 ADRs, none covering category boundaries",
+          "citation": "registry.yaml categories vs docs/adr/ (5 files)",
+          "confidence": "Medium",
+          "risk": "Medium",
+          "type": "missing"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "Backfill capabilities for routing participants (12 core plus delivery and routing categories)",
+          "impact": "High",
+          "effort": "Medium",
+          "priority": "P1",
+          "risk": "Medium"
+        },
+        {
+          "action": "Add an ADR for category boundaries and the routing graph",
+          "impact": "Medium",
+          "effort": "Low",
+          "priority": "P2",
+          "risk": "Low"
+        },
+        {
+          "action": "Set a growth ceiling for platform/ and split validators from runtime before 50k LOC",
+          "impact": "Medium",
+          "effort": "Medium",
+          "priority": "P2",
+          "risk": "Medium"
+        }
+      ]
+    }
+  },
+  "overall": {
+    "posture": "Structurally sound and fully green on its own gates, but the declared v2 contract is realized in a minority of the bundle; viability is conditional on completing or formally retiring it.",
+    "conflict_resolution": "None required: Conditional (goals reachable) and Partial (delivery incomplete) describe different axes and were not reranked.",
+    "recommended_skill": "implement"
+  },
+  "validation": {
+    "quality_gate_passed": true,
+    "all_findings_cited": true,
+    "score_consistency": true,
+    "preflight_gaps_addressed": true,
+    "rejected_subagent_claims": [
+      "no skills have a scripts/ directory (actual: 21)",
+      "no skills score at or above 85 (actual: 96, 93, 92, 92 in the sample)"
+    ]
+  },
+  "remediation": {
+    "applied": [
+      "ADR-004 marked Superseded by v3.0.0",
+      "Removed four duplicate ADR files under docs/reference/adr/, kept the installer template README",
+      "Corrected ADR-005 consequences with re-measured scores and slice-scoped wording",
+      "Deleted orphan .agents/skills/platform/a2a-router.mjs",
+      "validate-skills.mjs reports artifactOutputDebt (216) and promotes it to errors under --strict",
+      "Documented the lockfile provenance convention in docs/how-to/release.md and enforced it in validate-skills.mjs",
+      "The suite now executes every shipped task end to end in a sandbox",
+      "Added policy/platform-growth-budget.json with a 40000 LOC ceiling (measured 36139)"
+    ],
+    "validation": {
+      "tests": "479 pass / 0 fail",
+      "check_all": "22/22 pass, 0 warnings, 0 errors"
+    },
+    "open": []
+  },
+  "delta": {
+    "previous_report": "N/A",
+    "previous_date": "N/A",
+    "score_deltas": {
+      "viability": "N/A",
+      "functionality": "N/A",
+      "scalability": "N/A"
+    }
+  }
+}
