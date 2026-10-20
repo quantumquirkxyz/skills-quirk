@@ -24,10 +24,20 @@ Elevate the 12 core skills to grade A/B by adding:
 
 ## Consequences
 
-- All 12 skills now score 85+ (grade B minimum, 10 at grade A)
-- check-all.mjs passes 10/10 with 0 warnings, 0 errors
-- Lockfile updated to reflect new hashes
-- skills-lock.json synchronized with SKILL.md content
+- The elevation covered a slice, not the bundle: 21/266 skills have `scripts/`,
+  38/266 have `references/`, 25/266 have a `## Why` section, and 10/266 reference
+  `record-execution.mjs`.
+- The original "all 12 skills now score 85+" claim does not reproduce bundle-wide.
+  Re-measured 2026-10-20 with `quality-scorer.mjs`: `review-pr` 96, `to-spec` 93,
+  `ask-to` 92, `to-tickets` 92 (grade A) versus
+  `improve-codebase-architecture` 69, `project-viability` 67, `skill-audit` 62,
+  `grilling` 61 (grade D).
+- `check-all.mjs` passed 10/10 with 0 warnings and 0 errors at the time; the gate
+  now runs 22 checks and reports 22/22 with 0 warnings and 0 errors.
+- Lockfile hashes were refreshed. Every entry records `sourceType: "local"` and
+  `revision: "working-tree"`, the documented convention for authored skills — the
+  hash is the pin (see `docs/how-to/release.md#lockfile-provenance`). The shape is
+  now enforced by `validate-skills.mjs`.
 
 ## Alternatives Considered
 
