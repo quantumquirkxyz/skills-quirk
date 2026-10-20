@@ -4,8 +4,6 @@
   <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
 </p>
 
-# quirk Skills
-
 <p align="center">
   <img src="tooling/assets/quirk-animated-header.svg" alt="Quirk Skills — clarify, review, ship" width="100%" />
 </p>
