@@ -1,8 +1,8 @@
 # Skill Lab Gap Analysis and v4 Roadmap
 
-Date: 2026-10-19
+Date: 2026-10-19 (updated 2026-10-20 after the 3.1 truth pass)
 Baseline: `skills-quirk` 3.0.0 (254 shippable skills, 266 repository skills)
-Method: internal capability audit, five validation runs, external source review
+Method: internal capability audit, repeated validation runs, external source review
 (Agent Skills specification, arXiv routing research, skills.sh, OWASP AST10,
 MCP Skills extension, and the repository's own 2026-10-11 research note).
 
@@ -18,15 +18,17 @@ future work does not rebuild them.
 |---|---|---|
 | Shippable skills | 254 | `validate-skills.mjs` |
 | Repository skills | 266 | `audit-semantics.mjs` |
-| Full gate | 20/20 gating checks pass | `check-all.mjs` |
-| Test suite | 452 tests, 451 pass, 1 flaky under load | `node --test` in the gate |
+| Full gate | 21/21 gating checks pass | `check-all.mjs` |
+| Test suite | 462 tests, 462 pass, 0 flaky | `node --test` (456 platform + 6 root) |
+| Documentation links | 1,900 local links, 0 broken | `docs-links.mjs` |
+| Compatibility view | 266/266 canonical skills, directory links only | `fix-compatibility-view.mjs` |
 | Spec compliance | 0 errors, 0 warnings, all bodies < 500 lines | `validate-spec-compliance.mjs` |
 | Security scan | 0 findings in default and `--strict` | `security-scan-skills.mjs` |
 | Traceability | 60 clauses, 60 resolved | `validate-traceability.mjs` |
 | Routing evals | 203 rows, 60 negative controls, 0 errors | `evals/run-routing.mjs --check` |
 | Behavioral evals | 20 fixtures, mock judge | `evals/run-behavioral.mjs --all` |
 | Skill graph | 254 nodes, 85 edges | `skill-graph.mjs` |
-| Tool-risk debt | 84 error findings, capped budget | `policy/tool-risk-budget.json` |
+| Tool-risk debt | 0 error findings, zero-error budget | `policy/tool-risk-budget.json` |
 | Quality debt | mean 69.1, median 66, 151 D, 4 F | `docs/quality-debt-inventory.md` |
 
 The lab already implements a large surface most peer projects do not:
@@ -35,6 +37,29 @@ scanning, traceability clauses, routing and behavioral evals, a skill graph,
 MCP serving, execution traces, cost accounting, workflow state machines,
 idempotency ledgers, loop budgets, generated cross-agent adapters, and a
 hash-carrying lockfile. Proposals below assume those stay.
+
+### 3.1 truth pass (2026-10-20)
+
+The first stability pass closed the truth defects that could make the baseline
+lie about itself:
+
+- Markdown links are now a gating check: `docs-links.mjs` walks every tracked
+  documentation tree, skips fenced examples and external URLs, and fails when a
+  relative target is missing or escapes the checkout.
+- The `.claude/skills/` compatibility view is repaired and validated as one
+  relative directory symlink per canonical skill. Domain aliases, direct
+  `SKILL.md` links, dangling links, and missing skills are all rejected.
+- Native Cursor, Gemini, Copilot, OpenCode, and Windsurf views were regenerated
+  to the 254-skill public projection.
+- The accidental root `memory` sink was removed from version control. The
+  recorder's `sink: 'memory'` sentinel was being matched after the generic file
+  path branch, so tests appended JSONL to a tracked file named `memory`.
+- Task traces now measure duration with `performance.now()` and anchor
+  `completedAt` to `startedAt`, closing the same backwards-clock class in the
+  task harness.
+- The two Claude manifests are now pinned to `VERSION`, and the stale 246/258/
+  1484 counts and removed research paths were corrected or replaced with stable
+  references.
 
 ---
 
@@ -99,27 +124,30 @@ posture is correct and should not be relaxed.
 
 ### P0 — Stability and truth (must close before adding capability)
 
-1. **Wall-clock ordering.** `skill-runs.test.mjs` reported a timestamp
+1. **Wall-clock ordering — closed.** `skill-runs.test.mjs` reported a timestamp
    regression when the host clock stepped backwards (confirmed in `dmesg`).
-   3.0.0 makes session timestamps monotonic and adds a deterministic injected
-   clock test; keep a repeated-run soak check in the release gate.
-2. **Tracked trace output.** Running the gate appended execution records to the
-   tracked root `memory` file. Confirm whether that archive is intentional; if
-   so, document it as a release artifact, otherwise isolate it to a temp sink.
-3. **Dead documentation references.** `docs/quality-debt-inventory.md`,
-   `docs/tool-risk-debt.md`, `docs/skill-risk-tiers.md`, and
-   `policy/tool-risk-budget.json` cite
-   `docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/`, which does
-   not exist in the repository.
-4. **Stale generated claims.** Several docs still say 246/258 skills; the bundle
-   is 254/266. Generated counts must come from one source.
+   Session timestamps are monotonic, and the task harness now measures elapsed
+   time with `performance.now()` and anchors `completedAt` to `startedAt`.
+   Deterministic regression tests cover both paths; a repeated-run soak remains
+   in the release checklist.
+2. **Tracked trace output — closed.** Running the gate appended execution records
+   to the tracked root `memory` file because `sink: 'memory'` was interpreted as
+   a relative file path. The sentinel is now checked first, a regression test
+   pins the behavior, and the accidental file is untracked.
+3. **Dead documentation references — closed.** Current docs cite the
+   2026-10-19 analysis or name the historical pack explicitly.
+   `docs-links.mjs` now fails the gate on a relative link that does not resolve.
+4. **Stale generated claims — closed.** Current docs use 254/266 and 1532
+   adapters; `tests/projection-consistency.test.mjs` and the version test pin the
+   generated surfaces.
 5. **Quality debt is untouched.** 151 D-grade and 4 F-grade skills make the mean
    score a weak signal. The D→C template exists but has not been applied in
    batches.
-6. **Tool-risk debt is capped, not reduced.** 84 error-severity findings remain
-   at the Fase 0 budget.
-7. **Metadata holes.** 16 skills lack `evaluators`; `routing/worktree-swarm`
-   declares an empty `fixturesPath`; the `--deep` scanner has no documented
+6. **Tool-risk debt — closed.** All error-severity findings were remediated by
+   documenting untrusted-input handling and gating declared mutations.
+7. **Metadata holes.** All 266 canonical skills now declare evaluators.
+   `routing/worktree-swarm` still has no `fixturesPath` declaration despite
+   shipping `behavioral-fixtures/`; the `--deep` scanner has no documented
    baseline for intentional test-fixture positives.
 
 ### P1 — Capability gaps with direct user value
@@ -171,12 +199,12 @@ pass, and no phase may weaken an existing check to ship.
   check to the gate.
 - Derive all skill counts from one generated manifest; remove hard-coded counts
   from docs and tests where possible.
-- Add `evaluators` to the 16 skills; give `worktree-swarm` a real fixture; add a
+- Add `evaluators` to the remaining skills; give `worktree-swarm` a real fixture; add a
   documented `--deep` baseline.
 - Refresh the quality inventory with the current scorer; select the first 20
   D/F skills and apply the D→C template.
-- Reduce the tool-risk budget from 84 to 60 with documented untrusted-input
-  handling in the first remediation batch.
+- Reduce the tool-risk budget from 84 to 0 with documented untrusted-input
+  handling and approval gates.
 
 **Exit criteria:** three consecutive clean full gates; zero tracked-file writes
 from tests; zero dead doc links; budget reduced and locked; inventory refreshed.
@@ -254,12 +282,12 @@ met, not by feature count.
 
 | Metric | 3.0.0 | v4 target |
 |---|---:|---:|
-| Full gate pass rate over 20 runs | 1 clock-induced flake observed (fixed) | 100% |
-| Undocumented tracked-file writes from tests | root `memory` archive | 0 |
-| Dead documentation references | 4+ | 0 |
+| Full gate pass rate over 20 runs | 3 post-fix runs clean; soak continuing | 100% |
+| Undocumented tracked-file writes from tests | 0 after the 3.1 truth pass | 0 |
+| Dead documentation references | 0 after the 3.1 truth pass | 0 |
 | Mean quality score | 69.1 | ≥ 80 |
 | D/F grade skills | 155 | 0 |
-| Tool-risk error findings | 84 | 0 |
+| Tool-risk error findings | 0 after remediation | 0 |
 | Skills with behavioral evidence | subset | all T2/T3 |
 | Routing top-3 at 1,000 distractors | not measured | ≥ 90% |
 | Install/rollback across 5 agents | not implemented | verified |

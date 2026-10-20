@@ -403,7 +403,7 @@ curl http://[HOST]:3000/health
 ```json
 {
   status: ok,
-  skills: 246
+  skills: 254
 }
 ```
 
@@ -575,7 +575,7 @@ Each plugin is defined in .claude-plugin/plugin.json within its directory.
   },
   metadata: {
     description: A portable, validated skills bundle...,
-    version: 1.0.0,
+    version: 3.0.0,
     license: MIT,
     repository: https://github.com/quantumquirkxyz/skills-quirk
   },
@@ -583,6 +583,8 @@ Each plugin is defined in .claude-plugin/plugin.json within its directory.
   skillsDir: .agents/skills
 }
 ```
+
+The root manifest exposes the full bundle through `skillsDir`; it does not duplicate the per-skill list. `.claude-plugin/marketplace.json` is the generated manifest that enumerates the 254 shippable skills across 35 category plugins.
 
 #### Namespaced plugin example (fullstack)
 
@@ -629,7 +631,8 @@ Each plugin is defined in .claude-plugin/plugin.json within its directory.
 
 | Plugin | Path | Domain | Skills | Commands |
 |---|---|---|---|---|
-| quirk-skills | .claude-plugin/plugin.json | Full | 246 | — |
+| quirk-skills (root manifest) | .claude-plugin/plugin.json | Full (`skillsDir`) | 254 | — |
+| quirk-skills (marketplace) | .claude-plugin/marketplace.json | 35 category plugins | 254 | — |
 | quirk-fullstack | plugins/fullstack/.claude-plugin/plugin.json | Fullstack | 8 | ship-subissue, review-pr |
 | quirk-devops | plugins/devops/.claude-plugin/plugin.json | DevOps | 7 | wayfinder, to-tickets |
 | quirk-ai-ml | plugins/ai-ml/.claude-plugin/plugin.json | AI/ML | 6 | — |

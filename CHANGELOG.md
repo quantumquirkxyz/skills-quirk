@@ -8,6 +8,42 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
+## [Unreleased]
+
+### Fixed
+
+- Remediated all 84 error-severity tool-risk findings: web-derived content is
+  explicitly treated as untrusted, mutating skills declare approval gates, and
+  the MCP exposure exception is documented. The enforced budget is now zero.
+- `skill-run-recorder.mjs` treated `sink: 'memory'` as a relative file path, so
+  tests appended JSONL to a tracked root `memory` file. The no-op sentinel is
+  now checked first, a regression test pins it, and the accidental file is no
+  longer tracked.
+- `run-skill-task.mjs` now measures durations with `performance.now()` and
+  anchors `completedAt` to `startedAt`, so a backwards wall-clock step cannot
+  produce a trace that completes before it starts.
+- `.claude-plugin/plugin.json` metadata version is back in sync with `VERSION`;
+  both Claude manifests are pinned by the version-consistency test.
+
+### Added
+
+- `docs-links.mjs`: gating check for relative Markdown links, with support for
+  fenced examples, inline code, anchors, and external URLs. Broken links and
+  links that escape the repository fail the gate.
+
+### Changed
+
+- `fix-compatibility-view.mjs` now validates the full view contract: one
+  relative directory symlink per canonical skill, no domain aliases, no direct
+  `SKILL.md` targets, and no missing skills. The view is repaired to 266/266.
+- Native Cursor, Gemini, Copilot, OpenCode, and Windsurf views were regenerated
+  to the 254-skill public projection.
+- Current documentation counts are 254 bundle / 266 repository skills and 1532
+  adapters; removed-research references now point at stable documents.
+- Removed obsolete platform notes and the one-off 249-skill migration report;
+  generated runtime traces, artifacts, mocks, and temporary memory output are
+  excluded from the working tree.
+
 ## [3.0.0] - 2026-10-19
 
 Version 3.0.0 rolls up the accumulated Unreleased work into a single

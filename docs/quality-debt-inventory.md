@@ -1,6 +1,6 @@
 # Quality debt inventory
 
-Source: `docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/00-informe-ejecutivo.md` and `08-backlog-priorizado.md`.
+Source: the 2026-10-12 research pack (executive report and prioritized backlog), which is no longer shipped in this repository. The current debt baseline is maintained here and cross-checked in the [3.0.0 gap analysis](research/2026-10-19-skill-lab-v3-gap-analysis-and-v4-roadmap.md).
 
 The research baseline reports:
 

@@ -20,7 +20,7 @@ skill file, and reports clean again after the repair.
 
 This fixture lives outside `.agents/skills/` on purpose. Anything named
 `SKILL.md` inside `.agents/skills/` is counted as a bundle skill by the repo
-tooling, and the audit that pins the 246 bundle / 258 repo skill counts would
+tooling, and the audit that pins the 254 bundle / 266 repo skill counts would
 treat a fixture skill as a real one.
 
 Regenerate the lock entry after editing the reduced skill file:

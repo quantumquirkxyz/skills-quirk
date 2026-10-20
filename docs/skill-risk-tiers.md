@@ -1,6 +1,6 @@
 # Skill risk tiers T0–T3
 
-Source: `docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/08-backlog-priorizado.md` (`BL-45`) and `07-roadmap-fases.md` (`M0.6`).
+Source: `BL-45` and `M0.6` from the 2026-10-12 research pack, which is no longer shipped in this repository. This page is the current operating source of truth for the tier definitions.
 
 These tiers classify the operational risk of a canonical skill. They are separate from the existing frontmatter `trustTier` field; `trustTier` describes trust posture, while these T0–T3 tiers describe required controls for execution and publication.
 

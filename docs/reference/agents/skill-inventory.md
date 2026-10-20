@@ -19,4 +19,4 @@ This page records the inventory contract for the quirk Skills bundle without dup
 
 ## Maintenance Rule
 
-Do not maintain a full 258-row skill table by hand in this file. Regenerate projections from the registry and filesystem, then use this page as the stable pointer to the generated inventory sources.
+Do not maintain a full 266-row skill table by hand in this file. Regenerate projections from the registry and filesystem, then use this page as the stable pointer to the generated inventory sources.
