@@ -309,6 +309,11 @@ export class SkillRunSession {
     this.promptVersion = nonEmptyString(opts.promptVersion) ?? DEFAULT_PROMPT_VERSION;
     this.model = isPlainObject(opts.model) ? opts.model : null;
     this.bridge = opts.bridge === true;
+    // Wall clocks can step backwards (NTP correction, VM pause). A session
+    // still has to emit a monotonic trace, so every event timestamp is the
+    // maximum of the clock reading and the previous event. Tests inject a
+    // clock to exercise the regression deterministically.
+    this.clock = typeof opts.clock === 'function' ? opts.clock : () => Date.now();
     this.records = [];
     this.lastSpanId = null;
     this.lastEmitMs = 0;
@@ -323,7 +328,10 @@ export class SkillRunSession {
   }
 
   async append(spec) {
-    const partial = { traceId: this.traceId, ...spec };
+    const explicitTs = nonEmptyString(spec?.ts);
+    const nowMs = this.clock();
+    const ts = explicitTs ?? new Date(Math.max(nowMs, this.lastEmitMs)).toISOString();
+    const partial = { traceId: this.traceId, ...spec, ts };
     const built = record(partial);
     this.records.push(built);
     this.lastSpanId = built.spanId;
@@ -340,7 +348,7 @@ export class SkillRunSession {
     const overrides = isPlainObject(extra) ? extra : {};
     this.skill = nonEmptyString(skill) ?? this.skill;
     this.started = true;
-    this.startedAtMs = Date.now();
+    this.startedAtMs = this.clock();
     this.lastEmitMs = this.startedAtMs;
     return this.append({
       ...overrides,
@@ -361,12 +369,13 @@ export class SkillRunSession {
     if (!this.started) {
       await this.start(overrides.skill ?? this.options.skill, overrides.inputHash);
     }
-    const now = Date.now();
+    const now = this.clock();
     const spanId = crypto.randomUUID();
     const parentSpanId = this.lastSpanId ?? this.rootSpanId;
     const durationMs = overrides.durationMs ?? (this.lastEmitMs === 0 ? 0 : Math.max(0, now - this.lastEmitMs));
     return this.append({
       ...overrides,
+      ts: new Date(Math.max(now, this.lastEmitMs)).toISOString(),
       spanId,
       parentSpanId,
       event,
@@ -380,7 +389,7 @@ export class SkillRunSession {
 
   elapsedMs() {
     if (this.startedAtMs === 0) return 0;
-    return Math.max(0, (this.endedAtMs || Date.now()) - this.startedAtMs);
+    return Math.max(0, (this.endedAtMs || this.clock()) - this.startedAtMs);
   }
 
   async finish(verdict = 'pass', extra = {}) {
@@ -422,7 +431,7 @@ export class SkillRunSession {
       }
     }
     const startedAt = new Date(this.startedAtMs).toISOString();
-    const completedAt = new Date(this.endedAtMs || Date.now()).toISOString();
+    const completedAt = new Date(this.endedAtMs || this.clock()).toISOString();
     const runPath = await recordExecution({
       repoRoot: this.repoRoot,
       skill: this.skill,
