@@ -7,7 +7,7 @@
 # quirk Skills
 
 <p align="center">
-  <img src="tooling/assets/quirk-8bit-banner.svg" alt="Quirk Skills 8-bit animated banner" width="100%" />
+  <img src="tooling/assets/quirk-animated-header.svg" alt="Quirk Skills — clarify, review, ship" width="100%" />
 </p>
 
 <p align="center">

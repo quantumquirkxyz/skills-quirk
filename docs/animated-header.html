@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Quirk Skills — Animated Header</title>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <style>
+      :root {
+        --ink: #03060d;
+        --surface: #070b1b;
+        --line: #273449;
+        --text: #f3f5fa;
+        --green: #20c96b;
+        --cyan: #35c5f4;
+        --yellow: #ffd21f;
+        --blue-dark: #171f32;
+        --pixel: 8px;
+        --frame-gap: clamp(14px, 2.2vw, 28px);
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace;
+        --step: steps(8, end);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: clamp(12px, 3vw, 40px);
+        overflow-x: hidden;
+        color: var(--text);
+        background: var(--ink);
+        font-family: var(--mono);
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .demo {
+        width: min(1280px, 100%);
+      }
+
+      .header {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: 100%;
+        min-height: 260px;
+        aspect-ratio: 4 / 1;
+        overflow: hidden;
+        border: 1px solid transparent;
+        background: var(--surface);
+      }
+
+      .header::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        opacity: 0.42;
+        background-image:
+          linear-gradient(var(--blue-dark) 1px, transparent 1px),
+          linear-gradient(90deg, var(--blue-dark) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+      }
+
+      .header::after {
+        position: absolute;
+        inset: 9px;
+        z-index: -1;
+        content: "";
+        border: 1px solid rgba(39, 52, 73, 0.72);
+      }
+
+      .trace {
+        position: absolute;
+        top: 9px;
+        left: 9px;
+        width: calc(100% - 18px);
+        height: 2px;
+        background: var(--cyan);
+        transform-origin: left;
+      }
+
+      .frame-edge {
+        position: absolute;
+        background: var(--line);
+        transform-origin: left top;
+      }
+
+      .frame-edge--top,
+      .frame-edge--bottom {
+        left: var(--frame-gap);
+        width: calc(100% - (var(--frame-gap) * 2));
+        height: 2px;
+      }
+
+      .frame-edge--top {
+        top: var(--frame-gap);
+      }
+
+      .frame-edge--bottom {
+        bottom: var(--frame-gap);
+      }
+
+      .frame-edge--left,
+      .frame-edge--right {
+        top: var(--frame-gap);
+        width: 2px;
+        height: calc(100% - (var(--frame-gap) * 2));
+      }
+
+      .frame-edge--left {
+        left: var(--frame-gap);
+      }
+
+      .frame-edge--right {
+        right: var(--frame-gap);
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        margin: calc(var(--frame-gap) + 10px) calc(var(--frame-gap) + 14px) 0;
+        color: #8591a4;
+        font-size: clamp(0.48rem, 0.75vw, 0.64rem);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .replay {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 28px;
+        padding: 5px 8px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        color: #a9b3c2;
+        background: var(--ink);
+        cursor: pointer;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .replay::before {
+        width: 6px;
+        height: 6px;
+        content: "";
+        background: var(--green);
+      }
+
+      .replay:hover {
+        color: var(--text);
+        border-color: var(--cyan);
+      }
+
+      .replay:focus-visible {
+        outline: 2px solid var(--yellow);
+        outline-offset: 3px;
+      }
+
+      .core {
+        display: grid;
+        grid-template-columns: minmax(90px, 1fr) minmax(0, 2.35fr) minmax(90px, 1fr);
+        align-items: center;
+        gap: clamp(12px, 2vw, 34px);
+        min-height: 0;
+        padding: 4px calc(var(--frame-gap) + 30px) 0;
+      }
+
+      .node-field {
+        display: grid;
+        grid-template-columns: repeat(4, var(--pixel));
+        gap: var(--pixel);
+        justify-self: center;
+      }
+
+      .node-field--right {
+        transform: rotate(180deg);
+      }
+
+      .node {
+        width: var(--pixel);
+        height: var(--pixel);
+        opacity: 0.28;
+        background: var(--line);
+      }
+
+      .node--green {
+        background: var(--green);
+      }
+
+      .node--cyan {
+        background: var(--cyan);
+      }
+
+      .node--yellow {
+        background: var(--yellow);
+      }
+
+      .identity {
+        display: grid;
+        grid-template-columns: auto minmax(0, auto) auto;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(13px, 2vw, 26px);
+        min-width: 0;
+        text-align: center;
+      }
+
+      .pixel-mark {
+        display: grid;
+        grid-template-columns: repeat(4, 5px);
+        grid-template-rows: repeat(5, 5px);
+        gap: 3px;
+        width: 29px;
+        height: 37px;
+      }
+
+      .pixel-mark--right {
+        transform: scaleX(-1);
+      }
+
+      .mark-pixel {
+        background: transparent;
+      }
+
+      .mark-pixel:nth-child(1),
+      .mark-pixel:nth-child(2),
+      .mark-pixel:nth-child(5),
+      .mark-pixel:nth-child(9),
+      .mark-pixel:nth-child(13),
+      .mark-pixel:nth-child(17),
+      .mark-pixel:nth-child(18) {
+        background: var(--cyan);
+      }
+
+      .mark-pixel:nth-child(11) {
+        background: var(--yellow);
+      }
+
+      .wordmark {
+        min-width: 0;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--text);
+        font-size: clamp(2rem, 5.1vw, 4.05rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.055em;
+        white-space: nowrap;
+        text-shadow: 4px 4px 0 var(--blue-dark);
+      }
+
+      .char {
+        display: inline-block;
+        min-width: 0.58em;
+      }
+
+      .char--space {
+        min-width: 0.46em;
+      }
+
+      .tagline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(8px, 1.25vw, 18px);
+        margin: clamp(12px, 1.7vw, 19px) 0 0;
+        color: #b7c0ce;
+        font-size: clamp(0.56rem, 1.05vw, 0.84rem);
+        line-height: 1.4;
+        letter-spacing: clamp(0.1em, 0.35vw, 0.22em);
+        white-space: nowrap;
+      }
+
+      .tagline__divider {
+        width: 5px;
+        height: 5px;
+        background: var(--line);
+      }
+
+      .tagline span:nth-child(1) {
+        color: var(--green);
+      }
+
+      .tagline span:nth-child(3) {
+        color: var(--cyan);
+      }
+
+      .tagline span:nth-child(5) {
+        color: var(--yellow);
+      }
+
+      .pipeline-wrap {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 12px;
+        margin: 0 calc(var(--frame-gap) + 30px) calc(var(--frame-gap) + 13px);
+        color: #778398;
+        font-size: clamp(0.44rem, 0.65vw, 0.58rem);
+        letter-spacing: 0.12em;
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: clamp(3px, 0.55vw, 8px);
+        height: 8px;
+      }
+
+      .segment {
+        opacity: 0.28;
+        background: var(--line);
+        transform-origin: left;
+      }
+
+      .segment:nth-child(-n + 4) {
+        background: var(--green);
+      }
+
+      .segment:nth-child(n + 5):nth-child(-n + 8) {
+        background: var(--cyan);
+      }
+
+      .segment:nth-child(n + 9) {
+        background: var(--yellow);
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 7px;
+        height: 10px;
+        margin-left: 7px;
+        background: var(--green);
+        vertical-align: -1px;
+      }
+
+      .js .trace {
+        transform: scaleX(0);
+      }
+
+      .js .frame-edge--top,
+      .js .frame-edge--bottom {
+        transform: scaleX(0);
+      }
+
+      .js .frame-edge--left,
+      .js .frame-edge--right {
+        transform: scaleY(0);
+      }
+
+      .js .node,
+      .js .mark-pixel {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      .js .char {
+        opacity: 0.16;
+        transform: translateY(8px);
+      }
+
+      .js .tagline > *,
+      .js .pipeline-wrap > span,
+      .js .segment {
+        opacity: 0;
+      }
+
+      .phase-init .trace {
+        transform: scaleX(1);
+        transition: transform 720ms var(--step);
+      }
+
+      .phase-init .frame-edge--top {
+        transform: scaleX(1);
+        transition: transform 620ms 180ms var(--step);
+      }
+
+      .phase-init .frame-edge--right {
+        transform: scaleY(1);
+        transition: transform 280ms 760ms steps(4, end);
+      }
+
+      .phase-init .frame-edge--bottom {
+        transform: scaleX(1);
+        transform-origin: right;
+        transition: transform 620ms 940ms var(--step);
+      }
+
+      .phase-init .frame-edge--left {
+        transform: scaleY(1);
+        transform-origin: bottom;
+        transition: transform 280ms 1480ms steps(4, end);
+      }
+
+      .phase-assemble .node,
+      .phase-assemble .mark-pixel {
+        opacity: 1;
+        transform: scale(1);
+        transition:
+          opacity 90ms calc(var(--i) * 70ms) linear,
+          transform 180ms calc(var(--i) * 70ms) steps(2, end);
+      }
+
+      .phase-assemble .node:not(.node--green, .node--cyan, .node--yellow) {
+        opacity: 0.42;
+      }
+
+      .phase-title .char {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 110ms calc(var(--i) * 48ms) linear,
+          transform 220ms calc(var(--i) * 48ms) steps(3, end);
+      }
+
+      .phase-flow .tagline > * {
+        opacity: 1;
+        transition: opacity 160ms calc(var(--i) * 120ms) linear;
+      }
+
+      .phase-flow .pipeline-wrap > span {
+        opacity: 1;
+        transition: opacity 180ms 120ms linear;
+      }
+
+      .phase-flow .segment {
+        opacity: 0.92;
+        transition: opacity 120ms calc(var(--i) * 90ms) linear;
+      }
+
+      .is-resting .cursor {
+        animation: cursor-blink 1.8s steps(1, end) infinite;
+      }
+
+      .is-resting .node--green:nth-child(5),
+      .is-resting .node--cyan:nth-child(10) {
+        animation: node-breathe 4.2s steps(2, end) infinite;
+      }
+
+      @keyframes cursor-blink {
+        0%,
+        64% {
+          opacity: 1;
+        }
+        65%,
+        100% {
+          opacity: 0.3;
+        }
+      }
+
+      @keyframes node-breathe {
+        0%,
+        72%,
+        100% {
+          opacity: 0.55;
+        }
+        78%,
+        92% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 700px) {
+        :root {
+          --frame-gap: 12px;
+        }
+
+        body {
+          padding: 8px;
+        }
+
+        .header {
+          min-height: 238px;
+          aspect-ratio: auto;
+        }
+
+        .topline {
+          margin-inline: calc(var(--frame-gap) + 8px);
+        }
+
+        .topline > span {
+          display: none;
+        }
+
+        .core {
+          grid-template-columns: 1fr;
+          padding: 12px calc(var(--frame-gap) + 10px) 4px;
+        }
+
+        .node-field {
+          display: none;
+        }
+
+        .identity {
+          gap: clamp(8px, 3vw, 16px);
+        }
+
+        .pixel-mark {
+          grid-template-columns: repeat(4, 4px);
+          grid-template-rows: repeat(5, 4px);
+          gap: 2px;
+          width: 22px;
+          height: 28px;
+        }
+
+        h1 {
+          font-size: clamp(1.42rem, 7.2vw, 2.45rem);
+          letter-spacing: 0.02em;
+          text-shadow: 2px 2px 0 var(--blue-dark);
+        }
+
+        .tagline {
+          gap: clamp(5px, 2vw, 10px);
+          font-size: clamp(0.47rem, 2.25vw, 0.67rem);
+          letter-spacing: 0.06em;
+        }
+
+        .pipeline-wrap {
+          grid-template-columns: 1fr;
+          gap: 7px;
+          margin-inline: calc(var(--frame-gap) + 10px);
+          text-align: center;
+        }
+
+        .pipeline-wrap > span:first-child {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation: none !important;
+          transition: none !important;
+        }
+
+        .js .trace,
+        .js .frame-edge,
+        .js .node,
+        .js .mark-pixel,
+        .js .char {
+          opacity: 1;
+          transform: none;
+        }
+
+        .js .node:not(.node--green, .node--cyan, .node--yellow) {
+          opacity: 0.42;
+        }
+
+        .js .tagline > *,
+        .js .pipeline-wrap > span,
+        .js .segment {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo" aria-labelledby="quirk-title">
+      <section class="header" data-header aria-label="Quirk Skills animated workflow header">
+        <div class="trace" aria-hidden="true"></div>
+        <span class="frame-edge frame-edge--top" aria-hidden="true"></span>
+        <span class="frame-edge frame-edge--right" aria-hidden="true"></span>
+        <span class="frame-edge frame-edge--bottom" aria-hidden="true"></span>
+        <span class="frame-edge frame-edge--left" aria-hidden="true"></span>
+
+        <div class="topline">
+          <span>QSK / WORKFLOW SYSTEM / 03</span>
+          <button class="replay" type="button" data-replay>Replay</button>
+        </div>
+
+        <div class="core">
+          <div class="node-field" data-nodes aria-hidden="true"></div>
+
+          <div class="identity">
+            <div class="pixel-mark" data-mark aria-hidden="true"></div>
+
+            <div class="wordmark">
+              <h1 id="quirk-title" data-title>QUIRK SKILLS</h1>
+              <p class="tagline" aria-label="Clarify, review, ship">
+                <span style="--i: 0">CLARIFY</span>
+                <i class="tagline__divider" style="--i: 1" aria-hidden="true"></i>
+                <span style="--i: 2">REVIEW</span>
+                <i class="tagline__divider" style="--i: 3" aria-hidden="true"></i>
+                <span style="--i: 4">SHIP</span>
+              </p>
+            </div>
+
+            <div class="pixel-mark pixel-mark--right" data-mark aria-hidden="true"></div>
+          </div>
+
+          <div class="node-field node-field--right" data-nodes aria-hidden="true"></div>
+        </div>
+
+        <div class="pipeline-wrap" aria-hidden="true">
+          <span>EXECUTION</span>
+          <div class="pipeline" data-pipeline></div>
+          <span>READY<span class="cursor"></span></span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const root = document.querySelector("[data-header]");
+        const title = root.querySelector("[data-title]");
+        const replay = root.querySelector("[data-replay]");
+        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const phaseClasses = ["phase-init", "phase-assemble", "phase-title", "phase-flow", "is-resting"];
+        const timers = new Set();
+        const frames = new Set();
+
+        const schedule = (callback, delay) => {
+          const timer = window.setTimeout(() => {
+            timers.delete(timer);
+            callback();
+          }, delay);
+          timers.add(timer);
+        };
+
+        const nextFrame = (callback) => {
+          const frame = window.requestAnimationFrame(() => {
+            frames.delete(frame);
+            callback();
+          });
+          frames.add(frame);
+        };
+
+        const clearSequence = () => {
+          timers.forEach(window.clearTimeout);
+          frames.forEach(window.cancelAnimationFrame);
+          timers.clear();
+          frames.clear();
+        };
+
+        const buildPixels = () => {
+          const nodeColors = ["green", "", "cyan", "", "", "yellow", "", "green", "cyan", "", "yellow", ""];
+          root.querySelectorAll("[data-nodes]").forEach((field, fieldIndex) => {
+            nodeColors.forEach((color, index) => {
+              const node = document.createElement("span");
+              node.className = `node${color ? ` node--${color}` : ""}`;
+              node.style.setProperty("--i", fieldIndex ? 11 - index : index);
+              field.append(node);
+            });
+          });
+
+          root.querySelectorAll("[data-mark]").forEach((mark) => {
+            for (let index = 0; index < 20; index += 1) {
+              const pixel = document.createElement("span");
+              pixel.className = "mark-pixel";
+              pixel.style.setProperty("--i", index % 8);
+              mark.append(pixel);
+            }
+          });
+
+          const pipeline = root.querySelector("[data-pipeline]");
+          for (let index = 0; index < 12; index += 1) {
+            const segment = document.createElement("span");
+            segment.className = "segment";
+            segment.style.setProperty("--i", index);
+            pipeline.append(segment);
+          }
+        };
+
+        const splitTitle = () => {
+          const text = title.textContent;
+          title.textContent = "";
+          title.setAttribute("aria-label", text);
+          [...text].forEach((character, index) => {
+            const span = document.createElement("span");
+            span.className = character === " " ? "char char--space" : "char";
+            span.setAttribute("aria-hidden", "true");
+            span.style.setProperty("--i", index);
+            span.textContent = character === " " ? "\u00a0" : character;
+            title.append(span);
+          });
+        };
+
+        const showStaticState = () => {
+          clearSequence();
+          root.classList.add(...phaseClasses);
+        };
+
+        const play = () => {
+          clearSequence();
+          root.classList.remove(...phaseClasses);
+
+          if (motionQuery.matches) {
+            showStaticState();
+            return;
+          }
+
+          nextFrame(() => {
+            nextFrame(() => {
+              root.classList.add("phase-init");
+              schedule(() => root.classList.add("phase-assemble"), 1180);
+              schedule(() => root.classList.add("phase-title"), 2180);
+              schedule(() => root.classList.add("phase-flow"), 3320);
+              schedule(() => root.classList.add("is-resting"), 4680);
+            });
+          });
+        };
+
+        const handleMotionChange = () => play();
+        const destroy = () => {
+          clearSequence();
+          replay.removeEventListener("click", play);
+          motionQuery.removeEventListener("change", handleMotionChange);
+          window.removeEventListener("pagehide", destroy);
+        };
+
+        buildPixels();
+        splitTitle();
+        replay.addEventListener("click", play);
+        motionQuery.addEventListener("change", handleMotionChange);
+        window.addEventListener("pagehide", destroy);
+        play();
+      })();
+    </script>
+  </body>
+</html>
