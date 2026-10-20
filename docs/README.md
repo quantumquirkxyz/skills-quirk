@@ -17,3 +17,4 @@ This repository follows the [Diátaxis](https://diataxis.fr/) framework for tech
 - **Ready to install?** See [how-to/adoption.md](how-to/adoption.md) or [how-to/installation.md](how-to/installation.md).
 - **Looking up a skill?** Browse [reference/agents/skills-map.md](reference/agents/skills-map.md).
 - **Understanding the method?** Read [explanation/quirk-method.md](explanation/quirk-method.md).
+- **Planning the next major version?** Read the [3.0.0 gap analysis and v4 roadmap](research/2026-10-19-skill-lab-v3-gap-analysis-and-v4-roadmap.md).

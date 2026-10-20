@@ -8,11 +8,29 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
-## [Unreleased]
+## [3.0.0] - 2026-10-19
 
-Implements the 2026 ecosystem gap analysis (agentskills.io compliance,
-agent-native primitives, self-improvement, context engineering, and
-ecosystem distribution).
+Version 3.0.0 rolls up the accumulated Unreleased work into a single
+major bundle release: the 2026 ecosystem gap analysis (agentskills.io
+compliance, agent-native primitives, self-improvement, context
+engineering, and ecosystem distribution) plus aligned bundle metadata.
+
+### Release
+
+- `VERSION`, `package.json`, `registry.yaml`, `skills.json`, and the
+  README badge now agree on `3.0.0`.
+- Registry projections (`CATALOG.md`, `llms.txt`,
+  `.claude-plugin/marketplace.json`, and the generated site data) are
+  regenerated from the updated registry.
+- Added the 3.0.0 gap analysis and v4 roadmap in
+  `docs/research/2026-10-19-skill-lab-v3-gap-analysis-and-v4-roadmap.md`.
+
+### Fixed
+
+- `skill-run-recorder.mjs` now clamps session event timestamps to be
+  monotonic, so a backwards wall-clock step (for example an NTP
+  correction) cannot emit a trace that fails the integrity check. A
+  deterministic injected-clock regression test covers the case.
 
 ### Added
 
