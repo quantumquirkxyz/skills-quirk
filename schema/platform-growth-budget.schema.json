@@ -4,7 +4,7 @@
   "title": "Platform Growth Budget",
   "description": "Ceiling for .agents/skills/platform tooling size, enforced by platform/tests/platform-growth-budget.test.mjs.",
   "type": "object",
-  "required": ["maxLoc", "measuredAt", "measuredLoc", "remediation"],
+  "required": ["maxLoc", "measuredAt", "measuredLoc", "reviewTriggers", "remediation"],
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
@@ -12,7 +12,12 @@
     "maxLoc": { "type": "integer", "minimum": 1 },
     "measuredAt": { "type": "string", "format": "date" },
     "measuredLoc": { "type": "integer", "minimum": 0 },
-    "reviewBy": { "type": "string", "format": "date" },
+    "reviewTriggers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
     "remediation": { "type": "string", "minLength": 1 }
   }
 }

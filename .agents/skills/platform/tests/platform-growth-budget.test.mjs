@@ -27,6 +27,10 @@ test('platform tooling stays inside its published growth budget', () => {
   assert.equal(typeof budget.maxLoc, 'number', 'budget must declare a numeric maxLoc');
   assert.ok(budget.maxLoc > 0, 'budget must declare a positive maxLoc');
   assert.match(budget.remediation, /\S/, 'budget must declare what to do when exceeded');
+  assert.ok(Array.isArray(budget.reviewTriggers) && budget.reviewTriggers.length > 0,
+    'budget must declare event-based review triggers');
+  assert.equal('reviewBy' in budget, false,
+    'growth budgets use event-based triggers instead of a date that silently expires');
 
   assert.ok(
     measured <= budget.maxLoc,
