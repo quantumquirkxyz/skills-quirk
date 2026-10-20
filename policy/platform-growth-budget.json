@@ -3,7 +3,7 @@
   "description": "Ceiling for platform tooling size. Counts every .mjs file under .agents/skills/platform, tests included. When the measurement exceeds maxLoc, split validators from runtime instead of raising the number.",
   "maxLoc": 40000,
   "measuredAt": "2026-10-20",
-  "measuredLoc": 36146,
+  "measuredLoc": 36214,
   "reviewTriggers": [
     "measured LOC reaches 90% of maxLoc",
     "a release changes platform module boundaries",
