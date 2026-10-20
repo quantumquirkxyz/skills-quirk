@@ -7,6 +7,13 @@
 evals/results/mock/
 node_modules/
 .opencode/goals/
+# On-demand native agent views. `.agents/skills/` is canonical and
+# `.claude/skills/` is the only committed compatibility projection.
+.cursor/skills/
+.gemini/skills/
+.github/skills/
+.opencode/skills/
+.windsurf/skills/
 site/dist/
 .skill-sandbox/
 .DS_Store
