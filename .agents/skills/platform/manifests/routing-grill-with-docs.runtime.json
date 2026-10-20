@@ -2,7 +2,7 @@
   "skill": "routing/grill-with-docs",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "e4e06788b0eec900bd47f6d95328f527084a292d17ff480bfb7a8c65b2e57e12",
+  "frontmatterHash": "7dc4965b4fd0b0b4697c2b6c56b5e720fb246cf8dd635db8d40e09d1f86431a7",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -27,8 +27,10 @@
     "sideEffects": [
       "write-docs"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-docs"
+    ],
     "risk": "low",
     "trustTier": 2
   },

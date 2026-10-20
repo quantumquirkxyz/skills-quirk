@@ -109,6 +109,7 @@ const checks = [
   ['node', ['.agents/skills/platform/validate-skills.mjs']],
   ['node', ['.agents/skills/platform/validate-traceability.mjs']],
   ['node', ['.agents/skills/platform/audit-semantics.mjs']],
+  ['node', ['.agents/skills/platform/docs-links.mjs', '--json']],
   ['node', ['.agents/skills/platform/evaluate-scenarios.mjs']],
   ['node', ['.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
   ['node', ['--check', '.agents/skills/platform/audit-semantics.mjs']],

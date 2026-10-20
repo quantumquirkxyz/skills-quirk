@@ -437,6 +437,16 @@ describe('SkillRunSession', () => {
     assertSinkUnchanged();
   });
 
+  test('the memory sink is a no-op, not a file named memory', async () => {
+    const scratch = makeScratch('memory-sink');
+    const session = createSession({ repoRoot: scratch, sink: 'memory', skill: 'platform/skill-run-test' });
+    await session.start('platform/skill-run-test');
+    await session.emit('tool.called', { tools: [{ name: 'Read', durationMs: 1 }] });
+    const summary = await session.finish('pass');
+    assert.equal(summary.runPath, null);
+    assert.equal(fs.existsSync(path.join(scratch, 'memory')), false);
+  });
+
   test('session timestamps stay monotonic when the wall clock steps backwards', async () => {
     const scratch = makeScratch('clock');
     const base = Date.parse('2026-10-20T04:27:41.000Z');

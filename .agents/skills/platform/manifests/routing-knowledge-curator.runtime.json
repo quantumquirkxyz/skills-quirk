@@ -2,7 +2,7 @@
   "skill": "routing/knowledge-curator",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f9c7adfc31f98fe84386fd8c173b19c7494d143415dfaec8cb6e72c0678af2d7",
+  "frontmatterHash": "54af04b0fb070a7890e16664ac957a79dc7180a601ae260c45dfb83ad75f4842",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,8 +29,10 @@
     "sideEffects": [
       "write-docs"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-docs"
+    ],
     "risk": "low",
     "trustTier": 2
   },

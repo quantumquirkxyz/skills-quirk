@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-template-generator",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "19267f0f85d22b27abf8ad56597be84d491d20627b7c3f3fc07a5a688f875e68",
+  "frontmatterHash": "6975400a2ab920dc42857ebfd405dc85f3e5a777c42af9371d78a874470f5920",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,8 +29,10 @@
     "sideEffects": [
       "write-files"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "low",
     "trustTier": 2
   },

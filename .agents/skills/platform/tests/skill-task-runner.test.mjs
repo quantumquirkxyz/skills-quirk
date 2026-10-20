@@ -19,6 +19,7 @@ import {
   snapshotForbidden,
   resolveCommand,
   runTask,
+  completionTimestamp,
 } from '../scripts/run-skill-task.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -87,6 +88,14 @@ test('listTasks reports every task file', () => {
     assert.equal(entry.parseError, null);
   }
   assert.ok(tasks.map((entry) => entry.id).includes(SIMPLEST_TASK));
+});
+
+test('completionTimestamp never places completedAt before startedAt', () => {
+  const startedAt = new Date('2026-10-20T04:28:04.527Z');
+  assert.equal(completionTimestamp(startedAt, -5000), startedAt.toISOString());
+  assert.equal(completionTimestamp(startedAt, 0), startedAt.toISOString());
+  assert.equal(completionTimestamp(startedAt.getTime(), 2500), '2026-10-20T04:28:07.027Z');
+  assert.equal(completionTimestamp(startedAt, Number.NaN), startedAt.toISOString());
 });
 
 test('validateTask rejects a malformed task', () => {

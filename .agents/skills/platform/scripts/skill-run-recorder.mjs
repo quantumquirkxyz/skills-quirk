@@ -283,6 +283,11 @@ function normalizeSink(sink, repoRoot) {
       return typeof written === 'string' ? written : null;
     };
   }
+  // "memory" is the no-op sentinel, not a relative file path. It must be
+  // checked before the generic string branch, otherwise every caller that
+  // asks to keep a session in memory appends to a file literally named
+  // "memory" in the working directory.
+  if (sink === 'memory') return async () => null;
   if (typeof sink === 'string' && sink.trim() !== '') {
     const target = path.resolve(sink);
     return async (record_) => {
@@ -291,7 +296,6 @@ function normalizeSink(sink, repoRoot) {
       return target;
     };
   }
-  if (sink === 'memory') return async () => null;
   return async (record_) => appendSkillRun(record_, repoRoot);
 }
 

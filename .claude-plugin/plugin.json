@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "A portable, validated skills bundle for standard project development with fixtures, quality gates, and multi-agent support.",
-    "version": "2.5.0",
+    "version": "3.0.0",
     "license": "MIT",
     "repository": "https://github.com/quantumquirkxyz/skills-quirk"
   },
