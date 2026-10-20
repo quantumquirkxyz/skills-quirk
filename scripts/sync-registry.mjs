@@ -9,7 +9,6 @@ const repoRoot = process.cwd();
 const registryPath = path.join(repoRoot, 'registry.yaml');
 const claudePluginDir = path.join(repoRoot, '.claude-plugin');
 const claudeSkillsDir = path.join(repoRoot, '.claude', 'skills');
-const opencodeDir = path.join(repoRoot, '.opencode');
 const docsDir = path.join(repoRoot, 'docs');
 const agentsSkillsDir = path.join(repoRoot, '.agents', 'skills');
 
