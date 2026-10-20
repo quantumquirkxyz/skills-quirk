@@ -304,6 +304,30 @@ test('the simplest task passes end to end in an empty sandbox and cleans up', as
   assert.deepStrictEqual(report.forbiddenViolations, []);
 });
 
+test('every shipped task passes end to end in a sandbox', async () => {
+  const files = fs.readdirSync(TASKS_DIR).filter((name) => name.endsWith('.json')).sort();
+  assert.ok(files.length >= 3, `expected shipped tasks, found ${files.length}`);
+
+  for (const file of files) {
+    const taskFile = path.join(TASKS_DIR, file);
+    const { task } = loadTask(taskFile);
+    const report = await runTask(task, { sandbox: 'tmpdir', repoRoot: REPO_ROOT, taskFile });
+
+    assert.equal(
+      report.status,
+      'pass',
+      `${task.id} ended ${report.status}: ${JSON.stringify({
+        checks: report.stateChecks.filter((check) => !check.ok),
+        errors: report.errors,
+        blocked: report.blocked,
+      })}`
+    );
+    assert.equal(report.cleanup, 'removed', `${task.id} left its workspace behind`);
+    assert.equal(fs.existsSync(report.workspace), false, `${task.id} workspace still exists`);
+    assert.deepStrictEqual(report.forbiddenViolations, [], `${task.id} touched a forbidden path`);
+  }
+});
+
 test('a failing state check is a fail, never an error', async () => {
   const task = {
     id: 'task-state-failure-probe',
