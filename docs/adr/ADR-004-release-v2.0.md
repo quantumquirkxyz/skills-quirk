@@ -1,7 +1,10 @@
 # ADR-004: quirk Skills Release v2.0
 
 ## Status
-Proposed
+Superseded by the v3.0.0 release (`VERSION`, `package.json`, `registry.yaml`).
+
+> Historical record. The v2.0 plan below shipped as v3.0.0; it is kept for
+> provenance and must not be read as the current release decision.
 
 ## Context
 After 8 waves of modernization (artifact-first design, state machine workflows, shift-left gates, MCP-native, prompt management), the bundle has accumulated enough breaking changes to warrant a major version bump.
