@@ -2,16 +2,32 @@
   "$schema": "../schema/tool-risk-budget.schema.json",
   "version": 1,
   "generatedFor": "skills-quirk",
-  "phase": "Fase 0",
-  "source": "docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/06-especificaciones-sdd.md#spec-01--política-de-contención-para-skills-canónicos",
+  "phase": "Release target",
+  "source": "docs/tool-risk-debt.md",
   "budgets": {
-    "errors": 84,
-    "warnings": 999
+    "errors": 0,
+    "warnings": 0
   },
   "targets": [
-    { "phase": "Fase 0", "errors": 84, "note": "baseline gate: existing debt is visible and capped" },
-    { "phase": "Fase 1", "errors": 20, "note": "first remediation batch documents untrusted content handling" },
-    { "phase": "Fase 2", "errors": 10, "note": "operational security gate tightens before model-backed evals" },
-    { "phase": "Release target", "errors": 0, "note": "no error-severity tool-risk debt remains" }
+    {
+      "phase": "Fase 0",
+      "errors": 84,
+      "note": "baseline gate: existing debt is visible and capped"
+    },
+    {
+      "phase": "Fase 1",
+      "errors": 20,
+      "note": "first remediation batch documents untrusted content handling"
+    },
+    {
+      "phase": "Fase 2",
+      "errors": 10,
+      "note": "operational security gate tightens before model-backed evals"
+    },
+    {
+      "phase": "Release target",
+      "errors": 0,
+      "note": "no error-severity tool-risk debt remains"
+    }
   ]
 }

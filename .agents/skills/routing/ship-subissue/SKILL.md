@@ -40,6 +40,10 @@ clauses:
 reloadPolicy: always
 ---
 
+## MCP Exposure
+
+This high-trust workflow is not exposed over MCP; it requires explicit local approval for merge, issue-closing, and project updates.
+
 ## Contract
 
 - Input: skill invocation with the user's request and available context.

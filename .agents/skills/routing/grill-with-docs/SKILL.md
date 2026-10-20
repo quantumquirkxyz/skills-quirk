@@ -23,8 +23,8 @@ fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: true
+approvalFor: ["write-docs"]
 ---
 
 ## Contract

@@ -23,8 +23,8 @@ fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: true
+approvalFor: ["write-files"]
 ---
 
 ## Contract

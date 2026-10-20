@@ -1,24 +1,24 @@
 # Tool-risk debt budget
 
-Source: `docs/research/2026-10-12-laboratorio-de-skills-estado-del-arte/06-especificaciones-sdd.md` (`SPEC-01` and `SPEC-06`).
+Source: `SPEC-01` and `SPEC-06` from the 2026-10-12 research pack, which is no longer shipped in this repository. This page and `policy/tool-risk-budget.json` are the current operating source of truth.
 
-The bundle currently carries known tool-risk debt. The gate now treats that debt as a capped budget instead of report-only output:
+The previously reported tool-risk debt is remediated. The gate keeps the budget as a fail-closed regression guard:
 
 - Budget file: `policy/tool-risk-budget.json`
 - Enforced by: `node .agents/skills/platform/check-all.mjs`
-- Current baseline: **84 error-severity findings**, **0 warnings**
+- Current baseline: **0 error-severity findings**, **0 warnings**
 - Current dominant class: `untrusted-input-needs-documented-handling`
 
 ## Decreasing budget
 
 | Phase | Error budget | Meaning |
 |---|---:|---|
-| Fase 0 | 84 | Existing debt is visible, capped, and no regression is allowed. |
+| Fase 0 | 84 | Historical baseline before remediation. |
 | Fase 1 | 20 | First remediation batch documents untrusted content handling. |
 | Fase 2 | 10 | Operational security gate tightens before model-backed evals. |
 | Release target | 0 | No error-severity tool-risk debt remains. |
 
-To tighten the gate, reduce `policy/tool-risk-budget.json.budgets.errors` after remediation lands and the measured count is at or below the new target.
+The current budget is zero. Do not raise it to make a failing change pass; any exception requires a dated ADR or incident note.
 
 ## Operator rule
 

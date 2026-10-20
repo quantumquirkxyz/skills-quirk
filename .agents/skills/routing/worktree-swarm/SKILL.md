@@ -32,6 +32,7 @@ maxIterations: 1
 promptVersion: "1.0"
 artifactType: orchestration
 evaluators: [behavioral, regression, traceability]
+fixturesPath: .agents/skills/routing/worktree-swarm/behavioral-fixtures
 tags: [routing, git, github, worktree, multi-agent]
 compatibility: [implement, review-pr, plan-review-fixes, implement-review-fixes, publish-open-pr, ship-subissue]
 approvalRequired: true
