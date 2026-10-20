@@ -26,7 +26,7 @@
       "sourceType": "local"
     },
     "agent-memory": {
-      "hash": "9ee07dd16efbac8e6be066c0ea66c7cdc331c66534ba609a07ce4b20049a21f3",
+      "hash": "e2c1355a21ecf0552aacdfe8066a2217094b2941966c441853e6c8aeae52a261",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -131,7 +131,7 @@
       "sourceType": "local"
     },
     "browser-automation": {
-      "hash": "4f168797e78ff47f85ff4ca493ab869f168ab78aae368cc3e55458900249b9c8",
+      "hash": "2076c625f122e7fae8e94731b05d2885e6f4e5038208d1bb61ea16ca3327e175",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -206,7 +206,7 @@
       "sourceType": "local"
     },
     "context-compaction": {
-      "hash": "b9b948daa38fb5c46f730da3e24db672cb45eb437c34a4f7cc5b58d7253af23f",
+      "hash": "29f818d48d9410bd573ee6831aea7f63b04df8ca7c5575bde7d30dda4e49319f",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -346,7 +346,7 @@
       "sourceType": "local"
     },
     "diagnosing-bugs": {
-      "hash": "4404960703864b2ddf5887f6f67fba95be7a06f8b92f1ce5b4641af35e2b3657",
+      "hash": "aee94f0faa60516195d15f0aa59747510b153dd8066d416db36f3ebcc5bb0687",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -511,7 +511,7 @@
       "sourceType": "local"
     },
     "grill": {
-      "hash": "a0cfd1bd9be2584d5dddcd5bbe042b7e61c9755bfe67ba98c8b35a947950e7a4",
+      "hash": "13005eefa871ff2845c4f0196947324ab2aa8b8aaa42ef2077fc6b2ad66e1af8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1091,7 +1091,7 @@
       "sourceType": "local"
     },
     "skill-composition": {
-      "hash": "2ac0b315a89a8dc1027a67359adbf987176a2f8d929eef7685ff4e108a279d63",
+      "hash": "3208deeb41deb994a0efdbfe48a20efc6e4ec7013ce8b46b57030db5750d79de",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1151,7 +1151,7 @@
       "sourceType": "local"
     },
     "spec-driven-development": {
-      "hash": "c91c1df6e46a449156075422e7a0ada562ec25c1540528132a5e4c389fb0c647",
+      "hash": "61a2620734d611ce87cd4968b7b6ba5eb457ed97cd985fa4e358aa31c0df8cfa",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1301,7 +1301,7 @@
       "sourceType": "local"
     },
     "worktree-swarm": {
-      "hash": "a173787252febe8a5f255af7c600bb96023df8f77d29a6311ef97b04ff52008d",
+      "hash": "13195d057d5c165a5df3b76622ad25f18d35820e552e9f0bb24abe6b22f71c5c",
       "revision": "working-tree",
       "sourceType": "local"
     },

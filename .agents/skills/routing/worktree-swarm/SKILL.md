@@ -12,7 +12,7 @@ capabilities:
   - emit a machine-readable worktree manifest
 outputs:
   - type: object
-      name: IssueCopyManifest
+    name: IssueCopyManifest
     properties:
       ok: { type: boolean }
       manifestPath: { type: string }

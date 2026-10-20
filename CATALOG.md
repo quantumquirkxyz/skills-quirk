@@ -115,7 +115,7 @@
 |-------|---------|----------|------|------------|-------------|
 | [code-review](.agents/skills/delivery/code-review) | 2 | stable | medium | 3 | Review the changes since a fixed point (commit, branch, tag, or merge-base) a... |
 | [contribution-workflow-optimizer](.agents/skills/delivery/contribution-workflow-optimizer) | 1 | stable | low | 1 | Inspect changed Skills and recommend contribution improvements across standar... |
-| [diagnosing-bugs](.agents/skills/delivery/diagnosing-bugs) | 1 | stable | low | 1 | Diagnosis loop for hard bugs and performance regressions. Use when the user s... |
+| [diagnosing-bugs](.agents/skills/delivery/diagnosing-bugs) | 1 | stable | low | 1 | >- |
 | [implement](.agents/skills/delivery/implement) | 2 | stable | medium | 3 | Implement a piece of work based on a spec or set of tickets, or build a scope... |
 | [implement-review-fixes](.agents/skills/delivery/implement-review-fixes) | 1 | stable | medium | 3 | Read a GitHub PR remediation plan produced by plan-review-fixes, implement th... |
 | [loop-budget](.agents/skills/delivery/loop-budget) | 1 | experimental | low | 2 | Keep an agent loop inside its declared budget and end it with a typed verdict... |
@@ -354,7 +354,7 @@
 | [ask-to](.agents/skills/routing/ask-to) | 1 | stable | low | 1 | Ask which skill or flow fits your situation. A router over the skills in this... |
 | [capability-router](.agents/skills/routing/capability-router) | 1 | stable | low | 1 | Route work to the best matching Skill using declared capabilities and compati... |
 | [context-pack](.agents/skills/routing/context-pack) | 1 | stable | low | 1 | Build a minimal fresh context pack with ordered reads and provenance — for sc... |
-| [grill](.agents/skills/routing/grill) | 1 | stable | low | 1 | Alias for the quirk grilling flow. Use when the user says "grill" and wants a... |
+| [grill](.agents/skills/routing/grill) | 1 | stable | low | 1 | >- |
 | [grill-me](.agents/skills/routing/grill-me) | 1 | stable | low | 1 | A relentless interview to sharpen a plan or design. |
 | [grill-with-docs](.agents/skills/routing/grill-with-docs) | 1 | stable | low | 2 | A relentless interview to sharpen a plan or design, while creating docs (ADRs... |
 | [grilling](.agents/skills/routing/grilling) | 1 | stable | low | 1 | Grill the user relentlessly about a plan, decision, or idea. Use when the use... |

@@ -829,7 +829,7 @@
         },
         {
           "name": "diagnosing-bugs",
-          "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
+          "description": ">-",
           "category": "delivery",
           "version": "1",
           "maturity": "stable",
@@ -2805,7 +2805,7 @@
         },
         {
           "name": "grill",
-          "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+          "description": ">-",
           "category": "routing",
           "version": "1",
           "maturity": "stable",

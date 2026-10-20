@@ -78,7 +78,7 @@ npx skills-quirk add quirk-skills
 - [devops-feature-flags](./.agents/skills/devops/devops-feature-flags/SKILL.md) — Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks.
 - [devops-k8s-orchestration](./.agents/skills/devops/devops-k8s-orchestration/SKILL.md) — Design and configure Kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure.
 - [devops-terraform-iac](./.agents/skills/devops/devops-terraform-iac/SKILL.md) — Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.
-- [diagnosing-bugs](./.agents/skills/delivery/diagnosing-bugs/SKILL.md) — Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
+- [diagnosing-bugs](./.agents/skills/delivery/diagnosing-bugs/SKILL.md) — >-
 - [distributed-tracing](./.agents/skills/backend/distributed-tracing/SKILL.md) — Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).
 - [docs-adrs](./.agents/skills/docs/docs-adrs/SKILL.md) — Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.
 - [docs-knowledge-base](./.agents/skills/docs/docs-knowledge-base/SKILL.md) — Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules.
@@ -106,7 +106,7 @@ npx skills-quirk add quirk-skills
 - [graphic-design-photo-direction](./.agents/skills/graphic-design/graphic-design-photo-direction/SKILL.md) — Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.
 - [graphic-design-project-management](./.agents/skills/graphic-design/graphic-design-project-management/SKILL.md) — Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.
 - [graphic-design-tools](./.agents/skills/graphic-design/graphic-design-tools/SKILL.md) — Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.
-- [grill](./.agents/skills/routing/grill/SKILL.md) — Alias for the quirk grilling flow. Use when the user says "grill" and wants a relentless interview to sharpen a plan, decision, or design.
+- [grill](./.agents/skills/routing/grill/SKILL.md) — >-
 - [grill-me](./.agents/skills/routing/grill-me/SKILL.md) — A relentless interview to sharpen a plan or design.
 - [grill-with-docs](./.agents/skills/routing/grill-with-docs/SKILL.md) — A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
 - [grilling](./.agents/skills/routing/grilling/SKILL.md) — Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.

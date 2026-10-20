@@ -120,6 +120,7 @@ const checks = [
   ['node', ['.agents/skills/platform/loop-runner.mjs', '--demo', '--json']],
   ['node', ['.agents/skills/platform/idempotency.mjs', '--demo', '--intents-dir', idempotencyIntentsDir]],
   ['node', ['.agents/skills/platform/security-scan-skills.mjs', '--strict']],
+  ['node', ['.agents/skills/platform/evaluate-fixtures.mjs', '--json']],
   ['node', ['evals/run-routing.mjs', '--check']],
   ['node', testArgs(PLATFORM_TESTS_DIR)],
   ['node', ['.agents/skills/platform/validate-runtime-manifests.mjs', '--check', '--json']],

@@ -41,6 +41,7 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import { spawn, execFile } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { validateModelAdapter, validateModelResponse } from './adapter-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '..', '..');
@@ -652,7 +653,7 @@ export function createToolbox({ workspace, names = DEFAULT_TOOL_NAMES, limits = 
  * The key is read from the environment on every call and is kept out of the
  * returned object, so no record, plan, or transcript can carry it.
  */
-export function createModelClient(config = {}) {
+export function createModelClient(config = {}, externalAdapter = null) {
   const provider = asString(config.provider) ?? 'anthropic';
   const model = asString(config.model);
   const apiKeyEnv = asString(config.apiKeyEnv) ?? 'JUDGE_API_KEY';
@@ -669,7 +670,12 @@ export function createModelClient(config = {}) {
     return value;
   }
 
-  async function complete({ system, messages, tools }) {
+  async function complete(request) {
+    if (externalAdapter) {
+      const response = await externalAdapter.complete({ ...request, model, temperature, maxTokens });
+      return validateModelResponse(response);
+    }
+    const { system, messages, tools } = request;
     const key = readKey();
     if (!model) throw new Error('no model configured: pass --model <id> or set judgeModel in the judge config');
     if (!endpoint) throw new Error(`no endpoint configured for provider "${provider}"`);
@@ -758,7 +764,17 @@ export function createModelClient(config = {}) {
     };
   }
 
-  return { provider, model, endpoint, apiKeyEnv, complete };
+  return { provider: externalAdapter ? 'external-adapter' : provider, model, endpoint, apiKeyEnv, complete };
+}
+
+async function loadExternalModelAdapter(adapterPath) {
+  if (!adapterPath) return null;
+  const resolved = path.isAbsolute(adapterPath) ? adapterPath : path.resolve(repoRoot, adapterPath);
+  const module = await import(pathToFileURL(resolved).href);
+  const adapter = typeof module.createAdapter === 'function'
+    ? await module.createAdapter()
+    : module.default ?? module.adapter ?? module;
+  return validateModelAdapter(adapter);
 }
 
 function parseToolArguments(raw) {
@@ -998,7 +1014,7 @@ export async function runArmFromPlan(planPath) {
   if (!plan || typeof plan !== 'object') usageError(`arm plan not readable: ${planPath}`);
   const workspace = path.resolve(plan.workspace ?? process.cwd());
   const toolbox = createToolbox({ workspace, names: plan.tools ?? DEFAULT_TOOL_NAMES });
-  const client = createModelClient(plan.model ?? {});
+  const client = createModelClient(plan.model ?? {}, await loadExternalModelAdapter(plan.model?.adapter));
   const arm = plan.arm ?? {};
   let record;
   try {
@@ -1043,6 +1059,7 @@ async function launchArm({ fixture, file, mode, trial, skillBody, modelConfig, t
       apiKeyEnv: modelConfig.apiKeyEnv,
       temperature: modelConfig.temperature,
       maxTokens: modelConfig.maxTokens,
+      adapter: modelConfig.adapter,
     },
   };
   await fs.writeFile(plan.planPath, `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
@@ -1073,14 +1090,15 @@ async function loadJudgeConfig() {
 }
 
 function resolveModelConfig(judgeConfig) {
-  const provider = asString(args.provider) ?? asString(judgeConfig?.judgeProvider) ?? 'anthropic';
+  const adapter = asString(args.adapter) ?? asString(judgeConfig?.adapter);
+  const provider = asString(args.provider) ?? asString(judgeConfig?.judgeProvider) ?? (adapter ? 'external-adapter' : 'anthropic');
   const model = asString(args.model) ?? asString(judgeConfig?.judgeModel);
   const endpoint = asString(args.endpoint) ?? asString(judgeConfig?.endpoint)
     ?? (provider === 'anthropic' ? ANTHROPIC_ENDPOINT : null);
   const apiKeyEnv = asString(args['api-key-env']) ?? asString(judgeConfig?.apiKeyEnv) ?? 'JUDGE_API_KEY';
   const temperature = asNumber(args.temperature) ?? asNumber(judgeConfig?.temperature) ?? 0.1;
   const maxTokens = Math.max(1, Math.trunc(asNumber(args['max-tokens']) ?? MAX_OUTPUT_TOKENS));
-  return { provider, model, endpoint, apiKeyEnv, temperature, maxTokens };
+  return { provider, model, endpoint, apiKeyEnv, temperature, maxTokens, adapter };
 }
 
 function keyDefined(envName) {
@@ -1305,7 +1323,7 @@ async function modeRun() {
   // An operator-supplied arm command replaces the built-in provider loop, so the
   // key is only required when at least one arm still uses that loop.
   const usesBuiltInClient = customCommands['with-skill'] === null || customCommands.baseline === null;
-  if (usesBuiltInClient && !keyDefined(modelConfig.apiKeyEnv)) {
+  if (usesBuiltInClient && !modelConfig.adapter && !keyDefined(modelConfig.apiKeyEnv)) {
     fail(`${modelConfig.apiKeyEnv} is not set in the environment, so no provider session can run (export it, or use --dry-run to inspect the plan without a key)`);
   }
   if (!usesBuiltInClient) {
@@ -1457,7 +1475,8 @@ async function modeRun() {
 function printUsage() {
   console.log('usage: node evals/harness/run-ab.mjs --fixture evals/behavioral/<skill>.json [options]');
   console.log('  --trials <n>            trials per arm (default max(3, fixture.trials); floor 3)');
-  console.log('  --provider <id>         provider id (default from evals/judge/judge.config.json)');
+  console.log('  --provider <id>         provider label (optional with --adapter)');
+  console.log('  --adapter <path>        module exporting createAdapter() or complete(request)');
   console.log('  --model <id>            model snapshot id (default from the judge config)');
   console.log('  --endpoint <url>        provider messages endpoint (default from the judge config)');
   console.log('  --api-key-env <VAR>     environment variable holding the provider key');

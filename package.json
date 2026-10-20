@@ -20,6 +20,7 @@
     "evals:behavioral:mock": "node evals/run-behavioral.mjs --all",
     "audit:context": "node .agents/skills/platform/context-budget-auditor.mjs",
     "audit:cost": "node .agents/skills/platform/skill-lab.mjs cost",
+    "benchmark": "node .agents/skills/platform/benchmark-harness.mjs",
     "scan:skills": "node .agents/skills/platform/security-scan-skills.mjs",
     "traceability": "node .agents/skills/platform/validate-traceability.mjs",
     "mcp": "node .agents/skills/platform/mcp-server/mcp-skills-server.mjs",
