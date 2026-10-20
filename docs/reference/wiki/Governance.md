@@ -155,9 +155,9 @@ CONTEXT.md is the primary durable context file. It must remain at the repository
 
 > **Maintenance Rule:** This file is required. It must name the local domain vocabulary, project boundaries, and naming conventions. Skills must reference this context and avoid vocabulary from unrelated repositories.
 
-### 5.2 docs/reference/adr/ for ADRs
+### 5.2 docs/adr/ for ADRs
 
-Architecture Decision Records (ADRs) are stored under docs/reference/adr/ when the repository adopts formal architectural decisions. Each ADR documents:
+Architecture Decision Records (ADRs) are stored under `docs/adr/`. A consuming repository receives the template entry point at `docs/reference/adr/README.md`, and bundle-level decisions are recorded under `.agents/adr/`. Each ADR documents:
 
 - Decision context.
 - Considered alternatives.

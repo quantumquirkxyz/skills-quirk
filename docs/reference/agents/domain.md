@@ -5,7 +5,7 @@
 ```mermaid
 flowchart TD
     A[Repo root] --> B[CONTEXT.md]
-    A --> C[docs/reference/adr/]
+    A --> C[docs/adr/]
     C --> D[ADR files]
     B --> E[Primary durable context]
     D --> F[Architectural decisions]
@@ -16,7 +16,7 @@ flowchart TD
 ## Consumer rules
 
 - Keep `CONTEXT.md` at the repo root as the primary durable context file.
-- Keep ADRs under `docs/reference/adr/` when the repo adopts architectural decisions.
+- Keep ADRs under `docs/adr/`; a consuming repository starts from the template at `docs/reference/adr/README.md`.
 - Read durable docs before tactical ticket or implementation details when a skill depends on project vocabulary.
 
 ## Notes

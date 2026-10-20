@@ -1,14 +1,23 @@
 # ADRs
 
-Architecture Decision Records. Mandatory directory for durable design decisions.
+Architecture Decision Records. Entry point shipped to consuming repositories.
 
-Reference: `.agents/adr/README.md` (canonical ADR entry point).
-This directory (`docs/reference/adr/`) mirrors the repository-level design records.
+This directory is a **template surface**: the installer copies this README into a
+target repository that has no ADR convention yet. It does not hold this
+repository's decision records.
 
-Rules from `.agents/adr/README.md`:
-- Must be created when using `/grill-with-docs`.
-- Must reference `CONTEXT.md` vocabulary (now in repo root).
-- Must not contain placeholders after publication.
-- Must be reviewed before shipping.
+Where the records live here:
+
+| Path | Contents |
+|---|---|
+| `.agents/adr/` | Decisions about the bundle itself (frontmatter format, `adr: NNNN`) |
+| `docs/adr/` | Repository-level design records (`ADR-001` … `ADR-005`) |
+| `docs/reference/adr/` | This README only |
+
+Rules:
+- Record every durable design choice with context, decision, consequences, alternatives, and status.
+- Reference `CONTEXT.md` vocabulary.
+- Do not publish placeholders.
+- Review the record before shipping.
 
 Compatibility view: `.claude/skills/` is maintained as relative symlinks to `.agents/skills/` (see `.agents/AGENTS.md` and `README.md`).

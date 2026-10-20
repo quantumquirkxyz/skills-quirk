@@ -366,7 +366,7 @@ This wiki is part of the `quirk Skills` bundle. To contribute:
 1. Follow the [skills style guide](../../how-to/skill-style.md).
 2. Run `node .agents/skills/platform/check-all.mjs` after each change.
 3. Update `docs/reference/wiki/Home.md` if you add a new page to the wiki.
-4. Record design changes in `docs/reference/adr/`.
+4. Record design changes in `docs/adr/` (bundle-level decisions in `.agents/adr/`).
 
 ---
 

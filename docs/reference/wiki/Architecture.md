@@ -89,7 +89,8 @@ Defines the local vocabulary, conventions, ADRs, and method documentation that g
 | `docs/reference/agents/` | Work-item, issue-tracker, provenance inventory, routing, and skill-template reference. |
 | `docs/how-to/` | Adoption, installation, release, workflow, and skill-style guidance. |
 | `docs/explanation/` | Method, provenance, and explanatory material. |
-| `docs/reference/adr/` | Architecture Decision Records. |
+| `docs/adr/` | Repository-level Architecture Decision Records (`ADR-001` … `ADR-005`). |
+| `docs/reference/adr/` | ADR template entry point shipped to consuming repositories. |
 | `AUTHORSHIP.md` | Authorship and integrity of the bundle. |
 
 ### Detail
@@ -112,7 +113,7 @@ Defines the local vocabulary, conventions, ADRs, and method documentation that g
 - `docs/how-to/` contains adoption, installation, release, workflow, skill-style, and skill-lab guidance.
 - `docs/explanation/` contains method and provenance explanations.
   - `provenance-inventory.md`: provenance records.
-- `docs/reference/adr/` contains ADRs documenting architectural decisions.
+- `docs/adr/` contains the repository ADRs; `docs/reference/adr/` ships only the template README, and `.agents/adr/` records decisions about the bundle itself.
 
 ---
 
