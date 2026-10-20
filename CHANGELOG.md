@@ -36,8 +36,9 @@ This project follows semantic versioning once releases are cut:
 - `fix-compatibility-view.mjs` now validates the full view contract: one
   relative directory symlink per canonical skill, no domain aliases, no direct
   `SKILL.md` targets, and no missing skills. The view is repaired to 266/266.
-- Native Cursor, Gemini, Copilot, OpenCode, and Windsurf views were regenerated
-  to the 254-skill public projection.
+- Native Cursor, Gemini, Copilot, OpenCode, and Windsurf views are now ignored,
+  on-demand projections instead of 1,270 committed symlinks. Generate them with
+  `npm run views:native`; the committed `.claude/skills/` view remains intact.
 - Current documentation counts are 254 bundle / 266 repository skills and 1532
   adapters; removed-research references now point at stable documents.
 - Removed obsolete platform notes and the one-off 249-skill migration report;

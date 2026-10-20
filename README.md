@@ -214,7 +214,9 @@ flowchart LR
 - **Plugin system** — `.claude-plugin/plugin.json`
 - **Runtime hooks** — `hooks/hooks.json` (tool-risk PreToolUse guard, session-context)
 - **Subagents** — `.claude/agents/` (architect, explorer, reviewer, tester, implementer, doc-writer)
-- **Native agent views** — `.cursor/`, `.gemini/`, `.github/`, `.opencode/`, `.windsurf/` skill views
+- **On-demand native agent views** — generate local Cursor, Gemini, Copilot,
+  OpenCode, and Windsurf symlink views without committing duplicate projections:
+  `npm run views:native`
 
 </details>
 

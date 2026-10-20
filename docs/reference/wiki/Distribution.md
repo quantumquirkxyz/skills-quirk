@@ -678,11 +678,30 @@ npx skills-quirk sync --write
 
 ### OpenCode
 
-OpenCode consumes skills from .opencode/ or .claude/skills/. sync-registry can generate the compatible layout.
+OpenCode can consume the committed `.claude/skills/` compatibility view. To
+create its native local view, run:
 
-### Cursor / Codex
+```bash
+node .agents/skills/platform/project-agent-paths.mjs --write --view opencode
+```
 
-These IDEs consume skills from .claude/skills/ or the directory configured in their respective agent skills configuration. Symlinks guarantee parity.
+### Cursor / Gemini / GitHub Copilot / Windsurf
+
+These consumers can use `.claude/skills/` where supported, or an ignored native
+view generated on demand. The native views are not committed because they are
+deterministic symlink farms over `.agents/skills/`:
+
+```bash
+# Generate every native view
+npm run views:native
+
+# Or generate only one: cursor, gemini, copilot, opencode, windsurf
+npm run views:native -- --view cursor
+```
+
+Removing a generated native directory is safe; rerun the command to recreate it.
+`.agents/skills/` remains the only source of truth and `.claude/skills/` remains
+the committed compatibility view.
 
 ---
 
