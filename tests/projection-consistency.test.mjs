@@ -6,14 +6,14 @@ import { spawnSync } from 'node:child_process';
 
 const REPO_ROOT = process.cwd();
 
-// ── Invariant 1: consumer-facing bundle projection has 254 skills ──────────
-test('bundle projection contains 254 skills', () => {
+// ── Invariant 1: consumer-facing bundle projection has 255 skills ──────────
+test('bundle projection contains 255 skills', () => {
   const result = spawnSync('node', ['.agents/skills/platform/validate-skills.mjs'], {
     encoding: 'utf8',
   });
   assert.equal(result.status, 0, `validate-skills failed: ${result.stderr || result.stdout}`);
   const payload = JSON.parse(result.stdout);
-  assert.equal(payload.skills, 254, `Expected 254 bundle skills, got ${payload.skills}`);
+  assert.equal(payload.skills, 255, `Expected 255 bundle skills, got ${payload.skills}`);
   assert.strictEqual(payload.errors.length, 0, `Unexpected errors: ${JSON.stringify(payload.errors)}`);
   // Wave-0 contract (see skill-promoter): validator warnings are advisory — they block
   // promotion of a skill, never the general gate. Only known advisory categories pass here.
@@ -26,7 +26,7 @@ test('bundle projection contains 254 skills', () => {
   assert.deepStrictEqual(unexpectedWarnings, [], `Unexpected warning categories: ${JSON.stringify(unexpectedWarnings)}`);
 });
 
-// ── Invariant 2: repo-facing discovery count is 266 repo / 254 bundle ──────
+// ── Invariant 2: repo-facing discovery count is 267 repo / 255 bundle ──────
 test('repo-facing discovery count semantics', () => {
   const result = spawnSync('node', ['.agents/skills/platform/audit-semantics.mjs'], {
     encoding: 'utf8',
@@ -34,7 +34,7 @@ test('repo-facing discovery count semantics', () => {
   });
   assert.equal(result.status, 0, `audit-semantics failed: ${result.stderr || result.stdout}`);
   const payload = JSON.parse(result.stdout);
-  assert.equal(payload.skills, 266, `Expected 266 repo skills, got ${payload.skills}`);
+  assert.equal(payload.skills, 267, `Expected 267 repo skills, got ${payload.skills}`);
   assert.strictEqual(payload.errors.length, 0, `Unexpected errors: ${JSON.stringify(payload.errors)}`);
 });
 
@@ -84,12 +84,12 @@ test('generated artifacts agree on projected skill counts', () => {
     'site/src/skills.json should contain totalSkills'
   );
 
-  // All counts should be consistent: 254 bundle skills (excluding platform)
+  // All counts should be consistent: 255 bundle skills (excluding platform)
   const counts = [catalogSkillCount, llmsSkillCount, totalMarketplaceSkills, siteSkillCount];
-  const allBundle = counts.every(c => c === 254);
+  const allBundle = counts.every(c => c === 255);
   assert.ok(
     allBundle,
-    `All artifact counts should be 254 bundle skills. Got: catalog=${catalogSkillCount}, llms=${llmsSkillCount}, marketplace=${totalMarketplaceSkills}, site=${siteSkillCount}`
+    `All artifact counts should be 255 bundle skills. Got: catalog=${catalogSkillCount}, llms=${llmsSkillCount}, marketplace=${totalMarketplaceSkills}, site=${siteSkillCount}`
   );
 });
 
@@ -125,7 +125,7 @@ test('bundle projection excludes platform infrastructure as skill content', () =
   assert.equal(result.status, 0, `validate-skills failed: ${result.stderr || result.stdout}`);
   const payload = JSON.parse(result.stdout);
   // The validated skills should not include any from .agents/skills/platform/**
-  // This is implicitly validated by the count being 254 (bundle) vs 266 (repo)
+  // This is implicitly validated by the count being 255 (bundle) vs 267 (repo)
   // where the 12-skill difference is platform/infra
-  assert.equal(payload.skills, 254, 'Bundle projection must be 254 skills excluding platform');
+  assert.equal(payload.skills, 255, 'Bundle projection must be 255 skills excluding platform');
 });
