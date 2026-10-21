@@ -78,6 +78,11 @@ test('generated artifacts agree on projected skill counts', () => {
     const siteSkillsContent = fs.readFileSync(siteSkillsPath, 'utf8');
     const siteSkills = JSON.parse(siteSkillsContent);
     siteSkillCount = siteSkills.totalSkills || 0;
+    assert.equal(
+      'generatedAt' in siteSkills,
+      false,
+      'site data must remain deterministic and omit wall-clock metadata'
+    );
   }
   assert.ok(
     siteSkillCount > 0,
