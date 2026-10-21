@@ -506,7 +506,7 @@
       "tier": "1",
       "artifactType": "diagnosis",
       "capabilities": [],
-      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
+      "description": ">-",
       "path": ".agents/skills/delivery/diagnosing-bugs"
     },
     "implement-review-fixes": {
@@ -1730,7 +1730,7 @@
       "tier": "1",
       "artifactType": "routing",
       "capabilities": [],
-      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+      "description": ">-",
       "path": ".agents/skills/routing/grill"
     },
     "grilling": {
@@ -1756,6 +1756,24 @@
       "capabilities": [],
       "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
       "path": ".agents/skills/routing/knowledge-curator"
+    },
+    "parallel-issue-fleet": {
+      "domain": "routing",
+      "tier": "4",
+      "artifactType": "fleet-run",
+      "capabilities": [
+        "consume TicketArtifact dependency graphs and dispatch topological waves",
+        "isolate one implementation agent per issue through provider adapters",
+        "run any argv-based coding agent and model through a portable worker profile",
+        "bootstrap dependencies from project lockfiles before implementation",
+        "checkpoint and resume fleet runs without duplicating completed effects",
+        "fence concurrent runs with expiring per-issue claims",
+        "verify landed ancestry before advancing a wave",
+        "enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup",
+        "emit a validated FleetRunArtifact with per-issue ImplementArtifact references"
+      ],
+      "description": "Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.",
+      "path": ".agents/skills/routing/parallel-issue-fleet"
     },
     "publish-open-pr": {
       "domain": "routing",
@@ -2281,6 +2299,36 @@
       "weight": 1
     },
     {
+      "from": "parallel-issue-fleet",
+      "to": "to-tickets",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "implement",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "publish-open-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "review-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "ship-subissue",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "code-review",
       "to": "review-pr",
       "type": "compatible",
@@ -2527,6 +2575,42 @@
       "weight": 0.4
     },
     {
+      "from": "parallel-issue-fleet",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "implement",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "worktree-swarm",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "publish-open-pr",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "review-pr",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "parallel-issue-fleet",
+      "to": "ship-subissue",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "publish-open-pr",
       "to": "review-pr",
       "type": "compatible",
@@ -2559,6 +2643,12 @@
     {
       "from": "work-item-router",
       "to": "make-project",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "worktree-swarm",
+      "to": "parallel-issue-fleet",
       "type": "compatible",
       "weight": 0.4
     },

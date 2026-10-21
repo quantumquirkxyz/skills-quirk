@@ -2890,6 +2890,21 @@
       "exposed": true
     },
     {
+      "skill": "routing/parallel-issue-fleet",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/routing/parallel-issue-fleet"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
       "skill": "routing/publish-open-pr",
       "trustTier": 3,
       "tools": [

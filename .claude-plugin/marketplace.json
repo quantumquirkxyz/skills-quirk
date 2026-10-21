@@ -2882,6 +2882,37 @@
           "path": ".agents/skills/routing/knowledge-curator"
         },
         {
+          "name": "parallel-issue-fleet",
+          "description": "Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.",
+          "category": "routing",
+          "version": "2",
+          "maturity": "experimental",
+          "risk": "high",
+          "trustTier": "4",
+          "capabilities": [
+            "consume TicketArtifact dependency graphs and dispatch topological waves",
+            "isolate one implementation agent per issue through provider adapters",
+            "run any argv-based coding agent and model through a portable worker profile",
+            "bootstrap dependencies from project lockfiles before implementation",
+            "checkpoint and resume fleet runs without duplicating completed effects",
+            "fence concurrent runs with expiring per-issue claims",
+            "verify landed ancestry before advancing a wave",
+            "enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup",
+            "emit a validated FleetRunArtifact with per-issue ImplementArtifact references"
+          ],
+          "sideEffects": [
+            "write-files",
+            "create-git-worktrees",
+            "create-git-branches",
+            "launch-local-agents",
+            "provision-infrastructure",
+            "inject-ephemeral-secrets",
+            "terminate-processes",
+            "cleanup-owned-resources"
+          ],
+          "path": ".agents/skills/routing/parallel-issue-fleet"
+        },
+        {
           "name": "publish-open-pr",
           "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
           "category": "routing",

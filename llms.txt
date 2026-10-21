@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 254 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 255 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -156,6 +156,7 @@ npx skills-quirk add quirk-skills
 - [os-kernel](./.agents/skills/os/os-kernel/SKILL.md) — Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.
 - [os-memory](./.agents/skills/os/os-memory/SKILL.md) — Design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions.
 - [os-processes](./.agents/skills/os/os-processes/SKILL.md) — Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.
+- [parallel-issue-fleet](./.agents/skills/routing/parallel-issue-fleet/SKILL.md) — Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.
 - [payments](./.agents/skills/integrations/payments/SKILL.md) — Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.
 - [performance-testing](./.agents/skills/qa/performance-testing/SKILL.md) — Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.
 - [physics-astro](./.agents/skills/physics/physics-astro/SKILL.md) — Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.
@@ -296,7 +297,7 @@ npx skills-quirk add quirk-skills
 - qa: 4 skills
 - quant: 7 skills
 - research: 4 skills
-- routing: 16 skills
+- routing: 17 skills
 - sec: 11 skills
 - skill-dev: 18 skills
 - ux: 4 skills

@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v3.0.0
-> 254 skills across 35 categories
+> 255 skills across 35 categories
 
 ## Skills by Category
 
@@ -360,6 +360,7 @@
 | [grilling](.agents/skills/routing/grilling) | 1 | stable | low | 1 | Grill the user relentlessly about a plan, decision, or idea. Use when the use... |
 | [handoff](.agents/skills/routing/handoff) | 1 | stable | low | 2 | Compact the current conversation into a handoff document for another agent to... |
 | [knowledge-curator](.agents/skills/routing/knowledge-curator) | 1 | stable | low | 2 | Keep context, ADRs, registry entries, and research coherent over time — with ... |
+| [parallel-issue-fleet](.agents/skills/routing/parallel-issue-fleet) | 2 | experimental | high | 4 | Orchestrate a dependency-aware fleet of issue agents in isolated local worktr... |
 | [publish-open-pr](.agents/skills/routing/publish-open-pr) | 2 | stable | medium | 3 | Use when the user wants to publish a finished subissue as an open GitHub pull... |
 | [ship-subissue](.agents/skills/routing/ship-subissue) | 1 | stable | high | 4 | Use when a finished subissue already has a clean PR and you need to merge it,... |
 | [triage](.agents/skills/routing/triage) | 1 | stable | medium | 3 | Move issues and external PRs through a state machine of triage roles — catego... |

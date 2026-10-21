@@ -20,11 +20,7 @@
         "Grep",
         "Glob"
       ],
-      "deny": [
-        "Bash",
-        "WebFetch",
-        "WebSearch"
-      ]
+      "deny": []
     }
   },
   "guardrails": {
