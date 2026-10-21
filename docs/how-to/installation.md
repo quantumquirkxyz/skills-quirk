@@ -18,7 +18,7 @@ Installation places three fundamental elements in the target repository:
 | **Compatibility view** | Symlinks in .claude/skills/ for consumers expecting that layout |
 | **Method documentation** | `CONTEXT.md`, `docs/reference/agents/`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, and ADR references to specialize the bundle |
 
-After installation, the repository is ready to run the canonical flow: ask-to -> grill-with-docs -> to-spec -> to-tickets -> implement -> publish-open-pr -> review-pr -> ship-subissue.
+After installation, the repository is ready to run the canonical flow: ask-to -> grill-with-docs -> to-spec -> to-tickets -> implement -> publish-open-pr -> review-pr -> ship-subissue. When the approved ticket DAG has a parallel frontier and the user authorizes infrastructure effects, `parallel-issue-fleet` may replace the sequential dispatch into `implement` while preserving the same publication, review, and shipping stages.
 
 ## 2. Prerequisites
 

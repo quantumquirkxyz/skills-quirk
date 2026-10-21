@@ -102,7 +102,10 @@ flowchart TD
     C --> D[grill-with-docs]
     D --> E[to-spec]
     E --> F[to-tickets]
-    F --> G[implement]
+    F --> X{Dispatch mode}
+    X -->|sequential| G[implement]
+    X -->|parallel, explicit approval| Y[parallel-issue-fleet]
+    Y --> G
     G --> H[publish-open-pr]
     H --> I[review-pr]
     I --> J{findings?}
@@ -117,7 +120,7 @@ flowchart TD
 |---|---|---|
 | Clarify | `ask-to`, `grill-with-docs` | Agreed scope and durable context |
 | Plan | `to-spec`, `to-tickets` | Specification and claimable work items |
-| Build | `implement`, `publish-open-pr` | Validated change and pull request |
+| Build | `implement` or `parallel-issue-fleet`, then `publish-open-pr` | Validated branch or dependency-aware fleet wave and pull request |
 | Review | `review-pr`, `review-fix-loop` | Findings resolved with evidence |
 | Deliver | `ship-subissue` | Delivery after the review gate |
 

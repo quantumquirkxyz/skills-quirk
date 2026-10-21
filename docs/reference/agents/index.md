@@ -6,6 +6,7 @@ This repo uses the repository-local quirk Skills bundle in `.agents/skills/`. `.
 flowchart TD
     A[work-item-router] --> B[triage]
     A --> N[worktree-swarm]
+    A --> P[parallel-issue-fleet]
     B --> C[to-spec]
     B --> D[to-tickets]
     B --> E[review-pr]
@@ -23,6 +24,7 @@ flowchart TD
     G --> E
     E -->|clean| I
     N --> M
+    P --> M
 ```
 
 ## Work item flow
@@ -34,6 +36,7 @@ flowchart TD
 - `ask-to` is the user-facing route selector after governance preflight. Use it when the next step is uncertain or the request is not already a claimed work item.
 - If a PR branch is conflicted while review or repair is in progress, branch-state resolution belongs to `resolving-merge-conflicts` before review or shipping resumes.
 - `worktree-swarm` is opt-in only. It validates a batch of open GitHub issues, creates isolated local worktrees, and launches local agents in parallel; each delegated item follows the implementation/review/publication/shipping handoff loop without granting push, PR, merge, or issue-close authority.
+- `parallel-issue-fleet` is the opt-in Core Flow dispatcher between `to-tickets` and `implement`. It consumes the ticket DAG, executes only the claimable wave with bounded isolated workers, and stops at `awaiting-land` before dependent waves unless an integration branch was explicitly approved. It does not inherit publication, review, merge, or issue-close authority.
 
 ## Configuration docs
 

@@ -33,7 +33,7 @@ The canonical skills are cross-harness artifacts, so the bundle targets the agen
 |---|---|---|---|
 | `triage` | `AGENT-BRIEF.md`, `OUT-OF-SCOPE.md`, needs-info template | Stable triage state and durable handoff | `implement`, `plan-review-fixes`, or `wontfix` closure |
 | `to-spec` | `references/spec-template.md` | Publish a buildable spec issue | `to-tickets` |
-| `to-tickets` | `references/issue-template.md` | Split spec into tracer-bullet tickets | `implement` |
+| `to-tickets` | `references/issue-template.md` | Split spec into tracer-bullet tickets | `implement` or approved `parallel-issue-fleet` |
 | `plan-review-fixes` | `references/review-fix-plan.md` | Convert review findings into a repair plan | `implement-review-fixes` |
 | `implement-review-fixes` | `references/implementation-note.md` | Apply the scoped review plan and report completion | `review-pr` again |
 | `review-fix-loop` | review-pr, plan-review-fixes, implement-review-fixes handoff | Close the review-repair loop | `ship-subissue` when clean |

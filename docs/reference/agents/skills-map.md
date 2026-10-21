@@ -18,6 +18,7 @@ mindmap
             review-pr
             review-fix-loop
             ship-subissue
+            parallel-issue-fleet
             worktree-swarm
         Quality and governance
             authorship
@@ -87,6 +88,7 @@ mindmap
 | `codebase-design` | Design deep modules and seams |
 | `to-spec` | Turn conversation into a published spec |
 | `to-tickets` | Break plan into tracer-bullet tickets |
+| `parallel-issue-fleet` | Dispatch TicketArtifact DAG waves through isolated local or VM-pool workers with durable convergence |
 | `implement` | Implement work from spec or tickets |
 | `publish-open-pr` | Open a PR from an issue branch |
 | `issue-operations` | Create, update, comment, label, assign, or close issue tracker items with evidence |
@@ -98,7 +100,7 @@ mindmap
 | `ship-subissue` | Merge clean PR and close linked issue |
 | `worktree-swarm` | Copy open GitHub issues into isolated local worktrees and launch one local agent per issue |
 
-Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing is unclear. For standard feature work, use `grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` -> `publish-open-pr` -> `review-pr`. If the review is dirty, `review-fix-loop` coordinates `plan-review-fixes` and `implement-review-fixes` until the PR is clean or blocked. `ship-subissue` owns merge, issue closure, and tracker completion only after a clean review. Use `worktree-swarm` only when explicitly requested to fan out open GitHub issues into local worktrees; it hands each item into the same implement-to-ship loop but does not authorize remote publication or merge side effects.
+Canonical route: `setup-quirk-skills` once per repo, then `ask-to` when routing is unclear. For standard feature work, use `grill-with-docs` -> `to-spec` -> `to-tickets`, then choose sequential `implement` or explicitly approved `parallel-issue-fleet`, followed by `publish-open-pr` -> `review-pr`. If the review is dirty, `review-fix-loop` coordinates `plan-review-fixes` and `implement-review-fixes` until the PR is clean or blocked. `ship-subissue` owns merge, issue closure, and tracker completion only after a clean review. Use `worktree-swarm` only for one-shot local fan-out; use `parallel-issue-fleet` when the TicketArtifact DAG, resumability, VM slots, bounded concurrency, or cross-wave convergence matter. Neither grants remote publication or merge authority.
 
 ## Quality and governance
 

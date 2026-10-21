@@ -42,6 +42,9 @@ flowchart TD
 | `grill-with-docs` | `to-spec` | Clarified decisions, glossary/ADR updates |
 | `to-spec` | `to-tickets` | Spec issue |
 | `to-tickets` | `implement` | Claimable ticket |
+| `to-tickets` | `parallel-issue-fleet` | TicketArtifact with validated DAG waves |
+| `parallel-issue-fleet` | `implement` | Per-issue isolated environment and immutable issue context |
+| `parallel-issue-fleet` | `publish-open-pr` | FleetRunArtifact with validated branches and ImplementArtifact references |
 | `implement` | `publish-open-pr` | Validated issue branch |
 | `review-pr` | `plan-review-fixes` | Standards and Spec findings |
 | `plan-review-fixes` | `implement-review-fixes` | Review Fix Plan PR comment |

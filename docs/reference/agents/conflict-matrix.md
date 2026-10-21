@@ -40,6 +40,7 @@ apply to the same request.
 |---|---|---|---|---|
 | `ask-to` | `capability-router` | Both recommend skills | `ask-to` is the user-facing router with flow awareness (main flow, on-ramps, standalone). `capability-router` is a lower-level primitive that matches declared capabilities; `ask-to` delegates to it internally. Use `ask-to` for user routing; use `capability-router` only inside skills that need capability matching without flow context. | resolved |
 | `work-item-router` | `ask-to` | Both read governance before routing | `work-item-router` is a forced pre-read of the governance index; it does not recommend a skill. Run it before any workflow skill when the repo's work-item governance may have changed. | resolved |
+| `parallel-issue-fleet` | `worktree-swarm` | Both create isolated workspaces and launch issue agents | Use `parallel-issue-fleet` after `to-tickets` when DAG waves, concurrency limits, resumability, VM providers, or fleet convergence are required. Use `worktree-swarm` only for explicitly requested one-shot local fan-out without a durable control plane. | resolved |
 
 ## Evaluation and audit family
 

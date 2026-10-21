@@ -82,7 +82,7 @@ sequenceDiagram
     A->>G: Route to plan sharpening
     G->>S: Publish spec
     S->>T: Split into tickets
-    T->>I: Implement each ticket
+    T->>I: Choose sequential implement or an approved parallel issue fleet
     I->>P: Open PR
     P->>R: Review PR
     R-->>F: If corrections needed
@@ -97,8 +97,9 @@ sequenceDiagram
 | 1 | `ask-to` | Route to the next correct step | When routing is ambiguous or the request is not a claimed work item | Routing decision | `grill-with-docs` |
 | 2 | `grill-with-docs` | Sharpen plans through interview | When work is ambiguous and a codebase exists | Updated documentation + sharpened plan | `to-spec` |
 | 3 | `to-spec` | Convert conversation into a published spec | After clarification | Spec published in the issue tracker | `to-tickets` |
-| 4 | `to-tickets` | Split plan into tracer-bullet tickets | After the spec | Claimable and blocked tickets | `implement` |
-| 5 | `implement` | Implement work from spec or tickets | When a clear plan exists | Implemented code + tests | `publish-open-pr` |
+| 4 | `to-tickets` | Split plan into tracer-bullet tickets | After the spec | Claimable and blocked tickets | `implement` or `parallel-issue-fleet` |
+| 5a | `implement` | Implement one work item | When sequential execution is sufficient | Implemented code + tests | `publish-open-pr` |
+| 5b | `parallel-issue-fleet` | Execute the current DAG wave with isolated workers | When multiple claimable tickets can run concurrently and explicit infrastructure approval exists | FleetRunArtifact + validated issue branches | `publish-open-pr` per branch; land the wave before resuming |
 | 6 | `publish-open-pr` | Open PR from issue branch | After implementation | Opened pull request | `review-pr` |
 | 7 | `review-pr` | Review PR against Standards and Spec axes | Always after opening PR | Review findings or clean signal | `review-fix-loop` or `ship-subissue` |
 | 8 | `review-fix-loop` | Orchestrate repair cycle | When review has findings | Plan-repair-execution cycle | `review-pr` |
@@ -488,7 +489,7 @@ flowchart TD
 
 | Flow | Input | Output |
 |---|---|---|
-| **Standard** | `ask-to` → `grill-with-docs` → `to-spec` → `to-tickets` → `implement` → `publish-open-pr` → `review-pr` → `ship-subissue` | Feature merged and delivered |
+| **Standard** | `ask-to` → `grill-with-docs` → `to-spec` → `to-tickets` → (`implement` or approved `parallel-issue-fleet`) → `publish-open-pr` → `review-pr` → `ship-subissue` | Feature merged and delivered |
 | **Bug fix** | `ask-to` → `diagnosing-bugs` → `tdd` → `implement` → `publish-open-pr` → `review-pr` → `ship-subissue` | Bug fixed and delivered |
 | **Operations** | `release-management` → `deployment` → `observability` | System operational and monitored |
 | **Repair** | `review-pr` → `plan-review-fixes` → `implement-review-fixes` → `review-pr` | Clean PR for shipping |
