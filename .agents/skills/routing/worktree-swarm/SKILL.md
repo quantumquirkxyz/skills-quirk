@@ -34,7 +34,7 @@ artifactType: orchestration
 evaluators: [behavioral, regression, traceability]
 fixturesPath: .agents/skills/routing/worktree-swarm/behavioral-fixtures
 tags: [routing, git, github, worktree, multi-agent]
-compatibility: [implement, review-pr, plan-review-fixes, implement-review-fixes, publish-open-pr, ship-subissue]
+compatibility: [parallel-issue-fleet, implement, review-pr, plan-review-fixes, implement-review-fixes, publish-open-pr, ship-subissue]
 approvalRequired: true
 approvalFor: [create-git-worktrees, create-git-branches, launch-local-agents]
 reloadPolicy: on-trigger
@@ -49,6 +49,7 @@ reloadPolicy: on-trigger
 - **Side effects:** creates issue branches and worktrees and launches detached local agents. It never pushes, opens or merges pull requests, closes issues, or changes the primary checkout's branch.
 - **Risk:** medium. The validation phase must finish before any resource is created; a creation failure rolls back only resources created in this invocation.
 - **Boundary:** this skill prepares and delegates work. It does not implement issues itself and does not perform publication or merge operations.
+- **Evolution boundary:** use `parallel-issue-fleet` instead when the input is a `TicketArtifact` DAG or the run needs VM slots, bootstrap policies, concurrency limits, checkpoints, timeouts, secret injection, convergence, or owned-resource cleanup. This skill remains the one-shot local backend and compatibility route.
 
 ## Invocation
 

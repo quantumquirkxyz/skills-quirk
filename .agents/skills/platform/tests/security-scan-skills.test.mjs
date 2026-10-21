@@ -229,12 +229,14 @@ test('--deep reports the known test-fixture true positives as report-only output
   assert.equal(deep.status, 0, `--deep is a report-only mode and must not exit non-zero\n${deep.stderr}`);
 
   const high = payload.findings.filter((f) => BLOCKING_SEVERITIES.has(f.severity));
-  assert.equal(high.length, 5, `expected the 5 documented test-fixture findings, got ${high.length}\n${deep.stdout}`);
+  assert.equal(high.length, 17, `expected the 17 documented test-fixture findings, got ${high.length}\n${deep.stdout}`);
 
   const files = new Set(high.map((f) => f.file));
   const expectedFiles = [
     path.join(PLATFORM_DIR, 'tests', 'agent-cards-signing.test.mjs'),
+    path.join(PLATFORM_DIR, 'tests', 'parallel-issue-fleet.test.mjs'),
     path.join(PLATFORM_DIR, 'tests', 'security-scan-skills.test.mjs'),
+    path.join(PLATFORM_DIR, 'tests', 'worker-runner.test.mjs'),
   ];
   for (const file of expectedFiles) {
     assert.ok(files.has(file), `expected a known test-fixture finding in ${file}\n${deep.stdout}`);
