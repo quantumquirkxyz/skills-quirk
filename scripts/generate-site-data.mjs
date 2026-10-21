@@ -96,7 +96,6 @@ async function main() {
   const categories = [...new Set(skills.map(s => s.category))].sort();
 
   const data = {
-    generatedAt: new Date().toISOString(),
     totalSkills: skills.length,
     categories,
     skills: skills.map(s => ({
