@@ -10,17 +10,43 @@ const skillsRoot = path.join(root, '.agents', 'skills');
 const outputPath = path.join(root, 'site', 'src', 'skills.json');
 const write = process.argv.includes('--write');
 
+function foldBlock(style, lines) {
+  if (style === '|') return lines.join('\n').trim();
+  return lines.join('\n')
+    .replace(/\n(?!\n)/g, ' ')
+    .replace(/\n\n/g, '\n')
+    .trim();
+}
+
 function parseFrontmatter(text) {
   if (!text.startsWith('---')) return {};
   const end = text.indexOf('\n---', 3);
   if (end === -1) return {};
   const out = {};
   let active = null;
+  let block = null;
+  const finishBlock = () => {
+    if (!block) return;
+    out[block.key] = foldBlock(block.style, block.lines);
+    block = null;
+  };
   for (const line of text.slice(4, end).split(/\r?\n/)) {
+    if (block) {
+      if (/^\s{2,}/.test(line) || line.trim() === '') {
+        block.lines.push(line.replace(/^\s{2}/, ''));
+        continue;
+      }
+      finishBlock();
+    }
     const key = line.match(/^([A-Za-z][A-Za-z0-9-]*):\s*(.*)$/);
     if (key) {
       active = key[1];
-      out[active] = key[2] === '' || key[2] === '[]' ? [] : key[2].replace(/^["']|["']$/g, '');
+      const value = key[2];
+      if (/^[>|][+-]?$/.test(value)) {
+        block = { key: active, style: value[0], lines: [] };
+        continue;
+      }
+      out[active] = value === '' || value === '[]' ? [] : value.replace(/^["']|["']$/g, '');
       continue;
     }
     const item = line.match(/^\s+-\s+(.+)$/);
@@ -29,6 +55,7 @@ function parseFrontmatter(text) {
       out[active].push(item[1].replace(/^["']|["']$/g, ''));
     }
   }
+  finishBlock();
   return out;
 }
 
