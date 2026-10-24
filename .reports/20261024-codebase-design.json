@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "CodebaseDesignArtifact",
+  "repository": "/home/quantumquirkxyz/skills-quirk",
+  "date": "2026-10-24",
+  "candidate": "Skill Graph Index",
+  "problem": "skill-graph.mjs exposes parsing, discovery, graph construction, persistence, propagation, ranking, and diagnostics as separate caller-facing functions; platform growth is also above its declared LOC ceiling.",
+  "seam": {
+    "name": "Skill Graph Index interface",
+    "responsibility": "Own graph lifecycle, normalized skill ingestion, deterministic ranking, snapshot consistency, persistence policy, and graph diagnostics.",
+    "operations": [
+      {"name": "refresh", "input": "none", "output": "RefreshResult", "invariant": "atomically replaces one immutable graph snapshot"},
+      {"name": "find", "input": "query string and optional positive bounded limit", "output": "FindResult", "invariant": "exact/keyword seeds outrank pure neighborhood activation"},
+      {"name": "neighbors", "input": "skill name", "output": "NeighborResult", "invariant": "unknown names return typed not-found"},
+      {"name": "diagnostics", "input": "none", "output": "GraphDiagnostics", "invariant": "reports freshness, counts, unresolved references, and source fingerprint"}
+    ],
+    "hidden": ["frontmatter parsing", "skill discovery", "handoff extraction", "edge weighting", "PageRank", "deterministic ordering", "JSON persistence", "cache invalidation", "unresolved-reference accounting"],
+    "evidence": [".agents/skills/platform/skill-graph.mjs:76-182", ".agents/skills/platform/skill-graph.mjs:216-347", ".agents/skills/platform/skill-graph.mjs:424-570", "docs/adr/ADR-001-artifact-first-design.md:9-18", "docs/adr/ADR-002-state-machine-workflows.md:9-18"]
+  },
+  "adapters": [
+    {"name": "FilesystemSkillSource", "role": "production/CLI source adapter", "dependency_category": "local-substitutable"},
+    {"name": "ManifestSkillSource", "role": "check-all/audit source adapter", "dependency_category": "in-process"},
+    {"name": "FileGraphStore", "role": "optional persisted cache adapter", "dependency_category": "local-substitutable"},
+    {"name": "MemoryGraphStore", "role": "test adapter", "dependency_category": "in-process"}
+  ],
+  "depth": {
+    "assessment": "deep",
+    "leverage": "One routing contract serves CLI, evaluation, MCP, and future consumers.",
+    "locality": "Graph policy, source normalization, ranking, and persistence changes stay inside the index.",
+    "test_surface": "Interface-level tests cover source equivalence, deterministic refresh, ranking precedence, errors, atomic snapshots, and storage isolation."
+  },
+  "migration": [
+    "Define normalized source and result types.",
+    "Wrap existing pure graph behavior without changing ranking semantics.",
+    "Migrate evaluation, trajectory, trace improvement, marketplace export, and MCP callers.",
+    "Keep CLI commands as a thin adapter.",
+    "Replace private representation tests with interface tests.",
+    "Split validator/runtime directories internally after the index seam is stable."
+  ],
+  "decision": "Adopt the Skill Graph Index as the single external seam; keep validator/runtime separation internal rather than exposing a second public seam.",
+  "next_consumer": "implement or codebase-design review"
+}
