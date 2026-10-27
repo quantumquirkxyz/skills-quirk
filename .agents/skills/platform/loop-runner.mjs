@@ -299,18 +299,20 @@ export async function runLoop(options = {}) {
         return finish('completed');
       }
 
-      const stepCost = verdict && Number.isFinite(verdict.cost) ? verdict.cost : DEFAULT_COST_PER_STEP;
+      const invalidCost = verdict && verdict.cost !== undefined && (!Number.isFinite(verdict.cost) || verdict.cost < 0);
+      const stepCost = verdict && !invalidCost && Number.isFinite(verdict.cost) ? verdict.cost : DEFAULT_COST_PER_STEP;
       stepsSpent += 1;
       costSpent += stepCost;
       const stepWallTimeMs = Date.now() - stepStartedAt;
 
-      const errored = stepError !== null || (verdict !== null && verdict.error !== undefined && verdict.error !== null);
+      const errored = stepError !== null || Boolean(invalidCost) || (verdict !== null && verdict.error !== undefined && verdict.error !== null);
+      const reportedError = stepError ? errorText(stepError) : invalidCost ? 'invalid step cost' : String(verdict?.error);
       const action = verdict && typeof verdict.action === 'string' && verdict.action !== ''
         ? verdict.action
         : '__step__';
       const argsHash = hashArgs(verdict ? verdict.args : undefined);
       const resultSignature = errored
-        ? signatureOf({ error: stepError ? errorText(stepError) : String(verdict.error) })
+        ? signatureOf({ error: reportedError })
         : signatureOf(verdict ? verdict.result : undefined);
       const stepHash = stepHashOf(action, argsHash, resultSignature);
 
@@ -329,7 +331,7 @@ export async function runLoop(options = {}) {
         wallTimeMs: stepWallTimeMs,
       };
       if (errored) {
-        record.error = stepError ? errorText(stepError) : String(verdict.error);
+        record.error = reportedError;
       }
 
       try {
