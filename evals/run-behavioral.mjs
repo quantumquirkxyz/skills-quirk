@@ -24,6 +24,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -1063,7 +1064,7 @@ async function modeSingle() {
 /* ------------------------------------------------------- synthetic material */
 
 /** Build a transcript that satisfies the fixture's literal deterministic assertions. */
-function syntheticTranscript(fixture, mode, trialIndex) {
+function syntheticTranscript(fixture, mode, trialIndex, mockDirectory) {
   const events = [{
     type: 'session',
     skill: fixture.skill,
@@ -1136,7 +1137,7 @@ function syntheticTranscript(fixture, mode, trialIndex) {
     artifactText = `${body.join('\n')}\n`;
   }
 
-  const artifactPath = path.join(here, 'results', 'mock', `${fixture.skill.split('/').pop()}-${mode}-trial-${trialIndex}${usedJson ? '.json' : '.md'}`);
+  const artifactPath = path.join(mockDirectory, `${fixture.skill.split('/').pop()}-${mode}-trial-${trialIndex}${usedJson ? '.json' : '.md'}`);
   events.push({ type: 'artifact', path: path.relative(repoRoot, artifactPath), mock: true });
   events.push({
     type: 'end',
@@ -1161,6 +1162,9 @@ async function modeAll() {
   const rows = [];
   let schemaBroken = 0;
   let crashed = 0;
+  // Isolate mock artifacts per invocation and fixture to prevent concurrent
+  // CI jobs or similarly named skills from corrupting evaluation results.
+  const mockDirectory = await fs.mkdtemp(path.join(os.tmpdir(), 'quirk-behavioral-mock-'));
 
   for (const file of files) {
     const { fixture, errors } = await loadFixture(file);
@@ -1178,18 +1182,19 @@ async function modeAll() {
     }
 
     try {
-      await fs.mkdir(path.join(here, 'results', 'mock'), { recursive: true });
+      const fixtureMockDir = path.join(mockDirectory, path.basename(file, '.json'));
+      await fs.mkdir(fixtureMockDir, { recursive: true });
       const transcripts = {};
       for (const mode of ['with-skill', 'baseline']) {
         const trialCount = Math.max(1, fixture.trials);
         const events = [];
         for (let trialIndex = 1; trialIndex <= trialCount; trialIndex++) {
-          const synthetic = syntheticTranscript(fixture, mode, trialIndex);
+          const synthetic = syntheticTranscript(fixture, mode, trialIndex, fixtureMockDir);
           await fs.writeFile(synthetic.artifactPath, synthetic.artifactText, 'utf8');
           if (trialIndex > 1) events.push({ type: 'trial', index: trialIndex, mock: true });
           events.push(...synthetic.events);
         }
-        const transcriptPath = path.join(here, 'results', 'mock', `${fixture.skill.split('/').pop()}-${mode}.jsonl`);
+        const transcriptPath = path.join(fixtureMockDir, `${fixture.skill.split('/').pop()}-${mode}.jsonl`);
         await fs.writeFile(transcriptPath, `${events.map((event) => JSON.stringify(event)).join('\n')}\n`, 'utf8');
         transcripts[mode] = await loadTranscript(transcriptPath);
       }
@@ -1233,6 +1238,7 @@ async function modeAll() {
   console.log(`behavioural fixtures: ${rows.length} file(s), ${schemaBroken} broken schema, ${crashed} crashed`);
   console.log(`judge mode: ${metadata.judge} (${judge.reason}) — ${judge.mode === 'mock' ? 'mock output is a scorer smoke test, never evidence about a model or a skill; no model was invoked' : 'judge endpoint used for grading only; no agent model was invoked by this runner'}`);
   console.log(schemaBroken + crashed === 0 ? 'status: pass' : 'status: fail');
+  await fs.rm(mockDirectory, { recursive: true, force: true });
   process.exit(schemaBroken + crashed === 0 ? 0 : 1);
 }
 
