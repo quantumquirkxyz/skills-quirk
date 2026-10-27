@@ -58,5 +58,6 @@ flowchart TD
 | [Skill style guide](../../how-to/skill-style.md) | Editing and authoring rules |
 | [Release checklist](../../how-to/release.md) | Pre/post-release gates |
 | [Generated views](../../how-to/generated-views.md) | Registry-derived catalogs, projections, and compatibility views |
+| [Documentation maintenance](documentation-maintenance.md) | Internal documentation updates, path verification, and validation |
 | [Multi-agent protocol](multi-agent-protocol.md) | Multi-session handoff rules |
 | [Provenance inventory](provenance-inventory.md) | Provenance records |
