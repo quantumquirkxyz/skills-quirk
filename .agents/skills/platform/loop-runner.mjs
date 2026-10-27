@@ -216,10 +216,11 @@ function detectPingPong(budget, history, emitNudge) {
 }
 
 export async function runLoop(options = {}) {
-  const { steps, onNudge, exemptActions = [], loopId = null } = options;
+  const { steps, onNudge, exemptActions = [], loopId = null, strictLedger = false } = options;
   const iterator = toIterator(steps);
   const budget = normalizeBudget(options.budget);
   const ledgerPath = options.ledgerPath === undefined ? DEFAULT_LEDGER_PATH : options.ledgerPath;
+  if (strictLedger && !ledgerPath) throw new Error('Strict ledger mode requires a ledgerPath');
   const exempt = new Set(Array.isArray(exemptActions) ? exemptActions : [exemptActions]);
 
   const nudges = [];
@@ -236,7 +237,9 @@ export async function runLoop(options = {}) {
     if (!ledgerPath) return;
     try {
       appendFileSync(ledgerPath, `${JSON.stringify(line)}\n`);
-    } catch {}
+    } catch (error) {
+      if (strictLedger) throw error;
+    }
   };
 
   const startedAt = Date.now();
@@ -253,7 +256,9 @@ export async function runLoop(options = {}) {
   if (ledgerPath) {
     try {
       mkdirSync(dirname(resolve(ledgerPath)), { recursive: true });
-    } catch {}
+    } catch (error) {
+      if (strictLedger) throw error;
+    }
   }
 
   const finish = (status) => {
