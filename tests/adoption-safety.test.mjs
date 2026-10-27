@@ -78,3 +78,17 @@ test('adoption preserves target README and CONTEXT even with write enabled', asy
   assert.equal(await readFile(path.join(target, 'README.md'), 'utf8'), 'target README\\n');
   assert.equal(await readFile(path.join(target, 'CONTEXT.md'), 'utf8'), 'target domain\\n');
 });
+
+test('native view conflict blocks before copying any managed files', async t => {
+  const { source, target } = await fixture(t);
+  const claude = path.join(target, '.claude', 'skills');
+  await mkdir(claude, { recursive: true });
+  await writeFile(path.join(claude, 'sample'), 'host-owned file\n');
+  const preview = run(source, target);
+  assert.equal(preview.status, 1);
+  assert.ok(JSON.parse(preview.stdout).conflicts.some(x => x.includes('.claude/skills/sample')));
+  const install = run(source, target, '--write');
+  assert.equal(install.status, 1);
+  await assert.rejects(readFile(path.join(target, '.agents', 'skills', 'domain', 'sample', 'SKILL.md')));
+  assert.equal(await readFile(path.join(claude, 'sample'), 'utf8'), 'host-owned file\n');
+});
