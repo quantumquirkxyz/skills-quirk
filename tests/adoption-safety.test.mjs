@@ -29,7 +29,7 @@ test('dry-run leaves target unchanged', async t => {
   const result = run(source, target);
   assert.equal(result.status, 0, result.stderr || result.stdout);
   assert.equal(JSON.parse(result.stdout).mode, 'dry-run');
-  await assert.rejects(readFile(path.join(target, 'CONTEXT.md')));
+  await assert.rejects(readFile(path.join(target, 'skills-lock.json')));
 });
 
 test('existing content blocks overwrite even with write enabled', async t => {
@@ -64,4 +64,16 @@ test('repeat install keeps existing canonical compatibility symlink', async t =>
   assert.equal(first.status, 0, first.stderr || first.stdout);
   const second = run(source, target, '--write');
   assert.equal(second.status, 0, second.stderr || second.stdout);
+});
+
+
+test('adoption preserves target README and CONTEXT even with write enabled', async t => {
+  const { source, target } = await fixture(t);
+  await writeFile(path.join(source, 'README.md'), 'source README\\n');
+  await writeFile(path.join(target, 'README.md'), 'target README\\n');
+  await writeFile(path.join(target, 'CONTEXT.md'), 'target domain\\n');
+  const result = run(source, target, '--write');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.equal(await readFile(path.join(target, 'README.md'), 'utf8'), 'target README\\n');
+  assert.equal(await readFile(path.join(target, 'CONTEXT.md'), 'utf8'), 'target domain\\n');
 });
