@@ -33,6 +33,14 @@ try {
   const records = [];
   for (const [id, executable, commandArgs] of definitions) {
     if (only && id !== only) continue;
+    if (id === 'memory') {
+      const memoryPath = path.join(root, '.agents', 'memory');
+      const present = await fs.stat(memoryPath).then(stat => stat.isDirectory()).catch(() => false);
+      if (!present) {
+        records.push({ id, command: [executable, ...commandArgs], status: 'NOT RUN', reason: 'Optional project memory directory is absent', exit_code: null, signal: null, duration_ms: 0, error_code: null });
+        continue;
+      }
+    }
     const start = performance.now();
     const run = spawnSync(executable, commandArgs, {
       cwd: root, encoding: 'utf8', timeout: 180000, maxBuffer: 3 * 1024 * 1024,
@@ -58,7 +66,7 @@ try {
   await fs.mkdir(path.dirname(outPath), { recursive: true });
   await fs.writeFile(outPath, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ report: outPath, summary: report.summary }, null, 2));
-  if (records.some(r => r.status !== 'PASS')) process.exitCode = 1;
+  if (records.some(r => r.status === 'FAIL' || r.status === 'BLOCKED')) process.exitCode = 1;
 } catch (error) {
   console.error(error.message);
   process.exitCode = 2;
