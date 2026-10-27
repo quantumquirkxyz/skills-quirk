@@ -27,6 +27,17 @@ This avoids copying a prompt into an agent. The CLI may ask which skills, target
 
 Requires a Node.js version supported by the current `skills` CLI (its published package lists Node 22.20+ as of October 2026); the quirk repository's own Node engine requirement is separate. The CLI may collect anonymous install telemetry; set `DISABLE_TELEMETRY=1` to opt out, per its documentation. Pin or review the source revision and audit side effects before using third-party skills in sensitive environments.
 
+## Managed bundle: dry-run-first CLI (implemented)
+
+From a project directory, with the quirk CLI available, use:
+
+```bash
+skills-quirk adopt            # preview conflicts and planned files, no writes
+skills-quirk adopt --write    # apply only if the preview reports no conflicts
+```
+
+The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing files, and preserves already-correct compatibility links. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The adapter is new and its cross-platform integration and full repository gate have **not yet been executed**; use in a disposable repository first.
+
 ## Managed/full bundle installation
 
 The repository has **different** distribution mechanisms, and they are not interchangeable:
