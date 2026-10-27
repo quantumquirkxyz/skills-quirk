@@ -48,8 +48,8 @@ jobs:
           mkdir -p "$SANDBOX_DIR"
           echo "{}" > "$SANDBOX_DIR/manifest.json"
 
-      - name: Validate safe adoption regression fixtures
-        run: node --test tests/adoption-safety.test.mjs
+      - name: Validate adoption and inventory regressions
+        run: node --test tests/adoption-safety.test.mjs tests/skill-inventory.test.mjs
 
       - name: Run full local gate
         run: |
