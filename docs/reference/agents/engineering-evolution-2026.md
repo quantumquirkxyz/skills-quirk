@@ -65,6 +65,10 @@ Acceptance: performance claims are supported by reproducible comparisons and nev
 
 For every candidate skill: identify its canonical `SKILL.md`; read [Skill Style Guide](../../how-to/skill-style.md), [Conflict Matrix](conflict-matrix.md), and relevant fixtures; capture baseline; make one cohesive change; update fixtures; regenerate lockfile and projections using repository scripts when needed; run the full gate; report results; commit a focused English message. If a required tool cannot run, mark validation `NOT RUN` and do not claim verified functional improvement.
 
+## Engineering-methodology integration
+
+Use [Agent Engineering Methodologies](../../explanation/agent-engineering-methodologies-2026.md) to separate harness, loop, graph, context, memory, evaluation, protocol, and platform engineering concerns. Use [Installation Options](../../how-to/installation-options.md) for selective versus managed installation. Neither document establishes that untested behavior is implemented.
+
 ## Proposed follow-up investigations
 
 - Determine whether telemetry carries stable trace and attempt IDs across retries without exposing secrets.
