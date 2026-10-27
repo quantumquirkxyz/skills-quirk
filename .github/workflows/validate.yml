@@ -67,6 +67,9 @@ jobs:
       - name: Validate adoption and inventory regressions
         run: node --test tests/adoption-safety.test.mjs tests/skill-inventory.test.mjs
 
+      - name: Run focused security and memory regression checks
+        run: node --test tests/action-policy.test.mjs tests/mcp-server-safety.test.mjs tests/memory-provenance.test.mjs
+
       - name: Run full local gate
         run: |
           set -o pipefail
