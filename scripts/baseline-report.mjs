@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Reproducible, non-mutating command runner for engineering modernization.
+// Reproducible command runner for engineering modernization; run in CI or a disposable checkout.
 // Usage: node scripts/baseline-report.mjs [--out path] [--only id]
-// Records failures independently; never asserts a gate passed without execution.
+// Individual evaluators may write fixture outputs; records failures independently.
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
