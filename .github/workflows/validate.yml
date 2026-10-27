@@ -9,6 +9,10 @@ on:
       - "registry.yaml"
       - "skills.json"
       - "plugins/**"
+      - "scripts/**"
+      - "bin/**"
+      - "package.json"
+      - ".github/workflows/validate.yml"
   pull_request:
     paths:
       - ".agents/skills/**/*"
