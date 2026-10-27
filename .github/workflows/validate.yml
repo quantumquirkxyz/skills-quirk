@@ -48,6 +48,18 @@ jobs:
           mkdir -p "$SANDBOX_DIR"
           echo "{}" > "$SANDBOX_DIR/manifest.json"
 
+      - name: Capture canonical skill inventory
+        run: |
+          mkdir -p .skill-sandbox/baseline
+          node scripts/skill-inventory.mjs --out .skill-sandbox/baseline/skill-inventory.json
+
+      - name: Upload inventory baseline
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-skill-inventory
+          path: .skill-sandbox/baseline/skill-inventory.json
+          retention-days: 30
+
       - name: Validate adoption and inventory regressions
         run: node --test tests/adoption-safety.test.mjs tests/skill-inventory.test.mjs
 
