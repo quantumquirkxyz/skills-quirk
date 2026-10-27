@@ -148,6 +148,42 @@ for (const relative of copyEntries) {
   }
 }
 
+// Preflight compatibility symlinks before any file write, so --write cannot
+// partially copy a bundle and only then discover an incompatible native view.
+const sourceSkillsRoot = path.join(repoRoot, '.agents', 'skills');
+const targetClaudeRoot = path.join(targetRoot, '.claude', 'skills');
+await ensureSafeDestination(targetClaudeRoot);
+const sourceLinks = new Map();
+async function collectCanonicalLinks(dir) {
+  for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name === 'platform') continue;
+    const child = path.join(dir, entry.name);
+    if (await exists(path.join(child, 'SKILL.md'))) {
+      const name = entry.name;
+      const relative = path.relative(path.dirname(path.join(targetClaudeRoot, name)), path.join(targetRoot, path.relative(repoRoot, child)));
+      if (sourceLinks.has(name) && sourceLinks.get(name) !== relative) {
+        conflicts.push('.claude/skills/' + name + ' (duplicate source skill)');
+      }
+      sourceLinks.set(name, relative);
+    } else {
+      await collectCanonicalLinks(child);
+    }
+  }
+}
+if (await exists(sourceSkillsRoot)) await collectCanonicalLinks(sourceSkillsRoot);
+for (const [name, expected] of sourceLinks) {
+  const linkPath = path.join(targetClaudeRoot, name);
+  let stat;
+  try { stat = await fs.lstat(linkPath); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+  if (!stat) continue;
+  if (!stat.isSymbolicLink()) {
+    if (!force) conflicts.push('.claude/skills/' + name + ' (not a symlink)');
+  } else if ((await fs.readlink(linkPath)) !== expected && !force) {
+    conflicts.push('.claude/skills/' + name + ' (different symlink target)');
+  }
+}
+
 if (conflicts.length) {
   console.log(JSON.stringify({
     status: 'blocked',
