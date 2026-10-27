@@ -370,7 +370,7 @@ export function checkIndex(memoryDir, options = {}) {
     const tokens = estimateTokens(noteText);
     if (options.requireProvenance && path.basename(file) !== INDEX_FILENAME) {
       const note = path.relative(dir, file);
-      const source = noteText.match(/\\[source:\\s*([^;\\]]+);\\s*added:\\s*(\\d{4}-\\d{2}-\\d{2})\\]/i);
+      const source = noteText.match(/\[source:\s*([^;\]]+);\s*added:\s*(\d{4}-\d{2}-\d{2})\]/i);
       const isValidDate = value => {
         const date = new Date(value + 'T00:00:00Z');
         return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
@@ -378,7 +378,7 @@ export function checkIndex(memoryDir, options = {}) {
       if (!source || !source[1].trim() || !isValidDate(source[2])) {
         findings.push({ type: 'missing-provenance', file: note, message: 'memory note requires a valid [source: reference; added: YYYY-MM-DD] marker' });
       }
-      const expiry = noteText.match(/\\[expires:\\s*([^\\]]+)\\]/i);
+      const expiry = noteText.match(/\[expires:\s*([^\]]+)\]/i);
       const asOf = options.asOf || new Date().toISOString().slice(0, 10);
       if (expiry && (!isValidDate(expiry[1]) || expiry[1] < asOf)) {
         findings.push({ type: 'stale-memory', file: note, message: 'memory note expiry is invalid or older than evaluation date' });
@@ -492,7 +492,7 @@ export async function main(argv = process.argv.slice(2)) {
     asOf: values['--as-of'] || null,
   };
   const asJson = flags.includes('--json');
-  if (options.asOf && !/^\\d{4}-\\d{2}-\\d{2}$/.test(options.asOf)) {
+  if (options.asOf && (!/^\d{4}-\d{2}-\d{2}$/.test(options.asOf) || Number.isNaN(Date.parse(options.asOf + 'T00:00:00Z')) || new Date(options.asOf + 'T00:00:00Z').toISOString().slice(0, 10) !== options.asOf)) {
     console.error('memory-index: --as-of must use YYYY-MM-DD');
     return 2;
   }
