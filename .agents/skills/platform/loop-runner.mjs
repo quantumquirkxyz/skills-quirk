@@ -102,6 +102,18 @@ function normalizeBudget(budget) {
       normalized[key] = BUDGET_DEFAULTS[key];
     }
   }
+  for (const key of ['stepLimit', 'maxConsecutiveFormatErrors', 'repeatThreshold', 'repeatWindow', 'pingPongWindow']) {
+    const n = normalized[key];
+    if (!(n === Infinity && key === 'stepLimit') && (!Number.isSafeInteger(n) || n < (key === 'repeatThreshold' ? 2 : key === 'stepLimit' ? 0 : 1))) {
+      throw new RangeError('Invalid loop budget: ' + key);
+    }
+  }
+  for (const key of ['costLimit', 'wallTimeLimitMs']) {
+    const n = normalized[key];
+    if (!(n === Infinity || (typeof n === 'number' && Number.isFinite(n) && n >= 0))) {
+      throw new RangeError('Invalid loop budget: ' + key);
+    }
+  }
   return normalized;
 }
 
