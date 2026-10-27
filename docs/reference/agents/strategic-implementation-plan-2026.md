@@ -209,6 +209,14 @@ Example: `node .agents/skills/platform/memory-index.mjs check .agents/memory --r
 
 Fixtures: `tests/memory-provenance.test.mjs`. This is not a full memory policy engine: source references are syntactically checked rather than independently verified, and the implementation has not passed full remote CI yet. Memory storage consent, deletion semantics and all downstream runtime retrieval filters remain separate work items.
 
+## Implemented increment: loop budget and MCP boundary hardening
+
+The existing `loop-runner.mjs` now rejects invalid budgets (including negative limits and malformed repeat thresholds) before executing work. Negative/nonfinite per-step cost is treated as a format error and charged at the default cost, preventing budget underflow. Regression fixtures: `tests/loop-budget-safety.test.mjs`.
+
+The existing read-only MCP HTTP server now binds to `127.0.0.1` by default; binding to a non-loopback host requires `QUIRK_MCP_ALLOW_REMOTE=1`. Requests greater than 1 MiB receive HTTP 413. Regression fixtures: `tests/mcp-server-safety.test.mjs`. Remote exposure still requires independent authentication, TLS, access controls and deployment review, which this HTTP server does **not** implement.
+
+These are targeted code changes, not confirmation that W2/W4 are complete. The full repository CI, adversarial permission tests at live tool boundaries, multi-process replay, and distributed convergence remain outstanding.
+
 ## 10. Validation command reference (from package scripts)
 
 ```bash
