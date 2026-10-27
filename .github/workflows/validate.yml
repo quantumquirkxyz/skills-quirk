@@ -48,6 +48,9 @@ jobs:
           mkdir -p "$SANDBOX_DIR"
           echo "{}" > "$SANDBOX_DIR/manifest.json"
 
+      - name: Validate safe adoption regression fixtures
+        run: node --test tests/adoption-safety.test.mjs
+
       - name: Run full local gate
         run: |
           set -o pipefail
