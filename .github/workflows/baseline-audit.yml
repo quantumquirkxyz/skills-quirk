@@ -1,0 +1,37 @@
+name: Engineering Baseline Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Capture deterministic canonical inventory
+        run: node scripts/skill-inventory.mjs --out .skill-sandbox/baseline/inventory.json
+      - name: Execute independent baseline gates
+        id: baseline
+        continue-on-error: true
+        run: node scripts/baseline-report.mjs --out .skill-sandbox/baseline/baseline-report.json
+      - name: Upload auditable baseline artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engineering-baseline
+          path: .skill-sandbox/baseline/*.json
+          retention-days: 30
+      - name: Surface baseline failure
+        if: steps.baseline.outcome != 'success'
+        run: |
+          echo "Baseline checks failed; inspect engineering-baseline artifact."
+          exit 1
