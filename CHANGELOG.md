@@ -10,6 +10,19 @@ This project follows semantic versioning once releases are cut:
 
 ## [Unreleased]
 
+### Engineering modernization (2026-10-27)
+
+- Established a reproducible engineering baseline with canonical SHA-256 inventory, deterministic gate comparison, and scheduled GitHub Actions reports; missing optional project memory is classified as NOT RUN.
+- Introduced fail-closed agent action policy and hardened actual PreToolUse tool-risk enforcement, including MCP wildcard routing and explicit authorization requirements.
+- Hardened MCP HTTP binding and payload limits, memory provenance and expiry checks, bounded loop budgets, and opt-in durable loop ledgers.
+- Added a dry-run-first adoption CLI, safe file synchronization that preserves consumer project identity, and five representative cross-domain installation fixtures.
+- Fixed the npm archive manifest to ship governance files, hooks, and skills metadata; added an offline tarball-install verification gate and passed its GitHub Actions run.
+- Isolated concurrent mock behavioral artifacts, removed brittle hard-coded test counts, and added a negative behavioral fixture for the high-risk parallel-issue-fleet.
+- Expanded CI to exercise package installation, routing regressions, and baseline audits. A completed snapshot passed the full local gate with 22/22 checks and one optional memory check skipped.
+
+The work above does not certify complete skill-by-skill behavioral coverage, cross-domain feature correctness, public npm publication, or a new tagged release. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
+
+
 ### Fixed
 
 - Remediated all 84 error-severity tool-risk findings: web-derived content is
@@ -35,12 +48,11 @@ This project follows semantic versioning once releases are cut:
 
 - `fix-compatibility-view.mjs` now validates the full view contract: one
   relative directory symlink per canonical skill, no domain aliases, no direct
-  `SKILL.md` targets, and no missing skills. The view is repaired to 266/266.
+  `SKILL.md` targets, and no missing skills. The compatibility view is checked against the current canonical skill inventory.
 - Native Cursor, Gemini, Copilot, OpenCode, and Windsurf views are now ignored,
   on-demand projections instead of 1,270 committed symlinks. Generate them with
   `npm run views:native`; the committed `.claude/skills/` view remains intact.
-- Current documentation counts are 254 bundle / 266 repository skills and 1532
-  adapters; removed-research references now point at stable documents.
+- Current audited inventory is 255 bundle / 267 repository skills (including 12 platform skills); generated adapter totals must be calculated from the current registry.
 - Removed obsolete platform notes and the one-off 249-skill migration report;
   generated runtime traces, artifacts, mocks, and temporary memory output are
   excluded from the working tree.
