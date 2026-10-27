@@ -201,6 +201,14 @@ This is **not yet a runtime-enforced permission broker**: existing tool invocati
 
 **Local isolated proof:** four unit cases passed under Node.js 22.16.0 in a reconstructed fixture with identical module logic; the remote repository's full CI has NOT been verified. The release gate remains blocked until the implementation is validated in GitHub CI.
 
+## Implemented increment: opt-in memory provenance validation
+
+The existing memory-index validator now supports `--require-provenance` and `--as-of YYYY-MM-DD` for deterministic, backwards-compatible provenance and expiry validation. Memory notes are checked for `[source: reference; added: YYYY-MM-DD]` and may declare `[expires: YYYY-MM-DD]`. The default check behavior is unchanged until projects opt in.
+
+Example: `node .agents/skills/platform/memory-index.mjs check .agents/memory --require-provenance --as-of 2026-10-26 --json`.
+
+Fixtures: `tests/memory-provenance.test.mjs`. This is not a full memory policy engine: source references are syntactically checked rather than independently verified, and the implementation has not passed full remote CI yet. Memory storage consent, deletion semantics and all downstream runtime retrieval filters remain separate work items.
+
 ## 10. Validation command reference (from package scripts)
 
 ```bash
