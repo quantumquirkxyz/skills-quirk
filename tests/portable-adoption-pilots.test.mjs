@@ -40,6 +40,6 @@ for (const pilot of matrix) {
     assert.equal(readFileSync(path.join(target, 'CONTEXT.md'), 'utf8'), 'Project context\n');
     const view = path.join(target, '.claude', 'skills', 'demo');
     assert.ok(!path.isAbsolute(readlinkSync(view)), 'compatibility symlink must be relative');
-    assert.equal(realpathSync(view), path.join(target, '.agents', 'skills', 'routing', 'demo'));
+    assert.equal(realpathSync(view), realpathSync(path.join(target, '.agents', 'skills', 'routing', 'demo')));
   });
 }
