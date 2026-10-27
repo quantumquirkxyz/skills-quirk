@@ -99,6 +99,7 @@ async function copyPath(source, target) {
 async function recreateClaudeLinks() {
   const claudeRoot = path.join(targetRoot, '.claude', 'skills');
   const skillsRoot = path.join(targetRoot, '.agents', 'skills');
+  await ensureSafeDestination(claudeRoot);
   await fs.mkdir(claudeRoot, { recursive: true });
   async function linkSkill(skillDir) {
     const flatName = path.basename(skillDir);
