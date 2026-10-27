@@ -53,6 +53,7 @@ flowchart TD
 | [Skill inventory](skill-inventory.md) | Stable references to generated inventory and integrity sources |
 | [Engineering evolution roadmap](engineering-evolution-2026.md) | Evidence-led skill evaluation, security, and harness improvements |
 | [Strategic implementation plan](strategic-implementation-plan-2026.md) | Phased work packages, test gates, dependencies, migration and rollback |
+| [Implementation status](implementation-status-2026.md) | Evidence-backed progress, unverified changes, and remaining gates |
 | [Slash command map](slash-command-map.md) | Flat alias map |
 | [Skill templates](skill-templates.md) | Artifact templates map |
 | [Adoption guide](../../how-to/adoption.md) | Installation and sync |
