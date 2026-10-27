@@ -217,6 +217,18 @@ The existing read-only MCP HTTP server now binds to `127.0.0.1` by default; bind
 
 These are targeted code changes, not confirmation that W2/W4 are complete. The full repository CI, adversarial permission tests at live tool boundaries, multi-process replay, and distributed convergence remain outstanding.
 
+## Implemented increment: evaluation scorecards
+
+The new `scripts/baseline-scorecard.mjs` compares two baseline JSON reports by check ID, fails closed on missing check IDs, identifies `PASS -> FAIL/BLOCKED/NOT RUN` regressions, and supports `--strict` mode to require all candidate checks to pass. Regression tests: `tests/baseline-scorecard.test.mjs`.
+
+Example:
+
+```bash
+npm run baseline:compare -- --baseline /path/to/previous.json --candidate /path/to/current.json --strict
+```
+
+This is a deterministic **gate outcome comparator**, not an LLM-quality judge, not proof of benchmark coverage and not an automatic deployment authorization. Published artifacts and a fixed corpus must be reviewed independently. Four comparator unit cases passed in a self-contained Node.js 22.16.0 fixture; the full repository CI is not yet verified.
+
 ## 10. Validation command reference (from package scripts)
 
 ```bash
