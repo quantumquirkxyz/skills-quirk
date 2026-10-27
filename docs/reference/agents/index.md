@@ -50,7 +50,8 @@ flowchart TD
 | [Triage labels](triage-labels.md) | Triage label vocabulary |
 | [Conflict matrix](conflict-matrix.md) | Skill conflict and sequencing reference |
 | [Skills map](skills-map.md) | Full skills inventory |
-| [Skill inventory](skill-inventory.md) | Per-skill status table |
+| [Skill inventory](skill-inventory.md) | Stable references to generated inventory and integrity sources |
+| [Engineering evolution roadmap](engineering-evolution-2026.md) | Evidence-led skill evaluation, security, and harness improvements |
 | [Slash command map](slash-command-map.md) | Flat alias map |
 | [Skill templates](skill-templates.md) | Artifact templates map |
 | [Adoption guide](../../how-to/adoption.md) | Installation and sync |
