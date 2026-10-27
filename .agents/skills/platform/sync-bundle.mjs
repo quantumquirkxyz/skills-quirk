@@ -14,6 +14,27 @@ if (!targetArg) {
 }
 
 const targetRoot = path.resolve(targetArg);
+if (targetRoot === repoRoot || repoRoot.startsWith(targetRoot + path.sep) || targetRoot.startsWith(repoRoot + path.sep)) {
+  console.error('Source and target must be separate, non-nested repositories.');
+  process.exit(2);
+}
+
+// Never follow a pre-existing destination symlink (including parent directories).
+async function ensureSafeDestination(destination) {
+  const rel = path.relative(targetRoot, destination);
+  if (rel === '..' || rel.startsWith('..' + path.sep) || path.isAbsolute(rel)) throw new Error('Target path escapes repository');
+  let cursor = targetRoot;
+  for (const segment of rel.split(path.sep).filter(Boolean)) {
+    try {
+      const stat = await fs.lstat(cursor);
+      if (stat.isSymbolicLink()) throw new Error('Refusing to traverse target symlink: ' + cursor);
+    } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    cursor = path.join(cursor, segment);
+  }
+  try { if ((await fs.lstat(cursor)).isSymbolicLink()) throw new Error('Refusing to replace target symlink: ' + cursor); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+}
+
 const copyEntries = [
   '.agents/AGENTS.md',
   '.agents/skills',
@@ -61,6 +82,7 @@ async function walk(filePath) {
 
 async function copyPath(source, target) {
   if (source === target) return;
+  await ensureSafeDestination(target);
   const stat = await fs.lstat(source);
   if (stat.isSymbolicLink()) return;
   if (stat.isDirectory()) {
@@ -83,12 +105,17 @@ async function recreateClaudeLinks() {
     const flatPath = path.join(claudeRoot, flatName);
     const targetFor = path.relative(path.dirname(flatPath), skillDir);
     await fs.mkdir(path.dirname(flatPath), { recursive: true });
-    if (await exists(flatPath)) {
-      const stat = await fs.lstat(flatPath);
+    let existing;
+    try { existing = await fs.lstat(flatPath); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    if (existing) {
+      const stat = existing;
       if (!stat.isSymbolicLink()) {
         if (!force) throw new Error(`Refusing to replace non-symlink ${flatPath}`);
         await fs.rm(flatPath, { recursive: true, force: true });
       } else {
+        const current = await fs.readlink(flatPath);
+        if (current === targetFor) return;
+        if (!force) throw new Error(`Refusing to replace existing symlink ${flatPath}`);
         await fs.unlink(flatPath);
       }
     }
@@ -115,6 +142,7 @@ for (const relative of copyEntries) {
   for (const sourceFile of await walk(source)) {
     const relFile = path.relative(repoRoot, sourceFile);
     const targetFile = path.join(targetRoot, relFile);
+    await ensureSafeDestination(targetFile);
     if (await exists(targetFile)) {
       const same = await hashFile(sourceFile) === await hashFile(targetFile).catch(() => '');
       if (!same && !force) conflicts.push(relFile);
