@@ -70,6 +70,9 @@ jobs:
       - name: Run focused security and memory regression checks
         run: node --test tests/action-policy.test.mjs tests/mcp-server-safety.test.mjs tests/memory-provenance.test.mjs tests/loop-budget-safety.test.mjs tests/loop-durable-ledger.test.mjs tests/baseline-scorecard.test.mjs
 
+      - name: Verify packaged CLI adoption
+        run: npm run package:verify
+
       - name: Run full local gate
         run: |
           set -o pipefail
