@@ -193,6 +193,14 @@ The program is **not done** merely because documentation exists, a CLI command i
 
 Each QS item must become a fully specified tracker-backed ticket before implementation; identifiers here are **planning keys**, not assertions that GitHub issues already exist.
 
+## Implemented increment (2026-10-26): deterministic action policy
+
+The new `.agents/skills/platform/action-policy.mjs` exports a **pure**, deny-by-default `authorizeAction(request, grant)` decision primitive. It enforces known action categories, explicit resource allowlists, trusted origin for any write, and an approval ID bound to the exact action/resource for remote-write, deployment, merge and destructive actions. Regression tests live in `tests/action-policy.test.mjs` and are included in the repository's normal `npm test` glob.
+
+This is **not yet a runtime-enforced permission broker**: existing tool invocations are not automatically intercepted. Integrate this primitive at each actual tool boundary only after identifying the authoritative caller, validating grant provenance, adding tamper-resistant approvals, and running adversarial integration tests. A caller-supplied `origin: trusted` is not an authentication mechanism.
+
+**Local isolated proof:** four unit cases passed under Node.js 22.16.0 in a reconstructed fixture with identical module logic; the remote repository's full CI has NOT been verified. The release gate remains blocked until the implementation is validated in GitHub CI.
+
 ## 10. Validation command reference (from package scripts)
 
 ```bash
