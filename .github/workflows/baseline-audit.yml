@@ -1,6 +1,14 @@
 name: Engineering Baseline Audit
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".agents/skills/platform/**"
+      - "scripts/**"
+      - "tests/**"
+      - "package.json"
+      - ".github/workflows/baseline-audit.yml"
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * 1"
