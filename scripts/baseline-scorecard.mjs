@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export function compareBaselines(baseline, candidate, { strict = false } = {}) {
   if (!baseline || !candidate || !Array.isArray(baseline.checks) || !Array.isArray(candidate.checks)) {
@@ -31,7 +33,7 @@ export function compareBaselines(baseline, candidate, { strict = false } = {}) {
     ok: !findings.some(f => f.type !== 'new-check'), findings };
 }
 
-if (process.argv[1]?.endsWith('/baseline-scorecard.mjs')) {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const args = process.argv.slice(2);
     const get = name => { const i = args.indexOf(name); return i < 0 ? null : args[i + 1]; };
