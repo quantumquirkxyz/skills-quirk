@@ -54,6 +54,8 @@ function resolveCommand(command, commandArgs) {
     'sync': { script: 'scripts/sync-registry.mjs' },
     'catalog': { script: 'scripts/generate-site-data.mjs' },
     'install': { script: 'scripts/install-quirk-skills.sh', cwd: consumerCwd },
+    // Safe repository adoption: inspect first, then opt in to --write.
+    'adopt': { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd] },
   };
   if (command === 'add') {
     if (commandArgs[0] !== 'quirk-skills') return null;
@@ -89,7 +91,8 @@ Commands:
   metrics               Generate skill bundle metrics
   sync [--write]        Sync registry.yaml to marketplace.json and catalog
   catalog [--write]     Generate site/src/skills.json
-  install               Install the bundle into a target repo
+  install               Legacy greenfield installer (replaces managed paths)
+  adopt [--write]        Safely preview or sync into the current project
   add quirk-skills      Install/setup the bundle into the current repo
   version               Print CLI version
 
@@ -101,6 +104,8 @@ Examples:
   skills-quirk graph --format mermaid
   skills-quirk sync --write
   skills-quirk mcp --stdio
+  skills-quirk adopt
+  skills-quirk adopt --write
 `);
     return;
   }
