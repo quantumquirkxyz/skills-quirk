@@ -331,15 +331,18 @@ async function main() {
   const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && req.url === '/mcp') {
       let body = '';
+      let receivedBytes = 0;
       let oversized = false;
       req.on('data', chunk => {
         if (oversized) return;
-        body += chunk;
-        if (Buffer.byteLength(body) > MAX_REQUEST_BYTES) {
+        receivedBytes += Buffer.byteLength(chunk);
+        if (receivedBytes > MAX_REQUEST_BYTES) {
           oversized = true;
           res.writeHead(413, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: 'MCP request body too large' }));
+          return;
         }
+        body += chunk;
       });
       req.on('end', async () => {
         if (oversized) return;
