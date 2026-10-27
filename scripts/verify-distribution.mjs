@@ -8,19 +8,23 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+const npmCli = process.env.npm_execpath;
+const runNpm = (args, cwd) => npmCli
+  ? run(process.execPath, [npmCli, ...args], cwd)
+  : run(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, cwd, { shell: process.platform === 'win32' });
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'quirk-distribution-'));
-const run = (executable, args, cwd) => {
-  const result = spawnSync(executable, args, { cwd, encoding: 'utf8', timeout: 90000, maxBuffer: 5 * 1024 * 1024 });
+const run = (executable, args, cwd, extra = {}) => {
+  const result = spawnSync(executable, args, { cwd, encoding: 'utf8', timeout: 90000, maxBuffer: 5 * 1024 * 1024, ...extra });
   if (result.status !== 0) throw new Error(`${executable} ${args[0]} failed: ${result.stderr || result.stdout || result.error?.message}`);
   return result.stdout.trim();
 };
 
 try {
-  const pkgName = run('npm', ['pack', '--offline', '--silent', '--ignore-scripts', '--pack-destination', tmp], root).split('\n').at(-1);
+  const pkgName = runNpm(['pack', '--offline', '--silent', '--ignore-scripts', '--pack-destination', tmp], root).split('\n').at(-1);
   const archive = path.join(tmp, pkgName);
   if (!fs.statSync(archive).isFile()) throw new Error('npm did not produce an archive');
   const prefix = path.join(tmp, 'prefix');
-  run('npm', ['install', '--offline', '--no-audit', '--no-fund', '--ignore-scripts', '--prefix', prefix, archive], root);
+  runNpm(['install', '--offline', '--no-audit', '--no-fund', '--ignore-scripts', '--prefix', prefix, archive], root);
   const packageRoot = path.join(prefix, 'node_modules', 'skills-quirk');
   for (const required of ['.agents/AGENTS.md', '.agents/skills/platform/sync-bundle.mjs', 'skills.json', 'skills-lock.json', 'AUTHORSHIP.md', '.env.template', 'hooks/hooks.json']) {
     if (!fs.existsSync(path.join(packageRoot, required))) throw new Error('Missing packaged file: ' + required);
