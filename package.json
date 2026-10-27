@@ -9,6 +9,7 @@
   "scripts": {
     "test": "node --test .agents/skills/platform/tests/*.test.mjs tests/*.test.mjs",
     "inventory": "node scripts/skill-inventory.mjs",
+    "baseline": "node scripts/baseline-report.mjs",
     "validate": "node .agents/skills/platform/validate-skills.mjs",
     "audit": "node .agents/skills/platform/audit-semantics.mjs",
     "audit:spec": "node .agents/skills/platform/validate-spec-compliance.mjs",
