@@ -63,7 +63,7 @@ const usage = `memory-index options:
   check <dir>           validate the memory tree against the convention
   --json                emit machine-readable JSON
   --max-tokens <n>      per-file token budget (default ${DEFAULT_TOKEN_BUDGET})
-  --max-index-lines <n> index line budget (default ${DEFAULT_INDEX_LINE_BUDGET})
+  --max-index-lines <n> index line budget (default ${DEFAULT_INDEX_LINE_BUDGET})\n  --require-provenance    require [source: ...; added: YYYY-MM-DD] on notes\n  --as-of YYYY-MM-DD    deterministic expiry evaluation date (with provenance gate)
   --help                show this help`;
 
 // Code-unit ordering, not localeCompare: index output must be byte-stable across
@@ -366,7 +366,24 @@ export function checkIndex(memoryDir, options = {}) {
   const oversized = [];
   for (const file of listAllMarkdownFiles(dir)) {
     if (path.resolve(file) === path.resolve(indexPath)) continue; // the index has its own line budget
-    const tokens = estimateTokens(fsSync.readFileSync(file, 'utf8'));
+    const noteText = fsSync.readFileSync(file, 'utf8');
+    const tokens = estimateTokens(noteText);
+    if (options.requireProvenance && path.basename(file) !== INDEX_FILENAME) {
+      const note = path.relative(dir, file);
+      const source = noteText.match(/\\[source:\\s*([^;\\]]+);\\s*added:\\s*(\\d{4}-\\d{2}-\\d{2})\\]/i);
+      const isValidDate = value => {
+        const date = new Date(value + 'T00:00:00Z');
+        return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+      };
+      if (!source || !source[1].trim() || !isValidDate(source[2])) {
+        findings.push({ type: 'missing-provenance', file: note, message: 'memory note requires a valid [source: reference; added: YYYY-MM-DD] marker' });
+      }
+      const expiry = noteText.match(/\\[expires:\\s*([^\\]]+)\\]/i);
+      const asOf = options.asOf || new Date().toISOString().slice(0, 10);
+      if (expiry && (!isValidDate(expiry[1]) || expiry[1] < asOf)) {
+        findings.push({ type: 'stale-memory', file: note, message: 'memory note expiry is invalid or older than evaluation date' });
+      }
+    }
     if (tokens > maxTokens) {
       oversized.push(path.relative(dir, file));
       findings.push({
@@ -432,7 +449,7 @@ export function printCheckReport(report) {
   return lines.join('\n');
 }
 
-const VALUE_FLAGS = ['--max-tokens', '--max-index-lines'];
+const VALUE_FLAGS = ['--max-tokens', '--max-index-lines', '--as-of'];
 
 export function parseArgs(argv) {
   const positional = [];
@@ -471,8 +488,14 @@ export async function main(argv = process.argv.slice(2)) {
   const options = {
     maxTokens: positiveInt(values['--max-tokens'], DEFAULT_TOKEN_BUDGET),
     maxIndexLines: positiveInt(values['--max-index-lines'], DEFAULT_INDEX_LINE_BUDGET),
+    requireProvenance: flags.includes('--require-provenance'),
+    asOf: values['--as-of'] || null,
   };
   const asJson = flags.includes('--json');
+  if (options.asOf && !/^\\d{4}-\\d{2}-\\d{2}$/.test(options.asOf)) {
+    console.error('memory-index: --as-of must use YYYY-MM-DD');
+    return 2;
+  }
 
   try {
     if (command === 'build') {
