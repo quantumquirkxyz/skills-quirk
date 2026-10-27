@@ -17,6 +17,7 @@ async function fixture(t) {
   await mkdir(target);
   await writeFile(path.join(source, '.agents', 'skills', 'domain', 'sample', 'SKILL.md'), '# Sample\n');
   await writeFile(path.join(source, 'CONTEXT.md'), 'source context\n');
+  await writeFile(path.join(source, 'skills-lock.json'), '{"skills":{}}\n');
   return { root, source, target };
 }
 
@@ -32,13 +33,13 @@ test('dry-run leaves target unchanged', async t => {
   await assert.rejects(readFile(path.join(target, 'skills-lock.json')));
 });
 
-test('existing content blocks overwrite even with write enabled', async t => {
+test('changed managed files block writes without force', async t => {
   const { source, target } = await fixture(t);
-  await writeFile(path.join(target, 'CONTEXT.md'), 'keep user data\n');
+  await writeFile(path.join(target, 'skills-lock.json'), 'keep target lockfile\n');
   const result = run(source, target, '--write');
   assert.equal(result.status, 1, result.stderr || result.stdout);
   assert.equal(JSON.parse(result.stdout).status, 'blocked');
-  assert.equal(await readFile(path.join(target, 'CONTEXT.md'), 'utf8'), 'keep user data\n');
+  assert.equal(await readFile(path.join(target, 'skills-lock.json'), 'utf8'), 'keep target lockfile\n');
 });
 
 test('destination symlinks cannot escape project root', async t => {
