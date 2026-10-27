@@ -55,6 +55,8 @@ flowchart TD
 | [Slash command map](slash-command-map.md) | Flat alias map |
 | [Skill templates](skill-templates.md) | Artifact templates map |
 | [Adoption guide](../../how-to/adoption.md) | Installation and sync |
+| [Installation options](../../how-to/installation-options.md) | Prompt-free selective installs, managed bundle, and verification | 
+| [Agent engineering methodologies](../../explanation/agent-engineering-methodologies-2026.md) | Harness, loop, graph, context, memory, security and evaluations |
 | [Stack matrix](stack-matrix.md) | Stack-specific skills |
 | [Skill style guide](../../how-to/skill-style.md) | Editing and authoring rules |
 | [Release checklist](../../how-to/release.md) | Pre/post-release gates |
