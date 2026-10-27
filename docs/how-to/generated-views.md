@@ -17,14 +17,9 @@ flowchart LR
 
 Views exist because each consumer needs a different shape of the same data — a flat symlink directory for Claude Code, a Markdown catalog for humans, a JSON index for the site. The content is identical; the projection is not.
 
-Two counts make the contract checkable:
+Counts must be derived from current canonical files and the generated registry rather than maintained as hard-coded documentation totals. Distinguish public bundle skills from `.agents/skills/platform/**` infrastructure when comparing projections. See [Skill Inventory](../reference/agents/skill-inventory.md) for authoritative inventory sources.
 
-| Count | Meaning |
-|---|---|
-| 254 | bundle skills, excluding `.agents/skills/platform/**` infrastructure |
-| 266 | repo skills, the 254 above plus platform infrastructure |
-
-`tests/projection-consistency.test.mjs` pins the bundle count across every projection, so a hand-edited view fails the gate instead of shipping.
+`tests/projection-consistency.test.mjs` checks expected consistency across projections; run it and inspect the result before asserting the current count or that regeneration succeeded.
 
 ## The rule: regenerate, never hand-edit
 
