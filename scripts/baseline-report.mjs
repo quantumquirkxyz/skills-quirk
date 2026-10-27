@@ -5,7 +5,6 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -19,6 +18,7 @@ const definitions = [
   ['context', 'npm', ['run', 'audit:context']],
   ['memory', 'npm', ['run', 'memory:check']],
 ];
+// Do not persist execution output: arbitrary test logs can contain secrets.
 const args = process.argv.slice(2);
 function option(name) {
   const index = args.indexOf(name);
@@ -43,16 +43,15 @@ try {
       id, command: [executable, ...commandArgs],
       status, exit_code: run.status, signal: run.signal || null,
       duration_ms: Math.round(performance.now() - start),
-      error: run.error?.message || null,
-      stdout_tail: (run.stdout || '').slice(-6000),
-      stderr_tail: (run.stderr || '').slice(-6000),
+      error_code: run.error?.code || null,
+      // Store status and failure category only. Detailed logs remain in CI's access-controlled run.
     });
   }
   const git = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', timeout: 5000 });
   const report = {
     schema_version: 1, revision: git.status === 0 ? git.stdout.trim() : null,
     node: process.version, platform: process.platform, architecture: process.arch,
-    hostname: os.hostname(), captured_at: new Date().toISOString(),
+    captured_at: new Date().toISOString(),
     checks: records,
     summary: Object.fromEntries(['PASS', 'FAIL', 'BLOCKED', 'NOT RUN'].map(s => [s, records.filter(r => r.status === s).length])),
   };
