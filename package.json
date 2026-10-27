@@ -39,7 +39,8 @@
     "idempotency:demo": "node .agents/skills/platform/idempotency.mjs --demo --json",
     "catalog": "node scripts/generate-site-data.mjs",
     "site:dev": "npm --prefix site run dev",
-    "site:build": "npm --prefix site run build"
+    "site:build": "npm --prefix site run build",
+    "package:verify": "node scripts/verify-distribution.mjs"
   },
   "keywords": [
     "skills",
