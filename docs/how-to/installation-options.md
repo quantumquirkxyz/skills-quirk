@@ -36,7 +36,7 @@ skills-quirk adopt            # preview conflicts and planned files, no writes
 skills-quirk adopt --write    # apply only if the preview reports no conflicts
 ```
 
-The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing files, and preserves already-correct compatibility links. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The adapter is new and its cross-platform integration and full repository gate have **not yet been executed**; use in a disposable repository first.
+The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The adapter is new and its cross-platform integration and full repository gate have **not yet been executed**; use in a disposable repository first.
 
 ## Managed/full bundle installation
 
