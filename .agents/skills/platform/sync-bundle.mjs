@@ -46,11 +46,7 @@ const copyEntries = [
   'tooling/case-studies/README.md',
   'tooling/case-studies/template.md',
   'AUTHORSHIP.md',
-  'CONTEXT.md',
-  'README.md',
-  'LICENSE',
-  'VERSION',
-  'CHANGELOG.md',
+  // Preserve the target project's identity and history: these are not bundle files.
   'skills-lock.json',
   'skills.json',
   '.env.template',
