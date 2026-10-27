@@ -73,6 +73,12 @@
     "scripts/",
     "plugins/",
     "site/",
-    "tests/"
+    "tests/",
+    ".agents/AGENTS.md",
+    "AUTHORSHIP.md",
+    "skills.json",
+    ".env.template",
+    "hooks/",
+    "tooling/case-studies/"
   ]
 }
