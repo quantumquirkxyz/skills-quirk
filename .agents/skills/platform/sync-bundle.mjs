@@ -202,6 +202,26 @@ if (write) {
     if (await exists(source)) await copyPath(source, target);
   }
   await recreateClaudeLinks();
+
+  const managedFiles = {};
+  for (const relative of planned) {
+    const installed = path.join(targetRoot, relative);
+    if (await exists(installed)) managedFiles[relative.split(path.sep).join('/')] = await hashFile(installed);
+  }
+  const packageVersion = await fs.readFile(path.join(repoRoot, 'package.json'), 'utf8')
+    .then(text => JSON.parse(text).version ?? null)
+    .catch(() => null);
+  const manifest = {
+    schemaVersion: 1,
+    bundleVersion: packageVersion,
+    installedAt: new Date().toISOString(),
+    managedFiles,
+    compatibilityLinks: [...sourceLinks.keys()].sort(),
+  };
+  const manifestPath = path.join(targetRoot, '.agents', 'quirk-install.json');
+  await ensureSafeDestination(manifestPath);
+  await fs.mkdir(path.dirname(manifestPath), { recursive: true });
+  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
 }
 
 console.log(JSON.stringify({
