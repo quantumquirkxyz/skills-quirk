@@ -228,6 +228,12 @@ test('--deep reports the known test-fixture true positives as report-only output
   const payload = JSON.parse(deep.stdout);
   assert.equal(deep.status, 0, `--deep is a report-only mode and must not exit non-zero\n${deep.stderr}`);
 
+  assert.ok(Array.isArray(payload.suppressedFindings), 'deep JSON output must expose governed suppressions');
+  assert.equal(payload.suppressedFindings.length, 1, `expected one governed platform suppression\n${deep.stdout}`);
+  assert.equal(payload.suppressedFindings[0].finding.rule, 'credential-path-access');
+  assert.match(payload.suppressedFindings[0].finding.file, /tool-risk-guard\.mjs$/);
+  assert.match(payload.suppressedFindings[0].exception.reason, /HMAC-signed/);
+
   const high = payload.findings.filter((f) => BLOCKING_SEVERITIES.has(f.severity));
   assert.equal(high.length, 17, `expected the 17 documented test-fixture findings, got ${high.length}\n${deep.stdout}`);
 
