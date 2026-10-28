@@ -56,6 +56,9 @@ function resolveCommand(command, commandArgs) {
     'install': { script: 'scripts/install-quirk-skills.sh', cwd: consumerCwd },
     // Safe repository adoption: inspect first, then opt in to --write.
     'adopt': { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd] },
+    'verify-install': { script: 'scripts/manage-adoption.mjs', args: ['verify'], cwd: consumerCwd },
+    'upgrade': { script: 'scripts/manage-adoption.mjs', args: ['upgrade'], cwd: consumerCwd },
+    'uninstall': { script: 'scripts/manage-adoption.mjs', args: ['uninstall'], cwd: consumerCwd },
   };
   if (command === 'add') {
     if (commandArgs[0] !== 'quirk-skills') return null;
@@ -93,6 +96,9 @@ Commands:
   catalog [--write]     Generate site/src/skills.json
   install               Legacy greenfield installer (replaces managed paths)
   adopt [--write]        Safely preview or sync into the current project
+  verify-install         Verify the managed installation manifest and drift
+  upgrade [--write]      Preview or apply a backed-up managed upgrade
+  uninstall [--write]    Preview or conservatively remove unchanged managed files
   add quirk-skills      Install/setup the bundle into the current repo
   version               Print CLI version
 
@@ -106,6 +112,11 @@ Examples:
   skills-quirk mcp --stdio
   skills-quirk adopt
   skills-quirk adopt --write
+  skills-quirk verify-install
+  skills-quirk upgrade
+  skills-quirk upgrade --write
+  skills-quirk uninstall
+  skills-quirk uninstall --write
 `);
     return;
   }
