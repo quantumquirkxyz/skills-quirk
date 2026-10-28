@@ -1,6 +1,6 @@
 # Installation Options: From One Skill to Full Harness
 
-Status: installation guidance reviewed 2026-10-26. The third-party `skills` CLI commands below follow its published interface; integration with this repository's nested layout has **not** been smoke-tested here. Test against a clean disposable project before recommending a command as verified for quirk Skills.
+Status: installation guidance reviewed 2026-10-28. Third-party discovery and selective installation were smoke-tested by GitHub Actions; managed package installation was verified on Linux, macOS and Windows. Re-run the linked workflows for the exact release candidate before publishing.
 
 ## Preferred discovery path: Agent Skills CLI
 
@@ -23,7 +23,7 @@ The repository URL is also an accepted source format:
 npx skills add https://github.com/quantumquirkxyz/skills-quirk --list
 ```
 
-This avoids copying a prompt into an agent. The CLI may ask which skills, target agent and installation mechanism to use. Do **not** assume that the third-party CLI discovers every skill in `.agents/skills/<domain>/<skill>/SKILL.md`; confirm the `--list` output and an installed `SKILL.md` before adoption. For repository-local (not global) installation, use the default scope. Prefer selected skills over installing the entire large bundle.
+This avoids copying a prompt into an agent. The repository's automated interoperability workflow verifies that `--list` discovers `ask-to` and that a non-interactive `--skill ask-to -a claude-code -y --copy` installation produces a discoverable skill. This is evidence for selective interoperability, not proof that every skill/agent combination behaves identically. For repository-local (not global) installation, use the default scope. Prefer selected skills over installing the entire large bundle.
 
 Requires a Node.js version supported by the current `skills` CLI (its published package lists Node 22.20+ as of October 2026); the quirk repository's own Node engine requirement is separate. The CLI may collect anonymous install telemetry; set `DISABLE_TELEMETRY=1` to opt out, per its documentation. Pin or review the source revision and audit side effects before using third-party skills in sensitive environments.
 
@@ -36,7 +36,19 @@ skills-quirk adopt            # preview conflicts and planned files, no writes
 skills-quirk adopt --write    # apply only if the preview reports no conflicts
 ```
 
-The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The adapter is new and its cross-platform integration and full repository gate have **not yet been executed**; use in a disposable repository first.
+The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. A successful write creates `.agents/quirk-install.json`, which records hashes of bundle-managed files and compatibility links. That manifest enables three additional lifecycle commands:
+
+```bash
+skills-quirk verify-install       # detect missing/modified managed files
+skills-quirk upgrade              # preview changed managed files and backup plan
+skills-quirk upgrade --write      # back up changed managed files, then upgrade
+skills-quirk uninstall            # preview conservative removal
+skills-quirk uninstall --write    # remove only unchanged managed files/links
+```
+
+`upgrade --write` stores changed managed files under `.agents/quirk-backups/<timestamp>/` before replacement. `uninstall --write` refuses to remove a managed path that has been edited or replaced by the host project. Compatibility-view conflicts block before any copy begins.
+
+The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The managed lifecycle is exercised by the repository test suite and the portable distribution matrix; use the dry-run modes first in established repositories.
 
 ## Managed/full bundle installation
 
