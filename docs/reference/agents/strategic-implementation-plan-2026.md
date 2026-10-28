@@ -1,6 +1,6 @@
 # Quirk Skills — Strategic Implementation Plan (2026–2027)
 
-**Status:** approved planning baseline; execution NOT STARTED. **Date:** 2026-10-26. **Target:** cross-project, portable, evaluable agent-skills engineering platform. **Scope:** canonical skills, governance, runtime, evaluation, security, installer, docs, packaging and release. **Non-goal:** replace the ecosystem with a mandatory monolithic orchestration framework.
+**Status:** repository-controlled implementation complete; final CI acceptance in progress; external live-model evaluation and npm publication are NOT RUN because required repository secrets are absent. **Originally approved:** 2026-10-26. **Reconciled:** 2026-10-28. **Target:** cross-project, portable, evaluable agent-skills engineering platform. **Scope:** canonical skills, governance, runtime, evaluation, security, installer, docs, packaging and release. **Non-goal:** replace the ecosystem with a mandatory monolithic orchestration framework.
 
 This plan extends [Engineering Evolution](engineering-evolution-2026.md), [Agent Engineering Methodologies](../../explanation/agent-engineering-methodologies-2026.md), and [Installation Options](../../how-to/installation-options.md). Every feature claim needs tests; listed scripts are discovery points, not verified successes.
 
