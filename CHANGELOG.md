@@ -19,8 +19,16 @@ This project follows semantic versioning once releases are cut:
 - Fixed the npm archive manifest to ship governance files, hooks, and skills metadata; added an offline tarball-install verification gate and passed its GitHub Actions run.
 - Isolated concurrent mock behavioral artifacts, removed brittle hard-coded test counts, and added a negative behavioral fixture for the high-risk parallel-issue-fleet.
 - Expanded CI to exercise package installation, routing regressions, and baseline audits. A completed snapshot passed the full local gate with 22/22 checks and one optional memory check skipped.
+- Added signed, expiring tool/resource approval grants enforced at the PreToolUse boundary, plus governed expiring security-scanner exceptions with visible suppression evidence.
+- Added deterministic context compaction, memory provenance/expiry/revocation checks, and non-destructive stale-memory retirement.
+- Added cooperative loop cancellation, strict durable ledgers, and deterministic five-domain workflow/replay pilots.
+- Added managed installation manifests with verify, upgrade backup, rollback, and conservative uninstall; the portable matrix exercises the lifecycle on Linux, macOS, and Windows.
+- Verified third-party Agent Skills discovery and selective `ask-to` installation from the GitHub repository.
+- Added credential-gated live behavioral A/B evaluation and a non-destructive external-readiness workflow; absent credentials are recorded as NOT RUN.
+- Added canonical GitHub work-item metadata for assignees, labels, milestone, projects, parent/sub-issues, blocked-by/blocking relations, Project V2 fields, and Development branch linkage, with a dry-run-first `skills-quirk issue-meta` command.
+- Added a provenance-backed release workflow that gates tests, package verification, npm publication, public-artifact installation, and GitHub Release creation.
 
-The work above does not certify complete skill-by-skill behavioral coverage, cross-domain feature correctness, public npm publication, or a new tagged release. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
+Repository-controlled modernization is implemented and continuously gated. Live third-party model evaluation and public npm publication remain external acceptance actions and are explicitly NOT RUN while their repository secrets are absent. No new tag has been cut. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
 
 
 ### Fixed
