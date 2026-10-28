@@ -60,10 +60,10 @@ const SUBDIR_HEADING = `## ${SUBDIR_TITLE}`;
 
 const usage = `memory-index options:
   build <dir>           write/refresh the root MEMORY.md index (default dir: .agents/memory)
-  check <dir>           validate the memory tree against the convention
+  check <dir>           validate the memory tree against the convention\n  retire <dir>          dry-run expired/revoked note retirement into .archive/
   --json                emit machine-readable JSON
   --max-tokens <n>      per-file token budget (default ${DEFAULT_TOKEN_BUDGET})
-  --max-index-lines <n> index line budget (default ${DEFAULT_INDEX_LINE_BUDGET})\n  --require-provenance    require [source: ...; added: YYYY-MM-DD] on notes\n  --as-of YYYY-MM-DD    deterministic expiry evaluation date (with provenance gate)
+  --max-index-lines <n> index line budget (default ${DEFAULT_INDEX_LINE_BUDGET})\n  --require-provenance    require [source: ...; added: YYYY-MM-DD] on notes\n  --as-of YYYY-MM-DD    deterministic expiry/revocation evaluation date\n  --write               apply retire operations (default is dry-run)
   --help                show this help`;
 
 // Code-unit ordering, not localeCompare: index output must be byte-stable across
@@ -133,6 +133,48 @@ function listAllMarkdownFiles(dir, out = []) {
     else if (entry.isFile() && entry.name.endsWith('.md')) out.push(full);
   }
   return out;
+}
+
+function validIsoDate(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return false;
+  const parsed = new Date(value + 'T00:00:00Z');
+  return !Number.isNaN(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === value;
+}
+
+export function retireStaleMemory(dir, { asOf = new Date().toISOString().slice(0, 10), write = false, ...buildOptions } = {}) {
+  if (!validIsoDate(asOf)) throw new Error('retire requires a valid --as-of YYYY-MM-DD');
+  const candidates = [];
+  for (const file of listAllMarkdownFiles(dir)) {
+    if (path.basename(file) === INDEX_FILENAME) continue;
+    const text = fsSync.readFileSync(file, 'utf8');
+    const expiry = text.match(/\[expires:\s*([^\]]+)\]/i)?.[1] ?? null;
+    const revoked = text.match(/\[revoked:\s*([^\]]+)\]/i)?.[1] ?? null;
+    const reasons = [];
+    if (expiry && validIsoDate(expiry) && expiry < asOf) reasons.push('expired');
+    if (revoked && validIsoDate(revoked) && revoked <= asOf) reasons.push('revoked');
+    if (!reasons.length) continue;
+    const relative = path.relative(dir, file);
+    candidates.push({ file: relative, reasons });
+  }
+  if (write) {
+    for (const candidate of candidates) {
+      const source = path.join(dir, candidate.file);
+      const destination = path.join(dir, '.archive', candidate.file);
+      if (fsSync.existsSync(destination)) throw new Error('archive target already exists: ' + path.relative(dir, destination));
+      fsSync.mkdirSync(path.dirname(destination), { recursive: true });
+      fsSync.renameSync(source, destination);
+    }
+    buildIndex(dir, buildOptions);
+  }
+  return {
+    tool: 'memory-index',
+    command: 'retire',
+    dir,
+    asOf,
+    mode: write ? 'write' : 'dry-run',
+    retired: candidates,
+    status: 'pass',
+  };
 }
 
 function linkCell(target, label) {
@@ -379,9 +421,13 @@ export function checkIndex(memoryDir, options = {}) {
         findings.push({ type: 'missing-provenance', file: note, message: 'memory note requires a valid [source: reference; added: YYYY-MM-DD] marker' });
       }
       const expiry = noteText.match(/\[expires:\s*([^\]]+)\]/i);
+      const revoked = noteText.match(/\[revoked:\s*([^\]]+)\]/i);
       const asOf = options.asOf || new Date().toISOString().slice(0, 10);
       if (expiry && (!isValidDate(expiry[1]) || expiry[1] < asOf)) {
         findings.push({ type: 'stale-memory', file: note, message: 'memory note expiry is invalid or older than evaluation date' });
+      }
+      if (revoked && (!isValidDate(revoked[1]) || revoked[1] <= asOf)) {
+        findings.push({ type: 'revoked-memory', file: note, message: 'memory note is revoked or has an invalid revocation date' });
       }
     }
     if (tokens > maxTokens) {
@@ -474,7 +520,7 @@ export async function main(argv = process.argv.slice(2)) {
   }
 
   const command = argv[0];
-  if (command !== 'build' && command !== 'check') {
+  if (command !== 'build' && command !== 'check' && command !== 'retire') {
     console.error(`memory-index: unknown command "${command}"\n\n${usage}`);
     return 2;
   }
@@ -501,6 +547,11 @@ export async function main(argv = process.argv.slice(2)) {
     if (command === 'build') {
       const report = buildIndex(memoryDir, options);
       console.log(asJson ? JSON.stringify(report, null, 2) : printBuildReport(report));
+      return 0;
+    }
+    if (command === 'retire') {
+      const report = retireStaleMemory(memoryDir, { ...options, write: flags.includes('--write') });
+      console.log(JSON.stringify(report, null, 2));
       return 0;
     }
     const report = checkIndex(memoryDir, options);
