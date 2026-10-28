@@ -24,11 +24,11 @@ This project follows semantic versioning once releases are cut:
 - Added cooperative loop cancellation, strict durable ledgers, and deterministic five-domain workflow/replay pilots.
 - Added managed installation manifests with verify, upgrade backup, rollback, and conservative uninstall; the portable matrix exercises the lifecycle on Linux, macOS, and Windows.
 - Verified third-party Agent Skills discovery and selective `ask-to` installation from the GitHub repository.
-- Added credential-gated live behavioral A/B evaluation and a non-destructive external-readiness workflow; absent credentials are recorded as NOT RUN.
+- Added credential-gated optional external model evaluation and a non-destructive external-readiness workflow; absent credentials are recorded as NOT RUN.
 - Added canonical GitHub work-item metadata for assignees, labels, milestone, projects, parent/sub-issues, blocked-by/blocking relations, Project V2 fields, and Development branch linkage, with a dry-run-first `skills-quirk issue-meta` command.
 - Added a provenance-backed release workflow that gates tests, package verification, npm publication, public-artifact installation, and GitHub Release creation.
 
-Repository-controlled modernization is implemented and continuously gated. Live third-party model evaluation and public npm publication remain external acceptance actions and are explicitly NOT RUN while their repository secrets are absent. No new tag has been cut. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
+Repository-controlled modernization is implemented and continuously gated. External model evaluation and public npm publication remain external acceptance actions and are explicitly NOT RUN while their repository secrets are absent. No new tag has been cut. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
 
 
 ### Fixed
