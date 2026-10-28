@@ -50,6 +50,26 @@ try {
   if (!fs.lstatSync(compat).isSymbolicLink() || !fs.statSync(compat).isDirectory()) {
     throw new Error('Native compatibility symlink is absent or broken');
   }
+  const metadataFile = path.join(consumer, 'issue-metadata.json');
+  fs.writeFileSync(metadataFile, JSON.stringify({
+    assignees: ['quantumquirkxyz'],
+    labels: ['ready-for-agent'],
+    relationships: { blockedBy: [7] },
+    development: { branch: { name: 'feat/issue-8', base: 'main' } }
+  }));
+  const issuePlan = JSON.parse(run(process.execPath, [
+    cli, 'issue-meta',
+    '--repo', 'quantumquirkxyz/skills-quirk',
+    '--issue', '8',
+    '--metadata', metadataFile
+  ], consumer));
+  if (issuePlan.mode !== 'dry-run' || issuePlan.status !== 'pass') {
+    throw new Error('Packaged issue-meta command did not remain dry-run');
+  }
+  if (!issuePlan.commands.some(command => command.kind === 'issue-metadata') ||
+      !issuePlan.commands.some(command => command.kind === 'development-branch')) {
+    throw new Error('Packaged issue-meta command omitted native issue/development mutations');
+  }
   console.log(JSON.stringify({ status: 'PASS', installedSkills: fs.readdirSync(path.join(consumer, '.claude', 'skills')).length, archive: pkgName }));
 } catch (error) {
   console.error('Distribution verification failed:', error.message);
