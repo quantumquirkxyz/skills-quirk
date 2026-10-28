@@ -30,6 +30,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readToolRiskPolicy, defaultPolicyPath, PolicyParseError } from '../scripts/parse-tool-risk-policy.mjs';
+import { verifyApproval } from '../approval-token.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -101,6 +102,7 @@ async function loadPolicy() {
 async function main() {
   const args = process.argv.slice(2);
   let toolName = null;
+  let hookPayload = {};
 
   // Direct-test mode: --tool <name> skips stdin.
   const toolFlag = args.indexOf('--tool');
@@ -123,7 +125,8 @@ async function main() {
     }
     try {
       const payload = JSON.parse(raw);
-      toolName = payload?.tool_name ?? payload?.toolName ?? null;
+      hookPayload = payload && typeof payload === 'object' ? payload : {};
+      toolName = hookPayload?.tool_name ?? hookPayload?.toolName ?? null;
     } catch {
       toolName = null;
     }
@@ -142,7 +145,24 @@ async function main() {
     return 0;
   }
 
-  emit(decide(toolName, policy));
+  const decision = decide(toolName, policy);
+  if (decision.permissionDecision === 'ask' && hookPayload?.approval_token) {
+    const secret = process.env.QUIRK_APPROVAL_SECRET;
+    if (!secret) {
+      emit({ permissionDecision: 'deny', permissionDecisionReason: 'approval token supplied but QUIRK_APPROVAL_SECRET is unavailable' });
+      return 0;
+    }
+    const resource = typeof hookPayload?.resource === 'string' ? hookPayload.resource : null;
+    const verified = verifyApproval(hookPayload.approval_token, { tool: toolName, resource }, secret);
+    if (!verified.ok) {
+      emit({ permissionDecision: 'deny', permissionDecisionReason: 'approval token rejected: ' + verified.reason });
+      return 0;
+    }
+    emit({ permissionDecision: 'allow', permissionDecisionReason: 'signed approval ' + verified.approvalId + ' authorized this exact tool/resource request' });
+    return 0;
+  }
+
+  emit(decision);
   return 0;
 }
 
