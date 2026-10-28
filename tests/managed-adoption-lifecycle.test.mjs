@@ -80,3 +80,35 @@ test('managed install lifecycle verifies, backs up upgrades, and uninstalls cons
   assert.ok(!existsSync(path.join(target, '.agents', 'quirk-install.json')));
   assert.ok(!existsSync(path.join(target, '.agents', 'skills')));
 });
+
+
+test('rollback restores the exact pre-upgrade bytes and preserves prior drift evidence', t => {
+  const target = mkdtempSync(path.join(tmpdir(), 'quirk-rollback-'));
+  t.after(() => rmSync(target, { recursive: true, force: true }));
+  writeFileSync(path.join(target, 'README.md'), 'Consumer project\n');
+
+  const install = runNode(sync, [target, '--write'], root);
+  assert.equal(install.status, 0, install.stderr || install.stdout);
+
+  const locallyModified = '{"locally":"preserve-me"}\n';
+  writeFileSync(path.join(target, 'skills-lock.json'), locallyModified);
+
+  const upgrade = runNode(manage, ['upgrade', '--write'], target);
+  assert.equal(upgrade.status, 0, upgrade.stderr || upgrade.stdout);
+  assert.notEqual(readFileSync(path.join(target, 'skills-lock.json'), 'utf8'), locallyModified);
+
+  const preview = runNode(manage, ['rollback'], target);
+  assert.equal(preview.status, 0, preview.stderr || preview.stdout);
+  const plan = JSON.parse(preview.stdout);
+  assert.equal(plan.mode, 'dry-run');
+  assert.ok(plan.restoreFiles.includes('skills-lock.json'));
+
+  const rollback = runNode(manage, ['rollback', '--write'], target);
+  assert.equal(rollback.status, 0, rollback.stderr || rollback.stdout);
+  assert.equal(readFileSync(path.join(target, 'skills-lock.json'), 'utf8'), locallyModified);
+  assert.equal(readFileSync(path.join(target, 'README.md'), 'utf8'), 'Consumer project\n');
+
+  const verify = runNode(manage, ['verify'], target);
+  assert.equal(verify.status, 1, 'pre-upgrade local drift must remain visible after rollback');
+  assert.ok(JSON.parse(verify.stdout).findings.some(item => item.path === 'skills-lock.json' && item.type === 'modified'));
+});
