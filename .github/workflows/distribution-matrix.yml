@@ -9,6 +9,8 @@ on:
       - ".agents/skills/platform/sync-bundle.mjs"
       - "package.json"
       - "tests/portable-adoption-pilots.test.mjs"
+      - "tests/managed-adoption-lifecycle.test.mjs"
+      - "scripts/verify-distribution.mjs"
       - ".github/workflows/distribution-matrix.yml"
   pull_request:
     paths:
@@ -17,6 +19,8 @@ on:
       - ".agents/skills/platform/sync-bundle.mjs"
       - "package.json"
       - "tests/portable-adoption-pilots.test.mjs"
+      - "tests/managed-adoption-lifecycle.test.mjs"
+      - "scripts/verify-distribution.mjs"
       - ".github/workflows/distribution-matrix.yml"
   workflow_dispatch:
 
