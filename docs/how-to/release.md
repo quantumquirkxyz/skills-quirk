@@ -22,7 +22,7 @@ flowchart TD
 - [ ] Run `node .agents/skills/platform/check-all.mjs`.
 - [ ] Run `npm run package:verify` and the Portable Distribution Matrix for the exact release candidate.
 - [ ] Verify Agent Skills CLI discovery/selective install evidence for the release candidate or document why it is unchanged.
-- [ ] Run External Release Readiness. `NPM_TOKEN` must be PASS before tagging; live-model evaluation is recorded separately as PASS/FAIL/NOT RUN.
+- [ ] Run External Release Readiness. `NPM_TOKEN` must be PASS before tagging; no external model-provider credential is required.
 - [ ] Verify no project-specific vocabulary leaked into reusable docs.
 
 ## Lockfile provenance
