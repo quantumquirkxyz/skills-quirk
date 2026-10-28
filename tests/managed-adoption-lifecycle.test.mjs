@@ -1,14 +1,34 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, readFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, copyFileSync, writeFileSync, readFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const sync = path.join(root, '.agents', 'skills', 'platform', 'sync-bundle.mjs');
-const manage = path.join(root, 'scripts', 'manage-adoption.mjs');
+const sourceSync = path.join(root, '.agents', 'skills', 'platform', 'sync-bundle.mjs');
+const sourceManage = path.join(root, 'scripts', 'manage-adoption.mjs');
+
+function lifecycleFixture(t, prefix) {
+  const scratch = mkdtempSync(path.join(tmpdir(), prefix));
+  t.after(() => rmSync(scratch, { recursive: true, force: true }));
+  const bundle = path.join(scratch, 'bundle');
+  const target = path.join(scratch, 'target');
+  const sync = path.join(bundle, '.agents', 'skills', 'platform', 'sync-bundle.mjs');
+  const manage = path.join(bundle, 'scripts', 'manage-adoption.mjs');
+  mkdirSync(path.dirname(sync), { recursive: true });
+  mkdirSync(path.dirname(manage), { recursive: true });
+  mkdirSync(path.join(bundle, '.agents', 'skills', 'routing', 'sample'), { recursive: true });
+  mkdirSync(target, { recursive: true });
+  copyFileSync(sourceSync, sync);
+  copyFileSync(sourceManage, manage);
+  writeFileSync(path.join(bundle, '.agents', 'skills', 'routing', 'sample', 'SKILL.md'), '# Sample\n');
+  writeFileSync(path.join(bundle, 'skills-lock.json'), '{"skills":{"routing/sample":"one"}}\n');
+  writeFileSync(path.join(bundle, 'skills.json'), '{"skills":[]}\n');
+  writeFileSync(path.join(bundle, 'package.json'), '{"name":"fixture","version":"1.0.0"}\n');
+  return { bundle, target, sync, manage };
+}
 
 function runNode(script, args, cwd) {
   return spawnSync(process.execPath, [script, ...args], {
@@ -17,12 +37,11 @@ function runNode(script, args, cwd) {
 }
 
 test('managed install lifecycle verifies, backs up upgrades, and uninstalls conservatively', t => {
-  const target = mkdtempSync(path.join(tmpdir(), 'quirk-lifecycle-'));
-  t.after(() => rmSync(target, { recursive: true, force: true }));
+  const { bundle, target, sync, manage } = lifecycleFixture(t, 'quirk-lifecycle-');
   writeFileSync(path.join(target, 'README.md'), 'Consumer project\n');
   writeFileSync(path.join(target, 'CONTEXT.md'), 'Consumer context\n');
 
-  const install = runNode(sync, [target, '--write'], root);
+  const install = runNode(sync, [target, '--write'], bundle);
   assert.equal(install.status, 0, install.stderr || install.stdout);
   assert.ok(existsSync(path.join(target, '.agents', 'quirk-install.json')));
 
@@ -83,11 +102,10 @@ test('managed install lifecycle verifies, backs up upgrades, and uninstalls cons
 
 
 test('rollback restores the exact pre-upgrade bytes and preserves prior drift evidence', t => {
-  const target = mkdtempSync(path.join(tmpdir(), 'quirk-rollback-'));
-  t.after(() => rmSync(target, { recursive: true, force: true }));
+  const { bundle, target, sync, manage } = lifecycleFixture(t, 'quirk-rollback-');
   writeFileSync(path.join(target, 'README.md'), 'Consumer project\n');
 
-  const install = runNode(sync, [target, '--write'], root);
+  const install = runNode(sync, [target, '--write'], bundle);
   assert.equal(install.status, 0, install.stderr || install.stdout);
 
   const locallyModified = '{"locally":"preserve-me"}\n';
