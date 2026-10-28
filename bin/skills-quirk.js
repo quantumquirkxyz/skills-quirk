@@ -58,6 +58,7 @@ function resolveCommand(command, commandArgs) {
     'adopt': { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd] },
     'verify-install': { script: 'scripts/manage-adoption.mjs', args: ['verify'], cwd: consumerCwd },
     'upgrade': { script: 'scripts/manage-adoption.mjs', args: ['upgrade'], cwd: consumerCwd },
+    'rollback': { script: 'scripts/manage-adoption.mjs', args: ['rollback'], cwd: consumerCwd },
     'uninstall': { script: 'scripts/manage-adoption.mjs', args: ['uninstall'], cwd: consumerCwd },
     'issue-meta': { script: 'scripts/apply-issue-metadata.mjs', cwd: consumerCwd },
   };
@@ -99,6 +100,7 @@ Commands:
   adopt [--write]        Safely preview or sync into the current project
   verify-install         Verify the managed installation manifest and drift
   upgrade [--write]      Preview or apply a backed-up managed upgrade
+  rollback [--write]     Preview or restore the latest pre-upgrade state
   uninstall [--write]    Preview or conservatively remove unchanged managed files
   issue-meta             Preview/apply assignees, labels, milestone, project, relationships, and Development linkage
   add quirk-skills      Install/setup the bundle into the current repo
@@ -117,6 +119,8 @@ Examples:
   skills-quirk verify-install
   skills-quirk upgrade
   skills-quirk upgrade --write
+  skills-quirk rollback
+  skills-quirk rollback --write
   skills-quirk uninstall
   skills-quirk uninstall --write
   skills-quirk issue-meta --repo owner/repo --issue 123 --metadata issue.json
