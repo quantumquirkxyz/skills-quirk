@@ -139,17 +139,122 @@ async function upgrade() {
   }
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
   const backupRoot = path.join(targetRoot, '.agents', 'quirk-backups', stamp);
+  await fs.mkdir(backupRoot, { recursive: true });
+  await fs.copyFile(manifestPath, path.join(backupRoot, '.quirk-install.previous.json'));
   for (const rel of backupFiles) await copyBackup(await ensureInside(rel), path.join(backupRoot, rel));
   const applied = runSync('--write', '--force');
   if (applied.status !== 0) throw new Error(applied.stderr || applied.stdout || 'upgrade sync failed');
   console.log(JSON.stringify({ status: 'pass', mode: 'write', backupRoot: path.relative(targetRoot, backupRoot).split(path.sep).join('/'), backedUp: backupFiles.length }, null, 2));
 }
 
+
+async function latestBackupRoot() {
+  const root = path.join(targetRoot, '.agents', 'quirk-backups');
+  if (!(await exists(root))) throw new Error('No managed upgrade backups found');
+  const entries = (await fs.readdir(root, { withFileTypes: true }))
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+    .sort()
+    .reverse();
+  for (const name of entries) {
+    const candidate = path.join(root, name);
+    if (await exists(path.join(candidate, '.quirk-install.previous.json'))) return candidate;
+  }
+  throw new Error('No rollback-capable managed backup found');
+}
+
+async function rollback() {
+  const current = await loadManifest();
+  const backupRoot = await latestBackupRoot();
+  const previousManifestPath = path.join(backupRoot, '.quirk-install.previous.json');
+  const previous = JSON.parse(await fs.readFile(previousManifestPath, 'utf8'));
+  if (previous.schemaVersion !== 1 || !previous.managedFiles || typeof previous.managedFiles !== 'object') {
+    throw new Error('Rollback backup contains an invalid previous manifest');
+  }
+
+  const drift = [];
+  for (const [rel, expected] of Object.entries(current.managedFiles)) {
+    const absolute = await ensureInside(rel);
+    if (!(await exists(absolute))) { drift.push({ path: rel, type: 'missing' }); continue; }
+    const stat = await fs.lstat(absolute);
+    if (!stat.isFile() || await hashFile(absolute).catch(() => '') !== expected) drift.push({ path: rel, type: 'modified' });
+  }
+  for (const name of current.compatibilityLinks || []) {
+    const rel = '.claude/skills/' + name;
+    const link = await ensureInside(rel);
+    if (!(await exists(link)) || !(await fs.lstat(link)).isSymbolicLink()) drift.push({ path: rel, type: 'link-drift' });
+  }
+  if (drift.length) {
+    console.log(JSON.stringify({
+      status: 'blocked',
+      mode: write ? 'write' : 'dry-run',
+      backupRoot: path.relative(targetRoot, backupRoot).split(path.sep).join('/'),
+      drift,
+      note: 'Rollback refuses to overwrite changes made after the upgrade.',
+    }, null, 2));
+    process.exitCode = 1;
+    return;
+  }
+
+  const previousFiles = new Set(Object.keys(previous.managedFiles));
+  const newFiles = Object.keys(current.managedFiles).filter(rel => !previousFiles.has(rel));
+  const previousLinks = new Set(previous.compatibilityLinks || []);
+  const newLinks = (current.compatibilityLinks || []).filter(name => !previousLinks.has(name));
+  const restoreFiles = [];
+  for (const rel of Object.keys(previous.managedFiles)) {
+    if (await exists(path.join(backupRoot, rel))) restoreFiles.push(rel);
+  }
+
+  if (!write) {
+    console.log(JSON.stringify({
+      status: 'pass',
+      mode: 'dry-run',
+      backupRoot: path.relative(targetRoot, backupRoot).split(path.sep).join('/'),
+      restoreFiles,
+      removeFiles: newFiles,
+      removeLinks: newLinks,
+      targetBundleVersion: previous.bundleVersion ?? null,
+      note: 'No files changed. Add --write to apply rollback.',
+    }, null, 2));
+    return;
+  }
+
+  for (const name of newLinks) {
+    const link = await ensureInside('.claude/skills/' + name);
+    if (await exists(link) && (await fs.lstat(link)).isSymbolicLink()) await fs.unlink(link);
+  }
+  for (const rel of newFiles.sort((a,b)=>b.length-a.length)) {
+    const absolute = await ensureInside(rel);
+    if (await exists(absolute)) {
+      await fs.unlink(absolute);
+      await pruneEmpty(path.dirname(absolute), targetRoot);
+    }
+  }
+  for (const rel of restoreFiles) {
+    const source = path.join(backupRoot, rel);
+    const destination = await ensureInside(rel);
+    await fs.mkdir(path.dirname(destination), { recursive: true });
+    await fs.copyFile(source, destination);
+  }
+  await fs.copyFile(previousManifestPath, manifestPath);
+
+  console.log(JSON.stringify({
+    status: 'pass',
+    mode: 'write',
+    backupRoot: path.relative(targetRoot, backupRoot).split(path.sep).join('/'),
+    restoredFiles: restoreFiles.length,
+    removedFiles: newFiles.length,
+    removedLinks: newLinks.length,
+    bundleVersion: previous.bundleVersion ?? null,
+  }, null, 2));
+}
+
 try {
   if (command === 'verify') await verify();
   else if (command === 'uninstall') await uninstall();
   else if (command === 'upgrade') await upgrade();
-  else throw new Error('Usage: manage-adoption.mjs <verify|upgrade|uninstall> [--write]');
+  else if (command === 'rollback') await rollback();
+  else throw new Error('Usage: manage-adoption.mjs <verify|upgrade|rollback|uninstall> [--write]');
 } catch (error) {
   console.error(error.message);
   process.exitCode = 2;
