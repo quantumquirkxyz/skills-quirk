@@ -215,8 +215,38 @@ function detectPingPong(budget, history, emitNudge) {
   return false;
 }
 
+async function nextWithSignal(iterator, signal) {
+  if (!signal) return { cancelled: false, next: await iterator.next() };
+  if (signal.aborted) return { cancelled: true, next: null };
+  return await new Promise((resolve, reject) => {
+    let settled = false;
+    const cleanup = () => signal.removeEventListener('abort', onAbort);
+    const onAbort = () => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      resolve({ cancelled: true, next: null });
+    };
+    signal.addEventListener('abort', onAbort, { once: true });
+    Promise.resolve(iterator.next()).then(
+      next => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        resolve({ cancelled: false, next });
+      },
+      error => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        reject(error);
+      },
+    );
+  });
+}
+
 export async function runLoop(options = {}) {
-  const { steps, onNudge, exemptActions = [], loopId = null, strictLedger = false } = options;
+  const { steps, onNudge, exemptActions = [], loopId = null, strictLedger = false, signal = null } = options;
   const iterator = toIterator(steps);
   const budget = normalizeBudget(options.budget);
   const ledgerPath = options.ledgerPath === undefined ? DEFAULT_LEDGER_PATH : options.ledgerPath;
@@ -288,7 +318,12 @@ export async function runLoop(options = {}) {
       let iteratorReturn = null;
 
       try {
-        const next = await iterator.next();
+        const pulled = await nextWithSignal(iterator, signal);
+        if (pulled.cancelled) {
+          try { if (typeof iterator.return === 'function') await iterator.return(); } catch {}
+          return finish('cancelled');
+        }
+        const next = pulled.next;
         if (next.done) {
           done = true;
           iteratorReturn = next.value ?? null;
