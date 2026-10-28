@@ -53,7 +53,15 @@ The Epic itself currently has assignee `quantumquirkxyz`, labels `spec` and `rea
 - Agent Skills third-party interoperability: [#40725571913](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40725571913) — PASS.
 - External credential readiness: [#40728290815](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40728290815) — workflow PASS with bounded report **npm=NOT RUN, liveEval=NOT RUN** because both secrets are absent.
 
-Later installer/metadata commits must pass their own final CI/matrix before a release candidate is tagged; older successful runs are not evidence for later bytes.
+Final repository-controlled checkpoint `8e8dd6da5187255b7f4f8d56afdd2ebbc21cc2df` is verified:
+- [Portable Distribution Matrix #40729198258](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198258) — Ubuntu, macOS and Windows PASS, including packaged CLI planning, repeat adoption and managed lifecycle/rollback tests.
+- [Prompt Regression Tests #40729198249](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198249) — PASS.
+- [Quality Gates #40729198204](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198204) — PASS.
+- [Quality Report #40729198064](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198064) — PASS.
+- [qquirk skills ci #40729198000](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198000) — PASS.
+- [GitHub Work Item Contract #40728999025](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40728999025) — PASS against the actual `gh` CLI flags for assignees, labels, projects, milestone, relationships and Development branches.
+
+This is the accepted code checkpoint. Documentation-only commits after it do not change executable behavior; they still receive the repository's documentation/quality CI.
 
 ## Definition of done interpretation
 
