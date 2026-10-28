@@ -49,6 +49,25 @@ test('managed install lifecycle verifies, backs up upgrades, and uninstalls cons
   const verify2 = runNode(manage, ['verify'], target);
   assert.equal(verify2.status, 0, verify2.stderr || verify2.stdout);
 
+  const rollbackPreview = runNode(manage, ['rollback'], target);
+  assert.equal(rollbackPreview.status, 0, rollbackPreview.stderr || rollbackPreview.stdout);
+  assert.equal(JSON.parse(rollbackPreview.stdout).mode, 'dry-run');
+
+  const rollback = runNode(manage, ['rollback', '--write'], target);
+  assert.equal(rollback.status, 0, rollback.stderr || rollback.stdout);
+  assert.equal(readFileSync(path.join(target, 'skills-lock.json'), 'utf8'), '{"locally":"changed"}\n');
+
+  const rollbackDrift = runNode(manage, ['verify'], target);
+  assert.equal(rollbackDrift.status, 1, 'rollback restores the exact pre-upgrade locally modified state');
+
+  const blockedUninstall = runNode(manage, ['uninstall'], target);
+  assert.equal(blockedUninstall.status, 1, 'locally modified managed files must block uninstall after rollback');
+
+  const cleanAgain = runNode(manage, ['upgrade', '--write'], target);
+  assert.equal(cleanAgain.status, 0, cleanAgain.stderr || cleanAgain.stdout);
+  const verify3 = runNode(manage, ['verify'], target);
+  assert.equal(verify3.status, 0, verify3.stderr || verify3.stdout);
+
   const uninstallPreview = runNode(manage, ['uninstall'], target);
   assert.equal(uninstallPreview.status, 0, uninstallPreview.stderr || uninstallPreview.stdout);
   assert.equal(JSON.parse(uninstallPreview.stdout).mode, 'dry-run');
