@@ -41,3 +41,5 @@ jobs:
         run: npm run package:verify
       - name: Verify native path and repeat adoption fixtures
         run: node --test tests/portable-adoption-pilots.test.mjs
+      - name: Verify managed upgrade backup and uninstall lifecycle
+        run: node --test tests/managed-adoption-lifecycle.test.mjs
