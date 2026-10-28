@@ -81,5 +81,9 @@
     ".env.template",
     "hooks/",
     "tooling/case-studies/"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }
