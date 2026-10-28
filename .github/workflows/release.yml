@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  verify-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.4"
+          registry-url: "https://registry.npmjs.org"
+      - name: Verify tag and package versions
+        shell: bash
+        run: |
+          package_version="$(node -p "require('./package.json').version")"
+          file_version="$(tr -d '[:space:]' < VERSION)"
+          tag_version="${GITHUB_REF_NAME#v}"
+          test "$package_version" = "$file_version"
+          test "$package_version" = "$tag_version"
+      - name: Run full test suite
+        run: npm test
+      - name: Run full repository gate
+        run: node .agents/skills/platform/check-all.mjs
+      - name: Verify packaged managed installation
+        run: npm run package:verify
+      - name: Verify third-party discovery contract locally
+        run: node --test tests/priority-eval-coverage.test.mjs tests/high-risk-eval-coverage.test.mjs
+      - name: Build release archive
+        run: |
+          mkdir -p release-artifacts
+          npm pack --ignore-scripts --pack-destination release-artifacts
+      - name: Upload release candidate archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-release-candidate-${{ github.ref_name }}
+          path: release-artifacts/*.tgz
+          retention-days: 90
+      - name: Require npm publication credential
+        shell: bash
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::NPM_TOKEN is not configured; verified release cannot be published."
+            exit 1
+          fi
+      - name: Publish npm package with provenance
+        run: npm publish --provenance --access public
+      - name: Verify install from public npm artifact
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          project="$(mktemp -d)"
+          cd "$project"
+          printf '# Published artifact smoke test\n' > README.md
+          npx -y "skills-quirk@$version" version | grep -Fx "$version"
+          npx -y "skills-quirk@$version" adopt --write
+          npx -y "skills-quirk@$version" verify-install
+          test -f .agents/quirk-install.json
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" --verify-tag --generate-notes --title "quirk Skills ${GITHUB_REF_NAME}"
