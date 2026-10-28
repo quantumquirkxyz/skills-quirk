@@ -59,6 +59,7 @@ function resolveCommand(command, commandArgs) {
     'verify-install': { script: 'scripts/manage-adoption.mjs', args: ['verify'], cwd: consumerCwd },
     'upgrade': { script: 'scripts/manage-adoption.mjs', args: ['upgrade'], cwd: consumerCwd },
     'uninstall': { script: 'scripts/manage-adoption.mjs', args: ['uninstall'], cwd: consumerCwd },
+    'issue-meta': { script: 'scripts/apply-issue-metadata.mjs', cwd: consumerCwd },
   };
   if (command === 'add') {
     if (commandArgs[0] !== 'quirk-skills') return null;
@@ -99,6 +100,7 @@ Commands:
   verify-install         Verify the managed installation manifest and drift
   upgrade [--write]      Preview or apply a backed-up managed upgrade
   uninstall [--write]    Preview or conservatively remove unchanged managed files
+  issue-meta             Preview/apply assignees, labels, milestone, project, relationships, and Development linkage
   add quirk-skills      Install/setup the bundle into the current repo
   version               Print CLI version
 
@@ -117,6 +119,8 @@ Examples:
   skills-quirk upgrade --write
   skills-quirk uninstall
   skills-quirk uninstall --write
+  skills-quirk issue-meta --repo owner/repo --issue 123 --metadata issue.json
+  skills-quirk issue-meta --repo owner/repo --issue 123 --metadata issue.json --write
 `);
     return;
   }
