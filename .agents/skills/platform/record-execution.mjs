@@ -153,6 +153,16 @@ function normalizeExecution(execution) {
   return base;
 }
 
+function normalizeTools(tools) {
+  if (!Array.isArray(tools)) return [];
+  return tools
+    .filter(tool => isPlainObject(tool) && typeof tool.name === 'string' && tool.name)
+    .map(tool => ({
+      name: tool.name,
+      calls: Number.isFinite(tool.calls) ? Math.max(0, Math.round(tool.calls)) : 0,
+    }));
+}
+
 function normalizeQuality(quality) {
   const base = isPlainObject(quality) ? { ...quality } : {};
   base.artifactPassedQualityBar = typeof base.artifactPassedQualityBar === 'boolean' ? base.artifactPassedQualityBar : false;
@@ -316,12 +326,11 @@ export async function recordExecution({
     input: normalizedInput,
     output: normalizedOutput,
     execution: normalizedExecution,
-    tools,
+    tools: normalizeTools(tools),
     quality: normalizedQuality,
     result,
     blockedBy,
     nextConsumer,
-    ...extra,
   };
   const tracesDir = path.join(repoRoot, '.agents', 'skills', 'platform', 'traces');
   const dateStr = new Date(normalizedExecution.startedAt).toISOString().slice(0, 10);
