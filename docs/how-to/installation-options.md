@@ -42,11 +42,13 @@ The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. A
 skills-quirk verify-install       # detect missing/modified managed files
 skills-quirk upgrade              # preview changed managed files and backup plan
 skills-quirk upgrade --write      # back up changed managed files, then upgrade
+skills-quirk rollback             # preview restoration of the latest pre-upgrade state
+skills-quirk rollback --write     # restore exact backed-up bytes if no post-upgrade drift exists
 skills-quirk uninstall            # preview conservative removal
 skills-quirk uninstall --write    # remove only unchanged managed files/links
 ```
 
-`upgrade --write` stores changed managed files under `.agents/quirk-backups/<timestamp>/` before replacement. `uninstall --write` refuses to remove a managed path that has been edited or replaced by the host project. Compatibility-view conflicts block before any copy begins.
+`upgrade --write` stores changed managed files and the previous install manifest under `.agents/quirk-backups/<timestamp>/` before replacement. `rollback --write` restores that exact pre-upgrade state only when the current managed installation has not drifted after the upgrade; pre-existing local drift remains visible after restoration. `uninstall --write` refuses to remove a managed path that has been edited or replaced by the host project. Compatibility-view conflicts block before any copy begins.
 
 The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The managed lifecycle is exercised by the repository test suite and the portable distribution matrix; use the dry-run modes first in established repositories.
 
