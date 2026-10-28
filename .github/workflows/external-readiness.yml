@@ -1,0 +1,81 @@
+name: External Release Readiness
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/external-readiness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.4"
+          registry-url: "https://registry.npmjs.org"
+      - name: Initialize readiness report
+        shell: bash
+        run: |
+          mkdir -p .skill-sandbox/readiness
+          printf '{"schemaVersion":1,"npm":"NOT RUN","liveEval":"NOT RUN"}\n' > .skill-sandbox/readiness/report.json
+      - name: Validate npm publication credential without publishing
+        id: npm
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "NPM_TOKEN is not configured; npm publication remains NOT RUN."
+            exit 0
+          fi
+          npm whoami >/dev/null
+          node -e "const fs=require('fs'); const p='.skill-sandbox/readiness/report.json'; const j=JSON.parse(fs.readFileSync(p)); j.npm='PASS'; fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n')"
+      - name: Record invalid npm credential
+        if: steps.npm.outcome == 'failure'
+        shell: bash
+        run: |
+          node -e "const fs=require('fs'); const p='.skill-sandbox/readiness/report.json'; const j=JSON.parse(fs.readFileSync(p)); j.npm='FAIL'; fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n')"
+      - name: Run live behavioral A-B evaluation when credential exists
+        id: live
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY is not configured; live model evaluation remains NOT RUN."
+            exit 0
+          fi
+          mkdir -p evals/results/harness
+          node evals/harness/run-ab.mjs \
+            --fixture evals/behavioral/to-spec.json \
+            --trials 3 \
+            --judge \
+            --out evals/results/harness
+          node -e "const fs=require('fs'); const p='.skill-sandbox/readiness/report.json'; const j=JSON.parse(fs.readFileSync(p)); j.liveEval='PASS'; fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n')"
+      - name: Record failed live evaluation
+        if: steps.live.outcome == 'failure'
+        shell: bash
+        run: |
+          node -e "const fs=require('fs'); const p='.skill-sandbox/readiness/report.json'; const j=JSON.parse(fs.readFileSync(p)); j.liveEval='FAIL'; fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n')"
+      - name: Print bounded readiness status
+        if: always()
+        run: cat .skill-sandbox/readiness/report.json
+      - name: Upload external readiness evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-readiness
+          path: |
+            .skill-sandbox/readiness/report.json
+            evals/results/harness/**
+          if-no-files-found: ignore
+          retention-days: 30
