@@ -1,0 +1,52 @@
+name: Agent Skills CLI Interoperability
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 7 * * 1"
+  push:
+    branches: [main]
+    paths:
+      - ".agents/skills/**/SKILL.md"
+      - ".github/workflows/skills-cli-interop.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.4"
+      - name: Record third-party CLI version
+        run: npx -y skills@latest --version | tee skills-cli-version.txt
+      - name: Discover repository skills
+        run: |
+          npx -y skills@latest add quantumquirkxyz/skills-quirk --list | tee skills-list.txt
+          grep -qi "ask-to" skills-list.txt
+      - name: Install one selected skill into a disposable project
+        run: |
+          project="$(mktemp -d)"
+          cd "$project"
+          git init -q
+          npx -y skills@latest add quantumquirkxyz/skills-quirk --skill ask-to -a claude-code -y --copy | tee "$GITHUB_WORKSPACE/skills-install.txt"
+          test -f .claude/skills/ask-to/SKILL.md || test -f .agents/skills/ask-to/SKILL.md
+          npx -y skills@latest list -a claude-code | tee "$GITHUB_WORKSPACE/skills-installed.txt"
+          grep -qi "ask-to" "$GITHUB_WORKSPACE/skills-installed.txt"
+      - name: Upload interoperability evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-skills-cli-interop
+          path: |
+            skills-cli-version.txt
+            skills-list.txt
+            skills-install.txt
+            skills-installed.txt
+          retention-days: 30
