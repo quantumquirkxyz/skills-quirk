@@ -44,7 +44,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "22.23.4"
 
       - name: Install dependencies
         run: |
@@ -72,6 +72,9 @@ jobs:
 
       - name: Verify packaged CLI adoption
         run: npm run package:verify
+
+      - name: Enforce strict supply-chain scan with visible suppressions
+        run: node .agents/skills/platform/security-scan-skills.mjs --strict --json
 
       - name: Run full local gate
         run: |
