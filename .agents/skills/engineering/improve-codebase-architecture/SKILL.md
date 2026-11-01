@@ -6,9 +6,10 @@ description: "Scan a codebase for deepening opportunities and present candidates
 license: "MIT"
 version: "1"
 capabilities:
-  - identify evidence-backed architectural seams
   - distinguish confirmed design defects from improvement opportunities
   - consume repository audit findings
+  - trace improve codebase architecture decisions across inputs, constraints, and failure paths
+  - validate engineering outcomes with evidence, assumptions, and explicit next steps
 inputs: ""
 outputs: "HTML/JSON report with deepening candidates, plus selected candidate"
 sideEffects: ""
