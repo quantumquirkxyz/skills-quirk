@@ -244,12 +244,13 @@ test('an empty criteria array fails', () => {
 // files while the bodies themselves were edited, wave-2 added the spec-portable
 // `license` field to every skill in the bundle, and the duplicate-fixture cleanup
 // repointed `fixturesPath` on subagent-swarm to the canonical fixture file. Those
-// keys are the sanctioned exception; every other frontmatter field must stay
+// `capabilities` joined the exception set when the bundle-wide capability
+// enrichment updated every existing skill. Every other frontmatter field must stay
 // byte-identical.
 // `outputs` joined the exception set when the bundle-wide artifact-output debt
 // was paid: subagent-swarm now declares the output already promised by its
 // Contract. The historical guard still protects every unrelated field.
-const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license', 'fixturesPath', 'outputs'];
+const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license', 'fixturesPath', 'outputs', 'capabilities'];
 
 // A key line plus its block: the "key:" line and every indented continuation or
 // list item that belongs to it, up to the next top-level frontmatter key.
