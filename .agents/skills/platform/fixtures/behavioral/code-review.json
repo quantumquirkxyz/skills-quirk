@@ -1,31 +1,30 @@
 {
   "fixtures": [
     {
-      "id": "v2-contract-code-review",
+      "id": "v3-contract-code-review",
       "skill": "code-review",
       "type": "behavioral",
       "expected": {
         "outputContains": [
           "## Contract",
-          "## Provenance",
-          "## Artifact",
-          "ReviewArtifact",
-          "Standards and Spec"
+          "## Process",
+          "RepositoryAuditArtifact",
+          "confirmed-defect",
+          "evidence-gap",
+          "logical impact"
         ],
-        "doesNotContain": [
-          "## Operating Contract"
-        ]
+        "doesNotContain": ["## Operating Contract"]
       }
     },
     {
-      "id": "v2-frontmatter-code-review",
+      "id": "v3-frontmatter-code-review",
       "skill": "code-review",
       "type": "behavioral",
       "expected": {
         "frontmatterContains": [
           "modelTier: reasoning",
-          "promptVersion: \"2.0\"",
-          "artifactType: review"
+          "promptVersion: \"3.0\"",
+          "artifactType: repository-audit"
         ]
       }
     },
@@ -33,37 +32,24 @@
       "id": "code-review-triggers",
       "skill": "code-review",
       "type": "behavioral",
-      "description": "Code review skill triggers on PR review language",
-      "input": "Review the changes since the last commit",
+      "description": "Repository audit skill triggers on logic and full-codebase review language",
+      "input": "Audit the current repository and explain whether the requested behavior is logically implemented",
       "expected": {
         "invokes": true,
-        "outputContains": [
-          "Standards",
-          "Spec",
-          "review"
-        ],
-        "doesNotContain": [
-          "not found"
-        ]
+        "outputContains": ["RepositoryAuditArtifact", "objective", "findings"],
+        "doesNotContain": ["not found"]
       }
     },
     {
       "id": "skill-load-with-dependencies",
       "skill": "code-review",
       "type": "behavioral",
-      "description": "Skill loads with its declared dependencies available",
-      "input": "Review the changes since v1.2.0",
+      "description": "Skill loads with its repository audit contract available",
+      "input": "Inspect this module end to end for defects and risks",
       "expected": {
         "invokes": true,
-        "usesTools": [
-          "Read",
-          "Grep",
-          "Bash"
-        ],
-        "outputContains": [
-          "Standards",
-          "Spec"
-        ]
+        "usesTools": ["Read", "Grep", "Bash"],
+        "outputContains": ["scope", "inspected", "limitations"]
       }
     }
   ]

@@ -2,7 +2,10 @@
 name: "project-viability"
 description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - assess implementation health from repository evidence
+  - evaluate functional, architectural, and growth risks
+  - consume repository audit findings
 outputs: "one Markdown report under `.reports/` and one JSON artifact under `.reports/`, both with layered findings and a prompt for the user."
 sideEffects: ""
 dependencies: []
@@ -17,7 +20,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["project"]
-compatibility: []
+compatibility: [code-review, improve-codebase-architecture]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -59,6 +62,10 @@ approvalFor: []
 ## Artifact
 
 Return `ProjectViabilityArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
+
+## Repository evidence
+
+Use `code-review` findings as repository evidence when assessing viability. Preserve their severity, confidence, location, and limitations; do not convert an unverified risk into a project-blocking conclusion without independent support.
 
 
 # 

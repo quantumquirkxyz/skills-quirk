@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the qa-automation skill when the request matches its scope.
 
 Capabilities:
-- apply the qa-automation workflow
+- map repository risks to test seams
+- design regression coverage from audit evidence
+- distinguish coverage gaps from functional defects
 
 Stop when: Design and implement automated test suites complete; artifact saved; completion criteria checked.

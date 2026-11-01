@@ -1,6 +1,6 @@
 {
   "name": "diagnosing-bugs",
-  "instructions": ">-\n\nCapabilities:\n- apply the diagnosing-bugs workflow\n\nCanonical skill: .agents/skills/delivery/diagnosing-bugs/SKILL.md",
+  "instructions": ">-\n\nCapabilities:\n- build a red-capable reproduction loop\n- trace root causes across repository boundaries\n- consume code-review audit findings\n\nCanonical skill: .agents/skills/delivery/diagnosing-bugs/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Diagnosis loop for hard bugs and performance regressions complete; structured result returned; completion criteria checked.",

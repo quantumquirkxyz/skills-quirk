@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - inspect repository security boundaries end to end
+  - classify evidence-backed threats and vulnerabilities
+  - consume code-review audit findings
 outputs: "audit report with severity-classified findings."
 sideEffects: []
 dependencies: []
@@ -20,7 +23,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/sec-security-audit.json
 diataxis: "how-to"
 tags: ["sec"]
-compatibility: []
+compatibility: [code-review, sec-threat-modeling, secret-management]
 approvalRequired: "true"
 approvalFor: []
 ---

@@ -20,12 +20,14 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["routing"]
-compatibility: []
+compatibility: [code-review, diagnosing-bugs, testing, project-viability, improve-codebase-architecture]
 approvalRequired: "false"
 approvalFor: []
 ---
 
 ## Contract
+
+Repository audit handoffs must preserve objective, scope, inspected areas, finding kind, severity, evidence, limitations, and next consumer. Consumers must not turn an `evidence-gap` or `risk` into a confirmed defect without verification.
 
 - Input: skill invocation with the user's request and available context.
 - Output: a structured artifact or guidance aligned to the skill's declared outputs.

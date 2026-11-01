@@ -51,6 +51,8 @@ approvalFor: []
 
 ## Contract
 
+Repository audit chains may use `code-review` as the producer and hand its `RepositoryAuditArtifact` to `diagnosing-bugs`, `testing`, `project-viability`, architecture review, or a specialist audit. Verify the artifact schema and preserve finding classification at every edge.
+
 - Input: an ordered skill chain with declared edges and a budget.
 - Output: a `SkillChainReport` with per-edge evidence, artifacts produced, and budget spent.
 - Scope: the chain runs only the declared skills in the declared order. An edge that fails its compatibility check stops the chain before execution.

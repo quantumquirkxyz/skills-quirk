@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - map repository risks to test seams
+  - design regression coverage from audit evidence
+  - distinguish coverage gaps from functional defects
 outputs: "qa artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
@@ -20,7 +23,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["qa"]
-compatibility: []
+compatibility: [code-review, testing, tdd]
 approvalRequired: "false"
 approvalFor: []
 ---

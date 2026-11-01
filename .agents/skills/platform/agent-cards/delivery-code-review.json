@@ -1,8 +1,8 @@
 {
   "name": "code-review",
-  "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
+  "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
   "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/code-review/SKILL.md",
-  "version": "2",
+  "version": "3",
   "capabilities": {
     "skillInvocation": true,
     "artifactProduction": true,
@@ -17,18 +17,18 @@
     {
       "id": "delivery/code-review",
       "name": "code-review",
-      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
+      "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
       "tags": [
         "delivery",
-        "review",
-        "standards",
-        "spec",
+        "audit",
+        "logic",
+        "architecture",
         "quality"
       ],
       "parameters": {
         "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "review"
+        "artifactType": "repository-audit"
       }
     }
   ]

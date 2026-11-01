@@ -15,10 +15,10 @@
       "id": "code-review-body",
       "skill": "code-review",
       "type": "regression",
-      "version": "1.0.0",
-      "input": "Review changes since HEAD~1",
+      "version": "3.0.0",
+      "input": "Audit the current repository for logical correctness",
       "expectedOutput": {
-        "contains": ["Standards", "Spec", "review"],
+        "contains": ["RepositoryAuditArtifact", "confirmed-defect", "evidence-gap"],
         "minLength": 150
       }
     },

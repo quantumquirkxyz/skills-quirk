@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - trace backend requests and data flows end to end
+  - review contracts, state, errors, and integration boundaries
+  - consume code-review audit findings
 inputs:
   - type: object
     description: API requirements, data model, transport constraints, and caller obligations.
@@ -25,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["backend"]
-compatibility: []
+compatibility: [code-review, api-contracts, performance]
 approvalRequired: "false"
 approvalFor: []
 ---

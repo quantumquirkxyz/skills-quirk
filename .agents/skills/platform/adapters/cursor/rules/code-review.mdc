@@ -1,5 +1,5 @@
 ---
-description: "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only."
+description: "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files."
 globs: []
 alwaysApply: false
 ---
@@ -8,8 +8,8 @@ alwaysApply: false
 Apply the code-review skill when the request matches its scope.
 
 Capabilities:
-- apply code review workflow
-- produce code review artifact
-- validate code review completion criteria
+- audit repository-wide or scoped code behavior
+- verify logic against the user's stated objective
+- produce an evidence-backed repository audit artifact
 
-Stop when: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; structured result returned; completion criteria checked.
+Stop when: Repository or scoped audit complete; evidence-backed structured result returned; limitations and completion criteria checked.

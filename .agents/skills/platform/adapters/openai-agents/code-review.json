@@ -1,9 +1,9 @@
 {
   "name": "code-review",
-  "instructions": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.\n\nCapabilities:\n- apply code review workflow\n- produce code review artifact\n- validate code review completion criteria\n\nCanonical skill: .agents/skills/delivery/code-review/SKILL.md",
+  "instructions": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.\n\nCapabilities:\n- audit repository-wide or scoped code behavior\n- verify logic against the user's stated objective\n- produce an evidence-backed repository audit artifact\n\nCanonical skill: .agents/skills/delivery/code-review/SKILL.md",
   "model": "gpt-5",
   "tools": [],
-  "handoff_description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only complete; structured result returned; completion criteria checked.",
+  "handoff_description": "Repository or scoped audit complete; evidence-backed structured result returned; limitations and completion criteria checked.",
   "runtime": {
     "role": "workflow",
     "maxTurns": 6,

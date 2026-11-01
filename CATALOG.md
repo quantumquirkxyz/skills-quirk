@@ -113,7 +113,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [code-review](.agents/skills/delivery/code-review) | 2 | stable | medium | 3 | Review the changes since a fixed point (commit, branch, tag, or merge-base) a... |
+| [code-review](.agents/skills/delivery/code-review) | 3 | stable | medium | 3 | Analyze a repository or requested code scope for logical correctness, behavio... |
 | [contribution-workflow-optimizer](.agents/skills/delivery/contribution-workflow-optimizer) | 1 | stable | low | 1 | Inspect changed Skills and recommend contribution improvements across standar... |
 | [diagnosing-bugs](.agents/skills/delivery/diagnosing-bugs) | 1 | stable | low | 1 | >- |
 | [implement](.agents/skills/delivery/implement) | 2 | stable | medium | 3 | Implement a piece of work based on a spec or set of tickets, or build a scope... |

@@ -1,6 +1,6 @@
 {
   "name": "frontend-design",
-  "instructions": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.\n\nCapabilities:\n- apply the frontend-design workflow\n\nCanonical skill: .agents/skills/frontend/frontend-design/SKILL.md",
+  "instructions": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.\n\nCapabilities:\n- review frontend data flows and interaction states\n- identify loading, empty, error, and success state gaps\n- consume code-review audit findings\n\nCanonical skill: .agents/skills/frontend/frontend-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked.",

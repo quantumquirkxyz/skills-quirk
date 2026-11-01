@@ -1,17 +1,17 @@
 should_trigger,category,prompt
-true,explicit,"use code-review on the diff since origin/main...HEAD — standards and spec axes, findings only"
-true,explicit,/code-review with fixed point 6934cfd and the smell baseline pasted into the standards sub-agent
-true,explicit,"code-review the branch against the merge-base, two parallel sub-agents, no source edits"
-true,implicit,look at what changed on this branch vs main and tell me where it breaks AGENTS.md
-true,implicit,"i want the worst issue within each axis, not a single winner across axes"
-true,implicit,the repo documents nothing — still check the diff against the Fowler smell baseline as judgement calls
-true,contextual,"repo skills-quirk, branch feat/issue-42-harness, fixed point main. standards sources: AGENTS.md and docs/how-to/skill-style.md; spec: the wave-1 plan"
-true,contextual,context: the branch is mid-rebase and conflicted. do not review — route to resolving-merge-conflicts first
-true,contextual,reviewing evals/*.mjs in this repo. validate the ReviewArtifact against .agents/skills/platform/schemas/review-findings-schema.json before returning
-true,explicit,code-review with the traceId in the artifact metadata and the review footer
-true,implicit,"if the spec is missing, the spec axis reports no spec available rather than inventing requirements"
+true,explicit,"use code-review to audit the current repository for logical correctness and explain the evidence behind every finding"
+true,explicit,/code-review the whole repository and verify whether the requested behavior is actually implemented
+true,explicit,code-review this module end to end for bugs risks and maintainability; do not edit source
+true,implicit,trace this behavior across entrypoints business logic persistence and integrations
+true,implicit,tell me the worst confirmed defect the risks and the improvements separately
+true,implicit,audit the repository even if there is no specification and mark evidence gaps honestly
+true,contextual,repo skills-quirk on main; inspect CONTEXT.md AGENTS.md entrypoints tests and configuration
+true,contextual,the user reports a bug but the named file may not contain the cause; inspect the full flow
+true,contextual,reviewing evals/*.mjs in this repo. validate the RepositoryAuditArtifact against .agents/skills/platform/schemas/repository-audit-schema.json before returning
+true,explicit,code-review with inspected areas and limitations in the audit artifact
+true,implicit,if the repository is too large for full coverage report the boundary instead of claiming everything was checked
 false,negative-control,review-pr #88 against the fixed point i pinned in the issue — publish the findings on the PR
-false,negative-control,"review-fix-loop: run review-pr, plan, implement, repeat until clean"
-false,negative-control,qa-security-testing: test the auth flows and session handling adversarially
-false,negative-control,contribution-workflow-optimizer: inspect the changed skills and recommend contribution improvements
-false,negative-control,skill-audit: run validate-skills.mjs and audit-semantics.mjs and rank the findings
+false,negative-control,review-fix-loop: run review-pr then plan then implement and repeat until clean
+false,negative-control,qa-security-testing: test auth flows and session handling adversarially
+false,negative-control,contribution-workflow-optimizer: inspect changed skills and recommend contribution improvements
+false,negative-control,skill-audit: run validate-skills.mjs and audit-semantics.mjs then rank findings

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the sec-security-audit skill when the request matches its scope.
 
 Capabilities:
-- apply the sec-security-audit workflow
+- inspect repository security boundaries end to end
+- classify evidence-backed threats and vulnerabilities
+- consume code-review audit findings
 
 Stop when: Audit report complete; findings classified by severity; recommendations made.

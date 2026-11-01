@@ -301,7 +301,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "trace backend requests and data flows end to end",
+            "review contracts, state, errors, and integration boundaries",
+            "consume code-review audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/backend-architecture"
         },
@@ -799,20 +803,18 @@
       "skills": [
         {
           "name": "code-review",
-          "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.",
+          "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
           "category": "delivery",
-          "version": "2",
+          "version": "3",
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply code review workflow",
-            "produce code review artifact",
-            "validate code review completion criteria"
+            "audit repository-wide or scoped code behavior",
+            "verify logic against the user's stated objective",
+            "produce an evidence-backed repository audit artifact"
           ],
-          "sideEffects": [
-            "post-pr-comment"
-          ],
+          "sideEffects": [],
           "path": ".agents/skills/delivery/code-review"
         },
         {
@@ -835,7 +837,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "build a red-capable reproduction loop",
+            "trace root causes across repository boundaries",
+            "consume code-review audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/diagnosing-bugs"
         },
@@ -1216,7 +1222,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "identify evidence-backed architectural seams",
+            "distinguish confirmed design defects from improvement opportunities",
+            "consume repository audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/engineering/improve-codebase-architecture"
         }
@@ -1529,7 +1539,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "review frontend data flows and interaction states",
+            "identify loading, empty, error, and success state gaps",
+            "consume code-review audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/frontend-design"
         },
@@ -2471,7 +2485,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "assess implementation health from repository evidence",
+            "evaluate functional, architectural, and growth risks",
+            "consume repository audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/project/project-viability"
         },
@@ -2561,7 +2579,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "map repository risks to test seams",
+            "design regression coverage from audit evidence",
+            "distinguish coverage gaps from functional defects"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/qa/qa-automation"
         },
@@ -3101,7 +3123,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "inspect repository security boundaries end to end",
+            "classify evidence-backed threats and vulnerabilities",
+            "consume code-review audit findings"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/sec-security-audit"
         },

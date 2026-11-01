@@ -2,7 +2,7 @@
   "skill": "delivery/code-review",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7a0f58b94c6af775ed7931fb11cd0659274479be392eda2c015ef87236316711",
+  "frontmatterHash": "f4174b112ea8ecd6f5eee2de1fbdaa70e6606582cfc609a8e5d6206e47cca802",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,9 +18,7 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob",
-        "WebFetch",
-        "WebSearch"
+        "Glob"
       ],
       "deny": []
     }
@@ -40,7 +38,7 @@
     "commands": [
       "node .agents/skills/platform/check-all.mjs"
     ],
-    "artifactSchema": null
+    "artifactSchema": ".agents/skills/platform/schemas/repository-audit-schema.json"
   },
   "observability": {
     "traceEvents": [

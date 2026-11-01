@@ -289,7 +289,6 @@ test('the body-only skills kept their frontmatter untouched', async (t) => {
   }
   const bodyOnlySkills = [
     '.agents/skills/foundation/subagent-swarm/SKILL.md',
-    '.agents/skills/delivery/code-review/SKILL.md',
     '.agents/skills/project/project-viability/references/subagent-prompts.md',
   ];
   const head = (file) =>

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Measure and improve system performance — latency, throughput, resource usage, bottlenecks, and capacity planning — with reproducible profiling."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - identify evidence-backed performance risks
+  - trace latency and resource paths across the system
+  - consume code-review audit findings
 outputs: "performance hypothesis, profiling plan, bottleneck analysis, remediation options, and validation criteria."
 sideEffects: []
 dependencies: []
@@ -20,7 +23,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ".agents/skills/platform/fixtures/behavioral/performance.json"
 diataxis: "how-to"
 tags: ["platform/performance"]
-compatibility: []
+compatibility: [code-review, backend-architecture, performance-testing]
 approvalRequired: "false"
 approvalFor: []
 ---

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the backend-architecture skill when the request matches its scope.
 
 Capabilities:
-- apply the backend-architecture workflow
+- trace backend requests and data flows end to end
+- review contracts, state, errors, and integration boundaries
+- consume code-review audit findings
 
 Stop when: Shape backend systems complete; artifact saved; completion criteria checked.

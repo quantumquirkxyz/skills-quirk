@@ -7,7 +7,10 @@ description: >-
   Diagnosis loop for hard bugs and performance regressions. Use when the user says
   "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
 license: "MIT"
-capabilities: ""
+capabilities:
+  - build a red-capable reproduction loop
+  - trace root causes across repository boundaries
+  - consume code-review audit findings
 outputs: "diagnosis artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
@@ -22,7 +25,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["delivery"]
-compatibility: []
+compatibility: [code-review, testing, implement]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -49,6 +52,10 @@ approvalFor: []
 ## Artifact
 
 Return `DiagnosingBugsArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
+
+## Repository audit handoff
+
+Use `code-review` when the reported symptom may originate outside the initially named file. Consume its evidence as hypotheses to test, not as confirmed causes. Trace the complete path from input through business logic, persistence, integrations, and output, and distinguish symptom, contributing condition, and confirmed root cause.
 
 
 # 
