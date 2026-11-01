@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply ai prompt engineering methods within explicit ai boundaries
+  - analyze design, evaluate, and refine prompts for llms (gpt-4, claude, llama, mistral) with chain-of-thought, few-shot, rag, and evaluation metrics with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "prompt library + evaluation report + recommendation."
 sideEffects: []
 dependencies: []

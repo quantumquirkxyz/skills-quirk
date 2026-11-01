@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant market micro methods within explicit quant boundaries
+  - analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

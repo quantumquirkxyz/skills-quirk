@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cs data structures methods within explicit cs boundaries
+  - analyze design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants with assumptions, constraints, and failure modes
+  - produce and validate a cs artifact with evidence, decisions, and next steps
 outputs: "recommended data structure, operation complexity, invariants, and failure modes."
 sideEffects: []
 dependencies: []

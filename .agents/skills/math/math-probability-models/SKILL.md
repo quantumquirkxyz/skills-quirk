@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math probability models methods within explicit math boundaries
+  - analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

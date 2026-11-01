@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics career postdoc methods within explicit physics boundaries
+  - analyze navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (nsf career, doe, erc, simons), and negotiation with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "application package + timeline + negotiation notes."
 sideEffects: []
 dependencies: []

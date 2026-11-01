@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics talk design methods within explicit physics boundaries
+  - analyze design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "source + notes + checklist."
 sideEffects: []
 dependencies: []

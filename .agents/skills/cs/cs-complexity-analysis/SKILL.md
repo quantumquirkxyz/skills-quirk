@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cs complexity analysis methods within explicit cs boundaries
+  - analyze analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches with assumptions, constraints, and failure modes
+  - produce and validate a cs artifact with evidence, decisions, and next steps
 outputs: "time and space bounds with assumptions, proof sketch, and meaningful constants or bottlenecks when relevant."
 sideEffects: []
 dependencies: []

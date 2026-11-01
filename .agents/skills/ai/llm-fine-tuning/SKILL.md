@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply llm fine tuning methods within explicit ai boundaries
+  - analyze fine-tune llms — lora, qlora, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "fine-tuning plan + dataset curation report + evaluation report + deployment manifest."
 sideEffects: []
 dependencies: []

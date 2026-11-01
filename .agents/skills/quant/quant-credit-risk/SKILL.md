@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant credit risk methods within explicit quant boundaries
+  - analyze model credit risk — pd, lgd, ead, expected loss, loss distribution, credit var — with default correlation and portfolio-level risk aggregation with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

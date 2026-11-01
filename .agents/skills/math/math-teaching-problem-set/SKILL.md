@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math teaching problem set methods within explicit math boundaries
+  - analyze design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and latex layout with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "LaTeX problem set + rubric + variants."
 sideEffects: []
 dependencies: []

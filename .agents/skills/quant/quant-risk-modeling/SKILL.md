@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant risk modeling methods within explicit quant boundaries
+  - analyze model market/portfolio/credit risk (var, cvar, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "model artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

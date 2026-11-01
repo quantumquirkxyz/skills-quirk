@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant derivatives pricing methods within explicit quant boundaries
+  - analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

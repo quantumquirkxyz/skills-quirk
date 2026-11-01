@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply mlops methods within explicit ai boundaries
+  - analyze mlops (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining) with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "feature store contract + model registry + data version + pipeline manifest + monitoring + trigger policy."
 sideEffects: []
 dependencies: []

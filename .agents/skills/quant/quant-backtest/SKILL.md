@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant backtest methods within explicit quant boundaries
+  - analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "backtest audit report with strategy spec, data audit, statistics, stress tests, and verdict."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics astro methods within explicit physics boundaries
+  - analyze model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "physics artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math computational methods within explicit math boundaries
+  - analyze solve numerical and symbolic math problems (root finding, integration, odes, symbolic manipulation) with stable algorithms and explicit error analysis with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "Markdown artifact with algorithm choice, error analysis, computation, and verification."
 sideEffects: []
 dependencies: []

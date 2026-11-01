@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math presentation beamer methods within explicit math boundaries
+  - analyze design mathematics presentations — beamer slides with tikz diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "Beamer source + speaker notes + accessibility checklist."
 sideEffects: []
 dependencies: []

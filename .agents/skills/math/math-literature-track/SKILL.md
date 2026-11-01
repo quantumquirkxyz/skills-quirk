@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math literature track methods within explicit math boundaries
+  - analyze track mathematics literature across arxiv, mathscinet, zbmath, journal alerts, and citation graphs to keep a researcher current without drowning in papers with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "Markdown digest and optional BibTeX/CSV."
 sideEffects: []
 dependencies: []

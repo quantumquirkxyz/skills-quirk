@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cs algorithms methods within explicit cs boundaries
+  - analyze design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination with assumptions, constraints, and failure modes
+  - produce and validate a cs artifact with evidence, decisions, and next steps
 outputs: "cs artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

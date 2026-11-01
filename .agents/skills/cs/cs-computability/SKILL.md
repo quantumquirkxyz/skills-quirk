@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cs computability methods within explicit cs boundaries
+  - analyze analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations with assumptions, constraints, and failure modes
+  - produce and validate a cs artifact with evidence, decisions, and next steps
 outputs: "classification, reduction or recognizer construction, and proof sketch."
 sideEffects: []
 dependencies: []

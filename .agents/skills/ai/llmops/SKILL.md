@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply llmops methods within explicit ai boundaries
+  - analyze llmops (deployment, monitoring, a/b testing, prompt management, cost optimization, evaluation pipelines) with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "deployment manifest + monitoring config + A/B spec + prompt registry + evaluation pipeline."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics data analysis root methods within explicit physics boundaries
+  - analyze analyse experimental physics data with root, pandas, uproot, numpy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "analysis script + report."
 sideEffects: []
 dependencies: []

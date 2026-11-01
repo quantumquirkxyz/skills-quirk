@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply agent orchestration methods within explicit ai boundaries
+  - analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "orchestration architecture + capability matrix + handoff contracts + evaluation rubric."
 sideEffects: []
 dependencies: []

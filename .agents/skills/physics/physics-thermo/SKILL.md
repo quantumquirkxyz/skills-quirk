@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics thermo methods within explicit physics boundaries
+  - analyze model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "physics artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math grant structure methods within explicit math boundaries
+  - analyze structure mathematics grant proposals (nsf, erc, simons, msca) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "structured proposal draft + reviewer critique."
 sideEffects: []
 dependencies: []

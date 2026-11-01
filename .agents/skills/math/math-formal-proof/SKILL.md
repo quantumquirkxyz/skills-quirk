@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math formal proof methods within explicit math boundaries
+  - analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "verified source + Markdown narrative."
 sideEffects: []
 dependencies: []

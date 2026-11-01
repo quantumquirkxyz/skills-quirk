@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply ai model evaluation methods within explicit ai boundaries
+  - analyze evaluate ml / llm models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "evaluation report with recommendation."
 sideEffects: []
 dependencies: []

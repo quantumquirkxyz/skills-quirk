@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply quant portfolio opt methods within explicit quant boundaries
+  - analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes
+  - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

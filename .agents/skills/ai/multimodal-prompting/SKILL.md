@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Multimodal prompting (vision, audio, video, image generation, vision-language models)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply multimodal prompting methods within explicit ai boundaries
+  - analyze multimodal prompting (vision, audio, video, image generation, vision-language models) with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "prompt library + generation contract + validation suite + fallback discipline."
 sideEffects: []
 dependencies: []

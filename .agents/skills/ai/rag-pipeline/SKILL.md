@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply rag pipeline methods within explicit ai boundaries
+  - analyze design rag pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "RAG architecture + chunking config + reranking config + evaluation plan."
 sideEffects: []
 dependencies: []

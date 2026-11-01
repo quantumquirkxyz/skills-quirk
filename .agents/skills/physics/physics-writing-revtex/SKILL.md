@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply physics writing revtex methods within explicit physics boundaries
+  - analyze write physics papers using revtex / aps / iop / aip formatting, with figure conventions, citation styles, and submission package preparation with assumptions, constraints, and failure modes
+  - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "compiled PDF + source package + figure checklist."
 sideEffects: []
 dependencies: []

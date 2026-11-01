@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math pure proofs methods within explicit math boundaries
+  - analyze write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "a Markdown proof artifact saved to the repo, with statement, strategy, steps, verification, and theorem citations."
 sideEffects: []
 dependencies: []

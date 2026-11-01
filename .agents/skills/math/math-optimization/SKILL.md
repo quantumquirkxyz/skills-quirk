@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math optimization methods within explicit math boundaries
+  - analyze formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "math artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

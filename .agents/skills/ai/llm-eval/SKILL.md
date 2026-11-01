@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply llm eval methods within explicit ai boundaries
+  - analyze design llm evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection with assumptions, constraints, and failure modes
+  - produce and validate a ai artifact with evidence, decisions, and next steps
 outputs: "benchmark suite + comparison report + harness configuration."
 sideEffects: []
 dependencies: []

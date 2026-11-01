@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply math linear algebra methods within explicit math boundaries
+  - analyze solve and analyse linear algebra problems — matrix decompositions (lu, qr, svd, eigendecomposition), linear systems, and applications in ml, graphics, and optimisation with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
 outputs: "math artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
