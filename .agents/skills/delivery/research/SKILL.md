@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply research methods within explicit delivery boundaries
+  - analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "research artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-docs

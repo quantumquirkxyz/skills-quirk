@@ -5,7 +5,10 @@ maturity: "stable"
 description: "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill."
 license: "MIT"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply interactive tutorial builder methods within explicit auxiliary boundaries
+  - analyze generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any skill; use when teaching or onboarding someone to a skill with assumptions, constraints, and failure modes
+  - produce and validate a auxiliary artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "learning goals, exercise, expected outputs, checkpoint, and response space."
 dependencies: ""

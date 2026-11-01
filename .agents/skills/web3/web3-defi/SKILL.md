@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, MEV protection, and composability risks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply web3 defi methods within explicit web3 boundaries
+  - analyze analyse defi protocols — amms, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, mev protection, and composability risks with assumptions, constraints, and failure modes
+  - produce and validate a web3 artifact with evidence, decisions, and next steps
 outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

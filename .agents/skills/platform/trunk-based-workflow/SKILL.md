@@ -6,10 +6,11 @@ version: 1
 description: Orchestrate trunk-based development — short-lived branches, small PRs, CI gating, and merge-to-trunk discipline.
 license: MIT
 capabilities:
-  - validate branch age and PR size
   - enforce CI gating before merge
   - apply merge strategy and branch cleanup
   - emit TrunkBasedWorkflowArtifact
+  - trace trunk based workflow decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs: TrunkBasedWorkflowArtifact as JSON and Markdown
 sideEffects: none
 dependencies:

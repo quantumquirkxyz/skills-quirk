@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply api contracts methods within explicit integrations boundaries
+  - analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "contract design covering endpoints, schemas, versioning, breaking change policy, and consumer obligations."
 sideEffects: []
 dependencies: []

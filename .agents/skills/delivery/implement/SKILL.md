@@ -6,9 +6,10 @@ version: 2
 description: Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.
 license: MIT
 capabilities:
-  - apply implement workflow
   - produce implement artifact
   - validate implement completion criteria
+  - trace implement decisions across inputs, constraints, and failure paths
+  - validate delivery outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - spec or ticket with concrete acceptance criteria
   - current repo state

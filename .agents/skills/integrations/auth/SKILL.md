@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply auth methods within explicit integrations boundaries
+  - analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "an auth design document covering flows, protocols, token model, authorization, MFA, and security assessment."
 sideEffects: []
 dependencies: []

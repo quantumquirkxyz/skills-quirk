@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Shape the test strategy for a project so behavior is verified at the right seams and at the right level."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply testing methods within explicit delivery boundaries
+  - analyze shape the test strategy for a project so behavior is verified at the right seams and at the right level with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "a test strategy, seam guidance, and coverage boundaries."
 sideEffects: []
 dependencies: []

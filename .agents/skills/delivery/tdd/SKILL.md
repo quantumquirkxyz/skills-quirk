@@ -6,9 +6,10 @@ version: 1
 description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor"
 license: MIT
 capabilities:
-  - apply tdd workflow
   - produce tdd artifact
   - validate tdd completion criteria
+  - trace tdd decisions across inputs, constraints, and failure paths
+  - validate delivery outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - feature or bug request
   - current codebase state

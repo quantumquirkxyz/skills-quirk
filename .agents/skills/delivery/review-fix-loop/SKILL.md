@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply review fix loop methods within explicit delivery boundaries
+  - analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "either a clean review state or a blocked repair loop with a documented cause."
 sideEffects:
   - write-code

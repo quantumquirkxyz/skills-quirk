@@ -2,6 +2,10 @@
 name: "feature-flag"
 category: "platform"
 description: "Design and manage feature flags with short-lived flags, gradual rollouts, kill switches, A/B testing, and cleanup discipline."
+capabilities:
+  - apply feature flag methods within explicit platform boundaries
+  - analyze design and manage feature flags with short-lived flags, gradual rollouts, kill switches, a/b testing, and cleanup discipline with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 license: "MIT"
 artifactType: "feature-flag"
 modelTier: "router"

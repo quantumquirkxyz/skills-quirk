@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Shape Vercel deployment and runtime concerns into a clear operational seam — with Next.js, edge functions, ISR, middleware, environment, security, and observability constraints."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply vercel methods within explicit platform boundaries
+  - analyze shape vercel deployment and runtime concerns into a clear operational seam — with next.js, edge functions, isr, middleware, environment, security, and observability constraints with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "a Vercel deployment design covering runtime shape, edge strategy, ISR, middleware, environment, security, and observability."
 sideEffects: []
 dependencies: []

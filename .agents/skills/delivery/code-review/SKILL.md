@@ -6,9 +6,10 @@ version: 3
 description: Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.
 license: MIT
 capabilities:
-  - audit repository-wide or scoped code behavior
   - verify logic against the user's stated objective
   - produce an evidence-backed repository audit artifact
+  - trace code review decisions across inputs, constraints, and failure paths
+  - validate delivery outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - user objective or review question
   - repository path and optional scope

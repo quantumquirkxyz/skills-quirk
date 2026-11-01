@@ -5,7 +5,10 @@ maturity: "stable"
 description: "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures."
 license: "MIT"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply integration playground methods within explicit auxiliary boundaries
+  - analyze create a disposable fixture environment for safely exercising skills against local apis, data, and files; use when testing a skill with isolated local fixtures with assumptions, constraints, and failure modes
+  - produce and validate a auxiliary artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "disposable playground directory; when a command is supplied, its exit status, stdout, stderr, and command evidence."
 dependencies: ""

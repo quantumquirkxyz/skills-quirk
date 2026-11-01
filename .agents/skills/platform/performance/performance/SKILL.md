@@ -6,9 +6,10 @@ version: "1"
 description: "Measure and improve system performance — latency, throughput, resource usage, bottlenecks, and capacity planning — with reproducible profiling."
 license: "MIT"
 capabilities:
-  - identify evidence-backed performance risks
   - trace latency and resource paths across the system
   - consume code-review audit findings
+  - trace performance decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs: "performance hypothesis, profiling plan, bottleneck analysis, remediation options, and validation criteria."
 sideEffects: []
 dependencies: []

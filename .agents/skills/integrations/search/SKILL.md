@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply search methods within explicit integrations boundaries
+  - analyze design search behavior, indexing, relevance, and retrieval seams — with elasticsearch, algolia, meilisearch, opensearch, synonyms, ranking, analytics, and autocomplete with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "search design covering architecture, indexing, ranking, synonyms, analytics, and observability."
 sideEffects: []
 dependencies: []

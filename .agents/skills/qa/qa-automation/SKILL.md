@@ -6,9 +6,10 @@ version: "1"
 description: "Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration."
 license: "MIT"
 capabilities:
-  - map repository risks to test seams
   - design regression coverage from audit evidence
   - distinguish coverage gaps from functional defects
+  - trace qa automation decisions across inputs, constraints, and failure paths
+  - validate qa outcomes with evidence, assumptions, and explicit next steps
 outputs: "qa artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

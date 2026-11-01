@@ -6,9 +6,10 @@ description: "Keep an agent loop inside its declared budget and end it with a ty
 license: "MIT"
 version: "1"
 capabilities:
-  - declare loop budgets up front
   - detect degenerate loops (repeats, ping-pong, format errors)
   - record an append-only loop ledger and route on the typed verdict
+  - trace loop budget decisions across inputs, constraints, and failure paths
+  - validate delivery outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - loop step verdicts ({action, args, result}) produced by the agent
   - budget fields (stepLimit, costLimit, wallTimeLimitMs, maxConsecutiveFormatErrors, repeatThreshold, repeatWindow, pingPongWindow)

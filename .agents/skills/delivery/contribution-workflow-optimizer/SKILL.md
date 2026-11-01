@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply contribution workflow optimizer methods within explicit delivery boundaries
+  - analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "prioritized checks for contract, documentation, dependencies, tests, and examples."
 sideEffects: []
 dependencies: []

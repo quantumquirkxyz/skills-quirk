@@ -8,9 +8,10 @@ description: >-
   "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
 license: "MIT"
 capabilities:
-  - build a red-capable reproduction loop
   - trace root causes across repository boundaries
   - consume code-review audit findings
+  - trace diagnosing bugs decisions across inputs, constraints, and failure paths
+  - validate delivery outcomes with evidence, assumptions, and explicit next steps
 outputs: "diagnosis artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

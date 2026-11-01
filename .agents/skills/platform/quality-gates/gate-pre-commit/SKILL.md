@@ -6,10 +6,11 @@ version: 1
 description: Shift-left quality gate triggered on git-commit events. Runs lint + typecheck on changed files only, unit tests for changed files only, lightweight dependency vulnerability check, and blocks on failure within a 10s budget.
 license: MIT
 capabilities:
-  - apply pre-commit quality gate
   - run scoped checks
   - produce quality gate artifact
   - validate quality gate completion criteria
+  - trace gate pre commit decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     name: GatePreCommitArtifact

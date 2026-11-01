@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply plan review fixes methods within explicit delivery boundaries
+  - analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "review artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - post-pr-comment

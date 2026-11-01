@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply qa security testing methods within explicit qa boundaries
+  - analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes
+  - produce and validate a qa artifact with evidence, decisions, and next steps
 outputs: "security test plan or findings with evidence, severity, and remediation guidance."
 sideEffects: []
 dependencies: []

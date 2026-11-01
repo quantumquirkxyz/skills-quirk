@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply web3 consensus methods within explicit web3 boundaries
+  - analyze analyse and compare consensus mechanisms — pow, pos, bft, da, based sequencing — with security properties, finality guarantees, mev, and economic incentive alignment with assumptions, constraints, and failure modes
+  - produce and validate a web3 artifact with evidence, decisions, and next steps
 outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

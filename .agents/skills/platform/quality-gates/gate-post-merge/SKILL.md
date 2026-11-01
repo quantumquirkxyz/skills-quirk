@@ -6,10 +6,11 @@ version: 1
 description: Post-deployment quality gate triggered on merge-to-main events. Runs canary smoke test, production health check, and feature flag verification. Alerts on failure without blocking the workflow.
 license: MIT
 capabilities:
-  - apply post-merge quality gate
   - run canary and health checks
   - produce quality gate artifact
   - validate quality gate completion criteria
+  - trace gate post merge decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     name: GatePostMergeArtifact

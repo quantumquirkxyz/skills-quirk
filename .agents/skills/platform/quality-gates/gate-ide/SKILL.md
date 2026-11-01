@@ -6,10 +6,11 @@ version: 1
 description: Shift-left quality gate triggered on file-save events. Runs lint, format, typecheck, spellcheck, and lightweight secret scan. Blocks on failure and reports results to agent context.
 license: MIT
 capabilities:
-  - apply shift-left quality gate
   - run ide-level checks
   - produce quality gate artifact
   - validate quality gate completion criteria
+  - trace gate ide decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     name: GateIdeArtifact

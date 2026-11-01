@@ -6,7 +6,10 @@ description: "Decide whether a Skill action is allowed, requires approval, or mu
 license: "MIT"
 disable-model-invocation: "true"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply execution policy methods within explicit auxiliary boundaries
+  - analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes
+  - produce and validate a auxiliary artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "auxiliary artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 dependencies: []

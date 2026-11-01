@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, oSnap, Zodiac, EIP-7702 delegation — with attack vectors and resilience analysis."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply web3 governance methods within explicit web3 boundaries
+  - analyze design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, osnap, zodiac, eip-7702 delegation — with attack vectors and resilience analysis with assumptions, constraints, and failure modes
+  - produce and validate a web3 artifact with evidence, decisions, and next steps
 outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

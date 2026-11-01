@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply pr operations methods within explicit integrations boundaries
+  - analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: ""
 dependencies: ""

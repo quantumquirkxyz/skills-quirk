@@ -6,7 +6,10 @@ description: "Configure this repo for the engineering skills — set up its issu
 license: "MIT"
 disable-model-invocation: "true"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply setup quirk skills methods within explicit auxiliary boundaries
+  - analyze configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. run once before first use of the other engineering skills with assumptions, constraints, and failure modes
+  - produce and validate a auxiliary artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "auxiliary artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 dependencies: []

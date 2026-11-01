@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply prototype methods within explicit delivery boundaries
+  - analyze build a throwaway prototype to answer a design question. use when the user wants to sanity-check whether a state model or interaction shape actually works with assumptions, constraints, and failure modes
+  - produce and validate a delivery artifact with evidence, decisions, and next steps
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

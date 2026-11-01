@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Plan the release train, CI handoff, and rollback posture for a project — so shipping stays controlled."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply release management methods within explicit platform boundaries
+  - analyze plan the release train, ci handoff, and rollback posture for a project — so shipping stays controlled with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "release train guidance, CI handoff guidance, rollback posture, and a release decision record."
 sideEffects: []
 dependencies: []

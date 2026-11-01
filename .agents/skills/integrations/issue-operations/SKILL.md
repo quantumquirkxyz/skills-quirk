@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply issue operations methods within explicit integrations boundaries
+  - analyze manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "integrations artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: ""
 dependencies: ""

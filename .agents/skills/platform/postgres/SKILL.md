@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Shape PostgreSQL schema and query decisions — so the data model stays durable and reviewable."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply postgres methods within explicit platform boundaries
+  - analyze shape postgresql schema and query decisions — so the data model stays durable and reviewable with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "schema guidance, query guidance, and data durability notes."
 sideEffects: []
 dependencies: []

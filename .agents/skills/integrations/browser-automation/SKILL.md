@@ -6,10 +6,11 @@ version: "1"
 description: "Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence."
 license: "MIT"
 capabilities:
-  - turn a page objective into a declarative browser task
   - execute browser tasks with Playwright in a sandboxed context
   - gate irreversible or account-affecting actions behind approval
   - capture screenshots and DOM evidence as verifiable artifacts
+  - trace browser automation decisions across inputs, constraints, and failure paths
+  - validate integrations outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - a page objective (URL, intent, success condition)
   - credentials or session context when the task requires an authenticated state

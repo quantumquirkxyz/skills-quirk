@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply payments methods within explicit integrations boundaries
+  - analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes
+  - produce and validate a integrations artifact with evidence, decisions, and next steps
 outputs: "payment design covering flows, webhooks, idempotency, reconciliation, PCI, fraud, and provider evaluation."
 sideEffects: []
 dependencies: []

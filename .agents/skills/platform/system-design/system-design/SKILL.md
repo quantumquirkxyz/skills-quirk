@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design whole systems — components, data flow, scaling, reliability, and trade-offs — with clear assumptions and failure boundaries."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply system design methods within explicit platform boundaries
+  - analyze design whole systems — components, data flow, scaling, reliability, and trade-offs — with clear assumptions and failure boundaries with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "system design proposal with components, data flow, APIs, storage, trade-offs, risks, and validation plan."
 sideEffects: []
 dependencies: []

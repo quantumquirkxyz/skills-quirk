@@ -6,10 +6,11 @@ version: 1
 description: "Shift-left quality gate that runs on push-to-PR events. Executes the full unit suite, integration tests, contract tests, security scan (semgrep, snyk), performance regression (k6), and enforces an 80% line coverage threshold. Blocks on failure. Max duration: 30min."
 license: MIT
 capabilities:
-  - apply ci quality gate
   - run full test suite
   - produce quality gate artifact
   - validate quality gate completion criteria
+  - trace gate ci decisions across inputs, constraints, and failure paths
+  - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     name: GateCiArtifact

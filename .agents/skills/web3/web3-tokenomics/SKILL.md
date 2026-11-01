@@ -5,7 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Design token economics — supply, emission, incentives, governance, LST/LRT, restaking, points systems — with economic sustainability checks and adversarial stress tests."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply web3 tokenomics methods within explicit web3 boundaries
+  - analyze design token economics — supply, emission, incentives, governance, lst/lrt, restaking, points systems — with economic sustainability checks and adversarial stress tests with assumptions, constraints, and failure modes
+  - produce and validate a web3 artifact with evidence, decisions, and next steps
 outputs: "web3 artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

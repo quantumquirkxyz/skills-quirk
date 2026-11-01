@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Define how a project is built, released, and rolled back — as a safe operational seam."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply deployment methods within explicit platform boundaries
+  - analyze define how a project is built, released, and rolled back — as a safe operational seam with assumptions, constraints, and failure modes
+  - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "a deployment seam proposal, release path, rollback guidance, and deployment safety gates."
 sideEffects: []
 dependencies: []
