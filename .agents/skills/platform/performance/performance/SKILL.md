@@ -30,6 +30,10 @@ approvalFor: []
 
 ## Contract
 
+When a `RepositoryAuditArtifact` identifies a performance risk, distinguish a
+measured bottleneck from a structural risk or speculative optimization. Require
+a measurable target and representative workload before recommending changes.
+
 - Input: performance goal, workload, architecture, measurements, environment, and suspected bottlenecks.
 - Output: performance hypothesis, profiling plan, bottleneck analysis, remediation options, and validation criteria.
 - Scope: do not optimize without a measurable target and representative workload.

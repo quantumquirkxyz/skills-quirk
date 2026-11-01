@@ -59,6 +59,11 @@ Use this skill when the project needs a testing strategy beyond a single feature
 
 ## Steps
 
+When a `RepositoryAuditArtifact` is available, map confirmed defects and
+high-confidence risks to the smallest test seam that can fail on the reported
+behavior. Treat coverage gaps as prioritization evidence, not proof that the
+implementation is incorrect.
+
 1. Identify the public behavior that needs protection.
 2. Choose the smallest seam that proves that behavior.
 3. Assign the right test level to each behavior slice.
