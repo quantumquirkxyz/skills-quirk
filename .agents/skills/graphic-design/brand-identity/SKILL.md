@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply brand identity methods within explicit graphic-design boundaries
+  - analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 outputs: "brand identity artifact covering strategy, logo system, color, typography, imagery, iconography, and usage governance."
 sideEffects: []
 dependencies: []

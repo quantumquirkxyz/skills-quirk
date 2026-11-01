@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply professional project management methods within explicit professional boundaries
+  - analyze manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts with assumptions, constraints, and failure modes
+  - produce and validate a professional artifact with evidence, decisions, and next steps
 outputs: "scope, milestones, ownership, risks, dependencies, and communication cadence."
 sideEffects: []
 dependencies: []

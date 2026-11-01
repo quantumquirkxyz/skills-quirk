@@ -6,9 +6,10 @@ version: 1
 description: Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.
 license: MIT
 capabilities:
-  - apply to spec workflow
   - produce to spec artifact
   - validate to spec completion criteria
+  - trace to spec decisions across inputs, constraints, and failure paths
+  - validate project outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - current conversation context
   - codebase understanding

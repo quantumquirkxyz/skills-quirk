@@ -1,6 +1,10 @@
 ---
 name: "graphic-design-packaging"
 description: "Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications."
+capabilities:
+  - apply graphic design packaging methods within explicit graphic-design boundaries
+  - analyze design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"

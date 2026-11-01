@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply accessibility methods within explicit accessibility boundaries
+  - analyze design inclusive products — wcag compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees with assumptions, constraints, and failure modes
+  - produce and validate a accessibility artifact with evidence, decisions, and next steps
 outputs: "accessibility artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

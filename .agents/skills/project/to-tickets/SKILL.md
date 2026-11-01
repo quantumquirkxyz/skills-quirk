@@ -6,9 +6,10 @@ version: 1
 description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.
 license: MIT
 capabilities:
-  - apply to tickets workflow
   - produce to tickets artifact
   - validate to tickets completion criteria
+  - trace to tickets decisions across inputs, constraints, and failure paths
+  - validate project outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - a plan
   - a spec

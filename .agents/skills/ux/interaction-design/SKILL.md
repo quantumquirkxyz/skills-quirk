@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply interaction design methods within explicit ux boundaries
+  - analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes
+  - produce and validate a ux artifact with evidence, decisions, and next steps
 outputs: "plan artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply prod prd writing methods within explicit product boundaries
+  - analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes
+  - produce and validate a product artifact with evidence, decisions, and next steps
 outputs: "PRD with problem, goals, user stories, acceptance criteria, metrics, timeline."
 sideEffects: []
 dependencies: []

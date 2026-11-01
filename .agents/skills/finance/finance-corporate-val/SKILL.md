@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply finance corporate val methods within explicit finance boundaries
+  - analyze corporate valuation — dcf, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks with assumptions, constraints, and failure modes
+  - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

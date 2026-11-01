@@ -6,11 +6,12 @@ version: "1"
 description: "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow."
 license: "MIT"
 capabilities:
-  - author and maintain a repository constitution
   - produce a spec artifact from intent (specify phase)
   - produce a plan artifact with architecture and seams (plan phase)
   - decompose the plan into tracer-bullet tasks (tasks phase)
   - verify implementation against the spec and plan
+  - trace spec driven development decisions across inputs, constraints, and failure paths
+  - validate project outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - the user's intent for a feature or change
   - the repository constitution (or the intent to create one)

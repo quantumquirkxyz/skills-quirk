@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply accessibility design methods within explicit accessibility boundaries
+  - analyze design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns with assumptions, constraints, and failure modes
+  - produce and validate a accessibility artifact with evidence, decisions, and next steps
 outputs: "accessibility design guidance with barriers, remediations, validation checks, and residual risks."
 sideEffects: []
 dependencies: []

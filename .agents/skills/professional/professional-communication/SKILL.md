@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply professional communication methods within explicit professional boundaries
+  - analyze improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision with assumptions, constraints, and failure modes
+  - produce and validate a professional artifact with evidence, decisions, and next steps
 outputs: "polished message or critique with intent, tone, and next action."
 sideEffects: []
 dependencies: []

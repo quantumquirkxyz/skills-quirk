@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply pro market analysis methods within explicit professional boundaries
+  - analyze conduct professional market research — tam/sam/som, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing with assumptions, constraints, and failure modes
+  - produce and validate a professional artifact with evidence, decisions, and next steps
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

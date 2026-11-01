@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design accessible UX — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply ux accessibility methods within explicit ux boundaries
+  - analyze design accessible ux — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns with assumptions, constraints, and failure modes
+  - produce and validate a ux artifact with evidence, decisions, and next steps
 outputs: "flow-level accessibility guidance with barriers, interaction changes, and validation criteria."
 sideEffects: []
 dependencies: []

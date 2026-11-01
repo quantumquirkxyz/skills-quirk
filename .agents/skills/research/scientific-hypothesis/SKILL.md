@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply scientific hypothesis methods within explicit research boundaries
+  - analyze formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan with assumptions, constraints, and failure modes
+  - produce and validate a research artifact with evidence, decisions, and next steps
 outputs: "research artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

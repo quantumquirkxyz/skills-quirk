@@ -5,7 +5,10 @@ maturity: "experimental"
 version: "1"
 description: "Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply graphic design project management methods within explicit graphic-design boundaries
+  - analyze manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 outputs: "graphic design project management artifact with project plan, iteration schedule, review gates, and handoff standards."
 sideEffects: ""
 dependencies: []

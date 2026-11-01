@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply finance dcf methods within explicit finance boundaries
+  - analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes
+  - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

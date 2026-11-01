@@ -1,6 +1,10 @@
 ---
 name: "graphic-design-photo-direction"
 description: "Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery."
+capabilities:
+  - apply graphic design photo direction methods within explicit graphic-design boundaries
+  - analyze direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"

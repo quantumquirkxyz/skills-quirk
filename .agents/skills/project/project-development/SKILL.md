@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply project development methods within explicit project boundaries
+  - analyze evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins with assumptions, constraints, and failure modes
+  - produce and validate a project artifact with evidence, decisions, and next steps
 outputs: "a project fit assessment, a project shape classification, and an initial flow recommendation."
 sideEffects: []
 dependencies: []

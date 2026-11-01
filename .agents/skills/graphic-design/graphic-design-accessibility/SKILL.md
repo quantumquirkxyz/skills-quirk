@@ -1,6 +1,10 @@
 ---
 name: "graphic-design-accessibility"
 description: "Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital."
+capabilities:
+  - apply graphic design accessibility methods within explicit graphic-design boundaries
+  - analyze design inclusive graphic artifacts — wcag-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"

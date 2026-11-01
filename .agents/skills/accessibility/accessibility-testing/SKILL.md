@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply accessibility testing methods within explicit accessibility boundaries
+  - analyze test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence with assumptions, constraints, and failure modes
+  - produce and validate a accessibility artifact with evidence, decisions, and next steps
 outputs: "test-strategy artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

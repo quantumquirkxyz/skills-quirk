@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas."
 license: "MIT"
-capabilities: ["divergent ideation", "reframing", "clustering", "prioritization", "experiment framing"]
+capabilities:
+  - apply brainstorming methods within explicit product boundaries
+  - analyze facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas with assumptions, constraints, and failure modes
+  - produce and validate a product artifact with evidence, decisions, and next steps
 outputs: "brainstorm brief, idea inventory, decision matrix, next-step experiments"
 sideEffects: []
 dependencies: []

@@ -3,9 +3,10 @@ name: "project-viability"
 description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work."
 license: "MIT"
 capabilities:
-  - assess implementation health from repository evidence
   - evaluate functional, architectural, and growth risks
   - consume repository audit findings
+  - trace project viability decisions across inputs, constraints, and failure paths
+  - validate project outcomes with evidence, assumptions, and explicit next steps
 outputs: "one Markdown report under `.reports/` and one JSON artifact under `.reports/`, both with layered findings and a prompt for the user."
 sideEffects: ""
 dependencies: []

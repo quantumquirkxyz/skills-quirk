@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design A/B tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply prod ab testing methods within explicit product boundaries
+  - analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes
+  - produce and validate a product artifact with evidence, decisions, and next steps
 outputs: "test design with power analysis and rollback rules."
 sideEffects: []
 dependencies: []

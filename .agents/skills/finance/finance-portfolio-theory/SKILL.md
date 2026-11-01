@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply finance portfolio theory methods within explicit finance boundaries
+  - analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes
+  - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

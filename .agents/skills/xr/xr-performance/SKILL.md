@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply xr performance methods within explicit xr boundaries
+  - analyze optimize xr performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs with assumptions, constraints, and failure modes
+  - produce and validate a xr artifact with evidence, decisions, and next steps
 outputs: "XR performance budget, bottleneck analysis, optimization plan, and comfort validation checks."
 sideEffects: []
 dependencies: []

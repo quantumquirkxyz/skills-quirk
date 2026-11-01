@@ -6,9 +6,10 @@ version: "1"
 description: "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads."
 license: "MIT"
 capabilities:
-  - index requirements across spec plan and ticket artifacts
   - classify consistency findings by evidence
   - emit a read-only artifact consistency report
+  - trace analyze artifacts decisions across inputs, constraints, and failure paths
+  - validate project outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - the spec artifact of one work item
   - the plan artifact for that work item

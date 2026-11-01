@@ -1,6 +1,10 @@
 ---
 name: "graphic-design-advertising"
 description: "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules."
+capabilities:
+  - apply graphic design advertising methods within explicit graphic-design boundaries
+  - analyze design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 license: "MIT"
 promptVersion: "2.0"
 artifactType: "plan"

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply xr interaction design methods within explicit xr boundaries
+  - analyze design xr interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability with assumptions, constraints, and failure modes
+  - produce and validate a xr artifact with evidence, decisions, and next steps
 outputs: "XR interaction model with input mappings, feedback, comfort constraints, error recovery, and validation tasks."
 sideEffects: []
 dependencies: []

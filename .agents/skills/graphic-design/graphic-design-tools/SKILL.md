@@ -5,7 +5,10 @@ maturity: "experimental"
 version: "1"
 description: "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply graphic design tools methods within explicit graphic-design boundaries
+  - analyze connect graphic design tools — figma, adobe creative cloud, canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries with assumptions, constraints, and failure modes
+  - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 outputs: "graphic design tools artifact covering tool selection, authentication, use-case mapping, data flow, and safety boundaries."
 sideEffects: ""
 dependencies: []

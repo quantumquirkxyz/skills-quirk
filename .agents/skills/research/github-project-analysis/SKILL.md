@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project."
 license: "MIT"
-capabilities: ["GitHub discovery", "repository triage", "structure analysis", "comparative synthesis", "adaptation planning"]
+capabilities:
+  - apply github project analysis methods within explicit research boundaries
+  - analyze research comparable projects exclusively on github and analyze their structure, decisions, and reusable patterns for an active project with assumptions, constraints, and failure modes
+  - produce and validate a research artifact with evidence, decisions, and next steps
 outputs: "source register, repository profiles, structure comparison, adaptation recommendations, evidence gaps"
 sideEffects: []
 dependencies: []
