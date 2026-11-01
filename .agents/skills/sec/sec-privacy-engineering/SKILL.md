@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply sec privacy engineering methods within explicit sec boundaries
+  - analyze design privacy-protecting systems — gdpr / ccpa / hipaa compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "Privacy Impact Assessment + data-flow map + compliance checklist."
 sideEffects: []
 dependencies: []

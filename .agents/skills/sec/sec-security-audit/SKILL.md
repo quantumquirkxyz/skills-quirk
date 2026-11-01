@@ -6,9 +6,10 @@ version: "1"
 description: "Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities."
 license: "MIT"
 capabilities:
-  - inspect repository security boundaries end to end
   - classify evidence-backed threats and vulnerabilities
   - consume code-review audit findings
+  - trace sec security audit decisions across inputs, constraints, and failure paths
+  - validate sec outcomes with evidence, assumptions, and explicit next steps
 outputs: "audit report with severity-classified findings."
 sideEffects: []
 dependencies: []

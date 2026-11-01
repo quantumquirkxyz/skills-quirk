@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply chaos engineering methods within explicit devops boundaries
+  - analyze design chaos engineering — fault injection, gamedays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "chaos experiment plan + fault injection config + resilience report."
 sideEffects: []
 dependencies: []

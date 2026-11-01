@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cloud security methods within explicit sec boundaries
+  - analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "cloud security architecture + IAM review + compliance matrix + CSPM runbook."
 sideEffects: []
 dependencies: []

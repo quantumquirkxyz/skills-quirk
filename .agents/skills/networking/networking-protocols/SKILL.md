@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply networking protocols methods within explicit networking boundaries
+  - analyze analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions with assumptions, constraints, and failure modes
+  - produce and validate a networking artifact with evidence, decisions, and next steps
 outputs: "protocol explanation, state machine or flow, timing assumptions, and likely failure modes."
 sideEffects: []
 dependencies: []

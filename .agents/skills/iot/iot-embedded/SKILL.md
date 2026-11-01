@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply iot embedded methods within explicit iot boundaries
+  - analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes
+  - produce and validate a iot artifact with evidence, decisions, and next steps
 outputs: "iot artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply incident forensics methods within explicit sec boundaries
+  - analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "evidence inventory + timeline + root cause analysis + forensic report."
 sideEffects: []
 dependencies: []

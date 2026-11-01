@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply networking security methods within explicit networking boundaries
+  - analyze design network security — segmentation, firewalls, vpns, tls, authentication, and threat boundaries — with explicit trust zones with assumptions, constraints, and failure modes
+  - produce and validate a networking artifact with evidence, decisions, and next steps
 outputs: "trust-zone model, allowed/blocked flows, control recommendations, and residual risk."
 sideEffects: []
 dependencies: []

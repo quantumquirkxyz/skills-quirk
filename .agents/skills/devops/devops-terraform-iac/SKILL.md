@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply devops terraform iac methods within explicit devops boundaries
+  - analyze design infrastructure as code — terraform / pulumi / cloudformation — for reproducible, version-controlled, auditable cloud infrastructure with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "IAC module definitions + state rules + policy checklist."
 sideEffects: []
 dependencies: []

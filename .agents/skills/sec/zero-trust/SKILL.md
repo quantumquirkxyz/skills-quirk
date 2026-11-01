@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply zero trust methods within explicit sec boundaries
+  - analyze design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "zero trust architecture + identity model + segmentation policy + policy rules."
 sideEffects: []
 dependencies: []

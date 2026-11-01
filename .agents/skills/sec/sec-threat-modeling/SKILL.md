@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply sec threat modeling methods within explicit sec boundaries
+  - analyze design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using stride or att&ck frameworks with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "threat model document + risk register."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply container security methods within explicit sec boundaries
+  - analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "container security baseline + image scan policy + runtime rules + K8s security policies."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design feature flag systems — gradual rollouts, A/B experiments, kill switches, targeting rules — with lifecycle management and operational runbooks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply devops feature flags methods within explicit devops boundaries
+  - analyze design feature flag systems — gradual rollouts, a/b experiments, kill switches, targeting rules — with lifecycle management and operational runbooks with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "flag lifecycle + targeting rules + inventory."
 sideEffects: []
 dependencies: []

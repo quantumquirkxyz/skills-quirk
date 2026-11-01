@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply networking methods within explicit networking boundaries
+  - analyze design and analyze network infrastructure — tcp/ip, routing, dns, load balancing, firewalls, vpns, network security — with explicit assumptions about latency, bandwidth, and failure modes with assumptions, constraints, and failure modes
+  - produce and validate a networking artifact with evidence, decisions, and next steps
 outputs: "networking artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

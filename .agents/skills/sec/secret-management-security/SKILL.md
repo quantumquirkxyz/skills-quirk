@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Secrets management (Vault, KMS, rotation, injection, external secrets operator)"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply secret management security methods within explicit sec boundaries
+  - analyze secrets management (vault, kms, rotation, injection, external secrets operator) with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "secrets management architecture + rotation schedule + injection design + audit findings."
 sideEffects: []
 dependencies: []

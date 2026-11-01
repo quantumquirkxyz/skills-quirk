@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply secret management methods within explicit devops boundaries
+  - analyze design secret management — vault, sops, sealedsecrets, rotation, external secrets — with encryption, access control, and auditability with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "secret management architecture + access policy + rotation runbook + integration plan."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design CI/CD pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply devops ci cd pipeline methods within explicit devops boundaries
+  - analyze design ci/cd pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "pipeline definition + gate rules + rollback plan."
 sideEffects: []
 dependencies: []

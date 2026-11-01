@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply sec cryptography applied methods within explicit sec boundaries
+  - analyze apply cryptography — encryption at rest / in transit, digital signatures, key management, macs, tls/pki, hsm, secure enclaves — with implementation guidance and anti-patterns with assumptions, constraints, and failure modes
+  - produce and validate a sec artifact with evidence, decisions, and next steps
 outputs: "cryptographic design + implementation checklist."
 sideEffects: []
 dependencies: []

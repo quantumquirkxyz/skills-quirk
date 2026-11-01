@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply incident response methods within explicit devops boundaries
+  - analyze design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "incident response plan + runbook library + postmortem process."
 sideEffects: []
 dependencies: []

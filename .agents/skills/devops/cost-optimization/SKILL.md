@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cost optimization methods within explicit devops boundaries
+  - analyze design finops strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "FinOps architecture + cost visibility design + rightsizing recommendations + budget and showback plan."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply os processes methods within explicit os boundaries
+  - analyze design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries with assumptions, constraints, and failure modes
+  - produce and validate a os artifact with evidence, decisions, and next steps
 outputs: "process-state analysis, scheduling/IPC design, and failure or race-condition notes."
 sideEffects: []
 dependencies: []

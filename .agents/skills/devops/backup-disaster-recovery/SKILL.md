@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply backup disaster recovery methods within explicit devops boundaries
+  - analyze design backup and disaster recovery — rpo/rto, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation with assumptions, constraints, and failure modes
+  - produce and validate a devops artifact with evidence, decisions, and next steps
 outputs: "backup and DR architecture + recovery objectives matrix + backup strategy + restore testing plan."
 sideEffects: []
 dependencies: []
