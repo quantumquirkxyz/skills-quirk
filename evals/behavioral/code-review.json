@@ -35,6 +35,7 @@
   "assertions": [
     { "id": "a1", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["scope", "objective", "findings", "summary", "limitations"], "note": "RepositoryAuditArtifact fields" } },
     { "id": "a2", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_any", "values": ["repository-audit-schema.json", "RepositoryAuditArtifact"], "note": "schema validation must be evidenced" } },
-    { "id": "a3", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_any", "values": ["confirmed-defect", "risk", "improvement", "evidence-gap"], "note": "findings must be classified" } }
+    { "id": "a3", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_any", "values": ["confirmed-defect", "risk", "improvement", "evidence-gap"], "note": "findings must be classified" } },
+    { "id": "a4", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["nextConsumer", "recommendation"], "note": "handoff and remediation context must be represented" } }
   ]
 }
