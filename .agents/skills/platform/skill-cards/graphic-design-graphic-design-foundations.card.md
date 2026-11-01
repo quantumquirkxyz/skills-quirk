@@ -32,7 +32,9 @@ Design graphic artifacts — posters, social graphics, editorial layouts, packag
 
 ## Capabilities
 
-None declared.
+- `apply graphic design foundations methods within explicit graphic-design boundaries`
+- `analyze design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

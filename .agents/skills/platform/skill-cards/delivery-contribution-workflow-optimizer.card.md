@@ -32,7 +32,9 @@ Inspect changed Skills and recommend contribution improvements across standards,
 
 ## Capabilities
 
-None declared.
+- `apply contribution workflow optimizer methods within explicit delivery boundaries`
+- `analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

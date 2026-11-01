@@ -1,6 +1,6 @@
 {
   "name": "state-management",
-  "instructions": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).\n\nCapabilities:\n- apply the state-management workflow\n\nCanonical skill: .agents/skills/frontend/state-management/SKILL.md",
+  "instructions": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).\n\nCapabilities:\n- apply state management methods within explicit frontend boundaries\n- analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes\n- produce and validate a frontend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/frontend/state-management/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "State management design complete; artifact saved; completion criteria checked.",

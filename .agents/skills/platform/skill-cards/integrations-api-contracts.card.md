@@ -32,7 +32,9 @@ Define the request and response contracts, versioning rules, compatibility bound
 
 ## Capabilities
 
-None declared.
+- `apply api contracts methods within explicit integrations boundaries`
+- `analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes`
+- `produce and validate a integrations artifact with evidence, decisions, and next steps`
 
 ## Tags
 

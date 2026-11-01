@@ -32,7 +32,9 @@ Price and calibrate derivatives (options, exotics, structured products) — Blac
 
 ## Capabilities
 
-None declared.
+- `apply quant derivatives pricing methods within explicit quant boundaries`
+- `analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes`
+- `produce and validate a quant artifact with evidence, decisions, and next steps`
 
 ## Tags
 

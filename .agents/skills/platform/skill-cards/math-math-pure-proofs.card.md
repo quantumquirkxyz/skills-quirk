@@ -32,7 +32,9 @@ Write and verify pure-math proofs (number theory, algebra, analysis, combinatori
 
 ## Capabilities
 
-None declared.
+- `apply math pure proofs methods within explicit math boundaries`
+- `analyze write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

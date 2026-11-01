@@ -32,7 +32,9 @@ Model thermodynamic systems — first and second law, heat engines, entropy, pha
 
 ## Capabilities
 
-None declared.
+- `apply physics thermo methods within explicit physics boundaries`
+- `analyze model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Generate a focused tutorial with goals, exercise inputs, expected outputs, and c
 
 ## Capabilities
 
-None declared.
+- `apply interactive tutorial builder methods within explicit auxiliary boundaries`
+- `analyze generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any skill; use when teaching or onboarding someone to a skill with assumptions, constraints, and failure modes`
+- `produce and validate a auxiliary artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -2,7 +2,7 @@
   "skill": "integrations/auth",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c3ef2a574a99bf1aa21baf073e9cdfbb59786253c27f58ab7916793d9ed991d8",
+  "frontmatterHash": "402aace44be19040ba821f3639a71a4b5a6c4942a6551c5963a3eba18aa63d08",
   "role": "workflow",
   "router": {
     "positive": [],

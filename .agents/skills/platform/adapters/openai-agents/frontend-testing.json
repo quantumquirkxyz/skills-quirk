@@ -1,6 +1,6 @@
 {
   "name": "frontend-testing",
-  "instructions": "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).\n\nCapabilities:\n- apply the frontend-testing workflow\n\nCanonical skill: .agents/skills/frontend/frontend-testing/SKILL.md",
+  "instructions": "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).\n\nCapabilities:\n- apply frontend testing methods within explicit frontend boundaries\n- analyze frontend testing (vitest, testing library, playwright, visual testing, storybook) with assumptions, constraints, and failure modes\n- produce and validate a frontend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/frontend/frontend-testing/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Frontend testing design complete; artifact saved; completion criteria checked.",

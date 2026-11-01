@@ -32,7 +32,9 @@ Design network security — segmentation, firewalls, VPNs, TLS, authentication, 
 
 ## Capabilities
 
-None declared.
+- `apply networking security methods within explicit networking boundaries`
+- `analyze design network security — segmentation, firewalls, vpns, tls, authentication, and threat boundaries — with explicit trust zones with assumptions, constraints, and failure modes`
+- `produce and validate a networking artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Improve professional communication — status updates, stakeholder messages, exp
 
 ## Capabilities
 
-None declared.
+- `apply professional communication methods within explicit professional boundaries`
+- `analyze improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision with assumptions, constraints, and failure modes`
+- `produce and validate a professional artifact with evidence, decisions, and next steps`
 
 ## Tags
 

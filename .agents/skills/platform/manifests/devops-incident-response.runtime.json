@@ -2,7 +2,7 @@
   "skill": "devops/incident-response",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2380fa0fbd92dcc73166ee84152a023f4de0d74083986da0974ab23b4decd66b",
+  "frontmatterHash": "0d47c71b70029c0539fb11debea9f676d7bc9f945f22e755185427369e660ff7",
   "role": "workflow",
   "router": {
     "positive": [],

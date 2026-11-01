@@ -32,7 +32,9 @@ Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, sol
 
 ## Capabilities
 
-None declared.
+- `apply web3 defi methods within explicit web3 boundaries`
+- `analyze analyse defi protocols — amms, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, mev protection, and composability risks with assumptions, constraints, and failure modes`
+- `produce and validate a web3 artifact with evidence, decisions, and next steps`
 
 ## Tags
 

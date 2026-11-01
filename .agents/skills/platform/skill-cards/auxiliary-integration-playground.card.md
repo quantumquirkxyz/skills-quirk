@@ -32,7 +32,9 @@ Create a disposable fixture environment for safely exercising Skills against loc
 
 ## Capabilities
 
-None declared.
+- `apply integration playground methods within explicit auxiliary boundaries`
+- `analyze create a disposable fixture environment for safely exercising skills against local apis, data, and files; use when testing a skill with isolated local fixtures with assumptions, constraints, and failure modes`
+- `produce and validate a auxiliary artifact with evidence, decisions, and next steps`
 
 ## Tags
 

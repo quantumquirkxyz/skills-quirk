@@ -16,7 +16,7 @@ of the bundle. Regenerate every card with:
 
 ## Description
 
-Alias for the quirk grilling flow. Use when the user says "grill" and wants a relentless interview to sharpen a plan, decision, or design.
+>-
 
 ## Risk and execution
 
@@ -32,7 +32,9 @@ Alias for the quirk grilling flow. Use when the user says "grill" and wants a re
 
 ## Capabilities
 
-None declared.
+- `apply grill methods within explicit routing boundaries`
+- `analyze grill with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -82,7 +84,7 @@ None declared.
 
 ## Non-goals / when not to use
 
-- In scope: the user says "grill" and wants a relentless interview to sharpen a plan, decision, or design.
+- In scope: >-.
 - Out of scope: requests that do not match that declared trigger.
 - This card is documentation; the contract lives in the skill body.
 

@@ -32,7 +32,10 @@ Shape backend systems — REST/gRPC APIs, service contracts, data flow, state ma
 
 ## Capabilities
 
-None declared.
+- `review contracts, state, errors, and integration boundaries`
+- `consume code-review audit findings`
+- `trace backend architecture decisions across inputs, constraints, and failure paths`
+- `validate backend outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -80,7 +83,9 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [api-contracts](integrations-api-contracts.card.md)
+- `performance`
 
 ## Agent card
 
@@ -90,6 +95,7 @@ None declared.
 
 - In scope: Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `api-contracts`, `performance`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

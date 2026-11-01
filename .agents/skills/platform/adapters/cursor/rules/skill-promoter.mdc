@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the skill-promoter skill when the request matches its scope.
 
 Capabilities:
-- apply the skill-promoter workflow
+- apply skill promoter methods within explicit skill-dev boundaries
+- analyze promote validated experimental skills from the sandbox to the canonical skills bundle with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Promote validated experimental skills from the sandbox to the canonical skills bundle complete; artifact saved; completion criteria checked.

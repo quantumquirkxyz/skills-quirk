@@ -32,7 +32,9 @@ Prompt template library (versioned templates, A/B testing, composition, evaluati
 
 ## Capabilities
 
-None declared.
+- `apply prompt template library methods within explicit ai boundaries`
+- `analyze prompt template library (versioned templates, a/b testing, composition, evaluation) with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

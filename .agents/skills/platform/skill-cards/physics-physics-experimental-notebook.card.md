@@ -32,7 +32,9 @@ Maintain experimental physics lab notebooks — measurements, calibration, error
 
 ## Capabilities
 
-None declared.
+- `apply physics experimental notebook methods within explicit physics boundaries`
+- `analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

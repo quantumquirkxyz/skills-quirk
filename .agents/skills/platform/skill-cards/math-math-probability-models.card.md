@@ -32,7 +32,9 @@ Build probability models — distributions, stochastic processes (Markov, Browni
 
 ## Capabilities
 
-None declared.
+- `apply math probability models methods within explicit math boundaries`
+- `analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

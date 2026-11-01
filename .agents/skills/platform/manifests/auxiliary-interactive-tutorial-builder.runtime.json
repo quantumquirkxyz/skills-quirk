@@ -2,7 +2,7 @@
   "skill": "auxiliary/interactive-tutorial-builder",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "9faae18f3dd683493fc1d8f268fb9f5cf077259d3de2f707c12b0ddd19d4c69d",
+  "frontmatterHash": "ffd43eb6dc7862a6b370b9300e160a5e291c95fe897b7a2541baba12331a6e30",
   "role": "workflow",
   "router": {
     "positive": [],

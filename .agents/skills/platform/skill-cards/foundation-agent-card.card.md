@@ -26,16 +26,17 @@ Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `plan`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-files`
 - **Side effects**: `write-files`
 
 ## Capabilities
 
-- `generate-agent-card`
 - `validate-agent-card`
 - `emit-agent-card-json`
 - `update-agent-card-index`
+- `trace agent card decisions across inputs, constraints, and failure paths`
+- `validate foundation outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

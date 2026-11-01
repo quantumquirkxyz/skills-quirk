@@ -1,6 +1,6 @@
 {
   "name": "physics-talk-design",
-  "instructions": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.\n\nCapabilities:\n- apply the physics-talk-design workflow\n\nCanonical skill: .agents/skills/physics/physics-talk-design/SKILL.md",
+  "instructions": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.\n\nCapabilities:\n- apply physics talk design methods within explicit physics boundaries\n- analyze design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility with assumptions, constraints, and failure modes\n- produce and validate a physics artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/physics/physics-talk-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Source compiled; notes saved; checklist completed.",

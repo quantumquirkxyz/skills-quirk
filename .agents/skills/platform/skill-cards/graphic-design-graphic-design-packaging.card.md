@@ -32,7 +32,9 @@ Design physical packaging — dielines, structure, materials, regulatory labels 
 
 ## Capabilities
 
-None declared.
+- `apply graphic design packaging methods within explicit graphic-design boundaries`
+- `analyze design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

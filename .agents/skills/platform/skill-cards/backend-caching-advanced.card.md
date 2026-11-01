@@ -32,7 +32,9 @@ Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede
 
 ## Capabilities
 
-None declared.
+- `apply caching advanced methods within explicit backend boundaries`
+- `analyze advanced caching strategies (redis, memcached, cdn, cache invalidation, stampede prevention) with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

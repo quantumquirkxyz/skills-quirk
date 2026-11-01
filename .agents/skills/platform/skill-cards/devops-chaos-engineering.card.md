@@ -32,7 +32,9 @@ Design chaos engineering — fault injection, GameDays, resilience validation �
 
 ## Capabilities
 
-None declared.
+- `apply chaos engineering methods within explicit devops boundaries`
+- `analyze design chaos engineering — fault injection, gamedays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails with assumptions, constraints, and failure modes`
+- `produce and validate a devops artifact with evidence, decisions, and next steps`
 
 ## Tags
 

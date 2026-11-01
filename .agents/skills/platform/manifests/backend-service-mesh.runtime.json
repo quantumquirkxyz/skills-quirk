@@ -2,7 +2,7 @@
   "skill": "backend/service-mesh",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "b2d9b699b38c65441e5725af80ff700f6eaca162c18bd7382bd1831dbe601e06",
+  "frontmatterHash": "681a02dfa8e03801caa223834ba929b6df16684c21aaed6e9e7859ba4d1afc5f",
   "role": "workflow",
   "router": {
     "positive": [],

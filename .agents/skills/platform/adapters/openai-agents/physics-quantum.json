@@ -1,6 +1,6 @@
 {
   "name": "physics-quantum",
-  "instructions": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.\n\nCapabilities:\n- apply the physics-quantum workflow\n\nCanonical skill: .agents/skills/physics/physics-quantum/SKILL.md",
+  "instructions": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.\n\nCapabilities:\n- apply physics quantum methods within explicit physics boundaries\n- analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes\n- produce and validate a physics artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/physics/physics-quantum/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results complete; required sections present; completion criteria checked.",

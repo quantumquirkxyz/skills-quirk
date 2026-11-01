@@ -2,7 +2,7 @@
   "skill": "routing/ask-to",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "fffa080c6bab52f2c892f244eb54e19e8780fd85e6d0e5f73fa2270656c2eaf3",
+  "frontmatterHash": "f163d4f658277a9ce29b6a68281973850aeee23adf86dcb1ac47e334f15aa9c7",
   "role": "workflow",
   "router": {
     "positive": [],

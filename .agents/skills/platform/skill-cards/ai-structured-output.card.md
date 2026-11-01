@@ -32,7 +32,9 @@ Structured output for LLMs (JSON mode, function calling, constrained decoding, v
 
 ## Capabilities
 
-None declared.
+- `apply structured output methods within explicit ai boundaries`
+- `analyze structured output for llms (json mode, function calling, constrained decoding, validation) with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

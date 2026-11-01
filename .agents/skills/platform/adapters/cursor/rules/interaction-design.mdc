@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the interaction-design skill when the request matches its scope.
 
 Capabilities:
-- apply the interaction-design workflow
+- apply interaction design methods within explicit ux boundaries
+- analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes
+- produce and validate a ux artifact with evidence, decisions, and next steps
 
 Stop when: Design user interactions complete; artifact saved; completion criteria checked.

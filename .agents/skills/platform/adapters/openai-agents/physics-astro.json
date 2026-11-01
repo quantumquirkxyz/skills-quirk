@@ -1,6 +1,6 @@
 {
   "name": "physics-astro",
-  "instructions": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.\n\nCapabilities:\n- apply the physics-astro workflow\n\nCanonical skill: .agents/skills/physics/physics-astro/SKILL.md",
+  "instructions": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.\n\nCapabilities:\n- apply physics astro methods within explicit physics boundaries\n- analyze model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws with assumptions, constraints, and failure modes\n- produce and validate a physics artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/physics/physics-astro/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Model astrophysical systems complete; required sections present; completion criteria checked.",

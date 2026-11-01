@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the container-security skill when the request matches its scope.
 
 Capabilities:
-- apply the container-security workflow
+- apply container security methods within explicit sec boundaries
+- analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes
+- produce and validate a sec artifact with evidence, decisions, and next steps
 
 Stop when: Container baseline saved; image scan policy defined; runtime rules documented; K8s security policies complete.

@@ -32,7 +32,9 @@ Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integratio
 
 ## Capabilities
 
-None declared.
+- `apply math paper collaboration methods within explicit math boundaries`
+- `analyze manage mathematical paper collaboration — overleaf / github / arxiv integration, citation tracking, version control, reproducible computation links, and co-author coordination with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

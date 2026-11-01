@@ -32,7 +32,9 @@ Design authentication and authorization as a small, explicit seam — with OAuth
 
 ## Capabilities
 
-None declared.
+- `apply auth methods within explicit integrations boundaries`
+- `analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes`
+- `produce and validate a integrations artifact with evidence, decisions, and next steps`
 
 ## Tags
 

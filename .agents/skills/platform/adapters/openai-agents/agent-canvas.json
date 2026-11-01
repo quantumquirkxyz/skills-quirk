@@ -1,6 +1,6 @@
 {
   "name": "agent-canvas",
-  "instructions": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.\n\nCapabilities:\n- apply the agent-canvas workflow\n\nCanonical skill: .agents/skills/foundation/agent-canvas/SKILL.md",
+  "instructions": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.\n\nCapabilities:\n- apply agent canvas methods within explicit foundation boundaries\n- analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes\n- produce and validate a foundation artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/foundation/agent-canvas/SKILL.md",
   "model": "gpt-5-mini",
   "tools": [],
   "handoff_description": "Workspace defined, session has explicit finish line, and state is recorded.",

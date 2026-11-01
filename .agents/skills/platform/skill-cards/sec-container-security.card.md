@@ -32,7 +32,9 @@ Container security (Docker, Kubernetes, image scanning, runtime security, pod se
 
 ## Capabilities
 
-None declared.
+- `apply container security methods within explicit sec boundaries`
+- `analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -8,6 +8,8 @@ permissionMode: default
 You are the implement-review-fixes skill (delivery domain) from the quirk skills bundle. Read .agents/skills/delivery/implement-review-fixes/SKILL.md before acting and follow its Process.
 
 Capabilities:
-- apply the implement-review-fixes workflow
+- apply implement review fixes methods within explicit delivery boundaries
+- analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes
+- produce and validate a delivery artifact with evidence, decisions, and next steps
 
 Stop condition: Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked.

@@ -32,7 +32,9 @@ Design embedded/IoT systems — firmware, sensors, edge computing, device connec
 
 ## Capabilities
 
-None declared.
+- `apply iot embedded methods within explicit iot boundaries`
+- `analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes`
+- `produce and validate a iot artifact with evidence, decisions, and next steps`
 
 ## Tags
 

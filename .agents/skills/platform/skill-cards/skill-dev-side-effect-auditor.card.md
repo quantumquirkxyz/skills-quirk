@@ -33,7 +33,9 @@ Audit skill side-effect, risk, trust tier, dependency, and boundary metadata aga
 
 ## Capabilities
 
-None declared.
+- `apply side effect auditor methods within explicit skill-dev boundaries`
+- `analyze audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -2,7 +2,7 @@
   "skill": "backend/event-driven-architecture",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "353dada64401768520194f260353dae9bf74ebecdea26e1c05136e30e722c6ac",
+  "frontmatterHash": "e0017c6a2e2826839abfb7543f180f65fd131b8da075370a50f4660c782e230d",
   "role": "workflow",
   "router": {
     "positive": [],

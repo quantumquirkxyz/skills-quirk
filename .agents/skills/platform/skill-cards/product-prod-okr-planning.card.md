@@ -32,7 +32,9 @@ Design OKR cycles — Objectives, Key Results, initiatives — with measurable o
 
 ## Capabilities
 
-None declared.
+- `apply prod okr planning methods within explicit product boundaries`
+- `analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes`
+- `produce and validate a product artifact with evidence, decisions, and next steps`
 
 ## Tags
 

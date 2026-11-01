@@ -2,7 +2,7 @@
   "skill": "ai/agent-orchestration",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "124f4173e98f82d8db790f87c3a1c3adf74dd6a33fe52b89baaafc5b19fb3e86",
+  "frontmatterHash": "2e5eca488fdef11d846ccaef56703bd363b7151f8fe617aaed48914592516e9f",
   "role": "workflow",
   "router": {
     "positive": [],

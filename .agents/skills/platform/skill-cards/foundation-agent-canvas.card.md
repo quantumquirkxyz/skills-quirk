@@ -32,7 +32,9 @@ Reference skill for agent workspace control — multi-agent session management, 
 
 ## Capabilities
 
-None declared.
+- `apply agent canvas methods within explicit foundation boundaries`
+- `analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes`
+- `produce and validate a foundation artifact with evidence, decisions, and next steps`
 
 ## Tags
 

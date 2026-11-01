@@ -32,7 +32,9 @@ Plan a huge chunk of work — more than one agent session can hold — as a map 
 
 ## Capabilities
 
-None declared.
+- `apply wayfinder methods within explicit routing boundaries`
+- `analyze plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

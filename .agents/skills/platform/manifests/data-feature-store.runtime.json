@@ -2,7 +2,7 @@
   "skill": "data/feature-store",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "66571703d48eb9c70e5bd8cff092d6320f0ae5296d9374445338db0fb7756b14",
+  "frontmatterHash": "66bf4f30a6982fc66e0f202c3b2e2aa62ff42f636961b78f4be7f66f8b0f952b",
   "role": "workflow",
   "router": {
     "positive": [],

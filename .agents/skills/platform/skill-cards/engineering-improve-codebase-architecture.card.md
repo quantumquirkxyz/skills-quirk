@@ -32,7 +32,10 @@ Scan a codebase for deepening opportunities and present candidates as a visual H
 
 ## Capabilities
 
-None declared.
+- `distinguish confirmed design defects from improvement opportunities`
+- `consume repository audit findings`
+- `trace improve codebase architecture decisions across inputs, constraints, and failure paths`
+- `validate engineering outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -74,7 +77,10 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [project-viability](project-project-viability.card.md)
+- [codebase-design](foundation-codebase-design.card.md)
+- [grill-me](routing-grill-me.card.md)
 
 ## Agent card
 
@@ -84,6 +90,7 @@ None declared.
 
 - In scope: Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `project-viability`, `codebase-design`, `grill-me`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

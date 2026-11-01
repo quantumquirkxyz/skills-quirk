@@ -32,7 +32,9 @@ Design backend queues and background job systems — durability, retries, orderi
 
 ## Capabilities
 
-None declared.
+- `apply backend queues methods within explicit backend boundaries`
+- `analyze design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

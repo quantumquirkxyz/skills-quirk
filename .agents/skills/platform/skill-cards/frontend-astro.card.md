@@ -32,7 +32,9 @@ Astro framework (islands architecture, content-focused sites, SSR/SSG, view tran
 
 ## Capabilities
 
-None declared.
+- `apply astro methods within explicit frontend boundaries`
+- `analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

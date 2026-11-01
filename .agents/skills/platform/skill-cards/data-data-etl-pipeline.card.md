@@ -32,7 +32,9 @@ Design ETL / ELT pipelines — extraction, transformation, load — with reprodu
 
 ## Capabilities
 
-None declared.
+- `apply data etl pipeline methods within explicit data boundaries`
+- `analyze design etl / elt pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

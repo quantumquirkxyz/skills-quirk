@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the finance-dcf skill when the request matches its scope.
 
 Capabilities:
-- apply the finance-dcf workflow
+- apply finance dcf methods within explicit finance boundaries
+- analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes
+- produce and validate a finance artifact with evidence, decisions, and next steps
 
 Stop when: Discounted Cash Flow complete; required sections present; completion criteria checked.

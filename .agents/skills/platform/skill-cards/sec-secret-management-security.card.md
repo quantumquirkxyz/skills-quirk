@@ -32,7 +32,9 @@ Secrets management (Vault, KMS, rotation, injection, external secrets operator)
 
 ## Capabilities
 
-None declared.
+- `apply secret management security methods within explicit sec boundaries`
+- `analyze secrets management (vault, kms, rotation, injection, external secrets operator) with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

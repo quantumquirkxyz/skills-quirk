@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the analyze-artifacts skill when the request matches its scope.
 
 Capabilities:
-- index requirements across spec plan and ticket artifacts
 - classify consistency findings by evidence
 - emit a read-only artifact consistency report
+- trace analyze artifacts decisions across inputs, constraints, and failure paths
+- validate project outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Artifact consistency analysis complete; every finding classified with evidence; clarification markers carry an owner; report returned read-only; completion criteria checked.

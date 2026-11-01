@@ -1,6 +1,6 @@
 {
   "name": "codebase-design",
-  "instructions": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.\n\nCapabilities:\n- apply codebase design workflow\n- produce codebase design artifact\n- validate codebase design completion criteria\n\nCanonical skill: .agents/skills/foundation/codebase-design/SKILL.md",
+  "instructions": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.\n\nCapabilities:\n- produce codebase design artifact\n- validate codebase design completion criteria\n- trace codebase design decisions across inputs, constraints, and failure paths\n- validate foundation outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/foundation/codebase-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Shared vocabulary for designing deep modules complete; artifact saved; completion criteria checked.",

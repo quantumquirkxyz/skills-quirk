@@ -32,7 +32,9 @@ Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph,
 
 ## Capabilities
 
-None declared.
+- `apply physics literature search methods within explicit physics boundaries`
+- `analyze track physics literature — arxiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), inspire-hep, nasa ads, web of science, citation alerts — with domain filters with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -33,9 +33,10 @@ Turn the current conversation into a spec and publish it to the project issue tr
 
 ## Capabilities
 
-- `apply to spec workflow`
 - `produce to spec artifact`
 - `validate to spec completion criteria`
+- `trace to spec decisions across inputs, constraints, and failure paths`
+- `validate project outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

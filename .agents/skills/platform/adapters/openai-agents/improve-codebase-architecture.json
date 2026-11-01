@@ -1,6 +1,6 @@
 {
   "name": "improve-codebase-architecture",
-  "instructions": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.\n\nCapabilities:\n- identify evidence-backed architectural seams\n- distinguish confirmed design defects from improvement opportunities\n- consume repository audit findings\n\nCanonical skill: .agents/skills/engineering/improve-codebase-architecture/SKILL.md",
+  "instructions": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.\n\nCapabilities:\n- distinguish confirmed design defects from improvement opportunities\n- consume repository audit findings\n- trace improve codebase architecture decisions across inputs, constraints, and failure paths\n- validate engineering outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/engineering/improve-codebase-architecture/SKILL.md",
   "model": "gpt-5-mini",
   "tools": [],
   "handoff_description": "Report generated and a candidate is selected or explicitly deferred.",

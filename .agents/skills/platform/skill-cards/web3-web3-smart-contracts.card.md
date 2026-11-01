@@ -32,7 +32,9 @@ Design and review smart contracts — security, gas optimization, upgradeability
 
 ## Capabilities
 
-None declared.
+- `apply web3 smart contracts methods within explicit web3 boundaries`
+- `analyze design and review smart contracts — security, gas optimization, upgradeability, account abstraction, eip-7702 — with an adversarial review step with assumptions, constraints, and failure modes`
+- `produce and validate a web3 artifact with evidence, decisions, and next steps`
 
 ## Tags
 

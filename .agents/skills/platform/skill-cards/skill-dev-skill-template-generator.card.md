@@ -26,13 +26,15 @@ Generate an interactive, contract-complete Skill template in the sandbox — use
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `skill-dev`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-files`
 - **Side effects**: `write-files`
 
 ## Capabilities
 
-None declared.
+- `apply skill template generator methods within explicit skill-dev boundaries`
+- `analyze generate an interactive, contract-complete skill template in the sandbox — use when starting a new skill with the lab's scaffolding with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

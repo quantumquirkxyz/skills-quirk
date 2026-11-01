@@ -32,7 +32,9 @@ Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with ex
 
 ## Capabilities
 
-None declared.
+- `apply finance dcf methods within explicit finance boundaries`
+- `analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes`
+- `produce and validate a finance artifact with evidence, decisions, and next steps`
 
 ## Tags
 

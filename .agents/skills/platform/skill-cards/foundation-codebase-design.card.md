@@ -32,9 +32,10 @@ Shared vocabulary for designing deep modules. Use when the user wants to design 
 
 ## Capabilities
 
-- `apply codebase design workflow`
 - `produce codebase design artifact`
 - `validate codebase design completion criteria`
+- `trace codebase design decisions across inputs, constraints, and failure paths`
+- `validate foundation outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

@@ -1,6 +1,6 @@
 {
   "name": "styling",
-  "instructions": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).\n\nCapabilities:\n- apply the styling workflow\n\nCanonical skill: .agents/skills/frontend/styling/SKILL.md",
+  "instructions": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).\n\nCapabilities:\n- apply styling methods within explicit frontend boundaries\n- analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes\n- produce and validate a frontend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/frontend/styling/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Styling design complete; artifact saved; completion criteria checked.",

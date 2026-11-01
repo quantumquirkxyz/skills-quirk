@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the agent-canvas skill when the request matches its scope.
 
 Capabilities:
-- apply the agent-canvas workflow
+- apply agent canvas methods within explicit foundation boundaries
+- analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes
+- produce and validate a foundation artifact with evidence, decisions, and next steps
 
 Stop when: Workspace defined, session has explicit finish line, and state is recorded.

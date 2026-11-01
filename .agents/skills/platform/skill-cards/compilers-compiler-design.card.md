@@ -32,7 +32,9 @@ Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimiza
 
 ## Capabilities
 
-None declared.
+- `apply compiler design methods within explicit compilers boundaries`
+- `analyze design compiler pipelines — lexing, parsing, asts, type checking, ir, optimization, and code generation — with correctness and modularity with assumptions, constraints, and failure modes`
+- `produce and validate a compilers artifact with evidence, decisions, and next steps`
 
 ## Tags
 

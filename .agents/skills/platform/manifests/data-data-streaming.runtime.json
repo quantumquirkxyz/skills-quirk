@@ -2,7 +2,7 @@
   "skill": "data/data-streaming",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "60cf704c49cf94322985cae13928986f87a8ad4ceaab86d4dc86887953fd5c4e",
+  "frontmatterHash": "1bdfe2c264c26b5cdb0ab3d7eec3544538bed7527ffd148ccc5c43525931f00c",
   "role": "workflow",
   "router": {
     "positive": [],

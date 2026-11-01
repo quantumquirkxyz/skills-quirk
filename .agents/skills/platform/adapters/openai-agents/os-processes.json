@@ -1,6 +1,6 @@
 {
   "name": "os-processes",
-  "instructions": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.\n\nCapabilities:\n- apply the os-processes workflow\n\nCanonical skill: .agents/skills/os/os-processes/SKILL.md",
+  "instructions": "Design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries.\n\nCapabilities:\n- apply os processes methods within explicit os boundaries\n- analyze design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries with assumptions, constraints, and failure modes\n- produce and validate a os artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/os/os-processes/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Process states, scheduling assumptions, IPC, and failure behavior are explicit.",

@@ -32,7 +32,9 @@ Extract and classify rules across Skills by type, frequency, and application are
 
 ## Capabilities
 
-None declared.
+- `apply rule cataloger methods within explicit skill-dev boundaries`
+- `analyze extract and classify rules across skills by type, frequency, and application area; use when auditing the repository's shared guidance with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

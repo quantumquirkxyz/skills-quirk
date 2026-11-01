@@ -33,9 +33,10 @@ Force reading the canonical work-item governance index before routing specs, tic
 
 ## Capabilities
 
-- `apply work item router workflow`
 - `produce work item router artifact`
 - `validate work item router completion criteria`
+- `trace work item router decisions across inputs, constraints, and failure paths`
+- `validate routing outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

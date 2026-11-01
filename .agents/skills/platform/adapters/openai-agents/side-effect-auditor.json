@@ -1,6 +1,6 @@
 {
   "name": "side-effect-auditor",
-  "instructions": "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.\n\nCapabilities:\n- apply the side-effect-auditor workflow\n\nCanonical skill: .agents/skills/skill-dev/side-effect-auditor/SKILL.md",
+  "instructions": "Audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly.\n\nCapabilities:\n- apply side effect auditor methods within explicit skill-dev boundaries\n- analyze audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/side-effect-auditor/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Side-effect mismatches are classified with recommended frontmatter changes or the audited skills are confirmed consistent.",

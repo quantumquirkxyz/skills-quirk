@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the sec-privacy-engineering skill when the request matches its scope.
 
 Capabilities:
-- apply the sec-privacy-engineering workflow
+- apply sec privacy engineering methods within explicit sec boundaries
+- analyze design privacy-protecting systems — gdpr / ccpa / hipaa compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments with assumptions, constraints, and failure modes
+- produce and validate a sec artifact with evidence, decisions, and next steps
 
 Stop when: PIA saved; data-flow map complete; compliance checklist filled.

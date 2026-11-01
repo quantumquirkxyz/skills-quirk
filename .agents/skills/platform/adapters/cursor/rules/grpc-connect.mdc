@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the grpc-connect skill when the request matches its scope.
 
 Capabilities:
-- apply the grpc-connect workflow
+- apply grpc connect methods within explicit backend boundaries
+- analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes
+- produce and validate a backend artifact with evidence, decisions, and next steps
 
 Stop when: gRPC/Connect design complete; artifact saved; completion criteria checked.

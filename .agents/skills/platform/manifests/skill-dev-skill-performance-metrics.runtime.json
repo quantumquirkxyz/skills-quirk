@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-performance-metrics",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "15c869709c5c22c3e2edeeedc13a6c24b3395714d7d906c66d096d9a0743e9eb",
+  "frontmatterHash": "e3fa7c64406594c4a77ac0105aebe17c5f21e7b5fcbae0f1806fad44424f79a7",
   "role": "workflow",
   "router": {
     "positive": [],

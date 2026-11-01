@@ -32,7 +32,9 @@ Test web interfaces for accessibility compliance — automated scans, manual key
 
 ## Capabilities
 
-None declared.
+- `apply accessibility testing methods within explicit accessibility boundaries`
+- `analyze test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence with assumptions, constraints, and failure modes`
+- `produce and validate a accessibility artifact with evidence, decisions, and next steps`
 
 ## Tags
 

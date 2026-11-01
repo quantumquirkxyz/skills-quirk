@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the math-formal-proof skill when the request matches its scope.
 
 Capabilities:
-- apply the math-formal-proof workflow
+- apply math formal proof methods within explicit math boundaries
+- analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
 
 Stop when: source file compiles in the target assistant with no errors; verification report attached.

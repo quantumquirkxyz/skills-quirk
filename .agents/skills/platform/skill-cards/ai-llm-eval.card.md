@@ -32,7 +32,9 @@ Design LLM evaluation harnesses — benchmark design, model comparison, automate
 
 ## Capabilities
 
-None declared.
+- `apply llm eval methods within explicit ai boundaries`
+- `analyze design llm evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

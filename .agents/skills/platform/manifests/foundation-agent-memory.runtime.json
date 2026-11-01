@@ -2,7 +2,7 @@
   "skill": "foundation/agent-memory",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f11f1adf2b2320ee842b0167372abaa75b8bf7a63879d7d25842ff8bcf16005f",
+  "frontmatterHash": "35034b0e6e892869ca8255c2010587a653f86fa569caab5c94dc050288691a35",
   "role": "workflow",
   "router": {
     "positive": [],

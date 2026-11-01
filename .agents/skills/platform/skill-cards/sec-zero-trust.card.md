@@ -32,7 +32,9 @@ Design zero trust architecture — identity, per-request auth, microsegmentation
 
 ## Capabilities
 
-None declared.
+- `apply zero trust methods within explicit sec boundaries`
+- `analyze design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

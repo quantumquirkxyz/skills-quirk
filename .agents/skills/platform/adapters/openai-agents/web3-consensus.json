@@ -1,6 +1,6 @@
 {
   "name": "web3-consensus",
-  "instructions": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.\n\nCapabilities:\n- apply the web3-consensus workflow\n\nCanonical skill: .agents/skills/web3/web3-consensus/SKILL.md",
+  "instructions": "Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing — with security properties, finality guarantees, MEV, and economic incentive alignment.\n\nCapabilities:\n- apply web3 consensus methods within explicit web3 boundaries\n- analyze analyse and compare consensus mechanisms — pow, pos, bft, da, based sequencing — with security properties, finality guarantees, mev, and economic incentive alignment with assumptions, constraints, and failure modes\n- produce and validate a web3 artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/web3/web3-consensus/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Consensus classified; security properties and economics assessed; recommendation tied to threat model.",

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the math-grant-structure skill when the request matches its scope.
 
 Capabilities:
-- apply the math-grant-structure workflow
+- apply math grant structure methods within explicit math boundaries
+- analyze structure mathematics grant proposals (nsf, erc, simons, msca) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
 
 Stop when: All sections drafted; reviewer-perspective critique complete; submission checklist filled.

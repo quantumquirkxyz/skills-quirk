@@ -1,6 +1,6 @@
 {
   "name": "db-nosql-modeling",
-  "instructions": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.\n\nCapabilities:\n- apply the db-nosql-modeling workflow\n\nCanonical skill: .agents/skills/db/db-nosql-modeling/SKILL.md",
+  "instructions": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.\n\nCapabilities:\n- apply db nosql modeling methods within explicit db boundaries\n- analyze design nosql data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution with assumptions, constraints, and failure modes\n- produce and validate a db artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/db/db-nosql-modeling/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Design NoSQL data models complete; required sections present; completion criteria checked.",

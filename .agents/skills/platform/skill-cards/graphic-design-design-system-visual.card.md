@@ -32,7 +32,9 @@ Design visual design systems — tokens, components, patterns, and documentation
 
 ## Capabilities
 
-None declared.
+- `apply design system visual methods within explicit graphic-design boundaries`
+- `analyze design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

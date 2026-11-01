@@ -2,7 +2,7 @@
   "skill": "backend/distributed-tracing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "8c14cecf61d8bced405084e013c5fef31d15769a779978d60ade8514b6d0ae41",
+  "frontmatterHash": "c5fcca28c4184a768885e38acddeb0094a5838c8b20f5fceaac93625ce65f350",
   "role": "workflow",
   "router": {
     "positive": [],

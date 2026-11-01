@@ -32,7 +32,9 @@ Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR
 
 ## Capabilities
 
-None declared.
+- `apply quant credit risk methods within explicit quant boundaries`
+- `analyze model credit risk — pd, lgd, ead, expected loss, loss distribution, credit var — with default correlation and portfolio-level risk aggregation with assumptions, constraints, and failure modes`
+- `produce and validate a quant artifact with evidence, decisions, and next steps`
 
 ## Tags
 

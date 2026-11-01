@@ -2,7 +2,7 @@
   "skill": "routing/publish-open-pr",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "4cce59be2288439ffa58d57fc11b02a994e1970f18c9a5f3a2edfd970bfd8268",
+  "frontmatterHash": "5fa987dfb20205c1b38185698ee117f14d09be29c13ceab98ad258a4e190906c",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -26,13 +26,15 @@ Compact the current conversation into a handoff document for another agent to pi
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `routing`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-temp-file`
 - **Side effects**: `write-temp-file`
 
 ## Capabilities
 
-None declared.
+- `apply handoff methods within explicit routing boundaries`
+- `analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

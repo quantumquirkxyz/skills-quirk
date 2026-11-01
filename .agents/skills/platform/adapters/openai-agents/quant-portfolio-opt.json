@@ -1,6 +1,6 @@
 {
   "name": "quant-portfolio-opt",
-  "instructions": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.\n\nCapabilities:\n- apply the quant-portfolio-opt workflow\n\nCanonical skill: .agents/skills/quant/quant-portfolio-opt/SKILL.md",
+  "instructions": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.\n\nCapabilities:\n- apply quant portfolio opt methods within explicit quant boundaries\n- analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes\n- produce and validate a quant artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/quant/quant-portfolio-opt/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Construct and optimise portfolios complete; required sections present; completion criteria checked.",

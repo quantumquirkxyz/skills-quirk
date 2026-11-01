@@ -32,7 +32,9 @@ Test security posture — auth flows, authorization boundaries, injection paths,
 
 ## Capabilities
 
-None declared.
+- `apply qa security testing methods within explicit qa boundaries`
+- `analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes`
+- `produce and validate a qa artifact with evidence, decisions, and next steps`
 
 ## Tags
 

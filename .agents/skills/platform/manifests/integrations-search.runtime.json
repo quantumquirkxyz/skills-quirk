@@ -2,7 +2,7 @@
   "skill": "integrations/search",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c7b20a243daf385010af79d90ae1c9b6cf04a63970c0a1fda8aae2b0305b61de",
+  "frontmatterHash": "e3629d7fc39c80cabd7aaacdd225994bb075598aa789a292f44f9ad36bbfaed3",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -2,7 +2,7 @@
   "skill": "ai/multimodal-prompting",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3557b9a6a316fde4ca1c52f25fa287b805cc8a3e4c52816f58309dde2ba2aea1",
+  "frontmatterHash": "9bd4a1cad63f55f7aed627f035c156a4b564e6129255f3848ce66b2e473fab92",
   "role": "workflow",
   "router": {
     "positive": [],

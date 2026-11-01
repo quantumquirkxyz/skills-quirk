@@ -1,6 +1,6 @@
 {
   "name": "skill-promoter",
-  "instructions": "Promote validated experimental skills from the sandbox to the canonical skills bundle.\n\nCapabilities:\n- apply the skill-promoter workflow\n\nCanonical skill: .agents/skills/skill-dev/skill-promoter/SKILL.md",
+  "instructions": "Promote validated experimental skills from the sandbox to the canonical skills bundle.\n\nCapabilities:\n- apply skill promoter methods within explicit skill-dev boundaries\n- analyze promote validated experimental skills from the sandbox to the canonical skills bundle with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-promoter/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Promote validated experimental skills from the sandbox to the canonical skills bundle complete; artifact saved; completion criteria checked.",

@@ -32,7 +32,9 @@ Design advertising creatives — social ads, display ads, email banners, campaig
 
 ## Capabilities
 
-None declared.
+- `apply graphic design advertising methods within explicit graphic-design boundaries`
+- `analyze design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

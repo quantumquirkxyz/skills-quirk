@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-optimizer",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "a386109fe4f4119076fcfe24f1abfcc5aee3efb3e7fd7d4c6cad2aec9165be2a",
+  "frontmatterHash": "5e683aa3dc1f6fefdfbbb7b20b07e0701732ef9790b3e57393582e4e4d4b5429",
   "role": "workflow",
   "router": {
     "positive": [],

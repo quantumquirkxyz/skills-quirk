@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the gitops skill when the request matches its scope.
 
 Capabilities:
-- apply the gitops workflow
+- apply gitops methods within explicit devops boundaries
+- analyze design gitops workflows — argocd, flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries with assumptions, constraints, and failure modes
+- produce and validate a devops artifact with evidence, decisions, and next steps
 
 Stop when: Architecture diagram saved; sync configuration documented; drift runbook complete; progressive delivery strategy defined.

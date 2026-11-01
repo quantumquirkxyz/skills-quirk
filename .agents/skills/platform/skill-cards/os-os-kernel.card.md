@@ -32,7 +32,9 @@ Design and analyze operating system internals — process management, memory man
 
 ## Capabilities
 
-None declared.
+- `apply os kernel methods within explicit os boundaries`
+- `analyze design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries with assumptions, constraints, and failure modes`
+- `produce and validate a os artifact with evidence, decisions, and next steps`
 
 ## Tags
 

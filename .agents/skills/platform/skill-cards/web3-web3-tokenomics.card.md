@@ -32,7 +32,9 @@ Design token economics — supply, emission, incentives, governance, LST/LRT, re
 
 ## Capabilities
 
-None declared.
+- `apply web3 tokenomics methods within explicit web3 boundaries`
+- `analyze design token economics — supply, emission, incentives, governance, lst/lrt, restaking, points systems — with economic sustainability checks and adversarial stress tests with assumptions, constraints, and failure modes`
+- `produce and validate a web3 artifact with evidence, decisions, and next steps`
 
 ## Tags
 

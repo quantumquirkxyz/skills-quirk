@@ -1,6 +1,6 @@
 {
   "name": "compiler-design",
-  "instructions": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.\n\nCapabilities:\n- apply the compiler-design workflow\n\nCanonical skill: .agents/skills/compilers/compiler-design/SKILL.md",
+  "instructions": "Design compiler pipelines — lexing, parsing, ASTs, type checking, IR, optimization, and code generation — with correctness and modularity.\n\nCapabilities:\n- apply compiler design methods within explicit compilers boundaries\n- analyze design compiler pipelines — lexing, parsing, asts, type checking, ir, optimization, and code generation — with correctness and modularity with assumptions, constraints, and failure modes\n- produce and validate a compilers artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/compilers/compiler-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Pipeline stages, representations, invariants, and validation strategy are explicit.",

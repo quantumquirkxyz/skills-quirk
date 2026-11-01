@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the web3-defi skill when the request matches its scope.
 
 Capabilities:
-- apply the web3-defi workflow
+- apply web3 defi methods within explicit web3 boundaries
+- analyze analyse defi protocols — amms, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, mev protection, and composability risks with assumptions, constraints, and failure modes
+- produce and validate a web3 artifact with evidence, decisions, and next steps
 
 Stop when: Protocol classified; mechanics and economic security documented; recommendation tied to risk profile.

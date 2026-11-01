@@ -32,7 +32,9 @@ Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, pro
 
 ## Capabilities
 
-None declared.
+- `apply gitops methods within explicit devops boundaries`
+- `analyze design gitops workflows — argocd, flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries with assumptions, constraints, and failure modes`
+- `produce and validate a devops artifact with evidence, decisions, and next steps`
 
 ## Tags
 

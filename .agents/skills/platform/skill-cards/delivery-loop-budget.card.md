@@ -26,15 +26,16 @@ Keep an agent loop inside its declared budget and end it with a typed verdict in
 - **Max iterations**: `5`
 - **Prompt version**: `2.0`
 - **Artifact type**: `loop-budget`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-temp-file`
 - **Side effects**: `write-temp-file`
 
 ## Capabilities
 
-- `declare loop budgets up front`
 - `detect degenerate loops (repeats, ping-pong, format errors)`
 - `record an append-only loop ledger and route on the typed verdict`
+- `trace loop budget decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

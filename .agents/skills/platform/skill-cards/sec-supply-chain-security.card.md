@@ -32,7 +32,9 @@ Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — w
 
 ## Capabilities
 
-None declared.
+- `apply supply chain security methods within explicit sec boundaries`
+- `analyze design supply chain security — sbom, sigstore, slsa, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

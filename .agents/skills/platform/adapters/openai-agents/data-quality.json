@@ -1,6 +1,6 @@
 {
   "name": "data-quality",
-  "instructions": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.\n\nCapabilities:\n- apply the data-quality workflow\n\nCanonical skill: .agents/skills/data/data-quality/SKILL.md",
+  "instructions": "Design data quality frameworks — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.\n\nCapabilities:\n- apply data quality methods within explicit data boundaries\n- analyze design data quality frameworks — great expectations, soda, checks, observability, contracts — with explicit slas, freshness rules, and incident response for bad data with assumptions, constraints, and failure modes\n- produce and validate a data artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/data/data-quality/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Framework defined; check suite configured; observability and contract rules documented.",

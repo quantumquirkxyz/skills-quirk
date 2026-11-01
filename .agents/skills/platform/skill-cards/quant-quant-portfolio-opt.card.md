@@ -32,7 +32,9 @@ Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parit
 
 ## Capabilities
 
-None declared.
+- `apply quant portfolio opt methods within explicit quant boundaries`
+- `analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes`
+- `produce and validate a quant artifact with evidence, decisions, and next steps`
 
 ## Tags
 

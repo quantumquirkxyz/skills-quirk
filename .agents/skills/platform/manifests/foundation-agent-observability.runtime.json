@@ -2,7 +2,7 @@
   "skill": "foundation/agent-observability",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7b72049244a00c7f2c6094b0e8aec12d0ab5fd7b4669dae5198e46808610e8b3",
+  "frontmatterHash": "82df3965bb5c7fe3e524393573fbd4540cea4b12eb7f9c9ab99a79d9c476cf64",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -32,7 +32,9 @@ Optimize XR performance — frame rate, motion-to-photon latency, asset budgets,
 
 ## Capabilities
 
-None declared.
+- `apply xr performance methods within explicit xr boundaries`
+- `analyze optimize xr performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs with assumptions, constraints, and failure modes`
+- `produce and validate a xr artifact with evidence, decisions, and next steps`
 
 ## Tags
 

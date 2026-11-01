@@ -1,6 +1,6 @@
 {
   "name": "devops-terraform-iac",
-  "instructions": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.\n\nCapabilities:\n- apply the devops-terraform-iac workflow\n\nCanonical skill: .agents/skills/devops/devops-terraform-iac/SKILL.md",
+  "instructions": "Design infrastructure as code — Terraform / Pulumi / CloudFormation — for reproducible, version-controlled, auditable cloud infrastructure.\n\nCapabilities:\n- apply devops terraform iac methods within explicit devops boundaries\n- analyze design infrastructure as code — terraform / pulumi / cloudformation — for reproducible, version-controlled, auditable cloud infrastructure with assumptions, constraints, and failure modes\n- produce and validate a devops artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/devops/devops-terraform-iac/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Module definitions saved; state rules saved; policy checklist filled.",

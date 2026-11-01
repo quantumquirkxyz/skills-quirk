@@ -32,7 +32,9 @@ Plan database migrations — schema changes, backfills, compatibility windows, a
 
 ## Capabilities
 
-None declared.
+- `apply db migrations methods within explicit db boundaries`
+- `analyze plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks with assumptions, constraints, and failure modes`
+- `produce and validate a db artifact with evidence, decisions, and next steps`
 
 ## Tags
 

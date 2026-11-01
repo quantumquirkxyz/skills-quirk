@@ -32,7 +32,9 @@ Convert review-pr findings on a GitHub PR into a concrete remediation plan and p
 
 ## Capabilities
 
-None declared.
+- `apply plan review fixes methods within explicit delivery boundaries`
+- `analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -33,7 +33,9 @@ Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) i
 
 ## Capabilities
 
-None declared.
+- `apply subagent swarm methods within explicit foundation boundaries`
+- `analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes`
+- `produce and validate a foundation artifact with evidence, decisions, and next steps`
 
 ## Tags
 

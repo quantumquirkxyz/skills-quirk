@@ -32,7 +32,9 @@ Interactive tutorial that guides users through creating their first quirk skill 
 
 ## Capabilities
 
-None declared.
+- `apply skill tutor methods within explicit skill-dev boundaries`
+- `analyze interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

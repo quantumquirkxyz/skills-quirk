@@ -32,7 +32,9 @@ Design NoSQL data models — document, key-value, wide-column, graph, time-serie
 
 ## Capabilities
 
-None declared.
+- `apply db nosql modeling methods within explicit db boundaries`
+- `analyze design nosql data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution with assumptions, constraints, and failure modes`
+- `produce and validate a db artifact with evidence, decisions, and next steps`
 
 ## Tags
 

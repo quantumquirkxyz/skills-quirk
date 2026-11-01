@@ -32,7 +32,9 @@ Read a GitHub PR remediation plan produced by plan-review-fixes, implement the p
 
 ## Capabilities
 
-None declared.
+- `apply implement review fixes methods within explicit delivery boundaries`
+- `analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

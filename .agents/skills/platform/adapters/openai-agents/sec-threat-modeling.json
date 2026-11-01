@@ -1,6 +1,6 @@
 {
   "name": "sec-threat-modeling",
-  "instructions": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.\n\nCapabilities:\n- apply the sec-threat-modeling workflow\n\nCanonical skill: .agents/skills/sec/sec-threat-modeling/SKILL.md",
+  "instructions": "Design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK frameworks.\n\nCapabilities:\n- apply sec threat modeling methods within explicit sec boundaries\n- analyze design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using stride or att&ck frameworks with assumptions, constraints, and failure modes\n- produce and validate a sec artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/sec/sec-threat-modeling/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Threat model saved; all assets mapped; risk register complete.",

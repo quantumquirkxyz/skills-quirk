@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the accessibility-testing skill when the request matches its scope.
 
 Capabilities:
-- apply the accessibility-testing workflow
+- apply accessibility testing methods within explicit accessibility boundaries
+- analyze test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence with assumptions, constraints, and failure modes
+- produce and validate a accessibility artifact with evidence, decisions, and next steps
 
 Stop when: Test web interfaces for accessibility compliance complete; artifact saved; completion criteria checked.

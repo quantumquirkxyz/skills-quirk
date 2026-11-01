@@ -1,6 +1,6 @@
 {
   "name": "networking-security",
-  "instructions": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.\n\nCapabilities:\n- apply the networking-security workflow\n\nCanonical skill: .agents/skills/networking/networking-security/SKILL.md",
+  "instructions": "Design network security — segmentation, firewalls, VPNs, TLS, authentication, and threat boundaries — with explicit trust zones.\n\nCapabilities:\n- apply networking security methods within explicit networking boundaries\n- analyze design network security — segmentation, firewalls, vpns, tls, authentication, and threat boundaries — with explicit trust zones with assumptions, constraints, and failure modes\n- produce and validate a networking artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/networking/networking-security/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Trust zones, allowed flows, controls, and residual risks are explicit.",

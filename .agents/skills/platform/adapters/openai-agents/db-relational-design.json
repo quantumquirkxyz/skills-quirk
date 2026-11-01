@@ -1,6 +1,6 @@
 {
   "name": "db-relational-design",
-  "instructions": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.\n\nCapabilities:\n- apply the db-relational-design workflow\n\nCanonical skill: .agents/skills/db/db-relational-design/SKILL.md",
+  "instructions": "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning.\n\nCapabilities:\n- apply db relational design methods within explicit db boundaries\n- analyze design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning with assumptions, constraints, and failure modes\n- produce and validate a db artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/db/db-relational-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Artifact complete with schema, indexes, constraints, and migration sequence.",

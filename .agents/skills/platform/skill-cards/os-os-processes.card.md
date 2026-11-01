@@ -32,7 +32,9 @@ Design operating system process management — scheduling, signals, process stat
 
 ## Capabilities
 
-None declared.
+- `apply os processes methods within explicit os boundaries`
+- `analyze design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries with assumptions, constraints, and failure modes`
+- `produce and validate a os artifact with evidence, decisions, and next steps`
 
 ## Tags
 

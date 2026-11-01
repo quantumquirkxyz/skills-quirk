@@ -32,7 +32,9 @@ Keep repository documentation, ADRs, and durable context aligned with the curren
 
 ## Capabilities
 
-None declared.
+- `apply docs management methods within explicit project boundaries`
+- `analyze keep repository documentation, adrs, and durable context aligned with the current project shape — with explicit consumer rules with assumptions, constraints, and failure modes`
+- `produce and validate a project artifact with evidence, decisions, and next steps`
 
 ## Tags
 

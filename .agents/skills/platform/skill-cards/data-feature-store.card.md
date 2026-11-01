@@ -32,7 +32,9 @@ Feature store (online/offline, feature engineering, serving, monitoring, drift).
 
 ## Capabilities
 
-None declared.
+- `apply feature store methods within explicit data boundaries`
+- `analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

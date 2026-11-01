@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the skill-testing-framework skill when the request matches its scope.
 
 Capabilities:
-- apply the skill-testing-framework workflow
+- apply skill testing framework methods within explicit skill-dev boundaries
+- analyze validate skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a skill before promotion with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution complete; artifact saved; completion criteria checked.

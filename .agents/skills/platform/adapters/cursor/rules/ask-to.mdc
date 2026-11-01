@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the ask-to skill when the request matches its scope.
 
 Capabilities:
-- apply ask to workflow
 - produce ask to artifact
 - validate ask to completion criteria
+- trace ask to decisions across inputs, constraints, and failure paths
+- validate routing outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Ask which skill or flow fits your situation complete; structured result returned; completion criteria checked.

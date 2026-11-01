@@ -32,7 +32,9 @@ Design and grade math problem sets and exams — difficulty progression, rubric,
 
 ## Capabilities
 
-None declared.
+- `apply math teaching problem set methods within explicit math boundaries`
+- `analyze design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and latex layout with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

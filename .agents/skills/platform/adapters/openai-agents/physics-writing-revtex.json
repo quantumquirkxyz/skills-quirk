@@ -1,6 +1,6 @@
 {
   "name": "physics-writing-revtex",
-  "instructions": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.\n\nCapabilities:\n- apply the physics-writing-revtex workflow\n\nCanonical skill: .agents/skills/physics/physics-writing-revtex/SKILL.md",
+  "instructions": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.\n\nCapabilities:\n- apply physics writing revtex methods within explicit physics boundaries\n- analyze write physics papers using revtex / aps / iop / aip formatting, with figure conventions, citation styles, and submission package preparation with assumptions, constraints, and failure modes\n- produce and validate a physics artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/physics/physics-writing-revtex/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "PDF compiled in journal format; figure checklist complete; submission package ready.",

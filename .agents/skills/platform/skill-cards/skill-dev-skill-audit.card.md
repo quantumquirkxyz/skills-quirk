@@ -23,17 +23,19 @@ Audit the Skills bundle, lockfile, symlink parity, and contract drift — with a
 - **Risk**: `low`
 - **Trust tier**: `1`
 - **Model tier**: `reasoning`
-- **Max iterations**: `6`
+- **Max iterations**: `8`
 - **Prompt version**: `2.0`
 - **Reload policy**: `on-trigger`
 - **Artifact type**: `skill-dev`
 - **Approval required**: `no`
 - **Approval for**: none declared
-- **Side effects**: none declared
+- **Side effects**: `write-files`
 
 ## Capabilities
 
-None declared.
+- `apply skill audit methods within explicit skill-dev boundaries`
+- `analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -59,12 +61,12 @@ None declared. Artifact type: `skill-dev`.
 - **File**: [../manifests/skill-dev-skill-audit.runtime.json](../manifests/skill-dev-skill-audit.runtime.json)
 - **Status**: present and fresh
 - **Role**: `workflow`
-- **Isolation**: `none`
-- **Max turns**: `6`
-- **Default agent**: `explore`
-- **Tools allow**: `Read`, `Grep`, `Glob`
+- **Isolation**: `worktree`
+- **Max turns**: `8`
+- **Default agent**: `general`
+- **Tools allow**: `Read`, `Grep`, `Glob`, `Edit`, `Write`
 - **Tools deny**: none declared
-- **Guardrail side effects**: none declared
+- **Guardrail side effects**: `write-files`
 - **Verification commands**: `node .agents/skills/platform/check-all.mjs`
 - **Artifact schema**: none
 - **Trace events**: `skill.route`, `skill.execute`, `skill.verify`

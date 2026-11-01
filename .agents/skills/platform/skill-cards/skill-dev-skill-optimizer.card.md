@@ -16,7 +16,7 @@ of the bundle. Regenerate every card with:
 
 ## Description
 
-Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only GEPA-style reflective loop. Use when a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal carrying (skill, version, fixture) evidence; the human applies it. Not for body edits, metadata repair, or lockfile updates.
+Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.
 
 ## Risk and execution
 
@@ -33,9 +33,10 @@ Optimize a quirk Skill's model-facing description against routing fixtures with 
 
 ## Capabilities
 
-- `score skill description routing evidence`
 - `evolve description candidates reflectively`
 - `emit an apply-ready description proposal`
+- `trace skill optimizer decisions across inputs, constraints, and failure paths`
+- `validate skill-dev outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -147,7 +148,7 @@ None declared.
 
 ## Non-goals / when not to use
 
-- In scope: a Skill routes to the wrong skill, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression.
+- In scope: a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression.
 - Out of scope: requests that do not match that declared trigger.
 - When the request belongs to `evaluate-skill`, `skill-quality-gate`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.

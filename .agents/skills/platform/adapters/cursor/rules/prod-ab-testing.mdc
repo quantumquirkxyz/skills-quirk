@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the prod-ab-testing skill when the request matches its scope.
 
 Capabilities:
-- apply the prod-ab-testing workflow
+- apply prod ab testing methods within explicit product boundaries
+- analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes
+- produce and validate a product artifact with evidence, decisions, and next steps
 
 Stop when: Test design saved; analysis plan saved; rollback rules defined; statistical power computed.

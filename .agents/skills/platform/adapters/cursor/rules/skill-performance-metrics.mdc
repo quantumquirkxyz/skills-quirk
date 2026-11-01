@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the skill-performance-metrics skill when the request matches its scope.
 
 Capabilities:
-- apply the skill-performance-metrics workflow
+- apply skill performance metrics methods within explicit skill-dev boundaries
+- analyze summarize skill execution duration, success rate, and available run evidence — use when measuring skill performance from logs and records with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Summarize Skill execution duration, success rate, and available run evidence complete; artifact saved; completion criteria checked.

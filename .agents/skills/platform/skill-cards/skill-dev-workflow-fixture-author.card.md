@@ -32,7 +32,9 @@ Author deterministic scenario and behavioral fixtures for skills so routing, con
 
 ## Capabilities
 
-None declared.
+- `apply workflow fixture author methods within explicit skill-dev boundaries`
+- `analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

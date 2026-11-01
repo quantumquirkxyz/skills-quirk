@@ -1,6 +1,6 @@
 {
   "name": "subagent-swarm",
-  "instructions": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.\n\nCapabilities:\n- apply the subagent-swarm workflow\n\nCanonical skill: .agents/skills/foundation/subagent-swarm/SKILL.md",
+  "instructions": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.\n\nCapabilities:\n- apply subagent swarm methods within explicit foundation boundaries\n- analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes\n- produce and validate a foundation artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/foundation/subagent-swarm/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "All roles completed with valid evidence, conflicts resolved, and merged output validated.",

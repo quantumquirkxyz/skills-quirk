@@ -32,7 +32,9 @@ Manage pull request operations with branch, diff, validation, reviewer, label, c
 
 ## Capabilities
 
-None declared.
+- `apply pr operations methods within explicit integrations boundaries`
+- `analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes`
+- `produce and validate a integrations artifact with evidence, decisions, and next steps`
 
 ## Tags
 

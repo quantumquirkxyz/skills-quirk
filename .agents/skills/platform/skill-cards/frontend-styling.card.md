@@ -32,7 +32,9 @@ Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).
 
 ## Capabilities
 
-None declared.
+- `apply styling methods within explicit frontend boundaries`
+- `analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

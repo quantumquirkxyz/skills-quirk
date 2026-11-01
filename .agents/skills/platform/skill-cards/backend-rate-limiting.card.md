@@ -32,7 +32,9 @@ Rate limiting and throttling (token bucket, sliding window, distributed rate lim
 
 ## Capabilities
 
-None declared.
+- `apply rate limiting methods within explicit backend boundaries`
+- `analyze rate limiting and throttling (token bucket, sliding window, distributed rate limiting, api protection) with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -9,14 +9,14 @@ of the bundle. Regenerate every card with:
 - **Domain**: `delivery`
 - **Category**: `delivery`
 - **Maturity**: `stable`
-- **Version**: `2`
+- **Version**: `3`
 - **License**: `MIT`
 - **Diataxis**: `how-to`
 - **Source**: [SKILL.md](../../delivery/code-review/SKILL.md)
 
 ## Description
 
-Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
+Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.
 
 ## Risk and execution
 
@@ -24,44 +24,45 @@ Review the changes since a fixed point (commit, branch, tag, or merge-base) alon
 - **Trust tier**: `3`
 - **Model tier**: `reasoning`
 - **Max iterations**: `6`
-- **Prompt version**: `2.0`
+- **Prompt version**: `3.0`
 - **Reload policy**: `on-trigger`
-- **Artifact type**: `review`
+- **Artifact type**: `repository-audit`
 - **Approval required**: `yes`
 - **Approval for**: `post-pr-comment`
 - **Side effects**: `post-pr-comment`
 
 ## Capabilities
 
-- `apply code review workflow`
-- `produce code review artifact`
-- `validate code review completion criteria`
+- `verify logic against the user's stated objective`
+- `produce an evidence-backed repository audit artifact`
+- `trace code review decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
-`delivery`, `review`, `standards`, `spec`, `quality`
+`delivery`, `audit`, `logic`, `architecture`, `quality`
 
 ## Inputs
 
-- `fixed point reference (commit, branch, tag, or merge-base)`
-- `diff command`
-- `standards sources`
-- `spec source`
+- `user objective or review question`
+- `repository path and optional scope`
+- `optional specification, issue, or acceptance criteria`
+- `repository context and standards sources`
 
 ## Outputs
 
 ```yaml
 - type: object
-  name: ReviewArtifact
+  name: RepositoryAuditArtifact
   properties:
-    fixedPoint: { type: string }
-    diffCommand: { type: string }
-    standardsFindings: { type: array, items: { type: object } }
-    specFindings: { type: array, items: { type: object } }
+    scope: { type: string }
+    objective: { type: string }
+    inspected: { type: array, items: { type: string } }
+    findings: { type: array, items: { type: object } }
     summary: { type: object }
+    limitations: { type: array, items: { type: string } }
     nextConsumer: { type: string }
-    blockedBy: { type: array, items: { type: string } }
-  required: [fixedPoint, standardsFindings, specFindings, summary, nextConsumer]
+  required: [scope, objective, findings, summary, limitations]
 ```
 
 ## Fixtures
@@ -79,11 +80,11 @@ Review the changes since a fixed point (commit, branch, tag, or merge-base) alon
 - **Isolation**: `worktree`
 - **Max turns**: `6`
 - **Default agent**: `general`
-- **Tools allow**: `Read`, `Grep`, `Glob`, `WebFetch`, `WebSearch`
+- **Tools allow**: `Read`, `Grep`, `Glob`
 - **Tools deny**: none declared
 - **Guardrail side effects**: `post-pr-comment`
 - **Verification commands**: `node .agents/skills/platform/check-all.mjs`
-- **Artifact schema**: none
+- **Artifact schema**: `.agents/skills/platform/schemas/repository-audit-schema.json`
 - **Trace events**: `skill.route`, `skill.execute`, `skill.verify`
 
 ## Dependencies
@@ -92,9 +93,10 @@ None declared.
 
 ## Compatible skills
 
-- [review-pr](delivery-review-pr.card.md)
-- [plan-review-fixes](delivery-plan-review-fixes.card.md)
-- [ship-subissue](routing-ship-subissue.card.md)
+- [diagnosing-bugs](delivery-diagnosing-bugs.card.md)
+- [testing](delivery-testing.card.md)
+- [project-viability](project-project-viability.card.md)
+- [improve-codebase-architecture](engineering-improve-codebase-architecture.card.md)
 
 ## Agent card
 
@@ -102,16 +104,16 @@ None declared.
 
 ## Clauses
 
-- **CODE-REVIEW-1**: Always use the three-dot diff (git diff <fixed-point>...HEAD) so the comparison is against the merge-base. - check: [evals/behavioral/code-review.json#CODE-REVIEW-1](../../../../evals/behavioral/code-review.json#CODE-REVIEW-1)
-- **CODE-REVIEW-2**: Publish findings only: never edit source files, fix the PR, rewrite history, or merge it. - check: [evals/behavioral/code-review.json#CODE-REVIEW-2](../../../../evals/behavioral/code-review.json#CODE-REVIEW-2)
-- **CODE-REVIEW-3**: Run Standards and Spec as parallel sub-agents and never merge or rerank findings across axes. - check: [evals/behavioral/code-review.json#CODE-REVIEW-3](../../../../evals/behavioral/code-review.json#CODE-REVIEW-3)
-- **CODE-REVIEW-4**: Documented repo standards override the smell baseline; every baseline smell stays a labelled judgement call. - check: [evals/behavioral/code-review.json#CODE-REVIEW-4](../../../../evals/behavioral/code-review.json#CODE-REVIEW-4)
+- **CODE-REVIEW-1**: Establish repository context and the user's objective before judging code, and inspect the complete requested scope rather than assuming a diff is sufficient. - check: [evals/behavioral/code-review.json#CODE-REVIEW-1](../../../../evals/behavioral/code-review.json#CODE-REVIEW-1)
+- **CODE-REVIEW-2**: Stay read-only: never edit source files, fix the repository, rewrite history, or merge changes. - check: [evals/behavioral/code-review.json#CODE-REVIEW-2](../../../../evals/behavioral/code-review.json#CODE-REVIEW-2)
+- **CODE-REVIEW-3**: Separate confirmed defects, risks, improvements, and evidence gaps; never present an unverified inference as a defect. - check: [evals/behavioral/code-review.json#CODE-REVIEW-3](../../../../evals/behavioral/code-review.json#CODE-REVIEW-3)
+- **CODE-REVIEW-4**: Every finding cites concrete repository evidence and explains its logical impact; documented project standards take precedence over generic heuristics. - check: [evals/behavioral/code-review.json#CODE-REVIEW-4](../../../../evals/behavioral/code-review.json#CODE-REVIEW-4)
 
 ## Non-goals / when not to use
 
-- In scope: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes - Standards and Spec - and publish findings only.
+- In scope: Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.
 - Out of scope: requests that do not match that declared trigger.
-- When the request belongs to `review-pr`, `plan-review-fixes`, `ship-subissue`, hand off there instead of widening this skill's scope.
+- When the request belongs to `diagnosing-bugs`, `testing`, `project-viability`, `improve-codebase-architecture`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

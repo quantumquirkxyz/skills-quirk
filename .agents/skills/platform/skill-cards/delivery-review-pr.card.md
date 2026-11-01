@@ -33,9 +33,10 @@ Review a pull request against the fixed point the user supplies, separating Stan
 
 ## Capabilities
 
-- `apply review pr workflow`
 - `produce review pr artifact`
 - `validate review pr completion criteria`
+- `trace review pr decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

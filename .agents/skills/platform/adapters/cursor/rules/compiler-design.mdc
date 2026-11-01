@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the compiler-design skill when the request matches its scope.
 
 Capabilities:
-- apply the compiler-design workflow
+- apply compiler design methods within explicit compilers boundaries
+- analyze design compiler pipelines — lexing, parsing, asts, type checking, ir, optimization, and code generation — with correctness and modularity with assumptions, constraints, and failure modes
+- produce and validate a compilers artifact with evidence, decisions, and next steps
 
 Stop when: Pipeline stages, representations, invariants, and validation strategy are explicit.

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the service-mesh skill when the request matches its scope.
 
 Capabilities:
-- apply the service-mesh workflow
+- apply service mesh methods within explicit backend boundaries
+- analyze service mesh (istio, linkerd, cilium, mtls, traffic splitting, observability) with assumptions, constraints, and failure modes
+- produce and validate a backend artifact with evidence, decisions, and next steps
 
 Stop when: Service mesh design complete; artifact saved; completion criteria checked.

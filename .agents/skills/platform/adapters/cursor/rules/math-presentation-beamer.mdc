@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the math-presentation-beamer skill when the request matches its scope.
 
 Capabilities:
-- apply the math-presentation-beamer workflow
+- apply math presentation beamer methods within explicit math boundaries
+- analyze design mathematics presentations — beamer slides with tikz diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
 
 Stop when: Source compiles; speaker notes saved; accessibility checklist completed; audience-level stated.

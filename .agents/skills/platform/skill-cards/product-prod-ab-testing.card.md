@@ -32,7 +32,9 @@ Design A/B tests — hypothesis, control/treatment, randomization, metrics, stat
 
 ## Capabilities
 
-None declared.
+- `apply prod ab testing methods within explicit product boundaries`
+- `analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes`
+- `produce and validate a product artifact with evidence, decisions, and next steps`
 
 ## Tags
 

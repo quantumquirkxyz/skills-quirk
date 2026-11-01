@@ -32,7 +32,9 @@ Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage,
 
 ## Capabilities
 
-None declared.
+- `apply math computation reproducible methods within explicit math boundaries`
+- `analyze make mathematical computations reproducible — sympy, mathematica, magma, sage, julia — with versioned environments (docker/conda/nix), scripts, and result archival with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,10 @@ Audit software/security posture — code review, dependency scanning, secret det
 
 ## Capabilities
 
-None declared.
+- `classify evidence-backed threats and vulnerabilities`
+- `consume code-review audit findings`
+- `trace sec security audit decisions across inputs, constraints, and failure paths`
+- `validate sec outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -74,7 +77,9 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [sec-threat-modeling](sec-sec-threat-modeling.card.md)
+- [secret-management](devops-secret-management.card.md)
 
 ## Agent card
 
@@ -84,6 +89,7 @@ None declared.
 
 - In scope: Audit software/security posture — code review, dependency scanning, secret detection, access control, audit logging — with explicit findings and remediation priorities.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `sec-threat-modeling`, `secret-management`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

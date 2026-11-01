@@ -33,7 +33,9 @@ Use when a finished subissue already has a clean PR and you need to merge it, ma
 
 ## Capabilities
 
-None declared.
+- `apply ship subissue methods within explicit routing boundaries`
+- `analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -63,7 +65,7 @@ None declared. Artifact type: `routing`.
 - **Max turns**: `6`
 - **Default agent**: `general`
 - **Tools allow**: `Read`, `Grep`, `Glob`
-- **Tools deny**: `Bash`, `WebFetch`, `WebSearch`
+- **Tools deny**: none declared
 - **Guardrail side effects**: `merge-pull-request`, `close-issue`, `update-project`
 - **Verification commands**: none declared
 - **Artifact schema**: none

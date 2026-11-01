@@ -1,6 +1,6 @@
 {
   "name": "pr-operations",
-  "instructions": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.\n\nCapabilities:\n- apply the pr-operations workflow\n\nCanonical skill: .agents/skills/integrations/pr-operations/SKILL.md",
+  "instructions": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.\n\nCapabilities:\n- apply pr operations methods within explicit integrations boundaries\n- analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes\n- produce and validate a integrations artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/integrations/pr-operations/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Requested PR actions are completed or explicitly skipped, target PRs are identified, and validation or readiness evidence is reported.",

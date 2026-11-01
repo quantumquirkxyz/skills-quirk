@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the professional-communication skill when the request matches its scope.
 
 Capabilities:
-- apply the professional-communication workflow
+- apply professional communication methods within explicit professional boundaries
+- analyze improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision with assumptions, constraints, and failure modes
+- produce and validate a professional artifact with evidence, decisions, and next steps
 
 Stop when: The message has a clear audience, ask, status, tone, and next step.

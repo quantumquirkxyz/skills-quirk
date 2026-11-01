@@ -1,6 +1,6 @@
 {
   "name": "api-gateway",
-  "instructions": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).\n\nCapabilities:\n- apply the api-gateway workflow\n\nCanonical skill: .agents/skills/backend/api-gateway/SKILL.md",
+  "instructions": "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).\n\nCapabilities:\n- apply api gateway methods within explicit backend boundaries\n- analyze api gateway (kong, envoy, aws api gateway, rate limiting, auth, routing) with assumptions, constraints, and failure modes\n- produce and validate a backend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/backend/api-gateway/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "API gateway design complete; artifact saved; completion criteria checked.",

@@ -1,6 +1,6 @@
 {
   "name": "xr-performance",
-  "instructions": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.\n\nCapabilities:\n- apply the xr-performance workflow\n\nCanonical skill: .agents/skills/xr/xr-performance/SKILL.md",
+  "instructions": "Optimize XR performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs.\n\nCapabilities:\n- apply xr performance methods within explicit xr boundaries\n- analyze optimize xr performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs with assumptions, constraints, and failure modes\n- produce and validate a xr artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/xr/xr-performance/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "XR performance targets, profiling evidence, and comfort trade-offs are explicit.",

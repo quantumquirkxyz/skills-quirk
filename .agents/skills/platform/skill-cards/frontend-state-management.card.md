@@ -32,7 +32,9 @@ Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
 
 ## Capabilities
 
-None declared.
+- `apply state management methods within explicit frontend boundaries`
+- `analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -2,7 +2,7 @@
   "skill": "backend/microservices",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0e335c0dc0386d74ee4e674eb6f841cfcbf8536c64df6867ce996ef7ba182f4f",
+  "frontmatterHash": "e85fac4bc6b0049c36e87e839a0510f05a8962196a6a117b2310af0d079609d5",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the web3-consensus skill when the request matches its scope.
 
 Capabilities:
-- apply the web3-consensus workflow
+- apply web3 consensus methods within explicit web3 boundaries
+- analyze analyse and compare consensus mechanisms — pow, pos, bft, da, based sequencing — with security properties, finality guarantees, mev, and economic incentive alignment with assumptions, constraints, and failure modes
+- produce and validate a web3 artifact with evidence, decisions, and next steps
 
 Stop when: Consensus classified; security properties and economics assessed; recommendation tied to threat model.

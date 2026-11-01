@@ -26,15 +26,16 @@ Blackbox-verify a delegated worker's claim before it is accepted, using the arti
 - **Max iterations**: `3`
 - **Prompt version**: `2.0`
 - **Artifact type**: `agent`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-temp-file`
 - **Side effects**: `write-temp-file`
 
 ## Capabilities
 
-- `decompose delegated work into a canonical delegation brief`
 - `verify a delegated artifact against its success criteria without implementation context`
 - `return a bounded DelegationVerdict with evidence, negative tests, and suite status`
+- `trace verify delegation decisions across inputs, constraints, and failure paths`
+- `validate foundation outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

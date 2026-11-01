@@ -32,7 +32,9 @@ Reference for writing and editing skills well — the vocabulary and principles 
 
 ## Capabilities
 
-None declared.
+- `apply writing great skills methods within explicit skill-dev boundaries`
+- `analyze reference for writing and editing skills well — the vocabulary and principles that make a skill predictable with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

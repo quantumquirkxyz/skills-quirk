@@ -32,7 +32,9 @@ Formulate testable scientific hypotheses — null/alternative, variables, contro
 
 ## Capabilities
 
-None declared.
+- `apply scientific hypothesis methods within explicit research boundaries`
+- `analyze formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan with assumptions, constraints, and failure modes`
+- `produce and validate a research artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -1,6 +1,6 @@
 {
   "name": "lockfile-maintenance",
-  "instructions": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.\n\nCapabilities:\n- apply the lockfile-maintenance workflow\n\nCanonical skill: .agents/skills/skill-dev/lockfile-maintenance/SKILL.md",
+  "instructions": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.\n\nCapabilities:\n- apply lockfile maintenance methods within explicit skill-dev boundaries\n- analyze maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding skill.md files are resolved with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/lockfile-maintenance/SKILL.md",
   "model": "gpt-5-mini",
   "tools": [],
   "handoff_description": "Lockfile entries match the current skill tree or every drift item has a stated blocker and recommended repair.",

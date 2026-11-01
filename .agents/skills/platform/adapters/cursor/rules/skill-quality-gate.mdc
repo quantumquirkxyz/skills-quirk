@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the skill-quality-gate skill when the request matches its scope.
 
 Capabilities:
-- apply the skill-quality-gate workflow
+- apply skill quality gate methods within explicit skill-dev boundaries
+- analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Quality gate commands are executed or blocked with reasons, findings are separated into blockers and warnings, and release readiness is stated.

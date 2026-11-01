@@ -33,7 +33,9 @@ Evaluate a Skill against fixed scenarios for routing, completion, and artifact v
 
 ## Capabilities
 
-None declared.
+- `apply evaluate skill methods within explicit skill-dev boundaries`
+- `analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

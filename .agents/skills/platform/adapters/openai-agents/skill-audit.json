@@ -1,6 +1,6 @@
 {
   "name": "skill-audit",
-  "instructions": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.\n\nCapabilities:\n- apply the skill-audit workflow\n\nCanonical skill: .agents/skills/skill-dev/skill-audit/SKILL.md",
+  "instructions": "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output.\n\nCapabilities:\n- apply skill audit methods within explicit skill-dev boundaries\n- analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-audit/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked.",

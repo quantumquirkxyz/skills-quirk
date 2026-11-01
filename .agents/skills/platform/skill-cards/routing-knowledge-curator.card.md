@@ -26,13 +26,15 @@ Keep context, ADRs, registry entries, and research coherent over time — with r
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `routing`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-docs`
 - **Side effects**: `write-docs`
 
 ## Capabilities
 
-None declared.
+- `apply knowledge curator methods within explicit routing boundaries`
+- `analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

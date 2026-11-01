@@ -32,7 +32,9 @@ Data catalog (metadata management, discovery, classification, data mesh, governa
 
 ## Capabilities
 
-None declared.
+- `apply data catalog methods within explicit data boundaries`
+- `analyze data catalog (metadata management, discovery, classification, data mesh, governance) with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -2,7 +2,7 @@
   "skill": "routing/artifact-handoff",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "1c8815ecf18e1ecb97921d22464b07e765ae44777a30ce1cccd107aab1aeb187",
+  "frontmatterHash": "17f9ad0d424584cf41be28b125774f48b59fe3944dfd2b6edd2fe2cef1b2b71c",
   "role": "workflow",
   "router": {
     "positive": [],

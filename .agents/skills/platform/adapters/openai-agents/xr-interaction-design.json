@@ -1,6 +1,6 @@
 {
   "name": "xr-interaction-design",
-  "instructions": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.\n\nCapabilities:\n- apply the xr-interaction-design workflow\n\nCanonical skill: .agents/skills/xr/xr-interaction-design/SKILL.md",
+  "instructions": "Design XR interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability.\n\nCapabilities:\n- apply xr interaction design methods within explicit xr boundaries\n- analyze design xr interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability with assumptions, constraints, and failure modes\n- produce and validate a xr artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/xr/xr-interaction-design/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Spatial input, feedback, comfort constraints, and validation tasks are explicit.",

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the finance-portfolio-theory skill when the request matches its scope.
 
 Capabilities:
-- apply the finance-portfolio-theory workflow
+- apply finance portfolio theory methods within explicit finance boundaries
+- analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes
+- produce and validate a finance artifact with evidence, decisions, and next steps
 
 Stop when: Modern Portfolio Theory complete; required sections present; completion criteria checked.

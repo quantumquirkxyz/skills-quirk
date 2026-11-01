@@ -2,7 +2,7 @@
   "skill": "data/data-lineage",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "90998ba621133149f43f5eaa09939504ce78c0906183a398fb5f08268b605cf5",
+  "frontmatterHash": "ad2492364d6642170d19779db1188ed465c1860249752836d26609205c89d89e",
   "role": "workflow",
   "router": {
     "positive": [],

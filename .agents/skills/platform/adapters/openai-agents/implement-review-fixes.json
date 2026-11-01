@@ -1,6 +1,6 @@
 {
   "name": "implement-review-fixes",
-  "instructions": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor\n\nCapabilities:\n- apply the implement-review-fixes workflow\n\nCanonical skill: .agents/skills/delivery/implement-review-fixes/SKILL.md",
+  "instructions": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor\n\nCapabilities:\n- apply implement review fixes methods within explicit delivery boundaries\n- analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes\n- produce and validate a delivery artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/delivery/implement-review-fixes/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked.",

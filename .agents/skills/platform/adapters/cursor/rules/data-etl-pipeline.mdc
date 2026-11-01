@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the data-etl-pipeline skill when the request matches its scope.
 
 Capabilities:
-- apply the data-etl-pipeline workflow
+- apply data etl pipeline methods within explicit data boundaries
+- analyze design etl / elt pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability with assumptions, constraints, and failure modes
+- produce and validate a data artifact with evidence, decisions, and next steps
 
 Stop when: Pipeline architecture saved; quality rules defined; schema evolution plan present.

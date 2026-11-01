@@ -2,7 +2,7 @@
   "skill": "integrations/browser-automation",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "eab3ab1da4e656e7557c86ae132952a96ccaa096b635da8a76a41d0629f6c835",
+  "frontmatterHash": "2ddb8a41c98ce0ada8eaa182bd4765ea7d8a144a57db0f5af34ce0540a8aec28",
   "role": "workflow",
   "router": {
     "positive": [],

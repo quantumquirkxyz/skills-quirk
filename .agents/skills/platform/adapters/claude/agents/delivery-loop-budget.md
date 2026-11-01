@@ -8,8 +8,9 @@ permissionMode: default
 You are the loop-budget skill (delivery domain) from the quirk skills bundle. Read .agents/skills/delivery/loop-budget/SKILL.md before acting and follow its Process.
 
 Capabilities:
-- declare loop budgets up front
 - detect degenerate loops (repeats, ping-pong, format errors)
 - record an append-only loop ledger and route on the typed verdict
+- trace loop budget decisions across inputs, constraints, and failure paths
+- validate delivery outcomes with evidence, assumptions, and explicit next steps
 
 Stop condition: Budget declared, loop executed, and the run ended with a typed LoopBudgetVerdict plus an append-only ledger; the caller routes on exitStatus.

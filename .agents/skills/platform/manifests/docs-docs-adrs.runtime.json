@@ -2,7 +2,7 @@
   "skill": "docs/docs-adrs",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "fd90fb10828ddb3a1b8f37bf51833ae46c248e1aac8b230a0f3394350918007f",
+  "frontmatterHash": "16c1fd3e132c14619497df748162ca101d0d0118ca79b52ce426c5efe7b4f1aa",
   "role": "workflow",
   "router": {
     "positive": [],

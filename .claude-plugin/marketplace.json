@@ -25,7 +25,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply accessibility methods within explicit accessibility boundaries",
+            "analyze design inclusive products — wcag compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees with assumptions, constraints, and failure modes",
+            "produce and validate a accessibility artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/accessibility/accessibility"
         },
@@ -37,7 +41,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply accessibility design methods within explicit accessibility boundaries",
+            "analyze design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns with assumptions, constraints, and failure modes",
+            "produce and validate a accessibility artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/accessibility/accessibility-design"
         },
@@ -49,7 +57,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply accessibility testing methods within explicit accessibility boundaries",
+            "analyze test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — with explicit barrier detection and remediation evidence with assumptions, constraints, and failure modes",
+            "produce and validate a accessibility artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/accessibility/accessibility-testing"
         }
@@ -69,7 +81,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply agent orchestration methods within explicit ai boundaries",
+            "analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/agent-orchestration"
         },
@@ -81,7 +97,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply ai ml pipeline methods within explicit ai boundaries",
+            "analyze design ml pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/ai-ml-pipeline"
         },
@@ -93,7 +113,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply ai model evaluation methods within explicit ai boundaries",
+            "analyze evaluate ml / llm models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/ai-model-evaluation"
         },
@@ -105,7 +129,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply ai prompt engineering methods within explicit ai boundaries",
+            "analyze design, evaluate, and refine prompts for llms (gpt-4, claude, llama, mistral) with chain-of-thought, few-shot, rag, and evaluation metrics with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/ai-prompt-engineering"
         },
@@ -117,7 +145,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply ai time series forecasting methods within explicit ai boundaries",
+            "analyze design and evaluate time-series forecasting — arima, prophet, neuralprophet, lstm, transformer — with stationarity analysis, seasonality, exogenous variables, and backtest with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/ai-time-series-forecasting"
         },
@@ -129,7 +161,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply llm eval methods within explicit ai boundaries",
+            "analyze design llm evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/llm-eval"
         },
@@ -141,7 +177,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply llm fine tuning methods within explicit ai boundaries",
+            "analyze fine-tune llms — lora, qlora, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/llm-fine-tuning"
         },
@@ -153,7 +193,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply llmops methods within explicit ai boundaries",
+            "analyze llmops (deployment, monitoring, a/b testing, prompt management, cost optimization, evaluation pipelines) with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/llmops"
         },
@@ -165,7 +209,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply mlops methods within explicit ai boundaries",
+            "analyze mlops (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining) with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/mlops"
         },
@@ -177,7 +225,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply multimodal prompting methods within explicit ai boundaries",
+            "analyze multimodal prompting (vision, audio, video, image generation, vision-language models) with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/multimodal-prompting"
         },
@@ -189,7 +241,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply prompt template library methods within explicit ai boundaries",
+            "analyze prompt template library (versioned templates, a/b testing, composition, evaluation) with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/prompt-template-library"
         },
@@ -201,7 +257,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply rag pipeline methods within explicit ai boundaries",
+            "analyze design rag pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/rag-pipeline"
         },
@@ -213,7 +273,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply structured output methods within explicit ai boundaries",
+            "analyze structured output for llms (json mode, function calling, constrained decoding, validation) with assumptions, constraints, and failure modes",
+            "produce and validate a ai artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ai/structured-output"
         }
@@ -233,7 +297,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply execution policy methods within explicit auxiliary boundaries",
+            "analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes",
+            "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/auxiliary/execution-policy"
         },
@@ -245,7 +313,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply integration playground methods within explicit auxiliary boundaries",
+            "analyze create a disposable fixture environment for safely exercising skills against local apis, data, and files; use when testing a skill with isolated local fixtures with assumptions, constraints, and failure modes",
+            "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/auxiliary/integration-playground"
         },
@@ -257,7 +329,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply interactive tutorial builder methods within explicit auxiliary boundaries",
+            "analyze generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any skill; use when teaching or onboarding someone to a skill with assumptions, constraints, and failure modes",
+            "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
         },
@@ -269,7 +345,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply setup quirk skills methods within explicit auxiliary boundaries",
+            "analyze configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. run once before first use of the other engineering skills with assumptions, constraints, and failure modes",
+            "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/auxiliary/setup-quirk-skills"
         }
@@ -289,7 +369,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply api gateway methods within explicit backend boundaries",
+            "analyze api gateway (kong, envoy, aws api gateway, rate limiting, auth, routing) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/api-gateway"
         },
@@ -302,9 +386,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "trace backend requests and data flows end to end",
             "review contracts, state, errors, and integration boundaries",
-            "consume code-review audit findings"
+            "consume code-review audit findings",
+            "trace backend architecture decisions across inputs, constraints, and failure paths",
+            "validate backend outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/backend/backend-architecture"
@@ -317,7 +402,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply backend caching methods within explicit backend boundaries",
+            "analyze design backend caching strategies — cache keys, ttls, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/backend-caching"
         },
@@ -329,7 +418,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply backend queues methods within explicit backend boundaries",
+            "analyze design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/backend-queues"
         },
@@ -341,7 +434,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply caching advanced methods within explicit backend boundaries",
+            "analyze advanced caching strategies (redis, memcached, cdn, cache invalidation, stampede prevention) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/caching-advanced"
         },
@@ -353,7 +450,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply distributed tracing methods within explicit backend boundaries",
+            "analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/distributed-tracing"
         },
@@ -365,7 +466,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply event driven architecture methods within explicit backend boundaries",
+            "analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/event-driven-architecture"
         },
@@ -377,7 +482,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply grpc connect methods within explicit backend boundaries",
+            "analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/grpc-connect"
         },
@@ -389,7 +498,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply microservices methods within explicit backend boundaries",
+            "analyze design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/microservices"
         },
@@ -401,7 +514,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply rate limiting methods within explicit backend boundaries",
+            "analyze rate limiting and throttling (token bucket, sliding window, distributed rate limiting, api protection) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/rate-limiting"
         },
@@ -413,7 +530,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply serverless methods within explicit backend boundaries",
+            "analyze serverless architecture (lambda, functions, faas, event-driven, cold starts, scaling, cost) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/serverless"
         },
@@ -425,7 +546,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply service mesh methods within explicit backend boundaries",
+            "analyze service mesh (istio, linkerd, cilium, mtls, traffic splitting, observability) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/service-mesh"
         },
@@ -437,7 +562,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply websockets methods within explicit backend boundaries",
+            "analyze websockets and real-time (socket.io, ws, sse, pub/sub, scaling, reconnection, backpressure) with assumptions, constraints, and failure modes",
+            "produce and validate a backend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/backend/websockets"
         }
@@ -457,7 +586,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cms access control methods within explicit cms boundaries",
+            "analyze design cms access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability with assumptions, constraints, and failure modes",
+            "produce and validate a cms artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cms/cms-access-control"
         },
@@ -469,7 +602,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cms architecture methods within explicit cms boundaries",
+            "analyze design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery with assumptions, constraints, and failure modes",
+            "produce and validate a cms artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cms/cms-architecture"
         },
@@ -481,7 +618,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cms content strategy methods within explicit cms boundaries",
+            "analyze design cms content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership with assumptions, constraints, and failure modes",
+            "produce and validate a cms artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cms/cms-content-strategy"
         },
@@ -493,7 +634,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply localization methods within explicit cms boundaries",
+            "analyze design internationalization (i18n) and localization (l10n) — string management, locale handling, rtl support, cultural adaptation — so the product works across languages and regions with assumptions, constraints, and failure modes",
+            "produce and validate a cms artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cms/localization"
         }
@@ -513,7 +658,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply compiler design methods within explicit compilers boundaries",
+            "analyze design compiler pipelines — lexing, parsing, asts, type checking, ir, optimization, and code generation — with correctness and modularity with assumptions, constraints, and failure modes",
+            "produce and validate a compilers artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/compilers/compiler-design"
         },
@@ -525,7 +674,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply compiler testing methods within explicit compilers boundaries",
+            "analyze test compilers and interpreters — parser tests, semantic tests, ir validation, golden tests, and regression checks — with explicit oracle design with assumptions, constraints, and failure modes",
+            "produce and validate a compilers artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/compilers/compiler-testing"
         },
@@ -537,7 +690,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply compilers methods within explicit compilers boundaries",
+            "analyze design and implement compilers and interpreters — lexer, parser, ast, type checking, code generation, optimization — with correctness and modularity with assumptions, constraints, and failure modes",
+            "produce and validate a compilers artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/compilers/compilers"
         }
@@ -557,7 +714,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cs algorithms methods within explicit cs boundaries",
+            "analyze design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination with assumptions, constraints, and failure modes",
+            "produce and validate a cs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cs/cs-algorithms"
         },
@@ -569,7 +730,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cs complexity analysis methods within explicit cs boundaries",
+            "analyze analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches with assumptions, constraints, and failure modes",
+            "produce and validate a cs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cs/cs-complexity-analysis"
         },
@@ -581,7 +746,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cs computability methods within explicit cs boundaries",
+            "analyze analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations with assumptions, constraints, and failure modes",
+            "produce and validate a cs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cs/cs-computability"
         },
@@ -593,7 +762,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply cs data structures methods within explicit cs boundaries",
+            "analyze design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants with assumptions, constraints, and failure modes",
+            "produce and validate a cs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/cs/cs-data-structures"
         }
@@ -613,7 +786,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply data catalog methods within explicit data boundaries",
+            "analyze data catalog (metadata management, discovery, classification, data mesh, governance) with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-catalog"
         },
@@ -625,7 +802,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data contracts methods within explicit data boundaries",
+            "analyze design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-contracts"
         },
@@ -637,7 +818,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data etl pipeline methods within explicit data boundaries",
+            "analyze design etl / elt pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-etl-pipeline"
         },
@@ -649,7 +834,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data lineage methods within explicit data boundaries",
+            "analyze data lineage (end-to-end tracing, impact analysis, column-level lineage, governance) with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-lineage"
         },
@@ -661,7 +850,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data quality methods within explicit data boundaries",
+            "analyze design data quality frameworks — great expectations, soda, checks, observability, contracts — with explicit slas, freshness rules, and incident response for bad data with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-quality"
         },
@@ -673,7 +866,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data streaming methods within explicit data boundaries",
+            "analyze design streaming data pipelines — kafka, kinesis, pub/sub, flink — with event schemas, stream processing, and real-time analytics with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-streaming"
         },
@@ -685,7 +882,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply data versioning methods within explicit data boundaries",
+            "analyze data versioning (dvc, lakefs, delta tables, snapshotting, reproducibility) with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-versioning"
         },
@@ -697,7 +898,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply data warehouse modeling methods within explicit data boundaries",
+            "analyze design analytical warehouse schemas — star / snowflake / obt — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/data-warehouse-modeling"
         },
@@ -709,7 +914,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply feature store methods within explicit data boundaries",
+            "analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/feature-store"
         },
@@ -721,7 +930,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply semantic layer methods within explicit data boundaries",
+            "analyze design a semantic layer — dbt, cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/semantic-layer"
         },
@@ -733,7 +946,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply stream processing methods within explicit data boundaries",
+            "analyze stream processing (flink, kafka streams, risingwave, windowing, state, exactly-once) with assumptions, constraints, and failure modes",
+            "produce and validate a data artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/data/stream-processing"
         }
@@ -753,7 +970,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply db migrations methods within explicit db boundaries",
+            "analyze plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks with assumptions, constraints, and failure modes",
+            "produce and validate a db artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/db/db-migrations"
         },
@@ -765,7 +986,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply db nosql modeling methods within explicit db boundaries",
+            "analyze design nosql data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution with assumptions, constraints, and failure modes",
+            "produce and validate a db artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/db/db-nosql-modeling"
         },
@@ -777,7 +1002,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply db query optimization methods within explicit db boundaries",
+            "analyze optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement with assumptions, constraints, and failure modes",
+            "produce and validate a db artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/db/db-query-optimization"
         },
@@ -789,7 +1018,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply db relational design methods within explicit db boundaries",
+            "analyze design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning with assumptions, constraints, and failure modes",
+            "produce and validate a db artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/db/db-relational-design"
         }
@@ -810,11 +1043,14 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "audit repository-wide or scoped code behavior",
             "verify logic against the user's stated objective",
-            "produce an evidence-backed repository audit artifact"
+            "produce an evidence-backed repository audit artifact",
+            "trace code review decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "post-pr-comment"
+          ],
           "path": ".agents/skills/delivery/code-review"
         },
         {
@@ -825,7 +1061,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply contribution workflow optimizer methods within explicit delivery boundaries",
+            "analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/contribution-workflow-optimizer"
         },
@@ -838,9 +1078,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "build a red-capable reproduction loop",
             "trace root causes across repository boundaries",
-            "consume code-review audit findings"
+            "consume code-review audit findings",
+            "trace diagnosing bugs decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/diagnosing-bugs"
@@ -854,9 +1095,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply implement workflow",
             "produce implement artifact",
-            "validate implement completion criteria"
+            "validate implement completion criteria",
+            "trace implement decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-code",
@@ -873,7 +1115,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply implement review fixes methods within explicit delivery boundaries",
+            "analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-code",
             "commit-git",
@@ -890,9 +1136,10 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "declare loop budgets up front",
             "detect degenerate loops (repeats, ping-pong, format errors)",
-            "record an append-only loop ledger and route on the typed verdict"
+            "record an append-only loop ledger and route on the typed verdict",
+            "trace loop budget decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-temp-file"
@@ -907,7 +1154,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply plan review fixes methods within explicit delivery boundaries",
+            "analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "post-pr-comment"
           ],
@@ -921,7 +1172,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply prototype methods within explicit delivery boundaries",
+            "analyze build a throwaway prototype to answer a design question. use when the user wants to sanity-check whether a state model or interaction shape actually works with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/prototype"
         },
@@ -933,7 +1188,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply research methods within explicit delivery boundaries",
+            "analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-docs"
           ],
@@ -947,7 +1206,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply resolving merge conflicts methods within explicit delivery boundaries",
+            "analyze use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, pr branch corrections, or other branch-state blockers that need deliberate resolution with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-code",
             "commit-git",
@@ -963,7 +1226,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply review fix loop methods within explicit delivery boundaries",
+            "analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-code",
             "post-pr-comment",
@@ -981,9 +1248,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply review pr workflow",
             "produce review pr artifact",
-            "validate review pr completion criteria"
+            "validate review pr completion criteria",
+            "trace review pr decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "post-pr-comment"
@@ -999,9 +1267,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply tdd workflow",
             "produce tdd artifact",
-            "validate tdd completion criteria"
+            "validate tdd completion criteria",
+            "trace tdd decisions across inputs, constraints, and failure paths",
+            "validate delivery outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/tdd"
@@ -1014,7 +1283,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply testing methods within explicit delivery boundaries",
+            "analyze shape the test strategy for a project so behavior is verified at the right seams and at the right level with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/testing"
         },
@@ -1026,7 +1299,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply webapp testing methods within explicit delivery boundaries",
+            "analyze choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels with assumptions, constraints, and failure modes",
+            "produce and validate a delivery artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/delivery/webapp-testing"
         }
@@ -1046,7 +1323,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply backup disaster recovery methods within explicit devops boundaries",
+            "analyze design backup and disaster recovery — rpo/rto, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/backup-disaster-recovery"
         },
@@ -1058,7 +1339,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply chaos engineering methods within explicit devops boundaries",
+            "analyze design chaos engineering — fault injection, gamedays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/chaos-engineering"
         },
@@ -1070,7 +1355,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply cost optimization methods within explicit devops boundaries",
+            "analyze design finops strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/cost-optimization"
         },
@@ -1082,7 +1371,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply devops ci cd pipeline methods within explicit devops boundaries",
+            "analyze design ci/cd pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/devops-ci-cd-pipeline"
         },
@@ -1094,7 +1387,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply devops feature flags methods within explicit devops boundaries",
+            "analyze design feature flag systems — gradual rollouts, a/b experiments, kill switches, targeting rules — with lifecycle management and operational runbooks with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/devops-feature-flags"
         },
@@ -1106,7 +1403,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply devops k8s orchestration methods within explicit devops boundaries",
+            "analyze design and configure kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/devops-k8s-orchestration"
         },
@@ -1118,7 +1419,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply devops terraform iac methods within explicit devops boundaries",
+            "analyze design infrastructure as code — terraform / pulumi / cloudformation — for reproducible, version-controlled, auditable cloud infrastructure with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/devops-terraform-iac"
         },
@@ -1130,7 +1435,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply gitops methods within explicit devops boundaries",
+            "analyze design gitops workflows — argocd, flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/gitops"
         },
@@ -1142,7 +1451,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply incident response methods within explicit devops boundaries",
+            "analyze design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/incident-response"
         },
@@ -1154,7 +1467,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply secret management methods within explicit devops boundaries",
+            "analyze design secret management — vault, sops, sealedsecrets, rotation, external secrets — with encryption, access control, and auditability with assumptions, constraints, and failure modes",
+            "produce and validate a devops artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/devops/secret-management"
         }
@@ -1175,9 +1492,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply docs adrs workflow",
             "produce docs adrs analysis artifact",
-            "validate docs adrs completion criteria"
+            "validate docs adrs completion criteria",
+            "trace docs adrs decisions across inputs, constraints, and failure paths",
+            "validate docs outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/docs/docs-adrs"
@@ -1190,7 +1508,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply docs knowledge base methods within explicit docs boundaries",
+            "analyze maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules with assumptions, constraints, and failure modes",
+            "produce and validate a docs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/docs/docs-knowledge-base"
         },
@@ -1202,7 +1524,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply docs technical writing methods within explicit docs boundaries",
+            "analyze write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules with assumptions, constraints, and failure modes",
+            "produce and validate a docs artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/docs/docs-technical-writing"
         }
@@ -1223,9 +1549,10 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "identify evidence-backed architectural seams",
             "distinguish confirmed design defects from improvement opportunities",
-            "consume repository audit findings"
+            "consume repository audit findings",
+            "trace improve codebase architecture decisions across inputs, constraints, and failure paths",
+            "validate engineering outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/engineering/improve-codebase-architecture"
@@ -1246,7 +1573,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply finance corporate val methods within explicit finance boundaries",
+            "analyze corporate valuation — dcf, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks with assumptions, constraints, and failure modes",
+            "produce and validate a finance artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/finance/finance-corporate-val"
         },
@@ -1258,7 +1589,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply finance dcf methods within explicit finance boundaries",
+            "analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes",
+            "produce and validate a finance artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/finance/finance-dcf"
         },
@@ -1270,7 +1605,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply finance portfolio theory methods within explicit finance boundaries",
+            "analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes",
+            "produce and validate a finance artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/finance/finance-portfolio-theory"
         }
@@ -1290,7 +1629,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply agent canvas methods within explicit foundation boundaries",
+            "analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/agent-canvas"
         },
@@ -1303,10 +1646,11 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "generate-agent-card",
             "validate-agent-card",
             "emit-agent-card-json",
-            "update-agent-card-index"
+            "update-agent-card-index",
+            "trace agent card decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-files"
@@ -1322,10 +1666,11 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "maintain a NOW.md working thread for the active task",
             "maintain a MEMORY.md of durable, cross-session facts",
             "decide what belongs in memory versus in an artifact",
-            "recall memory into a fresh context pack with provenance"
+            "recall memory into a fresh context pack with provenance",
+            "trace agent memory decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-files"
@@ -1340,7 +1685,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply agent observability methods within explicit foundation boundaries",
+            "analyze capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. enables full audit of decisions made during agent execution with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/agent-observability"
         },
@@ -1353,9 +1702,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply api design workflow",
             "produce api design artifact",
-            "validate api design completion criteria"
+            "validate api design completion criteria",
+            "trace api design decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/api-design"
@@ -1369,9 +1719,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply codebase design workflow",
             "produce codebase design artifact",
-            "validate codebase design completion criteria"
+            "validate codebase design completion criteria",
+            "trace codebase design decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/codebase-design"
@@ -1385,10 +1736,11 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "diagnose context pressure in a running session",
             "compact a conversation window with a structured summary",
             "clear stale tool results and re-derive them on demand",
-            "hand off a session across a compaction boundary"
+            "hand off a session across a compaction boundary",
+            "trace context compaction decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-temp-file"
@@ -1403,7 +1755,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply context engine methods within explicit foundation boundaries",
+            "analyze manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static context.md (issues, prs, docs, execution traces) with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/context-engine"
         },
@@ -1415,7 +1771,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply domain modeling methods within explicit foundation boundaries",
+            "analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/domain-modeling"
         },
@@ -1428,10 +1788,11 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "expose-skills-as-mcp-tools",
             "generate-skill-resources",
             "generate-workflow-prompts",
-            "configure-transport"
+            "configure-transport",
+            "trace mcp server decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-files"
@@ -1446,7 +1807,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply observability methods within explicit foundation boundaries",
+            "analyze define the logs, metrics, traces, and alerts needed to understand a system in production — with slis, slos, dashboards, alert rules, and incident runbooks with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/observability"
         },
@@ -1459,10 +1824,11 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "declare a skill chain as producer-consumer edges",
             "verify artifact compatibility at each edge before execution",
             "run a chain inside a declared iteration and cost budget",
-            "report per-edge handoff evidence for the chain"
+            "report per-edge handoff evidence for the chain",
+            "trace skill composition decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "orchestration"
@@ -1477,7 +1843,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply subagent swarm methods within explicit foundation boundaries",
+            "analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes",
+            "produce and validate a foundation artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/foundation/subagent-swarm"
         },
@@ -1490,9 +1860,10 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "decompose delegated work into a canonical delegation brief",
             "verify a delegated artifact against its success criteria without implementation context",
-            "return a bounded DelegationVerdict with evidence, negative tests, and suite status"
+            "return a bounded DelegationVerdict with evidence, negative tests, and suite status",
+            "trace verify delegation decisions across inputs, constraints, and failure paths",
+            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-temp-file"
@@ -1515,7 +1886,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply astro methods within explicit frontend boundaries",
+            "analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/astro"
         },
@@ -1527,7 +1902,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply design system methods within explicit frontend boundaries",
+            "analyze define and evolve reusable ui tokens, components, and usage rules as a coherent system with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/design-system"
         },
@@ -1540,9 +1919,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "review frontend data flows and interaction states",
             "identify loading, empty, error, and success state gaps",
-            "consume code-review audit findings"
+            "consume code-review audit findings",
+            "trace frontend design decisions across inputs, constraints, and failure paths",
+            "validate frontend outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/frontend-design"
@@ -1555,7 +1935,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply frontend testing methods within explicit frontend boundaries",
+            "analyze frontend testing (vitest, testing library, playwright, visual testing, storybook) with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/frontend-testing"
         },
@@ -1567,7 +1951,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply mobile methods within explicit frontend boundaries",
+            "analyze shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for react native, expo, and capacitor with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/mobile"
         },
@@ -1579,7 +1967,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply nextjs methods within explicit frontend boundaries",
+            "analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/nextjs"
         },
@@ -1591,7 +1983,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply react methods within explicit frontend boundaries",
+            "analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/react"
         },
@@ -1603,7 +1999,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply remix methods within explicit frontend boundaries",
+            "analyze remix framework (loaders, actions, nested routes, progressive enhancement) with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/remix"
         },
@@ -1615,7 +2015,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply state management methods within explicit frontend boundaries",
+            "analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/state-management"
         },
@@ -1627,7 +2031,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply styling methods within explicit frontend boundaries",
+            "analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes",
+            "produce and validate a frontend artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/frontend/styling"
         }
@@ -1647,7 +2055,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply brand identity methods within explicit graphic-design boundaries",
+            "analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/brand-identity"
         },
@@ -1659,7 +2071,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply design system visual methods within explicit graphic-design boundaries",
+            "analyze design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/design-system-visual"
         },
@@ -1671,7 +2087,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design accessibility methods within explicit graphic-design boundaries",
+            "analyze design inclusive graphic artifacts — wcag-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-accessibility"
         },
@@ -1683,7 +2103,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design advertising methods within explicit graphic-design boundaries",
+            "analyze design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-advertising"
         },
@@ -1695,7 +2119,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design data viz methods within explicit graphic-design boundaries",
+            "analyze design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-data-viz"
         },
@@ -1707,7 +2135,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design editorial methods within explicit graphic-design boundaries",
+            "analyze design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-editorial"
         },
@@ -1719,7 +2151,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design foundations methods within explicit graphic-design boundaries",
+            "analyze design graphic artifacts — posters, social graphics, editorial layouts, packaging, signage — with explicit composition, color, typography, and production constraints with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-foundations"
         },
@@ -1731,7 +2167,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design motion methods within explicit graphic-design boundaries",
+            "analyze design motion graphics and ui animations — microinteractions, transitions, lottie, css animations — with explicit timing, easing, choreography, and performance rules with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-motion"
         },
@@ -1743,7 +2183,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design packaging methods within explicit graphic-design boundaries",
+            "analyze design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-packaging"
         },
@@ -1755,7 +2199,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design photo direction methods within explicit graphic-design boundaries",
+            "analyze direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-photo-direction"
         },
@@ -1767,7 +2215,11 @@
           "maturity": "experimental",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design project management methods within explicit graphic-design boundaries",
+            "analyze manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-project-management"
         },
@@ -1779,7 +2231,11 @@
           "maturity": "experimental",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply graphic design tools methods within explicit graphic-design boundaries",
+            "analyze connect graphic design tools — figma, adobe creative cloud, canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries with assumptions, constraints, and failure modes",
+            "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/graphic-design/graphic-design-tools"
         }
@@ -1799,7 +2255,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply api contracts methods within explicit integrations boundaries",
+            "analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/api-contracts"
         },
@@ -1811,7 +2271,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply auth methods within explicit integrations boundaries",
+            "analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/auth"
         },
@@ -1824,10 +2288,11 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "turn a page objective into a declarative browser task",
             "execute browser tasks with Playwright in a sandboxed context",
             "gate irreversible or account-affecting actions behind approval",
-            "capture screenshots and DOM evidence as verifiable artifacts"
+            "capture screenshots and DOM evidence as verifiable artifacts",
+            "trace browser automation decisions across inputs, constraints, and failure paths",
+            "validate integrations outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "network",
@@ -1843,7 +2308,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply issue operations methods within explicit integrations boundaries",
+            "analyze manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/issue-operations"
         },
@@ -1855,7 +2324,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply payments methods within explicit integrations boundaries",
+            "analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/payments"
         },
@@ -1867,7 +2340,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply pr operations methods within explicit integrations boundaries",
+            "analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/pr-operations"
         },
@@ -1879,7 +2356,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply search methods within explicit integrations boundaries",
+            "analyze design search behavior, indexing, relevance, and retrieval seams — with elasticsearch, algolia, meilisearch, opensearch, synonyms, ranking, analytics, and autocomplete with assumptions, constraints, and failure modes",
+            "produce and validate a integrations artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/integrations/search"
         }
@@ -1899,7 +2380,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply iot embedded methods within explicit iot boundaries",
+            "analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes",
+            "produce and validate a iot artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/iot/iot-embedded"
         }
@@ -1919,7 +2404,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math computation reproducible methods within explicit math boundaries",
+            "analyze make mathematical computations reproducible — sympy, mathematica, magma, sage, julia — with versioned environments (docker/conda/nix), scripts, and result archival with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-computation-reproducible"
         },
@@ -1931,7 +2420,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math computational methods within explicit math boundaries",
+            "analyze solve numerical and symbolic math problems (root finding, integration, odes, symbolic manipulation) with stable algorithms and explicit error analysis with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-computational"
         },
@@ -1943,7 +2436,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math cryptography methods within explicit math boundaries",
+            "analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-cryptography"
         },
@@ -1955,7 +2452,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math formal proof methods within explicit math boundaries",
+            "analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-formal-proof"
         },
@@ -1967,7 +2468,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math grant structure methods within explicit math boundaries",
+            "analyze structure mathematics grant proposals (nsf, erc, simons, msca) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-grant-structure"
         },
@@ -1979,7 +2484,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math linear algebra methods within explicit math boundaries",
+            "analyze solve and analyse linear algebra problems — matrix decompositions (lu, qr, svd, eigendecomposition), linear systems, and applications in ml, graphics, and optimisation with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-linear-algebra"
         },
@@ -1991,7 +2500,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math literature track methods within explicit math boundaries",
+            "analyze track mathematics literature across arxiv, mathscinet, zbmath, journal alerts, and citation graphs to keep a researcher current without drowning in papers with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-literature-track"
         },
@@ -2003,7 +2516,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math optimization methods within explicit math boundaries",
+            "analyze formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-optimization"
         },
@@ -2015,7 +2532,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math paper collaboration methods within explicit math boundaries",
+            "analyze manage mathematical paper collaboration — overleaf / github / arxiv integration, citation tracking, version control, reproducible computation links, and co-author coordination with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-paper-collaboration"
         },
@@ -2027,7 +2548,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math presentation beamer methods within explicit math boundaries",
+            "analyze design mathematics presentations — beamer slides with tikz diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-presentation-beamer"
         },
@@ -2039,7 +2564,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math probability models methods within explicit math boundaries",
+            "analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-probability-models"
         },
@@ -2051,7 +2580,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math pure proofs methods within explicit math boundaries",
+            "analyze write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-pure-proofs"
         },
@@ -2063,7 +2596,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply math teaching problem set methods within explicit math boundaries",
+            "analyze design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and latex layout with assumptions, constraints, and failure modes",
+            "produce and validate a math artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/math/math-teaching-problem-set"
         }
@@ -2083,7 +2620,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply networking methods within explicit networking boundaries",
+            "analyze design and analyze network infrastructure — tcp/ip, routing, dns, load balancing, firewalls, vpns, network security — with explicit assumptions about latency, bandwidth, and failure modes with assumptions, constraints, and failure modes",
+            "produce and validate a networking artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/networking/networking"
         },
@@ -2095,7 +2636,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply networking protocols methods within explicit networking boundaries",
+            "analyze analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions with assumptions, constraints, and failure modes",
+            "produce and validate a networking artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/networking/networking-protocols"
         },
@@ -2107,7 +2652,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply networking security methods within explicit networking boundaries",
+            "analyze design network security — segmentation, firewalls, vpns, tls, authentication, and threat boundaries — with explicit trust zones with assumptions, constraints, and failure modes",
+            "produce and validate a networking artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/networking/networking-security"
         }
@@ -2127,7 +2676,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply os kernel methods within explicit os boundaries",
+            "analyze design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries with assumptions, constraints, and failure modes",
+            "produce and validate a os artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/os/os-kernel"
         },
@@ -2139,7 +2692,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply os memory methods within explicit os boundaries",
+            "analyze design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions with assumptions, constraints, and failure modes",
+            "produce and validate a os artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/os/os-memory"
         },
@@ -2151,7 +2708,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply os processes methods within explicit os boundaries",
+            "analyze design operating system process management — scheduling, signals, process states, concurrency, and inter-process communication — with explicit isolation boundaries with assumptions, constraints, and failure modes",
+            "produce and validate a os artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/os/os-processes"
         }
@@ -2171,7 +2732,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics astro methods within explicit physics boundaries",
+            "analyze model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-astro"
         },
@@ -2183,7 +2748,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics career postdoc methods within explicit physics boundaries",
+            "analyze navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (nsf career, doe, erc, simons), and negotiation with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-career-postdoc"
         },
@@ -2195,7 +2764,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics classical methods within explicit physics boundaries",
+            "analyze solve classical mechanics problems — newton's laws, lagrangian, hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-classical"
         },
@@ -2207,7 +2780,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics data analysis root methods within explicit physics boundaries",
+            "analyze analyse experimental physics data with root, pandas, uproot, numpy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-data-analysis-root"
         },
@@ -2219,7 +2796,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics experimental notebook methods within explicit physics boundaries",
+            "analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-experimental-notebook"
         },
@@ -2231,7 +2812,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics literature search methods within explicit physics boundaries",
+            "analyze track physics literature — arxiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), inspire-hep, nasa ads, web of science, citation alerts — with domain filters with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-literature-search"
         },
@@ -2243,7 +2828,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics quantum methods within explicit physics boundaries",
+            "analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-quantum"
         },
@@ -2255,7 +2844,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics reproducibility archive methods within explicit physics boundaries",
+            "analyze make physics research reproducible and archive it — zenodo doi, github + container (docker/apptainer), data preservation, code review, and open-science compliance for journals and funders with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-reproducibility-archive"
         },
@@ -2267,7 +2860,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics simulation setup methods within explicit physics boundaries",
+            "analyze set up reproducible physics simulations — monte carlo (geant4), molecular dynamics (lammps), dft (vasp, quantum espresso), quantum dynamics (qutip) — with containers, parameter files, and verification with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-simulation-setup"
         },
@@ -2279,7 +2876,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics talk design methods within explicit physics boundaries",
+            "analyze design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-talk-design"
         },
@@ -2291,7 +2892,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics thermo methods within explicit physics boundaries",
+            "analyze model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-thermo"
         },
@@ -2303,7 +2908,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply physics writing revtex methods within explicit physics boundaries",
+            "analyze write physics papers using revtex / aps / iop / aip formatting, with figure conventions, citation styles, and submission package preparation with assumptions, constraints, and failure modes",
+            "produce and validate a physics artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/physics/physics-writing-revtex"
         }
@@ -2324,11 +2933,9 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "divergent ideation",
-            "reframing",
-            "clustering",
-            "prioritization",
-            "experiment framing"
+            "apply brainstorming methods within explicit product boundaries",
+            "analyze facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas with assumptions, constraints, and failure modes",
+            "produce and validate a product artifact with evidence, decisions, and next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/product/brainstorming"
@@ -2341,7 +2948,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply prod ab testing methods within explicit product boundaries",
+            "analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes",
+            "produce and validate a product artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/product/prod-ab-testing"
         },
@@ -2353,7 +2964,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply prod okr planning methods within explicit product boundaries",
+            "analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes",
+            "produce and validate a product artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/product/prod-okr-planning"
         },
@@ -2365,7 +2980,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply prod prd writing methods within explicit product boundaries",
+            "analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes",
+            "produce and validate a product artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/product/prod-prd-writing"
         }
@@ -2385,7 +3004,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply pro market analysis methods within explicit professional boundaries",
+            "analyze conduct professional market research — tam/sam/som, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing with assumptions, constraints, and failure modes",
+            "produce and validate a professional artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/professional/pro-market-analysis"
         },
@@ -2397,7 +3020,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply professional communication methods within explicit professional boundaries",
+            "analyze improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision with assumptions, constraints, and failure modes",
+            "produce and validate a professional artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/professional/professional-communication"
         },
@@ -2409,7 +3036,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply professional project management methods within explicit professional boundaries",
+            "analyze manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts with assumptions, constraints, and failure modes",
+            "produce and validate a professional artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/professional/professional-project-management"
         }
@@ -2430,9 +3061,10 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "index requirements across spec plan and ticket artifacts",
             "classify consistency findings by evidence",
-            "emit a read-only artifact consistency report"
+            "emit a read-only artifact consistency report",
+            "trace analyze artifacts decisions across inputs, constraints, and failure paths",
+            "validate project outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/project/analyze-artifacts"
@@ -2445,7 +3077,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply docs management methods within explicit project boundaries",
+            "analyze keep repository documentation, adrs, and durable context aligned with the current project shape — with explicit consumer rules with assumptions, constraints, and failure modes",
+            "produce and validate a project artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/project/docs-management"
         },
@@ -2457,7 +3093,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply make project methods within explicit project boundaries",
+            "analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes",
+            "produce and validate a project artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "create-project",
             "create-project-fields",
@@ -2473,7 +3113,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply project development methods within explicit project boundaries",
+            "analyze evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins with assumptions, constraints, and failure modes",
+            "produce and validate a project artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/project/project-development"
         },
@@ -2486,9 +3130,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "assess implementation health from repository evidence",
             "evaluate functional, architectural, and growth risks",
-            "consume repository audit findings"
+            "consume repository audit findings",
+            "trace project viability decisions across inputs, constraints, and failure paths",
+            "validate project outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/project/project-viability"
@@ -2502,11 +3147,12 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "author and maintain a repository constitution",
             "produce a spec artifact from intent (specify phase)",
             "produce a plan artifact with architecture and seams (plan phase)",
             "decompose the plan into tracer-bullet tasks (tasks phase)",
-            "verify implementation against the spec and plan"
+            "verify implementation against the spec and plan",
+            "trace spec driven development decisions across inputs, constraints, and failure paths",
+            "validate project outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-docs",
@@ -2523,9 +3169,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply to spec workflow",
             "produce to spec artifact",
-            "validate to spec completion criteria"
+            "validate to spec completion criteria",
+            "trace to spec decisions across inputs, constraints, and failure paths",
+            "validate project outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "create-issue"
@@ -2541,9 +3188,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply to tickets workflow",
             "produce to tickets artifact",
-            "validate to tickets completion criteria"
+            "validate to tickets completion criteria",
+            "trace to tickets decisions across inputs, constraints, and failure paths",
+            "validate project outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "create-issues",
@@ -2567,7 +3215,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply performance testing methods within explicit qa boundaries",
+            "analyze design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions with assumptions, constraints, and failure modes",
+            "produce and validate a qa artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/qa/performance-testing"
         },
@@ -2580,9 +3232,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "map repository risks to test seams",
             "design regression coverage from audit evidence",
-            "distinguish coverage gaps from functional defects"
+            "distinguish coverage gaps from functional defects",
+            "trace qa automation decisions across inputs, constraints, and failure paths",
+            "validate qa outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/qa/qa-automation"
@@ -2595,7 +3248,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply qa manual testing methods within explicit qa boundaries",
+            "analyze perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes with assumptions, constraints, and failure modes",
+            "produce and validate a qa artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/qa/qa-manual-testing"
         },
@@ -2607,7 +3264,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply qa security testing methods within explicit qa boundaries",
+            "analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes",
+            "produce and validate a qa artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/qa/qa-security-testing"
         }
@@ -2627,7 +3288,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant backtest methods within explicit quant boundaries",
+            "analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-backtest"
         },
@@ -2639,7 +3304,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant credit risk methods within explicit quant boundaries",
+            "analyze model credit risk — pd, lgd, ead, expected loss, loss distribution, credit var — with default correlation and portfolio-level risk aggregation with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-credit-risk"
         },
@@ -2651,7 +3320,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant derivatives pricing methods within explicit quant boundaries",
+            "analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-derivatives-pricing"
         },
@@ -2663,7 +3336,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant factors methods within explicit quant boundaries",
+            "analyze define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-factors"
         },
@@ -2675,7 +3352,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant market micro methods within explicit quant boundaries",
+            "analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-market-micro"
         },
@@ -2687,7 +3368,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant portfolio opt methods within explicit quant boundaries",
+            "analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-portfolio-opt"
         },
@@ -2699,7 +3384,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply quant risk modeling methods within explicit quant boundaries",
+            "analyze model market/portfolio/credit risk (var, cvar, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events with assumptions, constraints, and failure modes",
+            "produce and validate a quant artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-risk-modeling"
         }
@@ -2720,11 +3409,9 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "GitHub discovery",
-            "repository triage",
-            "structure analysis",
-            "comparative synthesis",
-            "adaptation planning"
+            "apply github project analysis methods within explicit research boundaries",
+            "analyze research comparable projects exclusively on github and analyze their structure, decisions, and reusable patterns for an active project with assumptions, constraints, and failure modes",
+            "produce and validate a research artifact with evidence, decisions, and next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/research/github-project-analysis"
@@ -2737,7 +3424,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply research data archiving methods within explicit research boundaries",
+            "analyze archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls with assumptions, constraints, and failure modes",
+            "produce and validate a research artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/research/research-data-archiving"
         },
@@ -2749,7 +3440,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply research literature review methods within explicit research boundaries",
+            "analyze review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria with assumptions, constraints, and failure modes",
+            "produce and validate a research artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/research/research-literature-review"
         },
@@ -2761,7 +3456,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply scientific hypothesis methods within explicit research boundaries",
+            "analyze formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan with assumptions, constraints, and failure modes",
+            "produce and validate a research artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/research/scientific-hypothesis"
         }
@@ -2781,7 +3480,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply artifact handoff methods within explicit routing boundaries",
+            "analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/artifact-handoff"
         },
@@ -2794,9 +3497,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply ask to workflow",
             "produce ask to artifact",
-            "validate ask to completion criteria"
+            "validate ask to completion criteria",
+            "trace ask to decisions across inputs, constraints, and failure paths",
+            "validate routing outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/routing/ask-to"
@@ -2809,7 +3513,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply capability router methods within explicit routing boundaries",
+            "analyze route work to the best matching skill using declared capabilities and compatibility — with explicit selection rules with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/capability-router"
         },
@@ -2821,7 +3529,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply context pack methods within explicit routing boundaries",
+            "analyze build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/context-pack"
         },
@@ -2833,7 +3545,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply grill methods within explicit routing boundaries",
+            "analyze grill with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/grill"
         },
@@ -2845,7 +3561,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply grill me methods within explicit routing boundaries",
+            "analyze a relentless interview to sharpen a plan or design with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/grill-me"
         },
@@ -2857,7 +3577,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply grill with docs methods within explicit routing boundaries",
+            "analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-docs"
           ],
@@ -2871,7 +3595,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply grilling methods within explicit routing boundaries",
+            "analyze grill the user relentlessly about a plan, decision, or idea. use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/grilling"
         },
@@ -2883,7 +3611,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply handoff methods within explicit routing boundaries",
+            "analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-temp-file"
           ],
@@ -2897,7 +3629,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply knowledge curator methods within explicit routing boundaries",
+            "analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-docs"
           ],
@@ -2912,7 +3648,6 @@
           "risk": "high",
           "trustTier": "4",
           "capabilities": [
-            "consume TicketArtifact dependency graphs and dispatch topological waves",
             "isolate one implementation agent per issue through provider adapters",
             "run any argv-based coding agent and model through a portable worker profile",
             "bootstrap dependencies from project lockfiles before implementation",
@@ -2920,7 +3655,9 @@
             "fence concurrent runs with expiring per-issue claims",
             "verify landed ancestry before advancing a wave",
             "enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup",
-            "emit a validated FleetRunArtifact with per-issue ImplementArtifact references"
+            "emit a validated FleetRunArtifact with per-issue ImplementArtifact references",
+            "trace parallel issue fleet decisions across inputs, constraints, and failure paths",
+            "validate routing outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "write-files",
@@ -2943,9 +3680,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply publish open pr workflow",
             "produce publish open pr artifact",
-            "validate publish open pr completion criteria"
+            "validate publish open pr completion criteria",
+            "trace publish open pr decisions across inputs, constraints, and failure paths",
+            "validate routing outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "push-branch",
@@ -2961,7 +3699,11 @@
           "maturity": "stable",
           "risk": "high",
           "trustTier": "4",
-          "capabilities": [],
+          "capabilities": [
+            "apply ship subissue methods within explicit routing boundaries",
+            "analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "merge-pull-request",
             "close-issue",
@@ -2977,7 +3719,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply triage methods within explicit routing boundaries",
+            "analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "label-issue",
             "post-comment",
@@ -2994,7 +3740,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply wayfinder methods within explicit routing boundaries",
+            "analyze plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries with assumptions, constraints, and failure modes",
+            "produce and validate a routing artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/routing/wayfinder"
         },
@@ -3007,9 +3757,10 @@
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply work item router workflow",
             "produce work item router artifact",
-            "validate work item router completion criteria"
+            "validate work item router completion criteria",
+            "trace work item router decisions across inputs, constraints, and failure paths",
+            "validate routing outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/routing/work-item-router"
@@ -3023,10 +3774,11 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "validate GitHub issue URLs and repository scope",
             "create isolated issue worktrees atomically",
             "launch local agents in parallel",
-            "emit a machine-readable worktree manifest"
+            "emit a machine-readable worktree manifest",
+            "trace worktree swarm decisions across inputs, constraints, and failure paths",
+            "validate routing outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [
             "create-git-worktrees",
@@ -3051,7 +3803,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply cloud security methods within explicit sec boundaries",
+            "analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/cloud-security"
         },
@@ -3063,7 +3819,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply compliance methods within explicit sec boundaries",
+            "analyze compliance (soc2, iso27001, gdpr, hipaa, pci dss, audits, evidence, remediation) with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/compliance"
         },
@@ -3075,7 +3835,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply container security methods within explicit sec boundaries",
+            "analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/container-security"
         },
@@ -3087,7 +3851,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply incident forensics methods within explicit sec boundaries",
+            "analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/incident-forensics"
         },
@@ -3099,7 +3867,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply sec cryptography applied methods within explicit sec boundaries",
+            "analyze apply cryptography — encryption at rest / in transit, digital signatures, key management, macs, tls/pki, hsm, secure enclaves — with implementation guidance and anti-patterns with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/sec-cryptography-applied"
         },
@@ -3111,7 +3883,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply sec privacy engineering methods within explicit sec boundaries",
+            "analyze design privacy-protecting systems — gdpr / ccpa / hipaa compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/sec-privacy-engineering"
         },
@@ -3124,9 +3900,10 @@
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "inspect repository security boundaries end to end",
             "classify evidence-backed threats and vulnerabilities",
-            "consume code-review audit findings"
+            "consume code-review audit findings",
+            "trace sec security audit decisions across inputs, constraints, and failure paths",
+            "validate sec outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/sec/sec-security-audit"
@@ -3139,7 +3916,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply sec threat modeling methods within explicit sec boundaries",
+            "analyze design and document threat models for software / systems — assets, threats, vulnerabilities, mitigations — using stride or att&ck frameworks with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/sec-threat-modeling"
         },
@@ -3151,7 +3932,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply secret management security methods within explicit sec boundaries",
+            "analyze secrets management (vault, kms, rotation, injection, external secrets operator) with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/secret-management-security"
         },
@@ -3163,7 +3948,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply supply chain security methods within explicit sec boundaries",
+            "analyze design supply chain security — sbom, sigstore, slsa, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/supply-chain-security"
         },
@@ -3175,7 +3964,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply zero trust methods within explicit sec boundaries",
+            "analyze design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement with assumptions, constraints, and failure modes",
+            "produce and validate a sec artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/sec/zero-trust"
         }
@@ -3195,7 +3988,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply evaluate skill methods within explicit skill-dev boundaries",
+            "analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/evaluate-skill"
         },
@@ -3207,7 +4004,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply lockfile maintenance methods within explicit skill-dev boundaries",
+            "analyze maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding skill.md files are resolved with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files"
           ],
@@ -3221,7 +4022,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply rule cataloger methods within explicit skill-dev boundaries",
+            "analyze extract and classify rules across skills by type, frequency, and application area; use when auditing the repository's shared guidance with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/rule-cataloger"
         },
@@ -3233,7 +4038,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply side effect auditor methods within explicit skill-dev boundaries",
+            "analyze audit skill side-effect, risk, trust tier, dependency, and boundary metadata against the actual workflow so mutating skills declare their operational authority honestly with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/side-effect-auditor"
         },
@@ -3245,7 +4054,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill audit methods within explicit skill-dev boundaries",
+            "analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files"
           ],
@@ -3259,7 +4072,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill creator methods within explicit skill-dev boundaries",
+            "analyze interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete codex skills with skill.md, scripts, references, assets, adrs, and traceability with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files"
           ],
@@ -3273,7 +4090,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill dependency graph methods within explicit skill-dev boundaries",
+            "analyze build a dependency graph that exposes central skills, cycles, and unnecessary coupling — use when analyzing skill modularity with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-dependency-graph"
         },
@@ -3285,7 +4106,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill diff analyzer methods within explicit skill-dev boundaries",
+            "analyze compare skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two skills with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-diff-analyzer"
         },
@@ -3298,9 +4123,10 @@
           "risk": "low",
           "trustTier": "2",
           "capabilities": [
-            "score skill description routing evidence",
             "evolve description candidates reflectively",
-            "emit an apply-ready description proposal"
+            "emit an apply-ready description proposal",
+            "trace skill optimizer decisions across inputs, constraints, and failure paths",
+            "validate skill-dev outcomes with evidence, assumptions, and explicit next steps"
           ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-optimizer"
@@ -3313,7 +4139,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill performance metrics methods within explicit skill-dev boundaries",
+            "analyze summarize skill execution duration, success rate, and available run evidence — use when measuring skill performance from logs and records with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-performance-metrics"
         },
@@ -3325,7 +4155,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill promoter methods within explicit skill-dev boundaries",
+            "analyze promote validated experimental skills from the sandbox to the canonical skills bundle with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files",
             "create-symlink",
@@ -3341,7 +4175,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill quality gate methods within explicit skill-dev boundaries",
+            "analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-quality-gate"
         },
@@ -3353,7 +4191,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill sandbox methods within explicit skill-dev boundaries",
+            "analyze create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-sandbox"
         },
@@ -3365,7 +4207,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill template generator methods within explicit skill-dev boundaries",
+            "analyze generate an interactive, contract-complete skill template in the sandbox — use when starting a new skill with the lab's scaffolding with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files"
           ],
@@ -3379,7 +4225,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill testing framework methods within explicit skill-dev boundaries",
+            "analyze validate skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a skill before promotion with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [
             "write-files"
           ],
@@ -3393,7 +4243,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply skill tutor methods within explicit skill-dev boundaries",
+            "analyze interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-tutor"
         },
@@ -3405,7 +4259,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "2",
-          "capabilities": [],
+          "capabilities": [
+            "apply workflow fixture author methods within explicit skill-dev boundaries",
+            "analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/workflow-fixture-author"
         },
@@ -3417,7 +4275,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply writing great skills methods within explicit skill-dev boundaries",
+            "analyze reference for writing and editing skills well — the vocabulary and principles that make a skill predictable with assumptions, constraints, and failure modes",
+            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/writing-great-skills"
         }
@@ -3437,7 +4299,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply interaction design methods within explicit ux boundaries",
+            "analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes",
+            "produce and validate a ux artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ux/interaction-design"
         },
@@ -3449,7 +4315,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply ux accessibility methods within explicit ux boundaries",
+            "analyze design accessible ux — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns with assumptions, constraints, and failure modes",
+            "produce and validate a ux artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ux/ux-accessibility"
         },
@@ -3461,7 +4331,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply ux prototyping methods within explicit ux boundaries",
+            "analyze prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria with assumptions, constraints, and failure modes",
+            "produce and validate a ux artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ux/ux-prototyping"
         },
@@ -3473,7 +4347,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply ux research methods within explicit ux boundaries",
+            "analyze conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior with assumptions, constraints, and failure modes",
+            "produce and validate a ux artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/ux/ux-research"
         }
@@ -3493,7 +4371,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 consensus methods within explicit web3 boundaries",
+            "analyze analyse and compare consensus mechanisms — pow, pos, bft, da, based sequencing — with security properties, finality guarantees, mev, and economic incentive alignment with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-consensus"
         },
@@ -3505,7 +4387,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 defi methods within explicit web3 boundaries",
+            "analyze analyse defi protocols — amms, lending, stablecoins, derivatives, intents, solver networks — across protocol mechanics, economic security, mev protection, and composability risks with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-defi"
         },
@@ -3517,7 +4403,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 governance methods within explicit web3 boundaries",
+            "analyze design and audit on-chain and off-chain governance — token voting, delegation, quadratic voting, timelock, multisig, osnap, zodiac, eip-7702 delegation — with attack vectors and resilience analysis with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-governance"
         },
@@ -3529,7 +4419,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 l2 scaling methods within explicit web3 boundaries",
+            "analyze analyse layer-2 scaling solutions — rollups (optimistic, zk), validiums, based sequencing, shared sequencing — with security assumptions, data availability, and cost trade-offs with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-l2-scaling"
         },
@@ -3541,7 +4435,11 @@
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 smart contracts methods within explicit web3 boundaries",
+            "analyze design and review smart contracts — security, gas optimization, upgradeability, account abstraction, eip-7702 — with an adversarial review step with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-smart-contracts"
         },
@@ -3553,7 +4451,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply web3 tokenomics methods within explicit web3 boundaries",
+            "analyze design token economics — supply, emission, incentives, governance, lst/lrt, restaking, points systems — with economic sustainability checks and adversarial stress tests with assumptions, constraints, and failure modes",
+            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-tokenomics"
         }
@@ -3573,7 +4475,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply xr development methods within explicit xr boundaries",
+            "analyze design and build extended reality (ar/vr/mr) experiences — 3d interaction, spatial computing, headset development, immersive ux — with performance, comfort, and accessibility as first-class concerns with assumptions, constraints, and failure modes",
+            "produce and validate a xr artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/xr/xr-development"
         },
@@ -3585,7 +4491,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply xr interaction design methods within explicit xr boundaries",
+            "analyze design xr interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability with assumptions, constraints, and failure modes",
+            "produce and validate a xr artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/xr/xr-interaction-design"
         },
@@ -3597,7 +4507,11 @@
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
-          "capabilities": [],
+          "capabilities": [
+            "apply xr performance methods within explicit xr boundaries",
+            "analyze optimize xr performance — frame rate, motion-to-photon latency, asset budgets, and thermal constraints — with comfort-aware trade-offs with assumptions, constraints, and failure modes",
+            "produce and validate a xr artifact with evidence, decisions, and next steps"
+          ],
           "sideEffects": [],
           "path": ".agents/skills/xr/xr-performance"
         }

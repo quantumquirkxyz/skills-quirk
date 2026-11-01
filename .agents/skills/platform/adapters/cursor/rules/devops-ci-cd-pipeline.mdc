@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the devops-ci-cd-pipeline skill when the request matches its scope.
 
 Capabilities:
-- apply the devops-ci-cd-pipeline workflow
+- apply devops ci cd pipeline methods within explicit devops boundaries
+- analyze design ci/cd pipelines — build, test, security scan, deploy, rollback — with reproducible steps, environment parity, and deployment gates with assumptions, constraints, and failure modes
+- produce and validate a devops artifact with evidence, decisions, and next steps
 
 Stop when: Pipeline file saved; gate rules documented; rollback plan present.

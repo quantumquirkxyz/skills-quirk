@@ -8,9 +8,10 @@ alwaysApply: false
 Apply the mcp-server skill when the request matches its scope.
 
 Capabilities:
-- expose-skills-as-mcp-tools
 - generate-skill-resources
 - generate-workflow-prompts
 - configure-transport
+- trace mcp server decisions across inputs, constraints, and failure paths
+- validate foundation outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: MCP server configured with tools, resources, and prompts generated; transport exposed; artifact saved; completion criteria checked.

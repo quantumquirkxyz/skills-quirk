@@ -32,7 +32,9 @@ Design and execute performance tests — load, stress, soak, spike — to valida
 
 ## Capabilities
 
-None declared.
+- `apply performance testing methods within explicit qa boundaries`
+- `analyze design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions with assumptions, constraints, and failure modes`
+- `produce and validate a qa artifact with evidence, decisions, and next steps`
 
 ## Tags
 

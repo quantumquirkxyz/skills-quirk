@@ -32,7 +32,9 @@ Analyse market microstructure — order book dynamics, price formation, executio
 
 ## Capabilities
 
-None declared.
+- `apply quant market micro methods within explicit quant boundaries`
+- `analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes`
+- `produce and validate a quant artifact with evidence, decisions, and next steps`
 
 ## Tags
 

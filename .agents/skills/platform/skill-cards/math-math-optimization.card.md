@@ -32,7 +32,9 @@ Formulate and solve optimization problems (linear, convex, non-convex, combinato
 
 ## Capabilities
 
-None declared.
+- `apply math optimization methods within explicit math boundaries`
+- `analyze formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

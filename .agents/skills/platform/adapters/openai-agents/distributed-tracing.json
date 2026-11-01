@@ -1,6 +1,6 @@
 {
   "name": "distributed-tracing",
-  "instructions": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).\n\nCapabilities:\n- apply the distributed-tracing workflow\n\nCanonical skill: .agents/skills/backend/distributed-tracing/SKILL.md",
+  "instructions": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).\n\nCapabilities:\n- apply distributed tracing methods within explicit backend boundaries\n- analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes\n- produce and validate a backend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/backend/distributed-tracing/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Distributed tracing design complete; artifact saved; completion criteria checked.",

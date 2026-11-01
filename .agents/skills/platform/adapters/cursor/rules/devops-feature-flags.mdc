@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the devops-feature-flags skill when the request matches its scope.
 
 Capabilities:
-- apply the devops-feature-flags workflow
+- apply devops feature flags methods within explicit devops boundaries
+- analyze design feature flag systems — gradual rollouts, a/b experiments, kill switches, targeting rules — with lifecycle management and operational runbooks with assumptions, constraints, and failure modes
+- produce and validate a devops artifact with evidence, decisions, and next steps
 
 Stop when: Lifecycle documented; targeting rules defined; flag inventory saved.

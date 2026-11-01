@@ -32,7 +32,9 @@ Perform manual test sessions — exploratory checks, edge cases, accessibility, 
 
 ## Capabilities
 
-None declared.
+- `apply qa manual testing methods within explicit qa boundaries`
+- `analyze perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes with assumptions, constraints, and failure modes`
+- `produce and validate a qa artifact with evidence, decisions, and next steps`
 
 ## Tags
 

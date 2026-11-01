@@ -32,7 +32,9 @@ Solve numerical and symbolic math problems (root finding, integration, ODEs, sym
 
 ## Capabilities
 
-None declared.
+- `apply math computational methods within explicit math boundaries`
+- `analyze solve numerical and symbolic math problems (root finding, integration, odes, symbolic manipulation) with stable algorithms and explicit error analysis with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

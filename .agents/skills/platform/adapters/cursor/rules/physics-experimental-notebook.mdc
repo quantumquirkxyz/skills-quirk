@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the physics-experimental-notebook skill when the request matches its scope.
 
 Capabilities:
-- apply the physics-experimental-notebook workflow
+- apply physics experimental notebook methods within explicit physics boundaries
+- analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes
+- produce and validate a physics artifact with evidence, decisions, and next steps
 
 Stop when: Notebook entry saved with all sections; calibration and error analysis complete; FAIR checklist filled.

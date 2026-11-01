@@ -1,6 +1,6 @@
 {
   "name": "execution-policy",
-  "instructions": "Decide whether a Skill action is allowed, requires approval, or must stop.\n\nCapabilities:\n- apply the execution-policy workflow\n\nCanonical skill: .agents/skills/auxiliary/execution-policy/SKILL.md",
+  "instructions": "Decide whether a Skill action is allowed, requires approval, or must stop.\n\nCapabilities:\n- apply execution policy methods within explicit auxiliary boundaries\n- analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes\n- produce and validate a auxiliary artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/auxiliary/execution-policy/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "The action is allowed or blocked with reason, approval requirement is clear, and rollback is named.",

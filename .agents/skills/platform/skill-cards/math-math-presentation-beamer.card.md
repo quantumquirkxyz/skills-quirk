@@ -32,7 +32,9 @@ Design mathematics presentations — Beamer slides with TikZ diagrams, colour ac
 
 ## Capabilities
 
-None declared.
+- `apply math presentation beamer methods within explicit math boundaries`
+- `analyze design mathematics presentations — beamer slides with tikz diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

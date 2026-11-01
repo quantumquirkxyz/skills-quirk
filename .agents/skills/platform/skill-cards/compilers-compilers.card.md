@@ -32,7 +32,9 @@ Design and implement compilers and interpreters — lexer, parser, AST, type che
 
 ## Capabilities
 
-None declared.
+- `apply compilers methods within explicit compilers boundaries`
+- `analyze design and implement compilers and interpreters — lexer, parser, ast, type checking, code generation, optimization — with correctness and modularity with assumptions, constraints, and failure modes`
+- `produce and validate a compilers artifact with evidence, decisions, and next steps`
 
 ## Tags
 

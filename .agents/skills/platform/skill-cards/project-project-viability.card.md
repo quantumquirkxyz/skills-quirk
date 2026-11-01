@@ -32,7 +32,10 @@ Evaluate whether a project is viable, functional, and scalable by analyzing its 
 
 ## Capabilities
 
-None declared.
+- `evaluate functional, architectural, and growth risks`
+- `consume repository audit findings`
+- `trace project viability decisions across inputs, constraints, and failure paths`
+- `validate project outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -74,7 +77,8 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [improve-codebase-architecture](engineering-improve-codebase-architecture.card.md)
 
 ## Agent card
 
@@ -84,6 +88,7 @@ None declared.
 
 - In scope: the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `improve-codebase-architecture`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

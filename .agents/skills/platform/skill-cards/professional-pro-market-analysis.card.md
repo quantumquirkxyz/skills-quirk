@@ -32,7 +32,9 @@ Conduct professional market research — TAM/SAM/SOM, competitor analysis, prici
 
 ## Capabilities
 
-None declared.
+- `apply pro market analysis methods within explicit professional boundaries`
+- `analyze conduct professional market research — tam/sam/som, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing with assumptions, constraints, and failure modes`
+- `produce and validate a professional artifact with evidence, decisions, and next steps`
 
 ## Tags
 

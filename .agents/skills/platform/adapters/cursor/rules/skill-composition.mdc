@@ -8,9 +8,10 @@ alwaysApply: false
 Apply the skill-composition skill when the request matches its scope.
 
 Capabilities:
-- declare a skill chain as producer-consumer edges
 - verify artifact compatibility at each edge before execution
 - run a chain inside a declared iteration and cost budget
 - report per-edge handoff evidence for the chain
+- trace skill composition decisions across inputs, constraints, and failure paths
+- validate foundation outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Every edge in the chain passed its artifact compatibility check and the chain stayed inside its declared budget.

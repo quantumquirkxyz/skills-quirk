@@ -32,7 +32,9 @@ Run and interpret the skill bundle quality gate across schema, lockfile, semanti
 
 ## Capabilities
 
-None declared.
+- `apply skill quality gate methods within explicit skill-dev boundaries`
+- `analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

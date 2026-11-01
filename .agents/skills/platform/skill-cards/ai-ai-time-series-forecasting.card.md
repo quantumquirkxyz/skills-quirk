@@ -32,7 +32,9 @@ Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, L
 
 ## Capabilities
 
-None declared.
+- `apply ai time series forecasting methods within explicit ai boundaries`
+- `analyze design and evaluate time-series forecasting — arima, prophet, neuralprophet, lstm, transformer — with stationarity analysis, seasonality, exogenous variables, and backtest with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

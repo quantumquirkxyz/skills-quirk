@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the writing-great-skills skill when the request matches its scope.
 
 Capabilities:
-- apply the writing-great-skills workflow
+- apply writing great skills methods within explicit skill-dev boundaries
+- analyze reference for writing and editing skills well — the vocabulary and principles that make a skill predictable with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Reference for writing and editing skills well complete; artifact saved; completion criteria checked.

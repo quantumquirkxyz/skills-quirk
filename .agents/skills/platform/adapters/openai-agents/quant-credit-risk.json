@@ -1,6 +1,6 @@
 {
   "name": "quant-credit-risk",
-  "instructions": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.\n\nCapabilities:\n- apply the quant-credit-risk workflow\n\nCanonical skill: .agents/skills/quant/quant-credit-risk/SKILL.md",
+  "instructions": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.\n\nCapabilities:\n- apply quant credit risk methods within explicit quant boundaries\n- analyze model credit risk — pd, lgd, ead, expected loss, loss distribution, credit var — with default correlation and portfolio-level risk aggregation with assumptions, constraints, and failure modes\n- produce and validate a quant artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/quant/quant-credit-risk/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Model credit risk complete; required sections present; completion criteria checked.",

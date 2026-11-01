@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the data-versioning skill when the request matches its scope.
 
 Capabilities:
-- apply the data-versioning workflow
+- apply data versioning methods within explicit data boundaries
+- analyze data versioning (dvc, lakefs, delta tables, snapshotting, reproducibility) with assumptions, constraints, and failure modes
+- produce and validate a data artifact with evidence, decisions, and next steps
 
 Stop when: Versioning strategy saved; branching workflow defined; reproducibility plan documented.

@@ -1,6 +1,6 @@
 # Skill cards (generated)
 
-One Markdown card per bundle skill: 246 cards in this directory.
+One Markdown card per bundle skill: 255 cards in this directory.
 These files and this index are GENERATED. Do not edit them by hand; regenerate with:
 
     node .agents/skills/platform/scripts/build-skill-dashboard.mjs --write
@@ -114,13 +114,16 @@ and the non-goals derived from the declared trigger.
 | [`finance/finance-portfolio-theory`](finance-finance-portfolio-theory.card.md) | finance | low | 1 | reasoning | - | ok |
 | [`foundation/agent-canvas`](foundation-agent-canvas.card.md) | foundation | low | 2 | fast | beh | ok |
 | [`foundation/agent-card`](foundation-agent-card.card.md) | foundation | low | 1 | router | beh reg | ok |
+| [`foundation/agent-memory`](foundation-agent-memory.card.md) | foundation | low | 2 | fast | beh | ok |
 | [`foundation/agent-observability`](foundation-agent-observability.card.md) | foundation | low | 2 | fast | - | ok |
 | [`foundation/api-design`](foundation-api-design.card.md) | foundation | low | 1 | reasoning | beh | ok |
 | [`foundation/codebase-design`](foundation-codebase-design.card.md) | foundation | low | 1 | reasoning | beh | ok |
+| [`foundation/context-compaction`](foundation-context-compaction.card.md) | foundation | low | 2 | fast | beh | ok |
 | [`foundation/context-engine`](foundation-context-engine.card.md) | foundation | low | 2 | fast | beh | ok |
 | [`foundation/domain-modeling`](foundation-domain-modeling.card.md) | foundation | low | 1 | reasoning | beh | ok |
 | [`foundation/mcp-server`](foundation-mcp-server.card.md) | foundation | low | 1 | router | beh reg | ok |
 | [`foundation/observability`](foundation-observability.card.md) | foundation | low | 1 | reasoning | beh | ok |
+| [`foundation/skill-composition`](foundation-skill-composition.card.md) | foundation | medium | 3 | reasoning | beh | ok |
 | [`foundation/subagent-swarm`](foundation-subagent-swarm.card.md) | foundation | medium | 3 | reasoning | beh | ok |
 | [`foundation/verify-delegation`](foundation-verify-delegation.card.md) | foundation | low | 2 | reasoning | - | ok |
 | [`frontend/astro`](frontend-astro.card.md) | frontend | low | 1 | reasoning | - | ok |
@@ -147,6 +150,7 @@ and the non-goals derived from the declared trigger.
 | [`graphic-design/graphic-design-tools`](graphic-design-graphic-design-tools.card.md) | graphic-design | medium | 3 | reasoning | - | ok |
 | [`integrations/api-contracts`](integrations-api-contracts.card.md) | integrations | low | 1 | reasoning | - | ok |
 | [`integrations/auth`](integrations-auth.card.md) | integrations | medium | 3 | reasoning | beh | ok |
+| [`integrations/browser-automation`](integrations-browser-automation.card.md) | integrations | medium | 3 | reasoning | beh | ok |
 | [`integrations/issue-operations`](integrations-issue-operations.card.md) | integrations | medium | 3 | reasoning | beh | ok |
 | [`integrations/payments`](integrations-payments.card.md) | integrations | medium | 3 | reasoning | beh | ok |
 | [`integrations/pr-operations`](integrations-pr-operations.card.md) | integrations | medium | 3 | reasoning | beh | ok |
@@ -183,6 +187,7 @@ and the non-goals derived from the declared trigger.
 | [`physics/physics-talk-design`](physics-physics-talk-design.card.md) | physics | low | 1 | reasoning | - | ok |
 | [`physics/physics-thermo`](physics-physics-thermo.card.md) | physics | low | 1 | reasoning | - | ok |
 | [`physics/physics-writing-revtex`](physics-physics-writing-revtex.card.md) | physics | low | 1 | reasoning | - | ok |
+| [`product/brainstorming`](product-brainstorming.card.md) | product | low | 1 | reasoning | - | ok |
 | [`product/prod-ab-testing`](product-prod-ab-testing.card.md) | product | medium | 3 | reasoning | beh | ok |
 | [`product/prod-okr-planning`](product-prod-okr-planning.card.md) | product | low | 1 | reasoning | - | ok |
 | [`product/prod-prd-writing`](product-prod-prd-writing.card.md) | product | low | 1 | reasoning | - | ok |
@@ -194,6 +199,7 @@ and the non-goals derived from the declared trigger.
 | [`project/make-project`](project-make-project.card.md) | project | medium | 3 | reasoning | beh | ok |
 | [`project/project-development`](project-project-development.card.md) | project | low | 1 | reasoning | - | ok |
 | [`project/project-viability`](project-project-viability.card.md) | project | low | 1 | reasoning | beh | ok |
+| [`project/spec-driven-development`](project-spec-driven-development.card.md) | project | medium | 3 | reasoning | beh | ok |
 | [`project/to-spec`](project-to-spec.card.md) | project | medium | 3 | reasoning | beh reg neg | ok |
 | [`project/to-tickets`](project-to-tickets.card.md) | project | medium | 3 | reasoning | beh reg neg | ok |
 | [`qa/performance-testing`](qa-performance-testing.card.md) | qa | low | 1 | reasoning | - | ok |
@@ -207,6 +213,7 @@ and the non-goals derived from the declared trigger.
 | [`quant/quant-market-micro`](quant-quant-market-micro.card.md) | quant | low | 1 | reasoning | - | ok |
 | [`quant/quant-portfolio-opt`](quant-quant-portfolio-opt.card.md) | quant | low | 1 | reasoning | - | ok |
 | [`quant/quant-risk-modeling`](quant-quant-risk-modeling.card.md) | quant | low | 1 | reasoning | - | ok |
+| [`research/github-project-analysis`](research-github-project-analysis.card.md) | research | medium | 3 | reasoning | - | ok |
 | [`research/research-data-archiving`](research-research-data-archiving.card.md) | research | low | 1 | reasoning | - | ok |
 | [`research/research-literature-review`](research-research-literature-review.card.md) | research | low | 1 | reasoning | - | ok |
 | [`research/scientific-hypothesis`](research-scientific-hypothesis.card.md) | research | low | 1 | reasoning | - | ok |
@@ -220,11 +227,13 @@ and the non-goals derived from the declared trigger.
 | [`routing/grilling`](routing-grilling.card.md) | routing | low | 1 | router | - | ok |
 | [`routing/handoff`](routing-handoff.card.md) | routing | low | 2 | router | - | ok |
 | [`routing/knowledge-curator`](routing-knowledge-curator.card.md) | routing | low | 2 | router | - | ok |
+| [`routing/parallel-issue-fleet`](routing-parallel-issue-fleet.card.md) | routing | high | 4 | reasoning | - | ok |
 | [`routing/publish-open-pr`](routing-publish-open-pr.card.md) | routing | medium | 3 | router | beh | ok |
 | [`routing/ship-subissue`](routing-ship-subissue.card.md) | routing | high | 4 | router | beh neg | ok |
 | [`routing/triage`](routing-triage.card.md) | routing | medium | 3 | router | beh | ok |
 | [`routing/wayfinder`](routing-wayfinder.card.md) | routing | low | 1 | router | - | ok |
 | [`routing/work-item-router`](routing-work-item-router.card.md) | routing | low | 1 | router | beh reg neg | ok |
+| [`routing/worktree-swarm`](routing-worktree-swarm.card.md) | routing | medium | 3 | reasoning | - | ok |
 | [`sec/cloud-security`](sec-cloud-security.card.md) | sec | medium | 3 | reasoning | beh | ok |
 | [`sec/compliance`](sec-compliance.card.md) | sec | medium | 3 | reasoning | beh | ok |
 | [`sec/container-security`](sec-container-security.card.md) | sec | medium | 3 | reasoning | beh | ok |
@@ -270,12 +279,12 @@ and the non-goals derived from the declared trigger.
 
 ## Totals
 
-- Skills: 246 across 35 domains.
-- Risk: low 176, medium 69, high 1.
-- Trust tiers: 156 / 20 / 69 / 1 for tiers 1 to 4.
-- Skills with a declared side effect: 24; requiring approval: 70.
-- Behavioral fixture: 84 of 246; regression fixture: 12 of 246; routing negative controls: 13 of 246.
-- Runtime manifests: 246 present, 0 missing, 0 stale.
+- Skills: 255 across 35 domains.
+- Risk: low 179, medium 74, high 2.
+- Trust tiers: 157 / 22 / 74 / 2 for tiers 1 to 4.
+- Skills with a declared side effect: 34; requiring approval: 82.
+- Behavioral fixture: 89 of 255; regression fixture: 12 of 255; routing negative controls: 13 of 255.
+- Runtime manifests: 255 present, 0 missing, 0 stale.
 
 Legend - fixtures: `beh` behavioral, `reg` regression, `neg` routing negative controls, `-` none.
 Manifest: `ok` fresh, `stale` behind its `SKILL.md` frontmatter hash, `missing` not generated.

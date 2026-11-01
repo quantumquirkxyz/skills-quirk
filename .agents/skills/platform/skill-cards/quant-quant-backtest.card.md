@@ -32,7 +32,9 @@ Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime 
 
 ## Capabilities
 
-None declared.
+- `apply quant backtest methods within explicit quant boundaries`
+- `analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes`
+- `produce and validate a quant artifact with evidence, decisions, and next steps`
 
 ## Tags
 

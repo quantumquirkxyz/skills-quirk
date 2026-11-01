@@ -32,7 +32,9 @@ Design and configure Kubernetes orchestration — cluster architecture, deployme
 
 ## Capabilities
 
-None declared.
+- `apply devops k8s orchestration methods within explicit devops boundaries`
+- `analyze design and configure kubernetes orchestration — cluster architecture, deployment strategies, service mesh, observability, auto-scaling, security policies — with reproducible infrastructure with assumptions, constraints, and failure modes`
+- `produce and validate a devops artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -1,6 +1,6 @@
 {
   "name": "structured-output",
-  "instructions": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)\n\nCapabilities:\n- apply the structured-output workflow\n\nCanonical skill: .agents/skills/ai/structured-output/SKILL.md",
+  "instructions": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)\n\nCapabilities:\n- apply structured output methods within explicit ai boundaries\n- analyze structured output for llms (json mode, function calling, constrained decoding, validation) with assumptions, constraints, and failure modes\n- produce and validate a ai artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/ai/structured-output/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Structured output green on acceptance suite with validation harness.",

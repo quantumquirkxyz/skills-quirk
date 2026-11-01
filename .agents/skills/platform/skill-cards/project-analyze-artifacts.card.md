@@ -16,7 +16,7 @@ of the bundle. Regenerate every card with:
 
 ## Description
 
-Analyze the spec, plan, and ticket artifacts of one work item for consistency and emit a read-only report of conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts alone cannot resolve it. Use when a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits or fixes the artifacts it reads.
+Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.
 
 ## Risk and execution
 
@@ -33,9 +33,10 @@ Analyze the spec, plan, and ticket artifacts of one work item for consistency an
 
 ## Capabilities
 
-- `index requirements across spec plan and ticket artifacts`
 - `classify consistency findings by evidence`
 - `emit a read-only artifact consistency report`
+- `trace analyze artifacts decisions across inputs, constraints, and failure paths`
+- `validate project outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -131,7 +132,7 @@ None declared.
 
 ## Non-goals / when not to use
 
-- In scope: a spec and its tickets may have drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict.
+- In scope: a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict.
 - Out of scope: requests that do not match that declared trigger.
 - When the request belongs to `to-spec`, `to-tickets`, `review-pr`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.

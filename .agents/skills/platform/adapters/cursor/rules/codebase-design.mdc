@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the codebase-design skill when the request matches its scope.
 
 Capabilities:
-- apply codebase design workflow
 - produce codebase design artifact
 - validate codebase design completion criteria
+- trace codebase design decisions across inputs, constraints, and failure paths
+- validate foundation outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Shared vocabulary for designing deep modules complete; artifact saved; completion criteria checked.

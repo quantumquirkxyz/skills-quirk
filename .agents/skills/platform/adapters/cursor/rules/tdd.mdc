@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the tdd skill when the request matches its scope.
 
 Capabilities:
-- apply tdd workflow
 - produce tdd artifact
 - validate tdd completion criteria
+- trace tdd decisions across inputs, constraints, and failure paths
+- validate delivery outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Test-driven development complete; structured result returned; completion criteria checked.

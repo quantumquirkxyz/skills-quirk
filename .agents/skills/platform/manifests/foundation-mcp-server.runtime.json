@@ -2,7 +2,7 @@
   "skill": "foundation/mcp-server",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "5c835e7902f96f966f6f69a9e75a2d8830c92c1281a6e15ba2c8c443e7969216",
+  "frontmatterHash": "ebcad9fe81bdfcc56992056abd0ff8b0c81a1335d00cf6a295d41395f84497af",
   "role": "workflow",
   "router": {
     "positive": [],

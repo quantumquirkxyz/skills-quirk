@@ -1,6 +1,6 @@
 {
   "name": "handoff",
-  "instructions": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.\n\nCapabilities:\n- apply the handoff workflow\n\nCanonical skill: .agents/skills/routing/handoff/SKILL.md",
+  "instructions": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.\n\nCapabilities:\n- apply handoff methods within explicit routing boundaries\n- analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes\n- produce and validate a routing artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/routing/handoff/SKILL.md",
   "model": "gpt-5.1",
   "tools": [],
   "handoff_description": "Compact the current conversation into a handoff document for another agent to pick up complete; artifact saved; completion criteria checked.",

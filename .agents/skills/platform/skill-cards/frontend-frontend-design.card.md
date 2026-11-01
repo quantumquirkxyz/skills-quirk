@@ -32,7 +32,10 @@ Shape frontend work into a clear visual system, interaction model, and implement
 
 ## Capabilities
 
-None declared.
+- `identify loading, empty, error, and success state gaps`
+- `consume code-review audit findings`
+- `trace frontend design decisions across inputs, constraints, and failure paths`
+- `validate frontend outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -80,7 +83,9 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [interaction-design](ux-interaction-design.card.md)
+- [accessibility-design](accessibility-accessibility-design.card.md)
 
 ## Agent card
 
@@ -90,6 +95,7 @@ None declared.
 
 - In scope: Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `interaction-design`, `accessibility-design`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

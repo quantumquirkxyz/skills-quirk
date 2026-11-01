@@ -32,7 +32,9 @@ Define the logs, metrics, traces, and alerts needed to understand a system in pr
 
 ## Capabilities
 
-None declared.
+- `apply observability methods within explicit foundation boundaries`
+- `analyze define the logs, metrics, traces, and alerts needed to understand a system in production — with slis, slos, dashboards, alert rules, and incident runbooks with assumptions, constraints, and failure modes`
+- `produce and validate a foundation artifact with evidence, decisions, and next steps`
 
 ## Tags
 

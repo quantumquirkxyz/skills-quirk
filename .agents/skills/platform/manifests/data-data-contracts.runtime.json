@@ -2,7 +2,7 @@
   "skill": "data/data-contracts",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "33717ae167ebd73b23c46e9165299d3ace3d0db19b8b511cd3caed3707bb0981",
+  "frontmatterHash": "d8ed263a8823d6381756b99c5cd781625862da7b914bd57051aa794cd2d719b6",
   "role": "workflow",
   "router": {
     "positive": [],

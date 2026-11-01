@@ -2,7 +2,7 @@
   "skill": "ai/llmops",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0dcf98a72226d40975e74c3e4ccaafa14a5851aa5c5f45ac3355e9b80c298ed4",
+  "frontmatterHash": "2991d01b739e6a4e1d5eaf8831548aaa81c18b2bd11002130794d1d0cd5f6fd6",
   "role": "workflow",
   "router": {
     "positive": [],

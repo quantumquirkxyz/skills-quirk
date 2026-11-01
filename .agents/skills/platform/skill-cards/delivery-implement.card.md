@@ -33,9 +33,10 @@ Implement a piece of work based on a spec or set of tickets, or build a scoped f
 
 ## Capabilities
 
-- `apply implement workflow`
 - `produce implement artifact`
 - `validate implement completion criteria`
+- `trace implement decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

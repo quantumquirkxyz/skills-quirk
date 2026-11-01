@@ -32,7 +32,9 @@ Manage graphic design projects — briefs, iterations, reviews, asset handoff, v
 
 ## Capabilities
 
-None declared.
+- `apply graphic design project management methods within explicit graphic-design boundaries`
+- `analyze manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

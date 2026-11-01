@@ -32,7 +32,9 @@ Decide whether a Skill action is allowed, requires approval, or must stop.
 
 ## Capabilities
 
-None declared.
+- `apply execution policy methods within explicit auxiliary boundaries`
+- `analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes`
+- `produce and validate a auxiliary artifact with evidence, decisions, and next steps`
 
 ## Tags
 

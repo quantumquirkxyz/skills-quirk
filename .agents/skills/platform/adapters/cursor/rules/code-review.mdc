@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the code-review skill when the request matches its scope.
 
 Capabilities:
-- audit repository-wide or scoped code behavior
 - verify logic against the user's stated objective
 - produce an evidence-backed repository audit artifact
+- trace code review decisions across inputs, constraints, and failure paths
+- validate delivery outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Repository or scoped audit complete; evidence-backed structured result returned; limitations and completion criteria checked.

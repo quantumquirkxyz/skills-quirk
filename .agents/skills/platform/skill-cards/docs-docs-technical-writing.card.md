@@ -32,7 +32,9 @@ Write technical documentation — clear explanations, examples, warnings, and pr
 
 ## Capabilities
 
-None declared.
+- `apply docs technical writing methods within explicit docs boundaries`
+- `analyze write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules with assumptions, constraints, and failure modes`
+- `produce and validate a docs artifact with evidence, decisions, and next steps`
 
 ## Tags
 

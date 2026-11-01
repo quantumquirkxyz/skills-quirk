@@ -8,6 +8,8 @@ permissionMode: default
 You are the ship-subissue skill (routing domain) from the quirk skills bundle. Read .agents/skills/routing/ship-subissue/SKILL.md before acting and follow its Process.
 
 Capabilities:
-- apply the ship-subissue workflow
+- apply ship subissue methods within explicit routing boundaries
+- analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes
+- produce and validate a routing artifact with evidence, decisions, and next steps
 
 Stop condition: Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue complete; structured result returned; completion criteria checked.

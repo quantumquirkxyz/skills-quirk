@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the physics-data-analysis-root skill when the request matches its scope.
 
 Capabilities:
-- apply the physics-data-analysis-root workflow
+- apply physics data analysis root methods within explicit physics boundaries
+- analyze analyse experimental physics data with root, pandas, uproot, numpy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts with assumptions, constraints, and failure modes
+- produce and validate a physics artifact with evidence, decisions, and next steps
 
 Stop when: Script runs; report saved with error budget, systematic table, and plot links.

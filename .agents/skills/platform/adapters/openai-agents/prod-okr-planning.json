@@ -1,6 +1,6 @@
 {
   "name": "prod-okr-planning",
-  "instructions": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.\n\nCapabilities:\n- apply the prod-okr-planning workflow\n\nCanonical skill: .agents/skills/product/prod-okr-planning/SKILL.md",
+  "instructions": "Design OKR cycles — Objectives, Key Results, initiatives — with measurable outcomes, quarterly cadences, and team alignment.\n\nCapabilities:\n- apply prod okr planning methods within explicit product boundaries\n- analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes\n- produce and validate a product artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/product/prod-okr-planning/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "OKR document saved; initiatives mapped to KRs; progress tracker template ready.",

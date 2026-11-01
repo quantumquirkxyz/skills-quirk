@@ -32,7 +32,10 @@ Design and implement automated test suites — unit, integration, e2e — with p
 
 ## Capabilities
 
-None declared.
+- `design regression coverage from audit evidence`
+- `distinguish coverage gaps from functional defects`
+- `trace qa automation decisions across inputs, constraints, and failure paths`
+- `validate qa outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -74,7 +77,9 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [testing](delivery-testing.card.md)
+- [tdd](delivery-tdd.card.md)
 
 ## Agent card
 
@@ -84,6 +89,7 @@ None declared.
 
 - In scope: Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `testing`, `tdd`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

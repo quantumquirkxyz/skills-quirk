@@ -1,6 +1,6 @@
 {
   "name": "serverless",
-  "instructions": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).\n\nCapabilities:\n- apply the serverless workflow\n\nCanonical skill: .agents/skills/backend/serverless/SKILL.md",
+  "instructions": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).\n\nCapabilities:\n- apply serverless methods within explicit backend boundaries\n- analyze serverless architecture (lambda, functions, faas, event-driven, cold starts, scaling, cost) with assumptions, constraints, and failure modes\n- produce and validate a backend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/backend/serverless/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Serverless architecture, event sources, scaling behavior, and cost model are explicit.",

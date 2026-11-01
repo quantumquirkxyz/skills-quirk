@@ -32,7 +32,9 @@ Design and analyze network infrastructure — TCP/IP, routing, DNS, load balanci
 
 ## Capabilities
 
-None declared.
+- `apply networking methods within explicit networking boundaries`
+- `analyze design and analyze network infrastructure — tcp/ip, routing, dns, load balancing, firewalls, vpns, network security — with explicit assumptions about latency, bandwidth, and failure modes with assumptions, constraints, and failure modes`
+- `produce and validate a networking artifact with evidence, decisions, and next steps`
 
 ## Tags
 

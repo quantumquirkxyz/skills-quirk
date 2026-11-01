@@ -32,7 +32,9 @@ Design user interactions — task flows, screen states, transitions, error state
 
 ## Capabilities
 
-None declared.
+- `apply interaction design methods within explicit ux boundaries`
+- `analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes`
+- `produce and validate a ux artifact with evidence, decisions, and next steps`
 
 ## Tags
 

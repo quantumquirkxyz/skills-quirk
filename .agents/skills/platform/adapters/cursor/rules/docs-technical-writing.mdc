@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the docs-technical-writing skill when the request matches its scope.
 
 Capabilities:
-- apply the docs-technical-writing workflow
+- apply docs technical writing methods within explicit docs boundaries
+- analyze write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules with assumptions, constraints, and failure modes
+- produce and validate a docs artifact with evidence, decisions, and next steps
 
 Stop when: The document is clear for its audience, complete for its scope, and maintainable.

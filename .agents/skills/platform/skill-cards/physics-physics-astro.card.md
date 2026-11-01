@@ -32,7 +32,9 @@ Model astrophysical systems — stellar structure, orbital dynamics, cosmology, 
 
 ## Capabilities
 
-None declared.
+- `apply physics astro methods within explicit physics boundaries`
+- `analyze model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

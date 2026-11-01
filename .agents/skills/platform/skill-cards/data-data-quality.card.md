@@ -32,7 +32,9 @@ Design data quality frameworks — Great Expectations, Soda, checks, observabili
 
 ## Capabilities
 
-None declared.
+- `apply data quality methods within explicit data boundaries`
+- `analyze design data quality frameworks — great expectations, soda, checks, observability, contracts — with explicit slas, freshness rules, and incident response for bad data with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Design and analyse algorithms — correctness proof, complexity analysis (time a
 
 ## Capabilities
 
-None declared.
+- `apply cs algorithms methods within explicit cs boundaries`
+- `analyze design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination with assumptions, constraints, and failure modes`
+- `produce and validate a cs artifact with evidence, decisions, and next steps`
 
 ## Tags
 

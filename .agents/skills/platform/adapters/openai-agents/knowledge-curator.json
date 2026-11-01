@@ -1,6 +1,6 @@
 {
   "name": "knowledge-curator",
-  "instructions": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.\n\nCapabilities:\n- apply the knowledge-curator workflow\n\nCanonical skill: .agents/skills/routing/knowledge-curator/SKILL.md",
+  "instructions": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.\n\nCapabilities:\n- apply knowledge curator methods within explicit routing boundaries\n- analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes\n- produce and validate a routing artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/routing/knowledge-curator/SKILL.md",
   "model": "gpt-5.1",
   "tools": [],
   "handoff_description": "Keep context, ADRs, registry entries, and research coherent over time complete; artifact saved; completion criteria checked.",

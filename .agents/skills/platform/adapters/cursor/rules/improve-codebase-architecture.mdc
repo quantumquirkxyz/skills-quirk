@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the improve-codebase-architecture skill when the request matches its scope.
 
 Capabilities:
-- identify evidence-backed architectural seams
 - distinguish confirmed design defects from improvement opportunities
 - consume repository audit findings
+- trace improve codebase architecture decisions across inputs, constraints, and failure paths
+- validate engineering outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Report generated and a candidate is selected or explicitly deferred.

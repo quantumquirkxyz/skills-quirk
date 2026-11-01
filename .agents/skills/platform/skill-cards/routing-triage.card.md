@@ -32,7 +32,9 @@ Move issues and external PRs through a state machine of triage roles — categor
 
 ## Capabilities
 
-None declared.
+- `apply triage methods within explicit routing boundaries`
+- `analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Prototype user experiences — wireframes, interactive mockups, and rapid valida
 
 ## Capabilities
 
-None declared.
+- `apply ux prototyping methods within explicit ux boundaries`
+- `analyze prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria with assumptions, constraints, and failure modes`
+- `produce and validate a ux artifact with evidence, decisions, and next steps`
 
 ## Tags
 

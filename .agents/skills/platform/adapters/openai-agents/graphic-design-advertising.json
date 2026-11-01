@@ -1,6 +1,6 @@
 {
   "name": "graphic-design-advertising",
-  "instructions": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.\n\nCapabilities:\n- apply the graphic-design-advertising workflow\n\nCanonical skill: .agents/skills/graphic-design/graphic-design-advertising/SKILL.md",
+  "instructions": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.\n\nCapabilities:\n- apply graphic design advertising methods within explicit graphic-design boundaries\n- analyze design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules with assumptions, constraints, and failure modes\n- produce and validate a graphic-design artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/graphic-design/graphic-design-advertising/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules. complete; structured result returned; completion criteria checked.",

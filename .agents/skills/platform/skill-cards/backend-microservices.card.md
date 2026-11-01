@@ -32,7 +32,9 @@ Design microservice architectures — service decomposition, inter-service commu
 
 ## Capabilities
 
-None declared.
+- `apply microservices methods within explicit backend boundaries`
+- `analyze design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

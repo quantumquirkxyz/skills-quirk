@@ -32,7 +32,9 @@ Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader
 
 ## Capabilities
 
-None declared.
+- `apply math grant structure methods within explicit math boundaries`
+- `analyze structure mathematics grant proposals (nsf, erc, simons, msca) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

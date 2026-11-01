@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the execution-policy skill when the request matches its scope.
 
 Capabilities:
-- apply the execution-policy workflow
+- apply execution policy methods within explicit auxiliary boundaries
+- analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes
+- produce and validate a auxiliary artifact with evidence, decisions, and next steps
 
 Stop when: The action is allowed or blocked with reason, approval requirement is clear, and rollback is named.

@@ -1,6 +1,6 @@
 {
   "name": "xr-development",
-  "instructions": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.\n\nCapabilities:\n- apply the xr-development workflow\n\nCanonical skill: .agents/skills/xr/xr-development/SKILL.md",
+  "instructions": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.\n\nCapabilities:\n- apply xr development methods within explicit xr boundaries\n- analyze design and build extended reality (ar/vr/mr) experiences — 3d interaction, spatial computing, headset development, immersive ux — with performance, comfort, and accessibility as first-class concerns with assumptions, constraints, and failure modes\n- produce and validate a xr artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/xr/xr-development/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Design and build extended reality (AR/VR/MR) experiences complete; artifact saved; completion criteria checked.",

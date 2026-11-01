@@ -32,7 +32,9 @@ Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)
 
 ## Capabilities
 
-None declared.
+- `apply compliance methods within explicit sec boundaries`
+- `analyze compliance (soc2, iso27001, gdpr, hipaa, pci dss, audits, evidence, remediation) with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Build a dependency graph that exposes central Skills, cycles, and unnecessary co
 
 ## Capabilities
 
-None declared.
+- `apply skill dependency graph methods within explicit skill-dev boundaries`
+- `analyze build a dependency graph that exposes central skills, cycles, and unnecessary coupling — use when analyzing skill modularity with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

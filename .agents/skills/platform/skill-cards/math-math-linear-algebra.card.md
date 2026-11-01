@@ -32,7 +32,9 @@ Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD
 
 ## Capabilities
 
-None declared.
+- `apply math linear algebra methods within explicit math boundaries`
+- `analyze solve and analyse linear algebra problems — matrix decompositions (lu, qr, svd, eigendecomposition), linear systems, and applications in ml, graphics, and optimisation with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

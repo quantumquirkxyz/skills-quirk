@@ -1,6 +1,6 @@
 {
   "name": "skill-performance-metrics",
-  "instructions": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.\n\nCapabilities:\n- apply the skill-performance-metrics workflow\n\nCanonical skill: .agents/skills/skill-dev/skill-performance-metrics/SKILL.md",
+  "instructions": "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.\n\nCapabilities:\n- apply skill performance metrics methods within explicit skill-dev boundaries\n- analyze summarize skill execution duration, success rate, and available run evidence — use when measuring skill performance from logs and records with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-performance-metrics/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Summarize Skill execution duration, success rate, and available run evidence complete; artifact saved; completion criteria checked.",

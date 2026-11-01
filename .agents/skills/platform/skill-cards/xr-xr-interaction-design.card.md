@@ -32,7 +32,9 @@ Design XR interactions — spatial input, comfort, locomotion, hand tracking, an
 
 ## Capabilities
 
-None declared.
+- `apply xr interaction design methods within explicit xr boundaries`
+- `analyze design xr interactions — spatial input, comfort, locomotion, hand tracking, and feedback — with clear constraints on immersion and usability with assumptions, constraints, and failure modes`
+- `produce and validate a xr artifact with evidence, decisions, and next steps`
 
 ## Tags
 

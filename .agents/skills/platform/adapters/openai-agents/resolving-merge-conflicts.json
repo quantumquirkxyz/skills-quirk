@@ -1,6 +1,6 @@
 {
   "name": "resolving-merge-conflicts",
-  "instructions": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.\n\nCapabilities:\n- apply the resolving-merge-conflicts workflow\n\nCanonical skill: .agents/skills/delivery/resolving-merge-conflicts/SKILL.md",
+  "instructions": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.\n\nCapabilities:\n- apply resolving merge conflicts methods within explicit delivery boundaries\n- analyze use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, pr branch corrections, or other branch-state blockers that need deliberate resolution with assumptions, constraints, and failure modes\n- produce and validate a delivery artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/delivery/resolving-merge-conflicts/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution complete; artifact saved; completion criteria checked.",

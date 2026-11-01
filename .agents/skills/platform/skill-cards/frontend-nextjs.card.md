@@ -32,7 +32,9 @@ Shape Next.js projects around routes, server/client seams, and data flow that st
 
 ## Capabilities
 
-None declared.
+- `apply nextjs methods within explicit frontend boundaries`
+- `analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

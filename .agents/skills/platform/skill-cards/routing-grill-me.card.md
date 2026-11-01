@@ -32,7 +32,9 @@ A relentless interview to sharpen a plan or design.
 
 ## Capabilities
 
-None declared.
+- `apply grill me methods within explicit routing boundaries`
+- `analyze a relentless interview to sharpen a plan or design with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

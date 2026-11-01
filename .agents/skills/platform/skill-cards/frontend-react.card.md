@@ -32,7 +32,9 @@ Design React component structure and state seams — with composability, testabi
 
 ## Capabilities
 
-None declared.
+- `apply react methods within explicit frontend boundaries`
+- `analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

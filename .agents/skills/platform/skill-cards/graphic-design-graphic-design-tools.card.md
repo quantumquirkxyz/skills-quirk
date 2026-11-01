@@ -32,7 +32,9 @@ Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local p
 
 ## Capabilities
 
-None declared.
+- `apply graphic design tools methods within explicit graphic-design boundaries`
+- `analyze connect graphic design tools — figma, adobe creative cloud, canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

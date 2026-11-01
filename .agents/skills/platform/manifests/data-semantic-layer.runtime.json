@@ -2,7 +2,7 @@
   "skill": "data/semantic-layer",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "08e3739579fc80f37c19e54384b5205d0c1d48cc9af00ec38ac1c29a078c9681",
+  "frontmatterHash": "356b24d83d465fa0eff5177bec1e7c2fbe5f1991b7d5540ba3b8244328789e2a",
   "role": "workflow",
   "router": {
     "positive": [],

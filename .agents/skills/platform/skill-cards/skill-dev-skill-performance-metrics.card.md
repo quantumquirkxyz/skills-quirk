@@ -32,7 +32,9 @@ Summarize Skill execution duration, success rate, and available run evidence —
 
 ## Capabilities
 
-None declared.
+- `apply skill performance metrics methods within explicit skill-dev boundaries`
+- `analyze summarize skill execution duration, success rate, and available run evidence — use when measuring skill performance from logs and records with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

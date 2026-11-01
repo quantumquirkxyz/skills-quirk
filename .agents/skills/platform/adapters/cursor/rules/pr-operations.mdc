@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the pr-operations skill when the request matches its scope.
 
 Capabilities:
-- apply the pr-operations workflow
+- apply pr operations methods within explicit integrations boundaries
+- analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes
+- produce and validate a integrations artifact with evidence, decisions, and next steps
 
 Stop when: Requested PR actions are completed or explicitly skipped, target PRs are identified, and validation or readiness evidence is reported.

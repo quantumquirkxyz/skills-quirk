@@ -32,7 +32,9 @@ Design RAG pipelines — retrieval, chunking, embedding, reranking, generation �
 
 ## Capabilities
 
-None declared.
+- `apply rag pipeline methods within explicit ai boundaries`
+- `analyze design rag pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

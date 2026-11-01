@@ -32,7 +32,9 @@ Data lineage (end-to-end tracing, impact analysis, column-level lineage, governa
 
 ## Capabilities
 
-None declared.
+- `apply data lineage methods within explicit data boundaries`
+- `analyze data lineage (end-to-end tracing, impact analysis, column-level lineage, governance) with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

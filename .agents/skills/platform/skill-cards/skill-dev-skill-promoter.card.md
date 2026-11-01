@@ -33,7 +33,9 @@ Promote validated experimental skills from the sandbox to the canonical skills b
 
 ## Capabilities
 
-None declared.
+- `apply skill promoter methods within explicit skill-dev boundaries`
+- `analyze promote validated experimental skills from the sandbox to the canonical skills bundle with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -1,6 +1,6 @@
 {
   "name": "rule-cataloger",
-  "instructions": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.\n\nCapabilities:\n- apply the rule-cataloger workflow\n\nCanonical skill: .agents/skills/skill-dev/rule-cataloger/SKILL.md",
+  "instructions": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.\n\nCapabilities:\n- apply rule cataloger methods within explicit skill-dev boundaries\n- analyze extract and classify rules across skills by type, frequency, and application area; use when auditing the repository's shared guidance with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/rule-cataloger/SKILL.md",
   "model": "gpt-5-mini",
   "tools": [],
   "handoff_description": "Every discovered rule is listed with its source Skill, type, and frequency.",

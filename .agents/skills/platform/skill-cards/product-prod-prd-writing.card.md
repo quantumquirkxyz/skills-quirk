@@ -32,7 +32,9 @@ Write Product Requirement Documents (PRDs) — problem statement, goals, user st
 
 ## Capabilities
 
-None declared.
+- `apply prod prd writing methods within explicit product boundaries`
+- `analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes`
+- `produce and validate a product artifact with evidence, decisions, and next steps`
 
 ## Tags
 

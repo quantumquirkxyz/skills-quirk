@@ -2,7 +2,7 @@
   "skill": "ai/llm-fine-tuning",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f44dec068e4620b1baf7670a353e313675f4a9617112b27c6569bec4b23fa746",
+  "frontmatterHash": "f2afb8e124a4eaa48b0794463f0762cd20fa7b81fa66e974edf7935ae0e6920d",
   "role": "workflow",
   "router": {
     "positive": [],

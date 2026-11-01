@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the skill-optimizer skill when the request matches its scope.
 
 Capabilities:
-- score skill description routing evidence
 - evolve description candidates reflectively
 - emit an apply-ready description proposal
+- trace skill optimizer decisions across inputs, constraints, and failure paths
+- validate skill-dev outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Skill description optimization proposal emitted with held-out evidence, or an explicit no-defensible-change verdict; target skill untouched; completion criteria checked.

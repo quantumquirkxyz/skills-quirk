@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the nextjs skill when the request matches its scope.
 
 Capabilities:
-- apply the nextjs workflow
+- apply nextjs methods within explicit frontend boundaries
+- analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
 
 Stop when: Shape Next complete; artifact saved; completion criteria checked.

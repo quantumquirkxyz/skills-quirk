@@ -1,6 +1,6 @@
 {
   "name": "design-system-visual",
-  "instructions": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.\n\nCapabilities:\n- apply the design-system-visual workflow\n\nCanonical skill: .agents/skills/graphic-design/design-system-visual/SKILL.md",
+  "instructions": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.\n\nCapabilities:\n- apply design system visual methods within explicit graphic-design boundaries\n- analyze design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency with assumptions, constraints, and failure modes\n- produce and validate a graphic-design artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/graphic-design/design-system-visual/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Visual design system design complete; tokens, components, accessibility, and adaptation rules explicit.",

@@ -26,16 +26,17 @@ Define an MCP server that exposes quirk Skills as tools, resources, and prompts 
 - **Max iterations**: `5`
 - **Prompt version**: `2.0`
 - **Artifact type**: `plan`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-files`
 - **Side effects**: `write-files`
 
 ## Capabilities
 
-- `expose-skills-as-mcp-tools`
 - `generate-skill-resources`
 - `generate-workflow-prompts`
 - `configure-transport`
+- `trace mcp server decisions across inputs, constraints, and failure paths`
+- `validate foundation outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

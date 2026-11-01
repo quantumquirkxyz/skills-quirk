@@ -33,7 +33,9 @@ Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findin
 
 ## Capabilities
 
-None declared.
+- `apply review fix loop methods within explicit delivery boundaries`
+- `analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

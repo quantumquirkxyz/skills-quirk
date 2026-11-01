@@ -32,7 +32,9 @@ Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture 
 
 ## Capabilities
 
-None declared.
+- `apply cloud security methods within explicit sec boundaries`
+- `analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

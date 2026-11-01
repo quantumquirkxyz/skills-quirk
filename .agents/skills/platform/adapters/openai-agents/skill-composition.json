@@ -1,6 +1,6 @@
 {
   "name": "skill-composition",
-  "instructions": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.\n\nCapabilities:\n- declare a skill chain as producer-consumer edges\n- verify artifact compatibility at each edge before execution\n- run a chain inside a declared iteration and cost budget\n- report per-edge handoff evidence for the chain\n\nCanonical skill: .agents/skills/foundation/skill-composition/SKILL.md",
+  "instructions": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.\n\nCapabilities:\n- verify artifact compatibility at each edge before execution\n- run a chain inside a declared iteration and cost budget\n- report per-edge handoff evidence for the chain\n- trace skill composition decisions across inputs, constraints, and failure paths\n- validate foundation outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/foundation/skill-composition/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Every edge in the chain passed its artifact compatibility check and the chain stayed inside its declared budget.",

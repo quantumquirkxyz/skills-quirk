@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the auth skill when the request matches its scope.
 
 Capabilities:
-- apply the auth workflow
+- apply auth methods within explicit integrations boundaries
+- analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes
+- produce and validate a integrations artifact with evidence, decisions, and next steps
 
 Stop when: Auth design complete; flows documented; security assessment explicit.

@@ -2,7 +2,7 @@
   "skill": "integrations/api-contracts",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2bb6946166254ca4f9e8797b21a741fd8d611a45eb9c36d12af17c47cb1a2a2f",
+  "frontmatterHash": "ad29afafcb3bac674e759bb85937de884b8783fe973838717e6ae7c619c245aa",
   "role": "workflow",
   "router": {
     "positive": [],

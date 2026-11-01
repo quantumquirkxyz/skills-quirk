@@ -32,7 +32,9 @@ Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-o
 
 ## Capabilities
 
-None declared.
+- `apply stream processing methods within explicit data boundaries`
+- `analyze stream processing (flink, kafka streams, risingwave, windowing, state, exactly-once) with assumptions, constraints, and failure modes`
+- `produce and validate a data artifact with evidence, decisions, and next steps`
 
 ## Tags
 

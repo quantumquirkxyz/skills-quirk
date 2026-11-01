@@ -28,11 +28,13 @@ Validate Skill structure, contracts, dependencies, anti-patterns, and isolated e
 - **Artifact type**: `test-strategy`
 - **Approval required**: `no`
 - **Approval for**: none declared
-- **Side effects**: none declared
+- **Side effects**: `write-files`
 
 ## Capabilities
 
-None declared.
+- `apply skill testing framework methods within explicit skill-dev boundaries`
+- `analyze validate skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a skill before promotion with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -58,12 +60,12 @@ None declared. Artifact type: `test-strategy`.
 - **File**: [../manifests/skill-dev-skill-testing-framework.runtime.json](../manifests/skill-dev-skill-testing-framework.runtime.json)
 - **Status**: present and fresh
 - **Role**: `workflow`
-- **Isolation**: `none`
+- **Isolation**: `worktree`
 - **Max turns**: `6`
-- **Default agent**: `explore`
-- **Tools allow**: `Read`, `Grep`, `Glob`
+- **Default agent**: `general`
+- **Tools allow**: `Read`, `Grep`, `Glob`, `Edit`, `Write`
 - **Tools deny**: none declared
-- **Guardrail side effects**: none declared
+- **Guardrail side effects**: `write-files`
 - **Verification commands**: `node .agents/skills/platform/check-all.mjs`
 - **Artifact schema**: none
 - **Trace events**: `skill.route`, `skill.execute`, `skill.verify`

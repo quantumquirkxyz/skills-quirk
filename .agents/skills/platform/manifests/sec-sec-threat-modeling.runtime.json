@@ -2,7 +2,7 @@
   "skill": "sec/sec-threat-modeling",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3d60f5bdd6678e2f26ccc6267e0e3ca5518523a3e0a544dd74ad02046a4b5d0f",
+  "frontmatterHash": "37cb1c8cb7fd0a7c339fc3cb2df2283d598ec891d398f16d2b5400704377c768",
   "role": "workflow",
   "router": {
     "positive": [],

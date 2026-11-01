@@ -1,6 +1,6 @@
 {
   "name": "graphic-design-tools",
-  "instructions": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.\n\nCapabilities:\n- apply the graphic-design-tools workflow\n\nCanonical skill: .agents/skills/graphic-design/graphic-design-tools/SKILL.md",
+  "instructions": "Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.\n\nCapabilities:\n- apply graphic design tools methods within explicit graphic-design boundaries\n- analyze connect graphic design tools — figma, adobe creative cloud, canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries with assumptions, constraints, and failure modes\n- produce and validate a graphic-design artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/graphic-design/graphic-design-tools/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Graphic design tools integration plan complete; tool selection, authentication, use cases, and safety boundaries explicit.",

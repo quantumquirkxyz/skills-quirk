@@ -32,7 +32,9 @@ Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestrati
 
 ## Capabilities
 
-None declared.
+- `apply event driven architecture methods within explicit backend boundaries`
+- `analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

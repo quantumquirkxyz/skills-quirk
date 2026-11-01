@@ -1,6 +1,6 @@
 {
   "name": "plan-review-fixes",
-  "instructions": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after\n\nCapabilities:\n- apply the plan-review-fixes workflow\n\nCanonical skill: .agents/skills/delivery/plan-review-fixes/SKILL.md",
+  "instructions": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after\n\nCapabilities:\n- apply plan review fixes methods within explicit delivery boundaries\n- analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes\n- produce and validate a delivery artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/delivery/plan-review-fixes/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments complete; structured result returned; completion criteria checked.",

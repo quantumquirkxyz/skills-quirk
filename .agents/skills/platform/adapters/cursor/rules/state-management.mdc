@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the state-management skill when the request matches its scope.
 
 Capabilities:
-- apply the state-management workflow
+- apply state management methods within explicit frontend boundaries
+- analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
 
 Stop when: State management design complete; artifact saved; completion criteria checked.

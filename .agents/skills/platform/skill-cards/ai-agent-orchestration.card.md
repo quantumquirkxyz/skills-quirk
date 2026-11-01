@@ -32,7 +32,9 @@ Design agent orchestration — multi-agent patterns, tool use, memory, handoffs,
 
 ## Capabilities
 
-None declared.
+- `apply agent orchestration methods within explicit ai boundaries`
+- `analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

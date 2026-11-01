@@ -33,9 +33,10 @@ Break a plan, spec, or the current conversation into a set of tracer-bullet tick
 
 ## Capabilities
 
-- `apply to tickets workflow`
 - `produce to tickets artifact`
 - `validate to tickets completion criteria`
+- `trace to tickets decisions across inputs, constraints, and failure paths`
+- `validate project outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

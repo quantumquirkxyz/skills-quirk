@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the db-query-optimization skill when the request matches its scope.
 
 Capabilities:
-- apply the db-query-optimization workflow
+- apply db query optimization methods within explicit db boundaries
+- analyze optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement with assumptions, constraints, and failure modes
+- produce and validate a db artifact with evidence, decisions, and next steps
 
 Stop when: The bottleneck, proposed change, and validation plan are explicit.

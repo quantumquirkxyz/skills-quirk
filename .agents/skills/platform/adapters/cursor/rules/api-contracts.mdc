@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the api-contracts skill when the request matches its scope.
 
 Capabilities:
-- apply the api-contracts workflow
+- apply api contracts methods within explicit integrations boundaries
+- analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes
+- produce and validate a integrations artifact with evidence, decisions, and next steps
 
 Stop when: API contracts defined; versioning strategy explicit; breaking change policy and migration path named.

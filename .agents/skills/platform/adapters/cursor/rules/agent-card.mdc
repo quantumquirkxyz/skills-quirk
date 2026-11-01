@@ -8,9 +8,10 @@ alwaysApply: false
 Apply the agent-card skill when the request matches its scope.
 
 Capabilities:
-- generate-agent-card
 - validate-agent-card
 - emit-agent-card-json
 - update-agent-card-index
+- trace agent card decisions across inputs, constraints, and failure paths
+- validate foundation outcomes with evidence, assumptions, and explicit next steps
 
 Stop when: Agent Card JSON emitted to platform/agent-cards, index updated, and completion criteria checked.

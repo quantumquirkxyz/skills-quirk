@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the event-driven-architecture skill when the request matches its scope.
 
 Capabilities:
-- apply the event-driven-architecture workflow
+- apply event driven architecture methods within explicit backend boundaries
+- analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes
+- produce and validate a backend artifact with evidence, decisions, and next steps
 
 Stop when: Event-driven architecture design complete; artifact saved; completion criteria checked.

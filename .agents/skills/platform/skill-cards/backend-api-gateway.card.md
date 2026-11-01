@@ -32,7 +32,9 @@ API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).
 
 ## Capabilities
 
-None declared.
+- `apply api gateway methods within explicit backend boundaries`
+- `analyze api gateway (kong, envoy, aws api gateway, rate limiting, auth, routing) with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

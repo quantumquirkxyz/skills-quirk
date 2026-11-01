@@ -1,6 +1,6 @@
 {
   "name": "cs-algorithms",
-  "instructions": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.\n\nCapabilities:\n- apply the cs-algorithms workflow\n\nCanonical skill: .agents/skills/cs/cs-algorithms/SKILL.md",
+  "instructions": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.\n\nCapabilities:\n- apply cs algorithms methods within explicit cs boundaries\n- analyze design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination with assumptions, constraints, and failure modes\n- produce and validate a cs artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/cs/cs-algorithms/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Design and analyse algorithms complete; required sections present; completion criteria checked.",

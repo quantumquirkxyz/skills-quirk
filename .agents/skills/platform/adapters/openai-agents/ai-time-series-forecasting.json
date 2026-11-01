@@ -1,6 +1,6 @@
 {
   "name": "ai-time-series-forecasting",
-  "instructions": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.\n\nCapabilities:\n- apply the ai-time-series-forecasting workflow\n\nCanonical skill: .agents/skills/ai/ai-time-series-forecasting/SKILL.md",
+  "instructions": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.\n\nCapabilities:\n- apply ai time series forecasting methods within explicit ai boundaries\n- analyze design and evaluate time-series forecasting — arima, prophet, neuralprophet, lstm, transformer — with stationarity analysis, seasonality, exogenous variables, and backtest with assumptions, constraints, and failure modes\n- produce and validate a ai artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/ai/ai-time-series-forecasting/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Forecast plot saved; backtest complete; best model recommendation made.",

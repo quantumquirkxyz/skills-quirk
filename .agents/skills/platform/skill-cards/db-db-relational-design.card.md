@@ -32,7 +32,9 @@ Design relational schemas — entities, relations, keys, indexes, constraints �
 
 ## Capabilities
 
-None declared.
+- `apply db relational design methods within explicit db boundaries`
+- `analyze design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning with assumptions, constraints, and failure modes`
+- `produce and validate a db artifact with evidence, decisions, and next steps`
 
 ## Tags
 

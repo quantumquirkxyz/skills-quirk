@@ -32,7 +32,9 @@ Create, test, and iterate on experimental skills in an isolated environment with
 
 ## Capabilities
 
-None declared.
+- `apply skill sandbox methods within explicit skill-dev boundaries`
+- `analyze create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 

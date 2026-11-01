@@ -32,7 +32,9 @@ Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dyna
 
 ## Capabilities
 
-None declared.
+- `apply physics simulation setup methods within explicit physics boundaries`
+- `analyze set up reproducible physics simulations — monte carlo (geant4), molecular dynamics (lammps), dft (vasp, quantum espresso), quantum dynamics (qutip) — with containers, parameter files, and verification with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

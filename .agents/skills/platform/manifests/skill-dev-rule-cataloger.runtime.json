@@ -2,7 +2,7 @@
   "skill": "skill-dev/rule-cataloger",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3120920bc6a73d5fb90ba1086bfce103e54c20eba72157840618a2e0c5792f80",
+  "frontmatterHash": "01827c3b3eeb5582f8a77aeb0b57f2faa1e65361308340a4df79be25fc2c1239",
   "role": "workflow",
   "router": {
     "positive": [],

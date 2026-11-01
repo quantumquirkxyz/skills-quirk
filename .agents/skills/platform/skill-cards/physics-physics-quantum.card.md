@@ -32,7 +32,9 @@ Model quantum systems (states, operators, measurement, entanglement) and perform
 
 ## Capabilities
 
-None declared.
+- `apply physics quantum methods within explicit physics boundaries`
+- `analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

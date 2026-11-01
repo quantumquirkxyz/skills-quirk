@@ -32,7 +32,9 @@ Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, ze
 
 ## Capabilities
 
-None declared.
+- `apply math cryptography methods within explicit math boundaries`
+- `analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

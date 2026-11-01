@@ -1,6 +1,6 @@
 {
   "name": "brand-identity",
-  "instructions": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.\n\nCapabilities:\n- apply the brand-identity workflow\n\nCanonical skill: .agents/skills/graphic-design/brand-identity/SKILL.md",
+  "instructions": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.\n\nCapabilities:\n- apply brand identity methods within explicit graphic-design boundaries\n- analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes\n- produce and validate a graphic-design artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/graphic-design/brand-identity/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Brand identity design complete; strategy, visual system, and usage rules explicit; governance named.",

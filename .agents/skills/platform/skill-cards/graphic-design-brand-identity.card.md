@@ -32,7 +32,9 @@ Design brand identity systems — logo, color, typography, imagery, iconography,
 
 ## Capabilities
 
-None declared.
+- `apply brand identity methods within explicit graphic-design boundaries`
+- `analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

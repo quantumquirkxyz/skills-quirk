@@ -16,7 +16,7 @@ of the bundle. Regenerate every card with:
 
 ## Description
 
-Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
+>-
 
 ## Risk and execution
 
@@ -32,7 +32,10 @@ Diagnosis loop for hard bugs and performance regressions. Use when the user says
 
 ## Capabilities
 
-None declared.
+- `trace root causes across repository boundaries`
+- `consume code-review audit findings`
+- `trace diagnosing bugs decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 
@@ -74,7 +77,9 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [testing](delivery-testing.card.md)
+- [implement](delivery-implement.card.md)
 
 ## Agent card
 
@@ -82,8 +87,9 @@ None declared.
 
 ## Non-goals / when not to use
 
-- In scope: the user says "diagnose"/"debug this", or reports something intermittent, ambiguous, or hard to reproduce.
+- In scope: >-.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `testing`, `implement`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

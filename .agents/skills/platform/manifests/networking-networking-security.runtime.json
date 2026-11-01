@@ -2,7 +2,7 @@
   "skill": "networking/networking-security",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "743b4f4335181224a9ad3de1b500668d1fc1b80d649951d1fe0c06468d1a9548",
+  "frontmatterHash": "e3b2b6990dadb1a75ab4f65445bfcc51c279ed2ce7d1672060e2f534067b383a",
   "role": "workflow",
   "router": {
     "positive": [],

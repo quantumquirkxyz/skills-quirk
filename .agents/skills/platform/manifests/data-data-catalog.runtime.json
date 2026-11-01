@@ -2,7 +2,7 @@
   "skill": "data/data-catalog",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7c3919eca52ab15c560bd82cff305ac136bbbd972a83cef711d330373887df88",
+  "frontmatterHash": "0bda73e1e4b4b633007488dfacc095601f41642d69239408e7d1bb66f13a6803",
   "role": "workflow",
   "router": {
     "positive": [],

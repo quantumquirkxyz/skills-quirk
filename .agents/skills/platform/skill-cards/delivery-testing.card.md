@@ -32,7 +32,9 @@ Shape the test strategy for a project so behavior is verified at the right seams
 
 ## Capabilities
 
-None declared.
+- `apply testing methods within explicit delivery boundaries`
+- `analyze shape the test strategy for a project so behavior is verified at the right seams and at the right level with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

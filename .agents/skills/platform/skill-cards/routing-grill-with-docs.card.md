@@ -26,13 +26,15 @@ A relentless interview to sharpen a plan or design, while creating docs (ADRs an
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `adr`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-docs`
 - **Side effects**: `write-docs`
 
 ## Capabilities
 
-None declared.
+- `apply grill with docs methods within explicit routing boundaries`
+- `analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

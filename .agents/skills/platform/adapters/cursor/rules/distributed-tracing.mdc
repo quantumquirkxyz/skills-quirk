@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the distributed-tracing skill when the request matches its scope.
 
 Capabilities:
-- apply the distributed-tracing workflow
+- apply distributed tracing methods within explicit backend boundaries
+- analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes
+- produce and validate a backend artifact with evidence, decisions, and next steps
 
 Stop when: Distributed tracing design complete; artifact saved; completion criteria checked.

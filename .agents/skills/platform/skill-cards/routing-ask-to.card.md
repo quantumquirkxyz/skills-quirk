@@ -33,9 +33,10 @@ Ask which skill or flow fits your situation. A router over the skills in this re
 
 ## Capabilities
 
-- `apply ask to workflow`
 - `produce ask to artifact`
 - `validate ask to completion criteria`
+- `trace ask to decisions across inputs, constraints, and failure paths`
+- `validate routing outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

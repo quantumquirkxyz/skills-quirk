@@ -32,7 +32,9 @@ Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, a
 
 ## Capabilities
 
-None declared.
+- `apply math literature track methods within explicit math boundaries`
+- `analyze track mathematics literature across arxiv, mathscinet, zbmath, journal alerts, and citation graphs to keep a researcher current without drowning in papers with assumptions, constraints, and failure modes`
+- `produce and validate a math artifact with evidence, decisions, and next steps`
 
 ## Tags
 

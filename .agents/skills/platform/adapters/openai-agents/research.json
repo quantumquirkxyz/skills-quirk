@@ -1,6 +1,6 @@
 {
   "name": "research",
-  "instructions": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w\n\nCapabilities:\n- apply the research workflow\n\nCanonical skill: .agents/skills/delivery/research/SKILL.md",
+  "instructions": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w\n\nCapabilities:\n- apply research methods within explicit delivery boundaries\n- analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes\n- produce and validate a delivery artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/delivery/research/SKILL.md",
   "model": "gpt-5-mini",
   "tools": [],
   "handoff_description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo complete; artifact saved; completion criteria checked.",

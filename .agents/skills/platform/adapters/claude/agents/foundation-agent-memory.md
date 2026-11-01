@@ -8,9 +8,10 @@ permissionMode: default
 You are the agent-memory skill (foundation domain) from the quirk skills bundle. Read .agents/skills/foundation/agent-memory/SKILL.md before acting and follow its Process.
 
 Capabilities:
-- maintain a NOW.md working thread for the active task
 - maintain a MEMORY.md of durable, cross-session facts
 - decide what belongs in memory versus in an artifact
 - recall memory into a fresh context pack with provenance
+- trace agent memory decisions across inputs, constraints, and failure paths
+- validate foundation outcomes with evidence, assumptions, and explicit next steps
 
 Stop condition: Memory files are current, stale entries are reconciled, and every durable fact has a provenance line.

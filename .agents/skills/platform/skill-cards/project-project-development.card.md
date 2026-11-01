@@ -32,7 +32,9 @@ Evaluate a project's shape, agent fit, and architectural starting point — befo
 
 ## Capabilities
 
-None declared.
+- `apply project development methods within explicit project boundaries`
+- `analyze evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins with assumptions, constraints, and failure modes`
+- `produce and validate a project artifact with evidence, decisions, and next steps`
 
 ## Tags
 

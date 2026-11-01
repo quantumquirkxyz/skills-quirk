@@ -28,11 +28,13 @@ Maintain the skills lockfile by detecting missing, stale, extra, or mismatched s
 - **Artifact type**: `skill-dev`
 - **Approval required**: `no`
 - **Approval for**: none declared
-- **Side effects**: none declared
+- **Side effects**: `write-files`
 
 ## Capabilities
 
-None declared.
+- `apply lockfile maintenance methods within explicit skill-dev boundaries`
+- `analyze maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding skill.md files are resolved with assumptions, constraints, and failure modes`
+- `produce and validate a skill-dev artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -58,12 +60,12 @@ None declared. Artifact type: `skill-dev`.
 - **File**: [../manifests/skill-dev-lockfile-maintenance.runtime.json](../manifests/skill-dev-lockfile-maintenance.runtime.json)
 - **Status**: present and fresh
 - **Role**: `workflow`
-- **Isolation**: `none`
+- **Isolation**: `worktree`
 - **Max turns**: `5`
 - **Default agent**: `general`
-- **Tools allow**: `Read`, `Grep`, `Glob`, `Bash`
+- **Tools allow**: `Read`, `Grep`, `Glob`, `Bash`, `Edit`, `Write`
 - **Tools deny**: none declared
-- **Guardrail side effects**: none declared
+- **Guardrail side effects**: `write-files`
 - **Verification commands**: `node .agents/skills/platform/check-all.mjs`
 - **Artifact schema**: none
 - **Trace events**: `skill.route`, `skill.execute`, `skill.verify`

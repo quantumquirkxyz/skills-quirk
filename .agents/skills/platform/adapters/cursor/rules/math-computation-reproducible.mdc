@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the math-computation-reproducible skill when the request matches its scope.
 
 Capabilities:
-- apply the math-computation-reproducible workflow
+- apply math computation reproducible methods within explicit math boundaries
+- analyze make mathematical computations reproducible — sympy, mathematica, magma, sage, julia — with versioned environments (docker/conda/nix), scripts, and result archival with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
 
 Stop when: All artifacts saved; container builds; result reproducible from artifacts alone.

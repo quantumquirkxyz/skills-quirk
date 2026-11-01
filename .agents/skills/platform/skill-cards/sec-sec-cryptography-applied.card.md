@@ -32,7 +32,9 @@ Apply cryptography — encryption at rest / in transit, digital signatures, key 
 
 ## Capabilities
 
-None declared.
+- `apply sec cryptography applied methods within explicit sec boundaries`
+- `analyze apply cryptography — encryption at rest / in transit, digital signatures, key management, macs, tls/pki, hsm, secure enclaves — with implementation guidance and anti-patterns with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

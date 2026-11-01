@@ -1,6 +1,6 @@
 {
   "name": "cloud-security",
-  "instructions": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)\n\nCapabilities:\n- apply the cloud-security workflow\n\nCanonical skill: .agents/skills/sec/cloud-security/SKILL.md",
+  "instructions": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)\n\nCapabilities:\n- apply cloud security methods within explicit sec boundaries\n- analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes\n- produce and validate a sec artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/sec/cloud-security/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Security architecture saved; IAM reviewed; compliance matrix complete; posture runbook documented.",

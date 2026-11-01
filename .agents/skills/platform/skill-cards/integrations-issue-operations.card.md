@@ -32,7 +32,9 @@ Manage issue tracker operations with scoped target resolution, duplicate checks,
 
 ## Capabilities
 
-None declared.
+- `apply issue operations methods within explicit integrations boundaries`
+- `analyze manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions with assumptions, constraints, and failure modes`
+- `produce and validate a integrations artifact with evidence, decisions, and next steps`
 
 ## Tags
 

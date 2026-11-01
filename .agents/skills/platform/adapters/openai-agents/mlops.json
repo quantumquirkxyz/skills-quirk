@@ -1,6 +1,6 @@
 {
   "name": "mlops",
-  "instructions": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)\n\nCapabilities:\n- apply the mlops workflow\n\nCanonical skill: .agents/skills/ai/mlops/SKILL.md",
+  "instructions": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)\n\nCapabilities:\n- apply mlops methods within explicit ai boundaries\n- analyze mlops (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining) with assumptions, constraints, and failure modes\n- produce and validate a ai artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/ai/mlops/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Registry green; pipelines passing; model validated; monitoring active.",

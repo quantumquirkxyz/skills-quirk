@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the issue-operations skill when the request matches its scope.
 
 Capabilities:
-- apply the issue-operations workflow
+- apply issue operations methods within explicit integrations boundaries
+- analyze manage issue tracker operations with scoped target resolution, duplicate checks, mutation evidence, and rollback notes for create, update, comment, label, link, assign, and close actions with assumptions, constraints, and failure modes
+- produce and validate a integrations artifact with evidence, decisions, and next steps
 
 Stop when: Requested issue tracker actions are completed or explicitly skipped, each target issue is identified, and the user receives evidence for every mutation.

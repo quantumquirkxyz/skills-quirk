@@ -2,7 +2,7 @@
   "skill": "sec/incident-forensics",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c1e659caa09545de6ecd68c3125db76476b42ef8e9eb301ee4e1120b27b4d1b8",
+  "frontmatterHash": "e1eeebecfa63c6c6c5dfaa8df917808df175d7e27e3a7e130dfcd8c219f74fee",
   "role": "workflow",
   "router": {
     "positive": [],

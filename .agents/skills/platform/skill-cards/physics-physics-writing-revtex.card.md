@@ -32,7 +32,9 @@ Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conv
 
 ## Capabilities
 
-None declared.
+- `apply physics writing revtex methods within explicit physics boundaries`
+- `analyze write physics papers using revtex / aps / iop / aip formatting, with figure conventions, citation styles, and submission package preparation with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

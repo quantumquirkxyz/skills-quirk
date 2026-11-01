@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the physics-reproducibility-archive skill when the request matches its scope.
 
 Capabilities:
-- apply the physics-reproducibility-archive workflow
+- apply physics reproducibility archive methods within explicit physics boundaries
+- analyze make physics research reproducible and archive it — zenodo doi, github + container (docker/apptainer), data preservation, code review, and open-science compliance for journals and funders with assumptions, constraints, and failure modes
+- produce and validate a physics artifact with evidence, decisions, and next steps
 
 Stop when: Zenodo DOI assigned; GitHub tag created; checklist complete.

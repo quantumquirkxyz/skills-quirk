@@ -32,7 +32,9 @@ Design privacy-protecting systems — GDPR / CCPA / HIPAA compliance, data minim
 
 ## Capabilities
 
-None declared.
+- `apply sec privacy engineering methods within explicit sec boundaries`
+- `analyze design privacy-protecting systems — gdpr / ccpa / hipaa compliance, data minimisation, anonymisation, consent management, data retention, breach notification — with explicit privacy impact assessments with assumptions, constraints, and failure modes`
+- `produce and validate a sec artifact with evidence, decisions, and next steps`
 
 ## Tags
 

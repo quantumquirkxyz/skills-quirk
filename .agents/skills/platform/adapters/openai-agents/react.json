@@ -1,6 +1,6 @@
 {
   "name": "react",
-  "instructions": "Design React component structure and state seams — with composability, testability, and clear data flow.\n\nCapabilities:\n- apply the react workflow\n\nCanonical skill: .agents/skills/frontend/react/SKILL.md",
+  "instructions": "Design React component structure and state seams — with composability, testability, and clear data flow.\n\nCapabilities:\n- apply react methods within explicit frontend boundaries\n- analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes\n- produce and validate a frontend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/frontend/react/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Design React component structure and state seams complete; artifact saved; completion criteria checked.",

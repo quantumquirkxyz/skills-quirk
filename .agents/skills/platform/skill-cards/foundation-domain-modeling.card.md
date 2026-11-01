@@ -32,7 +32,9 @@ Build and sharpen a project's domain model. Record the execution traceId and lin
 
 ## Capabilities
 
-None declared.
+- `apply domain modeling methods within explicit foundation boundaries`
+- `analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes`
+- `produce and validate a foundation artifact with evidence, decisions, and next steps`
 
 ## Tags
 

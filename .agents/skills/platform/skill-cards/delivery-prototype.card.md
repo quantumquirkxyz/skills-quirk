@@ -32,7 +32,9 @@ Build a throwaway prototype to answer a design question. Use when the user wants
 
 ## Capabilities
 
-None declared.
+- `apply prototype methods within explicit delivery boundaries`
+- `analyze build a throwaway prototype to answer a design question. use when the user wants to sanity-check whether a state model or interaction shape actually works with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

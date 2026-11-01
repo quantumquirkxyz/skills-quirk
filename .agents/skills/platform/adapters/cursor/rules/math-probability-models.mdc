@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the math-probability-models skill when the request matches its scope.
 
 Capabilities:
-- apply the math-probability-models workflow
+- apply math probability models methods within explicit math boundaries
+- analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
 
 Stop when: Build probability models complete; required sections present; completion criteria checked.

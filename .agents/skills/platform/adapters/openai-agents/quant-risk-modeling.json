@@ -1,6 +1,6 @@
 {
   "name": "quant-risk-modeling",
-  "instructions": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.\n\nCapabilities:\n- apply the quant-risk-modeling workflow\n\nCanonical skill: .agents/skills/quant/quant-risk-modeling/SKILL.md",
+  "instructions": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.\n\nCapabilities:\n- apply quant risk modeling methods within explicit quant boundaries\n- analyze model market/portfolio/credit risk (var, cvar, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events with assumptions, constraints, and failure modes\n- produce and validate a quant artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/quant/quant-risk-modeling/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events complete; required sections present; completion criteria checked.",

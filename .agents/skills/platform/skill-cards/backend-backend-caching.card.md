@@ -32,7 +32,9 @@ Design backend caching strategies — cache keys, TTLs, invalidation, stale-whil
 
 ## Capabilities
 
-None declared.
+- `apply backend caching methods within explicit backend boundaries`
+- `analyze design backend caching strategies — cache keys, ttls, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs with assumptions, constraints, and failure modes`
+- `produce and validate a backend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

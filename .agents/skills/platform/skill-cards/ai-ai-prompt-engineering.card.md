@@ -32,7 +32,9 @@ Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) wi
 
 ## Capabilities
 
-None declared.
+- `apply ai prompt engineering methods within explicit ai boundaries`
+- `analyze design, evaluate, and refine prompts for llms (gpt-4, claude, llama, mistral) with chain-of-thought, few-shot, rag, and evaluation metrics with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 

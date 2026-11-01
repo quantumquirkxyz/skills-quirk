@@ -33,9 +33,10 @@ Use when the user wants to publish a finished subissue as an open GitHub pull re
 
 ## Capabilities
 
-- `apply publish open pr workflow`
 - `produce publish open pr artifact`
 - `validate publish open pr completion criteria`
+- `trace publish open pr decisions across inputs, constraints, and failure paths`
+- `validate routing outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

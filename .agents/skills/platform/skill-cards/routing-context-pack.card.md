@@ -32,7 +32,9 @@ Build a minimal fresh context pack with ordered reads and provenance — for sco
 
 ## Capabilities
 
-None declared.
+- `apply context pack methods within explicit routing boundaries`
+- `analyze build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

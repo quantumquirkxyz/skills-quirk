@@ -32,7 +32,9 @@ Design accessible UX — keyboard navigation, focus order, semantics, contrast, 
 
 ## Capabilities
 
-None declared.
+- `apply ux accessibility methods within explicit ux boundaries`
+- `analyze design accessible ux — keyboard navigation, focus order, semantics, contrast, and assistive-technology support — with inclusive interaction patterns with assumptions, constraints, and failure modes`
+- `produce and validate a ux artifact with evidence, decisions, and next steps`
 
 ## Tags
 

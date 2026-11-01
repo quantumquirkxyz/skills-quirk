@@ -32,7 +32,9 @@ Design motion graphics and UI animations — microinteractions, transitions, Lot
 
 ## Capabilities
 
-None declared.
+- `apply graphic design motion methods within explicit graphic-design boundaries`
+- `analyze design motion graphics and ui animations — microinteractions, transitions, lottie, css animations — with explicit timing, easing, choreography, and performance rules with assumptions, constraints, and failure modes`
+- `produce and validate a graphic-design artifact with evidence, decisions, and next steps`
 
 ## Tags
 

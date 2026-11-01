@@ -32,7 +32,9 @@ Manage professional projects — scope, milestones, risks, dependencies, and sta
 
 ## Capabilities
 
-None declared.
+- `apply professional project management methods within explicit professional boundaries`
+- `analyze manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts with assumptions, constraints, and failure modes`
+- `produce and validate a professional artifact with evidence, decisions, and next steps`
 
 ## Tags
 

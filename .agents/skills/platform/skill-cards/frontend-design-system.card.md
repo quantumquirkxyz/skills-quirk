@@ -32,7 +32,9 @@ Define and evolve reusable UI tokens, components, and usage rules as a coherent 
 
 ## Capabilities
 
-None declared.
+- `apply design system methods within explicit frontend boundaries`
+- `analyze define and evolve reusable ui tokens, components, and usage rules as a coherent system with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

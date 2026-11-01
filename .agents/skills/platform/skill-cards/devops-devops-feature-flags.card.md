@@ -32,7 +32,9 @@ Design feature flag systems — gradual rollouts, A/B experiments, kill switches
 
 ## Capabilities
 
-None declared.
+- `apply devops feature flags methods within explicit devops boundaries`
+- `analyze design feature flag systems — gradual rollouts, a/b experiments, kill switches, targeting rules — with lifecycle management and operational runbooks with assumptions, constraints, and failure modes`
+- `produce and validate a devops artifact with evidence, decisions, and next steps`
 
 ## Tags
 

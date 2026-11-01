@@ -32,7 +32,9 @@ Design operating system memory systems — virtual memory, paging, allocation, s
 
 ## Capabilities
 
-None declared.
+- `apply os memory methods within explicit os boundaries`
+- `analyze design operating system memory systems — virtual memory, paging, allocation, swapping, and protection — with explicit resource accounting and locality assumptions with assumptions, constraints, and failure modes`
+- `produce and validate a os artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -2,7 +2,7 @@
   "skill": "ai/rag-pipeline",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7b3848e8574727963be4e84b092e890e4c6820a5d3fdac7aa200824d6d1ff14d",
+  "frontmatterHash": "16bebb62f600e8f815ac0e0a3298a9462de8a3893e86661a53cf03ba2bc91d39",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -32,7 +32,9 @@ Analyse and compare consensus mechanisms — PoW, PoS, BFT, DA, based sequencing
 
 ## Capabilities
 
-None declared.
+- `apply web3 consensus methods within explicit web3 boundaries`
+- `analyze analyse and compare consensus mechanisms — pow, pos, bft, da, based sequencing — with security properties, finality guarantees, mev, and economic incentive alignment with assumptions, constraints, and failure modes`
+- `produce and validate a web3 artifact with evidence, decisions, and next steps`
 
 ## Tags
 

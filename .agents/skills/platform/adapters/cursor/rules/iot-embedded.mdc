@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the iot-embedded skill when the request matches its scope.
 
 Capabilities:
-- apply the iot-embedded workflow
+- apply iot embedded methods within explicit iot boundaries
+- analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes
+- produce and validate a iot artifact with evidence, decisions, and next steps
 
 Stop when: Design embedded/IoT systems complete; artifact saved; completion criteria checked.

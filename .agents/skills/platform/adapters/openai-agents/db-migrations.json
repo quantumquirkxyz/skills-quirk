@@ -1,6 +1,6 @@
 {
   "name": "db-migrations",
-  "instructions": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.\n\nCapabilities:\n- apply the db-migrations workflow\n\nCanonical skill: .agents/skills/db/db-migrations/SKILL.md",
+  "instructions": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.\n\nCapabilities:\n- apply db migrations methods within explicit db boundaries\n- analyze plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks with assumptions, constraints, and failure modes\n- produce and validate a db artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/db/db-migrations/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "The migration sequence, compatibility window, validation, and rollback posture are explicit.",

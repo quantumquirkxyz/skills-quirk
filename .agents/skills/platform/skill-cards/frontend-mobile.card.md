@@ -32,7 +32,9 @@ Shape mobile projects around device constraints, platform seams, offline behavio
 
 ## Capabilities
 
-None declared.
+- `apply mobile methods within explicit frontend boundaries`
+- `analyze shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for react native, expo, and capacitor with assumptions, constraints, and failure modes`
+- `produce and validate a frontend artifact with evidence, decisions, and next steps`
 
 ## Tags
 

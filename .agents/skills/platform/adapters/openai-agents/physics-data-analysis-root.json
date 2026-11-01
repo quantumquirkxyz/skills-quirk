@@ -1,6 +1,6 @@
 {
   "name": "physics-data-analysis-root",
-  "instructions": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.\n\nCapabilities:\n- apply the physics-data-analysis-root workflow\n\nCanonical skill: .agents/skills/physics/physics-data-analysis-root/SKILL.md",
+  "instructions": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.\n\nCapabilities:\n- apply physics data analysis root methods within explicit physics boundaries\n- analyze analyse experimental physics data with root, pandas, uproot, numpy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts with assumptions, constraints, and failure modes\n- produce and validate a physics artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/physics/physics-data-analysis-root/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Script runs; report saved with error budget, systematic table, and plot links.",

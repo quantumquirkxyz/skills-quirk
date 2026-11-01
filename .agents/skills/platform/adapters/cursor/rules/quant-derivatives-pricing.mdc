@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the quant-derivatives-pricing skill when the request matches its scope.
 
 Capabilities:
-- apply the quant-derivatives-pricing workflow
+- apply quant derivatives pricing methods within explicit quant boundaries
+- analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes
+- produce and validate a quant artifact with evidence, decisions, and next steps
 
 Stop when: Price and calibrate derivatives (options, exotics, structured products) complete; required sections present; completion criteria checked.

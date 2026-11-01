@@ -32,7 +32,9 @@ Design content management systems — content models, editorial workflows, publi
 
 ## Capabilities
 
-None declared.
+- `apply cms architecture methods within explicit cms boundaries`
+- `analyze design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery with assumptions, constraints, and failure modes`
+- `produce and validate a cms artifact with evidence, decisions, and next steps`
 
 ## Tags
 

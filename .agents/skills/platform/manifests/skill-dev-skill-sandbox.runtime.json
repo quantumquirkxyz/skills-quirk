@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-sandbox",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "d4dab721013f85e5b533fc873b1de69044f46345180473df65b7b4219a66ee24",
+  "frontmatterHash": "01c7153660e080004f474f9071c6559d923e33b308702076390dfc74128a8974",
   "role": "workflow",
   "router": {
     "positive": [],

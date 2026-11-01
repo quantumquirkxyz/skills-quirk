@@ -1,6 +1,6 @@
 {
   "name": "data-catalog",
-  "instructions": "Data catalog (metadata management, discovery, classification, data mesh, governance).\n\nCapabilities:\n- apply the data-catalog workflow\n\nCanonical skill: .agents/skills/data/data-catalog/SKILL.md",
+  "instructions": "Data catalog (metadata management, discovery, classification, data mesh, governance).\n\nCapabilities:\n- apply data catalog methods within explicit data boundaries\n- analyze data catalog (metadata management, discovery, classification, data mesh, governance) with assumptions, constraints, and failure modes\n- produce and validate a data artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/data/data-catalog/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Catalog schema saved; discovery interface designed; governance policy defined.",

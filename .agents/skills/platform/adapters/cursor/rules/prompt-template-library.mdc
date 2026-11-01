@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the prompt-template-library skill when the request matches its scope.
 
 Capabilities:
-- apply the prompt-template-library workflow
+- apply prompt template library methods within explicit ai boundaries
+- analyze prompt template library (versioned templates, a/b testing, composition, evaluation) with assumptions, constraints, and failure modes
+- produce and validate a ai artifact with evidence, decisions, and next steps
 
 Stop when: Templates green on acceptance suite with evaluation and fallback.

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the skill-template-generator skill when the request matches its scope.
 
 Capabilities:
-- apply the skill-template-generator workflow
+- apply skill template generator methods within explicit skill-dev boundaries
+- analyze generate an interactive, contract-complete skill template in the sandbox — use when starting a new skill with the lab's scaffolding with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
 
 Stop when: Generate an interactive, contract-complete Skill template in the sandbox complete; artifact saved; completion criteria checked.

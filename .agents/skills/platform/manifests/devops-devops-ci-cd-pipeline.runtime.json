@@ -2,7 +2,7 @@
   "skill": "devops/devops-ci-cd-pipeline",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c1613011e530cd9cfdd1cace45c1a3a6e65efb2704e642ce3a90c1aca8e29f0e",
+  "frontmatterHash": "7f14f77daf52637bdc1c5f825fd3b61e7bda366d4d5dd6f219b8edb560e31fb1",
   "role": "workflow",
   "router": {
     "positive": [],

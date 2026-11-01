@@ -32,7 +32,9 @@ Transfer structured artifacts between Skills and sessions — with explicit prov
 
 ## Capabilities
 
-None declared.
+- `apply artifact handoff methods within explicit routing boundaries`
+- `analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 
@@ -74,7 +76,11 @@ None declared.
 
 ## Compatible skills
 
-None declared.
+- [code-review](delivery-code-review.card.md)
+- [diagnosing-bugs](delivery-diagnosing-bugs.card.md)
+- [testing](delivery-testing.card.md)
+- [project-viability](project-project-viability.card.md)
+- [improve-codebase-architecture](engineering-improve-codebase-architecture.card.md)
 
 ## Agent card
 
@@ -84,6 +90,7 @@ None declared.
 
 - In scope: Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.
 - Out of scope: requests that do not match that declared trigger.
+- When the request belongs to `code-review`, `diagnosing-bugs`, `testing`, `project-viability`, `improve-codebase-architecture`, hand off there instead of widening this skill's scope.
 - This card is documentation; the contract lives in the skill body.
 
 ## Regeneration

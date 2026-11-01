@@ -32,7 +32,9 @@ Capture redacted execution records, traces, and quality signals for skill runs w
 
 ## Capabilities
 
-None declared.
+- `apply agent observability methods within explicit foundation boundaries`
+- `analyze capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. enables full audit of decisions made during agent execution with assumptions, constraints, and failure modes`
+- `produce and validate a foundation artifact with evidence, decisions, and next steps`
 
 ## Tags
 

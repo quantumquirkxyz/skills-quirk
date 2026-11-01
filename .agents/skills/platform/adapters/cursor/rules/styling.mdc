@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the styling skill when the request matches its scope.
 
 Capabilities:
-- apply the styling workflow
+- apply styling methods within explicit frontend boundaries
+- analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
 
 Stop when: Styling design complete; artifact saved; completion criteria checked.

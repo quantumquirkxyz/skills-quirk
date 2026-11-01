@@ -32,7 +32,9 @@ Maintain a repository knowledge base — glossary, durable references, indexed g
 
 ## Capabilities
 
-None declared.
+- `apply docs knowledge base methods within explicit docs boundaries`
+- `analyze maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules with assumptions, constraints, and failure modes`
+- `produce and validate a docs artifact with evidence, decisions, and next steps`
 
 ## Tags
 

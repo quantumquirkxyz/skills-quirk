@@ -33,9 +33,10 @@ Test-driven development. Use when the user wants to build features or fix bugs t
 
 ## Capabilities
 
-- `apply tdd workflow`
 - `produce tdd artifact`
 - `validate tdd completion criteria`
+- `trace tdd decisions across inputs, constraints, and failure paths`
+- `validate delivery outcomes with evidence, assumptions, and explicit next steps`
 
 ## Tags
 

@@ -32,7 +32,9 @@ Navigate physics career transitions — postdoc applications, faculty applicatio
 
 ## Capabilities
 
-None declared.
+- `apply physics career postdoc methods within explicit physics boundaries`
+- `analyze navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (nsf career, doe, erc, simons), and negotiation with assumptions, constraints, and failure modes`
+- `produce and validate a physics artifact with evidence, decisions, and next steps`
 
 ## Tags
 

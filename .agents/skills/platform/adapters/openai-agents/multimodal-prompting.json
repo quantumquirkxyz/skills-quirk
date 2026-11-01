@@ -1,6 +1,6 @@
 {
   "name": "multimodal-prompting",
-  "instructions": "Multimodal prompting (vision, audio, video, image generation, vision-language models)\n\nCapabilities:\n- apply the multimodal-prompting workflow\n\nCanonical skill: .agents/skills/ai/multimodal-prompting/SKILL.md",
+  "instructions": "Multimodal prompting (vision, audio, video, image generation, vision-language models)\n\nCapabilities:\n- apply multimodal prompting methods within explicit ai boundaries\n- analyze multimodal prompting (vision, audio, video, image generation, vision-language models) with assumptions, constraints, and failure modes\n- produce and validate a ai artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/ai/multimodal-prompting/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "Each modality green on acceptance suite with validation and fallback.",

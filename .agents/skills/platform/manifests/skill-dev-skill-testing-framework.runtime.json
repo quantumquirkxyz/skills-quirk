@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-testing-framework",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "9d5ef550609932e8177de392bd34be39f05ecbdf8366d5b362efbc3871e1cc35",
+  "frontmatterHash": "140c98bce83c6acccaab7bdebdd63ab844c15e4f103474ebdf00c6d5935bce18",
   "role": "workflow",
   "router": {
     "positive": [],

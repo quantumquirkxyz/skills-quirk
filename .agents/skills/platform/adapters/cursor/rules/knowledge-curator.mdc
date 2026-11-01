@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the knowledge-curator skill when the request matches its scope.
 
 Capabilities:
-- apply the knowledge-curator workflow
+- apply knowledge curator methods within explicit routing boundaries
+- analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes
+- produce and validate a routing artifact with evidence, decisions, and next steps
 
 Stop when: Keep context, ADRs, registry entries, and research coherent over time complete; artifact saved; completion criteria checked.

@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the ai-prompt-engineering skill when the request matches its scope.
 
 Capabilities:
-- apply the ai-prompt-engineering workflow
+- apply ai prompt engineering methods within explicit ai boundaries
+- analyze design, evaluate, and refine prompts for llms (gpt-4, claude, llama, mistral) with chain-of-thought, few-shot, rag, and evaluation metrics with assumptions, constraints, and failure modes
+- produce and validate a ai artifact with evidence, decisions, and next steps
 
 Stop when: Best prompt identified with evaluation report; failure modes documented.

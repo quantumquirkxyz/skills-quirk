@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the prod-okr-planning skill when the request matches its scope.
 
 Capabilities:
-- apply the prod-okr-planning workflow
+- apply prod okr planning methods within explicit product boundaries
+- analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes
+- produce and validate a product artifact with evidence, decisions, and next steps
 
 Stop when: OKR document saved; initiatives mapped to KRs; progress tracker template ready.

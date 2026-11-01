@@ -32,7 +32,9 @@ Use when you need to resolve a conflicted or blocked branch state: in-progress g
 
 ## Capabilities
 
-None declared.
+- `apply resolving merge conflicts methods within explicit delivery boundaries`
+- `analyze use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, pr branch corrections, or other branch-state blockers that need deliberate resolution with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

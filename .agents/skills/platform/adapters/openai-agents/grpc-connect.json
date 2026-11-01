@@ -1,6 +1,6 @@
 {
   "name": "grpc-connect",
-  "instructions": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).\n\nCapabilities:\n- apply the grpc-connect workflow\n\nCanonical skill: .agents/skills/backend/grpc-connect/SKILL.md",
+  "instructions": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).\n\nCapabilities:\n- apply grpc connect methods within explicit backend boundaries\n- analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes\n- produce and validate a backend artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/backend/grpc-connect/SKILL.md",
   "model": "gpt-5",
   "tools": [],
   "handoff_description": "gRPC/Connect design complete; artifact saved; completion criteria checked.",

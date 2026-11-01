@@ -32,7 +32,9 @@ Design search behavior, indexing, relevance, and retrieval seams — with Elasti
 
 ## Capabilities
 
-None declared.
+- `apply search methods within explicit integrations boundaries`
+- `analyze design search behavior, indexing, relevance, and retrieval seams — with elasticsearch, algolia, meilisearch, opensearch, synonyms, ranking, analytics, and autocomplete with assumptions, constraints, and failure modes`
+- `produce and validate a integrations artifact with evidence, decisions, and next steps`
 
 ## Tags
 

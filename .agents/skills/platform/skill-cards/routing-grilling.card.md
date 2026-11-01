@@ -32,7 +32,9 @@ Grill the user relentlessly about a plan, decision, or idea. Use when the user w
 
 ## Capabilities
 
-None declared.
+- `apply grilling methods within explicit routing boundaries`
+- `analyze grill the user relentlessly about a plan, decision, or idea. use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting with assumptions, constraints, and failure modes`
+- `produce and validate a routing artifact with evidence, decisions, and next steps`
 
 ## Tags
 

@@ -26,13 +26,15 @@ Investigate a question against high-trust primary sources and capture the findin
 - **Max iterations**: `6`
 - **Prompt version**: `2.0`
 - **Artifact type**: `research`
-- **Approval required**: `no`
-- **Approval for**: none declared
+- **Approval required**: `yes`
+- **Approval for**: `write-docs`
 - **Side effects**: `write-docs`
 
 ## Capabilities
 
-None declared.
+- `apply research methods within explicit delivery boundaries`
+- `analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes`
+- `produce and validate a delivery artifact with evidence, decisions, and next steps`
 
 ## Tags
 

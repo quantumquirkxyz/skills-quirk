@@ -32,7 +32,9 @@ Design ML pipelines — data ingestion, preprocessing, training, evaluation, dep
 
 ## Capabilities
 
-None declared.
+- `apply ai ml pipeline methods within explicit ai boundaries`
+- `analyze design ml pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control with assumptions, constraints, and failure modes`
+- `produce and validate a ai artifact with evidence, decisions, and next steps`
 
 ## Tags
 
