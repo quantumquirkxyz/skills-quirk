@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data contracts methods within explicit data boundaries
+  - analyze design data contracts — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "data contract specification + schema evolution policy + registry configuration."
 sideEffects: []
 dependencies: []

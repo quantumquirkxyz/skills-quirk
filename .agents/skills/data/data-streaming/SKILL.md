@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design streaming data pipelines — Kafka, Kinesis, Pub/Sub, Flink — with event schemas, stream processing, and real-time analytics."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data streaming methods within explicit data boundaries
+  - analyze design streaming data pipelines — kafka, kinesis, pub/sub, flink — with event schemas, stream processing, and real-time analytics with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "topology design + event schema + processing rules."
 sideEffects: []
 dependencies: []

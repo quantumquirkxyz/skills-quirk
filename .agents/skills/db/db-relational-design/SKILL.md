@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply db relational design methods within explicit db boundaries
+  - analyze design relational schemas — entities, relations, keys, indexes, constraints — with normalisation, performance, and migration planning with assumptions, constraints, and failure modes
+  - produce and validate a db artifact with evidence, decisions, and next steps
 outputs: "schema and migration artifact."
 sideEffects: []
 dependencies: []

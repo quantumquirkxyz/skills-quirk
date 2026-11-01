@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply serverless methods within explicit backend boundaries
+  - analyze serverless architecture (lambda, functions, faas, event-driven, cold starts, scaling, cost) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "serverless architecture with function boundaries, event source mapping, cold start strategy, scaling policy, cost model, and failure handling."
 sideEffects: []
 dependencies: []

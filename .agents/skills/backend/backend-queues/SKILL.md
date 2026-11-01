@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply backend queues methods within explicit backend boundaries
+  - analyze design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Job or event type, producer and consumer behavior, ordering needs, durability requirements, and failure cases.

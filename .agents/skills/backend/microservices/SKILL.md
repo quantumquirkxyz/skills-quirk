@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply microservices methods within explicit backend boundaries
+  - analyze design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Domain context, team boundaries, scaling requirements, and communication constraints.

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design analytical warehouse schemas — star / snowflake / OBT — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data warehouse modeling methods within explicit data boundaries
+  - analyze design analytical warehouse schemas — star / snowflake / obt — with dimension, fact, and bridge tables; partitioning; indexing; and query optimization with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "warehouse schema design + query optimisation notes."
 sideEffects: []
 dependencies: []

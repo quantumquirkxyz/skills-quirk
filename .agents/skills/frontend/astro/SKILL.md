@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply astro methods within explicit frontend boundaries
+  - analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Site content model, rendering requirements, interactivity needs, and deployment target.

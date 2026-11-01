@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design React component structure and state seams — with composability, testability, and clear data flow."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply react methods within explicit frontend boundaries
+  - analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: React brief, component tree, state shape, and interaction requirements.

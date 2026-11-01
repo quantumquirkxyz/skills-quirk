@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply distributed tracing methods within explicit backend boundaries
+  - analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "tracing architecture with instrumentation plan, sampling strategy, and backend configuration."
 sideEffects: []
 dependencies: []

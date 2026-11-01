@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply semantic layer methods within explicit data boundaries
+  - analyze design a semantic layer — dbt, cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "semantic layer specification + dbt/Cube structure + governance documentation."
 sideEffects: []
 dependencies: []

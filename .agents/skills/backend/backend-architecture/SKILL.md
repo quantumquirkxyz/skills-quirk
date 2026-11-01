@@ -6,9 +6,10 @@ version: "1"
 description: "Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities."
 license: "MIT"
 capabilities:
-  - trace backend requests and data flows end to end
   - review contracts, state, errors, and integration boundaries
   - consume code-review audit findings
+  - trace backend architecture decisions across inputs, constraints, and failure paths
+  - validate backend outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - type: object
     description: API requirements, data model, transport constraints, and caller obligations.

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply db migrations methods within explicit db boundaries
+  - analyze plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks with assumptions, constraints, and failure modes
+  - produce and validate a db artifact with evidence, decisions, and next steps
 outputs: "phased migration plan with forward/backward compatibility, validation queries, and rollback posture."
 sideEffects: []
 dependencies: []

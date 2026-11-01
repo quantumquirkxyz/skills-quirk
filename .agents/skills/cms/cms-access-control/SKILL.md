@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cms access control methods within explicit cms boundaries
+  - analyze design cms access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability with assumptions, constraints, and failure modes
+  - produce and validate a cms artifact with evidence, decisions, and next steps
 outputs: "role-permission matrix, workflow gates, audit requirements, and exception handling."
 sideEffects: []
 dependencies: []

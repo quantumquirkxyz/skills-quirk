@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply service mesh methods within explicit backend boundaries
+  - analyze service mesh (istio, linkerd, cilium, mtls, traffic splitting, observability) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "mesh architecture with trust model, traffic policies, and observability configuration."
 sideEffects: []
 dependencies: []

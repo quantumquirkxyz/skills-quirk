@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply event driven architecture methods within explicit backend boundaries
+  - analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "event architecture with topic/stream design, schema registry plan, and flow diagrams."
 sideEffects: []
 dependencies: []

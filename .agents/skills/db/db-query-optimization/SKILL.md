@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply db query optimization methods within explicit db boundaries
+  - analyze optimize database queries — indexing, query plans, cardinality, joins, and execution trade-offs — with explainable reasoning and measurement with assumptions, constraints, and failure modes
+  - produce and validate a db artifact with evidence, decisions, and next steps
 outputs: "bottleneck analysis, recommended rewrite or index change, and validation plan."
 sideEffects: []
 dependencies: []

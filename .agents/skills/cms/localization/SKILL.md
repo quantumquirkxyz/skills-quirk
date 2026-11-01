@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply localization methods within explicit cms boundaries
+  - analyze design internationalization (i18n) and localization (l10n) — string management, locale handling, rtl support, cultural adaptation — so the product works across languages and regions with assumptions, constraints, and failure modes
+  - produce and validate a cms artifact with evidence, decisions, and next steps
 outputs: "cms artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

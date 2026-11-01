@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply stream processing methods within explicit data boundaries
+  - analyze stream processing (flink, kafka streams, risingwave, windowing, state, exactly-once) with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "stream topology + windowing design + exactly-once plan."
 sideEffects: []
 dependencies: []

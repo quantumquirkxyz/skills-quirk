@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design CMS content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cms content strategy methods within explicit cms boundaries
+  - analyze design cms content strategy — content models, taxonomy, governance, lifecycle, and multi-channel publishing — with explicit editorial ownership with assumptions, constraints, and failure modes
+  - produce and validate a cms artifact with evidence, decisions, and next steps
 outputs: "content model, taxonomy, ownership, workflow, lifecycle, and publishing guidance."
 sideEffects: []
 dependencies: []

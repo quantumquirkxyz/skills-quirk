@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Data catalog (metadata management, discovery, classification, data mesh, governance)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data catalog methods within explicit data boundaries
+  - analyze data catalog (metadata management, discovery, classification, data mesh, governance) with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "catalog schema + discovery design + governance policy."
 sideEffects: []
 dependencies: []

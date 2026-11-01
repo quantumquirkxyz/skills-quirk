@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Remix framework (loaders, actions, nested routes, progressive enhancement)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply remix methods within explicit frontend boundaries
+  - analyze remix framework (loaders, actions, nested routes, progressive enhancement) with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Route map, data requirements, mutation patterns, and user interaction flows.

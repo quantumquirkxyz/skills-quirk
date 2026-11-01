@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply state management methods within explicit frontend boundaries
+  - analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 outputs: "state architecture with primitive choices, state boundaries, and data flow diagram."
 sideEffects: []
 dependencies: []

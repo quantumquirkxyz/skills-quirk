@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply grpc connect methods within explicit backend boundaries
+  - analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "service contract design with proto definitions, streaming plan, and gateway configuration."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Feature store (online/offline, feature engineering, serving, monitoring, drift)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply feature store methods within explicit data boundaries
+  - analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "feature store architecture + feature definitions + monitoring plan."
 sideEffects: []
 dependencies: []

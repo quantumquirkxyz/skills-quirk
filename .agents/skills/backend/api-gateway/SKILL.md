@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply api gateway methods within explicit backend boundaries
+  - analyze api gateway (kong, envoy, aws api gateway, rate limiting, auth, routing) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "gateway architecture with route rules, policies, auth configuration, and observability plan."
 sideEffects: []
 dependencies: []

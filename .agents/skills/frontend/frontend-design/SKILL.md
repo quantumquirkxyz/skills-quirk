@@ -6,9 +6,10 @@ version: "1"
 description: "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries."
 license: "MIT"
 capabilities:
-  - review frontend data flows and interaction states
   - identify loading, empty, error, and success state gaps
   - consume code-review audit findings
+  - trace frontend design decisions across inputs, constraints, and failure paths
+  - validate frontend outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - type: object
     description: UI brief, current interface, brand context, and accessibility constraints.

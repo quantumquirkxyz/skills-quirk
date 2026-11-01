@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply cms architecture methods within explicit cms boundaries
+  - analyze design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery with assumptions, constraints, and failure modes
+  - produce and validate a cms artifact with evidence, decisions, and next steps
 outputs: "cms artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

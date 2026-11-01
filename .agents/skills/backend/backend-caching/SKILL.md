@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply backend caching methods within explicit backend boundaries
+  - analyze design backend caching strategies — cache keys, ttls, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Data source, read/write pattern, freshness requirements, traffic profile, and failure tolerance.

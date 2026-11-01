@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Design ETL / ELT pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data etl pipeline methods within explicit data boundaries
+  - analyze design etl / elt pipelines — extraction, transformation, load — with reproducible steps, schema evolution, quality checks, and observability with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "pipeline architecture + quality rules + schema evolution."
 sideEffects: []
 dependencies: []

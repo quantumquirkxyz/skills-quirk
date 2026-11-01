@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply caching advanced methods within explicit backend boundaries
+  - analyze advanced caching strategies (redis, memcached, cdn, cache invalidation, stampede prevention) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "advanced caching design with store selection, key strategy, invalidation policy, stampede prevention, consistency model, and operational runbook."
 sideEffects: []
 dependencies: []

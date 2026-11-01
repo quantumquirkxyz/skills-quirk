@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data versioning methods within explicit data boundaries
+  - analyze data versioning (dvc, lakefs, delta tables, snapshotting, reproducibility) with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "versioning strategy + branching workflow + reproducibility plan."
 sideEffects: []
 dependencies: []

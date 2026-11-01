@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply nextjs methods within explicit frontend boundaries
+  - analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Next.js brief, route map, rendering constraints, and deployment target.

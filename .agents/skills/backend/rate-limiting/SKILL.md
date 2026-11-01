@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply rate limiting methods within explicit backend boundaries
+  - analyze rate limiting and throttling (token bucket, sliding window, distributed rate limiting, api protection) with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
 outputs: "rate limiting design with algorithm selection, limit tiers, distributed coordination, API protection rules, graceful degradation, and monitoring."
 sideEffects: []
 dependencies: []

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Data lineage (end-to-end tracing, impact analysis, column-level lineage, governance)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply data lineage methods within explicit data boundaries
+  - analyze data lineage (end-to-end tracing, impact analysis, column-level lineage, governance) with assumptions, constraints, and failure modes
+  - produce and validate a data artifact with evidence, decisions, and next steps
 outputs: "lineage graph + impact analysis + column-level mapping."
 sideEffects: []
 dependencies: []

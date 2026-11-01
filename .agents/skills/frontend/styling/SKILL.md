@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens)."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply styling methods within explicit frontend boundaries
+  - analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Brand system, component library, design requirements, and team conventions.
