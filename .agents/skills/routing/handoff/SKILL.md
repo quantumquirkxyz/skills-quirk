@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply handoff methods within explicit routing boundaries
+  - analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-temp-file

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "A relentless interview to sharpen a plan or design."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply grill me methods within explicit routing boundaries
+  - analyze a relentless interview to sharpen a plan or design with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

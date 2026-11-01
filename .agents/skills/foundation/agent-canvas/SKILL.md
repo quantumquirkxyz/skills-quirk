@@ -5,7 +5,10 @@ maturity: "stable"
 description: "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework."
 license: "MIT"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply agent canvas methods within explicit foundation boundaries
+  - analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes
+  - produce and validate a foundation artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "workspace state, session report, export package"
 sideEffects: ""

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply knowledge curator methods within explicit routing boundaries
+  - analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "the minimal durable update that preserves consistency."
 sideEffects:
   - write-docs

@@ -6,10 +6,11 @@ version: 1
 description: Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.
 license: MIT
 capabilities:
-  - validate GitHub issue URLs and repository scope
   - create isolated issue worktrees atomically
   - launch local agents in parallel
   - emit a machine-readable worktree manifest
+  - trace worktree swarm decisions across inputs, constraints, and failure paths
+  - validate routing outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     name: IssueCopyManifest

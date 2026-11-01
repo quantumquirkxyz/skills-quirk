@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill tutor methods within explicit skill-dev boundaries
+  - analyze interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "completed tutorial worksheet, created skill in sandbox, learning validation, personalized learning path"
 sideEffects: ""
 dependencies: ""

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Promote validated experimental skills from the sandbox to the canonical skills bundle."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill promoter methods within explicit skill-dev boundaries
+  - analyze promote validated experimental skills from the sandbox to the canonical skills bundle with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "promoted skill in canonical bundle, updated symlinks, updated lockfile, and promotion report"
 sideEffects:
   - write-files

@@ -6,9 +6,10 @@ version: 1
 description: Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.
 license: MIT
 capabilities:
-  - apply api design workflow
   - produce api design artifact
   - validate api design completion criteria
+  - trace api design decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     description: API design plan with seam proposal and contract guidance

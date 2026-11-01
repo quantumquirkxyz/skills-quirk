@@ -6,9 +6,10 @@ version: 1
 description: Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.
 license: MIT
 capabilities:
-  - apply codebase design workflow
   - produce codebase design artifact
   - validate codebase design completion criteria
+  - trace codebase design decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     description: Codebase design plan with seam proposal and depth analysis

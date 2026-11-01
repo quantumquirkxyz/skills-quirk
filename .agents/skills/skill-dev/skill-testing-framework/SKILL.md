@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill testing framework methods within explicit skill-dev boundaries
+  - analyze validate skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a skill before promotion with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "structural findings and, for sandbox Skills, execution evidence and a promotion recommendation."
 sideEffects:
   - write-files

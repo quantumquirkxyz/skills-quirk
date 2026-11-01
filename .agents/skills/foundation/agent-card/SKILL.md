@@ -6,10 +6,11 @@ version: 1
 description: Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.
 license: MIT
 capabilities:
-  - generate-agent-card
   - validate-agent-card
   - emit-agent-card-json
   - update-agent-card-index
+  - trace agent card decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - "skill-path: relative path to the skill directory (e.g., .agents/skills/{category}/{skill})"
   - "skill-frontmatter: parsed frontmatter from SKILL.md"

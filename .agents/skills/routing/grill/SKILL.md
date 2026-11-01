@@ -7,7 +7,10 @@ description: >-
   Alias for the quirk grilling flow. Use when the user says "grill" and wants a relentless
   interview to sharpen a plan, decision, or design.
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply grill methods within explicit routing boundaries
+  - analyze grill with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

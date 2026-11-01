@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply grill with docs methods within explicit routing boundaries
+  - analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "adr artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-docs

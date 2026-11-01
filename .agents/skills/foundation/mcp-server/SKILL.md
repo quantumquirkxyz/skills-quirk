@@ -6,10 +6,11 @@ version: 2
 description: Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.
 license: MIT
 capabilities:
-  - expose-skills-as-mcp-tools
   - generate-skill-resources
   - generate-workflow-prompts
   - configure-transport
+  - trace mcp server decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - "skill-registry-paths: .agents/skills/ and .claude/skills/"
   - "transport: stdio or sse"

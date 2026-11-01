@@ -5,7 +5,10 @@ maturity: "stable"
 version: "4"
 description: "Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill creator methods within explicit skill-dev boundaries
+  - analyze interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete codex skills with skill.md, scripts, references, assets, adrs, and traceability with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "skill-dev artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - write-files

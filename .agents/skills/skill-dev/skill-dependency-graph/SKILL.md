@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill dependency graph methods within explicit skill-dev boundaries
+  - analyze build a dependency graph that exposes central skills, cycles, and unnecessary coupling — use when analyzing skill modularity with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "Mermaid or JSON graph, cycle list, central Skills, and modularity findings."
 sideEffects: []
 dependencies: []

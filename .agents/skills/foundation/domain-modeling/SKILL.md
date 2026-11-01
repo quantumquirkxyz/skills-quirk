@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply domain modeling methods within explicit foundation boundaries
+  - analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes
+  - produce and validate a foundation artifact with evidence, decisions, and next steps
 inputs:
   - type: object
     description: Domain context, existing terminology, business rules, and stakeholder constraints.

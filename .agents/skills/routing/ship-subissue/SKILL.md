@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply ship subissue methods within explicit routing boundaries
+  - analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - merge-pull-request

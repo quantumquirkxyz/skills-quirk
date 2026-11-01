@@ -6,10 +6,11 @@ version: "1"
 description: "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget."
 license: "MIT"
 capabilities:
-  - declare a skill chain as producer-consumer edges
   - verify artifact compatibility at each edge before execution
   - run a chain inside a declared iteration and cost budget
   - report per-edge handoff evidence for the chain
+  - trace skill composition decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - an ordered set of skills forming a workflow
   - the artifact contract at each edge (producer outputs, consumer inputs)

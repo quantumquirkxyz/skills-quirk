@@ -6,10 +6,11 @@ version: "1"
 description: "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts."
 license: "MIT"
 capabilities:
-  - diagnose context pressure in a running session
   - compact a conversation window with a structured summary
   - clear stale tool results and re-derive them on demand
   - hand off a session across a compaction boundary
+  - trace context compaction decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - a session nearing its context window limit, or a session whose signal-to-noise ratio has degraded
   - the durable artifacts already produced (spec, tickets, PR bodies, review plans)

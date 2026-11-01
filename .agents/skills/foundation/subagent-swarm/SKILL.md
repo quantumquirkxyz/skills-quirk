@@ -5,7 +5,10 @@ maturity: "stable"
 description: "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording."
 license: "MIT"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply subagent swarm methods within explicit foundation boundaries
+  - analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes
+  - produce and validate a foundation artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "swarm plan, subagent evidence, merged output, conflict resolution"
 sideEffects: []

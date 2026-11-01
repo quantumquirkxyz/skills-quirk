@@ -6,9 +6,10 @@ version: "1"
 description: "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair."
 license: "MIT"
 capabilities:
-  - score skill description routing evidence
   - evolve description candidates reflectively
   - emit an apply-ready description proposal
+  - trace skill optimizer decisions across inputs, constraints, and failure paths
+  - validate skill-dev outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - one target skill directory or skill name
   - routing fixtures with expected outcomes

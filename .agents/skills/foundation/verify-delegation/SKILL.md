@@ -6,9 +6,10 @@ description: "Blackbox-verify a delegated worker's claim before it is accepted, 
 license: "MIT"
 version: "1"
 capabilities:
-  - decompose delegated work into a canonical delegation brief
   - verify a delegated artifact against its success criteria without implementation context
   - return a bounded DelegationVerdict with evidence, negative tests, and suite status
+  - trace verify delegation decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - delegation brief (objective, outputFormat, toolGuidance, boundaries, stopCondition, effortBudget)
   - artifact or claim produced by the delegated worker

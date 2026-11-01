@@ -6,10 +6,11 @@ version: "1"
 description: "Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions."
 license: "MIT"
 capabilities:
-  - maintain a NOW.md working thread for the active task
   - maintain a MEMORY.md of durable, cross-session facts
   - decide what belongs in memory versus in an artifact
   - recall memory into a fresh context pack with provenance
+  - trace agent memory decisions across inputs, constraints, and failure paths
+  - validate foundation outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - a session that needs state to survive compaction, reset, or handoff
   - the repository's CONTEXT.md and ADRs (the repo-local vocabulary)

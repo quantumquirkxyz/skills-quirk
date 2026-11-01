@@ -6,9 +6,10 @@ version: 1
 description: Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.
 license: MIT
 capabilities:
-  - apply ask to workflow
   - produce ask to artifact
   - validate ask to completion criteria
+  - trace ask to decisions across inputs, constraints, and failure paths
+  - validate routing outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - ambiguous work request
   - available workflows

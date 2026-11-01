@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill template generator methods within explicit skill-dev boundaries
+  - analyze generate an interactive, contract-complete skill template in the sandbox — use when starting a new skill with the lab's scaffolding with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "a non-overwriting sandbox Skill, completed frontmatter, and validation command."
 sideEffects:
   - write-files

@@ -6,9 +6,10 @@ version: 1
 description: Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review.
 license: MIT
 capabilities:
-  - apply docs adrs workflow
   - produce docs adrs analysis artifact
   - validate docs adrs completion criteria
+  - trace docs adrs decisions across inputs, constraints, and failure paths
+  - validate docs outcomes with evidence, assumptions, and explicit next steps
 outputs:
   - type: object
     description: ADR document with completed sections and evidence

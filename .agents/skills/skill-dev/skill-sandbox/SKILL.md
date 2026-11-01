@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill sandbox methods within explicit skill-dev boundaries
+  - analyze create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "experimental skill directory, test results, validation report, and promotion recommendation"
 sideEffects: []
 dependencies: []

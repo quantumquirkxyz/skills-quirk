@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply grilling methods within explicit routing boundaries
+  - analyze grill the user relentlessly about a plan, decision, or idea. use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

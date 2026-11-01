@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill audit methods within explicit skill-dev boundaries
+  - analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "a concise audit report with warnings and errors ranked by impact."
 sideEffects:
   - write-files

@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply artifact handoff methods within explicit routing boundaries
+  - analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

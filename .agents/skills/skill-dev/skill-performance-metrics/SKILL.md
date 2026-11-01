@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill performance metrics methods within explicit skill-dev boundaries
+  - analyze summarize skill execution duration, success rate, and available run evidence — use when measuring skill performance from logs and records with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "sample count, explicit duration availability, average duration, success rate, and cognitive-complexity estimates."
 sideEffects: []
 dependencies: []

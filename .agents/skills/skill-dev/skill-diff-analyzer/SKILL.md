@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply skill diff analyzer methods within explicit skill-dev boundaries
+  - analyze compare skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two skills with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "frontmatter changes, content additions/removals, dependency impact, and review recommendation."
 sideEffects: []
 dependencies: []

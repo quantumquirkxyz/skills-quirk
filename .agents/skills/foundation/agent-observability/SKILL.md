@@ -5,7 +5,10 @@ maturity: "stable"
 description: "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution."
 license: "MIT"
 version: "1"
-capabilities: ""
+capabilities:
+  - apply agent observability methods within explicit foundation boundaries
+  - analyze capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. enables full audit of decisions made during agent execution with assumptions, constraints, and failure modes
+  - produce and validate a foundation artifact with evidence, decisions, and next steps
 inputs: ""
 outputs: "redacted execution record, structured analysis data, and traceability links"
 sideEffects: ""

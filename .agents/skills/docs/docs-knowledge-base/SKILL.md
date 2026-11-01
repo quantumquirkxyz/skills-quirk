@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply docs knowledge base methods within explicit docs boundaries
+  - analyze maintain a repository knowledge base — glossary, durable references, indexed guidance, and consumer-oriented navigation — with explicit update rules with assumptions, constraints, and failure modes
+  - produce and validate a docs artifact with evidence, decisions, and next steps
 outputs: "information architecture, index entries, glossary rules, and maintenance plan."
 sideEffects: []
 dependencies: []

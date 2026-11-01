@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag"
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply triage methods within explicit routing boundaries
+  - analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects:
   - label-issue

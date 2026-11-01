@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply capability router methods within explicit routing boundaries
+  - analyze route work to the best matching skill using declared capabilities and compatibility — with explicit selection rules with assumptions, constraints, and failure modes
+  - produce and validate a routing artifact with evidence, decisions, and next steps
 outputs: "plan artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []

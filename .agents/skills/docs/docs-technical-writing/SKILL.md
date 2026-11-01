@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply docs technical writing methods within explicit docs boundaries
+  - analyze write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules with assumptions, constraints, and failure modes
+  - produce and validate a docs artifact with evidence, decisions, and next steps
 outputs: "outline, edited document, or review notes with gaps and maintenance concerns."
 sideEffects: []
 dependencies: []

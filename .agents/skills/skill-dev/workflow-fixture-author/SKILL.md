@@ -5,7 +5,10 @@ maturity: "stable"
 version: "1"
 description: "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion."
 license: "MIT"
-capabilities: ""
+capabilities:
+  - apply workflow fixture author methods within explicit skill-dev boundaries
+  - analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
 outputs: "authentication artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: ""
 dependencies: ""

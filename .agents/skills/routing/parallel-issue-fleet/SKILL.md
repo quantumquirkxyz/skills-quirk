@@ -6,7 +6,6 @@ version: 2
 description: Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.
 license: MIT
 capabilities:
-  - consume TicketArtifact dependency graphs and dispatch topological waves
   - isolate one implementation agent per issue through provider adapters
   - run any argv-based coding agent and model through a portable worker profile
   - bootstrap dependencies from project lockfiles before implementation
@@ -15,6 +14,8 @@ capabilities:
   - verify landed ancestry before advancing a wave
   - enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup
   - emit a validated FleetRunArtifact with per-issue ImplementArtifact references
+  - trace parallel issue fleet decisions across inputs, constraints, and failure paths
+  - validate routing outcomes with evidence, assumptions, and explicit next steps
 inputs:
   - TicketArtifact JSON with concrete acceptance criteria and blocking edges
   - explicit base branch or immutable base revision
