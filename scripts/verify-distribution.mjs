@@ -25,7 +25,7 @@ try {
   if (!fs.statSync(archive).isFile()) throw new Error('npm did not produce an archive');
   const prefix = path.join(tmp, 'prefix');
   runNpm(['install', '--offline', '--no-audit', '--no-fund', '--ignore-scripts', '--prefix', prefix, archive], root);
-  const packageRoot = path.join(prefix, 'node_modules', 'skills-quirk');
+  const packageRoot = path.join(prefix, 'node_modules', '@quantumquirkxyz', 'skills-quirk');
   for (const required of ['.agents/AGENTS.md', '.agents/skills/platform/sync-bundle.mjs', 'skills.json', 'skills-lock.json', 'AUTHORSHIP.md', '.env.template', 'hooks/hooks.json']) {
     if (!fs.existsSync(path.join(packageRoot, required))) throw new Error('Missing packaged file: ' + required);
   }

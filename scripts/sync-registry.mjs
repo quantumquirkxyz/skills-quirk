@@ -221,7 +221,7 @@ async function main() {
     '## Quick Install',
     '',
     `\`\`\`bash`,
-    `npx skills-quirk add quirk-skills`,
+    `npx @quantumquirkxyz/skills-quirk add quirk-skills`,
     `\`\`\``,
     '',
     '## Skills Index',

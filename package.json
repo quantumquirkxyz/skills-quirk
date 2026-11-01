@@ -1,5 +1,5 @@
 {
-  "name": "skills-quirk",
+  "name": "@quantumquirkxyz/skills-quirk",
   "version": "3.0.0",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",

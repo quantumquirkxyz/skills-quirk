@@ -64,9 +64,9 @@ jobs:
           project="$(mktemp -d)"
           cd "$project"
           printf '# Published artifact smoke test\n' > README.md
-          npx -y "skills-quirk@$version" version | grep -Fx "$version"
-          npx -y "skills-quirk@$version" adopt --write
-          npx -y "skills-quirk@$version" verify-install
+          npx -y "@quantumquirkxyz/skills-quirk@$version" version | grep -Fx "$version"
+          npx -y "@quantumquirkxyz/skills-quirk@$version" adopt --write
+          npx -y "@quantumquirkxyz/skills-quirk@$version" verify-install
           test -f .agents/quirk-install.json
       - name: Create GitHub release
         env:
