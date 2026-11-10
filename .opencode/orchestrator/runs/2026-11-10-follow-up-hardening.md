@@ -3,10 +3,10 @@ request: Complete CI evidence/fix, release hardening, security policy, quality-s
 base: main @ 0f5feb4
 | id | kind | status | complexity | model | session | worktree/branch | validated_commit | rounds | depends_on |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| site-drift | implementation | pending | normal | configured | — | — | — | 0 | — |
-| quality-score | implementation | pending | complex | configured | — | — | — | 0 | — |
-| security-policy | implementation | pending | normal | configured | — | — | — | 0 | — |
-| install-integrity-docs | implementation | pending | normal | configured | — | — | — | 0 | — |
+| site-drift | implementation | progress | normal | default | ses_e3936eb29ffeN7oXTESoCy12ju | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/site-drift | — | 0 | — |
+| quality-score | implementation | progress | complex | default | ses_e3936eaffffeR5t2BMS85CpynW | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/quality-score | — | 0 | — |
+| security-policy | implementation | progress | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/security-policy | — | 0 | — |
+| install-integrity-docs | implementation | progress | normal | default | ses_e3936eadbffePs4XACnHcEevzl | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/install-integrity-docs | — | 0 | — |
 | release-hardening | implementation | pending | complex | configured | — | — | — | 0 | site-drift, quality-score, install-integrity-docs |
 | final-verification | verification | pending | normal | configured | — | — | — | 0 | site-drift, quality-score, security-policy, install-integrity-docs, release-hardening |
 | cleanup | verification | pending | normal | configured | — | — | — | 0 | final-verification |
