@@ -161,7 +161,7 @@ They are the basis of the breakdown in **to-tickets**.
 
 ## 15. What is provenance?
 
-**Provenance** is the record of the origin and redesign status of a skill, name, or flow. It includes:
+**Provenance** is the record of the origin and redesign status of a skill, name, or workflow. It includes:
 
 - Original author and influence references.
 - History of alias renames or retirements.
@@ -339,3 +339,36 @@ The **Maintenance Rule** requires that:
 ## 30. Where do I find the changelog?
 
 The bundle **changelog** is located in the CHANGELOG.md file at the repository root or on the project **Releases** page. It documents versions, added or deprecated skills, vocabulary changes, and security fixes.
+
+---
+
+## 31. What post-install verification commands should I run?
+
+After installing or synchronizing the bundle, verify its integrity using the following commands. These distinguish **source-repository** (canonical authority) from **target-repository** (installed state):
+
+| Check | Command | What it verifies |
+|---|---|---|
+| Lockfile hash integrity | `node .agents/skills/platform/validate-skills.mjs` | Each SKILL.md hash matches `skills-lock.json` |
+| Semantic audit | `node .agents/skills/platform/audit-semantics.mjs` | Skill naming, side-effects, dependencies, frontmatter conformance |
+| Compatibility-view check | `node .agents/skills/platform/fix-compatibility-view.mjs --dry-run` | Every `.claude/skills/` entry is a relative symlink resolving to `.agents/skills/` |
+| Installation drift check | `node bin/skills-quirk.js verify-install` | Managed files and links match the install manifest |
+| Full gate | `node .agents/skills/platform/check-all.mjs` | Comprehensive: structure, semantics, fixtures, syntax, platform tests |
+
+> **Note:** A dry-run (`--write` omitted) reports conflicts and writes nothing. It confirms what would change but does not prove integrity — only an actual verification run against the installed state can confirm that hashes, symlinks, and the manifest are consistent.
+
+---
+
+## 32. Can I install quirk Skills via npm?
+
+No. quirk Skills is distributed as a git-based bundle consumed through prompt-based installation or the `sync-bundle.mjs` CLI. There is no npm package or `npx` installation channel. Do not use `curl | sh` installers or unpinned arbitrary scripts.
+
+---
+
+## 33. How do I distinguish source-repository from target-repository checks?
+
+- **Source-repository checks** (authority lies in the canonical bundle): `validate-skills.mjs`, `audit-semantics.mjs`, `check-all.mjs`. These validate that the installed bundle matches the canonical source at `github.com/quantumquirkxyz/skills-quirk`.
+- **Target-repository checks** (authority lies in the installed state): `fix-compatibility-view.mjs --dry-run`, `verify-install`. These validate the local installed layout, symlink parity, and manifest consistency.
+
+Source-repository checks rely on `skills-lock.json` hashes as the authoritative reference. Target-repository checks rely on the `.agents/quirk-install.json` manifest and `.claude/skills/` symlink structure.
+
+---

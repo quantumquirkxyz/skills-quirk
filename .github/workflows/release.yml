@@ -11,7 +11,7 @@ permissions:
 jobs:
   verify-release:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       DISABLE_TELEMETRY: "1"
     steps:
@@ -28,12 +28,46 @@ jobs:
           test "$package_version" = "$file_version"
           test "$package_version" = "$tag_version"
       - name: Run full test suite
-        run: npm test
-      - name: Run full repository gate
+        run: node --test tests/*.test.mjs .agents/skills/platform/tests/*.test.mjs
+      - name: Run full repository gate (incl. site drift, scorer, prompt regression)
         run: node .agents/skills/platform/check-all.mjs
-      - name: Verify priority/high-risk eval coverage
-        run: node --test tests/priority-eval-coverage.test.mjs tests/high-risk-eval-coverage.test.mjs
+      - name: Verify site drift (skills-to-site consistency)
+        run: node scripts/generate-site-data.mjs --check
+      - name: Verify quality scorer domain consistency
+        run: node .agents/skills/platform/quality-scorer.mjs --json .agents/skills/ | node -e "const r=JSON.parse(require('fs').readFileSync(0,'utf8')); console.log(r.total>=60?'PASS':'FAIL'); process.exit(r.total<60?1:0)"
+      - name: Verify prompt regression tests
+        run: |
+          GOLDEN_DIR=.agents/skills/platform/golden
+          tested=0
+          found=0
+          for golden in "$GOLDEN_DIR"/*-v2.md; do
+            [ -f "$golden" ] || continue
+            skill=$(basename "$golden" -v2.md)
+            found=1
+            tested=$((tested + 1))
+            echo "Testing $skill..."
+            node .agents/skills/platform/scripts/test-prompt-regression.mjs "$skill" v2 || exit 1
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No golden prompt files (*-v2.md) found in golden directory; failing closed for release."
+            exit 1
+          fi
+          if [ "$tested" -eq 0 ]; then
+            echo "No golden prompt files (*-v2.md) found; nothing to test."
+          else
+            echo "All prompt regression tests passed ($tested skills)"
+          fi
+      - name: Log check results and version info
+        run: |
+          echo "=== Release Check Results ==="
+          echo "Commit SHA: $(git rev-parse HEAD)"
+          echo "Tag: ${GITHUB_REF_NAME}"
+          echo "Version: $(node -p "require('./package.json').version")"
+          echo "=== End ==="
       - name: Create GitHub release
+        if: success()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${GITHUB_REF_NAME}" --verify-tag --generate-notes --title "quirk Skills ${GITHUB_REF_NAME}"
+        run: |
+          gh release create "${GITHUB_REF_NAME}" --verify-tag --generate-notes --title "quirk Skills ${GITHUB_REF_NAME}"
+          echo "Release created successfully for ${GITHUB_REF_NAME}"

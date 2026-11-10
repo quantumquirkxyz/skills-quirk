@@ -4,6 +4,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
 const DEFAULT_SKILL_PATH = '.agents/skills/skill-dev/skill-creator';
@@ -260,7 +261,10 @@ async function scoreSkill(skillPath) {
   if (body.includes('## Why') || body.includes('Principle') || body.includes('Rationale') || body.includes('Explanation')) diaScore += 1;
   scores.diataxisCompleteness = Math.min(5, diaScore);
 
-  const total = Math.round(Object.values(scores).reduce((a, b) => a + b, 0));
+  const rawTotal = Math.round(Object.values(scores).reduce((a, b) => a + b, 0));
+  const maxRawScore = 105;
+  // Normalize to /100 scale: scale_factor = 100/105 ≈ 0.95238
+  const total = Math.round(rawTotal * 100 / maxRawScore);
   const scripts = foundDirs;
   const scriptLoc = await countScriptLoc(skillDir);
   const tier = tierFor(total, lines, scripts, scriptLoc);
@@ -272,13 +276,27 @@ async function scoreSkill(skillPath) {
     path: skillPath,
     scores,
     total,
+    rawTotal,
+    maxRawScore,
     grade,
     tier,
     issues,
     warnings,
     metrics: { tokens, lines, headers, scripts, scriptLoc },
+    frontmatter: {
+      name: fm.name,
+      description: fm.description,
+      category: fm.category,
+      version: fm.version,
+      promptVersion: fm.promptVersion,
+      modelTier: fm.modelTier,
+      artifactType: fm.artifactType,
+      fixturesPath: fm.fixturesPath,
+    },
   };
 }
+
+export { scoreSkill };
 
 async function main() {
   const args = process.argv.slice(2);
@@ -324,7 +342,12 @@ async function main() {
   }
 }
 
-main().catch(err => {
-  console.error('Error:', err);
-  process.exit(1);
-});
+/** Only run CLI main() when this script is executed directly, not when imported. */
+const argPath = path.resolve(process.argv[1]);
+const isMain = import.meta.url === pathToFileURL(argPath).href;
+if (isMain) {
+  main().catch(err => {
+    console.error('Error:', err);
+    process.exit(1);
+  });
+}
