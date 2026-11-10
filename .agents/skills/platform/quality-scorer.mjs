@@ -4,6 +4,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
 const DEFAULT_SKILL_PATH = '.agents/skills/skill-dev/skill-creator';
@@ -342,7 +343,8 @@ async function main() {
 }
 
 /** Only run CLI main() when this script is executed directly, not when imported. */
-const isMain = import.meta?.url === `file://${process.argv[1]}`;
+const argPath = path.resolve(process.argv[1]);
+const isMain = import.meta.url === pathToFileURL(argPath).href;
 if (isMain) {
   main().catch(err => {
     console.error('Error:', err);

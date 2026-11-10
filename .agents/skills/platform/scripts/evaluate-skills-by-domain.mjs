@@ -6,6 +6,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 import { scoreSkill } from '../quality-scorer.mjs';
 
@@ -38,16 +39,6 @@ function parseFrontmatter(text) {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-function wordCount(text) {
-  return (text.match(/[A-Za-z0-9_'-]+/g) ?? []).length;
-}
-
-function countHeaders(text) {
-  return (text.match(/^#{1,6}\s+.+$/gm) ?? []).length;
-}
-
-const VALID_MODEL_TIERS = ['reasoning', 'code', 'fast', 'router'];
 
 async function countScriptLoc(skillDir) {
   let total = 0;
@@ -286,7 +277,8 @@ async function main() {
 }
 
 /** Only run CLI main() when this script is executed directly, not when imported. */
-const isMain = import.meta?.url === `file://${process.argv[1]}`;
+const argPath = path.resolve(process.argv[1]);
+const isMain = import.meta.url === pathToFileURL(argPath).href;
 if (isMain) {
   main().catch(err => {
     console.error('Error:', err);
