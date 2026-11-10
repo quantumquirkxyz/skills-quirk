@@ -20,9 +20,7 @@ flowchart TD
 - [ ] Add or update scenarios for workflow changes.
 - [ ] Add or update behavioral fixtures for artifact-template changes.
 - [ ] Run `node .agents/skills/platform/check-all.mjs`.
-- [ ] Run `npm run package:verify` and the Portable Distribution Matrix for the exact release candidate.
-- [ ] Verify Agent Skills CLI discovery/selective install evidence for the release candidate or document why it is unchanged.
-- [ ] Run External Release Readiness. `NPM_TOKEN` must be PASS before tagging; no external model-provider credential is required.
+- [ ] Run the Portable Distribution Matrix for the exact release candidate.
 - [ ] Verify no project-specific vocabulary leaked into reusable docs.
 
 ## Lockfile provenance
@@ -44,9 +42,7 @@ carry the provenance contract, and `validate-skills.mjs` rejects anything else:
 
 ## Release
 
-The tag-triggered workflow is `.github/workflows/release.yml`. It validates version equality, runs the full suite and gate, verifies the packaged install, builds a release archive, publishes with npm provenance, installs the public artifact, and only then creates the GitHub Release.
-
-**Fail closed:** do not create a release tag while External Release Readiness reports `npm=NOT RUN` or `npm=FAIL`; a tag would intentionally fail at the publication credential gate.
+The tag-triggered workflow is `.github/workflows/release.yml`. It validates version equality, runs the full suite and gate, and then creates the GitHub Release. There is no npm publication: skills are distributed through the prompt-based installation flow documented in the README.
 
 - [ ] Commit only scoped release files.
 - [ ] Tag as `v<version>`.

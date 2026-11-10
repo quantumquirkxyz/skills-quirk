@@ -22,9 +22,9 @@ flowchart TD
 7. Run the validation commands in this guide.
 8. Start normal work through `ask-to` for ambiguous routing or the canonical feature flow for a claimed work item.
 
-## Prompt-free installation
+## Installation channels
 
-For optional, selective installation through the open Agent Skills CLI, follow [Installation Options](installation-options.md). That procedure is separate from full-bundle sync: first verify discovery of the nested canonical skills, then verify the target agent installation. Do not assume the external CLI installs quirk governance documents or the full harness.
+Skills are installed **by prompt only**: use the prompts in `README.md` (see [Installation Prompts](#installation-prompts) below) or the safe dry-run sync from a local checkout. There is no npm/npx installation channel for this bundle. [Installation Options](installation-options.md) documents the sync, greenfield, and managed-lifecycle variants.
 
 ## Installation Prompts
 

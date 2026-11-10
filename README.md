@@ -56,7 +56,7 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 - **Canonical auxiliary skills** — `.agents/skills/auxiliary/integration-playground`, `.agents/skills/skill-dev/skill-testing-framework`, and foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`
 - **CI validation** — `.github/workflows/validate.yml`
 - **Skill evolution** — `skill-lab.mjs` and `skill-evolver.mjs`
-- **Skills manifest** — `skills.json` for portable bundle definition and `npx skills` compatibility
+- **Skills manifest** — `skills.json` for portable bundle definition and agent discovery
 - **Work-item routing** — `work-item-router.mjs` for keyword-based skill selection
 
 </details>
@@ -200,7 +200,7 @@ flowchart LR
 
 - **Evidence-gated updates** — `skill-evolver.mjs`
 - **Audit trail** — `audit-trail.mjs`
-- **Versioning** — dist-tags `stable` / `beta` / `canary`
+- **Versioning** — channels `stable` / `beta` / `canary` (labels only; no npm dist-tags)
 - **Standards compliance** — `agentskills-compliance.mjs` (agentskills.io spec + progressive disclosure budgets)
 - **Self-improvement** — `trace-improver.mjs` (trace-driven proposals), `trajectory-eval.mjs` (state-machine conformance)
 - **Benchmark** — `benchmark-harness.mjs` (pass@k, duration stats, history)
@@ -212,7 +212,7 @@ flowchart LR
 <details>
 <summary>Platform layer</summary>
 
-- **NPX CLI** — `bin/skills-quirk.js`
+- **CLI** — `bin/skills-quirk.js` (run with `node bin/skills-quirk.js`; no npm installation involved)
 - **Discovery site** — `site/`
 - **Plugin system** — `.claude-plugin/plugin.json`
 - **Runtime hooks** — `hooks/hooks.json` (tool-risk PreToolUse guard, session-context)
@@ -338,7 +338,7 @@ node scripts/sync-registry.mjs
 node scripts/sync-registry.mjs --write
 ```
 
-`package.json` names the package `skills-quirk`. Package publication and npm release channels must be verified separately; the source checkout is the reproducible entry point documented here.
+`package.json` exists only for development scripts (tests, validation, projections); the bundle is not published to npm. The source checkout is the reproducible entry point documented here.
 
 ### Registry and marketplace
 
@@ -542,7 +542,7 @@ Update the skills implementation so it matches the upstream bundle while preserv
 
 ### Versioning
 
-Channel names in registry metadata do not establish that npm dist-tags have been published.
+Channel names in registry metadata are labels only; there is no npm publication channel.
 
 The current version is recorded in [VERSION](VERSION). Release changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 

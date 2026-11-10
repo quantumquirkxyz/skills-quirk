@@ -1,56 +1,49 @@
 # Installation Options: From One Skill to Full Harness
 
-Status: installation guidance reviewed 2026-10-28. Third-party discovery and selective installation were smoke-tested by GitHub Actions; managed package installation was verified on Linux, macOS and Windows. Re-run the linked workflows for the exact release candidate before publishing.
+Status: installation guidance reviewed 2026-11-10. Skills are installed **by prompt only** — there is no npm/npx installation channel for this bundle. Re-run the portable distribution workflows for the exact release candidate before publishing.
 
-## Preferred discovery path: Agent Skills CLI
+## Preferred path: prompt-based install
 
-From the **target project** directory, the open ecosystem CLI supports GitHub repository sources:
+Use one of the prompts preserved verbatim in [README.md → Installation & Sync](../../README.md#installation--sync). Paste the prompt into the AI coding agent working inside the target repository; the agent clones or references this repository, copies the bundle-managed files, and validates the result.
+
+This is the only endorsed installation channel. Do not publish or consume an npm package for skill installation.
+
+## Selective adoption: safe sync from a local checkout
+
+From a local checkout of this repository:
 
 ```bash
-# Discover available skills without installing (verify what the CLI finds)
-npx skills add quantumquirkxyz/skills-quirk --list
-
-# Interactive project-scoped installation, after reviewing discovered skills
-npx skills add quantumquirkxyz/skills-quirk
-
-# Select a specific skill only if the prior --list output includes it
-npx skills add quantumquirkxyz/skills-quirk --skill <discovered-skill-name>
+node .agents/skills/platform/check-all.mjs
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo          # dry run
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write  # apply
 ```
 
-The repository URL is also an accepted source format:
+The dry run writes nothing. Existing repositories should preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation unless the user explicitly approves broader adoption changes.
+
+## Managed lifecycle: dry-run-first CLI
+
+Run the CLI from this checkout with `node bin/skills-quirk.js <command>` (it is not installed globally):
 
 ```bash
-npx skills add https://github.com/quantumquirkxyz/skills-quirk --list
-```
-
-This avoids copying a prompt into an agent. The repository's automated interoperability workflow verifies that `--list` discovers `ask-to` and that a non-interactive `--skill ask-to -a claude-code -y --copy` installation produces a discoverable skill. This is evidence for selective interoperability, not proof that every skill/agent combination behaves identically. For repository-local (not global) installation, use the default scope. Prefer selected skills over installing the entire large bundle.
-
-Requires a Node.js version supported by the current `skills` CLI (its published package lists Node 22.20+ as of October 2026); the quirk repository's own Node engine requirement is separate. The CLI may collect anonymous install telemetry; set `DISABLE_TELEMETRY=1` to opt out, per its documentation. Pin or review the source revision and audit side effects before using third-party skills in sensitive environments.
-
-## Managed bundle: dry-run-first CLI (implemented)
-
-From a project directory, with the quirk CLI available, use:
-
-```bash
-skills-quirk adopt            # preview conflicts and planned files, no writes
-skills-quirk adopt --write    # apply only if the preview reports no conflicts
+node bin/skills-quirk.js adopt            # preview conflicts and planned files, no writes
+node bin/skills-quirk.js adopt --write    # apply only if the preview reports no conflicts
 ```
 
 The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. A successful write creates `.agents/quirk-install.json`, which records hashes of bundle-managed files and compatibility links. That manifest enables three additional lifecycle commands:
 
 ```bash
-skills-quirk verify-install       # detect missing/modified managed files
-skills-quirk upgrade              # preview changed managed files and backup plan
-skills-quirk upgrade --write      # back up changed managed files, then upgrade
-skills-quirk rollback             # preview restoration of the latest pre-upgrade state
-skills-quirk rollback --write     # restore exact backed-up bytes if no post-upgrade drift exists
-skills-quirk uninstall            # preview conservative removal
-skills-quirk uninstall --write    # remove only unchanged managed files/links
+node bin/skills-quirk.js verify-install       # detect missing/modified managed files
+node bin/skills-quirk.js upgrade              # preview changed managed files and backup plan
+node bin/skills-quirk.js upgrade --write      # back up changed managed files, then upgrade
+node bin/skills-quirk.js rollback             # preview restoration of the latest pre-upgrade state
+node bin/skills-quirk.js rollback --write     # restore exact backed-up bytes if no post-upgrade drift exists
+node bin/skills-quirk.js uninstall            # preview conservative removal
+node bin/skills-quirk.js uninstall --write    # remove only unchanged managed files/links
 ```
 
 `upgrade --write` stores changed managed files and the previous install manifest under `.agents/quirk-backups/<timestamp>/` before replacement. `rollback --write` restores that exact pre-upgrade state only when the current managed installation has not drifted after the upgrade; pre-existing local drift remains visible after restoration. `uninstall --write` refuses to remove a managed path that has been edited or replaced by the host project. Compatibility-view conflicts block before any copy begins.
 
-The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. It refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The managed lifecycle is exercised by the repository test suite and the portable distribution matrix; use the dry-run modes first in established repositories.
+The `adopt` command refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The managed lifecycle is exercised by the repository test suite and the portable distribution matrix; use the dry-run modes first in established repositories.
 
 ## Managed/full bundle installation
 
@@ -58,7 +51,7 @@ The repository has **different** distribution mechanisms, and they are not inter
 
 | Mode | Intended outcome | Caveat |
 |---|---|---|
-| `npx skills add ...` | Selective Agent Skills for supported agents | Does not imply quirk governance docs, lockfile, and full harness tools have been installed |
+| Prompt-based install (README) | Full bundle plus governance docs into the target repository | Review the agent's plan before it writes |
 | `node .agents/skills/platform/sync-bundle.mjs <target>` from a quirk checkout | Inspect managed bundle sync | Dry-run before using `--write`; review changed paths |
 | `bash scripts/install-quirk-skills.sh <target> <source>` | Copy bundle-managed files to a greenfield project | Replaces pre-existing managed paths; never run unreviewed against an established project |
 | `bash scripts/setup-quirk-skills.sh <target> <source>` | Copy bundle and prompt for tracker settings | Interactive and replaces paths; do not use as a non-interactive unattended installer |
@@ -69,17 +62,17 @@ For full harness adoption, follow [Adoption Guide](adoption.md) and [Generated V
 
 In a clean disposable repo with no existing agent files:
 
-1. Run `npx skills add quantumquirkxyz/skills-quirk --list`. Capture exit code, names discovered and tool version.
-2. Pick one displayed skill, install locally and verify its `SKILL.md` frontmatter, companion references and expected agent discovery path.
+1. Paste the README install prompt into an AI coding agent; capture the plan it proposes before any write.
+2. Apply the install and verify `SKILL.md` frontmatter, companion references, `skills-lock.json` hashes, and `.claude/skills/` symlink parity.
 3. Try repeat install/update; check for overwrites, broken symlinks and stale assets.
 4. Test isolation from pre-existing `CONTEXT.md`, `AGENTS.md`, `docs/`, and user skills in an **existing project fixture**; no data should disappear unexpectedly.
 5. Repeat on supported operating systems and agents; classify each combination as PASS, FAIL, or NOT RUN.
-6. Only after validation, publish a verified one-line install recommendation and consider automated CI install smoke tests.
+6. Only after validation, publish a verified one-line install recommendation.
 
-Avoid `curl | sh` installers, unreviewed `--all` selections, and unpinned arbitrary scripts when standard CLI discovery is available. Treat installation as a supply-chain security boundary.
+Avoid `curl | sh` installers, unreviewed `--all` selections, and unpinned arbitrary scripts. Treat installation as a supply-chain security boundary.
 
 ## References
 
-- [Agent Skills CLI reference](https://www.skills.sh/docs/cli)
-- [Agent Skills CLI source formats](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
-- [Agent Skills interoperability](https://agentskills.io/)
+- [Adoption Guide](adoption.md)
+- [Installation of quirk Skills](installation.md)
+- [Agent Skills interoperability spec](https://agentskills.io/)
