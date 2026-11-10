@@ -3,7 +3,7 @@ request: Fix CI-only/flaky failure where skills-json-consistency mutates site/sr
 base: main @ b6a4a83
 | id | kind | status | complexity | model | session | worktree/branch | validated_commit | rounds | depends_on |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| isolate-projection-tests | implementation | progress | normal | default | ses_e38dca500ffe4B613ozJDEwNml | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/ci-race-fix | — | 0 | — |
+| isolate-projection-tests | implementation | progress | normal | default | ses_e387aad61ffeJ5Bw8D5d8HxlMA | /home/quantumquirxyz/.local/share/opencode/worktree/d110f0/ci-race-fix | — | 0 | — |
 | review | verification | pending | normal | reviewer | — | — | — | 0 | isolate-projection-tests |
 | final-gate | verification | pending | normal | default | — | — | — | 0 | review |
 | ci-evidence | verification | pending | normal | default | — | — | — | 0 | final-gate |
