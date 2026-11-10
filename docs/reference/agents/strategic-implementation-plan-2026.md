@@ -1,6 +1,6 @@
 # Quirk Skills — Strategic Implementation Plan (2026–2027)
 
-**Status:** repository-controlled implementation complete; final CI acceptance in progress; external live-model evaluation and npm publication are NOT RUN because required repository secrets are absent. **Originally approved:** 2026-10-26. **Reconciled:** 2026-10-28. **Target:** cross-project, portable, evaluable agent-skills engineering platform. **Scope:** canonical skills, governance, runtime, evaluation, security, installer, docs, packaging and release. **Non-goal:** replace the ecosystem with a mandatory monolithic orchestration framework.
+**Status:** repository-controlled implementation complete; final CI acceptance in progress. The npm publication channel was removed on 2026-11-10: skills are distributed by prompt only. **Originally approved:** 2026-10-26. **Reconciled:** 2026-11-10. **Target:** cross-project, portable, evaluable agent-skills engineering platform. **Scope:** canonical skills, governance, runtime, evaluation, security, installer, docs, packaging and release. **Non-goal:** replace the ecosystem with a mandatory monolithic orchestration framework.
 
 This plan extends [Engineering Evolution](engineering-evolution-2026.md), [Agent Engineering Methodologies](../../explanation/agent-engineering-methodologies-2026.md), and [Installation Options](../../how-to/installation-options.md). Every feature claim needs tests; listed scripts are discovery points, not verified successes.
 
@@ -103,7 +103,7 @@ Sequencing is dependency-driven, not calendar-driven. Run W2, W3 and W5 on isola
 
 **Targets:** existing `bin/skills-quirk.js`, `scripts/setup-quirk-skills.sh`, `scripts/install-quirk-skills.sh`, `sync-bundle.mjs`, manifests and agent-native views.
 
-**Actions:** evaluate `npx skills add quantumquirkxyz/skills-quirk --list` and selective installs in disposable projects before endorsing; verify nested skill discovery and references. Audit current destructive copy behavior. Introduce separate modes only if justified: `inspect` (read-only), `install` (safe and conflict-aware), `upgrade` (diff/backup), `verify`, and optional `uninstall` (tracked manifest and non-destructive). Prefer standard ecosystem CLI; preserve existing CLI aliases. Document Node/platform support and pinning.
+**Actions:** installation is prompt-based only (README prompts); evaluate the prompt flow in disposable projects before endorsing; verify nested skill discovery and references. Audit current destructive copy behavior. Introduce separate modes only if justified: `inspect` (read-only), `install` (safe and conflict-aware), `upgrade` (diff/backup), `verify`, and optional `uninstall` (tracked manifest and non-destructive). No npm/npx installation channel. Document Node/platform support and pinning.
 
 **Acceptance:** clean-project and existing-project fixtures on Linux, macOS and Windows where supported; no silent overwrite of unrelated files; second install idempotent; optional selected-skill mode does not imply whole-harness installation; rollback tested; unsupported combos clearly documented.
 
@@ -125,7 +125,7 @@ Test on **at least five representative fixtures**: TypeScript fullstack, Python 
 
 Update version and changelog; follow [Release checklist](../../how-to/release.md). Publish migration notes, security model, platform compatibility and release evidence; tag only after full release gates pass. Maintain a quarterly review cycle for dependencies, protocols, performance and retired skills. Deprecate through warnings and migration intervals before removal.
 
-**Acceptance:** release artifacts match the tagged source; install tests run against the published artifact; upgrade/rollback documented; no unreviewed critical findings.
+**Acceptance:** release artifacts match the tagged source; prompt-based install tests pass against the tagged source; upgrade/rollback documented; no unreviewed critical findings.
 
 ## 4. Skill portfolio migration
 

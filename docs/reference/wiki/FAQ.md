@@ -200,15 +200,15 @@ It is not a simple average: each category may have different weight depending on
 
 ---
 
-## 18. How does the NPX CLI work?
+## 18. How does the local CLI work?
 
-The NPX package exposes commands to:
+The local CLI (`node bin/skills-quirk.js`) exposes commands to:
 
 - Install or synchronize the bundle in another repository.
 - Execute individual skills from the command line.
 - Manage local configurations and skill mappings.
 
-See [Distribution](Distribution.md) for the complete list of commands and usage.
+It runs from a checkout of this repository; it is not published to npm. See [Distribution](Distribution.md) for the complete list of commands and usage.
 
 ---
 
@@ -223,7 +223,7 @@ The **MCP server** (Model Context Protocol) connects dynamic context (issues, PR
 Use the synchronization flow described in [Distribution](Distribution.md):
 
 1. Identify the destination and mode (greenfield or existing-repo).
-2. Execute the NPX CLI synchronization command.
+2. Run `node .agents/skills/platform/sync-bundle.mjs <destination>` (dry run), then repeat with `--write` after review.
 3. Verify that .agents/skills/, skills-lock.json, and .claude/skills/ are consistent.
 4. Adjust the destination CONTEXT.md to incorporate local vocabulary.
 

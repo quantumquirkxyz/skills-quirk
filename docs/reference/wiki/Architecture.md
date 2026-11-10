@@ -41,7 +41,7 @@ flowchart TD
     G --> G2[audit-trail.mjs]
     G --> G3[versioning]
 
-    H[Platform layer] --> H1[NPX CLI]
+    H[Platform layer] --> H1[Local CLI]
     H --> H2[discovery site]
     H --> H3[plugin system]
 
@@ -65,7 +65,7 @@ This is the domain layer. It contains the canonical skill catalog, the integrity
 | `.agents/skills/` | Canonical skills. Each skill is a folder with `SKILL.md` as the entrypoint. |
 | `.claude/skills/` | Compatibility view. Symlinks that expose canonical skills to consumers expecting this layout. |
 | `skills-lock.json` | Canonical integrity hash for each skill. |
-| `skills.json` | Portable bundle manifest. Used by `npx skills` and the discovery site. |
+| `skills.json` | Portable bundle manifest. Used by agent discovery tooling and the discovery site. |
 | `registry.yaml` | Source-of-truth for the bundle. Includes JSON schema, metadata, categories, and distribution configuration. |
 
 ### Detail
@@ -237,11 +237,11 @@ Governs the skill lifecycle with evidence-gated updates, immutable audit trail, 
 
 ## 8. Platform layer
 
-Provides the NPX CLI, the discovery site, and the plugin system for distribution and consumption.
+Provides the local CLI, the discovery site, and the plugin system for distribution and consumption.
 
 | Path | Role |
 |---|---|
-| `bin/skills-quirk.js` | NPX CLI. Commands: `list`, `search`, `validate`, `audit`, `score`, `security`, `graph`, `test`, `mcp`, `evolve`, `audit-trail`, `metrics`, `sync`, `catalog`, `install`. |
+| `bin/skills-quirk.js` | Local CLI. Commands: `list`, `search`, `validate`, `audit`, `score`, `security`, `graph`, `test`, `mcp`, `evolve`, `audit-trail`, `metrics`, `sync`, `catalog`, `install`. |
 | `site/` | Discovery site. Vite + React app for visual exploration of skills. |
 | `.claude-plugin/plugin.json` | Plugin manifest for Claude Code. Defines `skillsDir`, owner, and metadata. |
 | `package.json` | NPM metadata for the bundle. |
@@ -295,7 +295,7 @@ skills-quirk/
 │       ├── validate.yml              # CI: full validation
 │       └── skills-ci.yml             # CI: legacy
 ├── bin/
-│   └── skills-quirk.js               # NPX CLI
+│   └── skills-quirk.js               # Local CLI
 ├── docs/
 │   ├── adr/                          # Project ADRs
 │   ├── explanation/                  # Method and provenance explanations
@@ -387,7 +387,7 @@ skills-quirk/
 | `VERSION` | Current bundle version. |
 | `CHANGELOG.md` | Changes per release. |
 | `AUTHORSHIP.md` | Authorship and integrity. |
-| `bin/skills-quirk.js` | NPX CLI that delegates to platform scripts. |
+| `bin/skills-quirk.js` | Local CLI that delegates to platform scripts. |
 | `scripts/work-item-router.mjs` | Keyword-based work item router. |
 | `scripts/setup-quirk-skills.sh` | Installs the bundle in a target repository. |
 | `scripts/sync-registry.mjs` | Synchronizes `registry.yaml` to `marketplace.json`, `CATALOG.md`, and other artifacts. |

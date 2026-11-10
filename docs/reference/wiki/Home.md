@@ -193,7 +193,7 @@ flowchart TD
 | **Registry** | `registry.yaml`, `.claude-plugin/marketplace.json`, `CATALOG.md` | Distribution and discovery |
 | **Runtime** | `mcp-skills-server.mjs`, `otel-skill-instrumentation.mjs` | Execution as MCP tools and traces |
 | **Governance** | `skill-evolver.mjs`, `audit-trail.mjs` | Evidence-gated evolution and auditing |
-| **Platform** | `bin/skills-quirk.js`, `site/`, `.claude-plugin/` | NPX CLI, discovery site and plugins |
+| **Platform** | `bin/skills-quirk.js`, `site/`, `.claude-plugin/` | Local CLI, discovery site and plugins |
 
 ### Skills architecture diagram
 
@@ -203,7 +203,7 @@ flowchart LR
     A --> C[skills-lock.json]
     D[Compatibility view] --> E[.claude/skills/ symlinks]
     E --> A
-    F[skills.json] --> G[npx skills compatibility]
+    F[skills.json] --> G[agent discovery]
     H[registry.yaml] --> I[marketplace.json]
     I --> J[Claude Code discovery]
     K[CONTEXT.md] --> L[Vocabulario local]

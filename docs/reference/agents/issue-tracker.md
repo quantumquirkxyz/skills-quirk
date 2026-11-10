@@ -19,7 +19,7 @@ Use the canonical shape from `work-item-format.md` for the issue sidebar and dev
 - Project V2 fields and views: `make-project`; these are project-level data, not issue sidebar fields.
 - Existing PR linkage and generic related-issue references: verify with the available GitHub API/UI; do not fabricate unsupported mutations.
 
-`skills-quirk issue-meta --repo owner/repo --issue <n> --metadata <file>` is dry-run by default. Add `--write` only after reviewing the generated argv plan and obtaining the required mutation approval.
+`node bin/skills-quirk.js issue-meta --repo owner/repo --issue <n> --metadata <file>` is dry-run by default. Add `--write` only after reviewing the generated argv plan and obtaining the required mutation approval.
 
 ## Defaults
 

@@ -27,8 +27,9 @@ This project follows semantic versioning once releases are cut:
 - Added credential-gated optional external model evaluation and a non-destructive external-readiness workflow; absent credentials are recorded as NOT RUN.
 - Added canonical GitHub work-item metadata for assignees, labels, milestone, projects, parent/sub-issues, blocked-by/blocking relations, Project V2 fields, and Development branch linkage, with a dry-run-first `skills-quirk issue-meta` command.
 - Added a provenance-backed release workflow that gates tests, package verification, npm publication, public-artifact installation, and GitHub Release creation.
+- **Removed the npm installation/publication channel (2026-11-10):** deleted the `bin`/`files`/`publishConfig` packaging fields, the `package:verify` tarball gate, the `external-readiness` and `skills-cli-interop` workflows, and the `npmPackage`/`npxCommand` registry fields; skills are now distributed **by prompt only** (README → Installation & Sync). Epic #6 (npm publication acceptance) was deleted with it.
 
-Repository-controlled modernization is implemented and continuously gated. External model evaluation and public npm publication remain external acceptance actions and are explicitly NOT RUN while their repository secrets are absent. No new tag has been cut. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
+Repository-controlled modernization is implemented and continuously gated. Live model evaluation is not part of project acceptance, and public npm publication was removed as a distribution channel on 2026-11-10 (skills install by prompt only). No new tag has been cut. See [Implementation status](docs/reference/agents/implementation-status-2026.md).
 
 
 ### Fixed
