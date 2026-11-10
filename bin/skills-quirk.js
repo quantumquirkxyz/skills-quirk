@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// skills-quirk.js - NPX CLI for Quirk Skills bundle
-// Usage: skills-quirk <command> [options]
+// skills-quirk.js - Local CLI for the Quirk Skills bundle (run with: node bin/skills-quirk.js <command>)
+// Usage: node bin/skills-quirk.js <command> [options]
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -79,7 +79,7 @@ async function main() {
     console.log(`
 ⚡ Quirk Skills CLI v${version}
 
-Usage: skills-quirk <command> [options]
+Usage: node bin/skills-quirk.js <command> [options]
 
 Commands:
   list                  List all skills in the bundle
@@ -107,24 +107,24 @@ Commands:
   version               Print CLI version
 
 Examples:
-  skills-quirk list
-  skills-quirk search "react testing"
-  skills-quirk score skill-creator
-  skills-quirk security implement
-  skills-quirk graph --format mermaid
-  skills-quirk sync --write
-  skills-quirk mcp --stdio
-  skills-quirk adopt
-  skills-quirk adopt --write
-  skills-quirk verify-install
-  skills-quirk upgrade
-  skills-quirk upgrade --write
-  skills-quirk rollback
-  skills-quirk rollback --write
-  skills-quirk uninstall
-  skills-quirk uninstall --write
-  skills-quirk issue-meta --repo owner/repo --issue 123 --metadata issue.json
-  skills-quirk issue-meta --repo owner/repo --issue 123 --metadata issue.json --write
+  node bin/skills-quirk.js list
+  node bin/skills-quirk.js search "react testing"
+  node bin/skills-quirk.js score skill-creator
+  node bin/skills-quirk.js security implement
+  node bin/skills-quirk.js graph --format mermaid
+  node bin/skills-quirk.js sync --write
+  node bin/skills-quirk.js mcp --stdio
+  node bin/skills-quirk.js adopt
+  node bin/skills-quirk.js adopt --write
+  node bin/skills-quirk.js verify-install
+  node bin/skills-quirk.js upgrade
+  node bin/skills-quirk.js upgrade --write
+  node bin/skills-quirk.js rollback
+  node bin/skills-quirk.js rollback --write
+  node bin/skills-quirk.js uninstall
+  node bin/skills-quirk.js uninstall --write
+  node bin/skills-quirk.js issue-meta --repo owner/repo --issue 123 --metadata issue.json
+  node bin/skills-quirk.js issue-meta --repo owner/repo --issue 123 --metadata issue.json --write
 `);
     return;
   }
@@ -137,7 +137,7 @@ Examples:
   const resolved = resolveCommand(command, args.args);
   if (!resolved) {
     console.error(`Unknown command: ${command}`);
-    console.error('Run `skills-quirk help` for available commands.');
+    console.error('Run `node bin/skills-quirk.js help` for available commands.');
     process.exit(1);
   }
 
