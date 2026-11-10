@@ -4,8 +4,12 @@
 
 ## Quick Install
 
-```bash
-npx @quantumquirkxyz/skills-quirk add quirk-skills
+Install the bundle into a target repository with the prompt-based flow documented in the README:
+
+```text
+Ask your AI coding agent to install the quirk Skills bundle from
+https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
+(Installation & Sync), then run node .agents/skills/platform/check-all.mjs.
 ```
 
 ## Skills Index
