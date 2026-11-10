@@ -91,9 +91,14 @@ async function collectSkills(dir, out = []) {
   return out;
 }
 
+// Sort skills by name for deterministic output ordering
+function sortSkills(skills) {
+  return [...skills].sort((a, b) => a.name.localeCompare(b.name));
+}
+
 async function main() {
   console.log('[generate-site-data] Collecting skills...');
-  const skills = await collectSkills(skillsRoot);
+  const skills = sortSkills(await collectSkills(skillsRoot));
   const categories = [...new Set(skills.map(s => s.category))].sort();
 
   const data = {
@@ -117,47 +122,88 @@ async function main() {
 
   if (check) {
     // Deterministic drift check: compare generated data against existing file
+    // using a deep structural comparison of all fields
     try {
       const existingJson = await fs.readFile(outputPath, 'utf8');
       const existingData = JSON.parse(existingJson);
 
+      const driftReasons = [];
+
+      // Compare top-level fields
       if (existingData.totalSkills !== data.totalSkills) {
-        console.error(`[generate-site-data] DRIFT DETECTED: totalSkills mismatch (existing: ${existingData.totalSkills}, generated: ${data.totalSkills})`);
-        process.exit(1);
+        driftReasons.push(`totalSkills mismatch (existing: ${existingData.totalSkills}, generated: ${data.totalSkills})`);
       }
-
       if (existingData.categories.join(',') !== data.categories.join(',')) {
-        console.error('[generate-site-data] DRIFT DETECTED: categories mismatch');
-        process.exit(1);
+        driftReasons.push('categories mismatch');
       }
 
-      // Compare each skill
-      let hasDrift = false;
-      for (let i = 0; i < data.skills.length; i++) {
+      // Compare each skill with full field comparison
+      // Handle case where skill counts differ
+      const maxLen = Math.max(existingData.skills.length, data.skills.length);
+
+      for (let i = 0; i < maxLen; i++) {
         const gen = data.skills[i];
         const existing = existingData.skills[i];
+
         if (!existing) {
-          console.error(`[generate-site-data] DRIFT DETECTED: skill ${gen.name} missing from existing data`);
-          hasDrift = true;
+          driftReasons.push(`skill "${gen.name}" missing from existing data at index ${i}`);
           continue;
         }
-        const capsDiff = gen.capabilities.filter(c => !existing.capabilities.includes(c)).length;
-        const capsExtra = existing.capabilities.filter(c => !gen.capabilities.includes(c)).length;
-        if (gen.name !== existing.name || gen.category !== existing.category || gen.description !== existing.description || capsDiff > 0 || capsExtra > 0) {
-          console.error(`[generate-site-data] DRIFT DETECTED: skill "${gen.name}" differs (capabilities missing: ${capsDiff}, extra: ${capsExtra})`);
-          hasDrift = true;
+
+        if (gen.name !== existing.name) {
+          driftReasons.push(`skill "${gen.name}" name mismatch (existing: "${existing.name}") at index ${i}`);
+        }
+        if (gen.category !== existing.category) {
+          driftReasons.push(`skill "${gen.name}" category mismatch (existing: "${existing.category}") at index ${i}`);
+        }
+        if (gen.description !== existing.description) {
+          driftReasons.push(`skill "${gen.name}" description mismatch at index ${i}`);
+        }
+        if (gen.version !== existing.version) {
+          driftReasons.push(`skill "${gen.name}" version mismatch (existing: "${existing.version}") at index ${i}`);
+        }
+        if (gen.maturity !== existing.maturity) {
+          driftReasons.push(`skill "${gen.name}" maturity mismatch (existing: "${existing.maturity}") at index ${i}`);
+        }
+        if (gen.risk !== existing.risk) {
+          driftReasons.push(`skill "${gen.name}" risk mismatch (existing: "${existing.risk}") at index ${i}`);
+        }
+        if (gen.trustTier !== existing.trustTier) {
+          driftReasons.push(`skill "${gen.name}" trustTier mismatch (existing: "${existing.trustTier}") at index ${i}`);
+        }
+        if (gen.sideEffects.length !== existing.sideEffects.length) {
+          driftReasons.push(`skill "${gen.name}" sideEffects length mismatch (existing: ${existing.sideEffects.length}) at index ${i}`);
+        } else {
+          for (let j = 0; j < gen.sideEffects.length; j++) {
+            if (gen.sideEffects[j] !== existing.sideEffects[j]) {
+              driftReasons.push(`skill "${gen.name}" sideEffect[${j}] mismatch at index ${i}`);
+              break;
+            }
+          }
+        }
+        // Compare capabilities as sorted arrays for deterministic order-independent comparison
+        const genCaps = [...gen.capabilities].sort();
+        const existingCaps = [...existing.capabilities].sort();
+        if (genCaps.length !== existingCaps.length || genCaps.some((c, idx) => c !== existingCaps[idx])) {
+          driftReasons.push(`skill "${gen.name}" capabilities mismatch at index ${i}`);
+        }
+        if (gen.path !== existing.path) {
+          driftReasons.push(`skill "${gen.name}" path mismatch (existing: "${existing.path}") at index ${i}`);
         }
       }
 
-      // Also check for extra skills in existing data
+      // Check for extra skills in existing data
       if (existingData.skills.length > data.skills.length) {
         for (let i = data.skills.length; i < existingData.skills.length; i++) {
-          console.error(`[generate-site-data] DRIFT DETECTED: extra skill "${existingData.skills[i].name}" in existing data not in generated`);
+          driftReasons.push(`extra skill "${existingData.skills[i].name}" in existing data at index ${i} not in generated`);
         }
-        hasDrift = true;
       }
 
-      if (hasDrift) {
+      if (driftReasons.length > 0) {
+        console.error('[generate-site-data] DRIFT DETECTED:');
+        for (const reason of driftReasons) {
+          console.error(`  - ${reason}`);
+        }
         console.error('[generate-site-data] Run node generate-site-data.mjs --write to regenerate site/src/skills.json');
         process.exit(1);
       } else {

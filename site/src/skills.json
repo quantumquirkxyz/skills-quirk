@@ -52,7 +52,9 @@
         "analyze design inclusive products — wcag compliance, assistive technology support, keyboard navigation, color contrast — with explicit user access guarantees with assumptions, constraints, and failure modes",
         "produce and validate a accessibility artifact with evidence, decisions, and next steps"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "different-effect"
+      ],
       "path": ".agents/skills/accessibility/accessibility"
     },
     {
@@ -86,6 +88,78 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/accessibility/accessibility-testing"
+    },
+    {
+      "name": "agent-canvas",
+      "category": "foundation",
+      "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply agent canvas methods within explicit foundation boundaries",
+        "analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/agent-canvas"
+    },
+    {
+      "name": "agent-card",
+      "category": "foundation",
+      "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "validate-agent-card",
+        "emit-agent-card-json",
+        "update-agent-card-index",
+        "trace agent card decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/agent-card"
+    },
+    {
+      "name": "agent-memory",
+      "category": "foundation",
+      "description": "Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "maintain a MEMORY.md of durable, cross-session facts",
+        "decide what belongs in memory versus in an artifact",
+        "recall memory into a fresh context pack with provenance",
+        "trace agent memory decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/agent-memory"
+    },
+    {
+      "name": "agent-observability",
+      "category": "foundation",
+      "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply agent observability methods within explicit foundation boundaries",
+        "analyze capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. enables full audit of decisions made during agent execution with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/agent-observability"
     },
     {
       "name": "agent-orchestration",
@@ -168,196 +242,54 @@
       "path": ".agents/skills/ai/ai-time-series-forecasting"
     },
     {
-      "name": "llm-eval",
-      "category": "ai",
-      "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
+      "name": "analyze-artifacts",
+      "category": "project",
+      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.",
       "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply llm eval methods within explicit ai boundaries",
-        "analyze design llm evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/llm-eval"
-    },
-    {
-      "name": "llm-fine-tuning",
-      "category": "ai",
-      "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply llm fine tuning methods within explicit ai boundaries",
-        "analyze fine-tune llms — lora, qlora, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/llm-fine-tuning"
-    },
-    {
-      "name": "llmops",
-      "category": "ai",
-      "description": "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply llmops methods within explicit ai boundaries",
-        "analyze llmops (deployment, monitoring, a/b testing, prompt management, cost optimization, evaluation pipelines) with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/llmops"
-    },
-    {
-      "name": "mlops",
-      "category": "ai",
-      "description": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply mlops methods within explicit ai boundaries",
-        "analyze mlops (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining) with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/mlops"
-    },
-    {
-      "name": "multimodal-prompting",
-      "category": "ai",
-      "description": "Multimodal prompting (vision, audio, video, image generation, vision-language models)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply multimodal prompting methods within explicit ai boundaries",
-        "analyze multimodal prompting (vision, audio, video, image generation, vision-language models) with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/multimodal-prompting"
-    },
-    {
-      "name": "prompt-template-library",
-      "category": "ai",
-      "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply prompt template library methods within explicit ai boundaries",
-        "analyze prompt template library (versioned templates, a/b testing, composition, evaluation) with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/prompt-template-library"
-    },
-    {
-      "name": "rag-pipeline",
-      "category": "ai",
-      "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply rag pipeline methods within explicit ai boundaries",
-        "analyze design rag pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/rag-pipeline"
-    },
-    {
-      "name": "structured-output",
-      "category": "ai",
-      "description": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply structured output methods within explicit ai boundaries",
-        "analyze structured output for llms (json mode, function calling, constrained decoding, validation) with assumptions, constraints, and failure modes",
-        "produce and validate a ai artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/ai/structured-output"
-    },
-    {
-      "name": "execution-policy",
-      "category": "auxiliary",
-      "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply execution policy methods within explicit auxiliary boundaries",
-        "analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/auxiliary/execution-policy"
-    },
-    {
-      "name": "integration-playground",
-      "category": "auxiliary",
-      "description": "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.",
-      "version": "1",
-      "maturity": "stable",
+      "maturity": "experimental",
       "risk": "low",
       "trustTier": "2",
       "capabilities": [
-        "apply integration playground methods within explicit auxiliary boundaries",
-        "analyze create a disposable fixture environment for safely exercising skills against local apis, data, and files; use when testing a skill with isolated local fixtures with assumptions, constraints, and failure modes",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+        "classify consistency findings by evidence",
+        "emit a read-only artifact consistency report",
+        "trace analyze artifacts decisions across inputs, constraints, and failure paths",
+        "validate project outcomes with evidence, assumptions, and explicit next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/auxiliary/integration-playground"
+      "path": ".agents/skills/project/analyze-artifacts"
     },
     {
-      "name": "interactive-tutorial-builder",
-      "category": "auxiliary",
-      "description": "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.",
+      "name": "api-contracts",
+      "category": "integrations",
+      "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply api contracts methods within explicit integrations boundaries",
+        "analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes",
+        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/api-contracts"
+    },
+    {
+      "name": "api-design",
+      "category": "foundation",
+      "description": "Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
-      "trustTier": "2",
+      "trustTier": "1",
       "capabilities": [
-        "apply interactive tutorial builder methods within explicit auxiliary boundaries",
-        "analyze generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any skill; use when teaching or onboarding someone to a skill with assumptions, constraints, and failure modes",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+        "produce api design artifact",
+        "validate api design completion criteria",
+        "trace api design decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
-    },
-    {
-      "name": "setup-quirk-skills",
-      "category": "auxiliary",
-      "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply setup quirk skills methods within explicit auxiliary boundaries",
-        "analyze configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. run once before first use of the other engineering skills with assumptions, constraints, and failure modes",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/auxiliary/setup-quirk-skills"
+      "path": ".agents/skills/foundation/api-design"
     },
     {
       "name": "api-gateway",
@@ -374,6 +306,71 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/backend/api-gateway"
+    },
+    {
+      "name": "artifact-handoff",
+      "category": "routing",
+      "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply artifact handoff methods within explicit routing boundaries",
+        "analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/artifact-handoff"
+    },
+    {
+      "name": "ask-to",
+      "category": "routing",
+      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "produce ask to artifact",
+        "validate ask to completion criteria",
+        "trace ask to decisions across inputs, constraints, and failure paths",
+        "validate routing outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/ask-to"
+    },
+    {
+      "name": "astro",
+      "category": "frontend",
+      "description": "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply astro methods within explicit frontend boundaries",
+        "analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/astro"
+    },
+    {
+      "name": "auth",
+      "category": "integrations",
+      "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply auth methods within explicit integrations boundaries",
+        "analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes",
+        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/auth"
     },
     {
       "name": "backend-architecture",
@@ -425,6 +422,75 @@
       "path": ".agents/skills/backend/backend-queues"
     },
     {
+      "name": "backup-disaster-recovery",
+      "category": "devops",
+      "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply backup disaster recovery methods within explicit devops boundaries",
+        "analyze design backup and disaster recovery — rpo/rto, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/backup-disaster-recovery"
+    },
+    {
+      "name": "brainstorming",
+      "category": "product",
+      "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply brainstorming methods within explicit product boundaries",
+        "analyze facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas with assumptions, constraints, and failure modes",
+        "produce and validate a product artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/product/brainstorming"
+    },
+    {
+      "name": "brand-identity",
+      "category": "graphic-design",
+      "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply brand identity methods within explicit graphic-design boundaries",
+        "analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes",
+        "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/graphic-design/brand-identity"
+    },
+    {
+      "name": "browser-automation",
+      "category": "integrations",
+      "description": "Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "execute browser tasks with Playwright in a sandboxed context",
+        "gate irreversible or account-affecting actions behind approval",
+        "capture screenshots and DOM evidence as verifiable artifacts",
+        "trace browser automation decisions across inputs, constraints, and failure paths",
+        "validate integrations outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "network",
+        "write-files"
+      ],
+      "path": ".agents/skills/integrations/browser-automation"
+    },
+    {
       "name": "caching-advanced",
       "category": "backend",
       "description": "Advanced caching strategies (Redis, Memcached, CDN, cache invalidation, stampede prevention).",
@@ -441,132 +507,52 @@
       "path": ".agents/skills/backend/caching-advanced"
     },
     {
-      "name": "distributed-tracing",
-      "category": "backend",
-      "description": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply distributed tracing methods within explicit backend boundaries",
-        "analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/backend/distributed-tracing"
-    },
-    {
-      "name": "event-driven-architecture",
-      "category": "backend",
-      "description": "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply event driven architecture methods within explicit backend boundaries",
-        "analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/backend/event-driven-architecture"
-    },
-    {
-      "name": "grpc-connect",
-      "category": "backend",
-      "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply grpc connect methods within explicit backend boundaries",
-        "analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/backend/grpc-connect"
-    },
-    {
-      "name": "microservices",
-      "category": "backend",
-      "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
+      "name": "capability-router",
+      "category": "routing",
+      "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply microservices methods within explicit backend boundaries",
-        "analyze design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
+        "apply capability router methods within explicit routing boundaries",
+        "analyze route work to the best matching skill using declared capabilities and compatibility — with explicit selection rules with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/backend/microservices"
+      "path": ".agents/skills/routing/capability-router"
     },
     {
-      "name": "rate-limiting",
-      "category": "backend",
-      "description": "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).",
+      "name": "chaos-engineering",
+      "category": "devops",
+      "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply rate limiting methods within explicit backend boundaries",
-        "analyze rate limiting and throttling (token bucket, sliding window, distributed rate limiting, api protection) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
+        "apply chaos engineering methods within explicit devops boundaries",
+        "analyze design chaos engineering — fault injection, gamedays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/backend/rate-limiting"
+      "path": ".agents/skills/devops/chaos-engineering"
     },
     {
-      "name": "serverless",
-      "category": "backend",
-      "description": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).",
+      "name": "cloud-security",
+      "category": "sec",
+      "description": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply serverless methods within explicit backend boundaries",
-        "analyze serverless architecture (lambda, functions, faas, event-driven, cold starts, scaling, cost) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
+        "apply cloud security methods within explicit sec boundaries",
+        "analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/backend/serverless"
-    },
-    {
-      "name": "service-mesh",
-      "category": "backend",
-      "description": "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply service mesh methods within explicit backend boundaries",
-        "analyze service mesh (istio, linkerd, cilium, mtls, traffic splitting, observability) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/backend/service-mesh"
-    },
-    {
-      "name": "websockets",
-      "category": "backend",
-      "description": "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply websockets methods within explicit backend boundaries",
-        "analyze websockets and real-time (socket.io, ws, sse, pub/sub, scaling, reconnection, backpressure) with assumptions, constraints, and failure modes",
-        "produce and validate a backend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/backend/websockets"
+      "path": ".agents/skills/sec/cloud-security"
     },
     {
       "name": "cms-access-control",
@@ -617,20 +603,40 @@
       "path": ".agents/skills/cms/cms-content-strategy"
     },
     {
-      "name": "localization",
-      "category": "cms",
-      "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
+      "name": "code-review",
+      "category": "delivery",
+      "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
+      "version": "3",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "verify logic against the user's stated objective",
+        "produce an evidence-backed repository audit artifact",
+        "trace code review decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
+      "path": ".agents/skills/delivery/code-review"
+    },
+    {
+      "name": "codebase-design",
+      "category": "foundation",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply localization methods within explicit cms boundaries",
-        "analyze design internationalization (i18n) and localization (l10n) — string management, locale handling, rtl support, cultural adaptation — so the product works across languages and regions with assumptions, constraints, and failure modes",
-        "produce and validate a cms artifact with evidence, decisions, and next steps"
+        "produce codebase design artifact",
+        "validate codebase design completion criteria",
+        "trace codebase design decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/cms/localization"
+      "path": ".agents/skills/foundation/codebase-design"
     },
     {
       "name": "compiler-design",
@@ -679,6 +685,122 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/compilers/compilers"
+    },
+    {
+      "name": "compliance",
+      "category": "sec",
+      "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply compliance methods within explicit sec boundaries",
+        "analyze compliance (soc2, iso27001, gdpr, hipaa, pci dss, audits, evidence, remediation) with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/compliance"
+    },
+    {
+      "name": "container-security",
+      "category": "sec",
+      "description": "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply container security methods within explicit sec boundaries",
+        "analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/container-security"
+    },
+    {
+      "name": "context-compaction",
+      "category": "foundation",
+      "description": "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "compact a conversation window with a structured summary",
+        "clear stale tool results and re-derive them on demand",
+        "hand off a session across a compaction boundary",
+        "trace context compaction decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/foundation/context-compaction"
+    },
+    {
+      "name": "context-engine",
+      "category": "foundation",
+      "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply context engine methods within explicit foundation boundaries",
+        "analyze manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static context.md (issues, prs, docs, execution traces) with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/context-engine"
+    },
+    {
+      "name": "context-pack",
+      "category": "routing",
+      "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply context pack methods within explicit routing boundaries",
+        "analyze build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/context-pack"
+    },
+    {
+      "name": "contribution-workflow-optimizer",
+      "category": "delivery",
+      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply contribution workflow optimizer methods within explicit delivery boundaries",
+        "analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/contribution-workflow-optimizer"
+    },
+    {
+      "name": "cost-optimization",
+      "category": "devops",
+      "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply cost optimization methods within explicit devops boundaries",
+        "analyze design finops strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/cost-optimization"
     },
     {
       "name": "cs-algorithms",
@@ -873,54 +995,6 @@
       "path": ".agents/skills/data/data-warehouse-modeling"
     },
     {
-      "name": "feature-store",
-      "category": "data",
-      "description": "Feature store (online/offline, feature engineering, serving, monitoring, drift).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply feature store methods within explicit data boundaries",
-        "analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes",
-        "produce and validate a data artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/data/feature-store"
-    },
-    {
-      "name": "semantic-layer",
-      "category": "data",
-      "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply semantic layer methods within explicit data boundaries",
-        "analyze design a semantic layer — dbt, cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization with assumptions, constraints, and failure modes",
-        "produce and validate a data artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/data/semantic-layer"
-    },
-    {
-      "name": "stream-processing",
-      "category": "data",
-      "description": "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply stream processing methods within explicit data boundaries",
-        "analyze stream processing (flink, kafka streams, risingwave, windowing, state, exactly-once) with assumptions, constraints, and failure modes",
-        "produce and validate a data artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/data/stream-processing"
-    },
-    {
       "name": "db-migrations",
       "category": "db",
       "description": "Plan database migrations — schema changes, backfills, compatibility windows, and rollback strategy — with explicit application and data safety checks.",
@@ -985,325 +1059,36 @@
       "path": ".agents/skills/db/db-relational-design"
     },
     {
-      "name": "code-review",
-      "category": "delivery",
-      "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
-      "version": "3",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "verify logic against the user's stated objective",
-        "produce an evidence-backed repository audit artifact",
-        "trace code review decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "post-pr-comment"
-      ],
-      "path": ".agents/skills/delivery/code-review"
-    },
-    {
-      "name": "contribution-workflow-optimizer",
-      "category": "delivery",
-      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "name": "design-system",
+      "category": "frontend",
+      "description": "Define and evolve reusable UI tokens, components, and usage rules as a coherent system.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply contribution workflow optimizer methods within explicit delivery boundaries",
-        "analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+        "apply design system methods within explicit frontend boundaries",
+        "analyze define and evolve reusable ui tokens, components, and usage rules as a coherent system with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/delivery/contribution-workflow-optimizer"
+      "path": ".agents/skills/frontend/design-system"
     },
     {
-      "name": "diagnosing-bugs",
-      "category": "delivery",
-      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
+      "name": "design-system-visual",
+      "category": "graphic-design",
+      "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "trace root causes across repository boundaries",
-        "consume code-review audit findings",
-        "trace diagnosing bugs decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
+        "apply design system visual methods within explicit graphic-design boundaries",
+        "analyze design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency with assumptions, constraints, and failure modes",
+        "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/delivery/diagnosing-bugs"
-    },
-    {
-      "name": "implement",
-      "category": "delivery",
-      "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
-      "version": "2",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce implement artifact",
-        "validate implement completion criteria",
-        "trace implement decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-code",
-        "commit-git",
-        "push-branch"
-      ],
-      "path": ".agents/skills/delivery/implement"
-    },
-    {
-      "name": "implement-review-fixes",
-      "category": "delivery",
-      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply implement review fixes methods within explicit delivery boundaries",
-        "analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-code",
-        "commit-git",
-        "push-branch"
-      ],
-      "path": ".agents/skills/delivery/implement-review-fixes"
-    },
-    {
-      "name": "loop-budget",
-      "category": "delivery",
-      "description": "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "detect degenerate loops (repeats, ping-pong, format errors)",
-        "record an append-only loop ledger and route on the typed verdict",
-        "trace loop budget decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-temp-file"
-      ],
-      "path": ".agents/skills/delivery/loop-budget"
-    },
-    {
-      "name": "plan-review-fixes",
-      "category": "delivery",
-      "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply plan review fixes methods within explicit delivery boundaries",
-        "analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "post-pr-comment"
-      ],
-      "path": ".agents/skills/delivery/plan-review-fixes"
-    },
-    {
-      "name": "prototype",
-      "category": "delivery",
-      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply prototype methods within explicit delivery boundaries",
-        "analyze build a throwaway prototype to answer a design question. use when the user wants to sanity-check whether a state model or interaction shape actually works with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/delivery/prototype"
-    },
-    {
-      "name": "research",
-      "category": "delivery",
-      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply research methods within explicit delivery boundaries",
-        "analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-docs"
-      ],
-      "path": ".agents/skills/delivery/research"
-    },
-    {
-      "name": "resolving-merge-conflicts",
-      "category": "delivery",
-      "description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply resolving merge conflicts methods within explicit delivery boundaries",
-        "analyze use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, pr branch corrections, or other branch-state blockers that need deliberate resolution with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-code",
-        "commit-git",
-        "continue-merge-or-rebase"
-      ],
-      "path": ".agents/skills/delivery/resolving-merge-conflicts"
-    },
-    {
-      "name": "review-fix-loop",
-      "category": "delivery",
-      "description": "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply review fix loop methods within explicit delivery boundaries",
-        "analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-code",
-        "post-pr-comment",
-        "commit-git",
-        "push-branch"
-      ],
-      "path": ".agents/skills/delivery/review-fix-loop"
-    },
-    {
-      "name": "review-pr",
-      "category": "delivery",
-      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce review pr artifact",
-        "validate review pr completion criteria",
-        "trace review pr decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "post-pr-comment"
-      ],
-      "path": ".agents/skills/delivery/review-pr"
-    },
-    {
-      "name": "tdd",
-      "category": "delivery",
-      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "produce tdd artifact",
-        "validate tdd completion criteria",
-        "trace tdd decisions across inputs, constraints, and failure paths",
-        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/delivery/tdd"
-    },
-    {
-      "name": "testing",
-      "category": "delivery",
-      "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply testing methods within explicit delivery boundaries",
-        "analyze shape the test strategy for a project so behavior is verified at the right seams and at the right level with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/delivery/testing"
-    },
-    {
-      "name": "webapp-testing",
-      "category": "delivery",
-      "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply webapp testing methods within explicit delivery boundaries",
-        "analyze choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels with assumptions, constraints, and failure modes",
-        "produce and validate a delivery artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/delivery/webapp-testing"
-    },
-    {
-      "name": "backup-disaster-recovery",
-      "category": "devops",
-      "description": "Design backup and disaster recovery — RPO/RTO, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply backup disaster recovery methods within explicit devops boundaries",
-        "analyze design backup and disaster recovery — rpo/rto, backup strategies, restore testing, cross-region — with explicit recovery objectives and validation with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/devops/backup-disaster-recovery"
-    },
-    {
-      "name": "chaos-engineering",
-      "category": "devops",
-      "description": "Design chaos engineering — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply chaos engineering methods within explicit devops boundaries",
-        "analyze design chaos engineering — fault injection, gamedays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/devops/chaos-engineering"
-    },
-    {
-      "name": "cost-optimization",
-      "category": "devops",
-      "description": "Design FinOps strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply cost optimization methods within explicit devops boundaries",
-        "analyze design finops strategies — rightsizing, spot instances, committed use, budgets, showback/chargeback — with cost visibility and optimisation guardrails with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/devops/cost-optimization"
+      "path": ".agents/skills/graphic-design/design-system-visual"
     },
     {
       "name": "devops-ci-cd-pipeline",
@@ -1370,52 +1155,37 @@
       "path": ".agents/skills/devops/devops-terraform-iac"
     },
     {
-      "name": "gitops",
-      "category": "devops",
-      "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
+      "name": "diagnosing-bugs",
+      "category": "delivery",
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something intermittent, ambiguous, or hard to reproduce.",
       "version": "1",
       "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
+      "risk": "low",
+      "trustTier": "1",
       "capabilities": [
-        "apply gitops methods within explicit devops boundaries",
-        "analyze design gitops workflows — argocd, flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
+        "trace root causes across repository boundaries",
+        "consume code-review audit findings",
+        "trace diagnosing bugs decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/devops/gitops"
+      "path": ".agents/skills/delivery/diagnosing-bugs"
     },
     {
-      "name": "incident-response",
-      "category": "devops",
-      "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
+      "name": "distributed-tracing",
+      "category": "backend",
+      "description": "Distributed tracing (OpenTelemetry, W3C TraceContext, sampling, instrumentation).",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply incident response methods within explicit devops boundaries",
-        "analyze design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
+        "apply distributed tracing methods within explicit backend boundaries",
+        "analyze distributed tracing (opentelemetry, w3c tracecontext, sampling, instrumentation) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/devops/incident-response"
-    },
-    {
-      "name": "secret-management",
-      "category": "devops",
-      "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply secret management methods within explicit devops boundaries",
-        "analyze design secret management — vault, sops, sealedsecrets, rotation, external secrets — with encryption, access control, and auditability with assumptions, constraints, and failure modes",
-        "produce and validate a devops artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/devops/secret-management"
+      "path": ".agents/skills/backend/distributed-tracing"
     },
     {
       "name": "docs-adrs",
@@ -1451,6 +1221,22 @@
       "path": ".agents/skills/docs/docs-knowledge-base"
     },
     {
+      "name": "docs-management",
+      "category": "project",
+      "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply docs management methods within explicit project boundaries",
+        "analyze keep repository documentation, adrs, and durable context aligned with the current project shape — with explicit consumer rules with assumptions, constraints, and failure modes",
+        "produce and validate a project artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/project/docs-management"
+    },
+    {
       "name": "docs-technical-writing",
       "category": "docs",
       "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
@@ -1467,21 +1253,84 @@
       "path": ".agents/skills/docs/docs-technical-writing"
     },
     {
-      "name": "improve-codebase-architecture",
-      "category": "engineering",
-      "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
+      "name": "domain-modeling",
+      "category": "foundation",
+      "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
-      "trustTier": "2",
+      "trustTier": "1",
       "capabilities": [
-        "distinguish confirmed design defects from improvement opportunities",
-        "consume repository audit findings",
-        "trace improve codebase architecture decisions across inputs, constraints, and failure paths",
-        "validate engineering outcomes with evidence, assumptions, and explicit next steps"
+        "apply domain modeling methods within explicit foundation boundaries",
+        "analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/engineering/improve-codebase-architecture"
+      "path": ".agents/skills/foundation/domain-modeling"
+    },
+    {
+      "name": "evaluate-skill",
+      "category": "skill-dev",
+      "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply evaluate skill methods within explicit skill-dev boundaries",
+        "analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes",
+        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/evaluate-skill"
+    },
+    {
+      "name": "event-driven-architecture",
+      "category": "backend",
+      "description": "Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply event driven architecture methods within explicit backend boundaries",
+        "analyze event-driven architecture (kafka, nats, eventbridge, choreography vs orchestration) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/event-driven-architecture"
+    },
+    {
+      "name": "execution-policy",
+      "category": "auxiliary",
+      "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply execution policy methods within explicit auxiliary boundaries",
+        "analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes",
+        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/execution-policy"
+    },
+    {
+      "name": "feature-store",
+      "category": "data",
+      "description": "Feature store (online/offline, feature engineering, serving, monitoring, drift).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply feature store methods within explicit data boundaries",
+        "analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes",
+        "produce and validate a data artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/feature-store"
     },
     {
       "name": "finance-corporate-val",
@@ -1532,287 +1381,6 @@
       "path": ".agents/skills/finance/finance-portfolio-theory"
     },
     {
-      "name": "agent-canvas",
-      "category": "foundation",
-      "description": "Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply agent canvas methods within explicit foundation boundaries",
-        "analyze reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/agent-canvas"
-    },
-    {
-      "name": "agent-card",
-      "category": "foundation",
-      "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "validate-agent-card",
-        "emit-agent-card-json",
-        "update-agent-card-index",
-        "trace agent card decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
-      "path": ".agents/skills/foundation/agent-card"
-    },
-    {
-      "name": "agent-memory",
-      "category": "foundation",
-      "description": "Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "maintain a MEMORY.md of durable, cross-session facts",
-        "decide what belongs in memory versus in an artifact",
-        "recall memory into a fresh context pack with provenance",
-        "trace agent memory decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
-      "path": ".agents/skills/foundation/agent-memory"
-    },
-    {
-      "name": "agent-observability",
-      "category": "foundation",
-      "description": "Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply agent observability methods within explicit foundation boundaries",
-        "analyze capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. enables full audit of decisions made during agent execution with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/agent-observability"
-    },
-    {
-      "name": "api-design",
-      "category": "foundation",
-      "description": "Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "produce api design artifact",
-        "validate api design completion criteria",
-        "trace api design decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/api-design"
-    },
-    {
-      "name": "codebase-design",
-      "category": "foundation",
-      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find depth, or define a clean seam.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "produce codebase design artifact",
-        "validate codebase design completion criteria",
-        "trace codebase design decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/codebase-design"
-    },
-    {
-      "name": "context-compaction",
-      "category": "foundation",
-      "description": "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "compact a conversation window with a structured summary",
-        "clear stale tool results and re-derive them on demand",
-        "hand off a session across a compaction boundary",
-        "trace context compaction decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-temp-file"
-      ],
-      "path": ".agents/skills/foundation/context-compaction"
-    },
-    {
-      "name": "context-engine",
-      "category": "foundation",
-      "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply context engine methods within explicit foundation boundaries",
-        "analyze manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static context.md (issues, prs, docs, execution traces) with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/context-engine"
-    },
-    {
-      "name": "domain-modeling",
-      "category": "foundation",
-      "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply domain modeling methods within explicit foundation boundaries",
-        "analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/domain-modeling"
-    },
-    {
-      "name": "mcp-server",
-      "category": "foundation",
-      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
-      "version": "2",
-      "maturity": "beta",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "generate-skill-resources",
-        "generate-workflow-prompts",
-        "configure-transport",
-        "trace mcp server decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-files"
-      ],
-      "path": ".agents/skills/foundation/mcp-server"
-    },
-    {
-      "name": "observability",
-      "category": "foundation",
-      "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
-      "version": "2",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply observability methods within explicit foundation boundaries",
-        "analyze define the logs, metrics, traces, and alerts needed to understand a system in production — with slis, slos, dashboards, alert rules, and incident runbooks with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/observability"
-    },
-    {
-      "name": "skill-composition",
-      "category": "foundation",
-      "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "verify artifact compatibility at each edge before execution",
-        "run a chain inside a declared iteration and cost budget",
-        "report per-edge handoff evidence for the chain",
-        "trace skill composition decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "orchestration"
-      ],
-      "path": ".agents/skills/foundation/skill-composition"
-    },
-    {
-      "name": "subagent-swarm",
-      "category": "foundation",
-      "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply subagent swarm methods within explicit foundation boundaries",
-        "analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes",
-        "produce and validate a foundation artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/foundation/subagent-swarm"
-    },
-    {
-      "name": "verify-delegation",
-      "category": "foundation",
-      "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "verify a delegated artifact against its success criteria without implementation context",
-        "return a bounded DelegationVerdict with evidence, negative tests, and suite status",
-        "trace verify delegation decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-temp-file"
-      ],
-      "path": ".agents/skills/foundation/verify-delegation"
-    },
-    {
-      "name": "astro",
-      "category": "frontend",
-      "description": "Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply astro methods within explicit frontend boundaries",
-        "analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/astro"
-    },
-    {
-      "name": "design-system",
-      "category": "frontend",
-      "description": "Define and evolve reusable UI tokens, components, and usage rules as a coherent system.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply design system methods within explicit frontend boundaries",
-        "analyze define and evolve reusable ui tokens, components, and usage rules as a coherent system with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/design-system"
-    },
-    {
       "name": "frontend-design",
       "category": "frontend",
       "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
@@ -1846,132 +1414,36 @@
       "path": ".agents/skills/frontend/frontend-testing"
     },
     {
-      "name": "mobile",
-      "category": "frontend",
-      "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
-      "version": "2",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply mobile methods within explicit frontend boundaries",
-        "analyze shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for react native, expo, and capacitor with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/mobile"
-    },
-    {
-      "name": "nextjs",
-      "category": "frontend",
-      "description": "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.",
+      "name": "github-project-analysis",
+      "category": "research",
+      "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
-        "apply nextjs methods within explicit frontend boundaries",
-        "analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+        "apply github project analysis methods within explicit research boundaries",
+        "analyze research comparable projects exclusively on github and analyze their structure, decisions, and reusable patterns for an active project with assumptions, constraints, and failure modes",
+        "produce and validate a research artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/frontend/nextjs"
+      "path": ".agents/skills/research/github-project-analysis"
     },
     {
-      "name": "react",
-      "category": "frontend",
-      "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
+      "name": "gitops",
+      "category": "devops",
+      "description": "Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
-        "apply react methods within explicit frontend boundaries",
-        "analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+        "apply gitops methods within explicit devops boundaries",
+        "analyze design gitops workflows — argocd, flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/frontend/react"
-    },
-    {
-      "name": "remix",
-      "category": "frontend",
-      "description": "Remix framework (loaders, actions, nested routes, progressive enhancement).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply remix methods within explicit frontend boundaries",
-        "analyze remix framework (loaders, actions, nested routes, progressive enhancement) with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/remix"
-    },
-    {
-      "name": "state-management",
-      "category": "frontend",
-      "description": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply state management methods within explicit frontend boundaries",
-        "analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/state-management"
-    },
-    {
-      "name": "styling",
-      "category": "frontend",
-      "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply styling methods within explicit frontend boundaries",
-        "analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes",
-        "produce and validate a frontend artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/frontend/styling"
-    },
-    {
-      "name": "brand-identity",
-      "category": "graphic-design",
-      "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply brand identity methods within explicit graphic-design boundaries",
-        "analyze design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance with assumptions, constraints, and failure modes",
-        "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/graphic-design/brand-identity"
-    },
-    {
-      "name": "design-system-visual",
-      "category": "graphic-design",
-      "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply design system visual methods within explicit graphic-design boundaries",
-        "analyze design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency with assumptions, constraints, and failure modes",
-        "produce and validate a graphic-design artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/graphic-design/design-system-visual"
+      "path": ".agents/skills/devops/gitops"
     },
     {
       "name": "graphic-design-accessibility",
@@ -2134,57 +1606,258 @@
       "path": ".agents/skills/graphic-design/graphic-design-tools"
     },
     {
-      "name": "api-contracts",
-      "category": "integrations",
-      "description": "Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.",
-      "version": "2",
+      "name": "grill",
+      "category": "routing",
+      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
+      "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply api contracts methods within explicit integrations boundaries",
-        "analyze define the request and response contracts, versioning rules, compatibility boundaries, openapi/json schema, and breaking change detection for apis — with explicit consumer obligations with assumptions, constraints, and failure modes",
-        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+        "apply grill methods within explicit routing boundaries",
+        "analyze grill with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/integrations/api-contracts"
+      "path": ".agents/skills/routing/grill"
     },
     {
-      "name": "auth",
-      "category": "integrations",
-      "description": "Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.",
+      "name": "grill-me",
+      "category": "routing",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply grill me methods within explicit routing boundaries",
+        "analyze a relentless interview to sharpen a plan or design with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/grill-me"
+    },
+    {
+      "name": "grill-with-docs",
+      "category": "routing",
+      "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply grill with docs methods within explicit routing boundaries",
+        "analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/routing/grill-with-docs"
+    },
+    {
+      "name": "grilling",
+      "category": "routing",
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply grilling methods within explicit routing boundaries",
+        "analyze grill the user relentlessly about a plan, decision, or idea. use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/grilling"
+    },
+    {
+      "name": "grpc-connect",
+      "category": "backend",
+      "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply grpc connect methods within explicit backend boundaries",
+        "analyze grpc and connect (protobuf, connectrpc, grpc-gateway, streaming, code generation) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/grpc-connect"
+    },
+    {
+      "name": "handoff",
+      "category": "routing",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply handoff methods within explicit routing boundaries",
+        "analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/routing/handoff"
+    },
+    {
+      "name": "implement",
+      "category": "delivery",
+      "description": "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.",
       "version": "2",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply auth methods within explicit integrations boundaries",
-        "analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes",
-        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+        "produce implement artifact",
+        "validate implement completion criteria",
+        "trace implement decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "sideEffects": [],
-      "path": ".agents/skills/integrations/auth"
+      "sideEffects": [
+        "write-code",
+        "commit-git",
+        "push-branch"
+      ],
+      "path": ".agents/skills/delivery/implement"
     },
     {
-      "name": "browser-automation",
-      "category": "integrations",
-      "description": "Automate browser and computer-use tasks with a safety rail: declarative page objectives, Playwright-based execution, human review gates for irreversible actions, and screenshots as verifiable evidence.",
+      "name": "implement-review-fixes",
+      "category": "delivery",
+      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
       "version": "1",
-      "maturity": "experimental",
+      "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "execute browser tasks with Playwright in a sandboxed context",
-        "gate irreversible or account-affecting actions behind approval",
-        "capture screenshots and DOM evidence as verifiable artifacts",
-        "trace browser automation decisions across inputs, constraints, and failure paths",
-        "validate integrations outcomes with evidence, assumptions, and explicit next steps"
+        "apply implement review fixes methods within explicit delivery boundaries",
+        "analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [
-        "network",
-        "write-files"
+        "write-code",
+        "commit-git",
+        "push-branch"
       ],
-      "path": ".agents/skills/integrations/browser-automation"
+      "path": ".agents/skills/delivery/implement-review-fixes"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "category": "engineering",
+      "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "distinguish confirmed design defects from improvement opportunities",
+        "consume repository audit findings",
+        "trace improve codebase architecture decisions across inputs, constraints, and failure paths",
+        "validate engineering outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/improve-codebase-architecture"
+    },
+    {
+      "name": "incident-forensics",
+      "category": "sec",
+      "description": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply incident forensics methods within explicit sec boundaries",
+        "analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/incident-forensics"
+    },
+    {
+      "name": "incident-response",
+      "category": "devops",
+      "description": "Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply incident response methods within explicit devops boundaries",
+        "analyze design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/incident-response"
+    },
+    {
+      "name": "integration-playground",
+      "category": "auxiliary",
+      "description": "Create a disposable fixture environment for safely exercising Skills against local APIs, data, and files; use when testing a Skill with isolated local fixtures.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply integration playground methods within explicit auxiliary boundaries",
+        "analyze create a disposable fixture environment for safely exercising skills against local apis, data, and files; use when testing a skill with isolated local fixtures with assumptions, constraints, and failure modes",
+        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/integration-playground"
+    },
+    {
+      "name": "interaction-design",
+      "category": "ux",
+      "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply interaction design methods within explicit ux boundaries",
+        "analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes",
+        "produce and validate a ux artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ux/interaction-design"
+    },
+    {
+      "name": "interactive-tutorial-builder",
+      "category": "auxiliary",
+      "description": "Generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any Skill; use when teaching or onboarding someone to a Skill.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply interactive tutorial builder methods within explicit auxiliary boundaries",
+        "analyze generate a focused tutorial with goals, exercise inputs, expected outputs, and checkpoints for any skill; use when teaching or onboarding someone to a skill with assumptions, constraints, and failure modes",
+        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/interactive-tutorial-builder"
+    },
+    {
+      "name": "iot-embedded",
+      "category": "iot",
+      "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply iot embedded methods within explicit iot boundaries",
+        "analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes",
+        "produce and validate a iot artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/iot/iot-embedded"
     },
     {
       "name": "issue-operations",
@@ -2203,68 +1876,143 @@
       "path": ".agents/skills/integrations/issue-operations"
     },
     {
-      "name": "payments",
-      "category": "integrations",
-      "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
-      "version": "2",
+      "name": "knowledge-curator",
+      "category": "routing",
+      "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
+      "version": "1",
       "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
+      "risk": "low",
+      "trustTier": "2",
       "capabilities": [
-        "apply payments methods within explicit integrations boundaries",
-        "analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes",
-        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+        "apply knowledge curator methods within explicit routing boundaries",
+        "analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
-      "sideEffects": [],
-      "path": ".agents/skills/integrations/payments"
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/routing/knowledge-curator"
     },
     {
-      "name": "pr-operations",
-      "category": "integrations",
-      "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
+      "name": "llm-eval",
+      "category": "ai",
+      "description": "Design LLM evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply pr operations methods within explicit integrations boundaries",
-        "analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes",
-        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+        "apply llm eval methods within explicit ai boundaries",
+        "analyze design llm evaluation harnesses — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/integrations/pr-operations"
+      "path": ".agents/skills/ai/llm-eval"
     },
     {
-      "name": "search",
-      "category": "integrations",
-      "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
-      "version": "2",
+      "name": "llm-fine-tuning",
+      "category": "ai",
+      "description": "Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls.",
+      "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
-        "apply search methods within explicit integrations boundaries",
-        "analyze design search behavior, indexing, relevance, and retrieval seams — with elasticsearch, algolia, meilisearch, opensearch, synonyms, ranking, analytics, and autocomplete with assumptions, constraints, and failure modes",
-        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+        "apply llm fine tuning methods within explicit ai boundaries",
+        "analyze fine-tune llms — lora, qlora, full fine-tuning, data preparation, evaluation, deployment — with reproducibility, efficiency, and safety controls with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/integrations/search"
+      "path": ".agents/skills/ai/llm-fine-tuning"
     },
     {
-      "name": "iot-embedded",
-      "category": "iot",
-      "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
+      "name": "llmops",
+      "category": "ai",
+      "description": "LLMOps (deployment, monitoring, A/B testing, prompt management, cost optimization, evaluation pipelines)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply llmops methods within explicit ai boundaries",
+        "analyze llmops (deployment, monitoring, a/b testing, prompt management, cost optimization, evaluation pipelines) with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/llmops"
+    },
+    {
+      "name": "localization",
+      "category": "cms",
+      "description": "Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply iot embedded methods within explicit iot boundaries",
-        "analyze design embedded/iot systems — firmware, sensors, edge computing, device connectivity, ota updates — with reliability, security, and constrained resource awareness with assumptions, constraints, and failure modes",
-        "produce and validate a iot artifact with evidence, decisions, and next steps"
+        "apply localization methods within explicit cms boundaries",
+        "analyze design internationalization (i18n) and localization (l10n) — string management, locale handling, rtl support, cultural adaptation — so the product works across languages and regions with assumptions, constraints, and failure modes",
+        "produce and validate a cms artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/iot/iot-embedded"
+      "path": ".agents/skills/cms/localization"
+    },
+    {
+      "name": "lockfile-maintenance",
+      "category": "skill-dev",
+      "description": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply lockfile maintenance methods within explicit skill-dev boundaries",
+        "analyze maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding skill.md files are resolved with assumptions, constraints, and failure modes",
+        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/skill-dev/lockfile-maintenance"
+    },
+    {
+      "name": "loop-budget",
+      "category": "delivery",
+      "description": "Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "detect degenerate loops (repeats, ping-pong, format errors)",
+        "record an append-only loop ledger and route on the typed verdict",
+        "trace loop budget decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/delivery/loop-budget"
+    },
+    {
+      "name": "make-project",
+      "category": "project",
+      "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply make project methods within explicit project boundaries",
+        "analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes",
+        "produce and validate a project artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "create-project",
+        "create-project-fields",
+        "link-repositories"
+      ],
+      "path": ".agents/skills/project/make-project"
     },
     {
       "name": "math-computation-reproducible",
@@ -2475,6 +2223,90 @@
       "path": ".agents/skills/math/math-teaching-problem-set"
     },
     {
+      "name": "mcp-server",
+      "category": "foundation",
+      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "version": "2",
+      "maturity": "beta",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "generate-skill-resources",
+        "generate-workflow-prompts",
+        "configure-transport",
+        "trace mcp server decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-files"
+      ],
+      "path": ".agents/skills/foundation/mcp-server"
+    },
+    {
+      "name": "microservices",
+      "category": "backend",
+      "description": "Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply microservices methods within explicit backend boundaries",
+        "analyze design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/microservices"
+    },
+    {
+      "name": "mlops",
+      "category": "ai",
+      "description": "MLOps (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply mlops methods within explicit ai boundaries",
+        "analyze mlops (feature stores, model registry, data versioning, pipeline orchestration, monitoring, retraining) with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/mlops"
+    },
+    {
+      "name": "mobile",
+      "category": "frontend",
+      "description": "Shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for React Native, Expo, and Capacitor.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply mobile methods within explicit frontend boundaries",
+        "analyze shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for react native, expo, and capacitor with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/mobile"
+    },
+    {
+      "name": "multimodal-prompting",
+      "category": "ai",
+      "description": "Multimodal prompting (vision, audio, video, image generation, vision-language models)",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply multimodal prompting methods within explicit ai boundaries",
+        "analyze multimodal prompting (vision, audio, video, image generation, vision-language models) with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/multimodal-prompting"
+    },
+    {
       "name": "networking",
       "category": "networking",
       "description": "Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.",
@@ -2523,6 +2355,38 @@
       "path": ".agents/skills/networking/networking-security"
     },
     {
+      "name": "nextjs",
+      "category": "frontend",
+      "description": "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply nextjs methods within explicit frontend boundaries",
+        "analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/nextjs"
+    },
+    {
+      "name": "observability",
+      "category": "foundation",
+      "description": "Define the logs, metrics, traces, and alerts needed to understand a system in production — with SLIs, SLOs, dashboards, alert rules, and incident runbooks.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply observability methods within explicit foundation boundaries",
+        "analyze define the logs, metrics, traces, and alerts needed to understand a system in production — with slis, slos, dashboards, alert rules, and incident runbooks with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/observability"
+    },
+    {
       "name": "os-kernel",
       "category": "os",
       "description": "Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.",
@@ -2569,6 +2433,70 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/os/os-processes"
+    },
+    {
+      "name": "parallel-issue-fleet",
+      "category": "routing",
+      "description": "Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.",
+      "version": "2",
+      "maturity": "experimental",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "isolate one implementation agent per issue through provider adapters",
+        "run any argv-based coding agent and model through a portable worker profile",
+        "bootstrap dependencies from project lockfiles before implementation",
+        "checkpoint and resume fleet runs without duplicating completed effects",
+        "fence concurrent runs with expiring per-issue claims",
+        "verify landed ancestry before advancing a wave",
+        "enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup",
+        "emit a validated FleetRunArtifact with per-issue ImplementArtifact references",
+        "trace parallel issue fleet decisions across inputs, constraints, and failure paths",
+        "validate routing outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-files",
+        "create-git-worktrees",
+        "create-git-branches",
+        "launch-local-agents",
+        "provision-infrastructure",
+        "inject-ephemeral-secrets",
+        "terminate-processes",
+        "cleanup-owned-resources"
+      ],
+      "path": ".agents/skills/routing/parallel-issue-fleet"
+    },
+    {
+      "name": "payments",
+      "category": "integrations",
+      "description": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply payments methods within explicit integrations boundaries",
+        "analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes",
+        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/payments"
+    },
+    {
+      "name": "performance-testing",
+      "category": "qa",
+      "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply performance testing methods within explicit qa boundaries",
+        "analyze design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions with assumptions, constraints, and failure modes",
+        "produce and validate a qa artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/qa/performance-testing"
     },
     {
       "name": "physics-astro",
@@ -2763,20 +2691,54 @@
       "path": ".agents/skills/physics/physics-writing-revtex"
     },
     {
-      "name": "brainstorming",
-      "category": "product",
-      "description": "Facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas.",
+      "name": "plan-review-fixes",
+      "category": "delivery",
+      "description": "Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply plan review fixes methods within explicit delivery boundaries",
+        "analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
+      "path": ".agents/skills/delivery/plan-review-fixes"
+    },
+    {
+      "name": "pr-operations",
+      "category": "integrations",
+      "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply pr operations methods within explicit integrations boundaries",
+        "analyze manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit with assumptions, constraints, and failure modes",
+        "produce and validate a integrations artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/integrations/pr-operations"
+    },
+    {
+      "name": "pro-market-analysis",
+      "category": "professional",
+      "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply brainstorming methods within explicit product boundaries",
-        "analyze facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas with assumptions, constraints, and failure modes",
-        "produce and validate a product artifact with evidence, decisions, and next steps"
+        "apply pro market analysis methods within explicit professional boundaries",
+        "analyze conduct professional market research — tam/sam/som, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing with assumptions, constraints, and failure modes",
+        "produce and validate a professional artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/product/brainstorming"
+      "path": ".agents/skills/professional/pro-market-analysis"
     },
     {
       "name": "prod-ab-testing",
@@ -2827,22 +2789,6 @@
       "path": ".agents/skills/product/prod-prd-writing"
     },
     {
-      "name": "pro-market-analysis",
-      "category": "professional",
-      "description": "Conduct professional market research — TAM/SAM/SOM, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply pro market analysis methods within explicit professional boundaries",
-        "analyze conduct professional market research — tam/sam/som, competitor analysis, pricing, and trend forecasting — with source citation, data quality checks, and decision framing with assumptions, constraints, and failure modes",
-        "produce and validate a professional artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/professional/pro-market-analysis"
-    },
-    {
       "name": "professional-communication",
       "category": "professional",
       "description": "Improve professional communication — status updates, stakeholder messages, expectations, and escalation — with clarity and precision.",
@@ -2873,59 +2819,6 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/professional/professional-project-management"
-    },
-    {
-      "name": "analyze-artifacts",
-      "category": "project",
-      "description": "Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "classify consistency findings by evidence",
-        "emit a read-only artifact consistency report",
-        "trace analyze artifacts decisions across inputs, constraints, and failure paths",
-        "validate project outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/project/analyze-artifacts"
-    },
-    {
-      "name": "docs-management",
-      "category": "project",
-      "description": "Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply docs management methods within explicit project boundaries",
-        "analyze keep repository documentation, adrs, and durable context aligned with the current project shape — with explicit consumer rules with assumptions, constraints, and failure modes",
-        "produce and validate a project artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/project/docs-management"
-    },
-    {
-      "name": "make-project",
-      "category": "project",
-      "description": "Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply make project methods within explicit project boundaries",
-        "analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes",
-        "produce and validate a project artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "create-project",
-        "create-project-fields",
-        "link-repositories"
-      ],
-      "path": ".agents/skills/project/make-project"
     },
     {
       "name": "project-development",
@@ -2961,81 +2854,56 @@
       "path": ".agents/skills/project/project-viability"
     },
     {
-      "name": "spec-driven-development",
-      "category": "project",
-      "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
-      "version": "1",
-      "maturity": "experimental",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce a spec artifact from intent (specify phase)",
-        "produce a plan artifact with architecture and seams (plan phase)",
-        "decompose the plan into tracer-bullet tasks (tasks phase)",
-        "verify implementation against the spec and plan",
-        "trace spec driven development decisions across inputs, constraints, and failure paths",
-        "validate project outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-docs",
-        "write-files"
-      ],
-      "path": ".agents/skills/project/spec-driven-development"
-    },
-    {
-      "name": "to-spec",
-      "category": "project",
-      "description": "Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce to spec artifact",
-        "validate to spec completion criteria",
-        "trace to spec decisions across inputs, constraints, and failure paths",
-        "validate project outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "create-issue"
-      ],
-      "path": ".agents/skills/project/to-spec"
-    },
-    {
-      "name": "to-tickets",
-      "category": "project",
-      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce to tickets artifact",
-        "validate to tickets completion criteria",
-        "trace to tickets decisions across inputs, constraints, and failure paths",
-        "validate project outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "create-issues",
-        "write-files"
-      ],
-      "path": ".agents/skills/project/to-tickets"
-    },
-    {
-      "name": "performance-testing",
-      "category": "qa",
-      "description": "Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.",
+      "name": "prompt-template-library",
+      "category": "ai",
+      "description": "Prompt template library (versioned templates, A/B testing, composition, evaluation)",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply performance testing methods within explicit qa boundaries",
-        "analyze design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions with assumptions, constraints, and failure modes",
-        "produce and validate a qa artifact with evidence, decisions, and next steps"
+        "apply prompt template library methods within explicit ai boundaries",
+        "analyze prompt template library (versioned templates, a/b testing, composition, evaluation) with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/qa/performance-testing"
+      "path": ".agents/skills/ai/prompt-template-library"
+    },
+    {
+      "name": "prototype",
+      "category": "delivery",
+      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply prototype methods within explicit delivery boundaries",
+        "analyze build a throwaway prototype to answer a design question. use when the user wants to sanity-check whether a state model or interaction shape actually works with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/prototype"
+    },
+    {
+      "name": "publish-open-pr",
+      "category": "routing",
+      "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
+      "version": "2",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "produce publish open pr artifact",
+        "validate publish open pr completion criteria",
+        "trace publish open pr decisions across inputs, constraints, and failure paths",
+        "validate routing outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "push-branch",
+        "create-pull-request"
+      ],
+      "path": ".agents/skills/routing/publish-open-pr"
     },
     {
       "name": "qa-automation",
@@ -3199,20 +3067,86 @@
       "path": ".agents/skills/quant/quant-risk-modeling"
     },
     {
-      "name": "github-project-analysis",
-      "category": "research",
-      "description": "Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.",
+      "name": "rag-pipeline",
+      "category": "ai",
+      "description": "Design RAG pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "apply github project analysis methods within explicit research boundaries",
-        "analyze research comparable projects exclusively on github and analyze their structure, decisions, and reusable patterns for an active project with assumptions, constraints, and failure modes",
-        "produce and validate a research artifact with evidence, decisions, and next steps"
+        "apply rag pipeline methods within explicit ai boundaries",
+        "analyze design rag pipelines — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/research/github-project-analysis"
+      "path": ".agents/skills/ai/rag-pipeline"
+    },
+    {
+      "name": "rate-limiting",
+      "category": "backend",
+      "description": "Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply rate limiting methods within explicit backend boundaries",
+        "analyze rate limiting and throttling (token bucket, sliding window, distributed rate limiting, api protection) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/rate-limiting"
+    },
+    {
+      "name": "react",
+      "category": "frontend",
+      "description": "Design React component structure and state seams — with composability, testability, and clear data flow.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply react methods within explicit frontend boundaries",
+        "analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/react"
+    },
+    {
+      "name": "remix",
+      "category": "frontend",
+      "description": "Remix framework (loaders, actions, nested routes, progressive enhancement).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply remix methods within explicit frontend boundaries",
+        "analyze remix framework (loaders, actions, nested routes, progressive enhancement) with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/remix"
+    },
+    {
+      "name": "research",
+      "category": "delivery",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply research methods within explicit delivery boundaries",
+        "analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-docs"
+      ],
+      "path": ".agents/skills/delivery/research"
     },
     {
       "name": "research-data-archiving",
@@ -3247,6 +3181,82 @@
       "path": ".agents/skills/research/research-literature-review"
     },
     {
+      "name": "resolving-merge-conflicts",
+      "category": "delivery",
+      "description": "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply resolving merge conflicts methods within explicit delivery boundaries",
+        "analyze use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, pr branch corrections, or other branch-state blockers that need deliberate resolution with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-code",
+        "commit-git",
+        "continue-merge-or-rebase"
+      ],
+      "path": ".agents/skills/delivery/resolving-merge-conflicts"
+    },
+    {
+      "name": "review-fix-loop",
+      "category": "delivery",
+      "description": "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply review fix loop methods within explicit delivery boundaries",
+        "analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "write-code",
+        "post-pr-comment",
+        "commit-git",
+        "push-branch"
+      ],
+      "path": ".agents/skills/delivery/review-fix-loop"
+    },
+    {
+      "name": "review-pr",
+      "category": "delivery",
+      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "produce review pr artifact",
+        "validate review pr completion criteria",
+        "trace review pr decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "post-pr-comment"
+      ],
+      "path": ".agents/skills/delivery/review-pr"
+    },
+    {
+      "name": "rule-cataloger",
+      "category": "skill-dev",
+      "description": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply rule cataloger methods within explicit skill-dev boundaries",
+        "analyze extract and classify rules across skills by type, frequency, and application area; use when auditing the repository's shared guidance with assumptions, constraints, and failure modes",
+        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/rule-cataloger"
+    },
+    {
       "name": "scientific-hypothesis",
       "category": "research",
       "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
@@ -3263,383 +3273,20 @@
       "path": ".agents/skills/research/scientific-hypothesis"
     },
     {
-      "name": "artifact-handoff",
-      "category": "routing",
-      "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply artifact handoff methods within explicit routing boundaries",
-        "analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/artifact-handoff"
-    },
-    {
-      "name": "ask-to",
-      "category": "routing",
-      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "produce ask to artifact",
-        "validate ask to completion criteria",
-        "trace ask to decisions across inputs, constraints, and failure paths",
-        "validate routing outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/ask-to"
-    },
-    {
-      "name": "capability-router",
-      "category": "routing",
-      "description": "Route work to the best matching Skill using declared capabilities and compatibility — with explicit selection rules.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply capability router methods within explicit routing boundaries",
-        "analyze route work to the best matching skill using declared capabilities and compatibility — with explicit selection rules with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/capability-router"
-    },
-    {
-      "name": "context-pack",
-      "category": "routing",
-      "description": "Build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply context pack methods within explicit routing boundaries",
-        "analyze build a minimal fresh context pack with ordered reads and provenance — for scoped, high-signal handoff with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/context-pack"
-    },
-    {
-      "name": "grill",
-      "category": "routing",
-      "description": "Alias for the quirk grilling flow. Use when the user says \"grill\" and wants a relentless interview to sharpen a plan, decision, or design.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply grill methods within explicit routing boundaries",
-        "analyze grill with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/grill"
-    },
-    {
-      "name": "grill-me",
-      "category": "routing",
-      "description": "A relentless interview to sharpen a plan or design.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply grill me methods within explicit routing boundaries",
-        "analyze a relentless interview to sharpen a plan or design with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/grill-me"
-    },
-    {
-      "name": "grill-with-docs",
-      "category": "routing",
-      "description": "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply grill with docs methods within explicit routing boundaries",
-        "analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-docs"
-      ],
-      "path": ".agents/skills/routing/grill-with-docs"
-    },
-    {
-      "name": "grilling",
-      "category": "routing",
-      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "apply grilling methods within explicit routing boundaries",
-        "analyze grill the user relentlessly about a plan, decision, or idea. use when the user wants to stress-test their thinking, or use docs to sharpen the premise before acting with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/grilling"
-    },
-    {
-      "name": "handoff",
-      "category": "routing",
-      "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply handoff methods within explicit routing boundaries",
-        "analyze compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-temp-file"
-      ],
-      "path": ".agents/skills/routing/handoff"
-    },
-    {
-      "name": "knowledge-curator",
-      "category": "routing",
-      "description": "Keep context, ADRs, registry entries, and research coherent over time — with refresh and provenance discipline.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply knowledge curator methods within explicit routing boundaries",
-        "analyze keep context, adrs, registry entries, and research coherent over time — with refresh and provenance discipline with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "write-docs"
-      ],
-      "path": ".agents/skills/routing/knowledge-curator"
-    },
-    {
-      "name": "parallel-issue-fleet",
-      "category": "routing",
-      "description": "Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.",
-      "version": "2",
-      "maturity": "experimental",
-      "risk": "high",
-      "trustTier": "4",
-      "capabilities": [
-        "isolate one implementation agent per issue through provider adapters",
-        "run any argv-based coding agent and model through a portable worker profile",
-        "bootstrap dependencies from project lockfiles before implementation",
-        "checkpoint and resume fleet runs without duplicating completed effects",
-        "fence concurrent runs with expiring per-issue claims",
-        "verify landed ancestry before advancing a wave",
-        "enforce concurrency limits timeouts ephemeral secrets and owned-resource cleanup",
-        "emit a validated FleetRunArtifact with per-issue ImplementArtifact references",
-        "trace parallel issue fleet decisions across inputs, constraints, and failure paths",
-        "validate routing outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "write-files",
-        "create-git-worktrees",
-        "create-git-branches",
-        "launch-local-agents",
-        "provision-infrastructure",
-        "inject-ephemeral-secrets",
-        "terminate-processes",
-        "cleanup-owned-resources"
-      ],
-      "path": ".agents/skills/routing/parallel-issue-fleet"
-    },
-    {
-      "name": "publish-open-pr",
-      "category": "routing",
-      "description": "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.",
+      "name": "search",
+      "category": "integrations",
+      "description": "Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.",
       "version": "2",
       "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "produce publish open pr artifact",
-        "validate publish open pr completion criteria",
-        "trace publish open pr decisions across inputs, constraints, and failure paths",
-        "validate routing outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "push-branch",
-        "create-pull-request"
-      ],
-      "path": ".agents/skills/routing/publish-open-pr"
-    },
-    {
-      "name": "ship-subissue",
-      "category": "routing",
-      "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "high",
-      "trustTier": "4",
-      "capabilities": [
-        "apply ship subissue methods within explicit routing boundaries",
-        "analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "merge-pull-request",
-        "close-issue",
-        "update-project"
-      ],
-      "path": ".agents/skills/routing/ship-subissue"
-    },
-    {
-      "name": "triage",
-      "category": "routing",
-      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply triage methods within explicit routing boundaries",
-        "analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [
-        "label-issue",
-        "post-comment",
-        "close-issue",
-        "write-files"
-      ],
-      "path": ".agents/skills/routing/triage"
-    },
-    {
-      "name": "wayfinder",
-      "category": "routing",
-      "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
-      "version": "1",
-      "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply wayfinder methods within explicit routing boundaries",
-        "analyze plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries with assumptions, constraints, and failure modes",
-        "produce and validate a routing artifact with evidence, decisions, and next steps"
+        "apply search methods within explicit integrations boundaries",
+        "analyze design search behavior, indexing, relevance, and retrieval seams — with elasticsearch, algolia, meilisearch, opensearch, synonyms, ranking, analytics, and autocomplete with assumptions, constraints, and failure modes",
+        "produce and validate a integrations artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/routing/wayfinder"
-    },
-    {
-      "name": "work-item-router",
-      "category": "routing",
-      "description": "Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
-      "capabilities": [
-        "produce work item router artifact",
-        "validate work item router completion criteria",
-        "trace work item router decisions across inputs, constraints, and failure paths",
-        "validate routing outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/routing/work-item-router"
-    },
-    {
-      "name": "worktree-swarm",
-      "category": "routing",
-      "description": "Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "create isolated issue worktrees atomically",
-        "launch local agents in parallel",
-        "emit a machine-readable worktree manifest",
-        "trace worktree swarm decisions across inputs, constraints, and failure paths",
-        "validate routing outcomes with evidence, assumptions, and explicit next steps"
-      ],
-      "sideEffects": [
-        "create-git-worktrees",
-        "create-git-branches",
-        "launch-local-agents"
-      ],
-      "path": ".agents/skills/routing/worktree-swarm"
-    },
-    {
-      "name": "cloud-security",
-      "category": "sec",
-      "description": "Cloud security (AWS, GCP, Azure, IAM, KMS, security groups, compliance, posture management)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply cloud security methods within explicit sec boundaries",
-        "analyze cloud security (aws, gcp, azure, iam, kms, security groups, compliance, posture management) with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/cloud-security"
-    },
-    {
-      "name": "compliance",
-      "category": "sec",
-      "description": "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply compliance methods within explicit sec boundaries",
-        "analyze compliance (soc2, iso27001, gdpr, hipaa, pci dss, audits, evidence, remediation) with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/compliance"
-    },
-    {
-      "name": "container-security",
-      "category": "sec",
-      "description": "Container security (Docker, Kubernetes, image scanning, runtime security, pod security policies)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply container security methods within explicit sec boundaries",
-        "analyze container security (docker, kubernetes, image scanning, runtime security, pod security policies) with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/container-security"
-    },
-    {
-      "name": "incident-forensics",
-      "category": "sec",
-      "description": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply incident forensics methods within explicit sec boundaries",
-        "analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/incident-forensics"
+      "path": ".agents/skills/integrations/search"
     },
     {
       "name": "sec-cryptography-applied",
@@ -3707,6 +3354,22 @@
       "path": ".agents/skills/sec/sec-threat-modeling"
     },
     {
+      "name": "secret-management",
+      "category": "devops",
+      "description": "Design secret management — Vault, SOPS, SealedSecrets, rotation, external secrets — with encryption, access control, and auditability.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply secret management methods within explicit devops boundaries",
+        "analyze design secret management — vault, sops, sealedsecrets, rotation, external secrets — with encryption, access control, and auditability with assumptions, constraints, and failure modes",
+        "produce and validate a devops artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/devops/secret-management"
+    },
+    {
       "name": "secret-management-security",
       "category": "sec",
       "description": "Secrets management (Vault, KMS, rotation, injection, external secrets operator)",
@@ -3723,86 +3386,88 @@
       "path": ".agents/skills/sec/secret-management-security"
     },
     {
-      "name": "supply-chain-security",
-      "category": "sec",
-      "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply supply chain security methods within explicit sec boundaries",
-        "analyze design supply chain security — sbom, sigstore, slsa, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/supply-chain-security"
-    },
-    {
-      "name": "zero-trust",
-      "category": "sec",
-      "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "medium",
-      "trustTier": "3",
-      "capabilities": [
-        "apply zero trust methods within explicit sec boundaries",
-        "analyze design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement with assumptions, constraints, and failure modes",
-        "produce and validate a sec artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/sec/zero-trust"
-    },
-    {
-      "name": "evaluate-skill",
-      "category": "skill-dev",
-      "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+      "name": "semantic-layer",
+      "category": "data",
+      "description": "Design a semantic layer — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply evaluate skill methods within explicit skill-dev boundaries",
-        "analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "apply semantic layer methods within explicit data boundaries",
+        "analyze design a semantic layer — dbt, cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization with assumptions, constraints, and failure modes",
+        "produce and validate a data artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/skill-dev/evaluate-skill"
+      "path": ".agents/skills/data/semantic-layer"
     },
     {
-      "name": "lockfile-maintenance",
-      "category": "skill-dev",
-      "description": "Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.",
+      "name": "serverless",
+      "category": "backend",
+      "description": "Serverless architecture (Lambda, Functions, FaaS, event-driven, cold starts, scaling, cost).",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
-        "apply lockfile maintenance methods within explicit skill-dev boundaries",
-        "analyze maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding skill.md files are resolved with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "apply serverless methods within explicit backend boundaries",
+        "analyze serverless architecture (lambda, functions, faas, event-driven, cold starts, scaling, cost) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/serverless"
+    },
+    {
+      "name": "service-mesh",
+      "category": "backend",
+      "description": "Service mesh (Istio, Linkerd, Cilium, mTLS, traffic splitting, observability).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply service mesh methods within explicit backend boundaries",
+        "analyze service mesh (istio, linkerd, cilium, mtls, traffic splitting, observability) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/service-mesh"
+    },
+    {
+      "name": "setup-quirk-skills",
+      "category": "auxiliary",
+      "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply setup quirk skills methods within explicit auxiliary boundaries",
+        "analyze configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. run once before first use of the other engineering skills with assumptions, constraints, and failure modes",
+        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/auxiliary/setup-quirk-skills"
+    },
+    {
+      "name": "ship-subissue",
+      "category": "routing",
+      "description": "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "apply ship subissue methods within explicit routing boundaries",
+        "analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [
-        "write-files"
+        "merge-pull-request",
+        "close-issue",
+        "update-project"
       ],
-      "path": ".agents/skills/skill-dev/lockfile-maintenance"
-    },
-    {
-      "name": "rule-cataloger",
-      "category": "skill-dev",
-      "description": "Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.",
-      "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
-      "capabilities": [
-        "apply rule cataloger methods within explicit skill-dev boundaries",
-        "analyze extract and classify rules across skills by type, frequency, and application area; use when auditing the repository's shared guidance with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
-      ],
-      "sideEffects": [],
-      "path": ".agents/skills/skill-dev/rule-cataloger"
+      "path": ".agents/skills/routing/ship-subissue"
     },
     {
       "name": "side-effect-auditor",
@@ -3837,6 +3502,26 @@
         "write-files"
       ],
       "path": ".agents/skills/skill-dev/skill-audit"
+    },
+    {
+      "name": "skill-composition",
+      "category": "foundation",
+      "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "verify artifact compatibility at each edge before execution",
+        "run a chain inside a declared iteration and cost budget",
+        "report per-edge handoff evidence for the chain",
+        "trace skill composition decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "orchestration"
+      ],
+      "path": ".agents/skills/foundation/skill-composition"
     },
     {
       "name": "skill-creator",
@@ -4026,52 +3711,215 @@
       "path": ".agents/skills/skill-dev/skill-tutor"
     },
     {
-      "name": "workflow-fixture-author",
-      "category": "skill-dev",
-      "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
+      "name": "spec-driven-development",
+      "category": "project",
+      "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
       "version": "1",
-      "maturity": "stable",
-      "risk": "low",
-      "trustTier": "2",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
-        "apply workflow fixture author methods within explicit skill-dev boundaries",
-        "analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "produce a spec artifact from intent (specify phase)",
+        "produce a plan artifact with architecture and seams (plan phase)",
+        "decompose the plan into tracer-bullet tasks (tasks phase)",
+        "verify implementation against the spec and plan",
+        "trace spec driven development decisions across inputs, constraints, and failure paths",
+        "validate project outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "sideEffects": [],
-      "path": ".agents/skills/skill-dev/workflow-fixture-author"
+      "sideEffects": [
+        "write-docs",
+        "write-files"
+      ],
+      "path": ".agents/skills/project/spec-driven-development"
     },
     {
-      "name": "writing-great-skills",
-      "category": "skill-dev",
-      "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+      "name": "state-management",
+      "category": "frontend",
+      "description": "Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply writing great skills methods within explicit skill-dev boundaries",
-        "analyze reference for writing and editing skills well — the vocabulary and principles that make a skill predictable with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "apply state management methods within explicit frontend boundaries",
+        "analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/skill-dev/writing-great-skills"
+      "path": ".agents/skills/frontend/state-management"
     },
     {
-      "name": "interaction-design",
-      "category": "ux",
-      "description": "Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.",
+      "name": "stream-processing",
+      "category": "data",
+      "description": "Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply stream processing methods within explicit data boundaries",
+        "analyze stream processing (flink, kafka streams, risingwave, windowing, state, exactly-once) with assumptions, constraints, and failure modes",
+        "produce and validate a data artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/data/stream-processing"
+    },
+    {
+      "name": "structured-output",
+      "category": "ai",
+      "description": "Structured output for LLMs (JSON mode, function calling, constrained decoding, validation)",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
       "capabilities": [
-        "apply interaction design methods within explicit ux boundaries",
-        "analyze design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably with assumptions, constraints, and failure modes",
-        "produce and validate a ux artifact with evidence, decisions, and next steps"
+        "apply structured output methods within explicit ai boundaries",
+        "analyze structured output for llms (json mode, function calling, constrained decoding, validation) with assumptions, constraints, and failure modes",
+        "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
-      "path": ".agents/skills/ux/interaction-design"
+      "path": ".agents/skills/ai/structured-output"
+    },
+    {
+      "name": "styling",
+      "category": "frontend",
+      "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply styling methods within explicit frontend boundaries",
+        "analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes",
+        "produce and validate a frontend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/frontend/styling"
+    },
+    {
+      "name": "subagent-swarm",
+      "category": "foundation",
+      "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply subagent swarm methods within explicit foundation boundaries",
+        "analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes",
+        "produce and validate a foundation artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/foundation/subagent-swarm"
+    },
+    {
+      "name": "supply-chain-security",
+      "category": "sec",
+      "description": "Design supply chain security — SBOM, Sigstore, SLSA, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply supply chain security methods within explicit sec boundaries",
+        "analyze design supply chain security — sbom, sigstore, slsa, provenance, signing — with explicit trust tiers, artifact verification, and incident response for compromised dependencies with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/supply-chain-security"
+    },
+    {
+      "name": "tdd",
+      "category": "delivery",
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "produce tdd artifact",
+        "validate tdd completion criteria",
+        "trace tdd decisions across inputs, constraints, and failure paths",
+        "validate delivery outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/tdd"
+    },
+    {
+      "name": "testing",
+      "category": "delivery",
+      "description": "Shape the test strategy for a project so behavior is verified at the right seams and at the right level.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply testing methods within explicit delivery boundaries",
+        "analyze shape the test strategy for a project so behavior is verified at the right seams and at the right level with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/testing"
+    },
+    {
+      "name": "to-spec",
+      "category": "project",
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "produce to spec artifact",
+        "validate to spec completion criteria",
+        "trace to spec decisions across inputs, constraints, and failure paths",
+        "validate project outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "create-issue"
+      ],
+      "path": ".agents/skills/project/to-spec"
+    },
+    {
+      "name": "to-tickets",
+      "category": "project",
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "produce to tickets artifact",
+        "validate to tickets completion criteria",
+        "trace to tickets decisions across inputs, constraints, and failure paths",
+        "validate project outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "create-issues",
+        "write-files"
+      ],
+      "path": ".agents/skills/project/to-tickets"
+    },
+    {
+      "name": "triage",
+      "category": "routing",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply triage methods within explicit routing boundaries",
+        "analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [
+        "label-issue",
+        "post-comment",
+        "close-issue",
+        "write-files"
+      ],
+      "path": ".agents/skills/routing/triage"
     },
     {
       "name": "ux-accessibility",
@@ -4120,6 +3968,41 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/ux/ux-research"
+    },
+    {
+      "name": "verify-delegation",
+      "category": "foundation",
+      "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "verify a delegated artifact against its success criteria without implementation context",
+        "return a bounded DelegationVerdict with evidence, negative tests, and suite status",
+        "trace verify delegation decisions across inputs, constraints, and failure paths",
+        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/foundation/verify-delegation"
+    },
+    {
+      "name": "wayfinder",
+      "category": "routing",
+      "description": "Plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply wayfinder methods within explicit routing boundaries",
+        "analyze plan a huge chunk of work — more than one agent session can hold — as a map of decision tickets on your issue tracker, with staged decomposition and durable scope boundaries with assumptions, constraints, and failure modes",
+        "produce and validate a routing artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/wayfinder"
     },
     {
       "name": "web3-consensus",
@@ -4218,6 +4101,109 @@
       "path": ".agents/skills/web3/web3-tokenomics"
     },
     {
+      "name": "webapp-testing",
+      "category": "delivery",
+      "description": "Choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply webapp testing methods within explicit delivery boundaries",
+        "analyze choose the right test seam for a web app and describe how to verify it at unit, integration, and end-to-end levels with assumptions, constraints, and failure modes",
+        "produce and validate a delivery artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/delivery/webapp-testing"
+    },
+    {
+      "name": "websockets",
+      "category": "backend",
+      "description": "WebSockets and real-time (Socket.IO, WS, SSE, pub/sub, scaling, reconnection, backpressure).",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply websockets methods within explicit backend boundaries",
+        "analyze websockets and real-time (socket.io, ws, sse, pub/sub, scaling, reconnection, backpressure) with assumptions, constraints, and failure modes",
+        "produce and validate a backend artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/backend/websockets"
+    },
+    {
+      "name": "work-item-router",
+      "category": "routing",
+      "description": "Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "produce work item router artifact",
+        "validate work item router completion criteria",
+        "trace work item router decisions across inputs, constraints, and failure paths",
+        "validate routing outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/routing/work-item-router"
+    },
+    {
+      "name": "workflow-fixture-author",
+      "category": "skill-dev",
+      "description": "Author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply workflow fixture author methods within explicit skill-dev boundaries",
+        "analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes",
+        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/workflow-fixture-author"
+    },
+    {
+      "name": "worktree-swarm",
+      "category": "routing",
+      "description": "Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "create isolated issue worktrees atomically",
+        "launch local agents in parallel",
+        "emit a machine-readable worktree manifest",
+        "trace worktree swarm decisions across inputs, constraints, and failure paths",
+        "validate routing outcomes with evidence, assumptions, and explicit next steps"
+      ],
+      "sideEffects": [
+        "create-git-worktrees",
+        "create-git-branches",
+        "launch-local-agents"
+      ],
+      "path": ".agents/skills/routing/worktree-swarm"
+    },
+    {
+      "name": "writing-great-skills",
+      "category": "skill-dev",
+      "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "low",
+      "trustTier": "1",
+      "capabilities": [
+        "apply writing great skills methods within explicit skill-dev boundaries",
+        "analyze reference for writing and editing skills well — the vocabulary and principles that make a skill predictable with assumptions, constraints, and failure modes",
+        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/skill-dev/writing-great-skills"
+    },
+    {
       "name": "xr-development",
       "category": "xr",
       "description": "Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.",
@@ -4264,6 +4250,22 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/xr/xr-performance"
+    },
+    {
+      "name": "zero-trust",
+      "category": "sec",
+      "description": "Design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "apply zero trust methods within explicit sec boundaries",
+        "analyze design zero trust architecture — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement with assumptions, constraints, and failure modes",
+        "produce and validate a sec artifact with evidence, decisions, and next steps"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/sec/zero-trust"
     }
   ]
 }
