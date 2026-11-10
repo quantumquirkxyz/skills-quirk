@@ -92,8 +92,18 @@ async function collectSkills(dir, out = []) {
 }
 
 // Sort skills by name for deterministic output ordering
+// Uses code-unit comparison (not locale-aware) for deterministic ordering
 function sortSkills(skills) {
-  return [...skills].sort((a, b) => a.name.localeCompare(b.name));
+  return [...skills].sort((a, b) => {
+    const na = a.name;
+    const nb = b.name;
+    for (let i = 0; i < Math.min(na.length, nb.length); i++) {
+      if (na.charCodeAt(i) !== nb.charCodeAt(i)) {
+        return na.charCodeAt(i) - nb.charCodeAt(i);
+      }
+    }
+    return na.length - nb.length;
+  });
 }
 
 async function main() {
@@ -181,11 +191,27 @@ async function main() {
             }
           }
         }
-        // Compare capabilities as sorted arrays for deterministic order-independent comparison
-        const genCaps = [...gen.capabilities].sort();
-        const existingCaps = [...existing.capabilities].sort();
-        if (genCaps.length !== existingCaps.length || genCaps.some((c, idx) => c !== existingCaps[idx])) {
-          driftReasons.push(`skill "${gen.name}" capabilities mismatch at index ${i}`);
+        // Compare capabilities as arrays in generated order for order-drift detection.
+// Both generated and committed are sorted identically (same sort function),
+// so this detects: (a) missing/extra capabilities, (b) capability order changes
+// if the committed file was manually reordered outside the sort.
+        // Compare capabilities in generated order (position-sensitive).
+        // Both generated and committed are sorted identically, so this detects
+        // missing/extra capabilities and any order drift from manual editing.
+        for (let j = 0; j < Math.max(gen.capabilities.length, existing.capabilities.length); j++) {
+          const genCap = gen.capabilities[j];
+          const existingCap = existing.capabilities[j];
+          if (genCap !== existingCap) {
+            // Check if it's a length mismatch or order drift
+            if (j >= gen.capabilities.length) {
+              driftReasons.push(`skill "${gen.name}" capability missing at index ${j} (existing has "${existingCap}")`);
+            } else if (j >= existing.capabilities.length) {
+              driftReasons.push(`skill "${gen.name}" extra capability at index ${j}: "${genCap}"`);
+            } else {
+              driftReasons.push(`skill "${gen.name}" capability order drift at index ${j}: expected "${existingCap}", got "${genCap}"`);
+            }
+            break; // report first order drift found per skill
+          }
         }
         if (gen.path !== existing.path) {
           driftReasons.push(`skill "${gen.name}" path mismatch (existing: "${existing.path}") at index ${i}`);
