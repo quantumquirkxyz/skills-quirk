@@ -73,6 +73,7 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 - [Installation & Sync](#installation--sync)
 - [Governance](#governance)
 - [Contributing](#contributing)
+- [Security](#security)
 - [License](#license)
 
 <a id="about"></a>
@@ -590,6 +591,12 @@ Quick checklist before submitting:
 > Follow [docs/how-to/skill-style.md](docs/how-to/skill-style.md) when editing or authoring skills.
 
 Questions? Check `docs/reference/agents/` and `docs/how-to/` for more documentation.
+
+<a id="security"></a>
+
+## Security
+
+This project maintains a [SECURITY.md](SECURITY.md) describing supported versions, vulnerability reporting scope and process, and security best practices for skill authors and contributors.
 
 ## License
 
