@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // generate-site-data.mjs - Generates site/src/skills.json from the skills bundle
-// Usage: node generate-site-data.mjs [--write]
+// Usage: node generate-site-data.mjs [--write] [--check]
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -9,6 +9,7 @@ const root = process.cwd();
 const skillsRoot = path.join(root, '.agents', 'skills');
 const outputPath = path.join(root, 'site', 'src', 'skills.json');
 const write = process.argv.includes('--write');
+const check = process.argv.includes('--check');
 
 function foldBlock(style, lines) {
   if (style === '|') return lines.join('\n').trim();
@@ -114,7 +115,64 @@ async function main() {
 
   const json = JSON.stringify(data, null, 2) + '\n';
 
-  if (write) {
+  if (check) {
+    // Deterministic drift check: compare generated data against existing file
+    try {
+      const existingJson = await fs.readFile(outputPath, 'utf8');
+      const existingData = JSON.parse(existingJson);
+
+      if (existingData.totalSkills !== data.totalSkills) {
+        console.error(`[generate-site-data] DRIFT DETECTED: totalSkills mismatch (existing: ${existingData.totalSkills}, generated: ${data.totalSkills})`);
+        process.exit(1);
+      }
+
+      if (existingData.categories.join(',') !== data.categories.join(',')) {
+        console.error('[generate-site-data] DRIFT DETECTED: categories mismatch');
+        process.exit(1);
+      }
+
+      // Compare each skill
+      let hasDrift = false;
+      for (let i = 0; i < data.skills.length; i++) {
+        const gen = data.skills[i];
+        const existing = existingData.skills[i];
+        if (!existing) {
+          console.error(`[generate-site-data] DRIFT DETECTED: skill ${gen.name} missing from existing data`);
+          hasDrift = true;
+          continue;
+        }
+        const capsDiff = gen.capabilities.filter(c => !existing.capabilities.includes(c)).length;
+        const capsExtra = existing.capabilities.filter(c => !gen.capabilities.includes(c)).length;
+        if (gen.name !== existing.name || gen.category !== existing.category || gen.description !== existing.description || capsDiff > 0 || capsExtra > 0) {
+          console.error(`[generate-site-data] DRIFT DETECTED: skill "${gen.name}" differs (capabilities missing: ${capsDiff}, extra: ${capsExtra})`);
+          hasDrift = true;
+        }
+      }
+
+      // Also check for extra skills in existing data
+      if (existingData.skills.length > data.skills.length) {
+        for (let i = data.skills.length; i < existingData.skills.length; i++) {
+          console.error(`[generate-site-data] DRIFT DETECTED: extra skill "${existingData.skills[i].name}" in existing data not in generated`);
+        }
+        hasDrift = true;
+      }
+
+      if (hasDrift) {
+        console.error('[generate-site-data] Run node generate-site-data.mjs --write to regenerate site/src/skills.json');
+        process.exit(1);
+      } else {
+        console.log('[generate-site-data] Drift check passed: site/src/skills.json is up to date');
+        process.exit(0);
+      }
+    } catch (e) {
+      if (e.code === 'ENOENT') {
+        console.error('[generate-site-data] DRIFT DETECTED: site/src/skills.json does not exist. Run node generate-site-data.mjs --write to generate it.');
+        process.exit(1);
+      }
+      console.error('Error during drift check:', e);
+      process.exit(1);
+    }
+  } else if (write) {
     await fs.writeFile(outputPath, json, 'utf8');
     console.log(`[generate-site-data] Wrote ${outputPath} (${skills.length} skills)`);
   } else {
