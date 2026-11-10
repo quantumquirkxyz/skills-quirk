@@ -3,9 +3,9 @@ request: Complete CI evidence/fix, release hardening, security policy, quality-s
 base: main @ 0f5feb4
 | id | kind | status | complexity | model | session | worktree/branch | validated_commit | rounds | depends_on |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| site-drift | implementation | progress | normal | default | ses_e3936eb29ffeN7oXTESoCy12ju | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/site-drift | — | 0 | — |
-| quality-score | implementation | progress | complex | default | ses_e3936eaffffeR5t2BMS85CpynW | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/quality-score | — | 0 | — |
-| security-policy | implementation | progress | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/security-policy | ca50c3b | 0 | — |
+| site-drift | implementation | progress | normal | default | ses_e3936eb29ffeN7oXTESoCy12ju | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/site-drift | 6596c0a16f45662690c318c61ade783d49517e50 | 0 | — |
+| quality-score | implementation | rework | complex | default | ses_e3936eaffffeR5t2BMS85CpynW | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/quality-score | — | 1 | — |
+| security-policy | implementation | rework | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/security-policy | ca50c3b | 1 | — |
 | install-integrity-docs | implementation | progress | normal | default | ses_e3936eadbffePs4XACnHcEevzl | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/install-integrity-docs | — | 0 | — |
 | release-hardening | implementation | pending | complex | configured | — | — | — | 0 | site-drift, quality-score, install-integrity-docs |
 | final-verification | verification | pending | normal | configured | — | — | — | 0 | site-drift, quality-score, security-policy, install-integrity-docs, release-hardening |
@@ -21,3 +21,5 @@ base: main @ 0f5feb4
 - Prompt-only install docs lack explicit post-install validation commands.
 
 - Quality-score implementer reports normalized /100, rawTotal/maxRawScore evidence, canonical scorer reuse, and 9 new tests; SHA not yet reported, so delivery remains unvalidated pending review.
+
+- Review: site delivery needs confirmation that --check is wired into local check-all; scorer has blocking relative-path CLI bootstrap bug; security policy has unsupported contact/SLAs, incorrect skills.json hash claim, and version wording.
