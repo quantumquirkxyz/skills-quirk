@@ -81,8 +81,6 @@
     "mutationTesting": false
   },
   "distribution": {
-    "npmPackage": "@quirk/skills",
-    "npxCommand": "npx @quantumquirkxyz/skills-quirk",
     "marketplaces": {
       "claudeCode": true,
       "opencode": true,

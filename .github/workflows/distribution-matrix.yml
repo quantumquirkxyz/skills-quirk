@@ -10,7 +10,6 @@ on:
       - "package.json"
       - "tests/portable-adoption-pilots.test.mjs"
       - "tests/managed-adoption-lifecycle.test.mjs"
-      - "scripts/verify-distribution.mjs"
       - ".github/workflows/distribution-matrix.yml"
   pull_request:
     paths:
@@ -20,7 +19,6 @@ on:
       - "package.json"
       - "tests/portable-adoption-pilots.test.mjs"
       - "tests/managed-adoption-lifecycle.test.mjs"
-      - "scripts/verify-distribution.mjs"
       - ".github/workflows/distribution-matrix.yml"
   workflow_dispatch:
 
@@ -29,7 +27,7 @@ permissions:
 
 jobs:
   install:
-    name: Package and adopt on ${{ matrix.os }}
+    name: Adopt on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -41,8 +39,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Package and install into consumer
-        run: npm run package:verify
       - name: Verify native path and repeat adoption fixtures
         run: node --test tests/portable-adoption-pilots.test.mjs
       - name: Verify managed upgrade backup and uninstall lifecycle

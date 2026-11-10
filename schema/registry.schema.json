@@ -81,8 +81,6 @@
     "distribution": {
       "type": "object",
       "properties": {
-        "npmPackage": {"type": "string"},
-        "npxCommand": {"type": "string"},
         "marketplaces": {
           "type": "object",
           "properties": {

@@ -3,9 +3,6 @@
   "version": "3.0.0",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
-  "bin": {
-    "skills-quirk": "./bin/skills-quirk.js"
-  },
   "scripts": {
     "test": "node --test .agents/skills/platform/tests/*.test.mjs tests/*.test.mjs",
     "inventory": "node scripts/skill-inventory.mjs",
@@ -39,8 +36,7 @@
     "idempotency:demo": "node .agents/skills/platform/idempotency.mjs --demo --json",
     "catalog": "node scripts/generate-site-data.mjs",
     "site:dev": "npm --prefix site run dev",
-    "site:build": "npm --prefix site run build",
-    "package:verify": "node scripts/verify-distribution.mjs"
+    "site:build": "npm --prefix site run build"
   },
   "keywords": [
     "skills",
@@ -60,30 +56,5 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "files": [
-    "bin/",
-    ".agents/skills/",
-    ".claude/skills/",
-    "CONTEXT.md",
-    "VERSION",
-    "docs/",
-    "skills-lock.json",
-    "registry.yaml",
-    "schema/",
-    "scripts/",
-    "plugins/",
-    "site/",
-    "tests/",
-    ".agents/AGENTS.md",
-    "AUTHORSHIP.md",
-    "skills.json",
-    ".env.template",
-    "hooks/",
-    "tooling/case-studies/"
-  ],
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
   }
 }
