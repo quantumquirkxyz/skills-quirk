@@ -202,8 +202,8 @@ Before considering installation complete, verify the following:
 - [ ] skills-lock.json matches all local SKILL.md hashes.
 - [ ] .claude/skills/ has one symlink per canonical skill.
 - [ ] Scenario evaluation passes.
-- [ ] Semantic audit passes.
-- [ ] Behavioral fixtures pass.
+- [ ] **Semantic audit passes.** `node .agents/skills/platform/audit-semantics.mjs`
+- [ ] **Behavioral fixtures pass.**
 - [ ] Any real use of the bundle is captured under tooling/case-studies/ when the method changes.
 
 ## 9. Maintenance cadence
@@ -230,7 +230,7 @@ The full gate covers structure, semantic health, 8 scenario fixtures, 4 behavior
 
 ## 10. Post-installation steps
 
-After copying the bundle files, complete the following steps to prepare the repository for normal work:
+After copying the bundle files, complete the following steps to prepare the repository for normal work.
 
 ### 10.1 Run setup-quirk-skills
 
@@ -297,9 +297,21 @@ Use ask-to for ambiguous routing or the canonical flow for a claimed work-item:
 8. **review-fix-loop** — applies corrections if there are findings.
 9. **ship-subissue** — merges and closes the issue when the review is clean.
 
-## 11. Additional notes
+### 10.7 Post-install integrity verification
 
-### Existing repositories with ADRs
+After completing the initial setup and configuration steps, run the following verification commands to confirm bundle integrity. These distinguish **source-repository** (canonical) authority from **target-repository** (installed) state:
+
+| Verification | Command | Authority | What it checks |
+|---|---|---|---|
+| **Lockfile hash integrity** | `node .agents/skills/platform/validate-skills.mjs` | Source-repository (skills-lock.json hashes) | Each SKILL.md hash matches skills-lock.json; detects stale or edited skill content |
+| **Semantic audit** | `node .agents/skills/platform/audit-semantics.mjs` | Source-repository (lockfile + schema) | Skill naming, side-effects, dependencies, and frontmatter conformance |
+| **Full gate** | `node .agents/skills/platform/check-all.mjs` | Source-repository (comprehensive) | Structure, semantics, fixtures, syntax, platform tests; `status: pass` required |
+
+> **Note:** `verify-install` (`node bin/skills-quirk.js verify-install`) is available for managed installations that have a `.agents/quirk-install.json` manifest. For raw sync or greenfield installs, use the lockfile and semantic checks above.
+
+### 10.8 Additional notes
+
+#### Existing repositories with ADRs
 
 If the target repository already has ADRs and an established CONTEXT.md, use the synchronization flow instead of a clean install:
 
@@ -313,7 +325,7 @@ To apply changes:
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
-### Dry-run synchronization
+#### Dry-run synchronization
 
 Before applying changes, run a dry-run to preview the impact:
 
@@ -323,7 +335,7 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
 
 This shows which files would change without modifying them.
 
-## 12. Resources
+## 11. Additional resources
 
 | Resource | Location |
 |---|---|

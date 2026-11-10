@@ -116,6 +116,7 @@ const checks = [
   ['node', ['--check', '.agents/skills/platform/evaluate-scenarios.mjs']],
   ['node', ['--check', '.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
   ['node', ['--check', '.agents/skills/platform/sync-bundle.mjs']],
+  ['node', ['scripts/generate-site-data.mjs', '--check']],
   ['bash', ['-n', '.agents/skills/delivery/diagnosing-bugs/scripts/hitl-loop.template.sh']],
   ['node', ['.agents/skills/platform/loop-runner.mjs', '--demo', '--json']],
   ['node', ['.agents/skills/platform/idempotency.mjs', '--demo', '--intents-dir', idempotencyIntentsDir]],

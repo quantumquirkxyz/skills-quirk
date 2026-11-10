@@ -684,7 +684,7 @@ create its native local view, run:
 node .agents/skills/platform/project-agent-paths.mjs --write --view opencode
 ```
 
-### Cursor / Gemini / GitHub Copilot / Windsurf
+### Cursor / Gemini / Codex / GitHub Copilot / Windsurf
 
 These consumers can use `.claude/skills/` where supported, or an ignored native
 view generated on demand. The native views are not committed because they are
@@ -701,6 +701,19 @@ npm run views:native -- --view cursor
 Removing a generated native directory is safe; rerun the command to recreate it.
 `.agents/skills/` remains the only source of truth and `.claude/skills/` remains
 the committed compatibility view.
+
+---
+
+## Agent compatibility matrix
+
+| Agent | Tested/Verified | Registry Support | Notes |
+|---|---|---|---|
+| **Claude Code** | ✅ Verified | `registry.yaml: supportsAgents includes claude-code` | Uses .claude/skills/ symlinks and .claude-plugin/marketplace.json |
+| **Cursor** | ✅ Tested | `registry.yaml: agents_compatible includes cursor` | Uses .claude/skills/; native view via `npm run views:native -- --view cursor` |
+| **Codex** | ✅ Tested | `registry.yaml: supportsAgents includes codex` | Uses .claude/skills/; native view available on demand |
+| **Gemini** | ✅ Tested | `registry.yaml: agents_compatible includes gemini` | Uses .claude/skills/; native view via `npm run views:native -- --view gemini` |
+
+*.*Registry-supported agents* are those listed in `registry.yaml` under `supportsAgents` and `agents_compatible`. These are the agents for which the bundle provides first-class compatibility views and discovery metadata.*
 
 ---
 

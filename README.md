@@ -73,6 +73,7 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 - [Installation & Sync](#installation--sync)
 - [Governance](#governance)
 - [Contributing](#contributing)
+- [Security](#security)
 - [License](#license)
 
 <a id="about"></a>
@@ -220,6 +221,10 @@ flowchart LR
 - **On-demand native agent views** — generate local Cursor, Gemini, Copilot,
   OpenCode, and Windsurf symlink views without committing duplicate projections:
   `npm run views:native`
+
+Removing a generated native directory is safe; rerun the command to recreate it.
+`.agents/skills/` remains the only source of truth and `.claude/skills/` remains
+the committed compatibility view.
 
 </details>
 
@@ -398,7 +403,7 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
-If the dry run reports conflicts, inspect them before using `--force`. Existing repositories should usually preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation; sync only the skills bundle paths unless the user explicitly approves broader adoption changes.
+If the dry run reports conflicts, inspect them before using `--force`. Existing repositories should preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation; sync only the skills bundle paths unless the user explicitly approves broader adoption changes.
 
 ### Greenfield path: replace starter docs
 
@@ -409,7 +414,7 @@ git clone https://github.com/quantumquirkxyz/skills-quirk.git
 bash skills-quirk/scripts/install-quirk-skills.sh /path/to/new-target-repo /path/to/skills-quirk
 ```
 
-The installer copies `.agents/skills/`, `.claude/skills/`, `docs/reference/agents/`, `docs/reference/adr/README.md`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, and `.env.template`. It replaces those target paths when they already exist.
+The installer replaces target paths when they already exist. Do not use it as the default update path for established repositories.
 
 ### What gets installed
 
@@ -424,21 +429,21 @@ The installer copies `.agents/skills/`, `.claude/skills/`, `docs/reference/agent
 | `CONTEXT.md` | Repository-local vocabulary to specialize after install |
 | `AUTHORSHIP.md` | Authorship and integrity rules |
 
-### Validate in the target repository
+### Post-install integrity verification
 
-After syncing, run from the target root:
+After syncing, run the following verification commands from the target repository root to confirm bundle integrity. These checks distinguish **source-repository** (canonical) authority from **target-repository** (installed) state:
 
-```bash
-node .agents/skills/platform/check-all.mjs
-```
+| Verification | Command | Authority | What it checks |
+|---|---|---|---|
+| **Lockfile hash integrity** | `node .agents/skills/platform/validate-skills.mjs` | Source-repository (skills-lock.json hashes) | Each SKILL.md hash matches skills-lock.json; detects stale or edited skill content |
+| **Semantic audit** | `node .agents/skills/platform/audit-semantics.mjs` | Source-repository (lockfile + schema) | Skill naming, side-effects, dependencies, and frontmatter conformance |
+| **Compatibility-view check** | `node .agents/skills/platform/fix-compatibility-view.mjs --dry-run` | Target-repository (.claude/skills/ symlinks) | Every `.claude/skills/` entry is a relative symlink resolving to `.agents/skills/` |
+| **Installation drift check** | `node bin/skills-quirk.js verify-install` | Target-repository (.agents/quirk-install.json manifest) | Managed files and links match the install manifest; detects missing or modified files |
+| **Full gate** | `node .agents/skills/platform/check-all.mjs` | Source-repository (comprehensive) | Structure, semantics, fixtures, syntax, platform tests; `status: pass` required |
 
-Expected summary: `failed: 0`, `totalWarnings: 0`, `totalErrors: 0`.
+> **Note on dry-run integrity:** A dry-run (`--write` omitted) reports conflicts and writes nothing. It confirms what would change but does not prove integrity — only an actual verification run against the installed state can confirm that hashes, symlinks, and the manifest are consistent.
 
-```text
-[ PROMPTS ] AI-AGNOSTIC PROMPTS
-```
-
-Use one of these prompts when you want an AI-agnostic IDE to install or sync this skills bundle into another repository.
+### AI-agnostic installation prompts
 
 > [!IMPORTANT]
 > These prompts are preserved verbatim. Use them as-is when installing or syncing.
@@ -476,13 +481,13 @@ Bring this repository into a valid quirk Skills state with the canonical bundle 
 5. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
 6. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
 7. Update `README.md` only if it needs a short installation or usage entry point for the new repository.
-8. Run `node .agents/skills/platform/check-all.mjs` and confirm the working tree is clean for the intended scope.
+8. Run `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node .agents/skills/platform/check-all.mjs` and confirm the working tree is clean for the intended scope. These checks use the canonical bundle authority from `skills-lock.json` (pinned revision from your cloned checkout), not live GitHub comparison.
 
 ## Final checks
 - `git status` must show only the expected bundle files and the local context/docs files you intentionally changed.
 - No ADR file under `docs/reference/adr/` should be modified unless the user explicitly requested it.
 - The result should be a repository that can be used by an AI-agnostic IDE without extra hidden setup.
-```
+- Verification summary: all above commands must report `status: pass` or `pass` with zero findings.
 
 ### 2. Existing repository with ADRs and local context
 
@@ -519,14 +524,13 @@ Update the skills implementation so it matches the upstream bundle while preserv
 - `git status --short` must show only `.agents/AGENTS.md`, `.agents/skills/`, `.claude/skills/`, `skills-lock.json`, `skills.json`, and any explicitly allowed optional file.
 - ADRs, `CONTEXT.md`, `README.md`, and product documentation must remain untouched.
 - If any protected path changes, revert only that part before finishing.
-```
 
 <details>
 <summary>After installation</summary>
 
 1. Specialize `CONTEXT.md` for the target repository.
 2. Follow the [adoption guide](docs/how-to/adoption.md) to set the issue tracker, domain docs, and validation commands.
-3. Run `node .agents/skills/platform/check-all.mjs` from the target root.
+3. Run post-install verification: `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node bin/skills-quirk.js verify-install && node .agents/skills/platform/check-all.mjs` from the target root. These checks use the canonical bundle authority from `skills-lock.json` (pinned revision from your cloned checkout / sync manifest), not live GitHub comparison.
 4. Use `ask-to` or the standard flow to route work.
 
 </details>
@@ -590,6 +594,12 @@ Quick checklist before submitting:
 > Follow [docs/how-to/skill-style.md](docs/how-to/skill-style.md) when editing or authoring skills.
 
 Questions? Check `docs/reference/agents/` and `docs/how-to/` for more documentation.
+
+<a id="security"></a>
+
+## Security
+
+This project maintains a [SECURITY.md](SECURITY.md) describing supported versions, vulnerability reporting scope and process, and security best practices for skill authors and contributors.
 
 ## License
 

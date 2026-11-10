@@ -45,18 +45,19 @@ node bin/skills-quirk.js uninstall --write    # remove only unchanged managed fi
 
 The `adopt` command refuses overlapping source/target directories and destination symlink traversal, detects differing existing bundle-managed files, and preserves already-correct compatibility links. It deliberately does **not** copy the source repository's `README.md`, `CONTEXT.md`, `LICENSE`, `VERSION`, or `CHANGELOG.md` into a consuming project. Create or edit project-specific `CONTEXT.md` separately. The legacy `install` and `add quirk-skills` commands remain available but are destructive or interactive: do not substitute them for safe adoption. The managed lifecycle is exercised by the repository test suite and the portable distribution matrix; use the dry-run modes first in established repositories.
 
-## Managed/full bundle installation
+## Post-install integrity verification matrix
 
-The repository has **different** distribution mechanisms, and they are not interchangeable:
+After installation, verify the bundle integrity using the commands below. These distinguish **source-repository** (canonical hashes/lockfile authority) from **target-repository** (installed state/symlink parity):
 
-| Mode | Intended outcome | Caveat |
-|---|---|---|
-| Prompt-based install (README) | Full bundle plus governance docs into the target repository | Review the agent's plan before it writes |
-| `node .agents/skills/platform/sync-bundle.mjs <target>` from a quirk checkout | Inspect managed bundle sync | Dry-run before using `--write`; review changed paths |
-| `bash scripts/install-quirk-skills.sh <target> <source>` | Copy bundle-managed files to a greenfield project | Replaces pre-existing managed paths; never run unreviewed against an established project |
-| `bash scripts/setup-quirk-skills.sh <target> <source>` | Copy bundle and prompt for tracker settings | Interactive and replaces paths; do not use as a non-interactive unattended installer |
+| Check | Command | Authority | Purpose |
+|---|---|---|---|
+| Lockfile hash integrity | `node .agents/skills/platform/validate-skills.mjs` | Source-repository (skills-lock.json) | Each SKILL.md hash matches `skills-lock.json`; detects stale or edited skill content |
+| Semantic audit | `node .agents/skills/platform/audit-semantics.mjs` | Source-repository (lockfile + schema) | Skill naming, side-effects, dependencies, and frontmatter conformance |
+| Compatibility-view check | `node .agents/skills/platform/fix-compatibility-view.mjs --dry-run` | Target-repository (.claude/skills/ symlinks) | Every `.claude/skills/` entry is a relative symlink resolving to `.agents/skills/` |
+| Installation drift check | `node bin/skills-quirk.js verify-install` | Target-repository (.agents/quirk-install.json manifest) | Managed files and links match the install manifest; detects missing or modified files |
+| Full gate | `node .agents/skills/platform/check-all.mjs` | Source-repository (comprehensive) | Structure, semantics, fixtures, syntax, platform tests; `status: pass` required |
 
-For full harness adoption, follow [Adoption Guide](adoption.md) and [Generated Views](generated-views.md). Execute check-all only from a complete checkout with the needed toolchain and dependencies; a selective skill installation is **not** expected to contain all scripts.
+> **Note on dry-run integrity:** A dry-run (`--write` omitted) reports conflicts and writes nothing. It confirms what would change but does not prove integrity — only an actual verification run against the installed state can confirm that hashes, symlinks, and the manifest are consistent.
 
 ## Acceptance tests for installability
 
