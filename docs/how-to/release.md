@@ -19,9 +19,15 @@ flowchart TD
 - [ ] Update `../reference/agents/skills-map.md` if routing changed.
 - [ ] Add or update scenarios for workflow changes.
 - [ ] Add or update behavioral fixtures for artifact-template changes.
-- [ ] Run `node .agents/skills/platform/check-all.mjs`.
-- [ ] Run the Portable Distribution Matrix for the exact release candidate.
+- [ ] Run `node .agents/skills/platform/check-all.mjs` — full structural, semantic, and security gate.
+- [ ] Run `node scripts/generate-site-data.mjs --check` — site drift verification (skills-to-site consistency).
+- [ ] Run quality scorer domain consistency check.
+- [ ] Run prompt regression tests (`node .agents/skills/platform/scripts/test-prompt-regression.mjs --check`).
+- [ ] Verify install script hash (`sha256sum scripts/setup-quirk-skills.sh`).
 - [ ] Verify no project-specific vocabulary leaked into reusable docs.
+- [ ] Commit only scoped release files.
+- [ ] Tag as `v<version>`.
+- [ ] Push branch and tag.
 
 ## Lockfile provenance
 
@@ -42,12 +48,14 @@ carry the provenance contract, and `validate-skills.mjs` rejects anything else:
 
 ## Release
 
-The tag-triggered workflow is `.github/workflows/release.yml`. It validates version equality, runs the full suite and gate, and then creates the GitHub Release. There is no npm publication: skills are distributed through the prompt-based installation flow documented in the README.
+The tag-triggered workflow is `.github/workflows/release.yml`. It validates version equality, runs the full suite and gate (including site drift, quality scorer, prompt regression, and install hash verification), and then creates the GitHub Release. **There is no npm publication: skills are distributed through the prompt-based installation flow documented in the README.**
 
 - [ ] Commit only scoped release files.
 - [ ] Tag as `v<version>`.
 - [ ] Push branch and tag.
 - [ ] Publish release notes from `CHANGELOG.md`.
+
+**Distribution note:** Skills are not published to npm. They are consumed via prompt-based installation (see README). The workflow enforces this by rejecting any release that would alter the npm/install surface.
 
 ## Post-release
 
