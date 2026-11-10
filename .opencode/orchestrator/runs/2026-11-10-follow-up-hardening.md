@@ -5,7 +5,7 @@ base: main @ 0f5feb4
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | site-drift | implementation | progress | normal | default | ses_e3936eb29ffeN7oXTESoCy12ju | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/site-drift | 6596c0a16f45662690c318c61ade783d49517e50 | 0 | — |
 | quality-score | implementation | progress | complex | default | ses_e3936eaffffeR5t2BMS85CpynW | /home/quantumquirxyz/.local/share/opencode/worktree/d110f0/quality-score | 3fbf2f6 | 1 | — |
-| security-policy | implementation | rework | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/security-policy | ca50c3b | 1 | — |
+| security-policy | implementation | progress | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/security-policy | 661e6aa | 1 | — |
 | install-integrity-docs | implementation | progress | normal | default | ses_e3936eadbffePs4XACnHcEevzl | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/install-integrity-docs | f21de6b | 0 | — |
 | release-hardening | implementation | pending | complex | configured | — | — | — | 0 | site-drift, quality-score, install-integrity-docs |
 | final-verification | verification | pending | normal | configured | — | — | — | 0 | site-drift, quality-score, security-policy, install-integrity-docs, release-hardening |
