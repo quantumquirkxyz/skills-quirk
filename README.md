@@ -480,7 +480,7 @@ Bring this repository into a valid quirk Skills state with the canonical bundle 
 5. Copy the canonical bundle into the local repo, preserving symlinks and lockfile hashes.
 6. Create or update `CONTEXT.md` so it describes only this repository's local vocabulary and setup.
 7. Update `README.md` only if it needs a short installation or usage entry point for the new repository.
-8. Run post-install verification: `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node bin/skills-quirk.js verify-install && node .agents/skills/platform/check-all.mjs` and confirm the working tree is clean for the intended scope.
+8. Run `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node .agents/skills/platform/check-all.mjs` and confirm the working tree is clean for the intended scope. These checks use the canonical bundle authority from `skills-lock.json` (pinned revision from your cloned checkout), not live GitHub comparison.
 
 ## Final checks
 - `git status` must show only the expected bundle files and the local context/docs files you intentionally changed.
@@ -529,7 +529,7 @@ Update the skills implementation so it matches the upstream bundle while preserv
 
 1. Specialize `CONTEXT.md` for the target repository.
 2. Follow the [adoption guide](docs/how-to/adoption.md) to set the issue tracker, domain docs, and validation commands.
-3. Run post-install verification: `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node bin/skills-quirk.js verify-install && node .agents/skills/platform/check-all.mjs` from the target root.
+3. Run post-install verification: `node .agents/skills/platform/validate-skills.mjs && node .agents/skills/platform/audit-semantics.mjs && node .agents/skills/platform/fix-compatibility-view.mjs --dry-run && node bin/skills-quirk.js verify-install && node .agents/skills/platform/check-all.mjs` from the target root. These checks use the canonical bundle authority from `skills-lock.json` (pinned revision from your cloned checkout / sync manifest), not live GitHub comparison.
 4. Use `ask-to` or the standard flow to route work.
 
 </details>

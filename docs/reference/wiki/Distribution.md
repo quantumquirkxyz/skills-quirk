@@ -716,7 +716,6 @@ the committed compatibility view.
 *.*Registry-supported agents* are those listed in `registry.yaml` under `supportsAgents` and `agents_compatible`. These are the agents for which the bundle provides first-class compatibility views and discovery metadata.*
 
 ---
----
 
 ## 9. Release channels
 
