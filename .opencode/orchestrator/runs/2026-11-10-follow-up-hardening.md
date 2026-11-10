@@ -19,3 +19,5 @@ base: main @ 0f5feb4
 - Local gate currently passes 22/22 but does not detect site projection drift.
 - Existing scorer has theoretical max 105 while labeling output /100; domain evaluator duplicates scoring logic.
 - Prompt-only install docs lack explicit post-install validation commands.
+
+- Quality-score implementer reports normalized /100, rawTotal/maxRawScore evidence, canonical scorer reuse, and 9 new tests; SHA not yet reported, so delivery remains unvalidated pending review.
