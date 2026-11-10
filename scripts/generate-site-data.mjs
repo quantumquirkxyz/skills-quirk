@@ -112,7 +112,7 @@ async function main() {
       maturity: s.maturity,
       risk: s.risk,
       trustTier: s.trustTier,
-      capabilities: s.capabilities,
+      capabilities: [...s.capabilities].sort(),
       sideEffects: s.sideEffects,
       path: s.path,
     })),
