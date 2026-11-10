@@ -7,7 +7,7 @@ base: main @ 0f5feb4
 | quality-score | implementation | completed | complex | default | ses_e3936eaffffeR5t2BMS85CpynW | /home/quantumquirxyz/.local/share/opencode/worktree/d110f0/quality-score | 3fbf2f6 | 1 | — |
 | security-policy | implementation | completed | normal | default | ses_e3936eafaffegJBCUzwKO2ip9m | /home/quantumquirxyz/.local/share/opencode/worktree/d110f0/security-policy | 661e6aa | 1 | — |
 | install-integrity-docs | implementation | completed | normal | default | ses_e3936eadbffePs4XACnHcEevzl | /home/quantumquirxyz/.local/share/opencode/worktree/d110f0/install-integrity-docs | 351801c | 1 | — |
-| release-hardening | implementation | pending | complex | configured | — | — | — | 0 | site-drift, quality-score, install-integrity-docs |
+| release-hardening | implementation | progress | complex | default | ses_e38fe2a3bffer6VJI0gE9etRNX | /home/quantumquirkxyz/.local/share/opencode/worktree/d110f0/release-hardening | — | 0 | site-drift, quality-score, install-integrity-docs |
 | final-verification | verification | pending | normal | configured | — | — | — | 0 | site-drift, quality-score, security-policy, install-integrity-docs, release-hardening |
 | cleanup | verification | pending | normal | configured | — | — | — | 0 | final-verification |
 ## Decisions
