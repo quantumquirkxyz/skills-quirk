@@ -23,3 +23,5 @@ base: main @ 0f5feb4
 - Quality-score implementer reports normalized /100, rawTotal/maxRawScore evidence, canonical scorer reuse, and 9 new tests; SHA not yet reported, so delivery remains unvalidated pending review.
 
 - Review: site delivery needs confirmation that --check is wired into local check-all; scorer has blocking relative-path CLI bootstrap bug; security policy has unsupported contact/SLAs, incorrect skills.json hash claim, and version wording.
+
+- Review: scorer has no blocking source issues; generated report artifact must be removed. Install docs rework addresses greenfield manifest and local-vs-upstream wording. Site drift requires gate wiring, full-field comparison, stable ordering, and regression coverage.
