@@ -30,7 +30,7 @@ jobs:
           test "$package_version" = "$file_version"
           test "$package_version" = "$tag_version"
       - name: Run full test suite
-        run: npm test
+        run: node --test tests/*.test.mjs .agents/skills/platform/tests/*.test.mjs
       - name: Run full repository gate (incl. site drift, scorer, prompt regression)
         run: node .agents/skills/platform/check-all.mjs
       - name: Verify site drift (skills-to-site consistency)
@@ -41,23 +41,24 @@ jobs:
         run: |
           GOLDEN_DIR=.agents/skills/platform/golden
           tested=0
+          found=0
           for golden in "$GOLDEN_DIR"/*-v2.md; do
             [ -f "$golden" ] || continue
             skill=$(basename "$golden" -v2.md)
+            found=1
             tested=$((tested + 1))
             echo "Testing $skill..."
             node .agents/skills/platform/scripts/test-prompt-regression.mjs "$skill" v2 || exit 1
           done
+          if [ "$found" -eq 0 ]; then
+            echo "No golden prompt files (*-v2.md) found in golden directory; failing closed for release."
+            exit 1
+          fi
           if [ "$tested" -eq 0 ]; then
             echo "No golden prompt files (*-v2.md) found; nothing to test."
           else
             echo "All prompt regression tests passed ($tested skills)"
           fi
-      - name: Verify install script hash
-        run: |
-          expected_sha="$(sha256sum scripts/setup-quirk-skills.sh | cut -d' ' -f1)"
-          actual_sha="$(sha256sum scripts/setup-quirk-skills.sh | cut -d' ' -f1)"
-          test "$expected_sha" = "$actual_sha"
       - name: Log check results and version info
         run: |
           echo "=== Release Check Results ==="
