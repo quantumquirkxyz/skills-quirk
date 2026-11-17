@@ -2,7 +2,7 @@
 name: "math-linear-algebra"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "math artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Solve and analyse linear algebra problems complete; required sections present; completion criteria checked."
+stopCondition: "Matrix properties, decomposition, residual validation, and domain interpretation all documented."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-linear-algebra.json"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["quant-portfolio-opt", "math-linear-algebra"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -72,7 +72,7 @@ Apply **linear algebra** — decompositions, solving systems, transformations �
 2. State matrix properties: shape, rank, symmetry, positive-definiteness, sparsity.
 3. Choose decomposition / method — LU (stable for well-conditioned), Cholesky (SPD), QR (least-squares), SVD (rank-deficient / ill-posed), eigendecomposition (diagonalisation).
 4. Compute — with explicit pivoting strategy and condition number estimate.
-5. Validate — residual ||Ax−b||, orthogonality of eigenvectors, singular values non-negative, backward error.
+5. Validate — residual ||Ax−b||, orthogonality of eigenvectors, singular values non-negative, backward error. Fixtures: condition number estimation, decomposition accuracy, backward error (negative case: ill-conditioned system).
 6. Interpret — in the problem domain (e.g. SVD: principal components, condition number → sensitivity; eigenvalues: stability of dynamical system).
 7. Deliver — artifact with matrix properties, decomposition chosen, computation, residual/validation, and domain interpretation.
 
@@ -105,3 +105,5 @@ Apply **linear algebra** — decompositions, solving systems, transformations �
 ## Validation Record
 
 Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), manifest, fixture expectations, assumptions, tolerances, proof obligations, accessibility/privacy/licensing checks, and explicit unknowns.
+---
+@include .agents/skills/platform/contract-base.xml

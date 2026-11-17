@@ -2,7 +2,7 @@
 name: "math-probability-models"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Build probability models complete; required sections present; completion criteria checked."
+stopCondition: "Model specified, parameters estimated, validation against limits complete, uncertainty intervals reported."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-probability-models.json"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["quant-risk-modeling", "quant-factors"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -93,7 +93,7 @@ Each parameter is named with value or estimation method (MLE, MAP, moment-matchi
 
 - Analytical where tractable (mean, variance, CDF, moments).
 - Monte Carlo with: seed, sample size N (justified), convergence check.
-- For inference: posterior sampling (MCMC, variational, conjugate update).
+- For inference: posterior sampling (MCMC, variational, conjugate update). For MCMC, run multiple chains and require R-hat convergence (< 1.01).
 
 **Completion criterion:** computation done; sample size or analytical result explicit.
 
@@ -103,6 +103,10 @@ Each parameter is named with value or estimation method (MLE, MAP, moment-matchi
 - **Sanity:** small cases (n=1, 2, 3) checked by hand.
 - **Cross-check:** analytical vs simulated mean / variance / tail probability.
 - **Calibration:** does the model reproduce known data moments?
+- **Prior sensitivity analysis:** power-scaling — vary prior strength and confirm posterior stability.
+- **Prior predictive checks:** simulate from the prior and compare to observed data.
+- **Posterior predictive checks:** simulate from the posterior and compare to observed data.
+- **Non-identifiability diagnosis:** diagnose non-identifiability before accepting results (flat posteriors, correlated parameters).
 
 **Completion criterion:** validation completed; discrepancy addressed.
 
@@ -119,6 +123,7 @@ Markdown artifact: model, parameters, computation, validation, and an operationa
 - Report parameter/posterior and predictive uncertainty intervals, calibration curves, coverage, and backtesting or posterior predictive checks.
 - Run known-solution distribution/process fixtures and counterexamples for violated support, dependence, stationarity, or boundary assumptions; state numerical tolerances.
 - Assess fairness/privacy for sensitive observations and state no-claims/no-advice boundaries for operational, medical, financial, or policy interpretations.
+- Fixtures: R-hat convergence (< 1.01), SBC calibration, prior predictive check.
 - Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
 
 ## Completion

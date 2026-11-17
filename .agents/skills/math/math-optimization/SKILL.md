@@ -2,7 +2,7 @@
 name: "math-optimization"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "math artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) complete; required sections present; completion criteria checked."
+stopCondition: "Model formulated, solver selected, optimality bound or gap reported, sensitivity analysis complete."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-optimization.json"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["quant-portfolio-opt", "math-linear-algebra"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -89,20 +89,21 @@ State the canonical class: LP, QP, SOCP, SDP, convex, MIP, non-convex, combinato
 Identify why the problem is hard (or easy):
 
 - LP: poly-time (interior point / simplex).
-- Convex: poly-time in practice.
+- Convex: poly-time in practice. Verify convexity via DCP compliance before selecting a convex solver.
 - MIP: NP-hard in general; LP relaxation gives a bound.
 - Non-convex / combinatorial: NP-hard; need heuristic or approximation with a guarantee.
 
-**Completion criterion:** hardness class stated; relaxation or approximation strategy named if not convex.
+**Completion criterion:** hardness class stated; convexity verified via DCP for convex solvers; relaxation or approximation strategy named if not convex.
 
 ### 3. Choose solver
 
 Pick by class:
 
-- **LP/MIP:** HiGHS, Gurobi, CPLEX, OR-Tools.
-- **Convex (QP/SOCP/SDP):** CVXPY, SCS, MOSEK.
+- **LP/MIP:** HiGHS, Gurobi, CPLEX.
+- **SOCP/SDP:** MOSEK, Clarabel.
+- **Convex QP:** CVXPY, SCS, MOSEK, Clarabel.
 - **Non-convex smooth:** scipy.optimize, IPOPT, PyTorch (gradient-based).
-- **Combinatorial:** greedy + local search, simulated annealing, tabu, ALNS, MILP relaxation.
+- **Combinatorial:** HiGHS, Gurobi, SCIP (MILP relaxation); greedy + local search, simulated annealing, tabu, ALNS as heuristics.
 - **Multi-objective:** weighted sum, ε-constraint, or NSGA-II.
 
 **Completion criterion:** solver named with one reason it fits.
@@ -122,7 +123,9 @@ Run the solver; for non-trivial models:
 - **LP/Convex:** verify dual feasibility or KKT conditions.
 - **MIP:** report the optimality gap (e.g. 0.2% within time limit).
 - **Heuristic:** report best-known value and a lower bound from a relaxation.
-- Always run a **sensitivity check** — perturb a parameter by 1–5% and confirm the solution behaves sensibly.
+- **Sensitivity analysis:** parametric solutions — perturb parameters and report how the solution/objective shifts.
+- **Infeasibility diagnostics:** compute an Irreducible Inconsistent Subsystem (IIS) when the model is infeasible.
+- **Numerical issue diagnosis:** detect ill-conditioning, scaling problems, and tolerance-sensitive solutions.
 
 **Completion criterion:** bound, gap, or sensitivity result reported.
 
@@ -139,6 +142,7 @@ Markdown artifact with: model formulation, hardness, solver, trace summary, opti
 - Report uncertainty intervals or scenario ranges for parameters and solution metrics; calibrate predictive objectives and backtest policies where applicable.
 - Run known-solution LP/QP/MIP fixtures and counterexamples for infeasibility, unboundedness, degeneracy, and tolerance-sensitive solutions; state absolute/relative solver tolerances.
 - Assess fairness/privacy when objectives or constraints affect people, and state no-claims/no-advice boundaries for real-world decisions.
+- Fixtures: solver cross-validation (HiGHS vs Gurobi), SAA convergence, multi-objective Pareto.
 - Stop with `inconclusive` when optimality evidence, hashes, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
 
 ## Completion

@@ -2,8 +2,8 @@
 name: "math-cryptography"
 category: "math"
 maturity: "stable"
-version: "1"
-description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis."
+version: "2"
+description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors."
 license: "MIT"
 capabilities:
   - apply math cryptography methods within explicit math boundaries
@@ -12,20 +12,33 @@ capabilities:
 outputs: "math artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Analyse cryptographic constructions complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Cryptographic analysis complete; security verdict stated; attack surface documented; assumptions listed; NIST PQ default applied; KAT vectors verified; constant-time discipline confirmed."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-cryptography.json"
+fixtures:
+  kat-vectors:
+    description: "Known Answer Test vectors for ML-KEM-768, ML-DSA-65, SLH-DSA-SHA256"
+    source: "NIST CAVP"
+  constant-time:
+    description: "Verify no secret-dependent branches or memory accesses in assembly"
+    tool: "ct-verif / constant-time analyzer"
+  spectre-v1:
+    description: "Spectre v1 check on assembly code"
+    tool: "spectre-v1 analyzer"
+  side-channel:
+    description: "Masking and fault injection countermeasures verified"
+    tool: "masking/fault-injection verifier"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["sec-cryptography-applied", "integrations/auth"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -54,8 +67,53 @@ Emit `MathCryptographyArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
+# NIST Post-Quantum Standards
+
+- Default KEM: FIPS 203 ML-KEM-768 (NIST security level 3)
+- Default signature: FIPS 204 ML-DSA-65 (NIST security level 3)
+- Stateless hash-based signature: FIPS 205 SLH-DSA-SHA256
+- No other PQ algorithms permitted without explicit justification and risk approval.
+- Hybrid classical/PQ constructions allowed only as transition layer; PQ component must be NIST-approved.
+
+# Deprecated Classical Algorithms
+
+- ECDSA: deprecated after 2030, disallowed after 2035 (NIST IR 8547)
+- EdDSA: deprecated after 2030, disallowed after 2035 (NIST IR 8547)
+- RSA ≥112-bit: deprecated after 2030, disallowed after 2035 (NIST IR 8547)
+- Migration required for all deprecated algorithms; document deprecation triggers and rollback.
+
+# Formally Verified Implementations
+
+- Require formally verified implementations where available:
+  - libcrux (formally verified ML-KEM, ML-DSA, X25519, X448)
+  - libjade (formally verified X25519)
+  - HACL* (F*-verified cryptographic library)
+- Machine-checked proofs must be referenced in artifact; informal proofs marked as limitation.
+
+# Constant-Time Discipline
+
+- No secret-dependent branches or memory accesses.
+- Constant-time required for all secret operations (key generation, encapsulation, signing, decapsulation, verification).
+- Verify at assembly level; assembly must not introduce secret-dependent control flow or data-dependent memory access patterns.
+
+# Side-Channel Countermeasures
+
+- Masking: Boolean/arithmetic masking required for side-channel exposed implementations.
+- Fault injection verification: redundant computation, infection barriers, and fault detectors required.
+- Countermeasures verified by dedicated fixtures; results recorded in artifact.
+
+# Security Reductions
+
+- Security reductions traceable to EasyCrypt/F* machine-checked proofs.
+- Cite the specific EasyCrypt/F* proof artifact and security notion (IND-CPA, IND-CCA, EUF-CMA, etc.).
+- Informal reductions only permitted when no machine-checked proof exists; mark as limitation with migration plan.
+
+# KAT Vectors
+
+- Known Answer Test vectors required for ML-KEM-768, ML-DSA-65, SLH-DSA-SHA256 parameter sets.
+- Vectors sourced from NIST CAVP; include expected encaps/decapsulate, sign/verify outputs.
+- KAT verification mandatory before any implementation is accepted.
+
 # Cryptographic Analysis
 
 Analyse or design a **cryptographic construction** with explicit hardness assumptions, security reductions, and attack analysis.
@@ -88,11 +146,20 @@ Analyse or design a **cryptographic construction** with explicit hardness assump
 - Rule: provide a rollback/safety case for parameter or algorithm changes, including compatibility window, revocation, recovery keys, evidence gates, and verifiable stop conditions when assumptions or randomness quality are unknown.
 - Rule: record provenance for standards, reductions, parameter sets, implementations, test vectors, and source claims; never present a proof or experiment as executed when it was only designed.
 
+# Quality Gates
+
+- All primitives must use NIST-approved algorithms (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA).
+- Constant-time verification mandatory (no secret-dependent branches or memory accesses).
+- Security reductions must reference machine-checked proofs (EasyCrypt/F*).
+- KAT vectors verified for ML-KEM-768, ML-DSA-65, SLH-DSA-SHA256.
+- Deprecated classical algorithms flagged for migration (ECDSA, EdDSA, RSA ≥112-bit).
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- quality gates all passed or explicitly documented as blocked
 ---
 @include .agents/skills/platform/contract-base.xml

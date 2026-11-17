@@ -2,7 +2,7 @@
 name: "math-presentation-beamer"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures."
 license: "MIT"
 capabilities:
@@ -20,7 +20,17 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-presentation-beamer.json"
+fixtures:
+  colour-accessibility:
+    description: "Colour contrast WCAG AA; no colour-only signalling; patterns/shapes supplement colour"
+    source: "WCAG 2.1 AA colour contrast"
+  compilation:
+    description: "Beamer source compiles cleanly with pdfLaTeX/XeLaTeX/LuaLaTeX; no overflow errors"
+    source: "LaTeX compilation"
+  audience-level:
+    description: "Audience level stated and matched to slide content; terminology and pacing adjusted"
+    source: "audience profile"
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []
@@ -72,11 +82,12 @@ Build a **Beamer presentation** that communicates the mathematics clearly to the
 
 ### 1. Define the audience and duration
 
-- **Audience level** — general mathematician / specialist / student / public.
+- **Audience level** — general mathematician / specialist / student / public. State the level explicitly and record assumptions about prior knowledge.
 - **Duration** — 15 min / 30 min / 50 min / 90 min.
 - **Goal** — inform / persuade / teach / review.
+- **Audience-level adjustments** — terminology, notation recaps, proof depth, and pacing tuned to the stated level; specialist content flagged for non-specialist audiences.
 
-**Completion criterion:** audience and goal explicit.
+**Completion criterion:** audience and goal explicit; audience-level adjustments documented.
 
 ### 2. Structure the slides
 
@@ -89,16 +100,26 @@ Build a **Beamer presentation** that communicates the mathematics clearly to the
 
 **Completion criterion:** structure saved; each section has a clear purpose.
 
-### 3. Figures and diagrams
+### 3. Colour accessibility
+
+- **Colour contrast** — WCAG 2.1 AA contrast ratios for text/background (minimum 4.5:1 normal text, 3:1 large text).
+- **No colour-only signalling** — never convey information by colour alone; combine colour with patterns, shapes, line styles, or labels.
+- Use colourblind-safe palettes (e.g. ColorBrewer, viridis); test in grayscale.
+- Alt-text for each figure (description for screen readers).
+- Font size readable from the back of the room (min 16pt body, 20pt headings).
+
+**Completion criterion:** colour accessibility checked; all figures have alt-text.
+
+### 4. Figures and diagrams
 
 - Use TikZ for mathematical figures; keep style consistent.
 - Colour: avoid colour-only signalling; use patterns / shapes.
 - Font size: readable from the back of the room (min 16pt for body, 20pt for headings).
 - Alt-text for each figure (description for screen readers).
 
-**Completion criterion:** all figures have alt-text; colour accessibility checked.
+**Completion criterion:** figures consistent; colour accessibility checked.
 
-### 4. Speaker notes
+### 5. Speaker notes
 
 For each slide, write:
 
@@ -107,15 +128,24 @@ For each slide, write:
 - **Transition cue** ("Next: we show the main theorem...").
 - **Common question / answer** (if this slide confuses someone).
 
-**Completion criterion:** notes saved for each slide.
+**Completion criterion:** notes saved for each slide; timing totals match declared duration.
 
-### 5. Compile and check
+### 6. LaTeX compilation
 
-- Compile the `.tex`; fix errors.
+- Compile the `.tex` with pdfLaTeX / XeLaTeX / LuaLaTeX; fix all errors and warnings.
+- Check for overfull boxes and content overflow.
+- Verify embedded fonts and correct page geometry.
+- Produce a compiled `.pdf` artifact alongside the source.
+
+**Completion criterion:** compiled PDF; zero errors; overflow checked.
+
+### 7. Compile and check
+
 - Print / preview; verify that no content overflows.
 - Check timing by reading aloud (target pace: ~2 minutes per major slide).
+- Verify speaker notes render in notes pages or secondary display.
 
-**Completion criterion:** compiled PDF; timing verified; overflow checked.
+**Completion criterion:** compiled PDF; timing verified; overflow checked; notes render.
 
 ## Notes
 

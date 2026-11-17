@@ -2,8 +2,8 @@
 name: "math-formal-proof"
 category: "math"
 maturity: "stable"
-version: "1"
-description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification."
+version: "2"
+description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification."
 license: "MIT"
 capabilities:
   - apply math formal proof methods within explicit math boundaries
@@ -12,7 +12,7 @@ capabilities:
 outputs: "verified source + Markdown narrative."
 sideEffects: []
 dependencies: []
-stopCondition: "source file compiles in the target assistant with no errors; verification report attached."
+stopCondition: "Source file compiles in target assistant with pinned toolchain and no errors; no sorry/Admitted; CI proof-checking job passes; verification report attached."
 risk: "low"
 trustTier: "1"
 maxIterations: "8"
@@ -20,10 +20,33 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-formal-proof.json"
+fixtures:
+  sorry-drift:
+    description: "Pinned sorry/Admitted count; any drift above the pin fails CI"
+    guard: "zero-sorry policy; pinned count drift is a hard error"
+  proof-compilation-ci:
+    description: "CI job that recompiles every proof and fails when a proof stops checking"
+    tool: "lake build / coqc / isabelle build / agda"
+  version-pin:
+    description: "Proof-assistant toolchain pin test (lean-toolchain, opam switch, Agda version + stdlib commit)"
+    scope: "Lean 4, Coq, Isabelle/HOL, Agda"
+  multi-prover-replay:
+    description: "Replay the same theorem statement across Lean 4, Coq, Isabelle/HOL, and Agda"
+    provers: ["lean", "coq", "isabelle", "agda"]
+clauses:
+  - id: FORMAL-PROOF-1
+    text: Pin the proof-assistant toolchain and record exact versions before verification.
+    check: evals/behavioral/math-formal-proof.json#FORMAL-PROOF-1
+  - id: FORMAL-PROOF-2
+    text: Run CI proof checking on every change and block merge when a proof stops checking.
+    check: evals/behavioral/math-formal-proof.json#FORMAL-PROOF-2
+  - id: FORMAL-PROOF-3
+    text: Keep sorry and Admitted out of verified proofs and require review for new axioms.
+    check: evals/behavioral/math-formal-proof.json#FORMAL-PROOF-3
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["math-pure-proofs", "cs-computability"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -108,11 +131,11 @@ Translate the mathematical statement into the assistant's syntax:
 
 Write the proof step by step. After each step:
 
-- Run the assistant's checker (`lake build`, `coqc`, `isabelle build`).
+- Run the assistant's checker (`lake build`, `coqc`, `isabelle build`, `agda`) with the pinned toolchain.
 - Replace `sorry` and `Admitted` with verified tactics.
 - Record the verified proof's hash or kernel confirmation.
 
-**Completion criterion:** proof fully verified (no `sorry`/`Admitted`).
+**Completion criterion:** proof fully verified (no `sorry`/`Admitted`); assistant checker passes in CI with the pinned toolchain.
 
 ### 5. Literate export
 
@@ -124,6 +147,33 @@ For a paper:
 
 **Completion criterion:** narrative + verified proof saved; cross-reference to paper present.
 
+## Version pins
+
+Pin the proof-assistant toolchain per project and record the exact versions in the artifact:
+
+- **Lean 4** — `lean-toolchain` / elan toolchain pin, `lake` version, and mathlib commit.
+- **Coq** — `opam switch` with a pinned Coq version and frozen opam repository state.
+- **Isabelle/HOL** — pinned Isabelle release (e.g. `Isabelle2025`) with `ISABELLE_HOME` pinned in CI.
+- **Agda** — pinned Agda version plus the Agda standard-library commit hash.
+
+No unpinned assistant invocation is permitted in CI or in shipped artifacts.
+
+## CI proof checking
+
+- A CI proof-checking job runs on every push and pull request: `lake build` (Lean), `coqc` (Coq), `isabelle build` (Isabelle), `agda` (Agda).
+- The job fails when any proof stops checking and blocks merge until the proof is repaired.
+- The artifact records the checker command, exit code, and proof hash for every theorem.
+
+## No sorry / Admitted
+
+- Repository-wide ban on `sorry`, the exclamation-mark variant, `Admitted`, and any checker-skipping `OPTIONS` exemptions; enforced by grep in CI.
+- A pinned allowance count is permitted only with explicit sign-off recorded in the artifact; drift above the pin is a hard CI error.
+
+## No new axioms without review
+
+- Additions of `axiom`, `axiomatized`, `postulate`, or classical-choice-style assumptions require explicit review sign-off, recorded in the artifact with justification.
+- Unreviewed axioms fail CI.
+
 ## Notes
 
 - Pair with `math-pure-proofs` for informal reasoning.
@@ -131,12 +181,23 @@ For a paper:
 
 ## Quality Gates
 
+- CI proof-checking job passes on every change and blocks merge on failure.
+- `sorry`/`Admitted` count equals the pinned count; drift is a hard error.
+- No unreviewed axioms (`axiom`, `axiomatized`, `postulate`, classical choice).
+- Toolchain pins match declarations (`lean-toolchain`, `opam switch`, Agda version + stdlib commit).
 - Record SHA-256 hashes for theorem source, imported libraries, lockfiles, compiler, kernel, and build environment.
 - Check for hidden axioms, leakage/look-ahead in imported data or lemmas, survivorship assumptions, untrusted generated code, and dependency/version drift; mark non-applicable checks explicitly and stop if provenance is unresolved.
 - Report any computational/reflection assumptions, proof-search uncertainty, and independent model-check or countermodel results where applicable.
 - Run known-solution theorem fixtures and counterexamples for weakened hypotheses; state checker tolerances and exact versioned commands.
 - State no-claims boundaries: kernel verification proves the encoded theorem, not the adequacy of its model or real-world advice; protect private theorem data and document fairness/privacy limits where formalization touches people.
 - Stop with `inconclusive` if compilation, hashes, dependency audit, or counterexample checks are incomplete; align verified source, narrative, and stop condition.
+
+## Fixtures
+
+- **sorry-count drift guard** — asserts the repo-wide `sorry`/`Admitted` count equals the pinned count; any drift fails the build.
+- **proof-compilation CI** — runs the assistant kernel on every proof and fails when compilation stops passing.
+- **version-pin test** — verifies `lean-toolchain`, `opam switch`, Agda version, and stdlib commit match the pinned declarations.
+- **multi-prover replay** — replays the same theorem statement across Lean 4, Coq, Isabelle/HOL, and Agda; results recorded per prover.
 
 ## Completion
 

@@ -2,7 +2,7 @@
 name: "math-paper-collaboration"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination."
 license: "MIT"
 capabilities:
@@ -20,7 +20,17 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-paper-collaboration.json"
+fixtures:
+  collaboration-workflow:
+    description: "Overleaf/GitHub sync workflow; merge rules and version tags verified end to end"
+    source: "COLLABABORATION.md + repo tags"
+  citation-tracking:
+    description: "Single .bib file, no duplicate keys, every citation verified against its source"
+    source: "references.bib + source links"
+  arxiv-package-validation:
+    description: "arXiv package compiles; .tex/.bib/.sty/figures complete; README present"
+    source: "arXiv source package"
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []
@@ -85,14 +95,15 @@ Create:
 
 **Completion criterion:** repository initialised; co-authors have access.
 
-### 2. Citation database
+### 2. Citation tracking
 
 - Maintain a single `.bib` file; no duplicate keys.
 - Use `bibtex` or `biber`; declare a style (`amsplain`, `alpha`, etc.).
 - Track sources: each entry links to a source (arXiv, journal, book).
 - For each citation in the paper, confirm it supports the claim (not just nearby in text).
+- Record citation database state: version, retrieval date, and source for each entry.
 
-**Completion criterion:** `.bib` clean; citations verified.
+**Completion criterion:** `.bib` clean; citations verified; citation database state recorded.
 
 ### 3. Collaboration rules
 
@@ -106,7 +117,7 @@ Document (e.g. `COLLABORATION.md`):
 
 **Completion criterion:** rules file saved and acknowledged by co-authors.
 
-### 4. Reproducibility links
+### 4. Version control with reproducible computation links
 
 Link to computation artifacts:
 
@@ -116,7 +127,7 @@ Link to computation artifacts:
 
 In the paper appendix, cite the computation: "Verified with SymPy 1.13; see repository [DOI] for code, container, and manifest."
 
-**Completion criterion:** links present; reproducibility statement in appendix.
+**Completion criterion:** links present; reproducibility statement in appendix; repo tagged.
 
 ### 5. ArXiv package
 

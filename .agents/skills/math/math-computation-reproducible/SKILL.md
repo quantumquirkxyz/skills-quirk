@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-computation-reproducible.json"
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []

@@ -2,7 +2,7 @@
 name: "math-grant-structure"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates."
 license: "MIT"
 capabilities:
@@ -20,7 +20,17 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-grant-structure.json"
+fixtures:
+  grant-structure-checklist:
+    description: "NSF/ERC/Simons/MSCA section compliance — every required section present with correct page limits"
+    source: "agency call document"
+  budget-validation:
+    description: "Budget justification line items match budget table and agency categories; indirect costs per agency rules"
+    source: "agency budget guidelines"
+  timeline-validation:
+    description: "Timeline has year-by-year milestones; milestones map to aims and deliverables"
+    source: "proposal timeline"
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []
@@ -77,6 +87,7 @@ Turn a **research programme** into a grant proposal that matches the agency's re
 
 Extract:
 
+- **Agency and programme** — NSF, ERC, Simons, MSCA (or NSERC).
 - **Award type** — individual, collaborative, postdoc, equipment.
 - **Review criteria** — intellectual merit / broader impacts (NSF), excellence / impact (ERC), etc.
 - **Page limits** — exact numbers per section.
@@ -85,7 +96,20 @@ Extract:
 
 **Completion criterion:** requirements checklist saved.
 
-### 2. Articulate the programme
+### 2. Verify agency structure compliance
+
+Check the proposal skeleton against the agency's required structure:
+
+- **NSF:** Project Description (15 pp max), Broader Impacts, Intellectual Merit, Budget Justification, Data Management Plan, Current and Pending Support, Facilities, Postdoctoral Mentoring Plan (if applicable).
+- **ERC:** B1/B2 sections, track record, CV, key publications, letter of recommendation.
+- **Simons:** research statement, budget, references, collaborator list.
+- **MSCA:** research, training, implementation, impact, CV, publications.
+
+Record which sections are required, their page limits, and any missing attachments.
+
+**Completion criterion:** structure compliance checked against agency template; gaps listed.
+
+### 3. Articulate the programme
 
 - **Central question** in one sentence.
 - **Why now** — what changed (new theorem, new technique, new data).
@@ -94,7 +118,17 @@ Extract:
 
 **Completion criterion:** programme stated concretely; aims measurable.
 
-### 3. Map to criteria
+### 4. Broader impacts (required)
+
+Explicitly address broader impacts (NSF) / societal impact (ERC/MSCA):
+
+- **Broader impacts section required** — must be a distinct, concrete section, not an afterthought.
+- Activities: mentoring, teaching integration, open-source software, public outreach, broadening participation, data sharing.
+- Each broader-impact activity names a deliverable, owner, and measure of success.
+
+**Completion criterion:** broader impacts section present and concrete; every activity has a deliverable and measure.
+
+### 5. Map to criteria
 
 For each aim, state:
 
@@ -104,17 +138,22 @@ For each aim, state:
 
 **Completion criterion:** each aim maps to a criterion explicitly.
 
-### 4. Budget and timeline
+### 6. Budget and timeline
 
-- **Personnel** — PI, postdocs, grad students; named or TBD.
+**Budget:**
+- **Personnel** — PI, postdocs, grad students; named or TBD, with effort %.
 - **Travel** — conferences, collaboration visits.
 - **Equipment** — compute, software licences.
 - **Indirect costs** — per agency rules.
-- **Timeline** — Gantt-style milestones per year.
+- **Budget justification line items** — every budget line has a justification sentence tying it to an aim or activity; justification matches the budget table exactly.
 
-**Completion criterion:** budget matches agency categories; timeline realistic.
+**Timeline:**
+- Year-by-year **milestones**, each tied to an aim and a deliverable.
+- Milestones include submission of preprints, software releases, conference talks, and progress reports.
 
-### 5. Reviewer-perspective critique
+**Completion criterion:** budget matches agency categories; justification line items complete; timeline realistic with milestones mapped to aims.
+
+### 7. Reviewer-perspective critique
 
 Write the critique as if reviewing:
 
@@ -125,7 +164,7 @@ Write the critique as if reviewing:
 
 **Completion criterion:** critique written with strengths, weaknesses, questions, verdict.
 
-### 6. Submission checklist
+### 8. Submission checklist
 
 - [ ] All required sections present and within page limits.
 - [ ] Biosketch / CV updated and formatted.
@@ -139,9 +178,9 @@ Write the critique as if reviewing:
 
 **Completion criterion:** all boxes checked; checklist saved.
 
-### 7. Deliver
+### 9. Deliver
 
-Markdown artifact with: call analysis, programme, aims mapping, budget, timeline, reviewer critique (strengths/weaknesses/questions/verdict), submission checklist.
+Markdown artifact with: call analysis, programme, aims mapping, broader impacts, budget, timeline, reviewer critique (strengths/weaknesses/questions/verdict), submission checklist.
 
 **Completion criterion:** deliverable complete and reviewed by at least one co-author or mentor before submission.
 

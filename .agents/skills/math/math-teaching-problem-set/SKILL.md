@@ -2,7 +2,7 @@
 name: "math-teaching-problem-set"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout."
 license: "MIT"
 capabilities:
@@ -20,10 +20,20 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-teaching-problem-set.json"
+fixtures:
+  accessibility-check:
+    description: "WCAG 2.1 AA compliance checked; ADA Title II deadline April 2027 noted"
+    source: "WCAG 2.1 AA / ADA Title II"
+  semantic-format-check:
+    description: "Math rendered in MathML/MathJax/OMML, not images"
+    source: "MathML / MathJax / OMML"
+  anti-cheating-variant:
+    description: "Variants provably distinct; no identical numerical answers across variants"
+    source: "variant generation"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["math-paper-collaboration"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -112,17 +122,20 @@ For each problem, write a rubric:
 - **Per-step credit** — which sub-step earns how much.
 - **Common mistakes** — and their deductions.
 - **Proofs vs computation** — partial credit for partial proofs.
+- **Segment-level evidence mapping** — each scoreable segment maps to the rubric line that justifies credit; grader records which segment earned which points.
 
-**Completion criterion:** rubric saved with concrete point allocations.
+**Completion criterion:** rubric saved with concrete point allocations; segment-to-evidence mapping complete.
 
 ### 5. Accessibility and layout
 
 - Use LaTeX with semantic commands (`\theorem`, `\lemma`).
+- Render math in a **semantic format** (MathML / MathJax / OMML), **not images**; equations are text, selectable, and screen-reader accessible.
 - Add `alt` text for figures (TikZ).
 - Avoid colour-only signalling.
+- Meet **WCAG 2.1 AA** (contrast, focus order, semantic headings); note ADA Title II deadline **April 2027** for public-facing course materials.
 - Provide a print-friendly PDF and a screen-reader-friendly version.
 
-**Completion criterion:** accessibility checklist completed.
+**Completion criterion:** accessibility checklist completed; semantic math confirmed; WCAG 2.1 AA checked.
 
 ## Notes
 
@@ -135,6 +148,9 @@ For each problem, write a rubric:
 - Check answer-key leakage, look-ahead to prior solutions, survivorship of examples, prior-exam contamination, demographic or language bias, accessibility barriers, and variant collisions before release.
 - Report uncertainty in difficulty estimates using pilot intervals or calibrated item statistics; backtest scoring/rubrics against known learner solutions where available.
 - Run known-solution fixtures and counterexamples for ambiguous wording, multiple valid proofs, malformed inputs, and tolerance-sensitive numeric answers; state grading tolerances.
+- Accessibility fixture: verify WCAG 2.1 AA compliance (contrast, focus order, semantic headings, alt text); note ADA Title II deadline April 2027.
+- Semantic format fixture: verify math renders as MathML / MathJax / OMML, not as images.
+- Anti-cheating fixture: verify N variants are provably distinct (different numerical answers or different proofs).
 - Minimize student personal data, document fairness/privacy limits, and protect accommodations and submissions, and state no-claims boundaries: assessment artifacts do not diagnose ability or replace educator judgment.
 - Stop with `inconclusive` when hashes, fairness/accessibility, validation, or tolerance checks are missing; align artifact, rubric, validation status, and stop condition.
 
@@ -146,3 +162,16 @@ For each problem, write a rubric:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Reproducibility, Evidence, and Stop Conditions
+
+- **Domain boundary:** Apply this contract specifically to teaching-problem-set: curriculum scope, item difficulty, rubric validity, variant distinctness, accessibility; do not invent computation, literature access, proof checking, or compilation.
+- **Provenance and licensing:** Record source/version/date, transformations, dependencies, authorship, citation, license, and redistribution limits; separate supplied facts from derived claims and protect student data.
+- **Reproducibility manifest:** Include exact inputs, notation/schema, parameters, software versions, seeds, commands or pseudocode, and hashes. Missing evidence remains `unknown`.
+- **Fixtures:** Declare a  with expected value/proof and tolerance, plus a /negative case. These are test specifications, not claims of execution.
+- **Uncertainty and proof:** State assumptions, error bounds, conditioning, tolerances and confidence convention. Attach proof obligations and formal proof artifacts when available; otherwise label reasoning `informal`.
+- **Accessible output:** Use semantic headings, readable equations/tables, text alternatives, descriptive captions, high contrast and a plain-language summary.
+- **Stop conditions:** Stop as / if a definition, oracle, tolerance, proof artifact, provenance, license, privacy boundary, or required input is missing, contradictory, outside validity bounds, or would require unobserved execution.
+
+## Validation Record
+
+Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), manifest, fixture expectations, assumptions, tolerances, proof obligations, accessibility/privacy/licensing checks, and explicit unknowns.

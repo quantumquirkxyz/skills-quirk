@@ -2,7 +2,7 @@
 name: "math-computational"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-computational.json"
 diataxis: "how-to"
 tags: ["math"]
-compatibility: []
+compatibility: ["math-linear-algebra", "math-optimization", "math-probability-models"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -108,6 +108,10 @@ For symbolic work, state the simplification rules used and any non-canonical cho
 Either run code (Python with NumPy/SciPy/SymPy) or hand-compute if tractable. For code, include:
 
 - The algorithm in named functions, not one giant cell.
+- Exact rational arithmetic where precision matters (SymPy `Rational`, not floats).
+- Guard against integer overflow: use Python `int` (arbitrary precision) or an explicit dtype for values beyond 2^63.
+- Use `math.fsum` for accounting summations; `np.sum` (pairwise) otherwise.
+- Validate `assume_a` structural claims before declaring a decomposition or solver.
 - Input validation (NaN, inf, dimension mismatch).
 - Sanity asserts on outputs (sign, magnitude, symmetry).
 
@@ -137,6 +141,8 @@ Markdown artifact with: problem, algorithm choice, error/stability/cost, code or
 - Report uncertainty intervals, conditioning, convergence/calibration diagnostics, and tolerances separately from point estimates.
 - Run known-solution fixtures plus counterexamples for domain violations, unstable regimes, and cancellation; report absolute and relative error.
 - State fairness/privacy limits for data-driven inputs and no-claims/no-advice boundaries for engineering, scientific, or financial interpretations.
+- Require a `conda-lock` file or committed Docker image alongside artifacts so the computational environment is reproducible.
+- Fixtures: deterministic seed-controlled stochastic cases, integer overflow boundary (>2^63), and `assume_a` misuse (invalid structural claim) as negative cases.
 - Stop with `inconclusive` when verification, hashes, uncertainty, or tolerance gates fail; align artifact sections and stop condition.
 
 ## Completion

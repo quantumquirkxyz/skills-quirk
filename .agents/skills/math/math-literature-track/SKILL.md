@@ -2,7 +2,7 @@
 name: "math-literature-track"
 category: "math"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers."
 license: "MIT"
 capabilities:
@@ -20,7 +20,20 @@ promptVersion: "2.0"
 artifactType: "math"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/math-literature-track.json"
+fixtures:
+  query-reproducibility:
+    description: "Store full query string, categories, and date range; replay returns identical paper set"
+    source: "arXiv API / MathSciNet / zbMATH"
+  deduplication:
+    description: "Normalize arXiv versioned IDs (2503.05650v1 → base ID 2503.05650) before comparison"
+    source: "arXiv ID normalization"
+  rate-limit:
+    description: "Backoff/retries respect source rate limits; 429 responses trigger exponential backoff"
+    source: "source rate-limit headers"
+  cross-source-citation:
+    description: "Verify citation counts match across arXiv, MathSciNet, zbMATH, and Semantic Scholar/OpenAlex"
+    source: "citation graph cross-check"
 diataxis: "how-to"
 tags: ["math"]
 compatibility: []
@@ -79,7 +92,13 @@ State:
 
 **Completion criterion:** set is explicit; queries reproducible.
 
-### 2. Pull from primary sources
+### 2. Record the query for reproducibility
+
+Store the full query string, categories, authors, keywords, date range, source API, and retrieval timestamp for every pull. A replay of the same query must return the identical paper set.
+
+**Completion criterion:** query record complete; replay verified on fixture.
+
+### 3. Pull from primary sources
 
 - **arXiv:** `arxiv` API / RSS by category, then filter.
 - **MathSciNet / zbMATH:** metadata, reviews, MSC codes.
@@ -90,7 +109,25 @@ Each item carries: title, authors, abstract, source, link, MSC codes, citation c
 
 **Completion criterion:** each item sourced; missing data flagged.
 
-### 3. Score relevance
+### 4. Rate-limit respect
+
+Respect each source's rate limits: honour `Retry-After` / `RateLimit-Reset` headers, apply exponential backoff with jitter on HTTP 429, cap retries (default 5), and log every backoff event. Do not hammer a source to compensate for partial retrieval.
+
+**Completion criterion:** rate-limit log complete; no 429 lost without retry.
+
+### 5. Deduplicate
+
+Normalize arXiv versioned IDs before comparison (e.g. `2503.05650v1` → base ID `2503.05650`). Deduplicate across arXiv, MathSciNet, zbMATH, and OpenAlex by base ID, then by title + author fuzzy match. Report every duplicate removed.
+
+**Completion criterion:** no versioned duplicates in digest; dedup report saved.
+
+### 6. Cross-source citation completeness check
+
+For each paper, compare citation counts across arXiv, MathSciNet, zbMATH, and Semantic Scholar/OpenAlex. Flag discrepancies above a stated tolerance (default 10%) and record which source is authoritative for the count used.
+
+**Completion criterion:** citation discrepancies flagged or confirmed; authoritative source noted per item.
+
+### 7. Score relevance
 
 For each paper, score 1–5:
 
@@ -104,7 +141,7 @@ State the score reason in one sentence.
 
 **Completion criterion:** every paper scored; reason stated.
 
-### 4. Group
+### 8. Group
 
 Group by:
 
@@ -115,7 +152,7 @@ Group by:
 
 **Completion criterion:** groupings explicit; at least two perspectives.
 
-### 5. Deliver the digest
+### 9. Deliver the digest
 
 Markdown artifact with: header (window), groups, scored items, follow-ups (papers to read deeply), citations, and **suggested reading order** (most relevant first).
 
@@ -131,9 +168,10 @@ Markdown artifact with: header (window), groups, scored items, follow-ups (paper
 - Record SHA-256 hashes for query definitions, retrieval snapshots, exported metadata, code, and environment; include retrieval timestamps and source versions.
 - Check publication-date, citation, author, duplicate, retraction, indexing, look-ahead, and survivorship leakage; mark non-applicable checks explicitly and do not use later citations to support a historical snapshot without labeling it.
 - Report coverage and relevance uncertainty, missing-source intervals, calibration of relevance scores, and backtest query recall on known papers.
+- Record rate-limit backoff events, deduplication removals, and cross-source citation discrepancies; stop with `inconclusive` if any are missing.
 - Run known-solution retrieval fixtures and counterexamples for near-duplicate, false-author, and false-keyword matches; state matching tolerances.
 - Minimize personal researcher data, document fairness/privacy limits, and protect access-controlled sources, and state that the digest is monitoring, not peer review or professional advice.
-- Stop with `inconclusive` when source hashes, coverage, deduplication, or uncertainty checks are missing; align digest status and stop condition.
+- Stop with `inconclusive` when source hashes, coverage, deduplication, rate-limit, or uncertainty checks are missing; align digest status and stop condition.
 
 ## Completion
 
