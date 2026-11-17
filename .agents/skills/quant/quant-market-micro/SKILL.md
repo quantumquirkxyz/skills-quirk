@@ -2,7 +2,7 @@
 name: "quant-market-micro"
 category: "quant"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Analyse market microstructure complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Venue modeled, spread decomposed, execution costs estimated, optimal schedule delivered."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/quant-market-micro.json"
 diataxis: "how-to"
 tags: ["quant"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-backtest", "quant-derivatives-pricing"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -68,13 +68,24 @@ Analyse **market microstructure** — order book, price formation, execution cos
 
 ## Process
 
-1. Identify venue type — lit exchange, dark pool, OTC, CEX vs DEX.
-2. Order book model — queueing theory (Geometric Brownian Motion of queue), Glosten-Milgrom (adverse selection), or Kyle's lambda.
-3. Spread decomposition — bid-ask spread = adverse selection + inventory + order processing cost.
-4. Execution costs — slippage vs arrival price, market impact (temporary vs permanent), timing risk from delay.
-5. Optimal execution — Almgren-Chriss framework (minimise expected cost + variance of execution); VWAP, TWAP, POV benchmarks.
-6. Data requirements — tick data, order log, trade reporting; NO OHLCV-only backtests for microstructure claims.
-7. Deliver — artifact: venue model, spread decomposition, cost estimate (bps), and optimal execution schedule.
+1. Identify venue type — lit exchange, dark pool, OTC, CEX vs DEX; record venue rules, tick size, fees, queue priority, and latency assumptions.
+2. **Tick data quality** — grade tick data on five dimensions:
+   - **Completeness** — fraction of expected events present; flag missing days, sessions, or symbols.
+   - **Accuracy** — price/size values free of misprints and cross-book errors (negative spreads, trades outside quotes).
+   - **Consistency** — cross-feed agreement, sequence-number continuity, no timestamp inversions.
+   - **Granularity** — tick-by-tick vs L1/L2/L3 order-book depth; minimum observable unit.
+   - **Timeliness** — event capture latency vs exchange timestamp; clock-sync tolerance.
+   Record a quality score per dimension; stop when tick data fails minimum quality.
+3. **Distinguish microstructure noise from genuine data defects** — microstructure noise (bid-ask bounce, discreteness, queue position) is expected and modelled; genuine defects (ghost quotes, spoofed size, stale stamps, corrupted prices) are excluded and logged.
+4. Order book model — queueing theory (Geometric Brownian Motion of queue), Glosten-Milgrom (adverse selection), or Kyle's lambda.
+5. Spread decomposition — bid-ask spread = adverse selection + inventory + order processing cost.
+6. Execution costs — slippage vs arrival price, market impact (temporary vs permanent), timing risk from delay.
+7. **Order book depth for temporary impact estimation** — use LOB depth at the inside and adjacent levels to estimate temporary impact of a child order walking the book; calibrate the impact coefficient from public LOB data.
+8. **Almgren-Chriss parameters calibrated from public LOB data** — estimate temporary impact (η), permanent impact (γ), and risk aversion (λ) from LOB shape, volatility, and volume; solve the optimal execution schedule minimising expected cost plus variance.
+9. **Implementation shortfall decomposition** — decompose implementation shortfall into permanent impact + temporary impact + risk (timing + adverse selection), reported in bps versus arrival price.
+10. Optimal execution — Almgren-Chriss framework (minimise expected cost + variance of execution); VWAP, TWAP, POV benchmarks.
+11. Data requirements — tick data, order log, trade reporting; NO OHLCV-only backtests for microstructure claims.
+12. Deliver — artifact: venue model, spread decomposition, cost estimate (bps), and optimal execution schedule.
 
 ## Rules
 
@@ -99,5 +110,6 @@ Analyse **market microstructure** — order book, price formation, execution cos
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- Fixtures validated: tick data quality, Roll estimator, Almgren-Chriss, slippage decomposition, venue rules
 ---
 @include .agents/skills/platform/contract-base.xml

@@ -2,7 +2,7 @@
 name: "quant-derivatives-pricing"
 category: "quant"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Price and calibrate derivatives (options, exotics, structured products) complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Instrument specified, model selected, price computed, Greeks reported, calibration validated."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/quant-derivatives-pricing.json"
 diataxis: "how-to"
 tags: ["quant"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-market-micro", "quant-risk-modeling"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -109,14 +109,37 @@ Report at minimum: Δ, Γ, ν (vega), ρ (rho), θ. For American options, also r
 If using a model with free parameters (Heston k, θ, ν, ρ; local vol volatility):
 
 - Fit to market-implied vol surface (minimise squared-error weighted by vega).
+- **Constrained optimization:** enforce positivity, |ρ| ≤ 1, and the Feller condition (2κθ ≥ ν²) throughout calibration.
+- **Multi-start calibration:** run from diverse initial points; divergence between starts signals a flat or multi-modal objective — flag it rather than accepting a local optimum.
 - Report calibration error (RMSE in vol points).
 - Stress the calibration: what happens to price if one vol parameter changes?
 
-**Completion criterion:** calibration done; RMSE reported; stressed parameters.
+**Completion criterion:** calibration done with constraints; RMSE reported; multi-start checked; stressed parameters.
 
-### 6. Deliver
+### 6. Validate
 
-Markdown artifact: instrument, model, SDE, price, Greeks, calibration (if applicable), and a **model risk note** — what the model ignores and what the gap to market means.
+- **Vanilla European option:** price matches Black-Scholes analytic within stated tolerance.
+- **Greeks:** validated against numerical finite differences.
+- **Held-out surface:** calibration instruments excluded from pricing validation; price held-out strikes/maturities and report error.
+- **Convergence:** MC standard error shrinks O(1/√N); trees converge O(1/N) with sawtooth pattern; report step/path counts and observed convergence.
+
+**Completion criterion:** validation evidence present; held-out and convergence checks reported.
+
+## Fixtures
+
+Run known-solution fixtures and counterexamples:
+
+- **Black-Scholes round-trip:** model price vs analytic Black-Scholes within tolerance.
+- **Heston vs Black pricing:** stochastic-vol price vs Black price across the vol surface.
+- **Tree sawtooth:** convergence O(1/N) with sawtooth across step counts.
+- **MC standard error:** error shrinks O(1/√N) across path counts.
+- **Calibration held-out:** calibration instruments excluded; held-out surface error reported.
+
+State numerical tolerances for each fixture.
+
+## Deliver
+
+Markdown artifact: instrument, model, SDE, price, Greeks, calibration (if applicable), validation results, and a **model risk note** — what the model ignores and what the gap to market means.
 
 **Completion criterion:** deliverable complete; model risk addressed.
 

@@ -2,7 +2,7 @@
 name: "quant-factors"
 category: "quant"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "Markdown backtest artifact."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Artifact present with all six sections; verdict is honest and grounded."
-risk: "low"
-trustTier: "1"
+stopCondition: "Signal defined, biases mitigated, backtest run, stress tests complete, verdict stated."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/quant-factors.json"
 diataxis: "how-to"
 tags: ["quant"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-backtest", "quant-portfolio-opt"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -85,12 +85,12 @@ Specify:
 
 ### 2. Handle data honestly
 
-- **Survivorship bias:** use a point-in-time dataset; delisted names kept.
-- **Look-ahead bias:** features computed only on data available at decision time.
+- **Survivorship bias:** use a point-in-time dataset; delisted and dead names are kept, with delisting returns applied on the delisting date so exiting names contribute their realized exit performance.
+- **Look-ahead bias:** features computed only on data available at decision time; fundamentals joined on filing/publication date, never on period end — enforce the publication lag so no fundamental is used before it was actually available.
 - **Corporate actions:** splits, dividends, mergers adjusted consistently.
 - **Missing data:** explicit policy (drop, fill, cap).
 
-**Completion criterion:** each bias named and the mitigation is in code.
+**Completion criterion:** each bias named and the mitigation is in code; point-in-time fundamental join uses filing/publication date with publication lag; delisted names retained with delisting returns.
 
 ### 3. Build the backtest
 
@@ -108,29 +108,37 @@ Run a backtest with:
 Attack the signal:
 
 - **Subperiods:** does it survive across decades / regimes (2008, 2020, 2022)?
+- **Factor decay:** measure factor IC / forward returns decay across sub-periods (e.g. first half vs second half of sample); report decay slope.
 - **Sectors / geographies:** is the effect localised to one slice?
 - **Turnover:** annualised; high turnover often eats alpha.
-- **Capacity:** does Sharpe decay as AUM grows (impact model)?
+- **Capacity:** estimate capacity from turnover × market impact; report how Sharpe degrades as AUM grows under the impact model.
 - **Crowding:** is the factor correlated with known crowded trades?
 
-**Completion criterion:** each stress test reported, even if the answer is "passed".
+**Completion criterion:** each stress test reported, even if the answer is "passed"; factor decay and capacity estimation included.
 
 ### 5. Statistics
 
 Report with discipline:
 
 - **Sharpe**, **Sortino**, **max drawdown**, **Calmar**.
-- **t-stat of alpha** vs benchmark, not just raw return.
+- **DSR** (Deflated Sharpe Ratio) and **PSR** (Probabilistic Sharpe Ratio) reported alongside raw Sharpe.
+- **t-stat of alpha** vs benchmark, not just raw return; apply a **t > 3** hurdle for statistical significance.
 - **Information ratio** if it's an active strategy.
-- **p-values** and **multiple-testing correction** if many variants were tried.
+- **p-values** and **multiple-testing correction** (BH-FDR or Bonferroni) if many variants were tried; disclose **N**, the number of variants tested.
 
-**Completion criterion:** Sharpe, drawdown, t-stat (or alpha) all present; multiple-testing acknowledged.
+**Completion criterion:** Sharpe, drawdown, t-stat (or alpha), DSR/PSR all present; multiple-testing correction disclosed with N variants; t-stat hurdle applied.
 
-### 6. Deliver
+## Fixtures
 
-Markdown artifact with: signal definition, biases mitigated, backtest setup, stress tests, statistics, and a **verdict** — "robust", "weak", "fragile", or "fails".
+Run known-solution factor fixtures and counterexamples:
 
-**Completion criterion:** artifact present; verdict is honest and grounded in the numbers, not in narrative.
+- **Survivorship bias:** delisted names dropped vs retained with delisting returns.
+- **Look-ahead bias:** fundamental joined on period end vs filing/publication date.
+- **Multiple testing correction:** uncorrected vs BH-FDR / Bonferroni p-values.
+- **Point-in-time join:** publication lag enforced vs instantaneous fundamental availability.
+- **Factor decay:** sub-period IC decay slope vs stable IC.
+
+State numerical tolerances for each fixture.
 
 ## Quality Gates
 

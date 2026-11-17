@@ -2,7 +2,7 @@
 name: "quant-risk-modeling"
 category: "quant"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze model market/portfolio/credit risk (var, cvar, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "model artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Risk object defined, model selected, measures computed, validation complete."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/quant-risk-modeling.json"
 diataxis: "how-to"
 tags: ["quant"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-backtest", "quant-portfolio-opt", "quant-credit-risk"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -98,8 +98,11 @@ Run with explicit parameters. Report:
 
 ### 4. Validate
 
-- **Backtest coverage:** does VaR 95% cover ~95% of out-of-sample days? If not, recalibrate.
-- **Stress test:** does the model predict known historical losses within a factor?
+- **VaR backtest** — Kupiec LR test for unconditional coverage; Christoffersen independence test for violations clustering.
+- **Basel traffic light** — exception count determines the capital multiplier (green / yellow / red zones).
+- **ES backtest** — Acerbi–Székely statistic with Monte Carlo p-value.
+- **PIT uniformity test** — probability integral transform of forecasted CDF at realised outcomes should be uniform.
+- **Stress test** — sensitivity, historical, hypothetical, and reverse stress tests; reverse stress at least annually.
 - **Stability:** does the risk measure jump wildly on small data changes?
 
 **Completion criterion:** out-of-sample coverage or stability check completed; discrepancy addressed.
@@ -125,5 +128,6 @@ Markdown artifact: risk definition, model, measures, validation, and a note on w
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- Fixtures validated: Kupiec, traffic light, ES Acerbi–Székely, drawdown, stress test
 ---
 @include .agents/skills/platform/contract-base.xml

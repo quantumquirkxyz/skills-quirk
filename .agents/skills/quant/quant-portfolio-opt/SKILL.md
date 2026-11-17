@@ -2,30 +2,30 @@
 name: "quant-portfolio-opt"
 category: "quant"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks."
 license: "MIT"
 capabilities:
   - apply quant portfolio opt methods within explicit quant boundaries
-  - analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes
+  - analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
 outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Construct and optimise portfolios complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Universe defined, models selected, weights computed, robustness checks complete."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/quant-portfolio-opt.json"
 diataxis: "how-to"
 tags: ["quant"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-backtest", "quant-risk-modeling", "quant-factors"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -84,9 +84,9 @@ State:
 
 Historical covariance and mean are noisy. Address:
 
-- **Shrinkage** on covariance (Ledoit-Wolf or oracle approximating).
+- **Shrinkage on covariance** — sample covariance must not be used raw; apply shrinkage with Ledoit-Wolf as default. Estimate shrinkage intensity δ* analytically (Ledoit-Wolf closed form) or via cross-validation; report the chosen δ*.
 - **Resampled efficiency** or Bayesian posterior for mean.
-- **Black-Litterman** to blend market-implied equilibrium with views.
+- **Black-Litterman** — blend market-implied equilibrium returns π (implied from market caps) with views; document views P, Q, and uncertainty Ω explicitly.
 - **Dropout estimation** — what fraction of estimated alpha survives out-of-sample?
 
 **Completion criterion:** at least one technique to combat estimation error applied.
@@ -96,16 +96,17 @@ Historical covariance and mean are noisy. Address:
 Run the optimisation:
 
 - Quadratic solver (QP) for mean-variance.
-- Non-linear for risk-parity (risk budgeting).
+- Non-linear for risk-parity (risk budgeting); enforce risk contribution deviation ≤ threshold.
 - MIP if cardinality constraints (max N assets).
+- **Transaction costs** — include linear/quadratic transaction costs in the objective.
 - Report weights, expected return, expected vol, Sharpe ratio.
 
 **Completion criterion:** weights computed; metrics (return, vol, Sharpe) reported.
 
 ### 4. Robustness checks
 
-- **Sensitividad** — perturb each input by ±10%; which weights change most?
-- ** turnover** — if rebalanced monthly, annual turnover and transaction cost drag.
+- **Covariance perturbation Monte Carlo** — perturb the covariance matrix; report P5 Sharpe across draws.
+- **Turnover** — if rebalanced monthly, annual turnover and transaction cost drag; enforce turnover budget.
 - **Regime** — does the portfolio behave in 2008 / 2020 as it did in calm markets?
 - **Corner solutions** — if weights are extreme (e.g. 90% in one asset), re-run with tighter constraints.
 
@@ -132,5 +133,6 @@ Markdown artifact: universe, return/risk models, objective, constraints, weights
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- Fixtures validated: shrinkage, Black-Litterman, risk parity, corner solution, turnover
 ---
 @include .agents/skills/platform/contract-base.xml
