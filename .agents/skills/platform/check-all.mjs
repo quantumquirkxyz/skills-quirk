@@ -112,6 +112,7 @@ const checks = [
   ['node', ['.agents/skills/platform/docs-links.mjs', '--json']],
   ['node', ['.agents/skills/platform/evaluate-scenarios.mjs']],
   ['node', ['.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
+  ['node', ['.agents/skills/platform/lifecycle-contract-gate.mjs']],
   ['node', ['--check', '.agents/skills/platform/audit-semantics.mjs']],
   ['node', ['--check', '.agents/skills/platform/evaluate-scenarios.mjs']],
   ['node', ['--check', '.agents/skills/platform/evaluate-behavioral-fixtures.mjs']],
