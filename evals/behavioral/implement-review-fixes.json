@@ -1,0 +1,42 @@
+{
+  "id": "implement-review-fixes-behavioral-v1",
+  "skill": "delivery/implement-review-fixes",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Apply a scoped review-fix plan only when its fixed point and source digests are current, then verify the result independently.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Apply the review fix plan at the supplied fixed point. Reject wrong commit, stale source, fabricated commands, partial validation, mutation survivors, and security omissions; accept only the fully evidenced verification.",
+  "context": [
+    "the plan and branch share fixed point commit abc123",
+    "operationId op-review-42 binds implementation and verification artifacts",
+    "all source and plan digests are recorded before edits",
+    "commands require observed process provenance and changed-file before/after digests",
+    "tests, coverage, mutation, security, and performance evidence are required"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/implement-review-fixes/SKILL.md#Contract",
+    ".agents/skills/delivery/implement-review-fixes/SKILL.md#Preconditions",
+    ".agents/skills/delivery/implement-review-fixes/SKILL.md#Completion"
+  ],
+  "cites": ["fixed-point", "operationId", "source-digests", "independent-verification"],
+  "costBudget": {"costUsd": 0.08, "durationMs": 420000, "inputTokens": 90000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"The same fixed point, operationId, and source digests bind implementation and verification.","levels":{"4":"all identities match","2":"some identities are present","0":"identity is absent or mismatched"}},
+      {"id":"if-2","criterion":"Only observed command provenance is accepted and partial validation is disclosed.","levels":{"4":"fabricated commands are refused and skips have reasons","2":"some provenance is recorded","0":"transcript claims pass as execution"}},
+      {"id":"if-3","criterion":"Mutation, security, and performance evidence are required before completed.","levels":{"4":"all three are present or explicitly non-pass","2":"one category is omitted","0":"omissions are silently treated as pass"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"Changed files and before/after digests are recorded.","levels":{"4":"complete inventory","2":"partial inventory","0":"no changed-file evidence"}},
+      {"id":"gc-2","criterion":"Wrong commit, partial suite, fabricated command, mutation survivor, security omission, and valid verification are covered.","levels":{"4":"all six cases have deterministic outcomes","2":"most cases are covered","0":"cases are missing"}},
+      {"id":"gc-3","criterion":"Independent verifier and canonical status are present.","levels":{"4":"verifier identity and status are explicit","2":"one is present","0":"worker narrative is the verdict"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["abc123","op-review-42","source digests","command provenance"],"note":"identity and provenance are bound"}},
+    {"id":"a2","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["wrong commit","partial suite","fabricated command","mutation survivor","security omission","valid verification"],"note":"negative and valid cases are represented"}},
+    {"id":"a3","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["changed files","coverage","tests skipped","independent verifier","validation-failed"],"note":"completion evidence and non-pass status are explicit"}},
+    {"id":"a4","type":"deterministic","category":"process","check":{"kind":"artifact_not_contains","values":["transcript-only pass","trust me","claimed command executed"],"note":"transcript-only claims are rejected"}}
+  ]
+}

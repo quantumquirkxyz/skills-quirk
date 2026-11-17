@@ -111,6 +111,10 @@ Beyond cost, TDD produces executable documentation. A test that passes is a proo
 
 ## Contract
 
+- Emit `ImplementArtifact` for the red-green change and `VerificationArtifact` for its independent validation, using `schemas/software-engineering/{implement,verification}-artifact.schema.json`.
+- Bind both artifacts to one `operationId`, fixed-point commit/ref, source digests, changed files and before/after digests, exact command provenance, tests run/skipped, coverage, mutation, security, performance, verifier identity, approvals, and canonical status.
+- Reject stale source or mismatched fixed point; a declared/fabricated command or transcript is not evidence. A partial suite, mutation survivor, security omission, or performance omission must be disclosed and remain non-pass.
+
 - **Input:** feature or bug request, current codebase state, and seam list.
 - **Output:** a red→green implementation trace: failing tests, minimal passing code, and refactor notes.
 - **Scope:** one test at a time; no speculative implementation.
@@ -141,7 +145,7 @@ Beyond cost, TDD produces executable documentation. A test that passes is a proo
 - all cycles follow the red → green → refactor discipline
 - every test is at a pre-agreed seam and survives refactors
 - no implementation-coupled or tautological tests remain
-- `TddArtifact` emitted and validated
+- `TddArtifact` emitted and validated as the payload view of the common ImplementArtifact, with a paired VerificationArtifact and canonical status
 
 ## Artifact
 

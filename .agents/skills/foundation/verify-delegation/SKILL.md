@@ -25,6 +25,10 @@ Agents write a growing share of code, so humans must direct and verify that work
 
 ## Contract
 
+- Emit `VerificationArtifact` using `schemas/software-engineering/verification-artifact.schema.json`; `VerificationVerdict` is its payload view.
+- Require one `operationId`, the exact fixed-point commit/ref, source and artifact digests, changed-file/side-effect inventory, observed command provenance, tests run/skipped, suite coverage denominator/result, mutation evidence, security evidence, performance evidence, independent verifier identity, approvals, and canonical status.
+- Reject stale source, wrong commit, fabricated or declared commands, transcript-only claims, mutation survivors, security omissions, and undisclosed partial suites. These produce `stale`, `blocked`, `validation-failed`, `outcome-unknown`, `partial`, `fail`, or `refusal`, never `pass`.
+
 Inputs:
 - `workerClaim`: the delegated work's claimed outcome, success criteria, and evidence references.
 - `fixedPointInputs`: canonical brief bytes, artifact path and SHA-256, source/input digests, repository revision, configuration, dependency/tool versions, platform, architecture, locale/timezone, and verifier identity.
@@ -32,7 +36,7 @@ Inputs:
 - `evidence`: observed command provenance, process records, test results, replay records, integrity observations.
 
 Outputs:
-- `VerificationVerdict`: typed pass/fail/blocked/partial/not-run/stale/outcome-unknown/refusal with fixed-point and artifact digests.
+- `VerificationVerdict`: typed pass/fail/blocked/partial/not-run/stale/outcome-unknown/refusal with fixed-point and artifact digests; `pass` requires independent evidence for every applicable check.
 - `evidenceGaps`: missing criteria, unproven commands, stale digests, NOT-RUN reasons, redacted-or-unknown coverage.
 - `recommendations`: next probes, capability additions, replay instructions, refusal next steps.
 
@@ -88,7 +92,7 @@ Validate the JSON against the declared output shape before returning it. Include
 ## Completion criteria
 
 - The fixed point, artifact integrity, capability inventory, replay, negative tests, and evidence gaps are recorded.
-- The emitted verdict is validated as bounded JSON and Markdown, with refusal or non-pass status when evidence is insufficient.
+- The emitted verdict is validated as bounded JSON and Markdown against the common `VerificationArtifact` schema, with refusal or non-pass status when evidence is insufficient; command, coverage, mutation, security, performance, and independent-verifier evidence are complete or explicitly skipped.
 
 ---
 @include .agents/skills/platform/contract-base.xml

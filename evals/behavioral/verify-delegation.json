@@ -6,14 +6,18 @@
   "scenario": "Verify delegated worker claims against a fixed point using independent evidence, refusing false or unexecuted claims, preserving partial and stale statuses, and detecting undeclared side effects.",
   "baseline": "without-skill",
   "trials": 5,
-  "prompt": "Verify five delegated-worker cases: a false full-suite claim with only 6 of 10 tests observed, commands with no process provenance, a 60% partial suite, an output stale against the current revision, and hidden file writes in a read-only run. Return refusal, partial, stale, or fail rather than upgrading unsupported evidence to pass.",
+  "prompt": "Verify six delegated-worker cases: wrong commit, partial suite, fabricated command, mutation survivor, security omission, and one valid verification. Return pass only for the valid case; preserve stale, partial, refusal, fail, and blocked statuses for the others.",
   "context": [
     "fixed point artifact deliverables/unit-suite-report.json with a recorded digest and repository revision",
     "case claim-false: worker claims 10/10 but independent evidence observes 6/10 and one command is capability-missing",
     "case command-not-executed: npm test and npm run lint have no process records",
     "case suite-partial: 6 of 10 tests executed and replay is NOT-RUN",
     "case output-stale: artifact and fixed point predate the current repository revision",
-    "case side-effect-hidden: undeclared writes to deliverables/temp-cache.json and scratch/notes.md"
+    "case side-effect-hidden: undeclared writes to deliverables/temp-cache.json and scratch/notes.md",
+    "case-wrong-commit: replay observes a different commit than the fixed point",
+    "case-mutation-survivor: mutation run leaves one surviving mutant",
+    "case-security-omission: security scan is skipped without a documented exception",
+    "case-valid: all commands have process provenance, full suite and required quality evidence match the fixed point"
   ],
   "grounding": [
     ".agents/skills/foundation/verify-delegation/SKILL.md"
@@ -107,7 +111,7 @@
       "category": "outcome",
       "check": {
         "kind": "artifact_contains_all",
-        "values": ["blocked", "partial", "stale", "fail"],
+        "values": ["blocked", "partial", "stale", "fail", "refusal", "pass"],
         "note": "all non-pass statuses remain represented"
       }
     },
@@ -119,6 +123,16 @@
         "kind": "artifact_contains_all",
         "values": ["undeclared writes", "deliverables/temp-cache.json", "scratch/notes.md"],
         "note": "hidden side effects are recorded"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": ["wrong commit", "mutation survivor", "security omission", "valid verification"],
+        "note": "fixed-point, mutation, security and valid-verification boundaries are covered"
       }
     }
   ]

@@ -71,6 +71,10 @@ reloadPolicy: on-trigger
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
+## Maintenance handoff
+
+A review finding that is an incident, defect, regression, or deferred corrective action MUST produce a `MaintenanceArtifact` handoff using `schemas/software-engineering/maintenance-artifact.schema.json`. Carry the source incident/defect digest, owner, PR fixed point and revision fence, impact, rollback/mitigation, verification evidence, next corrective consumer, and documentation/provenance refresh. End with exactly one closure state: `resolved-with-evidence`, `corrective-ticket-created`, `accepted-risk-with-owner-and-expiry`, or `blocked`; a missing owner, stale review/diagnosis, regression, or unverified fix remains `blocked` or returns to `implement-fixes`. Preserve the existing review, approval, checkpoint, reconciliation, and deferral rules.
+
 ## Artifact
 
 Emit `ReviewFixLoopArtifact` as both:

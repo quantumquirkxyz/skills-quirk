@@ -45,6 +45,10 @@ approvalFor: []
 
 ## Contract
 
+- Emit a `VerificationArtifact` envelope using `schemas/software-engineering/verification-artifact.schema.json`; put the strategy and observed validation in `payload`.
+- The artifact must bind one `operationId` to the fixed-point commit/ref and source digests, changed-file scope (when reviewing changes), exact command provenance, tests run/skipped, coverage denominator/result, mutation evidence, security evidence, performance evidence, and an independent verifier with canonical status.
+- Reject stale source or fabricated/declared commands. Partial suites and omitted security, mutation, or performance checks must be disclosed and produce a non-pass status (`blocked`, `validation-failed`, `outcome-unknown`, or `stale`), never an implied pass.
+
 ### Input schema
 
 | Field | Type | Required | Description |
@@ -208,6 +212,7 @@ The test pyramid keeps most tests at unit level, fewer at integration level, and
 
 ## Completion
 
+- The common `VerificationArtifact` is schema-validated and contains source/fixed-point identity, provenance, coverage and all run/skipped evidence.
 - Step 1 completion criteria met: public behavior inventory complete with outcomes and preconditions.
 - Step 2 completion criteria met: each behavior slice has a seam assignment with justification.
 - Step 3 completion criteria met: each behavior slice has a test level with risk-based justification.

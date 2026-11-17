@@ -67,6 +67,11 @@ reloadPolicy: on-trigger
 
 ## Contract
 
+- Artifact contract: emit `ImplementArtifact` using `schemas/software-engineering/implement-artifact.schema.json`; put implementation details in `payload` and retain the full envelope fields.
+- `payload` must include the same `operationId`, fixed-point commit/ref and source digests used for the run; list changed files with before/after digests and command provenance (argv, resolved executable/version, cwd, exit status, output digest, timestamp).
+- Record tests run and skipped with reasons, coverage denominator/result, mutation evidence, security evidence, performance evidence, independent verifier identity/result, approvals, blockers, and canonical status. A transcript, plan, screenshot, or self-attestation is never evidence of execution.
+- Reject stale source or a fixed-point mismatch. Partial validation must be disclosed and yields `blocked`, `validation-failed`, or `outcome-unknown`, never `completed`.
+
 - Input: one ticket or spec with concrete acceptance criteria, current repo state, explicit seams, optional feature flags.
 - Output: `ImplementArtifact` (JSON schema + Markdown view). See `.agents/skills/platform/schemas/implement-schema.json`.
 - Scope: execute approved work; do not reopen spec decisions unless blocked by a real defect or missing dependency.
@@ -78,7 +83,7 @@ reloadPolicy: on-trigger
 - Rule: trunk-based workflow — short-lived branches (< 24h), push to origin, feature flags for incomplete features.
 - Rule: side effects that change repository state (`write-code`, `commit-git`, `push-branch`) require an explicit user request or prior workflow approval before execution.
 - Rule: run quality gates after each slice — gate-ide on file-save, gate-pre-commit before commit, gate-ci before PR.
-- Rule: do not proceed to `publish-open-pr` until `gate-ci` passes.
+- Rule: do not proceed to `publish-open-pr` until `gate-ci` passes and the independent verifier records a matching fixed point, source digests, changed-file set, and canonical `completed` verification status.
 - Rule: do not open or merge PR here; stop at validated branch.
 
 The `gate-ide`, `gate-pre-commit`, and `gate-ci` names are compatibility labels for the repository's validation workflows, not canonical skill dependencies. Run their equivalent validation commands when available and record the results in `qualityGateResults`.
@@ -165,11 +170,12 @@ Set `nextConsumer` to the next workflow skill (`publish-open-pr`, `tdd`, or a na
 - the implementation note captures what changed and what was verified
 - any skipped validation is explicitly justified
 - feature flags documented if applicable
-- the work is committed on the dedicated issue branch with conventional commit messages
+- the work is committed on the dedicated issue branch with conventional commit messages and the artifact records the exact fixed-point/commit identity
 - `ImplementArtifact` emitted and validated at `.agents/skills/platform/artifacts/implement/{issue-id}.json`
 - `gate-ide` passed on final file-save
 - `gate-pre-commit` passed before final commit
 - `gate-ci` passed before PR publication
+- `ImplementArtifact` and its paired `VerificationArtifact` are schema-validated; no transcript-only, fabricated-command, stale-source, mutation-survivor, security-omission, or undisclosed-partial claim is accepted
 
 ---
 @include .agents/skills/platform/contract-base.xml

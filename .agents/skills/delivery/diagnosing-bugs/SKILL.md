@@ -54,6 +54,10 @@ approvalFor: []
 
 Return `DiagnosingBugsArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
+## Maintenance handoff
+
+When a diagnosis identifies an incident, defect, or regression, include a `MaintenanceArtifact` handoff (schema: `schemas/software-engineering/maintenance-artifact.schema.json`) rather than treating the diagnosis as closure. Require the source incident/defect digest, accountable owner, fixed point, user/system impact, rollback or mitigation, evidence digest, next corrective consumer, and documentation/provenance refresh. Select exactly one closure state: `resolved-with-evidence`, `corrective-ticket-created`, `accepted-risk-with-owner-and-expiry`, or `blocked`; missing ownership, stale diagnosis, or absent verification is `blocked`. Preserve the existing diagnosis loop, regression-test gate, user checkpoint, and approval boundaries. The next corrective consumer is `software-maintenance-evolution` for maintenance disposition, `requirements-engineering` when a requirement changes, or the named ticket owner when corrective work is already ticketed.
+
 ## Repository audit handoff
 
 Use `code-review` when the reported symptom may originate outside the initially named file. Consume its evidence as hypotheses to test, not as confirmed causes. Trace the complete path from input through business logic, persistence, integrations, and output, and distinguish symptom, contributing condition, and confirmed root cause.
