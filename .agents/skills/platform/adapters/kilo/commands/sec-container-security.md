@@ -7,13 +7,14 @@ When to use: Container security (Docker, Kubernetes, image scanning, runtime sec
 
 ## Workflow
 
-1. Image security baseline
-2. Image scanning and CI/CD gate
-3. Pod Security Standards (Kubernetes)
-4. Runtime security
-5. Kubernetes access control
-6. Secrets management in containers
-7. Monitoring and compliance
+1. Image and build baseline
+2. SBOM, VEX, signing, and scan gate
+3. Admission policy and mutable-tag defense
+4. Kubernetes isolation and access
+5. Runtime detection and drift
+6. Secrets and data boundaries
+7. Sandbox escape and vulnerability response
+8. Rollback, monitoring, and adversarial fixtures
 
 ## Deliverables
 

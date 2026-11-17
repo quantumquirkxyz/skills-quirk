@@ -2,7 +2,7 @@
   "skill": "web3/web3-smart-contracts",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "db054d5f622c224b7fa4f0ab94caa1c88ba5ef496b2671004231395cd7326391",
+  "frontmatterHash": "f6c61fdbccc772ec8325bc267eb60adce61f3fb830fe82834c92fdf7f8be581a",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -28,7 +28,15 @@
   "guardrails": {
     "sideEffects": [],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "deployment",
+      "upgrade",
+      "pause",
+      "unpause",
+      "role-change",
+      "bridge-route-change",
+      "oracle-change"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

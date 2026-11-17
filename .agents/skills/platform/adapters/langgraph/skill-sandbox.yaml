@@ -21,5 +21,5 @@ edges:
   - {from: verify, to: report}
 metadata:
   skill: skill-dev/skill-sandbox
-  risk: low
-  trustTier: 1
+  risk: high
+  trustTier: 4

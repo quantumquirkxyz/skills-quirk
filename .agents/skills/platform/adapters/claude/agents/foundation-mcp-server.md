@@ -1,6 +1,6 @@
 ---
 name: mcp-server
-description: "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol."
+description: "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol."
 tools: Read, Grep, Glob, Edit, Write
 model: sonnet
 permissionMode: default

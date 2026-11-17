@@ -61,5 +61,11 @@
         ]
       }
     }
+    ,{
+      "id": "saga-crash-existing-remote-stale-review-repeated-action-ship-subissue",
+      "skill": "ship-subissue",
+      "type": "behavioral",
+      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "branch protection", "never duplicate", "rollback evidence"]}
+    }
   ]
 }

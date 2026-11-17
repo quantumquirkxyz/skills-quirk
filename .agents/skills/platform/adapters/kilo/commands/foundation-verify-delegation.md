@@ -1,18 +1,20 @@
 ---
-description: "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative."
+description: "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative."
 ---
 # verify-delegation
 
-When to use: Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.
+When to use: Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.
 
 ## Workflow
 
-1. **Receive the brief.** Validate it against `DelegationBrief`. Reject a brief with no `boundaries`, no `stopCondition`, or `readOnly: false` without a declared mutating side effect on the caller
-2. **Split context-centrically.** One artifact, one verifier. Never split one artifact across phases of delegation - that is the documented telephone-game failure
-3. **Scale effort.** Simple objective: one worker, 3-10 tool calls. Comparison: 2-4 workers. Complex: more than 10 tool calls or several independent sources, with an explicit `effortBudget`
-4. **Hand over a clean room.** Give the verifier the artifact, the criteria, and the read-only tools. Withhold the implementation context
-5. **Run the checks.** Re-run each criterion, run the negative tests, then run the full suite
-6. **Emit the verdict.** Write the `DelegationVerdict` artifact, return the bounded summary plus `artifactRef`, and stop
+1. Validate the brief, schema, boundaries, stop condition, side-effect policy, expiry, and caller authority
+2. Compute and freeze the fixed-point digest; verify artifact existence, type, path containment, SHA-256, schema, ownership, and no unexpected files or mutations
+3. Build the capability inventory and reject commands not explicitly allowed. Strip worker transcript and implementation context from the verifier context
+4. Map every success criterion to an observable assertion, command, expected result, evidence digest, and coverage denominator. Criteria without an observable check are refused
+5. Execute the applicable checks and record complete command provenance. Do not infer execution from a worker report, log fragment, or green summary
+6. Run the negative-test minimum: at least two independent negative tests for a mutating artifact, and at least one for a read-only artifact. At least one must target the claimed success boundary and one must target an integrity or scope fa...
+7. Run an independent verifier/replay from the same fixed point with disjoint context, identity, and evidence collection. Replay must be deterministic or record allowed variance and comparison rules
+8. Run the full applicable suite. A partial suite is explicitly `PARTIAL`; omitted tests are `NOT-RUN` with reasons and cannot be counted as green
 
 ## Deliverables
 
@@ -20,8 +22,8 @@ When to use: Blackbox-verify a delegated worker's claim before it is accepted, u
 
 ## Guardrails
 
-- risk: low; trust tier: 2; approval required: yes
-- side effects: write-temp-file
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-temp-file, write-verdict-artifact, emit-redacted-evidence
 - isolation: none; model tier: reasoning
 
-Stop when: Every declared success criterion is re-checked against the artifact with evidence, negative tests were run, and a bounded DelegationVerdict plus artifact reference is returned to the caller.
+Stop when: Stop after every applicable criterion, integrity check, mandatory negative test, and independent replay has an evidence record, or return a typed non-pass state explaining each NOT-RUN or refusal reason.

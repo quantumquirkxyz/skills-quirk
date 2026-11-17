@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-quality-gate",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "ac5234544943a86f386ef78e558c03054bfb1a6911686f51f0107be07e1ad36d",
+  "frontmatterHash": "261a0452272f5e1e3c39834c3e8bd5482b7ae02853f70c464d6f1616e2e585e3",
   "role": "workflow",
   "router": {
     "positive": [],

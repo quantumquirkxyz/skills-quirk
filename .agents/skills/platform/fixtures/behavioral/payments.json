@@ -14,7 +14,12 @@
           "PaymentsArtifact",
           "Refund",
           "Dispute / chargeback",
-          "Adyen"
+          "Adyen",
+           "ledger invariants",
+           "partial settlement",
+           "provider failover",
+           "fraud outcomes",
+           "PCI evidence boundary"
         ],
         "doesNotContain": [
           "## Operating Contract",
@@ -30,7 +35,8 @@
           "BE-2",
           "OpenAPI spec",
           "localhost:3000",
-          "extremely extensive"
+          "extremely extensive",
+           "legal certification"
         ]
       }
     },

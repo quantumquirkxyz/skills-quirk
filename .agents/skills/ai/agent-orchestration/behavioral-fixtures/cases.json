@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","skill":"ai/agent-orchestration","cases":[{"id":"blocked-unknown","expected":"blocked","asserts":["independent-verification","bounded-budget","no-publication"]}]}

@@ -23,7 +23,7 @@ When to use: Design payment flows as a high-trust seam with explicit failure, re
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
+- side effects: write-artifact
 - isolation: none; model tier: reasoning
 
-Stop when: Payment design complete; flows, webhooks, and reconciliation explicit; PCI and fraud controls named.
+Stop when: Stop only when each money movement has an authoritative state machine, immutable ledger postings, replay/idempotency strategy, settlement and reconciliation owner, fraud/approval outcome, compensation path, and evidence boundary; stop as blocked on amount/currency mismatch, unverifiable webhook, unresolved ledger discrepancy, unsafe failover, or missing approval.

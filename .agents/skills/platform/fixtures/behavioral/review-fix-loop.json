@@ -65,5 +65,11 @@
         ]
       }
     }
+    ,{
+      "id": "saga-crash-existing-remote-stale-review-repeated-action",
+      "skill": "review-fix-loop",
+      "type": "behavioral",
+      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "revisionFence", "never duplicate", "budget-exceeded", "rollback evidence"]}
+    }
   ]
 }

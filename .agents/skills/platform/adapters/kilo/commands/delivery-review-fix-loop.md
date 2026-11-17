@@ -12,6 +12,7 @@ When to use: Orchestrate the PR repair loop: run review-pr, use plan-review-fixe
 3. Plan
 4. Implement
 5. Repeat
+6. Recover and fence
 
 ## Deliverables
 

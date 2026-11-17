@@ -1,18 +1,18 @@
 ---
-description: "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step."
+description: "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate."
 ---
 # web3-smart-contracts
 
-When to use: Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.
+When to use: Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.
 
 ## Workflow
 
-1. Capture requirements
-2. Security review checklist
-3. Gas audit
-4. Upgrade / governance / AA path
-5. Adversarial review
-6. Deliver
+1. Scope And State Model
+2. Threat And Abuse Review
+3. Verification Plan And Fixtures
+4. Upgrade, AA, Cross-Chain And Operations
+5. Gas And Adversarial Findings
+6. Deliver Typed Artifact
 
 ## Deliverables
 
@@ -24,4 +24,4 @@ When to use: Design and review smart contracts — security, gas optimization, u
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Artifact present with deployment recommendation.
+Stop when: Stop when every required gate is typed as pass, fail, blocked, not-applicable, or not-run; deployment recommendation and residual risks are explicit.

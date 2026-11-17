@@ -2,7 +2,7 @@
   "skill": "integrations/payments",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "a4bc369a53d79203ec3304a506f476b12497d99ef9a5f751c9b1cd104615f838",
+  "frontmatterHash": "daf048b750399a18b8495ead3c76c46c57dab8fd5529b5dd2cdae4a68fe58423",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -26,9 +26,19 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-artifact"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "refund",
+      "payout",
+      "dispute-response",
+      "provider-credential-change",
+      "production-migration",
+      "fraud-policy-exception",
+      "manual-ledger-adjustment"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

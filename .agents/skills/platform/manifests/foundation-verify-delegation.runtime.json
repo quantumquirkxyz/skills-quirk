@@ -2,7 +2,7 @@
   "skill": "foundation/verify-delegation",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "61e6dd7439779d9befabd01eebe4702d68773c134c22c0f0a8e51244480aef53",
+  "frontmatterHash": "a2573c23b463aa238fa74a4251165936931f050574fc39d256f4bc3f30893933",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -12,29 +12,29 @@
   "execution": {
     "defaultAgent": "general",
     "isolation": "none",
-    "maxTurns": 3,
+    "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob",
-        "WebFetch",
-        "WebSearch"
+        "Glob"
       ],
       "deny": []
     }
   },
   "guardrails": {
     "sideEffects": [
-      "write-temp-file"
+      "write-temp-file",
+      "write-verdict-artifact",
+      "emit-redacted-evidence"
     ],
     "approvalRequired": true,
     "approvalFor": [
-      "write-temp-file"
+      "write-verdict-artifact"
     ],
-    "risk": "low",
-    "trustTier": 2
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

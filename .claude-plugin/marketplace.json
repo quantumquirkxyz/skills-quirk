@@ -75,12 +75,12 @@
       "skills": [
         {
           "name": "agent-orchestration",
-          "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+          "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
           "category": "ai",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply agent orchestration methods within explicit ai boundaries",
             "analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes",
@@ -1831,9 +1831,9 @@
         },
         {
           "name": "mcp-server",
-          "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+          "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
           "category": "foundation",
-          "version": "2",
+          "version": "3",
           "maturity": "beta",
           "risk": "low",
           "trustTier": "1",
@@ -1889,7 +1889,7 @@
           "name": "subagent-swarm",
           "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
           "category": "foundation",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
@@ -1900,26 +1900,31 @@
           ],
           "sideEffects": [
             "write-files (orchestrator-owned swarm artifact only)",
-            "write-temp-file (bounded role-result references, when needed)"
+            "write-temp-file (bounded role-result references, when needed)",
+            "write-ledger (intent, lease, checkpoint, approval, and kill-switch records; bounded and orchestrator-owned)",
+            "emit-telemetry (trace-linked, redacted, bounded role lifecycle events)"
           ],
           "path": ".agents/skills/foundation/subagent-swarm"
         },
         {
           "name": "verify-delegation",
-          "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+          "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
           "category": "foundation",
-          "version": "1",
+          "version": "2",
           "maturity": "experimental",
-          "risk": "low",
-          "trustTier": "2",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
-            "verify a delegated artifact against its success criteria without implementation context",
-            "return a bounded DelegationVerdict with evidence, negative tests, and suite status",
-            "trace verify delegation decisions across inputs, constraints, and failure paths",
-            "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+            "verify a delegated artifact against observable success criteria without implementation context",
+            "inventory verifier capabilities and bind every command to provenance and a fixed-point digest",
+            "run mandatory negative checks, independent replay, and artifact-integrity checks",
+            "distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence",
+            "return a bounded typed DelegationVerdict without transcripts or repair work"
           ],
           "sideEffects": [
-            "write-temp-file"
+            "write-temp-file",
+            "write-verdict-artifact",
+            "emit-redacted-evidence"
           ],
           "path": ".agents/skills/foundation/verify-delegation"
         }
@@ -2373,7 +2378,9 @@
             "analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes",
             "produce and validate a integrations artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-artifact"
+          ],
           "path": ".agents/skills/integrations/auth"
         },
         {
@@ -2426,7 +2433,9 @@
             "analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes",
             "produce and validate a integrations artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-artifact"
+          ],
           "path": ".agents/skills/integrations/payments"
         },
         {
@@ -3427,16 +3436,16 @@
       "skills": [
         {
           "name": "quant-backtest",
-          "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+          "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
           "category": "quant",
-          "version": "2",
+          "version": "3",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
             "apply quant backtest methods within explicit quant boundaries",
-            "analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes",
-            "produce and validate a quant artifact with evidence, decisions, and next steps"
+            "audit data, code, configuration, validation, costs, execution assumptions, and failure modes",
+            "produce and validate a quant artifact with evidence, provenance, hashes, and a bounded verdict"
           ],
           "sideEffects": [],
           "path": ".agents/skills/quant/quant-backtest"
@@ -4128,16 +4137,17 @@
       "skills": [
         {
           "name": "evaluate-skill",
-          "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+          "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
           "category": "skill-dev",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply evaluate skill methods within explicit skill-dev boundaries",
-            "analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes",
-            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+            "evaluate routing, completion, artifact validity, safety, and declared side effects",
+            "run reproducible baseline/candidate experiments with calibrated judges and trace evidence",
+            "detect contamination, reward hacking, evaluator drift, cost/latency regressions, and flaky outcomes",
+            "produce a typed PASS, FAIL, BLOCKED, or NOT-RUN evaluation artifact"
           ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/evaluate-skill"
@@ -4315,34 +4325,40 @@
         },
         {
           "name": "skill-quality-gate",
-          "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
+          "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
           "category": "skill-dev",
-          "version": "2",
+          "version": "3",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
-            "apply skill quality gate methods within explicit skill-dev boundaries",
-            "analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes",
-            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+            "define and execute dependency-aware quality gates within explicit skill-dev scope",
+            "evaluate structural, behavioral, security, agentic, reproducibility, and artifact integrity properties",
+            "compare immutable baselines and emit evidence-backed release decisions"
           ],
           "sideEffects": [],
           "path": ".agents/skills/skill-dev/skill-quality-gate"
         },
         {
           "name": "skill-sandbox",
-          "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+          "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
           "category": "skill-dev",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "high",
+          "trustTier": "4",
           "capabilities": [
-            "apply skill sandbox methods within explicit skill-dev boundaries",
-            "analyze create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle with assumptions, constraints, and failure modes",
-            "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+            "create isolated experimental skill workspaces",
+            "enforce filesystem, network, credential, process, time, and resource boundaries",
+            "run deterministic behavioral and adversarial fixtures with replay evidence",
+            "attest cleanup, sign artifacts, recover from crashes, and recommend promotion"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files",
+            "execute-processes",
+            "network-denied",
+            "create-sandbox"
+          ],
           "path": ".agents/skills/skill-dev/skill-sandbox"
         },
         {
@@ -4575,16 +4591,16 @@
         },
         {
           "name": "web3-smart-contracts",
-          "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+          "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
           "category": "web3",
           "version": "2",
           "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
           "capabilities": [
-            "apply web3 smart contracts methods within explicit web3 boundaries",
-            "analyze design and review smart contracts — security, gas optimization, upgradeability, account abstraction, eip-7702 — with an adversarial review step with assumptions, constraints, and failure modes",
-            "produce and validate a web3 artifact with evidence, decisions, and next steps"
+            "design and review smart contracts within explicit web3 boundaries",
+            "specify invariants, adversarial fixtures, verification plans, and operational controls",
+            "produce a typed web3 artifact with decisions, assumptions, residual risks, and deployment status"
           ],
           "sideEffects": [],
           "path": ".agents/skills/web3/web3-smart-contracts"

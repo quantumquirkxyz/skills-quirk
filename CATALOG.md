@@ -17,7 +17,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [agent-orchestration](.agents/skills/ai/agent-orchestration) | 1 | stable | low | 1 | Design agent orchestration — multi-agent patterns, tool use, memory, handoffs... |
+| [agent-orchestration](.agents/skills/ai/agent-orchestration) | 2 | stable | medium | 3 | Design governed multi-agent workflows with state machines or DAGs, capability... |
 | [ai-ml-pipeline](.agents/skills/ai/ai-ml-pipeline) | 1 | stable | medium | 3 | Design ML pipelines — data ingestion, preprocessing, training, evaluation, de... |
 | [ai-model-evaluation](.agents/skills/ai/ai-model-evaluation) | 1 | stable | medium | 3 | Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, dr... |
 | [ai-prompt-engineering](.agents/skills/ai/ai-prompt-engineering) | 1 | stable | medium | 3 | Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral)... |
@@ -181,11 +181,11 @@
 | [context-compaction](.agents/skills/foundation/context-compaction) | 1 | experimental | low | 2 | Run the context compaction discipline for long agent sessions: summarize the ... |
 | [context-engine](.agents/skills/foundation/context-engine) | 1 | stable | low | 2 | Manage dynamic context for agent execution using retrieval-augmented generati... |
 | [domain-modeling](.agents/skills/foundation/domain-modeling) | 1 | stable | low | 1 | Build and sharpen a project's domain model. Record the execution traceId and ... |
-| [mcp-server](.agents/skills/foundation/mcp-server) | 2 | beta | low | 1 | Define an MCP server that exposes quirk Skills as tools, resources, and promp... |
+| [mcp-server](.agents/skills/foundation/mcp-server) | 3 | beta | low | 1 | Define and harden an MCP server that exposes quirk Skills as least-privilege ... |
 | [observability](.agents/skills/foundation/observability) | 2 | stable | low | 1 | Define the logs, metrics, traces, and alerts needed to understand a system in... |
 | [skill-composition](.agents/skills/foundation/skill-composition) | 1 | experimental | medium | 3 | Compose skills into chains and workflows with explicit contracts: declare the... |
-| [subagent-swarm](.agents/skills/foundation/subagent-swarm) | 1 | stable | medium | 3 | Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester... |
-| [verify-delegation](.agents/skills/foundation/verify-delegation) | 1 | experimental | low | 2 | Blackbox-verify a delegated worker's claim before it is accepted, using the a... |
+| [subagent-swarm](.agents/skills/foundation/subagent-swarm) | 2 | stable | medium | 3 | Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester... |
+| [verify-delegation](.agents/skills/foundation/verify-delegation) | 2 | experimental | medium | 3 | Black-box verify a delegated worker claim from the artifact, fixed-point inpu... |
 
 ### frontend
 
@@ -345,7 +345,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [quant-backtest](.agents/skills/quant/quant-backtest) | 2 | stable | low | 1 | Run a reproducible, leakage-resistant backtest with dataset/code provenance, ... |
+| [quant-backtest](.agents/skills/quant/quant-backtest) | 3 | stable | low | 1 | Run a reproducible, leakage-resistant backtest with point-in-time data, purge... |
 | [quant-credit-risk](.agents/skills/quant/quant-credit-risk) | 1 | stable | low | 1 | Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit Va... |
 | [quant-derivatives-pricing](.agents/skills/quant/quant-derivatives-pricing) | 1 | stable | low | 1 | Price and calibrate derivatives (options, exotics, structured products) — Bla... |
 | [quant-factors](.agents/skills/quant/quant-factors) | 1 | stable | low | 1 | Define, test, and stress-test a quantitative factor (momentum, value, carry, ... |
@@ -404,7 +404,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [evaluate-skill](.agents/skills/skill-dev/evaluate-skill) | 1 | stable | low | 1 | Evaluate a Skill against fixed scenarios for routing, completion, and artifac... |
+| [evaluate-skill](.agents/skills/skill-dev/evaluate-skill) | 2 | stable | low | 1 | Evaluate a Skill with versioned baseline/candidate experiments for routing, c... |
 | [lockfile-maintenance](.agents/skills/skill-dev/lockfile-maintenance) | 1 | stable | low | 2 | Maintain the skills lockfile by detecting missing, stale, extra, or mismatche... |
 | [rule-cataloger](.agents/skills/skill-dev/rule-cataloger) | 1 | stable | low | 2 | Extract and classify rules across Skills by type, frequency, and application ... |
 | [side-effect-auditor](.agents/skills/skill-dev/side-effect-auditor) | 1 | stable | low | 1 | Audit skill side-effect, risk, trust tier, dependency, and boundary metadata ... |
@@ -415,8 +415,8 @@
 | [skill-optimizer](.agents/skills/skill-dev/skill-optimizer) | 1 | experimental | low | 2 | Optimize a quirk Skill's model-facing description against routing fixtures wi... |
 | [skill-performance-metrics](.agents/skills/skill-dev/skill-performance-metrics) | 1 | stable | low | 1 | Summarize Skill execution duration, success rate, and available run evidence ... |
 | [skill-promoter](.agents/skills/skill-dev/skill-promoter) | 1 | stable | medium | 3 | Promote validated experimental skills from the sandbox to the canonical skill... |
-| [skill-quality-gate](.agents/skills/skill-dev/skill-quality-gate) | 2 | stable | low | 1 | Run a reproducible skill-bundle quality gate with manifests, source hashes, d... |
-| [skill-sandbox](.agents/skills/skill-dev/skill-sandbox) | 1 | stable | low | 1 | Create, test, and iterate on experimental skills in an isolated environment w... |
+| [skill-quality-gate](.agents/skills/skill-dev/skill-quality-gate) | 3 | stable | low | 1 | Run a reproducible, composable Skill-bundle quality gate with policy-as-code ... |
+| [skill-sandbox](.agents/skills/skill-dev/skill-sandbox) | 2 | stable | high | 4 | Create, test, and iterate on experimental skills inside a deny-by-default san... |
 | [skill-template-generator](.agents/skills/skill-dev/skill-template-generator) | 1 | stable | low | 2 | Generate an interactive, contract-complete Skill template in the sandbox — us... |
 | [skill-testing-framework](.agents/skills/skill-dev/skill-testing-framework) | 1 | stable | low | 1 | Validate Skill structure, contracts, dependencies, anti-patterns, and isolate... |
 | [skill-tutor](.agents/skills/skill-dev/skill-tutor) | 1 | stable | low | 2 | Interactive tutorial that guides users through creating their first quirk ski... |
@@ -440,7 +440,7 @@
 | [web3-defi](.agents/skills/web3/web3-defi) | 2 | stable | low | 1 | Analyse DeFi protocols — AMMs, lending, stablecoins, derivatives, intents, so... |
 | [web3-governance](.agents/skills/web3/web3-governance) | 2 | stable | low | 1 | Design and audit on-chain and off-chain governance — token voting, delegation... |
 | [web3-l2-scaling](.agents/skills/web3/web3-l2-scaling) | 2 | stable | low | 1 | Analyse Layer-2 scaling solutions — Rollups (optimistic, ZK), validiums, base... |
-| [web3-smart-contracts](.agents/skills/web3/web3-smart-contracts) | 2 | stable | medium | 3 | Design and review smart contracts — security, gas optimization, upgradeabilit... |
+| [web3-smart-contracts](.agents/skills/web3/web3-smart-contracts) | 2 | stable | medium | 3 | Design and review smart contracts with threat modeling, executable invariants... |
 | [web3-tokenomics](.agents/skills/web3/web3-tokenomics) | 2 | stable | low | 1 | Design token economics — supply, emission, incentives, governance, LST/LRT, r... |
 
 ### xr

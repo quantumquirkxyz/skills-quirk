@@ -2,7 +2,7 @@
   "skill": "integrations/auth",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "402aace44be19040ba821f3639a71a4b5a6c4942a6551c5963a3eba18aa63d08",
+  "frontmatterHash": "648b88aece7a358969cbc2ddb15d73cddb0758142d39b205b3151c4d719d2b56",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -26,9 +26,18 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-artifact"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "scope-widening",
+      "impersonation",
+      "account-recovery",
+      "break-glass",
+      "key-rotation",
+      "production-policy-change"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

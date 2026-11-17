@@ -269,7 +269,7 @@ test('subagent-swarm declares the current delegation contract', async () => {
 test('the new skill declares its lock-able identity and schema path', async () => {
   const skill = await fs.readFile(path.join(root, '.agents/skills/foundation/verify-delegation/SKILL.md'), 'utf8');
   const fm = skill.slice(0, skill.indexOf('\n---', 3));
-  for (const field of ['name: "verify-delegation"', 'category: "foundation"', 'artifactType: "agent"', 'risk: "low"', 'trustTier: "2"']) {
+  for (const field of ['name: "verify-delegation"', 'category: "foundation"', 'artifactType: "agent"', 'risk: "medium"', 'trustTier: "3"']) {
     assert.ok(fm.includes(field), `frontmatter must declare ${field}`);
   }
   for (const section of ['## Contract', '## Provenance', '## Artifact', '## Why', '## Rules', '## Workflow', '## Guardrails', '## Completion criteria']) {

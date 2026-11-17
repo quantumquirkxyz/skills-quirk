@@ -1,5 +1,5 @@
 ---
-description: "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity."
+description: "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk."
 globs: []
 alwaysApply: false
 ---
@@ -8,8 +8,9 @@ alwaysApply: false
 Apply the evaluate-skill skill when the request matches its scope.
 
 Capabilities:
-- apply evaluate skill methods within explicit skill-dev boundaries
-- analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes
-- produce and validate a skill-dev artifact with evidence, decisions, and next steps
+- evaluate routing, completion, artifact validity, safety, and declared side effects
+- run reproducible baseline/candidate experiments with calibrated judges and trace evidence
+- detect contamination, reward hacking, evaluator drift, cost/latency regressions, and flaky outcomes
+- produce a typed PASS, FAIL, BLOCKED, or NOT-RUN evaluation artifact
 
-Stop when: Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity complete; artifact saved; completion criteria checked.
+Stop when: The versioned evaluation manifest is validated; required baseline/candidate trials, negative scenarios, judge checks, evidence checks, and thresholds are either completed or explicitly typed BLOCKED/NOT-RUN; artifact is saved and completion criteria checked.

@@ -1,5 +1,5 @@
 name: web3-smart-contracts
-description: "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step."
+description: "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]

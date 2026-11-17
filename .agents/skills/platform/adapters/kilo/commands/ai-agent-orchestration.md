@@ -1,9 +1,9 @@
 ---
-description: "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability."
+description: "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication."
 ---
 # agent-orchestration
 
-When to use: Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.
+When to use: Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.
 
 ## Workflow
 
@@ -19,8 +19,8 @@ When to use: Design agent orchestration — multi-agent patterns, tool use, memo
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
+- risk: medium; trust tier: 3; approval required: no
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Architecture diagram saved; capability matrix complete; handoff contracts defined; evaluation rubric present.
+Stop when: Architecture, state/DAG, capability matrix, approval policy, budgets, handoff contracts, verification rubric, adversarial fixtures, and trace schema are complete and diff-checked.

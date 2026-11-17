@@ -2,7 +2,7 @@
   "skill": "ai/agent-orchestration",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2e5eca488fdef11d846ccaef56703bd363b7151f8fe617aaed48914592516e9f",
+  "frontmatterHash": "e6a8e7cdc555188f3148ccfe75799d0196d77bef46c429f17be0cdee9f65e233",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,7 +10,7 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
+    "defaultAgent": "general",
     "isolation": "none",
     "maxTurns": 6,
     "modelTier": "reasoning",
@@ -18,7 +18,8 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Bash"
       ],
       "deny": []
     }
@@ -27,8 +28,8 @@
     "sideEffects": [],
     "approvalRequired": false,
     "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

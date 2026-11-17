@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","skill":"foundation/verify-delegation","cases":[{"id":"stale-output","expected":"stale","asserts":["fixed-point-digest","no-worker-transcript"]}]}

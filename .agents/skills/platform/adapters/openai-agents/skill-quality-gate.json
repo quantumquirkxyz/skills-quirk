@@ -1,9 +1,9 @@
 {
   "name": "skill-quality-gate",
-  "instructions": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.\n\nCapabilities:\n- apply skill quality gate methods within explicit skill-dev boundaries\n- analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-quality-gate/SKILL.md",
+  "instructions": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.\n\nCapabilities:\n- define and execute dependency-aware quality gates within explicit skill-dev scope\n- evaluate structural, behavioral, security, agentic, reproducibility, and artifact integrity properties\n- compare immutable baselines and emit evidence-backed release decisions\n\nCanonical skill: .agents/skills/skill-dev/skill-quality-gate/SKILL.md",
   "model": "gpt-5",
   "tools": [],
-  "handoff_description": "Scoped validators and replay are executed or explicitly blocked, warnings-as-errors is applied, SARIF/attestation and baseline delta are emitted, and readiness is PASS, FAIL, BLOCKED, or NOT-RUN.",
+  "handoff_description": "Every required gate is terminal or explicitly BLOCKED/NOT-RUN; policy, baseline, replay, artifact integrity, evidence ledger, SARIF, and attestation checks are complete; verdict is fail-closed.",
   "runtime": {
     "role": "workflow",
     "maxTurns": 5,

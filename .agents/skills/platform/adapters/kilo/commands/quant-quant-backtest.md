@@ -1,19 +1,13 @@
 ---
-description: "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
+description: "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
 ---
 # quant-backtest
 
-When to use: Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.
+When to use: Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.
 
 ## Workflow
 
-1. Spec the strategy
-2. Audit the data and fixtures
-3. Run and replay the backtest
-4. Stress tests
-5. Coverage validation
-6. Verdict
-7. Deliver
+1. Read the canonical skill at .agents/skills/quant/quant-backtest/SKILL.md and execute its Process.
 
 ## Deliverables
 
@@ -25,4 +19,4 @@ When to use: Run a reproducible, leakage-resistant backtest with dataset/code pr
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Manifest and hashes are recorded, leakage/survivorship/corporate-action checks and deterministic replay are evaluated, baseline comparison is complete or explicitly not-run, and the verdict is PASS, FAIL, BLOCKED, or NOT-RUN.
+Stop when: Required manifests and hashes are recorded, point-in-time and leakage controls pass, validation and cost assumptions are evidenced, deterministic replay and known-failure fixtures are evaluated, and the verdict is PASS, FAIL, BLOCKED, or NOT-RUN.

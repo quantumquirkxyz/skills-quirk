@@ -11,4 +11,4 @@ Capabilities:
 - analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes
 - produce and validate a integrations artifact with evidence, decisions, and next steps
 
-Stop condition: Payment design complete; flows, webhooks, and reconciliation explicit; PCI and fraud controls named.
+Stop condition: Stop only when each money movement has an authoritative state machine, immutable ledger postings, replay/idempotency strategy, settlement and reconciliation owner, fraud/approval outcome, compensation path, and evidence boundary; stop as blocked on amount/currency mismatch, unverifiable webhook, unresolved ledger discrepancy, unsafe failover, or missing approval.

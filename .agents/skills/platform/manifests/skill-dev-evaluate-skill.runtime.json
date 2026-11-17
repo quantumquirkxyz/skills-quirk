@@ -2,7 +2,7 @@
   "skill": "skill-dev/evaluate-skill",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c64293a6f117a544bcb2768372e007017df268156642497d412dc42ff0391ef8",
+  "frontmatterHash": "d65d179a2a8417acfbb0c46060a3c4f9adb1d69ce924d2b133678d6ca520bb05",
   "role": "workflow",
   "router": {
     "positive": [],

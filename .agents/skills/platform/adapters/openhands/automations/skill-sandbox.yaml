@@ -1,5 +1,5 @@
 name: skill-sandbox
-description: "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle."
+description: "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]
@@ -11,5 +11,5 @@ steps:
     with:
       task: "{{ event.title }}"
 policy:
-  approvalRequired: false
-  sideEffects: []
+  approvalRequired: true
+  sideEffects: [write-files, execute-processes, network-denied, create-sandbox]

@@ -11,4 +11,4 @@ Capabilities:
 - analyze design authentication and authorization as a small, explicit seam — with oauth2/oidc, mfa, passkeys, jwt, session management, and clear caller and operator responsibilities with assumptions, constraints, and failure modes
 - produce and validate a integrations artifact with evidence, decisions, and next steps
 
-Stop condition: Auth design complete; flows documented; security assessment explicit.
+Stop condition: Stop only when every in-scope flow has an owner, state transitions, denial/recovery path, threat controls, conformance fixture, and evidence status; stop as blocked on unverifiable issuer, missing recovery owner, unsafe token binding, or missing approval for a privileged exception.

@@ -1,5 +1,5 @@
 name: agent-orchestration
-description: "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability."
+description: "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]

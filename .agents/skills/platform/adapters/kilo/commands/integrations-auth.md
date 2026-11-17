@@ -14,6 +14,7 @@ When to use: Design authentication and authorization as a small, explicit seam â
 5. MFA and passwordless design
 6. Security assessment
 7. Provider and protocol selection
+8. Modern protocol and recovery controls
 
 ## Deliverables
 
@@ -22,7 +23,7 @@ When to use: Design authentication and authorization as a small, explicit seam â
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
+- side effects: write-artifact
 - isolation: none; model tier: reasoning
 
-Stop when: Auth design complete; flows documented; security assessment explicit.
+Stop when: Stop only when every in-scope flow has an owner, state transitions, denial/recovery path, threat controls, conformance fixture, and evidence status; stop as blocked on unverifiable issuer, missing recovery owner, unsafe token binding, or missing approval for a privileged exception.

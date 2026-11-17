@@ -1,5 +1,5 @@
 name: skill-quality-gate
-description: "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison."
+description: "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]

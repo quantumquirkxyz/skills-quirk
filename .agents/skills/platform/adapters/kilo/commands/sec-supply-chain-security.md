@@ -7,12 +7,14 @@ When to use: Design supply chain security — SBOM, Sigstore, SLSA, provenance, 
 
 ## Workflow
 
-1. Inventory and SBOM policy
-2. Artifact signing
-3. SLSA build tiers
-4. Dependency management
-5. Vulnerability response
-6. Audit and compliance
+1. Scope, trust roots, and threat model
+2. SBOM and VEX contract
+3. Reproducible build and SLSA provenance
+4. Sigstore and attestation enforcement
+5. Dependency and maintainer controls
+6. Model and dataset provenance
+7. Vulnerability, incident, and rollback runbook
+8. Adversarial fixtures and evidence output
 
 ## Deliverables
 

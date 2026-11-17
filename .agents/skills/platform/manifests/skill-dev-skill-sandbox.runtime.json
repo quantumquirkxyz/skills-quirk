@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-sandbox",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "01c7153660e080004f474f9071c6559d923e33b308702076390dfc74128a8974",
+  "frontmatterHash": "7c453267c956130485ae63a45e9a2452b36c82359ff30f72437d4812092d8a3e",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,41 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Bash",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files",
+      "execute-processes",
+      "network-denied",
+      "create-sandbox"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "execute-processes",
+      "network",
+      "credentials",
+      "canonical-paths",
+      "symlinks",
+      "promotion"
+    ],
+    "risk": "high",
+    "trustTier": 4
   },
   "verification": {
     "commands": [

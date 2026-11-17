@@ -1,8 +1,15 @@
 {
-  "id": "subagent-swarm-paired-v1",
+  "id": "subagent-swarm-paired-v2",
   "skill": "foundation/subagent-swarm",
-  "skillVersion": "1",
-  "fixtureVersion": "1",
+  "skillVersion": "2",
+  "fixtureVersion": "2",
+  "scenarios": [
+    {"id": "happy-path", "expectedStatus": "succeeded", "asserts": ["capability-matrix", "signed-handoff", "independent-verifier", "traceId"]},
+    {"id": "refusal-unapproved-effect", "expectedStatus": "awaiting-approval", "asserts": ["least-agency", "named-expiring-approval", "no-side-effect"]},
+    {"id": "crash-resume", "expectedStatus": "resumable", "asserts": ["checkpoint", "new-lease", "reverify-critical-claims", "outcome-unknown-when-commit-uncertain"]},
+    {"id": "duplicate-side-effect", "expectedStatus": "outcome-unknown", "asserts": ["intent-record-before-effect", "idempotency-key", "no-replay"]},
+    {"id": "critical-claim-quarantine", "expectedStatus": "blocked", "asserts": ["signed-output", "hashed-output", "trace-linked", "quarantine-correlated-output"]}
+  ],
   "scenario": "A four-role parallel swarm of architect, implementer, reviewer and tester is launched to close the traceability backlog. The reviewer brief arrives without boundaries or a stop condition, and the tester returns a narrative paragraph with no artifact reference, so the merge must stop rather than fabricate completion.",
   "baseline": "without-skill",
   "trials": 5,
@@ -25,7 +32,10 @@
   "cites": [
     "SUBAGENT-SWARM-1",
     "SUBAGENT-SWARM-2",
-    "SUBAGENT-SWARM-3"
+    "SUBAGENT-SWARM-3",
+    "SUBAGENT-SWARM-4",
+    "SUBAGENT-SWARM-5",
+    "SUBAGENT-SWARM-6"
   ],
   "costBudget": {
     "costUsd": 0.14,
@@ -266,6 +276,41 @@
         },
         "strict": true
       }
+    },
+    {
+      "id": "a10",
+      "type": "deterministic",
+      "category": "process",
+      "check": {"kind": "artifact_contains_all", "values": ["capability", "authority", "signature", "traceId", "checkpoint", "idempotency"], "note": "trust primitive controls"}
+    },
+    {
+      "id": "j4",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Are refusal, crash/resume, and duplicate-side-effect scenarios represented with typed non-success outcomes and no replay of uncertain effects?",
+        "levels": {"pass": "all four scenarios are present and the refusal/crash/duplicate outcomes are explicit", "fail": "a scenario is absent or an uncertain mutation is replayed"},
+        "strict": true
+      }
+    },
+    {
+      "id": "a11",
+      "type": "deterministic",
+      "category": "process",
+      "check": {"kind": "artifact_contains_all", "values": ["capability", "authority", "approval", "intent ledger", "idempotency"], "note": "clause SUBAGENT-SWARM-4: least agency, approval per effect, and retry deduplication are observable"}
+    },
+    {
+      "id": "a12",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {"kind": "artifact_contains_all", "values": ["signed", "hashed", "trace-linked", "quarantine"], "note": "clause SUBAGENT-SWARM-5: critical claims require independent signed, hashed, trace-linked verification and correlated output is quarantined"}
+    },
+    {
+      "id": "a13",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {"kind": "artifact_contains_all", "values": ["crash", "checkpoint", "outcome-unknown", "no-replay"], "note": "clause SUBAGENT-SWARM-6: recovery resumes from a committed checkpoint without replaying an unknown effect"}
     }
   ]
 }

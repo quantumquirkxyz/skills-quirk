@@ -1,9 +1,9 @@
 ---
-description: "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol."
+description: "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol."
 ---
 # mcp-server
 
-When to use: Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.
+When to use: Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.
 
 ## Workflow
 

@@ -47,14 +47,14 @@
     },
     "agent-orchestration": {
       "domain": "ai",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "agent",
       "capabilities": [
         "apply agent orchestration methods within explicit ai boundaries",
         "analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes",
         "produce and validate a ai artifact with evidence, decisions, and next steps"
       ],
-      "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+      "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
       "path": ".agents/skills/ai/agent-orchestration"
     },
     "ai-ml-pipeline": {
@@ -1264,7 +1264,7 @@
         "trace mcp server decisions across inputs, constraints, and failure paths",
         "validate foundation outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
       "path": ".agents/skills/foundation/mcp-server"
     },
     "observability": {
@@ -1307,15 +1307,16 @@
     },
     "verify-delegation": {
       "domain": "foundation",
-      "tier": "2",
+      "tier": "3",
       "artifactType": "agent",
       "capabilities": [
-        "verify a delegated artifact against its success criteria without implementation context",
-        "return a bounded DelegationVerdict with evidence, negative tests, and suite status",
-        "trace verify delegation decisions across inputs, constraints, and failure paths",
-        "validate foundation outcomes with evidence, assumptions, and explicit next steps"
+        "verify a delegated artifact against observable success criteria without implementation context",
+        "inventory verifier capabilities and bind every command to provenance and a fixed-point digest",
+        "run mandatory negative checks, independent replay, and artifact-integrity checks",
+        "distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence",
+        "return a bounded typed DelegationVerdict without transcripts or repair work"
       ],
-      "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+      "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
       "path": ".agents/skills/foundation/verify-delegation"
     },
     "astro": {
@@ -2351,10 +2352,10 @@
       "artifactType": "test-strategy",
       "capabilities": [
         "apply quant backtest methods within explicit quant boundaries",
-        "analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes",
-        "produce and validate a quant artifact with evidence, decisions, and next steps"
+        "audit data, code, configuration, validation, costs, execution assumptions, and failure modes",
+        "produce and validate a quant artifact with evidence, provenance, hashes, and a bounded verdict"
       ],
-      "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+      "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
       "path": ".agents/skills/quant/quant-backtest"
     },
     "quant-credit-risk": {
@@ -2831,11 +2832,12 @@
       "tier": "1",
       "artifactType": "skill-dev",
       "capabilities": [
-        "apply evaluate skill methods within explicit skill-dev boundaries",
-        "analyze evaluate a skill against fixed scenarios for routing, completion, and artifact validity with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "evaluate routing, completion, artifact validity, safety, and declared side effects",
+        "run reproducible baseline/candidate experiments with calibrated judges and trace evidence",
+        "detect contamination, reward hacking, evaluator drift, cost/latency regressions, and flaky outcomes",
+        "produce a typed PASS, FAIL, BLOCKED, or NOT-RUN evaluation artifact"
       ],
-      "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+      "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
       "path": ".agents/skills/skill-dev/evaluate-skill"
     },
     "lockfile-maintenance": {
@@ -2964,23 +2966,24 @@
       "tier": "1",
       "artifactType": "skill-dev",
       "capabilities": [
-        "apply skill quality gate methods within explicit skill-dev boundaries",
-        "analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "define and execute dependency-aware quality gates within explicit skill-dev scope",
+        "evaluate structural, behavioral, security, agentic, reproducibility, and artifact integrity properties",
+        "compare immutable baselines and emit evidence-backed release decisions"
       ],
-      "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
+      "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
       "path": ".agents/skills/skill-dev/skill-quality-gate"
     },
     "skill-sandbox": {
       "domain": "skill-dev",
-      "tier": "1",
+      "tier": "4",
       "artifactType": "skill-dev",
       "capabilities": [
-        "apply skill sandbox methods within explicit skill-dev boundaries",
-        "analyze create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle with assumptions, constraints, and failure modes",
-        "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
+        "create isolated experimental skill workspaces",
+        "enforce filesystem, network, credential, process, time, and resource boundaries",
+        "run deterministic behavioral and adversarial fixtures with replay evidence",
+        "attest cleanup, sign artifacts, recover from crashes, and recommend promotion"
       ],
-      "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+      "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
       "path": ".agents/skills/skill-dev/skill-sandbox"
     },
     "skill-template-generator": {
@@ -3144,11 +3147,11 @@
       "tier": "3",
       "artifactType": "web3",
       "capabilities": [
-        "apply web3 smart contracts methods within explicit web3 boundaries",
-        "analyze design and review smart contracts — security, gas optimization, upgradeability, account abstraction, eip-7702 — with an adversarial review step with assumptions, constraints, and failure modes",
-        "produce and validate a web3 artifact with evidence, decisions, and next steps"
+        "design and review smart contracts within explicit web3 boundaries",
+        "specify invariants, adversarial fixtures, verification plans, and operational controls",
+        "produce a typed web3 artifact with decisions, assumptions, residual risks, and deployment status"
       ],
-      "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+      "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
       "path": ".agents/skills/web3/web3-smart-contracts"
     },
     "web3-tokenomics": {
@@ -3382,8 +3385,8 @@
       "weight": 1
     },
     {
-      "from": "verify-delegation",
-      "to": "subagent-swarm",
+      "from": "subagent-swarm",
+      "to": "agent-observability",
       "type": "depends-on",
       "weight": 1
     },
@@ -3498,6 +3501,18 @@
     {
       "from": "parallel-issue-fleet",
       "to": "ship-subissue",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-sandbox",
+      "to": "skill-creator",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-sandbox",
+      "to": "skill-testing-framework",
       "type": "depends-on",
       "weight": 1
     },
@@ -6232,12 +6247,6 @@
       "weight": 0.111111
     },
     {
-      "from": "agent-card",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.125
-    },
-    {
       "from": "agent-memory",
       "to": "api-design",
       "type": "capability",
@@ -6266,12 +6275,6 @@
       "to": "skill-composition",
       "type": "capability",
       "weight": 0.111111
-    },
-    {
-      "from": "agent-memory",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.125
     },
     {
       "from": "agent-observability",
@@ -6322,12 +6325,6 @@
       "weight": 0.125
     },
     {
-      "from": "api-design",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.142857
-    },
-    {
       "from": "codebase-design",
       "to": "context-compaction",
       "type": "capability",
@@ -6346,12 +6343,6 @@
       "weight": 0.125
     },
     {
-      "from": "codebase-design",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.142857
-    },
-    {
       "from": "context-compaction",
       "to": "mcp-server",
       "type": "capability",
@@ -6362,12 +6353,6 @@
       "to": "skill-composition",
       "type": "capability",
       "weight": 0.111111
-    },
-    {
-      "from": "context-compaction",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.125
     },
     {
       "from": "context-engine",
@@ -6406,22 +6391,10 @@
       "weight": 0.111111
     },
     {
-      "from": "mcp-server",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.125
-    },
-    {
       "from": "observability",
       "to": "subagent-swarm",
       "type": "capability",
       "weight": 0.2
-    },
-    {
-      "from": "skill-composition",
-      "to": "verify-delegation",
-      "type": "capability",
-      "weight": 0.125
     },
     {
       "from": "astro",
@@ -8182,42 +8155,6 @@
       "weight": 0.2
     },
     {
-      "from": "quant-backtest",
-      "to": "quant-credit-risk",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "quant-backtest",
-      "to": "quant-derivatives-pricing",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "quant-backtest",
-      "to": "quant-factors",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "quant-backtest",
-      "to": "quant-market-micro",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "quant-backtest",
-      "to": "quant-portfolio-opt",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "quant-backtest",
-      "to": "quant-risk-modeling",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
       "from": "quant-credit-risk",
       "to": "quant-derivatives-pricing",
       "type": "capability",
@@ -9070,102 +9007,6 @@
       "weight": 0.2
     },
     {
-      "from": "evaluate-skill",
-      "to": "lockfile-maintenance",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "rule-cataloger",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "side-effect-auditor",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-audit",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-creator",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-dependency-graph",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-diff-analyzer",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-performance-metrics",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-promoter",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-template-generator",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-testing-framework",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "skill-tutor",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "workflow-fixture-author",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "evaluate-skill",
-      "to": "writing-great-skills",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
       "from": "lockfile-maintenance",
       "to": "rule-cataloger",
       "type": "capability",
@@ -9215,18 +9056,6 @@
     },
     {
       "from": "lockfile-maintenance",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "lockfile-maintenance",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "lockfile-maintenance",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9299,18 +9128,6 @@
     },
     {
       "from": "rule-cataloger",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "rule-cataloger",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "rule-cataloger",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9377,18 +9194,6 @@
     },
     {
       "from": "side-effect-auditor",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "side-effect-auditor",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "side-effect-auditor",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9449,18 +9254,6 @@
     },
     {
       "from": "skill-audit",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-audit",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-audit",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9515,18 +9308,6 @@
     },
     {
       "from": "skill-creator",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-creator",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-creator",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9575,18 +9356,6 @@
     },
     {
       "from": "skill-dependency-graph",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-dependency-graph",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-dependency-graph",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9629,18 +9398,6 @@
     },
     {
       "from": "skill-diff-analyzer",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-diff-analyzer",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-diff-analyzer",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9677,18 +9434,6 @@
     },
     {
       "from": "skill-performance-metrics",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-performance-metrics",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-performance-metrics",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9719,18 +9464,6 @@
     },
     {
       "from": "skill-promoter",
-      "to": "skill-quality-gate",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-promoter",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-promoter",
       "to": "skill-template-generator",
       "type": "capability",
       "weight": 0.2
@@ -9755,72 +9488,6 @@
     },
     {
       "from": "skill-promoter",
-      "to": "writing-great-skills",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "skill-sandbox",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "skill-template-generator",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "skill-testing-framework",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "skill-tutor",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "workflow-fixture-author",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-quality-gate",
-      "to": "writing-great-skills",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-sandbox",
-      "to": "skill-template-generator",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-sandbox",
-      "to": "skill-testing-framework",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-sandbox",
-      "to": "skill-tutor",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-sandbox",
-      "to": "workflow-fixture-author",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "skill-sandbox",
       "to": "writing-great-skills",
       "type": "capability",
       "weight": 0.2
@@ -9941,12 +9608,6 @@
     },
     {
       "from": "web3-consensus",
-      "to": "web3-smart-contracts",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "web3-consensus",
       "to": "web3-tokenomics",
       "type": "capability",
       "weight": 0.2
@@ -9965,12 +9626,6 @@
     },
     {
       "from": "web3-defi",
-      "to": "web3-smart-contracts",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "web3-defi",
       "to": "web3-tokenomics",
       "type": "capability",
       "weight": 0.2
@@ -9983,30 +9638,12 @@
     },
     {
       "from": "web3-governance",
-      "to": "web3-smart-contracts",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "web3-governance",
       "to": "web3-tokenomics",
       "type": "capability",
       "weight": 0.2
     },
     {
       "from": "web3-l2-scaling",
-      "to": "web3-smart-contracts",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "web3-l2-scaling",
-      "to": "web3-tokenomics",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "web3-smart-contracts",
       "to": "web3-tokenomics",
       "type": "capability",
       "weight": 0.2

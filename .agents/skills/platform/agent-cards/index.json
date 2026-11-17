@@ -1,6 +1,6 @@
 {
   "totalCards": 261,
-  "generatedAt": "2026-11-17T04:53:55.253Z",
+  "generatedAt": "2026-11-17T05:29:22.163Z",
   "cards": [
     {
       "name": "accessibility",
@@ -97,9 +97,9 @@
     },
     {
       "name": "agent-orchestration",
-      "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+      "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/ai/agent-orchestration/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -114,12 +114,12 @@
         {
           "id": "ai/agent-orchestration",
           "name": "agent-orchestration",
-          "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+          "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
           "tags": [
             "\"ai\""
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "reasoning",
             "artifactType": "agent"
           }
@@ -3211,9 +3211,9 @@
     },
     {
       "name": "mcp-server",
-      "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/mcp-server/SKILL.md",
-      "version": "2",
+      "version": "3",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -3228,7 +3228,7 @@
         {
           "id": "foundation/mcp-server",
           "name": "mcp-server",
-          "description": "Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+          "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
           "tags": [
             "foundation"
           ],
@@ -3309,7 +3309,7 @@
       "name": "subagent-swarm",
       "description": "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/subagent-swarm/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -3338,9 +3338,9 @@
     },
     {
       "name": "verify-delegation",
-      "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+      "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/verify-delegation/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -3355,16 +3355,16 @@
         {
           "id": "foundation/verify-delegation",
           "name": "verify-delegation",
-          "description": "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative.",
+          "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
           "tags": [
             "\"foundation\"",
             "\"delegation\"",
             "\"verification\"",
-            "\"subagent\""
+            "\"black-box\"",
+            "\"provenance\""
           ],
           "parameters": {
-            "trustTier": "2",
-            "modelTier": "reasoning",
+            "trustTier": "3",
             "artifactType": "agent"
           }
         }
@@ -5999,9 +5999,9 @@
     },
     {
       "name": "quant-backtest",
-      "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+      "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/quant/quant-backtest/SKILL.md",
-      "version": "2",
+      "version": "3",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -6016,7 +6016,7 @@
         {
           "id": "quant/quant-backtest",
           "name": "quant-backtest",
-          "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+          "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
           "tags": [
             "\"quant\""
           ],
@@ -7225,9 +7225,9 @@
     },
     {
       "name": "evaluate-skill",
-      "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+      "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/evaluate-skill/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -7242,9 +7242,12 @@
         {
           "id": "skill-dev/evaluate-skill",
           "name": "evaluate-skill",
-          "description": "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity.",
+          "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
           "tags": [
-            "\"skill-dev\""
+            "\"skill-dev\"",
+            "\"evaluation\"",
+            "\"reproducibility\"",
+            "\"safety\""
           ],
           "parameters": {
             "trustTier": "1",
@@ -7568,9 +7571,9 @@
     },
     {
       "name": "skill-quality-gate",
-      "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
+      "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/skill-quality-gate/SKILL.md",
-      "version": "2",
+      "version": "3",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -7585,9 +7588,13 @@
         {
           "id": "skill-dev/skill-quality-gate",
           "name": "skill-quality-gate",
-          "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
+          "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
           "tags": [
-            "\"skill-dev\""
+            "\"skill-dev\"",
+            "\"quality-gate\"",
+            "\"policy-as-code\"",
+            "\"security\"",
+            "\"reproducibility\""
           ],
           "parameters": {
             "trustTier": "1",
@@ -7599,9 +7606,9 @@
     },
     {
       "name": "skill-sandbox",
-      "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+      "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/skill-sandbox/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -7616,12 +7623,15 @@
         {
           "id": "skill-dev/skill-sandbox",
           "name": "skill-sandbox",
-          "description": "Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.",
+          "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
           "tags": [
-            "\"skill-dev\""
+            "\"skill-dev\"",
+            "\"sandbox\"",
+            "\"isolation\"",
+            "\"security\""
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "4",
             "modelTier": "reasoning",
             "artifactType": "skill-dev"
           }
@@ -8033,7 +8043,7 @@
     },
     {
       "name": "web3-smart-contracts",
-      "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+      "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/web3/web3-smart-contracts/SKILL.md",
       "version": "2",
       "capabilities": {
@@ -8050,9 +8060,12 @@
         {
           "id": "web3/web3-smart-contracts",
           "name": "web3-smart-contracts",
-          "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+          "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
           "tags": [
-            "\"web3\""
+            "\"web3\"",
+            "\"solidity\"",
+            "\"security\"",
+            "\"verification\""
           ],
           "parameters": {
             "trustTier": "3",

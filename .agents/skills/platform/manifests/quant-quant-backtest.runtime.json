@@ -2,7 +2,7 @@
   "skill": "quant/quant-backtest",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0ecbd1cf292311ba32a3c54dc715591c86ee9b6469250a6a70712f27d356a5cd",
+  "frontmatterHash": "aad315426c30335d705f7325cb8e56809c4ab4fa4a732f024d498f1012d038e1",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,7 +18,9 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "WebFetch",
+        "WebSearch"
       ],
       "deny": []
     }

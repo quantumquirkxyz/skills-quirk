@@ -1,5 +1,5 @@
 ---
-description: "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability."
+description: "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication."
 globs: []
 alwaysApply: false
 ---
@@ -12,4 +12,4 @@ Capabilities:
 - analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes
 - produce and validate a ai artifact with evidence, decisions, and next steps
 
-Stop when: Architecture diagram saved; capability matrix complete; handoff contracts defined; evaluation rubric present.
+Stop when: Architecture, state/DAG, capability matrix, approval policy, budgets, handoff contracts, verification rubric, adversarial fixtures, and trace schema are complete and diff-checked.

@@ -9,5 +9,11 @@
         "doesNotContain": ["## Operating Contract"]
       }
     }
+    ,{
+      "id": "saga-crash-existing-remote-repeated-action",
+      "skill": "publish-open-pr",
+      "type": "behavioral",
+      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "branch protection", "never create a second PR", "checkpoint"]}
+    }
   ]
 }

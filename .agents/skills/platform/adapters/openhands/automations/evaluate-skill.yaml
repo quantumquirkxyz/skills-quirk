@@ -1,5 +1,5 @@
 name: evaluate-skill
-description: "Evaluate a Skill against fixed scenarios for routing, completion, and artifact validity."
+description: "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]

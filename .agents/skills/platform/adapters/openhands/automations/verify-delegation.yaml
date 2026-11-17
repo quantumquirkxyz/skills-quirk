@@ -1,5 +1,5 @@
 name: verify-delegation
-description: "Blackbox-verify a delegated worker's claim before it is accepted, using the artifact, the declared success criteria, and the tools needed to re-check them - never the worker's implementation narrative."
+description: "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]
@@ -12,4 +12,4 @@ steps:
       task: "{{ event.title }}"
 policy:
   approvalRequired: true
-  sideEffects: [write-temp-file]
+  sideEffects: [write-temp-file, write-verdict-artifact, emit-redacted-evidence]

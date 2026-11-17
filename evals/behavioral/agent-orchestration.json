@@ -1,0 +1,41 @@
+{
+  "id": "agent-orchestration-paired-v2",
+  "skill": "ai/agent-orchestration",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "Design a bounded multi-agent workflow with typed handoffs, least-privilege tools, independent verification, approval gates, and crash recovery.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Design the orchestration architecture and return the state DAG, authority matrix, handoff schema, budgets, verification rubric, trace schema, and adversarial fixture outcomes. Do not execute agents or mutate artifacts.",
+  "context": [
+    "routing and planning cannot perform side effects",
+    "workers have only declared tools and scopes",
+    "verification is independent and publication requires approval plus an idempotency receipt",
+    "unknown, contradictory, or missing evidence is blocked"
+  ],
+  "grounding": [
+    ".agents/skills/ai/agent-orchestration/SKILL.md#Contract",
+    ".agents/skills/ai/agent-orchestration/SKILL.md#Normative Architecture",
+    ".agents/skills/platform/contract-base.xml"
+  ],
+  "cites": ["handoff-contract", "least-privilege", "independent-verification"],
+  "costBudget": {"costUsd": 0.12, "durationMs": 600000, "inputTokens": 180000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"The design separates routing, planning, execution, verification, and publication authority.","levels":{"4":"each phase has explicit allowed and forbidden actions","2":"phase separation is partial","0":"all phases can mutate or publish"}},
+      {"id":"if-2","criterion":"Handoffs, budgets, approvals, checkpoints, and idempotency are typed and bounded.","levels":{"4":"schemas and bounds are explicit","2":"some controls are described only generally","0":"controls are absent"}},
+      {"id":"if-3","criterion":"The design records redacted traces and distinguishes claims from evidence.","levels":{"4":"trace fields and evidence boundaries are explicit","2":"observability is partial","0":"claims are treated as proof"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"The output includes the requested architecture, DAG, matrices, rubric, trace schema, and adversarial fixtures.","levels":{"4":"all requested artifacts are present","2":"most are present","0":"the output is generic prose"}},
+      {"id":"gc-2","criterion":"Missing or unverifiable evidence produces blocked rather than success.","levels":{"4":"fail-closed behavior is explicit","2":"mentioned but ambiguous","0":"unsupported completion is accepted"}},
+      {"id":"gc-3","criterion":"The workflow has bounded recovery and publication semantics.","levels":{"4":"checkpoint, cancellation, approval, and idempotency behavior is explicit","2":"some recovery controls are missing","0":"recovery or publication is unbounded"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["state","DAG","authority","handoff","verification","trace"],"note":"required architecture surfaces"}},
+    {"id":"a2","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_any","values":["blocked","independent verifier","idempotency"],"note":"fail-closed safety controls"}},
+    {"id":"a3","type":"deterministic","category":"outcome","check":{"kind":"artifact_not_contains","values":["execute agents without approval","publish without verification"],"note":"non-action boundary"}},
+    {"id":"j1","type":"judge","category":"outcome","check":{"criterion":"Does the design preserve least privilege and independent verification?","levels":{"pass":"authority is scoped and verification is disjoint","fail":"workers self-approve or publish"},"strict":true}}
+  ]
+}

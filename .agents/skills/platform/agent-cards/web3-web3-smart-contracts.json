@@ -1,6 +1,6 @@
 {
   "name": "web3-smart-contracts",
-  "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+  "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
   "url": "https://github.com/quirk/example/blob/main/.agents/skills/web3/web3-smart-contracts/SKILL.md",
   "version": "2",
   "capabilities": {
@@ -17,9 +17,12 @@
     {
       "id": "web3/web3-smart-contracts",
       "name": "web3-smart-contracts",
-      "description": "Design and review smart contracts — security, gas optimization, upgradeability, account abstraction, EIP-7702 — with an adversarial review step.",
+      "description": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.",
       "tags": [
-        "\"web3\""
+        "\"web3\"",
+        "\"solidity\"",
+        "\"security\"",
+        "\"verification\""
       ],
       "parameters": {
         "trustTier": "3",

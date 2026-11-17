@@ -1,8 +1,8 @@
 {
   "name": "agent-orchestration",
-  "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+  "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
   "url": "https://github.com/quirk/example/blob/main/.agents/skills/ai/agent-orchestration/SKILL.md",
-  "version": "1",
+  "version": "2",
   "capabilities": {
     "skillInvocation": true,
     "artifactProduction": true,
@@ -17,12 +17,12 @@
     {
       "id": "ai/agent-orchestration",
       "name": "agent-orchestration",
-      "description": "Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.",
+      "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
       "tags": [
         "\"ai\""
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
         "artifactType": "agent"
       }

@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "description": "Adversarial sandbox contract fixtures; all fixture content is untrusted data.",
+  "cases": [
+    {"id":"path-escape","expect":"FAIL","assert":["path traversal is denied","symlink escape is denied","no outside mutation"]},
+    {"id":"subprocess","expect":"FAIL","assert":["undeclared process is denied","child process is absent after teardown"]},
+    {"id":"network","expect":"FAIL","assert":["egress is denied by default","no request reaches the network"]},
+    {"id":"secret-access","expect":"FAIL","assert":["credential and host-secret reads are denied","no secret value appears in artifacts"]},
+    {"id":"timeout","expect":"FAIL","assert":["wall-clock timeout is enforced","process group is terminated","state is recoverable"]},
+    {"id":"cleanup-failure","expect":"BLOCKED","assert":["failed cleanup is attested","promotion is withheld","recovery is required"]}
+  ]
+}

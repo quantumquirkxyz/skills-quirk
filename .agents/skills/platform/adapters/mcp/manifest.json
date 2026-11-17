@@ -49,7 +49,7 @@
     },
     {
       "skill": "ai/agent-orchestration",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -1491,7 +1491,7 @@
     },
     {
       "skill": "foundation/verify-delegation",
-      "trustTier": 2,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -3397,7 +3397,7 @@
     },
     {
       "skill": "skill-dev/skill-sandbox",
-      "trustTier": 1,
+      "trustTier": 4,
       "tools": [
         "get_skill"
       ],
@@ -3407,7 +3407,8 @@
       "prompts": [
         "use_skill"
       ],
-      "exposed": true
+      "exposed": false,
+      "reason": "trustTier>3"
     },
     {
       "skill": "skill-dev/skill-template-generator",

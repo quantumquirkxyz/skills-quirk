@@ -10,12 +10,31 @@
        before an interrupt must be safe to re-run. Ledger implementation:
        platform/idempotency.mjs (.scratch/intents/<key>.json). -->
   <idempotency>
-    Every skill that mutates external state (issue, pull request, merge,
-    label, comment) MUST record its intent before executing the effect and
-    MUST check the prior intent after a retry: when the outcome is unknown,
-    report "outcome unknown" and never silently re-execute. Side effects
-    performed before an interrupt or pause must be safe to re-run.
+    Every skill that mutates external state MUST create one globally unique
+    operationId and record an intent before executing each effect. The intent
+    includes operationId, effect name, remote identity, fixed-point/revision
+    fence, approval token, and checkpoint. Retries MUST reconcile the remote
+    state by those fields before executing; an unknown outcome is a first-class
+    state and MUST NOT be silently re-executed. Existing matching state is
+    adopted; duplicate PRs, comments, merges, closes, pushes, and updates are
+    forbidden. Side effects before an interrupt or pause must be safe to
+    resume from their last checkpoint.
   </idempotency>
+  <saga>
+    Mutating workflows are sagas: plan -> preflight -> effect -> reconcile ->
+    commit-checkpoint, with a checkpoint before and after every effect. Each
+    effect has separate approval, bounded compensation, and rollback evidence.
+    Compensation may undo only effects owned by this operation and is never
+    assumed successful without remote evidence. A dryRun may plan and
+    reconcile but cannot mutate. A revision fence mismatch, protected-branch
+    violation, stale review, or missing approval stops the saga.
+  </saga>
+  <budgets>
+    Aggregate caller budget takes precedence over skill and retry budgets;
+    attempts, remote mutations, comments, PRs, wall time, and compensation
+    are counted globally across resumes. Exhaustion returns budget-exceeded
+    with the last checkpoint and reconciliation evidence.
+  </budgets>
   <dependencies>{{dependencies}}</dependencies>
   <stop-condition>{{stopCondition}}</stop-condition>
   <risk>{{risk}}</risk>
