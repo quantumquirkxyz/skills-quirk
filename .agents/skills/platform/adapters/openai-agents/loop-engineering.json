@@ -1,0 +1,16 @@
+{
+  "name": "loop-engineering",
+  "instructions": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.\n\nCapabilities:\n- declare loop budgets and termination contracts up front\n- detect progress, degeneration, and ping-pong across iterations\n- verify loop outcomes outside the model with typed evidence\n- escalate via a structured nudge taxonomy on blocker detection\n- emit a LoopEngineeringVerdict artifact as JSON + Markdown\n\nCanonical skill: .agents/skills/loop/loop-engineering/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Loop terminated with typed verdict; progress measure confirmed or blocker escalated",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 5,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

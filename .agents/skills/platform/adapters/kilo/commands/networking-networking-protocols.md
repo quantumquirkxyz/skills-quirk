@@ -16,7 +16,7 @@ When to use: Analyze network protocols — packet formats, handshakes, congestio
 
 ## Deliverables
 
-- pull-request artifact
+- networking artifact
 
 ## Guardrails
 

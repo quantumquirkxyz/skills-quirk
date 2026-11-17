@@ -1,6 +1,6 @@
 ---
 name: quant-backtest
-description: "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust."
+description: "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
 tools: Read, Grep, Glob
 model: opus
 ---
@@ -11,4 +11,4 @@ Capabilities:
 - analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes
 - produce and validate a quant artifact with evidence, decisions, and next steps
 
-Stop condition: Audit report complete with strategy spec, data audit, statistics, stress tests, and verdict.
+Stop condition: Manifest and hashes are recorded, leakage/survivorship/corporate-action checks and deterministic replay are evaluated, baseline comparison is complete or explicitly not-run, and the verdict is PASS, FAIL, BLOCKED, or NOT-RUN.

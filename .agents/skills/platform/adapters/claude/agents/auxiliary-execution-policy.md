@@ -9,6 +9,6 @@ You are the execution-policy skill (auxiliary domain) from the quirk skills bund
 Capabilities:
 - apply execution policy methods within explicit auxiliary boundaries
 - analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes
-- produce and validate a auxiliary artifact with evidence, decisions, and next steps
+- produce and validate an auxiliary artifact with evidence, decisions, and next steps
 
 Stop condition: The action is allowed or blocked with reason, approval requirement is clear, and rollback is named.

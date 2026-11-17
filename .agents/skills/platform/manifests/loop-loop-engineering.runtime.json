@@ -1,0 +1,50 @@
+{
+  "skill": "loop/loop-engineering",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "c2be7ed3bd0b42f005c11bd1e54c05077e4207bfe25287dc21a9d9524af14569",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 5,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-temp-file"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-temp-file"
+    ],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

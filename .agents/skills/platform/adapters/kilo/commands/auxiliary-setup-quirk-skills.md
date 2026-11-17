@@ -19,7 +19,7 @@ When to use: Configure this repo for the engineering skills — set up its issue
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
-- isolation: none; model tier: reasoning
+- side effects: write-files, write-temp-file, write-generated-projections
+- isolation: worktree; model tier: reasoning
 
 Stop when: The repo-specific skill configuration is written and consistent.

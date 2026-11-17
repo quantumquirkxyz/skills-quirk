@@ -2,7 +2,7 @@
   "skill": "foundation/context-engine",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "1e93c7575600e34d9944012a9af3a699a95df58244d3769a5345f0f9e13765cc",
+  "frontmatterHash": "c82fcf369a52609eee4006f8a9e3b7fbff9082c695be48a26369081f84837f32",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,22 +11,28 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 5,
     "modelTier": "fast",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "low",
     "trustTier": 2
   },

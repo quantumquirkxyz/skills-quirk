@@ -11,4 +11,4 @@ Capabilities:
 - analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Shape Next complete; artifact saved; completion criteria checked.
+Stop condition: Next route, RSC/streaming, auth/CSRF, cache seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked.

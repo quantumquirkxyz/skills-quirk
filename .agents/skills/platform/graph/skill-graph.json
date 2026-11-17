@@ -208,7 +208,7 @@
       "capabilities": [
         "apply execution policy methods within explicit auxiliary boundaries",
         "analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+        "produce and validate an auxiliary artifact with evidence, decisions, and next steps"
       ],
       "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
       "path": ".agents/skills/auxiliary/execution-policy"
@@ -765,7 +765,7 @@
         "analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes",
         "produce and validate a delivery artifact with evidence, decisions, and next steps"
       ],
-      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+      "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
       "path": ".agents/skills/delivery/implement-review-fixes"
     },
     "implement": {
@@ -869,7 +869,7 @@
     },
     "tdd": {
       "domain": "delivery",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "implementation",
       "capabilities": [
         "produce tdd artifact",
@@ -1061,6 +1061,19 @@
       "description": "Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.",
       "path": ".agents/skills/docs/docs-technical-writing"
     },
+    "agent-native-engineering": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "engineering-assessment",
+      "capabilities": [
+        "assess spec literacy of incoming work before any implementation begins",
+        "engineer context packs for parallel agent execution",
+        "design and supervise multi-agent orchestration plans",
+        "own quality gates from line-by-line diff review to final validation"
+      ],
+      "description": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.",
+      "path": ".agents/skills/engineering/agent-native-engineering"
+    },
     "improve-codebase-architecture": {
       "domain": "engineering",
       "tier": "2",
@@ -1073,6 +1086,20 @@
       ],
       "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
       "path": ".agents/skills/engineering/improve-codebase-architecture"
+    },
+    "software-factory": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "factory-design",
+      "capabilities": [
+        "design a software factory where a foreman agent orchestrates code-writing agents between a human and the factory",
+        "separate validator agent from the code-writer so the machine never reviews its own output",
+        "select a different-model critic to independently assess factory behavior against a quality bar",
+        "wire MCP connections and observability views with context window management",
+        "tune convergence rules and decide when an agent acts, checks, escalates, or hands back"
+      ],
+      "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+      "path": ".agents/skills/engineering/software-factory"
     },
     "finance-corporate-val": {
       "domain": "finance",
@@ -1412,6 +1439,34 @@
       "description": "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens).",
       "path": ".agents/skills/frontend/styling"
     },
+    "graph-skill-routing": {
+      "domain": "graph",
+      "tier": "2",
+      "artifactType": "graph-routing",
+      "capabilities": [
+        "expand the prerequisite closure of root skills through declared dependency edges up to a depth limit",
+        "compute overlap-based edge weights between skills from shared prerequisites, artifacts, and tags",
+        "topologically order skills into a dependency-respecting execution sequence using Kahn's algorithm seeded by reverse Personalized PageRank",
+        "verify acyclicity of the skill subgraph and surface cycles as blockers",
+        "emit a RoutingResult with ordered skill list, closure, dependency edges, and confidence"
+      ],
+      "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+      "path": ".agents/skills/graph/graph-skill-routing"
+    },
+    "skill-graph-engineering": {
+      "domain": "graph",
+      "tier": "2",
+      "artifactType": "skill-graph",
+      "capabilities": [
+        "construct a typed SkillGraph from a skill registry, dependency declarations, and a goal specification",
+        "classify edges as dependency, workflow, semantic, or alternative, each with a state/data/order role",
+        "compile a typed graph into an executable DAG with verified acyclicity, reachability, and goal completeness",
+        "apply local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) bounded to the affected subgraph",
+        "emit a SkillGraph artifact as JSON plus a Markdown summary with a repair plan and executability verdict"
+      ],
+      "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+      "path": ".agents/skills/graph/skill-graph-engineering"
+    },
     "brand-identity": {
       "domain": "graphic-design",
       "tier": "1",
@@ -1654,6 +1709,34 @@
       "description": "Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.",
       "path": ".agents/skills/iot/iot-embedded"
     },
+    "loop-engineering": {
+      "domain": "loop",
+      "tier": "2",
+      "artifactType": "loop-engineering",
+      "capabilities": [
+        "declare loop budgets and termination contracts up front",
+        "detect progress, degeneration, and ping-pong across iterations",
+        "verify loop outcomes outside the model with typed evidence",
+        "escalate via a structured nudge taxonomy on blocker detection",
+        "emit a LoopEngineeringVerdict artifact as JSON + Markdown"
+      ],
+      "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+      "path": ".agents/skills/loop/loop-engineering"
+    },
+    "retry-backoff": {
+      "domain": "loop",
+      "tier": "2",
+      "artifactType": "retry-backoff",
+      "capabilities": [
+        "Exponential backoff with jitter for transient tool failures",
+        "Idempotency keys for write-like agent actions",
+        "Circuit breaker state machine (closed/open/half-open)",
+        "Retry decision table keyed by error type, status, and action kind",
+        "RetryDecision artifact emitted as JSON + Markdown"
+      ],
+      "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+      "path": ".agents/skills/loop/retry-backoff"
+    },
     "math-computation-reproducible": {
       "domain": "math",
       "tier": "1",
@@ -1813,7 +1896,7 @@
     "networking-protocols": {
       "domain": "networking",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "networking",
       "capabilities": [
         "apply networking protocols methods within explicit networking boundaries",
         "analyze analyze network protocols — packet formats, handshakes, congestion control, routing, and transport behavior — with explicit timing and failure assumptions with assumptions, constraints, and failure modes",
@@ -2138,7 +2221,7 @@
     "make-project": {
       "domain": "project",
       "tier": "3",
-      "artifactType": "pull-request",
+      "artifactType": "project",
       "capabilities": [
         "apply make project methods within explicit project boundaries",
         "analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes",
@@ -2150,7 +2233,7 @@
     "project-development": {
       "domain": "project",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "project-assessment",
       "capabilities": [
         "apply project development methods within explicit project boundaries",
         "analyze evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins with assumptions, constraints, and failure modes",
@@ -2162,7 +2245,7 @@
     "project-viability": {
       "domain": "project",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "project-viability",
       "capabilities": [
         "evaluate functional, architectural, and growth risks",
         "consume repository audit findings",
@@ -2259,7 +2342,7 @@
         "analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes",
         "produce and validate a qa artifact with evidence, decisions, and next steps"
       ],
-      "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+      "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
       "path": ".agents/skills/qa/qa-security-testing"
     },
     "quant-backtest": {
@@ -2271,7 +2354,7 @@
         "analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes",
         "produce and validate a quant artifact with evidence, decisions, and next steps"
       ],
-      "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+      "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
       "path": ".agents/skills/quant/quant-backtest"
     },
     "quant-credit-risk": {
@@ -2289,7 +2372,7 @@
     "quant-derivatives-pricing": {
       "domain": "quant",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "quant",
       "capabilities": [
         "apply quant derivatives pricing methods within explicit quant boundaries",
         "analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes",
@@ -2885,7 +2968,7 @@
         "analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes",
         "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
       ],
-      "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
+      "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
       "path": ".agents/skills/skill-dev/skill-quality-gate"
     },
     "skill-sandbox": {
@@ -2939,7 +3022,7 @@
     "workflow-fixture-author": {
       "domain": "skill-dev",
       "tier": "2",
-      "artifactType": "authentication",
+      "artifactType": "skill-dev-fixture",
       "capabilities": [
         "apply workflow fixture author methods within explicit skill-dev boundaries",
         "analyze author deterministic scenario and behavioral fixtures for skills so routing, contracts, outputs, side effects, and refusal boundaries can be tested before promotion with assumptions, constraints, and failure modes",
@@ -2987,7 +3070,7 @@
     "ux-prototyping": {
       "domain": "ux",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "ux",
       "capabilities": [
         "apply ux prototyping methods within explicit ux boundaries",
         "analyze prototype user experiences — wireframes, interactive mockups, and rapid validation — with explicit experiment goals and iteration criteria with assumptions, constraints, and failure modes",
@@ -3119,6 +3202,96 @@
   },
   "edges": [
     {
+      "from": "implement-review-fixes",
+      "to": "plan-review-fixes",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "implement-review-fixes",
+      "to": "implement",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "implement-review-fixes",
+      "to": "review-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "implement-review-fixes",
+      "to": "resolving-merge-conflicts",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "implement",
+      "to": "tdd",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "review-fix-loop",
+      "to": "review-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "review-fix-loop",
+      "to": "plan-review-fixes",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "review-fix-loop",
+      "to": "implement-review-fixes",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-native-engineering",
+      "to": "spec-driven-development",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-native-engineering",
+      "to": "to-tickets",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-native-engineering",
+      "to": "implement",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "agent-native-engineering",
+      "to": "review-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-factory",
+      "to": "agent-native-engineering",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-factory",
+      "to": "mcp-server",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-factory",
+      "to": "agent-observability",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "agent-memory",
       "to": "context-pack",
       "type": "depends-on",
@@ -3161,6 +3334,24 @@
       "weight": 1
     },
     {
+      "from": "context-engine",
+      "to": "context-pack",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "context-engine",
+      "to": "agent-memory",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "context-engine",
+      "to": "agent-observability",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "skill-composition",
       "to": "artifact-handoff",
       "type": "depends-on",
@@ -3185,8 +3376,38 @@
       "weight": 1
     },
     {
+      "from": "subagent-swarm",
+      "to": "verify-delegation",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "verify-delegation",
       "to": "subagent-swarm",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "graph-skill-routing",
+      "to": "skill-graph-engineering",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "graph-skill-routing",
+      "to": "capability-router",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-graph-engineering",
+      "to": "skill-dependency-graph",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "skill-graph-engineering",
+      "to": "skill-composition",
       "type": "depends-on",
       "weight": 1
     },
@@ -3199,6 +3420,12 @@
     {
       "from": "browser-automation",
       "to": "qa-security-testing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "retry-backoff",
+      "to": "loop-budget",
       "type": "depends-on",
       "weight": 1
     },
@@ -3235,6 +3462,12 @@
     {
       "from": "spec-driven-development",
       "to": "docs-adrs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ask-to",
+      "to": "context-pack",
       "type": "depends-on",
       "weight": 1
     },
@@ -3401,6 +3634,18 @@
       "weight": 0.4
     },
     {
+      "from": "agent-native-engineering",
+      "to": "software-factory",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "agent-native-engineering",
+      "to": "spec-driven-development",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "improve-codebase-architecture",
       "to": "code-review",
       "type": "compatible",
@@ -3421,6 +3666,18 @@
     {
       "from": "improve-codebase-architecture",
       "to": "grill-me",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-factory",
+      "to": "agent-native-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-factory",
+      "to": "mcp-server",
       "type": "compatible",
       "weight": 0.4
     },
@@ -3505,6 +3762,60 @@
     {
       "from": "frontend-design",
       "to": "accessibility-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "graph-skill-routing",
+      "to": "capability-router",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "graph-skill-routing",
+      "to": "skill-graph-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "skill-graph-engineering",
+      "to": "graph-skill-routing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "loop-engineering",
+      "to": "loop-budget",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "loop-engineering",
+      "to": "implement",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "loop-engineering",
+      "to": "review-fix-loop",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "retry-backoff",
+      "to": "loop-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "retry-backoff",
+      "to": "implement",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "retry-backoff",
+      "to": "review-fix-loop",
       "type": "compatible",
       "weight": 0.4
     },
@@ -3649,6 +3960,12 @@
     {
       "from": "ask-to",
       "to": "observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "ask-to",
+      "to": "work-item-router",
       "type": "compatible",
       "weight": 0.4
     },
@@ -3835,6 +4152,12 @@
     {
       "from": "improve-codebase-architecture",
       "to": "grill-me",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "capability-router",
+      "to": "react",
       "type": "handoff",
       "weight": 0.8
     },
@@ -4333,24 +4656,6 @@
     {
       "from": "rag-pipeline",
       "to": "structured-output",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "execution-policy",
-      "to": "integration-playground",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "execution-policy",
-      "to": "interactive-tutorial-builder",
-      "type": "capability",
-      "weight": 0.2
-    },
-    {
-      "from": "execution-policy",
-      "to": "setup-quirk-skills",
       "type": "capability",
       "weight": 0.2
     },

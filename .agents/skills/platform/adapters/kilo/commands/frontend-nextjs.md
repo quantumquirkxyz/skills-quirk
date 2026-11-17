@@ -22,4 +22,4 @@ When to use: Shape Next.js projects around routes, server/client seams, and data
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Shape Next complete; artifact saved; completion criteria checked.
+Stop when: Next route, RSC/streaming, auth/CSRF, cache seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked.

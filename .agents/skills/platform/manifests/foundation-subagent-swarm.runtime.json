@@ -2,7 +2,7 @@
   "skill": "foundation/subagent-swarm",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "862e1e98729cde40c897458ccb2df35bdbb7fd87ef00ba445efe0d6985371206",
+  "frontmatterHash": "7fd55939a7d1acc5ded1db506e7eca5a6afa43669eb1504f91fd3dd266fbe1e7",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -24,9 +24,14 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files (orchestrator-owned swarm artifact only)",
+      "write-temp-file (bounded role-result references, when needed)"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

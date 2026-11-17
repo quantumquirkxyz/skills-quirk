@@ -19,10 +19,10 @@
       "name": "agent-card",
       "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
       "tags": [
-        "agent-card",
-        "a2a",
-        "discovery",
-        "metadata"
+        "\"agent-card\"",
+        "\"a2a\"",
+        "\"discovery\"",
+        "\"metadata\""
       ],
       "parameters": {
         "trustTier": "1",

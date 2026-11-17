@@ -22,7 +22,7 @@ When to use: Coordinate multiple agent sub-roles (architect, implementer, review
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
+- side effects: write-files (orchestrator-owned swarm artifact only), write-temp-file (bounded role-result references, when needed)
 - isolation: none; model tier: reasoning
 
-Stop when: All roles completed with valid evidence, conflicts resolved, and merged output validated.
+Stop when: All roles completed with valid evidence, conflicts resolved, and merged output validated; otherwise return a typed non-completed status.

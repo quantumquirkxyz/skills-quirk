@@ -11,4 +11,4 @@ Capabilities:
 - analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes
 - produce and validate a foundation artifact with evidence, decisions, and next steps
 
-Stop condition: All roles completed with valid evidence, conflicts resolved, and merged output validated.
+Stop condition: All roles completed with valid evidence, conflicts resolved, and merged output validated; otherwise return a typed non-completed status.

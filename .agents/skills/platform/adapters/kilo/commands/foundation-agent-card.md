@@ -8,7 +8,7 @@ When to use: Generates and maintains Agent Cards for A2A (Agent-to-Agent) discov
 ## Workflow
 
 1. Read skill frontmatter from `.agents/skills/{category}/{skill}/SKILL.md`
-2. Validate the extracted metadata against `agent-card-schema.json`
+2. Validate the extracted metadata against the inline JSON schema defined in this skill body
 3. Emit AgentCard JSON to `.agents/skills/platform/agent-cards/{category}-{skill}.json`
 4. Update `index.json` in the same directory
 5. When the card leaves the repository, regenerate and sign the corpus with `--sign`, and record the key id alongside the release notes

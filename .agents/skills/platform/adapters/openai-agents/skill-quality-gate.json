@@ -1,9 +1,9 @@
 {
   "name": "skill-quality-gate",
-  "instructions": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.\n\nCapabilities:\n- apply skill quality gate methods within explicit skill-dev boundaries\n- analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-quality-gate/SKILL.md",
+  "instructions": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.\n\nCapabilities:\n- apply skill quality gate methods within explicit skill-dev boundaries\n- analyze run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication with assumptions, constraints, and failure modes\n- produce and validate a skill-dev artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/skill-dev/skill-quality-gate/SKILL.md",
   "model": "gpt-5",
   "tools": [],
-  "handoff_description": "Quality gate commands are executed or blocked with reasons, findings are separated into blockers and warnings, and release readiness is stated.",
+  "handoff_description": "Scoped validators and replay are executed or explicitly blocked, warnings-as-errors is applied, SARIF/attestation and baseline delta are emitted, and readiness is PASS, FAIL, BLOCKED, or NOT-RUN.",
   "runtime": {
     "role": "workflow",
     "maxTurns": 5,

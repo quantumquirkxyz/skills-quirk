@@ -1,0 +1,46 @@
+{
+  "skill": "loop/retry-backoff",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "971c056eb41fcb6dfbc469468ac81343362414d8b10ad1f011cc2a56e62243e4",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 3,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

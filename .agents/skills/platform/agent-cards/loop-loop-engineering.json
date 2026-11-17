@@ -1,0 +1,35 @@
+{
+  "name": "loop-engineering",
+  "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+  "url": "https://github.com/quirk/example/blob/main/.agents/skills/loop/loop-engineering/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "loop/loop-engineering",
+      "name": "loop-engineering",
+      "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+      "tags": [
+        "\"loop\"",
+        "\"loop-engineering\"",
+        "\"bounded-loop\"",
+        "\"agent-engineering\"",
+        "\"termination\""
+      ],
+      "parameters": {
+        "trustTier": "2",
+        "modelTier": "reasoning",
+        "artifactType": "loop-engineering"
+      }
+    }
+  ]
+}

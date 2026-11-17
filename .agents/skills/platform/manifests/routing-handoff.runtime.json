@@ -2,7 +2,7 @@
   "skill": "routing/handoff",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "5b0e6a85dd7ee05fbc68731c4101fe097cce000c5e5888723b9af0049c3f4afd",
+  "frontmatterHash": "a1afdf75cd1bad75a210a8a8a9b53378f18d0d5df83e33887343b064470d9765",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,25 +11,29 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "router",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
     "sideEffects": [
-      "write-temp-file"
+      "write-temp-file",
+      "write-files"
     ],
     "approvalRequired": true,
     "approvalFor": [
-      "write-temp-file"
+      "write-temp-file",
+      "write-files"
     ],
     "risk": "low",
     "trustTier": 2

@@ -19,7 +19,7 @@ When to use: Audit the Skills bundle, lockfile, symlink parity, and contract dri
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
+- risk: low; trust tier: 1; approval required: yes
 - side effects: write-files
 - isolation: worktree; model tier: reasoning
 

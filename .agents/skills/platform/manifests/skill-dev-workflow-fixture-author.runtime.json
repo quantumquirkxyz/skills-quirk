@@ -2,7 +2,7 @@
   "skill": "skill-dev/workflow-fixture-author",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "1bd778d78dc2b24bc697870197dc5d3688ec1cf083d00a68f02defda7ccc2d2f",
+  "frontmatterHash": "0ae564482a4089a940abb7b256f8c90754e0188bc8e439acd07a52eeb563f157",
   "role": "workflow",
   "router": {
     "positive": [],

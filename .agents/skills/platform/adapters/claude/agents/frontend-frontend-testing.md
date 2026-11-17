@@ -11,4 +11,4 @@ Capabilities:
 - analyze frontend testing (vitest, testing library, playwright, visual testing, storybook) with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Frontend testing design complete; artifact saved; completion criteria checked.
+Stop condition: Test tiers, deterministic fixtures, browser matrix, a11y/visual checks, budgets, and stop conditions are explicit; artifact saved; completion criteria checked.

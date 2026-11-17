@@ -25,4 +25,4 @@ When to use: Shape mobile projects around device constraints, platform seams, of
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Mobile design complete; offline and notification behavior explicit; platform trade-offs named.
+Stop when: Mobile targets, offline/sync, auth/privacy, passkeys, OTA recovery, fixtures, budgets, and platform trade-offs are explicit; artifact saved; completion criteria checked.

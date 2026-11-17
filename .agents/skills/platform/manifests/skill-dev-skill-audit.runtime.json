@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-audit",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "6b10dd81a598aaf04b0275b942643a5b3b5bc01c4e8190facdaa55ffbc0f8788",
+  "frontmatterHash": "2a1ede56c8d0f0f4f8f015e05668aab0f67708e66a4d0910a92b9775beb2b76b",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,8 +29,10 @@
     "sideEffects": [
       "write-files"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "low",
     "trustTier": 1
   },

@@ -24,7 +24,7 @@
       "parameters": {
         "trustTier": "1",
         "modelTier": "reasoning",
-        "artifactType": "pull-request"
+        "artifactType": "project-viability"
       }
     }
   ]

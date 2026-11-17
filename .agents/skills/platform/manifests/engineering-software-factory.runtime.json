@@ -1,0 +1,50 @@
+{
+  "skill": "engineering/software-factory",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "5b4edeb9b078d3de0f2b497dc2fc9891edc4d2ed51889f192ab6ac4bda43816c",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 5,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Edit",
+        "Write"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

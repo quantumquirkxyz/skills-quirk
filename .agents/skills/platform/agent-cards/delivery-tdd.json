@@ -25,7 +25,7 @@
         "implementation"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "code",
         "artifactType": "implementation"
       }

@@ -22,4 +22,4 @@ When to use: Shape frontend work into a clear visual system, interaction model, 
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked.
+Stop when: Visual system, interaction seams, fallback states, fixtures, compatibility targets, and budgets are explicit; artifact saved; completion criteria checked.

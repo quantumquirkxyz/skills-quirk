@@ -23,4 +23,4 @@ When to use: Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Styling design complete; artifact saved; completion criteria checked.
+Stop when: Styling compatibility, seams, fallback behavior, fixture matrix, accessibility, and budgets are explicit; artifact saved; completion criteria checked.

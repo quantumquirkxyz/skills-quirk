@@ -1,5 +1,5 @@
 {
-  "totalSkills": 255,
+  "totalSkills": 261,
   "categories": [
     "accessibility",
     "ai",
@@ -17,9 +17,11 @@
     "finance",
     "foundation",
     "frontend",
+    "graph",
     "graphic-design",
     "integrations",
     "iot",
+    "loop",
     "math",
     "networking",
     "os",
@@ -142,6 +144,23 @@
         "write-files"
       ],
       "path": ".agents/skills/foundation/agent-memory"
+    },
+    {
+      "name": "agent-native-engineering",
+      "category": "engineering",
+      "description": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "assess spec literacy of incoming work before any implementation begins",
+        "design and supervise multi-agent orchestration plans",
+        "engineer context packs for parallel agent execution",
+        "own quality gates from line-by-line diff review to final validation"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/agent-native-engineering"
     },
     {
       "name": "agent-observability",
@@ -732,7 +751,8 @@
         "validate foundation outcomes with evidence, assumptions, and explicit next steps"
       ],
       "sideEffects": [
-        "write-temp-file"
+        "write-temp-file: \"ephemeral staging and discarded tool-result indexes only",
+        "write-persistent-file: \"session handoff state or repo-local CONTEXT.md only; never task artifacts"
       ],
       "path": ".agents/skills/foundation/context-compaction"
     },
@@ -749,7 +769,9 @@
         "apply context engine methods within explicit foundation boundaries",
         "produce and validate a foundation artifact with evidence, decisions, and next steps"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files"
+      ],
       "path": ".agents/skills/foundation/context-engine"
     },
     {
@@ -1309,7 +1331,7 @@
       "capabilities": [
         "analyze decide whether a skill action is allowed, requires approval, or must stop with assumptions, constraints, and failure modes",
         "apply execution policy methods within explicit auxiliary boundaries",
-        "produce and validate a auxiliary artifact with evidence, decisions, and next steps"
+        "produce and validate an auxiliary artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [],
       "path": ".agents/skills/auxiliary/execution-policy"
@@ -1442,6 +1464,24 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/devops/gitops"
+    },
+    {
+      "name": "graph-skill-routing",
+      "category": "graph",
+      "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "compute overlap-based edge weights between skills from shared prerequisites, artifacts, and tags",
+        "emit a RoutingResult with ordered skill list, closure, dependency edges, and confidence",
+        "expand the prerequisite closure of root skills through declared dependency edges up to a depth limit",
+        "topologically order skills into a dependency-respecting execution sequence using Kahn's algorithm seeded by reverse Personalized PageRank",
+        "verify acyclicity of the skill subgraph and surface cycles as blockers"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/graph/graph-skill-routing"
     },
     {
       "name": "graphic-design-accessibility",
@@ -1689,7 +1729,7 @@
       "name": "handoff",
       "category": "routing",
       "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
-      "version": "1",
+      "version": "2",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "2",
@@ -1699,7 +1739,8 @@
         "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
       "sideEffects": [
-        "write-temp-file"
+        "write-temp-file",
+        "write-files"
       ],
       "path": ".agents/skills/routing/handoff"
     },
@@ -1727,7 +1768,7 @@
     {
       "name": "implement-review-fixes",
       "category": "delivery",
-      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+      "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
@@ -1740,7 +1781,8 @@
       "sideEffects": [
         "write-code",
         "commit-git",
-        "push-branch"
+        "push-branch",
+        "post-pr-comment"
       ],
       "path": ".agents/skills/delivery/implement-review-fixes"
     },
@@ -1991,6 +2033,26 @@
         "write-temp-file"
       ],
       "path": ".agents/skills/delivery/loop-budget"
+    },
+    {
+      "name": "loop-engineering",
+      "category": "loop",
+      "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "declare loop budgets and termination contracts up front",
+        "detect progress, degeneration, and ping-pong across iterations",
+        "emit a LoopEngineeringVerdict artifact as JSON + Markdown",
+        "escalate via a structured nudge taxonomy on blocker detection",
+        "verify loop outcomes outside the model with typed evidence"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/loop/loop-engineering"
     },
     {
       "name": "make-project",
@@ -2848,7 +2910,9 @@
         "trace project viability decisions across inputs, constraints, and failure paths",
         "validate project outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files"
+      ],
       "path": ".agents/skills/project/project-viability"
     },
     {
@@ -2939,8 +3003,8 @@
     {
       "name": "qa-security-testing",
       "category": "qa",
-      "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
-      "version": "1",
+      "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
+      "version": "2",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
@@ -2955,8 +3019,8 @@
     {
       "name": "quant-backtest",
       "category": "quant",
-      "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
-      "version": "1",
+      "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+      "version": "2",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
@@ -3197,6 +3261,24 @@
         "continue-merge-or-rebase"
       ],
       "path": ".agents/skills/delivery/resolving-merge-conflicts"
+    },
+    {
+      "name": "retry-backoff",
+      "category": "loop",
+      "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "Circuit breaker state machine (closed/open/half-open)",
+        "Exponential backoff with jitter for transient tool failures",
+        "Idempotency keys for write-like agent actions",
+        "Retry decision table keyed by error type, status, and action kind",
+        "RetryDecision artifact emitted as JSON + Markdown"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/loop/retry-backoff"
     },
     {
       "name": "review-fix-loop",
@@ -3572,6 +3654,24 @@
       "path": ".agents/skills/skill-dev/skill-diff-analyzer"
     },
     {
+      "name": "skill-graph-engineering",
+      "category": "graph",
+      "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "low",
+      "trustTier": "2",
+      "capabilities": [
+        "apply local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) bounded to the affected subgraph",
+        "classify edges as dependency, workflow, semantic, or alternative, each with a state/data/order role",
+        "compile a typed graph into an executable DAG with verified acyclicity, reachability, and goal completeness",
+        "construct a typed SkillGraph from a skill registry, dependency declarations, and a goal specification",
+        "emit a SkillGraph artifact as JSON plus a Markdown summary with a repair plan and executability verdict"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/graph/skill-graph-engineering"
+    },
+    {
       "name": "skill-optimizer",
       "category": "skill-dev",
       "description": "Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.",
@@ -3627,8 +3727,8 @@
     {
       "name": "skill-quality-gate",
       "category": "skill-dev",
-      "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
-      "version": "1",
+      "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
+      "version": "2",
       "maturity": "stable",
       "risk": "low",
       "trustTier": "1",
@@ -3707,6 +3807,24 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/skill-tutor"
+    },
+    {
+      "name": "software-factory",
+      "category": "engineering",
+      "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "design a software factory where a foreman agent orchestrates code-writing agents between a human and the factory",
+        "select a different-model critic to independently assess factory behavior against a quality bar",
+        "separate validator agent from the code-writer so the machine never reviews its own output",
+        "tune convergence rules and decide when an agent acts, checks, escalates, or hands back",
+        "wire MCP connections and observability views with context window management"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/software-factory"
     },
     {
       "name": "spec-driven-development",
@@ -3807,7 +3925,10 @@
         "apply subagent swarm methods within explicit foundation boundaries",
         "produce and validate a foundation artifact with evidence, decisions, and next steps"
       ],
-      "sideEffects": [],
+      "sideEffects": [
+        "write-files (orchestrator-owned swarm artifact only)",
+        "write-temp-file (bounded role-result references, when needed)"
+      ],
       "path": ".agents/skills/foundation/subagent-swarm"
     },
     {
@@ -3832,8 +3953,8 @@
       "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "produce tdd artifact",
         "trace tdd decisions across inputs, constraints, and failure paths",

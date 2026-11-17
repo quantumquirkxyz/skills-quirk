@@ -7,11 +7,12 @@ When to use: Route work to the best matching Skill using declared capabilities a
 
 ## Workflow
 
-1. Parse the task intent and required artifact type
-2. Match against declared capabilities and side effects
-3. Ask `skill-graph.mjs` to rank the candidate set: `node .agents/skills/platform/skill-graph.mjs rank "<query>" --json`, or read the persisted graph at `.agents/skills/platform/graph/skill-graph.json`
-4. Prefer the thinnest Skill that can finish the work; use neighborhood activation only to break near-ties and to pull declared prerequisites
-5. Fall back to a human-readable rationale when multiple Skills fit
+1. **Parse the task intent and required artifact type.**
+2. **Match against declared capabilities and side effects.**
+3. **Ask `skill-graph.mjs` to rank the candidate set.**
+4. **Select the thinnest matching Skill.**
+5. **Handle conflicts and surface blockers.**
+6. **Produce and validate the CapabilityRouterArtifact.**
 
 ## Deliverables
 
@@ -23,4 +24,4 @@ When to use: Route work to the best matching Skill using declared capabilities a
 - side effects: none
 - isolation: none; model tier: router
 
-Stop when: Route work to the best matching Skill using declared capabilities and compatibility complete; structured result returned; completion criteria checked.
+Stop when: Route work to the best matching Skill using declared capabilities and compatibility complete; structured result returned; per-step completion criteria checked.

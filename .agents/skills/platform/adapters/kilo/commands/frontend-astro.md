@@ -23,4 +23,4 @@ When to use: Astro framework (islands architecture, content-focused sites, SSR/S
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Astro design complete; artifact saved; completion criteria checked.
+Stop when: Astro design, compatibility targets, seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked.

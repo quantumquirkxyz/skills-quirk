@@ -7,10 +7,10 @@ When to use: Build a minimal fresh context pack with ordered reads and provenanc
 
 ## Workflow
 
-1. Identify the task scope and the smallest authoritative docs needed
-2. Order the reads from durable repo context to task-specific evidence
-3. Record freshness, provenance, and budget in the pack
-4. Capture the smallest set of facts needed to choose the next skill without reopening the full repo
+1. **Identify the task scope and the smallest authoritative docs needed.**
+2. **Order the reads from durable repo context to task-specific evidence.**
+3. **Record freshness, provenance, and budget in the pack.**
+4. **Capture the smallest set of facts needed to choose the next skill without reopening the full repo.**
 
 ## Deliverables
 

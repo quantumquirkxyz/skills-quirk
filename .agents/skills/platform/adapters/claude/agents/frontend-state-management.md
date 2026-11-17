@@ -11,4 +11,4 @@ Capabilities:
 - analyze modern state management (zustand, jotai, signals, redux toolkit, server state) with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: State management design complete; artifact saved; completion criteria checked.
+Stop condition: State ownership, cache/sync recovery, deterministic fixtures, fallbacks, targets, budgets, and stop conditions are explicit; artifact saved; completion criteria checked.

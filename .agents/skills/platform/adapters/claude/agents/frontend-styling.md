@@ -11,4 +11,4 @@ Capabilities:
 - analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Styling design complete; artifact saved; completion criteria checked.
+Stop condition: Styling compatibility, seams, fallback behavior, fixture matrix, accessibility, and budgets are explicit; artifact saved; completion criteria checked.

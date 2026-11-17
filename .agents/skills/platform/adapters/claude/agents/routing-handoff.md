@@ -1,7 +1,7 @@
 ---
 name: handoff
 description: "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit, Write
 model: sonnet
 permissionMode: default
 ---

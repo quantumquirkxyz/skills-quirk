@@ -7,11 +7,11 @@ When to use: Create a disposable fixture environment for safely exercising Skill
 
 ## Workflow
 
-1. Define the fixture data and the command to exercise
-2. Create the isolated playground under a temporary output path
-3. Run the command with the minimal environment required
-4. Record stdout, stderr, exit status, and generated files
-5. Summarize what the playground proved and what it did not prove
+1. **Define the fixture data and the command to exercise.**
+2. **Create the isolated playground under a temporary output path.**
+3. **Run the command with the minimal environment required.**
+4. **Record stdout, stderr, exit status, and generated files.**
+5. **Summarize what the playground proved and what it did not prove.**
 
 ## Deliverables
 

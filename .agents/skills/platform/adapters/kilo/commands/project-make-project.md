@@ -18,7 +18,7 @@ When to use: Use when the user wants a new board in GitHub Projects, or another 
 
 ## Deliverables
 
-- pull-request artifact
+- project artifact
 
 ## Guardrails
 

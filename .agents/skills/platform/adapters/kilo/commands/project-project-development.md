@@ -7,14 +7,14 @@ When to use: Evaluate a project's shape, agent fit, and architectural starting p
 
 ## Workflow
 
-1. Read the minimum repo context needed to understand the stack and current constraints
-2. Classify the project shape: interactive app, batch pipeline, agentic system, library, backend service, or hybrid
-3. Identify whether the first useful seam is in UI, API, data, execution, or governance
-4. Recommend the next workflow skill and explain why it is the thinnest safe path
+1. Read the canonical skill at .agents/skills/project/project-development/SKILL.md and execute its Process.
 
 ## Deliverables
 
-- pull-request artifact
+- projectFitAssessment
+- projectShapeClassification
+- flowRecommendation
+- thinnestSafePath
 
 ## Guardrails
 

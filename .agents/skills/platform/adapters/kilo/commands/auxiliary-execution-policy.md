@@ -7,8 +7,8 @@ When to use: Decide whether a Skill action is allowed, requires approval, or mus
 
 ## Workflow
 
-1. Classify the requested action as read, write, delete, network, or external write
-2. Check the Skill manifest side effects and approval threshold
+1. Classify the requested action
+2. Check the Skill manifest side effects
 3. Require explicit approval for destructive or irreversible actions
 4. Record the decision and rollback path
 

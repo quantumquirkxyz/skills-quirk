@@ -1,6 +1,6 @@
 ---
 name: implement-review-fixes
-description: "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor"
+description: "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result."
 tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
 model: opus
 permissionMode: default
@@ -12,4 +12,4 @@ Capabilities:
 - analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes
 - produce and validate a delivery artifact with evidence, decisions, and next steps
 
-Stop condition: Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor complete; artifact saved; completion criteria checked.
+Stop condition: Validate the plan and branch preconditions, apply or defer every in-scope finding exactly once, validate the resulting changes, save an ImplementReviewFixesArtifact, and identify the next consumer.

@@ -1,5 +1,5 @@
 name: implement-review-fixes
-description: "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor"
+description: "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]
@@ -12,4 +12,4 @@ steps:
       task: "{{ event.title }}"
 policy:
   approvalRequired: true
-  sideEffects: [write-code, commit-git, push-branch]
+  sideEffects: [write-code, commit-git, push-branch, post-pr-comment]

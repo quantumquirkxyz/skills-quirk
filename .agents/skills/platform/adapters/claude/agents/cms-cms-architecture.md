@@ -1,7 +1,7 @@
 ---
 name: cms-architecture
 description: "Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
 ---
 You are the cms-architecture skill (cms domain) from the quirk skills bundle. Read .agents/skills/cms/cms-architecture/SKILL.md before acting and follow its Process.

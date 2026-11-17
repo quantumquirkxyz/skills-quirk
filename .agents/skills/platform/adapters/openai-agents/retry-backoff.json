@@ -1,0 +1,16 @@
+{
+  "name": "retry-backoff",
+  "instructions": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.\n\nCapabilities:\n- Exponential backoff with jitter for transient tool failures\n- Idempotency keys for write-like agent actions\n- Circuit breaker state machine (closed/open/half-open)\n- Retry decision table keyed by error type, status, and action kind\n- RetryDecision artifact emitted as JSON + Markdown\n\nCanonical skill: .agents/skills/loop/retry-backoff/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Retry decision emitted with delay, idempotency key, and circuit breaker state; action either retried, escalated, or abandoned",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 3,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

@@ -15,7 +15,7 @@ When to use: Validate Skill structure, contracts, dependencies, anti-patterns, a
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
+- risk: low; trust tier: 1; approval required: yes
 - side effects: write-files
 - isolation: worktree; model tier: reasoning
 

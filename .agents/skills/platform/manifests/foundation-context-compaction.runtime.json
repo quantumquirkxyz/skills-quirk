@@ -2,7 +2,7 @@
   "skill": "foundation/context-compaction",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "05e5d4ef4b0e9742dc28ebf0910d31690b4e40628aa36679a8988bdb81ba8f2f",
+  "frontmatterHash": "31878641cefa258ebe8e3a7150d1d10f1570ab43bab221ca1818bbec6df6200e",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -27,7 +27,8 @@
   },
   "guardrails": {
     "sideEffects": [
-      "write-temp-file"
+      "write-temp-file: \"ephemeral staging and discarded tool-result indexes only",
+      "write-persistent-file: \"session handoff state or repo-local CONTEXT.md only; never task artifacts"
     ],
     "approvalRequired": false,
     "approvalFor": [],

@@ -1,18 +1,20 @@
 ---
-description: "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication."
+description: "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison."
 ---
 # skill-quality-gate
 
-When to use: Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.
+When to use: Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.
 
 ## Workflow
 
-1. Identify changed skills and metadata files from git status or the user's scope
-2. Discover repository validation scripts under the skills platform directory
-3. Run structural, lockfile, semantic, and all-in-one gates when available
-4. Inspect output for warnings that should be promoted to blockers due to the requested release or promotion context
-5. If failures occur, map each failure to the responsible skill path and likely repair
-6. Return a compact readiness decision: ready, ready with warnings, or blocked
+1. Identify changed skills and metadata files from the user's scope; hash the exact files and baseline
+2. Discover repository validation scripts under the skills platform directory without executing untrusted content
+3. Run structural, lockfile, semantic, routing, placeholder, rule, metadata, side-effect, security/injection, SARIF, and attestation checks when available
+4. Execute the scoped gate twice with deterministic normalization and compare outputs
+5. Inspect warnings and promote release-impacting warnings to failures under warnings-as-errors
+6. Compare findings, counts, hashes, and statuses with the named baseline; explain or block on drift
+7. Map failures to skill paths and likely repairs; preserve redacted evidence only
+8. Return `PASS`, `FAIL`, `BLOCKED`, or `NOT-RUN` with readiness and exact command outcomes
 
 ## Deliverables
 
@@ -24,4 +26,4 @@ When to use: Run and interpret the skill bundle quality gate across schema, lock
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Quality gate commands are executed or blocked with reasons, findings are separated into blockers and warnings, and release readiness is stated.
+Stop when: Scoped validators and replay are executed or explicitly blocked, warnings-as-errors is applied, SARIF/attestation and baseline delta are emitted, and readiness is PASS, FAIL, BLOCKED, or NOT-RUN.

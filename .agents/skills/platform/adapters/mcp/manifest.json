@@ -1001,7 +1001,7 @@
     },
     {
       "skill": "delivery/tdd",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -1224,6 +1224,20 @@
       "exposed": true
     },
     {
+      "skill": "engineering/agent-native-engineering",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/agent-native-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "engineering/improve-codebase-architecture",
       "trustTier": 2,
       "tools": [
@@ -1231,6 +1245,20 @@
       ],
       "resources": [
         "skill://skill/engineering/improve-codebase-architecture"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "engineering/software-factory",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/software-factory"
       ],
       "prompts": [
         "use_skill"
@@ -1616,6 +1644,34 @@
       "exposed": true
     },
     {
+      "skill": "graph/graph-skill-routing",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/graph/graph-skill-routing"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "graph/skill-graph-engineering",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/graph/skill-graph-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "graphic-design/brand-identity",
       "trustTier": 1,
       "tools": [
@@ -1889,6 +1945,34 @@
       ],
       "resources": [
         "skill://skill/iot/iot-embedded"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "loop/loop-engineering",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/loop/loop-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "loop/retry-backoff",
+      "trustTier": 2,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/loop/retry-backoff"
       ],
       "prompts": [
         "use_skill"

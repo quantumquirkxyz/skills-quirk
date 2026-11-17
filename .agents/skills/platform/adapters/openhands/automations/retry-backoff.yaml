@@ -1,0 +1,15 @@
+name: retry-backoff
+description: "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/loop-retry-backoff
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: false
+  sideEffects: []

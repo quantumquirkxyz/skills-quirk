@@ -13,4 +13,4 @@ Capabilities:
 - trace project viability decisions across inputs, constraints, and failure paths
 - validate project outcomes with evidence, assumptions, and explicit next steps
 
-Stop when: Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON structured result returned; completion criteria verified; user asked how to proceed.
+Stop when: Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed.

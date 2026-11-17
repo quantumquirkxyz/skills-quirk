@@ -1,6 +1,6 @@
 {
-  "totalCards": 255,
-  "generatedAt": "2026-11-01T19:32:32.701Z",
+  "totalCards": 261,
+  "generatedAt": "2026-11-17T04:53:55.253Z",
   "cards": [
     {
       "name": "accessibility",
@@ -1964,7 +1964,7 @@
     },
     {
       "name": "implement-review-fixes",
-      "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+      "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/implement-review-fixes/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -1981,7 +1981,7 @@
         {
           "id": "delivery/implement-review-fixes",
           "name": "implement-review-fixes",
-          "description": "Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor",
+          "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
           "tags": [
             "\"delivery\""
           ],
@@ -2244,7 +2244,7 @@
             "implementation"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "code",
             "artifactType": "implementation"
           }
@@ -2720,6 +2720,42 @@
       ]
     },
     {
+      "name": "agent-native-engineering",
+      "description": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/engineering/agent-native-engineering/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "engineering/agent-native-engineering",
+          "name": "agent-native-engineering",
+          "description": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.",
+          "tags": [
+            "\"engineering\"",
+            "\"agent-native\"",
+            "\"ai-native-engineer\"",
+            "\"software-engineering\"",
+            "\"quality-ownership\"",
+            "\"orchestration\""
+          ],
+          "parameters": {
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "engineering-assessment"
+          }
+        }
+      ]
+    },
+    {
       "name": "improve-codebase-architecture",
       "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/engineering/improve-codebase-architecture/SKILL.md",
@@ -2746,6 +2782,44 @@
             "trustTier": "2",
             "modelTier": "fast",
             "artifactType": "pull-request"
+          }
+        }
+      ]
+    },
+    {
+      "name": "software-factory",
+      "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/engineering/software-factory/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "engineering/software-factory",
+          "name": "software-factory",
+          "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+          "tags": [
+            "\"engineering\"",
+            "\"software-factory\"",
+            "\"agent-factory\"",
+            "\"foreman\"",
+            "\"validator\"",
+            "\"critic\"",
+            "\"mcp\"",
+            "\"observability\""
+          ],
+          "parameters": {
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "factory-design"
           }
         }
       ]
@@ -2895,10 +2969,10 @@
           "name": "agent-card",
           "description": "Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.",
           "tags": [
-            "agent-card",
-            "a2a",
-            "discovery",
-            "metadata"
+            "\"agent-card\"",
+            "\"a2a\"",
+            "\"discovery\"",
+            "\"metadata\""
           ],
           "parameters": {
             "trustTier": "1",
@@ -3607,6 +3681,73 @@
       ]
     },
     {
+      "name": "graph-skill-routing",
+      "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/graph/graph-skill-routing/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": false
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "graph/graph-skill-routing",
+          "name": "graph-skill-routing",
+          "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+          "tags": [
+            "graph"
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "modelTier": "router",
+            "artifactType": "graph-routing"
+          }
+        }
+      ]
+    },
+    {
+      "name": "skill-graph-engineering",
+      "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/graph/skill-graph-engineering/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "graph/skill-graph-engineering",
+          "name": "skill-graph-engineering",
+          "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+          "tags": [
+            "\"graph\"",
+            "\"skill-graph\"",
+            "\"dependency-graph\"",
+            "\"dag\"",
+            "\"graph-engineering\"",
+            "\"composition\""
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "modelTier": "reasoning",
+            "artifactType": "skill-graph"
+          }
+        }
+      ]
+    },
+    {
       "name": "brand-identity",
       "description": "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/graphic-design/brand-identity/SKILL.md",
@@ -4223,6 +4364,76 @@
       ]
     },
     {
+      "name": "loop-engineering",
+      "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/loop/loop-engineering/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "loop/loop-engineering",
+          "name": "loop-engineering",
+          "description": "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.",
+          "tags": [
+            "\"loop\"",
+            "\"loop-engineering\"",
+            "\"bounded-loop\"",
+            "\"agent-engineering\"",
+            "\"termination\""
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "modelTier": "reasoning",
+            "artifactType": "loop-engineering"
+          }
+        }
+      ]
+    },
+    {
+      "name": "retry-backoff",
+      "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+      "url": "https://github.com/quirk/example/blob/main/.agents/skills/loop/retry-backoff/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "loop/retry-backoff",
+          "name": "retry-backoff",
+          "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+          "tags": [
+            "\"retry\"",
+            "\"backoff\"",
+            "\"idempotency\"",
+            "\"circuit-breaker\"",
+            "\"loop-engineering\"",
+            "\"agent-engineering\""
+          ],
+          "parameters": {
+            "trustTier": "2",
+            "artifactType": "retry-backoff"
+          }
+        }
+      ]
+    },
+    {
       "name": "math-computation-reproducible",
       "description": "Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/math/math-computation-reproducible/SKILL.md",
@@ -4682,7 +4893,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "networking"
           }
         }
       ]
@@ -5492,7 +5703,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "project"
           }
         }
       ]
@@ -5523,7 +5734,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "project-assessment"
           }
         }
       ]
@@ -5554,7 +5765,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "project-viability"
           }
         }
       ]
@@ -5757,9 +5968,9 @@
     },
     {
       "name": "qa-security-testing",
-      "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+      "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/qa/qa-security-testing/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -5774,7 +5985,7 @@
         {
           "id": "qa/qa-security-testing",
           "name": "qa-security-testing",
-          "description": "Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.",
+          "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
           "tags": [
             "\"qa\""
           ],
@@ -5788,9 +5999,9 @@
     },
     {
       "name": "quant-backtest",
-      "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+      "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/quant/quant-backtest/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -5805,7 +6016,7 @@
         {
           "id": "quant/quant-backtest",
           "name": "quant-backtest",
-          "description": "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.",
+          "description": "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
           "tags": [
             "\"quant\""
           ],
@@ -5874,7 +6085,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "quant"
           }
         }
       ]
@@ -6381,7 +6592,7 @@
       "name": "handoff",
       "description": "Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/routing/handoff/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -7357,9 +7568,9 @@
     },
     {
       "name": "skill-quality-gate",
-      "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
+      "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
       "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/skill-quality-gate/SKILL.md",
-      "version": "1",
+      "version": "2",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -7374,7 +7585,7 @@
         {
           "id": "skill-dev/skill-quality-gate",
           "name": "skill-quality-gate",
-          "description": "Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.",
+          "description": "Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.",
           "tags": [
             "\"skill-dev\""
           ],
@@ -7536,7 +7747,7 @@
           "parameters": {
             "trustTier": "2",
             "modelTier": "fast",
-            "artifactType": "authentication"
+            "artifactType": "skill-dev-fixture"
           }
         }
       ]
@@ -7660,7 +7871,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "ux"
           }
         }
       ]

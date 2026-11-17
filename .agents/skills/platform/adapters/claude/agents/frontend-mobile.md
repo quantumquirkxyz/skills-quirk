@@ -11,4 +11,4 @@ Capabilities:
 - analyze shape mobile projects around device constraints, platform seams, offline behavior, and push notifications — with explicit performance and resilience boundaries for react native, expo, and capacitor with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Mobile design complete; offline and notification behavior explicit; platform trade-offs named.
+Stop condition: Mobile targets, offline/sync, auth/privacy, passkeys, OTA recovery, fixtures, budgets, and platform trade-offs are explicit; artifact saved; completion criteria checked.

@@ -2,7 +2,7 @@
   "skill": "delivery/tdd",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "b63f8d4721462323a07ad9227dcb7eb83e6378d15e9c4560123b690428835232",
+  "frontmatterHash": "3aa399cd2ce60e63816493bd2cf4483bfd24ad3310d87ea2c9e67138bd425a21",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,33 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-code",
+      "commit-git"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-code",
+      "commit-git"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [

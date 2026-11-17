@@ -2,7 +2,7 @@
   "skill": "qa/qa-automation",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c438ac033819661ecc9bff436dc1f6975624dbaee79266838c3a66d55054047e",
+  "frontmatterHash": "df1dc36761f48731db2c1b33436ca1a1fb90d4089dc66303382fa8c55fd9e871",
   "role": "workflow",
   "router": {
     "positive": [],

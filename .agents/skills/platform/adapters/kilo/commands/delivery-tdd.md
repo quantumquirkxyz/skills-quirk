@@ -19,8 +19,8 @@ When to use: Test-driven development. Use when the user wants to build features 
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-code, commit-git
+- isolation: worktree; model tier: reasoning
 
 Stop when: Test-driven development complete; structured result returned; completion criteria checked.

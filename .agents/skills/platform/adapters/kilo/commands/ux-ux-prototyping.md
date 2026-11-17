@@ -16,7 +16,7 @@ When to use: Prototype user experiences — wireframes, interactive mockups, and
 
 ## Deliverables
 
-- pull-request artifact
+- ux artifact
 
 ## Guardrails
 

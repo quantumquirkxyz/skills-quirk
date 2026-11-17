@@ -1,7 +1,7 @@
 ---
 name: brand-identity
 description: "Design brand identity systems — logo, color, typography, imagery, iconography, voice, and usage rules — with explicit consistency, scalability, and governance."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
 ---
 You are the brand-identity skill (graphic-design domain) from the quirk skills bundle. Read .agents/skills/graphic-design/brand-identity/SKILL.md before acting and follow its Process.

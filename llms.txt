@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 255 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 261 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -20,6 +20,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [agent-canvas](./.agents/skills/foundation/agent-canvas/SKILL.md) — Reference skill for agent workspace control — multi-agent session management, workspace persistence, and cross-device continuity, independent of any external framework.
 - [agent-card](./.agents/skills/foundation/agent-card/SKILL.md) — Generates and maintains Agent Cards for A2A (Agent-to-Agent) discovery.
 - [agent-memory](./.agents/skills/foundation/agent-memory/SKILL.md) — Maintain external agent memory: structured notes persisted outside the context window (NOW.md for the working thread, MEMORY.md for durable facts) so context can compact or reset while knowledge survives across sessions.
+- [agent-native-engineering](./.agents/skills/engineering/agent-native-engineering/SKILL.md) — AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.
 - [agent-observability](./.agents/skills/foundation/agent-observability/SKILL.md) — Capture redacted execution records, traces, and quality signals for skill runs with structured data for analysis. Enables full audit of decisions made during agent execution.
 - [agent-orchestration](./.agents/skills/ai/agent-orchestration/SKILL.md) — Design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability.
 - [ai-ml-pipeline](./.agents/skills/ai/ai-ml-pipeline/SKILL.md) — Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.
@@ -100,6 +101,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [frontend-testing](./.agents/skills/frontend/frontend-testing/SKILL.md) — Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook).
 - [github-project-analysis](./.agents/skills/research/github-project-analysis/SKILL.md) — Research comparable projects exclusively on GitHub and analyze their structure, decisions, and reusable patterns for an active project.
 - [gitops](./.agents/skills/devops/gitops/SKILL.md) — Design GitOps workflows — ArgoCD, Flux, declarative sync, drift detection, progressive delivery — with explicit reconciliation and safety boundaries.
+- [graph-skill-routing](./.agents/skills/graph/graph-skill-routing/SKILL.md) — Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.
 - [graphic-design-accessibility](./.agents/skills/graphic-design/graphic-design-accessibility/SKILL.md) — Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital.
 - [graphic-design-advertising](./.agents/skills/graphic-design/graphic-design-advertising/SKILL.md) — Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules.
 - [graphic-design-data-viz](./.agents/skills/graphic-design/graphic-design-data-viz/SKILL.md) — Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules.
@@ -117,7 +119,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [grpc-connect](./.agents/skills/backend/grpc-connect/SKILL.md) — gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).
 - [handoff](./.agents/skills/routing/handoff/SKILL.md) — Compact the current conversation into a handoff document for another agent to pick up — with explicit continuity and ownership notes.
 - [implement](./.agents/skills/delivery/implement/SKILL.md) — Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch.
-- [implement-review-fixes](./.agents/skills/delivery/implement-review-fixes/SKILL.md) — Read a GitHub PR remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor
+- [implement-review-fixes](./.agents/skills/delivery/implement-review-fixes/SKILL.md) — Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.
 - [improve-codebase-architecture](./.agents/skills/engineering/improve-codebase-architecture/SKILL.md) — Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.
 - [incident-forensics](./.agents/skills/sec/incident-forensics/SKILL.md) — Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)
 - [incident-response](./.agents/skills/devops/incident-response/SKILL.md) — Design incident response — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.
@@ -133,6 +135,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [localization](./.agents/skills/cms/localization/SKILL.md) — Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.
 - [lockfile-maintenance](./.agents/skills/skill-dev/lockfile-maintenance/SKILL.md) — Maintain the skills lockfile by detecting missing, stale, extra, or mismatched skill entries and updating hashes only after the corresponding SKILL.md files are resolved.
 - [loop-budget](./.agents/skills/delivery/loop-budget/SKILL.md) — Keep an agent loop inside its declared budget and end it with a typed verdict instead of a runaway process. Use when a repair, polling, or fan-out loop must declare step/cost/wall-time budgets up front, detect degenerate repetition and ping-pong, and exit with {exitStatus, submission, budgetSpent, nudges}.
+- [loop-engineering](./.agents/skills/loop/loop-engineering/SKILL.md) — Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout.
 - [make-project](./.agents/skills/project/make-project/SKILL.md) — Use when the user wants a new board in GitHub Projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics.
 - [math-computation-reproducible](./.agents/skills/math/math-computation-reproducible/SKILL.md) — Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage, Julia — with versioned environments (Docker/Conda/Nix), scripts, and result archival.
 - [math-computational](./.agents/skills/math/math-computational/SKILL.md) — Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.
@@ -190,8 +193,8 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [publish-open-pr](./.agents/skills/routing/publish-open-pr/SKILL.md) — Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication.
 - [qa-automation](./.agents/skills/qa/qa-automation/SKILL.md) — Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.
 - [qa-manual-testing](./.agents/skills/qa/qa-manual-testing/SKILL.md) — Perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes.
-- [qa-security-testing](./.agents/skills/qa/qa-security-testing/SKILL.md) — Test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios.
-- [quant-backtest](./.agents/skills/quant/quant-backtest/SKILL.md) — Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust.
+- [qa-security-testing](./.agents/skills/qa/qa-security-testing/SKILL.md) — Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.
+- [quant-backtest](./.agents/skills/quant/quant-backtest/SKILL.md) — Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.
 - [quant-credit-risk](./.agents/skills/quant/quant-credit-risk/SKILL.md) — Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.
 - [quant-derivatives-pricing](./.agents/skills/quant/quant-derivatives-pricing/SKILL.md) — Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.
 - [quant-factors](./.agents/skills/quant/quant-factors/SKILL.md) — Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.
@@ -206,6 +209,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [research-data-archiving](./.agents/skills/research/research-data-archiving/SKILL.md) — Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.
 - [research-literature-review](./.agents/skills/research/research-literature-review/SKILL.md) — Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.
 - [resolving-merge-conflicts](./.agents/skills/delivery/resolving-merge-conflicts/SKILL.md) — Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution.
+- [retry-backoff](./.agents/skills/loop/retry-backoff/SKILL.md) — Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.
 - [review-fix-loop](./.agents/skills/delivery/review-fix-loop/SKILL.md) — Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.
 - [review-pr](./.agents/skills/delivery/review-pr/SKILL.md) — Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
 - [rule-cataloger](./.agents/skills/skill-dev/rule-cataloger/SKILL.md) — Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.
@@ -228,14 +232,16 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [skill-creator](./.agents/skills/skill-dev/skill-creator/SKILL.md) — Interactive interview and collaborative design tool that helps users define, research, name, generate, and validate complete Codex skills with SKILL.md, scripts, references, assets, ADRs, and traceability.
 - [skill-dependency-graph](./.agents/skills/skill-dev/skill-dependency-graph/SKILL.md) — Build a dependency graph that exposes central Skills, cycles, and unnecessary coupling — use when analyzing Skill modularity.
 - [skill-diff-analyzer](./.agents/skills/skill-dev/skill-diff-analyzer/SKILL.md) — Compare Skill versions and explain contract, dependency, and behavior impact — use when assessing changes between two Skills.
+- [skill-graph-engineering](./.agents/skills/graph/skill-graph-engineering/SKILL.md) — Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.
 - [skill-optimizer](./.agents/skills/skill-dev/skill-optimizer/SKILL.md) — Optimize a quirk Skill's model-facing description against routing fixtures with a propose-only reflective loop. Use when a Skill routes wrong, fires too rarely or too often, or when evaluate-skill or skill-quality-gate reports a routing regression. Emits a diff-shaped proposal with (skill, version, fixture) evidence; the human applies it. Not for body edits or metadata repair.
 - [skill-performance-metrics](./.agents/skills/skill-dev/skill-performance-metrics/SKILL.md) — Summarize Skill execution duration, success rate, and available run evidence — use when measuring Skill performance from logs and records.
 - [skill-promoter](./.agents/skills/skill-dev/skill-promoter/SKILL.md) — Promote validated experimental skills from the sandbox to the canonical skills bundle.
-- [skill-quality-gate](./.agents/skills/skill-dev/skill-quality-gate/SKILL.md) — Run and interpret the skill bundle quality gate across schema, lockfile, semantic, routing, placeholder, rule, metadata, and side-effect checks before promotion or publication.
+- [skill-quality-gate](./.agents/skills/skill-dev/skill-quality-gate/SKILL.md) — Run a reproducible skill-bundle quality gate with manifests, source hashes, deterministic replay, adversarial injection checks, warnings-as-errors, SARIF/attestation, and baseline comparison.
 - [skill-sandbox](./.agents/skills/skill-dev/skill-sandbox/SKILL.md) — Create, test, and iterate on experimental skills in an isolated environment without affecting the canonical skills bundle.
 - [skill-template-generator](./.agents/skills/skill-dev/skill-template-generator/SKILL.md) — Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.
 - [skill-testing-framework](./.agents/skills/skill-dev/skill-testing-framework/SKILL.md) — Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.
 - [skill-tutor](./.agents/skills/skill-dev/skill-tutor/SKILL.md) — Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+- [software-factory](./.agents/skills/engineering/software-factory/SKILL.md) — Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.
 - [spec-driven-development](./.agents/skills/project/spec-driven-development/SKILL.md) — Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.
 - [state-management](./.agents/skills/frontend/state-management/SKILL.md) — Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
 - [stream-processing](./.agents/skills/data/stream-processing/SKILL.md) — Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).
@@ -284,13 +290,15 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - delivery: 15 skills
 - devops: 10 skills
 - docs: 3 skills
-- engineering: 1 skills
+- engineering: 3 skills
 - finance: 3 skills
 - foundation: 14 skills
 - frontend: 10 skills
+- graph: 2 skills
 - graphic-design: 12 skills
 - integrations: 7 skills
 - iot: 1 skills
+- loop: 2 skills
 - math: 13 skills
 - networking: 3 skills
 - os: 3 skills

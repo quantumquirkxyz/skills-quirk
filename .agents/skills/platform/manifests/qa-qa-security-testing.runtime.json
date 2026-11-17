@@ -2,7 +2,7 @@
   "skill": "qa/qa-security-testing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "6dac8598a080e87c21919bcdaf5e18d46d4daf6c71894b007872da4a941b14eb",
+  "frontmatterHash": "b7ac20467f2cb290ff512f84cab0203f1129cd209756489c868c954778710857",
   "role": "workflow",
   "router": {
     "positive": [],

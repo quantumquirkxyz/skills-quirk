@@ -22,4 +22,4 @@ When to use: Define and evolve reusable UI tokens, components, and usage rules a
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Define and evolve reusable UI tokens, components, and usage rules as a coherent system complete; artifact saved; completion criteria checked.
+Stop when: Tokens, component contracts, compatibility targets, fixtures, accessibility/privacy guardrails, and budgets are explicit; artifact saved; completion criteria checked.

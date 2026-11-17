@@ -23,4 +23,4 @@ When to use: Frontend testing (Vitest, Testing Library, Playwright, visual testi
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Frontend testing design complete; artifact saved; completion criteria checked.
+Stop when: Test tiers, deterministic fixtures, browser matrix, a11y/visual checks, budgets, and stop conditions are explicit; artifact saved; completion criteria checked.

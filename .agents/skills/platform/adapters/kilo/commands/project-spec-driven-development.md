@@ -15,7 +15,7 @@ When to use: Run spec-driven development (SDD): a constitution for repo-local ru
 
 ## Guardrails
 
-- risk: medium; trust tier: 3; approval required: no
+- risk: medium; trust tier: 3; approval required: yes
 - side effects: write-docs, write-files
 - isolation: worktree; model tier: reasoning
 

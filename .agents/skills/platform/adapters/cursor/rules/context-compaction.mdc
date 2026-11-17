@@ -14,4 +14,4 @@ Capabilities:
 - trace context compaction decisions across inputs, constraints, and failure paths
 - validate foundation outcomes with evidence, assumptions, and explicit next steps
 
-Stop when: The session continues with a fresh window, every durable artifact preserved, and every dropped item either re-derivable or recorded as a risk.
+Stop when: Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts. complete; structured result returned; completion criteria checked.

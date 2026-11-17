@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Shape the test strategy for a project so behavior is verified at the right seams and at the right level.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
 ---
 You are the testing skill (delivery domain) from the quirk skills bundle. Read .agents/skills/delivery/testing/SKILL.md before acting and follow its Process.

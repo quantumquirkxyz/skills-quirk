@@ -7,10 +7,7 @@ When to use: Shape the test strategy for a project so behavior is verified at th
 
 ## Workflow
 
-1. Identify the public behavior that needs protection
-2. Choose the smallest seam that proves that behavior
-3. Assign the right test level to each behavior slice
-4. State what is intentionally not covered
+1. Read the canonical skill at .agents/skills/delivery/testing/SKILL.md and execute its Process.
 
 ## Deliverables
 

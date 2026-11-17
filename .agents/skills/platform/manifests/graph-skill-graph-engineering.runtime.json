@@ -1,0 +1,45 @@
+{
+  "skill": "graph/skill-graph-engineering",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "fa9ddbd72879e5f6dcc24bce18a0776f77d16d86ac1fa2ae5b10c658298d76b5",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 4,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

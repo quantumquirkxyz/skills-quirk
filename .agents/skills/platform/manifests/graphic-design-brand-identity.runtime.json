@@ -18,7 +18,9 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "WebFetch",
+        "WebSearch"
       ],
       "deny": []
     }

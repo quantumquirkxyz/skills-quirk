@@ -11,4 +11,4 @@ Capabilities:
 - analyze astro framework (islands architecture, content-focused sites, ssr/ssg, view transitions) with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Astro design complete; artifact saved; completion criteria checked.
+Stop condition: Astro design, compatibility targets, seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked.

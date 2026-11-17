@@ -1,0 +1,16 @@
+{
+  "name": "agent-native-engineering",
+  "instructions": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.\n\nCapabilities:\n- assess spec literacy of incoming work before any implementation begins\n- engineer context packs for parallel agent execution\n- design and supervise multi-agent orchestration plans\n- own quality gates from line-by-line diff review to final validation\n\nCanonical skill: .agents/skills/engineering/agent-native-engineering/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Engineering assessment complete with spec literacy score, context quality rating, orchestration plan, and quality gate status",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 5,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

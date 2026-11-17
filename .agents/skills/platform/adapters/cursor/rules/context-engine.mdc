@@ -12,4 +12,4 @@ Capabilities:
 - analyze manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static context.md (issues, prs, docs, execution traces) with assumptions, constraints, and failure modes
 - produce and validate a foundation artifact with evidence, decisions, and next steps
 
-Stop when: Context retrieved, indexed, and answer provided with explicit source attribution.
+Stop when: A ContextEngineArtifact is validated and emitted, or a terminal state is recorded: completed, blocked, stale-input, validation-failed, or budget-exceeded.

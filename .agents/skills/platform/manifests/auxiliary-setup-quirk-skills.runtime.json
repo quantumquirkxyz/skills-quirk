@@ -2,7 +2,7 @@
   "skill": "auxiliary/setup-quirk-skills",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f81a239bde582ea0f476049d9ad55856fc6f7b2c2b191aab6034d7d975029edd",
+  "frontmatterHash": "b2f5bda87ef903757dd515a881ca0d295bf7f7211f01e781585acaf761dbbe44",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,22 +11,31 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files",
+      "write-temp-file",
+      "write-generated-projections"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "write-files",
+      "write-generated-projections"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

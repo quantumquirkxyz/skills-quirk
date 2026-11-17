@@ -1,8 +1,9 @@
 ---
 name: tdd
 description: "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor"
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit, Write
 model: opus
+permissionMode: default
 ---
 You are the tdd skill (delivery domain) from the quirk skills bundle. Read .agents/skills/delivery/tdd/SKILL.md before acting and follow its Process.
 

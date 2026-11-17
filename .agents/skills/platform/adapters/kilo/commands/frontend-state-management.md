@@ -23,4 +23,4 @@ When to use: Modern state management (Zustand, Jotai, signals, Redux Toolkit, se
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: State management design complete; artifact saved; completion criteria checked.
+Stop when: State ownership, cache/sync recovery, deterministic fixtures, fallbacks, targets, budgets, and stop conditions are explicit; artifact saved; completion criteria checked.

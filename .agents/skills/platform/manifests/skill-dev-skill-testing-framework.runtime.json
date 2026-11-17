@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-testing-framework",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "140c98bce83c6acccaab7bdebdd63ab844c15e4f103474ebdf00c6d5935bce18",
+  "frontmatterHash": "9d280417d89ff4df208009698c2feaf6c41cc55d17d81b4e78455db07cd6a1d2",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,8 +29,10 @@
     "sideEffects": [
       "write-files"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "low",
     "trustTier": 1
   },

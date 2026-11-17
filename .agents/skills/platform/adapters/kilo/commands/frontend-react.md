@@ -22,4 +22,4 @@ When to use: Design React component structure and state seams — with composabi
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design React component structure and state seams complete; artifact saved; completion criteria checked.
+Stop when: React ownership seams, fixtures, fallbacks, compatibility targets, a11y coverage, and budgets are explicit; artifact saved; completion criteria checked.

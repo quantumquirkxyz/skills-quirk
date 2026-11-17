@@ -11,4 +11,4 @@ Capabilities:
 - analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Design React component structure and state seams complete; artifact saved; completion criteria checked.
+Stop condition: React ownership seams, fixtures, fallbacks, compatibility targets, a11y coverage, and budgets are explicit; artifact saved; completion criteria checked.

@@ -12,4 +12,4 @@ Capabilities:
 - trace frontend design decisions across inputs, constraints, and failure paths
 - validate frontend outcomes with evidence, assumptions, and explicit next steps
 
-Stop condition: Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked.
+Stop condition: Visual system, interaction seams, fallback states, fixtures, compatibility targets, and budgets are explicit; artifact saved; completion criteria checked.

@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v3.0.0
-> 255 skills across 35 categories
+> 261 skills across 37 categories
 
 ## Skills by Category
 
@@ -117,7 +117,7 @@
 | [contribution-workflow-optimizer](.agents/skills/delivery/contribution-workflow-optimizer) | 1 | stable | low | 1 | Inspect changed Skills and recommend contribution improvements across standar... |
 | [diagnosing-bugs](.agents/skills/delivery/diagnosing-bugs) | 1 | stable | low | 1 | >- |
 | [implement](.agents/skills/delivery/implement) | 2 | stable | medium | 3 | Implement a piece of work based on a spec or set of tickets, or build a scope... |
-| [implement-review-fixes](.agents/skills/delivery/implement-review-fixes) | 1 | stable | medium | 3 | Read a GitHub PR remediation plan produced by plan-review-fixes, implement th... |
+| [implement-review-fixes](.agents/skills/delivery/implement-review-fixes) | 1 | stable | medium | 3 | Apply a plan-review-fixes remediation plan through implement, validate each f... |
 | [loop-budget](.agents/skills/delivery/loop-budget) | 1 | experimental | low | 2 | Keep an agent loop inside its declared budget and end it with a typed verdict... |
 | [plan-review-fixes](.agents/skills/delivery/plan-review-fixes) | 1 | stable | medium | 3 | Convert review-pr findings on a GitHub PR into a concrete remediation plan an... |
 | [prototype](.agents/skills/delivery/prototype) | 1 | stable | low | 1 | Build a throwaway prototype to answer a design question. Use when the user wa... |
@@ -125,7 +125,7 @@
 | [resolving-merge-conflicts](.agents/skills/delivery/resolving-merge-conflicts) | 1 | stable | medium | 3 | Use when you need to resolve a conflicted or blocked branch state: in-progres... |
 | [review-fix-loop](.agents/skills/delivery/review-fix-loop) | 1 | stable | medium | 3 | Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when fin... |
 | [review-pr](.agents/skills/delivery/review-pr) | 1 | stable | medium | 3 | Review a pull request against the fixed point the user supplies, separating S... |
-| [tdd](.agents/skills/delivery/tdd) | 1 | stable | low | 1 | Test-driven development. Use when the user wants to build features or fix bug... |
+| [tdd](.agents/skills/delivery/tdd) | 1 | stable | medium | 3 | Test-driven development. Use when the user wants to build features or fix bug... |
 | [testing](.agents/skills/delivery/testing) | 1 | stable | low | 1 | Shape the test strategy for a project so behavior is verified at the right se... |
 | [webapp-testing](.agents/skills/delivery/webapp-testing) | 1 | stable | low | 1 | Choose the right test seam for a web app and describe how to verify it at uni... |
 
@@ -156,7 +156,9 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
+| [agent-native-engineering](.agents/skills/engineering/agent-native-engineering) | 1 | experimental | medium | 3 | AI-Native Engineer skill stack: spec literacy, context engineering, orchestra... |
 | [improve-codebase-architecture](.agents/skills/engineering/improve-codebase-architecture) | 1 | stable | low | 2 | Scan a codebase for deepening opportunities and present candidates as a visua... |
+| [software-factory](.agents/skills/engineering/software-factory) | 1 | experimental | medium | 3 | Engineer the system that builds code — foreman agent, separate validator, dif... |
 
 ### finance
 
@@ -200,6 +202,13 @@
 | [state-management](.agents/skills/frontend/state-management) | 1 | stable | low | 1 | Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state). |
 | [styling](.agents/skills/frontend/styling) | 1 | stable | low | 1 | Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens). |
 
+### graph
+
+| Skill | Version | Maturity | Risk | Trust Tier | Description |
+|-------|---------|----------|------|------------|-------------|
+| [graph-skill-routing](.agents/skills/graph/graph-skill-routing) | 1 | experimental | low | 2 | Dependency-aware skill retrieval: expand prerequisite closure, topologically ... |
+| [skill-graph-engineering](.agents/skills/graph/skill-graph-engineering) | 1 | experimental | low | 2 | Build typed skill dependency graphs (dependency, workflow, semantic, alternat... |
+
 ### graphic-design
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
@@ -234,6 +243,13 @@
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
 | [iot-embedded](.agents/skills/iot/iot-embedded) | 1 | stable | low | 1 | Design embedded/IoT systems — firmware, sensors, edge computing, device conne... |
+
+### loop
+
+| Skill | Version | Maturity | Risk | Trust Tier | Description |
+|-------|---------|----------|------|------------|-------------|
+| [loop-engineering](.agents/skills/loop/loop-engineering) | 1 | experimental | low | 2 | Design bounded agent loops with termination contracts, progress detection, ve... |
+| [retry-backoff](.agents/skills/loop/retry-backoff) | 1 | experimental | low | 2 | Retry-with-backoff patterns for agent actions: exponential backoff with jitte... |
 
 ### math
 
@@ -323,13 +339,13 @@
 | [performance-testing](.agents/skills/qa/performance-testing) | 1 | stable | low | 1 | Design and execute performance tests — load, stress, soak, spike — to validat... |
 | [qa-automation](.agents/skills/qa/qa-automation) | 1 | stable | low | 1 | Design and implement automated test suites — unit, integration, e2e — with pr... |
 | [qa-manual-testing](.agents/skills/qa/qa-manual-testing) | 1 | stable | low | 1 | Perform manual test sessions — exploratory checks, edge cases, accessibility,... |
-| [qa-security-testing](.agents/skills/qa/qa-security-testing) | 1 | stable | low | 1 | Test security posture — auth flows, authorization boundaries, injection paths... |
+| [qa-security-testing](.agents/skills/qa/qa-security-testing) | 2 | stable | low | 1 | Run reproducible security tests for authorization drift, adversarial tool and... |
 
 ### quant
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [quant-backtest](.agents/skills/quant/quant-backtest) | 1 | stable | low | 1 | Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime... |
+| [quant-backtest](.agents/skills/quant/quant-backtest) | 2 | stable | low | 1 | Run a reproducible, leakage-resistant backtest with dataset/code provenance, ... |
 | [quant-credit-risk](.agents/skills/quant/quant-credit-risk) | 1 | stable | low | 1 | Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit Va... |
 | [quant-derivatives-pricing](.agents/skills/quant/quant-derivatives-pricing) | 1 | stable | low | 1 | Price and calibrate derivatives (options, exotics, structured products) — Bla... |
 | [quant-factors](.agents/skills/quant/quant-factors) | 1 | stable | low | 1 | Define, test, and stress-test a quantitative factor (momentum, value, carry, ... |
@@ -358,7 +374,7 @@
 | [grill-me](.agents/skills/routing/grill-me) | 1 | stable | low | 1 | A relentless interview to sharpen a plan or design. |
 | [grill-with-docs](.agents/skills/routing/grill-with-docs) | 1 | stable | low | 2 | A relentless interview to sharpen a plan or design, while creating docs (ADRs... |
 | [grilling](.agents/skills/routing/grilling) | 1 | stable | low | 1 | Grill the user relentlessly about a plan, decision, or idea. Use when the use... |
-| [handoff](.agents/skills/routing/handoff) | 1 | stable | low | 2 | Compact the current conversation into a handoff document for another agent to... |
+| [handoff](.agents/skills/routing/handoff) | 2 | stable | low | 2 | Compact the current conversation into a handoff document for another agent to... |
 | [knowledge-curator](.agents/skills/routing/knowledge-curator) | 1 | stable | low | 2 | Keep context, ADRs, registry entries, and research coherent over time — with ... |
 | [parallel-issue-fleet](.agents/skills/routing/parallel-issue-fleet) | 2 | experimental | high | 4 | Orchestrate a dependency-aware fleet of issue agents in isolated local worktr... |
 | [publish-open-pr](.agents/skills/routing/publish-open-pr) | 2 | stable | medium | 3 | Use when the user wants to publish a finished subissue as an open GitHub pull... |
@@ -399,7 +415,7 @@
 | [skill-optimizer](.agents/skills/skill-dev/skill-optimizer) | 1 | experimental | low | 2 | Optimize a quirk Skill's model-facing description against routing fixtures wi... |
 | [skill-performance-metrics](.agents/skills/skill-dev/skill-performance-metrics) | 1 | stable | low | 1 | Summarize Skill execution duration, success rate, and available run evidence ... |
 | [skill-promoter](.agents/skills/skill-dev/skill-promoter) | 1 | stable | medium | 3 | Promote validated experimental skills from the sandbox to the canonical skill... |
-| [skill-quality-gate](.agents/skills/skill-dev/skill-quality-gate) | 1 | stable | low | 1 | Run and interpret the skill bundle quality gate across schema, lockfile, sema... |
+| [skill-quality-gate](.agents/skills/skill-dev/skill-quality-gate) | 2 | stable | low | 1 | Run a reproducible skill-bundle quality gate with manifests, source hashes, d... |
 | [skill-sandbox](.agents/skills/skill-dev/skill-sandbox) | 1 | stable | low | 1 | Create, test, and iterate on experimental skills in an isolated environment w... |
 | [skill-template-generator](.agents/skills/skill-dev/skill-template-generator) | 1 | stable | low | 2 | Generate an interactive, contract-complete Skill template in the sandbox — us... |
 | [skill-testing-framework](.agents/skills/skill-dev/skill-testing-framework) | 1 | stable | low | 1 | Validate Skill structure, contracts, dependencies, anti-patterns, and isolate... |

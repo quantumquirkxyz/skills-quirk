@@ -11,4 +11,4 @@ Capabilities:
 - analyze remix framework (loaders, actions, nested routes, progressive enhancement) with assumptions, constraints, and failure modes
 - produce and validate a frontend artifact with evidence, decisions, and next steps
 
-Stop condition: Remix design complete; artifact saved; completion criteria checked.
+Stop condition: Remix routes, loaders/actions, streaming, auth/CSRF, fixtures, fallbacks, targets, and budgets are explicit; artifact saved; completion criteria checked.

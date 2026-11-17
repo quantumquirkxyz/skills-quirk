@@ -2,7 +2,7 @@
   "skill": "project/spec-driven-development",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3a9c89b31faf3f74c4939452be8cea0770db7bb00c3e08dcb44836c7f4f1bcfa",
+  "frontmatterHash": "3ca8b9e23b20ea90c42ae6d1b2477e9df1df1f6882e8fe5caab8d48d9a04c108",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -30,8 +30,11 @@
       "write-docs",
       "write-files"
     ],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-docs",
+      "write-files"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

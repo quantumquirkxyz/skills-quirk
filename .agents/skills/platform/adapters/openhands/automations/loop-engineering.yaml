@@ -1,0 +1,15 @@
+name: loop-engineering
+description: "Design bounded agent loops with termination contracts, progress detection, verification outside the model, and escalation policy — so loops end with a verdict, not a timeout."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/loop-loop-engineering
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: true
+  sideEffects: [write-temp-file]

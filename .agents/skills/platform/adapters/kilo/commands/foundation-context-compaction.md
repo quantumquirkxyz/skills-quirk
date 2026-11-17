@@ -20,7 +20,7 @@ When to use: Run the context compaction discipline for long agent sessions: summ
 ## Guardrails
 
 - risk: low; trust tier: 2; approval required: no
-- side effects: write-temp-file
+- side effects: write-temp-file: "ephemeral staging and discarded tool-result indexes only, write-persistent-file: "session handoff state or repo-local CONTEXT.md only; never task artifacts
 - isolation: none; model tier: fast
 
-Stop when: The session continues with a fresh window, every durable artifact preserved, and every dropped item either re-derivable or recorded as a risk.
+Stop when: Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts. complete; structured result returned; completion criteria checked.

@@ -16,7 +16,7 @@ When to use: Price and calibrate derivatives (options, exotics, structured produ
 
 ## Deliverables
 
-- pull-request artifact
+- quant artifact
 
 ## Guardrails
 

@@ -11,7 +11,7 @@ When to use: Manage dynamic context for agent execution using retrieval-augmente
 2. Retrieve content from sources (files, issues, PRs, traces)
 3. Index and synthesize
 4. Detect changes since last index
-5. Provide answer with source attribution
+5. Validate the artifact, write both views, and record the terminal state
 
 ## Deliverables
 
@@ -19,8 +19,8 @@ When to use: Manage dynamic context for agent execution using retrieval-augmente
 
 ## Guardrails
 
-- risk: low; trust tier: 2; approval required: no
-- side effects: none
-- isolation: none; model tier: fast
+- risk: low; trust tier: 2; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: fast
 
-Stop when: Context retrieved, indexed, and answer provided with explicit source attribution.
+Stop when: A ContextEngineArtifact is validated and emitted, or a terminal state is recorded: completed, blocked, stale-input, validation-failed, or budget-exceeded.

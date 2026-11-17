@@ -23,4 +23,4 @@ When to use: Remix framework (loaders, actions, nested routes, progressive enhan
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Remix design complete; artifact saved; completion criteria checked.
+Stop when: Remix routes, loaders/actions, streaming, auth/CSRF, fixtures, fallbacks, targets, and budgets are explicit; artifact saved; completion criteria checked.

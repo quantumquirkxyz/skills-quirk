@@ -1,0 +1,15 @@
+name: graph-skill-routing
+description: "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/graph-graph-skill-routing
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: false
+  sideEffects: []
