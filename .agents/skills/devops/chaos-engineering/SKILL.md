@@ -112,6 +112,15 @@ Design **chaos engineering** — fault injection, GameDays, resilience validatio
 
 **Completion criterion:** automation plan and sharing process defined.
 
+## P1 Controls
+
+- Emit an experiment manifest before execution: hypothesis, steady-state metrics, scope selector, blast-radius ceiling, dependencies, owner, approval, start/expiry, kill switch, abort thresholds, rollback, and evidence sink.
+- Make abort and kill-switch controls independent of the fault injector; a lost control plane, telemetry gap, identity failure, or budget breach must fail closed and stop or quarantine the experiment.
+- Preserve immutable experiment evidence with manifest/config digests, target and tool versions, timeline sequence, operator identity, and explicit NOT-RUN/ABORTED/OUTCOME-UNKNOWN states.
+- Include fixtures for partial injection, control-plane loss, telemetry silence, cascading failure, clock skew, duplicate execution, rollback failure, and an exceeded error budget.
+- Define capacity and error budgets for affected traffic, retries, queue depth, saturation, and customer impact; do not trade an exhausted budget for experiment completion.
+- Keep production claims separate from staging or simulation evidence; provenance must identify environment and unexecuted checks.
+
 ## Rules
 
 - Rule: start with a steady-state hypothesis; never inject faults without an expected outcome.

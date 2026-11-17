@@ -98,6 +98,12 @@ Design **reproducible infrastructure** â€” compute, network, storage, identity â
 ### 5. Deliver
 Module definitions (HCL / TypeScript / YAML) + state rules + policy checklist + plan example (terraform plan output or equivalent).
 
+## P1 Controls
+
+- Require a change manifest containing plan digest, state snapshot identity, module/provider versions, policy decisions, approvers, blast radius, rollback, kill switch, and expiry.
+- Enforce policy-as-code and fail closed on unknown drift, unverifiable state, provider errors, missing identity, or incomplete plan output.
+- Preserve immutable plan/apply evidence and provenance; never treat a plan as an applied result. Include capacity and error-budget gates before destructive or scaling changes.
+
 ## Rules
 
 - Rule: separate module design from apply/execution; production changes require explicit approval.
@@ -114,3 +120,12 @@ Module definitions (HCL / TypeScript / YAML) + state rules + policy checklist + 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Governance Controls
+
+- Use remote, encrypted, versioned state with state locking and a documented recovery path. A plan must fail closed when the lock cannot be acquired or state integrity is uncertain.
+- Run policy-as-code checks on plan and configuration for identity, network, encryption, public exposure, data residency, and protected-environment boundaries; exceptions require owner, scope, expiry, and approval.
+- Treat plan provenance as evidence: record commit, provider/module lockfiles, tool versions, inputs, plan digest, and artifact attestations/SBOM for supplied modules or images.
+- Isolate fork/untrusted plan execution from cloud write credentials; use read-only or mocked providers and separate state. Apply requires protected-environment approval and separation of duties.
+- Detect and classify drift before apply. Refresh-only evidence, timeout, or flaky provider responses are not approval to apply; retry within bounds and preserve the last known-good state.
+- Require changed-risk coverage for IAM, networking, encryption, data stores, modules, and destructive operations, with explicit review and rollback/import safeguards.

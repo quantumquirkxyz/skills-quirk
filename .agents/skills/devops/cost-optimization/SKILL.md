@@ -104,6 +104,15 @@ Design a **FinOps** strategy for cloud cost visibility, rightsizing, spot instan
 
 **Completion criterion:** budget, alert, and showback/chargeback plan saved.
 
+## P1 Controls
+
+- Emit a cost-change manifest for each recommendation: baseline window, source billing export digest, allocation policy version, owner, expected savings, capacity/performance guardrails, approval, rollback, and expiry.
+- Express tagging, budget, procurement, and spend-cap rules as policy-as-code; missing identity, pricing, allocation, or policy evidence fails closed and blocks automated action.
+- Preserve immutable cost and capacity evidence with query/config digests, currency and rate-card versions, timestamp, and provenance; distinguish observed spend from modeled savings.
+- Define a kill switch for automated rightsizing, spot migration, and commitment purchases. Abort on SLA/error-budget breach, insufficient headroom, anomalous pricing, or uncertain attribution.
+- Include fixtures for burst demand, regional price drift, missing tags, shared resources, spot interruption, quota exhaustion, forecast error, and a negative-savings outcome.
+- Track capacity and error budgets alongside financial budgets so cost reductions cannot silently consume availability or latency objectives.
+
 ## Rules
 
 - Rule: enforce tagging and cost allocation policies before implementing visibility or chargeback.

@@ -94,6 +94,11 @@ Design and analyze operating system internals — process management, memory man
 - Rule: include concurrency, race, deadlock, and resource-exhaustion failure modes.
 - Rule: state privilege, isolation, and capability boundaries explicitly.
 - Rule: ground claims in real kernel designs when possible.
+- Rule: threat-model kernel attack surface, confused-deputy syscalls, DMA, speculative execution, unsafe drivers, namespace escapes, container breakout, and denial of service.
+- Rule: specify least privilege through capabilities, seccomp/LSM policy, namespaces, cgroups, memory/IO quotas, and device mediation; identify the isolation boundary and residual shared state.
+- Rule: require adversarial/property/fuzz fixtures for syscall validation, allocator invariants, parser/driver inputs, race/deadlock, fault injection, resource exhaustion, and container escape attempts.
+- Rule: include a rollback/safety case for kernel/config/driver changes: staged deployment, known-good image, recovery console, evidence gates, and stop conditions for panic, invariant violation, privilege escalation, or unbounded resource use.
+- Rule: record provenance for kernel version, config, patches, toolchain, threat assumptions, and benchmark evidence; do not claim execution without captured evidence.
 
 ## References
 - `../networking/networking/SKILL.md` — OS networking stack

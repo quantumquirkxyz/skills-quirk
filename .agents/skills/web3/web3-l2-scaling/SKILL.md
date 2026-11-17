@@ -143,6 +143,14 @@ Match the L2 choice to use-case priorities:
 - Rule: include bridge, proof, upgrade, and censorship risks.
 - Rule: separate throughput claims from finality and settlement guarantees.
 - Rule: match recommendation to use-case priorities rather than generic L2 rankings.
+- Rule: model bridge, oracle, sequencer, prover, DA committee, upgrade admin, and cross-domain message trust separately; never collapse soft finality into settlement finality.
+- Rule: stress DA withholding, sequencer censorship/downtime, forced inclusion, invalid proof, fraud expiry, bridge replay, reorg, MEV extraction, and cross-L2 delay.
+- Rule: record invariants for state commitment, proof soundness, withdrawal safety, message ordering, DA reconstruction, and fee solvency.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: unavailable DA quorum, censored forced transaction, invalid/fraud proof, sequencer equivocation, bridge replay, delayed withdrawal, oracle failure, and upgrade-key compromise.
+- Stop when a critical bridge/DA/proof/sequencer assumption is unverified, recovery is absent, or throughput/cost lacks measurement scope; classify as `blocked`.
 
 ## Completion
 

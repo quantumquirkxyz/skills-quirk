@@ -114,6 +114,15 @@ Design **incident response** — runbooks, war rooms, postmortems, blameless cul
 
 **Completion criterion:** blameless culture guidelines documented.
 
+## P1 Controls
+
+- Emit an incident manifest with incident ID, severity, declaration authority, service/identity scope, IC and delegates, communication cadence, kill switch, evidence sources, and closure criteria.
+- Maintain an append-only timeline: monotonic sequence, event timestamp plus clock source, author, source reference/digest, correction chain, and observed/derived/inferred classification. Never rewrite history.
+- Fail closed when identity, evidence integrity, or escalation ownership cannot be established; preserve outcome-unknown for interrupted actions and do not infer resolution from silence.
+- Include fixtures for duplicate alerts, clock skew, missing logs, contradictory telemetry, unauthorized mitigation, rollback failure, communication outage, and a breached response error budget.
+- Define policy-as-code for severity, access, retention, redaction, evidence custody, and kill-switch authority. Record capacity limits for responders, channels, and telemetry.
+- Separate executed actions from proposed runbook steps and mark unexecuted validations explicitly.
+
 ## Rules
 
 - Rule: define severity by customer impact, not by team comfort.

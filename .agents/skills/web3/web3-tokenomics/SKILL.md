@@ -143,6 +143,14 @@ Markdown artifact: purpose, supply, incentives, governance, stress tests, and a 
 - Rule: include LST, LRT, and restaking risks when applicable.
 - Rule: document vesting schedules and unlock cliffs; they are material to price discovery.
 - Rule: prefer sustainable emission over high initial inflation with cliffs.
+- Rule: express invariants for solvency, emissions, collateralization, liquidation, slashing, treasury runway, value capture, and governance power with units, horizon, and oracle assumptions.
+- Rule: stress MEV leakage, oracle manipulation, bridge failure, DA/sequencer outage, governance capture, AA/paymaster subsidy abuse, depeg, correlated slashing, bank run, and unlock cliffs.
+- Rule: use adversarial fixtures and sensitivity ranges rather than point estimates; separate observed data, assumptions, and analyst inference.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: 90% price shock, demand collapse, emissions spiral, stale oracle, bridge halt, DA outage, sequencer censorship, flash-loan governance, paymaster drain, depeg, mass withdrawal, and slashing cascade.
+- Stop when solvency, redemption, collateral, or governance invariants fail; inputs lack provenance; or sensitivity bounds are missing. Return `fragile`, `unsustainable`, or `blocked`.
 
 ## Completion
 

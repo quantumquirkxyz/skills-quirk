@@ -63,6 +63,13 @@ Emit `NetworkingSecurityArtifact` as both:
 Use this skill when designing or reviewing segmentation, firewall rules, VPN access, TLS posture, ingress/egress controls, or service-to-service network trust.
 
 
+## P1 Controls
+
+- Emit a policy manifest with trust-zone/version, identities, allowed and denied flows, certificate/key provenance, policy-as-code decision, rollout, rollback, abort, kill switch, and evidence digest.
+- Enforce default-deny and fail-closed behavior for unknown identity, policy engine outage, certificate ambiguity, route/DNS uncertainty, or logging failure on high-risk paths.
+- Cover IPv6 parity, QUIC/HTTP3 visibility and controls, identity-aware proxying, mTLS rotation/revocation, and encrypted-traffic metadata limits without claiming payload inspection.
+- Include fixtures for policy precedence, parser fuzzing, malformed IPv6/DNS, route leak, certificate expiry, downgrade, segmentation bypass, egress exfiltration, and capacity/error-budget exhaustion.
+
 ## Rules
 
 - Rule: define trust zones before discussing individual firewall rules.
@@ -70,6 +77,11 @@ Use this skill when designing or reviewing segmentation, firewall rules, VPN acc
 - Rule: separate ingress, egress, lateral movement, and administrative access.
 - Rule: include TLS, certificate, key rotation, and authentication assumptions where traffic crosses boundaries.
 - Rule: document logging and alerting for policy violations and unexpected exposure.
+- Rule: threat-model identity compromise, lateral movement, route/DNS/BGP abuse, supply-chain appliances, downgrade/misconfiguration, metadata leakage, and encrypted traffic blind spots.
+- Rule: apply least privilege to users, services, network devices, certificates, and admin paths; default deny and explicitly constrain egress, management, and break-glass access.
+- Rule: require adversarial/property/fuzz fixtures for parser/protocol boundaries, policy precedence, fail-open behavior, certificate rotation/revocation, segmentation bypass, and malformed DNS/route inputs.
+- Rule: define rollback/safety case with staged policy rollout, known-good ruleset, emergency isolation, approver, telemetry gates, and stop conditions for unexpected exposure or unverifiable identity.
+- Rule: preserve provenance for topology, rules, certificates, threat intel, captures, and assumptions; separate observed flows from inferred reachability.
 
 ## Steps
 

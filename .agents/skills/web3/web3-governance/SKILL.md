@@ -148,6 +148,13 @@ Artifact: governance type, actors, proposal lifecycle, token distribution, attac
 - Rule: separate social legitimacy from on-chain enforceability.
 - Rule: identify capture, bribery, apathy, and rushed-execution risks.
 - Rule: document EIP-7702 delegation if used for governance accounts.
+- Rule: threat-model token capture, delegation, flash-loan voting, bribery, oracle dependence, multisig/guardian compromise, timelock bypass, bridge replay, and delegated-account authority.
+- Rule: test invariants: quorum cannot be bypassed, execution is bounded by approved calldata, timelocks/vetoes are observable, and emergency powers expire or are auditable.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: low-turnout whale capture, vote buying, delegate key loss, malicious upgrade, timelock race, guardian collusion, cross-domain replay, oracle compromise, and AA paymaster abuse.
+- Stop on unbounded emergency authority, unverifiable voter weight, missing exit/fork path, violated invariant, or absent independent execution evidence.
 
 ## Completion
 

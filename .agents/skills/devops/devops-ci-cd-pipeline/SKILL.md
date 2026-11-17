@@ -98,6 +98,12 @@ Design a **CI/CD pipeline** — build, test, security, deploy, rollback — with
 ### 5. Deliver
 Pipeline file (YAML / JSON / script), gate rules, rollback plan, environment parity checklist.
 
+## P1 Controls
+
+- Emit a release manifest with artifact digests, provenance, environment, approvals, rollout/rollback, kill switch, capacity/error budgets, and verification status.
+- Apply policy-as-code with fail-closed behavior for untrusted artifacts, missing attestations, unavailable gates, or ambiguous deployment outcomes.
+- Preserve immutable pipeline evidence and fixtures for duplicate delivery, partial rollout, failed rollback, secret absence, and timeout; label unexecuted checks.
+
 ## Rules
 
 - Rule: make build, test, security, deploy, and rollback stages explicit.
@@ -114,3 +120,11 @@ Pipeline file (YAML / JSON / script), gate rules, rollback plan, environment par
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Security Controls (P0/P1)
+
+- Apply least agency to runners, tokens, deploy tools, and environments; isolate build, test, signing, and release authorities to prevent confused deputy and tool injection.
+- Require SBOM, VEX handling, signed provenance, SLSA target, Sigstore verification, secret/PII redaction, immutable artifact digests, and audit evidence at promotion gates.
+- Inputs declare source, builder, trust roots, environments, approvals, data classification, and rollback target. Outputs include gate evidence, refused actions, mutation log, rollback rehearsal, and residual unknowns.
+- Require explicit approval for production, privilege, signing, secret access, migrations, and policy exceptions. Add refusal/non-action and adversarial mutation fixtures.
+- Stop on failed verification, injection, secret exposure, missing approval, drifted provenance, or untested rollback; do not describe recommendations as legal compliance.

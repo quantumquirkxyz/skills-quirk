@@ -17,7 +17,7 @@ risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "networking"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ""
@@ -62,6 +62,13 @@ Emit `NetworkingProtocolsArtifact` as both:
 
 Use this skill when analyzing packet formats, handshakes, transport behavior, routing interactions, congestion control, or protocol-level failure scenarios.
 
+
+## P1 Controls
+
+- Emit a protocol manifest with version/draft, actors and identities, state machine, packet/message evidence, timing bounds, retry budget, capacity/error budget, rollback/abort, and provenance.
+- Model QUIC and HTTP/3 separately from TCP/TLS: connection IDs, 0-RTT replay, stream flow control, loss recovery, migration, version negotiation, QPACK, and fallback/downgrade behavior. State what was not observed.
+- Include IPv6 path, PMTUD, DNS/SVCB/HTTPS, NAT traversal, and identity/authentication assumptions where relevant; fail closed on unknown peer identity or downgrade policy.
+- Preserve immutable capture/log digests and fixtures for loss, reordering, fragmentation, replay, handshake timeout, malformed frames, version negotiation, 0-RTT rejection, and telemetry gaps.
 
 ## Rules
 

@@ -104,6 +104,12 @@ Design a **secret management** strategy using HashiCorp Vault, SOPS, SealedSecre
 
 **Completion criterion:** integration plan saved with CI/CD and runtime patterns.
 
+## P1 Controls
+
+- Emit a secret-operation manifest with identity, purpose, scope, rotation/version, policy decision, provenance, expiry, rollback/revocation, and kill switch.
+- Fail closed on missing attestation, stale version, identity ambiguity, policy outage, or audit-write failure; never claim rotation or revocation without immutable evidence.
+- Include fixtures for replay, split-brain rotation, revoked key, backup restore, lease expiry, quota exhaustion, and unavailable KMS.
+
 ## Rules
 
 - Rule: treat secrets as high-value assets; apply least-privilege access and time-bound tokens.
@@ -120,3 +126,11 @@ Design a **secret management** strategy using HashiCorp Vault, SOPS, SealedSecre
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Security Controls (P0/P1)
+
+- Apply least agency with short-lived, audience-bound, purpose-bound access; default deny and separate requester, custodian, approver, and operator roles to prevent confused deputy behavior.
+- Define key/secret custody, non-exportability, quorum, rotation, revocation, recovery, destruction, break-glass expiry, and tamper-evident audit evidence.
+- Redact secrets, tokens, credentials, and PII before logs, traces, fixtures, prompts, and reports. Treat prompts, config, vault paths, and tool output as untrusted for injection.
+- Inputs declare secret inventory, classification, trust boundary, operators, provider, approval context, and rollback. Outputs include access graph, redaction proof, rotation evidence, refusal cases, and residual unknowns.
+- Require approval for issuance, export, policy widening, break-glass, rotation, destruction, and production migration. Stop on custody ambiguity, injection, exposed values, or unverifiable audit evidence.

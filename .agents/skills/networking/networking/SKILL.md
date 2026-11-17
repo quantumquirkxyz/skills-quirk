@@ -98,6 +98,13 @@ Design and analyze network infrastructure — TCP/IP, routing, DNS, load balanci
 5. **Plan for failure** — redundancy, failover, disaster recovery
 6. **Document** — topology, IP ranges, DNS, routing rules
 
+## P1 Controls
+
+- Emit a network design manifest with topology/version, IPv4 and IPv6 CIDRs, owners, identities, routes, policy-as-code references, capacity/error budgets, rollback, abort, and kill switch.
+- Specify IPv6-only, dual-stack, NAT64/DNS64, MTU/PMTUD, and address-selection assumptions; fail closed on ambiguous route, identity, or policy evaluation.
+- Preserve immutable topology, change, and observation evidence with source digests and environment provenance; distinguish designed reachability from observed traffic.
+- Include fixtures for IPv6 extension headers, RA/DHCP attacks, asymmetric routing, MTU black holes, DNS failure, route leak, saturation, and partial failover.
+
 ## Rules
 
 - Rule: map who talks to whom before choosing protocols or appliances.

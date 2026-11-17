@@ -141,6 +141,14 @@ Markdown artifact: classification, security properties, economic incentives, DA/
 - Rule: include MEV extraction and censorship resistance in the threat model.
 - Rule: compare at least one meaningful alternative.
 - Rule: tie recommendation to use-case priorities rather than generic rankings.
+- Rule: threat-model validators, proposers, builders, bridges, oracles, sequencers, DA providers, and governance actors with trust, quorum, corruption, and recovery assumptions.
+- Rule: stress MEV, oracle manipulation, bridge compromise, DA withholding, sequencer censorship/reorg, partitions, and governance capture using adversarial fixtures.
+- Rule: state invariants for stake at risk, quorum, issuance, slashing, finality, and recovery; do not claim security when assumptions are unverified.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: minority equivocation, correlated validator outage, withheld DA sample, censorship, oracle deviation, bridge replay, MEV sandwich, preconfirmation reorg, and emergency override.
+- Stop when safety/liveness thresholds, DA recoverability, oracle assumptions, or economic invariants lack evidence; verdict is `blocked` or `unknown`.
 
 ## Completion
 

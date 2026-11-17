@@ -62,6 +62,12 @@ Emit `DevopsK8sOrchestrationArtifact` as both:
 
 Design a **Kubernetes deployment** — architecture, deployment strategy, service mesh, observability — with reproducible manifests.
 
+## P1 Controls
+
+- Require a workload/change manifest with image digests, identity, policy decisions, dependency order, capacity budget, error budget, rollout, rollback, abort, and kill-switch paths.
+- Use policy-as-code and fail closed for admission, identity, network, quota, or provenance uncertainty; preserve immutable audit evidence.
+- Include fixtures for unschedulable pods, quota exhaustion, split brain, network policy bypass, expired credentials, partial rollout, and failed rollback.
+
 ## Process
 
 ### 1. Architecture design
@@ -119,3 +125,12 @@ Manifests (YAML) + architecture diagram + monitoring rules + deployment runbook 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Supply-Chain And Policy Controls
+
+- Admit only signed container images by digest; verify signature, artifact attestation, SBOM, provenance, and vulnerability policy before scheduling workloads.
+- Enforce policy-as-code admission for Pod Security, RBAC, network policy, resource limits, allowed registries, provenance, and protected namespaces. Policy failures block promotion.
+- Isolate fork/untrusted workloads with dedicated namespaces/nodes, restricted service accounts, no production secrets, network egress controls, and explicit sandbox boundaries.
+- Define changed-risk coverage for manifests, CRDs, admission policies, network rules, and data migrations; high-risk changes require staging validation and named approval.
+- Canary promotion must verify readiness, SLO/error/latency/saturation metrics, and rollback execution against the prior image digest. Timeouts or flaky probes pause promotion.
+- Record cluster drift, policy decisions, image digests, approvals, and rollback evidence; never treat an out-of-band mutation as reconciled without review.

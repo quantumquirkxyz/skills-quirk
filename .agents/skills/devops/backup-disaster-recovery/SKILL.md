@@ -115,6 +115,15 @@ Design a **backup and disaster recovery** strategy with explicit recovery object
 
 **Completion criterion:** failover runbook saved with triggers, process, communication plan, and rollback criteria.
 
+## P1 Controls
+
+- Emit a versioned recovery manifest for every service: owner, dependency order, source snapshot identifiers, target environment, RPO/RTO, restore commands, verifier, and abort conditions.
+- Treat backup and restore evidence as immutable records: bind each snapshot, manifest, log, and checksum to a content digest, timestamp, tool version, and operator; never overwrite a prior attempt.
+- Define a kill switch and abort path before restore or failover design. Abort on digest mismatch, untrusted key, unexpected schema, unsafe data divergence, or RTO/RPO breach; preserve outcome-unknown state rather than claiming success.
+- Include fixtures for missed backup, corrupted snapshot, stale key, partial restore, split-brain, expired retention, RPO breach, and RTO breach. Mark validation as not-run unless evidence exists.
+- Use policy-as-code for retention, encryption, residency, access, and deletion; fail closed when policy evaluation or provenance verification is unavailable.
+- Track capacity and recovery error budgets (restore throughput, parallel jobs, storage, and allowed failed drills) and record assumptions separately from observed evidence.
+
 ## Rules
 
 - Rule: define RPO and RTO per service before designing backup or DR topology.

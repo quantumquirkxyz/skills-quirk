@@ -108,6 +108,12 @@ Design a **GitOps** workflow using ArgoCD or Flux with declarative sync, drift d
 
 **Completion criterion:** progressive delivery strategy documented with metrics, gates, and rollback criteria.
 
+## P1 Controls
+
+- Require a sync manifest with commit/artifact digests, source provenance, target, policy decisions, dependency order, drift status, rollback, abort, and kill switch.
+- Reconciliation and admission must fail closed on unverifiable source, identity, policy, or desired state; retain immutable sync evidence and outcome-unknown status.
+- Include fixtures for duplicate sync, drift, partial apply, controller outage, rollback failure, quota exhaustion, and error-budget breach.
+
 ## Rules
 
 - Rule: Git is the single source of truth; never modify production cluster state outside Git.
@@ -124,3 +130,13 @@ Design a **GitOps** workflow using ArgoCD or Flux with declarative sync, drift d
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Trust And Reconciliation Controls
+
+- Git remains the source of truth only for reviewed, signed commits and immutable image digests carrying attestations, SBOM, and provenance; admission policy rejects unsigned or unverifiable artifacts.
+- Enforce policy-as-code before merge and at admission (RBAC, Pod Security, network, secrets, registries, protected namespaces). Exceptions require owner, scope, expiry, and approval.
+- Isolate fork/untrusted CI and preview environments from production clusters, credentials, and write-capable deploy keys; never let untrusted automation approve or sync protected environments.
+- Define changed-risk coverage for manifests, CRDs, policies, secrets, migrations, and sync configuration. High-risk changes require staged validation and named approval.
+- Detect drift with source, timestamp, desired/live digests, and severity. Auto-remediation is allowed only for pre-approved classes; production drift requires investigation and an auditable decision.
+- Progressive delivery must verify canary metrics and rollback execution. Sync, health-check, provider, or metric timeouts are inconclusive and pause promotion; bounded retries never become a green result.
+- Record flag expiry/owner state, sync approvals, policy decisions, image verification, and rollback evidence for every protected-environment promotion.

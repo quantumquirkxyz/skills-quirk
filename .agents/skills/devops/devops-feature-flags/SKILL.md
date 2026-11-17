@@ -62,6 +62,12 @@ Emit `DevopsFeatureFlagsArtifact` as both:
 
 Design a **feature flag system** — rollouts, targeting, kill switches — with lifecycle management and operational runbooks.
 
+## P1 Controls
+
+- Emit a flag change manifest with owner, targeting identity, expiry, rollout percentage, dependencies, kill switch, rollback, capacity/error-budget guardrails, and audit evidence.
+- Default deny when flag policy, identity, provenance, or control-plane state is unavailable; preserve immutable evaluation and mutation evidence.
+- Include fixtures for stale clients, conflicting rules, targeting leakage, control-plane outage, rollback failure, and budget breach.
+
 ## Process
 
 ### 1. Flag types
@@ -112,3 +118,12 @@ Flag lifecycle document + targeting rules template + flag inventory.
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Governance Controls
+
+- Every flag has an owner, purpose, risk tier, creation date, expiry/retirement date, kill-switch procedure, and approval boundary per environment.
+- Production changes require protected-environment approval and an auditable change record; emergency disablement is authorized separately and reviewed afterward.
+- Targeting rules are deterministic, deny-by-default for new cohorts, and tested against unintended exposure. Record evaluation evidence without exposing user secrets.
+- Flag rollout is tied to canary metrics and rollback criteria. Verify disablement and recovery, not only the control-plane API response.
+- Detect expired, orphaned, conflicting, or permanently enabled flags in CI and scheduled drift checks; block high-risk expiry violations and assign an owner for every exception.
+- Treat flag-service timeouts and flaky reads as unknown and fail safe to the documented default. Bounded retries do not establish successful verification.

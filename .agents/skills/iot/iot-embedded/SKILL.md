@@ -94,6 +94,14 @@ Design embedded/IoT systems — firmware, sensors, edge computing, device connec
 - [ ] OTA updates with rollback capability
 - [ ] No hardcoded credentials
 
+## High-Risk Safety And Threat Model
+
+- Threat-model physical access, debug ports, supply-chain replacement, cloned device identity, rogue update servers, downgrade/replay, compromised cloud credentials, data exfiltration, and fleet-wide blast radius.
+- Require hardware/root-of-trust-backed secure boot, measured boot where available, signed and versioned images, anti-rollback counters, A/B or recovery partitions, staged rollout, and an offline recovery path.
+- Define least-privilege identities and per-device keys; isolate sensor, update, networking, and application permissions. Minimise location, telemetry, and identifier collection and state retention/deletion rules.
+- Add adversarial/property/fuzz fixtures for malformed packets, parser lengths, power loss during update, clock rollback, duplicate messages, revoked certificates, corrupted flash, and reconnect storms.
+- Document a rollback/safety case with update provenance (source revision, signer, digest, SBOM), canary gates, abort authority, recovery image, and verifiable stop conditions for signature, boot, health, or privacy failures.
+
 ## Rules
 
 - Rule: design from device constraints: CPU, memory, storage, power, and connectivity.
@@ -101,6 +109,7 @@ Design embedded/IoT systems — firmware, sensors, edge computing, device connec
 - Rule: require secure boot, signed firmware, device identity, and OTA rollback for managed fleets.
 - Rule: define offline behavior, retry policy, and data buffering explicitly.
 - Rule: include fleet observability: health, firmware version, connectivity, and error telemetry.
+- Rule: no OTA rollout proceeds when signature, provenance, secure-boot, anti-rollback, health, or privacy checks are unknown or contradictory.
 
 ## References
 - `../../networking/networking/SKILL.md` — network protocols

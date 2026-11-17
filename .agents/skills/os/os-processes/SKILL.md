@@ -70,6 +70,11 @@ Use this skill when reasoning about process lifecycle, scheduling, signals, fork
 - Rule: separate CPU scheduling, blocking I/O, locks, and IPC delays.
 - Rule: treat signal handling and process cleanup as failure paths, not afterthoughts.
 - Rule: call out isolation boundaries for privileges, namespaces, cgroups, and resources when relevant.
+- Rule: threat-model signal spoofing, PID/FD reuse, privilege transitions, IPC confused deputies, fork bombs, deadlocks, zombie leaks, namespace escapes, and cross-tenant side channels.
+- Rule: require least-privilege process identities, capability drops, explicit FD/signal ownership, namespace/cgroup limits, and authenticated IPC with replay/ordering semantics.
+- Rule: define adversarial/property/fuzz fixtures for lifecycle transitions, signal storms, malformed IPC, cancellation races, scheduler starvation, resource exhaustion, and orphan cleanup.
+- Rule: provide rollback/safety case and verifiable stop conditions for lost ownership, invariant violations, unbounded retries, deadlock, or isolation failure; state recovery authority and evidence.
+- Rule: preserve provenance of observations, scheduler assumptions, kernel/config versions, and inferred versus measured timing.
 
 ## Steps
 
