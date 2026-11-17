@@ -2,7 +2,7 @@
 name: "physics-thermo"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "physics artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Model thermodynamic systems complete; required sections present; completion criteria checked."
+stopCondition: "System definition, first law, second law, cycle analysis, efficiency, and key bound all documented."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-thermo.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-classical", "physics-simulation-setup"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -80,13 +80,25 @@ Apply ΔU = Q − W for closed systems; ṁ(ĥ₂ − ĥ₁) for open systems. L
 
 **Completion criterion:** energy balance written with every term named and signed.
 
-### 3. Second law (entropy)
+### 3. First-law cycle accounting
+
+For any closed cycle, verify net Q − W = 0 (net heat equals net work over the cycle). Sum Q and W over every step and confirm closure within tolerance.
+
+**Completion criterion:** cycle energy balance closes: ΣQ − ΣW = 0.
+
+### 4. Second law (entropy)
 
 Apply ΔS = ∫δQ_rev/T + S_gen. Compute S_gen ≥ 0. If an irreversibility is present (friction, mixing, finite ΔT), quantify it: lost work W_lost = T₀ · S_gen.
 
 **Completion criterion:** entropy balance written; lost work computed if irreversibility present.
 
-### 4. Pick the cycle / process
+### 5. Entropy production
+
+For isolated or closed systems, verify entropy production ≥ 0. Report S_gen and confirm it is non-negative for every process step.
+
+**Completion criterion:** S_gen ≥ 0 confirmed for isolated/closed systems.
+
+### 6. Pick the cycle / process
 
 - Isothermal, adiabatic, polytropic, or specific process (Otto, Diesel, Rankine, Carnot, Brayton, refrigeration).
 - For each step, apply the appropriate equation of state (ideal gas law, Van der Waals, Steam tables).
@@ -94,7 +106,30 @@ Apply ΔS = ∫δQ_rev/T + S_gen. Compute S_gen ≥ 0. If an irreversibility is 
 
 **Completion criterion:** cycle named; each step computed; efficiency vs Carnot stated.
 
-### 5. Phase transitions (if applicable)
+### 7. Carnot bound check
+
+Verify η ≤ 1 − T_C/T_H for any heat engine operating between reservoirs at T_H and T_C. Confirm no claimed efficiency exceeds the Carnot bound.
+
+**Completion criterion:** efficiency compared to Carnot bound; bound not violated.
+
+### 8. Van der Waals critical point verification
+
+For a Van der Waals fluid (p + a/V²)(V − b) = RT, verify the critical point conditions:
+
+- ∂p/∂V = 0 at critical point.
+- ∂²p/∂V² = 0 at critical point.
+
+Compute V_c, p_c, T_c and confirm both derivatives vanish at the critical point.
+
+**Completion criterion:** both critical-point derivative conditions verified.
+
+### 9. Maxwell construction (if phase coexistence)
+
+Apply the Maxwell equal-area construction for first-order phase transitions: verify equal areas under the Van der Waals isotherm in the coexistence region.
+
+**Completion criterion:** Maxwell construction verified where applicable.
+
+### 10. Phase transitions (if applicable)
 
 - Clapeyron equation: dP/dT = ΔS/ΔV = ΔH/(TΔV).
 - Phase diagram: identify phases, coexistence lines, critical point.
@@ -102,11 +137,19 @@ Apply ΔS = ∫δQ_rev/T + S_gen. Compute S_gen ≥ 0. If an irreversibility is 
 
 **Completion criterion:** phase diagram described; latent heat and critical point computed.
 
-### 6. Deliver
+### 11. Deliver
 
-Markdown artifact: system definition, first law, second law, cycle analysis, efficiency, and the key bound (e.g. "this engine cannot exceed 60% Carnot efficiency at these temperatures").
+Markdown artifact: system definition, first law, first-law cycle accounting, second law, entropy production, cycle analysis, efficiency, Carnot bound check, Van der Waals critical point verification, Maxwell construction, and the key bound (e.g. "this engine cannot exceed 60% Carnot efficiency at these temperatures").
 
 **Completion criterion:** all sections present; efficiency bound stated.
+
+## Fixtures
+
+- **Carnot efficiency** — fixture with T_H, T_C, expected Carnot bound, and confirmation that claimed η does not exceed it.
+- **First-law cycle** — fixture with per-step Q and W values; expected closure ΣQ − ΣW = 0 within tolerance.
+- **Van der Waals critical point** — fixture with a, b, R; expected V_c, p_c, T_c; confirmation ∂p/∂V = ∂²p/∂V² = 0 at the critical point.
+- **Maxwell construction** — fixture with a Van der Waals isotherm; expected equal areas in the coexistence region.
+- **Entropy production** — fixture with heat transfers and temperatures; expected S_gen ≥ 0 for isolated/closed systems.
 
 ## Completion
 

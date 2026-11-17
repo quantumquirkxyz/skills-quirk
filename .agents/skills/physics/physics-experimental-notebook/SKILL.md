@@ -2,7 +2,7 @@
 name: "physics-experimental-notebook"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-experimental-notebook.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-data-analysis-root", "physics-reproducibility-archive"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -87,10 +87,10 @@ Document:
 
 - **Apparatus** — instruments with model numbers, settings.
 - **Calibration procedure** — standard source, method, date, result.
-- **Traceability** — chain to a national/international standard if applicable.
-- **Calibration uncertainty** — propagated into the final result.
+- **Traceability** — chain to a national/international standard if applicable; record calibration certificate number, issuing lab, calibration date, next due date, and the link from each measurement to its calibration record.
+- **Calibration uncertainty** — propagated into the final result as a Type B component.
 
-**Completion criterion:** calibration documented with traceability and uncertainty.
+**Completion criterion:** calibration documented with traceability link to each measurement and uncertainty.
 
 ### 3. Measurements
 
@@ -105,29 +105,39 @@ Record:
 
 ### 4. Error analysis
 
-Distinguish:
+Apply **GUM uncertainty propagation**:
 
-- **Statistical errors** — variance of repeated measurements.
-- **Systematic errors** — calibration errors, instrument bias, environmental effects.
-- **Combined uncertainty** — root-sum-square or full covariance matrix.
+- **Type A (statistical)** — standard uncertainty from repeated measurements: `u_A = s / sqrt(n)` where `s` is the sample standard deviation and `n` the number of repetitions.
+- **Type B (systematic)** — standard uncertainty from calibration certificates, instrument specifications, or tolerance limits; for a uniform (rectangular) distribution with half-width `a`, `u_B = a / sqrt(3)`.
+- **Combined standard uncertainty** — `u_c = sqrt(sum_i u_i^2)` over independent Type A and Type B components (root-sum-square), or the full covariance matrix when components are correlated.
+- **Expanded uncertainty** — `U = k · u_c` with coverage factor `k = 2` for approximately 95% confidence; report the result as `measurand ± U`.
 - **Sensitivity analysis** — how does the result change with key parameter perturbation?
 
-**Completion criterion:** statistical and systematic errors quantified; combined uncertainty reported.
+**Completion criterion:** statistical and systematic errors quantified; combined and expanded uncertainty (k=2) reported.
 
 ### 5. FAIR checklist
 
-- **Findable** — metadata (title, authors, date, keywords) in a repository (Zenodo, OSF, institutional).
+- **Findable** — metadata (title, authors, date, keywords) in a repository (Zenodo, OSF, institutional); assign a **DOI** with **DataCite** metadata (creators, title, publisher, publicationYear, resourceType, relatedIdentifiers).
 - **Accessible** — open access policy; file formats (CSV, HDF5) with open specifications.
 - **Interoperable** — metadata uses standard vocabularies (e.g. Dublin Core, DataCite, FAIRsharing).
 - **Reusable** — licence (CC0 / MIT), code for analysis linked, version control (Git tag / DOI).
 
-**Completion criterion:** checklist filled; DOI or Git tag assigned.
+**Completion criterion:** checklist filled; DOI or Git tag assigned; DataCite metadata present.
 
-### 6. Deliver
+### 6. Audit trail immutability
 
-Markdown entry with: description, setup, calibration, measurements, error analysis, FAIR checklist, and linked data. The entry should be readable by another physicist without the original experimenter.
+- Record every notebook entry as **append-only** with a UTC timestamp and a content hash (SHA-256).
+- Corrections are made only by **addendum**; never edit or delete a recorded entry.
+- Pin entries with **Git signed commits** (or equivalent signed record) so the history cannot be rewritten silently.
+- Verify immutability on each review by recomputing hashes and comparing against the stored manifest.
 
-**Completion criterion:** entry saved; all links active; FAIR checklist complete.
+**Completion criterion:** audit trail is append-only, hashed, and signed; immutability check passes.
+
+### 7. Deliver
+
+Markdown entry with: description, setup, calibration, measurements, error analysis, FAIR checklist, audit trail, and linked data. The entry should be readable by another physicist without the original experimenter.
+
+**Completion criterion:** entry saved; all links active; FAIR checklist complete; audit trail verified.
 
 ## Completion
 
@@ -152,3 +162,9 @@ Markdown entry with: description, setup, calibration, measurements, error analys
 ## Validation Record
 
 Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), the evidence manifest, fixture declarations and expected tolerances, assumptions, accessibility/privacy/licensing checks, and unresolved proof obligations. Completion requires all in-scope fields or an explicit reason for each unknown.
+
+## Fixtures
+
+- `uncertainty-propagation` — known-solution: two repeated measurements (10.12, 10.18) with Type B calibration component `u_B = 0.05`; expected combined `u_c ≈ 0.053`, expanded `U = 2 · u_c ≈ 0.106`, reported as `10.15 ± 0.11`.
+- `calibration-traceability` — counterexample: a measurement whose calibration certificate is expired or lacks the standard-source chain must be flagged and excluded from the FAIR entry.
+- `audit-trail-immutability` — counterexample: an edited or deleted notebook entry without an addendum or signed commit must be rejected as non-immutable.

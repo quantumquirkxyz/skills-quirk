@@ -2,7 +2,7 @@
 name: "physics-reproducibility-archive"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-reproducibility-archive.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-simulation-setup", "physics-data-analysis-root", "physics-writing-revtex"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -97,8 +97,8 @@ List:
 
 ### 3. Containerise
 
-- **Docker:** `Dockerfile` with base image, tool versions, code, data.
-- **Apptainer:** `.def` file for HPC clusters.
+- **Docker:** `Dockerfile` with base image pinned by digest (e.g. `ubuntu@sha256:...`), tool versions pinned, code, data.
+- **Apptainer:** `.def` file for HPC clusters; base image pinned by digest or versioned tag.
 - Include: exact tool versions (not `latest`); build instructions; run command.
 
 **Completion criterion:** container builds; produces expected output on a fresh host.
@@ -113,8 +113,9 @@ Create a Zenodo deposit:
 - **Licence:** stated.
 - **Related identifiers:** link to the paper (arXiv DOI or journal DOI).
 - **Upload:** data + code + container (or link to Docker Hub / GHCR).
+- **DOI:** request a DataCite DOI (specific version DOI, not concept DOI); record the version number used.
 
-**Completion criterion:** Zenodo record created; DOI assigned.
+**Completion criterion:** Zenodo record created; version-specific DataCite DOI assigned.
 
 ### 5. GitHub release
 
@@ -124,7 +125,14 @@ Create a Zenodo deposit:
 
 **Completion criterion:** GitHub release created; DOI linked.
 
-### 6. Checklist and compliance
+### 6. CITATION.cff
+
+- Add `CITATION.cff` at the repo root with `cff-version`, `title`, `authors`, `version`, `date-released`, `doi` (DataCite DOI), `preferred-citation`.
+- Validate the `CITATION.cff` against the CFF schema (e.g. `cffconvert --validate`).
+
+**Completion criterion:** `CITATION.cff` present at repo root; validation passes.
+
+### 7. Checklist and compliance
 
 - **Journal requirements** — which journals require data / code? (Nature, Science, APS, IOP all have policies).
 - **Funder requirements** — NSF, DOE, ERC open-data mandates.
@@ -138,6 +146,13 @@ Create a Zenodo deposit:
 - Pair with `physics-simulation-setup` for simulation containerization.
 - Pair with `physics-experimental-notebook` for experimental data archival.
 - Pair with `physics-writing-revtex` for journal submission.
+
+## Fixtures
+
+- **DOI creation** — fixture with expected Zenodo record metadata fields (title, authors, keywords, related identifiers) and expected DataCite DOI format (version-specific, not concept DOI).
+- **Container digest pinning** — fixture with expected base image digest reference and confirmation that no `latest` tag appears in `Dockerfile` or `.def`.
+- **CITATION.cff validation** — fixture validating `CITATION.cff` at repo root against the CFF schema; expected fields present.
+- **Reproducibility test** — fixture verifying that containerised analysis re-runs on a fresh host and reproduces expected output within tolerance.
 
 ## Completion
 

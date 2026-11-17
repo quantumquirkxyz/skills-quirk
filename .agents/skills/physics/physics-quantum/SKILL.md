@@ -2,17 +2,17 @@
 name: "physics-quantum"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results."
 license: "MIT"
 capabilities:
   - apply physics quantum methods within explicit physics boundaries
-  - analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes
+  - analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with assumptions, constraints, and failure modes
   - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "physics artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results complete; required sections present; completion criteria checked."
+stopCondition: "System definition, regime, computation, units/limits, and answer all documented."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-quantum.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-classical", "math-linear-algebra"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -92,7 +92,22 @@ Pick the right formalism: Schrödinger picture, Heisenberg, interaction picture,
 
 **Completion criterion:** regime and formalism chosen with a one-line justification.
 
-### 3. Compute
+### 3. Software and solver selection
+
+- **QuTiP version** — require **QuTiP v5.x**; QuTiP v4.7.x is legacy and must not be used for new computations.
+- **Qobj dimension structure** — enforce the correct dimension format:
+  - A two-qubit operator uses nested dimensions `[[2, 2], [2, 2]]` (two subsystems of dimension 2).
+  - A single four-dimensional operator uses `[[4], [4]]`.
+  - Mixing these structures produces silent dimension errors; validate the Qobj dims before solving.
+- **Solver selection**:
+  - `mesolve` — open systems / Lindblad master equation (with collapse operators).
+  - `sesolve` — closed systems (unitary Schrödinger evolution).
+  - `mcsolve` — Monte Carlo wavefunction for large open systems.
+- **Collapse operators** — validate that Lindblad collapse operators satisfy trace preservation: `sum_c C_c† C_c` must be consistent with the chosen Lindblad convention; check trace of ρ remains 1 (within numerical tolerance) over the evolution.
+
+**Completion criterion:** QuTiP v5.x declared; Qobj dims validated; solver matched to open/closed regime; collapse operators checked for trace preservation.
+
+### 4. Compute
 
 Solve by the path that matches the system:
 
@@ -100,12 +115,13 @@ Solve by the path that matches the system:
 - **Perturbation theory** — time-independent or time-dependent; cite the small parameter.
 - **Variational** — ansatz + minimize ⟨ψ|H|ψ⟩.
 - **Numerical** — exact diagonalisation, DMRG, tensor networks, QMC.
+- **DMRG convergence sweep** (many-body / 1D systems) — sweep bond dimension `χ` and confirm the **truncation error ≤ 1e-8**; report the converged energy and the bond dimension at convergence.
 
 For each step, state approximations and truncations.
 
-**Completion criterion:** method named, approximations listed, computation executed.
+**Completion criterion:** method named, approximations listed, computation executed; DMRG reports truncation error ≤ 1e-8 when used.
 
-### 4. Units and limits check
+### 5. Units and limits check
 
 - **Units:** verify ℏ, c, k_B are set correctly; energies, lengths, times have plausible orders of magnitude.
 - **Limits:** check classical limit (ℏ→0), continuum limit, weak-coupling limit, large-N limit.
@@ -113,11 +129,11 @@ For each step, state approximations and truncations.
 
 **Completion criterion:** units sanity-checked; at least one limit recovered.
 
-### 5. Deliver
+### 6. Deliver
 
 Markdown artifact with: system definition, regime, computation, units/limits, and the answer with an uncertainty or approximation note. Cite the method used.
 
-**Completion criterion:** artifact covers all five; answer is reproducible.
+**Completion criterion:** artifact covers all six; answer is reproducible.
 
 ## Completion
 
@@ -142,3 +158,10 @@ Markdown artifact with: system definition, regime, computation, units/limits, an
 ## Validation Record
 
 Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), the evidence manifest, fixture declarations and expected tolerances, assumptions, accessibility/privacy/licensing checks, and unresolved proof obligations. Completion requires all in-scope fields or an explicit reason for each unknown.
+
+## Fixtures
+
+- `two-qubit-heisenberg` — known-solution: H = J(S1·S2) with J=1; QuTiP v5.x; Qobj dims `[[2, 2], [2, 2]]`; expected ground-state energy `-0.75 J` (singlet) and triplet gap `J`, tolerance 1e-6.
+- `rabi-oscillation` — known-solution: closed two-level driven system; `sesolve` (not `mesolve`); expect population oscillation `P_e(t) = sin²(Ω t / 2)` on resonance, tolerance 1e-4.
+- `lindblad-decay` — known-solution: open qubit amplitude damping with collapse operator `C = sqrt(γ) σ⁻`; `mesolve`; excited-state population decays `P_e(t) = exp(-γ t)`, trace of ρ stays 1 within 1e-8, tolerance 1e-4.
+- `dmrg-convergence` — known-solution: spin-1/2 Heisenberg chain; sweep bond dimension χ; require truncation error ≤ 1e-8; report converged ground-state energy per site and the χ at convergence.

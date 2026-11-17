@@ -2,7 +2,7 @@
 name: "physics-literature-search"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-literature-search.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-astro", "physics-quantum"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -80,6 +80,7 @@ Track the **front of physics** — arXiv, INSPIRE, NASA ADS, citation graphs —
 - **Keywords / methods** — terms for filtering (e.g. "superfluidity", "gravitational waves", "DFT").
 - **Window** — since last digest (default 7 days).
 - **Citation triggers** — papers that cite a tracked paper.
+- **Query reproducibility** — store the full query string, categories, date range, and sort order for every source so the same digest can be regenerated exactly.
 
 **Completion criterion:** set explicit; queries reproducible.
 
@@ -95,7 +96,28 @@ Each item carries: title, authors, abstract, source, link, subfield, citation co
 
 **Completion criterion:** sources listed; items with full metadata.
 
-### 3. Filter and score
+### 3. Deduplicate
+
+- Normalize **arXiv versioned IDs** (strip the version suffix, e.g. `arXiv:2401.12345v2` → `arXiv:2401.12345`) so the same paper appearing across versions or sources is counted once.
+- Match across sources by DOI, arXiv ID, or title+author canonical form; keep the most complete record.
+
+**Completion criterion:** no duplicate paper appears in the digest under different IDs or sources.
+
+### 4. Cross-source citation completeness
+
+- Check citation completeness across **ADS + INSPIRE + arXiv**: for each tracked paper, verify that citation counts and citing-paper lists are consistent across the sources that cover it.
+- Flag papers whose citation count diverges by more than an agreed threshold between sources, or whose citing graph is present in one source but absent in another.
+
+**Completion criterion:** citation completeness checked; divergences flagged.
+
+### 5. Rate-limit respect
+
+- Honor each source's rate limits (arXiv API: one request per second; ADS/INSPIRE token limits; Web of Science quotas).
+- Implement **backoff and retries** (exponential backoff with jitter) on HTTP 429 / 503 responses; record retry counts and never hammer a source after repeated failures.
+
+**Completion criterion:** no rate-limit violations; backoff/retry behavior evident.
+
+### 6. Filter and score
 
 Score 1–5:
 
@@ -109,7 +131,7 @@ State the score reason.
 
 **Completion criterion:** scores stated; reasons brief.
 
-### 4. Group and deliver
+### 7. Group and deliver
 
 Group by:
 
@@ -145,3 +167,10 @@ Deliver a Markdown digest with groups, abstract summaries, citation counts, and 
 ## Validation Record
 
 Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), the evidence manifest, fixture declarations and expected tolerances, assumptions, accessibility/privacy/licensing checks, and unresolved proof obligations. Completion requires all in-scope fields or an explicit reason for each unknown.
+
+## Fixtures
+
+- `query-reproducibility` — known-solution: re-run a stored query (full string, categories hep-th+gr-qc, date range 2025-01-01..2025-06-30, sort by submittedDate desc) and confirm the same identifier set is regenerated.
+- `deduplication` — counterexample: `arXiv:2401.12345v1` and `arXiv:2401.12345v3` must resolve to one paper; two distinct papers with identical titles but different authors/arXiv IDs must not be merged.
+- `citation-completeness` — known-solution: a paper tracked in ADS, INSPIRE, and arXiv must show consistent citation counts within the agreed threshold; a divergence beyond threshold is flagged.
+- `rate-limit` — counterexample: a burst of requests exceeding arXiv's one-per-second limit must trigger backoff/retries; a continued hammer after repeated 429s must stop and report blocked.

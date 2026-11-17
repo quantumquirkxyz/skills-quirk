@@ -2,7 +2,7 @@
 name: "physics-data-analysis-root"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts."
 license: "MIT"
 capabilities:
@@ -13,17 +13,17 @@ outputs: "analysis script + report."
 sideEffects: []
 dependencies: []
 stopCondition: "Script runs; report saved with error budget, systematic table, and plot links."
-risk: "low"
-trustTier: "1"
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-data-analysis-root.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-experimental-notebook", "physics-reproducibility-archive"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -92,12 +92,15 @@ Record the calibration constants with their uncertainties.
 
 ### 3. Statistical analysis
 
-- **Histogram / fit** — with appropriate model (Gaussian, Poisson, exponential, custom).
+- **Blinding** — apply the blinding state machine: signal-region access is blocked until sideband validation passes; record blinding state.
+- **Histogram / fit** — with appropriate model (Gaussian, Poisson, exponential, custom), performed on blinded/sideband data only.
 - **Hypothesis test** — chi² / Kolmogorov-Smirnov / likelihood ratio.
 - **Confidence interval** — 68% / 95% (bootstrap or analytic).
-- **Systematic table** — each source (calibration, model, background, acceptance) with contribution.
+- **Uncertainty propagation** — propagate statistical and systematic uncertainties separately; never combine before reporting.
+- **Systematic table** — named systematics (calibration, model, background, acceptance, ...) each with contribution.
+- **Unblinding approval** — record approval before unblinding the signal region; track approver, timestamp, and criteria met.
 
-**Completion criterion:** statistical result with error budget saved; systematic table present.
+**Completion criterion:** statistical result with error budget saved; systematic table present; blinding state and unblinding approval recorded.
 
 ### 4. Results and plots
 
@@ -111,7 +114,10 @@ Record the calibration constants with their uncertainties.
 
 - Rule: preserve raw data and write analysis outputs separately.
 - Rule: record provenance, run conditions, calibration constants, and software environment.
+- Rule: block signal-region access until sideband validation passes (blinding state machine).
+- Rule: require a systematic error table with named systematics and contributions.
 - Rule: propagate statistical and systematic uncertainties separately.
+- Rule: record unblinding approval (approver, timestamp, criteria) before unblinding.
 - Rule: label plots with units, selections, and fit/model assumptions.
 - Rule: make scripts reproducible from a clean checkout or documented environment.
 
@@ -121,6 +127,7 @@ Record the calibration constants with their uncertainties.
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- required fixtures declared: signal-region access blocked until sideband validation, systematic error table, statistical vs systematic separation, unblinding approval
 ---
 @include .agents/skills/platform/contract-base.xml
 ## Reproducibility, Evidence, and Stop Conditions
@@ -128,7 +135,7 @@ Record the calibration constants with their uncertainties.
 - **Domain boundary:** Apply this contract specifically to data-analysis-root: calibración, propagación de errores, estadística y análisis reproducible. Do not claim execution, measurement, publication, peer review, or tool output unless supplied as evidence.
 - **Provenance:** Record source identifiers, versions, retrieval dates, transformations, assumptions, and license/redistribution constraints for every external datum, reference, figure, or template. Keep user-provided and analyst-derived facts distinct.
 - **Reproducibility:** Emit a manifest with inputs, units/schema, parameter values, software/tool versions, random seeds where relevant, deterministic commands or pseudocode, and content hashes. A missing item is `unknown`, not reconstructed.
-- **Fixtures:** Include at least one `known-solution` fixture with expected result and tolerance, and one `counterexample` or failure fixture that must be rejected or flagged. Fixtures are specifications only; do not imply they were run.
+- **Fixtures:** Include at least one `known-solution` fixture with expected result and tolerance, and one `counterexample` or failure fixture that must be rejected or flagged. Required fixtures: signal-region access blocked until sideband validation, systematic error table, statistical vs systematic separation, unblinding approval. Fixtures are specifications only; do not imply they were run.
 - **Uncertainty:** State uncertainty sources, interval/confidence convention, numerical tolerances, significant figures, conditioning/sensitivity, and acceptance thresholds. Never turn a heuristic estimate into a proof or measurement.
 - **Formal artifacts:** When correctness is claimed, attach assumptions, invariant/derivation, proof obligations, and a machine-checkable proof or verification artifact when available; otherwise label the result `informal` and list residual obligations.
 - **Accessible output:** Provide units and plain-language interpretation, text alternatives for figures/equations, sufficient contrast and reading order, keyboard/screen-reader-friendly tables, and captions/transcripts for presentations or media.

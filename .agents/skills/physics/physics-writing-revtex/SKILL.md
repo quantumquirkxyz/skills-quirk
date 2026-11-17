@@ -2,7 +2,7 @@
 name: "physics-writing-revtex"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-writing-revtex.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-paper-collaboration", "physics-reproducibility-archive"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -72,7 +72,7 @@ Prepare a **physics paper** in the target journal format — RevTeX (APS), IOP, 
 
 ### 1. Choose journal and format
 
-- **APS / Physical Review** — RevTeX template (`revsym`, `revtwo`, `aps`.
+- **APS / Physical Review** — RevTeX template (`revsym`, `revtwo`, `aps`).
 - **IOP** — `iopart` class.
 - **AIP** — `aip` / `aip-cp` class.
 
@@ -80,7 +80,52 @@ Download the template; check page limit and figure rules.
 
 **Completion criterion:** template downloaded; rules noted.
 
-### 2. Write the structure
+### 2. Require REVTeX 4.2f
+
+When using APS / Physical Review format:
+
+- Require REVTeX 4.2f (`\documentclass[...]{revtex4-2}` or the appropriate 4.2f class option).
+- Do not use REVTeX 3.x or 4.1 without explicit justification.
+- Record the REVTeX version in the submission manifest.
+
+**Completion criterion:** REVTeX 4.2f required and recorded.
+
+### 3. Validate class options
+
+Confirm the document class option matches the target journal:
+
+- **prl** — Physical Review Letters.
+- **prx** — Physical Review X.
+- **prb** — Physical Review B.
+- **pra** — Physical Review A.
+- **prc** — Physical Review C.
+- **prd** — Physical Review D.
+- **pre** — Physical Review E.
+- **prl/prx/prb/etc.** with `aps` / `revtwo` / `revsym` as appropriate.
+
+Validate that the selected option is supported by REVTeX 4.2f for the target journal.
+
+**Completion criterion:** class option validated against target journal.
+
+### 4. 80-char line limit
+
+Keep all source lines at or below 80 characters:
+
+- TeX source, BibTeX entries, and configuration files.
+- Wrap long equations and URLs without breaking semantics.
+- Check with a line-length lint on every source file.
+
+**Completion criterion:** no source line exceeds 80 characters.
+
+### 5. BibTeX apsrev4-2 style
+
+- Use `apsrev4-2` bibliography style for APS journals.
+- Confirm `.bbl` entries match `apsrev4-2` output.
+- Validate that citations resolve and reference list is complete.
+
+**Completion criterion:** bibliography uses `apsrev4-2`; citations resolved.
+
+### 6. Write the structure
 
 Standard sections for physics papers:
 
@@ -97,7 +142,7 @@ Standard sections for physics papers:
 
 **Completion criterion:** structure complete.
 
-### 3. Figures
+### 7. Figures
 
 Journal rules vary; common conventions:
 
@@ -109,7 +154,7 @@ Journal rules vary; common conventions:
 
 **Completion criterion:** figures comply with checklist; all cross-references resolved.
 
-### 4. Compile and check
+### 8. Compile and check
 
 - Compile `.tex` with `pdfLaTeX` / `LuaLaTeX`; fix errors.
 - Check reference list for duplicates / missing entries.
@@ -119,7 +164,7 @@ Journal rules vary; common conventions:
 
 **Completion criterion:** compiled PDF; all checks passed.
 
-### 5. Submission package
+### 9. Submission package
 
 Prepare:
 
@@ -129,6 +174,14 @@ Prepare:
 - `README.md` describing file structure.
 
 **Completion criterion:** package saved; all files present.
+
+## Fixtures
+
+- **Compile test** — fixture confirming the `.tex` compiles cleanly with REVTeX 4.2f and produces a PDF.
+- **Class option test** — fixture validating the class option (prl, prx, prb, etc.) against the target journal and REVTeX 4.2f.
+- **Package version test** — fixture confirming REVTeX 4.2f is required and recorded; no 3.x / 4.1 usage without justification.
+- **Line-length test** — fixture confirming no source line exceeds 80 characters.
+- **Citation test** — fixture confirming `apsrev4-2` bibliography style is used and all citations resolve.
 
 ## Completion
 

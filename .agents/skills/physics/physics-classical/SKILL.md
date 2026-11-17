@@ -2,7 +2,7 @@
 name: "physics-classical"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "physics artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Solve classical mechanics problems complete; required sections present; completion criteria checked."
+stopCondition: "Diagram, formulation, equations, solution, dimensional check, and limiting cases all present."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-classical.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-quantum", "physics-simulation-setup"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -72,7 +72,7 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 2. Draw free-body diagram — all forces with direction, labels, and units.
 3. Choose formulation — Newtonian (F=ma), Lagrangian (L=T−V), Hamiltonian (H=T+V), or energy methods.
 4. Write equations — Newton's 2nd / Euler-Lagrange / Hamilton's equations; include constraints (holonomic / nonholonomic).
-5. Solve — analytically (harmonic oscillator, projectile, central force) or numerically (RK4 for ODEs, finite elements).
+5. Solve — analytically (harmonic oscillator, projectile, central force) or numerically (leapfrog/Verlet for Hamiltonian systems; RK45/RK4 flagged as non-symplectic and unsuitable for long-term Hamiltonian integration; fixed step size only for Verlet/leapfrog — variable step destabilizes).
 6. Dimensional check — verify [force]=[mass][acceleration]; no hidden unit mismatches.
 7. Physical limits — check limiting cases (small angle, large mass, friction → 0).
 8. Deliver — artifact: diagram, formulation, equations, solution, dimensional check, and limiting cases.
@@ -81,6 +81,11 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 
 - Rule: define coordinate system, sign conventions, and constraints before writing equations.
 - Rule: account for every force, torque, or generalized coordinate.
+- Rule: require symplectic integrators (leapfrog/Verlet) for Hamiltonian systems; flag RK45/RK4 as non-symplectic.
+- Rule: use fixed step size for Verlet/leapfrog — variable step destabilizes the integration.
+- Rule: verify time-reversal — integrate forward then backward; the system must return to its start.
+- Rule: verify energy drift — energy error must be bounded and oscillatory, not secular growth.
+- Rule: enforce dimensional consistency — every term in an equation must share the same dimensions.
 - Rule: check units and limiting cases after deriving the solution.
 - Rule: state when approximations such as small angle, massless string, or frictionless contact are used.
 - Rule: prefer conservation laws when they simplify the problem without hiding assumptions.
@@ -91,6 +96,7 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- required fixtures declared: harmonic oscillator energy bounded, Kepler problem stability, time-reversal test, variable-step Verlet instability
 ---
 @include .agents/skills/platform/contract-base.xml
 ## Reproducibility, Evidence, and Stop Conditions
@@ -98,7 +104,7 @@ Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltoni
 - **Domain boundary:** Apply this contract specifically to classical: invariantes, límites dimensionales, energía/momento y tolerancias numéricas. Do not claim execution, measurement, publication, peer review, or tool output unless supplied as evidence.
 - **Provenance:** Record source identifiers, versions, retrieval dates, transformations, assumptions, and license/redistribution constraints for every external datum, reference, figure, or template. Keep user-provided and analyst-derived facts distinct.
 - **Reproducibility:** Emit a manifest with inputs, units/schema, parameter values, software/tool versions, random seeds where relevant, deterministic commands or pseudocode, and content hashes. A missing item is `unknown`, not reconstructed.
-- **Fixtures:** Include at least one `known-solution` fixture with expected result and tolerance, and one `counterexample` or failure fixture that must be rejected or flagged. Fixtures are specifications only; do not imply they were run.
+- **Fixtures:** Include at least one `known-solution` fixture with expected result and tolerance, and one `counterexample` or failure fixture that must be rejected or flagged. Required fixtures: harmonic oscillator energy bounded, Kepler problem stability, time-reversal test, variable-step Verlet instability. Fixtures are specifications only; do not imply they were run.
 - **Uncertainty:** State uncertainty sources, interval/confidence convention, numerical tolerances, significant figures, conditioning/sensitivity, and acceptance thresholds. Never turn a heuristic estimate into a proof or measurement.
 - **Formal artifacts:** When correctness is claimed, attach assumptions, invariant/derivation, proof obligations, and a machine-checkable proof or verification artifact when available; otherwise label the result `informal` and list residual obligations.
 - **Accessible output:** Provide units and plain-language interpretation, text alternatives for figures/equations, sufficient contrast and reading order, keyboard/screen-reader-friendly tables, and captions/transcripts for presentations or media.

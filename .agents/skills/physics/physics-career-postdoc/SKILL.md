@@ -2,7 +2,7 @@
 name: "physics-career-postdoc"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation."
 license: "MIT"
 capabilities:
@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-career-postdoc.json"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []
@@ -84,7 +84,20 @@ For each target:
 
 **Completion criterion:** targets ranked; fit statement per target.
 
-### 2. Research statement
+### 2. Application package structure
+
+For each target, assemble:
+
+- **CV / resume:** education, publications, presentations, awards, service.
+- **Research statement:** central physics question, progress, future plan, connection to target.
+- **Teaching statement:** philosophy and evidence.
+- **Diversity statement:** experience and commitment (when required).
+- **Letters of recommendation:** typically 3; coordinators contacted.
+- **Cover letter:** position-specific summary of fit.
+
+**Completion criterion:** package structure documented; all required components identified per target.
+
+### 3. Research statement
 
 Structure (typically 2–4 pages):
 
@@ -97,7 +110,7 @@ Be specific: name the physics, not just "study complex systems".
 
 **Completion criterion:** statement drafted; per-target adaptation noted.
 
-### 3. Teaching and diversity statements
+### 4. Teaching and diversity statements
 
 - **Teaching statement:** philosophy (active learning, research-based, equity-minded); evidence (courses taught, mentoring, syllabus design).
 - **Diversity statement:** experience with DEI; commitment; specific actions.
@@ -106,17 +119,26 @@ Both require concrete examples, not generic platitudes.
 
 **Completion criterion:** both statements drafted with specific examples.
 
-### 4. Letters of recommendation
+### 5. Letters of recommendation
 
 Coordinate:
 
 - **Who:** mentors who know the user's research; at least one from a different institution.
 - **What to give letter-writers:** research summary, publications, specific strengths to highlight.
 - **Deadline:** at least 3 weeks before submission.
+- **Tracking:** record which writers agreed, materials sent, and submission status per letter.
 
-**Completion criterion:** letter-writers contacted; materials sent.
+**Completion criterion:** letter-writers contacted; materials sent; tracking record maintained.
 
-### 5. Grant applications
+### 6. Timeline and milestone tracking
+
+- Maintain a per-target timeline: application open, materials due, letters due, submission date, interview date, decision date.
+- Track milestones: draft complete, review, finalise, submit, follow-up.
+- Flag overdue items and conflicting deadlines.
+
+**Completion criterion:** timeline saved; all milestones tracked per target.
+
+### 7. Grant applications
 
 For NSF CAREER, DOE, ERC, Simons:
 
@@ -127,7 +149,7 @@ For NSF CAREER, DOE, ERC, Simons:
 
 **Completion criterion:** draft complete; programme manager contacted if possible.
 
-### 6. Negotiation strategy
+### 8. Negotiation strategy
 
 If an offer comes:
 
@@ -139,6 +161,12 @@ If an offer comes:
 Know the range before negotiating.
 
 **Completion criterion:** negotiation notes saved; priorities ranked.
+
+## Fixtures
+
+- **Package completeness** — fixture with expected application package components (CV, research statement, teaching statement, diversity statement, letters, cover letter) and confirmation each is present per target.
+- **Timeline validation** — fixture with deadlines and milestones; expected order confirmed (e.g. letters due before submission; submission before decision).
+- **Recommendation tracking** — fixture with letter-writer names, contact date, materials sent date, and submission status per letter.
 
 ## Completion
 

@@ -2,7 +2,7 @@
 name: "physics-talk-design"
 category: "physics"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility."
 license: "MIT"
 capabilities:
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/physics-talk-design.json"
 diataxis: "how-to"
 tags: ["physics"]
-compatibility: []
+compatibility: ["physics-writing-revtex", "physics-paper-collaboration"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -103,7 +103,16 @@ Physics conventions:
 
 **Completion criterion:** all figures comply with conventions; accessibility checklist filled.
 
-### 4. Poster design
+### 4. Colour accessibility
+
+- **WCAG 2.1 AA contrast:** text and figures meet at least 4.5:1 contrast against background (3:1 for large text); graphics and UI components meet 3:1.
+- **No colour-only signalling:** never encode meaning by colour alone; add pattern, line style, marker shape, or text labels.
+- **Colour-blind simulation:** check figures against common colour blindness (protanopia, deuteranopia, tritanopia).
+- **Grayscale check:** confirm figures remain readable when printed in black and white.
+
+**Completion criterion:** contrast targets met; no colour-only encodings remain.
+
+### 5. Poster design
 
 - **Layout:** title, abstract, result figure, conclusion, references.
 - **Flow:** top-to-bottom, left-to-right; highlight result in centre.
@@ -113,13 +122,39 @@ Physics conventions:
 
 **Completion criterion:** poster layout saved; readability checked.
 
-### 5. Speaker notes and timing
+### 6. Speaker notes
 
-- **Notes:** key message per slide; common question and answer.
-- **Timing:** practice aloud; adjust slides to meet duration.
-- **Transitions:** state what the next slide answers.
+For each slide:
 
-**Completion criterion:** notes saved for each slide; practice timing recorded.
+- **Key message:** one sentence the audience should take away.
+- **Timing target:** planned seconds / minutes for the slide.
+- **Transition cue:** what the next slide answers.
+- **Q/A:** anticipated question and prepared answer.
+
+**Completion criterion:** notes saved for each slide; timing totals match duration.
+
+### 7. Audience-level adjustments
+
+- **Terminology:** define specialist terms for students / public; use precise notation for specialists.
+- **Notation recaps:** restate symbols and units before reuse.
+- **Proof depth:** full derivation for specialists; sketch / statement-only for students and public.
+- **Pacing:** slower and more repetition for student / public audiences; tighter for specialists.
+
+**Completion criterion:** audience-level settings documented; notes reflect adjustments.
+
+### 8. Compilation
+
+- Compile the source (LaTeX Beamer, PowerPoint, Keynote, or Markdown-based tooling).
+- Verify no missing references, broken links, or overflowing text.
+- Render to PDF and inspect each slide visually.
+
+**Completion criterion:** source compiles cleanly; PDF rendered.
+
+## Fixtures
+
+- **Colour accessibility** — fixture with expected contrast ratios (≥4.5:1 text, ≥3:1 graphics/UI) and confirmation no encoding relies on colour alone.
+- **Compilation** — fixture confirming the source compiles without errors and a PDF is produced.
+- **Audience-level** — fixture verifying terminology definitions, notation recaps, proof depth, and pacing match the declared audience level.
 
 ## Completion
 
