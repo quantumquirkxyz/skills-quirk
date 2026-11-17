@@ -95,6 +95,10 @@ Vertical slices solve this by cutting a narrow but complete path through every l
 
 Tracer bullets also surface design problems early. The first slice reveals the seams. Subsequent slices follow the same path. If the first slice was painful, the design needs refactoring before the team commits to building the remaining slices on a broken foundation.
 
+## Artifact Preconditions
+
+`to-tickets` MUST receive a valid, non-stale `RequirementsArtifact` conforming to [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json). Its `status` must be approved or otherwise explicitly ticketable, its `sourceDigests` and `fixedPoint` must match the current handoff, its `owner` and `nextConsumer` must be present, and its `approvals` must contain the required approval record. It MUST also receive a valid, non-stale `ArchitectureArtifact` or `DesignArtifact` with matching provenance. The only exception is an explicitly approved `not-applicable` architecture/design decision that records rationale, approver, fixed point, and source digest. Missing, stale, expired, superseded, rejected, blocked, or unapproved artifacts stop processing with `stale-input`, `blocked`, or `validation-failed`; do not infer or regenerate them from conversation context.
+
 ## Contract
 
 - **Input:** a plan, a spec, or conversation context.
@@ -105,6 +109,7 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - **Rule:** every blocking edge must be a genuine prerequisite — a redundant edge only lowers expected subtask success (FLOW, ICLR 2025), so remove it or record it as intentional in the ticket's risks.
 - **Rule:** every published ticket must carry the canonical metadata from `docs/reference/agents/work-item-format.md` for labels, milestone, project item, and project fields.
 - **Rule:** when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
+- **Rule:** ticketing is permitted only after the requirements and architecture/design handoff gates pass, including an approved `not-applicable` rationale where relevant.
 - **Compatibility:** `operationId`, `idempotencyKey`, and `baseRevision` are optional for legacy callers; when either idempotency field is supplied, preserve it in the artifact and use it for every publication attempt.
 - **Side effect ownership:** this skill owns creation of ticket artifacts and issue/ticket publication; writing files or creating issues requires the declared approval. Parent issue mutation, closure, comments, merges, and PR creation are not owned here.
 - **States:** return exactly one `recoveryStatus`: `completed`, `blocked`, `needs-approval`, `stale-input`, `validation-failed`, or `superseded`.
@@ -136,6 +141,7 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - the user has approved the granularity before publication
 - the published tickets follow the canonical metadata shape in `docs/reference/agents/work-item-format.md`
 - the `TicketArtifact` JSON is emitted with valid blocking edges and traceId
+- a valid, non-stale `RequirementsArtifact` and valid architecture/design handoff (or approved `not-applicable` rationale) were verified before ticket drafting
 - the DAG waves are emitted with the artifact and every over-coupling warning is removed or recorded as intentional
 
 ## Artifact
@@ -146,9 +152,9 @@ The ticket array includes a traceId linking the decomposition session to the exe
 
 ## Process
 
-### 1. Gather context
+### 1. Validate handoff and gather context
 
-Build a minimal fresh context pack first, then route the task against declared capabilities so the ticket shape is chosen deliberately. Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments. If the input is a corrective recommendation, inherit the parent requirement quote, blockers, and metadata from the upstream audit output.
+Validate the `RequirementsArtifact` and the required `ArchitectureArtifact`/`DesignArtifact` (or approved `not-applicable` rationale) before building context. Recompute or compare source digests and fixed point; reject stale or missing artifacts rather than falling back to the conversation. Then build a minimal fresh context pack and route the task against declared capabilities so the ticket shape is chosen deliberately. Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments. If the input is a corrective recommendation, inherit the parent requirement quote, blockers, and metadata from the upstream audit output.
 
 ### 2. Explore the codebase (optional)
 

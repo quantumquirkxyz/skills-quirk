@@ -11,7 +11,7 @@ When to use: Turn the current conversation into a spec and publish it to the pro
 2. Draft the spec
 3. Review against completion criteria
 4. Mark unresolved requirements
-5. Publish
+5. Validate and publish
 
 ## Deliverables
 

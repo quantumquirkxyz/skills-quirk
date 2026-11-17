@@ -7,7 +7,7 @@ When to use: Break a plan, spec, or the current conversation into a set of trace
 
 ## Workflow
 
-1. Gather context
+1. Validate handoff and gather context
 2. Explore the codebase (optional)
 3. Draft vertical slices
 4. Compute DAG waves and lint over-coupling

@@ -111,6 +111,10 @@ A written spec prevents this by making boundaries explicit before implementation
 
 Publishing the spec to the issue tracker makes it durable and linkable. Tickets created from the spec inherit its scope guardrails. When a change request arrives, the team can check the spec before deciding whether it is a new feature or scope creep.
 
+## RequirementsArtifact Handoff
+
+`to-spec` MUST emit one `RequirementsArtifact` conforming to [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json) alongside the Markdown spec. Validate the complete envelope before publication: `schemaVersion: "1.0"`, `artifactType: "requirements-artifact"`, `status`, `sourceDigests`, `fixedPoint`, `owner`, `nextConsumer`, `approvals`, `createdAt`, and `expiresAt` are required, and `artifactId`, `traceId`, `operationId`, `sourceArtifacts`, `producer`, `evidence`, `blockers`, and `risks` must remain intact. Set `nextConsumer` to `to-tickets` (or the explicitly named downstream consumer), record approval state in `approvals`, and make a non-approved or blocked handoff ineligible for publication. A missing or stale source digest/fixed point is a validation failure, not a best-effort artifact.
+
 ## Contract
 
 - **Input:** current conversation context, codebase understanding, and repo conventions.
@@ -119,6 +123,7 @@ Publishing the spec to the issue tracker makes it durable and linkable. Tickets 
 - **Rule:** prefer one seam, and make any seam choice explicit before publishing.
 - **Rule:** frame the work in terms of this repo's concepts where relevant: context, harness, loop, graph, data plane, execution plane, observability, and safety boundaries.
 - **Rule:** if the spec cannot be made concrete enough to hand off, stop and say what is still missing.
+- **Rule:** emit and validate the `RequirementsArtifact`; never publish a spec with missing, stale, or unapproved requirements provenance.
 
 ## Provenance
 
@@ -178,9 +183,9 @@ Any requirement that cannot be made testable from what is already known is publi
 - A spec published with an open marker is not ticket-ready: `to-tickets` must not slice a marked requirement into work, because the ticket would inherit an untestable criterion.
 - A marker is cleared only by the owner's answer recorded in the spec, never by deleting the marker to make the spec look complete.
 
-### 5. Publish
+### 5. Validate and publish
 
-Publish the spec to the configured tracker with the canonical metadata shape from [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md). Emit the `SpecArtifact` JSON atomically with the published issue so the machine-readable contract and the Markdown stay in sync.
+Validate the complete `RequirementsArtifact` against [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json). Confirm every `sourceDigests` entry and the `fixedPoint` match the draft inputs, the artifact is not expired or superseded, `owner` is explicit, `nextConsumer` is declared, and `approvals` records the required approval state. If any check fails, return `validation-failed` or `blocked` and do not publish. Publish the spec to the configured tracker with the canonical metadata shape from [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md). Emit the `RequirementsArtifact` and Markdown/`SpecArtifact` atomically so machine-readable contracts and the issue body stay in sync.
 
 ## Completion Criteria
 
@@ -192,6 +197,7 @@ The spec is complete when all of the following are true:
 - scope and out-of-scope items are explicit
 - the spec is published with the tracker defaults applied
 - the artifact JSON is emitted and its schema version matches the declared `artifactType`
+- a valid, non-stale `RequirementsArtifact` records sourceDigests, fixedPoint, owner, nextConsumer, and approval state
 
 See [`references/spec-template.md`](references/spec-template.md) for the canonical shape, and [`references/spec-checklist.md`](references/spec-checklist.md) for the reviewer-owned unit tests every criterion must pass.
 

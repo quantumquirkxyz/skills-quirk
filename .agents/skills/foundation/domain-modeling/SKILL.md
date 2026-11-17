@@ -33,10 +33,20 @@ approvalRequired: "false"
 approvalFor: []
 ---
 
+## Normative Rules
+
+- Emit a `DesignArtifact` validated against `schemas/software-engineering/design-artifact.schema.json`; place the domain model, resolved terms, scenarios, and ADR-ready decisions in `payload`.
+- Require a fixed point, source requirements digest, quality-attribute scenarios, risks, owner, next consumer, and verification plan before handoff.
+- Consume architecture context when supplied and record any architecture/design mismatch as a blocker; do not silently invent a compatible design.
+- An unresolved domain tradeoff blocks readiness until alternatives and the decision rationale are recorded.
+- If no domain design is applicable, emit `payload.notApplicable: true` with rationale and an explicit approval in `approvals`; omission is not a valid path.
+- Do not claim certification or compliance from a validated artifact.
+
 ## Contract
 
 - Input: one overloaded or uncertain term, the current codebase context, and the existing glossary.
 - Output: one resolved term, or one ADR-ready decision with the glossary updated to match.
+- Artifact: `DesignArtifact` envelope from `schemas/software-engineering/design-artifact.schema.json`, with domain model content in `payload` and requirements/architecture provenance in `sourceDigests`.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
@@ -139,5 +149,6 @@ If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- the fixed point, requirements digest, quality-attribute scenarios, risks, owner, next consumer, and verification plan are present
 ---
 @include .agents/skills/platform/contract-base.xml

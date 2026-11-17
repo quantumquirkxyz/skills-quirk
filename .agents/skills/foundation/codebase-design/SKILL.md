@@ -89,10 +89,20 @@ trustTier: 1
 maxIterations: 6
 ---
 
+## Normative Rules
+
+- Emit a `DesignArtifact` validated against `schemas/software-engineering/design-artifact.schema.json`; preserve the seam, interface guidance, depth analysis, and adapter roles in `payload`.
+- Require a fixed point, source requirements digest, quality-attribute scenarios, risks, ownership, next consumer, and verification plan before a design is `ready` or `approved`.
+- Consume the referenced architecture artifact and fail closed on architecture/design mismatch; record the mismatch as a blocker rather than reconciling it silently.
+- Treat unresolved tradeoffs as blockers. A design may proceed only when the selected option, rejected alternatives, and verification evidence are recorded.
+- If design is not applicable, emit `payload.notApplicable: true`, explain why, and obtain an explicit approval record in `approvals`; do not infer approval from omission.
+- Do not claim certification or compliance from schema validation or design review.
+
 ## Contract
 
 - **Input:** module shape, interface constraints, and architecture context.
 - **Output:** a seam proposal, interface guidance, and a depth analysis.
+- **Artifact:** `DesignArtifact` envelope from `schemas/software-engineering/design-artifact.schema.json`, with the design details in `payload` and source requirements/architecture digests in `sourceDigests`.
 - **Scope:** design the shape of the module, not the full implementation.
 - **Rule:** prefer one external seam and make its responsibility explicit.
 - **Rule:** do not add a seam unless something actually varies across it.
@@ -231,6 +241,8 @@ Good interfaces make testing natural:
 - any adapter role is explicit
 - the recommendation is concrete enough to test against
 - the recommendation names what stays hidden behind the interface
+- the fixed point, requirements digest, quality-attribute scenarios, risks, owner, next consumer, and verification plan are present
+- architecture/design consistency and tradeoff resolution are verified, or a blocker is recorded
 
 ---
 @include .agents/skills/platform/contract-base.xml

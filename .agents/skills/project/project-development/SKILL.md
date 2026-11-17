@@ -55,11 +55,16 @@ approvalFor: []
 - Select exactly one dominant shape; record secondary shapes and ambiguity rather than guessing.
 - Recommend the thinnest safe path: the narrowest next workflow skill and one concrete first action that stays within declared scope.
 - Do not broaden scope or route to whole-system design at this stage; surface blockers before making a recommendation.
+- When this assessment establishes an architectural starting point, emit an `ArchitectureArtifact` validated against `schemas/software-engineering/architecture-artifact.schema.json`; retain the project-assessment fields in `payload`.
+- The architecture payload must include the fixed point, source requirements digest, quality-attribute scenarios, risks, owner, next consumer, and verification plan. A missing requirements digest is a blocker, not an inferred value.
+- If architecture is genuinely not applicable, emit `status: "blocked"` or `"completed"` with `payload.notApplicable: true`, explain the boundary and reason, and include an explicit approval record in `approvals`; never silently omit architecture.
+- Do not claim certification or compliance merely because the artifact validates.
 
 ## Contract
 
 - Input: project brief, repo state, and target stack.
 - Output: a project fit assessment, a project shape classification, and an initial flow recommendation.
+- Architecture handoff: when produced, the output is an `ArchitectureArtifact` envelope whose `sourceDigests.requirements` identifies the requirements fixed point and whose `payload.verificationPlan` names the next verification activities.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
@@ -202,6 +207,7 @@ This skill stays at classification level rather than designing the whole system.
 - Structured result returned and validated against the output schema
 - Any blockers or skipped validations documented
 - Next consumer identified or the work handed off
+- ArchitectureArtifact envelope validated when architecture is applicable; `notApplicable` approval and rationale validated otherwise
 
 ## References
 

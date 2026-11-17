@@ -60,12 +60,17 @@ approvalFor:
   - write-files
 ---
 
+## Common Artifact Contract
+
+SDD composes the common software-engineering artifacts rather than inventing parallel envelopes. `to-spec` is the producer of the `RequirementsArtifact`; `to-tickets` consumes it and requires a valid `ArchitectureArtifact` or `DesignArtifact`, or an explicitly approved `not-applicable` rationale. Every handoff preserves `artifactId`, `traceId`, `operationId`, `status`, `sourceDigests`, `fixedPoint`, `owner`, `nextConsumer`, approval records, timestamps, and expiry. Missing, stale, expired, superseded, rejected, blocked, or unapproved inputs stop the next phase with an explicit blocked/validation-failed status.
+
 ## Contract
 
 - Input: user intent, plus the repository constitution (or the intent to create one).
 - Output: `SpecDrivenArtifacts` covering constitution, spec, plan, tasks, and verification.
 - Scope: SDD is the planning spine. Implementation belongs to `implement`; this skill produces the artifacts implementation is held against.
 - Rule: no phase starts until the previous artifact is durable. Ambiguity is resolved with `grill-with-docs`, not guessed.
+- Rule: persistent writes require the approval recorded by the artifact envelope; SDD does not bypass approval because outputs are documentation.
 
 ## The constitution
 
@@ -75,7 +80,7 @@ The constitution is the repo-local rule set SDD enforces: architecture invariant
 
 1. **Specify** (`/specify` compatible). Turn intent into a spec: problem, goals, user stories, acceptance criteria, explicit non-goals. The spec is the source of truth; the plan and tasks must trace to it.
 2. **Plan** (`/plan` compatible). Architecture and seams: components, data flow, the public API seam, trade-offs as ADR candidates, and the validation strategy. Every decision traces to a constitution rule.
-3. **Tasks** (`/tasks` compatible). Decompose the plan into tracer-bullet tasks: narrow, complete paths through behavior, validation, and delivery. Each task names its spec clause and its acceptance evidence. In the quirk flow this phase is `to-spec` followed by `to-tickets`; the SDD artifacts carry the same contracts.
+3. **Tasks** (`/tasks` compatible). Decompose the plan into tracer-bullet tasks: narrow, complete paths through behavior, validation, and delivery. Each task names its spec clause and its acceptance evidence. In the quirk flow this phase is `to-spec` followed by `to-tickets`; the SDD artifacts carry the same common artifact contracts and must preserve their approval state.
 4. **Implement.** Hand the tasks to `implement`; each slice validates against its acceptance criteria.
 5. **Verify.** Run `analyze-artifacts` to confirm spec, plan, tasks, and implementation still agree. Divergence is a finding, not a footnote.
 
@@ -87,7 +92,7 @@ The constitution is the repo-local rule set SDD enforces: architecture invariant
 | What is in scope? | Constitution, specify, plan, tasks, implement handoff, verify |
 | What is explicitly out of scope? | Implementation itself, which belongs to `implement` against these artifacts |
 | Who or what consumes this artifact afterward? | `implement` for each task slice, then `analyze-artifacts` for verification |
-| What evidence proves it is done? | SpecDrivenArtifacts with constitution, spec, plan, tasks, and verification |
+| What evidence proves it is done? | SpecDrivenArtifacts with constitution, spec, plan, tasks, verification, and linked common artifacts with valid handoff state |
 | What risk remains? | Tasks that trace to no spec clause; a plan without declared seams |
 
 ## Artifact
@@ -109,8 +114,9 @@ Vibe coding produces implementations no artifact can be held against. A constitu
 
 - The constitution exists and the spec, plan, and tasks trace to it.
 - Every task names the spec clause it implements and the evidence that proves it.
+- `RequirementsArtifact` and architecture/design handoffs are valid, current, linked, and approval state is preserved.
 - `analyze-artifacts` reports no unresolved divergence.
-- No approval is required for SDD artifacts: the constitution, spec, plan, and tasks are repo-local documentation files, reversible via git.
+- Approval is required for persistent writes declared by the artifact envelope; reversibility via git does not waive that approval.
 
 ## Failure modes
 
