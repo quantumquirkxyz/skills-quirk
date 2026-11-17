@@ -48,6 +48,10 @@ approvalFor: []
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
+## Maintenance handoff
+
+When operational evidence, an incident, defect, regression, or accepted risk requires a documentation change, consume or emit a `MaintenanceArtifact` using `schemas/software-engineering/maintenance-artifact.schema.json`. Preserve the source incident/defect digest, owner, fixed point, impact, rollback/mitigation, next corrective consumer, and documentation/provenance refresh. Closure MUST be exactly `resolved-with-evidence`, `corrective-ticket-created`, `accepted-risk-with-owner-and-expiry`, or `blocked`; stale source material, missing owner, or unreviewed documentation is `blocked`. Preserve deliberate docs review, ADR approval, tier ownership, and generated-manifest rules.
+
 ## Artifact
 
 Return `DocsManagementArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.

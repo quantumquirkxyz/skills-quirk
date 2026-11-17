@@ -191,7 +191,7 @@
       "sourceType": "local"
     },
     "codebase-design": {
-      "hash": "01506cf202b85fdaae71c9cb2c94e3e4653d3f1bcae286b4a759972520643831",
+      "hash": "04f7e2ad5756b03afee887429c998ae9b7b5991f33f0f7838b9d0de893c5fa8c",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -331,7 +331,7 @@
       "sourceType": "local"
     },
     "deployment": {
-      "hash": "79eb8b4ea6112857a4bbfed97a6539d7ced4d7e09d72ef8885e4cbe4ccfd95bb",
+      "hash": "5baf4219f0d990efd5670711e8250ff0ce3cd6ea668cbe91c547fc3eb675adf7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -366,7 +366,7 @@
       "sourceType": "local"
     },
     "diagnosing-bugs": {
-      "hash": "b2f263fe3c0dce2a58bcd58f07af77d39ca59213cf97f42d61e6efb989381544",
+      "hash": "a76b06822b334ff61f52354e01bb566f82f04c9762f6613c41ee672398e1809b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -386,7 +386,7 @@
       "sourceType": "local"
     },
     "docs-management": {
-      "hash": "c7a2a25a95f2dbc59d7ef82f0ad6d886a9debc451d8e2ce9c5c41841e899cdb2",
+      "hash": "505463f39bc488b7b21f4d33ffb65107bb23df282a8928856f4c4e18a72a4657",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -396,7 +396,7 @@
       "sourceType": "local"
     },
     "domain-modeling": {
-      "hash": "c024f5d8a73cbb4543a2d8aa2509bafd3d8253394f63c1d6b7bddf85e99cc04c",
+      "hash": "7a5e43fdc3010377e0087d8bb64fcdb2d0f2464bbf73fac33f03ccda1ef99811",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -581,12 +581,12 @@
       "sourceType": "local"
     },
     "implement": {
-      "hash": "436969005d4bf222be13d8c481a6f2cf2ffb227a6fbad34afa3499efabc75f8a",
+      "hash": "7d90d404beecbef0244f6b4e5b7d178e8b1eae3dcc603398aed143daa5bfbf95",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "implement-review-fixes": {
-      "hash": "654f2d0db5bbef548b7e681e696dc5dd3e74122b75c3ea6d29ec8678ebab2db8",
+      "hash": "71144cb40ca86a064cae06f1deaeaadd950e73b3a50dc5a08def6ad41441bcb6",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -601,7 +601,7 @@
       "sourceType": "local"
     },
     "incident-response": {
-      "hash": "da90337ebe9acbb0d75f715a0221c9e2f7e972e86ca4027fda8d5e0b9cde5f88",
+      "hash": "eacd916695a685e80fd68ad291b3cc7bb46834cb2f0bc96a71eca6c9d93c366d",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -631,7 +631,7 @@
       "sourceType": "local"
     },
     "knowledge-curator": {
-      "hash": "1aec2d8e13e36dcb8d5931c01813a71704a80e5f6d77dda87cd1b3e84f574ebf",
+      "hash": "623acd6f298c88bd10581f0b8b18ea433087d2cdf621234a87175af5afef23f5",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -786,7 +786,7 @@
       "sourceType": "local"
     },
     "observability": {
-      "hash": "5ef2bd064ef9147128637dba344136196bdc1579b16e498e68dd44aa387681ad",
+      "hash": "58b7d6ebffa23914b939cfd0506ff8a87cc7d0764835e03873bffd0cfaa5d84a",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -936,7 +936,7 @@
       "sourceType": "local"
     },
     "project-development": {
-      "hash": "67cfd6a5f63805d61b63c0b37dc4c613a694f49db0513f8c804654205f9b569b",
+      "hash": "91bf387ed0fe738590085e3603fcf63cf36a407b450991bb8e24645433b433d3",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -956,7 +956,7 @@
       "sourceType": "local"
     },
     "publish-open-pr": {
-      "hash": "79397a7c5a3b615643634ffffb2703b2377d6aa7aec08a2e94d19686b21f382d",
+      "hash": "66bc66c6928e70421fab69653bf7ab01d654152f0ee35d835426a121cb3b8000",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1026,7 +1026,7 @@
       "sourceType": "local"
     },
     "release-management": {
-      "hash": "854bff3504634ad056b10789113363aeb3599a1b00f7943d06f1a767338d9b0e",
+      "hash": "b84ae19c07a9d0f1d812a0f2e190f4500d3bd09e3b3559f89d327629b6aeba20",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1066,12 +1066,12 @@
       "sourceType": "local"
     },
     "review-fix-loop": {
-      "hash": "fffdec990d92eb5e61bbe8dc5000435198d39b7dc14fd98f872714c910fb4bd1",
+      "hash": "870d0fdb820de5ba413b073aa75163b3ee8cd61dcb40db48b527801407af02c5",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "review-pr": {
-      "hash": "06bffc1966c64cbbf2acd36dd785fc263d4fd57e9229582758cad3090c5587ed",
+      "hash": "7c6420ab6963d3d5e85c3f5d3efc7c52263e3541900ea5663f6badb01d7c317e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1146,7 +1146,7 @@
       "sourceType": "local"
     },
     "ship-subissue": {
-      "hash": "44cfa277fa070645af4bafdabe745028c1fe89a246a0e510ec121ce813f82837",
+      "hash": "b1ab2a53687824f9541d506e11fc483478091a831c3af1b2da89c5968414a0bb",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1236,17 +1236,17 @@
       "sourceType": "local"
     },
     "software-maintenance-evolution": {
-      "hash": "a790ed96e71d0ecbc367e2cf9d05672547b67fd7ae3f4caac9b9feb8a8da314a",
+      "hash": "ca007778f62df77cb26c1644e13162d329732b9fe1becbf071f144c00df649f2",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "spec-driven-development": {
-      "hash": "f11df5603d05e7f87eb86fe5824677f83d9e6bee9231bf1e225f47d56997bdd8",
+      "hash": "7d6a532f56615352e04977c1b539a7ecff642cd4874e90758c70cbbec475e031",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "sre": {
-      "hash": "f369f0d5a4bdf27718ed20ba5a808e2072227c10a52d4b06fbaa1959bb67c026",
+      "hash": "be1d4a88a09699b98fe335089f331aa787866c28fa8fa9175072f1d8c1d7bdb2",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1286,22 +1286,22 @@
       "sourceType": "local"
     },
     "tdd": {
-      "hash": "09679905648e923db2fb0ae6ce942dc47c0e1ab76b694c46740d6363bd797b07",
+      "hash": "781d0b20f174ab001fc76107fd95d904868439afb8b978f2f50581e49a08dda9",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "testing": {
-      "hash": "daba84cf93d99859ba0803f1a3028ea7e881e9b319e700352ed96c5f555462a8",
+      "hash": "9e7458940dfbbd8db486940798eba3ea07f4a00ad2c6a96170edb71dd6ed07c4",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-spec": {
-      "hash": "3944d45c5e42921292d0ba60ffc3c0a1028698c8ea8566651facf04b61ab0aa9",
+      "hash": "c754931c445ed2f2853f36b18c08d3062c9531a9130b42b669dadfcc92a386c4",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-tickets": {
-      "hash": "bd0f7ffd8f5b7f7594c69eb193274cc877cd013bb82f4979856d312bf69bfd47",
+      "hash": "ae86c5febbf432a2f8f31830cf0d8d3ea56bdf71027c9b9c19aa642816441564",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1336,7 +1336,7 @@
       "sourceType": "local"
     },
     "verify-delegation": {
-      "hash": "417678c63527e802fe9362e168847f91efc2247f9ae9e90a950f2db9a5a1deee",
+      "hash": "f31aa3b78700b684e66edd93cc650eab21fe83e24e0ffcb34fcc2c15a75a6764",
       "revision": "working-tree",
       "sourceType": "local"
     },

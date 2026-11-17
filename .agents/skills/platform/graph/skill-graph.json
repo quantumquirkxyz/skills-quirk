@@ -5178,6 +5178,24 @@
       "weight": 0.8
     },
     {
+      "from": "spec-driven-development",
+      "to": "to-spec",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "to-tickets",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "to-spec",
+      "to": "to-tickets",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
       "from": "capability-router",
       "to": "react",
       "type": "handoff",

@@ -175,3 +175,7 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 - Persist the common snapshot and exact command evidence at every checkpoint; resume from the first unconfirmed effect after a crash.
 - Reconcile by operation key, branch, fixed point, head revision, title, and linked issue after unknown results; adopt matching remote state and never duplicate a PR.
 - Compensation is limited to operation-owned branch/PR effects. Terminal statuses remain canonical: `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, `superseded`, `rolled-back`.
+
+## Release Readiness Boundary
+
+Publication may provide candidate evidence, but `ship-subissue` owns the release-candidate handoff. Preserve fixed point, digest, SBOM/VEX/provenance, owner, approval, rollback, canary/rollout evidence, and next consumer without widening this skill's push/PR side effects.

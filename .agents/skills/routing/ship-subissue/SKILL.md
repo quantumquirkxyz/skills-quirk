@@ -139,3 +139,7 @@ Use the canonical work-item format in [`docs/reference/agents/work-item-format.m
 - Persist a common snapshot and command evidence before and after each side effect; resume from the first unconfirmed checkpoint after a crash.
 - Reconcile by operation key, PR, fixed point, commit, project item, and issue after unknown results; adopt matching state and never duplicate merges, comments, or closures.
 - Compensate only operation-owned project or issue changes where supported. Terminal statuses are `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, `superseded`, and `rolled-back`.
+
+## ReleaseCandidateArtifact Handoff
+
+Emit a schema-valid `ReleaseCandidateArtifact` using `schemas/software-engineering/release-candidate-artifact.schema.json` for `release-management`. It must bind the reviewed fixed point and source digests and include SBOM, VEX, provenance/attestation, named owner, approval evidence, verification, rollback plan and verification, canary/rollout evidence, and `nextConsumer: release-management`. Reject shipping when verification or rollback evidence is absent, stale, contradictory, or unowned. Preserve merge, issue-close, and project-update approval boundaries.
