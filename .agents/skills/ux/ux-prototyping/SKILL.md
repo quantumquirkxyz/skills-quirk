@@ -17,7 +17,7 @@ risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "ux"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ""
@@ -36,6 +36,12 @@ approvalFor: []
 - Rule: prototype only the uncertainty that matters; avoid making high-fidelity artifacts for low-fidelity questions.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Normative Rules
+
+- Rule: agentic prototypes expose authority boundaries, consent, confirmation, cancel, pause, undo, and partial completion at testable fidelity.
+- Rule: prototype privacy, accessibility, WCAG, XR, and multimodal alternatives alongside the happy path when relevant.
+- Rule: use synthetic or minimized data; never place real PII, credentials, wallet secrets, or irreversible integrations in a prototype.
 
 ## Provenance
 
@@ -70,6 +76,12 @@ Use this skill when planning or reviewing a UX prototype meant to answer a quest
 - Rule: define user tasks and success signals before collecting feedback.
 - Rule: separate observed behavior from participant preference.
 - Rule: decide in advance what evidence will cause iteration, abandonment, or implementation.
+- Rule: pre-register bias controls, inclusion targets, order effects, and stop thresholds; distinguish behavior from preference.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: prompt injection, ambiguous consent, cancel during action, undo after side effect, stale data, screen-reader path, XR discomfort, voice failure, and privacy redaction.
+- Stop when safety, consent, privacy, or accessibility criteria fail, or evidence is insufficient; do not ship a prototype as validated product behavior.
 
 ## Steps
 

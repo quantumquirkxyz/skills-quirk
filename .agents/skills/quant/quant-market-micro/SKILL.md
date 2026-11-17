@@ -84,6 +84,15 @@ Analyse **market microstructure** — order book, price formation, execution cos
 - Rule: model temporary and permanent impact separately when estimating execution cost.
 - Rule: validate execution assumptions against tick, quote, or order-book data.
 
+## Quality Gates
+
+- Record SHA-256 hashes for tick, quote, order-book, venue-rule, code, and environment snapshots, with exchange timestamps and timezone.
+- Check event-order, clock-sync, look-ahead, survivorship, hidden-liquidity, and selection leakage; stop for OHLCV-only evidence or unverifiable queue history.
+- Report confidence intervals for spread, impact, and fill estimates; calibrate against held-out sessions and backtest execution schedules with realistic latency and costs.
+- Run known-solution queue/spread fixtures and counterexamples for crossed books, negative spreads, timestamp inversions, and zero latency; state numerical tolerances.
+- Minimize trader/customer identifiers, assess fairness/privacy in execution allocation, and state that outputs are analytical, not trading or investment advice.
+- Stop with `inconclusive` when event provenance, calibration, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

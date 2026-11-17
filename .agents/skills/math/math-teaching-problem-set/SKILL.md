@@ -129,6 +129,15 @@ For each problem, write a rubric:
 - Pair with `math-paper-collaboration` for sharing and versioning.
 - Use Overleaf for collaborative editing; tag each term's set.
 
+## Quality Gates
+
+- Record SHA-256 hashes for source curriculum, problem data, solution code, LaTeX, fonts, and rendering environment; version each variant set.
+- Check answer-key leakage, look-ahead to prior solutions, survivorship of examples, prior-exam contamination, demographic or language bias, accessibility barriers, and variant collisions before release.
+- Report uncertainty in difficulty estimates using pilot intervals or calibrated item statistics; backtest scoring/rubrics against known learner solutions where available.
+- Run known-solution fixtures and counterexamples for ambiguous wording, multiple valid proofs, malformed inputs, and tolerance-sensitive numeric answers; state grading tolerances.
+- Minimize student personal data, document fairness/privacy limits, and protect accommodations and submissions, and state no-claims boundaries: assessment artifacts do not diagnose ability or replace educator judgment.
+- Stop with `inconclusive` when hashes, fairness/accessibility, validation, or tolerance checks are missing; align artifact, rubric, validation status, and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

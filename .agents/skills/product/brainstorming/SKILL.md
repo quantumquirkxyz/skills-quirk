@@ -86,6 +86,11 @@ Convert the shortlist into small experiments with owner, target user, method, ti
 
 Created from the skill-creator workflow using the requested brainstorming use case, repository contract, and product skill conventions. The design is intentionally artifact-first and does not require external research.
 
+## Evidence and Safety
+- Maintain an evidence ledger for observations, claims, ideas, metrics, and sources with owner, provenance, license, freshness, confidence, uncertainty, and corroboration; disclose synthetic media and simulated research.
+- Check privacy, inclusive/localized communication, accessibility, contrast/color, and claim substantiation before recommendations. Minimize PII and document purpose, consent, retention, access, and deletion.
+- Negative fixtures: stale/unlicensed source, unsupported claim, undisclosed synthetic content, PII leak, inaccessible output, missing metric definition, and unrepresented minority. Stop as `blocked` on any critical failure; resume only after remediation evidence and fixture rerun.
+
 ## References
 
 - `../../skill-dev/skill-creator/references/skill_design_principles.md`

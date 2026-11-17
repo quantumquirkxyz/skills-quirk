@@ -110,6 +110,15 @@ Markdown artifact: risk definition, model, measures, validation, and a note on w
 
 **Completion criterion:** deliverable includes measures, validation, and an operational interpretation.
 
+## Quality Gates
+
+- Record SHA-256 hashes for returns, positions, risk-factor, scenario, code, and environment snapshots, with as-of timestamps.
+- Check look-ahead, survivorship, stale-price, missing-data, stress-selection, and scenario leakage; stop when historical coverage is not point-in-time.
+- Report confidence intervals for VaR/CVaR and drawdown, calibrate coverage, and run rolling or walk-forward backtests plus named historical stress tests.
+- Run known-solution distribution/VaR fixtures and counterexamples for tail, dependence, and confidence-level violations; state numerical tolerances.
+- Apply fairness/privacy controls when risk data contains protected or personal attributes and state that outputs are analytical, not risk, investment, or regulatory advice.
+- Stop with `inconclusive` when coverage, provenance, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

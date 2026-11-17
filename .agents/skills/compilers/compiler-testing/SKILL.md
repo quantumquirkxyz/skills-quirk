@@ -87,4 +87,11 @@ Use this skill when planning tests for a compiler, interpreter, transpiler, pars
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Fixture And Oracle Contract
+
+- Maintain grammar/conformance, negative/error-recovery, semantic, IR-invariant, optimization, runtime, determinism, sandbox, and known-regression fixture classes.
+- Use differential oracles against a reference implementation where available; property-based generators assert parse/print round trips, semantic preservation, idempotent normalization, and bounded termination.
+- Fuzz lexing, parsing, typing, lowering, and resource limits with minimized reproducers; assert no crashes, hangs, escapes, or nondeterministic diagnostics.
+- Prefer verified oracles: structured AST/IR predicates, diagnostic code/span sets, runtime equivalence, output digests, resource-policy events, and conformance results. Golden text alone is insufficient.
+- Boundary: consume invariants from `compiler-design`; validate the implementation owned by `compilers`; do not redesign pipeline stages inside tests.
 @include .agents/skills/platform/contract-base.xml

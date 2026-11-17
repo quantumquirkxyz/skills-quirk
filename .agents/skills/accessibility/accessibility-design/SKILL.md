@@ -87,4 +87,10 @@ Use this skill when designing or reviewing interface behavior for keyboard acces
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## WCAG 2.2 Design Evidence
+
+- Design against WCAG 2.2 A/AA and EN 301 549 mappings, including focus appearance, focus not obscured, target size, dragging alternatives, consistent help, and accessible authentication where applicable.
+- Specify a focus/state contract for every interactive pattern: entry, order, visible indicator, modal containment, escape, restoration, and screen-reader announcement.
+- Provide a browser/AT matrix with expected semantics and a criterion-level evidence row (criterion, scenario, expected/observed, capture or transcript, environment, unresolved risk).
+- Use native semantics before ARIA and state the hand-off boundary: this skill decides interaction and semantics; `accessibility` owns product conformance scope; `accessibility-testing` owns execution and regression evidence.
 @include .agents/skills/platform/contract-base.xml

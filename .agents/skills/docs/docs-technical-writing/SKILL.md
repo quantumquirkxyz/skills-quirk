@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-technical-writing.json"
 diataxis: "how-to"
 tags: ["docs"]
 compatibility: []
@@ -89,5 +89,12 @@ Use this skill when drafting, editing, or restructuring documentation for develo
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Reproducibility and Quality Evidence
+
+- Emit a manifest with document ID/version, audience, source/ref digests, author/reviewer, commands and tool versions, license/provenance, accessibility target, and review date.
+- Run deterministic link, heading/outline, code-example, command, terminology, spelling, and accessibility checks. Negative fixtures cover dead links, stale commands, malformed snippets, missing alt text, ambiguous prerequisites, and secret leakage; unavailable checks are `NOT-RUN`.
+- Keep an evidence ledger mapping claims and examples to source facts and validation outputs. Property tests check stable heading/link resolution and example round trips; mutation tests remove prerequisites or alter commands to ensure checks fail.
+- Redact secrets and personal data from examples, logs, screenshots, and generated docs; document intentionally omitted evidence.
 ---
 @include .agents/skills/platform/contract-base.xml

@@ -127,6 +127,15 @@ Markdown artifact with: scope, methods, assumptions (with sources or notes), com
 
 **Completion criterion:** range delivered; reliability note included; sources cited.
 
+## Quality Gates
+
+- Record SHA-256 hashes for every data snapshot, source table, model-input file, and code revision; include valuation-date and publication timestamps.
+- Check look-ahead, survivorship, stale-price, currency, corporate-action, and double-counting leakage; stop with `blocked` when point-in-time provenance is unavailable.
+- Report scenario and parameter uncertainty as intervals or ranges, not a single point estimate; include calibration, historical cross-checks, or a documented backtest where data supports it.
+- Run known-solution DCF/multiples fixtures and a counterexample that exposes an invalid assumption; state numerical tolerances.
+- State fairness/privacy limits for sensitive inputs and that the artifact is analytical, not investment, legal, tax, or accounting advice.
+- Stop with `inconclusive` when material inputs, hashes, leakage checks, or tolerance checks are missing; align artifact validation and residual risks with the stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

@@ -115,4 +115,9 @@ At end of cycle: score each KR (0.0–1.0); write retrospective: what worked, wh
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Measurement and Inclusion Controls
+- Define every metric with formula, numerator/denominator, unit, cohort, window, exclusions, source query, baseline, target, owner, and freshness SLA; preserve an evidence ledger with provenance, confidence, uncertainty, and claim substantiation.
+- Review privacy, accessibility, localization, and inclusive communication impacts; disclose synthetic inputs and never use unlicensed or stale sources.
+- Negative fixtures: metric drift, missing denominator, stale source, unsupported target, PII leakage, inaccessible communication, or inequitable cohort omission. Stop as `blocked` and require named-owner remediation evidence plus rerun.
+
 @include .agents/skills/platform/contract-base.xml

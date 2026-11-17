@@ -112,6 +112,15 @@ Markdown artifact: model, parameters, computation, validation, and an operationa
 
 **Completion criterion:** artifact complete and reproducible.
 
+## Quality Gates
+
+- Record SHA-256 hashes for observations, model code, dependencies, random seeds, and environment; preserve collection timestamps.
+- Check look-ahead, survivorship, censoring, missingness, selection, and label leakage; stop when the sample or filtration is not point-in-time.
+- Report parameter/posterior and predictive uncertainty intervals, calibration curves, coverage, and backtesting or posterior predictive checks.
+- Run known-solution distribution/process fixtures and counterexamples for violated support, dependence, stationarity, or boundary assumptions; state numerical tolerances.
+- Assess fairness/privacy for sensitive observations and state no-claims/no-advice boundaries for operational, medical, financial, or policy interpretations.
+- Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

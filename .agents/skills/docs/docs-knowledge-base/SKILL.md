@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-knowledge-base.json"
 diataxis: "how-to"
 tags: ["docs"]
 compatibility: []
@@ -86,5 +86,12 @@ Use this skill when building or maintaining a repository knowledge base, glossar
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Freshness, Provenance, and Validation
+
+- Emit a manifest with page IDs, owner, audience, canonical source, source/ref digest, last-reviewed timestamp, review cadence, license, provenance, and redaction policy.
+- Run deterministic link, anchor, example, glossary-collision, navigation, and accessibility checks. Negative fixtures cover dead links, stale pages, duplicate terms, missing owners, inaccessible examples, and unsafe secrets; unavailable checks are `NOT-RUN`.
+- Maintain an evidence ledger for each navigation claim and source relationship. Property tests verify every indexed page is reachable and every canonical term has one definition; mutation tests remove links or owners to prove checks fail.
+- Redact credentials, personal data, and private URLs from snapshots and examples; preserve only evidence needed to maintain the knowledge base.
 ---
 @include .agents/skills/platform/contract-base.xml

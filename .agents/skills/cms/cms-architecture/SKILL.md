@@ -108,4 +108,10 @@ Design content management systems — content models, editorial workflows, publi
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Schema And Delivery Contract
+
+- Define canonical schemas with identifiers, ownership, required/optional fields, validation, references, locale variants, version, migration, deprecation, and compatibility policy.
+- Model the full content lifecycle (draft, review, approved, scheduled, published, superseded, archived, deleted/restored) and state which transitions are transactional, auditable, idempotent, and reversible.
+- Specify preview as an isolated read model with draft-aware caching, authorization, noindex/no-store policy, environment parity, and explicit stale-preview behavior.
+- Threat-model API and authoring boundaries: tenant isolation, authorization, webhook signing/replay, untrusted rich text/media, SSRF, secrets, and cache poisoning. Hand off permission decisions to `cms-access-control`, editorial governance to `cms-content-strategy`, and locale behavior to `localization`.
 @include .agents/skills/platform/contract-base.xml

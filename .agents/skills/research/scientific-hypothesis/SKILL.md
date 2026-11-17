@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/scientific-hypothesis.json"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: []
@@ -90,5 +90,13 @@ Formulate a **scientific hypothesis** that is testable, falsifiable, and tied to
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Preregistration and Evidence
+
+- Preregister H0/H1, estimand, outcomes, operational definitions, power assumptions, exclusion rules, analysis code/version, stopping rule, and deviations before observing outcomes.
+- Emit a manifest containing seed, randomisation/blinding plan, instrument versions, dataset digest, license/consent basis, and provenance. Mark unavailable checks `NOT-RUN`.
+- Include deterministic null, effect, confounded, missingness, and measurement-error fixtures plus negative fixtures for p-hacking, outcome switching, and invalid units.
+- Maintain an evidence ledger from prediction to observation, statistical output digest, uncertainty, and conclusion; property tests check row-order invariance and mutation tests challenge the planned analysis.
+- Redact sensitive observations and identifiers from examples and artifacts.
 ---
 @include .agents/skills/platform/contract-base.xml

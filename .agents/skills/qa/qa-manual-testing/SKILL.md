@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "test-strategy"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-manual-testing.json"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: []
@@ -86,5 +86,12 @@ Use this skill when manually testing a feature, reproducing a user-visible issue
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Reproducibility and Evidence
+
+- Freeze a session manifest: build digest, device/browser/OS, locale/time zone, account/data fixture IDs, permissions, network mode, timestamps, charter seed, and exact steps.
+- Use deterministic fixtures plus negative paths for empty, malformed, unauthorized, offline, timeout, accessibility, privacy, and recovery states. Record expected and observed UI text or artifact hashes.
+- Repeat suspected flaky paths with a bounded retry matrix and report reproducibility rate; unavailable tooling or blocked setup is `NOT-RUN`.
+- Maintain an evidence ledger linking each finding to step IDs, screenshots/log digests, severity rationale, and whether root cause is observed or inferred. Check accessibility and privacy redaction on captured evidence.
 ---
 @include .agents/skills/platform/contract-base.xml

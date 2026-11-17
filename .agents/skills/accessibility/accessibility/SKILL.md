@@ -123,4 +123,11 @@ Design inclusive products — WCAG compliance, assistive technology support, key
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Evidence Contract
+
+- Use WCAG 2.2 A/AA as the default target and map applicable requirements to EN 301 549; record exceptions and product-specific conformance claims.
+- Maintain one evidence row per criterion: criterion/version, target, expected behavior, observed result, artifact or test reference, environment, date, and residual risk. Automated results never replace manual evidence.
+- Test focus end to end: keyboard-only Tab/Shift+Tab/Enter/Space/Escape, visible focus, focus order, focus restoration, and no unintended traps.
+- Declare a browser and assistive-technology matrix (Chromium/Firefox/WebKit with NVDA, JAWS, VoiceOver, and TalkBack as applicable) and mark untested cells unknown.
+- Hand off component interaction decisions to `accessibility-design`; hand off reproducible scans and regression evidence to `accessibility-testing`.
 @include .agents/skills/platform/contract-base.xml

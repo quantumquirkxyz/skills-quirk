@@ -140,5 +140,12 @@ Create an **Architecture Decision Record** (context, decision, consequences, alt
 - links to related artifacts are included when available
 - review or supersession conditions are named
 
+## Reproducibility and Decision Graph
+
+- Emit a manifest with ADR ID, repository/ref digest, author/owner, date/time zone, evidence IDs, reviewed alternatives, validation commands, and artifact hash.
+- Maintain a supersession graph: each `superseded` ADR links to exactly one successor, each successor links back to predecessors, cycles are invalid, and deprecated decisions retain historical rationale.
+- Add deterministic and negative fixtures for missing context, duplicate numbers, invalid status transitions, broken links, cycles, and conflicting decisions. Unavailable evidence or checks are `NOT-RUN`.
+- Keep an evidence ledger separating observed constraints, assumptions, decision, consequences, and inference. Link claims to source documents and review results; redact secrets and personal data from examples.
+
 ---
 @include .agents/skills/platform/contract-base.xml

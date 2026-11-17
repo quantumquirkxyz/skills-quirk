@@ -121,3 +121,16 @@ Produce the proof in a Markdown file with: statement, strategy, steps, verificat
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Reproducibility, Evidence, and Stop Conditions
+
+- **Domain boundary:** Apply this contract specifically to pure-proofs: definitions, lemmas, countermodels, proof terms and formal verification; do not invent computation, literature access, proof checking, or compilation.
+- **Provenance and licensing:** Record source/version/date, transformations, dependencies, authorship, citation, license, and redistribution limits; separate supplied facts from derived claims and protect private collaborator data.
+- **Reproducibility manifest:** Include exact inputs, notation/schema, parameters, software versions, seeds, commands or pseudocode, and hashes. Missing evidence remains `unknown`.
+- **Fixtures:** Declare a  with expected value/proof and tolerance, plus a /negative case. These are test specifications, not claims of execution.
+- **Uncertainty and proof:** State assumptions, error bounds, conditioning, tolerances and confidence convention. Attach proof obligations and formal proof artifacts when available; otherwise label reasoning `informal`.
+- **Accessible output:** Use semantic headings, readable equations/tables, text alternatives, descriptive captions, high contrast and a plain-language summary.
+- **Stop conditions:** Stop as / if a definition, oracle, tolerance, proof artifact, provenance, license, privacy boundary, or required input is missing, contradictory, outside validity bounds, or would require unobserved execution.
+
+## Validation Record
+
+Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), manifest, fixture expectations, assumptions, tolerances, proof obligations, accessibility/privacy/licensing checks, and explicit unknowns.

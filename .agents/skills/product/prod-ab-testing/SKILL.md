@@ -119,4 +119,9 @@ Compute:
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Experiment Controls
+- Freeze a versioned experiment manifest before exposure: hypothesis, population, randomization, variants, metric definitions/formulas/denominators, power/sample assumptions, guardrails, SRM test and threshold, privacy review, stopping/rollback rules, owner, freshness, and analysis plan.
+- Keep provenance/evidence ledger for events, sources, code/config, claims, and decisions; disclose synthetic data/media. Define accessibility, localization, and inclusive communication requirements and minimize PII.
+- Negative fixtures: SRM, denominator drift, unregistered variant, stale event schema, guardrail breach, peeking, privacy violation, and unsupported claim. Stop as `blocked` on critical failure or non-reproducible manifest; require remediation evidence and rerun.
+
 @include .agents/skills/platform/contract-base.xml

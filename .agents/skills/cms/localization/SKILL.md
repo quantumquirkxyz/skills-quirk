@@ -107,4 +107,10 @@ Design internationalization (i18n) and localization (l10n) — string management
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Locale Verification Contract
+
+- Use ICU MessageFormat (or an explicitly equivalent typed contract) for plural, select, gender, rich text, date, number, and currency; validate placeholder names/types and reject malformed messages.
+- Test pseudo-locales with expansion, accented glyphs, bidi controls, missing translations, and long labels; test RTL with `dir=rtl`, mixed-direction content, mirrored geometry, icons, tables, and focus order.
+- Define locale fallback, collation, timezone, numbering system, calendar, and Unicode normalization rules; record ICU/CLDR version and timezone data as evidence.
+- Keep source content lifecycle separate from translation lifecycle, with stale-translation detection, glossary/context, reviewer identity, and rollback. Hand off visual/accessibility execution to accessibility skills and schema ownership to `cms-architecture`.
 @include .agents/skills/platform/contract-base.xml

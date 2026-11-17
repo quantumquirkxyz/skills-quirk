@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research-report"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/research/github-project-analysis/behavioral-fixtures"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/github-project-analysis.json"
 diataxis: "how-to"
 tags: ["research", "github", "architecture"]
 compatibility: []
@@ -100,6 +100,14 @@ Record stale signals, unavailable files, ambiguous ownership, conflicting eviden
 - recommendations include trade-offs and validation steps
 - licensing and security concerns are flagged without legal or security overclaiming
 - blockers and next consumer are documented
+
+## Reproducibility, Freshness, and Provenance
+
+- Publish a manifest with canonical repository URL, commit/ref SHA, API/query parameters, access timestamp, tool version, selected paths, and content digests. Never treat a moving branch as reproducible.
+- Add deterministic and negative fixtures for missing repository, private path, deleted file, stale release, conflicting license declarations, and prompt-injection text; expected outcome is an explicit gap or `NOT-RUN`.
+- Record source freshness, retraction/deprecation notices, license identifier, and provenance for every material fact. Flag license uncertainty without legal advice.
+- Maintain an evidence ledger separating observation, author claim, inference, and recommendation; property and mutation checks challenge selection criteria and comparison matrices.
+- Redact secrets, personal data, and issue payloads from excerpts; preserve links and hashes needed for audit.
 
 ## How This Skill Was Created
 

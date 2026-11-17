@@ -149,4 +149,11 @@ Fix A first, then AA. Track each fix with a re-test step.
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Verification Matrix
+
+- Report WCAG 2.2 A/AA and EN 301 549 criterion IDs, applicability, tool limitations, and criterion-level evidence; a pass requires an observable assertion, not only a score.
+- Execute the focus keyboard script and capture before/after focus, announcements, scroll position, and restoration for dialogs, menus, route changes, errors, and skip links.
+- Maintain a browser/AT matrix (Chromium, Firefox, WebKit; NVDA, JAWS, VoiceOver, TalkBack as applicable), including version, OS, locale, viewport, and untested cells.
+- Use deterministic fixtures for names/roles/states, reflow/zoom, contrast, reduced motion, pointer cancellation, and malformed form input. Record screenshots, DOM/accessibility snapshots, transcripts, and tool versions.
+- Hand off design defects to `accessibility-design`; do not reinterpret interaction decisions as implementation evidence.
 @include .agents/skills/platform/contract-base.xml

@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/research-data-archiving.json"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: []
@@ -89,5 +89,12 @@ Use this skill when preparing research data, code, notebooks, instruments output
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## FAIR, CARE, and Reproducibility
+
+- Emit a manifest with stable identifiers, file/format versions, checksums, schema, provenance graph, environment lock, license, consent/access basis, retention, and custodian.
+- Apply FAIR (findable, accessible, interoperable, reusable) and CARE (collective benefit, authority to control, responsibility, ethics) checks; document non-applicability or `NOT-RUN`.
+- Include deterministic fixtures for complete, empty, corrupted, sensitive, restricted, and schema-mismatched datasets. Negative fixtures fail closed without exposing values.
+- Maintain an evidence ledger for collection, transformations, QC, approvals, and archive verification. Redact identifiers and secrets in samples, logs, and manifests.
 ---
 @include .agents/skills/platform/contract-base.xml

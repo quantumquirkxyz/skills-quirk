@@ -9,7 +9,7 @@ capabilities:
   - apply quant derivatives pricing methods within explicit quant boundaries
   - analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
-outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+outputs: "quant artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
 stopCondition: "Price and calibrate derivatives (options, exotics, structured products) complete; required sections present; completion criteria checked."
@@ -17,7 +17,7 @@ risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ""
@@ -119,6 +119,15 @@ If using a model with free parameters (Heston k, θ, ν, ρ; local vol volatilit
 Markdown artifact: instrument, model, SDE, price, Greeks, calibration (if applicable), and a **model risk note** — what the model ignores and what the gap to market means.
 
 **Completion criterion:** deliverable complete; model risk addressed.
+
+## Quality Gates
+
+- Record SHA-256 hashes for market snapshots, volatility surfaces, curves, code, calibration data, and environment; preserve quote timestamps and settlement conventions.
+- Check look-ahead, stale-quote, survivorship, corporate-action, interpolation, and calibration leakage; stop when market data is not point-in-time.
+- Report Monte Carlo confidence intervals, finite-difference tolerances, calibration error, and parameter uncertainty; backtest Greeks or calibration stability where feasible.
+- Run known-solution Black-Scholes/parity fixtures and counterexamples for negative time value, arbitrage bounds, or unstable Greeks; state numerical tolerances.
+- Apply fairness/privacy checks to client or trade-level data and state that outputs are analytical, not trading, investment, legal, or regulatory advice.
+- Stop with `inconclusive` when hashes, calibration, uncertainty, or tolerance gates fail; align the quant artifact and stop condition.
 
 ## Completion
 

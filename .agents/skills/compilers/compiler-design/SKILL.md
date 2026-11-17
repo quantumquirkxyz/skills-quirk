@@ -87,4 +87,11 @@ Use this skill when designing or changing a compiler, interpreter, transpiler, p
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Engineering Contracts
+
+- Specify an unambiguous grammar, precedence, associativity, tokenization, source-span policy, and recovery synchronization points before implementation.
+- Define invariants and versioned schemas for AST, typed AST, IR, and emitted output; diagnostics retain stable codes, spans, related notes, and recovery status.
+- Require deterministic builds: pinned inputs/toolchain, stable traversal/order, reproducible output, and digest comparison across repeated isolated runs.
+- Treat untrusted source and plugins as sandboxed inputs with resource limits, cancellation, filesystem/network isolation, and explicit capability grants.
+- Boundary: this skill owns stage architecture and invariants; `compilers` owns implementation integration; `compiler-testing` owns fixtures and oracle execution.
 @include .agents/skills/platform/contract-base.xml

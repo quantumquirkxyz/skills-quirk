@@ -90,4 +90,10 @@ Use this skill when designing CMS content models, editorial workflows, taxonomie
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Governance Evidence
+
+- For every content type, record purpose, owner, audience, schema version, taxonomy, accessibility obligations, locale policy, freshness SLA, retention, archival and deletion trigger.
+- Define lifecycle gates and evidence for authoring, review, legal/security approval, preview, publish, rollback, supersession, archive, and deletion; a page screenshot is not proof of canonical content.
+- Provide representative schema, taxonomy, preview, localization, and channel fixtures, including forbidden transitions and stale-version cases.
+- Hand off technical schema/migration and delivery contracts to `cms-architecture`; role and approval enforcement to `cms-access-control`; translation mechanics to `localization`.
 @include .agents/skills/platform/contract-base.xml

@@ -126,6 +126,15 @@ Markdown artifact with: header (window), groups, scored items, follow-ups (paper
 - This is **monitoring**, not **review** — for deep analysis use `research` or `scientific-literature-review`.
 - Maintain a persistent `digest/` folder indexed by date.
 
+## Quality Gates
+
+- Record SHA-256 hashes for query definitions, retrieval snapshots, exported metadata, code, and environment; include retrieval timestamps and source versions.
+- Check publication-date, citation, author, duplicate, retraction, indexing, look-ahead, and survivorship leakage; mark non-applicable checks explicitly and do not use later citations to support a historical snapshot without labeling it.
+- Report coverage and relevance uncertainty, missing-source intervals, calibration of relevance scores, and backtest query recall on known papers.
+- Run known-solution retrieval fixtures and counterexamples for near-duplicate, false-author, and false-keyword matches; state matching tolerances.
+- Minimize personal researcher data, document fairness/privacy limits, and protect access-controlled sources, and state that the digest is monitoring, not peer review or professional advice.
+- Stop with `inconclusive` when source hashes, coverage, deduplication, or uncertainty checks are missing; align digest status and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
@@ -134,3 +143,16 @@ Markdown artifact with: header (window), groups, scored items, follow-ups (paper
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Reproducibility, Evidence, and Stop Conditions
+
+- **Domain boundary:** Apply this contract specifically to literature-track: query provenance, citation graph, versioning and access/licensing; do not invent computation, literature access, proof checking, or compilation.
+- **Provenance and licensing:** Record source/version/date, transformations, dependencies, authorship, citation, license, and redistribution limits; separate supplied facts from derived claims and protect private collaborator data.
+- **Reproducibility manifest:** Include exact inputs, notation/schema, parameters, software versions, seeds, commands or pseudocode, and hashes. Missing evidence remains `unknown`.
+- **Fixtures:** Declare a  with expected value/proof and tolerance, plus a /negative case. These are test specifications, not claims of execution.
+- **Uncertainty and proof:** State assumptions, error bounds, conditioning, tolerances and confidence convention. Attach proof obligations and formal proof artifacts when available; otherwise label reasoning `informal`.
+- **Accessible output:** Use semantic headings, readable equations/tables, text alternatives, descriptive captions, high contrast and a plain-language summary.
+- **Stop conditions:** Stop as / if a definition, oracle, tolerance, proof artifact, provenance, license, privacy boundary, or required input is missing, contradictory, outside validity bounds, or would require unobserved execution.
+
+## Validation Record
+
+Return `status` (`planned`, `observed`, `validated`, `uncertain`, or `blocked`), manifest, fixture expectations, assumptions, tolerances, proof obligations, accessibility/privacy/licensing checks, and explicit unknowns.

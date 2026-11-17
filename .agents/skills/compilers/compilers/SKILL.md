@@ -111,4 +111,11 @@ Source → Lexer → Tokens → Parser → AST
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Implementation Boundaries
+
+- Preserve explicit hand-offs: `compiler-design` supplies grammar, representations, invariants, and recovery policy; this skill implements stages and runtime integration; `compiler-testing` supplies fixtures, differential/property/fuzz/conformance execution, and oracles.
+- Enforce deterministic outputs and diagnostics by pinning toolchain/input ordering, isolating environment state, and comparing repeated-run manifests and digests.
+- Implement recovery with bounded progress, synchronization sets, error nodes, source spans, stable diagnostic codes, and no silent continuation after invalid state.
+- Sandbox compiler input, macros/plugins, and generated code with least-privilege capabilities, CPU/memory/time/output limits, cancellation, and no implicit network or filesystem access.
+- Completion requires stage invariants, negative/recovery fixtures, differential/property/fuzz/conformance evidence, and explicit residual unknowns.
 @include .agents/skills/platform/contract-base.xml

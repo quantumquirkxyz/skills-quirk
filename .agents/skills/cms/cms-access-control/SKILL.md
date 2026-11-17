@@ -87,4 +87,10 @@ Use this skill when designing or reviewing CMS roles, permissions, approval gate
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Lifecycle And Security Controls
+
+- Evaluate permissions across draft, review, scheduled, published, archived, deleted, and restored states; separate content scope, field scope, environment, and action.
+- Require preview isolation: drafts and unpublished media must be unguessable, non-indexed, tenant-scoped, and protected against cache leakage; preview must reflect the intended schema version.
+- Record immutable audit evidence for grants, denials, impersonation, break-glass, workflow transitions, exports, and destructive actions, with actor, target, reason, correlation ID, and outcome.
+- Test deny-by-default, tenant isolation, segregation of duties, replayed approvals, stale sessions, CSRF/SSRF, upload/content injection, and rollback. Hand off schema/lifecycle design to `cms-architecture` and editorial policy to `cms-content-strategy`.
 @include .agents/skills/platform/contract-base.xml

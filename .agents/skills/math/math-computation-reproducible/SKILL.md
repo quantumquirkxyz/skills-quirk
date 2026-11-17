@@ -127,6 +127,15 @@ The container must run the script and produce the declared outputs.
 - Pair with `cs-formal-methods` for verification and `scientific-reproducibility` for broader framing.
 - A reproducible computation earns a footnote in the paper.
 
+## Quality Gates
+
+- Record SHA-256 hashes for source data, scripts, lockfiles, container/base image, and every output; include platform and toolchain fingerprints.
+- Check input provenance, leakage, look-ahead, survivorship, hidden mutable dependencies, and accidental use of future or private data; mark non-applicable checks explicitly and stop when the snapshot cannot be reconstructed.
+- Report numerical uncertainty, interval estimates, convergence diagnostics, and calibration/backtest results where the computation models data or simulation.
+- Run known-solution fixtures and counterexamples (including a deliberately perturbed input) with explicit absolute/relative tolerances.
+- Minimize personal or sensitive data, document fairness/privacy limits, and state that outputs are analytical and not professional advice.
+- Stop with `inconclusive` when hashes, environment, validation, or tolerance evidence is missing; align manifest, validation status, and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

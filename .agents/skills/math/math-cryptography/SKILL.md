@@ -82,6 +82,11 @@ Analyse or design a **cryptographic construction** with explicit hardness assump
 - Rule: name hardness assumptions and estimated security level.
 - Rule: include randomness, key management, side-channel, and replay considerations.
 - Rule: mark any informal proof or missing reduction as a limitation.
+- Rule: include crypto-agility and post-quantum migration analysis: algorithm identifiers, hybrid negotiation, downgrade resistance, key/certificate rotation, ciphertext/signature inventory, and deprecation triggers.
+- Rule: threat-model quantum, classical, side-channel, fault, nonce/replay, oracle, implementation, supply-chain, and key-compromise attackers; state trust boundaries and least-privilege key use.
+- Rule: require adversarial/property/fuzz fixtures for round-trip and authentication properties, malformed encodings, nonce uniqueness, transcript binding, invalid-curve/padding cases, and hybrid downgrade attempts.
+- Rule: provide a rollback/safety case for parameter or algorithm changes, including compatibility window, revocation, recovery keys, evidence gates, and verifiable stop conditions when assumptions or randomness quality are unknown.
+- Rule: record provenance for standards, reductions, parameter sets, implementations, test vectors, and source claims; never present a proof or experiment as executed when it was only designed.
 
 ## Completion
 

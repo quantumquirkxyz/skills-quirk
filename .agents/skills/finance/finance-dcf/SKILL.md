@@ -125,6 +125,15 @@ Markdown artifact: forecast, WACC, terminal value, sensitivity, scenarios, cross
 
 **Completion criterion:** range delivered; reliability and TV dominance flagged.
 
+## Quality Gates
+
+- Record SHA-256 hashes for data snapshots, source tables, code, and environment; preserve as-of timestamps and valuation date.
+- Check look-ahead, survivorship, stale-price, currency, corporate-action, and terminal-value leakage; stop if point-in-time evidence is unavailable.
+- Report WACC, terminal growth, forecast, and scenario uncertainty as intervals; calibrate historical forecast error when available and backtest the forecast protocol where feasible.
+- Run a known-solution DCF fixture and a counterexample with `WACC <= g`; report numerical tolerances and fail closed on violations.
+- State fairness/privacy limits for sensitive data and that outputs are analytical, not investment, legal, tax, or accounting advice.
+- Stop with `inconclusive` when hashes, leakage checks, validation, or tolerances are missing; align artifact validation and residual risks with the stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

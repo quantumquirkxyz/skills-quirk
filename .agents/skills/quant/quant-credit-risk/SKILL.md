@@ -85,6 +85,15 @@ Model **credit risk** at the instrument and portfolio level — PD, LGD, EAD, EL
 - Rule: document calibration data, default definition, and downturn assumptions.
 - Rule: stress-test correlation, concentration, and macro scenarios.
 
+## Quality Gates
+
+- Record SHA-256 hashes for exposure, default, recovery, macro, code, and environment snapshots, including as-of dates and target population.
+- Check look-ahead, survivorship, censoring, label leakage, missing-not-at-random, and rating-migration leakage; stop when default definitions or observation windows are not point-in-time.
+- Calibrate PD/LGD/EAD on held-out or time-split data, report confidence intervals and calibration curves, and backtest loss coverage and stress scenarios.
+- Run known-solution EL/UL fixtures and counterexamples for impossible probabilities, recoveries, or CCFs; state numerical tolerances.
+- Assess fairness/privacy across protected groups when borrower-level attributes or proxies are used, minimize sensitive data, and state that outputs are analytical, not lending, investment, or regulatory advice.
+- Stop with `inconclusive` when calibration, provenance, uncertainty, or fairness checks are unavailable; align output validation with the stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

@@ -21,7 +21,7 @@ promptVersion: "2.0"
 artifactType: "qa"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-automation.json"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: [code-review, testing, tdd]
@@ -114,5 +114,13 @@ Design and implement automated test suites — unit, integration, e2e — with p
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Reproducibility and Evidence
+
+- Create a test manifest with stable case IDs, seed, dependency/container versions, artifact digest, command, environment, timeout, retries, and expected result.
+- Include deterministic and negative fixtures for malformed input, authorization denial, unavailable dependencies, timeout, duplicate delivery, and schema drift.
+- Require unit/property tests for invariants, mutation tests for assertion strength, and an explicit flaky-test record with first-seen commit, reproduction count, quarantine owner, and exit criteria.
+- Preserve an evidence ledger from requirement to test, output digest, coverage/mutation result, and conclusion. `NOT-RUN` means blocked, skipped, or unavailable and is not passing coverage.
+- Redact secrets and personal data from logs, snapshots, traces, and failure messages.
 ---
 @include .agents/skills/platform/contract-base.xml

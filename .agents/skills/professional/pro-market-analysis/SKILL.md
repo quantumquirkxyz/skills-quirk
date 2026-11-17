@@ -92,4 +92,9 @@ Conduct **market analysis** — TAM/SAM/SOM, competitor mapping, pricing analysi
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Evidence and Claim Controls
+- Maintain a ledger linking each market claim, source, asset, and metric to provenance, license, publication/capture date, freshness SLA, methodology, owner, confidence, uncertainty, and corroboration. Substantiate TAM/SAM/SOM, pricing, and forecasts; label estimates and synthetic media clearly.
+- Check privacy, accessibility, color/print where applicable, localization, and inclusive communication; minimize PII.
+- Negative fixtures: stale/conflicting/unlicensed source, unsupported causal or superlative claim, undisclosed synthetic evidence, denominator drift, PII leak, and missing uncertainty. Stop as `blocked` on material failure and require remediation evidence plus rerun.
+
 @include .agents/skills/platform/contract-base.xml

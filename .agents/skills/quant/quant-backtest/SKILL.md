@@ -2,21 +2,21 @@
 name: "quant-backtest"
 category: "quant"
 maturity: "stable"
-version: "1"
-description: "Run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust."
+version: "2"
+description: "Run a reproducible, leakage-resistant backtest with dataset/code provenance, corporate-action fixtures, deterministic replay, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
 license: "MIT"
 capabilities:
   - apply quant backtest methods within explicit quant boundaries
   - analyze run a backtest with full audit hygiene — biases, costs, out-of-sample, regime splits — and produce a verdict on whether a strategy is robust with assumptions, constraints, and failure modes
   - produce and validate a quant artifact with evidence, decisions, and next steps
-outputs: "backtest audit report with strategy spec, data audit, statistics, stress tests, and verdict."
+outputs: "reproducible backtest audit with manifest, hashes, bias fixtures, replay evidence, baseline comparison, statistics, and PASS/FAIL/BLOCKED/NOT-RUN verdict."
 sideEffects: []
 dependencies: []
-stopCondition: "Audit report complete with strategy spec, data audit, statistics, stress tests, and verdict."
+stopCondition: "Manifest and hashes are recorded, leakage/survivorship/corporate-action checks and deterministic replay are evaluated, baseline comparison is complete or explicitly not-run, and the verdict is PASS, FAIL, BLOCKED, or NOT-RUN."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
-promptVersion: "2.0"
+promptVersion: "3.0"
 artifactType: "test-strategy"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
@@ -30,12 +30,12 @@ approvalFor: []
 
 ## Contract
 
-- Input: trading strategy definition (signal, universe, sizing, costs).
-- Output: backtest audit report with strategy spec, data audit, statistics, stress tests, and verdict.
-- Scope: produces audit report; does not execute live trading.
-- Rule: produces audit report; does not execute live trading.
+- Input: strategy definition, immutable dataset/code references, evaluation window, baseline, and permitted runtime.
+- Output: `QuantBacktestArtifact` containing a reproducible manifest, hashes, fixture results, replay evidence, metrics, baseline delta, limitations, and one verdict: `PASS`, `FAIL`, `BLOCKED`, or `NOT-RUN`.
+- Scope: produces an audit report; never executes live trading or places orders.
+- Rule: warnings are errors for leakage, survivorship, corporate-action, non-determinism, missing hashes, or unexplained baseline drift.
+- Rule: if required context, data, code, or dependencies are unavailable, stop with `BLOCKED`; use `NOT-RUN` only when execution was deliberately skipped.
 - Rule: documented standards override defaults; explicit project rules take precedence.
-- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
 ## Provenance
 
@@ -54,6 +54,24 @@ approvalFor: []
 Emit `QuantBacktestArtifact` as both:
 - JSON: `.agents/skills/platform/artifacts/quant-backtest/{identifier}.json`
 - Markdown view: same filename with `.md` extension
+
+The JSON must include a reproducible manifest:
+
+```yaml
+manifest_version: 1
+run_id: <stable identifier>
+dataset: { uri: <immutable reference>, sha256: <64 hex>, schema_sha256: <64 hex> }
+code: { uri: <revision or bundle>, sha256: <64 hex> }
+config_sha256: <64 hex>
+seed: <integer>
+environment: { runtime: <version>, platform: <version>, dependencies_lock_sha256: <64 hex> }
+fixtures: [leakage, survivorship, corporate_actions]
+replay: { command: <exact command>, input_sha256: <64 hex>, output_sha256: <64 hex> }
+baseline: { name: <name>, result_sha256: <64 hex>, delta: <structured values> }
+status: PASS | FAIL | BLOCKED | NOT-RUN
+```
+
+Hash every source, transform, configuration, dependency lock, fixture input, and materialized output. Redact secrets without replacing their hash with an unverifiable placeholder.
 
 
 # 
@@ -84,23 +102,28 @@ No ambiguity. If a parameter is unspecified, ask.
 
 **Completion criterion:** the strategy could be re-implemented from the spec alone.
 
-### 2. Audit the data
+### 2. Audit the data and fixtures
 
-- **Survivorship bias:** use point-in-time dataset; keep delisted names.
-- **Look-ahead:** features computed only on data available at the decision timestamp.
-- **Adjustments:** splits, dividends, mergers consistent with provider.
-- **Corporate actions:** delistings reflected in returns (delisting return ≠ 0).
+- **Leakage fixture:** inject a future-only feature and a timestamp boundary case; the pipeline must reject or score it as unavailable.
+- **Survivorship fixture:** include a delisted constituent and a removed symbol; membership must be point-in-time and the name must contribute its delisting return.
+- **Corporate-action fixture:** include split, dividend, merger, ticker change, and delisting events; adjusted prices, raw prices, shares, and cash flows must reconcile without double counting.
+- **Look-ahead:** features use only records available at the decision timestamp, including publication lag.
+- Record provider version, adjustment policy, timezone, calendar, missing-value policy, and every fixture result.
 
-**Completion criterion:** each bias named and the dataset policy is documented.
+**Completion criterion:** all three mandatory fixtures execute; any warning is an error; missing fixture data is `BLOCKED`.
 
-### 3. Run the backtest
+### 3. Run and replay the backtest
 
 - **Transaction-cost model:** not zero. Commissions + spread + impact estimate.
 - **Out-of-sample split:** train / test / walk-forward, not just one backtest window.
 - **Benchmark:** explicit (e.g. cap-weighted universe, risk-free, SPY).
 - Report: Sharpe, Sortino, max drawdown, Calmar, annualised return, annualised vol, win rate.
 
-**Completion criterion:** backtest run; out-of-sample period honoured; all statistics present.
+- Persist the exact command and input manifest, then run it twice in an isolated environment with the same seed.
+- Deterministic replay requires byte-identical normalized trades, positions, cash flows, metrics, and artifact hashes; otherwise status is `FAIL`.
+- Compare against a named baseline using the same dates, costs, calendar, and data policy. Explain every material delta.
+
+**Completion criterion:** backtest run; out-of-sample period honoured; all statistics, replay comparison, and baseline delta are present.
 
 ### 4. Stress tests
 
@@ -129,9 +152,9 @@ Deliver the verdict:
 
 ### 7. Deliver
 
-Markdown artifact: strategy spec, data audit, backtest statistics, stress tests, coverage validation, and verdict with explicit conditions.
+Markdown artifact: strategy spec, manifest and hashes, fixture evidence, data audit, backtest statistics, deterministic replay, stress tests, baseline comparison, coverage validation, limitations, and verdict with explicit conditions.
 
-**Completion criterion:** report complete; all sections present; verdict honest.
+**Completion criterion:** report and JSON validate; warnings-as-errors policy is applied; every skipped check is `NOT-RUN` with reason; verdict is honest.
 
 ## Completion
 

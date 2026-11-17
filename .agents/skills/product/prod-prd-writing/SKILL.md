@@ -116,4 +116,9 @@ For each user journey: "As a [user type], I want [action] so that [benefit]."
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## PRD Quality Controls
+- PRDs must specify functional requirements and measurable NFR acceptance evidence for security, privacy, accessibility, localization, reliability, performance, observability, recovery, and supportability, with owners and stop conditions.
+- Maintain evidence ledger and source/asset provenance including licensing, freshness, confidence, uncertainty, and claim substantiation; disclose synthetic media. Minimize PII and document consent, retention, access, redaction, and deletion.
+- Negative fixtures: missing security/accessibility NFR, stale or unlicensed source, unsupported claim, undisclosed synthetic content, PII leak, undefined metric, and missing inclusive/localized criteria. Stop as `blocked` until remediation evidence is recorded and rerun.
+
 @include .agents/skills/platform/contract-base.xml

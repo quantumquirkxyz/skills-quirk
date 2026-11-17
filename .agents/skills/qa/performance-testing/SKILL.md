@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "test-strategy"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/performance-testing.json"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: []
@@ -117,5 +117,13 @@ Design and execute performance tests — load, stress, soak, spike — to valida
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Reproducibility and Evidence
+
+- Emit a versioned manifest before execution: scenario IDs, workload seed, tool/runtime versions, commit or artifact digest, environment dimensions, clock/time zone, warm-up, duration, concurrency, thresholds, and collection commands.
+- Keep deterministic baseline, stress, soak, spike, and negative fixtures. Negative fixtures cover missing telemetry, invalid thresholds, mixed environments, clock skew, and an intentionally failing SLI.
+- Record an evidence ledger mapping each claim to raw result digests, metric query, fixture, and analyst inference. A test not run, partially collected, or blocked is `NOT-RUN`, never pass or fail.
+- Re-run flaky scenarios with the same seed and bounded retry policy; report flake rate separately. Use mutation probes on thresholds/workload assumptions and property checks for monotonic load/error relationships.
+- Redact credentials, tokens, payloads, and personal data before storing traces or charts.
 ---
 @include .agents/skills/platform/contract-base.xml

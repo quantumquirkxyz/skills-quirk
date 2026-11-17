@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/research-literature-review.json"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: []
@@ -89,5 +89,13 @@ Use this skill when planning or performing a literature review, evidence scan, r
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Protocol, Freshness, and Evidence
+
+- Preregister the question, outcomes, sources, queries, date window, screening rules, extraction schema, synthesis method, deviations, and stopping rule before searching.
+- Emit a manifest with source identifiers/DOIs, retrieval timestamps, versions, content hashes where permitted, database coverage, and tool versions. Track updates, corrections, retractions, and withdrawals explicitly.
+- Use deterministic and negative fixtures for duplicates, missing abstracts, inaccessible full text, retracted studies, contradictory outcomes, and license-restricted content; unresolved retrieval is `NOT-RUN`.
+- Keep an evidence ledger linking synthesis claims to extracted source passages, quality appraisal, provenance, license, and confidence. Property checks cover inclusion monotonicity; mutation checks challenge screening rules.
+- Redact participant data and access-controlled text from notes and exports.
 ---
 @include .agents/skills/platform/contract-base.xml

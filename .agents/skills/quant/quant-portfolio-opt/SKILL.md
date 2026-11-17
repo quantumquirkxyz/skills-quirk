@@ -117,6 +117,15 @@ Markdown artifact: universe, return/risk models, objective, constraints, weights
 
 **Completion criterion:** deliverable complete; extreme weights acknowledged.
 
+## Quality Gates
+
+- Record SHA-256 hashes for asset, return, benchmark, constraint, code, and environment snapshots, including point-in-time timestamps.
+- Check look-ahead, survivorship, stale-price, reconstitution, benchmark, and constraint leakage; stop when the investable universe cannot be reconstructed.
+- Report confidence/bootstrap intervals for returns, risk, and weights; calibrate risk forecasts and use walk-forward backtesting with turnover and costs.
+- Run known-solution convex/QP fixtures and counterexamples for singular covariance, infeasibility, and corner concentration; state solver and numerical tolerances.
+- Assess fairness/privacy for ESG or demographic proxies and state that outputs are analytical, not personalized financial advice.
+- Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance gates fail; align output validation and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

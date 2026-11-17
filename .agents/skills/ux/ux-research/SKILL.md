@@ -98,6 +98,14 @@ Conduct user research — interviews, surveys, usability testing, personas, jour
 - Rule: separate observed behavior, direct quotes, interpretation, and recommendations.
 - Rule: protect participant privacy and avoid collecting unnecessary sensitive data.
 - Rule: tie design implications back to evidence strength and sample limits.
+- Rule: obtain specific, revocable informed consent; collect minimum data, separate contact from research data, redact PII, define retention/deletion, and restrict access.
+- Rule: plan for selection, survivorship, moderator, demand, language, accessibility, and confirmation bias; record recruitment gaps and disconfirming evidence.
+- Rule: protect participants in agentic, XR, and multimodal studies with authority boundaries, cancel/withdraw paths, debriefing, and safe synthetic fixtures.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: leading versus neutral prompts, withdrawal, PII injection, vulnerable participant, modality mismatch, agent hallucination, and expectation masking.
+- Stop on consent ambiguity, sensitive disclosure, unsafe distress, inability to withdraw, or unapproved purpose change; quarantine affected records and report limitations.
 
 ## References
 - `../interaction-design/SKILL.md` — design from research

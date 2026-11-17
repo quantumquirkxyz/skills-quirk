@@ -132,6 +132,15 @@ Markdown artifact with: signal definition, biases mitigated, backtest setup, str
 
 **Completion criterion:** artifact present; verdict is honest and grounded in the numbers, not in narrative.
 
+## Quality Gates
+
+- Record SHA-256 hashes for point-in-time universe, prices, fundamentals, corporate actions, code, and environment; retain delisted constituents.
+- Check look-ahead, survivorship, reconstitution, publication-lag, label, and feature leakage; stop if the historical investable universe cannot be reproduced.
+- Use walk-forward or embargoed splits, report confidence intervals, multiple-testing corrections, calibration of forecasts, and out-of-sample backtest results.
+- Run known-solution factor fixtures and counterexamples with shuffled labels, inverted signals, and zero-cost assumptions; state numerical tolerances.
+- Assess fairness/privacy when signals use sensitive or proxy attributes and state that results are analytical, not investment advice.
+- Stop with `inconclusive` when data hashes, leakage controls, uncertainty, or backtest gates are missing; align verdict and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

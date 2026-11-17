@@ -132,6 +132,15 @@ Markdown artifact with: model formulation, hardness, solver, trace summary, opti
 
 **Completion criterion:** all six sections present; solution reproducible from the code shown.
 
+## Quality Gates
+
+- Record SHA-256 hashes for instance data, model/code, solver, dependencies, and environment; preserve parameter timestamps and random seeds.
+- Check look-ahead, survivorship, data, objective, and constraint leakage in time-dependent programs; stop when the instance snapshot is not reproducible.
+- Report uncertainty intervals or scenario ranges for parameters and solution metrics; calibrate predictive objectives and backtest policies where applicable.
+- Run known-solution LP/QP/MIP fixtures and counterexamples for infeasibility, unboundedness, degeneracy, and tolerance-sensitive solutions; state absolute/relative solver tolerances.
+- Assess fairness/privacy when objectives or constraints affect people, and state no-claims/no-advice boundaries for real-world decisions.
+- Stop with `inconclusive` when optimality evidence, hashes, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

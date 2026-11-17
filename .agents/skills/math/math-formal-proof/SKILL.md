@@ -129,6 +129,15 @@ For a paper:
 - Pair with `math-pure-proofs` for informal reasoning.
 - For paper inclusion, use a versioned Git tag of the formal proof.
 
+## Quality Gates
+
+- Record SHA-256 hashes for theorem source, imported libraries, lockfiles, compiler, kernel, and build environment.
+- Check for hidden axioms, leakage/look-ahead in imported data or lemmas, survivorship assumptions, untrusted generated code, and dependency/version drift; mark non-applicable checks explicitly and stop if provenance is unresolved.
+- Report any computational/reflection assumptions, proof-search uncertainty, and independent model-check or countermodel results where applicable.
+- Run known-solution theorem fixtures and counterexamples for weakened hypotheses; state checker tolerances and exact versioned commands.
+- State no-claims boundaries: kernel verification proves the encoded theorem, not the adequacy of its model or real-world advice; protect private theorem data and document fairness/privacy limits where formalization touches people.
+- Stop with `inconclusive` if compilation, hashes, dependency audit, or counterexample checks are incomplete; align verified source, narrative, and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

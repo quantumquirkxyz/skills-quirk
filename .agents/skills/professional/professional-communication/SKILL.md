@@ -87,4 +87,9 @@ Use this skill when writing or reviewing status updates, stakeholder messages, e
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Communication Quality Controls
+- Preserve source/asset provenance, licensing, freshness, and an evidence ledger for claims with confidence, uncertainty, corroboration, and owner; substantiate material claims and disclose synthetic/AI-generated content.
+- Use accessible, color-safe, localized, inclusive language and formats; protect privacy with purpose limitation, consent, redaction, retention, and access controls.
+- Negative fixtures: stale/unlicensed source, unsupported claim, undisclosed synthetic content, inaccessible or exclusionary wording, privacy leak, and untranslated critical instruction. Stop as `blocked` on critical failure until remediation evidence and rerun.
+
 @include .agents/skills/platform/contract-base.xml

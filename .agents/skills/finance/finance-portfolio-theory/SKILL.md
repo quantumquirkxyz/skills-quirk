@@ -84,6 +84,15 @@ Apply **Modern Portfolio Theory** — efficient frontier, CAPM, APT, performance
 - Rule: check covariance stability, concentration, turnover, and transaction-cost impact.
 - Rule: distinguish ex ante risk modeling from realized performance attribution.
 
+## Quality Gates
+
+- Record SHA-256 hashes for price/fundamental snapshots, benchmark data, code, and environment, with point-in-time timestamps.
+- Check look-ahead, survivorship, stale-price, corporate-action, benchmark-selection, and regime leakage; stop when the investable universe cannot be reconstructed.
+- Report parameter and estimation uncertainty with confidence or bootstrap intervals; calibrate risk forecasts and use walk-forward backtesting for performance claims.
+- Run known-solution covariance/frontier fixtures and counterexamples for singular covariance, short-sale limits, and concentration; state numerical tolerances.
+- Test fairness/privacy implications of demographic or ESG proxies and state that outputs are analytical, not personalized financial advice.
+- Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance gates fail; align artifact validation and residual risks with the stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

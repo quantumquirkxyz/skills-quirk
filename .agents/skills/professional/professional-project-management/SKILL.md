@@ -87,4 +87,9 @@ Use this skill when turning an ambiguous initiative into a project plan, recover
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
 ---
+## Governance Controls
+- Keep an evidence ledger for scope, claims, decisions, metrics, risks, and assets with provenance, licensing, freshness, owner, confidence, uncertainty, and corroboration; disclose synthetic media.
+- Define metrics with formula, denominator, cohort, window, source, baseline, target, and freshness. Plans must include privacy, security, accessibility, localization, reliability, performance, observability, recovery, and supportability NFRs with acceptance evidence.
+- Negative fixtures: stale/unlicensed evidence, unsupported claim, undefined metric, PII leak, inaccessible/localization failure, missing NFR, guardrail breach, and unreconciled risk. Stop as `blocked` on critical failure and resume only after named-owner remediation evidence and rerun.
+
 @include .agents/skills/platform/contract-base.xml

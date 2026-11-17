@@ -37,6 +37,13 @@ approvalFor: []
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 
+## Normative Rules
+
+- Rule: evaluate WCAG 2.2 AA and applicable EN 301 549 requirements at task-flow level, mapping every claim to testable evidence.
+- Rule: consent is specific, informed, revocable, and renewed when scope, data, recipient, or purpose changes; provide cancel and undo where possible.
+- Rule: cover XR comfort, locomotion, hand/voice input, spatial audio, seated mode, and multimodal alternatives without assuming headset access.
+- Rule: minimize privacy exposure in announcements, previews, logs, and shared displays; do not leak PII through accessibility output.
+
 ## Provenance
 
 | Question | Answer |
@@ -70,6 +77,12 @@ Use this skill when reviewing or designing the accessibility of a user journey, 
 - Rule: make state changes perceivable without relying on color, motion, or spatial memory alone.
 - Rule: include cognitive load, reading clarity, timing pressure, and error prevention.
 - Rule: define validation in terms of task completion, not only individual WCAG checks.
+- Rule: include reduced motion, zoom/reflow, contrast, focus restoration, screen-reader announcements, timing extensions, and error recovery.
+
+## Adversarial Fixtures and Stop Conditions
+
+- Fixtures: keyboard/screen-reader replay, 400% zoom, reduced motion, voice-only, XR seated/no-hand-tracking, consent revocation, and PII in live-region text.
+- Stop on a critical task blocker, trapped focus, missing modality equivalent, unconsented exposure, or unverifiable WCAG claim; report blocked.
 
 ## Steps
 

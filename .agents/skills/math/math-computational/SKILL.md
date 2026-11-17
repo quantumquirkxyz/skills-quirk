@@ -130,6 +130,15 @@ Markdown artifact with: problem, algorithm choice, error/stability/cost, code or
 
 **Completion criterion:** artifact contains algorithm, error bounds, verification, and a final answer whose precision is justified.
 
+## Quality Gates
+
+- Record SHA-256 hashes for input snapshots, code, dependencies, and environment; pin random seeds and numerical backends.
+- Check data leakage, look-ahead, and survivorship whenever inputs are time-indexed; mark non-applicable checks explicitly and stop when the computational snapshot is not reproducible.
+- Report uncertainty intervals, conditioning, convergence/calibration diagnostics, and tolerances separately from point estimates.
+- Run known-solution fixtures plus counterexamples for domain violations, unstable regimes, and cancellation; report absolute and relative error.
+- State fairness/privacy limits for data-driven inputs and no-claims/no-advice boundaries for engineering, scientific, or financial interpretations.
+- Stop with `inconclusive` when verification, hashes, uncertainty, or tolerance gates fail; align artifact sections and stop condition.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
