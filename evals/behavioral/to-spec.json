@@ -2,7 +2,12 @@
   "id": "to-spec-paired-v1",
   "skill": "project/to-spec",
   "skillVersion": "1",
-  "fixtureVersion": "1",
+  "fixtureVersion": "2",
+  "artifactCases": [
+    {"name": "missing-requirements", "expected": "validation-failed", "rule": "do not publish without RequirementsArtifact"},
+    {"name": "stale-requirements", "expected": "stale-input", "rule": "reject sourceDigest or fixedPoint mismatch"},
+    {"name": "valid-handoff", "expected": "approved", "rule": "emit schema-valid RequirementsArtifact with owner and nextConsumer"}
+  ],
   "scenario": "A long conversation has settled the shape of the behavioural eval harness. The operator asks for it to be synthesised into a published spec issue without any further interview.",
   "baseline": "without-skill",
   "trials": 5,

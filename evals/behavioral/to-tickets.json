@@ -2,7 +2,13 @@
   "id": "to-tickets-paired-v1",
   "skill": "project/to-tickets",
   "skillVersion": "1",
-  "fixtureVersion": "1",
+  "fixtureVersion": "2",
+  "artifactCases": [
+    {"name": "missing-requirements", "expected": "blocked", "rule": "reject ticketing without a valid RequirementsArtifact"},
+    {"name": "stale-requirements", "expected": "stale-input", "rule": "reject sourceDigest or fixedPoint mismatch"},
+    {"name": "approved-not-applicable-architecture", "expected": "completed", "rule": "accept explicit approved not-applicable rationale with approver and fixed point"},
+    {"name": "valid-handoff", "expected": "completed", "rule": "accept valid requirements plus ArchitectureArtifact or DesignArtifact"}
+  ],
   "scenario": "Spec 212 is approved and the operator hands over a hand-drawn dependency order in which one blocking edge is redundant because a shorter path already covers it, plus one corrective recommendation from the wave-1 review that must be published as the smallest ticket.",
   "baseline": "without-skill",
   "trials": 5,
