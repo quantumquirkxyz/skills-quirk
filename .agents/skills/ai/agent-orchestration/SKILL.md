@@ -113,6 +113,27 @@ Design a **multi-agent orchestration** system with clear coordination boundaries
 - Rule: instrument every agent run with tracing, structured logging, and quality metrics.
 - Rule: document memory access policies (read/write permissions, retention, summarisation) for each memory tier.
 
+## P0/P1 Operating Contract
+
+### Capability and authority matrix
+
+| Role/tool | Can do | Cannot do | Evidence |
+|---|---|---|---|
+| Foreman/router | Decompose, schedule, assign typed briefs | Modify artifacts or self-approve | plan digest, lease, budget |
+| Worker/tool | Read declared inputs and produce its artifact | Cross boundaries or call undeclared tools | signed handoff, source digests |
+| Verifier/critic | Re-run checks independently and reject claims | Repair, merge, or trust worker narrative | independent verdict, replay result |
+| Human approver | Approve named mutations until expiry | Grant broad or transitive authority | scoped approval record |
+
+Authority is least-privilege and non-transitive. Approval propagation carries only the named operation, paths, resources, quota, and expiry.
+
+### Typed handoffs and canonical states
+
+Every handoff is a signed typed envelope containing `schemaVersion`, `runId`, `parentId`, `objective`, `authority`, input SHA-256 digests, `artifactRef`, claims, limitations, issue/expiry times, and signature. Invalid, expired, unsigned, or digest-mismatched envelopes are rejected. Canonical states are `planned`, `leased`, `running`, `awaiting-approval`, `verifying`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, and `expired`; illegal transitions stop the run.
+
+### Budgets, leases, recovery, and data
+
+Declare quotas for wall time, tokens, cost, tool calls, concurrency, output bytes, and retries. Leases name holder, scope, quota, heartbeat, and expiry. A kill switch cancels new work, revokes leases, prevents side effects, and emits `cancelled`. Crash recovery resumes only from the last committed checkpoint and never silently replays an outcome-unknown mutation. Replay tests cover timeout, duplicate delivery, crash before/after commit, lease expiry, and kill switch. Persist only minimum redacted evidence with retention/deletion deadlines; missing independent verification is `blocked`, never success.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

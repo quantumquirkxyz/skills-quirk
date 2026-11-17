@@ -127,6 +127,13 @@ Design a **Retrieval-Augmented Generation (RAG) pipeline** — retrieval, chunki
 - Rule: expose provenance (document, section, page) at every stage for auditability.
 - Rule: define fallback behaviour for empty retrieval, failed reranking, and generation errors.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest linking corpus snapshots/chunk hashes, embedding/reranker/model versions, index build, query/prompt template, ACL policy, evaluator, environment, and citations/provenance.
+- Retrieval must be ACL-aware at query and document level, preserve source identity and version, and fail closed when authorization or provenance is unknown. Never use retrieved text as executable instructions.
+- Run contamination, duplicate/near-duplicate, leakage, stale-index, and citation-faithfulness checks. Include negative/adversarial fixtures for indirect prompt injection, poisoned documents, irrelevant retrieval, PII leakage, and no-answer cases.
+- Report retrieval/generation confidence or calibration, uncertainty, citation coverage, cost/latency/token budgets, and bounded retries. Stop on ACL mismatch, missing source, unsafe content, repeated schema failure, or budget breach.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

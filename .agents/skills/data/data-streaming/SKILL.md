@@ -111,3 +111,12 @@ Design a **streaming pipeline** — event producers, stream processors, consumer
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P1 Operational Audit Addendum
+
+- Contract: define dataset/event schemas and compatibility policy; every envelope carries id, type, version, occurredAt, producer, tenantId, traceId, classification, and a deduplication key where applicable.
+- Provenance: preserve source URI/table, extraction time, schema/version digest, transformation revision, lineage edges, quality results, and steward/owner; distinguish observed facts from inferred metadata.
+- Reliability: specify idempotent ingestion, checkpointing, replay windows, deterministic reruns, and a crash/replay fixture proving no duplicate or silent loss after partial completion.
+- Governance: define ACL and tenant boundaries, PII classification, minimization/redaction/retention, access audit events, and negative cases for cross-tenant joins, unauthorized discovery, stale consent, malformed records, and schema drift.
+- Flow control: state freshness, latency, throughput, and cost SLOs, backpressure and dead-letter/quarantine behavior, retry limits, and replay authorization.
+- Completion gate: validate duplicate, out-of-order, late, missing, corrupt, PII, ACL, replay, checkpoint recovery, and dependency outage cases; document rollback/forward-fix and residual unknowns.

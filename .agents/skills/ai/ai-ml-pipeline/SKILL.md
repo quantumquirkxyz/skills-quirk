@@ -107,6 +107,13 @@ State: supervised / unsupervised / reinforcement; classification / regression / 
 
 **Completion criterion:** deployment checklist complete; monitoring rules defined.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest containing dataset/model/code/config digests, versions, seeds, environment, licenses, lineage, and exact reproduction commands; mark unrun steps as `planned`, not `observed`.
+- Version datasets, features, checkpoints, tokenizer/config, and evaluation prompts together. Record split membership and contamination, duplicate, and near-duplicate checks.
+- Define PII minimisation, retention, ACLs, and approved-use boundaries. Include calibration/confidence, subgroup uncertainty, negative/adversarial fixtures, and rollback cases.
+- Set explicit cost, latency, memory, and bounded retry budgets. Stop on leakage, unsafe data, missing provenance, repeated validation failure, or budget exhaustion.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

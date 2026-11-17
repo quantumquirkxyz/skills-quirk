@@ -107,6 +107,13 @@ Retry: exponential backoff, retry budget, circuit breaker, pager.
 - No retry discipline accepted without circuit breaker and pager.
 - No fallback accepted without human or template escalation.
 
+## Reproducibility and Safety Contract
+
+- Version schemas, prompts, examples, model/provider, tool definitions, datasets, validators, and fixtures in a digest-based manifest with provenance, ACLs, and compatibility status.
+- Define additive/breaking schema evolution, required/optional fields, unknown-field policy, migration/version negotiation, and citation/source fields where claims require evidence.
+- Include negative/adversarial fixtures for prompt/tool injection, PII leakage, malformed JSON, type confusion, truncation, refusal, hallucinated citations, and partial outputs.
+- Use bounded repair retries and explicit token/cost/latency/tool-call budgets. Stop on repeated invalid output, unsafe content, missing provenance, incompatible schema, or budget exhaustion. Mark validation as `planned` unless execution evidence exists.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

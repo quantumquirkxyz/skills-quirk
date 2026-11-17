@@ -124,6 +124,13 @@ Fine-tune a **large language model** using efficient methods (LoRA, QLoRA, full 
 - Rule: compare fine-tuned model against base model on held-out test set; report delta metrics.
 - Rule: implement monitoring for output quality and safety flags in production serving.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest for base-model digest, tokenizer/config, dataset snapshots and lineage, code/container, hyperparameters, seeds, checkpoint digests, evaluator, and license/provenance; unexecuted jobs remain `planned`.
+- Version dataset, prompts, preference labels, model/adapters, and eval suite together. Run duplicate/near-duplicate, contamination, leakage, PII, license, toxicity, and memorisation checks before training.
+- Define privacy/retention/ACL boundaries and injection defenses for training data, tools, and prompts. Include negative/adversarial fixtures for jailbreaks, regurgitation, unsafe tool calls, citation fabrication, and format failures.
+- Report confidence/calibration, variance, base-model deltas, cost/latency/memory budgets, and bounded retry/rollback policy. Stop on unsafe data, failed holdout, missing provenance, budget exhaustion, or regression beyond threshold.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

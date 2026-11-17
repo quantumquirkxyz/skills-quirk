@@ -109,6 +109,13 @@ Retry: exponential backoff, retry budget, circuit breaker, pager.
 - No fallback accepted without escalation path tested.
 - No human check omitted for high-stakes or safety-critical modalities.
 
+## Reproducibility and Safety Contract
+
+- Version and hash media inputs, preprocessing, prompts, model/config, tools, schemas, and evaluators in a manifest; record rights, retention, ACLs, and provenance for each modality.
+- Include contamination and duplicate checks plus negative/adversarial fixtures for hidden instructions in media, prompt/tool injection, PII/OCR leakage, unsafe generation, hallucinated citations, modality mismatch, and malformed outputs.
+- Require confidence/uncertainty or calibration where supported, citation provenance for retrieved evidence, and explicit cost/latency/token/media-size budgets.
+- Retries and fallbacks are bounded and idempotent. Stop on unsafe content, missing consent/ACL, unverifiable source, repeated parse failure, or budget exhaustion; report unexecuted validation as `planned`.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

@@ -120,6 +120,14 @@ Design an **LLM evaluation harness** — benchmark design, model comparison, aut
 - Rule: version prompts, datasets, and model snapshots together for reproducibility.
 - Rule: define regression thresholds before running experiments to avoid p-hacking.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest binding dataset/version and digests, prompt/template version, model snapshot/provider, tokenizer, grader, seed, environment, and raw-result provenance to each report.
+- Run contamination, duplicate/near-duplicate, benchmark leakage, memorisation, and grader-bias checks; keep a quarantined holdout that cannot drive tuning.
+- Include calibrated confidence intervals, uncertainty, inter-rater agreement, judge calibration, and effect sizes, not only aggregate scores.
+- Add negative/adversarial fixtures for prompt injection, tool misuse, PII leakage, hallucinated citations, refusal, unsafe outputs, and schema failures. Define ACL-aware access to evaluation data and citations.
+- Enforce explicit cost/latency/token/retry budgets and stop on budget exhaustion, missing provenance, unresolved comparisons, or safety regression. Report design separately from observed execution.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

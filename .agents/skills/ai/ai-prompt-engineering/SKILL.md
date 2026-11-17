@@ -114,6 +114,13 @@ State the best variant with evidence; document when it fails; provide fallback r
 - Pair with `ai-ml-pipeline` when the prompt feeds into a model pipeline.
 - Use `ai-model-evaluation` for deeper evaluation (fairness, robustness, cross-model comparison).
 
+## Reproducibility and Safety Contract
+
+- Version every prompt, partial, example, dataset, model/provider configuration, tool schema, and evaluator; emit digests, permissions, provenance, and a manifest linking them to each result.
+- Separate development, contamination-checked holdout, and adversarial suites. Preserve negative fixtures for injection, jailbreak, PII exfiltration, citation fabrication, tool misuse, refusal, and malformed output.
+- Require bounded retries with repair/fallback limits and explicit cost, latency, token, and tool-call budgets. Stop on repeated invalid schema, unsafe content, unverifiable claims, or budget exhaustion.
+- Report uncertainty, confidence/calibration where applicable, variance, and citation/source provenance. Never claim execution or promotion without evidence.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

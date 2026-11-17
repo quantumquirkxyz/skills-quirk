@@ -108,6 +108,13 @@ Retry: exponential backoff, retry budget, circuit breaker, pager.
 - No A/B lift accepted without guardrail metrics green.
 - No fallback accepted without escalation path tested.
 
+## Reproducibility and Safety Contract
+
+- Give each template, partial, example, model/provider, tool schema, dataset, and evaluator an immutable version/digest and manifest entry with owner, ACL, provenance, compatibility, and rollback target.
+- Maintain contamination-checked holdouts and negative/adversarial fixtures for injection, PII leakage, tool misuse, citation fabrication, schema drift, refusal, and prompt sensitivity.
+- Define structured schema evolution rules (compatibility, deprecation, migration, version negotiation) and validate every composition before promotion.
+- Enforce bounded retries, explicit cost/latency/token/tool budgets, calibration/confidence reporting, and citation provenance. Stop on incompatible schema, unsafe input/output, missing evidence, or budget exhaustion; do not imply execution without run evidence.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

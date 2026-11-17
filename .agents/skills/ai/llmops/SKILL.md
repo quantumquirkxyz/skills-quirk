@@ -113,6 +113,13 @@ Promote or rollback based on canary result; report saved to run log.
 - No cost optimization accepted without error budget intact.
 - No prompt promoted without evaluation green.
 
+## Reproducibility and Safety Contract
+
+- Every deployment, prompt, model, tool schema, dataset/eval set, and configuration has an immutable version/digest manifest with owner, ACL, provenance, rollback target, and environment.
+- Treat deployment, monitoring, and evaluation as stateful: use `planned`, `observed`, `blocked`, and `rolled_back`; do not claim publication, green health, or active monitoring without recorded evidence.
+- Enforce per-request and aggregate cost, latency, token, concurrency, and bounded-retry budgets. Stop or fail closed on repeated errors, unsafe output, prompt/tool injection, PII exposure, missing citations, or budget breach.
+- Maintain negative/adversarial fixtures, contamination-checked holdouts, calibration/confidence signals, citation provenance, and schema-compatibility tests before promotion.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

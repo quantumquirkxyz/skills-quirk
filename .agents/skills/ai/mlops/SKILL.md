@@ -121,6 +121,13 @@ Backfill: retrain from scratch or incremental; lineage preserved.
 - No backfill without lineage preserved and validation green.
 - No drift ignored without regression gate and rollback tested.
 
+## Reproducibility and Safety Contract
+
+- Manifests must bind dataset/feature/model/code/container versions and digests, lineage, schema, ACLs, licenses, seeds, environment, and exact reproduction steps; distinguish planned from observed pipeline states.
+- Run point-in-time leakage, duplicate/near-duplicate, contamination, PII, schema, drift, and data-quality checks before training, backfill, or promotion.
+- Track calibration/confidence, subgroup uncertainty, cost/latency/resource budgets, bounded retries, and rollback checkpoints. Add negative/adversarial fixtures for poisoned data, stale features, injection, unsafe outputs, and registry mismatch.
+- Stop on missing lineage/ACL approval, failed acceptance or safety checks, schema incompatibility, budget exhaustion, repeated retry failure, or unverified deployment. No claim of active execution without evidence.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

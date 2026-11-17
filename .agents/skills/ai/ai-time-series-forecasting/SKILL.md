@@ -102,6 +102,13 @@ Best model with evidence; limitations (exogenous availability, structural breaks
 - Rule: evaluate with rolling or expanding backtests, not random splits.
 - Rule: report uncertainty intervals and structural-break limitations with the forecast.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest with dataset snapshot/hash, time boundaries, feature/model versions, code/environment, seeds, forecast origin, and backtest commands; mark unrun analysis as `planned`.
+- Check duplicate timestamps, leakage, revisions, missingness, contamination across temporal splits, and exogenous availability at prediction time.
+- Report interval coverage, calibration, confidence/uncertainty, interval width, segment performance, and structural-break limits.
+- Include naive/seasonal-negative, shock, missing-input, outlier, and stale-data fixtures. Set bounded retries and cost/latency budgets; stop on leakage or invalid time order.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked

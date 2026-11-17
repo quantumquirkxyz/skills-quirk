@@ -115,6 +115,14 @@ From confusion matrix or error set:
 
 **Completion criterion:** recommendation with explicit conditions.
 
+## Reproducibility and Safety Contract
+
+- Emit a manifest with immutable dataset/model/prompt versions, digests, evaluator versions, seeds, split membership, environment, and provenance; distinguish `observed`, `inferred`, `planned`, and `blocked`.
+- Run contamination, duplicate/near-duplicate, train/test leakage, and grader leakage checks; do not tune on the final test set.
+- Report confidence intervals, calibration/reliability, subgroup coverage, uncertainty, and metric denominators.
+- Define PII minimisation/redaction, retention, ACLs, prompt/tool-injection defenses, and citation provenance. Include negative, adversarial, OOD, refusal, schema-failure, and regression fixtures.
+- Stop on missing ground truth, invalid provenance, unsafe PII exposure, or unmet cost/latency/retry budgets.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
