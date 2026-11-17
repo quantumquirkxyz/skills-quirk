@@ -1,0 +1,180 @@
+{
+  "id": "physics-quantum-v2",
+  "skill": "physics/physics-quantum",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A two-qubit Heisenberg model, a Rabi oscillation, a Lindblad decay, and a DMRG convergence sweep must be computed with QuTiP v5.x, correct Qobj dimension structure, the right solver per regime, trace-preserving collapse operators, and DMRG truncation error ≤ 1e-8.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Model the two-qubit Heisenberg chain with QuTiP v5.x: verify Qobj dims [[2,2],[2,2]], use sesolve for the closed Rabi oscillation, mesolve for Lindblad decay with trace-preserving collapse operators, and run a DMRG bond-dimension sweep requiring truncation error ≤ 1e-8.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "QuTiP v5.x required; v4.7.x is legacy",
+    "two-qubit Qobj dims: [[2, 2], [2, 2]]; single four-dimensional: [[4], [4]]",
+    "sesolve = closed/unitary; mesolve = open/Lindblad; mcsolve = Monte Carlo wavefunction"
+  ],
+  "grounding": [
+    ".agents/skills/physics/physics-quantum/SKILL.md#Process step 3 (QuTiP v5.x, Qobj dimensions, solver selection, collapse operator trace preservation, DMRG convergence)",
+    ".agents/skills/physics/physics-quantum/SKILL.md#Fixtures (two-qubit-heisenberg, rabi-oscillation, lindblad-decay, dmrg-convergence)"
+  ],
+  "cites": [
+    "QuTiP",
+    "Lindblad",
+    "DMRG"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 360000,
+    "inputTokens": 70000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "QuTiP v5.x is required; v4.7.x legacy is rejected.",
+        "levels": {
+          "4": "QuTiP v5.x declared and used; v4.7.x not used",
+          "2": "QuTiP mentioned without version pin or v4.7.x allowed",
+          "0": "no QuTiP version requirement or legacy used"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Qobj dimension structure is enforced: two-qubit uses [[2, 2], [2, 2]], single four-dimensional uses [[4], [4]].",
+        "levels": {
+          "4": "dims validated before solving; mismatch rejected",
+          "2": "dims mentioned but not validated",
+          "0": "no dimension validation"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Solver selection matches regime: mesolve for open/Lindblad, sesolve for closed.",
+        "levels": {
+          "4": "mesolve for open/Lindblad; sesolve for closed; correct per fixture",
+          "2": "solver chosen but mismatched to regime in one case",
+          "0": "wrong solver for regime (e.g. sesolve for Lindblad)"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Collapse operators are validated for trace preservation: Tr(ρ) stays 1 within numerical tolerance over the evolution.",
+        "levels": {
+          "4": "trace preservation checked and reported within tolerance",
+          "2": "collapse operators present but trace not checked",
+          "0": "no collapse operator validation"
+        }
+      },
+      {
+        "id": "if-5",
+        "criterion": "DMRG convergence sweep over bond dimension χ confirms truncation error ≤ 1e-8 and reports converged energy and χ.",
+        "levels": {
+          "4": "bond-dimension sweep; truncation error ≤ 1e-8; energy and χ reported",
+          "2": "DMRG run but no convergence sweep or no truncation-error bound",
+          "0": "no DMRG or no convergence criterion"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "All four fixtures addressed with correct versions, dims, solvers, trace preservation, and DMRG convergence; artifact covers system definition, regime, computation, units/limits, and answer.",
+        "levels": {
+          "4": "all fixtures correct and artifact complete",
+          "2": "most fixtures correct with minor gaps",
+          "0": "fixtures missing or incorrect"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Numerical assumptions, tolerances, and convergence evidence are recorded for each quantum calculation.",
+        "levels": {
+          "4": "assumptions, tolerances, and evidence are complete",
+          "2": "some numerical evidence is missing",
+          "0": "results are unsupported by numerical checks"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The artifact distinguishes computed results from unavailable runtime or solver evidence.",
+        "levels": {
+          "4": "computed and unavailable claims are clearly separated",
+          "2": "separation is partial",
+          "0": "unsupported results are presented as verified"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "QuTiP v5.x",
+          "[[2, 2], [2, 2]]",
+          "sesolve",
+          "mesolve"
+        ],
+        "note": "QuTiP v5.x required; two-qubit dims [[2,2],[2,2]]; sesolve closed; mesolve open"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "trace preservation",
+          "Tr(ρ)",
+          "1e-8"
+        ],
+        "note": "collapse operators validated for trace preservation; DMRG truncation error ≤ 1e-8"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "v4.7.x",
+          "QuTiP 4"
+        ],
+        "note": "negative control: legacy QuTiP v4.7.x must not be used"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is the solver matched to the regime (mesolve for open/Lindblad, sesolve for closed)?",
+        "levels": {
+          "pass": "mesolve for Lindblad/open; sesolve for closed/unitary",
+          "fail": "solver mismatched to regime"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-5",
+      "check": {
+        "criterion": "Does the DMRG sweep confirm truncation error ≤ 1e-8 and report converged energy and bond dimension?",
+        "levels": {
+          "pass": "sweep over χ with truncation error ≤ 1e-8; energy and χ reported",
+          "fail": "no sweep, no truncation-error bound, or missing energy/χ"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

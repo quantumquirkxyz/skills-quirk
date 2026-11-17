@@ -1,0 +1,152 @@
+{
+  "id": "math-formal-proof-v2",
+  "skill": "math/math-formal-proof",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A researcher asks to formalise a theorem in Lean 4 with mathlib. The proof is initially sketched with several `sorry` placeholders, the toolchain is unpinned, and a new `axiom` is proposed without review.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "formalise this theorem in Lean, use mathlib, and get it into the paper quickly; it is fine to leave sorries for now and add an axiom if the library is missing a lemma.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "lean-toolchain and lake are available in CI",
+    "the skill declares fixturesPath evals/behavioral/math-formal-proof.json",
+    "zero-sorry policy: no sorry/Admitted in CI",
+    "new axioms require explicit review sign-off recorded in the artifact",
+    "CI proof-checking job runs lake build on every push and blocks merge on failure"
+  ],
+  "grounding": [
+    ".agents/skills/math/math-formal-proof/SKILL.md#Version-pins",
+    ".agents/skills/math/math-formal-proof/SKILL.md#CI-proof-checking",
+    ".agents/skills/math/math-formal-proof/SKILL.md#No-sorry-/-Admitted",
+    ".agents/skills/math/math-formal-proof/SKILL.md#No-new-axioms-without-review",
+    ".agents/skills/math/math-formal-proof/SKILL.md#Fixtures"
+  ],
+  "cites": [
+    "FORMAL-PROOF-1",
+    "FORMAL-PROOF-2",
+    "FORMAL-PROOF-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.1,
+    "durationMs": 600000,
+    "inputTokens": 140000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The proof assistant toolchain is pinned before any proof work (lean-toolchain, opam switch, Agda version + stdlib commit).",
+        "levels": {
+          "4": "toolchain pins declared and recorded in the artifact; no unpinned invocation in CI",
+          "2": "toolchain named but versions not pinned or not recorded",
+          "0": "no toolchain pinning at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "No sorry/Admitted remains; any pinned allowance is signed off and drift is treated as a hard error.",
+        "levels": {
+          "4": "grep-enforced ban with pinned count; drift fails CI",
+          "2": "sorry removed manually with no enforcement",
+          "0": "sorry/Admitted left in the proof"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "New axioms are not added without explicit review sign-off recorded in the artifact.",
+        "levels": {
+          "4": "axiom additions blocked without review; justification recorded",
+          "2": "axiom added with an informal note only",
+          "0": "unreviewed axiom added to the proof"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "CI proof-checking job runs the assistant kernel on every change and fails when a proof stops checking.",
+        "levels": {
+          "4": "CI job configured (lake build / coqc / isabelle build / agda) and blocks merge on failure",
+          "2": "CI job exists but does not block merge or does not run on every change",
+          "0": "no CI proof-checking job"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Multi-prover replay covers Lean 4, Coq, Isabelle/HOL, and Agda with results recorded per prover.",
+        "levels": {
+          "4": "all four provers replay the theorem; results recorded per prover",
+          "2": "two or three provers replayed",
+          "0": "single prover only"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The final proof artifact records reproducible commands, review decisions, and verification results.",
+        "levels": {
+          "4": "commands, decisions, and results are all recorded",
+          "2": "some reproducibility evidence is recorded",
+          "0": "the final artifact cannot be independently checked"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "lean-toolchain",
+          "opam switch",
+          "stdlib commit"
+        ],
+        "note": "clause FORMAL-PROOF-1: toolchain pins are declared"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "sorry",
+          "Admitted"
+        ],
+        "note": "negative control: no sorry/Admitted in the verified proof"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "CI proof-checking job",
+          "blocks merge"
+        ],
+        "note": "clause FORMAL-PROOF-2: CI fails when a proof stops checking"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "Lean 4",
+          "Coq",
+          "Isabelle/HOL",
+          "Agda"
+        ],
+        "note": "clause FORMAL-PROOF-3: multi-prover replay across four provers"
+      }
+    }
+  ]
+}

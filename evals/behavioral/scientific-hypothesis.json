@@ -1,0 +1,248 @@
+{
+  "id": "scientific-hypothesis-v2",
+  "skill": "research/scientific-hypothesis",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A researcher proposes a drug-effect claim before any data is collected. The skill must require an explicit null/alternative hypothesis with a named test statistic, pre-specified significance level and power, pre-registration of the analysis plan before observing outcomes, BH-FDR correction across a family of three secondary hypotheses, effect size with 95% confidence interval reported alongside p-values, and a reproducibility manifest recording data/code/environment hashes.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Design a confirmatory experiment testing whether a new intervention changes mean recovery time. State H0 and H1, name the test statistic, pre-specify alpha and power, register the plan before data collection, correct for three secondary endpoints with BH-FDR, report Cohen's d with a 95% CI alongside p-values, and emit a reproducibility manifest with SHA-256 hashes for data, code, and environment.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the skill declares fixturesPath evals/behavioral/scientific-hypothesis.json",
+    "confirmatory hypothesis must be pre-registered before data observation",
+    "family of three secondary hypotheses requires BH-FDR multiplicity correction",
+    "effect size and confidence interval must accompany p-values",
+    "reproducibility manifest records data, code, and environment SHA-256 hashes"
+  ],
+  "grounding": [
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Falsifiability checklist",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Pre-registration",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Multiple testing correction",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Effect size and confidence interval",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Reproducibility manifest",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Fixtures (falsifiability-checklist, pre-registration, multiple-testing, effect-size, reproducibility-manifest)",
+    ".agents/skills/research/scientific-hypothesis/SKILL.md#Quality gates"
+  ],
+  "cites": [
+    "Benjamini-Hochberg FDR",
+    "pre-registration",
+    "effect size",
+    "confidence interval",
+    "reproducibility manifest"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 420000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Falsifiability checklist complete: explicit H0/H1, named test statistic, pre-specified alpha, planned power, observable refutation.",
+        "levels": {
+          "4": "all checklist items present and tied to the intervention claim",
+          "2": "checklist partly present; one of H0/H1, statistic, alpha, or power missing",
+          "0": "no falsifiability checklist; hypothesis unfalsifiable"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Pre-registration stated before data analysis: H0/H1, estimand, outcomes, test selection, alpha, power, exclusion rules, stopping rule, timestamped record.",
+        "levels": {
+          "4": "full pre-registration preceding data collection; deviations documented",
+          "2": "registration mentioned but incomplete or timed after seeing data",
+          "0": "no pre-registration; HARKing risk present"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Multiple testing correction applied to the family of three secondary hypotheses using BH-FDR; adjusted p-values/q-values reported.",
+        "levels": {
+          "4": "BH-FDR applied across all three secondary hypotheses; raw and adjusted values reported",
+          "2": "correction mentioned but misapplied or only Bonferroni without justification",
+          "0": "no multiplicity correction; raw p-values interpreted across the family"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Effect size (e.g. Cohen's d) with a 95% confidence interval reported alongside p-values for the primary hypothesis.",
+        "levels": {
+          "4": "effect size and CI present with interpretation of the interval",
+          "2": "effect size or CI present but not both, or not interpreted",
+          "0": "p-value only; no effect size or confidence interval"
+        }
+      },
+      {
+        "id": "if-5",
+        "criterion": "Reproducibility manifest records SHA-256 hashes for dataset, analysis code/version, and environment (container/runtime versions, random seed); unavailable checks marked NOT-RUN.",
+        "levels": {
+          "4": "complete manifest with all hashes; NOT-RUN used only for genuinely unavailable items",
+          "2": "manifest present but missing one of data/code/environment hashes",
+          "0": "no reproducibility manifest or hashes fabricated"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "All five fixtures addressed: falsifiability checklist, pre-registration before data, BH-FDR for the three-hypothesis family, effect size with 95% CI alongside p-values, and reproducibility manifest with data/code/environment hashes.",
+        "levels": {
+          "4": "all five fixtures correct and complete in the artifact",
+          "2": "most fixtures correct with minor gaps",
+          "0": "fixtures missing or substantively incorrect"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The confirmatory analysis separates planned claims from results and records deviations without changing the registered outcome.",
+        "levels": {
+          "4": "plan, results, and deviations are separately documented",
+          "2": "separation is partial",
+          "0": "post hoc changes are presented as pre-specified"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The reproducibility manifest makes the experiment independently auditable without fabricating unavailable hashes.",
+        "levels": {
+          "4": "hashes, versions, seed, and unavailable checks are explicit",
+          "2": "manifest is incomplete but gaps are disclosed",
+          "0": "audit evidence is fabricated or absent"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "H0",
+          "H1",
+          "test statistic",
+          "alpha",
+          "power"
+        ],
+        "note": "falsifiability-checklist fixture: explicit H0/H1, named test statistic, significance level, power"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "pre-register",
+          "before",
+          "data"
+        ],
+        "note": "pre-registration fixture: hypothesis and analysis plan registered before observing data"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "Benjamini",
+          "Hochberg",
+          "FDR",
+          "adjusted"
+        ],
+        "note": "multiple-testing fixture: BH-FDR correction applied to the hypothesis family"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "Cohen",
+          "confidence interval",
+          "95%"
+        ],
+        "note": "effect-size fixture: effect size with confidence interval reported alongside p-values"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "SHA-256",
+          "dataset",
+          "code",
+          "environment"
+        ],
+        "note": "reproducibility-manifest fixture: data, code, and environment hashes recorded"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "p-hacking",
+          "outcome switching"
+        ],
+        "note": "negative control: no p-hacking or outcome switching admitted as valid practice"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Is the confirmatory hypothesis pre-registered before data observation, with deviations documented?",
+        "levels": {
+          "pass": "registration precedes data collection; deviations documented and justified",
+          "fail": "registration absent, incomplete, or after seeing data"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is BH-FDR multiplicity correction correctly applied across the family of three secondary hypotheses?",
+        "levels": {
+          "pass": "BH-FDR applied to the family; adjusted p-values/q-values reported",
+          "fail": "no correction or correction not applied to the family"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-5",
+      "check": {
+        "criterion": "Does the reproducibility manifest record SHA-256 hashes for dataset, analysis code/version, and environment, with NOT-RUN for unavailable items?",
+        "levels": {
+          "pass": "data, code, and environment hashes all present; NOT-RUN used only for unavailable checks",
+          "fail": "manifest missing hashes for data, code, or environment, or hashes fabricated"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

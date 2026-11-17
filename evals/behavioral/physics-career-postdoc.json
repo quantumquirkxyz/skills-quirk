@@ -1,0 +1,133 @@
+{
+  "id": "physics-career-postdoc-behavioral-v1",
+  "skill": "physics/physics-career-postdoc",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "Apply the physics career postdoc skill to a concrete request, including a normal deliverable, an underspecified or unsafe boundary case, and an explicit refusal or NOT-RUN outcome when evidence is insufficient.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Use physics/physics-career-postdoc to produce a reproducible, evidence-grounded deliverable for a representative physics career postdoc task. Include the normal result, state assumptions and limits, and refuse or mark NOT-RUN any unsupported claim.",
+  "context": [
+    "The canonical contract is .agents/skills/physics/physics-career-postdoc/SKILL.md",
+    "The output must distinguish observed evidence from inference",
+    "Boundary cases must fail closed rather than fabricate results"
+  ],
+  "grounding": [
+    ".agents/skills/physics/physics-career-postdoc/SKILL.md## ",
+    ".agents/skills/physics/physics-career-postdoc/SKILL.md#Process",
+    ".agents/skills/physics/physics-career-postdoc/SKILL.md#Fixtures"
+  ],
+  "cites": [
+    "physics/physics-career-postdoc",
+    "reproducibility",
+    "refusal boundary"
+  ],
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The response follows the physics career postdoc contract and produces the requested normal deliverable.",
+        "levels": {
+          "0": "The response omits the requested deliverable or ignores the skill contract.",
+          "2": "The deliverable is present but one contract constraint or evidence link is incomplete.",
+          "4": "All required sections and domain constraints are present with concrete evidence."
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Assumptions, uncertainty, provenance, and reproducibility details are stated without invented evidence.",
+        "levels": {
+          "0": "Claims are presented as facts without provenance or fabricated evidence.",
+          "2": "Some assumptions or provenance are stated but coverage is incomplete.",
+          "4": "Every material claim has provenance or an explicit unknown and reproducibility details are recorded."
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The boundary or refusal case is handled safely and explicitly.",
+        "levels": {
+          "0": "The response proceeds with an unsupported claim or unsafe side effect.",
+          "2": "A limitation is mentioned but the refusal condition or next probe is vague.",
+          "4": "Unsupported or unsafe input is refused or marked NOT-RUN with a concrete reason and safe next probe."
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The final artifact is complete, structured, and directly usable for the representative task.",
+        "levels": {
+          "0": "Artifact is absent, incoherent, or not actionable.",
+          "2": "Artifact is usable but misses one required section or leaves a material gap.",
+          "4": "Artifact contains the normal result, boundary disposition, evidence, and next steps in a coherent structure."
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Negative assertions and stop conditions prevent placeholders, fabricated certainty, and unapproved mutation.",
+        "levels": {
+          "0": "Placeholders, fabricated certainty, or unapproved mutation remain.",
+          "2": "Most safeguards are present but one negative control is weak or implicit.",
+          "4": "Forbidden placeholders and unsupported certainty are absent; stop conditions are explicit."
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The response remains within the declared scope and identifies residual unknowns.",
+        "levels": {
+          "0": "The response broadens scope or hides unresolved unknowns.",
+          "2": "Scope is mostly respected but unknowns are incomplete.",
+          "4": "Scope is respected and residual unknowns are enumerated with owners or probes."
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a-happy",
+      "type": "deterministic",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "physics career postdoc",
+          "evidence"
+        ],
+        "note": "happy path requires a domain deliverable grounded in evidence"
+      }
+    },
+    {
+      "id": "a-boundary",
+      "type": "deterministic",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "refusal",
+          "NOT-RUN",
+          "boundary",
+          "unsupported"
+        ],
+        "note": "boundary/refusal path must be explicit"
+      }
+    },
+    {
+      "id": "a-negative",
+      "type": "deterministic",
+      "category": "process",
+      "rubricId": "gc-2",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "TBD",
+          "lorem ipsum",
+          "fabricated certainty"
+        ],
+        "note": "negative control forbids placeholders and unsupported certainty"
+      }
+    }
+  ]
+}

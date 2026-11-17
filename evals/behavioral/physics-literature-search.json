@@ -1,0 +1,172 @@
+{
+  "id": "physics-literature-search-v2",
+  "skill": "physics/physics-literature-search",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A researcher needs a reproducible literature digest in quant-ph that stores full query strings, deduplicates versioned arXiv IDs, checks citation completeness across ADS/INSPIRE/arXiv, and respects rate limits with backoff/retries.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Produce a quant-ph literature digest for the last 30 days; store the full query, categories, date range and sort order; deduplicate arXiv versioned IDs; verify citation completeness across ADS, INSPIRE, and arXiv; honor rate limits with backoff and retries.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "sources: arXiv, INSPIRE-HEP, NASA ADS",
+    "arXiv rate limit: one request per second; backoff on HTTP 429/503",
+    "arXiv versioned IDs such as arXiv:2401.12345v2 must be normalized to arXiv:2401.12345"
+  ],
+  "grounding": [
+    ".agents/skills/physics/physics-literature-search/SKILL.md#Process steps 1-5 (query reproducibility, deduplication, citation completeness, rate-limit respect)",
+    ".agents/skills/physics/physics-literature-search/SKILL.md#Fixtures (query-reproducibility, deduplication, citation-completeness, rate-limit)"
+  ],
+  "cites": [
+    "arXiv",
+    "INSPIRE-HEP",
+    "NASA ADS"
+  ],
+  "costBudget": {
+    "costUsd": 0.06,
+    "durationMs": 300000,
+    "inputTokens": 60000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Query reproducibility: full query string, categories, date range, and sort order are stored so the digest can be regenerated exactly.",
+        "levels": {
+          "4": "all query parameters stored and reproducible",
+          "2": "some parameters stored but not all",
+          "0": "query not stored; results not reproducible"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Deduplication: arXiv versioned IDs are normalized (strip vN suffix) so the same paper is counted once across versions and sources.",
+        "levels": {
+          "4": "versioned IDs normalized; distinct papers not merged",
+          "2": "deduplication attempted but versions or distinct papers mishandled",
+          "0": "no deduplication; duplicates appear in digest"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Cross-source citation completeness is checked across ADS + INSPIRE + arXiv; divergences beyond threshold are flagged.",
+        "levels": {
+          "4": "citation counts compared across sources; divergences flagged",
+          "2": "citation counts from one source only",
+          "0": "no citation completeness check"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Rate-limit respect: exponential backoff with retries on 429/503; no hammering after repeated failures.",
+        "levels": {
+          "4": "backoff/retries evident; rate limits honored",
+          "2": "retries attempted but no backoff or repeated hammering",
+          "0": "no rate-limit handling"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Digest saved with groups, abstract summaries, citation counts, reading priority, and sources cited.",
+        "levels": {
+          "4": "digest complete with priority and citations",
+          "2": "digest present with gaps",
+          "0": "no digest or incomplete"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Every included paper retains provenance sufficient to reproduce its retrieval and deduplication decision.",
+        "levels": {
+          "4": "query, source records, and normalized identifiers are retained",
+          "2": "provenance is partial",
+          "0": "paper provenance is absent"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Unavailable sources, rate-limit failures, and citation disagreements are reported without inventing results.",
+        "levels": {
+          "4": "gaps and disagreements are explicit with next actions",
+          "2": "some gaps are disclosed",
+          "0": "missing evidence is silently treated as complete"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "query string",
+          "categories",
+          "date range",
+          "sort order"
+        ],
+        "note": "query reproducibility: full query, categories, date range, sort order stored"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "arXiv:2401.12345v1",
+          "arXiv:2401.12345v3"
+        ],
+        "note": "negative control: versioned arXiv IDs normalized to a single ID; both versions must not appear separately"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "ADS",
+          "INSPIRE",
+          "arXiv"
+        ],
+        "note": "citation completeness checked across ADS, INSPIRE, and arXiv"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "backoff",
+          "retry",
+          "429",
+          "503"
+        ],
+        "note": "rate-limit respect with backoff/retries on 429/503"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Are arXiv versioned IDs normalized so duplicates are removed without merging distinct papers?",
+        "levels": {
+          "pass": "versioned IDs normalized; distinct papers kept separate",
+          "fail": "duplicates remain or distinct papers merged"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

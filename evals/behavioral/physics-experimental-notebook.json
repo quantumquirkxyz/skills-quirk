@@ -1,0 +1,186 @@
+{
+  "id": "physics-experimental-notebook-v2",
+  "skill": "physics/physics-experimental-notebook",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A lab measurement of a resistance vs temperature curve needs a notebook entry with GUM uncertainty propagation, calibration traceability to a national standard, a DataCite DOI, and an immutable append-only audit trail.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Write the experimental notebook entry for the resistance measurement: repeat 5 times at each temperature, the standard resistor calibration certificate is valid, assign a DOI with DataCite metadata, and make the audit trail immutable.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "measurement data: repeated resistance readings at several temperatures",
+    "calibration certificate: standard resistor, issuing lab, calibration date, next due date",
+    "QuTiP not used; this is experimental-notebook only",
+    "AGENTS.md and CONTEXT.md are the standards sources for FAIR and uncertainty vocabulary"
+  ],
+  "grounding": [
+    ".agents/skills/physics/physics-experimental-notebook/SKILL.md#Process steps 2-6 (calibration traceability, GUM uncertainty, FAIR checklist, audit trail immutability)",
+    ".agents/skills/physics/physics-experimental-notebook/SKILL.md#Fixtures (uncertainty-propagation, calibration-traceability, audit-trail-immutability)"
+  ],
+  "cites": [
+    "GUM",
+    "DataCite",
+    "FAIR"
+  ],
+  "costBudget": {
+    "costUsd": 0.06,
+    "durationMs": 300000,
+    "inputTokens": 60000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "GUM uncertainty propagation is applied: Type A statistical and Type B systematic components, combined u_c, expanded U = k·u_c with k=2.",
+        "levels": {
+          "4": "Type A and Type B are distinguished, u_c is root-sum-square, U = 2·u_c is reported as value ± U",
+          "2": "only one uncertainty type is present or k is not 2",
+          "0": "no uncertainty propagation or a heuristic estimate is presented as a measurement"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Each measurement is linked to its calibration record with certificate number, issuing lab, calibration date, next due date, and traceability chain to a national/international standard.",
+        "levels": {
+          "4": "full calibration link present per measurement, expired or incomplete certificates are flagged",
+          "2": "calibration mentioned but without the full traceability chain",
+          "0": "no calibration traceability"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "FAIR compliance includes a DOI with DataCite metadata (creators, title, publisher, publicationYear, resourceType, relatedIdentifiers).",
+        "levels": {
+          "4": "DOI assigned and DataCite metadata present",
+          "2": "FAIR checklist filled but no DOI/DataCite",
+          "0": "no FAIR checklist"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Audit trail is append-only with UTC timestamps and SHA-256 content hashes; corrections are addenda only; entries are pinned with signed Git commits; immutability is verified by recomputing hashes.",
+        "levels": {
+          "4": "append-only, hashed, signed, immutability check passes",
+          "2": "audit trail present but not verified or not append-only",
+          "0": "no audit trail or entries are editable/deletable without addendum"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Notebook entry saved with description, setup, calibration, measurements, error analysis, FAIR checklist, audit trail, and linked data; all links active.",
+        "levels": {
+          "4": "all sections present and validated",
+          "2": "most sections present with minor gaps",
+          "0": "entry incomplete or missing core sections"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Repeated measurements and their uncertainty inputs are traceable to the reported resistance versus temperature result.",
+        "levels": {
+          "4": "all readings, inputs, calculations, and results are linked",
+          "2": "measurements or calculations are partially linked",
+          "0": "reported results cannot be traced to readings"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The notebook artifact identifies unavailable metadata instead of fabricating DOI, calibration, or audit evidence.",
+        "levels": {
+          "4": "unknown or unavailable values are explicitly marked",
+          "2": "some gaps are disclosed",
+          "0": "missing evidence is presented as verified"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "Type A",
+          "Type B",
+          "u_c",
+          "k = 2"
+        ],
+        "note": "GUM uncertainty propagation: Type A/Type B, combined u_c, expanded U = k·u_c with k=2"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "calibration certificate",
+          "traceability",
+          "next due date"
+        ],
+        "note": "calibration traceability link to each measurement"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "DOI",
+          "DataCite"
+        ],
+        "note": "FAIR compliance: DOI with DataCite metadata"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "SHA-256",
+          "append-only",
+          "addendum"
+        ],
+        "note": "audit trail immutability: hashed, append-only, addendum-only corrections"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Is GUM uncertainty propagation correctly applied with k=2 expanded uncertainty?",
+        "levels": {
+          "pass": "Type A and Type B, u_c, U = 2·u_c reported as value ± U",
+          "fail": "missing uncertainty type, wrong k, or heuristic presented as measurement"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Is the audit trail immutable, append-only, hashed, and verified?",
+        "levels": {
+          "pass": "append-only, SHA-256 hashes, signed commits, immutability verified",
+          "fail": "editable/deletable entries or no verification"
+        },
+        "strict": true
+      }
+    }
+  ]
+}
