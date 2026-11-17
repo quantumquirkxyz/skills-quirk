@@ -2,7 +2,7 @@
 name: "cs-algorithms"
 category: "cs"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "cs artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
 sideEffects: []
 dependencies: []
-stopCondition: "Design and analyse algorithms complete; required sections present; completion criteria checked."
+stopCondition: "Problem stated, algorithm designed, correctness proof complete, complexity analyzed, stability verified."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "cs"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/cs-algorithms.json"
 diataxis: "how-to"
 tags: ["cs"]
-compatibility: []
+compatibility: ["cs-complexity-analysis", "cs-data-structures", "cs-computability"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -76,6 +76,15 @@ Design, analyse, and verify an **algorithm** — its correctness, complexity, st
 6. Stability — if numerical, numerical stability; if combinatorial, output stability.
 7. Deliver — artifact: problem, design, code/pseudocode, correctness proof, complexity, stability note.
 
+## Correctness Obligations
+
+- Precondition/postcondition: state preconditions on inputs and postconditions on outputs before proposing the algorithm.
+- Loop invariant or induction hypothesis: for iterative algorithms, declare a loop invariant with initialization, maintenance, and termination; for recursive algorithms, declare an induction hypothesis on the recursion parameter.
+- Complexity bounds: declare worst-case, expected, and amortized time and space bounds in Big-O / Theta notation, naming every size parameter.
+- Design paradigm tag: tag the algorithm (divide & conquer, greedy, dynamic programming, backtracking, etc.) and verify that the code structure matches the tag.
+- Sorting stability: for sorting algorithms, declare stable or unstable and verify against fixtures.
+- Determinism flag: flag deterministic algorithms with input-sensitive worst cases (e.g. fixed-pivot quicksort on sorted input) and state the trigger input.
+
 ## Rules
 
 - Rule: define inputs, outputs, and preconditions before proposing the algorithm.
@@ -90,6 +99,15 @@ Design, analyse, and verify an **algorithm** — its correctness, complexity, st
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Fixtures
+
+- Correctness examples: input/output pairs with known oracles.
+- Invariant assertions: loop-invariant or induction-hypothesis checks at each step.
+- Adversarial inputs: inputs that trigger worst-case behavior.
+- Stability tests: sorting-stability verification for equal keys.
+- Property-based round-trip tests: encode/decode or transform/inverse-transform identities.
+- Amortized sequence tests: operation sequences verifying amortized bounds.
 ---
 @include .agents/skills/platform/contract-base.xml
 ## Reproducibility, Evidence, and Stop Conditions

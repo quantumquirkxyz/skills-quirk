@@ -2,7 +2,7 @@
 name: "cs-computability"
 category: "cs"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "classification, reduction or recognizer construction, and proof sketch."
 sideEffects: []
 dependencies: []
-stopCondition: "The problem class, proof strategy, and reduction obligations are explicit and checked."
+stopCondition: "Problem class, proof strategy, and reduction obligations explicit and checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "cs"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/cs-computability.json"
 diataxis: "how-to"
 tags: ["cs"]
-compatibility: []
+compatibility: ["cs-algorithms", "math-formal-proof"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -80,12 +80,27 @@ Use this skill when the task involves decidability, recognizability, reductions,
 5. Prove soundness and completeness of the construction.
 6. State the final classification and any unresolved variants.
 
+## Computability Obligations
+
+- Reduction direction: reduce from a known-hard problem to the target (known-hard → target), never backward.
+- Reduction function: verify the reduction function is computable and total; state its cost model.
+- Semantic vs syntactic: distinguish semantic from syntactic properties before applying Rice's theorem; confirm the property is semantic and non-trivial.
+- Halting problem: flag any claim that the halting problem is decidable; it is undecidable.
+- Decidability classification: give an explicit classification — decidable, r.e. (recognizable), co-r.e., or neither — for every problem.
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Fixtures
+
+- Undecidable problems: Halting, ε-Halting, A_TM, NOT_EMPTY_TM, EQ_TM.
+- Decidable problems: decidable language recognizers with explicit deciders.
+- Reduction fixtures: many-one reductions with direction, computability, and totality checks.
+- Busy Beaver known values: BB(1) = 1, BB(2) = 4, BB(3) = 6, BB(4) = 13.
 ---
 @include .agents/skills/platform/contract-base.xml
 ## Reproducibility, Evidence, and Stop Conditions

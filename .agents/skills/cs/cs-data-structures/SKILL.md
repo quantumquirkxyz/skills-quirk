@@ -2,7 +2,7 @@
 name: "cs-data-structures"
 category: "cs"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants."
 license: "MIT"
 capabilities:
@@ -12,7 +12,7 @@ capabilities:
 outputs: "recommended data structure, operation complexity, invariants, and failure modes."
 sideEffects: []
 dependencies: []
-stopCondition: "The recommended structure, invariants, and operation costs are explicit."
+stopCondition: "Recommended structure, invariants, and operation costs explicit."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -20,10 +20,10 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/cs-data-structures.json"
 diataxis: "how-to"
 tags: ["cs"]
-compatibility: []
+compatibility: ["cs-algorithms", "cs-complexity-analysis"]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -80,12 +80,27 @@ Use this skill when choosing, designing, or reviewing a data structure for a spe
 5. Recommend the structure and explain rejected alternatives.
 6. Describe tests or proofs that would catch invariant violations.
 
+## Data Structure Obligations
+
+- Balancing invariants: declare balancing invariants (AVL balance factor in [-1, 1]; red-black tree's five color invariants) and verify them after every operation.
+- Concurrency model: declare the concurrency model (locking, lock-free, wait-free), the progress guarantee, and the memory reclamation scheme.
+- Persistence strategy: declare the persistence strategy (path copying) with an O(log n) copy bound per update.
+- Hash table: declare the load factor and the resizing strategy (grow/shrink thresholds and rehashing).
+- Graph representation: justify adjacency list vs adjacency matrix by sparsity (list for sparse, matrix for dense).
+
 ## Completion
 
 - the skill's completion criteria are explicitly checked
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+
+## Fixtures
+
+- Invariant fixtures: AVL balance factor, red-black color invariants, BST ordering after every mutation.
+- Persistence fixtures: path-copying updates with O(log n) copied nodes.
+- Concurrency fixtures: race-detection fixtures for the declared concurrency model and progress guarantee.
+- Hash table resize fixtures: insert/delete sequences crossing load-factor thresholds with rehashing.
 ---
 @include .agents/skills/platform/contract-base.xml
 ## Reproducibility, Evidence, and Stop Conditions
