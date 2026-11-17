@@ -22,12 +22,12 @@ outputs:
           type: object
           properties:
             name: { type: string }
-            status: { type: string, enum: [passed, failed, skipped] }
+            status: { type: string, enum: [passed, failed, skipped, timed_out, partial, inconclusive, quarantined] }
             durationMs: { type: integer }
             output: { type: string }
       blockOnFailure: { type: boolean }
       reportTo: { type: string }
-      result: { type: string, enum: [completed, blocked, failed] }
+      result: { type: string, enum: [completed, blocked, failed, partial] }
     required: [trigger, checks, blockOnFailure, reportTo, result]
 sideEffects: []
 dependencies: []
@@ -57,6 +57,7 @@ approvalFor: []
 - Rule: run checks in parallel where possible to stay under sub-second budget.
 - Rule: lightweight secret scan only — do not run full dependency audit here.
 - Rule: report results to agent context immediately; do not block the save operation itself.
+- Rule: timeout, partial, inconclusive, or quarantined checks are visible and never silently pass.
 
 ## Provenance
 
@@ -98,8 +99,15 @@ Compile all check results into `GateIdeArtifact`. Determine terminal state:
 - If any check failed and `blockOnFailure` is true → `blocked`
 - If all checks passed → `completed`
 - If checks errored → `failed`
+- If a check timed out, is partial, or is inconclusive → `partial` unless policy marks it failed
 
-### 8. Report to agent context
+### 8. Record risk, provenance, and isolation
+Classify changed-file risk, including dependency/configuration/security paths, and record file/tool versions, content provenance, hermeticity, and whether the workspace is trusted. Scan fork, downloaded, or untrusted content without credentials or write-capable access. Route elevated risk to the next gate.
+
+### 9. Run applicable AI evaluation
+When prompts, model adapters, agent behavior, or evaluation fixtures change, run the repository-declared lightweight evaluation or mark it `inconclusive` with the missing evidence and downstream gate. Do not invent a command or score.
+
+### 10. Report to agent context
 Publish a concise summary to agent context so the user sees results immediately.
 
 ## Completion
@@ -108,6 +116,8 @@ Publish a concise summary to agent context so the user sees results immediately.
 - structured result returned
 - results reported to agent context
 - terminal state correctly reflects `blockOnFailure` policy
+- changed-risk coverage, secret-scan status, and provenance are recorded
+- bypass attempts are recorded with actor, reason, expiry, approver, and audit status
 
 
 ## P1 Risk And Failure Handling
@@ -117,3 +127,5 @@ Publish a concise summary to agent context so the user sees results immediately.
 - Retries are bounded and diagnostic only. A flaky result remains `failed` or `skipped` with owner, expiry, and reproduction data.
 - Fork, untrusted workspace, and downloaded content are scanned without secrets or write-capable credentials; report isolation status in the artifact.
 - Report changed-file provenance, tool versions, timeout/retry data, and all skipped checks with reasons.
+- Quarantine requires an owner, expiry, linked issue, and re-entry condition; it remains non-passing.
+- Stop and report `failed` when isolation, secret-scan integrity, or required evidence cannot be established.

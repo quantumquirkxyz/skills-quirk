@@ -22,12 +22,12 @@ outputs:
           type: object
           properties:
             name: { type: string }
-            status: { type: string, enum: [passed, failed, skipped] }
+            status: { type: string, enum: [passed, failed, skipped, timed_out, partial, inconclusive, quarantined] }
             durationMs: { type: integer }
             output: { type: string }
       blockOnFailure: { type: boolean }
       alertOnFailure: { type: boolean }
-      result: { type: string, enum: [completed, blocked, failed] }
+      result: { type: string, enum: [completed, blocked, failed, partial] }
     required: [trigger, checks, blockOnFailure, alertOnFailure, result]
 sideEffects: []
 dependencies: []
@@ -57,6 +57,7 @@ approvalFor: []
 - Rule: do not block the workflow on failure — alert instead.
 - Rule: canary must reach minimum traffic threshold before health check runs.
 - Rule: feature flag verification checks that new flags are present and correctly targeted.
+- Rule: canary promotion requires statistical evidence; timeout, partial, flaky, or inconclusive evidence never promotes.
 
 ## Provenance
 
@@ -75,25 +76,32 @@ Return `GatePostMergeArtifact` as structured output in the current response. Do 
 
 ## Process
 
-### 1. Trigger canary smoke test
+### 1. Verify release provenance
+Verify deployed digest against the attested build, SBOM, provenance, and approved commit. Record verifier identity and authorization. Mismatch or missing evidence stops promotion and starts rollback evaluation.
+
+### 2. Trigger canary smoke test
 Deploy to canary environment (5-10% traffic). Run smoke tests against canary endpoints. Wait for success or timeout.
 
-### 2. Run production health check
+### 3. Run production health check
 Query production health endpoints. Check: response time, error rate, database connectivity, cache hit rate. Compare against SLO thresholds.
 
-### 3. Verify feature flags
+### 4. Verify feature flags
 Check that all feature flags introduced in this merge are present in the flag service, have correct targeting rules, and default to off for safety.
 
-### 4. Alert on failure
+### 5. Verify rollback readiness and authorization
+Confirm an authorized rollback decision-maker, target last-known-good digest, data-compatibility assessment, and a reversible runbook. Execute or rehearse the approved rollback path where policy requires it, and record completion plus recovery evidence. A bypass requires explicit approver, reason, scope, expiry, and post-incident audit.
+
+### 6. Alert on failure
 If any check fails:
 - Send alert to incident channel (Slack, PagerDuty, etc.)
 - Tag the merge commit with failure metadata
 - Do NOT block the workflow — merge already happened
 
-### 5. Aggregate results
+### 7. Aggregate results
 Compile all check results into `GatePostMergeArtifact`. Terminal state:
 - All `passed` → `completed`
 - Any `failed` → `failed` (but workflow not blocked)
+- Any `timed_out`, `partial`, or `inconclusive` → `partial`; alert and do not promote
 
 ## Completion
 
@@ -102,6 +110,9 @@ Compile all check results into `GatePostMergeArtifact`. Terminal state:
 - feature flag verification completed
 - alerts sent if any check failed
 - structured result returned
+- canary evidence includes sample size, exposure duration, comparison baseline, confidence/uncertainty, and decision threshold
+- deployed digest, SBOM, provenance, attestation, rollback authorization, and verification evidence are recorded
+- bypass and quarantine records include owner/approver, reason, expiry, issue, and audit outcome
 
 
 ## P0/P1 Release Verification
@@ -112,3 +123,5 @@ Compile all check results into `GatePostMergeArtifact`. Terminal state:
 - Protected-environment approvals remain explicit and auditable. This gate may alert and recommend rollback, but cannot bypass an approval boundary or silently mutate production.
 - Timeouts and flaky health probes are inconclusive, not successful. Retry within a bounded window, then alert with evidence and preserve the last known-good revision.
 - Verify feature-flag targeting, expiry/owner metadata, and kill-switch availability as part of post-merge checks.
+- Quarantine flaky probes only with owner, expiry, linked issue, and re-entry condition; quarantine cannot support promotion.
+- Preserve partial observations and stop on missing statistical power, unverifiable provenance, unavailable rollback authorization, or failed isolation.

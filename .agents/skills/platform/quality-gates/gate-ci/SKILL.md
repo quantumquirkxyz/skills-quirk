@@ -22,14 +22,14 @@ outputs:
           type: object
           properties:
             name: { type: string }
-            status: { type: string, enum: [passed, failed, skipped] }
+            status: { type: string, enum: [passed, failed, skipped, timed_out, partial, inconclusive, quarantined] }
             durationMs: { type: integer }
             output: { type: string }
       maxDuration: { type: integer }
       blockOnFailure: { type: boolean }
       coverageThreshold: { type: integer }
       qualityBar: { type: boolean }
-      result: { type: string, enum: [completed, blocked, failed] }
+      result: { type: string, enum: [completed, blocked, failed, partial] }
     required: [trigger, checks, maxDuration, blockOnFailure, coverageThreshold, result]
 sideEffects: []
 dependencies: []
@@ -59,6 +59,7 @@ approvalFor: []
 - Rule: enforce 80% line coverage threshold for new/modified lines.
 - Rule: max duration 30min (30 minutes); fail the gate if exceeded.
 - Rule: block on failure; PR cannot be merged until gate passes.
+- Rule: timeout, partial, inconclusive, or unverified supply-chain evidence cannot be treated as passed.
 
 ## Provenance
 
@@ -68,7 +69,7 @@ approvalFor: []
 | What is in scope? | Full unit suite, integration tests, contract tests, security scan, performance regression, coverage |
 | What is explicitly out of scope? | E2E tests, manual QA, production canary |
 | Who or what consumes this artifact afterward? | `review-pr` or merge gate |
-| What evidence proves it is done? | All checks completed, coverage threshold met, structured result returned |
+| What evidence proves it is done? | Check evidence, risk coverage, secret-scan result, SBOM/provenance/attestation references, and structured terminal result |
 | What risk remains? | Flaky tests; security scan false positives; performance regression baselines may need tuning |
 
 ## Artifact
@@ -98,11 +99,15 @@ Measure line coverage for new/modified lines. Enforce 80% threshold. If below th
 ### 7. Enforce time budget
 Track elapsed time. If approaching 30min (30 minutes), skip remaining non-critical checks and mark as `skipped` with reason `time-budget-exceeded`.
 
-### 8. Aggregate and block
+### 8. Run AI evaluation checks
+Run repository-declared AI evaluations when changed code, prompts, models, agents, or evaluation fixtures are in scope. Record dataset/model/prompt versions, score thresholds, and evaluation seed. Missing required evaluation evidence is `inconclusive`, not passed.
+
+### 9. Aggregate and block
 Compile all results into `GateCiArtifact`. Terminal state:
 - Any `failed` → `blocked` (PR merge prevented)
+- Any `timed_out`, `partial`, or `inconclusive` → `partial` and block merge
 - All `passed` and coverage met → `completed`
-- Error → `failed`
+- Error or invalid evidence → `failed`
 
 ## Completion
 
@@ -114,6 +119,10 @@ Compile all results into `GateCiArtifact`. Terminal state:
 - coverage threshold enforced (80% lines)
 - structured result returned
 - PR blocked if any check failed
+- risk-based changed coverage recorded for every changed file and impacted dependency/configuration
+- secret scan and AI evaluation evidence recorded when applicable
+- SBOM, provenance, and artifact attestation references are present and verifiable
+- bypass requests are denied by default or recorded with actor, reason, scope, expiry, approver, and follow-up verification
 
 
 ## P0/P1 Supply-Chain And Trust Controls
@@ -125,3 +134,6 @@ Compile all results into `GateCiArtifact`. Terminal state:
 - Classify flaky failures separately from product failures. A bounded retry may gather evidence, but a flaky or timeout result never becomes `passed`; quarantine requires owner, expiry, and a follow-up issue.
 - Enforce protected-environment approvals for deployment-facing checks; CI may produce evidence but cannot self-approve production promotion.
 - Record timeout budgets, retry counts, test seed, runner identity, artifact digests, SBOM/provenance references, and the reason for every skip.
+- Quarantine only reproducibly flaky checks, with owner, expiry, linked issue, retry evidence, and a required re-entry condition; quarantine never produces `passed`.
+- Record hermeticity, network access, credential scope, and fork/untrusted-worker isolation. Stop if isolation cannot be established.
+- Record every bypass attempt and audit it after the gate; an unapproved or expired bypass is `failed`.
