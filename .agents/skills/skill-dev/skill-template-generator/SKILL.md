@@ -78,3 +78,10 @@ Emit `SkillTemplateGeneratorArtifact` as both:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Generate templates eval-first with explicit authority, side effects, read-only mode, policy severity, semantic-diff expectations, and stop conditions.
+- Include provenance/signature placeholders, generated-view integrity checks, routing anti-gaming constraints, learner-safety guidance, and least-agency defaults.
+- Emit adversarial, mutation, property, flaky, refusal, rollback, and cleanup fixture hooks; generated output must be deterministic and replayable.
+- Require approval before writing canonical files or projections; stop on placeholder leakage, injection, authority ambiguity, or integrity mismatch.

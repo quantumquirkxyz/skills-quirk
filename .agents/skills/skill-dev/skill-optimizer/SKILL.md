@@ -198,3 +198,11 @@ A reflection step shown only a scalar score loses the failure mode it is meant t
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+
+## 2026 Controls
+
+- Eval-first optimization fixes a versioned routing baseline, objective, severity policy, authority, and semantic-diff budget before proposing changes.
+- Guard against routing anti-gaming, evaluator overfitting, prompt injection, and reward hacking with held-out adversarial, mutation, property, and flaky fixtures.
+- Preserve provenance/signatures, generated-view integrity, seed/replay data, and false-allow/false-refuse metrics; never claim improvement from text-only drift.
+- Read-only proposals are the default; require approval for skill edits or generated writes and stop on regressions, learner harm, or unverifiable evidence.

@@ -25,8 +25,9 @@ fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor:
+  - write-files
 ---
 
 ## Contract
@@ -78,3 +79,11 @@ Emit `SkillTestingFrameworkArtifact` as both:
 - no approval is required for test writes: the framework only writes sandbox and fixture files inside the repository, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Security Controls (P0/P1)
+
+- Test least agency, sandbox boundaries, prompt/tool injection, confused deputy, secret/PII redaction, and undeclared side effects as first-class contract properties.
+- Require positive, refusal/non-action, boundary, mutation, adversarial, rollback, and cleanup fixtures. Fixtures must prove no action occurred, not merely that an error was returned.
+- Calibrate evaluators against labeled examples, inter-rater disagreement, false-allow/false-refuse rates, and a fixed regression set; preserve evaluator version and evidence.
+- Inputs declare skill, fixture authority, tools, trust boundary, approval context, and data classification. Outputs include per-test evidence, mutations, redaction proof, provenance, residual unknowns, and promotion verdict.
+- Stop on missing negative tests, evaluator drift, leaked sensitive data, unexplained mutation, unverifiable provenance, or cleanup failure.

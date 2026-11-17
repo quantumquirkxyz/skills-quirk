@@ -124,3 +124,11 @@ Rules that bind the audit:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Security Controls (P0/P1)
+
+- Compare declared inputs, outputs, sideEffects, approvalFor, and stopCondition with observed reads, writes, network, subprocess, credential, symlink, and publication behavior; least agency is the expected baseline.
+- Model prompt/tool injection and confused deputy paths, including whether untrusted content can select tools, destinations, credentials, or approval state.
+- Require secret/PII redaction, signed provenance, SBOM/VEX/SLSA/Sigstore evidence, sandbox-boundary evidence, refusal/non-action fixtures, adversarial mutation tests, rollback, and audit evidence when applicable.
+- Inputs declare the skill, workflow trace, authority, data classification, tools, and approval context. Outputs classify under/over-declaration, list exact evidence and mutations, propose metadata corrections, and state residual unknowns.
+- Stop promotion when a side effect is under-declared, approval is missing, sensitive data is exposed, provenance is unverifiable, or rollback/cleanup cannot be demonstrated.

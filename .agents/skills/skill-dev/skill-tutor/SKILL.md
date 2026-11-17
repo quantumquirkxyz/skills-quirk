@@ -264,3 +264,10 @@ This tutorial connects to the broader quirk learning ecosystem:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first lessons declare learning objectives, authority, policy severity, semantic-diff checkpoints, and safe failure boundaries before exercises.
+- Learner safety is mandatory: use sanitized fixtures, least agency, read-only defaults, explicit approvals, reversible mutations, and no credential/network assumptions.
+- Include adversarial prompt/tool-injection, mutation/property, flaky/replay, provenance/signature, generated-view integrity, and routing anti-gaming exercises with observable rubrics.
+- Stop on unsafe instructions, secret exposure, unexplained side effects, missing provenance, or an evaluator that rewards bypassing the stated contract.

@@ -76,3 +76,10 @@ Emit `SkillDependencyGraphArtifact` as both:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Begin with eval-first graph invariants: authority, severity, semantic diff, acyclicity, reachability, and expected generated-view integrity.
+- Test adversarial edge injection, routing anti-gaming, duplicate identities, provenance/signature mismatch, and confused-deputy dependencies with mutation/property fixtures.
+- Replay flaky graph builds deterministically and report unresolved edges separately from absence; default read-only with signed evidence hashes.
+- Require approval for graph mutations or generated projections and stop on cycles, unauthorized edges, integrity drift, or missing authority.

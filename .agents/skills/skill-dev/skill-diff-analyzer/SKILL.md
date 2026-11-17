@@ -76,3 +76,10 @@ Emit `SkillDiffAnalyzerArtifact` as both:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first comparison declares baseline, semantic equivalence rules, policy severity, authority, provenance/signatures, and expected changed/unknown classes.
+- Prefer semantic diff over textual diff; verify generated views and source hashes, and preserve exact evidence for every finding.
+- Use adversarial, mutation, property, and flaky/replay fixtures for renamed, reordered, injected, deleted, and partially generated content; apply routing anti-gaming checks.
+- Operate read-only by default. Approval is required for annotations or writes; stop on unverifiable provenance, ambiguous pairing, or unexplained mutation.

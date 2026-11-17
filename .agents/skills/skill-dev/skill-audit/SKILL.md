@@ -25,8 +25,9 @@ fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor:
+  - write-files
 clauses:
   - id: SKILL-AUDIT-1
     text: "Run the platform validator and the semantic auditor before reporting, so findings cover structure and contract drift together."
@@ -91,3 +92,10 @@ Use this skill to verify the repository-local Skills platform.
 - no approval is required for audit writes: the scripts only update the bundle's own audit, card, and index files, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first audit plan must declare scope, authority, policy severity, expected semantic diff, and read-only mode before inspection.
+- Audit declared versus observed authority, side effects, provenance/signatures, generated-view integrity, and routing anti-gaming; separate findings from evidence and hypotheses.
+- Include adversarial prompt/tool-injection, mutation/property, flaky/replay, refusal/non-action, and cleanup fixtures. Redact secrets and PII.
+- Least agency is default; approval is required for repairs or generated writes. Block on critical findings, missing authority, signature mismatch, or unexplained mutation.

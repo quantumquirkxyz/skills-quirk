@@ -76,3 +76,10 @@ Emit `SkillPerformanceMetricsArtifact` as both:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first metrics declare authority, semantic diff, policy severity, baselines, sample plan, and acceptance thresholds before collection.
+- Measure correctness, latency, cost, refusal/non-action, side effects, and flaky/replay stability; protect learner safety and redact sensitive data.
+- Use adversarial and mutation/property fixtures to detect metric gaming, provenance/signature drift, generated-view mismatch, and selection bias.
+- Default read-only and least agency; approval is required for instrumented writes. Stop on missing provenance, non-reproducible results, or unsafe optimization.

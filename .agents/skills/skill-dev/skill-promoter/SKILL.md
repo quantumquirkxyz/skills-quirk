@@ -152,3 +152,11 @@ Confirm the promotion was successful:
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Security Controls (P0/P1)
+
+- Promote only from an isolated sandbox after independent validation, evaluator calibration, refusal/non-action fixtures, mutation/adversarial tests, and complete audit evidence.
+- Verify exact source digest, lockfile, generated compatibility view, signed provenance, SBOM/VEX, SLSA target, Sigstore identity, reviewer authority, and custody of signing keys before mutation.
+- Apply least agency and prevent confused deputy: promotion tooling may mutate only declared paths and artifacts, never arbitrary user-controlled destinations or credentials.
+- Inputs declare candidate identity, evidence bundle, approvals, trust roots, rollback target, and allowed side effects. Outputs include changed paths, digests, signatures, audit trail, approval evidence, and rollback instructions.
+- Require explicit approval for canonical writes, symlink changes, lockfile updates, and publication. Stop on digest/provenance mismatch, uncalibrated evaluator, injection, missing approval, or incomplete rollback.

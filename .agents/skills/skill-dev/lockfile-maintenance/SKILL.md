@@ -25,8 +25,9 @@ fixturesPath: ""
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor:
+  - write-files
 ---
 
 ## Contract
@@ -97,3 +98,10 @@ The dry run reports added, updated, and removed lock entries without changing fi
 - no approval is required for lockfile writes: the script only updates skills-lock.json hashes for resolved SKILL.md files, reversible via git
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first: define expected hash, missing/stale/extra outcomes, severity policy, and read-only dry-run before any lockfile mutation.
+- Compare semantic content and provenance (source digest, signer/attestation, generated-view integrity), not formatting alone; preserve an auditable diff.
+- Use adversarial, mutation, property, and flaky/replay fixtures for tampered paths, symlinks, duplicate entries, nondeterministic ordering, and partial writes.
+- Least agency: default read-only; require explicit approval for lockfile writes and never regenerate unrelated projections. Stop on authority, signature, or integrity mismatch.
