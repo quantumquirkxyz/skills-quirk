@@ -105,3 +105,11 @@ If terminal state is `blocked`, return exit code 1 to prevent the commit.
 - total duration within 10s budget
 - structured result returned
 - commit blocked if any check failed
+
+
+## P0/P1 Trust And Risk Controls
+
+- Derive changed-risk coverage from the staged diff. Changes to auth, deployment, policy, dependency, migration, or secret-handling paths require the mapped higher-level checks and cannot be waived by this fast gate.
+- Run hooks in an isolated, non-privileged context; never expose signing keys, cloud credentials, or protected-environment tokens to hooks or untrusted repository content.
+- A timeout is a failed check for commit purposes. Bounded retries may identify flaky behavior but cannot convert it to `passed`; quarantine must include owner and expiry.
+- Record staged commit identity, tool versions, duration budget, retry/timeout facts, and reasons for every skip.

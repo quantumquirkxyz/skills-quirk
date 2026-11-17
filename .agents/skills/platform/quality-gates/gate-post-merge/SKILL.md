@@ -102,3 +102,13 @@ Compile all check results into `GatePostMergeArtifact`. Terminal state:
 - feature flag verification completed
 - alerts sent if any check failed
 - structured result returned
+
+
+## P0/P1 Release Verification
+
+- Verify the deployed image/artifact digest against the attested build, SBOM, and provenance before traffic is shifted; unsigned or mismatched artifacts alert and trigger rollback evaluation.
+- Treat the canary as a measured promotion gate: verify minimum traffic, duration, error rate, latency, saturation, key business signals, and rollback readiness before each increase.
+- Verify rollback by executing the approved rollback path in the protected environment or an equivalent controlled rehearsal; record target digest, completion, health recovery, and data-compatibility result.
+- Protected-environment approvals remain explicit and auditable. This gate may alert and recommend rollback, but cannot bypass an approval boundary or silently mutate production.
+- Timeouts and flaky health probes are inconclusive, not successful. Retry within a bounded window, then alert with evidence and preserve the last known-good revision.
+- Verify feature-flag targeting, expiry/owner metadata, and kill-switch availability as part of post-merge checks.

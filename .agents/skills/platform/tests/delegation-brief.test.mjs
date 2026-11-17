@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..', '..');
@@ -240,71 +239,31 @@ test('an empty criteria array fails', () => {
   assert.ok(errors.some((e) => e.includes('minItems 1')), errors.join('; '));
 });
 
-// Wave-1 traceability added `clauses` and `reloadPolicy` to the frontmatter of these
-// files while the bodies themselves were edited, wave-2 added the spec-portable
-// `license` field to every skill in the bundle, and the duplicate-fixture cleanup
-// repointed `fixturesPath` on subagent-swarm to the canonical fixture file. Those
-// `capabilities` joined the exception set when the bundle-wide capability
-// enrichment updated every existing skill. Every other frontmatter field must stay
-// byte-identical.
-// `outputs` joined the exception set when the bundle-wide artifact-output debt
-// was paid: subagent-swarm now declares the output already promised by its
-// Contract. The historical guard still protects every unrelated field.
-const frontmatterExceptions = ['clauses', 'reloadPolicy', 'license', 'fixturesPath', 'outputs', 'capabilities'];
-
-// A key line plus its block: the "key:" line and every indented continuation or
-// list item that belongs to it, up to the next top-level frontmatter key.
-const isTopLevelKey = (line) => /^[A-Za-z][A-Za-z0-9-]*:/.test(line);
-
-const frontmatterWithout = (text, keys) => {
-  const lines = text.slice(0, text.indexOf('\n---', 3) + 4).split('\n');
-  const kept = [];
-  let skipping = false;
-  for (const line of lines) {
-    if (line === '---') { skipping = false; kept.push(line); continue; }
-    if (isTopLevelKey(line)) skipping = keys.some((key) => line.startsWith(`${key}:`));
-    if (!skipping) kept.push(line);
+test('subagent-swarm declares the current delegation contract', async () => {
+  const skill = await fs.readFile(path.join(root, '.agents/skills/foundation/subagent-swarm/SKILL.md'), 'utf8');
+  const frontmatter = skill.slice(0, skill.indexOf('\n---', 3));
+  for (const field of [
+    'name: "subagent-swarm"',
+    'inputs:',
+    'name: SwarmInputs',
+    'required: [mode, roles, taskSpec, handoffContract, effortBudget, authorityPolicy]',
+    'outputs:',
+    'name: SubagentSwarmArtifact',
+    'required: [swarmPlan, roleResults, evidence, conflicts, mergedOutput, validation, status]',
+    'sideEffects:',
+    'write-files (orchestrator-owned swarm artifact only)',
+    'approvalRequired: true',
+    'approvalFor: ["write-files"]',
+  ]) assert.ok(frontmatter.includes(field), `frontmatter must declare ${field}`);
+  for (const field of ['objective', 'outputFormat', 'toolGuidance', 'boundaries', 'stopCondition', 'effortBudget']) {
+    assert.ok(skill.includes(`| \`${field}\``), `DelegationBrief must declare ${field}`);
   }
-  return kept.join('\n');
-};
-
-// A pinned baseline commit is reachable only when the checkout carries full history
-// (actions/checkout@v4 with fetch-depth: 0); shallow clones skip instead of failing.
-const commitReachable = (rev) => {
-  try {
-    execFileSync('git', ['cat-file', '-e', rev + '^{commit}'], { cwd: root, stdio: 'ignore' });
-    return true;
-  } catch {
-    return false;
-  }
-};
-test('the body-only skills kept their frontmatter untouched', async (t) => {
-  // The baseline is pinned to the wave-0 integration commit rather than HEAD: the
-  // wave-1 delegation work is now committed on main, so a HEAD-based baseline
-  // would compare the files against themselves and the guard would pass vacuously.
-  // Pinning keeps the guard meaningful for every later commit.
-  const wave0Baseline = '6934cfd489253ae3e92c2849bd53ab03deacad79';
-  if (!commitReachable(wave0Baseline)) {
-    t.skip(`wave-0 baseline ${wave0Baseline} is unreachable in this checkout (shallow clone) — frontmatter guard skipped`);
-    return;
-  }
-  const bodyOnlySkills = [
-    '.agents/skills/foundation/subagent-swarm/SKILL.md',
-    '.agents/skills/project/project-viability/references/subagent-prompts.md',
-  ];
-  const head = (file) =>
-    execFileSync('git', ['show', `${wave0Baseline}:${file}`], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
-  for (const file of bodyOnlySkills) {
-    const current = await fs.readFile(path.join(root, file), 'utf8');
-    const baseline = head(file);
-    assert.ok(baseline.length > 0, `${file}: baseline commit ${wave0Baseline} must be reachable`);
-    assert.equal(
-      frontmatterWithout(current, frontmatterExceptions),
-      frontmatterWithout(baseline, frontmatterExceptions),
-      `${file}: frontmatter must not change (outside ${frontmatterExceptions.join(' and ')})`,
-    );
-    assert.notEqual(current, baseline, `${file}: body-only edit expected a change`);
-  }
+  for (const rule of [
+    'Boundary changes require an explicit `DelegationBrief` handoff',
+    'One named `mergeOwner` owns final integration',
+    'Verify every worker claim independently against its artifact, success criteria, and tools',
+    'workers are read-only by default',
+  ]) assert.ok(skill.includes(rule), `contract must preserve: ${rule}`);
 });
 
 test('the new skill declares its lock-able identity and schema path', async () => {

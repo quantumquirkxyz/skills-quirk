@@ -114,3 +114,14 @@ Compile all results into `GateCiArtifact`. Terminal state:
 - coverage threshold enforced (80% lines)
 - structured result returned
 - PR blocked if any check failed
+
+
+## P0/P1 Supply-Chain And Trust Controls
+
+- Build once from the reviewed commit and promote the immutable digest; record an artifact attestation linking commit, builder, inputs, and workflow run.
+- Produce and retain an SBOM plus build provenance. Missing, invalid, or unverifiable attestations are `failed`, not `skipped`.
+- Run fork and untrusted contributions in isolated, least-privilege workers with read-only secrets (normally none), no production credentials, and no write access to protected environments.
+- Apply changed-risk coverage: map changed files and dependency/configuration impact to required tests; changed high-risk paths require explicit integration/security coverage or a documented block.
+- Classify flaky failures separately from product failures. A bounded retry may gather evidence, but a flaky or timeout result never becomes `passed`; quarantine requires owner, expiry, and a follow-up issue.
+- Enforce protected-environment approvals for deployment-facing checks; CI may produce evidence but cannot self-approve production promotion.
+- Record timeout budgets, retry counts, test seed, runner identity, artifact digests, SBOM/provenance references, and the reason for every skip.

@@ -108,3 +108,12 @@ Publish a concise summary to agent context so the user sees results immediately.
 - structured result returned
 - results reported to agent context
 - terminal state correctly reflects `blockOnFailure` policy
+
+
+## P1 Risk And Failure Handling
+
+- Calculate changed-risk coverage from modified files, dependency manifests, generated code, configuration, and security-sensitive paths; route elevated risk to `gate-pre-commit` or `gate-ci`.
+- Treat formatter, linter, typechecker, and secret-scan timeouts as `failed` unless an explicit, visible local policy marks the check advisory; never silently pass a timeout.
+- Retries are bounded and diagnostic only. A flaky result remains `failed` or `skipped` with owner, expiry, and reproduction data.
+- Fork, untrusted workspace, and downloaded content are scanned without secrets or write-capable credentials; report isolation status in the artifact.
+- Report changed-file provenance, tool versions, timeout/retry data, and all skipped checks with reasons.
