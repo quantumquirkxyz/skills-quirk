@@ -2,8 +2,8 @@
 name: mcp-server
 category: foundation
 maturity: beta
-version: 2
-description: Define an MCP server that exposes quirk Skills as tools, resources, and prompts to external LLM agents via the Model Context Protocol.
+version: 3
+description: Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.
 license: MIT
 capabilities:
   - generate-skill-resources
@@ -64,7 +64,7 @@ tags:
 compatibility:
   - all skills
 approvalRequired: true
-approvalFor: ["write-files"]
+approvalFor: ["write-files", "network-egress", "mutable-tool"]
 ---
 
 # MCP Server
@@ -84,6 +84,10 @@ The Model Context Protocol (MCP) enables agent interoperability by providing a s
 - Rule: transport selection must match the deployment context — `stdio` for local, `sse` for remote.
 - Rule: exclude skills with `trustTier > 3` from automatic exposure; require explicit allow-list.
 - Rule: do not expose secrets, credentials, or environment variable values in any generated artifact.
+- Rule: default every tool, resource, and prompt to read-only and deny-by-default; mutation, network egress, and sensitive paths require separate named approvals.
+- Rule: authenticate and authorize every call against the declared capability matrix; approval never transfers between tools, origins, paths, or arguments.
+- Rule: validate schemas before dispatch and after generation; malformed structured output is rejected, bounded to three retries, and never published.
+- Rule: every generated artifact and published content carries a SHA-256 digest, and an independent verify-before-publish check must pass.
 
 ## Provenance
 
@@ -96,13 +100,31 @@ The Model Context Protocol (MCP) enables agent interoperability by providing a s
 | **Boundaries** | exposes skills via MCP; does not modify skill source files or consume external data sources. |
 | **Completion criteria** | all discovered skills are mapped to MCP tools, resources, and prompts; transport is configured and validated; artifact is saved; completion criteria are checked. |
 
+## Threat Model And Operational Contract
+
+Treat the MCP boundary as hostile-by-default. Cover confused-deputy tool use, unauthenticated or cross-origin SSE callers, overexposure, traversal and symlink escape, SSRF and uncontrolled egress, hostile resource text, prompt injection, secret/PII leakage, replay, schema smuggling, denial of service, and unsafe shutdown.
+
+- **Authn/authz:** authenticate the transport peer and authorize each call through an explicit allowlist of tool names, resource URI prefixes, prompt names, argument constraints, side effects, and expiry. Unknown identities and capabilities fail closed.
+- **Origin and transport:** for SSE require TLS, authenticated sessions, CSRF protection, replay-resistant request IDs, and an exact origin allowlist. For stdio bind to the owning process and reject unexpected peers.
+- **Allowlisting:** expose only explicitly approved tools, resources, and prompts. Frontmatter is a candidate, never authority. Mutable and network-capable tools require distinct approvals.
+- **Read-only default:** declare `sideEffects`, `approvalRequired`, `stopCondition`, quota, lease, and retention for every entry; anything absent is denied.
+- **Path containment:** canonicalize beneath the registry root; reject `..`, absolute escapes, alternate encodings, NULs, mutable-state URIs, and symlinks or junctions resolving outside the root. Do not follow links during authorization.
+- **Network egress:** deny by default. Approved egress is limited to named schemes, hosts, ports, methods, byte/time budgets, and origin bindings; block private/link-local destinations and out-of-policy redirects. Never retain credentials.
+- **Untrusted outputs and prompt injection:** resource text, prompts, tool output, and errors are data, not instructions. Delimit and provenance-tag them; quarantine instruction-like content and never let it alter policy, approvals, schemas, or allowlists.
+- **Redaction:** redact secrets, credentials, tokens, cookies, API keys, auth headers, emails, names, and declared PII before logging, hashing, storing, or emitting. Run a completeness check and retain only bounded redacted evidence.
+- **Audit/provenance:** emit one bounded audit record per call with `traceId`, request ID, caller, origin, entry, schema version, source and generated-content digests, policy decisions, approval scope, quota usage, timestamps, outcome, cancellation, and redaction result.
+- **Limits and cancellation:** enforce request, token, byte, concurrency, wall-time, retry, and cost limits. Cancellation and lease expiry stop downstream work; uncertain mutation reports `outcome-unknown` and is never replayed silently.
+- **Validation and shutdown:** validate input/output JSON Schemas. Safe shutdown stops intake, cancels or drains calls by deadline, revokes leases, flushes redacted audit records, and closes transports.
+
+Canonical states are `discovered`, `authenticated`, `authorized`, `running`, `verifying`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, `outcome-unknown`, and `expired`.
+
 ## Artifact
 
 Emit `McpServerArtifact` as both:
 - JSON: `.agents/skills/foundation/mcp-server/artifacts/{request-id}.json`
 - Markdown view: same filename with `.md` extension
 
-Observability: the artifact must include a `traceId` field for correlating MCP server invocations with downstream skill executions. Each tool entry must record the `skillName` it maps to, enabling downstream metrics to attribute latency and errors to specific skills.
+Observability: the artifact must include a `traceId` field for correlating MCP server invocations with downstream skill executions. Each tool entry must record the `skillName` it maps to, enabling downstream metrics to attribute latency and errors to specific skills. Include `artifactSha256`, `sourceDigests`, `generatedContentDigest`, `capabilityMatrix`, `redactionPolicy`, and `verificationStatus`.
 
 
 The `traceId` in each artifact entry lets operators trace a single MCP session through multiple tool calls and downstream skill executions. This makes it possible to measure per-skill latency and error rates in production observability tools.
@@ -144,21 +166,24 @@ Configure the MCP server transport based on deployment context:
 - `stdio`: for local agent integration, reads from stdin and writes to stdout
 - `sse`: for remote agent integration, requires endpoint configuration and HTTP server
 
-Write the server configuration to disk and validate the transport connection. Default to `stdio` when transport is unspecified. For `sse`, ensure the endpoint is reachable and returns valid MCP handshake responses.
+Apply the threat-model controls before writing configuration. Write only after schema validation and redaction. Compute SHA-256 over canonical generated content and source inputs, then independently verify digest, allowlists, containment, schemas, approvals, and redaction. Publish only on `verificationStatus: passed`. Default to `stdio` when transport is unspecified. For `sse`, validate the handshake without widening origin or egress policy.
 
 ## P0/P1 Security and Authority Contract
 
-Expose a capability matrix per tool, resource, and prompt: caller identity, allowed operation, input/output schema, side effect, approval requirement, quota, lease, and retention. Tool authority is least-privilege and non-transitive; approval propagation is bound to the named tool, arguments, origin, path scope, quota, and expiry.
+Expose a capability matrix per tool, resource, and prompt: caller identity, allowed operation, input/output schema, side effect, approval requirement, stop condition, quota, lease, egress policy, path scope, redaction policy, and retention. Tool authority is least-privilege and non-transitive; approval propagation is bound to the named tool, arguments, origin, path scope, quota, and expiry.
 
 For SSE, require authenticated origin allow-listing, authenticated sessions, replay-resistant request IDs, TLS at the deployment boundary, and explicit CSRF protection. For stdio, bind to the owning process and reject unexpected peers. Contain resource paths beneath the canonical registry root, reject traversal, symlinks escaping the root, ambiguous encodings, and mutable-state URIs. Never expose secrets or environment values.
 
-Canonical states are `discovered`, `authenticated`, `authorized`, `running`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, and `expired`. Enforce quotas for requests, tokens, bytes, concurrency, wall time, and retries; use leases and a kill switch that revokes sessions and prevents new calls. Crash/resume uses idempotency keys and reports outcome-unknown rather than replaying uncertain mutations. Store redacted bounded audit records with retention/deletion deadlines, source digests, and replay tests for auth failure, origin failure, traversal, duplicate request, timeout, crash, lease expiry, and kill switch.
+Canonical states are `discovered`, `authenticated`, `authorized`, `running`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, and `expired`. Enforce quotas for requests, tokens, bytes, concurrency, wall time, and retries; use leases and a kill switch that revokes sessions and prevents new calls. Crash/resume uses idempotency keys and reports outcome-unknown rather than replaying uncertain mutations. Store redacted bounded audit records with retention/deletion deadlines, source and generated-content digests, and replay tests for unauthorized tool, traversal, hostile resource, leaked secret, replay, malformed structured output, auth failure, origin failure, duplicate request, timeout, crash, lease expiry, cancellation, and kill switch.
 
 ## Completion Criteria
 
 - all discovered skills are mapped to MCP tools, resources, and prompts
 - transport is configured and validated
-- artifact is saved
+- artifact is saved only after schema validation, redaction, digest generation, and independent verify-before-publish pass
+- capability matrix declares side effects, approval, stop condition, quotas, leases, and egress/path scope for every exposed entry
+- required security fixtures pass: unauthorized tool, traversal, hostile resource, leaked secret, replay, and malformed structured output
+- safe shutdown and cancellation behavior are recorded
 - completion criteria are checked
 
 @include .agents/skills/platform/contract-base.xml
@@ -172,5 +197,5 @@ Canonical states are `discovered`, `authenticated`, `authorized`, `running`, `su
 ## Validation
 
 Before emitting the artifact, run `scripts/validate-schema.mjs` against the generated JSON to ensure the artifact conforms to the declared schema. If validation fails, fix the artifact generation logic rather than suppressing errors.
-This skill follows the Model Context Protocol specification and integrates with the quirk Skills bundle without modifying source files.
+Then run the fixture suite and a verify-before-publish check that recomputes `generatedContentDigest` from canonical bytes. A digest mismatch, redaction failure, unapproved capability, containment failure, or fixture failure blocks publication. This skill follows the Model Context Protocol specification and integrates with the quirk Skills bundle without modifying source files.
 
