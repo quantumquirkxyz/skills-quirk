@@ -125,3 +125,6 @@ For each critical alert: what to check first? (metrics, logs, traces, recent dep
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## OperationsArtifact Handoff
+
+Consume only a verified `DeploymentArtifact` bound to its fixed point and digest. Emit a schema-valid `OperationsArtifact` using `schemas/software-engineering/operations-artifact.schema.json` with SLOs, alert thresholds, runbooks, owner, approval boundary, rollback verification status, evidence references, and `nextConsumer: sre`. Reject missing deployment verification or rollback verification and route the blocker to `deployment`; preserve the deployment's canary/rollout evidence and provenance.

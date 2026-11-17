@@ -103,3 +103,7 @@ Cover exhausted budget, partial dependency evidence, alert fatigue, multi-region
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## OperationsArtifact Boundary
+
+Consume the verified `DeploymentArtifact` and preserve fixed point/digest, SBOM/VEX/provenance, owner, approval, canary/rollout, rollback verification, and evidence provenance in the schema-valid `OperationsArtifact`. Reject release/deployment handoffs without a verification artifact or rollback verification; return a deterministic blocked result to the producing consumer. The mandatory chain is `ship-subissue -> release-management -> deployment -> observability/sre`.

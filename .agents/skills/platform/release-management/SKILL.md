@@ -86,3 +86,9 @@ Use this skill when a project needs governance for getting changes into producti
 - Gate advancement on changed-risk coverage and explicit canary evidence. Record promotion, abort, rollback, and post-rollback verification with the target digest and recovery signals.
 - Treat flaky, skipped, and timed-out checks as unresolved risk. Allow only bounded retries and an expiring, owner-backed exception; do not label the release green on a timeout.
 - Verify rollback in the target environment or a controlled rehearsal, including migration compatibility, feature-flag state, artifact signature, and health recovery.
+
+## ReleaseCandidateArtifact Contract
+
+Emit a schema-valid `ReleaseCandidateArtifact` using `schemas/software-engineering/release-candidate-artifact.schema.json`, bound to the reviewed fixed point and source digests. Required evidence includes SBOM, VEX, provenance/attestation, named owner, approval, verification artifact, rollback plan and verification, canary/rollout evidence, and `nextConsumer: deployment`. Reject stale candidates, missing owner/approval, failed canaries, missing verification artifacts, or missing rollback verification; return the blocker to `ship-subissue`.
+
+The mandatory chain is `ship-subissue -> release-management -> deployment -> observability/sre`. Release-management has no deployment side effects and must preserve approval boundaries.

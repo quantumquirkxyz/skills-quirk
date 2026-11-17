@@ -87,3 +87,7 @@ Use this skill when the project needs a clear release path. It should define how
 - Select canary, blue/green, or rolling rollout with measurable promotion, abort, and rollback thresholds. Verify rollback completion and service recovery, not merely command success.
 - Include changed-risk coverage for code, dependencies, manifests, migrations, and policy changes; require additional validation for high-risk changes.
 - Handle flaky checks and timeouts as unknown/failed evidence with bounded retries, owner, expiry, and explicit follow-up; never treat silence as health.
+
+## DeploymentArtifact Contract
+
+Consume only a current, schema-valid `ReleaseCandidateArtifact` and emit `DeploymentArtifact` using `schemas/software-engineering/deployment-artifact.schema.json`. Bind candidate reference, fixed point, and digest; retain SBOM/VEX/provenance, named owner, approval, canary/rollout observations, verification artifact, rollback plan and post-rollback verification, SLO/alert/runbook links, and `nextConsumer: observability` or `sre`. Reject stale candidates, missing owner/approval, failed canaries, absent verification, or absent rollback verification and return the blocker to `release-management`. Deployment mechanics do not grant approval authority.

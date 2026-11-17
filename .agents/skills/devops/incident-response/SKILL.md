@@ -49,6 +49,10 @@ approvalFor: []
 | What risk remains? | Subjective judgment calls, missing context, or external dependency failures
 
 
+## Maintenance handoff
+
+Every closed incident or postmortem remediation set MUST emit a `MaintenanceArtifact` handoff using `schemas/software-engineering/maintenance-artifact.schema.json`. Record the source incident digest, accountable owner, incident fixed point, customer/system impact, rollback or mitigation, verification evidence, next corrective consumer, and documentation/provenance refresh. Use exactly one closure state: `resolved-with-evidence`, `corrective-ticket-created`, `accepted-risk-with-owner-and-expiry`, or `blocked`; missing owner, stale diagnosis, unresolved regression, or missing evidence is `blocked`. Preserve incident-command authority, approvals, append-only timeline, communication cadence, and unexecuted-action markings.
+
 ## Artifact
 
 Emit `IncidentResponseArtifact` as both:
