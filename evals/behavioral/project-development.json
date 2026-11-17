@@ -1,0 +1,213 @@
+{
+  "id": "project-development-paired-v1",
+  "skill": "project/project-development",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A nightly batch data pipeline project needs its dominant shape classified as batch pipeline and a thinnest safe path recommended before the workflow commits to a path.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "classify the project shape from the brief, repo state, and target stack; recommend the next workflow skill and describe the thinnest safe path as a concrete first action.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the project brief describes a nightly job reading CSV exports, normalizing, and loading into a warehouse",
+    "repo state is Python with pyproject.toml, etl/load.py entry point, tests/, and GitHub Actions cron",
+    "target stack is Python, PostgreSQL, AWS S3, scheduled execution",
+    "exactly one dominant shape is selected from interactive app, batch pipeline, agentic system, library, backend service, hybrid",
+    "classification rationale cites specific repo signals and ambiguous signals are surfaced rather than guessed"
+  ],
+  "grounding": [
+    ".agents/skills/project/project-development/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/project/project-development/SKILL.md#Classification boundaries - six shapes and hybrid definition",
+    ".agents/skills/project/project-development/SKILL.md#Steps - read repo context, classify shape, identify seam, recommend next skill",
+    ".agents/skills/project/project-development/SKILL.md#Guardrails - do not design the whole system, surface ambiguity, do not write code"
+  ],
+  "cites": [
+    "PD-1",
+    "PD-2",
+    "PD-3",
+    "PD-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.06,
+    "durationMs": 300000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Exactly one dominant shape is selected from the six defined shapes or hybrid.",
+        "levels": {
+          "4": "one shape from the enum is selected with no ambiguity",
+          "2": "a shape is selected but multiple shapes are claimed as dominant",
+          "0": "no shape is selected or the shape is outside the enum"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Classification rationale cites specific repo signals such as entry points, manifests, CI config, or scheduled jobs.",
+        "levels": {
+          "4": "rationale references concrete repo signals that led to the shape",
+          "2": "rationale is vague or references generic signals",
+          "0": "no rationale is provided"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Secondary shapes are noted when present with risk flagged.",
+        "levels": {
+          "4": "secondary shapes are listed with associated risks",
+          "2": "secondary shapes are mentioned without risk",
+          "0": "no secondary shapes are considered"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Ambiguous signals are surfaced rather than guessing a shape when context is insufficient.",
+        "levels": {
+          "4": "ambiguity is documented and no forced classification is made",
+          "2": "ambiguity is noted but a guess is still made",
+          "0": "ambiguous signals are ignored and a shape is forced"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Flow recommendation names the next workflow skill with explicit rationale tied to the dominant shape.",
+        "levels": {
+          "4": "next skill is named with rationale tied to the shape classification",
+          "2": "a skill is named but rationale is weak or unrelated",
+          "0": "no flow recommendation is made"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Thinnest safe path is described as a concrete first action that stays within declared scope.",
+        "levels": {
+          "4": "thinnest safe path is a concrete, scoped first action",
+          "2": "path is described but is vague or exceeds declared scope",
+          "0": "no thinnest safe path is described"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "No whole-system design is included; the assessment stays at the classification level.",
+        "levels": {
+          "4": "the output is classification-only with no system design",
+          "2": "mostly classification with minor design elements",
+          "0": "full system design is included"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The structured project development result is returned and validated with blockers documented if any.",
+        "levels": {
+          "4": "projectFitAssessment, projectShapeClassification, flowRecommendation, and thinnestSafePath are all present and validated",
+          "2": "the result is partially present or validation is skipped",
+          "0": "no structured result is returned"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "projectFitAssessment",
+          "projectShapeClassification",
+          "flowRecommendation",
+          "thinnestSafePath"
+        ],
+        "note": "the project development artifact must contain all four output fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "interactive app",
+          "batch pipeline",
+          "agentic system",
+          "library",
+          "backend service",
+          "hybrid"
+        ],
+        "note": "the classification vocabulary must cover all six shapes plus hybrid"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "whole-system design",
+          "system architecture",
+          "implementation framework"
+        ],
+        "note": "negative control: no whole-system design, architecture, or implementation framework selection"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the assessment must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Is exactly one dominant shape selected from the defined enum with no ambiguity?",
+        "levels": {
+          "pass": "one enum shape is selected unambiguously",
+          "fail": "no shape is selected or multiple shapes are claimed as dominant"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is the thinnest safe path described as a concrete first action within declared scope?",
+        "levels": {
+          "pass": "concrete scoped first action is described",
+          "fail": "path is vague, out of scope, or missing"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Are ambiguous signals surfaced rather than forcing a guess when context is insufficient?",
+        "levels": {
+          "pass": "ambiguity is documented and no forced classification is made",
+          "fail": "ambiguity is ignored and a shape is guessed"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

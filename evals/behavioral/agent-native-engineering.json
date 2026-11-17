@@ -1,0 +1,212 @@
+{
+  "id": "agent-native-engineering-paired-v1",
+  "skill": "engineering/agent-native-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A repository with specs, tickets, and AGENTS.md needs a spec-literacy and quality-gate assessment before any implementation begins, with an orchestration plan for parallel agent execution.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "assess the project's spec literacy, context quality, orchestration plan, and quality gate status; emit an EngineeringAssessment with score, rating, plan, and recommendations.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "AGENTS.md, open issues, specs, tickets, and recent commits are present in the repository",
+    "available quirk skills have categories, maturity, dependencies, and trust tiers",
+    "quality gates include lint, typecheck, tests, and review rules",
+    "write-files side effect requires explicit approval at trust tier 3",
+    "spec literacy, context engineering, orchestration, and quality ownership are the four skill dimensions"
+  ],
+  "grounding": [
+    ".agents/skills/engineering/agent-native-engineering/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/engineering/agent-native-engineering/SKILL.md#Rules - four skills: spec literacy, context engineering, orchestration, quality ownership",
+    ".agents/skills/engineering/agent-native-engineering/SKILL.md#Guardrails - separate doing from checking, external verification, side effects require approval",
+    ".agents/skills/engineering/agent-native-engineering/SKILL.md#Workflow - assess spec literacy, engineer context, design orchestration, own quality gates, produce recommendations"
+  ],
+  "cites": [
+    "ANE-1",
+    "ANE-2",
+    "ANE-3",
+    "ANE-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.10,
+    "durationMs": 480000,
+    "inputTokens": 140000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Spec literacy score is computed (0-100) with gaps, ambiguities, and blockers identified from the spec, tickets, and AGENTS.md.",
+        "levels": {
+          "4": "a numeric score 0-100 is recorded with specific gaps and blockers listed",
+          "2": "a score is given but gaps or blockers are vague or missing",
+          "0": "no spec literacy score is computed"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Context quality is rated complete, partial, or missing with missing inputs and provenance recorded.",
+        "levels": {
+          "4": "rating is one of the three enum values with missing inputs and provenance string",
+          "2": "rating is present but missing inputs or provenance is incomplete",
+          "0": "no context quality rating is assigned"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Orchestration plan separates parallelizable work from sequential dependencies and defines handoffs between agents.",
+        "levels": {
+          "4": "parallelizable, sequential, and handoffs arrays are all populated with concrete items",
+          "2": "plan is present but one of the three arrays is empty or vague",
+          "0": "no orchestration plan is defined"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Quality gate status records passed, failed, and pending gates; recommendations name skill, action, and outcome.",
+        "levels": {
+          "4": "all three gate arrays are populated and each recommendation cites skill, action, and outcome",
+          "2": "gate status or recommendations are partially populated",
+          "0": "no quality gate status or recommendations are emitted"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Doing is separated from checking; the agent that implements does not review its own work.",
+        "levels": {
+          "4": "verification is a separate step with a separate agent or the human; no self-review",
+          "2": "verification is mentioned but not clearly separated from implementation",
+          "0": "the same agent both implements and reviews its own work"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Behavior is verified against independent sources (spec, tests, actual diff), not model self-assessment.",
+        "levels": {
+          "4": "verification cites external evidence such as the spec, tests, or diff output",
+          "2": "verification references evidence but relies partly on model agreement",
+          "0": "verification is based solely on model self-assessment"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Side effects requiring approval (write-files) are not executed without explicit approval; intent is recorded first.",
+        "levels": {
+          "4": "no file writes occur without approval; intent and outcome are recorded",
+          "2": "approval is noted but intent recording is incomplete",
+          "0": "file writes proceed without explicit approval"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The EngineeringAssessment artifact is emitted as JSON and Markdown and validated against its schema.",
+        "levels": {
+          "4": "artifact saved in both formats and schema validation passes",
+          "2": "artifact produced but not saved in both formats or validation skipped",
+          "0": "no artifact is emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "EngineeringAssessment",
+          "specLiteracy",
+          "contextQuality",
+          "orchestrationPlan",
+          "qualityGateStatus",
+          "recommendations"
+        ],
+        "note": "the EngineeringAssessment must contain all required sub-objects"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "score",
+          "gaps",
+          "blockers"
+        ],
+        "note": "specLiteracy must include score, gaps, and blockers"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "self-review",
+          "model agreement",
+          "unapproved write"
+        ],
+        "note": "negative control: no self-review, reliance on model agreement, or unapproved file writes"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 20
+        },
+        "note": "the assessment must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Is doing separated from checking so the implementing agent does not review its own work?",
+        "levels": {
+          "pass": "verification is a separate step with a separate agent or human",
+          "fail": "the same agent implements and reviews its own work"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Are write-files side effects never executed without explicit approval, with intent recorded first?",
+        "levels": {
+          "pass": "no file writes without approval; intent and outcome recorded",
+          "fail": "file writes proceed without explicit approval"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Does quality gate status record passed, failed, and pending gates with recommendations naming skill, action, and outcome?",
+        "levels": {
+          "pass": "all gate arrays populated and recommendations cite skill, action, outcome",
+          "fail": "gate status missing or recommendations lack skill/action/outcome"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

@@ -47,7 +47,7 @@
           "trustTier: \"3\"",
           "modelTier: \"reasoning\"",
           "promptVersion: \"2.0\"",
-          "artifactType: \"pull-request\"",
+          "artifactType: \"project\"",
           "diataxis: \"how-to\""
         ]
       }

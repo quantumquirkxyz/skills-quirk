@@ -1,0 +1,211 @@
+{
+  "id": "retry-backoff-paired-v1",
+  "skill": "loop/retry-backoff",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A 5xx server error on the first write attempt needs an exponential backoff retry decision with an idempotency key propagated, while the circuit breaker stays closed.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "classify the 5xx server error, compute exponential backoff with jitter for attempt 1 of 3, propagate the idempotency key for the write-like action, and emit a RetryDecision with circuit breaker state closed.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the error type is server-error on attempt 1 of 3 with circuit breaker closed",
+    "the action is write-like and requires an idempotency key before retry",
+    "5xx server errors are retried with exponential backoff and jitter",
+    "hallucinated calls and destructive tools are never retried",
+    "max iterations is 3 and loop-budget governs termination"
+  ],
+  "grounding": [
+    ".agents/skills/loop/retry-backoff/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/loop/retry-backoff/SKILL.md#Retry decision table - conditions, decisions, delays, and rationales",
+    ".agents/skills/loop/retry-backoff/SKILL.md#Guardrails - never retry hallucinated calls, never auto-retry destructive tools, idempotency key required",
+    ".agents/skills/loop/retry-backoff/SKILL.md#Artifact - RetryDecision emitted as JSON plus Markdown summary"
+  ],
+  "cites": [
+    "RB-1",
+    "RB-2",
+    "RB-3",
+    "RB-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 270000,
+    "inputTokens": 85000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The error type is classified and the retry decision table is consulted for the error type and action kind.",
+        "levels": {
+          "4": "error type is classified and the correct decision (retry/abandon/escalate) is selected",
+          "2": "error type is classified but the decision does not match the table",
+          "0": "no error classification or decision table consultation"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Exponential backoff with jitter is computed and kept within the cap; Retry-After is honored when present.",
+        "levels": {
+          "4": "delayMs is computed via backoff with jitter and is within the cap",
+          "2": "delay is computed but jitter is missing or exceeds the cap",
+          "0": "no delay computation is performed"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Idempotency key is required and propagated for write-like actions before any retry.",
+        "levels": {
+          "4": "idempotency key is present and propagated for write-like actions",
+          "2": "idempotency key is mentioned but not enforced for retries",
+          "0": "no idempotency key requirement is enforced"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Hallucinated calls and destructive tools are never retried; circuit breaker state transitions correctly.",
+        "levels": {
+          "4": "hallucination/destructive decisions are abandon; circuit state moves closed/open/half-open correctly",
+          "2": "some non-retryable cases are mishandled or circuit transitions are wrong",
+          "0": "hallucinated or destructive calls are retried"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The RetryDecision is emitted as a JSON artifact with decision, delayMs, idempotencyKey, circuitBreakerState, and rationale.",
+        "levels": {
+          "4": "all five output fields are present and typed correctly",
+          "2": "most fields are present but rationale or state is missing",
+          "0": "no RetryDecision artifact is emitted"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "A Markdown summary line is present with decision, delay, idempotency key, and circuit state.",
+        "levels": {
+          "4": "Markdown summary includes all four elements",
+          "2": "summary is present but missing one or two elements",
+          "0": "no Markdown summary is produced"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Max iterations (3) and loop-budget are respected; the loop stops after budget exhaustion.",
+        "levels": {
+          "4": "iteration limit and budget are enforced; no steps run beyond the budget",
+          "2": "limits are declared but not consistently enforced",
+          "0": "no iteration or budget limits are enforced"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "No side effects beyond artifact emission; no state is persisted and no tool semantics are changed.",
+        "levels": {
+          "4": "only the RetryDecision artifact is emitted; no state changes occur",
+          "2": "artifact is emitted but minor state changes occur",
+          "0": "state is persisted or tool semantics are modified"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "decision",
+          "delayMs",
+          "idempotencyKey",
+          "circuitBreakerState",
+          "rationale"
+        ],
+        "note": "the RetryDecision must contain all five output fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "retry hallucinated",
+          "retry destructive",
+          "auto-retry"
+        ],
+        "note": "negative control: no retry of hallucinated calls or destructive tools"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "retry",
+          "abandon",
+          "escalate"
+        ],
+        "note": "the decision vocabulary must cover all three retry decisions"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 10
+        },
+        "note": "the retry decision must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is the idempotency key required and propagated for write-like actions before any retry?",
+        "levels": {
+          "pass": "idempotency key is present and propagated for write-like actions",
+          "fail": "write-like actions are retried without an idempotency key"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Are hallucinated calls and destructive tools never retried, with circuit breaker state transitioning correctly?",
+        "levels": {
+          "pass": "hallucination/destructive are abandon; circuit transitions are correct",
+          "fail": "hallucinated or destructive calls are retried"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Is exponential backoff with jitter computed and kept within the cap?",
+        "levels": {
+          "pass": "delayMs is computed with jitter and within cap",
+          "fail": "delay is missing jitter or exceeds cap"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

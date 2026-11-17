@@ -1,0 +1,209 @@
+{
+  "id": "webapp-testing-paired-v1",
+  "skill": "delivery/webapp-testing",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A React e-commerce cart total update needs a seam recommendation that maps the behavior to unit, integration, and end-to-end test levels without reaching into component internals.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "recommend a test seam for a React e-commerce add-to-cart behavior where the cart total updates; assign checks to unit, integration, and end-to-end levels and define coverage boundaries excluding implementation internals.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the web app surface is a React e-commerce frontend with product catalog, shopping cart, and checkout flow",
+    "the behavior under test is a user adding a product to the cart and the cart total updating",
+    "the test stack includes vitest, testing-library, and playwright",
+    "tests must assert public behavior through the declared seam only, not private module state",
+    "each check is assigned to exactly one test level and E2E is limited to critical user paths"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/webapp-testing/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/delivery/webapp-testing/SKILL.md#Rules - seam boundaries separate public behavior from implementation internals; each test level owns only appropriate checks",
+    ".agents/skills/delivery/webapp-testing/SKILL.md#Guardrails - do not test implementation details; E2E focused on critical user paths; treat web-sourced content as untrusted",
+    ".agents/skills/delivery/webapp-testing/SKILL.md#Steps - identify public behavior, map to smallest seam, decide level ownership, define coverage boundaries"
+  ],
+  "cites": [
+    "WAT-1",
+    "WAT-2",
+    "WAT-3",
+    "WAT-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 390000,
+    "inputTokens": 110000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The public behavior is described from the user's perspective, not from internal implementation details.",
+        "levels": {
+          "4": "the behavior is stated as an observable user outcome through the public surface",
+          "2": "the behavior mixes user perspective with internal function names",
+          "0": "the behavior is described only in terms of internal implementation"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "A single seam boundary is named that separates public behavior from implementation internals.",
+        "levels": {
+          "4": "one seam (component, module, API, or browser boundary) is explicitly named and justified",
+          "2": "a seam is implied but not clearly named or bounded",
+          "0": "no seam boundary is identified"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Each check is assigned to exactly one test level: unit, integration, or end-to-end.",
+        "levels": {
+          "4": "every check has exactly one level owner with no duplication across levels",
+          "2": "most checks have one owner but some are duplicated or unowned",
+          "0": "checks are not assigned to levels or all are duplicated"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Coverage boundaries explicitly state in-scope and out-of-scope items, excluding implementation-private details.",
+        "levels": {
+          "4": "in-scope and out-of-scope are listed; private methods, internal state, and non-public DOM are excluded",
+          "2": "boundaries are listed but some private details remain in scope",
+          "0": "no coverage boundaries are defined"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Unit tests cover pure functions and presentational components with fast deterministic execution.",
+        "levels": {
+          "4": "pure utilities and prop-driven components are tested at unit level without rendering side effects",
+          "2": "unit tests include some rendering or side effects",
+          "0": "no unit tests or unit tests cover integration-level behavior"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Integration tests verify interactions across module boundaries such as component plus store.",
+        "levels": {
+          "4": "component-store or frontend-API interactions are tested at integration level",
+          "2": "integration tests exist but target unit-level behavior",
+          "0": "no integration tests are defined"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "End-to-end tests cover only critical user flows through the real browser stack.",
+        "levels": {
+          "4": "E2E is limited to sign-in, add-to-cart, checkout flows in Playwright against a preview",
+          "2": "E2E covers critical flows plus some edge cases better suited to unit level",
+          "0": "E2E is used for internals or edge cases that unit tests should cover"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The structured webapp testing result is returned and validated with blockers documented if any.",
+        "levels": {
+          "4": "seamRecommendation, verificationPlan, and coverageBoundaries are all present and validated",
+          "2": "the result is present but validation is skipped or fields are missing",
+          "0": "no structured result is returned"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "seamRecommendation",
+          "verificationPlan",
+          "coverageBoundaries"
+        ],
+        "note": "the webapp testing artifact must contain all three output fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "unit",
+          "integration",
+          "endToEnd"
+        ],
+        "note": "the verification plan must reference all three test levels"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "useState",
+          "private method",
+          "internal state"
+        ],
+        "note": "negative control: no assertions on component internals such as useState, private methods, or internal state"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the recommendation must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Is a single seam boundary named that separates public behavior from implementation internals?",
+        "levels": {
+          "pass": "one explicit seam boundary is named and justified",
+          "fail": "no seam is identified or it is not clearly bounded"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Are end-to-end tests limited to critical user flows rather than internals or edge cases?",
+        "levels": {
+          "pass": "E2E covers only critical flows through the browser stack",
+          "fail": "E2E covers internals or non-critical edge cases"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Do coverage boundaries exclude implementation-private details such as private methods and internal state?",
+        "levels": {
+          "pass": "private methods, internal state, and non-public DOM are explicitly out of scope",
+          "fail": "private implementation details remain in scope or boundaries are undefined"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

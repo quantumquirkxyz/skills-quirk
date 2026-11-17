@@ -1,0 +1,211 @@
+{
+  "id": "capability-router-paired-v1",
+  "skill": "routing/capability-router",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A React form validation request needs to be routed to the thinnest matching skill from the registry using declared capabilities, compatibility, and explicit selection rules.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "route a React form validation request to the best matching skill; build candidates with match type and score, apply exact-over-keyword-over-neighborhood ranking, select the thinnest skill, and emit a CapabilityRouterArtifact.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the request is to add a React form validation with domain frontend",
+    "the registry contains react, frontend-design, and styling skills with capabilities and tags",
+    "exact and keyword matches always outrank graph neighborhood activation",
+    "if no skill matches with confidence >= 0.7, return a no confident match result instead of forcing a selection",
+    "the thinnest skill that can finish the work is preferred"
+  ],
+  "grounding": [
+    ".agents/skills/routing/capability-router/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/routing/capability-router/SKILL.md#Explicit rules - exact/keyword/graph-neighborhood ranking, thinnest skill preference, confidence floor",
+    ".agents/skills/routing/capability-router/SKILL.md#Steps - parse intent, match capabilities, rank with skill graph, select thinnest, handle conflicts, emit artifact",
+    ".agents/skills/routing/capability-router/SKILL.md#Guardrails - routing boundaries, no confident match rule, conflict handling, stop condition"
+  ],
+  "cites": [
+    "CR-1",
+    "CR-2",
+    "CR-3",
+    "CR-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 270000,
+    "inputTokens": 85000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The task intent and required artifact type are parsed and documented in the routing artifact.",
+        "levels": {
+          "4": "intent and artifact type are documented with domain classification",
+          "2": "intent is partially documented without domain classification",
+          "0": "no intent or artifact type is documented"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The candidate list is built with match type (exact, keyword, graph-neighborhood) and score per candidate.",
+        "levels": {
+          "4": "all candidates have matchType and score populated",
+          "2": "candidates are listed but matchType or score is missing for some",
+          "0": "no candidate list is built"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Exact and keyword matches outrank graph neighborhood activation; the thinnest skill is selected.",
+        "levels": {
+          "4": "ranking follows exact > keyword > graph-neighborhood and the thinnest skill is chosen",
+          "2": "ranking is mostly correct but the thinnest skill is not always chosen",
+          "0": "ranking rules are violated or no selection is made"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "When no skill matches with confidence >= 0.7, a no confident match result is returned instead of forcing a selection.",
+        "levels": {
+          "4": "below-threshold matches return candidates with a no confident match note",
+          "2": "below-threshold matches are noted but a selection is still forced",
+          "0": "a selection is forced regardless of confidence"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The selected skill's contract boundary is respected; no assumption is made that it performs work outside declared capabilities and side effects.",
+        "levels": {
+          "4": "selection stays within the target skill's declared boundary",
+          "2": "selection slightly exceeds the declared boundary",
+          "0": "selection assumes work outside the target skill's capabilities"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Blockers and missing dependencies are surfaced before proceeding; every candidate considered is recorded with the tie-break rule applied.",
+        "levels": {
+          "4": "all candidates and tie-break rules are recorded; blockers are listed",
+          "2": "candidates or tie-break rules are partially recorded",
+          "0": "no candidates, tie-break rules, or blockers are recorded"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The CapabilityRouterArtifact is returned and validated with selectedSkill, rationale, candidates, sideEffects, blockers, risk, and nextConsumer.",
+        "levels": {
+          "4": "all artifact fields are present and validation passes",
+          "2": "artifact is partially present or validation is skipped",
+          "0": "no artifact is returned"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The next consumer is identified or the work is handed off; routing ends at the selected skill's contract boundary.",
+        "levels": {
+          "4": "nextConsumer is named and routing stops at the skill boundary",
+          "2": "nextConsumer is implied but not clearly named",
+          "0": "no consumer is identified and routing does not stop at a boundary"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "selectedSkill",
+          "rationale",
+          "candidates",
+          "sideEffects",
+          "risk",
+          "nextConsumer"
+        ],
+        "note": "the CapabilityRouterArtifact must contain all required fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "exact",
+          "keyword",
+          "graph-neighborhood"
+        ],
+        "note": "all three match types must be represented in the candidate ranking"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "forced selection",
+          "no match forced"
+        ],
+        "note": "negative control: no skill is forced when confidence is below 0.7"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the routing artifact must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Does ranking follow exact > keyword > graph-neighborhood with the thinnest skill selected?",
+        "levels": {
+          "pass": "ranking rules are followed and the thinnest skill is selected",
+          "fail": "ranking rules are violated or the thinnest skill is not selected"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Is the selected skill's contract boundary respected with no assumption of work outside declared capabilities?",
+        "levels": {
+          "pass": "selection stays within the target skill's declared boundary",
+          "fail": "selection assumes work outside declared capabilities"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "When confidence is below 0.7, is a no confident match result returned instead of forcing a selection?",
+        "levels": {
+          "pass": "below-threshold matches return candidates with no confident match note",
+          "fail": "a selection is forced despite low confidence"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

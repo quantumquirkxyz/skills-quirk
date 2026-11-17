@@ -1,0 +1,211 @@
+{
+  "id": "skill-graph-engineering-paired-v1",
+  "skill": "graph/skill-graph-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A skill registry with three skills and dependency declarations needs to be compiled into an executable DAG with acyclicity, reachability, and goal completeness verified.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "build a typed skill graph from the registry, dependency declarations, and goal specification; classify edges, compile a DAG, verify acyclicity and goal completeness, and emit a SkillGraph with a repair plan.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the skill registry contains spec-driven-development, implement, and review-pr with capabilities, inputs, outputs, and dependencies",
+    "dependency declarations classify edges as dependency/workflow/semantic/alternative with state/data/order roles",
+    "the goal specification requires capabilities and accepted outputs",
+    "every edge carries exactly one edgeType and one role; undeclared edges are absent",
+    "the graph must be acyclic before compilation; cycles are violations"
+  ],
+  "grounding": [
+    ".agents/skills/graph/skill-graph-engineering/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/graph/skill-graph-engineering/SKILL.md#Explicit rules - edge typing, acyclicity, reachability, goal completeness, locality-bounded repair",
+    ".agents/skills/graph/skill-graph-engineering/SKILL.md#Workflow - register skills, declare dependencies, build graph, verify properties, compile DAG, emit repair plan",
+    ".agents/skills/graph/skill-graph-engineering/SKILL.md#Guardrails - locality-bounded repair, no cycles, goal completeness check, no implicit edges"
+  ],
+  "cites": [
+    "SGE-1",
+    "SGE-2",
+    "SGE-3",
+    "SGE-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.09,
+    "durationMs": 420000,
+    "inputTokens": 125000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Every edge is typed as dependency, workflow, semantic, or alternative with a role of state, data, or order.",
+        "levels": {
+          "4": "all edges have exactly one edgeType and one role",
+          "2": "most edges are typed but some lack a role or edgeType",
+          "0": "no edge typing is applied"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The graph is verified acyclic before compilation; cycles are violations, not execution hints.",
+        "levels": {
+          "4": "acyclicity is verified and cycles, if any, are violations",
+          "2": "acyclicity is assumed without verification",
+          "0": "no acyclicity check is performed"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Goal completeness requires every requiredCapability to be provided by a reachable node emitting an acceptedOutput.",
+        "levels": {
+          "4": "all required capabilities are covered by reachable nodes emitting accepted outputs",
+          "2": "most capabilities are covered but some are missing",
+          "0": "no goal completeness check is performed"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Repair is locality-bounded; operators touch only the affected subgraph and no operator introduces a cycle.",
+        "levels": {
+          "4": "repair operators are bounded to the affected subgraph and preserve acyclicity",
+          "2": "repair is attempted but not clearly bounded or may introduce cycles",
+          "0": "no repair operators are applied"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The DAG is compiled with topologicalOrder and levels, and dag.executable is true only when all properties hold.",
+        "levels": {
+          "4": "topologicalOrder and levels are produced; executable is true only when acyclic, reachable, and goalComplete",
+          "2": "DAG structure is partial or executable is set without verifying all properties",
+          "0": "no DAG compilation is performed"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Reachability is verified from entry nodes to every goal-required node.",
+        "levels": {
+          "4": "all goal-required nodes are reachable from entry nodes",
+          "2": "most goal-required nodes are reachable but some are not",
+          "0": "no reachability check is performed"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The executability verdict reports acyclic, reachable, goalComplete, executable, and violations.",
+        "levels": {
+          "4": "all five verdict fields are populated accurately",
+          "2": "verdict is present but some fields are missing or inaccurate",
+          "0": "no executability verdict is produced"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The SkillGraph artifact is emitted as JSON and Markdown with provenance and validated.",
+        "levels": {
+          "4": "artifact saved in both formats with provenance and validation passes",
+          "2": "artifact produced but not saved in both formats or validation skipped",
+          "0": "no artifact is emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "nodes",
+          "edges",
+          "dag",
+          "executability"
+        ],
+        "note": "the SkillGraph must contain all required top-level fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "topologicalOrder",
+          "levels",
+          "executable"
+        ],
+        "note": "the DAG must include topological order, levels, and executable flag"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "acyclic",
+          "reachable",
+          "goalComplete",
+          "violations"
+        ],
+        "note": "executability must report acyclic, reachable, goalComplete, and violations"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the skill graph must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Is the graph verified acyclic before compilation, with cycles treated as violations?",
+        "levels": {
+          "pass": "acyclicity is verified and cycles are violations",
+          "fail": "acyclicity is not verified or cycles are treated as execution hints"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is every required capability provided by a reachable node emitting an accepted output?",
+        "levels": {
+          "pass": "all required capabilities are covered",
+          "fail": "one or more required capabilities are uncovered"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Are repair operators locality-bounded and do they preserve acyclicity?",
+        "levels": {
+          "pass": "operators are bounded to the affected subgraph and preserve acyclicity",
+          "fail": "operators are unbounded or may introduce cycles"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "id": "context-pack-paired-v1",
+  "skill": "routing/context-pack",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A code-review task on a billing service PR needs a minimal context pack with ordered reads, freshness validation, provenance tracking, and a next skill named for handoff.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "build a minimal context pack for reviewing the billing service PR; list the smallest authoritative docs ordered durable-first, validate freshness, record provenance and budget, and name the next skill.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the task scope is reviewing a billing service PR and deciding whether to approve, request changes, or route to a specialist",
+    "the smallest authoritative docs include CONTEXT.md, AGENTS.md, code-review SKILL.md, and work-item format doc",
+    "reads are ordered durable repo context first, then task-specific evidence",
+    "freshness validation is mandatory; no doc with unknown staleness is included",
+    "provenance tracking is mandatory; every entry carries source path, freshness-checked-at, and integrity flag"
+  ],
+  "grounding": [
+    ".agents/skills/routing/context-pack/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/routing/context-pack/SKILL.md#Steps - identify task scope and docs, order reads, record freshness/provenance/budget, capture facts for next skill",
+    ".agents/skills/routing/context-pack/SKILL.md#Guardrails - minimal context only, freshness validation mandatory, provenance integrity mandatory, no artifact drafting, canonical source only",
+    ".agents/skills/routing/context-pack/SKILL.md#Artifact - ContextPackArtifact returned as structured output"
+  ],
+  "cites": [
+    "CP-1",
+    "CP-2",
+    "CP-3",
+    "CP-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 240000,
+    "inputTokens": 80000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The task scope is stated and smallestAuthoritativeDocs lists only paths required to decide the next skill.",
+        "levels": {
+          "4": "task scope is stated and docs are minimal and decision-relevant",
+          "2": "task scope is vague or docs include unnecessary files",
+          "0": "no task scope or docs are listed"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Reads are ordered durable-first with budget.readsUsed and budget.readsRemaining recorded and no duplicate reads.",
+        "levels": {
+          "4": "reads are ordered durable-first, budget is recorded, and no reads are duplicated",
+          "2": "ordering is mostly durable-first but budget or duplicates are issues",
+          "0": "no read ordering or budget recording"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Every doc has freshness validated or is explicitly listed as stale; unknown integrity fails closed and is excluded.",
+        "levels": {
+          "4": "all docs are freshness-validated or explicitly stale; unknown integrity is excluded",
+          "2": "most docs are validated but some have unknown staleness",
+          "0": "no freshness validation is performed"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Provenance is recorded for every entry: sourceOfTruth, freshnessCheckedAt, and provenanceIntegrity flag.",
+        "levels": {
+          "4": "every doc carries source, timestamp, and integrity flag",
+          "2": "provenance is partially recorded for some entries",
+          "0": "no provenance tracking is performed"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "nextSkill is named or the pack explicitly states no downstream skill applies.",
+        "levels": {
+          "4": "next skill is named or the absence of a downstream skill is explicitly stated",
+          "2": "next skill is implied but not clearly stated",
+          "0": "no next skill is identified"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "decisions, risks, and blockers are populated; the pack alone is sufficient for handoff without reopening the full repo.",
+        "levels": {
+          "4": "decisions, risks, and blockers are all populated and the pack suffices for handoff",
+          "2": "some decisions, risks, or blockers are missing",
+          "0": "no decisions, risks, or blockers are recorded"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "No over-collection: every additional read beyond the minimum is justified by freshness, provenance, and budget.",
+        "levels": {
+          "4": "context is minimal and every read is justified",
+          "2": "context is mostly minimal with minor over-collection",
+          "0": "context is over-collected with no justification"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The structured context pack result is returned and validated; canonical .agents/skills/ is used as source of truth.",
+        "levels": {
+          "4": "context pack is returned, validated, and uses canonical skills as source of truth",
+          "2": "result is present but validation is skipped or compatibility view is used as source",
+          "0": "no structured result is returned"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "contextPack",
+          "nextSkill",
+          "decisions",
+          "risks",
+          "blockers"
+        ],
+        "note": "the context pack artifact must contain all required top-level fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "taskScope",
+          "smallestAuthoritativeDocs",
+          "provenance",
+          "freshness",
+          "budget"
+        ],
+        "note": "contextPack must contain taskScope, docs, provenance, freshness, and budget"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          ".claude/skills/",
+          "staleness unknown"
+        ],
+        "note": "negative control: no compatibility-view symlinks as source and no unknown-staleness docs included"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the context pack must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is every doc freshness-validated or explicitly stale, with unknown integrity failing closed?",
+        "levels": {
+          "pass": "all docs are validated or explicitly stale; unknown integrity is excluded",
+          "fail": "docs with unknown staleness are included or no freshness check is done"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Is provenance recorded for every entry with sourceOfTruth, freshnessCheckedAt, and provenanceIntegrity?",
+        "levels": {
+          "pass": "every entry carries source, timestamp, and integrity flag",
+          "fail": "provenance is missing or incomplete for one or more entries"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Is context collection minimal with no over-collection beyond the minimum needed?",
+        "levels": {
+          "pass": "context is minimal and every read is justified",
+          "fail": "context is over-collected without justification"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

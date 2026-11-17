@@ -1,0 +1,215 @@
+{
+  "id": "software-factory-paired-v1",
+  "skill": "engineering/software-factory",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A software factory needs a design with a foreman agent between the human and the factory, a separate validator, a different-model critic, MCP wiring, observability views, and convergence rules.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "design a software factory with foreman role, validator role, critic model, MCP connections, observability views, and convergence rules; emit a FactoryDesign artifact as JSON and Markdown.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the foreman agent sits between the human and the factory; code-writing agents never talk directly to the human",
+    "the validator is separate from the code-writer and never reviews its own output",
+    "the critic runs a different model tier than the factory workers",
+    "MCP connections and observability views are declared, not improvised",
+    "convergence rules decide act, check, escalate, or handBack; the factory is simplified when it stops converging"
+  ],
+  "grounding": [
+    ".agents/skills/engineering/software-factory/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/engineering/software-factory/SKILL.md#Rules - foreman between human and factory, separate validator, different-model critic, declared MCP and observability, convergence rules",
+    ".agents/skills/engineering/software-factory/SKILL.md#Workflow - design foreman, configure validator, select critic, wire MCP, define observability, set convergence rules, emit artifact",
+    ".agents/skills/engineering/software-factory/SKILL.md#Guardrails - separate validator and critic from code-writer, decide act/check/escalate/handBack, simplify when not converging, no runtime execution"
+  ],
+  "cites": [
+    "SF-1",
+    "SF-2",
+    "SF-3",
+    "SF-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.10,
+    "durationMs": 480000,
+    "inputTokens": 145000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The foreman role is designed with factoryName, modelTier, maxConcurrency, batchSize, and splitPolicy.",
+        "levels": {
+          "4": "all foreman fields are populated with concrete values",
+          "2": "most foreman fields are populated but some are missing",
+          "0": "no foreman role is designed"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The validator is separate from the code-writer with validatorRole, qualityThreshold, and passCriteria; it never generates code or reviews its own output.",
+        "levels": {
+          "4": "validator is fully configured and separate from code-writing",
+          "2": "validator is partially configured or not clearly separate",
+          "0": "no validator is configured"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The critic model is selected on a different model tier than the factory workers and independently assesses factory behavior.",
+        "levels": {
+          "4": "critic model is on a different tier and performs independent assessment",
+          "2": "critic model is selected but on the same tier or assessment is not independent",
+          "0": "no critic model is selected"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "MCP connections and observability views are declared with serverId, transport, capabilities and viewId, metric, sink respectively.",
+        "levels": {
+          "4": "all MCP connections and observability views are fully declared",
+          "2": "MCP or observability declarations are partial",
+          "0": "no MCP connections or observability views are declared"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Convergence rules are set with ruleId, trigger, and action (act, check, escalate, handBack); the factory is simplified when it stops converging.",
+        "levels": {
+          "4": "all convergence rules are populated with valid actions and simplification is addressed",
+          "2": "convergence rules are partial or simplification is not addressed",
+          "0": "no convergence rules are set"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The code-writing machine is kept away from reviewing itself; validator and critic are separate from code-writers and run different models.",
+        "levels": {
+          "4": "clear separation between code-writing, validation, and criticism with different models",
+          "2": "separation is partial or models overlap",
+          "0": "no separation; code-writer reviews its own output"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "No runtime execution occurs; the skill produces a design artifact only and does not start agents, call MCP servers, or write production code.",
+        "levels": {
+          "4": "only a FactoryDesign artifact is produced; no runtime execution",
+          "2": "artifact is produced but some runtime execution is attempted",
+          "0": "runtime execution occurs"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The FactoryDesign artifact is saved as JSON and Markdown with completion criteria met and blockers documented.",
+        "levels": {
+          "4": "artifact saved in both formats with all completion criteria met",
+          "2": "artifact produced but not saved in both formats or criteria not met",
+          "0": "no artifact is emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "FactoryDesign",
+          "foremanRole",
+          "validatorRole",
+          "criticModel",
+          "mcpConnections",
+          "observabilityViews",
+          "convergenceRules"
+        ],
+        "note": "the FactoryDesign must contain all required sub-fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "act",
+          "check",
+          "escalate",
+          "handBack"
+        ],
+        "note": "convergence rule actions must cover all four action types"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "runtime execution",
+          "start agent",
+          "call MCP server",
+          "production code"
+        ],
+        "note": "negative control: no runtime execution, agent startup, MCP calls, or production code generation"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the factory design must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is the code-writing machine kept away from reviewing itself, with validator and critic separate and running different models?",
+        "levels": {
+          "pass": "validator and critic are separate from code-writers with different models",
+          "fail": "code-writer reviews its own output or models overlap"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Is there no runtime execution; only a FactoryDesign artifact is produced?",
+        "levels": {
+          "pass": "only a design artifact is produced with no runtime execution",
+          "fail": "runtime execution, agent startup, or production code generation occurs"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Are convergence rules populated with valid act/check/escalate/handBack actions?",
+        "levels": {
+          "pass": "convergence rules have ruleId, trigger, and valid action",
+          "fail": "convergence rules are missing or have invalid actions"
+        },
+        "strict": false
+      }
+    }
+  ]
+}
