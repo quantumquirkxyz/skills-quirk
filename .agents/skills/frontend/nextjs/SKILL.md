@@ -17,7 +17,7 @@ outputs:
     description: Next.js seam proposal, route guidance, server/client split guidance, and data-flow diagram.
 sideEffects: []
 dependencies: []
-stopCondition: "Shape Next complete; artifact saved; completion criteria checked."
+stopCondition: "Next route, RSC/streaming, auth/CSRF, cache seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -28,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [app-router-or-equivalent, rsc, streaming, server-actions, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -89,3 +89,10 @@ Explicit server/client seams and route boundaries keep Next.js apps from devolvi
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Modern Target Contract
+
+5. Mark each route/component as server or client, document RSC serialization boundaries, streaming/Suspense/error fallbacks, and the cache/revalidation owner.
+6. Define auth/session and CSRF protections for server actions, route handlers, mutations, redirects, and cache keys; never treat client state as authorization.
+7. Add deterministic route fixtures for loading, empty, error, stale, unauthorized, offline, and mutation-conflict states plus browser/a11y/visual fixtures and performance budgets.
+
+**Completion criterion:** RSC/streaming, auth/CSRF, cache seams, fixtures, browser targets, budgets, and graceful fallbacks are documented.

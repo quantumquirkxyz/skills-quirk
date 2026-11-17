@@ -12,7 +12,7 @@ capabilities:
 outputs: "state architecture with primitive choices, state boundaries, and data flow diagram."
 sideEffects: []
 dependencies: []
-stopCondition: "State management design complete; artifact saved; completion criteria checked."
+stopCondition: "State ownership, cache/sync recovery, deterministic fixtures, fallbacks, targets, budgets, and stop conditions are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -23,7 +23,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [server-state-cache, optimistic-updates, offline-sync, external-stores, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -118,3 +118,9 @@ Use this skill when designing state architecture for modern frontend application
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+### 6. Define resilience and verification
+- Separate server cache, client state, URL state, persistence, and synchronization ownership; document cache keys, freshness, invalidation, hydration, and privacy boundaries.
+- Specify deterministic fixtures for optimistic success/rollback, auth expiry/CSRF rejection, offline queueing, retries, duplicate delivery, migrations, and concurrent sync conflicts.
+- Include browser/device targets, visual/a11y states, performance budgets, and graceful fallback when storage, workers, network, or streaming APIs are unavailable.
+
+**Completion criterion:** every state owner has a fixture, recovery path, cache rule, and stop condition.

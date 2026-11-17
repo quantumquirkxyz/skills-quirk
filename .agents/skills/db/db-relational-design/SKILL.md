@@ -98,3 +98,12 @@ Design a **relational database schema** — entities, relations, keys, indexes, 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P1 Operational Audit Addendum
+
+- Contract: define schema, ownership, compatibility window, tenant scope, idempotency key, and correlation ID for every operation.
+- Safety: require expand/compatibility before destructive change, resumable checkpoints, bounded batches, and an explicit schema rollback, data repair, or forward-fix path with owner and stop condition.
+- Security: define ACL, tenant isolation, least privilege, PII classification/redaction/retention, and negative cases for cross-tenant reads, unauthorized writes, malformed input, stale versions, and partial failure.
+- Reliability: include timeout, duplicate, crash/restart, replay, lock/contention, replica lag, and dependency outage fixtures; specify reconciliation evidence and when rollback is unsafe.
+- SLOs and evidence: state query latency, error rate, throughput, and cost SLOs; capture a baseline with schema digest, row/cardinality samples, query plans, lock/replication metrics, and backup/restore evidence.
+- Provenance and completion: record engine/version, migration IDs, fixture IDs, evidence timestamps, assumptions, and residual unknowns; validate positive and negative cases before completion.

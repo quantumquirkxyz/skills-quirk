@@ -17,7 +17,7 @@ outputs:
     description: React seam proposal, component guidance, state boundary guidance, and test hooks.
 sideEffects: []
 dependencies: []
-stopCondition: "Design React component structure and state seams complete; artifact saved; completion criteria checked."
+stopCondition: "React ownership seams, fixtures, fallbacks, compatibility targets, a11y coverage, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -28,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [concurrent-rendering, suspense, streaming, rsc-boundaries, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -86,3 +86,10 @@ A clean component seam keeps the UI refactor-friendly and testable. Without it, 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Modern Target Contract
+
+5. Classify server, client, cache, and external-store ownership; mark hydration, serialization, Suspense/streaming, transition, and error boundaries.
+6. Specify auth/CSRF-sensitive actions and privacy-preserving state exposure; define graceful fallback for unavailable browser APIs, JS, network, or reduced motion.
+7. Provide deterministic fixtures for each state and interaction, including visual/a11y assertions, browser targets, and performance budgets.
+
+**Completion criterion:** ownership seams, fallback states, deterministic fixtures, browser/a11y coverage, budgets, and stop conditions are explicit.

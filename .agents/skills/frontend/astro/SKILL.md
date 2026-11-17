@@ -17,7 +17,7 @@ outputs:
     description: Astro project design, island strategy, rendering mode decisions, and routing plan.
 sideEffects: []
 dependencies: []
-stopCondition: "Astro design complete; artifact saved; completion criteria checked."
+stopCondition: "Astro design, compatibility targets, seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -28,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [islands, ssr-ssg-hybrid, streaming, view-transitions, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -124,3 +124,9 @@ Use this skill when designing or reviewing Astro projects. Record the execution 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Modern Target Contract
+
+- Declare target rendering modes and treat framework/provider versions as project inputs, never as facts.
+- Record server/client ownership, cache key, revalidation trigger, auth/CSRF boundary, and fallback when JavaScript, streaming, or view transitions are unavailable.
+- Define deterministic content and route fixtures, browser matrix, visual/a11y states, and performance budgets.
+- Stop when any required route seam, fixture, fallback, or budget is unknown; report the gap rather than guessing.

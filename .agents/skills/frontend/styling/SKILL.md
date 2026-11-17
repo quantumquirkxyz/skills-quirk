@@ -17,7 +17,7 @@ outputs:
     description: Styling architecture, token definitions, component variant strategy, and theme plan.
 sideEffects: []
 dependencies: []
-stopCondition: "Styling design complete; artifact saved; completion criteria checked."
+stopCondition: "Styling compatibility, seams, fallback behavior, fixture matrix, accessibility, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -28,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [modern-css, design-tokens, forced-colors, reduced-motion, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -125,3 +125,9 @@ Styling is the visual interface contract. Making token, variant, and theme decis
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+### 6. Verify delivery and fallback
+- Declare CSS/browser compatibility targets without inventing versions; identify graceful fallback for unsupported selectors, nesting, color functions, container queries, fonts, and motion APIs.
+- Define server/client ownership for critical styles, cache/invalidation for generated assets, privacy-sensitive themes, and a performance budget for CSS, fonts, and render-blocking resources.
+- Create deterministic fixtures for themes, breakpoints, RTL, forced colors, reduced motion, zoom, keyboard focus, contrast, and visual diffs.
+
+**Completion criterion:** compatibility targets, seams, fallback behavior, fixture matrix, budgets, and stop conditions are part of the styling artifact.

@@ -9,10 +9,15 @@ capabilities:
   - apply frontend testing methods within explicit frontend boundaries
   - analyze frontend testing (vitest, testing library, playwright, visual testing, storybook) with assumptions, constraints, and failure modes
   - produce and validate a frontend artifact with evidence, decisions, and next steps
-outputs: "test strategy with test tiers, tool configuration, coverage targets, and execution plan."
+inputs:
+  - type: object
+    description: Component library, user flows, server/client/cache seams, auth/CSRF rules, browser/device targets, CI environment, deterministic data, and quality requirements.
+outputs:
+  - type: object
+    description: Test strategy with unit/integration/E2E/visual/a11y tiers, browser matrix, deterministic fixtures, budgets, coverage targets, and stop conditions.
 sideEffects: []
 dependencies: []
-stopCondition: "Frontend testing design complete; artifact saved; completion criteria checked."
+stopCondition: "Test tiers, deterministic fixtures, browser matrix, a11y/visual checks, budgets, and stop conditions are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -23,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [vitest-or-jest, testing-library, playwright-or-equivalent, visual-regression, accessibility-automation]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -120,3 +125,9 @@ Use this skill when designing the test strategy for a frontend application — u
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+### 6. Verify modern seams
+- Test server/client boundaries, RSC or streaming fallbacks where applicable, cache freshness/invalidation, auth expiry, CSRF rejection, offline/sync conflicts, and privacy-sensitive output.
+- Use deterministic clocks, seeds, network handlers, feature flags, and fixture snapshots; record when an external service is intentionally not exercised.
+- Define browser/device matrix, visual and accessibility fixture states, performance budgets, retry policy, and a stop condition for flaky, inaccessible, nondeterministic, or budget-breaking results.
+
+**Completion criterion:** every declared seam has a deterministic fixture and an executable pass/fail or explicit unknown outcome.

@@ -123,3 +123,12 @@ Use this skill when designing, reviewing, or refactoring serverless systems — 
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P1 Operational Audit Addendum
+
+- Contract: define caller-visible request/response or command contract, ownership, timeout, retry, cancellation, and compatibility rules; include a versioned schema or event envelope with id, type, version, occurredAt, tenantId, traceId, and idempotencyKey where applicable.
+- Reliability: make retries and side effects idempotent, and specify a crash/replay fixture proving no duplicate effect after timeout, restart, or redelivery.
+- Security: define ACL checks, tenant isolation, least privilege, PII classification/redaction, and negative cases for cross-tenant access, missing claims, malformed envelopes, replayed keys, and unauthorized admin paths.
+- SLOs and evidence: state latency, error, throughput, and cost SLOs; capture a pre-change baseline of metrics, trace, schema digest, load assumptions, and post-change evidence.
+- Provenance: record source requirements, assumptions, versions, fixture IDs, evidence timestamps, and residual unknowns; do not claim runtime behavior from design-only evidence.
+- Completion gate: cover normal, timeout, crash/restart, duplicate, overload, dead-letter, authorization, PII, and dependency-outage cases with rollback or forward-fix ownership.

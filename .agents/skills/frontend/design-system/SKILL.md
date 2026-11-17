@@ -11,16 +11,13 @@ capabilities:
   - produce and validate a frontend artifact with evidence, decisions, and next steps
 inputs:
   - type: object
-    description: UI requirements, component inventory, brand context, and accessibility constraints.
-inputs:
-  - type: object
-    description: UI requirements, component inventory, brand context, and accessibility constraints.
+    description: UI requirements, component inventory, target platforms, brand context, accessibility/privacy constraints, deterministic fixtures, and performance budgets.
 outputs:
   - type: object
-    description: Token definitions, component guidance, and usage rules.
+    description: Token definitions, component contracts, usage rules, browser/accessibility fixture matrix, and performance/privacy guardrails.
 sideEffects: []
 dependencies: []
-stopCondition: "Define and evolve reusable UI tokens, components, and usage rules as a coherent system complete; artifact saved; completion criteria checked."
+stopCondition: "Tokens, component contracts, compatibility targets, fixtures, accessibility/privacy guardrails, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -31,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [design-tokens, web-components-or-react, browser-matrix, a11y, privacy-manifest]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -89,3 +86,9 @@ A design system prevents drift by making the shared token and component decision
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## Modern Target Contract
+
+- Declare browser, input-modality, reduced-motion, forced-colors, dark-mode, localization, and host targets without inventing versions.
+- Specify server/client ownership for token delivery, cache boundaries for remote content, and graceful fallback for unsupported CSS or interaction APIs.
+- Create deterministic component fixtures for every state, breakpoint/theme, keyboard flow, accessible name, contrast check, and privacy-sensitive rendering.
+- Set budgets for CSS, fonts, images, rendering, and animation; stop on an accessibility invariant or budget violation.

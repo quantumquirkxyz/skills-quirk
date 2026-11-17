@@ -17,7 +17,7 @@ outputs:
     description: Remix route design, loader/action plan, data flow, and progressive enhancement strategy.
 sideEffects: []
 dependencies: []
-stopCondition: "Remix design complete; artifact saved; completion criteria checked."
+stopCondition: "Remix routes, loaders/actions, streaming, auth/CSRF, fixtures, fallbacks, targets, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -28,7 +28,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: []
+compatibility: [nested-routes, loaders-actions, streaming, progressive-enhancement, browser-fallbacks]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -124,3 +124,9 @@ Use this skill when designing or reviewing Remix applications. Record the execut
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+### 6. Verify seams and fixtures
+- Document server/client/cache ownership, streaming/deferred fallbacks, auth/session and CSRF checks, and cache invalidation after actions.
+- Create deterministic loader/action fixtures for loading, empty, error, unauthorized, offline, conflict, and no-JS form paths; include visual/a11y states and browser matrix.
+- Assign performance budgets and a stop condition for stale data, duplicate mutation, accessibility failure, or unsupported browser behavior.
+
+**Completion criterion:** route contract, seams, security checks, fixtures, fallbacks, targets, budgets, and stop conditions are represented in the output.

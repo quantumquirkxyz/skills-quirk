@@ -18,7 +18,7 @@ outputs:
     description: Frontend seam proposal, interaction model, visual system guidance, and motion boundaries.
 sideEffects: []
 dependencies: []
-stopCondition: "Shape frontend work into a clear visual system, interaction model, and implementation seam complete; artifact saved; completion criteria checked."
+stopCondition: "Visual system, interaction seams, fallback states, fixtures, compatibility targets, and budgets are explicit; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
@@ -29,7 +29,7 @@ evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["frontend"]
-compatibility: [code-review, interaction-design, accessibility-design]
+compatibility: [code-review, interaction-design, accessibility-design, browser-matrix, visual-fixtures, privacy-by-design]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -87,3 +87,11 @@ Frontend design is the interface contract. Making it explicit prevents one-off s
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## Modern Target Contract
+
+5. Map server/client/cache seams, auth and CSRF-sensitive states, and graceful fallbacks for no-JS, slow data, reduced motion, unsupported APIs, and narrow viewports.
+6. Define deterministic fixtures for loading, empty, error, success, permission-denied, offline, stale, and conflict states, including visual and accessibility assertions.
+7. Attach browser/device targets and performance budgets to each critical interaction; unspecified versions remain compatibility targets to verify, not facts.
+
+**Completion criterion:** seams, fallback states, deterministic fixtures, browser/a11y coverage, budgets, and stop conditions are explicit.
