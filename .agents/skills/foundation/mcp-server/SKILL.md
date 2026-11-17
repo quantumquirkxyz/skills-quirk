@@ -146,6 +146,14 @@ Configure the MCP server transport based on deployment context:
 
 Write the server configuration to disk and validate the transport connection. Default to `stdio` when transport is unspecified. For `sse`, ensure the endpoint is reachable and returns valid MCP handshake responses.
 
+## P0/P1 Security and Authority Contract
+
+Expose a capability matrix per tool, resource, and prompt: caller identity, allowed operation, input/output schema, side effect, approval requirement, quota, lease, and retention. Tool authority is least-privilege and non-transitive; approval propagation is bound to the named tool, arguments, origin, path scope, quota, and expiry.
+
+For SSE, require authenticated origin allow-listing, authenticated sessions, replay-resistant request IDs, TLS at the deployment boundary, and explicit CSRF protection. For stdio, bind to the owning process and reject unexpected peers. Contain resource paths beneath the canonical registry root, reject traversal, symlinks escaping the root, ambiguous encodings, and mutable-state URIs. Never expose secrets or environment values.
+
+Canonical states are `discovered`, `authenticated`, `authorized`, `running`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, and `expired`. Enforce quotas for requests, tokens, bytes, concurrency, wall time, and retries; use leases and a kill switch that revokes sessions and prevents new calls. Crash/resume uses idempotency keys and reports outcome-unknown rather than replaying uncertain mutations. Store redacted bounded audit records with retention/deletion deadlines, source digests, and replay tests for auth failure, origin failure, traversal, duplicate request, timeout, crash, lease expiry, and kill switch.
+
 ## Completion Criteria
 
 - all discovered skills are mapped to MCP tools, resources, and prompts

@@ -9,11 +9,35 @@ capabilities:
   - apply subagent swarm methods within explicit foundation boundaries
   - analyze coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording with assumptions, constraints, and failure modes
   - produce and validate a foundation artifact with evidence, decisions, and next steps
-inputs: ""
-outputs: "swarm plan, subagent evidence, merged output, conflict resolution"
-sideEffects: []
-dependencies: []
-stopCondition: "All roles completed with valid evidence, conflicts resolved, and merged output validated."
+inputs:
+  - type: object
+    name: SwarmInputs
+    properties:
+      mode: { type: string, enum: [parallel, sequential] }
+      roles: { type: array, items: RoleSpec }
+      taskSpec: { type: TaskSpec }
+      handoffContract: { type: HandoffContract }
+      effortBudget: { type: EffortBudget }
+      authorityPolicy: { type: AuthorityPolicy }
+    required: [mode, roles, taskSpec, handoffContract, effortBudget, authorityPolicy]
+outputs:
+  - type: object
+    name: SubagentSwarmArtifact
+    properties:
+      swarmPlan: { type: object }
+      roleResults: { type: array }
+      evidence: { type: array }
+      conflicts: { type: array }
+      mergedOutput: { type: object }
+      validation: { type: object }
+      status: { type: string, enum: [completed, blocked, needs-approval, validation-failed, budget-exceeded] }
+    required: [swarmPlan, roleResults, evidence, conflicts, mergedOutput, validation, status]
+sideEffects:
+  - "write-files (orchestrator-owned swarm artifact only)"
+  - "write-temp-file (bounded role-result references, when needed)"
+dependencies:
+  - verify-delegation
+stopCondition: "All roles completed with valid evidence, conflicts resolved, and merged output validated; otherwise return a typed non-completed status."
 risk: "medium"
 trustTier: "3"
 maxIterations: "3"
@@ -25,8 +49,8 @@ fixturesPath: ".agents/skills/platform/fixtures/behavioral/subagent-swarm.json"
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []
-approvalRequired: "true"
-approvalFor: []
+approvalRequired: true
+approvalFor: ["write-files"]
 clauses:
   - id: SUBAGENT-SWARM-1
     text: "Never merge role outputs without validating the evidence, and stop instead of fabricating completion when evidence is missing."
@@ -42,12 +66,20 @@ reloadPolicy: on-trigger
 
 ## Contract
 
-- Input: swarm mode, roles, task spec, handoff contract
-- Output: swarm plan, subagent evidence, merged output, conflict resolution
+- Input: typed `mode`, `roles`, `taskSpec`, `handoffContract`, `effortBudget`, and `authorityPolicy`.
+- Output: typed `SubagentSwarmArtifact` with `swarmPlan`, `roleResults`, `evidence`, `conflicts`, `mergedOutput`, `validation`, and `status`.
 - Scope: does not replace individual skills; orchestrates them with roles
 - Rule: does not replace individual skills; orchestrates them with roles
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Critical Limits
+
+- `roles` is bounded by the declared `effortBudget`; never add workers or tool calls beyond `maxSubagents` or `maxToolCalls`.
+- Each role stays inside its declared boundary. Boundary changes require an explicit `DelegationBrief` handoff and an updated `authorityPolicy`.
+- One named `mergeOwner` owns final integration, even in parallel mode; workers do not merge one another's outputs.
+- Verify every worker claim independently against its artifact, success criteria, and tools through `verify-delegation` before accepting or merging it.
+- A missing required artifact or verification result yields `validation-failed` or `blocked`, never fabricated completion.
 
 ## Provenance
 
@@ -66,6 +98,8 @@ reloadPolicy: on-trigger
 Emit `SubagentSwarmArtifact` as both:
 - JSON: `.agents/skills/platform/artifacts/subagent-swarm/{identifier}.json`
 - Markdown view: same filename with `.md` extension
+
+`status` is one of: `completed`, `blocked`, `needs-approval`, `validation-failed`, or `budget-exceeded`.
 
 
 # 
@@ -91,6 +125,7 @@ Emit `SubagentSwarmArtifact` as both:
 - Rule: Do not let a subagent operate outside its declared role boundary without an explicit handoff.
 - Rule: If outputs conflict, preserve both claims and the evidence used to choose between them.
 - Rule: Stop the swarm when validation evidence is missing for a required role instead of fabricating completion.
+- Rule: Workers are read-only by default; delegated mutation is an effect of the worker and its approved brief, not authority owned by this orchestrator.
 
 ## Contracts Per Role
 
@@ -132,6 +167,19 @@ Every spawned role receives a `DelegationBrief` — see `.agents/skills/platform
 - Rule: decompose by the context each role needs, never by splitting one artifact across phases — that is the documented telephone-game failure.
 - Rule: workers are read-only by default. A role that must mutate the repository sets `readOnly: false` in its brief, and only the orchestrator may opt in, with the write scope named in `boundaries`.
 - Rule: verify a worker's claim with the artifact, the success criteria, and the tools — never with the worker's implementation narrative (see `verify-delegation`).
+
+## P0/P1 Controls
+
+| Role/tool | Authority | Forbidden | Proof |
+|---|---|---|---|
+| Orchestrator | Schedule, lease, merge after verification | Implement or self-approve | plan digest, merge owner |
+| Worker | Declared task, tools, and paths | Scope expansion or subdelegation | signed typed handoff |
+| Reviewer/tester | Independent check and replay | Repair or merge | verdict and replay tests |
+| Approver | Named mutation until expiry | Broad or transitive approval | scoped approval token |
+
+Each `DelegationBrief` carries `schemaVersion`, `runId`, `parentId`, authority scope, source SHA-256 digests, quotas, lease expiry, redaction/retention policy, kill-switch reference, and signature. Reject stale, unsigned, invalid, or digest-mismatched handoffs. Approval propagation is explicit per operation and path.
+
+Use quotas for subagents, tool calls, tokens, cost, wall time, concurrency, bytes, and retries. Canonical states are `planned`, `leased`, `running`, `awaiting-approval`, `verifying`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, and `expired`. A kill switch revokes leases and prevents effects. Crash/resume starts at the last committed checkpoint and reports `outcome-unknown` rather than replaying uncertain mutations. Replay duplicate delivery, timeout, crash before/after commit, lease expiry, redaction, digest mismatch, and kill switch paths.
 
 ## Completion
 

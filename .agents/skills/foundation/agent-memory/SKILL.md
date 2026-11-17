@@ -46,8 +46,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/agent-memory.json
 diataxis: "how-to"
 tags: ["memory", "context-engineering", "continuity"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: [write-files]
 ---
 
 ## Contract
@@ -68,6 +68,19 @@ approvalFor: []
 2. **Recall.** At session start, read NOW.md and MEMORY.md into the context pack (see `context-pack`) with their provenance lines.
 3. **Reconcile.** When a fact changes, update the entry and its provenance; never leave contradictory entries. Mark stale entries and remove them at the next reconciliation.
 4. **Promote.** When a memory entry becomes a decision, promote it to an ADR (see `docs-adrs`) and replace the memory entry with a reference.
+
+## P0/P1 Memory Controls
+
+| Role/tool | Allowed | Forbidden |
+|---|---|---|
+| Session agent | Propose thread facts | Persist unverified secrets |
+| Memory writer | Append/reconcile declared files | Modify artifacts or source |
+| Verifier | Check provenance and digests | Rewrite entries |
+| Approver | Authorize named external mutation | Grant transitive authority |
+
+Memory writes are limited to declared `NOW.md`/`MEMORY.md`; they cannot mutate specs, tickets, PRs, source, or external systems. Session agents may propose, memory writers append/reconcile, verifiers check provenance, and human approvers authorize only non-reversible or externally visible mutations. Approval never propagates beyond the named path and operation.
+
+Each entry is a typed signed record with `schemaVersion`, `runId`, source/artifact SHA-256 digests, author, expiry, confidence, retention deadline, and redaction status. Canonical states are `proposed`, `recorded`, `recalled`, `reconciled`, `stale`, `blocked`, `rejected`, and `deleted`. Use bounded quotas, a writer lease, an idempotency key, and a kill switch. Crash/resume reopens the last committed revision; outcome-unknown writes are not replayed silently. Replay duplicate append, stale revision, crash before/after commit, lease expiry, redaction, digest mismatch, and retention deletion.
 
 ## Provenance
 
@@ -100,7 +113,7 @@ Compaction and resets destroy working state unless something outside the window 
 - NOW.md reflects the exact working thread; nothing in flight is memory-only.
 - MEMORY.md entries are durable, provenance-carrying, and non-contradictory.
 - Decisions live in ADRs; memory holds references, not copies.
-- No approval is required for memory writes: NOW.md and MEMORY.md are repo-local Markdown files, reversible via git.
+- No approval is required for declared repo-local memory writes; broader or externally visible mutations are approval-gated.
 
 ## Failure modes
 

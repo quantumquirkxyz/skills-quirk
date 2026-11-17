@@ -59,6 +59,14 @@ Repository audit chains may use `code-review` as the producer and hand its `Repo
 - Scope: the chain runs only the declared skills in the declared order. An edge that fails its compatibility check stops the chain before execution.
 - Rule: every handoff is an artifact handoff (see `artifact-handoff`). A skill that "just knows" what the previous skill produced is a broken edge.
 
+## P0/P1 Composition Contract
+
+Every edge is a signed typed handoff containing producer/consumer schema versions, source SHA-256 digests, artifact digest, authority scope, approval state, quota, lease expiry, retention/redaction policy, and signature. The capability matrix records each skill's readable inputs, writable outputs, tools, side effects, and verifier. Authority and approval do not propagate across an edge unless explicitly named.
+
+Canonical states are `planned`, `leased`, `running`, `awaiting-approval`, `verifying`, `succeeded`, `failed`, `blocked`, `cancelled`, `crashed`, `resumable`, `partial`, and `budget-exceeded`. Enforce chain quotas for iterations, wall time, cost, tokens, calls, concurrency, bytes, and retries. A kill switch revokes leases and stops downstream edges. Crash/resume begins at the last committed artifact and uses idempotency keys; outcome-unknown effects are not replayed silently.
+
+Replay tests cover schema mismatch, source-digest mismatch, duplicate handoff, timeout, crash before/after commit, lease expiry, redaction/retention, and kill switch. Keep only bounded redacted evidence and declare deletion deadlines; independent verification is required before a downstream consumer accepts an artifact.
+
 ## Procedure
 
 1. **Declare the chain.** List the skills in order and, for each edge, the artifact the producer emits and the input the consumer declares. Use `analyze-artifacts` to check spec/plan/ticket agreement across the chain.

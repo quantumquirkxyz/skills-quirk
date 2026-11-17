@@ -112,6 +112,14 @@ Delegation fails at the seam, not in the worker. A brief without boundaries dupl
 - Rule: do not spawn a debate loop of same-role reviewers to break a tie; spawn one reviewer with a different role and a clean context.
 - Rule: stop and report `blocked` when a required tool, source, or suite is unavailable instead of inferring the result.
 
+## P0/P1 Verification Contract
+
+The verifier receives only the signed typed brief, artifact, criteria, source SHA-256 digests, and read-only tools. The envelope includes `schemaVersion`, `runId`, `parentId`, quota/lease, redaction and retention policy, approval scope, issue/expiry times, and signature. Reject stale, unsigned, digest-mismatched, or out-of-scope inputs.
+
+Canonical verdict states are `pass`, `fail`, `blocked`, `crashed`, `resumable`, and `outcome-unknown`; `pass` requires every criterion, negative test, replay fixture, and applicable full suite. Quotas cover tool calls, tokens, wall time, cost, output bytes, and retries. A kill switch cancels verification without converting partial evidence to pass. Crash recovery resumes from a checkpoint and never repeats an unknown mutation.
+
+Replay duplicate delivery, timeout, crash before/after commit, lease expiry, approval expiry, redaction completeness, and source-digest mismatch. Return only a bounded signed verdict and artifact reference; retain redacted evidence for a declared period and never persist worker transcripts or secrets.
+
 ## Completion criteria
 
 - every declared criterion has evidence, not an assertion
