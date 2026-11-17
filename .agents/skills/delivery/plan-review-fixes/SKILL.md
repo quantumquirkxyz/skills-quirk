@@ -9,7 +9,19 @@ capabilities:
   - apply plan review fixes methods within explicit delivery boundaries
   - analyze convert review-pr findings on a github pr into a concrete remediation plan and post that plan as pr comments. use after with assumptions, constraints, and failure modes
   - produce and validate a delivery artifact with evidence, decisions, and next steps
-outputs: "review artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+inputs:
+  - operationId or idempotencyKey (optional for backward compatibility)
+  - fixedPoint (optional; review command or commit being planned)
+  - PR and review findings context
+outputs:
+  - type: object
+    name: PlanReviewFixesArtifact
+    properties:
+      status: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      checkpoint: { type: object }
+      operationId: { type: string }
+      recoveryStatus: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      reconciliationEvidence: { type: array, items: { type: object } }
 sideEffects:
   - post-pr-comment
 
@@ -36,6 +48,10 @@ approvalFor: ["post-pr-comment"]
 - Output: a structured artifact or guidance aligned to the skill's declared outputs.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: follow the skill's completion criteria and stop condition exactly.
+- Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; preserve supplied values in `PlanReviewFixesArtifact`.
+- Side effect ownership: this skill owns one review-plan comment publication; posting it requires explicit approval. It does not own source edits, review dismissal, merge, issue closure, or implementation.
+- Recovery invariant: checkpoint after finding normalization and before/after comment publication. If publication is unknown, reconcile existing PR comments by the fixed heading, fixed point, operation key, and plan digest; adopt or supersede the matching comment, never post a duplicate plan.
+- Retry invariant: reconcile remote comments and verify `fixedPoint` before every retry. Changed review state returns `stale-input`; missing approval returns `needs-approval`; malformed findings or failed validation returns `validation-failed`; replaced work returns `superseded`.
 
 ## Provenance
 
@@ -66,7 +82,7 @@ The plan still needs the familiar checklist language that keeps fixes executable
 
 - Severity
 - Scope guard
-When a PR already has linked-issue metadata, keep the plan aligned with the canonical work-item format in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md): preserve the linked issue's labels and milestone as the source of truth, and do not invent new tracker metadata in the comment.
+When a PR already has linked-issue metadata, keep the plan aligned with the canonical work-item format in [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md): preserve the linked issue's labels and milestone as the source of truth, and do not invent new tracker metadata in the comment.
 If a finding is already partially fixed in the current branch, keep it only if the remaining gap is still actionable and testable.
 
 ## Workflow

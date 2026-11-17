@@ -252,7 +252,7 @@ A change can pass one axis and fail the other:
 Reporting them separately stops one axis from masking the other.
 
 When reviewing a spec or ADR, keep the spec axis aligned to `CONTEXT.md` and the repo's ADRs so findings use the project's canonical architecture and domain vocabulary.
-When the review is attached to a tracker-backed PR, treat the linked issue metadata as part of the review surface: the published review should preserve traceability to the issue labels and milestone, following [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) for any metadata references you include in the PR review body.
+When the review is attached to a tracker-backed PR, treat the linked issue metadata as part of the review surface: the published review should preserve traceability to the issue labels and milestone, following [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) for any metadata references you include in the PR review body.
 
 ## Review quality bar
 
@@ -263,3 +263,11 @@ When the review is attached to a tracker-backed PR, treat the linked issue metad
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- Record `operationId`/`idempotencyKey`, `fixedPoint`, scope, and a common snapshot before review; preserve them in the review artifact.
+- `dryRun` is the default for planning findings. Posting comments or changing labels requires separate approval from read-only review.
+- Capture exact diff, log, and validation commands with exit status and output digests as command evidence.
+- On crash or unknown remote comment result, reconcile by PR, fixed point, operation key, and finding identity before retrying; adopt matching comments and never duplicate them.
+- Terminal statuses are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, and `superseded`; findings outside scope remain deferred rather than silently expanded.

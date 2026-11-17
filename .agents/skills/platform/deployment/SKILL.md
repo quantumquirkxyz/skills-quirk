@@ -78,3 +78,12 @@ Use this skill when the project needs a clear release path. It should define how
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Safety Controls
+
+- Build and promote immutable, signed artifacts by digest. Require verifiable artifact attestation, SBOM, and provenance before deployment; record their references in `DeploymentArtifact`.
+- Define protected environments and approval boundaries: development may be automatic, while staging/production promotion requires named approvers, separation of duties, and an auditable decision.
+- Isolate fork and untrusted builds from deployment credentials and production networks; only trusted, attested outputs may enter promotion.
+- Select canary, blue/green, or rolling rollout with measurable promotion, abort, and rollback thresholds. Verify rollback completion and service recovery, not merely command success.
+- Include changed-risk coverage for code, dependencies, manifests, migrations, and policy changes; require additional validation for high-risk changes.
+- Handle flaky checks and timeouts as unknown/failed evidence with bounded retries, owner, expiry, and explicit follow-up; never treat silence as health.

@@ -7,23 +7,35 @@ capabilities:
   - consume repository audit findings
   - trace project viability decisions across inputs, constraints, and failure paths
   - validate project outcomes with evidence, assumptions, and explicit next steps
-outputs: "one Markdown report under `.reports/` and one JSON artifact under `.reports/`, both with layered findings and a prompt for the user."
-sideEffects: ""
+outputs:
+  - type: object
+    name: ProjectViabilityArtifact
+    properties:
+      assessment: { type: object }
+      score: { type: object }
+      evidence: { type: array, items: { type: object } }
+      confidence: { type: string }
+      risks: { type: array, items: { type: object } }
+      recommendations: { type: array, items: { type: object } }
+      reportPaths: { type: array, items: { type: string } }
+    required: [assessment, score, evidence, confidence, risks, recommendations, reportPaths]
+sideEffects:
+  - write-files
 dependencies: []
-stopCondition: "Pre-flight checks resolved; automated baseline completed; three parallel sub-agents executed; quality gate passed; Viability Assessment saved to .reports/; JSON structured result returned; completion criteria verified; user asked how to proceed."
+stopCondition: "Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "project-viability"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ""
 diataxis: "how-to"
 tags: ["project"]
 compatibility: [code-review, improve-codebase-architecture]
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: true
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -62,7 +74,7 @@ approvalFor: []
 
 ## Artifact
 
-Return `ProjectViabilityArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
+Return `ProjectViabilityArtifact` as structured output in the current response, including the generated Markdown and JSON report paths. Writes are limited to `.reports/`; do not implement changes or alter project source, configuration, or documentation.
 
 ## Repository evidence
 

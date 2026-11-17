@@ -11,6 +11,12 @@ capabilities:
   - emit a machine-readable worktree manifest
   - trace worktree swarm decisions across inputs, constraints, and failure paths
   - validate routing outcomes with evidence, assumptions, and explicit next steps
+inputs:
+  - issueUrls: non-empty HTTPS GitHub issue URLs
+  - baseRevision: explicit immutable base branch or revision
+  - operationId or idempotencyKey: optional caller-supplied retry identity
+  - dryRun: optional boolean; when true no resources are created
+  - scope: allowed issue, branch, path, and agent limits
 outputs:
   - type: object
     name: IssueCopyManifest
@@ -20,7 +26,11 @@ outputs:
       created: { type: array }
       skipped: { type: array }
       error: { type: string }
-    required: [ok, created, skipped]
+      operationId: { type: string }
+      checkpoint: { type: object }
+      reconciliationEvidence: { type: array }
+      status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, rolled-back] }
+    required: [ok, created, skipped, status]
 sideEffects:
   - create-git-worktrees
   - create-git-branches
@@ -41,6 +51,15 @@ approvalFor: [create-git-worktrees, create-git-branches, launch-local-agents]
 reloadPolicy: on-trigger
 ---
 
+## Normative Rules
+
+- Validate `baseRevision`, `scope`, and issue ownership before any mutation; reject scope creep and ambiguous branch/path targets.
+- `dryRun: true` performs validation and emits a plan/checkpoint only; it never creates branches, worktrees, or agents.
+- Require separate approval for each side effect in `approvalFor`; approval to plan does not authorize creation or launch.
+- Persist a checkpoint before and after each resource creation, keyed by `operationId` or `idempotencyKey` plus issue URL. Crash/resume must adopt only resources matching that key and ownership token.
+- If a creation result is unknown, reconcile local git/worktree/process state before retrying. Never duplicate a branch, worktree, or agent.
+- On partial failure, compensate only resources created by this operation and report rollback evidence. Terminal states are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, or `rolled-back`.
+
 ## Contract
 
 - **Use only when explicitly requested.** Do not infer this skill from a normal issue, implementation, or multi-agent request.
@@ -49,6 +68,7 @@ reloadPolicy: on-trigger
 - **Dependencies:** the current directory must be a GitHub checkout with `git`, authenticated `gh`, and the local `opencode` CLI available.
 - **Side effects:** creates issue branches and worktrees and launches detached local agents. It never pushes, opens or merges pull requests, closes issues, or changes the primary checkout's branch.
 - **Risk:** medium. The validation phase must finish before any resource is created; a creation failure rolls back only resources created in this invocation.
+- **Recovery:** persist a common snapshot containing `operationId`, `baseRevision`, scope, intended resources, checkpoints, and command evidence; resume from the first unconfirmed effect after crash.
 - **Boundary:** this skill prepares and delegates work. It does not implement issues itself and does not perform publication or merge operations.
 - **Evolution boundary:** use `parallel-issue-fleet` instead when the input is a `TicketArtifact` DAG or the run needs VM slots, bootstrap policies, concurrency limits, checkpoints, timeouts, secret injection, convergence, or owned-resource cleanup. This skill remains the one-shot local backend and compatibility route.
 

@@ -33,7 +33,8 @@ sideEffects:
   - write-code
   - commit-git
   - push-branch
-dependencies: []
+dependencies:
+  - tdd
 stopCondition: Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication complete; artifact saved; completion criteria checked.
 risk: medium
 trustTier: 3
@@ -45,7 +46,7 @@ evaluators: [behavioral, regression, traceability, quality-bar]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/implement.json
 diataxis: how-to
 tags: [tdd, delivery, implementation, testing]
-compatibility: [to-tickets, publish-open-pr, tdd, gate-ci]
+compatibility: [to-tickets, publish-open-pr, tdd, gate-ide, gate-pre-commit, gate-ci]
 approvalRequired: true
 approvalFor: ["write-code", "commit-git", "push-branch"]
 clauses:
@@ -79,6 +80,8 @@ reloadPolicy: on-trigger
 - Rule: run quality gates after each slice — gate-ide on file-save, gate-pre-commit before commit, gate-ci before PR.
 - Rule: do not proceed to `publish-open-pr` until `gate-ci` passes.
 - Rule: do not open or merge PR here; stop at validated branch.
+
+The `gate-ide`, `gate-pre-commit`, and `gate-ci` names are compatibility labels for the repository's validation workflows, not canonical skill dependencies. Run their equivalent validation commands when available and record the results in `qualityGateResults`.
 
 See `.agents/skills/prompts/implement/v2.md` for the canonical prompt.
 
@@ -170,3 +173,11 @@ Set `nextConsumer` to the next workflow skill (`publish-open-pr`, `tdd`, or a na
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- Accept optional `operationId`/`idempotencyKey` and `fixedPoint`; preserve them in `ImplementArtifact` for legacy callers.
+- Require an explicit `dryRun` plan before any write, commit, or push, and separate approval for each declared side effect.
+- Persist a common snapshot and checkpoint before and after every slice, including scope, branch, fixed point, command evidence, and validation results.
+- After a crash or unknown command result, reconcile git state and artifact identity before retrying; never duplicate commits or pushes.
+- Use compensation only for effects owned by this operation. Terminal statuses are `planned`, `running`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, and `validation-failed`.

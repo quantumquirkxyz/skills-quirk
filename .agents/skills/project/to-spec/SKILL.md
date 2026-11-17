@@ -140,7 +140,7 @@ The spec artifact includes the traceId of the session that produced it, enabling
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know. Write the published issue body in English, and use the this repo's vocabulary consistently.
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-quirk-skills` if not.
-The canonical work-item metadata shape is documented in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md); follow it for labels, milestone, project, fields, and todo/acceptance structure.
+The canonical work-item metadata shape is documented in [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md); follow it for labels, milestone, project, fields, and todo/acceptance structure.
 
 ## Process
 
@@ -180,7 +180,7 @@ Any requirement that cannot be made testable from what is already known is publi
 
 ### 5. Publish
 
-Publish the spec to the configured tracker with the canonical metadata shape from [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md). Emit the `SpecArtifact` JSON atomically with the published issue so the machine-readable contract and the Markdown stay in sync.
+Publish the spec to the configured tracker with the canonical metadata shape from [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md). Emit the `SpecArtifact` JSON atomically with the published issue so the machine-readable contract and the Markdown stay in sync.
 
 ## Completion Criteria
 
@@ -197,3 +197,11 @@ See [`references/spec-template.md`](references/spec-template.md) for the canonic
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- Accept optional `operationId`/`idempotencyKey` and `fixedPoint`; preserve them in the spec artifact and tracker metadata.
+- `dryRun` drafts and validates the spec without creating an issue. Creating the issue requires separate approval from local file generation.
+- Persist a common snapshot and checkpoint before publication and after tracker verification, including scope, command evidence, and response identity.
+- On crash or unknown publication result, reconcile by owner, exact title, source digest, fixed point, and operation key; adopt a matching issue and never create a duplicate.
+- Terminal statuses are `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, and `superseded`; unresolved requirements remain explicit and block ticketing.

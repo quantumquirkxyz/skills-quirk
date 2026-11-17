@@ -14,6 +14,8 @@ inputs:
   - a plan
   - a spec
   - conversation context
+  - operationId or idempotencyKey (optional for backward compatibility)
+  - baseRevision (optional; required when publishing against a mutable remote)
 outputs:
   - type: array
     description: Ordered set of published tickets with explicit blockers
@@ -34,6 +36,16 @@ outputs:
           type: string
         completionCriteriaMet:
           type: boolean
+        checkpoint:
+          type: object
+        operationId:
+          type: string
+        recoveryStatus:
+          type: string
+          enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded]
+        reconciliationEvidence:
+          type: array
+          items: { type: object }
 modelTier: reasoning
 promptVersion: "2.0"
 artifactType: ticket
@@ -93,6 +105,11 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - **Rule:** every blocking edge must be a genuine prerequisite — a redundant edge only lowers expected subtask success (FLOW, ICLR 2025), so remove it or record it as intentional in the ticket's risks.
 - **Rule:** every published ticket must carry the canonical metadata from `docs/reference/agents/work-item-format.md` for labels, milestone, project item, and project fields.
 - **Rule:** when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
+- **Compatibility:** `operationId`, `idempotencyKey`, and `baseRevision` are optional for legacy callers; when either idempotency field is supplied, preserve it in the artifact and use it for every publication attempt.
+- **Side effect ownership:** this skill owns creation of ticket artifacts and issue/ticket publication; writing files or creating issues requires the declared approval. Parent issue mutation, closure, comments, merges, and PR creation are not owned here.
+- **States:** return exactly one `recoveryStatus`: `completed`, `blocked`, `needs-approval`, `stale-input`, `validation-failed`, or `superseded`.
+- **Recovery invariant:** persist a `checkpoint` after context, DAG validation, and each publication. On an unknown result, stop, reconcile the remote tracker by stable title/source/operation key and recorded checkpoint, then resume only from the first unconfirmed ticket. Never create a duplicate ticket.
+- **Retry invariant:** reconcile remote state and verify `baseRevision` before every retry. A changed revision yields `stale-input`; an already-existing matching ticket is adopted and recorded in `reconciliationEvidence`, never recreated.
 
 ## Provenance
 
@@ -196,3 +213,10 @@ See [`references/issue-template.md`](references/issue-template.md) for the canon
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- `dryRun` validates the spec and DAG without creating tracker tickets. Each publication side effect requires separate approval.
+- Persist a common snapshot with `operationId`/`idempotencyKey`, `fixedPoint`, scope, ticket plan, checkpoints, and command evidence.
+- After crash or unknown publication result, reconcile by source requirement, stable title, tracker owner, and operation key before retrying; adopt matches and never duplicate tickets.
+- Compensate only tickets created by this operation when safe; otherwise report `outcome-unknown` with reconciliation evidence. Terminal statuses remain explicit and canonical.

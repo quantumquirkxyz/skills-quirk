@@ -53,6 +53,10 @@ outputs:
           type: string
       completionCriteriaMet:
         type: boolean
+      operationId: { type: string }
+      fixedPoint: { type: string }
+      checkpoint: { type: object }
+      status: { type: string, enum: [completed, blocked, needs-approval, outcome-unknown, validation-failed] }
 modelTier: code
 promptVersion: "2.0"
 artifactType: implementation
@@ -65,13 +69,13 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/tdd.json
 diataxis: how-to
 tags: [tdd, testing, delivery, implementation]
 compatibility: [implement, code-review]
-approvalRequired: false
-approvalFor: []
-sideEffects: []
+approvalRequired: true
+approvalFor: [write-code, commit-git]
+sideEffects: [write-code, commit-git]
 dependencies: []
 stopCondition: Test-driven development complete; structured result returned; completion criteria checked.
-risk: low
-trustTier: 1
+risk: medium
+trustTier: 3
 maxIterations: 6
 clauses:
   - id: TDD-1
@@ -85,6 +89,15 @@ clauses:
     check: evals/behavioral/tdd.json#TDD-3
 reloadPolicy: on-trigger
 ---
+
+## Normative Rules
+
+- Confirm the seam and scope guard before writing tests; do not broaden the request during a cycle.
+- Record `operationId`/`idempotencyKey`, `fixedPoint`, and a common checkpoint snapshot for every red-green cycle.
+- Commit effects require separate approval from test execution; a red test may be recorded without commit approval, but no commit occurs without it.
+- On crash or unknown command result, reconcile the fixed point, test files, and git state before retrying; never duplicate a cycle or commit.
+- Record exact test commands, exit codes, stdout/stderr digests, and timestamps as command evidence.
+- Terminal states are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, and `validation-failed`.
 
 ## Why
 
@@ -112,7 +125,7 @@ Beyond cost, TDD produces executable documentation. A test that passes is a proo
 | **Intent** | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor" |
 | **Input** | feature or bug request, current codebase state, and seam list. |
 | **Output** | a red→green implementation trace: failing tests, minimal passing code, and refactor notes. |
-| **Side effects** | none. |
+| **Side effects** | write-code, commit-git. |
 | **Boundaries** | one test at a time; no speculative implementation. |
 | **Completion criteria** | each test fails before implementation; each test passes with minimal code; tests survive refactor; no implementation-coupled or tautological tests. |
 

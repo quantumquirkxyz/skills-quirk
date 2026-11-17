@@ -9,7 +9,23 @@ capabilities:
   - apply make project methods within explicit project boundaries
   - analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes
   - produce and validate a project artifact with evidence, decisions, and next steps
-outputs: "a live board URL, confirmed by verification."
+inputs:
+  - owner, title, and explicit board scope
+  - operationId or idempotencyKey: optional retry identity
+  - fixedPoint: optional tracker snapshot revision
+  - dryRun: optional boolean
+  - approval: separate decisions for each declared side effect
+outputs:
+  - type: object
+    name: MakeProjectArtifact
+    properties:
+      status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, rolled-back] }
+      operationId: { type: string }
+      checkpoint: { type: object }
+      reconciliationEvidence: { type: array }
+      commandEvidence: { type: array }
+      projectUrl: { type: string }
+    required: [status, operationId, checkpoint]
 sideEffects:
   - create-project
   - create-project-fields
@@ -21,16 +37,26 @@ risk: "medium"
 trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "project"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/make-project.json
 diataxis: "how-to"
 tags: ["project"]
 compatibility: []
-approvalRequired: "true"
+approvalRequired: true
 approvalFor: ["create-project", "create-project-fields", "link-repositories"]
 ---
+
+## Normative Rules
+
+- Confirm owner, title, fixed point, and exact scope before mutation; reject repositories, fields, views, or items outside scope.
+- `dryRun: true` resolves and validates the plan but performs no GraphQL mutation.
+- Require separate approval for `create-project`, `create-project-fields`, and `link-repositories`; approval for one effect never authorizes another.
+- Persist one checkpoint snapshot before each mutation and after verification, keyed by `operationId` or `idempotencyKey`. Resume adopts an existing exact-title/project match instead of creating a duplicate.
+- After unknown GraphQL results, reconcile by owner, exact title, node IDs, and fixed point before retrying. Never repeat an uncertain mutation blindly.
+- If setup partially succeeds, compensate only owned fields, views, links, or items when the provider supports safe deletion; otherwise stop as `outcome-unknown` with reconciliation evidence.
+- Record each GraphQL command, variables without secrets, response status, and node IDs as command evidence. Terminal states are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, and `rolled-back`.
 
 ## Untrusted Input Handling
 

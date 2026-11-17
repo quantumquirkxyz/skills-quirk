@@ -60,6 +60,12 @@ approvalFor: ["write-temp-file"]
 
 # Loop Budget
 
+## Compatibility Adapter
+
+`loop-budget` is a compatibility adapter over the canonical `loop-engineering` primitive. It MUST preserve the `LoopBudgetVerdict` name, artifact paths, and legacy `exitStatus` values while exposing the shared loop contract. Its adapter status maps as follows: `completed` -> `completed`; `limits-exceeded` -> `budget-exceeded`; `repeated-action` and `ping-pong` -> `repeated-action`; `format-errors` -> `validation-failed`. Missing context or an unavailable dependency maps to `blocked`; approval or stale-input conditions map to `needs-approval` or `stale-input`; a superseded run maps to `superseded`.
+
+Shared invariants: carry `loopId`, `ledgerRef`, `budget`, `progressEvidence`, `recoveryPolicy`, and `status`; carry `operationId` for effectful steps; enforce caller budget > loop budget > retry policy; never relax inherited limits. A retry after an unknown result reconciles the prior operation before any external effect is repeated.
+
 ## Why
 
 Agents do not stop when they should. A repair loop retries the same failing edit forever; a polling loop mistakes activity for progress; a fan-out loop redispatches work that already finished. mini-swe-agent's answer is budgets declared up front - step_limit, cost_limit, wall_time_limit_seconds, max_consecutive_format_errors - with typed exits instead of exceptions, cost charged even on parse failure, and a trajectory saved every step. SWE-agent's ACI adds the guardrails: discard invalid edits and retry, keep only the first format-error message in the retry prompt, and narrate empty results instead of dropping them. This skill applies both to any loop an agent runs, so the loop ends with a verdict the caller can route on rather than a timeout or a hung process.
@@ -74,6 +80,7 @@ The loop ledger is the durable record underneath the verdict: append-only, writt
 - Rule: budgets are declared UP FRONT, before the first iteration, and are never relaxed mid-loop.
 - Rule: the loop verdict is the only exit - every termination path returns the typed object; loop-control failures never raise exceptions.
 - Rule: polling actions with changing results are exempt from repeat detection, because the result hash is part of the step signature.
+- Rule: `LoopBudgetVerdict` retains its legacy shape and additionally carries the shared loop fields and canonical `status`.
 
 ## Provenance
 

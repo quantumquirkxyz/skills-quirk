@@ -230,3 +230,11 @@ Created from the user's proposal to evolve local worktree fan-out into a VM-capa
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- Accept optional `operationId`/`idempotencyKey` and `fixedPoint`/`baseRevision`; preserve supplied values and derive a stable key for legacy callers.
+- Support `dryRun` as a side-effect-free plan mode. Require separate approval for provisioning, worker launch, secret injection, and cleanup.
+- Persist one common snapshot with scope, DAG frontier, ownership tokens, checkpoints, and command evidence before each external effect.
+- On crash or unknown provider result, reconcile remote/local state by operation key, issue, branch, and fixed point before retrying; adopt matches and never duplicate effects.
+- Compensate only owned resources on partial failure. Terminal statuses are `planned`, `running`, `awaiting-land`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, and `rolled-back`.

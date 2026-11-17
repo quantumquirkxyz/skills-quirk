@@ -38,7 +38,8 @@ outputs:
       - nextSkill
       - workflow
 sideEffects: []
-dependencies: []
+dependencies:
+  - context-pack
 stopCondition: Ask which skill or flow fits your situation complete; structured result returned; completion criteria checked.
 risk: low
 trustTier: 1
@@ -64,6 +65,7 @@ compatibility:
   - project-viability
   - wayfinder
   - observability
+  - work-item-router
 approvalRequired: false
 approvalFor: []
 clauses:

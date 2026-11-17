@@ -16,7 +16,10 @@ sideEffects:
   - commit-git
   - push-branch
 
-dependencies: []
+dependencies:
+  - review-pr
+  - plan-review-fixes
+  - implement-review-fixes
 stopCondition: "Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked complete; artifact saved; completion criteria checked."
 risk: "medium"
 trustTier: "3"
@@ -51,6 +54,9 @@ reloadPolicy: on-trigger
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+- Contract metadata: carry `loopId`, `ledgerRef`, `budget`, `progressEvidence`, `recoveryPolicy`, and `status`; carry `operationId` for comments, code, git, or other external effects.
+- Standard statuses are `completed`, `blocked`, `needs-approval`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, and `superseded`.
+- Budget precedence is caller budget > loop budget > retry policy; no inherited limit may be relaxed. Unknown effect results require reconciliation by `operationId` before repeating the effect.
 
 ## Provenance
 
@@ -78,7 +84,7 @@ Emit `ReviewFixLoopArtifact` as both:
 ## Overview
 
 Coordinate review, planning, and implementation without diluting any one skill's responsibility. The review remains the measurement instrument; this skill decides whether to plan fixes, implement them, repeat, or hand off to ship-subissue.
-Use the canonical work-item metadata format in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) as the source of truth for labels, milestone, and project metadata when preserving the loop state in comments or handoffs.
+Use the canonical work-item metadata format in [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) as the source of truth for labels, milestone, and project metadata when preserving the loop state in comments or handoffs.
 Keep the loop tight: if the same review-fix plan would be posted again without a new finding, stop rather than restating the same repair in different words.
 
 
@@ -91,6 +97,8 @@ Keep the loop tight: if the same review-fix plan would be posted again without a
 If the fixed point is missing, ask for it before starting. If the PR is missing, identify it with `gh pr view` or stop.
 
 ## Workflow
+
+The machine states are `review`, `plan-fixes`, `implement-fixes`, `verify`, `completed`, `blocked`, and `repeated-action`. Transitions MUST record `progressEvidence` and append to `ledgerRef`.
 
 1. Run review-pr.
    - Use the user-provided fixed point.
@@ -116,6 +124,7 @@ If the fixed point is missing, ask for it before starting. If the PR is missing,
    - Run review-pr again against the same fixed point.
    - Continue until clean or blocked.
    - Do not widen scope during a repeat pass unless a new review finding makes it unavoidable.
+   - After degeneration or `repeated-action`, do not restart the identical review/plan/implementation sequence; change the approach or transition to `blocked`.
 
 ## Loop State
 

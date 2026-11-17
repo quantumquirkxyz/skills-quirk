@@ -10,11 +10,15 @@ capabilities:
   - validate publish open pr completion criteria
   - trace publish open pr decisions across inputs, constraints, and failure paths
   - validate routing outcomes with evidence, assumptions, and explicit next steps
+inputs:
+  - operationId or idempotencyKey (optional for backward compatibility)
+  - fixedPoint (optional legacy alias for the prepared branch revision)
+  - validated issue branch, linked issue metadata, PR bundle metadata, and quality gate results
 outputs:
   - type: object
     name: PublishOpenPrArtifact
     properties:
-      status: { type: string, enum: [completed, blocked, failed] }
+      status: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
       branch: { type: string }
       prNumber: { type: integer }
       prUrl: { type: string }
@@ -23,6 +27,10 @@ outputs:
       gateCiResult: { type: object }
       reviewers: { type: array, items: { type: string } }
       labels: { type: array, items: { type: string } }
+      checkpoint: { type: object }
+      operationId: { type: string }
+      recoveryStatus: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      reconciliationEvidence: { type: array, items: { type: object } }
     required: [status, branch, prNumber, prUrl, title, validation, gateCiResult]
 sideEffects:
   - push-branch
@@ -70,6 +78,10 @@ reloadPolicy: always
 - Rule: never create or amend commits here; that belongs to `implement`.
 - Rule: never merge the PR or close the issue here; that belongs to `ship-subissue`.
 - Rule: the linked issue's labels and milestone are the source of truth for PR metadata.
+- Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; supplied values must be echoed in `PublishOpenPrArtifact`.
+- Side effect ownership: this skill owns pushing the prepared branch and creating one open PR; both require explicit approval. It does not own commits, comments, merges, issue closure, or review decisions.
+- Recovery invariant: write `checkpoint` before push, after push, and after PR lookup/create. On an unknown push or PR result, reconcile branch and PR state by branch, head revision, title, linked issue, and idempotency key before any retry. Adopt an existing matching PR; never create a second PR.
+- Retry invariant: reconcile remote state and verify `fixedPoint` (or the prepared branch revision) before retrying. A changed revision returns `stale-input`; a failed gate returns `validation-failed`; an approval absence returns `needs-approval`; a superseded branch returns `superseded`.
 
 ## Provenance
 
@@ -151,3 +163,10 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Workflow Controls
+
+- `dryRun` performs local packaging and remote reconciliation only; push and PR creation each require separate approval.
+- Persist the common snapshot and exact command evidence at every checkpoint; resume from the first unconfirmed effect after a crash.
+- Reconcile by operation key, branch, fixed point, head revision, title, and linked issue after unknown results; adopt matching remote state and never duplicate a PR.
+- Compensation is limited to operation-owned branch/PR effects. Terminal statuses remain canonical: `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, `superseded`, `rolled-back`.

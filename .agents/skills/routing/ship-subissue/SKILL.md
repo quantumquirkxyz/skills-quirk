@@ -9,7 +9,19 @@ capabilities:
   - apply ship subissue methods within explicit routing boundaries
   - analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes
   - produce and validate a routing artifact with evidence, decisions, and next steps
-outputs: "routing artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+inputs:
+  - operationId or idempotencyKey (optional for backward compatibility)
+  - fixedPoint (optional; identifies the reviewed PR/commit state)
+  - approved PR, linked issue, review result, and repository context
+outputs:
+  - type: object
+    name: ShipSubissueArtifact
+    properties:
+      status: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      checkpoint: { type: object }
+      operationId: { type: string }
+      recoveryStatus: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      reconciliationEvidence: { type: array, items: { type: object } }
 sideEffects:
   - merge-pull-request
   - close-issue
@@ -53,6 +65,10 @@ This high-trust workflow is not exposed over MCP; it requires explicit local app
 - Output: a structured artifact or guidance aligned to the skill's declared outputs.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: follow the skill's completion criteria and stop condition exactly.
+- Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; preserve supplied values in `ShipSubissueArtifact`.
+- Side effect ownership: this skill owns one approved PR merge, project completion update, and linked issue closure; each requires explicit approval. It does not own code changes, review fixes, or PR creation.
+- Recovery invariant: checkpoint before merge, after merge, after project update, and after issue closure. If any result is unknown, reconcile PR, commit, project item, and issue state before retrying. Existing matching state is adopted; never duplicate merge, completion comment, or closure.
+- Retry invariant: reconcile remote state and verify `fixedPoint` before every retry. Changed review/commit state returns `stale-input`; missing approval returns `needs-approval`; unresolved review or validation returns `validation-failed`; superseded work returns `superseded`.
 
 ## Provenance
 
@@ -76,7 +92,7 @@ Return `ShipSubissueArtifact` as structured output in the current response. Do n
 # Ship Subissue
 
 Merge one approved repository-local subissue PR, including a corrective subissue PR, mark the subissue as completed, and close out the linked issue when needed.
-Use the canonical work-item format in [`docs/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) when deciding what metadata to preserve: linked-issue labels and milestone are the source of truth, and the completion note should not introduce conflicting tracker metadata.
+Use the canonical work-item format in [`docs/reference/agents/work-item-format.md`](../../../../docs/reference/agents/work-item-format.md) when deciding what metadata to preserve: linked-issue labels and milestone are the source of truth, and the completion note should not introduce conflicting tracker metadata.
 
 ## Workflow
 
@@ -112,3 +128,9 @@ Use the canonical work-item format in [`docs/agents/work-item-format.md`](../../
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+## P0/P1 Workflow Controls
+
+- `dryRun` reconciles merge, project, and issue state without mutating any remote resource; merge, project update, and closure each require separate approval.
+- Persist a common snapshot and command evidence before and after each side effect; resume from the first unconfirmed checkpoint after a crash.
+- Reconcile by operation key, PR, fixed point, commit, project item, and issue after unknown results; adopt matching state and never duplicate merges, comments, or closures.
+- Compensate only operation-owned project or issue changes where supported. Terminal statuses are `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, `superseded`, and `rolled-back`.

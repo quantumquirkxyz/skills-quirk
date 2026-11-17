@@ -54,8 +54,10 @@ compatibility:
   - claude-code
   - codex
   - opencode
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor:
+  - write-docs
+  - write-files
 ---
 
 ## Contract

@@ -4,16 +4,25 @@ category: "auxiliary"
 maturity: "stable"
 description: "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills."
 license: "MIT"
-disable-model-invocation: "true"
+disable-model-invocation: true
 version: "1"
 capabilities:
   - apply setup quirk skills methods within explicit auxiliary boundaries
   - analyze configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. run once before first use of the other engineering skills with assumptions, constraints, and failure modes
   - produce and validate a auxiliary artifact with evidence, decisions, and next steps
-inputs: ""
-outputs: "auxiliary artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+inputs:
+  type: object
+  required: [repositoryRoot, requestedProvider, approval]
+  properties:
+    repositoryRoot: {type: string}
+    requestedProvider: {type: string}
+    approval: {type: string, enum: [pending, approved, refused]}
+outputs:
+  - type: object
+    name: SetupQuirkSkillsArtifact
+    required: [provider, permissions, operationId, idempotency, generatedProjections, rollback, status]
 dependencies: []
-sideEffects: ""
+sideEffects: [write-files, write-temp-file, write-generated-projections]
 stopCondition: "The repo-specific skill configuration is written and consistent."
 risk: "medium"
 trustTier: "3"
@@ -25,9 +34,17 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/setup-quirk-skills.jso
 diataxis: "how-to"
 tags: ["auxiliary"]
 compatibility: []
-approvalRequired: "true"
-approvalFor: []
+approvalRequired: true
+approvalFor: [write-files, write-generated-projections]
 ---
+
+## Normative Rules
+
+- Require explicit approval before writing repository configuration, creating tracker labels, or changing an existing tracker/provider choice; exploration is read-only.
+- Record `operationId`, selected provider, scope, approval evidence, and a deterministic rollback plan. Re-running the same `operationId` must reconcile existing files instead of duplicating blocks or labels.
+- Validate provider contracts before mutation: tracker capabilities, repository identity, permissions, and generated projection requirements must be recorded; missing or contradictory provider facts are a refusal state.
+- Never infer consent from a draft. Pause with `approvalRequired` when the user has not confirmed the proposed tracker, labels, or multi-context layout.
+- Refuse writes when the chosen source file is ambiguous, the target docs already contain conflicting ownership, or generated projections would be stale; report the exact blocking evidence.
 
 ## Contract
 
@@ -174,5 +191,6 @@ Tell the user the setup is complete and which engineering skills will now read f
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- setup manifest records provider, permissions, operationId, idempotency result, generated projections, and rollback evidence
 ---
 @include .agents/skills/platform/contract-base.xml

@@ -78,3 +78,11 @@ Use this skill when a project needs governance for getting changes into producti
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+## P0/P1 Release Controls
+
+- A release candidate is immutable and must carry a signed artifact attestation, SBOM, and provenance tied to the reviewed commit and reproducible build inputs.
+- Define approval boundaries for protected environments, including required roles, separation of duties, emergency-release authority, and evidence retention; automation cannot self-approve production.
+- Gate advancement on changed-risk coverage and explicit canary evidence. Record promotion, abort, rollback, and post-rollback verification with the target digest and recovery signals.
+- Treat flaky, skipped, and timed-out checks as unresolved risk. Allow only bounded retries and an expiring, owner-backed exception; do not label the release green on a timeout.
+- Verify rollback in the target environment or a controlled rehearsal, including migration compatibility, feature-flag state, artifact signature, and health recovery.
