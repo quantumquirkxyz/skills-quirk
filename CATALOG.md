@@ -79,10 +79,10 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [cs-algorithms](.agents/skills/cs/cs-algorithms) | 1 | stable | low | 1 | Design and analyse algorithms — correctness proof, complexity analysis (time ... |
-| [cs-complexity-analysis](.agents/skills/cs/cs-complexity-analysis) | 1 | stable | low | 1 | Analyze algorithmic complexity — time, space, amortized cost, and lower bound... |
-| [cs-computability](.agents/skills/cs/cs-computability) | 1 | stable | low | 1 | Analyze computability questions — decidability, reductions, recognizability, ... |
-| [cs-data-structures](.agents/skills/cs/cs-data-structures) | 1 | stable | low | 1 | Design and analyze data structures — arrays, trees, heaps, hash tables, graph... |
+| [cs-algorithms](.agents/skills/cs/cs-algorithms) | 2 | stable | low | 1 | Design and analyse algorithms — correctness proof, complexity analysis (time ... |
+| [cs-complexity-analysis](.agents/skills/cs/cs-complexity-analysis) | 2 | stable | low | 1 | Analyze algorithmic complexity — time, space, amortized cost, and lower bound... |
+| [cs-computability](.agents/skills/cs/cs-computability) | 2 | stable | low | 1 | Analyze computability questions — decidability, reductions, recognizability, ... |
+| [cs-data-structures](.agents/skills/cs/cs-data-structures) | 2 | stable | low | 1 | Design and analyze data structures — arrays, trees, heaps, hash tables, graph... |
 
 ### data
 
@@ -164,9 +164,9 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [finance-corporate-val](.agents/skills/finance/finance-corporate-val) | 1 | stable | low | 1 | Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with ... |
-| [finance-dcf](.agents/skills/finance/finance-dcf) | 1 | stable | low | 1 | Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with exp... |
-| [finance-portfolio-theory](.agents/skills/finance/finance-portfolio-theory) | 1 | stable | low | 1 | Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, an... |
+| [finance-corporate-val](.agents/skills/finance/finance-corporate-val) | 2 | stable | medium | 3 | Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with ... |
+| [finance-dcf](.agents/skills/finance/finance-dcf) | 2 | stable | medium | 3 | Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with exp... |
+| [finance-portfolio-theory](.agents/skills/finance/finance-portfolio-theory) | 2 | stable | medium | 3 | Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, an... |
 
 ### foundation
 
@@ -185,7 +185,7 @@
 | [observability](.agents/skills/foundation/observability) | 2 | stable | low | 1 | Define the logs, metrics, traces, and alerts needed to understand a system in... |
 | [skill-composition](.agents/skills/foundation/skill-composition) | 1 | experimental | medium | 3 | Compose skills into chains and workflows with explicit contracts: declare the... |
 | [subagent-swarm](.agents/skills/foundation/subagent-swarm) | 2 | stable | medium | 3 | Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester... |
-| [verify-delegation](.agents/skills/foundation/verify-delegation) | 2 | experimental | medium | 3 | Black-box verify a delegated worker claim from the artifact, fixed-point inpu... |
+| [verify-delegation](.agents/skills/foundation/verify-delegation) | 2 | stable | medium | 3 | Black-box verify a delegated worker claim from the artifact, fixed-point inpu... |
 
 ### frontend
 
@@ -256,18 +256,18 @@
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
 | [math-computation-reproducible](.agents/skills/math/math-computation-reproducible) | 1 | stable | low | 1 | Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage... |
-| [math-computational](.agents/skills/math/math-computational) | 1 | stable | low | 1 | Solve numerical and symbolic math problems (root finding, integration, ODEs, ... |
-| [math-cryptography](.agents/skills/math/math-cryptography) | 1 | stable | low | 1 | Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, z... |
-| [math-formal-proof](.agents/skills/math/math-formal-proof) | 1 | stable | low | 1 | Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle... |
-| [math-grant-structure](.agents/skills/math/math-grant-structure) | 1 | stable | low | 1 | Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broade... |
-| [math-linear-algebra](.agents/skills/math/math-linear-algebra) | 1 | stable | low | 1 | Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SV... |
-| [math-literature-track](.agents/skills/math/math-literature-track) | 1 | stable | low | 1 | Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts... |
-| [math-optimization](.agents/skills/math/math-optimization) | 1 | stable | low | 1 | Formulate and solve optimization problems (linear, convex, non-convex, combin... |
-| [math-paper-collaboration](.agents/skills/math/math-paper-collaboration) | 1 | stable | low | 1 | Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integrati... |
-| [math-presentation-beamer](.agents/skills/math/math-presentation-beamer) | 1 | stable | low | 1 | Design mathematics presentations — Beamer slides with TikZ diagrams, colour a... |
-| [math-probability-models](.agents/skills/math/math-probability-models) | 1 | stable | low | 1 | Build probability models — distributions, stochastic processes (Markov, Brown... |
-| [math-pure-proofs](.agents/skills/math/math-pure-proofs) | 1 | stable | low | 1 | Write and verify pure-math proofs (number theory, algebra, analysis, combinat... |
-| [math-teaching-problem-set](.agents/skills/math/math-teaching-problem-set) | 1 | stable | low | 1 | Design and grade math problem sets and exams — difficulty progression, rubric... |
+| [math-computational](.agents/skills/math/math-computational) | 2 | stable | low | 1 | Solve numerical and symbolic math problems (root finding, integration, ODEs, ... |
+| [math-cryptography](.agents/skills/math/math-cryptography) | 2 | stable | medium | 3 | Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, z... |
+| [math-formal-proof](.agents/skills/math/math-formal-proof) | 2 | stable | low | 1 | Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle... |
+| [math-grant-structure](.agents/skills/math/math-grant-structure) | 2 | stable | low | 1 | Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broade... |
+| [math-linear-algebra](.agents/skills/math/math-linear-algebra) | 2 | stable | low | 1 | Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SV... |
+| [math-literature-track](.agents/skills/math/math-literature-track) | 2 | stable | low | 1 | Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts... |
+| [math-optimization](.agents/skills/math/math-optimization) | 2 | stable | low | 1 | Formulate and solve optimization problems (linear, convex, non-convex, combin... |
+| [math-paper-collaboration](.agents/skills/math/math-paper-collaboration) | 2 | stable | low | 1 | Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integrati... |
+| [math-presentation-beamer](.agents/skills/math/math-presentation-beamer) | 2 | stable | low | 1 | Design mathematics presentations — Beamer slides with TikZ diagrams, colour a... |
+| [math-probability-models](.agents/skills/math/math-probability-models) | 2 | stable | low | 1 | Build probability models — distributions, stochastic processes (Markov, Brown... |
+| [math-pure-proofs](.agents/skills/math/math-pure-proofs) | 2 | stable | low | 1 | Write and verify pure-math proofs (number theory, algebra, analysis, combinat... |
+| [math-teaching-problem-set](.agents/skills/math/math-teaching-problem-set) | 2 | stable | low | 1 | Design and grade math problem sets and exams — difficulty progression, rubric... |
 
 ### networking
 
@@ -289,18 +289,18 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [physics-astro](.agents/skills/physics/physics-astro) | 1 | stable | low | 1 | Model astrophysical systems — stellar structure, orbital dynamics, cosmology,... |
-| [physics-career-postdoc](.agents/skills/physics/physics-career-postdoc) | 1 | stable | low | 1 | Navigate physics career transitions — postdoc applications, faculty applicati... |
-| [physics-classical](.agents/skills/physics/physics-classical) | 1 | stable | low | 1 | Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, ... |
-| [physics-data-analysis-root](.agents/skills/physics/physics-data-analysis-root) | 1 | stable | low | 1 | Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibrat... |
-| [physics-experimental-notebook](.agents/skills/physics/physics-experimental-notebook) | 1 | stable | low | 1 | Maintain experimental physics lab notebooks — measurements, calibration, erro... |
-| [physics-literature-search](.agents/skills/physics/physics-literature-search) | 1 | stable | low | 1 | Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph... |
-| [physics-quantum](.agents/skills/physics/physics-quantum) | 1 | stable | low | 1 | Model quantum systems (states, operators, measurement, entanglement) and perf... |
-| [physics-reproducibility-archive](.agents/skills/physics/physics-reproducibility-archive) | 1 | stable | low | 1 | Make physics research reproducible and archive it — Zenodo DOI, GitHub + cont... |
-| [physics-simulation-setup](.agents/skills/physics/physics-simulation-setup) | 1 | stable | low | 1 | Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dyn... |
-| [physics-talk-design](.agents/skills/physics/physics-talk-design) | 1 | stable | low | 1 | Design physics talks — seminars, conference presentations, posters, public ou... |
-| [physics-thermo](.agents/skills/physics/physics-thermo) | 1 | stable | low | 1 | Model thermodynamic systems — first and second law, heat engines, entropy, ph... |
-| [physics-writing-revtex](.agents/skills/physics/physics-writing-revtex) | 1 | stable | low | 1 | Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure c... |
+| [physics-astro](.agents/skills/physics/physics-astro) | 2 | stable | low | 1 | Model astrophysical systems — stellar structure, orbital dynamics, cosmology,... |
+| [physics-career-postdoc](.agents/skills/physics/physics-career-postdoc) | 2 | stable | low | 1 | Navigate physics career transitions — postdoc applications, faculty applicati... |
+| [physics-classical](.agents/skills/physics/physics-classical) | 2 | stable | low | 1 | Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, ... |
+| [physics-data-analysis-root](.agents/skills/physics/physics-data-analysis-root) | 2 | stable | medium | 3 | Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibrat... |
+| [physics-experimental-notebook](.agents/skills/physics/physics-experimental-notebook) | 2 | stable | low | 1 | Maintain experimental physics lab notebooks — measurements, calibration, erro... |
+| [physics-literature-search](.agents/skills/physics/physics-literature-search) | 2 | stable | low | 1 | Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph... |
+| [physics-quantum](.agents/skills/physics/physics-quantum) | 2 | stable | low | 1 | Model quantum systems (states, operators, measurement, entanglement) and perf... |
+| [physics-reproducibility-archive](.agents/skills/physics/physics-reproducibility-archive) | 2 | stable | low | 1 | Make physics research reproducible and archive it — Zenodo DOI, GitHub + cont... |
+| [physics-simulation-setup](.agents/skills/physics/physics-simulation-setup) | 2 | stable | medium | 3 | Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecu... |
+| [physics-talk-design](.agents/skills/physics/physics-talk-design) | 2 | stable | low | 1 | Design physics talks — seminars, conference presentations, posters, public ou... |
+| [physics-thermo](.agents/skills/physics/physics-thermo) | 2 | stable | low | 1 | Model thermodynamic systems — first and second law, heat engines, entropy, ph... |
+| [physics-writing-revtex](.agents/skills/physics/physics-writing-revtex) | 2 | stable | low | 1 | Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure c... |
 
 ### product
 
@@ -345,13 +345,13 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
-| [quant-backtest](.agents/skills/quant/quant-backtest) | 3 | stable | low | 1 | Run a reproducible, leakage-resistant backtest with point-in-time data, purge... |
-| [quant-credit-risk](.agents/skills/quant/quant-credit-risk) | 1 | stable | low | 1 | Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit Va... |
-| [quant-derivatives-pricing](.agents/skills/quant/quant-derivatives-pricing) | 1 | stable | low | 1 | Price and calibrate derivatives (options, exotics, structured products) — Bla... |
-| [quant-factors](.agents/skills/quant/quant-factors) | 1 | stable | low | 1 | Define, test, and stress-test a quantitative factor (momentum, value, carry, ... |
-| [quant-market-micro](.agents/skills/quant/quant-market-micro) | 1 | stable | low | 1 | Analyse market microstructure — order book dynamics, price formation, executi... |
-| [quant-portfolio-opt](.agents/skills/quant/quant-portfolio-opt) | 1 | stable | low | 1 | Construct and optimise portfolios — mean-variance, Black-Litterman, risk-pari... |
-| [quant-risk-modeling](.agents/skills/quant/quant-risk-modeling) | 1 | stable | low | 1 | Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explici... |
+| [quant-backtest](.agents/skills/quant/quant-backtest) | 4 | stable | high | 4 | Run a reproducible, leakage-resistant backtest with point-in-time data, purge... |
+| [quant-credit-risk](.agents/skills/quant/quant-credit-risk) | 2 | stable | medium | 3 | Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit Va... |
+| [quant-derivatives-pricing](.agents/skills/quant/quant-derivatives-pricing) | 2 | stable | medium | 3 | Price and calibrate derivatives (options, exotics, structured products) — Bla... |
+| [quant-factors](.agents/skills/quant/quant-factors) | 2 | stable | medium | 3 | Define, test, and stress-test a quantitative factor (momentum, value, carry, ... |
+| [quant-market-micro](.agents/skills/quant/quant-market-micro) | 2 | stable | medium | 3 | Analyse market microstructure — order book dynamics, price formation, executi... |
+| [quant-portfolio-opt](.agents/skills/quant/quant-portfolio-opt) | 2 | stable | medium | 3 | Construct and optimise portfolios — mean-variance, Black-Litterman, risk-pari... |
+| [quant-risk-modeling](.agents/skills/quant/quant-risk-modeling) | 2 | stable | medium | 3 | Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explici... |
 
 ### research
 
@@ -360,7 +360,7 @@
 | [github-project-analysis](.agents/skills/research/github-project-analysis) | 1 | stable | medium | 3 | Research comparable projects exclusively on GitHub and analyze their structur... |
 | [research-data-archiving](.agents/skills/research/research-data-archiving) | 1 | stable | low | 1 | Archive research data — metadata, storage, preservation, provenance, and reus... |
 | [research-literature-review](.agents/skills/research/research-literature-review) | 1 | stable | low | 1 | Review research literature — search strategy, screening, synthesis, citation ... |
-| [scientific-hypothesis](.agents/skills/research/scientific-hypothesis) | 1 | stable | low | 1 | Formulate testable scientific hypotheses — null/alternative, variables, contr... |
+| [scientific-hypothesis](.agents/skills/research/scientific-hypothesis) | 2 | stable | low | 1 | Formulate testable scientific hypotheses — null/alternative, variables, contr... |
 
 ### routing
 

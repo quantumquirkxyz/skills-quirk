@@ -11,4 +11,4 @@ Capabilities:
 - analyze solve and analyse linear algebra problems — matrix decompositions (lu, qr, svd, eigendecomposition), linear systems, and applications in ml, graphics, and optimisation with assumptions, constraints, and failure modes
 - produce and validate a math artifact with evidence, decisions, and next steps
 
-Stop condition: Solve and analyse linear algebra problems complete; required sections present; completion criteria checked.
+Stop condition: Matrix properties, decomposition, residual validation, and domain interpretation all documented.

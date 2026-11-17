@@ -9,9 +9,10 @@ When to use: Model quantum systems (states, operators, measurement, entanglement
 
 1. Define the system
 2. Identify the regime
-3. Compute
-4. Units and limits check
-5. Deliver
+3. Software and solver selection
+4. Compute
+5. Units and limits check
+6. Deliver
 
 ## Deliverables
 
@@ -23,4 +24,4 @@ When to use: Model quantum systems (states, operators, measurement, entanglement
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results complete; required sections present; completion criteria checked.
+Stop when: System definition, regime, computation, units/limits, and answer all documented.

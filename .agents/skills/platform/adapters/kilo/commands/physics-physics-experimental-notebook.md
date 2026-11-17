@@ -12,7 +12,8 @@ When to use: Maintain experimental physics lab notebooks — measurements, calib
 3. Measurements
 4. Error analysis
 5. FAIR checklist
-6. Deliver
+6. Audit trail immutability
+7. Deliver
 
 ## Deliverables
 

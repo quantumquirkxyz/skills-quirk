@@ -24,4 +24,4 @@ When to use: Formulate and solve optimization problems (linear, convex, non-conv
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) complete; required sections present; completion criteria checked.
+Stop when: Model formulated, solver selected, optimality bound or gap reported, sensitivity analysis complete.

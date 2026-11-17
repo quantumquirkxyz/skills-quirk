@@ -24,4 +24,4 @@ When to use: Build probability models — distributions, stochastic processes (M
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Build probability models complete; required sections present; completion criteria checked.
+Stop when: Model specified, parameters estimated, validation against limits complete, uncertainty intervals reported.

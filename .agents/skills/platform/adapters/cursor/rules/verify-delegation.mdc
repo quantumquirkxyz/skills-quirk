@@ -8,10 +8,6 @@ alwaysApply: false
 Apply the verify-delegation skill when the request matches its scope.
 
 Capabilities:
-- verify a delegated artifact against observable success criteria without implementation context
-- inventory verifier capabilities and bind every command to provenance and a fixed-point digest
-- run mandatory negative checks, independent replay, and artifact-integrity checks
-- distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence
-- return a bounded typed DelegationVerdict without transcripts or repair work
+- apply the verify-delegation workflow
 
-Stop when: Stop after every applicable criterion, integrity check, mandatory negative test, and independent replay has an evidence record, or return a typed non-pass state explaining each NOT-RUN or refusal reason.
+Stop when: Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient.

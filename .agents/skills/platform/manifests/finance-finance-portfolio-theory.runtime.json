@@ -2,7 +2,7 @@
   "skill": "finance/finance-portfolio-theory",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "afc0ff1e96d9e7e26c0365f8dda61badb5e9e84d19f9df68ab03f9cb843cda3e",
+  "frontmatterHash": "ec47c8069c303ec13e2c30813c88b1b24abf7ed8ce27cd968079669423fc7f3b",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

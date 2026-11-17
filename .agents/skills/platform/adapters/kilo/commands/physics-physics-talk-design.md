@@ -10,8 +10,11 @@ When to use: Design physics talks — seminars, conference presentations, poster
 1. Audience and duration
 2. Structure
 3. Figures and conventions
-4. Poster design
-5. Speaker notes and timing
+4. Colour accessibility
+5. Poster design
+6. Speaker notes
+7. Audience-level adjustments
+8. Compilation
 
 ## Deliverables
 

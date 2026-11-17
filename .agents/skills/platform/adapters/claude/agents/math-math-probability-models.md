@@ -11,4 +11,4 @@ Capabilities:
 - analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes
 - produce and validate a math artifact with evidence, decisions, and next steps
 
-Stop condition: Build probability models complete; required sections present; completion criteria checked.
+Stop condition: Model specified, parameters estimated, validation against limits complete, uncertainty intervals reported.

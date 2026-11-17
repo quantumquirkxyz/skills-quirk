@@ -8,12 +8,13 @@ When to use: Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — 
 ## Workflow
 
 1. Read the call
-2. Articulate the programme
-3. Map to criteria
-4. Budget and timeline
-5. Reviewer-perspective critique
-6. Submission checklist
-7. Deliver
+2. Verify agency structure compliance
+3. Articulate the programme
+4. Broader impacts (required)
+5. Map to criteria
+6. Budget and timeline
+7. Reviewer-perspective critique
+8. Submission checklist
 
 ## Deliverables
 

@@ -8,10 +8,13 @@ When to use: Write physics papers using RevTeX / APS / IOP / AIP formatting, wit
 ## Workflow
 
 1. Choose journal and format
-2. Write the structure
-3. Figures
-4. Compile and check
-5. Submission package
+2. Require REVTeX 4.2f
+3. Validate class options
+4. 80-char line limit
+5. BibTeX apsrev4-2 style
+6. Write the structure
+7. Figures
+8. Compile and check
 
 ## Deliverables
 

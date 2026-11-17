@@ -11,4 +11,4 @@ Capabilities:
 - analyze design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants with assumptions, constraints, and failure modes
 - produce and validate a cs artifact with evidence, decisions, and next steps
 
-Stop condition: The recommended structure, invariants, and operation costs are explicit.
+Stop condition: Recommended structure, invariants, and operation costs explicit.

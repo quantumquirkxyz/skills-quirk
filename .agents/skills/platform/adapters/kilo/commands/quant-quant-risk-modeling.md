@@ -19,8 +19,8 @@ When to use: Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) wi
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events complete; required sections present; completion criteria checked.
+Stop when: Risk object defined, model selected, measures computed, validation complete.

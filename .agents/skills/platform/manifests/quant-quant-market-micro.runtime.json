@@ -2,7 +2,7 @@
   "skill": "quant/quant-market-micro",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7cd65fb219c78cf5cc3b6c38720b06a4a52e81001a34505849dc8c83e7f44c0f",
+  "frontmatterHash": "146e647e4b3156c665de59bbfb5a39d8abc1a2df6f73cada47bc25eda9741302",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

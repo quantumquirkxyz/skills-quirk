@@ -2,7 +2,7 @@
   "skill": "finance/finance-dcf",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "838a8eae25d897ccb8c5a55de1c5f8d5866ff7fb8ae6bcb9fe5b786cf025cd96",
+  "frontmatterHash": "146ca330ca4e5945bb913cfe8957f7d8b78baf2dd7dfbd947fc41c1892a9c7ce",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

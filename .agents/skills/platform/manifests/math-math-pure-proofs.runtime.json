@@ -2,7 +2,7 @@
   "skill": "math/math-pure-proofs",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f7ba7e1c1d6c2d7eebbb3c79f6c11f04cce01571f93efe42dfd5e7724551719a",
+  "frontmatterHash": "0f68ea1a21ed0279ceaa819491dc76efb517e1408468f378fdea911fc5f15da3",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,7 +18,9 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "WebFetch",
+        "WebSearch"
       ],
       "deny": []
     }

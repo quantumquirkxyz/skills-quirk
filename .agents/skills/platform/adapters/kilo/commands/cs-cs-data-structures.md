@@ -24,4 +24,4 @@ When to use: Design and analyze data structures — arrays, trees, heaps, hash t
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: The recommended structure, invariants, and operation costs are explicit.
+Stop when: Recommended structure, invariants, and operation costs explicit.

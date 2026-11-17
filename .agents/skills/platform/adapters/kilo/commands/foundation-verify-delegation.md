@@ -7,14 +7,13 @@ When to use: Black-box verify a delegated worker claim from the artifact, fixed-
 
 ## Workflow
 
-1. Validate the brief, schema, boundaries, stop condition, side-effect policy, expiry, and caller authority
-2. Compute and freeze the fixed-point digest; verify artifact existence, type, path containment, SHA-256, schema, ownership, and no unexpected files or mutations
-3. Build the capability inventory and reject commands not explicitly allowed. Strip worker transcript and implementation context from the verifier context
-4. Map every success criterion to an observable assertion, command, expected result, evidence digest, and coverage denominator. Criteria without an observable check are refused
-5. Execute the applicable checks and record complete command provenance. Do not infer execution from a worker report, log fragment, or green summary
-6. Run the negative-test minimum: at least two independent negative tests for a mutating artifact, and at least one for a read-only artifact. At least one must target the claimed success boundary and one must target an integrity or scope fa...
-7. Run an independent verifier/replay from the same fixed point with disjoint context, identity, and evidence collection. Replay must be deterministic or record allowed variance and comparison rules
-8. Run the full applicable suite. A partial suite is explicitly `PARTIAL`; omitted tests are `NOT-RUN` with reasons and cannot be counted as green
+1. Inspect claim: validate the brief, schema, boundaries, stop condition, expiry, and caller authority
+2. Gather evidence: compute and freeze the fixed-point digest; verify artifact existence, type, path containment, SHA-256, schema, ownership, and no unexpected files
+3. Verify against fixed point: compare artifact digest, tool versions, revision, and expiry window against the snapshot
+4. Check capability inventory: reject commands not explicitly allowed; strip worker transcript and implementation context from the verifier context
+5. Run negative tests: meet the negative-test minimum against observable assertions mapped from success criteria
+6. Compare digest: recheck artifact digest and side effects after execution; hidden writes, undeclared network access, changed files, or output drift produce `FAIL`, `BLOCKED`, or `OUTCOME-UNKNOWN`
+7. Emit verdict: bounded `VerificationVerdict` JSON + Markdown, transcript-free; issue refusal when evidence is insufficient
 
 ## Deliverables
 
@@ -22,8 +21,8 @@ When to use: Black-box verify a delegated worker claim from the artifact, fixed-
 
 ## Guardrails
 
-- risk: medium; trust tier: 3; approval required: yes
-- side effects: write-temp-file, write-verdict-artifact, emit-redacted-evidence
+- risk: medium; trust tier: 3; approval required: no
+- side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Stop after every applicable criterion, integrity check, mandatory negative test, and independent replay has an evidence record, or return a typed non-pass state explaining each NOT-RUN or refusal reason.
+Stop when: Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient.

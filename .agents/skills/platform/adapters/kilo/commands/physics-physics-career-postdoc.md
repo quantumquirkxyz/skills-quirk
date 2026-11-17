@@ -8,11 +8,13 @@ When to use: Navigate physics career transitions — postdoc applications, facul
 ## Workflow
 
 1. Assess the position
-2. Research statement
-3. Teaching and diversity statements
-4. Letters of recommendation
-5. Grant applications
-6. Negotiation strategy
+2. Application package structure
+3. Research statement
+4. Teaching and diversity statements
+5. Letters of recommendation
+6. Timeline and milestone tracking
+7. Grant applications
+8. Negotiation strategy
 
 ## Deliverables
 

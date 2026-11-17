@@ -1,9 +1,9 @@
 {
   "name": "verify-delegation",
-  "instructions": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.\n\nCapabilities:\n- verify a delegated artifact against observable success criteria without implementation context\n- inventory verifier capabilities and bind every command to provenance and a fixed-point digest\n- run mandatory negative checks, independent replay, and artifact-integrity checks\n- distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence\n- return a bounded typed DelegationVerdict without transcripts or repair work\n\nCanonical skill: .agents/skills/foundation/verify-delegation/SKILL.md",
+  "instructions": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.\n\nCapabilities:\n- apply the verify-delegation workflow\n\nCanonical skill: .agents/skills/foundation/verify-delegation/SKILL.md",
   "model": "gpt-5",
   "tools": [],
-  "handoff_description": "Stop after every applicable criterion, integrity check, mandatory negative test, and independent replay has an evidence record, or return a typed non-pass state explaining each NOT-RUN or refusal reason.",
+  "handoff_description": "Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient.",
   "runtime": {
     "role": "workflow",
     "maxTurns": 6,

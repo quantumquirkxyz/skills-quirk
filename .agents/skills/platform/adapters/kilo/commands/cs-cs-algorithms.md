@@ -25,4 +25,4 @@ When to use: Design and analyse algorithms — correctness proof, complexity ana
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design and analyse algorithms complete; required sections present; completion criteria checked.
+Stop when: Problem stated, algorithm designed, correctness proof complete, complexity analyzed, stability verified.

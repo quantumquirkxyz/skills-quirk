@@ -1,9 +1,9 @@
 ---
-description: "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
+description: "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict."
 ---
 # quant-backtest
 
-When to use: Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.
+When to use: Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.
 
 ## Workflow
 
@@ -15,8 +15,8 @@ When to use: Run a reproducible, leakage-resistant backtest with point-in-time d
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: high; trust tier: 4; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Required manifests and hashes are recorded, point-in-time and leakage controls pass, validation and cost assumptions are evidenced, deterministic replay and known-failure fixtures are evaluated, and the verdict is PASS, FAIL, BLOCKED, or NOT-RUN.
+Stop when: Required manifests and hashes recorded, point-in-time and leakage controls pass, purged/embargoed/CPCV/walk-forward validation evidenced, DSR/PSR reported, multiple-testing correction disclosed, deterministic replay verified, FRTB alignment evidenced, verdict is PASS/FAIL/BLOCKED/NOT-RUN.

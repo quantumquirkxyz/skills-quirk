@@ -11,4 +11,4 @@ Capabilities:
 - analyze formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan with assumptions, constraints, and failure modes
 - produce and validate a research artifact with evidence, decisions, and next steps
 
-Stop condition: Formulate testable scientific hypotheses complete; required sections present; completion criteria checked.
+Stop condition: Hypothesis stated as null/alternative, variables and controls defined, falsifiability criteria explicit, statistical power calculated.

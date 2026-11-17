@@ -2,7 +2,7 @@
   "skill": "physics/physics-simulation-setup",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "dffddc3e02fa0ce3b8f81cc5c3609ac6364f67e4c1fca62e66ac3a0139b655e8",
+  "frontmatterHash": "9db97e0a984286f073689cb39060c355dc05fea7ede6a6e52812c79d6b08b35f",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,8 +10,8 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
@@ -19,6 +19,8 @@
         "Read",
         "Grep",
         "Glob",
+        "Edit",
+        "Write",
         "WebFetch",
         "WebSearch"
       ],
@@ -26,11 +28,15 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

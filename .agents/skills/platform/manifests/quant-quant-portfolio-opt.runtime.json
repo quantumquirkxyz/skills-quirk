@@ -2,7 +2,7 @@
   "skill": "quant/quant-portfolio-opt",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3bc20b67aaf6a051756b4a2bd256c4a93724a6bd355f8559854d4f6bc5c141fc",
+  "frontmatterHash": "29c7e957ab883833009c53392dcbd73b4c7430c26eb802d31f583ea95a574a0d",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

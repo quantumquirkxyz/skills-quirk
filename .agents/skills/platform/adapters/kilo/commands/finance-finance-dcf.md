@@ -20,8 +20,8 @@ When to use: Discounted Cash Flow — forecast, WACC, terminal value, sensitivit
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Discounted Cash Flow complete; required sections present; completion criteria checked.
+Stop when: Forecast built, WACC computed, terminal value calculated, sensitivity analyzed, cross-check complete, valuation range delivered.

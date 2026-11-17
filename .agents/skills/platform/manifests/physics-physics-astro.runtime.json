@@ -2,7 +2,7 @@
   "skill": "physics/physics-astro",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "ac84269729c34ce488fd5727b70a4223d80ddcaa41473d7bef7a2ec4f00e5cfe",
+  "frontmatterHash": "a1982a83eb4c43ab11c4537284c280b20913194f80265782e5e5c7d9fb76ba15",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,7 +18,9 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "WebFetch",
+        "WebSearch"
       ],
       "deny": []
     }

@@ -12,4 +12,4 @@ Capabilities:
 - analyze analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches with assumptions, constraints, and failure modes
 - produce and validate a cs artifact with evidence, decisions, and next steps
 
-Stop when: Complexity bounds are stated, justified, and tied to the chosen input model.
+Stop when: Complexity bounds stated, justified, and tied to chosen input model.

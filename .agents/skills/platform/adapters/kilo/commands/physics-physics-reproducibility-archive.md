@@ -12,7 +12,8 @@ When to use: Make physics research reproducible and archive it — Zenodo DOI, G
 3. Containerise
 4. Archive on Zenodo
 5. GitHub release
-6. Checklist and compliance
+6. CITATION.cff
+7. Checklist and compliance
 
 ## Deliverables
 

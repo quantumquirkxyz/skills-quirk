@@ -10,9 +10,9 @@ When to use: Modern Portfolio Theory — efficient frontier, CAPM, APT, risk att
 1. Define universe — assets, time window, currency
 2. Compute moments — expected returns (historical, factor, or blended), covariance matrix (shrinkage justified), correlations
 3. Efficient frontier — compute frontier; identify minimum-variance portfolio, tangency portfolio, and efficient set
-4. CAPM / APT — estimate beta for each asset; APT: factor exposures (Fama-French 3/5, momentum, quality)
-5. Performance attribution — Brinson-Hood-Beebower: allocation, selection, interaction effects
-6. Regime analysis — does the factor model / efficient frontier hold across economic regimes?
+4. CAPM / APT — CAPM: beta = cov(Ri,RM)/var(RM); security market line; alpha = intercept. APT/Fama-French: correct factor construction (SMB, HML, RMW, CMA, WML)
+5. Performance attribution — Brinson: allocation + selection + interaction reconciles to active return. Time-weighted returns for manager evaluation; money-weighted returns for investor experience
+6. Regime analysis — factor performance across regimes; structural break detection
 7. Deliver — artifact: efficient frontier, CAPM betas / APT factor exposures, attribution decomposition, and a note on model assumptions and regime robustness
 
 ## Deliverables
@@ -21,8 +21,8 @@ When to use: Modern Portfolio Theory — efficient frontier, CAPM, APT, risk att
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Modern Portfolio Theory complete; required sections present; completion criteria checked.
+Stop when: Efficient frontier computed, CAPM/APT estimated, attribution decomposed, regime robustness noted.

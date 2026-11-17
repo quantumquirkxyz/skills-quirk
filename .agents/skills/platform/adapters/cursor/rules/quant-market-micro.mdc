@@ -12,4 +12,4 @@ Capabilities:
 - analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes
 - produce and validate a quant artifact with evidence, decisions, and next steps
 
-Stop when: Analyse market microstructure complete; required sections present; completion criteria checked.
+Stop when: Venue modeled, spread decomposed, execution costs estimated, optimal schedule delivered.

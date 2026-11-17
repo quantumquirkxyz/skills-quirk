@@ -18,7 +18,7 @@ When to use: Analyse experimental physics data with ROOT, pandas, uproot, NumPy 
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
+- risk: medium; trust tier: 3; approval required: no
 - side effects: none
 - isolation: none; model tier: reasoning
 

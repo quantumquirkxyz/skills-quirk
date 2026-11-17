@@ -714,7 +714,7 @@
           "name": "cs-algorithms",
           "description": "Design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination.",
           "category": "cs",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -730,7 +730,7 @@
           "name": "cs-complexity-analysis",
           "description": "Analyze algorithmic complexity — time, space, amortized cost, and lower bounds — with explicit assumptions and proof sketches.",
           "category": "cs",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -746,7 +746,7 @@
           "name": "cs-computability",
           "description": "Analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations.",
           "category": "cs",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -762,7 +762,7 @@
           "name": "cs-data-structures",
           "description": "Design and analyze data structures — arrays, trees, heaps, hash tables, graphs, and balanced variants — with operation costs and invariants.",
           "category": "cs",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -1616,48 +1616,54 @@
           "name": "finance-corporate-val",
           "description": "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks.",
           "category": "finance",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply finance corporate val methods within explicit finance boundaries",
             "analyze corporate valuation — dcf, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks with assumptions, constraints, and failure modes",
             "produce and validate a finance artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/finance/finance-corporate-val"
         },
         {
           "name": "finance-dcf",
           "description": "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range.",
           "category": "finance",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply finance dcf methods within explicit finance boundaries",
             "analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes",
             "produce and validate a finance artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/finance/finance-dcf"
         },
         {
           "name": "finance-portfolio-theory",
           "description": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.",
           "category": "finance",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply finance portfolio theory methods within explicit finance boundaries",
             "analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes",
             "produce and validate a finance artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/finance/finance-portfolio-theory"
         }
       ]
@@ -1911,21 +1917,11 @@
           "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
           "category": "foundation",
           "version": "2",
-          "maturity": "experimental",
+          "maturity": "stable",
           "risk": "medium",
           "trustTier": "3",
-          "capabilities": [
-            "verify a delegated artifact against observable success criteria without implementation context",
-            "inventory verifier capabilities and bind every command to provenance and a fixed-point digest",
-            "run mandatory negative checks, independent replay, and artifact-integrity checks",
-            "distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence",
-            "return a bounded typed DelegationVerdict without transcripts or repair work"
-          ],
-          "sideEffects": [
-            "write-temp-file",
-            "write-verdict-artifact",
-            "emit-redacted-evidence"
-          ],
+          "capabilities": [],
+          "sideEffects": [],
           "path": ".agents/skills/foundation/verify-delegation"
         }
       ]
@@ -2568,7 +2564,7 @@
           "name": "math-computational",
           "description": "Solve numerical and symbolic math problems (root finding, integration, ODEs, symbolic manipulation) with stable algorithms and explicit error analysis.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2582,12 +2578,12 @@
         },
         {
           "name": "math-cryptography",
-          "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
+          "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply math cryptography methods within explicit math boundaries",
             "analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes",
@@ -2598,9 +2594,9 @@
         },
         {
           "name": "math-formal-proof",
-          "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.",
+          "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2616,7 +2612,7 @@
           "name": "math-grant-structure",
           "description": "Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broader impacts, budget, timeline, reviewer expectations — with concrete templates.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2632,7 +2628,7 @@
           "name": "math-linear-algebra",
           "description": "Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SVD, eigendecomposition), linear systems, and applications in ML, graphics, and optimisation.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2648,7 +2644,7 @@
           "name": "math-literature-track",
           "description": "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2664,7 +2660,7 @@
           "name": "math-optimization",
           "description": "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2680,7 +2676,7 @@
           "name": "math-paper-collaboration",
           "description": "Manage mathematical paper collaboration — Overleaf / GitHub / arXiv integration, citation tracking, version control, reproducible computation links, and co-author coordination.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2696,7 +2692,7 @@
           "name": "math-presentation-beamer",
           "description": "Design mathematics presentations — Beamer slides with TikZ diagrams, colour accessibility, speaker notes, and audience-level adjustments — for seminars, conferences, or lectures.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2712,7 +2708,7 @@
           "name": "math-probability-models",
           "description": "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2726,9 +2722,9 @@
         },
         {
           "name": "math-pure-proofs",
-          "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.",
+          "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with conjecture falsification, counterexample search, verified algebraic proof checkers, and explicit proof strategies.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2744,7 +2740,7 @@
           "name": "math-teaching-problem-set",
           "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
           "category": "math",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2880,7 +2876,7 @@
           "name": "physics-astro",
           "description": "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2896,7 +2892,7 @@
           "name": "physics-career-postdoc",
           "description": "Navigate physics career transitions — postdoc applications, faculty applications, letters of recommendation, research statements, teaching statements, grant applications (NSF CAREER, DOE, ERC, Simons), and negotiation.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2912,7 +2908,7 @@
           "name": "physics-classical",
           "description": "Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2928,10 +2924,10 @@
           "name": "physics-data-analysis-root",
           "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply physics data analysis root methods within explicit physics boundaries",
             "analyze analyse experimental physics data with root, pandas, uproot, numpy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts with assumptions, constraints, and failure modes",
@@ -2944,7 +2940,7 @@
           "name": "physics-experimental-notebook",
           "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2960,7 +2956,7 @@
           "name": "physics-literature-search",
           "description": "Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph, nucl-th, physics.*), INSPIRE-HEP, NASA ADS, Web of Science, citation alerts — with domain filters.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -2976,13 +2972,13 @@
           "name": "physics-quantum",
           "description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
           "capabilities": [
             "apply physics quantum methods within explicit physics boundaries",
-            "analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes",
+            "analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with assumptions, constraints, and failure modes",
             "produce and validate a physics artifact with evidence, decisions, and next steps"
           ],
           "sideEffects": [],
@@ -2992,7 +2988,7 @@
           "name": "physics-reproducibility-archive",
           "description": "Make physics research reproducible and archive it — Zenodo DOI, GitHub + container (Docker/Apptainer), data preservation, code review, and open-science compliance for journals and funders.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -3006,25 +3002,27 @@
         },
         {
           "name": "physics-simulation-setup",
-          "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+          "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply physics simulation setup methods within explicit physics boundaries",
             "analyze set up reproducible physics simulations — monte carlo (geant4), molecular dynamics (lammps), dft (vasp, quantum espresso), quantum dynamics (qutip) — with containers, parameter files, and verification with assumptions, constraints, and failure modes",
             "produce and validate a physics artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/physics/physics-simulation-setup"
         },
         {
           "name": "physics-talk-design",
           "description": "Design physics talks — seminars, conference presentations, posters, public outreach — with audience-level adjustments, timing, visual conventions, and accessibility.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -3040,7 +3038,7 @@
           "name": "physics-thermo",
           "description": "Model thermodynamic systems — first and second law, heat engines, entropy, phase transitions — with energy accounting and efficiency bounds.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -3056,7 +3054,7 @@
           "name": "physics-writing-revtex",
           "description": "Write physics papers using RevTeX / APS / IOP / AIP formatting, with figure conventions, citation styles, and submission package preparation.",
           "category": "physics",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",
@@ -3436,114 +3434,128 @@
       "skills": [
         {
           "name": "quant-backtest",
-          "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+          "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
           "category": "quant",
-          "version": "3",
+          "version": "4",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "high",
+          "trustTier": "4",
           "capabilities": [
             "apply quant backtest methods within explicit quant boundaries",
             "audit data, code, configuration, validation, costs, execution assumptions, and failure modes",
             "produce and validate a quant artifact with evidence, provenance, hashes, and a bounded verdict"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-backtest"
         },
         {
           "name": "quant-credit-risk",
           "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant credit risk methods within explicit quant boundaries",
             "analyze model credit risk — pd, lgd, ead, expected loss, loss distribution, credit var — with default correlation and portfolio-level risk aggregation with assumptions, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-credit-risk"
         },
         {
           "name": "quant-derivatives-pricing",
           "description": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant derivatives pricing methods within explicit quant boundaries",
             "analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-derivatives-pricing"
         },
         {
           "name": "quant-factors",
           "description": "Define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant factors methods within explicit quant boundaries",
             "analyze define, test, and stress-test a quantitative factor (momentum, value, carry, quality) with explicit universe, signal, weighting, and statistical checks with assumptions, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-factors"
         },
         {
           "name": "quant-market-micro",
           "description": "Analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant market micro methods within explicit quant boundaries",
             "analyze analyse market microstructure — order book dynamics, price formation, execution costs (slippage, spread, impact), and optimal execution strategies with assumptions, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-market-micro"
         },
         {
           "name": "quant-portfolio-opt",
           "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant portfolio opt methods within explicit quant boundaries",
-            "analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes",
+            "analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-portfolio-opt"
         },
         {
           "name": "quant-risk-modeling",
           "description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.",
           "category": "quant",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
-          "risk": "low",
-          "trustTier": "1",
+          "risk": "medium",
+          "trustTier": "3",
           "capabilities": [
             "apply quant risk modeling methods within explicit quant boundaries",
             "analyze model market/portfolio/credit risk (var, cvar, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events with assumptions, constraints, and failure modes",
             "produce and validate a quant artifact with evidence, decisions, and next steps"
           ],
-          "sideEffects": [],
+          "sideEffects": [
+            "write-files"
+          ],
           "path": ".agents/skills/quant/quant-risk-modeling"
         }
       ]
@@ -3606,7 +3618,7 @@
           "name": "scientific-hypothesis",
           "description": "Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.",
           "category": "research",
-          "version": "1",
+          "version": "2",
           "maturity": "stable",
           "risk": "low",
           "trustTier": "1",

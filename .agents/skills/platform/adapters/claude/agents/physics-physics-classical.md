@@ -11,4 +11,4 @@ Capabilities:
 - analyze solve classical mechanics problems — newton's laws, lagrangian, hamiltonian, rigid body, orbital — with free-body diagrams, energy accounting, and dimensional checks with assumptions, constraints, and failure modes
 - produce and validate a physics artifact with evidence, decisions, and next steps
 
-Stop condition: Solve classical mechanics problems complete; required sections present; completion criteria checked.
+Stop condition: Diagram, formulation, equations, solution, dimensional check, and limiting cases all present.

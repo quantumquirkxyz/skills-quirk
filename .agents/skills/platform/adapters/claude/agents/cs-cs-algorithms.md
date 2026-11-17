@@ -11,4 +11,4 @@ Capabilities:
 - analyze design and analyse algorithms — correctness proof, complexity analysis (time and space), and stability — with explicit proof of invariants and termination with assumptions, constraints, and failure modes
 - produce and validate a cs artifact with evidence, decisions, and next steps
 
-Stop condition: Design and analyse algorithms complete; required sections present; completion criteria checked.
+Stop condition: Problem stated, algorithm designed, correctness proof complete, complexity analyzed, stability verified.

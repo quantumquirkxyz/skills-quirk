@@ -24,4 +24,4 @@ When to use: Analyze computability questions — decidability, reductions, recog
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: The problem class, proof strategy, and reduction obligations are explicit and checked.
+Stop when: Problem class, proof strategy, and reduction obligations explicit and checked.

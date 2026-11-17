@@ -9,8 +9,11 @@ When to use: Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-
 
 1. Define the tracking set
 2. Pull from primary sources
-3. Filter and score
-4. Group and deliver
+3. Deduplicate
+4. Cross-source citation completeness
+5. Rate-limit respect
+6. Filter and score
+7. Group and deliver
 
 ## Deliverables
 

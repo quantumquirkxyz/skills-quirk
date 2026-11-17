@@ -12,7 +12,7 @@ When to use: Price and calibrate derivatives (options, exotics, structured produ
 3. Price
 4. Compute Greeks
 5. Calibrate to market
-6. Deliver
+6. Validate
 
 ## Deliverables
 
@@ -20,8 +20,8 @@ When to use: Price and calibrate derivatives (options, exotics, structured produ
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Price and calibrate derivatives (options, exotics, structured products) complete; required sections present; completion criteria checked.
+Stop when: Instrument specified, model selected, price computed, Greeks reported, calibration validated.

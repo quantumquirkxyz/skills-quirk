@@ -8,10 +8,13 @@ When to use: Track mathematics literature across arXiv, MathSciNet, zbMATH, jour
 ## Workflow
 
 1. Define the tracking set
-2. Pull from primary sources
-3. Score relevance
-4. Group
-5. Deliver the digest
+2. Record the query for reproducibility
+3. Pull from primary sources
+4. Rate-limit respect
+5. Deduplicate
+6. Cross-source citation completeness check
+7. Score relevance
+8. Group
 
 ## Deliverables
 

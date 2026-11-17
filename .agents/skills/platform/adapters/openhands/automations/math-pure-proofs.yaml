@@ -1,5 +1,5 @@
 name: math-pure-proofs
-description: "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies."
+description: "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with conjecture falsification, counterexample search, verified algebraic proof checkers, and explicit proof strategies."
 trigger:
   type: webhook
   events: [pull_request.opened, issues.opened]

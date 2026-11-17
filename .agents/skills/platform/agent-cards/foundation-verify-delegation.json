@@ -19,11 +19,7 @@
       "name": "verify-delegation",
       "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
       "tags": [
-        "\"foundation\"",
-        "\"delegation\"",
-        "\"verification\"",
-        "\"black-box\"",
-        "\"provenance\""
+        "foundation"
       ],
       "parameters": {
         "trustTier": "3",

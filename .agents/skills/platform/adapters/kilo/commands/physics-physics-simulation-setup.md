@@ -1,9 +1,9 @@
 ---
-description: "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification."
+description: "Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks."
 ---
 # physics-simulation-setup
 
-When to use: Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.
+When to use: Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks.
 
 ## Workflow
 
@@ -19,8 +19,8 @@ When to use: Set up reproducible physics simulations — Monte Carlo (GEANT4), m
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Container builds; parameters saved; verification report shows agreement with benchmark.
+Stop when: Container builds; parameters saved; convergence study passes; benchmark verification passes; quality gates green.

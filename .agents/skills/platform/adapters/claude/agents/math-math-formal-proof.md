@@ -1,6 +1,6 @@
 ---
 name: math-formal-proof
-description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification."
+description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven constructi..."
 tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
 ---
@@ -11,4 +11,4 @@ Capabilities:
 - analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes
 - produce and validate a math artifact with evidence, decisions, and next steps
 
-Stop condition: source file compiles in the target assistant with no errors; verification report attached.
+Stop condition: Source file compiles in target assistant with pinned toolchain and no errors; no sorry/Admitted; CI proof-checking job passes; verification report attached.

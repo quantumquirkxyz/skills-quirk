@@ -2,7 +2,7 @@
   "skill": "quant/quant-derivatives-pricing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "c2be905c49a0f6a019b9dc371b3c917caa54b9f19e0c74bf8277cee2e0d352ce",
+  "frontmatterHash": "4fafe3c35c0114d148994efdf101dbf454ec296ce44189f1cba8486170655417",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

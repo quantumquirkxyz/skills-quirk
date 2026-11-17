@@ -12,7 +12,6 @@ When to use: Define, test, and stress-test a quantitative factor (momentum, valu
 3. Build the backtest
 4. Stress tests
 5. Statistics
-6. Deliver
 
 ## Deliverables
 
@@ -20,8 +19,8 @@ When to use: Define, test, and stress-test a quantitative factor (momentum, valu
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Artifact present with all six sections; verdict is honest and grounded.
+Stop when: Signal defined, biases mitigated, backtest run, stress tests complete, verdict stated.

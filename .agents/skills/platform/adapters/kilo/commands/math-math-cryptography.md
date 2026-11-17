@@ -1,9 +1,9 @@
 ---
-description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis."
+description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors."
 ---
 # math-cryptography
 
-When to use: Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.
+When to use: Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors.
 
 ## Workflow
 
@@ -20,8 +20,8 @@ When to use: Analyse cryptographic constructions — symmetric, asymmetric, hash
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
+- risk: medium; trust tier: 3; approval required: yes
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Analyse cryptographic constructions complete; required sections present; completion criteria checked.
+Stop when: Cryptographic analysis complete; security verdict stated; attack surface documented; assumptions listed; NIST PQ default applied; KAT vectors verified; constant-time discipline confirmed.

@@ -1,6 +1,6 @@
 ---
 name: math-cryptography
-description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis."
+description: "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified..."
 tools: Read, Grep, Glob
 model: opus
 ---
@@ -11,4 +11,4 @@ Capabilities:
 - analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes
 - produce and validate a math artifact with evidence, decisions, and next steps
 
-Stop condition: Analyse cryptographic constructions complete; required sections present; completion criteria checked.
+Stop condition: Cryptographic analysis complete; security verdict stated; attack surface documented; assumptions listed; NIST PQ default applied; KAT vectors verified; constant-time discipline confirmed.

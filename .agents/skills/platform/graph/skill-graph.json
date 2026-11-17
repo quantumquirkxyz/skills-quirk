@@ -1103,7 +1103,7 @@
     },
     "finance-corporate-val": {
       "domain": "finance",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "finance",
       "capabilities": [
         "apply finance corporate val methods within explicit finance boundaries",
@@ -1115,7 +1115,7 @@
     },
     "finance-dcf": {
       "domain": "finance",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "finance",
       "capabilities": [
         "apply finance dcf methods within explicit finance boundaries",
@@ -1127,7 +1127,7 @@
     },
     "finance-portfolio-theory": {
       "domain": "finance",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "finance",
       "capabilities": [
         "apply finance portfolio theory methods within explicit finance boundaries",
@@ -1309,13 +1309,7 @@
       "domain": "foundation",
       "tier": "3",
       "artifactType": "agent",
-      "capabilities": [
-        "verify a delegated artifact against observable success criteria without implementation context",
-        "inventory verifier capabilities and bind every command to provenance and a fixed-point digest",
-        "run mandatory negative checks, independent replay, and artifact-integrity checks",
-        "distinguish pass, fail, blocked, partial, NOT-RUN, stale, and outcome-unknown evidence",
-        "return a bounded typed DelegationVerdict without transcripts or repair work"
-      ],
+      "capabilities": [],
       "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
       "path": ".agents/skills/foundation/verify-delegation"
     },
@@ -1764,14 +1758,14 @@
     },
     "math-cryptography": {
       "domain": "math",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "math",
       "capabilities": [
         "apply math cryptography methods within explicit math boundaries",
         "analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes",
         "produce and validate a math artifact with evidence, decisions, and next steps"
       ],
-      "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis.",
+      "description": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors.",
       "path": ".agents/skills/math/math-cryptography"
     },
     "math-formal-proof": {
@@ -1783,7 +1777,7 @@
         "analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes",
         "produce and validate a math artifact with evidence, decisions, and next steps"
       ],
-      "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.",
+      "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification.",
       "path": ".agents/skills/math/math-formal-proof"
     },
     "math-grant-structure": {
@@ -1879,7 +1873,7 @@
         "analyze write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies with assumptions, constraints, and failure modes",
         "produce and validate a math artifact with evidence, decisions, and next steps"
       ],
-      "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with rigorous step-by-step reasoning and explicit proof strategies.",
+      "description": "Write and verify pure-math proofs (number theory, algebra, analysis, combinatorics) with conjecture falsification, counterexample search, verified algebraic proof checkers, and explicit proof strategies.",
       "path": ".agents/skills/math/math-pure-proofs"
     },
     "math-teaching-problem-set": {
@@ -2004,7 +1998,7 @@
     },
     "physics-data-analysis-root": {
       "domain": "physics",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "data",
       "capabilities": [
         "apply physics data analysis root methods within explicit physics boundaries",
@@ -2044,7 +2038,7 @@
       "artifactType": "physics",
       "capabilities": [
         "apply physics quantum methods within explicit physics boundaries",
-        "analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with checks against limits and known results with assumptions, constraints, and failure modes",
+        "analyze model quantum systems (states, operators, measurement, entanglement) and perform calculations using dirac notation, with assumptions, constraints, and failure modes",
         "produce and validate a physics artifact with evidence, decisions, and next steps"
       ],
       "description": "Model quantum systems (states, operators, measurement, entanglement) and perform calculations using Dirac notation, with checks against limits and known results.",
@@ -2064,14 +2058,14 @@
     },
     "physics-simulation-setup": {
       "domain": "physics",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "physics",
       "capabilities": [
         "apply physics simulation setup methods within explicit physics boundaries",
         "analyze set up reproducible physics simulations — monte carlo (geant4), molecular dynamics (lammps), dft (vasp, quantum espresso), quantum dynamics (qutip) — with containers, parameter files, and verification with assumptions, constraints, and failure modes",
         "produce and validate a physics artifact with evidence, decisions, and next steps"
       ],
-      "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+      "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks.",
       "path": ".agents/skills/physics/physics-simulation-setup"
     },
     "physics-talk-design": {
@@ -2348,19 +2342,19 @@
     },
     "quant-backtest": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "4",
       "artifactType": "test-strategy",
       "capabilities": [
         "apply quant backtest methods within explicit quant boundaries",
         "audit data, code, configuration, validation, costs, execution assumptions, and failure modes",
         "produce and validate a quant artifact with evidence, provenance, hashes, and a bounded verdict"
       ],
-      "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, cost/impact realism, generated-code audit, deterministic replay, known-failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+      "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
       "path": ".agents/skills/quant/quant-backtest"
     },
     "quant-credit-risk": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "quant",
       "capabilities": [
         "apply quant credit risk methods within explicit quant boundaries",
@@ -2372,7 +2366,7 @@
     },
     "quant-derivatives-pricing": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "quant",
       "capabilities": [
         "apply quant derivatives pricing methods within explicit quant boundaries",
@@ -2384,7 +2378,7 @@
     },
     "quant-factors": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "quant",
       "capabilities": [
         "apply quant factors methods within explicit quant boundaries",
@@ -2396,7 +2390,7 @@
     },
     "quant-market-micro": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "quant",
       "capabilities": [
         "apply quant market micro methods within explicit quant boundaries",
@@ -2408,11 +2402,11 @@
     },
     "quant-portfolio-opt": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "quant",
       "capabilities": [
         "apply quant portfolio opt methods within explicit quant boundaries",
-        "analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks with assumptions, constraints, and failure modes",
+        "analyze construct and optimise portfolios — mean-variance, black-litterman, risk-parity, factor — with explicit objectives, constraints, and failure modes",
         "produce and validate a quant artifact with evidence, decisions, and next steps"
       ],
       "description": "Construct and optimise portfolios — mean-variance, Black-Litterman, risk-parity, factor — with explicit objectives, constraints, and robustness checks.",
@@ -2420,7 +2414,7 @@
     },
     "quant-risk-modeling": {
       "domain": "quant",
-      "tier": "1",
+      "tier": "3",
       "artifactType": "model",
       "capabilities": [
         "apply quant risk modeling methods within explicit quant boundaries",
@@ -3529,6 +3523,60 @@
       "weight": 0.4
     },
     {
+      "from": "cs-algorithms",
+      "to": "cs-complexity-analysis",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-algorithms",
+      "to": "cs-data-structures",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-algorithms",
+      "to": "cs-computability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-complexity-analysis",
+      "to": "cs-algorithms",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-complexity-analysis",
+      "to": "cs-data-structures",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-computability",
+      "to": "cs-algorithms",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-computability",
+      "to": "math-formal-proof",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-data-structures",
+      "to": "cs-algorithms",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "cs-data-structures",
+      "to": "cs-complexity-analysis",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "code-review",
       "to": "diagnosing-bugs",
       "type": "compatible",
@@ -3697,6 +3745,42 @@
       "weight": 0.4
     },
     {
+      "from": "finance-corporate-val",
+      "to": "finance-dcf",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "finance-corporate-val",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "finance-dcf",
+      "to": "finance-corporate-val",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "finance-dcf",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "finance-portfolio-theory",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "finance-portfolio-theory",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "agent-card",
       "to": "mcp-server",
       "type": "compatible",
@@ -3758,7 +3842,13 @@
     },
     {
       "from": "verify-delegation",
-      "to": "code-review",
+      "to": "agent-observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "verify-delegation",
+      "to": "skill-testing-framework",
       "type": "compatible",
       "weight": 0.4
     },
@@ -3835,6 +3925,228 @@
       "weight": 0.4
     },
     {
+      "from": "math-computational",
+      "to": "math-linear-algebra",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-computational",
+      "to": "math-optimization",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-computational",
+      "to": "math-probability-models",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-cryptography",
+      "to": "sec-cryptography-applied",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-cryptography",
+      "to": "auth",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-formal-proof",
+      "to": "math-pure-proofs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-formal-proof",
+      "to": "cs-computability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-linear-algebra",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-optimization",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-optimization",
+      "to": "math-linear-algebra",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-probability-models",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-probability-models",
+      "to": "quant-factors",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-pure-proofs",
+      "to": "math-formal-proof",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-pure-proofs",
+      "to": "cs-computability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "math-teaching-problem-set",
+      "to": "math-paper-collaboration",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-astro",
+      "to": "physics-literature-search",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-astro",
+      "to": "physics-reproducibility-archive",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-classical",
+      "to": "physics-quantum",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-classical",
+      "to": "physics-simulation-setup",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-data-analysis-root",
+      "to": "physics-experimental-notebook",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-data-analysis-root",
+      "to": "physics-reproducibility-archive",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-experimental-notebook",
+      "to": "physics-data-analysis-root",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-experimental-notebook",
+      "to": "physics-reproducibility-archive",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-literature-search",
+      "to": "physics-astro",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-literature-search",
+      "to": "physics-quantum",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-quantum",
+      "to": "physics-classical",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-quantum",
+      "to": "math-linear-algebra",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-reproducibility-archive",
+      "to": "physics-simulation-setup",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-reproducibility-archive",
+      "to": "physics-data-analysis-root",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-reproducibility-archive",
+      "to": "physics-writing-revtex",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-simulation-setup",
+      "to": "physics-classical",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-simulation-setup",
+      "to": "physics-quantum",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-simulation-setup",
+      "to": "physics-thermo",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-talk-design",
+      "to": "physics-writing-revtex",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-thermo",
+      "to": "physics-classical",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-thermo",
+      "to": "physics-simulation-setup",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "physics-writing-revtex",
+      "to": "physics-reproducibility-archive",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "analyze-artifacts",
       "to": "to-spec",
       "type": "compatible",
@@ -3903,6 +4215,126 @@
     {
       "from": "qa-automation",
       "to": "tdd",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-backtest",
+      "to": "quant-factors",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-backtest",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-backtest",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-credit-risk",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-credit-risk",
+      "to": "quant-derivatives-pricing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-derivatives-pricing",
+      "to": "quant-market-micro",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-derivatives-pricing",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-factors",
+      "to": "quant-backtest",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-factors",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-market-micro",
+      "to": "quant-backtest",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-market-micro",
+      "to": "quant-derivatives-pricing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-portfolio-opt",
+      "to": "quant-backtest",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-portfolio-opt",
+      "to": "quant-risk-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-portfolio-opt",
+      "to": "quant-factors",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-risk-modeling",
+      "to": "quant-backtest",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-risk-modeling",
+      "to": "quant-portfolio-opt",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "quant-risk-modeling",
+      "to": "quant-credit-risk",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "scientific-hypothesis",
+      "to": "math-pure-proofs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "scientific-hypothesis",
+      "to": "math-probability-models",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "scientific-hypothesis",
+      "to": "research-literature-review",
       "type": "compatible",
       "weight": 0.4
     },

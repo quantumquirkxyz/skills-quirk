@@ -21,5 +21,5 @@ edges:
   - {from: verify, to: report}
 metadata:
   skill: physics/physics-simulation-setup
-  risk: low
-  trustTier: 1
+  risk: medium
+  trustTier: 3

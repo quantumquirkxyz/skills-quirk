@@ -20,8 +20,8 @@ When to use: Corporate valuation — DCF, multiples, sum-of-parts, scenario anal
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Corporate valuation complete; required sections present; completion criteria checked.
+Stop when: Scope defined, methods selected, assumptions explicit, computation executed, cross-check complete, valuation range delivered.

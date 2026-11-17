@@ -12,4 +12,4 @@ Capabilities:
 - analyze analyze computability questions — decidability, reductions, recognizability, and undecidability proofs — with formal problem transformations with assumptions, constraints, and failure modes
 - produce and validate a cs artifact with evidence, decisions, and next steps
 
-Stop when: The problem class, proof strategy, and reduction obligations are explicit and checked.
+Stop when: Problem class, proof strategy, and reduction obligations explicit and checked.

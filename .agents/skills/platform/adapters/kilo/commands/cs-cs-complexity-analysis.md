@@ -24,4 +24,4 @@ When to use: Analyze algorithmic complexity — time, space, amortized cost, and
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Complexity bounds are stated, justified, and tied to the chosen input model.
+Stop when: Complexity bounds stated, justified, and tied to chosen input model.

@@ -9,9 +9,11 @@ When to use: Design mathematics presentations — Beamer slides with TikZ diagra
 
 1. Define the audience and duration
 2. Structure the slides
-3. Figures and diagrams
-4. Speaker notes
-5. Compile and check
+3. Colour accessibility
+4. Figures and diagrams
+5. Speaker notes
+6. LaTeX compilation
+7. Compile and check
 
 ## Deliverables
 

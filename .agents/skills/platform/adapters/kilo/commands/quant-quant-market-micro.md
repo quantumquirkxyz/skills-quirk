@@ -7,13 +7,14 @@ When to use: Analyse market microstructure — order book dynamics, price format
 
 ## Workflow
 
-1. Identify venue type — lit exchange, dark pool, OTC, CEX vs DEX
-2. Order book model — queueing theory (Geometric Brownian Motion of queue), Glosten-Milgrom (adverse selection), or Kyle's lambda
-3. Spread decomposition — bid-ask spread = adverse selection + inventory + order processing cost
-4. Execution costs — slippage vs arrival price, market impact (temporary vs permanent), timing risk from delay
-5. Optimal execution — Almgren-Chriss framework (minimise expected cost + variance of execution); VWAP, TWAP, POV benchmarks
-6. Data requirements — tick data, order log, trade reporting; NO OHLCV-only backtests for microstructure claims
-7. Deliver — artifact: venue model, spread decomposition, cost estimate (bps), and optimal execution schedule
+1. Identify venue type — lit exchange, dark pool, OTC, CEX vs DEX; record venue rules, tick size, fees, queue priority, and latency assumptions
+2. **Tick data quality** — grade tick data on five dimensions
+3. **Distinguish microstructure noise from genuine data defects** — microstructure noise (bid-ask bounce, discreteness, queue position) is expected and modelled; genuine defects (ghost quotes, spoofed size, stale stamps, corrupted prices) a...
+4. Order book model — queueing theory (Geometric Brownian Motion of queue), Glosten-Milgrom (adverse selection), or Kyle's lambda
+5. Spread decomposition — bid-ask spread = adverse selection + inventory + order processing cost
+6. Execution costs — slippage vs arrival price, market impact (temporary vs permanent), timing risk from delay
+7. **Order book depth for temporary impact estimation** — use LOB depth at the inside and adjacent levels to estimate temporary impact of a child order walking the book; calibrate the impact coefficient from public LOB data
+8. **Almgren-Chriss parameters calibrated from public LOB data** — estimate temporary impact (η), permanent impact (γ), and risk aversion (λ) from LOB shape, volatility, and volume; solve the optimal execution schedule minimising expected c...
 
 ## Deliverables
 
@@ -21,8 +22,8 @@ When to use: Analyse market microstructure — order book dynamics, price format
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
-Stop when: Analyse market microstructure complete; required sections present; completion criteria checked.
+Stop when: Venue modeled, spread decomposed, execution costs estimated, optimal schedule delivered.

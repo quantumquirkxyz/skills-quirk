@@ -1,8 +1,8 @@
 {
   "name": "physics-simulation-setup",
-  "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+  "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks.",
   "url": "https://github.com/quirk/example/blob/main/.agents/skills/physics/physics-simulation-setup/SKILL.md",
-  "version": "1",
+  "version": "2",
   "capabilities": {
     "skillInvocation": true,
     "artifactProduction": true,
@@ -17,12 +17,12 @@
     {
       "id": "physics/physics-simulation-setup",
       "name": "physics-simulation-setup",
-      "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4), molecular dynamics (LAMMPS), DFT (VASP, Quantum ESPRESSO), quantum dynamics (QuTiP) — with containers, parameter files, and verification.",
+      "description": "Set up reproducible physics simulations — Monte Carlo (GEANT4 11.2.x), molecular dynamics (LAMMPS), DFT (VASP commercial, Quantum ESPRESSO 7.x), quantum dynamics (QuTiP 5.x) — with pinned containers, parameter files, convergence verification, and regression benchmarks.",
       "tags": [
         "\"physics\""
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
         "artifactType": "physics"
       }

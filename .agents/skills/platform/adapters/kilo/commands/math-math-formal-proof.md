@@ -1,9 +1,9 @@
 ---
-description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification."
+description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification."
 ---
 # math-formal-proof
 
-When to use: Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with literate programming, tactic-driven construction, and verification.
+When to use: Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification.
 
 ## Workflow
 
@@ -23,4 +23,4 @@ When to use: Develop formal mathematical proofs in proof assistants (Lean 4, Coq
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: source file compiles in the target assistant with no errors; verification report attached.
+Stop when: Source file compiles in target assistant with pinned toolchain and no errors; no sorry/Admitted; CI proof-checking job passes; verification report attached.

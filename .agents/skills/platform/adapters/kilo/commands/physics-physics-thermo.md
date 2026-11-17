@@ -9,10 +9,12 @@ When to use: Model thermodynamic systems — first and second law, heat engines,
 
 1. Define the system
 2. First law (energy accounting)
-3. Second law (entropy)
-4. Pick the cycle / process
-5. Phase transitions (if applicable)
-6. Deliver
+3. First-law cycle accounting
+4. Second law (entropy)
+5. Entropy production
+6. Pick the cycle / process
+7. Carnot bound check
+8. Van der Waals critical point verification
 
 ## Deliverables
 
@@ -24,4 +26,4 @@ When to use: Model thermodynamic systems — first and second law, heat engines,
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Model thermodynamic systems complete; required sections present; completion criteria checked.
+Stop when: System definition, first law, second law, cycle analysis, efficiency, and key bound all documented.

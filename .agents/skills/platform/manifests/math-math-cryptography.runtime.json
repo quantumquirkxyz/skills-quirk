@@ -2,7 +2,7 @@
   "skill": "math/math-cryptography",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "ffabfbb96f50c900da38c0546e0761c87566ddb353df7511226aeff1d7519b66",
+  "frontmatterHash": "0f670ebe4d7fe0f03b7198057fae74389f7c7cc8ae0ed163686785a96635ec4a",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,7 +10,7 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
+    "defaultAgent": "general",
     "isolation": "none",
     "maxTurns": 6,
     "modelTier": "reasoning",
@@ -25,10 +25,12 @@
   },
   "guardrails": {
     "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

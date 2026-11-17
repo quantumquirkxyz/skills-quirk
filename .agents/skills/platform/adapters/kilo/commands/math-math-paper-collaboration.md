@@ -8,9 +8,9 @@ When to use: Manage mathematical paper collaboration — Overleaf / GitHub / arX
 ## Workflow
 
 1. Set up the repository
-2. Citation database
+2. Citation tracking
 3. Collaboration rules
-4. Reproducibility links
+4. Version control with reproducible computation links
 5. ArXiv package
 
 ## Deliverables

@@ -2,7 +2,7 @@
   "skill": "quant/quant-risk-modeling",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "952c48d80ae861b725b310ef0584b03fd208c83b14aa202fd0cca2787cfc3d1a",
+  "frontmatterHash": "01f14e88c79500ed126481cd194ec9fc236155d4246a992e89b8ccdda013958c",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,31 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],
