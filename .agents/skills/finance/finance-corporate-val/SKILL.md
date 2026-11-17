@@ -2,7 +2,7 @@
 name: "finance-corporate-val"
 category: "finance"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Corporate valuation — DCF, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze corporate valuation — dcf, multiples, sum-of-parts, scenario analysis — with explicit assumptions, sensitivity, and cross-checks with assumptions, constraints, and failure modes
   - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Corporate valuation complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Scope defined, methods selected, assumptions explicit, computation executed, cross-check complete, valuation range delivered."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "finance"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/finance-corporate-val.json"
 diataxis: "how-to"
 tags: ["finance"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["finance-dcf", "quant-portfolio-opt"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -92,8 +92,10 @@ State why each method fits.
 Every number comes from a source or an explicit assumption:
 
 - **Forecasts:** revenue growth, margins, capex, working-capital — with a source (management, analyst, industry).
-- **WACC / discount rate:** risk-free rate, beta, equity risk premium, debt cost, capital structure.
-- **Terminal growth:** not automatically 3%; tie to GDP / inflation / sector.
+- **WACC / discount rate:** risk-free rate, beta, equity risk premium, debt cost, capital structure. Match cash flow type to discount rate: FCFF is discounted at WACC; FCFE is discounted at cost of equity. WACC uses market-value weights and net debt, not gross debt.
+- **Terminal growth:** g ≤ long-term nominal GDP (~2–3%) and ≤ risk-free proxy; not automatically 3%.
+- **Terminal FCFF numerator:** reinvestment-consistent NOPAT × (1 − g/ROIC).
+- **Mid-year convention:** apply consistently to explicit period cash flows and terminal value.
 - **Multiples:** how comparables selected; adjustments for size, growth, profitability.
 
 **Completion criterion:** every major assumption is either cited or explicitly stated.
@@ -103,7 +105,7 @@ Every number comes from a source or an explicit assumption:
 Compute each method. For DCF, report:
 
 - Projected FCF by year.
-- Terminal value and terminal-value-to-enterprise-value ratio.
+- Terminal value and terminal-value-to-enterprise-value ratio (60–80% typical; >85% flagged).
 - Sensitivity table (WACC ±2%, terminal growth ±1%).
 
 For multiples, show the comparable list and adjustments.
@@ -116,6 +118,7 @@ Compare methods:
 
 - Is the DCF range consistent with the multiples range?
 - If they diverge, which assumption drives it?
+- Cross-check the implied exit multiple and implied growth rate; flag inconsistency.
 - Scenario analysis: base / optimistic / pessimistic case.
 - Sanity against market price: premium / discount to current price, and why.
 
@@ -132,7 +135,7 @@ Markdown artifact with: scope, methods, assumptions (with sources or notes), com
 - Record SHA-256 hashes for every data snapshot, source table, model-input file, and code revision; include valuation-date and publication timestamps.
 - Check look-ahead, survivorship, stale-price, currency, corporate-action, and double-counting leakage; stop with `blocked` when point-in-time provenance is unavailable.
 - Report scenario and parameter uncertainty as intervals or ranges, not a single point estimate; include calibration, historical cross-checks, or a documented backtest where data supports it.
-- Run known-solution DCF/multiples fixtures and a counterexample that exposes an invalid assumption; state numerical tolerances.
+- Run known-solution fixtures: DCF round-trip, terminal value, WACC, and sensitivity; and a counterexample that exposes an invalid assumption; state numerical tolerances.
 - State fairness/privacy limits for sensitive inputs and that the artifact is analytical, not investment, legal, tax, or accounting advice.
 - Stop with `inconclusive` when material inputs, hashes, leakage checks, or tolerance checks are missing; align artifact validation and residual risks with the stop condition.
 

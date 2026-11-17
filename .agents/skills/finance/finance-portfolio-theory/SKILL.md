@@ -2,7 +2,7 @@
 name: "finance-portfolio-theory"
 category: "finance"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes
   - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Modern Portfolio Theory complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Efficient frontier computed, CAPM/APT estimated, attribution decomposed, regime robustness noted."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "finance"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/finance-portfolio-theory.json"
 diataxis: "how-to"
 tags: ["finance"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["quant-portfolio-opt", "quant-risk-modeling"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -71,9 +71,9 @@ Apply **Modern Portfolio Theory** — efficient frontier, CAPM, APT, performance
 1. Define universe — assets, time window, currency.
 2. Compute moments — expected returns (historical, factor, or blended), covariance matrix (shrinkage justified), correlations.
 3. Efficient frontier — compute frontier; identify minimum-variance portfolio, tangency portfolio, and efficient set.
-4. CAPM / APT — estimate beta for each asset; APT: factor exposures (Fama-French 3/5, momentum, quality).
-5. Performance attribution — Brinson-Hood-Beebower: allocation, selection, interaction effects.
-6. Regime analysis — does the factor model / efficient frontier hold across economic regimes?
+4. CAPM / APT — CAPM: beta = cov(Ri,RM)/var(RM); security market line; alpha = intercept. APT/Fama-French: correct factor construction (SMB, HML, RMW, CMA, WML).
+5. Performance attribution — Brinson: allocation + selection + interaction reconciles to active return. Time-weighted returns for manager evaluation; money-weighted returns for investor experience.
+6. Regime analysis — factor performance across regimes; structural break detection.
 7. Deliver — artifact: efficient frontier, CAPM betas / APT factor exposures, attribution decomposition, and a note on model assumptions and regime robustness.
 
 ## Rules
@@ -89,7 +89,7 @@ Apply **Modern Portfolio Theory** — efficient frontier, CAPM, APT, performance
 - Record SHA-256 hashes for price/fundamental snapshots, benchmark data, code, and environment, with point-in-time timestamps.
 - Check look-ahead, survivorship, stale-price, corporate-action, benchmark-selection, and regime leakage; stop when the investable universe cannot be reconstructed.
 - Report parameter and estimation uncertainty with confidence or bootstrap intervals; calibrate risk forecasts and use walk-forward backtesting for performance claims.
-- Run known-solution covariance/frontier fixtures and counterexamples for singular covariance, short-sale limits, and concentration; state numerical tolerances.
+- Run known-solution fixtures: CAPM, Fama-French, Brinson attribution, efficient frontier, and risk attribution; plus counterexamples for singular covariance, short-sale limits, and concentration; state numerical tolerances.
 - Test fairness/privacy implications of demographic or ESG proxies and state that outputs are analytical, not personalized financial advice.
 - Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance gates fail; align artifact validation and residual risks with the stop condition.
 

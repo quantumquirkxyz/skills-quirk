@@ -2,7 +2,7 @@
 name: "finance-dcf"
 category: "finance"
 maturity: "stable"
-version: "1"
+version: "2"
 description: "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range."
 license: "MIT"
 capabilities:
@@ -10,22 +10,22 @@ capabilities:
   - analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes
   - produce and validate a finance artifact with evidence, decisions, and next steps
 outputs: "finance artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
-stopCondition: "Discounted Cash Flow complete; required sections present; completion criteria checked."
-risk: "low"
-trustTier: "1"
+stopCondition: "Forecast built, WACC computed, terminal value calculated, sensitivity analyzed, cross-check complete, valuation range delivered."
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
 artifactType: "finance"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "evals/behavioral/finance-dcf.json"
 diataxis: "how-to"
 tags: ["finance"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: ["finance-corporate-val", "quant-portfolio-opt"]
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
@@ -75,7 +75,7 @@ Produce explicit annual projections (typically 5–10 years):
 - **Revenue growth** — justified by historicals, market size, pricing power.
 - **EBITDA margin** — projected path with operating leverage reasoning.
 - **Capex and D&A** — investment cycle and depreciation schedule.
-- **Working capital** — as % of revenue with historical justification.
+- **Working capital** — changes in growing phases; as % of revenue with historical justification.
 - **Tax rate** — effective vs statutory; deferred tax if relevant.
 - **FCF** = EBIT(1−T) + D&A − Capex − ΔWC.
 
@@ -85,10 +85,11 @@ Produce explicit annual projections (typically 5–10 years):
 
 Compute WACC:
 
-- **Cost of equity:** CAPM with beta (levered, from comparables or fundamental), risk-free (sovereign yield), ERP.
-- **Cost of debt:** pre-tax yield on debt, or risk-free + credit spread.
+- **Cost of equity:** CAPM; risk-free rate matches currency/duration (10Y gov bond); beta unlevered from comparables, relevered at target D/E (Hamada); ERP from a consistent provider.
+- **Cost of debt:** after-tax yield on debt, or risk-free + credit spread; synthetic rating for private companies.
 - **Capital structure:** market-value weights (not book); target vs current.
 - **Tax shield:** WACC = Ke·E/V + Kd·D/V·(1−T).
+- **Mid-year convention:** apply consistently to explicit period cash flows and terminal value.
 
 State the source for beta, ERP, and risk-free rate.
 
@@ -96,7 +97,7 @@ State the source for beta, ERP, and risk-free rate.
 
 ### 3. Terminal value
 
-- **Gordon growth:** TV = FCF_n(1+g)/(WACC−g); g tied to long-run nominal GDP / inflation.
+- **Gordon growth:** TV = FCF_n(1+g)/(WACC−g); g tied to long-run nominal GDP / inflation and ≤ risk-free proxy.
 - **Exit multiple:** TV = EBITDA_n × multiple; state the multiple and its justification.
 - Report both; explain which you prefer and why.
 
@@ -130,7 +131,7 @@ Markdown artifact: forecast, WACC, terminal value, sensitivity, scenarios, cross
 - Record SHA-256 hashes for data snapshots, source tables, code, and environment; preserve as-of timestamps and valuation date.
 - Check look-ahead, survivorship, stale-price, currency, corporate-action, and terminal-value leakage; stop if point-in-time evidence is unavailable.
 - Report WACC, terminal growth, forecast, and scenario uncertainty as intervals; calibrate historical forecast error when available and backtest the forecast protocol where feasible.
-- Run a known-solution DCF fixture and a counterexample with `WACC <= g`; report numerical tolerances and fail closed on violations.
+- Run known-solution fixtures: DCF computation, terminal value, WACC, mid-year convention, sensitivity, and break-even; plus a counterexample with `WACC <= g`; report numerical tolerances and fail closed on violations.
 - State fairness/privacy limits for sensitive data and that outputs are analytical, not investment, legal, tax, or accounting advice.
 - Stop with `inconclusive` when hashes, leakage checks, validation, or tolerances are missing; align artifact validation and residual risks with the stop condition.
 
