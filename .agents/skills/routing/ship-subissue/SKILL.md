@@ -17,11 +17,13 @@ outputs:
   - type: object
     name: ShipSubissueArtifact
     properties:
-      status: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       checkpoint: { type: object }
       operationId: { type: string }
-      recoveryStatus: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      recoveryStatus: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       reconciliationEvidence: { type: array, items: { type: object } }
+      dryRun: { type: boolean }
+      saga: { type: object }
 sideEffects:
   - merge-pull-request
   - close-issue
@@ -69,6 +71,8 @@ This high-trust workflow is not exposed over MCP; it requires explicit local app
 - Side effect ownership: this skill owns one approved PR merge, project completion update, and linked issue closure; each requires explicit approval. It does not own code changes, review fixes, or PR creation.
 - Recovery invariant: checkpoint before merge, after merge, after project update, and after issue closure. If any result is unknown, reconcile PR, commit, project item, and issue state before retrying. Existing matching state is adopted; never duplicate merge, completion comment, or closure.
 - Retry invariant: reconcile remote state and verify `fixedPoint` before every retry. Changed review/commit state returns `stale-input`; missing approval returns `needs-approval`; unresolved review or validation returns `validation-failed`; superseded work returns `superseded`.
+- Saga invariant: use one global `operationId`; checkpoint `planned`, `preflight`, `before-effect`, `after-effect`, and `reconciled` for merge, project update, and closure. `dryRun` is read/reconcile-only. Each effect has separate approval; verify branch protection, fixed-point/revision fence, and clean review immediately before it.
+- Unknown/repeat invariant: after crash or unknown outcome, reconcile by operationId, PR, commit, project item, issue, and exact comment marker; adopt existing state and never duplicate merge, comment, completion, or closure. Repeated action returns `repeated-action`; compensation is limited to operation-owned project/issue updates and must include rollback evidence.
 
 ## Provenance
 
@@ -126,6 +130,7 @@ Use the canonical work-item format in [`docs/reference/agents/work-item-format.m
 - the structured result is returned and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- saga checkpoints, operationId, approvals, budgets, and reconciliation evidence are returned
 ---
 @include .agents/skills/platform/contract-base.xml
 ## P0/P1 Workflow Controls

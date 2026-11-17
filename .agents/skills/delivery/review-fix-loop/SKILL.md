@@ -9,7 +9,7 @@ capabilities:
   - apply review fix loop methods within explicit delivery boundaries
   - analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes
   - produce and validate a delivery artifact with evidence, decisions, and next steps
-outputs: "either a clean review state or a blocked repair loop with a documented cause."
+outputs: "ReviewFixLoopArtifact with saga checkpoints, operationId, fixed-point fence, budgets, reconciliation evidence, and either a clean review state or a blocked repair loop with a documented cause."
 sideEffects:
   - write-code
   - post-pr-comment
@@ -55,8 +55,9 @@ reloadPolicy: on-trigger
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 - Contract metadata: carry `loopId`, `ledgerRef`, `budget`, `progressEvidence`, `recoveryPolicy`, and `status`; carry `operationId` for comments, code, git, or other external effects.
-- Standard statuses are `completed`, `blocked`, `needs-approval`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, and `superseded`.
+- Standard statuses are `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, `superseded`, and `rolled-back`.
 - Budget precedence is caller budget > loop budget > retry policy; no inherited limit may be relaxed. Unknown effect results require reconciliation by `operationId` before repeating the effect.
+- Saga metadata MUST include `dryRun`, `fixedPoint`, `revisionFence`, checkpoints, per-effect approvals, and rollback evidence. Dry-run may review and reconcile but cannot write code, comment, commit, or push.
 
 ## Provenance
 
@@ -126,6 +127,11 @@ The machine states are `review`, `plan-fixes`, `implement-fixes`, `verify`, `com
    - Do not widen scope during a repeat pass unless a new review finding makes it unavoidable.
    - After degeneration or `repeated-action`, do not restart the identical review/plan/implementation sequence; change the approach or transition to `blocked`.
 
+6. Recover and fence.
+  - Before every external effect, write a checkpoint and verify the same PR head, base fixed point, and review revision; stale data returns `stale-input`.
+  - After a crash or unknown result, reconcile by operationId, effect digest, PR head, and exact comment marker before retrying. Adopt existing effects; never duplicate comments, commits, pushes, or plans. If reconciliation cannot prove the outcome, return `outcome-unknown`.
+  - Compensate only operation-owned comments or branch effects when explicitly supported; record rollback evidence and never claim rollback from a failed request.
+
 ## Loop State
 
 Track these facts in the working response or PR comments:
@@ -143,6 +149,7 @@ Track these facts in the working response or PR comments:
 - **Clean:** review-pr reports no Standards findings and no Spec findings. Say that ship-subissue may proceed when the user wants merge/close/project updates or when a separate ship step will handle them.
 - **Blocked:** missing PR, missing fixed point, stale or contradictory plan, failing validation without an obvious scoped fix, or the same findings recurring after three passes.
 - **User stop:** user pauses or redirects the loop.
+- **Budget:** aggregate attempts, passes, effects, comments, commits, pushes, wall time, and compensation are exhausted; return `budget-exceeded` with the last checkpoint.
 
 ## Deferred Work
 
@@ -162,5 +169,6 @@ Some valid findings are not this PR's job: a real defect that belongs to another
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- saga checkpoints, operationId, approvals, budgets, fixed-point fence, and reconciliation evidence are returned
 ---
 @include .agents/skills/platform/contract-base.xml

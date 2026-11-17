@@ -18,7 +18,7 @@ outputs:
   - type: object
     name: PublishOpenPrArtifact
     properties:
-      status: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       branch: { type: string }
       prNumber: { type: integer }
       prUrl: { type: string }
@@ -29,8 +29,10 @@ outputs:
       labels: { type: array, items: { type: string } }
       checkpoint: { type: object }
       operationId: { type: string }
-      recoveryStatus: { type: string, enum: [completed, blocked, needs-approval, stale-input, validation-failed, superseded] }
+      recoveryStatus: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       reconciliationEvidence: { type: array, items: { type: object } }
+      dryRun: { type: boolean }
+      saga: { type: object }
     required: [status, branch, prNumber, prUrl, title, validation, gateCiResult]
 sideEffects:
   - push-branch
@@ -82,6 +84,8 @@ reloadPolicy: always
 - Side effect ownership: this skill owns pushing the prepared branch and creating one open PR; both require explicit approval. It does not own commits, comments, merges, issue closure, or review decisions.
 - Recovery invariant: write `checkpoint` before push, after push, and after PR lookup/create. On an unknown push or PR result, reconcile branch and PR state by branch, head revision, title, linked issue, and idempotency key before any retry. Adopt an existing matching PR; never create a second PR.
 - Retry invariant: reconcile remote state and verify `fixedPoint` (or the prepared branch revision) before retrying. A changed revision returns `stale-input`; a failed gate returns `validation-failed`; an approval absence returns `needs-approval`; a superseded branch returns `superseded`.
+- Saga invariant: use one global `operationId`; checkpoint `planned`, `preflight`, `before-effect`, `after-effect`, and `reconciled` for each effect. `dryRun` may not push or create. Verify branch protection and the fixed-point/revision fence immediately before every effect; push and PR creation have separate approvals.
+- Unknown/repeat invariant: after crash or unknown outcome, reconcile by operationId plus branch, revision, title, issue, and PR URL/number; adopt one matching remote PR or return `outcome-unknown`. Repeated action returns `repeated-action`; compensation is limited to an operation-owned branch/PR and requires rollback evidence.
 
 ## Provenance
 
@@ -160,6 +164,7 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 - open PR created with title, body, assignee, labels, milestone, and reviewers
 - `PublishOpenPrArtifact` returned as structured output
 - handoff to `review-pr` is explicit
+- saga checkpoints, operationId, approvals, budgets, and reconciliation evidence are returned
 
 ---
 @include .agents/skills/platform/contract-base.xml
