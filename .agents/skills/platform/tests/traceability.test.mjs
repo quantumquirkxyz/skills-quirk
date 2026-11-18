@@ -65,7 +65,7 @@ test('governance skills carry an always reload policy', () => {
   assert.equal(result.status, 0, result.stderr || result.stdout);
   const payload = JSON.parse(result.stdout);
   const always = payload.perSkill.filter((entry) => entry.reloadPolicy === 'always').map((entry) => entry.name).sort();
-  assert.deepEqual(always, ['ask-to', 'publish-open-pr', 'ship-subissue', 'work-item-router']);
+  assert.deepEqual(always, ['ask-to', 'publish-open-pr', 'ship-subissue', 'software-maintenance-evolution', 'work-item-router']);
 });
 
 test('fix-hint mode prints remediation for pending evals citations', () => {

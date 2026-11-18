@@ -1,0 +1,15 @@
+name: software-maintenance-evolution
+description: "Analyze and govern corrective, adaptive, perfective, and preventive software maintenance, technical debt, compatibility, deprecation, EOL, migration, modernization, retirement, ownership, and feedback into requirements and architecture."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/project-software-maintenance-evolution
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: true
+  sideEffects: []

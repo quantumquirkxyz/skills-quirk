@@ -1,0 +1,15 @@
+name: software-economics
+description: "Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/engineering-software-economics
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: false
+  sideEffects: []

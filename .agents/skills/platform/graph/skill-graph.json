@@ -93,6 +93,18 @@
       "description": "Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.",
       "path": ".agents/skills/ai/ai-prompt-engineering"
     },
+    "ai-systems-engineering": {
+      "domain": "ai",
+      "tier": "4",
+      "artifactType": "ai-system",
+      "capabilities": [
+        "frame AI product requirements as measurable system behavior and constraints",
+        "connect model, data, evaluation, abuse, serving, fallback, oversight, monitoring, cost, and latency decisions",
+        "produce and validate an AISystemSpecificationArtifact with explicit evidence and approval gates"
+      ],
+      "description": "Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work.",
+      "path": ".agents/skills/ai/ai-systems-engineering"
+    },
     "ai-time-series-forecasting": {
       "domain": "ai",
       "tier": "3",
@@ -1074,6 +1086,46 @@
       "description": "AI-Native Engineer skill stack: spec literacy, context engineering, orchestration, and quality ownership — plan with agents, maintain AGENTS.md, run agents in parallel, review diffs line by line, own quality gates.",
       "path": ".agents/skills/engineering/agent-native-engineering"
     },
+    "architecture-evaluation": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "ArchitectureArtifact",
+      "capabilities": [
+        "frame stakeholders, concerns, viewpoints, views, and rationale using ISO/IEC/IEEE 42010 concepts",
+        "convert architecture-significant requirements into measurable quality attribute scenarios",
+        "compare alternatives with explicit trade-offs, sensitivity points, risks/non-risks, and reversibility",
+        "produce and validate an ArchitectureArtifact with ADR and fitness-function handoffs"
+      ],
+      "description": "Evaluate architecture alternatives against quality attributes, constraints, cost, risk, reversibility, sustainability, and operational fit.",
+      "path": ".agents/skills/engineering/architecture-evaluation"
+    },
+    "engineering-governance": {
+      "domain": "engineering",
+      "tier": "4",
+      "artifactType": "EngineeringGovernanceArtifact",
+      "capabilities": [
+        "map decision rights and accountable owners to engineering risks and policies",
+        "define approval gates with explicit proposer, approver, verifier, evidence, and expiry",
+        "process urgent exceptions with bounded authority, compensating controls, and retrospective review",
+        "maintain evidence ledgers, policy-to-control mappings, audit trails, and escalation models"
+      ],
+      "description": "Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.",
+      "path": ".agents/skills/engineering/engineering-governance"
+    },
+    "green-software-engineering": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "green-software-artifact",
+      "capabilities": [
+        "define workload-normalized energy and carbon budgets using SCI/ISO 21031 concepts",
+        "design reproducible measurement plans for operational energy, carbon intensity, and embodied hardware",
+        "distinguish measured, sourced, estimated, and unknown emissions inputs",
+        "evaluate performance, reliability, capacity, and cost trade-offs without greenwashing",
+        "produce a prioritized optimization backlog and verification plan"
+      ],
+      "description": "This skill should be used when assessing or improving software carbon intensity, energy use, embodied hardware impact, workload efficiency, or regional carbon intensity with source-qualified measurement and explicit performance, reliability, and cost trade-offs.",
+      "path": ".agents/skills/engineering/green-software-engineering"
+    },
     "improve-codebase-architecture": {
       "domain": "engineering",
       "tier": "2",
@@ -1086,6 +1138,34 @@
       ],
       "description": "Scan a codebase for deepening opportunities and present candidates as a visual HTML report, then grill through the selected one.",
       "path": ".agents/skills/engineering/improve-codebase-architecture"
+    },
+    "safety-critical-software": {
+      "domain": "engineering",
+      "tier": "4",
+      "artifactType": "SafetyCaseArtifact",
+      "capabilities": [
+        "identify hazards, hazardous events, causes, controls, assumptions, and residual risk",
+        "write measurable, verifiable, allocated, and traceable safety requirements",
+        "structure assurance cases with claims, arguments, evidence, authority, and gaps",
+        "plan independent verification and validation with independence, method, oracle, and exit criteria",
+        "assess change impact, revalidation scope, configuration baselines, and unresolved common-cause risk",
+        "adapt evidence expectations to DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles"
+      ],
+      "description": "Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification.",
+      "path": ".agents/skills/engineering/safety-critical-software"
+    },
+    "software-economics": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "SoftwareEconomicsArtifact",
+      "capabilities": [
+        "model software TCO across build, buy, open source, and migration alternatives",
+        "quantify cost of delay, cost of quality, technical debt economics, lock-in, and option value",
+        "compare alternatives using unit economics, scenarios, sensitivity, and decision thresholds",
+        "produce and validate a SoftwareEconomicsArtifact with traceable assumptions and evidence"
+      ],
+      "description": "Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps.",
+      "path": ".agents/skills/engineering/software-economics"
     },
     "software-factory": {
       "domain": "engineering",
@@ -2250,6 +2330,32 @@
       "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
       "path": ".agents/skills/project/project-viability"
     },
+    "requirements-engineering": {
+      "domain": "project",
+      "tier": "4",
+      "artifactType": "RequirementsArtifact",
+      "capabilities": [
+        "elicit and classify requirements without treating stakeholder text as authority",
+        "produce schema-validated RequirementsArtifact records",
+        "make requirements measurable, testable, traceable, and version-controlled",
+        "identify omissions, conflicts, unsafe assumptions, and unresolved decisions"
+      ],
+      "description": "Transform stakeholder, business, and system needs into verifiable, traceable, versioned requirements with explicit provenance, conflicts, quality gates, and change impact.",
+      "path": ".agents/skills/project/requirements-engineering"
+    },
+    "software-maintenance-evolution": {
+      "domain": "project",
+      "tier": "4",
+      "artifactType": "MaintenanceArtifact",
+      "capabilities": [
+        "produce schema-validated MaintenanceArtifact records from repository and operational evidence",
+        "classify maintenance drivers, risks, compatibility impact, ownership, and closure evidence",
+        "analyze consumers and dependencies before migration, deprecation, modernization, or retirement proposals",
+        "feed verified maintenance findings back to requirements, architecture, contracts, and release planning"
+      ],
+      "description": "Analyze and govern corrective, adaptive, perfective, and preventive software maintenance, technical debt, compatibility, deprecation, EOL, migration, modernization, retirement, ownership, and feedback into requirements and architecture.",
+      "path": ".agents/skills/project/software-maintenance-evolution"
+    },
     "spec-driven-development": {
       "domain": "project",
       "tier": "3",
@@ -2423,6 +2529,19 @@
       ],
       "description": "Model market/portfolio/credit risk (VaR, CVaR, drawdown, stress) with explicit distributions, assumptions, and validation against historical stress events.",
       "path": ".agents/skills/quant/quant-risk-modeling"
+    },
+    "empirical-software-engineering": {
+      "domain": "research",
+      "tier": "3",
+      "artifactType": "research",
+      "capabilities": [
+        "operationalize software-engineering constructs and estimands",
+        "design experiments, quasi-experiments, case studies, surveys, and mining-software-repositories studies",
+        "assess causal threats, selection, measurement, missingness, privacy, and ethics",
+        "produce a provenance-aware empirical study artifact and decision report"
+      ],
+      "description": "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.",
+      "path": ".agents/skills/research/empirical-software-engineering"
     },
     "github-project-analysis": {
       "domain": "research",
@@ -3199,6 +3318,48 @@
   },
   "edges": [
     {
+      "from": "ai-systems-engineering",
+      "to": "ai-ml-pipeline",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "mlops",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "ai-model-evaluation",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "llmops",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "data-contracts",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "sec-threat-modeling",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "ai-systems-engineering",
+      "to": "software-economics",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "implement-review-fixes",
       "to": "plan-review-fixes",
       "type": "depends-on",
@@ -3267,6 +3428,138 @@
     {
       "from": "agent-native-engineering",
       "to": "review-pr",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "requirements-engineering",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "codebase-design",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "docs-adrs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "cost-optimization",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "observability",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "engineering-governance",
+      "to": "execution-policy",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "engineering-governance",
+      "to": "professional-project-management",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "engineering-governance",
+      "to": "compliance",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "engineering-governance",
+      "to": "supply-chain-security",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "engineering-governance",
+      "to": "docs-adrs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "green-software-engineering",
+      "to": "observability",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "green-software-engineering",
+      "to": "cost-optimization",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "green-software-engineering",
+      "to": "software-economics",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "requirements-engineering",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "architecture-evaluation",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "testing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "sec-threat-modeling",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "math-formal-proof",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-economics",
+      "to": "architecture-evaluation",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-economics",
+      "to": "cost-optimization",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-economics",
+      "to": "finance-dcf",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-economics",
+      "to": "finance-corporate-val",
       "type": "depends-on",
       "weight": 1
     },
@@ -3427,6 +3720,60 @@
       "weight": 1
     },
     {
+      "from": "requirements-engineering",
+      "to": "to-spec",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "prod-prd-writing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "analyze-artifacts",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "domain-modeling",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "testing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "diagnosing-bugs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "db-migrations",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "docs-management",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "supply-chain-security",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
       "from": "spec-driven-development",
       "to": "to-spec",
       "type": "depends-on",
@@ -3459,6 +3806,36 @@
     {
       "from": "spec-driven-development",
       "to": "docs-adrs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "scientific-hypothesis",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "research",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "data-quality",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "observability",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "math-probability-models",
       "type": "depends-on",
       "weight": 1
     },
@@ -3709,6 +4086,48 @@
       "weight": 0.4
     },
     {
+      "from": "architecture-evaluation",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "architecture-evaluation",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-governance",
+      "to": "execution-policy",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-governance",
+      "to": "professional-project-management",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-governance",
+      "to": "compliance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-governance",
+      "to": "supply-chain-security",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-governance",
+      "to": "docs-adrs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "improve-codebase-architecture",
       "to": "code-review",
       "type": "compatible",
@@ -3729,6 +4148,48 @@
     {
       "from": "improve-codebase-architecture",
       "to": "grill-me",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "safety-critical-software",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-economics",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-economics",
+      "to": "cost-optimization",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-economics",
+      "to": "finance-dcf",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-economics",
+      "to": "finance-corporate-val",
       "type": "compatible",
       "weight": 0.4
     },
@@ -4177,6 +4638,90 @@
       "weight": 0.4
     },
     {
+      "from": "requirements-engineering",
+      "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "prod-prd-writing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "analyze-artifacts",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "domain-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "sec-threat-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "diagnosing-bugs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "db-migrations",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "docs-management",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "supply-chain-security",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "to-spec",
       "to": "to-tickets",
       "type": "compatible",
@@ -4317,6 +4862,36 @@
     {
       "from": "quant-risk-modeling",
       "to": "quant-credit-risk",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "scientific-hypothesis",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "research",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "data-quality",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "empirical-software-engineering",
+      "to": "math-probability-models",
       "type": "compatible",
       "weight": 0.4
     },

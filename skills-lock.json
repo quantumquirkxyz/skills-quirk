@@ -60,6 +60,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "ai-systems-engineering": {
+      "hash": "95fd600411f6efbf76a9be0176279f8e6adb0d1a3f77b17f7847f49f4416695a",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "ai-time-series-forecasting": {
       "hash": "dc47561a01e86c4ff823a6ce270eec637b27e04d179d3e5f5fd29df668becd50",
       "revision": "working-tree",
@@ -82,6 +87,11 @@
     },
     "api-gateway": {
       "hash": "13f31b020238474fdba4b361a46b4132edf487640228af99a41236316cea859f",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "architecture-evaluation": {
+      "hash": "9db50c1a2dad65189b16d6a6844f661cc57c2fa16f718c207dd3b0dc72308ed8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -202,6 +212,11 @@
     },
     "compliance": {
       "hash": "06422952ee9bd6d0dff04689ee4556538c62a14efe23e004d4445791e5af8562",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "configuration-management": {
+      "hash": "60b100fa04eb276e99cf89db5d82321679a93155ddab56699683d8434f42f597",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -385,6 +400,16 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "empirical-software-engineering": {
+      "hash": "cb44e68ab7b412d49aa56c7f289a72d0d3099efe6d3154cabc3d9b4e2d66b2a3",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "engineering-governance": {
+      "hash": "e1ed557bf09fa17deabac14abce2092a23234aec3c39f344a90c7e8914cb8061",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "evaluate-skill": {
       "hash": "d7db4a795b2a5e871d69e3532264028d56ede4e7e5d0b35e1664919758c788a2",
       "revision": "working-tree",
@@ -517,6 +542,11 @@
     },
     "graphic-design-tools": {
       "hash": "48b8bbee4135bfae47d73abdd8a62828d3e901daf86b8ffa3dfb5996c6c8764d",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "green-software-engineering": {
+      "hash": "fa0f786fd1ece138d8e6017228352ece82035541d5bc1c92533ae3f3450dfa6a",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -860,6 +890,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "platform-engineering": {
+      "hash": "dbc473499a3062abd1660cab555742bc371bc831b55102b1be90c8112f997338",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "postgres": {
       "hash": "29e3ba4c2dcebee4c684041defc24dd1979d94b5d85d74f48ec320a0d0ad7bbf",
       "revision": "working-tree",
@@ -1000,6 +1035,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "requirements-engineering": {
+      "hash": "33b8e4561408e31eabe5e4ab989ee0c9199210664bea3a292fb3a0bced8a3bc6",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "research": {
       "hash": "1d34c4fe617f1052f15ded9326d3a16ffd19bca545fdf5c7b49f75f2ec4f82b4",
       "revision": "working-tree",
@@ -1037,6 +1077,11 @@
     },
     "rule-cataloger": {
       "hash": "f2a1eb6bf48bc5dce01e79c883f5018f34fc5ff45cf255538431a23d989c0cca",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "safety-critical-software": {
+      "hash": "07dc8e998556d5115539664a20ec3e4df009652a4df328c3a4656b42dddbe787",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1180,13 +1225,28 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "software-economics": {
+      "hash": "7b34657abbe0e6493928592b60448a3312ed6100f5d1d9157918fd4c3de52437",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "software-factory": {
       "hash": "64951e3a3cd4fb15ef332d2bf272a6788eae708f312e27a8bbb279fe2bb84890",
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "software-maintenance-evolution": {
+      "hash": "a790ed96e71d0ecbc367e2cf9d05672547b67fd7ae3f4caac9b9feb8a8da314a",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "spec-driven-development": {
       "hash": "f11df5603d05e7f87eb86fe5824677f83d9e6bee9231bf1e225f47d56997bdd8",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "sre": {
+      "hash": "f369f0d5a4bdf27718ed20ba5a808e2072227c10a52d4b06fbaa1959bb67c026",
       "revision": "working-tree",
       "sourceType": "local"
     },

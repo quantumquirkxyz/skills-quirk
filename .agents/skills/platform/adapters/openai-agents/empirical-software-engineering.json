@@ -1,0 +1,16 @@
+{
+  "name": "empirical-software-engineering",
+  "instructions": "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.\n\nCapabilities:\n- operationalize software-engineering constructs and estimands\n- design experiments, quasi-experiments, case studies, surveys, and mining-software-repositories studies\n- assess causal threats, selection, measurement, missingness, privacy, and ethics\n- produce a provenance-aware empirical study artifact and decision report\n\nCanonical skill: .agents/skills/research/empirical-software-engineering/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Constructs and estimands are operationalized; design and identification assumptions are explicit; provenance, analysis plan, uncertainty, validity threats, ethics/privacy, and decision boundaries are documented; unsupported causal claims are downgraded or blocked.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

@@ -1,0 +1,15 @@
+---
+description: "Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work."
+globs: []
+alwaysApply: false
+---
+# ai-systems-engineering
+
+Apply the ai-systems-engineering skill when the request matches its scope.
+
+Capabilities:
+- frame AI product requirements as measurable system behavior and constraints
+- connect model, data, evaluation, abuse, serving, fallback, oversight, monitoring, cost, and latency decisions
+- produce and validate an AISystemSpecificationArtifact with explicit evidence and approval gates
+
+Stop when: All required artifact sections are complete, risks and unknowns are explicit, approval gates are identified, and JSON/schema plus Markdown/diff checks pass.

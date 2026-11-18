@@ -104,6 +104,21 @@
       "exposed": true
     },
     {
+      "skill": "ai/ai-systems-engineering",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/ai/ai-systems-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
       "skill": "ai/ai-time-series-forecasting",
       "trustTier": 3,
       "tools": [
@@ -1238,6 +1253,49 @@
       "exposed": true
     },
     {
+      "skill": "engineering/architecture-evaluation",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/architecture-evaluation"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "engineering/engineering-governance",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/engineering-governance"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
+      "skill": "engineering/green-software-engineering",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/green-software-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "engineering/improve-codebase-architecture",
       "trustTier": 2,
       "tools": [
@@ -1245,6 +1303,35 @@
       ],
       "resources": [
         "skill://skill/engineering/improve-codebase-architecture"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "engineering/safety-critical-software",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/safety-critical-software"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
+      "skill": "engineering/software-economics",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/software-economics"
       ],
       "prompts": [
         "use_skill"
@@ -2582,6 +2669,36 @@
       "exposed": true
     },
     {
+      "skill": "project/requirements-engineering",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/project/requirements-engineering"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
+      "skill": "project/software-maintenance-evolution",
+      "trustTier": 4,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/project/software-maintenance-evolution"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": false,
+      "reason": "trustTier>3"
+    },
+    {
       "skill": "project/spec-driven-development",
       "trustTier": 3,
       "tools": [
@@ -2772,6 +2889,20 @@
       ],
       "resources": [
         "skill://skill/quant/quant-risk-modeling"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
+      "skill": "research/empirical-software-engineering",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/research/empirical-software-engineering"
       ],
       "prompts": [
         "use_skill"

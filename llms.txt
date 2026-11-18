@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 261 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 270 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -26,11 +26,13 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [ai-ml-pipeline](./.agents/skills/ai/ai-ml-pipeline/SKILL.md) — Design ML pipelines — data ingestion, preprocessing, training, evaluation, deployment, monitoring — with reproducibility, fairness, and version control.
 - [ai-model-evaluation](./.agents/skills/ai/ai-model-evaluation/SKILL.md) — Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, drift — with explicit metrics, subgroup analysis, and failure-mode reporting.
 - [ai-prompt-engineering](./.agents/skills/ai/ai-prompt-engineering/SKILL.md) — Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral) with chain-of-thought, few-shot, RAG, and evaluation metrics.
+- [ai-systems-engineering](./.agents/skills/ai/ai-systems-engineering/SKILL.md) — Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work.
 - [ai-time-series-forecasting](./.agents/skills/ai/ai-time-series-forecasting/SKILL.md) — Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.
 - [analyze-artifacts](./.agents/skills/project/analyze-artifacts/SKILL.md) — Analyze the spec, plan, and ticket artifacts of one work item for consistency: conflicts, gaps, ambiguities, and dead references, each marked [NEEDS CLARIFICATION] when the artifacts cannot resolve it. Use when a spec and its tickets drifted apart, before to-tickets slices work, or when review-pr needs a spec-side verdict. Never edits the artifacts it reads.
 - [api-contracts](./.agents/skills/integrations/api-contracts/SKILL.md) — Define the request and response contracts, versioning rules, compatibility boundaries, OpenAPI/JSON Schema, and breaking change detection for APIs — with explicit consumer obligations.
 - [api-design](./.agents/skills/foundation/api-design/SKILL.md) — Design a small, durable API seam — with a deep backend and explicit caller contract boundaries.
 - [api-gateway](./.agents/skills/backend/api-gateway/SKILL.md) — API gateway (Kong, Envoy, AWS API Gateway, rate limiting, auth, routing).
+- [architecture-evaluation](./.agents/skills/engineering/architecture-evaluation/SKILL.md) — Evaluate architecture alternatives against quality attributes, constraints, cost, risk, reversibility, sustainability, and operational fit.
 - [artifact-handoff](./.agents/skills/routing/artifact-handoff/SKILL.md) — Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.
 - [ask-to](./.agents/skills/routing/ask-to/SKILL.md) — Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.
 - [astro](./.agents/skills/frontend/astro/SKILL.md) — Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).
@@ -90,6 +92,8 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [docs-management](./.agents/skills/project/docs-management/SKILL.md) — Keep repository documentation, ADRs, and durable context aligned with the current project shape — with explicit consumer rules.
 - [docs-technical-writing](./.agents/skills/docs/docs-technical-writing/SKILL.md) — Write technical documentation — clear explanations, examples, warnings, and procedural guidance — with audience-aware structure and maintenance rules.
 - [domain-modeling](./.agents/skills/foundation/domain-modeling/SKILL.md) — Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.
+- [empirical-software-engineering](./.agents/skills/research/empirical-software-engineering/SKILL.md) — Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.
+- [engineering-governance](./.agents/skills/engineering/engineering-governance/SKILL.md) — Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.
 - [evaluate-skill](./.agents/skills/skill-dev/evaluate-skill/SKILL.md) — Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.
 - [event-driven-architecture](./.agents/skills/backend/event-driven-architecture/SKILL.md) — Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).
 - [execution-policy](./.agents/skills/auxiliary/execution-policy/SKILL.md) — Decide whether a Skill action is allowed, requires approval, or must stop.
@@ -112,6 +116,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [graphic-design-photo-direction](./.agents/skills/graphic-design/graphic-design-photo-direction/SKILL.md) — Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery.
 - [graphic-design-project-management](./.agents/skills/graphic-design/graphic-design-project-management/SKILL.md) — Manage graphic design projects — briefs, iterations, reviews, asset handoff, versioning, and delivery — with explicit scope, timelines, and quality gates.
 - [graphic-design-tools](./.agents/skills/graphic-design/graphic-design-tools/SKILL.md) — Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local production tools — to agent workflows with explicit authentication, scopes, and safety boundaries.
+- [green-software-engineering](./.agents/skills/engineering/green-software-engineering/SKILL.md) — This skill should be used when assessing or improving software carbon intensity, energy use, embodied hardware impact, workload efficiency, or regional carbon intensity with source-qualified measurement and explicit performance, reliability, and cost trade-offs.
 - [grill](./.agents/skills/routing/grill/SKILL.md) — >-
 - [grill-me](./.agents/skills/routing/grill-me/SKILL.md) — A relentless interview to sharpen a plan or design.
 - [grill-with-docs](./.agents/skills/routing/grill-with-docs/SKILL.md) — A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go.
@@ -205,6 +210,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [rate-limiting](./.agents/skills/backend/rate-limiting/SKILL.md) — Rate limiting and throttling (token bucket, sliding window, distributed rate limiting, API protection).
 - [react](./.agents/skills/frontend/react/SKILL.md) — Design React component structure and state seams — with composability, testability, and clear data flow.
 - [remix](./.agents/skills/frontend/remix/SKILL.md) — Remix framework (loaders, actions, nested routes, progressive enhancement).
+- [requirements-engineering](./.agents/skills/project/requirements-engineering/SKILL.md) — Transform stakeholder, business, and system needs into verifiable, traceable, versioned requirements with explicit provenance, conflicts, quality gates, and change impact.
 - [research](./.agents/skills/delivery/research/SKILL.md) — Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w
 - [research-data-archiving](./.agents/skills/research/research-data-archiving/SKILL.md) — Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.
 - [research-literature-review](./.agents/skills/research/research-literature-review/SKILL.md) — Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.
@@ -213,6 +219,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [review-fix-loop](./.agents/skills/delivery/review-fix-loop/SKILL.md) — Orchestrate the PR repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the PR is clean or blocked. This skill coordinates the loop only.
 - [review-pr](./.agents/skills/delivery/review-pr/SKILL.md) — Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
 - [rule-cataloger](./.agents/skills/skill-dev/rule-cataloger/SKILL.md) — Extract and classify rules across Skills by type, frequency, and application area; use when auditing the repository's shared guidance.
+- [safety-critical-software](./.agents/skills/engineering/safety-critical-software/SKILL.md) — Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification.
 - [scientific-hypothesis](./.agents/skills/research/scientific-hypothesis/SKILL.md) — Formulate testable scientific hypotheses — null/alternative, variables, controls, falsifiability — with explicit variables and statistical plan.
 - [search](./.agents/skills/integrations/search/SKILL.md) — Design search behavior, indexing, relevance, and retrieval seams — with Elasticsearch, Algolia, Meilisearch, OpenSearch, synonyms, ranking, analytics, and autocomplete.
 - [sec-cryptography-applied](./.agents/skills/sec/sec-cryptography-applied/SKILL.md) — Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.
@@ -241,7 +248,9 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [skill-template-generator](./.agents/skills/skill-dev/skill-template-generator/SKILL.md) — Generate an interactive, contract-complete Skill template in the sandbox — use when starting a new Skill with the lab's scaffolding.
 - [skill-testing-framework](./.agents/skills/skill-dev/skill-testing-framework/SKILL.md) — Validate Skill structure, contracts, dependencies, anti-patterns, and isolated execution — use when checking a Skill before promotion.
 - [skill-tutor](./.agents/skills/skill-dev/skill-tutor/SKILL.md) — Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+- [software-economics](./.agents/skills/engineering/software-economics/SKILL.md) — Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps.
 - [software-factory](./.agents/skills/engineering/software-factory/SKILL.md) — Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.
+- [software-maintenance-evolution](./.agents/skills/project/software-maintenance-evolution/SKILL.md) — Analyze and govern corrective, adaptive, perfective, and preventive software maintenance, technical debt, compatibility, deprecation, EOL, migration, modernization, retirement, ownership, and feedback into requirements and architecture.
 - [spec-driven-development](./.agents/skills/project/spec-driven-development/SKILL.md) — Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.
 - [state-management](./.agents/skills/frontend/state-management/SKILL.md) — Modern state management (Zustand, Jotai, signals, Redux Toolkit, server state).
 - [stream-processing](./.agents/skills/data/stream-processing/SKILL.md) — Stream processing (Flink, Kafka Streams, RisingWave, windowing, state, exactly-once).
@@ -279,7 +288,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 ## Categories
 
 - accessibility: 3 skills
-- ai: 13 skills
+- ai: 14 skills
 - auxiliary: 4 skills
 - backend: 13 skills
 - cms: 4 skills
@@ -290,7 +299,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - delivery: 15 skills
 - devops: 10 skills
 - docs: 3 skills
-- engineering: 3 skills
+- engineering: 8 skills
 - finance: 3 skills
 - foundation: 14 skills
 - frontend: 10 skills
@@ -305,10 +314,10 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - physics: 12 skills
 - product: 4 skills
 - professional: 3 skills
-- project: 8 skills
+- project: 10 skills
 - qa: 4 skills
 - quant: 7 skills
-- research: 4 skills
+- research: 5 skills
 - routing: 17 skills
 - sec: 11 skills
 - skill-dev: 18 skills

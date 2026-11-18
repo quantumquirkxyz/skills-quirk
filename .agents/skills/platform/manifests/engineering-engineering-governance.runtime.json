@@ -1,0 +1,48 @@
+{
+  "skill": "engineering/engineering-governance",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "382fbedd6d55d88b9f8cf270ce3930c7fb074afe9afdf0d76b496e2c79f4bbba",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 4,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "deny": [
+        "Bash",
+        "WebFetch",
+        "WebSearch"
+      ]
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [],
+    "risk": "high",
+    "trustTier": 4
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

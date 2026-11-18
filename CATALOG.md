@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
 > Generated from quirk-skills v3.0.0
-> 261 skills across 37 categories
+> 270 skills across 37 categories
 
 ## Skills by Category
 
@@ -21,6 +21,7 @@
 | [ai-ml-pipeline](.agents/skills/ai/ai-ml-pipeline) | 1 | stable | medium | 3 | Design ML pipelines — data ingestion, preprocessing, training, evaluation, de... |
 | [ai-model-evaluation](.agents/skills/ai/ai-model-evaluation) | 1 | stable | medium | 3 | Evaluate ML / LLM models — accuracy, fairness, robustness, explainability, dr... |
 | [ai-prompt-engineering](.agents/skills/ai/ai-prompt-engineering) | 1 | stable | medium | 3 | Design, evaluate, and refine prompts for LLMs (GPT-4, Claude, Llama, Mistral)... |
+| [ai-systems-engineering](.agents/skills/ai/ai-systems-engineering) | 1 | experimental | high | 4 | Engineer complete AI systems by integrating product requirements, models, dat... |
 | [ai-time-series-forecasting](.agents/skills/ai/ai-time-series-forecasting) | 1 | stable | medium | 3 | Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, ... |
 | [llm-eval](.agents/skills/ai/llm-eval) | 1 | stable | medium | 3 | Design LLM evaluation harnesses — benchmark design, model comparison, automat... |
 | [llm-fine-tuning](.agents/skills/ai/llm-fine-tuning) | 1 | stable | medium | 3 | Fine-tune LLMs — LoRA, QLoRA, full fine-tuning, data preparation, evaluation,... |
@@ -157,7 +158,12 @@
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
 | [agent-native-engineering](.agents/skills/engineering/agent-native-engineering) | 1 | experimental | medium | 3 | AI-Native Engineer skill stack: spec literacy, context engineering, orchestra... |
+| [architecture-evaluation](.agents/skills/engineering/architecture-evaluation) | 1 | stable | medium | 3 | Evaluate architecture alternatives against quality attributes, constraints, c... |
+| [engineering-governance](.agents/skills/engineering/engineering-governance) | 1 | experimental | high | 4 | Establish engineering decision rights, approval gates, exceptions, evidence, ... |
+| [green-software-engineering](.agents/skills/engineering/green-software-engineering) | 1 | experimental | medium | 3 | This skill should be used when assessing or improving software carbon intensi... |
 | [improve-codebase-architecture](.agents/skills/engineering/improve-codebase-architecture) | 1 | stable | low | 2 | Scan a codebase for deepening opportunities and present candidates as a visua... |
+| [safety-critical-software](.agents/skills/engineering/safety-critical-software) | 1 | experimental | high | 4 | Engineer safety evidence for hazard analysis, safety requirements, assurance ... |
+| [software-economics](.agents/skills/engineering/software-economics) | 1 | stable | medium | 3 | Evaluate software decisions through total cost, delay, quality, debt, lock-in... |
 | [software-factory](.agents/skills/engineering/software-factory) | 1 | experimental | medium | 3 | Engineer the system that builds code — foreman agent, separate validator, dif... |
 
 ### finance
@@ -328,6 +334,8 @@
 | [make-project](.agents/skills/project/make-project) | 1 | stable | medium | 3 | Use when the user wants a new board in GitHub Projects, or another skill need... |
 | [project-development](.agents/skills/project/project-development) | 1 | stable | low | 1 | Evaluate a project's shape, agent fit, and architectural starting point — bef... |
 | [project-viability](.agents/skills/project/project-viability) | 1.0.0 | stable | low | 1 | Evaluate whether a project is viable, functional, and scalable by analyzing i... |
+| [requirements-engineering](.agents/skills/project/requirements-engineering) | 1 | stable | high | 4 | Transform stakeholder, business, and system needs into verifiable, traceable,... |
+| [software-maintenance-evolution](.agents/skills/project/software-maintenance-evolution) | 1 | stable | high | 4 | Analyze and govern corrective, adaptive, perfective, and preventive software ... |
 | [spec-driven-development](.agents/skills/project/spec-driven-development) | 1 | experimental | medium | 3 | Run spec-driven development (SDD): a constitution for repo-local rules, then ... |
 | [to-spec](.agents/skills/project/to-spec) | 1 | stable | medium | 3 | Turn the current conversation into a spec and publish it to the project issue... |
 | [to-tickets](.agents/skills/project/to-tickets) | 1 | stable | medium | 3 | Break a plan, spec, or the current conversation into a set of tracer-bullet t... |
@@ -357,6 +365,7 @@
 
 | Skill | Version | Maturity | Risk | Trust Tier | Description |
 |-------|---------|----------|------|------------|-------------|
+| [empirical-software-engineering](.agents/skills/research/empirical-software-engineering) | 1 | stable | medium | 3 | Design and assess empirical software-engineering studies — operational defini... |
 | [github-project-analysis](.agents/skills/research/github-project-analysis) | 1 | stable | medium | 3 | Research comparable projects exclusively on GitHub and analyze their structur... |
 | [research-data-archiving](.agents/skills/research/research-data-archiving) | 1 | stable | low | 1 | Archive research data — metadata, storage, preservation, provenance, and reus... |
 | [research-literature-review](.agents/skills/research/research-literature-review) | 1 | stable | low | 1 | Review research literature — search strategy, screening, synthesis, citation ... |

@@ -1,0 +1,15 @@
+name: safety-critical-software
+description: "Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/engineering-safety-critical-software
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: false
+  sideEffects: []

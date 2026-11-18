@@ -1,0 +1,50 @@
+{
+  "skill": "project/software-maintenance-evolution",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "3e7ffd93f9aefe3aff928dda79cc610658b9b48d04c0a49b06cd6492003e90db",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write",
+      "migration",
+      "deprecation",
+      "retirement",
+      "release-impacting-change"
+    ],
+    "risk": "high",
+    "trustTier": 4
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

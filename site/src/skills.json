@@ -1,5 +1,5 @@
 {
-  "totalSkills": 261,
+  "totalSkills": 270,
   "categories": [
     "accessibility",
     "ai",
@@ -243,6 +243,22 @@
       "path": ".agents/skills/ai/ai-prompt-engineering"
     },
     {
+      "name": "ai-systems-engineering",
+      "category": "ai",
+      "description": "Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "connect model, data, evaluation, abuse, serving, fallback, oversight, monitoring, cost, and latency decisions",
+        "frame AI product requirements as measurable system behavior and constraints",
+        "produce and validate an AISystemSpecificationArtifact with explicit evidence and approval gates"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/ai/ai-systems-engineering"
+    },
+    {
       "name": "ai-time-series-forecasting",
       "category": "ai",
       "description": "Design and evaluate time-series forecasting — ARIMA, Prophet, NeuralProphet, LSTM, Transformer — with stationarity analysis, seasonality, exogenous variables, and backtest.",
@@ -323,6 +339,23 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/backend/api-gateway"
+    },
+    {
+      "name": "architecture-evaluation",
+      "category": "engineering",
+      "description": "Evaluate architecture alternatives against quality attributes, constraints, cost, risk, reversibility, sustainability, and operational fit.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "compare alternatives with explicit trade-offs, sensitivity points, risks/non-risks, and reversibility",
+        "convert architecture-significant requirements into measurable quality attribute scenarios",
+        "frame stakeholders, concerns, viewpoints, views, and rationale using ISO/IEC/IEEE 42010 concepts",
+        "produce and validate an ArchitectureArtifact with ADR and fitness-function handoffs"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/architecture-evaluation"
     },
     {
       "name": "artifact-handoff",
@@ -1289,6 +1322,40 @@
       "path": ".agents/skills/foundation/domain-modeling"
     },
     {
+      "name": "empirical-software-engineering",
+      "category": "research",
+      "description": "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "assess causal threats, selection, measurement, missingness, privacy, and ethics",
+        "design experiments, quasi-experiments, case studies, surveys, and mining-software-repositories studies",
+        "operationalize software-engineering constructs and estimands",
+        "produce a provenance-aware empirical study artifact and decision report"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/research/empirical-software-engineering"
+    },
+    {
+      "name": "engineering-governance",
+      "category": "engineering",
+      "description": "Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "define approval gates with explicit proposer, approver, verifier, evidence, and expiry",
+        "maintain evidence ledgers, policy-to-control mappings, audit trails, and escalation models",
+        "map decision rights and accountable owners to engineering risks and policies",
+        "process urgent exceptions with bounded authority, compensating controls, and retrospective review"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/engineering-governance"
+    },
+    {
       "name": "evaluate-skill",
       "category": "skill-dev",
       "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
@@ -1643,6 +1710,24 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/graphic-design/graphic-design-tools"
+    },
+    {
+      "name": "green-software-engineering",
+      "category": "engineering",
+      "description": "This skill should be used when assessing or improving software carbon intensity, energy use, embodied hardware impact, workload efficiency, or regional carbon intensity with source-qualified measurement and explicit performance, reliability, and cost trade-offs.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "define workload-normalized energy and carbon budgets using SCI/ISO 21031 concepts",
+        "design reproducible measurement plans for operational energy, carbon intensity, and embodied hardware",
+        "distinguish measured, sourced, estimated, and unknown emissions inputs",
+        "evaluate performance, reliability, capacity, and cost trade-offs without greenwashing",
+        "produce a prioritized optimization backlog and verification plan"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/green-software-engineering"
     },
     {
       "name": "grill",
@@ -3194,6 +3279,23 @@
       "path": ".agents/skills/frontend/remix"
     },
     {
+      "name": "requirements-engineering",
+      "category": "project",
+      "description": "Transform stakeholder, business, and system needs into verifiable, traceable, versioned requirements with explicit provenance, conflicts, quality gates, and change impact.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "elicit and classify requirements without treating stakeholder text as authority",
+        "identify omissions, conflicts, unsafe assumptions, and unresolved decisions",
+        "make requirements measurable, testable, traceable, and version-controlled",
+        "produce schema-validated RequirementsArtifact records"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/project/requirements-engineering"
+    },
+    {
       "name": "research",
       "category": "delivery",
       "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
@@ -3336,6 +3438,25 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/skill-dev/rule-cataloger"
+    },
+    {
+      "name": "safety-critical-software",
+      "category": "engineering",
+      "description": "Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "adapt evidence expectations to DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles",
+        "assess change impact, revalidation scope, configuration baselines, and unresolved common-cause risk",
+        "identify hazards, hazardous events, causes, controls, assumptions, and residual risk",
+        "plan independent verification and validation with independence, method, oracle, and exit criteria",
+        "structure assurance cases with claims, arguments, evidence, authority, and gaps",
+        "write measurable, verifiable, allocated, and traceable safety requirements"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/safety-critical-software"
     },
     {
       "name": "scientific-hypothesis",
@@ -3816,6 +3937,23 @@
       "path": ".agents/skills/skill-dev/skill-tutor"
     },
     {
+      "name": "software-economics",
+      "category": "engineering",
+      "description": "Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "compare alternatives using unit economics, scenarios, sensitivity, and decision thresholds",
+        "model software TCO across build, buy, open source, and migration alternatives",
+        "produce and validate a SoftwareEconomicsArtifact with traceable assumptions and evidence",
+        "quantify cost of delay, cost of quality, technical debt economics, lock-in, and option value"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/software-economics"
+    },
+    {
       "name": "software-factory",
       "category": "engineering",
       "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
@@ -3832,6 +3970,23 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/engineering/software-factory"
+    },
+    {
+      "name": "software-maintenance-evolution",
+      "category": "project",
+      "description": "Analyze and govern corrective, adaptive, perfective, and preventive software maintenance, technical debt, compatibility, deprecation, EOL, migration, modernization, retirement, ownership, and feedback into requirements and architecture.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "high",
+      "trustTier": "4",
+      "capabilities": [
+        "analyze consumers and dependencies before migration, deprecation, modernization, or retirement proposals",
+        "classify maintenance drivers, risks, compatibility impact, ownership, and closure evidence",
+        "feed verified maintenance findings back to requirements, architecture, contracts, and release planning",
+        "produce schema-validated MaintenanceArtifact records from repository and operational evidence"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/project/software-maintenance-evolution"
     },
     {
       "name": "spec-driven-development",
