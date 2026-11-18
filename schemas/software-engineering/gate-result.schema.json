@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-quirk.dev/schemas/software-engineering/gate-result.schema.json",
+  "title": "gate-result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactType",
+    "artifactId",
+    "traceId",
+    "operationId",
+    "status",
+    "sourceArtifacts",
+    "sourceDigests",
+    "fixedPoint",
+    "producer",
+    "owner",
+    "nextConsumer",
+    "evidence",
+    "approvals",
+    "blockers",
+    "risks",
+    "createdAt",
+    "expiresAt",
+    "gate",
+    "result"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "artifactType": {
+      "const": "gate-result"
+    },
+    "artifactId": {
+      "$ref": "#/$defs/id"
+    },
+    "traceId": {
+      "$ref": "#/$defs/id"
+    },
+    "operationId": {
+      "$ref": "#/$defs/id"
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "sourceArtifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "sourceDigests": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/digest"
+      }
+    },
+    "fixedPoint": {
+      "$ref": "#/$defs/record"
+    },
+    "producer": {
+      "$ref": "#/$defs/person"
+    },
+    "owner": {
+      "$ref": "#/$defs/person"
+    },
+    "nextConsumer": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/person"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "createdAt": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "expiresAt": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gate": {
+      "$ref": "#/$defs/id"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "waived",
+        "not-run"
+      ]
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "in-progress",
+        "ready",
+        "approved",
+        "rejected",
+        "blocked",
+        "completed",
+        "superseded",
+        "expired"
+      ]
+    },
+    "artifactRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._:/+=-]+$"
+    },
+    "person": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "artifactType",
+        "artifactId",
+        "traceId",
+        "operationId",
+        "status",
+        "sourceArtifacts",
+        "sourceDigests",
+        "fixedPoint",
+        "producer",
+        "owner",
+        "nextConsumer",
+        "evidence",
+        "approvals",
+        "blockers",
+        "risks",
+        "createdAt",
+        "expiresAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "artifactType": {
+          "type": "string"
+        },
+        "artifactId": {
+          "$ref": "#/$defs/id"
+        },
+        "traceId": {
+          "$ref": "#/$defs/id"
+        },
+        "operationId": {
+          "$ref": "#/$defs/id"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "sourceArtifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactRef"
+          }
+        },
+        "sourceDigests": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "fixedPoint": {
+          "$ref": "#/$defs/record"
+        },
+        "producer": {
+          "$ref": "#/$defs/person"
+        },
+        "owner": {
+          "$ref": "#/$defs/person"
+        },
+        "nextConsumer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/person"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record"
+          }
+        },
+        "approvals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record"
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record"
+          }
+        },
+        "createdAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

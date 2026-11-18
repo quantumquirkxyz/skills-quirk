@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-quirk.dev/schemas/software-engineering/configuration-management-artifact.schema.json",
+  "title": "configuration-management-artifact",
+  "type": "object",
+  "allOf": [{ "$ref": "#/$defs/envelope" }, { "type": "object", "required": ["payload"], "properties": { "artifactType": { "const": "configuration-management-artifact" }, "payload": { "$ref": "#/$defs/payload" } } }],
+  "$defs": {
+    "id": { "type": "string", "minLength": 1 },
+    "record": { "type": "object", "additionalProperties": true },
+    "status": { "type": "string", "enum": ["draft", "in-progress", "ready", "approved", "rejected", "blocked", "completed", "superseded", "expired"] },
+    "envelope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schemaVersion", "artifactType", "artifactId", "traceId", "operationId", "status", "sourceArtifacts", "sourceDigests", "fixedPoint", "producer", "owner", "nextConsumer", "evidence", "approvals", "blockers", "risks", "createdAt", "expiresAt", "payload"],
+      "properties": {
+        "schemaVersion": { "const": "1.0" }, "artifactType": { "type": "string" }, "artifactId": { "$ref": "#/$defs/id" }, "traceId": { "$ref": "#/$defs/id" }, "operationId": { "$ref": "#/$defs/id" }, "status": { "$ref": "#/$defs/status" },
+        "sourceArtifacts": { "type": "array", "items": { "$ref": "#/$defs/id" } }, "sourceDigests": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } }, "fixedPoint": { "$ref": "#/$defs/record" }, "producer": { "$ref": "#/$defs/id" }, "owner": { "$ref": "#/$defs/id" }, "nextConsumer": { "anyOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }] }, "evidence": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "approvals": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "blockers": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "risks": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "createdAt": { "type": "string", "format": "date-time" }, "expiresAt": { "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }] }, "payload": { "$ref": "#/$defs/payload" }
+      }
+    },
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["inventory", "baseline", "driftReport", "reproducibilityManifest", "changeRecords"],
+      "properties": {
+        "inventory": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "baseline": { "$ref": "#/$defs/record" }, "driftReport": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "reproducibilityManifest": { "$ref": "#/$defs/record" }, "changeRecords": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+      }
+    }
+  }
+}
