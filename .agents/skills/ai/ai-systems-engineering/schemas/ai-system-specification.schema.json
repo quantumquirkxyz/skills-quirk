@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AISystemSpecificationArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "producer", "status", "summary", "systemSpec", "modelContracts", "dataContracts", "evalMatrix", "abuseSafetyCases", "servingTopology", "fallbackPolicy", "monitoringChangeGates"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": { "const": "AISystemSpecificationArtifact" },
+    "producer": { "const": "ai-systems-engineering" },
+    "status": { "enum": ["draft", "ready", "blocked", "accepted", "rejected"] },
+    "summary": { "type": "string", "minLength": 1 },
+    "systemSpec": { "$ref": "#/$defs/section" },
+    "modelContracts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/contract" } },
+    "dataContracts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/contract" } },
+    "evalMatrix": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evaluation" } },
+    "abuseSafetyCases": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/safetyCase" } },
+    "servingTopology": { "$ref": "#/$defs/section" },
+    "fallbackPolicy": { "$ref": "#/$defs/section" },
+    "monitoringChangeGates": { "$ref": "#/$defs/section" },
+    "approvals": { "type": "array", "items": { "$ref": "#/$defs/approval" } },
+    "unknowns": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "consumers": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "section": { "type": "object", "additionalProperties": false, "required": ["objective", "requirements", "owners", "evidenceStatus"], "properties": { "objective": { "type": "string", "minLength": 1 }, "requirements": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "owners": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "evidenceStatus": { "enum": ["observed", "derived", "planned", "blocked"] }, "controls": { "type": "array", "items": { "type": "string" } } } },
+    "contract": { "type": "object", "additionalProperties": false, "required": ["name", "version", "input", "output", "compatibility", "owner"], "properties": { "name": { "type": "string", "minLength": 1 }, "version": { "type": "string", "minLength": 1 }, "input": { "type": "array", "items": { "type": "string" } }, "output": { "type": "array", "items": { "type": "string" } }, "compatibility": { "type": "string", "minLength": 1 }, "owner": { "type": "string", "minLength": 1 } } },
+    "evaluation": { "type": "object", "additionalProperties": false, "required": ["requirement", "method", "metric", "threshold", "owner", "gate"], "properties": { "requirement": { "type": "string" }, "method": { "type": "string" }, "metric": { "type": "string" }, "threshold": { "type": "string" }, "owner": { "type": "string" }, "gate": { "enum": ["pre-merge", "pre-release", "canary", "production"] } } },
+    "safetyCase": { "type": "object", "additionalProperties": false, "required": ["scenario", "risk", "prevention", "detection", "mitigation", "owner", "residualRisk"], "properties": { "scenario": { "type": "string" }, "risk": { "enum": ["low", "medium", "high", "critical"] }, "prevention": { "type": "array", "items": { "type": "string" } }, "detection": { "type": "array", "items": { "type": "string" } }, "mitigation": { "type": "array", "items": { "type": "string" } }, "owner": { "type": "string" }, "residualRisk": { "type": "string" } } },
+    "approval": { "type": "object", "additionalProperties": false, "required": ["decision", "approver", "status"], "properties": { "decision": { "type": "string" }, "approver": { "type": "string" }, "status": { "enum": ["pending", "approved", "rejected", "blocked"] } } }
+  }
+}
