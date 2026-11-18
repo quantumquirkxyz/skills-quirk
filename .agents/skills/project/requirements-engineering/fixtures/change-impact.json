@@ -1,0 +1,1 @@
+{"id":"change-impact","input":"Change REQ-12 timeout from 2s to 500ms in baseline v1. Affects API contract, capacity, tests, tickets, and rollback.","expectedStatus":"blocked","requiredFindings":["impact","API","capacity","tests","rollback","new revision"]}

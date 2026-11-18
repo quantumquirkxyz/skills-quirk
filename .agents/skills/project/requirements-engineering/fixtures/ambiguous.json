@@ -1,0 +1,1 @@
+{"id":"ambiguous","input":"The dashboard shall be fast and easy to use.","expectedStatus":"blocked","requiredFindings":["non-verifiable","missing measure","named owner"]}

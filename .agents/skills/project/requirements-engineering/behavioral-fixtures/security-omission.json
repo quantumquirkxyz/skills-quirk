@@ -1,0 +1,1 @@
+{"id":"security-omission","input":"Public file upload has no authentication, malware scanning, or audit requirements.","expectedStatus":"blocked","requiredFindings":["security omission","sec-threat-modeling"]}
