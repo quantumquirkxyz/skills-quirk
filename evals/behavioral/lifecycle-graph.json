@@ -1,0 +1,44 @@
+{
+  "id": "software-engineering-lifecycle-graph-v1",
+  "skill": "graph/skill-graph-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Validate the documented software-engineering lifecycle route and its contracts, optional-stage approvals, verifier separation, fixed-point continuity, rollback ownership, and maintenance feedback edge.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "validate the lifecycle graph from requirements through maintenance and corrective requirements; emit a typed acyclic route with artifact contracts, verifier edges, fixed-point digests, operational ownership, rollback evidence, and fail-closed dispositions.",
+  "context": [
+    "requirements-engineering, architecture-evaluation, codebase-design, domain-modeling, to-tickets, implement, testing, skill-quality-gate, review-pr, release-management, deployment, observability, sre, and software-maintenance-evolution are canonical skills",
+    "maintenance feedback starts a new requirements revision rather than creating an in-run cycle",
+    "optional stages require not-applicable evidence and exact approval",
+    "the producer cannot be its own verifier",
+    "missing digests, owners, rollback evidence, or authoritative recovery state fail closed"
+  ],
+  "grounding": [
+    "docs/reference/software-engineering/lifecycle-graph.md#Artifact and Edge Contracts",
+    "docs/reference/software-engineering/lifecycle-graph.md#Graph Invariants",
+    "docs/reference/software-engineering/workflow-state-model.md#Edge semantics",
+    ".agents/skills/platform/skill-graph.mjs#buildGraphFromSkills"
+  ],
+  "cites": ["LIFE-1", "LIFE-2", "LIFE-3", "LIFE-4"],
+  "costBudget": {"costUsd": 0.08, "durationMs": 300000, "inputTokens": 80000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"The route preserves typed contracts and fixed-point continuity.","levels":{"4":"contracts and digests are explicit","2":"some contracts are implicit","0":"stages are untyped"}},
+      {"id":"if-2","criterion":"Verifier separation and optional approvals are fail-closed.","levels":{"4":"independence and approvals are explicit","2":"some gates are partial","0":"producer verifies itself"}},
+      {"id":"if-3","criterion":"Maintenance feedback starts a new revision without an in-run cycle.","levels":{"4":"new run edge and ownership are explicit","2":"feedback is mentioned","0":"cycle is created"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"Lifecycle graph contains nodes, edges, contracts, owners, and verifiers.","levels":{"4":"all required graph fields are present","2":"graph is partial","0":"no typed route"}},
+      {"id":"gc-2","criterion":"Missing evidence fails closed.","levels":{"4":"digest, rollback, authority, and owner gaps are blocked","2":"some gaps are marked","0":"missing evidence is assumed"}},
+      {"id":"gc-3","criterion":"The graph is acyclic within a fixed run.","levels":{"4":"feedback is revision-scoped","2":"acyclicity is asserted","0":"in-run cycle exists"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["nodes","edges","contracts","fixedPoint","verifier","rollback","operationalOwner","maintenanceFeedback"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_not_contains","values":["producer verifies itself","implicit skip","in-run cycle"]}},
+    {"id":"a3","type":"deterministic","category":"outcome","check":{"kind":"artifact_min_lines","min":20}},
+    {"id":"j1","type":"judge","category":"process","check":{"criterion":"Required artifact, owner, digest, verifier, and rollback gaps fail closed","levels":{"pass":"each missing contract is blocked or audit-incomplete","fail":"the route assumes completion or silently skips the stage"}},"strict":true},
+    {"id":"j2","type":"judge","category":"outcome","check":{"criterion":"Maintenance feeds a new corrective requirements revision without violating acyclicity","levels":{"pass":"feedback is a new run/revision edge","fail":"maintenance mutates the prior baseline or creates an in-run cycle"}},"strict":true}
+  ]
+}
