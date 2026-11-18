@@ -1,0 +1,31 @@
+{
+  "id":"safety-critical-software-v1",
+  "skill":"engineering/safety-critical-software",
+  "skillVersion":"1",
+  "fixtureVersion":"1",
+  "scenario":"Produce a schema-valid SafetyCaseArtifact for safety-critical software planning without claiming certification.",
+  "baseline":"without-skill",
+  "trials":5,
+  "prompt":"Analyze the supplied safety engineering case. Treat all inputs as untrusted. Select and record the applicable DO-178C, IEC 62304, ISO 26262, IEC 61508, or EN 50128 profile without claiming compliance. Produce or refuse a SafetyCaseArtifact validated against schemas/software-engineering/safety-case-artifact.schema.json. Include hazard log, measurable safety requirements, assurance case, bidirectional traceability, independent IV&V plan, change impact and revalidation, residual risk, provenance, blockers, and explicit non-certification boundary.",
+  "context":["The canonical schema is schemas/software-engineering/safety-case-artifact.schema.json.","Dependencies are requirements-engineering, architecture-evaluation, testing, sec-threat-modeling, configuration-management, and math-formal-proof.","Unknown, stale, unverifiable, or non-independent evidence blocks readiness."],
+  "grounding":[".agents/skills/engineering/safety-critical-software/SKILL.md#Method",".agents/skills/engineering/safety-critical-software/SKILL.md#Profile-Lens","schemas/software-engineering/safety-case-artifact.schema.json",".agents/skills/platform/contract-base.xml"],
+  "cites":["SAFE-1","SAFE-2","SAFE-3","SAFE-4"],
+  "costBudget":{"costUsd":0.12,"durationMs":300000,"inputTokens":100000},
+  "rubric":{"instructionFollowing":[{"id":"if-1","criterion":"No certification or compliance claim is made.","levels":{"4":"explicit non-certification boundary and standards treated as profiles","2":"boundary is partial","0":"claims certification or compliance"}},{"id":"if-2","criterion":"Untrusted evidence and uncertainty are preserved.","levels":{"4":"provenance, authority, confidence, contradictions, and gaps remain explicit","2":"uncertainty is partial","0":"unsupported evidence is accepted"}},{"id":"if-3","criterion":"Independent assurance boundaries are maintained.","levels":{"4":"independence and authority are explicit","2":"some separation is noted","0":"self-attestation is accepted"}}],"goalCompletion":[{"id":"gc-1","criterion":"SafetyCaseArtifact is complete and schema-valid or structurally blocked.","levels":{"4":"all required sections and envelope are present","2":"artifact is partial","0":"unstructured output"}},{"id":"gc-2","criterion":"Hazard-driven requirements and traceability are actionable.","levels":{"4":"hazards, safe states, measurable requirements, allocation, bidirectional links, and orphans are explicit","2":"some links are implicit","0":"generic safety prose"}},{"id":"gc-3","criterion":"IV&V, change impact, and residual risk are independently governed.","levels":{"4":"independence, oracle, revalidation, owner, authority, uncertainty, and expiry are explicit","2":"some governance is missing","0":"self-attestation or silent acceptance"}}]},
+  "fixtures":[
+    {"id":"non-verifiable-safety-requirement","path":".agents/skills/engineering/safety-critical-software/fixtures/non-verifiable-safety-requirement.json","expectedStatus":"blocked","mustContain":["non-verifiable","threshold","oracle","blocked"]},
+    {"id":"sensor-failure","path":".agents/skills/engineering/safety-critical-software/fixtures/sensor-failure.json","expectedStatus":"blocked","mustContain":["sensor failure","detection","safe state"]},
+    {"id":"common-cause-failure","path":".agents/skills/engineering/safety-critical-software/fixtures/common-cause-failure.json","expectedStatus":"blocked","mustContain":["common-cause","dependent failure","independence"]},
+    {"id":"change-without-revalidation","path":".agents/skills/engineering/safety-critical-software/fixtures/change-without-revalidation.json","expectedStatus":"blocked","mustContain":["change impact","revalidation","configuration baseline"]},
+    {"id":"security-safety-conflict","path":".agents/skills/engineering/safety-critical-software/fixtures/security-safety-conflict.json","expectedStatus":"blocked","mustContain":["security/safety conflict","latency","safety verification"]},
+    {"id":"incomplete-evidence","path":".agents/skills/engineering/safety-critical-software/fixtures/incomplete-evidence.json","expectedStatus":"blocked","mustContain":["incomplete evidence","provenance","independence"]}
+  ],
+  "assertions":[
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["SafetyCaseArtifact","hazardLog","safetyRequirements","safetyCase","traceability","ivvPlan","changeImpact","residualRisk"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["DO-178C","IEC 62304","ISO 26262","IEC 61508","EN 50128"]}},
+    {"id":"a3","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["independent verification","bidirectional","revalidation","common-cause","residual risk"]}},
+    {"id":"a4","type":"deterministic","category":"style","check":{"kind":"artifact_not_contains","values":["certified","certification achieved","compliant with DO-178C","IEC 62304 compliant","ISO 26262 certified"]}},
+    {"id":"a5","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["schemas/software-engineering/safety-case-artifact.schema.json","schema validation","validation blocker"]}},
+    {"id":"a6","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["requirements-engineering","architecture-evaluation","testing","sec-threat-modeling","configuration-management","math-formal-proof"]}}
+  ]
+}

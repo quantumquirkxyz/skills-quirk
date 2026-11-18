@@ -1,0 +1,33 @@
+{
+  "fixtures": [
+    {
+      "id": "v1-contract-ai-systems-engineering",
+      "skill": "ai-systems-engineering",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": ["## Contract", "## Provenance", "## Artifact", "## Process", "## Rules", "## Completion", "AISystemSpecificationArtifact", "model and data contracts", "evaluation matrix", "abuse/safety", "serving topology", "fallback policy", "monitoring and change gates", "human oversight", "cost", "latency"]
+      }
+    },
+    {
+      "id": "v1-frontmatter-ai-systems-engineering",
+      "skill": "ai-systems-engineering",
+      "type": "behavioral",
+      "expected": {
+        "frontmatterContains": ["name: \"ai-systems-engineering\"", "risk: \"high\"", "trustTier: \"4\"", "approvalRequired: \"true\"", "modelTier: \"reasoning\"", "artifactType: \"ai-system\""]
+      }
+    },
+    {
+      "id": "v1-footer-ai-systems-engineering",
+      "skill": "ai-systems-engineering",
+      "type": "behavioral",
+      "expected": { "outputContains": ["@include .agents/skills/platform/contract-base.xml"] }
+    },
+    { "id": "v1-failure-data-drift", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["distribution shift", "drift", "data integrity"] } },
+    { "id": "v1-failure-prompt-injection", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["prompt/tool injection", "fail closed", "authorization"] } },
+    { "id": "v1-failure-model-regression", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["model changes", "canary", "rollback"] } },
+    { "id": "v1-failure-unsafe-output", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["unsafe output", "safety", "residual risk"] } },
+    { "id": "v1-failure-provider-outage", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["provider outage", "fallback", "safe degradation"] } },
+    { "id": "v1-failure-latency-cost-spike", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["latency", "cost", "budgets", "bounded retries"] } },
+    { "id": "v1-failure-human-review-overload", "skill": "ai-systems-engineering", "type": "behavioral", "expected": { "outputContains": ["human-review overload", "reviewer", "capacity", "overloaded"] } }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "green-software-engineering-v1",
+  "skill": "engineering/green-software-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Assess software energy and carbon trade-offs with measured evidence and explicit performance constraints.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Produce a GreenSoftwareArtifact with declared boundary, workload unit, budgets, measurement plan, source-qualified carbon inputs, reliability/performance/cost trade-offs, optimization backlog, and before/after verification. Cover replica rebound, batch shifting, regional factors, idle GPUs, inaccurate factors, and redundancy reduction without claiming exact emissions.",
+  "context": ["carbon evidence may be measured, sourced, estimated, or unknown", "annual regional factors do not prove marginal emissions", "optimization must preserve SLO and reliability guardrails"],
+  "grounding": [".agents/skills/engineering/green-software-engineering/SKILL.md#Method", ".agents/skills/engineering/green-software-engineering/SKILL.md#Evidence-Rules", ".agents/skills/engineering/green-software-engineering/SKILL.md#Contract"],
+  "cites": ["GREEN-1", "GREEN-2", "GREEN-3"],
+  "costBudget": {"costUsd": 0.12, "durationMs": 300000, "inputTokens": 100000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"The artifact declares boundary, workload unit, budgets, and evidence quality.","levels":{"4":"all are explicit","2":"some are explicit","0":"totals are unsupported"}},
+      {"id":"if-2","criterion":"Carbon and energy claims preserve source quality and uncertainty.","levels":{"4":"measured, sourced, estimated, and unknown states are separated","2":"uncertainty is partial","0":"false precision is used"}},
+      {"id":"if-3","criterion":"Recommendations preserve reliability, performance, cost, and residency constraints.","levels":{"4":"trade-offs and guardrails are actionable","2":"trade-offs are mentioned","0":"green claims override constraints"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"GreenSoftwareArtifact is structured and schema-valid or blocked.","levels":{"4":"required sections and blockers are present","2":"artifact is partial","0":"no structured output"}},
+      {"id":"gc-2","criterion":"Measurement and optimization plans are reproducible.","levels":{"4":"telemetry, sampling, calibration, owner, and verification are explicit","2":"plan is incomplete","0":"no measurement path"}},
+      {"id":"gc-3","criterion":"Before and after verification reports regressions and residual unknowns.","levels":{"4":"normalized comparison and thresholds are explicit","2":"verification is vague","0":"improvement is assumed"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["GreenSoftwareArtifact","scope","budgets","measurementPlan","optimizationBacklog","verification"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["workload unit","measured","sourced","estimated","unknown"]}},
+    {"id":"a3","type":"deterministic","category":"style","check":{"kind":"artifact_contains_all","values":["reliability","performance","cost","guardrail","rollback"]}},
+    {"id":"a4","type":"deterministic","category":"efficiency","check":{"kind":"artifact_not_contains","values":["automatically greener","exact emissions without source","precise carbon result"]}}
+  ],
+  "fixtures": [
+    {"id":"latency-optimization-carbon-rebound","type":"regression","expectedOutput":{"contains":["replica","carbon","reliability","workload unit"]}},
+    {"id":"batch-carbon-shifting","type":"regression","expectedOutput":{"contains":["delay","regional","SLO","verification"]}},
+    {"id":"regional-intensity","type":"negative","expectedOutput":{"contains":["time","location","source quality","marginal"]}},
+    {"id":"idle-gpu","type":"regression","expectedOutput":{"contains":["utilization","idle","energy","workload unit"]}},
+    {"id":"inaccurate-emissions-factor","type":"negative","expectedOutput":{"contains":["downgrade","uncertainty","energy","source"]}},
+    {"id":"reliability-tradeoff","type":"negative","expectedOutput":{"contains":["availability","failure","guardrail","rollback"]}}
+  ]
+}

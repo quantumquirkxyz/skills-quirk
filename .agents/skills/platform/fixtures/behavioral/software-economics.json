@@ -1,0 +1,46 @@
+{
+  "fixtures": [
+    {
+      "id": "software-economics-build-vs-buy",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Compare building an internal workflow engine with buying a vendor product over five years. Include engineering, integration, support, license, migration, exit, adoption, and demand-sensitive costs.",
+      "expected": { "outputContains": ["SoftwareEconomicsArtifact", "TCO", "cost of delay", "build", "buy", "exit", "sensitivity", "recommendation"], "doesNotContain": ["DCF valuation", "FinOps rightsizing"] }
+    },
+    {
+      "id": "software-economics-refactor-vs-feature",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Decide whether to spend two quarters refactoring a brittle service or ship two customer features. Use delivery capacity, defect rate, incident cost, delay value, debt carrying cost, and a reversible checkpoint.",
+      "expected": { "outputContains": ["cost of delay", "technical debt", "defect", "incident", "reversible", "break-even", "conditions"], "doesNotContain": ["terminal value", "cloud commitment purchase"] }
+    },
+    {
+      "id": "software-economics-multicloud-lock-in",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Compare single-cloud, multicloud, and portable abstraction options. Model duplicated operations, performance overhead, migration cost, outage exposure, portability, exit rights, and the trigger for exercising a portability option.",
+      "expected": { "outputContains": ["lock-in", "migration", "portability", "option", "trigger", "exit", "adverse"], "doesNotContain": ["guaranteed resilience", "purchase approval"] }
+    },
+    {
+      "id": "software-economics-debt-impact",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Estimate the economics of a known technical-debt backlog using cycle time, rework, constrained capacity, failure exposure, repayment cost, and uncertainty ranges. Do not treat story points as money without a rate.",
+      "expected": { "outputContains": ["debt principal", "carrying cost", "repayment", "rate", "uncertainty", "observed", "assumed"], "doesNotContain": ["story points equal dollars", "single numeric score"] }
+    },
+    {
+      "id": "software-economics-incident-cost",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Compare two designs using incident frequency, affected demand, duration, recovery effort, customer impact, and confidence intervals. Include expected quality cost and avoid double counting delay and incident losses.",
+      "expected": { "outputContains": ["expected", "incident", "duration", "recovery", "confidence", "double count", "quality"], "doesNotContain": ["incident cost is zero", "guaranteed savings"] }
+    },
+    {
+      "id": "software-economics-false-precision",
+      "skill": "software-economics",
+      "type": "behavioral",
+      "input": "Evaluate alternatives when labor rate, demand, vendor price, exit cost, and delay value are missing or highly uncertain. The ranking changes across plausible ranges.",
+      "expected": { "outputContains": ["blocked", "missing", "range", "reversal", "confidence", "too weak to rank", "evidence"], "doesNotContain": ["exact winner", "100% confidence", "one-number decision"] }
+    }
+  ]
+}

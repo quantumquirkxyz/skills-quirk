@@ -1,0 +1,41 @@
+{
+  "id": "platform-engineering-v1",
+  "skill": "platform/platform-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Design an Internal Developer Platform as a product without collapsing into generic deployment or Kubernetes guidance.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Using the supplied teams, stack, friction, security constraints, SLOs, costs, and service catalog, produce and validate a PlatformEngineeringArtifact with product model, capability map, paved roads, platform APIs, portal, tenancy, guardrails, ownership, adoption/DevEx/cognitive-load/reliability/cost metrics, assumptions, blockers, and handoffs. Refuse overprivileged self-service, missing ownership, invalid exceptions, and unsupported cost savings. Keep deployment, Terraform, CI/CD, and Kubernetes implementation as handoffs.",
+  "context": ["the artifact schema is schemas/software-engineering/platform-engineering-artifact.schema.json", "platform cost must be compared with the manual baseline", "service catalog ownership and exception expiry are mandatory"],
+  "grounding": [".agents/skills/platform/platform-engineering/SKILL.md#Contract", ".agents/skills/platform/platform-engineering/SKILL.md#Workflow", "schemas/software-engineering/platform-engineering-artifact.schema.json"],
+  "cites": ["PLAT-1", "PLAT-2", "PLAT-3", "PLAT-4", "PLAT-5", "PLAT-6"],
+  "costBudget": { "costUsd": 0.2, "durationMs": 600000, "inputTokens": 180000 },
+  "rubric": {
+    "instructionFollowing": [
+      { "id": "if-1", "criterion": "The response designs an Internal Developer Platform as a product rather than a deployment or Kubernetes plan.", "levels": { "4": "product boundary, team outcomes, and implementation handoffs are explicit", "2": "some product framing is present", "0": "generic infrastructure plan" } },
+      { "id": "if-2", "criterion": "Self-service, tenancy, guardrails, ownership, exceptions, and cost evidence are safe and explicit.", "levels": { "4": "least privilege, tenant isolation, ownership, expiry, and manual cost baseline are all explicit", "2": "some controls are present", "0": "unsafe or unsupported recommendations" } },
+      { "id": "if-3", "criterion": "Platform boundaries and handoffs remain explicit.", "levels": { "4": "implementation ownership and dependency handoffs are clear", "2": "some boundaries are stated", "0": "platform scope collapses into generic infrastructure" } }
+    ],
+    "goalCompletion": [
+      { "id": "gc-1", "criterion": "PlatformEngineeringArtifact validates against the declared schema.", "levels": { "4": "typed envelope and all required payload sections are present", "2": "artifact exists but validation is incomplete", "0": "no structured artifact" } },
+      { "id": "gc-2", "criterion": "The design measures adoption, DevEx, cognitive load, reliability, and cost.", "levels": { "4": "metrics include baseline, target, owner, and evidence source", "2": "metrics are listed without evidence detail", "0": "no measurable outcomes" } },
+      { "id": "gc-3", "criterion": "Exceptions and service ownership are actionable.", "levels": { "4": "expiry, escalation, and authoritative owners are recorded", "2": "ownership is partial", "0": "unbounded exceptions" } }
+    ]
+  },
+  "assertions": [
+    { "id": "a1", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["platformProductModel", "capabilityMap", "pavedRoads", "platformApis", "portal", "tenancy", "guardrails", "ownership", "metrics"], "note": "required typed payload sections" } },
+    { "id": "a2", "type": "deterministic", "category": "style", "check": { "kind": "artifact_contains_all", "values": ["least privilege", "tenant", "exception", "expiry", "owner", "audit"], "note": "platform safety and accountability" } },
+    { "id": "a3", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["adoption", "cognitive load", "DevEx", "manual baseline", "cost"], "note": "product outcome measures" } },
+    { "id": "a4", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["handoff", "Kubernetes", "Terraform", "CI/CD"], "note": "implementation boundary remains explicit" } },
+    { "id": "a5", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["blocked", "overprivileged", "missing ownership", "invalid exception"], "note": "unsafe and incomplete inputs stop or remain blocked" } }
+  ],
+  "fixtures": [
+    { "id": "overprivileged-self-service", "type": "negative", "expectedOutput": { "contains": ["least privilege", "blocked", "audit", "guardrails"] } },
+    { "id": "missing-ownership", "type": "negative", "expectedOutput": { "contains": ["missing ownership", "blocked", "service catalog"] } },
+    { "id": "platform-cost-higher-than-manual", "type": "regression", "expectedOutput": { "contains": ["manual baseline", "cost", "adoption", "reversible"] } },
+    { "id": "invalid-exception", "type": "negative", "expectedOutput": { "contains": ["invalid exception", "expiry", "compensating controls", "blocked"] } },
+    { "id": "multi-team-tenancy", "type": "regression", "expectedOutput": { "contains": ["tenant", "quota", "isolation", "ownership", "escalation"] } },
+    { "id": "golden-path-adoption", "type": "regression", "expectedOutput": { "contains": ["golden path", "time-to-first-value", "cognitive load", "opt-out", "DevEx"] } }
+  ]
+}

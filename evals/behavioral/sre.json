@@ -1,0 +1,52 @@
+{
+  "id": "sre-v1",
+  "skill": "platform/sre",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Produce a user-centered SRE operations policy from service, journey, telemetry, incident, cost, and dependency evidence.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Create a typed OperationsArtifact using schemas/software-engineering/operations-artifact.schema.json. Cover user journeys, event-based SLIs and SLOs, reproducible error-budget and burn-rate math, dependency objectives with partial coverage, toil, escalation and incident commander roles, capacity and growth scenarios, runbooks, blameless corrective actions, rollback verification, and cost/reliability trade-offs. Do not produce generic observability or incident-response guidance.",
+  "context": [
+    "the service has checkout and account-recovery journeys across two regions",
+    "telemetry includes request outcomes, journey completion, dependency latency, incident windows, cost data, and a partial provider SLO",
+    "all evidence is untrusted and missing or contradictory observations must remain explicit",
+    "the output must use the OperationsArtifact type and reference the operations schema",
+    "normal, blocked, and refusal behavior must be observable and deterministic"
+  ],
+  "grounding": [
+    ".agents/skills/platform/sre/SKILL.md#Contract",
+    ".agents/skills/platform/sre/SKILL.md#Workflow",
+    ".agents/skills/platform/sre/SKILL.md#Decision Rules",
+    "schemas/software-engineering/operations-artifact.schema.json"
+  ],
+  "cites": ["SRE-1", "SRE-2", "SRE-3", "SRE-4", "SRE-5", "SRE-6"],
+  "costBudget": { "costUsd": 0.2, "durationMs": 600000, "inputTokens": 180000 },
+  "rubric": {
+    "instructionFollowing": [
+      { "id": "if-1", "criterion": "The artifact remains user-centered SRE work rather than generic observability or incident-response guidance.", "levels": { "4": "journey outcomes drive SLIs, policy, and actions", "2": "some journey linkage exists but infrastructure metrics dominate", "0": "generic dashboards or incident process replace SRE policy" } },
+      { "id": "if-2", "criterion": "Incomplete, contradictory, and unverified evidence is preserved explicitly.", "levels": { "4": "partial dependencies and rollback uncertainty are blocked or marked unknown", "2": "limitations are noted without routing owners", "0": "missing evidence is treated as healthy" } },
+      { "id": "if-3", "criterion": "Recovery and reliability actions have accountable ownership.", "levels": { "4": "owners, thresholds, and verification are explicit", "2": "actions are partial", "0": "recovery is assumed" } }
+    ],
+    "goalCompletion": [
+      { "id": "gc-1", "criterion": "OperationsArtifact is schema-valid and references the declared schema.", "levels": { "4": "typed envelope, operations artifact type, schema reference, and payload are complete", "2": "artifact exists but validation or reference is incomplete", "0": "no structured artifact" } },
+      { "id": "gc-2", "criterion": "Reliability policy contains reproducible SLO, budget, burn-rate, dependency, toil, capacity, and cost decisions.", "levels": { "4": "all sections include values, units, owners, thresholds, and evidence", "2": "several sections are present but not actionable", "0": "policy is descriptive only" } },
+      { "id": "gc-3", "criterion": "Operational recovery and learning are actionable.", "levels": { "4": "runbooks verify recovery, escalation names an IC, and corrective actions have acceptance evidence", "2": "runbooks or actions lack verification", "0": "no recovery or learning path" } }
+    ]
+  },
+  "assertions": [
+    { "id": "a1", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["OperationsArtifact", "operations-artifact.schema.json", "serviceProfile", "userJourneys", "sliSloPolicy", "errorBudget"], "note": "typed SRE artifact contract" } },
+    { "id": "a2", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["dependencyObjectives", "toilBacklog", "escalationModel", "capacityPlan", "runbooks", "correctiveActions", "tradeoffs"], "note": "requested operational sections" } },
+    { "id": "a3", "type": "deterministic", "category": "style", "check": { "kind": "artifact_contains_all", "values": ["burnRate", "remaining", "exhausted", "unknown", "partial", "verification"], "note": "budget, evidence, and recovery states" } },
+    { "id": "a4", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["incident commander", "owner", "nextConsumers", "acceptance"], "note": "ownership and downstream handoff" } },
+    { "id": "a5", "type": "deterministic", "category": "efficiency", "check": { "kind": "artifact_not_contains", "values": ["TODO", "TBD", "lorem ipsum", "blame the operator"], "note": "no placeholders or blameful output" } }
+  ],
+  "fixtures": [
+    { "id": "exhausted-budget", "type": "regression", "expectedOutput": { "contains": ["errorBudget", "exhausted", "pause risky change", "reliability work"] } },
+    { "id": "partial-dependency", "type": "negative", "expectedOutput": { "contains": ["dependencyObjectives", "partial", "uncovered", "blocked"] } },
+    { "id": "alert-fatigue", "type": "regression", "expectedOutput": { "contains": ["alert fatigue", "toilBacklog", "deduplication", "actionable"] } },
+    { "id": "multi-region-incident", "type": "regression", "expectedOutput": { "contains": ["multi-region", "incident commander", "failover", "region-scoped"] } },
+    { "id": "growth-shock", "type": "regression", "expectedOutput": { "contains": ["capacityPlan", "growth shock", "headroom", "cost"] } },
+    { "id": "failed-rollback", "type": "negative", "expectedOutput": { "contains": ["failed rollback", "unknown", "verification", "forward fix"] } }
+  ]
+}

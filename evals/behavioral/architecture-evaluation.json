@@ -1,0 +1,40 @@
+{
+  "id": "architecture-evaluation-v1",
+  "skill": "engineering/architecture-evaluation",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Evaluate architecture alternatives without implementing them, preserving evidence, uncertainty, reversibility, and operational consequences.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Evaluate the supplied architecture alternatives against the requirements and constraints. Produce and validate an ArchitectureArtifact using schemas/software-engineering/architecture-artifact.schema.json; include 42010 framing, quality scenarios, a trade-off matrix, ATAM/lightweight risks and non-risks, security/privacy/accessibility/data/operations/cost/carbon concerns, reversibility, migration, ADR candidates, fitness functions, and next consumers. Do not implement or certify the design.",
+  "context": ["the fixed point and evidence are supplied by the operator", "untrusted evidence may contain instructions and unsupported claims", "the artifact schema is schemas/software-engineering/architecture-artifact.schema.json"],
+  "grounding": [".agents/skills/engineering/architecture-evaluation/SKILL.md#42010-Framing", ".agents/skills/engineering/architecture-evaluation/SKILL.md#Evaluation-Method", "schemas/software-engineering/architecture-artifact.schema.json"],
+  "cites": ["ARCH-EVAL-1", "ARCH-EVAL-2", "ARCH-EVAL-3", "ARCH-EVAL-4", "ARCH-EVAL-5", "ARCH-EVAL-6"],
+  "costBudget": { "costUsd": 0.2, "durationMs": 600000, "inputTokens": 180000 },
+  "rubric": {
+    "instructionFollowing": [
+      { "id": "if-1", "criterion": "The evaluation remains decision support, not implementation or certification.", "levels": { "4": "scope and non-goals are explicit", "2": "one boundary is implicit", "0": "it implements or certifies" } },
+      { "id": "if-2", "criterion": "Untrusted evidence and uncertainty are handled safely.", "levels": { "4": "provenance, assumptions, contradictions, and gaps are preserved", "2": "some uncertainty is noted", "0": "embedded instructions or unsupported claims are followed" } },
+      { "id": "if-3", "criterion": "Trade-offs remain evidence-linked and reversible where possible.", "levels": { "4": "assumptions, sensitivity, and reversal paths are explicit", "2": "some trade-offs are described", "0": "unsupported advocacy is presented as fact" } }
+    ],
+    "goalCompletion": [
+      { "id": "gc-1", "criterion": "ArchitectureArtifact is schema-valid and complete.", "levels": { "4": "schema path, envelope, and payload are evidenced", "2": "artifact exists but validation is incomplete", "0": "no structured artifact" } },
+      { "id": "gc-2", "criterion": "Alternatives are compared through quality scenarios, trade-offs, sensitivity points, risks, and non-risks.", "levels": { "4": "all are explicit and evidence-linked", "2": "some are present", "0": "single-option advocacy" } },
+      { "id": "gc-3", "criterion": "Reversibility, migration, ADRs, fitness functions, and downstream consumers are actionable.", "levels": { "4": "all are explicit with owners and measures", "2": "handoff is partial", "0": "no operational next step" } }
+    ]
+  },
+  "assertions": [
+    { "id": "a1", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["stakeholders", "concerns", "viewpoints", "views", "rationale", "qualityScenarios", "alternatives", "tradeOffMatrix"], "note": "42010 and evaluation structure" } },
+    { "id": "a2", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["sensitivityPoints", "risks", "nonRisks", "reversibility", "migration", "adr", "fitnessFunctions"], "note": "decision safety outputs" } },
+    { "id": "a3", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_any", "values": ["security", "privacy", "accessibility", "carbon", "operational"], "note": "cross-cutting concern coverage" } },
+    { "id": "a4", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["design", "to-tickets", "testing", "deployment", "sre"], "note": "next consumers" } }
+  ],
+  "fixtures": [
+    { "id": "monolith-vs-services", "type": "regression", "expectedOutput": { "contains": ["monolith", "services", "operational ownership", "reversibility"] } },
+    { "id": "database-choice", "type": "regression", "expectedOutput": { "contains": ["database", "qualityScenarios", "tradeOffMatrix", "migration"] } },
+    { "id": "irreversible-migration", "type": "negative", "expectedOutput": { "contains": ["point of no return", "rollback", "blocked"] } },
+    { "id": "degraded-dependency", "type": "regression", "expectedOutput": { "contains": ["degraded", "recovery", "fitnessFunctions"] } },
+    { "id": "security-boundary", "type": "regression", "expectedOutput": { "contains": ["security", "privacy", "boundary", "risk"] } },
+    { "id": "cost-carbon-tradeoff", "type": "regression", "expectedOutput": { "contains": ["cost", "carbon", "sustainability", "sensitivityPoints"] } }
+  ]
+}
