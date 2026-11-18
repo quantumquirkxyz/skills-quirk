@@ -1,0 +1,1 @@
+{"scenario":"Two redundant channels share power, clock, compiler assumptions, and a network dependency.","expectedStatus":"blocked","mustContain":["common-cause","dependent failure","independence","residual risk"]}
