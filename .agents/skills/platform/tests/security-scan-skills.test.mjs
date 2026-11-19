@@ -263,3 +263,11 @@ test('--deep reports the known test-fixture true positives as report-only output
   const strict = runScanner(['--strict']);
   assert.equal(strict.status, 0, `default (gating) scan must stay clean\n${strict.stdout}\n${strict.stderr}`);
 });
+
+
+test('Quirk approval secrets remain detectable while playground variables stay benign', () => {
+  const secret = scanText('const approval = process.env.QUIRK_APPROVAL_SECRET;', 'approval.mjs');
+  assert.ok(secret.some((finding) => finding.rule === 'credential-path-access'), 'approval signing secret must not be allowlisted');
+  const playground = scanText('const root = process.env.QUIRK_PLAYGROUND;', 'playground.mjs');
+  assert.ok(!playground.some((finding) => finding.rule === 'credential-path-access'), 'playground path is not a credential');
+});
