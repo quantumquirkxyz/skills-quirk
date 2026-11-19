@@ -2,6 +2,11 @@
 // changing the canonical domain artifact or its lifecycle semantics.
 const lifecycleToExecution = Object.freeze({
   draft: 'partial', 'in-progress': 'partial', ready: 'partial',
+  planned: 'partial', 'needs-approval': 'blocked',
+  'stale-input': 'blocked', 'stale-plan': 'blocked',
+  'validation-failed': 'failed', 'budget-exceeded': 'blocked',
+  'repeated-action': 'blocked', 'outcome-unknown': 'unknown',
+  'rolled-back': 'cancelled',
   approved: 'partial', rejected: 'blocked', blocked: 'blocked',
   completed: 'success', superseded: 'cancelled', expired: 'blocked',
 });
