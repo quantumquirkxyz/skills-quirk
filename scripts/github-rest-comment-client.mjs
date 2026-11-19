@@ -64,6 +64,12 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
       if (typeof existing?.user?.login !== 'string' || existing.user.login.toLowerCase() !== actor.toLowerCase()) {
         throw new Error('Refusing to update a comment not owned by authenticated actor');
       }
+      const markerPattern = /<!-- quirk-skill-output:[A-Za-z0-9_-]+ -->$/;
+      const oldMarker = typeof existing.body === 'string' ? existing.body.match(markerPattern)?.[0] : null;
+      const newMarker = typeof body === 'string' ? body.match(markerPattern)?.[0] : null;
+      if (!oldMarker || oldMarker !== newMarker) {
+        throw new Error('Refusing to replace a comment with a different or missing idempotency marker');
+      }
       const result = await request('PATCH','/issues/comments/' + id,{body});
       return {id:result.id,body:result.body};
     },
