@@ -11,7 +11,8 @@ test('REST client authenticates, verifies ownership, and publishes via GitHub is
     calls.push({url,method:opts.method,auth:opts.headers.Authorization});
     const path=new URL(url).pathname;
     let data;
-    if (opts.method==='GET') data=comments;
+    if (path==='/user') data={login:'quantumquirkxyz'};
+    else if (opts.method==='GET') data=comments;
     else if (opts.method==='POST') {
       data={id:42,body:JSON.parse(opts.body).body,user:{login:'quantumquirkxyz'}};
       comments.push(data);
@@ -38,6 +39,20 @@ test('REST client fails closed on authorization errors without disclosing token'
   await assert.rejects(client.listComments({kind:'issue',number:1}),e=>e.status===403 && !e.message.includes('secret-token'));
 });
 test('REST client marks foreign comments as unowned', async () => {
-  const client=createGitHubRestCommentClient({token:'token',owner:'org',repo:'repo',actor:'actor',fetchImpl:async()=>({ok:true,json:async()=>[{id:1,body:'x',user:{login:'other'}}]})});
+  const client=createGitHubRestCommentClient({token:'token',owner:'org',repo:'repo',actor:'actor',fetchImpl:async(url)=>({ok:true,json:async()=>new URL(url).pathname==='/user'?{login:'actor'}:[{id:1,body:'x',user:{login:'other'}}]})});
   assert.equal((await client.listComments({kind:'issue',number:1}))[0].owned,false);
+});
+
+test('REST client rejects a mismatched token identity before listing or writing comments', async () => {
+  const calls=[];
+  const client=createGitHubRestCommentClient({
+    token:'token',owner:'org',repo:'repo',actor:'claimed-actor',
+    fetchImpl:async(url)=>{
+      calls.push(new URL(url).pathname);
+      return {ok:true,json:async()=>({login:'different-actor'})};
+    },
+  });
+  await assert.rejects(client.listComments({kind:'issue',number:1}),/identity does not match/);
+  await assert.rejects(client.createComment({kind:'issue',number:1},'body'),/identity does not match/);
+  assert.deepEqual(calls,['/user'],'mismatched identity must block repository API calls');
 });
