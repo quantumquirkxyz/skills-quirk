@@ -33,11 +33,11 @@ This is a mapping specification, **not** a claim that each skill has been migrat
 5. Respect rate limits, permission failures, and cancellation; do not retry authentication/authorization failures.
 6. Keep credentials and secret-bearing tool responses out of Markdown and logs.
 
-The generic `publishSkillOutput` helper deliberately does **not** provide a production GitHub client or concurrency lock. These must be implemented and tested before enabling automated publication.
+The generic `publishSkillOutput` helper and `createGitHubCommentAdapter` provide a testable publication interface and GitHub comment mapping, but **not** a production authenticated GitHub API client or concurrency lock. The injected client must set `owned: true` only after checking the comment author against the authenticated account or an explicitly authorized bot identity. A comment marker alone is never proof of ownership. The adapter only supports issue and PR conversation comments, not inline review threads. These must be implemented and tested before enabling automated publication.
 
 ## Review gates
 
-- `node --test tests/skill-output.test.mjs tests/skill-publication.test.mjs`
+- `node --test tests/skill-output.test.mjs tests/skill-publication.test.mjs tests/github-skill-comment-adapter.test.mjs`
 - `node .agents/skills/platform/check-all.mjs`
 - `npm test`
 - Compare generated issue, PR, and review Markdown with existing skill-local templates and behavioral fixtures.
