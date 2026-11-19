@@ -17,17 +17,18 @@ async function scan(directory, entries) {
     if (entry.isDirectory()) await scan(path,entries);
     else if (entry.name==='SKILL.md') {
       const content=await readFile(path,'utf8');
+      const frontmatter=content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
       const schemaRefs=[...new Set(content.match(patterns.canonicalSchema) ?? [])];
-      const risk=/^risk:\s*(.+)$/m.exec(content)?.[1]?.trim() ?? 'unclassified';
-      const sideEffects=patterns.sideEffects.test(content);
-      const approval=patterns.approval.exec(content)?.[1] ?? 'unspecified';
+      const risk=/^risk:\s*(.+)$/m.exec(frontmatter)?.[1]?.trim() ?? 'unclassified';
+      const sideEffects=patterns.sideEffects.test(frontmatter);
+      const approval=patterns.approval.exec(frontmatter)?.[1] ?? 'unspecified';
       entries.push({
         path:relative('.',path).replaceAll('\\','/'),
-        artifactType:patterns.artifactType.exec(content)?.[1]?.trim() ?? null,
+        artifactType:patterns.artifactType.exec(frontmatter)?.[1]?.trim() ?? null,
         risk, sideEffects, approvalRequired:approval,
-        fixture:patterns.fixtures.exec(content)?.[1]?.trim() ?? null,
-        schemaRefs, hasOutputDeclaration:patterns.output.test(content),
-        migrationStatus:'not-assessed',
+        fixture:patterns.fixtures.exec(frontmatter)?.[1]?.trim() ?? null,
+        schemaRefs, hasOutputDeclaration:patterns.output.test(frontmatter),
+        migrationStatus: !patterns.output.test(frontmatter) ? 'missing-output-declaration' : schemaRefs.length ? 'schema-referenced-needs-verification' : 'declared-needs-contract-mapping',
       });
     }
   }
@@ -39,6 +40,7 @@ export async function inventorySkills(directory=root) {
   return {schemaVersion:'1.0',generatedBy:'scripts/skill-output-inventory.mjs',
     total:entries.length,
     priorities:{high:entries.filter(x=>x.sideEffects || ['high','critical'].includes(x.risk)).length},
+    migrationCounts:Object.fromEntries([...new Set(entries.map(x=>x.migrationStatus))].sort().map(status=>[status,entries.filter(x=>x.migrationStatus===status).length])),
     skills:entries};
 }
 if (process.argv[1]?.endsWith('skill-output-inventory.mjs')) {
