@@ -14,12 +14,12 @@ export async function presentReviewArtifact(artifact, {
     throw new Error('Review pilot requires a stable idempotency key');
   }
   if (!Array.isArray(validation)) throw new Error('Review pilot requires explicit validation results');
+  if (artifact?.producer !== 'review-pr' || artifact?.artifactType !== 'verification-artifact') {
+    throw new Error('Review pilot accepts only canonical review-pr verification artifacts');
+  }
   const {presentation} = renderLifecycleArtifact(artifact, {
     title, summary, validation, nextActions, surface:'pr',
   });
-  if (artifact.producer !== 'review-pr' || artifact.artifactType !== 'verification-artifact') {
-    throw new Error('Review pilot accepts only canonical review-pr verification artifacts');
-  }
   const record={...presentation,publication:{target,idempotencyKey}};
   return publishSkillOutput(record,adapter,{approved,dryRun});
 }
