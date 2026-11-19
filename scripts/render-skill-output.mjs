@@ -21,10 +21,10 @@ export function validateSkillOutput(record) {
   for (const key of ['sourceRefs', 'evidence', 'nextActions']) {
     if (!Array.isArray(record[key]) || record[key].some(x => typeof x !== 'string' || !x.trim())) throw new Error('Invalid array: ' + key);
   }
-  if ('generatedAt' in record && (typeof record.generatedAt !== 'string' || !/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$/.test(record.generatedAt) || Number.isNaN(Date.parse(record.generatedAt)))) throw new Error('Invalid generatedAt');
+  if ('generatedAt' in record && (typeof record.generatedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(record.generatedAt) || Number.isNaN(Date.parse(record.generatedAt)))) throw new Error('Invalid generatedAt');
   if ('publication' in record) {
     for (const key of Object.keys(record.publication)) if (!['target','idempotencyKey'].includes(key)) throw new Error('Unexpected publication field: ' + key);
-    if ('target' in record.publication && (typeof record.publication.target !== 'string' || !/^(issue|pr):[1-9]\\d*$/.test(record.publication.target))) throw new Error('Invalid publication target');
+    if ('target' in record.publication && (typeof record.publication.target !== 'string' || !/^(issue|pr):[1-9]\d*$/.test(record.publication.target))) throw new Error('Invalid publication target');
     if ('idempotencyKey' in record.publication && (typeof record.publication.idempotencyKey !== 'string' || !record.publication.idempotencyKey.trim())) throw new Error('Invalid publication idempotencyKey');
   }
   if (!Array.isArray(record.validation)) throw new Error('Invalid validation');
