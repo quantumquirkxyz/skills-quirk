@@ -10,7 +10,7 @@ test('classifies canonical skills without changing their source files', async ()
   try {
     const folder=join(root,'delivery','review-pr');
     await mkdir(folder,{recursive:true});
-    const source='---\nartifactType: review\nrisk: high\napprovalRequired: true\nsideEffects:\n  - post-pr-comment\nfixturesPath: evals/review.json\noutputs:\n  - type: object\n---\n\nUses schemas/software-engineering/verification-artifact.schema.json\n';
+    const source='---\nname: review-pr\nartifactType: review\nrisk: high\napprovalRequired: true\nsideEffects:\n  - post-pr-comment\nfixturesPath: evals/review.json\noutputs:\n  - type: object\n---\n\nUses schemas/software-engineering/verification-artifact.schema.json\n';
     await writeFile(join(folder,'SKILL.md'),source);
     const result=await inventorySkills(root);
     assert.equal(result.total,1);
