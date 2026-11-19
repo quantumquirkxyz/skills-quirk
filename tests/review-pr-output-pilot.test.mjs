@@ -53,3 +53,19 @@ test('review-pr pilot rejects malformed PR identifiers before publication',async
     );
   }
 });
+
+test('review-pr pilot passes a coordinator through to publication',async()=>{
+  const events=[];
+  const coordinator={withLock:async(target,key,fn)=>{
+    events.push('lock:'+target+':'+key);
+    return fn();
+  }};
+  const adapter={
+    findByKey:async()=>{events.push('read');return null;},
+    create:async()=>{events.push('create');return {id:19};},
+    update:async()=>{throw new Error('unexpected update');},
+  };
+  const result=await presentReviewArtifact(canonical(),{...opts(),adapter,dryRun:false,approved:true,coordinator});
+  assert.equal(result.status,'created');
+  assert.deepEqual(events,['lock:pr:8:review:8:commit','read','create']);
+});
