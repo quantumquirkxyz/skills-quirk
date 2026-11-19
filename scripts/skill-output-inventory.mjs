@@ -28,7 +28,11 @@ async function scan(directory, entries) {
         risk, sideEffects, approvalRequired:approval,
         fixture:patterns.fixtures.exec(frontmatter)?.[1]?.trim() ?? null,
         schemaRefs, hasOutputDeclaration:patterns.output.test(frontmatter),
-        migrationStatus: !patterns.output.test(frontmatter) ? 'missing-output-declaration' : schemaRefs.length ? 'schema-referenced-needs-verification' : 'declared-needs-contract-mapping',
+        migrationStatus: !frontmatter.trim() || !/^name:\\s*\\S+/m.test(frontmatter)
+          ? 'not-assessed'
+          : !patterns.output.test(frontmatter) ? 'missing-output-declaration'
+          : schemaRefs.length ? 'schema-referenced-needs-verification'
+          : 'declared-needs-contract-mapping',
       });
     }
   }
