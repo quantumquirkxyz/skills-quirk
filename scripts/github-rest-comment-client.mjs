@@ -60,6 +60,10 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
       issueNumber(target);
       await verifiedActor();
       if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid comment id');
+      const existing = await request('GET','/issues/comments/' + id);
+      if (typeof existing?.user?.login !== 'string' || existing.user.login.toLowerCase() !== actor.toLowerCase()) {
+        throw new Error('Refusing to update a comment not owned by authenticated actor');
+      }
       const result = await request('PATCH','/issues/comments/' + id,{body});
       return {id:result.id,body:result.body};
     },
