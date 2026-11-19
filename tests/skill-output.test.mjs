@@ -48,3 +48,12 @@ test('preserves structured payload details in published text', () => {
   assert.match(output, /src/);
   assert.match(output, /severity/);
 });
+
+test('rejects invalid optional metadata and publication fields', () => {
+  assert.throws(() => validateSkillOutput({...fixture(),generatedAt:'not-a-date'}), /Invalid generatedAt/);
+  assert.throws(() => validateSkillOutput({...fixture(),publication:{target:'pr:0',idempotencyKey:'x'}}), /Invalid publication target/);
+  assert.throws(() => validateSkillOutput({...fixture(),publication:{target:'pr:8',idempotencyKey:''}}), /Invalid publication idempotencyKey/);
+  assert.throws(() => validateSkillOutput({...fixture(),publication:{target:'pr:8',idempotencyKey:'x',unexpected:true}}), /Unexpected publication field/);
+  assert.throws(() => validateSkillOutput({...fixture(),validation:[{check:'unit',status:'passed',extra:1}]}), /Unexpected validation field/);
+  assert.throws(() => validateSkillOutput({...fixture(),validation:[{check:'unit',status:'passed',reason:3}]}), /Invalid validation reason/);
+});
