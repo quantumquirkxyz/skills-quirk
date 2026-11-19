@@ -35,8 +35,28 @@ export async function publishSkillOutput(record, adapter, { approved = false, dr
     const updated = await adapter.update(target, existing.id, body, key);
     return {status:'updated',id:updated.id ?? existing.id,target,key};
   }
-  const created = await adapter.create(target, body, key);
-  if (!created || !created.id) throw new Error('Publication outcome unknown: reconcile by idempotency key before retry');
-  return {status:'created',id:created.id,target,key};
+  let created;
+  let ambiguous = false;
+  try {
+    created = await adapter.create(target, body, key);
+    if (created?.id) return {status:'created',id:created.id,target,key};
+    ambiguous = true;
+  } catch (error) {
+    // A timeout or connection reset may occur after GitHub accepted the write.
+    // Reconcile once, but never repeat a potentially successful mutation.
+    if (error?.status && error.status < 500 && error.status !== 408 && error.status !== 429) throw error;
+    ambiguous = true;
+  }
+  if (ambiguous) {
+    try {
+      const recovered = await adapter.findByKey(target, key);
+      if (recovered?.id && recovered.body === body) {
+        return {status:'reconciled',id:recovered.id,target,key};
+      }
+    } catch {
+      // Preserve fail-closed semantics if the reconciliation read also fails.
+    }
+  }
+  throw new Error('Publication outcome unknown: reconcile by idempotency key before retry');
   });
 }
