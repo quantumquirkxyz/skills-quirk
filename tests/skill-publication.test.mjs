@@ -40,3 +40,17 @@ test('unknown remote outcomes are surfaced, not silently retried', async () => {
   const adapter={findByKey:async()=>null,create:async()=>null,update:async()=>null};
   await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}), /outcome unknown/);
 });
+
+test('serializes concurrent publications in the same process', async () => {
+  let created = 0, saved;
+  const adapter = {
+    findByKey:async()=>saved ?? null,
+    create:async(_target,body)=>{await new Promise(resolve=>setTimeout(resolve,10));created++;saved={id:9,body};return saved;},
+    update:async(_target,id,body)=>{saved={id,body};return saved;}
+  };
+  const r=record();
+  const outcomes=await Promise.all(Array.from({length:8},()=>publishSkillOutput(r,adapter,{approved:true,dryRun:false})));
+  assert.equal(created,1);
+  assert.equal(outcomes.filter(x=>x.status==='created').length,1);
+  assert.equal(outcomes.filter(x=>x.status==='unchanged').length,7);
+});
