@@ -87,3 +87,25 @@ test('does not reconcile authorization failures as ambiguous writes', async () =
   await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}),/forbidden/);
   assert.equal(reads,1,'only the initial lookup is allowed');
 });
+
+test('reconciles a successful update after an ambiguous transport failure', async () => {
+  let body='previous',writes=0;
+  const adapter={
+    findByKey:async()=>({id:12,body}),
+    create:async()=>{throw new Error('must not create');},
+    update:async(_target,_id,next)=>{writes++;body=next;throw new Error('connection reset');},
+  };
+  const result=await publishSkillOutput(record(),adapter,{approved:true,dryRun:false});
+  assert.equal(result.status,'reconciled');
+  assert.equal(writes,1);
+});
+test('does not retry an update when the remote body remains unchanged', async () => {
+  let writes=0;
+  const adapter={
+    findByKey:async()=>({id:12,body:'previous'}),
+    create:async()=>{throw new Error('must not create');},
+    update:async()=>{writes++;throw new Error('timeout');},
+  };
+  await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}),/update outcome unknown/);
+  assert.equal(writes,1);
+});
