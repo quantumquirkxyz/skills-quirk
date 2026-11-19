@@ -5,7 +5,7 @@ import {publishSkillOutput} from './publish-skill-output.mjs';
 
 export async function presentReviewArtifact(artifact, {
   title, summary, validation, nextActions = [], target,
-  idempotencyKey, adapter, approved = false, dryRun = true,
+  idempotencyKey, adapter, approved = false, dryRun = true, coordinator = null,
 } = {}) {
   if (typeof target !== 'string' || !/^pr:[1-9]\d*$/.test(target)) {
     throw new Error('Review pilot requires an explicit PR target');
@@ -21,5 +21,5 @@ export async function presentReviewArtifact(artifact, {
     title, summary, validation, nextActions, surface:'pr',
   });
   const record={...presentation,publication:{target,idempotencyKey}};
-  return publishSkillOutput(record,adapter,{approved,dryRun});
+  return publishSkillOutput(record,adapter,{approved,dryRun,coordinator});
 }
