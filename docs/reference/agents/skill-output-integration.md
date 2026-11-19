@@ -150,3 +150,22 @@ does **not** assign that status automatically. Merely mentioning a schema
 does not prove that the skill's outputs are compatible or tested. The
 strict gate is intended for final acceptance, not for existing baseline CI,
 and must not be bypassed by relabeling untested skills.
+
+## Local-host cross-process publication lock
+
+`createFilesystemPublicationCoordinator({directory, waitMs, pollMs})`
+in `scripts/filesystem-publication-coordinator.mjs` provides a concrete
+coordinator using atomic directory creation. Pass the resulting object as
+`coordinator` to `publishSkillOutput`. All publisher processes must use
+the same filesystem and lock directory; the filesystem must provide atomic
+directory creation. The lock key is a SHA-256 digest of the target and
+idempotency key. Lock acquisition times out and fails closed. Locks are
+released after the critical section, including when publication fails.
+
+This implementation **does not** provide distributed coordination across
+hosts or automatic stale-lock recovery. A process killed while holding the
+lock leaves it behind; an operator must establish that the former process
+cannot resume and reconcile the remote publication before manually clearing
+that lock. Never use this coordinator on independent host filesystems, or
+claim it provides fencing. For multi-host deployment, replace it with a
+durable transactional coordinator offering fencing tokens and recovery.
