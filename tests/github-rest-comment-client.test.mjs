@@ -70,3 +70,32 @@ test('REST client refuses to edit a foreign comment even with a valid actor toke
   await assert.rejects(client.updateComment({kind:'pr',number:8},5,'replacement'),/not owned/);
   assert.ok(!calls.some(call=>call.method==='PATCH'),'foreign comments must never be modified');
 });
+
+test('REST client rejects replacing an owned comment with another publication key',async()=>{
+  const calls=[];
+  const original='original\\n\\n<!-- quirk-skill-output:a2V5LTE -->';
+  const replacement='changed\\n\\n<!-- quirk-skill-output:a2V5LTI -->';
+  const client=createGitHubRestCommentClient({
+    token:'token',owner:'org',repo:'repo',actor:'actor',
+    fetchImpl:async(url,opts)=>{
+      calls.push(opts.method);
+      return {ok:true,json:async()=>new URL(url).pathname==='/user'
+        ? {login:'actor'} : {id:5,user:{login:'actor'},body:original}};
+    },
+  });
+  await assert.rejects(client.updateComment({kind:'pr',number:8},5,replacement),/idempotency marker/);
+  assert.ok(!calls.includes('PATCH'));
+});
+test('REST client refuses to replace an owned comment without its marker',async()=>{
+  const calls=[];
+  const client=createGitHubRestCommentClient({
+    token:'token',owner:'org',repo:'repo',actor:'actor',
+    fetchImpl:async(url,opts)=>{
+      calls.push(opts.method);
+      return {ok:true,json:async()=>new URL(url).pathname==='/user'
+        ? {login:'actor'} : {id:5,user:{login:'actor'},body:'unrelated'}};
+    },
+  });
+  await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new body'),/idempotency marker/);
+  assert.ok(!calls.includes('PATCH'));
+});
