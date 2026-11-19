@@ -57,12 +57,16 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
       return {id:result.id,body:result.body};
     },
     async updateComment(target, id, body) {
-      issueNumber(target);
+      const number = issueNumber(target);
       await verifiedActor();
       if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid comment id');
       const existing = await request('GET','/issues/comments/' + id);
       if (typeof existing?.user?.login !== 'string' || existing.user.login.toLowerCase() !== actor.toLowerCase()) {
         throw new Error('Refusing to update a comment not owned by authenticated actor');
+      }
+      const expectedIssueUrl = root + '/issues/' + number;
+      if (typeof existing.issue_url !== 'string' || existing.issue_url.toLowerCase() !== expectedIssueUrl.toLowerCase()) {
+        throw new Error('Refusing to update a comment attached to another issue or repository');
       }
       const markerPattern = /<!-- quirk-skill-output:[A-Za-z0-9_-]+ -->$/;
       const oldMarker = typeof existing.body === 'string' ? existing.body.match(markerPattern)?.[0] : null;
