@@ -100,3 +100,15 @@ invocation from the canonical skill or authorization for unattended publishing.
 
 Run the pilot test with
 `node --test tests/review-pr-output-pilot.test.mjs`.
+
+## Canonical skill registry synchronization gate
+
+The `.agents/skills/**/SKILL.md` files are lock-hashed. Editing one without
+regenerating its registry/lock projections causes `validate-skills`, semantic
+drift, and conflict checks to fail with `lock hash is stale`. The
+`review-pr` integration currently remains an opt-in module and tests rather
+than a canonical skill-body edit. Before changing canonical skill text,
+regenerate the repository's complete lock and derived views with the
+appropriate repository tooling in a fully checked-out worktree; do not
+manually forge lock hashes or change generated projections through the
+GitHub contents API. Confirm the complete CI matrix afterward.
