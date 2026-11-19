@@ -169,3 +169,31 @@ cannot resume and reconcile the remote publication before manually clearing
 that lock. Never use this coordinator on independent host filesystems, or
 claim it provides fencing. For multi-host deployment, replace it with a
 durable transactional coordinator offering fencing tokens and recovery.
+
+## Eight-skill read-only pilot bridge
+
+The `scripts/pilot-skill-output.mjs` module defines presentation surfaces
+for `to-spec`, `to-tickets`, `review-pr`, `plan-review-fixes`,
+`implement-review-fixes`, `publish-open-pr`, `ship-subissue`, and
+`github-project-analysis` (read-only research pilot). It rejects
+mismatched canonical producers and disallowed surfaces, maps lifecycle
+states to the common envelope, and never invokes remote mutations.
+
+Example:
+
+```sh
+node scripts/render-pilot-skill-output.mjs review-pr review.json \
+  --title "PR review" --summary "Evidence-backed review" \
+  --surface pr --validation checks.json
+```
+
+The input must be an existing canonical lifecycle artifact with
+`artifactType`, `artifactId`, `operationId`, `status`, and `producer`.
+Do not synthesize those fields when a legacy skill does not emit them.
+The `--surface json` mode writes a deterministic JSON presentation envelope
+to stdout. This is **presentation integration**, not execution of the
+underlying skill or proof that all eight canonical producers have adopted
+the lifecycle schema. Remote publication remains a separate, approval-gated
+operation; `ship-subissue` is never allowed to merge through this bridge.
+The end-to-end fixture exercises to-spec rendering, review-pr rendering,
+approval denial, idempotent PR comment creation, and local-host locking.
