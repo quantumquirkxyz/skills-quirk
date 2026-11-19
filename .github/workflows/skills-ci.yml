@@ -23,6 +23,9 @@ jobs:
       - name: Validate skills bundle
         run: node .agents/skills/platform/check-all.mjs
 
+      - name: Test standardized skill output contract
+        run: node --test tests/skill-output.test.mjs
+
   semantic-drift:
     runs-on: ubuntu-latest
     steps:
