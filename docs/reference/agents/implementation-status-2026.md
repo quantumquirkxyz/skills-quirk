@@ -46,7 +46,7 @@ The Epic itself currently has assignee `quantumquirkxyz`, labels `spec` and `rea
   - [Quality Report #40727600632](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600632) — PASS
   - [Quality Gates #40727600520](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600520) — PASS
   - [Validate Skills Bundle #40727600380](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600380) — PASS
-  - [qquirk skills ci #40727600321](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600321) — PASS
+  - [quirk skills ci #40727600321](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600321) — PASS
   - [Prompt Regression Tests #40727600198](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600198) — PASS
   - [Engineering Baseline Audit #40727600183](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40727600183) — PASS
 - Exact source snapshot from the later repository-controlled code checkpoint `ae359ad6ef485e5d6c085c3597a6794d1a4e5c3c` executed independently: `npm test` → **585 tests, 584 PASS, 0 FAIL, 1 SKIP**; authoritative `check-all.mjs` → **22/22 PASS**, 1 optional memory check skipped, 0 warnings, 0 errors.
@@ -57,7 +57,7 @@ Final repository-controlled checkpoint `8e8dd6da5187255b7f4f8d56afdd2ebbc21cc2df
 - [Prompt Regression Tests #40729198249](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198249) — PASS.
 - [Quality Gates #40729198204](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198204) — PASS.
 - [Quality Report #40729198064](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198064) — PASS.
-- [qquirk skills ci #40729198000](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198000) — PASS.
+- [quirk skills ci #40729198000](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40729198000) — PASS.
 - [GitHub Work Item Contract #40728999025](https://github.com/quantumquirkxyz/skills-quirk/actions/runs/40728999025) — PASS against the actual `gh` CLI flags for assignees, labels, projects, milestone, relationships and Development branches.
 
 This is the accepted code checkpoint. Documentation-only commits after it do not change executable behavior; they still receive the repository's documentation/quality CI.
