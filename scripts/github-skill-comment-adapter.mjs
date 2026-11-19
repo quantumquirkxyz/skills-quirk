@@ -17,6 +17,7 @@ export function createGitHubCommentAdapter(client, { maxPages = 20 } = {}) {
       const issue = parseTarget(target);
       if (typeof key !== 'string' || !key.trim()) throw new Error('Invalid idempotency key');
       const expected = marker(key);
+      let found = null;
       for (let page = 1; page <= maxPages; page++) {
         const comments = await client.listComments(issue, {page, perPage:100});
         if (!Array.isArray(comments)) throw new Error('Invalid GitHub comments response');
