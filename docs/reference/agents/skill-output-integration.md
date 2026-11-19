@@ -84,3 +84,19 @@ owned by another actor. This check does not provide atomic concurrency control. 
 `approved:true,dryRun:false`. Same-process locking is available, but
 distributed workers can still race. Do not enable autonomous multi-worker
 publication until distributed coordination and recovery are tested.
+
+## Review-PR opt-in publication pilot
+
+`presentReviewArtifact` in `scripts/review-pr-output-pilot.mjs` connects the
+canonical `review-pr` verification artifact to the normalized presentation and
+publication adapter. It accepts only `producer: review-pr` and
+`artifactType: verification-artifact`, requires an explicit PR target,
+stable idempotency key, and explicit validation results. It preserves the
+canonical input, defaults to dry-run, and requires both `approved:true` and
+`dryRun:false` before invoking a write. Tests cover previews, unauthorized
+writes, producer mismatch, missing verification, and an injected publication
+adapter. This is an opt-in application-level integration, **not** automatic
+invocation from the canonical skill or authorization for unattended publishing.
+
+Run the pilot test with
+`node --test tests/review-pr-output-pilot.test.mjs`.
