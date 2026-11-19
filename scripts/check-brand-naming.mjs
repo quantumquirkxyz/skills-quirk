@@ -2,7 +2,7 @@
 // Enforce current public branding in tracked text sources. Historical Git
 // commit messages are deliberately out of scope.
 import {execFileSync} from 'node:child_process';
-import {readFileSync} from 'node:fs';
+import {readFileSync,statSync} from 'node:fs';
 
 const forbidden = new RegExp('\\b' + 'q' + 'quirk' + '\\b','i');
 const tracked = execFileSync('git',['ls-files','-z'],{encoding:'buffer'})
@@ -10,7 +10,10 @@ const tracked = execFileSync('git',['ls-files','-z'],{encoding:'buffer'})
 const matches=[];
 for (const path of tracked) {
   let data;
-  try {data=readFileSync(path);} catch (error) {
+  try {
+    if (!statSync(path).isFile()) continue;
+    data=readFileSync(path);
+  } catch (error) {
     if (error.code==='ENOENT') continue;
     throw error;
   }
