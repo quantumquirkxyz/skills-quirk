@@ -1,6 +1,6 @@
 # Skill Output Contract and Modernization Plan
 
-Status: proposed; baseline: main, 2026-11-19. This document initiates planning, not a claim that all skills have been remediated.
+Status: implementation in progress; baseline: main, 2026-11-19. The release acceptance gate remains open; not all skills have been migrated.
 
 ## Scope and evidence
 - Canonical inventory: 286 SKILL.md files under .agents/skills, across 39 category directories, based on the recursive main tree.
@@ -68,3 +68,26 @@ Use small English Conventional Commits (docs:, test:, feat:, fix:, refactor:) on
 
 ## Non-goals and constraints
 No direct untested mass rewrite of all skills. No automatic merge to main before CI verification. No claims of full behavioral verification from static inspection alone. No editing generated compatibility files by hand.
+
+## Current implementation evidence and acceptance gaps
+
+The feature branch provides a canonical-skill inventory and classification,
+a validated presentation envelope, deterministic renderers, a read-only
+eight-skill pilot CLI, GitHub comment ownership and idempotency safeguards,
+a local-host cross-process publication coordinator, and a simulated
+spec-to-review publication fixture. None of these components modifies
+canonical skills automatically or authorizes a merge.
+
+| Phase | Evidence available | Acceptance still required |
+| --- | --- | --- |
+| 0 | Inventory script, classification tests | Audit reconciliation and recorded baseline gate results |
+| 1 | Envelope schema, renderer and regression tests | Full six-surface golden coverage and compatibility proof |
+| 2 | Eight-skill read-only presentation pilot and e2e fixture | Canonical producer integration and true issue-to-PR workflow fixture |
+| 3 | Marker collision checks and local-host lock | P0/P1 closure, multi-host fencing if multi-host publication is enabled |
+| 4 | Coverage checker and migration status reporting | Evidence-backed mapping and tests for every canonical skill |
+| 5 | Existing PR CI and explicit release gate | Independent review, all gates on final head, user-approved merge and post-merge checks |
+
+Do not change `migrationStatus` to `mapped-and-verified` without a
+recorded schema/fixture check for that skill. The strict gate
+`node scripts/check-skill-output-coverage.mjs --require-mapped` must
+pass before claiming the catalog-wide migration complete.
