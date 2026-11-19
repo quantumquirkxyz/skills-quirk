@@ -112,3 +112,16 @@ regenerate the repository's complete lock and derived views with the
 appropriate repository tooling in a fully checked-out worktree; do not
 manually forge lock hashes or change generated projections through the
 GitHub contents API. Confirm the complete CI matrix afterward.
+
+## Comment identity collision controls
+
+The GitHub comment adapter now refuses publication if a matching idempotency
+marker is found in a foreign-owned comment or if multiple owned comments
+contain the same marker, including across paginated results. The authenticated
+REST client also checks that the existing owned comment ends with the same
+idempotency marker as the proposed replacement before PATCH. These checks
+prevent accidental adoption of a foreign publication or overwriting a
+different publication key. They are not an atomic compare-and-swap: concurrent
+writers and malicious edits between GET and PATCH remain outside the
+guarantee. Do not enable multi-worker autonomous publication without a
+shared transactional lock and an appropriate recovery protocol.
