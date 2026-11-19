@@ -112,7 +112,32 @@
           "reason": {
             "type": "string"
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "skipped"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "then": {
+              "required": [
+                "reason"
+              ],
+              "properties": {
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
       }
     },
     "risks": {
@@ -139,15 +164,54 @@
       "additionalProperties": false,
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(issue|pr):[1-9][0-9]*$"
         },
         "idempotencyKey": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       }
     },
     "payload": {
       "type": "object"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "success"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "validation": {
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "failed",
+                      "skipped"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
