@@ -42,3 +42,8 @@ test('CLI rejects missing arguments and unsupported surfaces',()=>{
   assert.throws(()=>parseArgs([]),/Usage/);
   assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Completed',surface:'unknown'}),/Unsupported surface/);
 });
+
+test('completed verification artifact cannot claim success without executed checks',()=>{
+  assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Complete'}),/High-risk success requires validation evidence/);
+  assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Complete',validation:[{check:'security',status:'skipped',reason:'Unavailable'}]}),/Skipped validation cannot yield unqualified success/);
+});
