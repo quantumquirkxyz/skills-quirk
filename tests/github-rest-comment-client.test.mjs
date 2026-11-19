@@ -115,3 +115,26 @@ test('REST client refuses to update an owned comment on a different issue',async
   await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new\\n\\n'+marker),/another issue/);
   assert.ok(!calls.includes('PATCH'));
 });
+
+test('REST client rejects forged issue URLs despite matching path suffix',async()=>{
+  for(const issue_url of [
+    'https://api.github.com.evil.example/repos/org/repo/issues/8',
+    'https://api.github.com/repos/org/repo/issues/8?spoof=1',
+    'https://api.github.com/repos/org/repo/issues/8#fragment',
+    'not-a-url',
+  ]) {
+    let patched=false;
+    const marker='<!-- quirk-skill-output:a2V5 -->';
+    const client=createGitHubRestCommentClient({
+      token:'token',owner:'org',repo:'repo',actor:'actor',
+      fetchImpl:async(url,opts)=>{
+        if(opts.method==='PATCH') patched=true;
+        return {ok:true,json:async()=>new URL(url).pathname==='/user'
+          ? {login:'actor'}
+          : {id:5,user:{login:'actor'},body:'old\\n\\n'+marker,issue_url}};
+      },
+    });
+    await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new\\n\\n'+marker),/another issue/);
+    assert.equal(patched,false);
+  }
+});
