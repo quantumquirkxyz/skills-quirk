@@ -1,4 +1,4 @@
-import {mkdir,rm} from 'node:fs/promises';
+import {mkdir,rmdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {join,resolve} from 'node:path';
 
@@ -28,7 +28,7 @@ export function createFilesystemPublicationCoordinator({directory,waitMs=5000,po
       finally {
         // Failure to release must surface to the caller, rather than allow a
         // later writer to assume the operation was safely completed.
-        await rm(lock,{recursive:false});
+        await rmdir(lock);
       }
     },
   };
