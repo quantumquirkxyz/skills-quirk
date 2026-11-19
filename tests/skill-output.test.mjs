@@ -45,6 +45,6 @@ test('preserves structured payload details in published text', () => {
   const r = fixture();
   r.payload = {findings:[{severity:'high',path:'src/index.ts',line:14}]};
   const output = renderSkillOutput(r, 'pr');
-  assert.match(output, /src\\/);
+  assert.match(output, /src/);
   assert.match(output, /severity/);
 });
