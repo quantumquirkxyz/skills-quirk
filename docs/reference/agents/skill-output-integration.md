@@ -138,3 +138,15 @@ all writers for the same repository and publication key. A plain in-memory
 coordinator is **not** a distributed lock. If no coordinator is supplied,
 only same-process serialization is provided. This API is an integration
 seam, not a claim that distributed publication safety is implemented.
+
+## Migration acceptance gate
+
+Run `node scripts/check-skill-output-coverage.mjs` to verify that every
+canonical skill has an assessed classification. Run
+`node scripts/check-skill-output-coverage.mjs --require-mapped` for the
+stricter release gate: it fails until every entry has the
+`mapped-and-verified` status. The current inventory classifier deliberately
+does **not** assign that status automatically. Merely mentioning a schema
+does not prove that the skill's outputs are compatible or tested. The
+strict gate is intended for final acceptance, not for existing baseline CI,
+and must not be bypassed by relabeling untested skills.
