@@ -25,7 +25,7 @@ export function createGitHubCommentAdapter(client, { maxPages = 20 } = {}) {
         if (matches.some(comment => comment.owned !== true)) throw new Error('Idempotency marker collision with a foreign comment');
         if (matches.length > 1 || (matches.length === 1 && found)) throw new Error('Duplicate owned idempotency markers');
         if (matches.length === 1) found = matches[0];
-        if (comments.length < 100) return found ? {id:found.id,body:found.body.slice(0,-('\\n\\n'+expected).length)} : null;
+        if (comments.length < 100) return found ? {id:found.id,body:found.body.slice(0,-('\n\n'+expected).length)} : null;
       }
       // Never create if an existing marker might be beyond the pagination cap.
       throw new Error('Comment search incomplete; refusing unsafe publication');
