@@ -12,6 +12,7 @@ test('REST client authenticates, verifies ownership, and publishes via GitHub is
     const path=new URL(url).pathname;
     let data;
     if (path==='/user') data={login:'quantumquirkxyz'};
+    else if (opts.method==='GET' && path==='/repos/quantumquirkxyz/skills-quirk/issues/comments/42') data=comments[0];
     else if (opts.method==='GET') data=comments;
     else if (opts.method==='POST') {
       data={id:42,body:JSON.parse(opts.body).body,user:{login:'quantumquirkxyz'}};
@@ -55,4 +56,17 @@ test('REST client rejects a mismatched token identity before listing or writing 
   await assert.rejects(client.listComments({kind:'issue',number:1}),/identity does not match/);
   await assert.rejects(client.createComment({kind:'issue',number:1},'body'),/identity does not match/);
   assert.deepEqual(calls,['/user'],'mismatched identity must block repository API calls');
+});
+
+test('REST client refuses to edit a foreign comment even with a valid actor token', async () => {
+  const calls=[];
+  const client=createGitHubRestCommentClient({
+    token:'token',owner:'org',repo:'repo',actor:'actor',
+    fetchImpl:async(url,opts)=>{
+      calls.push({path:new URL(url).pathname,method:opts.method});
+      return {ok:true,json:async()=>new URL(url).pathname==='/user'?{login:'actor'}:{id:5,user:{login:'other'},body:'foreign'}};
+    },
+  });
+  await assert.rejects(client.updateComment({kind:'pr',number:8},5,'replacement'),/not owned/);
+  assert.ok(!calls.some(call=>call.method==='PATCH'),'foreign comments must never be modified');
 });
