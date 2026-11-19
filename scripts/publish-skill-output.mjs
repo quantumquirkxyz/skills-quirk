@@ -17,7 +17,7 @@ export async function publishSkillOutput(record, adapter, { approved = false, dr
   const existing = await adapter.findByKey(target, key);
   if (existing) {
     if (existing.body === body) return {status:'unchanged',id:existing.id,target,key};
-    const updated = await adapter.update(target, existing.id, body);
+    const updated = await adapter.update(target, existing.id, body, key);
     return {status:'updated',id:updated.id ?? existing.id,target,key};
   }
   const created = await adapter.create(target, body, key);
