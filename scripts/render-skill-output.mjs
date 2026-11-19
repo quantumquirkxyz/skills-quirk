@@ -11,6 +11,13 @@ export function validateSkillOutput(record) {
   for (const key of ['artifactType', 'artifactId', 'operationId', 'title', 'summary'])
     if (typeof record[key] !== 'string' || !record[key].trim()) throw new Error('Invalid field: ' + key);
   if (!statuses.has(record.status)) throw new Error('Invalid status');
+  const allowed = new Set([...required, 'scope', 'assumptions', 'decisions', 'findings', 'risks', 'generatedAt', 'provenance', 'publication']);
+  for (const key of Object.keys(record)) if (!allowed.has(key)) throw new Error('Unexpected field: ' + key);
+  for (const key of ['scope', 'assumptions', 'decisions', 'findings', 'risks']) {
+    if (key in record && (!Array.isArray(record[key]) || record[key].some(x => typeof x !== 'string'))) throw new Error('Invalid array: ' + key);
+  }
+  if ('publication' in record && (!record.publication || typeof record.publication !== 'object' || Array.isArray(record.publication))) throw new Error('Invalid publication');
+  if ('provenance' in record && (!record.provenance || typeof record.provenance !== 'object' || Array.isArray(record.provenance))) throw new Error('Invalid provenance');
   for (const key of ['sourceRefs', 'evidence', 'nextActions']) {
     if (!Array.isArray(record[key]) || record[key].some(x => typeof x !== 'string' || !x.trim())) throw new Error('Invalid array: ' + key);
   }
@@ -22,10 +29,20 @@ export function validateSkillOutput(record) {
   if (record.validation.some(x => x.status === 'failed') && record.status === 'success') throw new Error('Failed validation cannot yield success');
   if (record.validation.some(x => x.status === 'skipped') && record.status === 'success') throw new Error('Skipped validation cannot yield unqualified success');
   if (!record.payload || typeof record.payload !== 'object' || Array.isArray(record.payload)) throw new Error('Invalid payload');
+  if (record.status === 'success' && ['deployment', 'implementation', 'security-review', 'publication'].includes(record.artifactType) && record.validation.length === 0) throw new Error('High-risk success requires validation evidence');
   return record;
 }
 
 const safe = value => String(value).replace(/\\/g, '\\\\').replace(/([*_`\[\]<>|])/g, '\\$1').replace(/\r?\n/g, ' ');
+const payloadSection = (record) => {
+  const entries = Object.entries(record.payload);
+  if (!entries.length) return '';
+  return '\\n## Artifact details\\n\\n' + entries.map(([key, value]) =>
+    '### ' + safe(key) + '\\n\\n' +
+    (Array.isArray(value) ? (value.length ? value.map(x => '- ' + safe(typeof x === 'string' ? x : JSON.stringify(x))).join('\\n') : '_None_') :
+      safe(typeof value === 'string' ? value : JSON.stringify(value))) + '\\n'
+  ).join('\\n');
+};
 const sections = (label, items) => items?.length ? '\n## ' + label + '\n\n' + items.map(x => '- ' + safe(x)).join('\n') + '\n' : '';
 
 export function renderSkillOutput(record, surface = 'file') {
@@ -34,6 +51,6 @@ export function renderSkillOutput(record, surface = 'file') {
   const r = record;
   const header = '# ' + safe(r.title) + '\n\n' + '**Status:** ' + safe(r.status) + ' | **Artifact:** ' + safe(r.artifactId) + ' | **Operation:** ' + safe(r.operationId) + '\n\n' + safe(r.summary) + '\n';
   const checks = r.validation.length ? '\n## Validation\n\n' + r.validation.map(x => '- ' + safe(x.check) + ': **' + x.status + '**' + (x.reason ? ' — ' + safe(x.reason) : '')).join('\n') + '\n' : '';
-  const body = header + sections('Sources', r.sourceRefs) + sections('Scope', r.scope) + sections('Assumptions', r.assumptions) + sections('Decisions', r.decisions) + sections('Findings', r.findings) + sections('Evidence', r.evidence) + checks + sections('Risks', r.risks) + sections('Next actions', r.nextActions);
+  const body = header + payloadSection(r) + sections('Sources', r.sourceRefs) + sections('Scope', r.scope) + sections('Assumptions', r.assumptions) + sections('Decisions', r.decisions) + sections('Findings', r.findings) + sections('Evidence', r.evidence) + checks + sections('Risks', r.risks) + sections('Next actions', r.nextActions);
   return surface === 'comment' ? body.replace(/^# /, '### ').replace(/\n## /g, '\n#### ') : body;
 }
