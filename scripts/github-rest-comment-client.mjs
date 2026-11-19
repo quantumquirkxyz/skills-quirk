@@ -6,9 +6,21 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
   }
   if (!/^[\w.-]+$/.test(owner) || !/^[\w.-]+$/.test(repo)) throw new Error('Invalid repository identity');
   if (typeof fetchImpl !== 'function') throw new TypeError('fetchImpl must be a function');
-  const root = 'https://api.github.com/repos/' + owner + '/' + repo;
-  async function request(method, path, body) {
-    const response = await fetchImpl(root + path, {
+  const api = 'https://api.github.com';
+  const root = api + '/repos/' + owner + '/' + repo;
+  let identityCheck;
+  async function verifiedActor() {
+    identityCheck ??= (async () => {
+      const user = await request('GET', '/user', undefined, true);
+      if (typeof user?.login !== 'string' || user.login.toLowerCase() !== actor.toLowerCase()) {
+        throw new Error('GitHub authenticated identity does not match configured actor');
+      }
+      return user.login;
+    })();
+    return identityCheck;
+  }
+  async function request(method, path, body, identityEndpoint = false) {
+    const response = await fetchImpl((identityEndpoint ? api : root) + path, {
       method,
       headers: {
         Authorization: 'Bearer ' + token,
@@ -33,17 +45,20 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
   return {
     async listComments(target, {page = 1, perPage = 100} = {}) {
       const number = issueNumber(target);
+      await verifiedActor();
       if (!Number.isSafeInteger(page) || page < 1 || perPage !== 100) throw new Error('Invalid pagination');
       const result = await request('GET','/issues/' + number + '/comments?per_page=100&page=' + page);
       if (!Array.isArray(result)) throw new Error('Invalid GitHub comments payload');
-      return result.map(item => ({id:item.id,body:item.body,owned:item.user?.login === actor}));
+      return result.map(item => ({id:item.id,body:item.body,owned:typeof item.user?.login === 'string' && item.user.login.toLowerCase() === actor.toLowerCase()}));
     },
     async createComment(target, body) {
+      await verifiedActor();
       const result = await request('POST','/issues/' + issueNumber(target) + '/comments',{body});
       return {id:result.id,body:result.body};
     },
     async updateComment(target, id, body) {
       issueNumber(target);
+      await verifiedActor();
       if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid comment id');
       const result = await request('PATCH','/issues/comments/' + id,{body});
       return {id:result.id,body:result.body};
