@@ -1,4 +1,4 @@
-import {mkdir,rm,stat} from 'node:fs/promises';
+import {mkdir,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {join,resolve} from 'node:path';
 
