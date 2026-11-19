@@ -16,7 +16,7 @@ async function withLocalLock(key, fn) {
     if (localLocks.get(key) === tail) localLocks.delete(key);
   }
 }
-export async function publishSkillOutput(record, adapter, { approved = false, dryRun = true } = {}) {
+export async function publishSkillOutput(record, adapter, { approved = false, dryRun = true, coordinator = null } = {}) {
   validateSkillOutput(record);
   const target = record.publication?.target;
   const key = record.publication?.idempotencyKey;
@@ -26,9 +26,10 @@ export async function publishSkillOutput(record, adapter, { approved = false, dr
   const body = renderSkillOutput(record, surface);
   if (dryRun) return {status:'preview',target,key,body};
   if (!approved) throw new Error('Explicit publication approval required');
-  // A read-before-write check is not atomic. The provider must also enforce
-  // uniqueness/locking on (target,key) to guarantee concurrent idempotency.
-  return withLocalLock(target + '\\0' + key, async () => {
+  // The optional coordinator must serialize the entire read/modify/write
+  // transaction across processes. Local locking alone is not distributed safety.
+  if (coordinator !== null && typeof coordinator.withLock !== 'function') throw new TypeError('Invalid publication coordinator');
+  const publish = () => withLocalLock(target + '\\0' + key, async () => {
   const existing = await adapter.findByKey(target, key);
   if (existing) {
     if (existing.body === body) return {status:'unchanged',id:existing.id,target,key};
@@ -74,4 +75,5 @@ export async function publishSkillOutput(record, adapter, { approved = false, dr
   }
   throw new Error('Publication outcome unknown: reconcile by idempotency key before retry');
   });
+  return coordinator ? coordinator.withLock(target, key, publish) : publish();
 }
