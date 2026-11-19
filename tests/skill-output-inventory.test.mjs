@@ -18,6 +18,21 @@ test('classifies canonical skills without changing their source files', async ()
     assert.equal(result.skills[0].artifactType,'review');
     assert.equal(result.skills[0].approvalRequired,'true');
     assert.deepEqual(result.skills[0].schemaRefs,['schemas/software-engineering/verification-artifact.schema.json']);
-    assert.equal(result.skills[0].migrationStatus,'not-assessed');
+    assert.equal(result.skills[0].migrationStatus,'schema-referenced-needs-verification');
+    assert.equal(result.migrationCounts['schema-referenced-needs-verification'],1);
+  } finally {await rm(root,{recursive:true,force:true});}
+});
+
+test('ignores misleading body text when classifying frontmatter declarations',async()=>{
+  const root=await mkdtemp(join(tmpdir(),'skill-output-inventory-'));
+  try {
+    const folder=join(root,'research','example');
+    await mkdir(folder,{recursive:true});
+    await writeFile(join(folder,'SKILL.md'),'---\\nname: example\\nrisk: low\\n---\\noutputs:\\nsideEffects:\\napprovalRequired: true\\n');
+    const result=await inventorySkills(root);
+    assert.equal(result.skills[0].hasOutputDeclaration,false);
+    assert.equal(result.skills[0].sideEffects,false);
+    assert.equal(result.skills[0].approvalRequired,'unspecified');
+    assert.equal(result.skills[0].migrationStatus,'missing-output-declaration');
   } finally {await rm(root,{recursive:true,force:true});}
 });
