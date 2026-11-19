@@ -36,3 +36,14 @@ test('ignores misleading body text when classifying frontmatter declarations',as
     assert.equal(result.skills[0].migrationStatus,'missing-output-declaration');
   } finally {await rm(root,{recursive:true,force:true});}
 });
+
+test('leaves missing canonical skill identity unassessed',async()=>{
+  const root=await mkdtemp(join(tmpdir(),'skill-output-inventory-'));
+  try {
+    const folder=join(root,'broken','unnamed');
+    await mkdir(folder,{recursive:true});
+    await writeFile(join(folder,'SKILL.md'),'---\\noutputs:\\n  - type: object\\n---\\n');
+    const result=await inventorySkills(root);
+    assert.equal(result.skills[0].migrationStatus,'not-assessed');
+  } finally {await rm(root,{recursive:true,force:true});}
+});
