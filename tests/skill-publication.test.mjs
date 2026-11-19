@@ -109,3 +109,29 @@ test('does not retry an update when the remote body remains unchanged', async ()
   await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}),/update outcome unknown/);
   assert.equal(writes,1);
 });
+
+test('wraps the full publication transaction in an injected coordinator',async()=>{
+  const order=[];
+  const coordinator={withLock:async(target,key,fn)=>{
+    order.push('acquire:'+target+':'+key);
+    const result=await fn();
+    order.push('release');
+    return result;
+  }};
+  const adapter={
+    findByKey:async()=>{order.push('read');return null;},
+    create:async()=>{order.push('write');return {id:7};},
+    update:async()=>{throw new Error('unexpected update');},
+  };
+  const result=await publishSkillOutput(record(),adapter,{approved:true,dryRun:false,coordinator});
+  assert.equal(result.status,'created');
+  assert.deepEqual(order,['acquire:pr:8:review:8','read','write','release']);
+});
+test('rejects invalid publication coordinator without remote calls',async()=>{
+  const adapter={
+    findByKey:async()=>{throw new Error('unexpected read');},
+    create:async()=>{throw new Error('unexpected write');},
+    update:async()=>{throw new Error('unexpected update');},
+  };
+  await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false,coordinator:{}}),/coordinator/);
+});
