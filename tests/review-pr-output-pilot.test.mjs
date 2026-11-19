@@ -42,3 +42,14 @@ test('review-pr pilot can publish through injected adapter after approval',async
   assert.equal(result.status,'created');
   assert.match(saved.body,/standards/);
 });
+
+test('review-pr pilot rejects malformed PR identifiers before publication',async()=>{
+  const fail=()=>{throw new Error('unexpected remote operation');};
+  const adapter={findByKey:fail,create:fail,update:fail};
+  for (const target of ['issue:8','pr:0','pr:8-extra','pr:-1']) {
+    await assert.rejects(
+      presentReviewArtifact(canonical(),{...opts(),target,adapter}),
+      /explicit PR target/,
+    );
+  }
+});
