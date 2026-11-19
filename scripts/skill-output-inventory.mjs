@@ -28,7 +28,7 @@ async function scan(directory, entries) {
         risk, sideEffects, approvalRequired:approval,
         fixture:patterns.fixtures.exec(frontmatter)?.[1]?.trim() ?? null,
         schemaRefs, hasOutputDeclaration:patterns.output.test(frontmatter),
-        migrationStatus: !frontmatter.trim() || !/^name:\\s*\\S+/m.test(frontmatter)
+        migrationStatus: !frontmatter.trim() || !/^name:\s*\S+/m.test(frontmatter)
           ? 'not-assessed'
           : !patterns.output.test(frontmatter) ? 'missing-output-declaration'
           : schemaRefs.length ? 'schema-referenced-needs-verification'
@@ -44,7 +44,7 @@ export async function inventorySkills(directory=root) {
   return {schemaVersion:'1.0',generatedBy:'scripts/skill-output-inventory.mjs',
     total:entries.length,
     priorities:{high:entries.filter(x=>x.sideEffects || ['high','critical'].includes(x.risk)).length},
-    coverage:{classified:entries.length,unmapped:entries.filter(x=>x.migrationStatus!=='schema-referenced-needs-verification').length},
+    coverage:{classified:entries.filter(x=>x.migrationStatus!=='not-assessed').length,unmapped:entries.filter(x=>x.migrationStatus!=='mapped-and-verified').length},
     migrationCounts:Object.fromEntries([...new Set(entries.map(x=>x.migrationStatus))].sort().map(status=>[status,entries.filter(x=>x.migrationStatus===status).length])),
     skills:entries};
 }
