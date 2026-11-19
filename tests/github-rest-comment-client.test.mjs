@@ -80,7 +80,7 @@ test('REST client rejects replacing an owned comment with another publication ke
     fetchImpl:async(url,opts)=>{
       calls.push(opts.method);
       return {ok:true,json:async()=>new URL(url).pathname==='/user'
-        ? {login:'actor'} : {id:5,user:{login:'actor'},body:original}};
+        ? {login:'actor'} : {id:5,user:{login:'actor'},body:original,issue_url:'https://api.github.com/repos/org/repo/issues/8'}};
     },
   });
   await assert.rejects(client.updateComment({kind:'pr',number:8},5,replacement),/idempotency marker/);
@@ -93,7 +93,7 @@ test('REST client refuses to replace an owned comment without its marker',async(
     fetchImpl:async(url,opts)=>{
       calls.push(opts.method);
       return {ok:true,json:async()=>new URL(url).pathname==='/user'
-        ? {login:'actor'} : {id:5,user:{login:'actor'},body:'unrelated'}};
+        ? {login:'actor'} : {id:5,user:{login:'actor'},body:'unrelated',issue_url:'https://api.github.com/repos/org/repo/issues/8'}};
     },
   });
   await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new body'),/idempotency marker/);
