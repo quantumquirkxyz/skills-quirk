@@ -77,7 +77,9 @@ client using GitHub's REST issue-comment endpoints. Supply a token, repository
 owner/name, and the expected authenticated actor login explicitly. Before any
 comment read or write, the client checks GitHub's authenticated `/user` endpoint
 and rejects a mismatch; the successful identity check is cached per client.
-It verifies comment ownership by GitHub's returned author login. Pair with
+It verifies comment ownership by GitHub's returned author login and independently
+fetches the remote comment before every PATCH, refusing updates to comments
+owned by another actor. This check does not provide atomic concurrency control. Pair with
 `createGitHubCommentAdapter` and `publishSkillOutput`; writes require
 `approved:true,dryRun:false`. Same-process locking is available, but
 distributed workers can still race. Do not enable autonomous multi-worker
