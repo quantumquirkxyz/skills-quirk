@@ -37,7 +37,7 @@ export function validateSkillOutput(record) {
   if (record.validation.some(x => x.status === 'failed') && record.status === 'success') throw new Error('Failed validation cannot yield success');
   if (record.validation.some(x => x.status === 'skipped') && record.status === 'success') throw new Error('Skipped validation cannot yield unqualified success');
   if (!record.payload || typeof record.payload !== 'object' || Array.isArray(record.payload)) throw new Error('Invalid payload');
-  if (record.status === 'success' && ['deployment', 'implementation', 'security-review', 'publication'].includes(record.artifactType) && record.validation.length === 0) throw new Error('High-risk success requires validation evidence');
+  if (record.status === 'success' && ['deployment', 'implementation', 'security-review', 'publication', 'verification-artifact'].includes(record.artifactType) && record.validation.length === 0) throw new Error('High-risk success requires validation evidence');
   return record;
 }
 
