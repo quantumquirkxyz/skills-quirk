@@ -3,7 +3,7 @@
 Status: implementation in progress; baseline: main, 2026-11-19. The release acceptance gate remains open; not all skills have been migrated.
 
 ## Scope and evidence
-- Canonical inventory: 286 SKILL.md files under .agents/skills, across 39 category directories, based on the recursive main tree.
+- Historical baseline: 286 SKILL.md files under .agents/skills, across 39 category directories, from the initial main-tree snapshot. The feature branch recursive Git tree currently contains 285 canonical SKILL.md files; the live inventory command is authoritative for its checked-out revision. Reconcile the one-entry delta before release.
 - Reuse .reports/skills-deep-audit-2026-11-16.md; validate its observations against current files before applying edits.
 - Preserve AGENTS.md rules: canonical skill files are authoritative; generated .claude/skills views and skills-lock.json are regenerated, not edited manually.
 - Existing contracts include schema/skill-run.schema.json, schemas/software-engineering/*.schema.json, and docs/reference/agents/work-item-format.md.
