@@ -40,6 +40,7 @@ export async function inventorySkills(directory=root) {
   return {schemaVersion:'1.0',generatedBy:'scripts/skill-output-inventory.mjs',
     total:entries.length,
     priorities:{high:entries.filter(x=>x.sideEffects || ['high','critical'].includes(x.risk)).length},
+    coverage:{classified:entries.length,unmapped:entries.filter(x=>x.migrationStatus!=='schema-referenced-needs-verification').length},
     migrationCounts:Object.fromEntries([...new Set(entries.map(x=>x.migrationStatus))].sort().map(status=>[status,entries.filter(x=>x.migrationStatus===status).length])),
     skills:entries};
 }
