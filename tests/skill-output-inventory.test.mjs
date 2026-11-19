@@ -28,7 +28,7 @@ test('ignores misleading body text when classifying frontmatter declarations',as
   try {
     const folder=join(root,'research','example');
     await mkdir(folder,{recursive:true});
-    await writeFile(join(folder,'SKILL.md'),'---\\nname: example\\nrisk: low\\n---\\noutputs:\\nsideEffects:\\napprovalRequired: true\\n');
+    await writeFile(join(folder,'SKILL.md'),'---\nname: example\nrisk: low\n---\noutputs:\nsideEffects:\napprovalRequired: true\n');
     const result=await inventorySkills(root);
     assert.equal(result.skills[0].hasOutputDeclaration,false);
     assert.equal(result.skills[0].sideEffects,false);
