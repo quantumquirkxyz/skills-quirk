@@ -4,7 +4,7 @@
 import {execFileSync} from 'node:child_process';
 import {readFileSync} from 'node:fs';
 
-const forbidden = /\bqquirk\b/i;
+const forbidden = new RegExp('\\b' + 'q' + 'quirk' + '\\b','i');
 const tracked = execFileSync('git',['ls-files','-z'],{encoding:'buffer'})
   .toString('utf8').split('\0').filter(Boolean);
 const matches=[];
