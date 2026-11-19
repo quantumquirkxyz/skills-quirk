@@ -32,8 +32,23 @@ export async function publishSkillOutput(record, adapter, { approved = false, dr
   const existing = await adapter.findByKey(target, key);
   if (existing) {
     if (existing.body === body) return {status:'unchanged',id:existing.id,target,key};
-    const updated = await adapter.update(target, existing.id, body, key);
-    return {status:'updated',id:updated.id ?? existing.id,target,key};
+    try {
+      const updated = await adapter.update(target, existing.id, body, key);
+      if (updated?.id) return {status:'updated',id:updated.id,target,key};
+    } catch (error) {
+      if (error?.status && error.status < 500 && error.status !== 408 && error.status !== 429) throw error;
+    }
+    // Do not repeat a possibly successful PATCH. Confirm the new body by
+    // reading the owned idempotency marker again.
+    try {
+      const recovered = await adapter.findByKey(target, key);
+      if (recovered?.id === existing.id && recovered.body === body) {
+        return {status:'reconciled',id:existing.id,target,key};
+      }
+    } catch {
+      // The caller must reconcile later; an ambiguous update is never success.
+    }
+    throw new Error('Publication update outcome unknown: reconcile before retry');
   }
   let created;
   let ambiguous = false;
