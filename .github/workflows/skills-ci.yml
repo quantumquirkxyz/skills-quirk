@@ -1,4 +1,4 @@
-name: qquirk skills ci
+name: quirk skills ci
 
 on:
   pull_request:
