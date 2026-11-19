@@ -31,11 +31,11 @@ export function createGitHubCommentAdapter(client, { maxPages = 20 } = {}) {
       const issue = parseTarget(target);
       return client.createComment(issue, commentBody(body, key));
     },
-    async update(target, id, body) {
+    async update(target, id, body, key) {
       const issue = parseTarget(target);
       // The existing marker is recovered from the remote comment by the caller's
       // authenticated client, so updates must preserve it.
-      return client.updateComment(issue, id, body);
+      return client.updateComment(issue, id, commentBody(body, key));
     },
   };
 }
