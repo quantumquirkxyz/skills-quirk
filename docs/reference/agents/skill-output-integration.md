@@ -125,3 +125,16 @@ different publication key. They are not an atomic compare-and-swap: concurrent
 writers and malicious edits between GET and PATCH remain outside the
 guarantee. Do not enable multi-worker autonomous publication without a
 shared transactional lock and an appropriate recovery protocol.
+
+## Injected publication coordination
+
+`publishSkillOutput(record, adapter, {approved, dryRun, coordinator})`
+accepts an optional `coordinator` with the interface
+`withLock(target, idempotencyKey, asyncCriticalSection)`. The critical
+section encompasses the initial remote lookup, mutation, and ambiguous-write
+reconciliation. An implementation must provide cross-process mutual exclusion,
+lease expiry/fencing, crash recovery, and a stable lock namespace covering
+all writers for the same repository and publication key. A plain in-memory
+coordinator is **not** a distributed lock. If no coordinator is supplied,
+only same-process serialization is provided. This API is an integration
+seam, not a claim that distributed publication safety is implemented.
