@@ -7,7 +7,7 @@ export async function presentReviewArtifact(artifact, {
   title, summary, validation, nextActions = [], target,
   idempotencyKey, adapter, approved = false, dryRun = true,
 } = {}) {
-  if (typeof target !== 'string' || !/^pr:[1-9]\\d*$/.test(target)) {
+  if (typeof target !== 'string' || !/^pr:[1-9]\d*$/.test(target)) {
     throw new Error('Review pilot requires an explicit PR target');
   }
   if (typeof idempotencyKey !== 'string' || !idempotencyKey.trim()) {
