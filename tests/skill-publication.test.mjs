@@ -54,3 +54,36 @@ test('serializes concurrent publications in the same process', async () => {
   assert.equal(outcomes.filter(x=>x.status==='created').length,1);
   assert.equal(outcomes.filter(x=>x.status==='unchanged').length,7);
 });
+
+test('reconciles a create timeout when the matching remote comment exists', async () => {
+  let saved, writes=0;
+  const adapter={
+    findByKey:async()=>saved??null,
+    create:async(_target,body)=>{writes++;saved={id:51,body};throw new Error('connection reset');},
+    update:async()=>{throw new Error('must not update');},
+  };
+  const result=await publishSkillOutput(record(),adapter,{approved:true,dryRun:false});
+  assert.equal(result.status,'reconciled');
+  assert.equal(result.id,51);
+  assert.equal(writes,1);
+});
+test('does not retry ambiguous creation when reconciliation cannot find an owned match', async () => {
+  let writes=0;
+  const adapter={
+    findByKey:async()=>null,
+    create:async()=>{writes++;throw new Error('connection reset');},
+    update:async()=>{throw new Error('must not update');},
+  };
+  await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}),/outcome unknown/);
+  assert.equal(writes,1);
+});
+test('does not reconcile authorization failures as ambiguous writes', async () => {
+  let reads=0;
+  const adapter={
+    findByKey:async()=>{reads++;return null;},
+    create:async()=>{const error=new Error('forbidden');error.status=403;throw error;},
+    update:async()=>null,
+  };
+  await assert.rejects(publishSkillOutput(record(),adapter,{approved:true,dryRun:false}),/forbidden/);
+  assert.equal(reads,1,'only the initial lookup is allowed');
+});
