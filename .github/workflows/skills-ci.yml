@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Enforce Quirk branding
+        run: node scripts/check-brand-naming.mjs
+
       - name: Validate skills bundle
         run: node .agents/skills/platform/check-all.mjs
 
