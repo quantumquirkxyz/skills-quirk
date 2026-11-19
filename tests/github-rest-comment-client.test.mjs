@@ -15,7 +15,7 @@ test('REST client authenticates, verifies ownership, and publishes via GitHub is
     else if (opts.method==='GET' && path==='/repos/quantumquirkxyz/skills-quirk/issues/comments/42') data=comments[0];
     else if (opts.method==='GET') data=comments;
     else if (opts.method==='POST') {
-      data={id:42,body:JSON.parse(opts.body).body,user:{login:'quantumquirkxyz'}};
+      data={id:42,body:JSON.parse(opts.body).body,user:{login:'quantumquirkxyz'},issue_url:'https://api.github.com/repos/quantumquirkxyz/skills-quirk/issues/8'};
       comments.push(data);
     } else if (opts.method==='PATCH') {
       data=comments[0];
@@ -97,5 +97,21 @@ test('REST client refuses to replace an owned comment without its marker',async(
     },
   });
   await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new body'),/idempotency marker/);
+  assert.ok(!calls.includes('PATCH'));
+});
+
+test('REST client refuses to update an owned comment on a different issue',async()=>{
+  const calls=[];
+  const marker='<!-- quirk-skill-output:a2V5 -->';
+  const client=createGitHubRestCommentClient({
+    token:'token',owner:'org',repo:'repo',actor:'actor',
+    fetchImpl:async(url,opts)=>{
+      calls.push(opts.method);
+      return {ok:true,json:async()=>new URL(url).pathname==='/user'
+        ? {login:'actor'}
+        : {id:5,user:{login:'actor'},body:'old\\n\\n'+marker,issue_url:'https://api.github.com/repos/org/repo/issues/7'}};
+    },
+  });
+  await assert.rejects(client.updateComment({kind:'pr',number:8},5,'new\\n\\n'+marker),/another issue/);
   assert.ok(!calls.includes('PATCH'));
 });
