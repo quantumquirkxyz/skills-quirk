@@ -37,11 +37,11 @@ const safe = value => String(value).replace(/\\/g, '\\\\').replace(/([*_`\[\]<>|
 const payloadSection = (record) => {
   const entries = Object.entries(record.payload);
   if (!entries.length) return '';
-  return '\\n## Artifact details\\n\\n' + entries.map(([key, value]) =>
-    '### ' + safe(key) + '\\n\\n' +
-    (Array.isArray(value) ? (value.length ? value.map(x => '- ' + safe(typeof x === 'string' ? x : JSON.stringify(x))).join('\\n') : '_None_') :
-      safe(typeof value === 'string' ? value : JSON.stringify(value))) + '\\n'
-  ).join('\\n');
+  return '\n## Artifact details\n\n' + entries.map(([key, value]) =>
+    '### ' + safe(key) + '\n\n' +
+    (Array.isArray(value) ? (value.length ? value.map(x => '- ' + safe(typeof x === 'string' ? x : JSON.stringify(x))).join('\n') : '_None_') :
+      safe(typeof value === 'string' ? value : JSON.stringify(value))) + '\n'
+  ).join('\n');
 };
 const sections = (label, items) => items?.length ? '\n## ' + label + '\n\n' + items.map(x => '- ' + safe(x)).join('\n') + '\n' : '';
 
@@ -52,5 +52,8 @@ export function renderSkillOutput(record, surface = 'file') {
   const header = '# ' + safe(r.title) + '\n\n' + '**Status:** ' + safe(r.status) + ' | **Artifact:** ' + safe(r.artifactId) + ' | **Operation:** ' + safe(r.operationId) + '\n\n' + safe(r.summary) + '\n';
   const checks = r.validation.length ? '\n## Validation\n\n' + r.validation.map(x => '- ' + safe(x.check) + ': **' + x.status + '**' + (x.reason ? ' — ' + safe(x.reason) : '')).join('\n') + '\n' : '';
   const body = header + payloadSection(r) + sections('Sources', r.sourceRefs) + sections('Scope', r.scope) + sections('Assumptions', r.assumptions) + sections('Decisions', r.decisions) + sections('Findings', r.findings) + sections('Evidence', r.evidence) + checks + sections('Risks', r.risks) + sections('Next actions', r.nextActions);
-  return surface === 'comment' ? body.replace(/^# /, '### ').replace(/\n## /g, '\n#### ') : body;
+  if (surface === 'comment') return body.replace(/^# /, '### ').replace(/\n## /g, '\n#### ').replace(/\n### (?!#)/g, '\n##### ');
+  if (surface === 'issue') return body.replace('## Artifact details', '## Requirements and acceptance');
+  if (surface === 'pr') return body.replace('## Artifact details', '## Changes and implementation');
+  return body;
 }
