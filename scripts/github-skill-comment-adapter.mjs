@@ -21,9 +21,11 @@ export function createGitHubCommentAdapter(client, { maxPages = 20 } = {}) {
       for (let page = 1; page <= maxPages; page++) {
         const comments = await client.listComments(issue, {page, perPage:100});
         if (!Array.isArray(comments)) throw new Error('Invalid GitHub comments response');
-        const found = comments.find(comment => comment?.body?.endsWith(expected) && comment?.owned === true);
-        if (found) return {id:found.id,body:found.body.slice(0,-('\n\n'+expected).length)};
-        if (comments.length < 100) return null;
+        const matches = comments.filter(comment => typeof comment?.body === 'string' && comment.body.endsWith(expected));
+        if (matches.some(comment => comment.owned !== true)) throw new Error('Idempotency marker collision with a foreign comment');
+        if (matches.length > 1 || (matches.length === 1 && found)) throw new Error('Duplicate owned idempotency markers');
+        if (matches.length === 1) found = matches[0];
+        if (comments.length < 100) return found ? {id:found.id,body:found.body.slice(0,-('\\n\\n'+expected).length)} : null;
       }
       // Never create if an existing marker might be beyond the pagination cap.
       throw new Error('Comment search incomplete; refusing unsafe publication');
