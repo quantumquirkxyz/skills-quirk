@@ -42,7 +42,7 @@ test('leaves missing canonical skill identity unassessed',async()=>{
   try {
     const folder=join(root,'broken','unnamed');
     await mkdir(folder,{recursive:true});
-    await writeFile(join(folder,'SKILL.md'),'---\\noutputs:\\n  - type: object\\n---\\n');
+    await writeFile(join(folder,'SKILL.md'),'---\noutputs:\n  - type: object\n---\n');
     const result=await inventorySkills(root);
     assert.equal(result.skills[0].migrationStatus,'not-assessed');
   } finally {await rm(root,{recursive:true,force:true});}
