@@ -34,3 +34,25 @@ test('fails closed on incomplete pagination and invalid targets', async () => {
   await assert.rejects(adapter.findByKey('pr:8','k'),/incomplete/);
   await assert.rejects(adapter.findByKey('pr:0','k'),/Expected issue/);
 });
+
+test('rejects a foreign comment containing the same idempotency marker',async()=>{
+  const key='review:collision';
+  const marker=Buffer.from(key).toString('base64url');
+  const client={
+    listComments:async()=>[{id:9,body:'foreign\\n\\n<!-- quirk-skill-output:'+marker+' -->',owned:false}],
+    createComment:async()=>{throw new Error('must not create');},
+    updateComment:async()=>{throw new Error('must not update');},
+  };
+  await assert.rejects(createGitHubCommentAdapter(client).findByKey('pr:8',key),/collision/);
+});
+test('rejects duplicate owned markers across paginated pages',async()=>{
+  const key='review:duplicate',suffix='<!-- quirk-skill-output:'+Buffer.from(key).toString('base64url')+' -->';
+  const page1=Array.from({length:100},(_,i)=>({id:i+1,body:i===0?'a\\n\\n'+suffix:'unrelated',owned:true}));
+  const page2=[{id:101,body:'b\\n\\n'+suffix,owned:true}];
+  const client={
+    listComments:async(_target,{page})=>page===1?page1:page2,
+    createComment:async()=>{throw new Error('must not create');},
+    updateComment:async()=>{throw new Error('must not update');},
+  };
+  await assert.rejects(createGitHubCommentAdapter(client).findByKey('pr:8',key),/Duplicate/);
+});
