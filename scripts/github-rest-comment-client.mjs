@@ -65,7 +65,15 @@ export function createGitHubRestCommentClient({token, owner, repo, actor, fetchI
         throw new Error('Refusing to update a comment not owned by authenticated actor');
       }
       const expectedIssueUrl = root + '/issues/' + number;
-      if (typeof existing.issue_url !== 'string' || existing.issue_url.toLowerCase() !== expectedIssueUrl.toLowerCase()) {
+      // Normalize only the URL pathname; do not accept lookalike domains,
+      // query parameters, fragments, or an unexpected API origin.
+      let matchesTarget = false;
+      try {
+        const actual = new URL(existing.issue_url);
+        matchesTarget = actual.origin === api && actual.search === '' && actual.hash === '' &&
+          actual.pathname.toLowerCase() === new URL(expectedIssueUrl).pathname.toLowerCase();
+      } catch { /* Missing or invalid URL is not trusted. */ }
+      if (!matchesTarget) {
         throw new Error('Refusing to update a comment attached to another issue or repository');
       }
       const markerPattern = /<!-- quirk-skill-output:[A-Za-z0-9_-]+ -->$/;
