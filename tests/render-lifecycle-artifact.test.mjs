@@ -31,7 +31,9 @@ test('CLI reads canonical input and preserves it on disk',async()=>{
     const path=join(root,'artifact.json');
     const source=JSON.stringify(canonical());
     await writeFile(path,source);
-    const markdown=await runCli([path,'--title','Review','--summary','Completed','--surface','comment']);
+    const validationPath=join(root,'validation.json');
+    await writeFile(validationPath,JSON.stringify([{check:'unit',status:'passed'}]));
+    const markdown=await runCli([path,'--title','Review','--summary','Completed','--surface','comment','--validation',validationPath]);
     assert.match(markdown,/### Review/);
     assert.match(markdown,/trace-42|review-42/);
     assert.equal((await import('node:fs/promises')).readFile!==undefined,true);
@@ -40,7 +42,7 @@ test('CLI reads canonical input and preserves it on disk',async()=>{
 });
 test('CLI rejects missing arguments and unsupported surfaces',()=>{
   assert.throws(()=>parseArgs([]),/Usage/);
-  assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Completed',surface:'unknown'}),/Unsupported surface/);
+  assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Completed',surface:'unknown',validation:[{check:'unit',status:'passed'}]}),/Unsupported surface/);
 });
 
 test('completed verification artifact cannot claim success without executed checks',()=>{
