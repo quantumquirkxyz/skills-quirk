@@ -23,6 +23,13 @@ export function evaluateCoverage(inventory,{requireMapped=false,verifiedPaths=[]
     passed:unclassified.length===0 && (!requireMapped || unmapped.length===0),
   };
 }
+export function evaluateReleaseCoverage(inventory,{requireMapped=false,verifiedPaths=[],evidenceProblems=[],evidencePassed=true}={}) {
+  const result={...evaluateCoverage(inventory,{requireMapped,verifiedPaths}),
+    remaining:inventory.skills.filter(skill=>!verifiedPaths.includes(skill.path)).map(skill=>skill.path),
+    evidenceProblems};
+  if (evidenceProblems.length || !evidencePassed) result.passed=false;
+  return result;
+}
 if (process.argv[1]?.endsWith('check-skill-output-coverage.mjs')) {
   const requireMapped=process.argv.includes('--require-mapped');
   const inventory=await inventorySkills();
@@ -33,14 +40,14 @@ if (process.argv[1]?.endsWith('check-skill-output-coverage.mjs')) {
   // performs manifest integrity, repository-boundary, and bounded-time checks.
   const evidence=manifestArg===-1 ? {verified:[],problems:[]} :
     await runMigrationFixtures(manifest);
-  const scopedInventory=manifest?.scope?.paths
-    ? {...inventory,skills:inventory.skills.filter(skill=>manifest.scope.paths.includes(skill.path)),total:manifest.scope.paths.length}
-    : manifest?.scope?.tranches
-      ? {...inventory,skills:inventory.skills.filter(skill=>manifest.entries.some(entry=>entry.path===skill.path)),total:manifest.entries.length}
-      : inventory;
   const verifiedPaths=evidence.verifiedPaths ?? [];
-  const result={...evaluateCoverage(scopedInventory,{requireMapped,verifiedPaths}),remaining:inventory.skills.filter(skill=>!verifiedPaths.includes(skill.path)).map(skill=>skill.path),evidenceProblems:evidence.problems,fixtureResults:evidence.results};
-  if (evidence.problems.length || evidence.missing?.length || evidence.passed===false) result.passed=false;
+  // A release manifest may organize execution into tranches, but it must never
+  // redefine the canonical inventory. Evaluate evidence against every skill.
+  const result=evaluateReleaseCoverage(inventory,{
+    requireMapped,verifiedPaths,evidenceProblems:evidence.problems,
+    evidencePassed:evidence.passed !== false && !evidence.missing?.length,
+  });
+  result.fixtureResults=evidence.results;
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
   if (!result.passed) process.exitCode=1;
 }

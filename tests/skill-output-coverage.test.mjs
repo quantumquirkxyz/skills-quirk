@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {evaluateCoverage} from '../scripts/check-skill-output-coverage.mjs';
+import {evaluateCoverage,evaluateReleaseCoverage} from '../scripts/check-skill-output-coverage.mjs';
 
 const sample=statuses=>({total:statuses.length,skills:statuses.map((migrationStatus,i)=>({path:'skill-'+i,migrationStatus}))});
 test('classification gate passes when every skill is assessed',()=>{
@@ -34,4 +34,17 @@ test('release gate refuses empty catalogs and unknown verified paths',()=>{
   assert.throws(()=>evaluateCoverage(sample([])),/Empty canonical/);
   assert.throws(()=>evaluateCoverage(sample(['mapped-and-verified']),{verifiedPaths:['nonexistent']}),/Unknown verified/);
   assert.throws(()=>evaluateCoverage({total:2,skills:[{path:'duplicate',migrationStatus:'mapped-and-verified'},{path:'duplicate',migrationStatus:'mapped-and-verified'}]}),/Duplicate canonical/);
+});
+
+test('release evidence cannot narrow the canonical inventory to a tranche',()=>{
+  const inventory=sample(Array.from({length:285},(_,i)=>i<254?'mapped-and-verified':'schema-referenced-needs-verification'));
+  const result=evaluateReleaseCoverage(inventory,{
+    requireMapped:true,
+    verifiedPaths:Array.from({length:254},(_,i)=>`skill-${i}`),
+  });
+  assert.equal(result.total,285);
+  assert.equal(result.verified,254);
+  assert.equal(result.passed,false);
+  assert.equal(result.remaining.length,31);
+  assert.deepEqual(result.remaining,Array.from({length:31},(_,i)=>`skill-${i+254}`));
 });
