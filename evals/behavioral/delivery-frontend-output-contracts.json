@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "1.0",
+  "id": "delivery-frontend-output-contracts-v1",
+  "fixtureVersion": "1",
+  "purpose": "Executable contract checks for the currently unmapped delivery and frontend output contracts. This fixture is not migration evidence.",
+  "entries": [
+    {
+      "skill": "delivery/code-review",
+      "artifact": "RepositoryAuditArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/contribution-workflow-optimizer",
+      "artifact": "ContributionWorkflowOptimizerArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/diagnosing-bugs",
+      "artifact": "DiagnosingBugsArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/implement",
+      "artifact": "ImplementArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/implement-review-fixes",
+      "artifact": "ImplementArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/loop-budget",
+      "artifact": "LoopBudgetVerdict",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/plan-review-fixes",
+      "artifact": "PlanReviewFixesArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/prototype",
+      "artifact": "PrototypeArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/research",
+      "artifact": "ResearchArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/resolving-merge-conflicts",
+      "artifact": "ResolvingMergeConflictsArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/review-fix-loop",
+      "artifact": "ReviewFixLoopArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/review-pr",
+      "artifact": "VerificationArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/tdd",
+      "artifact": "ImplementArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/testing",
+      "artifact": "TestingArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "delivery/webapp-testing",
+      "artifact": "WebappTestingArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/astro",
+      "artifact": "AstroArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/design-system",
+      "artifact": "DesignSystemArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/frontend-design",
+      "artifact": "FrontendDesignArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/frontend-testing",
+      "artifact": "FrontendTestingArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/mobile",
+      "artifact": "MobileArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/nextjs",
+      "artifact": "NextjsArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/react",
+      "artifact": "ReactArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/remix",
+      "artifact": "RemixArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/state-management",
+      "artifact": "StateManagementArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    },
+    {
+      "skill": "frontend/styling",
+      "artifact": "StylingArtifact",
+      "required": [
+        "## Contract",
+        "Input",
+        "Output",
+        "Scope",
+        "Rule",
+        "## Artifact"
+      ],
+      "negative": [
+        "fabricated verification",
+        "marked verified without execution"
+      ]
+    }
+  ],
+  "negativeControls": [
+    {
+      "id": "missing-contract-clause",
+      "mutate": "remove-required-clause",
+      "expected": "fail"
+    },
+    {
+      "id": "wrong-artifact-type",
+      "mutate": "replace-artifact-name",
+      "expected": "fail"
+    },
+    {
+      "id": "unlisted-skill",
+      "mutate": "append-unknown-skill",
+      "expected": "fail"
+    }
+  ]
+}
