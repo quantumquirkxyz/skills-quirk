@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 
 const root=resolve('.');
-const fixture=JSON.parse(await readFile(resolve(root,'evals/behavioral/delivery-frontend-output-contracts.json'),'utf8'));
+const fixture=JSON.parse(await readFile(resolve(root,'.agents/skills/platform/fixtures/migration/delivery-frontend-output-contracts.json'),'utf8'));
 const readSkill=skill=>readFile(resolve(root,'.agents/skills',`${skill}/SKILL.md`),'utf8');
 
 function checkEntry(entry,contents) {
