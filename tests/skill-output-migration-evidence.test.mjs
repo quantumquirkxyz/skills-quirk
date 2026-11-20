@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {verifyMigrationEvidence,verifyMigrationEvidenceFiles} from '../scripts/skill-output-migration-evidence.mjs';
+import {fixtureExplicitlyCoversSkill} from '../scripts/generate-skill-output-migration-evidence.mjs';
 
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const inventory={skills:[{path:'.agents/skills/research/example/SKILL.md'}]};
@@ -64,4 +65,19 @@ test('rejects test fixture symlinks escaping the repository',async()=>{
     await rm(root,{recursive:true,force:true});
     await rm(outside,{recursive:true,force:true});
   }
+});
+
+test('does not fabricate coverage from a domain mapping the fixture does not declare',()=>{
+  const fixture = `
+    const domains = ['research'];
+    for (const domain of domains) {
+      for (const entry of await readdir(resolve(root, '.agents/skills', domain), {withFileTypes:true})) {
+        if (entry.isDirectory()) paths.push(entry);
+      }
+    }
+  `;
+  assert.equal(fixtureExplicitlyCoversSkill(
+    fixture, '.agents/skills/research/example/SKILL.md', ['research']), true);
+  assert.equal(fixtureExplicitlyCoversSkill(
+    fixture, '.agents/skills/quant/example/SKILL.md', ['quant']), false);
 });

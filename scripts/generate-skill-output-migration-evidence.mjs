@@ -27,6 +27,20 @@ const tranches = [
 ];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
+// A tranche is only trustworthy when the fixture itself declares its scope and
+// exercises that scope. The generator must not turn a caller-supplied domain
+// list into evidence by association alone.
+export function fixtureExplicitlyCoversSkill(source, skillPath, domains) {
+  const domain = skillPath.split('/')[2];
+  if (!domains.includes(domain)) return false;
+  const declaredDomains = source.match(/(?:const|let)\s+domains\s*=\s*\[([\s\S]*?)\]/)?.[1] ??
+    source.match(/(?:const|let)\s+domain\s*=\s*['"`]([^'"`]+)['"`]/)?.[1] ?? '';
+  const listedDomains = [...declaredDomains.matchAll(/['"`]([^'"`]+)['"`]/g)].map(match => match[1]);
+  if (!listedDomains.includes(domain)) return false;
+  return /readdir[\s\S]{0,160}domain/.test(source) &&
+    /isDirectory/.test(source);
+}
+
 function executeFixture(root, fixture, timeoutMs) {
   return new Promise((settle, reject) => {
     const child = spawn(process.execPath, ['--test', resolve(root, fixture)], {
@@ -47,11 +61,13 @@ export async function generateMigrationEvidence({root = '.', output = 'tests/ski
   const inventory = await inventorySkills(resolve(root, '.agents/skills'), {base: root});
   const source = new Map();
   for (const [fixture, domains] of tranches) {
-    await executeFixture(root, fixture, timeoutMs);
-    const fixtureBytes = await readFile(resolve(root, fixture));
-    for (const skill of inventory.skills.filter(item => domains.includes(item.path.split('/')[2]))) {
-      source.set(skill.path, {fixturePath: fixture, fixtureSha256: sha256(fixtureBytes)});
-    }
+     await executeFixture(root, fixture, timeoutMs);
+     const fixtureBytes = await readFile(resolve(root, fixture));
+     const fixtureSource = fixtureBytes.toString('utf8');
+     for (const skill of inventory.skills.filter(item =>
+       fixtureExplicitlyCoversSkill(fixtureSource, item.path, domains))) {
+       source.set(skill.path, {fixturePath: fixture, fixtureSha256: sha256(fixtureBytes)});
+     }
   }
   const entries = [];
   for (const skill of inventory.skills) {
