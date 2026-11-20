@@ -10,7 +10,10 @@ import {verifyMigrationEvidenceFiles} from './skill-output-migration-evidence.mj
 export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,runner=process.execPath}={}) {
   if(!Number.isSafeInteger(timeoutMs)||timeoutMs<1||timeoutMs>300000) throw new Error('Invalid fixture timeout');
   const inventory=await inventorySkills(root+'/.agents/skills',{base:root});
-  const report=await verifyMigrationEvidenceFiles(inventory,manifest,{root});
+  const scopedInventory=manifest?.scope?.tranches
+    ? {...inventory,skills:inventory.skills.filter(skill=>manifest.entries.some(entry=>entry.path===skill.path)),total:manifest.entries.length}
+    : inventory;
+  const report=await verifyMigrationEvidenceFiles(scopedInventory,manifest,{root});
   if(report.problems.length || report.missing.length) {
     return {passed:false,verified:report.verified.length,problems:report.problems,missing:report.missing,results:[]};
   }

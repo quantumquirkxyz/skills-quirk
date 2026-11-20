@@ -41,7 +41,8 @@
     "output:coverage": "node scripts/check-skill-output-coverage.mjs",
     "output:release-gate": "node scripts/check-skill-output-coverage.mjs --require-mapped",
     "output:test": "node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs",
-    "output:verify-fixtures": "node scripts/run-skill-output-migration-fixtures.mjs",
+    "output:verify-fixtures": "node scripts/run-skill-output-migration-fixtures.mjs tests/skill-output-migration-evidence.json",
+    "output:generate-evidence": "node scripts/generate-skill-output-migration-evidence.mjs",
     "output:migration-backlog": "node scripts/generate-skill-output-migration-backlog.mjs"
   },
   "keywords": [

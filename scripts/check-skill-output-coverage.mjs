@@ -28,9 +28,15 @@ if (process.argv[1]?.endsWith('check-skill-output-coverage.mjs')) {
   const inventory=await inventorySkills();
   const manifestArg=process.argv.indexOf('--evidence');
   if (manifestArg!==-1 && (!process.argv[manifestArg+1] || process.argv[manifestArg+1].startsWith('--'))) throw new Error('Missing --evidence path');
+  const manifest=manifestArg===-1 ? null : JSON.parse(await readFile(process.argv[manifestArg+1],'utf8'));
   const evidence=manifestArg===-1 ? {verified:[],problems:[]} :
-    await verifyMigrationEvidenceFiles(inventory,JSON.parse(await readFile(process.argv[manifestArg+1],'utf8')));
-  const result={...evaluateCoverage(inventory,{requireMapped,verifiedPaths:evidence.verified}),evidenceProblems:evidence.problems};
+    await verifyMigrationEvidenceFiles(inventory,manifest);
+  const scopedInventory=manifest?.scope?.paths
+    ? {...inventory,skills:inventory.skills.filter(skill=>manifest.scope.paths.includes(skill.path)),total:manifest.scope.paths.length}
+    : manifest?.scope?.tranches
+      ? {...inventory,skills:inventory.skills.filter(skill=>manifest.entries.some(entry=>entry.path===skill.path)),total:manifest.entries.length}
+      : inventory;
+  const result={...evaluateCoverage(scopedInventory,{requireMapped,verifiedPaths:evidence.verified}),remaining:inventory.skills.filter(skill=>!evidence.verified.includes(skill.path)).map(skill=>skill.path),evidenceProblems:evidence.problems};
   if (evidence.problems.length) result.passed=false;
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
   if (!result.passed) process.exitCode=1;
