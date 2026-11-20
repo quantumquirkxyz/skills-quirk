@@ -2,7 +2,7 @@
   "skill": "db/db-migrations",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "ce84e6909026d88d1ec39fbf4c85f8c045dc9409547076053e941f4cd59b5800",
+  "frontmatterHash": "8e3a992de048910b1d90cfcbf1703eb27dca6df408bc8e1966f5da520d47b02b",
   "role": "workflow",
   "router": {
     "positive": [],

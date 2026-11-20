@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/cs-data-structures.json"
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
 diataxis: "how-to"
 tags: ["cs"]
 compatibility: ["cs-algorithms", "cs-complexity-analysis"]

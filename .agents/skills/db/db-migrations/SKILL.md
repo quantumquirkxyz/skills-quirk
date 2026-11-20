@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "db"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
 diataxis: "how-to"
 tags: ["db"]
 compatibility: []

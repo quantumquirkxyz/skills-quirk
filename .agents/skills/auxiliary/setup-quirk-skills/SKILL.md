@@ -30,7 +30,7 @@ promptVersion: "2.0"
 artifactType: "auxiliary"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/setup-quirk-skills.json
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
 diataxis: "how-to"
 tags: ["auxiliary"]
 compatibility: []
