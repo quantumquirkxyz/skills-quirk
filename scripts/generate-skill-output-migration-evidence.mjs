@@ -16,6 +16,8 @@ const tranches = [
     ['devops', 'docs', 'engineering', 'finance', 'graph']],
   ['tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs',
     ['auxiliary', 'cms', 'compilers', 'cs', 'db']],
+  ['tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs',
+    ['accessibility', 'graphic-design', 'os', 'platform', 'xr']],
 ];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
