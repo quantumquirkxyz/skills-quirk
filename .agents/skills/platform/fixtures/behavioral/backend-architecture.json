@@ -1,0 +1,23 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-backend-architecture",
+      "skill": "backend-architecture",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "BackendArchitectureArtifact",
+          "service seams",
+          "error handling",
+          "backward compatibility"
+        ],
+        "doesNotContain": [
+          "ship without validation",
+          "approve production without evidence"
+        ]
+      }
+    }
+  ]
+}

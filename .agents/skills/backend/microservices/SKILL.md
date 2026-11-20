@@ -25,7 +25,7 @@ promptVersion: "2.0"
 artifactType: "backend"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/microservices.json
 diataxis: "how-to"
 tags: ["backend"]
 compatibility: []

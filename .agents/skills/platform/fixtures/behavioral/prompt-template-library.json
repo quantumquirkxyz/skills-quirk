@@ -1,0 +1,22 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-prompt-template-library",
+      "skill": "prompt-template-library",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "template manifest",
+          "composition",
+          "evaluation"
+        ],
+        "doesNotContain": [
+          "secret",
+          "unbounded"
+        ]
+      }
+    }
+  ]
+}

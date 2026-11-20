@@ -116,17 +116,17 @@
       "sourceType": "local"
     },
     "backend-architecture": {
-      "hash": "2df8cdaedcf73b84bf196e8a6af98a48c592c1b3c68af32843fa5d654f94fefa",
+      "hash": "08838f4e158ae58d59cd7468cfe0464bcaeb963c05599fe7c6bfbd6b2f086d24",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "backend-caching": {
-      "hash": "a05dc6dc400ae0e3859eb969fd20fd04fded061db88af1fdc94ea07d095187c6",
+      "hash": "52d5358c0b55fefb88ae055dfa686627d69fd5fbcd03d6001f3164ff71d68aa9",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "backend-queues": {
-      "hash": "47122745dfbc9c87ef40f1c282b76b1b396543f28e1161b1a78786000a0e0996",
+      "hash": "baec894ef07974c3e0a9ceda7507f55739577699ac26ac56915f0f19e7961da1",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -746,7 +746,7 @@
       "sourceType": "local"
     },
     "microservices": {
-      "hash": "0c0a03d31627a2c6b309e395fa963b4a3b96c21540f45273b44b45b74aabc5fa",
+      "hash": "35c26529ac2a4cadfaf0b3462fbfade91898da796d909976fc8fed0f2d6aafa7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -761,7 +761,7 @@
       "sourceType": "local"
     },
     "multimodal-prompting": {
-      "hash": "e9b0279cb5f6279458926700d89677f5ae0ed309a7ae643d4906dd02b12db59f",
+      "hash": "fd946083a7a78cf8305e5a5d538a570555659dc64cbc5e4c22837f05fcc2f14f",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -946,7 +946,7 @@
       "sourceType": "local"
     },
     "prompt-template-library": {
-      "hash": "f7c5979238ca2605e74aee463d29151ecac9ad4b7b473d50f6093d0ac6afa824",
+      "hash": "b19303e143995d7121032385dd691899e8f2b269d52611173ab9a03b64eeb47f",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1261,7 +1261,7 @@
       "sourceType": "local"
     },
     "structured-output": {
-      "hash": "945ae7aad2311409092ffacf726562fa75739e3d5629ef3072b39f812cd53dc3",
+      "hash": "b11705a598c9b879410cfba0b884871ebea5abd557ebcf99b2c18998c1f66cb7",
       "revision": "working-tree",
       "sourceType": "local"
     },

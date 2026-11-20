@@ -25,7 +25,7 @@ promptVersion: "2.0"
 artifactType: "queue-design"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/backend-queues.json
 diataxis: "how-to"
 tags: ["backend"]
 compatibility: []

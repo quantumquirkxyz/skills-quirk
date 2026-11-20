@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: .agents/skills/platform/fixtures/behavioral/multimodal-prompting.json
 diataxis: "how-to"
 tags: ["ai"]
 compatibility: []
