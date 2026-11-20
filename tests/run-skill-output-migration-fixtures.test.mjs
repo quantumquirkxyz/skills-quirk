@@ -12,13 +12,13 @@ async function setup() {
   const skill='.agents/skills/research/example/SKILL.md';
   const fixture='tests/example.test.mjs';
   const source='---\nname: example\noutputs:\n  - type: object\n---\n';
-  const passing="import test from 'node:test';test('works',()=>{});\n";
+   const passing=`const coveredSkills=['${skill}'];\nimport test from 'node:test';test('works',()=>{});\n`;
   await mkdir(join(root,'.agents/skills/research/example'),{recursive:true});
   await mkdir(join(root,'tests'),{recursive:true});
   await writeFile(join(root,skill),source);
   await writeFile(join(root,fixture),passing);
   const manifest={schemaVersion:'1.0',entries:[{path:skill,skillSha256:hash(source),fixturePath:fixture,fixtureSha256:hash(passing),contract:'schema/skill-output.schema.json',result:'passed'}]};
-  return {root,manifest,fixture};
+   return {root,manifest,fixture,skill};
 }
 test('runs a verified pinned test file and reports success',async()=>{
   const {root,manifest}=await setup();
@@ -30,9 +30,9 @@ test('runs a verified pinned test file and reports success',async()=>{
   } finally {await rm(root,{recursive:true,force:true});}
 });
 test('does not run a stale fixture and rejects a failed test',async()=>{
-  const {root,manifest,fixture}=await setup();
+   const {root,manifest,fixture,skill}=await setup();
   try {
-    await writeFile(join(root,fixture),"throw new Error('bad fixture');\n");
+     await writeFile(join(root,fixture),`const coveredSkills=['${skill}'];\nthrow new Error('bad fixture');\n`);
     const stale=await runMigrationFixtures(manifest,{root});
     assert.equal(stale.passed,false);
     assert.equal(stale.results.length,0);

@@ -89,7 +89,7 @@ canonical skills automatically or authorizes a merge.
 
 Do not change `migrationStatus` to `mapped-and-verified` without a
 recorded schema/fixture check for that skill. The strict gate
-`node scripts/check-skill-output-coverage.mjs --require-mapped` must
+`node scripts/check-skill-output-coverage.mjs --require-mapped --evidence tests/skill-output-migration-evidence.json` must
 pass before claiming the catalog-wide migration complete.
 
 ## Evidence-first migration tooling

@@ -9,9 +9,10 @@ import {fixtureExplicitlyCoversSkill} from '../scripts/generate-skill-output-mig
 
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const inventory={skills:[{path:'.agents/skills/research/example/SKILL.md'}]};
+const fixtureText=`const coveredSkills=['${inventory.skills[0].path}'];\nfixture`;
 const valid={schemaVersion:'1.0',entries:[{
   path:inventory.skills[0].path,skillSha256:hash('skill'),fixturePath:'tests/example.json',
-  fixtureSha256:hash('fixture'),contract:'schema/skill-output.schema.json',result:'passed',
+  fixtureSha256:hash(fixtureText),contract:'schema/skill-output.schema.json',result:'passed',
 }]};
 test('missing evidence never counts as verified migration',()=>{
   const result=verifyMigrationEvidence(inventory,{schemaVersion:'1.0',entries:[]});
@@ -31,7 +32,7 @@ test('verifies canonical and fixture bytes and detects stale evidence',async()=>
     await mkdir(path,{recursive:true});
     await mkdir(join(root,'tests'),{recursive:true});
     await writeFile(join(path,'SKILL.md'),'skill');
-    await writeFile(join(root,'tests/example.json'),'fixture');
+     await writeFile(join(root,'tests/example.json'),fixtureText);
     assert.equal((await verifyMigrationEvidenceFiles(inventory,valid,{root})).verified.length,1);
     await writeFile(join(path,'SKILL.md'),'changed');
     const stale=await verifyMigrationEvidenceFiles(inventory,valid,{root});
@@ -77,7 +78,13 @@ test('does not fabricate coverage from a domain mapping the fixture does not dec
     }
   `;
   assert.equal(fixtureExplicitlyCoversSkill(
-    fixture, '.agents/skills/research/example/SKILL.md', ['research']), true);
+     fixture, '.agents/skills/research/example/SKILL.md'), false);
   assert.equal(fixtureExplicitlyCoversSkill(
-    fixture, '.agents/skills/quant/example/SKILL.md', ['quant']), false);
+     fixture, '.agents/skills/quant/example/SKILL.md'), false);
+});
+
+test('a fixture explicitly covering one canonical skill cannot verify another',()=>{
+  const fixture=`const coveredSkills=['.agents/skills/research/example/SKILL.md'];`;
+  assert.equal(fixtureExplicitlyCoversSkill(fixture,'.agents/skills/research/example/SKILL.md'),true);
+  assert.equal(fixtureExplicitlyCoversSkill(fixture,'.agents/skills/research/other/SKILL.md'),false);
 });

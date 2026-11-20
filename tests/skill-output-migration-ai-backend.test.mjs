@@ -5,6 +5,7 @@ import {resolve} from 'node:path';
 import {validateFixture} from '../evals/run-behavioral.mjs';
 
 const root=resolve('.');
+const coveredSkills = ['.agents/skills/ai/agent-orchestration/SKILL.md', '.agents/skills/ai/ai-ml-pipeline/SKILL.md', '.agents/skills/ai/ai-model-evaluation/SKILL.md', '.agents/skills/ai/ai-prompt-engineering/SKILL.md', '.agents/skills/ai/ai-systems-engineering/SKILL.md', '.agents/skills/ai/ai-time-series-forecasting/SKILL.md', '.agents/skills/ai/llm-eval/SKILL.md', '.agents/skills/ai/llm-fine-tuning/SKILL.md', '.agents/skills/ai/llmops/SKILL.md', '.agents/skills/ai/mlops/SKILL.md', '.agents/skills/ai/multimodal-prompting/SKILL.md', '.agents/skills/ai/prompt-template-library/SKILL.md', '.agents/skills/ai/rag-pipeline/SKILL.md', '.agents/skills/ai/structured-output/SKILL.md', '.agents/skills/backend/api-gateway/SKILL.md', '.agents/skills/backend/backend-architecture/SKILL.md', '.agents/skills/backend/backend-caching/SKILL.md', '.agents/skills/backend/backend-queues/SKILL.md', '.agents/skills/backend/caching-advanced/SKILL.md', '.agents/skills/backend/distributed-tracing/SKILL.md', '.agents/skills/backend/event-driven-architecture/SKILL.md', '.agents/skills/backend/grpc-connect/SKILL.md', '.agents/skills/backend/microservices/SKILL.md', '.agents/skills/backend/rate-limiting/SKILL.md', '.agents/skills/backend/serverless/SKILL.md', '.agents/skills/backend/service-mesh/SKILL.md', '.agents/skills/backend/websockets/SKILL.md'];
 const domains=['ai','backend'];
 
 async function canonicalSkills() {

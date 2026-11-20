@@ -6,6 +6,7 @@ import {validateSkillOutput} from '../scripts/render-skill-output.mjs';
 import {runLoop} from '../.agents/skills/platform/loop-runner.mjs';
 
 const root = resolve('.');
+const coveredSkills = ['.agents/skills/loop/loop-engineering/SKILL.md', '.agents/skills/loop/retry-backoff/SKILL.md', '.agents/skills/project/analyze-artifacts/SKILL.md', '.agents/skills/project/docs-management/SKILL.md', '.agents/skills/project/make-project/SKILL.md', '.agents/skills/project/project-development/SKILL.md', '.agents/skills/project/project-viability/SKILL.md', '.agents/skills/project/requirements-engineering/SKILL.md', '.agents/skills/project/software-maintenance-evolution/SKILL.md', '.agents/skills/project/spec-driven-development/SKILL.md', '.agents/skills/project/to-spec/SKILL.md', '.agents/skills/project/to-tickets/SKILL.md', '.agents/skills/qa/performance-testing/SKILL.md', '.agents/skills/qa/qa-automation/SKILL.md', '.agents/skills/qa/qa-manual-testing/SKILL.md', '.agents/skills/qa/qa-security-testing/SKILL.md'];
 const domains = ['loop', 'project', 'qa'];
 const fixturePath = 'tests/skill-output-migration-loop-project-qa.test.mjs';
 

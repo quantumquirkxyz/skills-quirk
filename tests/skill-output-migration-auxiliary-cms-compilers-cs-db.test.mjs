@@ -6,6 +6,7 @@ import {validateSkillOutput} from '../scripts/render-skill-output.mjs';
 
 const domains = ['auxiliary', 'cms', 'compilers', 'cs', 'db'];
 const root = resolve('.');
+const coveredSkills = ['.agents/skills/auxiliary/execution-policy/SKILL.md', '.agents/skills/auxiliary/integration-playground/SKILL.md', '.agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md', '.agents/skills/auxiliary/setup-quirk-skills/SKILL.md', '.agents/skills/cms/cms-access-control/SKILL.md', '.agents/skills/cms/cms-architecture/SKILL.md', '.agents/skills/cms/cms-content-strategy/SKILL.md', '.agents/skills/cms/localization/SKILL.md', '.agents/skills/compilers/compiler-design/SKILL.md', '.agents/skills/compilers/compiler-testing/SKILL.md', '.agents/skills/compilers/compilers/SKILL.md', '.agents/skills/cs/cs-algorithms/SKILL.md', '.agents/skills/cs/cs-complexity-analysis/SKILL.md', '.agents/skills/cs/cs-computability/SKILL.md', '.agents/skills/cs/cs-data-structures/SKILL.md', '.agents/skills/db/db-migrations/SKILL.md', '.agents/skills/db/db-nosql-modeling/SKILL.md', '.agents/skills/db/db-query-optimization/SKILL.md', '.agents/skills/db/db-relational-design/SKILL.md'];
 
 async function canonicalSkills() {
   const paths = [];

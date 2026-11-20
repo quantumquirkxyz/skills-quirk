@@ -28,6 +28,10 @@ export function verifyMigrationEvidence(inventory,manifest) {
   return {verified,problems,missing:inventory.skills.filter(x=>!verified.has(x.path)).map(x=>x.path)};
 }
 const digest=buffer=>createHash('sha256').update(buffer).digest('hex');
+const fixtureCoversSkill=(source,skillPath)=>{
+  const declaration=source.match(/(?:const|let)\s+coveredSkills\s*=\s*\[([\s\S]*?)\]/)?.[1] ?? '';
+  return [...declaration.matchAll(/['"`]([^'"`]+)['"`]/g)].some(match=>match[1]===skillPath);
+};
 export async function verifyMigrationEvidenceFiles(inventory,manifest,{root='.'}={}) {
   const report=verifyMigrationEvidence(inventory,manifest);
   const realRoot=await realpath(root);
@@ -39,7 +43,11 @@ export async function verifyMigrationEvidenceFiles(inventory,manifest,{root='.'}
         if(!full.startsWith(resolve(root)+'/')) throw new Error('Path escapes repository');
         const realFile=await realpath(full);
         if(!realFile.startsWith(realRoot+'/')) throw new Error('Symlink escapes repository');
-        const actual=digest(await readFile(realFile));
+        const bytes=await readFile(realFile);
+        if(path===entry.fixturePath && !fixtureCoversSkill(bytes.toString('utf8'),entry.path)) {
+          throw new Error('Fixture does not explicitly cover canonical skill: '+entry.path);
+        }
+        const actual=digest(bytes);
         if(actual!==expected) throw new Error('Digest mismatch: '+path);
       }
     } catch(error) {
