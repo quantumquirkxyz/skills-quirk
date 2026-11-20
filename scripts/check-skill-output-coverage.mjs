@@ -1,6 +1,6 @@
 import {inventorySkills} from './skill-output-inventory.mjs';
-import {verifyMigrationEvidenceFiles} from './skill-output-migration-evidence.mjs';
 import {readFile} from 'node:fs/promises';
+import {runMigrationFixtures} from './run-skill-output-migration-fixtures.mjs';
 
 // Read-only release gate. Do not equate a schema reference with a verified migration.
 export function evaluateCoverage(inventory,{requireMapped=false,verifiedPaths=[]}={}) {
@@ -29,15 +29,18 @@ if (process.argv[1]?.endsWith('check-skill-output-coverage.mjs')) {
   const manifestArg=process.argv.indexOf('--evidence');
   if (manifestArg!==-1 && (!process.argv[manifestArg+1] || process.argv[manifestArg+1].startsWith('--'))) throw new Error('Missing --evidence path');
   const manifest=manifestArg===-1 ? null : JSON.parse(await readFile(process.argv[manifestArg+1],'utf8'));
+  // Strict evidence gates must execute every digest-pinned fixture. The runner
+  // performs manifest integrity, repository-boundary, and bounded-time checks.
   const evidence=manifestArg===-1 ? {verified:[],problems:[]} :
-    await verifyMigrationEvidenceFiles(inventory,manifest);
+    await runMigrationFixtures(manifest);
   const scopedInventory=manifest?.scope?.paths
     ? {...inventory,skills:inventory.skills.filter(skill=>manifest.scope.paths.includes(skill.path)),total:manifest.scope.paths.length}
     : manifest?.scope?.tranches
       ? {...inventory,skills:inventory.skills.filter(skill=>manifest.entries.some(entry=>entry.path===skill.path)),total:manifest.entries.length}
       : inventory;
-  const result={...evaluateCoverage(scopedInventory,{requireMapped,verifiedPaths:evidence.verified}),remaining:inventory.skills.filter(skill=>!evidence.verified.includes(skill.path)).map(skill=>skill.path),evidenceProblems:evidence.problems};
-  if (evidence.problems.length) result.passed=false;
+  const verifiedPaths=evidence.verifiedPaths ?? [];
+  const result={...evaluateCoverage(scopedInventory,{requireMapped,verifiedPaths}),remaining:inventory.skills.filter(skill=>!verifiedPaths.includes(skill.path)).map(skill=>skill.path),evidenceProblems:evidence.problems,fixtureResults:evidence.results};
+  if (evidence.problems.length || evidence.missing?.length || evidence.passed===false) result.passed=false;
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
   if (!result.passed) process.exitCode=1;
 }

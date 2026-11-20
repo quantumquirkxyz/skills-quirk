@@ -4,9 +4,12 @@ import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
 import {runMigrationFixtures} from '../scripts/run-skill-output-migration-fixtures.mjs';
 
 const hash=x=>createHash('sha256').update(x).digest('hex');
+const execFileAsync=promisify(execFile);
 async function setup() {
   const root=await mkdtemp(join(tmpdir(),'quirk-fixture-runner-'));
   const skill='.agents/skills/research/example/SKILL.md';
@@ -40,5 +43,21 @@ test('does not run a stale fixture and rejects a failed test',async()=>{
     const failed=await runMigrationFixtures(manifest,{root});
     assert.equal(failed.passed,false,JSON.stringify(failed));
     assert.equal(failed.results[0].passed,false,JSON.stringify(failed));
+  } finally {await rm(root,{recursive:true,force:true});}
+});
+test('strict coverage gate rejects a failing digest-pinned fixture',async()=>{
+  const {root,manifest,fixture}=await setup();
+  try {
+    const failing=`const coveredSkills=['${manifest.entries[0].path}'];\nthrow new Error('strict gate failure');\n`;
+    await writeFile(join(root,fixture),failing);
+    manifest.entries[0].fixtureSha256=hash(failing);
+    await writeFile(join(root,'evidence.json'),JSON.stringify(manifest));
+    await assert.rejects(
+      execFileAsync(process.execPath,[
+        join(process.cwd(),'scripts/check-skill-output-coverage.mjs'),
+        '--require-mapped','--evidence','evidence.json'
+      ],{cwd:root}),
+      error=>error.code===1
+    );
   } finally {await rm(root,{recursive:true,force:true});}
 });

@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: '20'
       - name: Verify assessed skill inventory
-        run: node scripts/check-skill-output-coverage.mjs --require-mapped --evidence tests/skill-output-migration-evidence.json
+        run: npm run output:release-gate
       - name: Run skill output integration and publication tests
         run: node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs
 

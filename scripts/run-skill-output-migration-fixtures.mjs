@@ -15,7 +15,7 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     : inventory;
   const report=await verifyMigrationEvidenceFiles(scopedInventory,manifest,{root});
   if(report.problems.length || report.missing.length) {
-    return {passed:false,verified:report.verified.length,problems:report.problems,missing:report.missing,results:[]};
+    return {passed:false,verified:report.verified.length,verifiedPaths:report.verified,problems:report.problems,missing:report.missing,results:[]};
   }
   const fixtures=[...new Set(manifest.entries.map(e=>e.fixturePath))].sort();
   const results=[];
@@ -41,7 +41,7 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     });
     results.push(result);
   }
-  return {passed:fixtures.length>0 && results.length===fixtures.length && results.every(x=>x.passed),verified:report.verified.length,problems:[],missing:[],results};
+  return {passed:fixtures.length>0 && results.length===fixtures.length && results.every(x=>x.passed),verified:report.verified.length,verifiedPaths:report.verified,problems:[],missing:[],results};
 }
 if(process.argv[1]?.endsWith('run-skill-output-migration-fixtures.mjs')) {
   try {
