@@ -11,7 +11,7 @@ artifactType: "plan"
 outputs: "a structured artifact or guidance aligned to the skill's declared outputs."
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs"
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

@@ -49,7 +49,7 @@ modelTier: reasoning
 promptVersion: "1.0"
 artifactType: fleet-run
 evaluators: [behavioral, regression, traceability, quality-bar]
-fixturesPath: .agents/skills/routing/parallel-issue-fleet/behavioral-fixtures/fleet.json
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: how-to
 tags: [routing, orchestration, git, worktree, vm, dag, multi-agent]
 compatibility:

@@ -38,7 +38,7 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/ship-subissue.json
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

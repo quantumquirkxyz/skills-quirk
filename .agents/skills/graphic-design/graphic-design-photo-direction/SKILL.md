@@ -11,7 +11,7 @@ artifactType: "plan"
 outputs: "shot list, lighting and composition specs, and post-production retouching workflow."
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs"
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

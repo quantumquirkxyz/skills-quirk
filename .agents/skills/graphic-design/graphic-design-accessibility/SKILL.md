@@ -11,7 +11,7 @@ artifactType: "plan"
 outputs: "accessible design specification with compliance report and remediation guidance."
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs"
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

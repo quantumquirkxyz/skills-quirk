@@ -11,7 +11,7 @@ artifactType: "plan"
 outputs: "paginated layout specification with grid system, typography hierarchy, and image treatment."
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs"
 diataxis: "how-to"
 tags: ["graphic-design"]
 compatibility: []

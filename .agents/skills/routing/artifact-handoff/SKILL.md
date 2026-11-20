@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "routing"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: [code-review, diagnosing-bugs, testing, project-viability, improve-codebase-architecture]

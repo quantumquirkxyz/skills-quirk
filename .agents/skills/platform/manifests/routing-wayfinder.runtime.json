@@ -2,7 +2,7 @@
   "skill": "routing/wayfinder",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "ca6ef546966ac9e10e7d25af2d9506e5e4319d7b0fdb0f7b9f9555c4cc0b6e5c",
+  "frontmatterHash": "7afea24a6d037fbd1323613618df07fc3ec32f901f0786658c2f766e677b64d2",
   "role": "workflow",
   "router": {
     "positive": [],

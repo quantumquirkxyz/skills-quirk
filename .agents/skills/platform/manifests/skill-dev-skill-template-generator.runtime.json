@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-template-generator",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3c68961aba464be149a85a637d9137d69629168b40876164a6dd54e09ba6f6c3",
+  "frontmatterHash": "8f574e2cac8d51ae46003518f027765c2363c1dbcf6869f16d43a631579f98fb",
   "role": "workflow",
   "router": {
     "positive": [],

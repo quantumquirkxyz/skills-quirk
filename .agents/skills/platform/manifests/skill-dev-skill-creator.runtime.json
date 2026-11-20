@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-creator",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2474faf7e79ed23bb1661570aeaa0a5d8a221c6213e958badda3db4faa78ad05",
+  "frontmatterHash": "a39afed071483fcc3b74fff870ac59060ff7b3b28dd4e8dc2da1403e1667654a",
   "role": "workflow",
   "router": {
     "positive": [],

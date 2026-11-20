@@ -21,7 +21,7 @@ promptVersion: "3.0"
 artifactType: "skill-dev"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression", "safety", "reliability"]
-fixturesPath: "evals/behavioral/evaluate-skill.json"
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["skill-dev", "evaluation", "reproducibility", "safety"]
 compatibility: []

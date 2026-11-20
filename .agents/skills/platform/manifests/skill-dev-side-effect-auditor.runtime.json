@@ -2,7 +2,7 @@
   "skill": "skill-dev/side-effect-auditor",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "3dc1cafff08a5896b995e91e019c583fa24d41080e3e6c19b1b975b24ad100c4",
+  "frontmatterHash": "c1e9ffff2336e7faee28394e6f4860c2c4ba6d9b636053f62e164bac548d88f4",
   "role": "workflow",
   "router": {
     "positive": [],

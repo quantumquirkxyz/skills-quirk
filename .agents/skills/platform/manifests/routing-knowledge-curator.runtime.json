@@ -2,7 +2,7 @@
   "skill": "routing/knowledge-curator",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0f496d17f18756fa304097cf302b3333351c9f9260196cc2923910110e0d6189",
+  "frontmatterHash": "ad59f70cd0ae82ddab93e2142a3e06cd38de3b3abb3713dc810316123dcf011d",
   "role": "workflow",
   "router": {
     "positive": [],
