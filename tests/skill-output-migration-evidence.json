@@ -14,9 +14,10 @@
       "tests/skill-output-migration-physics.test.mjs",
       "tests/skill-output-migration-quant.test.mjs",
       "tests/skill-output-migration-research.test.mjs",
-      "tests/skill-output-migration-web3.test.mjs"
+      "tests/skill-output-migration-web3.test.mjs",
+      "tests/skill-output-migration-loop-project-qa.test.mjs"
     ],
-    "verified": 269
+    "verified": 285
   },
   "entries": [
     {
@@ -1180,6 +1181,22 @@
       "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
     },
     {
+      "path": ".agents/skills/loop/loop-engineering/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "ba28571116c470dcbf657dc9da9869f5ae14985b781d69775360ff505cfa5eda",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/loop/retry-backoff/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "687ba8e4afc2ab74c32a9b93c322eb9cd790c31956299cf70f615e6dbcd9ddf7",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
       "path": ".agents/skills/math/math-computation-reproducible/SKILL.md",
       "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
       "contract": "schema/skill-output.schema.json",
@@ -1602,6 +1619,118 @@
       "result": "passed",
       "skillSha256": "a5b72003a590df5615146510eb628ff879edf1c2bc396132f83de1318e54a245",
       "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/project/analyze-artifacts/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "e808af9d2dea2afc8275f1bc55b8bb7904dcd9937e0663976f67a513e2f82e1c",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/docs-management/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "348e7d0cb859c6c6adf3cdd7de5dde775de8038e274f6f3bd99c8e889aa62176",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/make-project/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "e39e0f5471a7dce0fbff237bce1f3c71dac7b356c086c2dd2b510b39f29e59de",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/project-development/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "89139189219983e5b234b793720999a79f2633fe04baa857d344a085e7392c04",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/project-viability/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "c53eba771987ffb60581c2a3639b87f9b0da54a64d578707f86576f4d745d933",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/requirements-engineering/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "9d2ebd3f24dbbac1e5077a9c18c759749a6ce655fb81fe9322c63aef7f156085",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/software-maintenance-evolution/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "1b8a8c36b7318608b167d5b2b46e0c096665f4858ba7f27b5b81fd55897e356a",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/spec-driven-development/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "11ccc41669f0e341d93fac15564227983fe1a97e3a5bbf0643a125a3ffd93609",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/to-spec/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "b528fa2b60a711b5c184bb35454c6c1925cc1caad54e36faf1f1b1858e883ae3",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/project/to-tickets/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "edb27f6b6c54f3288b67b9f77a8f695dd757c29fa71e2d3b174e83a5dc8bf9d5",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/qa/performance-testing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "893509e682768538e48eb8e5deeb2ef3fd59ea2d937dd79e15fa99c816f124b1",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/qa/qa-automation/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "9cf8d378acd3463a690ec079a95afc6fcd3462ec3fcfd170ee42b3385d3eaee9",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/qa/qa-manual-testing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "55c74e256d69cb53db7156529737d6f0417750b3c8f90e2eeecc127a873db5a1",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
+    },
+    {
+      "path": ".agents/skills/qa/qa-security-testing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-loop-project-qa.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "3e9a7c817e38d54ec240e6c4a4ec6bd889ae26786c177b2c8945cc3f8aecba08",
+      "fixtureSha256": "aabc44034a58571271ace8469288e1bfd6dba267b9a287c87edca74babe29119"
     },
     {
       "path": ".agents/skills/quant/quant-backtest/SKILL.md",

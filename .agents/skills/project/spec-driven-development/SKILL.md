@@ -47,7 +47,7 @@ promptVersion: "1.0"
 artifactType: "spec-driven-artifacts"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/spec-driven-development.json
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["spec-driven", "sdd", "spec-kit", "constitution", "planning"]
 compatibility:

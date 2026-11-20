@@ -30,7 +30,7 @@ risk: high
 trustTier: 4
 artifactType: RequirementsArtifact
 evaluators: [behavioral, regression, traceability, quality-bar]
-fixturesPath: .agents/skills/project/requirements-engineering/fixtures
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 compatibility: [to-spec, prod-prd-writing, analyze-artifacts, domain-modeling, testing, architecture-evaluation, to-tickets, sec-threat-modeling]
 approvalRequired: true
 approvalFor: [baseline, approved, release-impacting-change]

@@ -50,7 +50,7 @@ maxIterations: 3
 promptVersion: "2.0"
 artifactType: "retry-backoff"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/retry-backoff.json"
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["retry", "backoff", "idempotency", "circuit-breaker", "loop-engineering", "agent-engineering"]
 compatibility: ["loop/loop-engineering", "delivery/implement", "delivery/review-fix-loop"]

@@ -23,6 +23,7 @@ const tranches = [
   ['tests/skill-output-migration-quant.test.mjs', ['quant']],
   ['tests/skill-output-migration-research.test.mjs', ['research']],
   ['tests/skill-output-migration-web3.test.mjs', ['web3']],
+  ['tests/skill-output-migration-loop-project-qa.test.mjs', ['loop', 'project', 'qa']],
 ];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 

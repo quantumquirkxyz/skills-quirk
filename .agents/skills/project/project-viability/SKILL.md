@@ -30,7 +30,7 @@ promptVersion: "2.0"
 artifactType: "project-viability"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["project"]
 compatibility: [code-review, improve-codebase-architecture]

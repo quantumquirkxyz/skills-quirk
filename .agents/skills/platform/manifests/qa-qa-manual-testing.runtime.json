@@ -2,7 +2,7 @@
   "skill": "qa/qa-manual-testing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "51a07b393fc8fefc74f56536078a8ecc306ba3d593ce5caef671833b280be551",
+  "frontmatterHash": "75f058cec703f406a3b6234837596b911a8ae9e03f78f1fc80336c105273e76a",
   "role": "workflow",
   "router": {
     "positive": [],
