@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "web3"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: .agents/skills/platform/fixtures/behavioral/web3-smart-contracts.json
+fixturesPath: "tests/skill-output-migration-web3.test.mjs"
 diataxis: "how-to"
 tags: ["web3", "solidity", "security", "verification"]
 compatibility: []

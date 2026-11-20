@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/physics-thermo.json"
+fixturesPath: "tests/skill-output-migration-physics.test.mjs"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: ["physics-classical", "physics-simulation-setup"]

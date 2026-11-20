@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/research-data-archiving.json"
+fixturesPath: "tests/skill-output-migration-research.test.mjs"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: []

@@ -18,6 +18,11 @@ const tranches = [
     ['auxiliary', 'cms', 'compilers', 'cs', 'db']],
   ['tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs',
     ['accessibility', 'graphic-design', 'os', 'platform', 'xr']],
+  ['tests/skill-output-migration-routing-skill-dev.test.mjs', ['routing', 'skill-dev']],
+  ['tests/skill-output-migration-physics.test.mjs', ['physics']],
+  ['tests/skill-output-migration-quant.test.mjs', ['quant']],
+  ['tests/skill-output-migration-research.test.mjs', ['research']],
+  ['tests/skill-output-migration-web3.test.mjs', ['web3']],
 ];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 

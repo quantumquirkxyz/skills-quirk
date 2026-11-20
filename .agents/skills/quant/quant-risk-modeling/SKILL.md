@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "model"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/quant-risk-modeling.json"
+fixturesPath: "tests/skill-output-migration-quant.test.mjs"
 diataxis: "how-to"
 tags: ["quant"]
 compatibility: ["quant-backtest", "quant-portfolio-opt", "quant-credit-risk"]

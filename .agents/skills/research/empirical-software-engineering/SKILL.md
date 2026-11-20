@@ -26,7 +26,7 @@ promptVersion: "1.0"
 artifactType: "research"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/empirical-software-engineering.json"
+fixturesPath: "tests/skill-output-migration-research.test.mjs"
 diataxis: "how-to"
 tags: ["research", "software-engineering", "empirical-methods"]
 compatibility: ["scientific-hypothesis", "research", "data-quality", "observability", "math-probability-models"]

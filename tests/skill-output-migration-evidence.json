@@ -8,9 +8,13 @@
       "tests/skill-output-migration-security-data-math-networking.test.mjs",
       "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
       "tests/skill-output-migration-devops-docs-engineering-finance-graph.test.mjs",
-      "tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs"
+      "tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs",
+      "tests/skill-output-migration-physics.test.mjs",
+      "tests/skill-output-migration-quant.test.mjs",
+      "tests/skill-output-migration-research.test.mjs",
+      "tests/skill-output-migration-web3.test.mjs"
     ],
-    "verified": 168
+    "verified": 198
   },
   "entries": [
     {
@@ -1182,6 +1186,102 @@
       "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
     },
     {
+      "path": ".agents/skills/physics/physics-astro/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "4f602313a5967ff4b27f09baa46e5263bd889e972840aa210ed4f171d7bd0cca",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-career-postdoc/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a8a1c739cf20f3ad4fbfb33229c01d4e325ab798b4f4247c55efb123a6fa74d9",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-classical/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a439efc55ce614609847daf475beeb5a862f7895949d96ae122abea8195e4da4",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-data-analysis-root/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0b1fc4f3d302aadc93bd2984f7f2dab3fade710144669e3b0acdb03b2db3209c",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-experimental-notebook/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "b601faa3e7162aebafc51212d8bdc0278e481eee9a9e4af57eca0b0b7628ca3c",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-literature-search/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "dc2f795f4dcc05c7b1a102a90c74666c6ad85ee492db7e7b3e439bbfb5222b63",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-quantum/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "24bf827979939f5f9a459b2e396748a23f18e9b5f2a2c1e4eca40ee11a6ef26e",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-reproducibility-archive/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "9b8e224668d36024276c1d0f95ada03705f0f5d9402e1cd8ccca4b917566c8e0",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-simulation-setup/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "e1af08e3bd1b515479368e163d0db93f961d1e2f21ce15318de8d5c38e24da56",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-talk-design/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "abe572a3f10c28ed5be4e4ca3bc23bb04fbc2744a402ae2a139a3aaba0bc61b6",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-thermo/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "aaf8e1e99eb4f72d067c961e5377d031b7e5e1533031271c6eeec621dea78202",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
+      "path": ".agents/skills/physics/physics-writing-revtex/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-physics.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "51d8510a7d738e1960510b97420a9d76edc7406c9841bdbdfc014acaa9fab3b6",
+      "fixtureSha256": "bd23bc9933742ab72896c3220e0928b827c8398a411b77e135c354b6285df067"
+    },
+    {
       "path": ".agents/skills/product/brainstorming/SKILL.md",
       "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
       "contract": "schema/skill-output.schema.json",
@@ -1236,6 +1336,102 @@
       "result": "passed",
       "skillSha256": "a5b72003a590df5615146510eb628ff879edf1c2bc396132f83de1318e54a245",
       "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/quant/quant-backtest/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "4a0875c9f42ee71331c78b5d860b9ae01848fd24af9ebed8c0a1e5fcd40df647",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-credit-risk/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "4b7b5c61aa63a912909b2c6a59778fbc5d41e1dc7cc93b3de0853d5055018645",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-derivatives-pricing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "5f92817d3a4c11525c04b96975722ef194c4bb890066333cf5bfc22f665042a2",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-factors/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "54a8f097b2d987e17b2bef87935ad7fa7476cf6a991c1113ec10b5ccc11a7d2f",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-market-micro/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "156454c23c98e1bdef9dae5ad89dbc4fdc54c01d8d7d33943ceb00d4cd113ca8",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-portfolio-opt/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "3e91b0f587bc8f02378d1251b1fe634ef5f3bb429e86c3b79d370301d92abc2c",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/quant/quant-risk-modeling/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-quant.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8d2d84ddf9507e8a5e9bf6198be532c89e46374de7ecf46aab54b5ba09474a55",
+      "fixtureSha256": "06c47a073c417777ee5a134e1e1d7cfdc1219e9649953ad0f5beddf066786195"
+    },
+    {
+      "path": ".agents/skills/research/empirical-software-engineering/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-research.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "60b5347b9ea3e40d82b541d919317c20e5adb799b085776e7e36cae05efa26f9",
+      "fixtureSha256": "649d42469f6d22d3937be800ae0fef42e37155869d277bcadf9c705b02801662"
+    },
+    {
+      "path": ".agents/skills/research/github-project-analysis/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-research.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8c7e55301bd2fd510c7d26759ab956a584ceb83b9f925a11caad267cab2c32c8",
+      "fixtureSha256": "649d42469f6d22d3937be800ae0fef42e37155869d277bcadf9c705b02801662"
+    },
+    {
+      "path": ".agents/skills/research/research-data-archiving/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-research.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "d95e0289530e821d8dd890272ebaacf1348a7c66ec858f7b31f5d03b84f45556",
+      "fixtureSha256": "649d42469f6d22d3937be800ae0fef42e37155869d277bcadf9c705b02801662"
+    },
+    {
+      "path": ".agents/skills/research/research-literature-review/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-research.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "9fb1d42a786e8e291b7238f0f3add53638fcdfa3ae35c4f859eae01ff2e98477",
+      "fixtureSha256": "649d42469f6d22d3937be800ae0fef42e37155869d277bcadf9c705b02801662"
+    },
+    {
+      "path": ".agents/skills/research/scientific-hypothesis/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-research.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "6dbd976371ba8420c2f232d7dc77e6d49b903c8949d405ad0db6ba7181cb3f44",
+      "fixtureSha256": "649d42469f6d22d3937be800ae0fef42e37155869d277bcadf9c705b02801662"
     },
     {
       "path": ".agents/skills/sec/cloud-security/SKILL.md",
@@ -1356,6 +1552,54 @@
       "result": "passed",
       "skillSha256": "b00469fd55fd2c3fb40b25d1a8bad56cb58a69cf1a25044ad5d840162a22fa23",
       "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/web3/web3-consensus/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a6d9fe1d8c5fb1b9cae245826a420f2906818503b18488d90f026c9c7c46d4df",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
+    },
+    {
+      "path": ".agents/skills/web3/web3-defi/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "de249aa004d748f8c9459a9ef5e65aed60022f065abae385a425c06c5418374c",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
+    },
+    {
+      "path": ".agents/skills/web3/web3-governance/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8d9c40e6816d62fa9e8bf8274d35a835262830d1502203e7ccedd863abddb862",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
+    },
+    {
+      "path": ".agents/skills/web3/web3-l2-scaling/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "eb61ba9cece39b94f461e76f2cd2c537ef8808500fb3b9df39edb109d5fefa94",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
+    },
+    {
+      "path": ".agents/skills/web3/web3-smart-contracts/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "875316dc4d5d64c764b0dd7f2f0594ff831dafa757bfe0eb725b4c83625f353c",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
+    },
+    {
+      "path": ".agents/skills/web3/web3-tokenomics/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-web3.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "6dae49268b7624483a4ae9e54184c29c108e0f1bf466232c74bc6953970ff320",
+      "fixtureSha256": "d2a5fc973ce977a3632018f1368d8c07215445f235e5d64081d63744b77a8e85"
     }
   ]
 }

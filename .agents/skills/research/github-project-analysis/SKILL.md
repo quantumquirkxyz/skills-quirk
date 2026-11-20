@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research-report"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/github-project-analysis.json"
+fixturesPath: "tests/skill-output-migration-research.test.mjs"
 diataxis: "how-to"
 tags: ["research", "github", "architecture"]
 compatibility: []

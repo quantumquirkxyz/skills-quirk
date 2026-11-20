@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "review"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/research-literature-review.json"
+fixturesPath: "tests/skill-output-migration-research.test.mjs"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: []

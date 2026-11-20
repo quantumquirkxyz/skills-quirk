@@ -401,7 +401,7 @@
       "sourceType": "local"
     },
     "empirical-software-engineering": {
-      "hash": "cb44e68ab7b412d49aa56c7f289a72d0d3099efe6d3154cabc3d9b4e2d66b2a3",
+      "hash": "60b5347b9ea3e40d82b541d919317c20e5adb799b085776e7e36cae05efa26f9",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -481,7 +481,7 @@
       "sourceType": "local"
     },
     "github-project-analysis": {
-      "hash": "7aac4dd5ed02e8ac278e17b1f3fc305867790892d0c7d0f7b5da2c5276334913",
+      "hash": "8c7e55301bd2fd510c7d26759ab956a584ceb83b9f925a11caad267cab2c32c8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -826,62 +826,62 @@
       "sourceType": "local"
     },
     "physics-astro": {
-      "hash": "52ee34400cfcca53846c4dd8819cd8146fa6cd1c8398dadf9b53e457cdc3b642",
+      "hash": "4f602313a5967ff4b27f09baa46e5263bd889e972840aa210ed4f171d7bd0cca",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-career-postdoc": {
-      "hash": "a1656bbcb0580ccc12921b90f2b78762070b4d8e3c90ea4853a876f6e95b7e3e",
+      "hash": "a8a1c739cf20f3ad4fbfb33229c01d4e325ab798b4f4247c55efb123a6fa74d9",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-classical": {
-      "hash": "4b585e8e12e69a4d7d7f9f340b92a771250c9b23ec5b3a1dc825f6db1f667226",
+      "hash": "a439efc55ce614609847daf475beeb5a862f7895949d96ae122abea8195e4da4",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-data-analysis-root": {
-      "hash": "67cca3589fe7274d0511036a8979c5d6b6b650286e4b0c50c63602cb1c03d335",
+      "hash": "0b1fc4f3d302aadc93bd2984f7f2dab3fade710144669e3b0acdb03b2db3209c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-experimental-notebook": {
-      "hash": "bc3d0524e3f3078ae539c1167410063e5bb5c570bfcf7309e2623a52c5c52582",
+      "hash": "b601faa3e7162aebafc51212d8bdc0278e481eee9a9e4af57eca0b0b7628ca3c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-literature-search": {
-      "hash": "db07cd9f830f46df2bf77fd41fe6dad558754c476c69e66f310e7e787331e9cd",
+      "hash": "dc2f795f4dcc05c7b1a102a90c74666c6ad85ee492db7e7b3e439bbfb5222b63",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-quantum": {
-      "hash": "48c57e9b26989d929addf989f70485b2dcb19454548ca247421c15f4a42e3ec2",
+      "hash": "24bf827979939f5f9a459b2e396748a23f18e9b5f2a2c1e4eca40ee11a6ef26e",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-reproducibility-archive": {
-      "hash": "ce8bf11eaa476b6295f5e177773be781b163bdb03cc6e7faac96b91f642353f5",
+      "hash": "9b8e224668d36024276c1d0f95ada03705f0f5d9402e1cd8ccca4b917566c8e0",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-simulation-setup": {
-      "hash": "acb9aa147dda793e2fa68eb5410a2bffc1e6111fe564c8603f506ac77e20c42d",
+      "hash": "e1af08e3bd1b515479368e163d0db93f961d1e2f21ce15318de8d5c38e24da56",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-talk-design": {
-      "hash": "f764497caa5dbe2834c194d17ced76e8ca0feba1b5857483c9a6f29e8dc44a8e",
+      "hash": "abe572a3f10c28ed5be4e4ca3bc23bb04fbc2744a402ae2a139a3aaba0bc61b6",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-thermo": {
-      "hash": "90b2b33b75ecc4852eb3f19213e927e4fb26d0f5fbb827a11a4ed8a9e24f52b3",
+      "hash": "aaf8e1e99eb4f72d067c961e5377d031b7e5e1533031271c6eeec621dea78202",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "physics-writing-revtex": {
-      "hash": "f1aefde1ae04f404624775559f0cebab2f57284049cdd6b32346b2ab9e44e4bc",
+      "hash": "51d8510a7d738e1960510b97420a9d76edc7406c9841bdbdfc014acaa9fab3b6",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -976,37 +976,37 @@
       "sourceType": "local"
     },
     "quant-backtest": {
-      "hash": "87d528b1c5a1de12396f82e46c90bb2baa60c645de0aa8cb51d65822af66983e",
+      "hash": "4a0875c9f42ee71331c78b5d860b9ae01848fd24af9ebed8c0a1e5fcd40df647",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-credit-risk": {
-      "hash": "3a42707b7cad27d77e8764f038e54106345b1e5a51a384257124e1b8d0afbe84",
+      "hash": "4b7b5c61aa63a912909b2c6a59778fbc5d41e1dc7cc93b3de0853d5055018645",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-derivatives-pricing": {
-      "hash": "d9910d83f231836e0ba68de42db5326b8f232911dc82596bc59b1dc6a29a7df6",
+      "hash": "5f92817d3a4c11525c04b96975722ef194c4bb890066333cf5bfc22f665042a2",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-factors": {
-      "hash": "125c5d0dd576788450c0a254086045dd9e0acf058b981afaed587aff67fa1380",
+      "hash": "54a8f097b2d987e17b2bef87935ad7fa7476cf6a991c1113ec10b5ccc11a7d2f",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-market-micro": {
-      "hash": "278aedf170c41390e0bfb5ccdb1a2704028aeef41e95498e4f247b3107d6bb57",
+      "hash": "156454c23c98e1bdef9dae5ad89dbc4fdc54c01d8d7d33943ceb00d4cd113ca8",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-portfolio-opt": {
-      "hash": "69c21960e6a3b98f48a341df09e269cbdc5786114a8d9311a518ebfa335f7688",
+      "hash": "3e91b0f587bc8f02378d1251b1fe634ef5f3bb429e86c3b79d370301d92abc2c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "quant-risk-modeling": {
-      "hash": "e54cb0fdc7faf53041c6300484de1c2b582fde626b31fcb6198056b977abac7f",
+      "hash": "8d2d84ddf9507e8a5e9bf6198be532c89e46374de7ecf46aab54b5ba09474a55",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1046,12 +1046,12 @@
       "sourceType": "local"
     },
     "research-data-archiving": {
-      "hash": "de901d3c8112b15d66ace6c18db648a10871a0f17b0ec826c72a243ec859fbf4",
+      "hash": "d95e0289530e821d8dd890272ebaacf1348a7c66ec858f7b31f5d03b84f45556",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "research-literature-review": {
-      "hash": "d17c00039edaa780fa7d32e0b6af076190be552634786bf0e6c94e57d4b1c876",
+      "hash": "9fb1d42a786e8e291b7238f0f3add53638fcdfa3ae35c4f859eae01ff2e98477",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1086,7 +1086,7 @@
       "sourceType": "local"
     },
     "scientific-hypothesis": {
-      "hash": "55fd9bad26ace3a2a8b318f6fc6540cdd292622bc31f67e2ae9e23daa6dc0bc6",
+      "hash": "6dbd976371ba8420c2f232d7dc77e6d49b903c8949d405ad0db6ba7181cb3f44",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1346,32 +1346,32 @@
       "sourceType": "local"
     },
     "web3-consensus": {
-      "hash": "cb1634b5ae6225af2f04456046698adf9ca7da402b6ed860a8c2c4064396e0f2",
+      "hash": "a6d9fe1d8c5fb1b9cae245826a420f2906818503b18488d90f026c9c7c46d4df",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "web3-defi": {
-      "hash": "1d0640a07688bb7b28ffb4b344d02a6fc0e1d040d69d4fa97742d3921b793293",
+      "hash": "de249aa004d748f8c9459a9ef5e65aed60022f065abae385a425c06c5418374c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "web3-governance": {
-      "hash": "dec202dc4da585ecb3912c1b20519e1d20fbfdcfe7b49a67d4d9d9ab753f3521",
+      "hash": "8d9c40e6816d62fa9e8bf8274d35a835262830d1502203e7ccedd863abddb862",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "web3-l2-scaling": {
-      "hash": "b62cd9ad01dd09125fe53fc8d2b9742e18737ece62dba800f6985e880cbd3f2d",
+      "hash": "eb61ba9cece39b94f461e76f2cd2c537ef8808500fb3b9df39edb109d5fefa94",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "web3-smart-contracts": {
-      "hash": "1abfe4fbfe364daeb609b82238ed15396d302ee24dd0c1a7e7e6e852abab9abb",
+      "hash": "875316dc4d5d64c764b0dd7f2f0594ff831dafa757bfe0eb725b4c83625f353c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "web3-tokenomics": {
-      "hash": "fce808e931da546a80cc01d306b892e6324e8e7b891db2117cb2d8121e5ab37d",
+      "hash": "6dae49268b7624483a4ae9e54184c29c108e0f1bf466232c74bc6953970ff320",
       "revision": "working-tree",
       "sourceType": "local"
     },
