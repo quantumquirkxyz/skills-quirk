@@ -6,6 +6,33 @@ import {resolve} from 'node:path';
 const root=resolve('.');
 const fixture=JSON.parse(await readFile(resolve(root,'.agents/skills/platform/fixtures/migration/delivery-frontend-output-contracts.json'),'utf8'));
 const readSkill=skill=>readFile(resolve(root,'.agents/skills',`${skill}/SKILL.md`),'utf8');
+const coveredSkills = [
+  '.agents/skills/delivery/code-review/SKILL.md',
+  '.agents/skills/delivery/contribution-workflow-optimizer/SKILL.md',
+  '.agents/skills/delivery/diagnosing-bugs/SKILL.md',
+  '.agents/skills/delivery/implement/SKILL.md',
+  '.agents/skills/delivery/implement-review-fixes/SKILL.md',
+  '.agents/skills/delivery/loop-budget/SKILL.md',
+  '.agents/skills/delivery/plan-review-fixes/SKILL.md',
+  '.agents/skills/delivery/prototype/SKILL.md',
+  '.agents/skills/delivery/research/SKILL.md',
+  '.agents/skills/delivery/resolving-merge-conflicts/SKILL.md',
+  '.agents/skills/delivery/review-fix-loop/SKILL.md',
+  '.agents/skills/delivery/review-pr/SKILL.md',
+  '.agents/skills/delivery/tdd/SKILL.md',
+  '.agents/skills/delivery/testing/SKILL.md',
+  '.agents/skills/delivery/webapp-testing/SKILL.md',
+  '.agents/skills/frontend/astro/SKILL.md',
+  '.agents/skills/frontend/design-system/SKILL.md',
+  '.agents/skills/frontend/frontend-design/SKILL.md',
+  '.agents/skills/frontend/frontend-testing/SKILL.md',
+  '.agents/skills/frontend/mobile/SKILL.md',
+  '.agents/skills/frontend/nextjs/SKILL.md',
+  '.agents/skills/frontend/react/SKILL.md',
+  '.agents/skills/frontend/remix/SKILL.md',
+  '.agents/skills/frontend/state-management/SKILL.md',
+  '.agents/skills/frontend/styling/SKILL.md',
+];
 
 function checkEntry(entry,contents) {
   const normalized=contents.replaceAll('**','');
@@ -26,6 +53,8 @@ function validateFixture(data,skills) {
 }
 
 test('delivery/frontend migration fixture covers every selected canonical skill',async()=>{
+  assert.equal(coveredSkills.length,25);
+  assert.equal(new Set(coveredSkills).size,coveredSkills.length);
   const skills=fixture.entries.map(entry=>entry.skill);
   assert.equal(new Set(skills).size,skills.length);
   assert.equal(skills.filter(skill=>skill.startsWith('delivery/')).length,15);
