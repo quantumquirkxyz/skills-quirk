@@ -1,4 +1,4 @@
-import {readFile} from 'node:fs/promises';
+import {readFile,realpath} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 
@@ -30,13 +30,16 @@ export function verifyMigrationEvidence(inventory,manifest) {
 const digest=buffer=>createHash('sha256').update(buffer).digest('hex');
 export async function verifyMigrationEvidenceFiles(inventory,manifest,{root='.'}={}) {
   const report=verifyMigrationEvidence(inventory,manifest);
+  const realRoot=await realpath(root);
   for(const entry of manifest.entries) {
     if(!report.verified.has(entry.path)) continue;
     try {
       for(const [path,expected] of [[entry.path,entry.skillSha256],[entry.fixturePath,entry.fixtureSha256]]) {
         const full=resolve(root,path);
         if(!full.startsWith(resolve(root)+'/')) throw new Error('Path escapes repository');
-        const actual=digest(await readFile(full));
+        const realFile=await realpath(full);
+        if(!realFile.startsWith(realRoot+'/')) throw new Error('Symlink escapes repository');
+        const actual=digest(await readFile(realFile));
         if(actual!==expected) throw new Error('Digest mismatch: '+path);
       }
     } catch(error) {
