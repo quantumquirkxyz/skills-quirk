@@ -266,3 +266,18 @@ A fixture that passes does not by itself demonstrate correctness of the
 entire skill. Reviewers must still assess representative behavior, side
 effects, trust boundaries, rollback and workflow compatibility. A signed
 CI run on the final commit is required for release.
+
+### Behavioral fixture inventory (coverage aid, not migration evidence)
+
+`node scripts/skill-output-fixture-inventory.mjs` produces a deterministic
+catalog report for declared behavioral JSON fixtures. It normalizes quoted
+frontmatter scalars, accepts only the two repository behavioral-fixture
+roots, resolves symlinks before accepting a file, parses the fixture, and
+reports missing or unsafe declarations separately. The companion
+`tests/skill-output-fixture-inventory.test.mjs` exercises this report.
+
+This report is deliberately **not** an evidence manifest: it does not claim
+that a skill has adopted the output envelope, and it cannot satisfy
+`--require-mapped --evidence`. Use it to prioritize fixture authoring and
+then create real per-skill evidence only after an executable `tests/*.test.mjs`
+fixture has passed against the pinned canonical bytes.

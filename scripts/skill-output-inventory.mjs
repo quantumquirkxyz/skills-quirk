@@ -11,6 +11,14 @@ const patterns = {
   fixtures: /^fixturesPath:\s*(.+)$/m,
   output: /^outputs:\s*$/m,
 };
+const scalar = value => {
+  const trimmed=value?.trim() ?? '';
+  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+      (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+    return trimmed.slice(1,-1);
+  }
+  return trimmed;
+};
 async function scan(directory, entries, base) {
   for (const entry of await readdir(directory,{withFileTypes:true})) {
     const path=join(directory,entry.name);
@@ -19,14 +27,14 @@ async function scan(directory, entries, base) {
       const content=await readFile(path,'utf8');
       const frontmatter=content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
       const schemaRefs=[...new Set(content.match(patterns.canonicalSchema) ?? [])];
-      const risk=/^risk:\s*(.+)$/m.exec(frontmatter)?.[1]?.trim() ?? 'unclassified';
+      const risk=scalar(/^risk:\s*(.+)$/m.exec(frontmatter)?.[1]) || 'unclassified';
       const sideEffects=patterns.sideEffects.test(frontmatter);
       const approval=patterns.approval.exec(frontmatter)?.[1] ?? 'unspecified';
       entries.push({
         path:relative(base,path).replaceAll('\\','/'),
-        artifactType:patterns.artifactType.exec(frontmatter)?.[1]?.trim() ?? null,
+        artifactType:scalar(patterns.artifactType.exec(frontmatter)?.[1]) || null,
         risk, sideEffects, approvalRequired:approval,
-        fixture:patterns.fixtures.exec(frontmatter)?.[1]?.trim() ?? null,
+        fixture:scalar(patterns.fixtures.exec(frontmatter)?.[1]) || null,
         schemaRefs, hasOutputDeclaration:patterns.output.test(frontmatter),
         migrationStatus: !frontmatter.trim() || !/^name:\s*\S+/m.test(frontmatter)
           ? 'not-assessed'
