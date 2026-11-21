@@ -1,12 +1,15 @@
 import {inventorySkills} from './skill-output-inventory.mjs';
+import {verifyMigrationEvidenceFiles} from './skill-output-migration-evidence.mjs';
+import {readFile} from 'node:fs/promises';
 
 // Read-only release gate. Do not equate a schema reference with a verified migration.
-export function evaluateCoverage(inventory,{requireMapped=false}={}) {
+export function evaluateCoverage(inventory,{requireMapped=false,verifiedPaths=[]}={}) {
   if (!inventory || !Array.isArray(inventory.skills) || inventory.total!==inventory.skills.length) {
     throw new Error('Invalid skill inventory');
   }
   const unclassified=inventory.skills.filter(skill=>!skill.migrationStatus || skill.migrationStatus==='not-assessed');
-  const unmapped=inventory.skills.filter(skill=>skill.migrationStatus!=='mapped-and-verified');
+  const verified=new Set(verifiedPaths);
+  const unmapped=inventory.skills.filter(skill=>!verified.has(skill.path));
   return {
     total:inventory.total,
     classified:inventory.total-unclassified.length,
@@ -19,7 +22,12 @@ export function evaluateCoverage(inventory,{requireMapped=false}={}) {
 if (process.argv[1]?.endsWith('check-skill-output-coverage.mjs')) {
   const requireMapped=process.argv.includes('--require-mapped');
   const inventory=await inventorySkills();
-  const result=evaluateCoverage(inventory,{requireMapped});
+  const manifestArg=process.argv.indexOf('--evidence');
+  if (manifestArg!==-1 && (!process.argv[manifestArg+1] || process.argv[manifestArg+1].startsWith('--'))) throw new Error('Missing --evidence path');
+  const evidence=manifestArg===-1 ? {verified:[],problems:[]} :
+    await verifyMigrationEvidenceFiles(inventory,JSON.parse(await readFile(process.argv[manifestArg+1],'utf8')));
+  const result={...evaluateCoverage(inventory,{requireMapped,verifiedPaths:evidence.verified}),evidenceProblems:evidence.problems};
+  if (evidence.problems.length) result.passed=false;
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
   if (!result.passed) process.exitCode=1;
 }
