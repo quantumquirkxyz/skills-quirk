@@ -1,7 +1,7 @@
 {
   "name": "pr-operations",
   "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/integrations/pr-operations/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/integrations/pr-operations/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "pr-operations",
       "description": "Manage pull request operations with branch, diff, validation, reviewer, label, comment, and publication evidence while keeping merge decisions explicit.",
       "tags": [
-        "\"integrations\""
+        "integrations"
       ],
       "parameters": {
         "trustTier": "3",

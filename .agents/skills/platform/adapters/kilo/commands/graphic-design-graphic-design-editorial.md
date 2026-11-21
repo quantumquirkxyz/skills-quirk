@@ -24,4 +24,4 @@ When to use: Design editorial layouts — magazines, books, reports, long-form c
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination. complete; structured result returned; completion criteria checked.
+Stop when: Editorial layout specification complete; grid, typography hierarchy, image treatment, and pagination production-ready.

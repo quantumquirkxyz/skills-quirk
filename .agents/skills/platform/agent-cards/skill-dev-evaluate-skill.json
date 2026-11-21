@@ -1,7 +1,7 @@
 {
   "name": "evaluate-skill",
   "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/evaluate-skill/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/skill-dev/evaluate-skill/SKILL.md",
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
@@ -19,10 +19,10 @@
       "name": "evaluate-skill",
       "description": "Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.",
       "tags": [
-        "\"skill-dev\"",
-        "\"evaluation\"",
-        "\"reproducibility\"",
-        "\"safety\""
+        "skill-dev",
+        "evaluation",
+        "reproducibility",
+        "safety"
       ],
       "parameters": {
         "trustTier": "1",

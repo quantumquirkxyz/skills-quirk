@@ -1,7 +1,7 @@
 {
   "name": "diagnosing-bugs",
   "description": ">-",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/diagnosing-bugs/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/diagnosing-bugs/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "diagnosing-bugs",
       "description": ">-",
       "tags": [
-        "\"delivery\""
+        "delivery"
       ],
       "parameters": {
         "trustTier": "1",

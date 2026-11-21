@@ -1,7 +1,7 @@
 {
   "name": "tdd",
   "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\"",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/tdd/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/tdd/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,

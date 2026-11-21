@@ -1,7 +1,7 @@
 {
   "name": "db-nosql-modeling",
   "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/db/db-nosql-modeling/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/db/db-nosql-modeling/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "db-nosql-modeling",
       "description": "Design NoSQL data models — document, key-value, wide-column, graph, time-series — with access pattern analysis, consistency requirements, and schema evolution.",
       "tags": [
-        "\"db\""
+        "db"
       ],
       "parameters": {
         "trustTier": "1",

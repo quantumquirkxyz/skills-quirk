@@ -221,14 +221,14 @@
 |-------|---------|----------|------|------------|-------------|
 | [brand-identity](.agents/skills/graphic-design/brand-identity) | 1 | stable | low | 1 | Design brand identity systems — logo, color, typography, imagery, iconography... |
 | [design-system-visual](.agents/skills/graphic-design/design-system-visual) | 1 | stable | low | 1 | Design visual design systems — tokens, components, patterns, and documentatio... |
-| [graphic-design-accessibility](.agents/skills/graphic-design/graphic-design-accessibility) | 1.0.0 | stable | low | 1 | Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe ... |
-| [graphic-design-advertising](.agents/skills/graphic-design/graphic-design-advertising) | 1.0.0 | stable | low | 1 | Design advertising creatives — social ads, display ads, email banners, campai... |
-| [graphic-design-data-viz](.agents/skills/graphic-design/graphic-design-data-viz) | 1.0.0 | stable | low | 1 | Design data visualizations — charts, infographics, dashboards — with explicit... |
-| [graphic-design-editorial](.agents/skills/graphic-design/graphic-design-editorial) | 1.0.0 | stable | low | 1 | Design editorial layouts — magazines, books, reports, long-form content — wit... |
+| [graphic-design-accessibility](.agents/skills/graphic-design/graphic-design-accessibility) | 1 | stable | low | 1 | Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe ... |
+| [graphic-design-advertising](.agents/skills/graphic-design/graphic-design-advertising) | 1 | stable | low | 1 | Design advertising creatives — social ads, display ads, email banners, campai... |
+| [graphic-design-data-viz](.agents/skills/graphic-design/graphic-design-data-viz) | 1 | stable | low | 1 | Design data visualizations — charts, infographics, dashboards — with explicit... |
+| [graphic-design-editorial](.agents/skills/graphic-design/graphic-design-editorial) | 1 | stable | low | 1 | Design editorial layouts — magazines, books, reports, long-form content — wit... |
 | [graphic-design-foundations](.agents/skills/graphic-design/graphic-design-foundations) | 1 | stable | low | 1 | Design graphic artifacts — posters, social graphics, editorial layouts, packa... |
-| [graphic-design-motion](.agents/skills/graphic-design/graphic-design-motion) | 1.0.0 | stable | low | 1 | Design motion graphics and UI animations — microinteractions, transitions, Lo... |
-| [graphic-design-packaging](.agents/skills/graphic-design/graphic-design-packaging) | 1.0.0 | stable | low | 1 | Design physical packaging — dielines, structure, materials, regulatory labels... |
-| [graphic-design-photo-direction](.agents/skills/graphic-design/graphic-design-photo-direction) | 1.0.0 | stable | low | 1 | Direct photography and image retouching — art direction, lighting, compositio... |
+| [graphic-design-motion](.agents/skills/graphic-design/graphic-design-motion) | 1 | stable | low | 1 | Design motion graphics and UI animations — microinteractions, transitions, Lo... |
+| [graphic-design-packaging](.agents/skills/graphic-design/graphic-design-packaging) | 1 | stable | low | 1 | Design physical packaging — dielines, structure, materials, regulatory labels... |
+| [graphic-design-photo-direction](.agents/skills/graphic-design/graphic-design-photo-direction) | 1 | stable | low | 1 | Direct photography and image retouching — art direction, lighting, compositio... |
 | [graphic-design-project-management](.agents/skills/graphic-design/graphic-design-project-management) | 1 | experimental | low | 2 | Manage graphic design projects — briefs, iterations, reviews, asset handoff, ... |
 | [graphic-design-tools](.agents/skills/graphic-design/graphic-design-tools) | 1 | experimental | medium | 3 | Connect graphic design tools — Figma, Adobe Creative Cloud, Canva, and local ... |
 
@@ -333,7 +333,7 @@
 | [docs-management](.agents/skills/project/docs-management) | 1 | stable | low | 1 | Keep repository documentation, ADRs, and durable context aligned with the cur... |
 | [make-project](.agents/skills/project/make-project) | 1 | stable | medium | 3 | Use when the user wants a new board in GitHub Projects, or another skill need... |
 | [project-development](.agents/skills/project/project-development) | 1 | stable | low | 1 | Evaluate a project's shape, agent fit, and architectural starting point — bef... |
-| [project-viability](.agents/skills/project/project-viability) | 1.0.0 | stable | low | 1 | Evaluate whether a project is viable, functional, and scalable by analyzing i... |
+| [project-viability](.agents/skills/project/project-viability) | 1 | stable | low | 1 | Evaluate whether a project is viable, functional, and scalable by analyzing i... |
 | [requirements-engineering](.agents/skills/project/requirements-engineering) | 1 | stable | high | 4 | Transform stakeholder, business, and system needs into verifiable, traceable,... |
 | [software-maintenance-evolution](.agents/skills/project/software-maintenance-evolution) | 1 | stable | high | 4 | Analyze and govern corrective, adaptive, perfective, and preventive software ... |
 | [spec-driven-development](.agents/skills/project/spec-driven-development) | 1 | experimental | medium | 3 | Run spec-driven development (SDD): a constitution for repo-local rules, then ... |

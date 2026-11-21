@@ -24,4 +24,4 @@ When to use: Design advertising creatives — social ads, display ads, email ban
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules. complete; structured result returned; completion criteria checked.
+Stop when: Advertising creative specification complete; brand consistency, format compliance, hierarchy, and accessibility checked.

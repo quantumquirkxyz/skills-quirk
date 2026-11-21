@@ -1,7 +1,7 @@
 {
   "name": "skill-quality-gate",
   "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/skill-dev/skill-quality-gate/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/skill-dev/skill-quality-gate/SKILL.md",
   "version": "3",
   "capabilities": {
     "skillInvocation": true,
@@ -19,11 +19,11 @@
       "name": "skill-quality-gate",
       "description": "Run a reproducible, composable Skill-bundle quality gate with policy-as-code severities, baseline deltas, security and agentic evaluations, mutation/property/adversarial checks, SARIF/attestations, and fail-closed verdicts.",
       "tags": [
-        "\"skill-dev\"",
-        "\"quality-gate\"",
-        "\"policy-as-code\"",
-        "\"security\"",
-        "\"reproducibility\""
+        "skill-dev",
+        "quality-gate",
+        "policy-as-code",
+        "security",
+        "reproducibility"
       ],
       "parameters": {
         "trustTier": "1",

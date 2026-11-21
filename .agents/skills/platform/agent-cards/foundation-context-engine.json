@@ -1,7 +1,7 @@
 {
   "name": "context-engine",
   "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/context-engine/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/foundation/context-engine/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "context-engine",
       "description": "Manage dynamic context for agent execution using retrieval-augmented generation patterns, updating the working context from sources beyond static CONTEXT.md (issues, PRs, docs, execution traces).",
       "tags": [
-        "\"foundation\""
+        "foundation"
       ],
       "parameters": {
         "trustTier": "2",

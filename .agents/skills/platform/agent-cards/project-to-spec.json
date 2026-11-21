@@ -1,7 +1,7 @@
 {
   "name": "to-spec",
   "description": "Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/to-spec/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/project/to-spec/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,

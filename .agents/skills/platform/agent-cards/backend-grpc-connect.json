@@ -1,7 +1,7 @@
 {
   "name": "grpc-connect",
   "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/backend/grpc-connect/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/backend/grpc-connect/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "grpc-connect",
       "description": "gRPC and Connect (protobuf, ConnectRPC, grpc-gateway, streaming, code generation).",
       "tags": [
-        "\"backend\""
+        "backend"
       ],
       "parameters": {
         "trustTier": "3",

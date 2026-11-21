@@ -1389,7 +1389,11 @@
       "domain": "foundation",
       "tier": "3",
       "artifactType": "agent",
-      "capabilities": [],
+      "capabilities": [
+        "independently reproduce a delegated claim",
+        "reject unverifiable, stale, or partial evidence",
+        "emit a bounded verification verdict with evidence"
+      ],
       "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
       "path": ".agents/skills/foundation/verify-delegation"
     },

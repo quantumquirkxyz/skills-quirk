@@ -1,7 +1,7 @@
 {
   "name": "code-review",
   "description": "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/code-review/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/code-review/SKILL.md",
   "version": "3",
   "capabilities": {
     "skillInvocation": true,

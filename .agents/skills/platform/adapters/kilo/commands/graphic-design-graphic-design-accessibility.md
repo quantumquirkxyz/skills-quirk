@@ -24,4 +24,4 @@ When to use: Design inclusive graphic artifacts — WCAG-compliant visuals, colo
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital. complete; structured result returned; completion criteria checked.
+Stop when: Accessible artifact specification complete; WCAG level, contrast, palette, typography, and remediation evidence explicit.

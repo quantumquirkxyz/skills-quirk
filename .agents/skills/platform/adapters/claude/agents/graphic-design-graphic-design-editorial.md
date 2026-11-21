@@ -11,4 +11,4 @@ Capabilities:
 - analyze design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination with assumptions, constraints, and failure modes
 - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 
-Stop condition: Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination. complete; structured result returned; completion criteria checked.
+Stop condition: Editorial layout specification complete; grid, typography hierarchy, image treatment, and pagination production-ready.

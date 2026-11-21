@@ -1,7 +1,7 @@
 {
   "name": "spec-driven-development",
   "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/spec-driven-development/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/project/spec-driven-development/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,11 +19,11 @@
       "name": "spec-driven-development",
       "description": "Run spec-driven development (SDD): a constitution for repo-local rules, then specify, plan, and tasks as durable artifacts, then implement against them - compatible with GitHub Spec Kit's /specify, /plan, /tasks workflow.",
       "tags": [
-        "\"spec-driven\"",
-        "\"sdd\"",
-        "\"spec-kit\"",
-        "\"constitution\"",
-        "\"planning\""
+        "spec-driven",
+        "sdd",
+        "spec-kit",
+        "constitution",
+        "planning"
       ],
       "parameters": {
         "trustTier": "3",

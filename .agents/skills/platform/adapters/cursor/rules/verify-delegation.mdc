@@ -8,6 +8,8 @@ alwaysApply: false
 Apply the verify-delegation skill when the request matches its scope.
 
 Capabilities:
-- apply the verify-delegation workflow
+- independently reproduce a delegated claim
+- reject unverifiable, stale, or partial evidence
+- emit a bounded verification verdict with evidence
 
 Stop when: Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient.

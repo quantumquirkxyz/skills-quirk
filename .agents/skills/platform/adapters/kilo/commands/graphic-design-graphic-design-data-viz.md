@@ -24,4 +24,4 @@ When to use: Design data visualizations — charts, infographics, dashboards —
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules. complete; structured result returned; completion criteria checked.
+Stop when: Visualization artifact complete; chart choice justified, palette accessible, labels and text alternatives validated.

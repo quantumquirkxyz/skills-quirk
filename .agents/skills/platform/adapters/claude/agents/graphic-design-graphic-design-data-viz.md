@@ -11,4 +11,4 @@ Capabilities:
 - analyze design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules with assumptions, constraints, and failure modes
 - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 
-Stop condition: Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules. complete; structured result returned; completion criteria checked.
+Stop condition: Visualization artifact complete; chart choice justified, palette accessible, labels and text alternatives validated.

@@ -1,7 +1,7 @@
 {
   "name": "sec-cryptography-applied",
   "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/sec/sec-cryptography-applied/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/sec/sec-cryptography-applied/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "sec-cryptography-applied",
       "description": "Apply cryptography — encryption at rest / in transit, digital signatures, key management, MACs, TLS/PKI, HSM, secure enclaves — with implementation guidance and anti-patterns.",
       "tags": [
-        "\"sec\""
+        "sec"
       ],
       "parameters": {
         "trustTier": "3",

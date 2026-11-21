@@ -24,4 +24,4 @@ When to use: Design motion graphics and UI animations — microinteractions, tra
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules. complete; structured result returned; completion criteria checked.
+Stop when: Motion specification and assets complete; timing, easing, reduced-motion behavior, and performance budgets verified.

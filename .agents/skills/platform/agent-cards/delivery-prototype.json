@@ -1,7 +1,7 @@
 {
   "name": "prototype",
   "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/prototype/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/prototype/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "prototype",
       "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or interaction shape actually works.",
       "tags": [
-        "\"delivery\""
+        "delivery"
       ],
       "parameters": {
         "trustTier": "1",

@@ -1,7 +1,7 @@
 {
   "name": "parallel-issue-fleet",
   "description": "Orchestrate a dependency-aware fleet of issue agents in isolated local worktrees or dedicated VM-pool slots, with portable worker profiles, durable checkpoints, bounded concurrency, validation, and owned-resource cleanup.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/routing/parallel-issue-fleet/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/parallel-issue-fleet/SKILL.md",
   "version": "2",
   "capabilities": {
     "skillInvocation": true,

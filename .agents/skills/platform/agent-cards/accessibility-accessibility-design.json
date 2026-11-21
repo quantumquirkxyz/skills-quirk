@@ -1,7 +1,7 @@
 {
   "name": "accessibility-design",
   "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/accessibility/accessibility-design/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/accessibility/accessibility-design/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "accessibility-design",
       "description": "Design accessible interfaces — semantics, focus management, keyboard flows, contrast, and assistive-technology compatibility — with inclusive interaction patterns.",
       "tags": [
-        "\"accessibility\""
+        "accessibility"
       ],
       "parameters": {
         "trustTier": "1",

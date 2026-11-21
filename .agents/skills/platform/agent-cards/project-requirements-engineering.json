@@ -1,7 +1,7 @@
 {
   "name": "requirements-engineering",
   "description": "Transform stakeholder, business, and system needs into verifiable, traceable, versioned requirements with explicit provenance, conflicts, quality gates, and change impact.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/requirements-engineering/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/project/requirements-engineering/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,

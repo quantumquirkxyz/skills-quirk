@@ -1,7 +1,7 @@
 {
   "name": "execution-policy",
   "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/auxiliary/execution-policy/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/auxiliary/execution-policy/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "execution-policy",
       "description": "Decide whether a Skill action is allowed, requires approval, or must stop.",
       "tags": [
-        "\"auxiliary\""
+        "auxiliary"
       ],
       "parameters": {
         "trustTier": "1",

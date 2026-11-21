@@ -1,7 +1,7 @@
 {
   "name": "frontend-design",
   "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/frontend/frontend-design/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/frontend/frontend-design/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "frontend-design",
       "description": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.",
       "tags": [
-        "\"frontend\""
+        "frontend"
       ],
       "parameters": {
         "trustTier": "1",

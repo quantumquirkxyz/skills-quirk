@@ -23,4 +23,4 @@ When to use: Direct photography and image retouching — art direction, lighting
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery. complete; structured result returned; completion criteria checked.
+Stop when: Photography direction complete; shot list, lighting, composition, color grading, and retouching workflow explicit.

@@ -11,4 +11,4 @@ Capabilities:
 - analyze design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications with assumptions, constraints, and failure modes
 - produce and validate a graphic-design artifact with evidence, decisions, and next steps
 
-Stop condition: Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications. complete; structured result returned; completion criteria checked.
+Stop condition: Packaging specification complete; dielines, materials, regulatory labels, and production constraints explicit.

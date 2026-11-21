@@ -1,7 +1,7 @@
 {
   "name": "artifact-handoff",
   "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/routing/artifact-handoff/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/artifact-handoff/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "artifact-handoff",
       "description": "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations.",
       "tags": [
-        "\"routing\""
+        "routing"
       ],
       "parameters": {
         "trustTier": "1",

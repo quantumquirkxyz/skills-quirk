@@ -1,7 +1,7 @@
 {
   "name": "project-viability",
   "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/project/project-viability/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/project/project-viability/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "project-viability",
       "description": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.",
       "tags": [
-        "\"project\""
+        "project"
       ],
       "parameters": {
         "trustTier": "1",

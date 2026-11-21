@@ -23,4 +23,4 @@ When to use: Run the context compaction discipline for long agent sessions: summ
 - side effects: write-temp-file: "ephemeral staging and discarded tool-result indexes only, write-persistent-file: "session handoff state or repo-local CONTEXT.md only; never task artifacts
 - isolation: none; model tier: fast
 
-Stop when: Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts. complete; structured result returned; completion criteria checked.
+Stop when: Durable artifacts preserved by reference; dropped items re-derivable or recorded in riskRemaining; the next window opens with the summary and budget; completion criteria checked.

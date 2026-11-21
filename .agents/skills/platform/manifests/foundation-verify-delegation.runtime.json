@@ -2,7 +2,7 @@
   "skill": "foundation/verify-delegation",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "35d4ff8c43bd9807279fb7b02c79fd79cb29d595cea8efc81ae8c26f36a31365",
+  "frontmatterHash": "d8b85f692ab8161b40a53ca48532df91a2d282d7af1af7752a19cbb6c79a1ef8",
   "role": "workflow",
   "router": {
     "positive": [],

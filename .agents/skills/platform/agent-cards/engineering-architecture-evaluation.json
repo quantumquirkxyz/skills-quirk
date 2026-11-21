@@ -1,7 +1,7 @@
 {
   "name": "architecture-evaluation",
   "description": "Evaluate architecture alternatives against quality attributes, constraints, cost, risk, reversibility, sustainability, and operational fit.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/engineering/architecture-evaluation/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/architecture-evaluation/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,9 +19,9 @@
       "name": "architecture-evaluation",
       "description": "Evaluate architecture alternatives against quality attributes, constraints, cost, risk, reversibility, sustainability, and operational fit.",
       "tags": [
-        "\"engineering\"",
-        "\"architecture\"",
-        "\"quality-attributes\""
+        "engineering",
+        "architecture",
+        "quality-attributes"
       ],
       "parameters": {
         "trustTier": "3",

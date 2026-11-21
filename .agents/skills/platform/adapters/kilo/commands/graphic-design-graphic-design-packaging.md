@@ -24,4 +24,4 @@ When to use: Design physical packaging — dielines, structure, materials, regul
 - side effects: none
 - isolation: none; model tier: reasoning
 
-Stop when: Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications. complete; structured result returned; completion criteria checked.
+Stop when: Packaging specification complete; dielines, materials, regulatory labels, and production constraints explicit.

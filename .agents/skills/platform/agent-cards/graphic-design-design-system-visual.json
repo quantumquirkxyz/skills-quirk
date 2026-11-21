@@ -1,7 +1,7 @@
 {
   "name": "design-system-visual",
   "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/graphic-design/design-system-visual/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/graphic-design/design-system-visual/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "design-system-visual",
       "description": "Design visual design systems — tokens, components, patterns, and documentation — with explicit hierarchy, accessibility, and cross-channel consistency.",
       "tags": [
-        "\"graphic-design\""
+        "graphic-design"
       ],
       "parameters": {
         "trustTier": "1",

@@ -1,7 +1,7 @@
 {
   "name": "skill-composition",
   "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/foundation/skill-composition/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/foundation/skill-composition/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,10 +19,10 @@
       "name": "skill-composition",
       "description": "Compose skills into chains and workflows with explicit contracts: declare the producer-consumer edges between skills, verify artifact compatibility at each edge, and keep the chain inside a declared budget.",
       "tags": [
-        "\"composition\"",
-        "\"workflows\"",
-        "\"handoff\"",
-        "\"orchestration\""
+        "composition",
+        "workflows",
+        "handoff",
+        "orchestration"
       ],
       "parameters": {
         "trustTier": "3",

@@ -1,7 +1,7 @@
 {
   "name": "math-teaching-problem-set",
   "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/math/math-teaching-problem-set/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/math/math-teaching-problem-set/SKILL.md",
   "version": "2",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "math-teaching-problem-set",
       "description": "Design and grade math problem sets and exams — difficulty progression, rubric, anti-cheating variants, accessibility, and LaTeX layout.",
       "tags": [
-        "\"math\""
+        "math"
       ],
       "parameters": {
         "trustTier": "1",

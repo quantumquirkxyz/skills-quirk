@@ -1,7 +1,7 @@
 {
   "name": "implement-review-fixes",
   "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/delivery/implement-review-fixes/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/implement-review-fixes/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
@@ -19,7 +19,7 @@
       "name": "implement-review-fixes",
       "description": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.",
       "tags": [
-        "\"delivery\""
+        "delivery"
       ],
       "parameters": {
         "trustTier": "3",

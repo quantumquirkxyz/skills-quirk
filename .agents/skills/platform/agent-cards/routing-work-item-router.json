@@ -1,7 +1,7 @@
 {
   "name": "work-item-router",
   "description": "Force reading the canonical work-item governance index before routing specs, tickets, project boards, or publication flows.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/routing/work-item-router/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/work-item-router/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,

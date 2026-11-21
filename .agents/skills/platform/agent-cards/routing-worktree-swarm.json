@@ -1,7 +1,7 @@
 {
   "name": "worktree-swarm",
   "description": "Create isolated local git worktrees and launch one local coding agent per open GitHub issue in the current repository.",
-  "url": "https://github.com/quirk/example/blob/main/.agents/skills/routing/worktree-swarm/SKILL.md",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/worktree-swarm/SKILL.md",
   "version": "1",
   "capabilities": {
     "skillInvocation": true,
