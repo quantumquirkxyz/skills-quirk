@@ -12,7 +12,8 @@ const lifecycleToExecution = Object.freeze({
 });
 export function normalizeLifecycleArtifact(artifact, {title, summary, validation = [], nextActions = []} = {}) {
   if (!artifact || typeof artifact !== 'object' || Array.isArray(artifact)) throw new TypeError('Artifact must be an object');
-  const status = lifecycleToExecution[artifact.status];
+  const status = Object.hasOwn(lifecycleToExecution, artifact.status)
+    ? lifecycleToExecution[artifact.status] : undefined;
   if (!status) throw new Error('Unsupported lifecycle status: ' + artifact.status);
   for (const key of ['artifactType', 'artifactId', 'operationId']) {
     if (typeof artifact[key] !== 'string' || !artifact[key].trim()) throw new Error('Missing canonical artifact field: ' + key);
