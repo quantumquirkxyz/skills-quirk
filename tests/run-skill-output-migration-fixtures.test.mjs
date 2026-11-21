@@ -32,7 +32,7 @@ test('runs a verified pinned test file and reports success',async()=>{
 test('does not run a stale fixture and rejects a failed test',async()=>{
   const {root,manifest,fixture}=await setup();
   try {
-    await writeFile(join(root,fixture),"import test from 'node:test';test('fails',()=>{process.exitCode=1;throw new Error('bad')});\n");
+    await writeFile(join(root,fixture),"throw new Error('bad fixture');\n");
     const stale=await runMigrationFixtures(manifest,{root});
     assert.equal(stale.passed,false);
     assert.equal(stale.results.length,0);

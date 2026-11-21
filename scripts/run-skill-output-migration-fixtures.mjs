@@ -27,12 +27,14 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     } catch(error) {
       results.push({path,passed:false,reason:error.message});continue;
     }
-    const result=await new Promise(resolve=>{
-      const child=spawn(runner,['--test',path],{cwd:root,stdio:'ignore',shell:false});
+    const result=await new Promise(settle=>{
+      const env={...process.env};
+      delete env.NODE_TEST_CONTEXT;
+      const child=spawn(runner,['--test',resolve(root,path)],{cwd:root,stdio:'ignore',shell:false,env});
       let settled=false;
       const timer=setTimeout(()=>{child.kill('SIGKILL');},timeoutMs);
-      child.once('error',error=>{if(!settled){settled=true;clearTimeout(timer);resolve({path,passed:false,reason:error.message});}});
-      child.once('close',(code,signal)=>{if(!settled){settled=true;clearTimeout(timer);resolve({path,passed:code===0&&!signal,exitCode:code,signal});}});
+      child.once('error',error=>{if(!settled){settled=true;clearTimeout(timer);settle({path,passed:false,reason:error.message});}});
+      child.once('close',(code,signal)=>{if(!settled){settled=true;clearTimeout(timer);settle({path,passed:code===0&&!signal,exitCode:code,signal});}});
     });
     results.push(result);
   }
