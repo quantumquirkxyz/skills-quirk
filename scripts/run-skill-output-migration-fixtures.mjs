@@ -36,7 +36,7 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     });
     results.push(result);
   }
-  return {passed:results.every(x=>x.passed),verified:report.verified.length,problems:[],missing:[],results};
+  return {passed:fixtures.length>0 && results.length===fixtures.length && results.every(x=>x.passed),verified:report.verified.length,problems:[],missing:[],results};
 }
 if(process.argv[1]?.endsWith('run-skill-output-migration-fixtures.mjs')) {
   try {
