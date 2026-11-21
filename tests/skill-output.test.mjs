@@ -57,3 +57,11 @@ test('rejects invalid optional metadata and publication fields', () => {
   assert.throws(() => validateSkillOutput({...fixture(),validation:[{check:'unit',status:'passed',extra:1}]}), /Unexpected validation field/);
   assert.throws(() => validateSkillOutput({...fixture(),validation:[{check:'unit',status:'passed',reason:3}]}), /Invalid validation reason/);
 });
+
+test('envelope required fields must be own properties',()=>{
+  const original=fixture();
+  const inherited=Object.create({artifactId:original.artifactId});
+  Object.assign(inherited,original);
+  delete inherited.artifactId;
+  assert.throws(()=>validateSkillOutput(inherited),/Missing field: artifactId/);
+});
