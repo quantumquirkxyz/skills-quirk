@@ -36,7 +36,11 @@
     "idempotency:demo": "node .agents/skills/platform/idempotency.mjs --demo --json",
     "catalog": "node scripts/generate-site-data.mjs",
     "site:dev": "npm --prefix site run dev",
-    "site:build": "npm --prefix site run build"
+    "site:build": "npm --prefix site run build",
+    "output:inventory": "node scripts/skill-output-inventory.mjs",
+    "output:coverage": "node scripts/check-skill-output-coverage.mjs",
+    "output:release-gate": "node scripts/check-skill-output-coverage.mjs --require-mapped",
+    "output:test": "node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs"
   },
   "keywords": [
     "skills",
