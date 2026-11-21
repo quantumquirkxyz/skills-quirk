@@ -12,14 +12,20 @@ test('classification gate passes when every skill is assessed',()=>{
 test('release gate fails until every skill is mapped and verified',()=>{
   const result=evaluateCoverage(sample(['mapped-and-verified','schema-referenced-needs-verification']),{requireMapped:true});
   assert.equal(result.passed,false);
-  assert.deepEqual(result.unmapped,['skill-1']);
+  assert.deepEqual(result.unmapped,['skill-0','skill-1']);
 });
 test('release gate passes only on verified complete inventory',()=>{
-  const result=evaluateCoverage(sample(['mapped-and-verified']),{requireMapped:true});
+  const result=evaluateCoverage(sample(['mapped-and-verified']),{requireMapped:true,verifiedPaths:['skill-0']});
   assert.equal(result.passed,true);
   assert.equal(result.verified,1);
 });
 test('rejects invalid inventory and unassessed skills',()=>{
   assert.throws(()=>evaluateCoverage({total:3,skills:[]}),/Invalid/);
   assert.equal(evaluateCoverage(sample(['not-assessed'])).passed,false);
+});
+
+test('self-declared mapped status cannot bypass evidence-backed release gate',()=>{
+  const result=evaluateCoverage(sample(['mapped-and-verified']),{requireMapped:true});
+  assert.equal(result.passed,false);
+  assert.equal(result.verified,0);
 });
