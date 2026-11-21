@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "path": ".agents/skills/data/data-catalog/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8b8dc1f1a286f6d08ef1bed6c67e64a3bf3f80589e291921b4fca39faff8de5a",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-contracts/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "03e5c91b2cd54cef33e96b9afbe6ad5c0a11965d5a2f623a00c1ae013c78be7e",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-etl-pipeline/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "98d34e80c75dae96999bdeb281e5d5e5e646e958cb1758049684baa8ab91fff2",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-lineage/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "471d9421e0a8e1614a2b1e37565cb2f730895c518618d41dc56ab35ae38ad365",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-quality/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "48ab0e3003396dfa7e0f7d66fc6f5ba0c313d1604c532fbc705a5a845cbd86e0",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-streaming/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0c91af6159163d362b77c5b1945bfc75401b5a02226cffcc46bf1634e961bae5",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-versioning/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "2e67a47ced9b732a225b832f4b2a5317b38726d3d76a221ef7034dbe71ce3346",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/data-warehouse-modeling/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a0b220e6e477842b5765768d530547e496dce637bdce5c3bb3f7a16c5f0a1a4c",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/feature-store/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "6207bb71e3965cc8c0e885503b9077e9899821b8571eda2e65f05045a666b257",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/semantic-layer/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "6c4c2e5b0203e4ddc64aa4cb41eeea171b0f1d4f043b37229329890a2751e591",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/data/stream-processing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "041fde94dd2c2b71525af631fede880e63562accd4f6dee20bdf7cfec6ce31d9",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-computation-reproducible/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0a9d20b22910d189ef787cca17df7fd06a16b73d9e5d86476296750f71180b49",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-computational/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "b4470d1ef754e2b765bd1e4f04fd7b2b1006a438bfcd77aea6bb30e7469ae428",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-cryptography/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "7cfbd8505b19ce9a8477d836c22c87915ee46546a37bc15d1ee03fdbb084bbfd",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-formal-proof/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "5637edbce6cb09fc498da23ce6ea256f20409effe471af5e9cd597f3fa22c0e0",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-grant-structure/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "1b908a49f851ec54d4c2b4ab0129a92c037a6d1f17a02423f7598f03cb860857",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-linear-algebra/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "95edb4af1142c632b17c9383cfb7ebc37a496944693ae26fd142c2bfda7daafa",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-literature-track/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8089e27d9237b8e474e6c57d3948eb4538dd28c7284bfb78b6979ffcd7e50c54",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-optimization/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "74a502d30c6570e3504814bfdd1fb43c463090d96dfe1274ae47cc5a9f997344",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-paper-collaboration/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "278047fafe0395c1cfd247304de94fa99335bb9973fdcf080e7daaec859b6c41",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-presentation-beamer/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "bdc5e83afb55e1299cf58248f4ecb76785a1c39687c75640708c07191a7a91e8",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-probability-models/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "72d174cd63fba8df1e73d74da9d8e3d66484d8e7d860f995971868cc7291dcb3",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-pure-proofs/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a4ad17de66f26293e2d0a1a41306855af57457cef6ca769f63996d68efa5b71e",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/math/math-teaching-problem-set/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "3501eebe937e4777f8ed1f300950f71542a3b3f82a3274fa7af0e8b20303eab7",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/networking/networking-protocols/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "cf0cc005c3fc7d3323918518a013977a62c9ad179710cb4c8cdd75ff1c360956",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/networking/networking-security/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "007afb86237fc71027baf41b8423c12be59056e500a2c31ba2d8a0b0e03e8c4c",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/networking/networking/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0c84311ce8593ce48a899067ce76615791ab605deac7bea34c607915cfb2499e",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/cloud-security/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "702c853d600a0d6221fc3009c208c6940684eb6f95573ef55bb905697ea82ae4",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/compliance/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "06422952ee9bd6d0dff04689ee4556538c62a14efe23e004d4445791e5af8562",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/container-security/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "cc4f80fda6273e342070ddff463ff20c2ffa9bdd6d3acf5a4642f46086103915",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/incident-forensics/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "66374c2f670ac1431651baddd5eb9a6be1f25ed3a331eabbf1d38c4c2ae681ef",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/sec-cryptography-applied/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "49dcc0a2bd6bddd3591a4334942915cece51f85e355b4fc2f1e0612fd585b048",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/sec-privacy-engineering/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "537270c40cd4c26431f64f7cfc24808596428c0c585ae4e9ac80929d17a2d3e4",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/sec-security-audit/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "4eba726c01671b0d23dbbdda7fd94c3ed68c34ecd494037c0849597db8afd1b1",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/sec-threat-modeling/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "8ef64f6f2a832106731c48477e645e1787f4e38b9a248337aa23463649a32342",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/secret-management-security/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "6800732383b25b075ed37d1cc3ec678f22b753c124ca20b719ee06f0cc2a44d7",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/supply-chain-security/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "f7e31af3c8fde17e0479047925b87f46e0f67b632f11d8582df3b56a6a1c788a",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/sec/zero-trust/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "50b2012c49d673ed7b39defb471046d783e6a96cc7b44bd1854e480dd2f1eae9",
+      "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    }
+  ]
+}
