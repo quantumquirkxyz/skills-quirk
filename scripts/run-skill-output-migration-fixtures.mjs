@@ -20,10 +20,12 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     if(!/^tests\/[A-Za-z0-9_./-]+\.test\.mjs$/.test(path)||path.split('/').includes('..')) {
       results.push({path,passed:false,reason:'Fixture must be a tracked .test.mjs file'});continue;
     }
-    const realRoot=await realpath(root);
-    const realFixture=await realpath(resolve(root,path));
-    if(!realFixture.startsWith(realRoot+'/')) {
-      results.push({path,passed:false,reason:'Fixture symlink escapes repository'});continue;
+    try {
+      const realRoot=await realpath(root);
+      const realFixture=await realpath(resolve(root,path));
+      if(!realFixture.startsWith(realRoot+'/')) throw new Error('Fixture symlink escapes repository');
+    } catch(error) {
+      results.push({path,passed:false,reason:error.message});continue;
     }
     const result=await new Promise(resolve=>{
       const child=spawn(runner,['--test',path],{cwd:root,stdio:'ignore',shell:false});
