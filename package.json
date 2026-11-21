@@ -40,7 +40,8 @@
     "output:inventory": "node scripts/skill-output-inventory.mjs",
     "output:coverage": "node scripts/check-skill-output-coverage.mjs",
     "output:release-gate": "node scripts/check-skill-output-coverage.mjs --require-mapped",
-    "output:test": "node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs"
+    "output:test": "node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs",
+    "output:verify-fixtures": "node scripts/run-skill-output-migration-fixtures.mjs"
   },
   "keywords": [
     "skills",
