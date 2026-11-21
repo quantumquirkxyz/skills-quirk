@@ -1,0 +1,10 @@
+{
+  "fixtures": [
+    {"id": "mandatory-role-graph", "skill": "automatic-refinement", "type": "behavioral", "expected": {"outputContains": ["grill-agent", "research-agent", "domain-agent", "brainstorm-agent", "critic-agent", "verifier-agent", "Preflight", "Independent analysis", "Synthesis", "Adversarial critique", "Correction", "Independent verification"]}},
+    {"id": "fail-closed-availability", "skill": "automatic-refinement", "type": "behavioral", "expected": {"outputContains": ["return `blocked`", "Never claim a subagent ran when it was unavailable", "not verified"]}},
+    {"id": "approval-and-publication-boundary", "skill": "automatic-refinement", "type": "behavioral", "expected": {"outputContains": ["refinement-review", "local-file-approval", "remote-effect-approval", "Do not automatically create issues, projects, PRs", "refined-awaiting-review"]}},
+    {"id": "budget-convergence", "skill": "automatic-refinement", "type": "behavioral", "expected": {"outputContains": ["maxIterations", "maxSubagents", "maxSkillInvocations", "maxParallelSubagents", "maxWallTimeMs", "maxSources", "ping-pong", "no-progress"]}},
+    {"id": "untrusted-and-artifact-contract", "skill": "automatic-refinement", "type": "behavioral", "expected": {"outputContains": ["untrusted data", "RefinementArtifact", "operationId", "parentOperationId", "input digest", "typed handoff"]}},
+    {"id": "negative-no-review", "skill": "automatic-refinement", "type": "regression", "expectedOutput": {"contains": ["pending-refinement-review", "never mark the result approved"]}}
+  ]
+}

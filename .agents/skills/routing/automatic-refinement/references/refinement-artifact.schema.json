@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.local/schemas/refinement-artifact-v1.json",
+  "title": "RefinementArtifact",
+  "type": "object",
+  "required": ["operationId", "status", "provenance", "invocationTrace", "evidence", "decisions", "assumptions", "risks", "openQuestions", "proposedArtifacts", "verification", "approvalStatus"],
+  "properties": {
+    "operationId": {"type": "string", "minLength": 1},
+    "parentOperationId": {"type": ["string", "null"]},
+    "status": {"enum": ["refined-awaiting-review", "refined-with-limitations", "blocked", "validation-failed", "budget-exceeded", "no-progress", "cancelled", "stale-input"]},
+    "provenance": {"type": "object", "required": ["inputDigest", "sourceDigests", "producer", "createdAt"], "properties": {"inputDigest": {"type": "string"}, "sourceDigests": {"type": "array"}, "producer": {"type": "string"}, "createdAt": {"type": "string"}}},
+    "invocationTrace": {"type": "array"},
+    "evidence": {"type": "array"},
+    "decisions": {"type": "array"},
+    "assumptions": {"type": "array"},
+    "risks": {"type": "array"},
+    "openQuestions": {"type": "array"},
+    "proposedArtifacts": {"type": "array"},
+    "verification": {"type": "object"},
+    "approvalStatus": {"enum": ["pending-refinement-review", "not-approved", "approved-for-local-write", "not-applicable"]}
+  },
+  "additionalProperties": true
+}
