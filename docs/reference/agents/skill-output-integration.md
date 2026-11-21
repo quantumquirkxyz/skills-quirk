@@ -250,3 +250,19 @@ Run `node scripts/check-skill-output-coverage.mjs --require-mapped
 has actually executed and passed on the same source revision. A digest
 proves file identity, **not** that a fixture ran; CI logs or signed test
 attestations remain necessary to independently establish execution.
+
+### Executable migration fixture gate
+
+After collecting evidence for **every** canonical skill, run
+`npm run output:verify-fixtures -- path/to/manifest.json`. This runner
+checks canonical skill and test fixture SHA-256 digests, refuses incomplete
+or stale evidence, then executes each unique tracked `tests/*.test.mjs`
+fixture using `node --test` with a 30-second timeout per fixture.
+The runner reports fixture exit codes and refuses to claim success if
+any fixture fails or is missing. The fixture runner intentionally cannot
+execute arbitrary commands embedded in a manifest.
+
+A fixture that passes does not by itself demonstrate correctness of the
+entire skill. Reviewers must still assess representative behavior, side
+effects, trust boundaries, rollback and workflow compatibility. A signed
+CI run on the final commit is required for release.
