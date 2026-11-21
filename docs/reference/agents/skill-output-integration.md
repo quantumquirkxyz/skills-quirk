@@ -215,3 +215,38 @@ committing. The lockfile tool hashes canonical skill text with SHA-256;
 it must not be bypassed by manually inserting hashes. This separation
 explains why canonical skill edits without lockfile regeneration failed
 previously.
+
+## Evidence-backed catalog migration gate
+
+The strict catalog release gate now accepts `--evidence path/to/manifest.json`.
+A manifest entry requires the canonical skill path, SHA-256 of its actual
+`SKILL.md` bytes, a tracked `tests/` fixture path and SHA-256 of those
+fixture bytes, the output contract identifier, and `result: "passed"`.
+The gate recomputes both digests and rejects missing, duplicated, stale,
+untracked or failed evidence. Merely adding `mapped-and-verified` to a
+classification cannot satisfy the release gate.
+
+Example manifest shape (the hashes below are placeholders, **not**
+verification evidence):
+
+```json
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "path": ".agents/skills/research/example/SKILL.md",
+      "skillSha256": "<64 lowercase hexadecimal digits>",
+      "fixturePath": "tests/example-output.test.mjs",
+      "fixtureSha256": "<64 lowercase hexadecimal digits>",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed"
+    }
+  ]
+}
+```
+
+Run `node scripts/check-skill-output-coverage.mjs --require-mapped
+--evidence path/to/manifest.json` only after the corresponding fixture
+has actually executed and passed on the same source revision. A digest
+proves file identity, **not** that a fixture ran; CI logs or signed test
+attestations remain necessary to independently establish execution.
