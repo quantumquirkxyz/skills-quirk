@@ -1,6 +1,6 @@
 {
-  "totalCards": 270,
-  "generatedAt": "2026-11-21T19:41:10.328Z",
+  "totalCards": 271,
+  "generatedAt": "2026-11-21T20:23:08.271Z",
   "cards": [
     {
       "name": "accessibility",
@@ -6704,6 +6704,41 @@
             "trustTier": "1",
             "modelTier": "router",
             "artifactType": "plan"
+          }
+        }
+      ]
+    },
+    {
+      "name": "automatic-refinement",
+      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+      "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/automatic-refinement/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "routing/automatic-refinement",
+          "name": "automatic-refinement",
+          "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+          "tags": [
+            "routing",
+            "orchestration",
+            "refinement",
+            "multi-agent",
+            "bounded-loop"
+          ],
+          "parameters": {
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "refinement"
           }
         }
       ]

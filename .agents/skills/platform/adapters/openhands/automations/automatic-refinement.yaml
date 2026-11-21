@@ -1,0 +1,15 @@
+name: automatic-refinement
+description: Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/routing-automatic-refinement
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: true
+  sideEffects: [write-temp-file]

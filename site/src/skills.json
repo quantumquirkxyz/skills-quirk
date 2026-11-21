@@ -1,5 +1,5 @@
 {
-  "totalSkills": 270,
+  "totalSkills": 271,
   "categories": [
     "accessibility",
     "ai",
@@ -420,6 +420,25 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/integrations/auth"
+    },
+    {
+      "name": "automatic-refinement",
+      "category": "routing",
+      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+      "version": "1",
+      "maturity": "experimental",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "enforce typed handoffs, budgets, convergence, and independent verification",
+        "plan and execute a mandatory six-role refinement graph",
+        "route dynamic domain skills through the canonical skill graph",
+        "synthesize a review-ready RefinementArtifact without remote effects"
+      ],
+      "sideEffects": [
+        "write-temp-file"
+      ],
+      "path": ".agents/skills/routing/automatic-refinement"
     },
     {
       "name": "backend-architecture",

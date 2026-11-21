@@ -1,9 +1,9 @@
 ---
-description: "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax"
+description: "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes."
 ---
 # review-pr
 
-When to use: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
+When to use: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes.
 
 ## Workflow
 

@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
-> Generated from quirk-skills v3.0.1
-> 270 skills across 37 categories
+> Generated from quirk-skills v3.1.0
+> 271 skills across 37 categories
 
 ## Skills by Category
 
@@ -377,6 +377,7 @@
 |-------|---------|----------|------|------------|-------------|
 | [artifact-handoff](.agents/skills/routing/artifact-handoff) | 1 | stable | low | 1 | Transfer structured artifacts between Skills and sessions — with explicit pro... |
 | [ask-to](.agents/skills/routing/ask-to) | 1 | stable | low | 1 | Ask which skill or flow fits your situation. A router over the skills in this... |
+| [automatic-refinement](.agents/skills/routing/automatic-refinement) | 1 | experimental | medium | 3 | Orchestrate a bounded multi-agent refinement run that turns an idea into an e... |
 | [capability-router](.agents/skills/routing/capability-router) | 1 | stable | low | 1 | Route work to the best matching Skill using declared capabilities and compati... |
 | [context-pack](.agents/skills/routing/context-pack) | 1 | stable | low | 1 | Build a minimal fresh context pack with ordered reads and provenance — for sc... |
 | [grill](.agents/skills/routing/grill) | 1 | stable | low | 1 | >- |

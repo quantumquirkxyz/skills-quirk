@@ -1,6 +1,6 @@
 ---
 name: skill-tutor
-description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.
 tools: Read, Grep, Glob, Bash
 model: haiku
 ---

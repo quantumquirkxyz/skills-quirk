@@ -1,6 +1,6 @@
 ---
 name: contribution-workflow-optimizer
-description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva"
+description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness."
 tools: Read, Grep, Glob
 model: opus
 ---

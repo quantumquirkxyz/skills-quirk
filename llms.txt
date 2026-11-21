@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 270 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 271 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -37,6 +37,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [ask-to](./.agents/skills/routing/ask-to/SKILL.md) — Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.
 - [astro](./.agents/skills/frontend/astro/SKILL.md) — Astro framework (islands architecture, content-focused sites, SSR/SSG, view transitions).
 - [auth](./.agents/skills/integrations/auth/SKILL.md) — Design authentication and authorization as a small, explicit seam — with OAuth2/OIDC, MFA, passkeys, JWT, session management, and clear caller and operator responsibilities.
+- [automatic-refinement](./.agents/skills/routing/automatic-refinement/SKILL.md) — Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.
 - [backend-architecture](./.agents/skills/backend/backend-architecture/SKILL.md) — Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.
 - [backend-caching](./.agents/skills/backend/backend-caching/SKILL.md) — Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs.
 - [backend-queues](./.agents/skills/backend/backend-queues/SKILL.md) — Design backend queues and background job systems — durability, retries, ordering, idempotency, and backpressure — with explicit delivery guarantees.
@@ -318,7 +319,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - qa: 4 skills
 - quant: 7 skills
 - research: 5 skills
-- routing: 17 skills
+- routing: 18 skills
 - sec: 11 skills
 - skill-dev: 18 skills
 - ux: 4 skills

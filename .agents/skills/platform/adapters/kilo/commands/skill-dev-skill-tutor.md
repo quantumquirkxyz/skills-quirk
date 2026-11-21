@@ -1,9 +1,9 @@
 ---
-description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+description: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.
 ---
 # skill-tutor
 
-When to use: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on
+When to use: Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.
 
 ## Workflow
 

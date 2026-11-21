@@ -1,6 +1,6 @@
 ---
 name: triage
-description: "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag"
+description: "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs."
 tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
 model: sonnet
 permissionMode: default

@@ -2620,6 +2620,19 @@
       "description": "Ask which skill or flow fits your situation. A router over the skills in this repo that recommends the next step after governance preflight.",
       "path": ".agents/skills/routing/ask-to"
     },
+    "automatic-refinement": {
+      "domain": "routing",
+      "tier": "3",
+      "artifactType": "refinement",
+      "capabilities": [
+        "plan and execute a mandatory six-role refinement graph",
+        "route dynamic domain skills through the canonical skill graph",
+        "enforce typed handoffs, budgets, convergence, and independent verification",
+        "synthesize a review-ready RefinementArtifact without remote effects"
+      ],
+      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+      "path": ".agents/skills/routing/automatic-refinement"
+    },
     "capability-router": {
       "domain": "routing",
       "tier": "1",
@@ -3846,6 +3859,60 @@
     {
       "from": "ask-to",
       "to": "context-pack",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "context-pack",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "grill-with-docs",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "graph-skill-routing",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "loop-engineering",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "subagent-swarm",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "skill-composition",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "artifact-handoff",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "domain-modeling",
+      "type": "depends-on",
+      "weight": 1
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "verify-delegation",
       "type": "depends-on",
       "weight": 1
     },

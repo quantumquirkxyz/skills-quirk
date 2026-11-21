@@ -2994,6 +2994,20 @@
       "exposed": true
     },
     {
+      "skill": "routing/automatic-refinement",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/routing/automatic-refinement"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "routing/capability-router",
       "trustTier": 1,
       "tools": [
