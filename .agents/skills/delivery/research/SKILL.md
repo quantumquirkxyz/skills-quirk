@@ -3,7 +3,7 @@ name: "research"
 category: "delivery"
 maturity: "stable"
 version: "1"
-description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w"
+description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings."
 license: "MIT"
 capabilities:
   - apply research methods within explicit delivery boundaries

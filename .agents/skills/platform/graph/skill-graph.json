@@ -752,7 +752,7 @@
         "analyze inspect changed skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva with assumptions, constraints, and failure modes",
         "produce and validate a delivery artifact with evidence, decisions, and next steps"
       ],
-      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness.",
       "path": ".agents/skills/delivery/contribution-workflow-optimizer"
     },
     "diagnosing-bugs": {
@@ -839,7 +839,7 @@
         "analyze investigate a question against high-trust primary sources and capture the findings as a markdown file in the repo. use w with assumptions, constraints, and failure modes",
         "produce and validate a delivery artifact with evidence, decisions, and next steps"
       ],
-      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
       "path": ".agents/skills/delivery/research"
     },
     "resolving-merge-conflicts": {
@@ -876,7 +876,7 @@
         "trace review pr decisions across inputs, constraints, and failure paths",
         "validate delivery outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes.",
       "path": ".agents/skills/delivery/review-pr"
     },
     "tdd": {
@@ -2769,7 +2769,7 @@
         "analyze move issues and external prs through a state machine of triage roles — categorise, verify, grill if needed, and write ag with assumptions, constraints, and failure modes",
         "produce and validate a routing artifact with evidence, decisions, and next steps"
       ],
-      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
       "path": ".agents/skills/routing/triage"
     },
     "wayfinder": {
@@ -3136,7 +3136,7 @@
         "analyze interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on with assumptions, constraints, and failure modes",
         "produce and validate a skill-dev artifact with evidence, decisions, and next steps"
       ],
-      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
       "path": ".agents/skills/skill-dev/skill-tutor"
     },
     "workflow-fixture-author": {

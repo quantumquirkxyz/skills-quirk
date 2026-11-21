@@ -1,6 +1,6 @@
 {
   "name": "research",
-  "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+  "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
   "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/research/SKILL.md",
   "version": "1",
   "capabilities": {
@@ -17,7 +17,7 @@
     {
       "id": "delivery/research",
       "name": "research",
-      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
       "tags": [
         "delivery"
       ],

@@ -3,7 +3,7 @@ name: "skill-tutor"
 category: "skill-dev"
 maturity: "stable"
 version: "1"
-description: "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on"
+description: "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice."
 license: "MIT"
 capabilities:
   - apply skill tutor methods within explicit skill-dev boundaries

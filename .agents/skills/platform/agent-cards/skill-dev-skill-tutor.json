@@ -1,6 +1,6 @@
 {
   "name": "skill-tutor",
-  "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+  "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
   "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/skill-dev/skill-tutor/SKILL.md",
   "version": "1",
   "capabilities": {
@@ -17,7 +17,7 @@
     {
       "id": "skill-dev/skill-tutor",
       "name": "skill-tutor",
-      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
       "tags": [
         "skill-dev"
       ],

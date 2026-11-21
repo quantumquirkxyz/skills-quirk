@@ -3,7 +3,7 @@ name: "contribution-workflow-optimizer"
 category: "delivery"
 maturity: "stable"
 version: "1"
-description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva"
+description: "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness."
 license: "MIT"
 capabilities:
   - apply contribution workflow optimizer methods within explicit delivery boundaries

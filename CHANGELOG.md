@@ -10,6 +10,14 @@ This project follows semantic versioning once releases are cut:
 
 ## [Unreleased]
 
+## [3.0.1] - 2026-11-21
+
+### Fixed
+
+- Completed 5 truncated `description` frontmatter fields that were cut off mid-word and missing closing quotes: `delivery/research`, `routing/triage`, `delivery/contribution-workflow-optimizer`, `delivery/review-pr`, `skill-dev/skill-tutor`. Each completion was taken from the skill's own body text.
+- Re-locked `skills-lock.json` SHA-256 hashes for the 5 edited skills; all 285 lock entries match their canonical `SKILL.md` files.
+- Regenerated downstream projections: agent cards, runtime manifests, and site data (`site/src/skills.json`).
+
 ### Engineering modernization (2026-10-27)
 
 - Established a reproducible engineering baseline with canonical SHA-256 inventory, deterministic gate comparison, and scheduled GitHub Actions reports; missing optional project memory is classified as NOT RUN.

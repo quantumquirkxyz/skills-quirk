@@ -1,6 +1,6 @@
 {
   "totalCards": 270,
-  "generatedAt": "2026-11-21T18:31:07.934Z",
+  "generatedAt": "2026-11-21T19:41:10.328Z",
   "cards": [
     {
       "name": "accessibility",
@@ -1902,7 +1902,7 @@
     },
     {
       "name": "contribution-workflow-optimizer",
-      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/contribution-workflow-optimizer/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -1919,7 +1919,7 @@
         {
           "id": "delivery/contribution-workflow-optimizer",
           "name": "contribution-workflow-optimizer",
-          "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+          "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness.",
           "tags": [
             "delivery"
           ],
@@ -2125,7 +2125,7 @@
     },
     {
       "name": "research",
-      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/research/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -2142,7 +2142,7 @@
         {
           "id": "delivery/research",
           "name": "research",
-          "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+          "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
           "tags": [
             "delivery"
           ],
@@ -2218,7 +2218,7 @@
     },
     {
       "name": "review-pr",
-      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/review-pr/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -2235,7 +2235,7 @@
         {
           "id": "delivery/review-pr",
           "name": "review-pr",
-          "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+          "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes.",
           "tags": [
             "delivery",
             "review",
@@ -7060,7 +7060,7 @@
     },
     {
       "name": "triage",
-      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/triage/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -7077,7 +7077,7 @@
         {
           "id": "routing/triage",
           "name": "triage",
-          "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+          "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
           "tags": [
             "routing"
           ],
@@ -8008,7 +8008,7 @@
     },
     {
       "name": "skill-tutor",
-      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/skill-dev/skill-tutor/SKILL.md",
       "version": "1",
       "capabilities": {
@@ -8025,7 +8025,7 @@
         {
           "id": "skill-dev/skill-tutor",
           "name": "skill-tutor",
-          "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+          "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
           "tags": [
             "skill-dev"
           ],

@@ -3,7 +3,7 @@ name: review-pr
 category: delivery
 maturity: stable
 version: 1
-description: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax
+description: "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes."
 license: MIT
 capabilities:
   - produce review pr artifact

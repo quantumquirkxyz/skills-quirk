@@ -825,7 +825,7 @@
     {
       "name": "contribution-workflow-optimizer",
       "category": "delivery",
-      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when eva",
+      "description": "Inspect changed Skills and recommend contribution improvements across standards, docs, tests, and examples; use when evaluating changed skills for contribution readiness.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
@@ -3297,7 +3297,7 @@
     {
       "name": "research",
       "category": "delivery",
-      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when you need to investigate a question against primary sources and document findings.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
@@ -3406,7 +3406,7 @@
     {
       "name": "review-pr",
       "category": "delivery",
-      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax",
+      "description": "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
@@ -3922,7 +3922,7 @@
     {
       "name": "skill-tutor",
       "category": "skill-dev",
-      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on",
+      "description": "Interactive tutorial that guides users through creating their first quirk skill using structured worksheets and hands-on practice.",
       "version": "1",
       "maturity": "stable",
       "risk": "low",
@@ -4185,7 +4185,7 @@
     {
       "name": "triage",
       "category": "routing",
-      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
       "version": "1",
       "maturity": "stable",
       "risk": "medium",
