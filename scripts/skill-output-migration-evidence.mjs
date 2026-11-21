@@ -19,7 +19,7 @@ export function verifyMigrationEvidence(inventory,manifest) {
     seen.add(entry.path);
     if(!/^[a-f0-9]{64}$/.test(entry.skillSha256??'')) problems.push('Invalid skill digest: '+entry.path);
     if(!/^[a-f0-9]{64}$/.test(entry.fixtureSha256??'')) problems.push('Invalid fixture digest: '+entry.path);
-    if(typeof entry.fixturePath!=='string' || !entry.fixturePath.startsWith('tests/')) problems.push('Missing tracked test fixture: '+entry.path);
+    if(typeof entry.fixturePath!=='string' || !/^tests\/[A-Za-z0-9_./-]+$/.test(entry.fixturePath) || entry.fixturePath.split('/').includes('..')) problems.push('Missing tracked test fixture: '+entry.path);
     if(typeof entry.contract!=='string' || !entry.contract.trim()) problems.push('Missing contract: '+entry.path);
     if(entry.result!=='passed') problems.push('Fixture not passed: '+entry.path);
     if(!problems.some(x=>x.endsWith(': '+entry.path))) verified.add(entry.path);
