@@ -112,7 +112,7 @@ function parseFrontmatter(content) {
       const key = keyMatch[1];
       const value = keyMatch[2].trim();
       if (value.startsWith('[') && value.endsWith(']')) {
-        fm[key] = value.slice(1, -1).split(',').map(s => s.trim());
+        fm[key] = value.slice(1, -1).split(',').map(s => s.trim().replace(/^[\"']|[\"']$/g, '')).filter(Boolean);
       } else if (value.startsWith('"') && value.endsWith('"')) {
         fm[key] = value.slice(1, -1);
       } else {
@@ -131,7 +131,7 @@ async function generateCard(skill) {
   const card = {
     name: fm.name || skill.name,
     description: fm.description || '',
-    url: `https://github.com/quirk/example/blob/main/.agents/skills/${skill.category}/${skill.name}/SKILL.md`,
+    url: `https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/${skill.category}/${skill.name}/SKILL.md`,
     version: fm.version || "1",
     capabilities: {
       skillInvocation: true,

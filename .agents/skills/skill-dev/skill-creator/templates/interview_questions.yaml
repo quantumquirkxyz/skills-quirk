@@ -1,0 +1,18 @@
+# Interview questions used by `scripts/interview_skill.py`.
+# Each item is asked in order during the discovery phase.
+discovery:
+  - question: What problem should this skill solve, in one sentence?
+    purpose: Establish the single outcome the skill exists to produce.
+    follow_up: What would a failed outcome look like?
+  - question: Who or what invokes the skill, and in what situation?
+    purpose: Identify the caller and the routing trigger.
+    follow_up: What keywords would a user say when they need it?
+  - question: What inputs does the skill need, and which are mandatory?
+    purpose: Define the contract inputs before any workflow is proposed.
+    follow_up: What should the skill do when a mandatory input is missing?
+  - question: What artifact or decision should the skill emit?
+    purpose: Keep the skill artifact-first and reviewable.
+    follow_up: How would a reviewer verify the artifact is complete?
+  - question: What must the skill never do?
+    purpose: Record explicit boundaries, permissions, and side effects.
+    follow_up: Which of those boundaries needs human approval?

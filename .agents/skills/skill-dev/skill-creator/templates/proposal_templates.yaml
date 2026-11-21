@@ -1,0 +1,25 @@
+# Design proposals used by `scripts/interview_skill.py`.
+architecture_templates:
+  - name: focused-workflow
+    template: |
+      Use one SKILL.md with an explicit contract, a short workflow, and a
+      completion check. Add a reference file only when the detail is long enough
+      to distract from the workflow. Add a script only when it removes repeated
+      manual work or ambiguity.
+
+resource_templates:
+  - name: standard
+    items:
+      - scripts/main.py - executable entry point, only if the skill runs code
+      - references/domain.md - detailed guidance loaded on demand
+      - assets/README.md - notes for templates or static resources
+      - adrs/0001-initial-design.md - why the skill has this shape
+
+workflow_templates:
+  - name: linear-process
+    steps:
+      - Clarify the request and confirm scope
+      - Gather the required context and inputs
+      - Produce the artifact or decision
+      - Validate the result against completion criteria
+      - Hand off to the next consumer identified in the contract
