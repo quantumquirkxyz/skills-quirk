@@ -100,6 +100,11 @@
       "revision": "working-tree",
       "sourceType": "local"
     },
+    "automatic-refinement": {
+      "hash": "d6fadb8313d4fba922a95017b77e4f1ae7332bf30e723b70a1eb800ceca05070",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
     "ask-to": {
       "hash": "a632fb8f12cf69a19629af3158d33f60418dbc7b90b617364da7fae5965c6d69",
       "revision": "working-tree",
