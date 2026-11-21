@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/promises';
+import {mkdtemp,mkdir,writeFile,rm,symlink} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
@@ -46,4 +46,22 @@ test('refuses untrusted fixture paths outside tracked test directory',()=>{
 test('rejects empty and duplicate canonical inventories',()=>{
   assert.throws(()=>verifyMigrationEvidence({skills:[]},{schemaVersion:'1.0',entries:[]}),/Invalid inventory/);
   assert.throws(()=>verifyMigrationEvidence({skills:[inventory.skills[0],inventory.skills[0]]},valid),/Duplicate canonical/);
+});
+
+test('rejects test fixture symlinks escaping the repository',async()=>{
+  const root=await mkdtemp(join(tmpdir(),'quirk-evidence-link-'));
+  const outside=await mkdtemp(join(tmpdir(),'quirk-evidence-outside-'));
+  try {
+    await mkdir(join(root,'.agents/skills/research/example'),{recursive:true});
+    await mkdir(join(root,'tests'),{recursive:true});
+    await writeFile(join(root,inventory.skills[0].path),'skill');
+    await writeFile(join(outside,'fixture'),'fixture');
+    await symlink(join(outside,'fixture'),join(root,'tests/example.json'));
+    const report=await verifyMigrationEvidenceFiles(inventory,valid,{root});
+    assert.equal(report.verified.length,0);
+    assert.match(report.problems[0],/Symlink escapes repository/);
+  } finally {
+    await rm(root,{recursive:true,force:true});
+    await rm(outside,{recursive:true,force:true});
+  }
 });
