@@ -8,7 +8,7 @@ import {verifyMigrationEvidenceFiles} from './skill-output-migration-evidence.mj
 // This is a separate execution gate from evidence-file integrity checks.
 export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,runner=process.execPath}={}) {
   if(!Number.isSafeInteger(timeoutMs)||timeoutMs<1||timeoutMs>300000) throw new Error('Invalid fixture timeout');
-  const inventory=await inventorySkills(root+'/.agents/skills');
+  const inventory=await inventorySkills(root+'/.agents/skills',{base:root});
   const report=await verifyMigrationEvidenceFiles(inventory,manifest,{root});
   if(report.problems.length || report.missing.length) {
     return {passed:false,verified:report.verified.length,problems:report.problems,missing:report.missing,results:[]};
