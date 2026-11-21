@@ -29,3 +29,9 @@ test('self-declared mapped status cannot bypass evidence-backed release gate',()
   assert.equal(result.passed,false);
   assert.equal(result.verified,0);
 });
+
+test('release gate refuses empty catalogs and unknown verified paths',()=>{
+  assert.throws(()=>evaluateCoverage(sample([])),/Empty canonical/);
+  assert.throws(()=>evaluateCoverage(sample(['mapped-and-verified']),{verifiedPaths:['nonexistent']}),/Unknown verified/);
+  assert.throws(()=>evaluateCoverage({total:2,skills:[{path:'duplicate',migrationStatus:'mapped-and-verified'},{path:'duplicate',migrationStatus:'mapped-and-verified'}]}),/Duplicate canonical/);
+});
