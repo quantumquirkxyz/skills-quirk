@@ -38,7 +38,7 @@ test('does not run a stale fixture and rejects a failed test',async()=>{
     assert.equal(stale.results.length,0);
     manifest.entries[0].fixtureSha256=hash(await (await import('node:fs/promises')).readFile(join(root,fixture)));
     const failed=await runMigrationFixtures(manifest,{root});
-    assert.equal(failed.passed,false);
-    assert.equal(failed.results[0].passed,false);
+    assert.equal(failed.passed,false,JSON.stringify(failed));
+    assert.equal(failed.results[0].passed,false,JSON.stringify(failed));
   } finally {await rm(root,{recursive:true,force:true});}
 });
