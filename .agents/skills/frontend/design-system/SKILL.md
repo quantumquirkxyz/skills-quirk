@@ -60,8 +60,6 @@ Emit `DesignSystemArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Design System
 
 Use this skill when UI work starts to repeat and needs a shared system rather than one-off styling. It should define the reusable tokens, components, and usage rules that keep the frontend coherent as it grows.

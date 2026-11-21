@@ -55,8 +55,6 @@ Emit `IotEmbeddedArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # iot-embedded
 
 Design embedded/IoT systems — firmware, sensors, edge computing, device connectivity, OTA updates — with reliability, security, and constrained resource awareness.

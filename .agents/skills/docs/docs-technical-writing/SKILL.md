@@ -59,8 +59,6 @@ Emit `DocsTechnicalWritingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # docs-technical-writing
 
 Use this skill when drafting, editing, or restructuring documentation for developers, operators, researchers, or technical stakeholders.

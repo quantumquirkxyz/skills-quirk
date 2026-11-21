@@ -54,8 +54,6 @@ Emit `CsAlgorithmsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # CS Algorithms
 
 Design, analyse, and verify an **algorithm** — its correctness, complexity, stability, and invariants — with an explicit proof structure.

@@ -56,8 +56,6 @@ Emit `PhysicsDataAnalysisRootArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Data Analysis — ROOT / Python
 
 Analyse **experimental physics data** with reproducible scripts, explicit calibration, and a complete error budget.

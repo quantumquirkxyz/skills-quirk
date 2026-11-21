@@ -54,8 +54,6 @@ Emit `QuantMarketMicroArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Market Microstructure
 
 Analyse **market microstructure** — order book, price formation, execution costs, and optimal execution — with quantitative models.

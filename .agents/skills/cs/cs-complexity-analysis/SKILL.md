@@ -60,8 +60,6 @@ Emit `CsComplexityAnalysisArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cs-complexity-analysis
 
 Use this skill when a task asks how an algorithm scales, why one approach is faster, how much memory is needed, or whether an optimization changes asymptotic behavior.

@@ -56,8 +56,6 @@ Emit `DataVersioningArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Versioning
 
 Design **data versioning** — DVC, lakeFS, delta tables, snapshotting, and reproducibility.

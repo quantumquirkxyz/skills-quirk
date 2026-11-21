@@ -56,8 +56,6 @@ Emit `SecretManagementArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Secret Management
 
 Design a **secret management** strategy using HashiCorp Vault, SOPS, SealedSecrets, or cloud KMS with encryption, access control, rotation, and auditability.

@@ -82,8 +82,6 @@ Emit `MathFormalProofArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Formal Proof Development
 
 Build a **proof** in a proof assistant — Lean 4, Coq, Isabelle, Agda — that the assistant's kernel can verify, with a literate narrative for publication.

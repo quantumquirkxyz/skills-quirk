@@ -56,8 +56,6 @@ Emit `XrPerformanceArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # xr-performance
 
 Use this skill when optimizing AR/VR/MR frame rate, latency, thermal behavior, asset budgets, tracking stability, or comfort-sensitive rendering performance.

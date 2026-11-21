@@ -57,8 +57,6 @@ Emit `AuthArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Auth
 
 Use this skill when a project needs authentication or authorization defined before implementation. Keep the seam small and the responsibilities explicit: who is the user, who can act, and where the trust boundary sits. Treat identity as untrusted input until the project has verified it at the declared boundary.

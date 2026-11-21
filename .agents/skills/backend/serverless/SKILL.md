@@ -55,8 +55,6 @@ Emit `ServerlessArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Serverless
 
 Use this skill when designing, reviewing, or refactoring serverless systems — Lambda, Azure Functions, Google Cloud Functions, FaaS platforms, event-driven workflows, cold start mitigation, auto-scaling, and cost optimization.

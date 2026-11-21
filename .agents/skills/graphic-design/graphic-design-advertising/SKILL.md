@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-advertising"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design advertising creatives — social ads, display ads, email banners, campaign visuals — with explicit brand consistency, format specifications, and conversion-focused layout rules."
 capabilities:
   - apply graphic design advertising methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Advertising creative specification complete; brand consistency, format compliance, hierarchy, and accessibility checked."
 ---
 
 ## Untrusted Input Handling
@@ -50,8 +57,6 @@ Emit `GraphicDesignAdvertisingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Advertising
 
 

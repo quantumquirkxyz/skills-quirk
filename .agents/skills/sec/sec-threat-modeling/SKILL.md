@@ -56,8 +56,6 @@ Emit `SecThreatModelingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Threat Modeling
 
 Build a **threat model** — assets, threats, vulnerabilities, mitigations — using STRIDE or ATT&CK.

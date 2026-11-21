@@ -55,8 +55,6 @@ Emit `VercelArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Vercel
 
 Use this skill when a project runs on Vercel and the deployment/runtime seam needs to be clear. It should define what Vercel owns, what the app owns, and where operational expectations live.

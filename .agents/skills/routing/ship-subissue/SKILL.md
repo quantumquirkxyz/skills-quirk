@@ -91,8 +91,6 @@ This high-trust workflow is not exposed over MCP; it requires explicit local app
 Return `ShipSubissueArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-# 
-# 
 # Ship Subissue
 
 Merge one approved repository-local subissue PR, including a corrective subissue PR, mark the subissue as completed, and close out the linked issue when needed.

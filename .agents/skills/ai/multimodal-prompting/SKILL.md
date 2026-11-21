@@ -56,8 +56,6 @@ Emit `MultimodalPromptingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Multimodal Prompting
 
 Compose prompts and contracts for vision, audio, video, and image generation with discipline.

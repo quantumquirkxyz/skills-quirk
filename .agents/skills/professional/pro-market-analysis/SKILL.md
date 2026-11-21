@@ -57,8 +57,6 @@ Emit `ProMarketAnalysisArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Professional Market Research
 
 Conduct **market analysis** — TAM/SAM/SOM, competitor mapping, pricing analysis, trend forecasting — with explicit sources and data quality checks.

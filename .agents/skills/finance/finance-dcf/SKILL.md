@@ -54,8 +54,6 @@ Emit `FinanceDcfArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Discounted Cash Flow
 
 Run a **DCF** — forecast FCF, choose WACC, compute terminal value — and deliver a valuation range with cross-checks and sensitivity.

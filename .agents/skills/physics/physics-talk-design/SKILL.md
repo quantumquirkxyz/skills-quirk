@@ -56,8 +56,6 @@ Emit `PhysicsTalkDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Talk Design
 
 Build a **physics talk or poster** — seminar, conference talk, public outreach — with audience-appropriate depth and visual conventions.

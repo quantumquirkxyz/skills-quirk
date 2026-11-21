@@ -60,8 +60,6 @@ Emit `IncidentResponseArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Incident Response
 
 Design **incident response** — runbooks, war rooms, postmortems, blameless culture — with explicit severity taxonomy, escalation paths, and communication rules.

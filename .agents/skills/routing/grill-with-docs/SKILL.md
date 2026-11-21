@@ -56,8 +56,6 @@ Emit `GrillWithDocsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: ask one question at a time and recommend a concrete answer.

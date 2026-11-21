@@ -54,8 +54,6 @@ Emit `MathProbabilityModelsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Probability & Stochastic Modeling
 
 Construct a **probability model** — distribution, process, or inference — with explicit assumptions and checks against known limits.

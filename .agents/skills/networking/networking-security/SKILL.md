@@ -56,8 +56,6 @@ Emit `NetworkingSecurityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # networking-security
 
 Use this skill when designing or reviewing segmentation, firewall rules, VPN access, TLS posture, ingress/egress controls, or service-to-service network trust.

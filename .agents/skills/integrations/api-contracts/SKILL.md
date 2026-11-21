@@ -67,8 +67,6 @@ Emit `ApiContractsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # API Contracts
 
 Use this skill when the request and response surfaces need to be pinned down precisely. It should define what callers send, what they receive, how the contract can evolve, and what consumers must do to stay compatible.

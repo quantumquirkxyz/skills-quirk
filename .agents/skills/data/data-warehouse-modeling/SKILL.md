@@ -56,8 +56,6 @@ Emit `DataWarehouseModelingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Warehouse Modeling
 
 Design an **analytical warehouse schema** — star / snowflake / OBT — with dimensions, facts, and query optimisation.

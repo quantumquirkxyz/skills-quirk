@@ -56,8 +56,6 @@ Emit `OsMemoryArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # os-memory
 
 Use this skill when reasoning about virtual memory, paging, allocation, swapping, address spaces, memory protection, locality, or OS-level memory pressure.

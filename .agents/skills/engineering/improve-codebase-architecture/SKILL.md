@@ -65,8 +65,6 @@ Emit `ImproveCodebaseArchitectureArtifact` as both:
 Use `code-review` to establish how the current system actually behaves before proposing a deeper module boundary. Preserve the distinction between confirmed defects, risks, and opportunities. A metric or smell is a prompt for investigation, not an automatic refactoring order.
 
 
-# 
-# 
 # Improve Codebase Architecture
 
 

@@ -58,8 +58,6 @@ Emit `NetworkingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # networking
 
 Design and analyze network infrastructure — TCP/IP, routing, DNS, load balancing, firewalls, VPNs, network security — with explicit assumptions about latency, bandwidth, and failure modes.

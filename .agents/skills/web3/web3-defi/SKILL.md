@@ -74,8 +74,6 @@ Emit `Web3DefiArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # DeFi Protocol Analysis
 
 Analyse a **DeFi protocol** — AMM, lending, stablecoin, derivative, intents, or restaking — for mechanics, economic security, MEV protection, composability, and regulatory posture.

@@ -57,8 +57,6 @@ Emit `Web3TokenomicsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Tokenomics Design
 
 Design the **economics of a token** — supply schedule, incentives, governance, LST/LRT, restaking, points systems — and stress-test it for sustainability and attack surfaces.

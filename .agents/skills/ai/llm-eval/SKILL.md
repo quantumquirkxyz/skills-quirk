@@ -56,8 +56,6 @@ Emit `LlmEvalArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # LLM Evaluation Harness
 
 Design an **LLM evaluation harness** — benchmark design, model comparison, automated evals — with reproducible scoring, confidence intervals, and regression detection.

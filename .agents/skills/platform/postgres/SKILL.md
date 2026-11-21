@@ -55,8 +55,6 @@ Emit `PostgresArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Postgres
 
 Use this skill when PostgreSQL is the persistence layer and the schema or query shape matters. It should make the data model durable and the query seam explicit so changes can be migrated safely.

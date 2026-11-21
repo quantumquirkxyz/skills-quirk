@@ -60,8 +60,6 @@ Emit `PaymentsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Payments
 
 Use this skill when money moves through the system. It should keep the seam small, the trust boundary explicit, and the failure, reconciliation, and compliance story visible before implementation begins.

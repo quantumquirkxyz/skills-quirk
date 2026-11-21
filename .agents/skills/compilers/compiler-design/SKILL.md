@@ -56,8 +56,6 @@ Emit `CompilerDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # compiler-design
 
 Use this skill when designing or changing a compiler, interpreter, transpiler, parser, type checker, optimizer, or code-generation pipeline.

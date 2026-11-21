@@ -55,8 +55,6 @@ Emit `LocalizationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # localization
 
 Design internationalization (i18n) and localization (l10n) — string management, locale handling, RTL support, cultural adaptation — so the product works across languages and regions.

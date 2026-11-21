@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-photo-direction"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Direct photography and image retouching — art direction, lighting, composition, color grading, and post-production workflows for brand and product imagery."
 capabilities:
   - apply graphic design photo direction methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Photography direction complete; shot list, lighting, composition, color grading, and retouching workflow explicit."
 ---
 
 ## Untrusted Input Handling
@@ -49,8 +56,6 @@ Emit `GraphicDesignPhotoDirectionArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Photo Direction
 
 ## Purpose

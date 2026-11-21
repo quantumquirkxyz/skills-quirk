@@ -56,8 +56,6 @@ Emit `DataStreamingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Streaming Pipeline Design
 
 Design a **streaming pipeline** — event producers, stream processors, consumers — with schema, processing rules, and reliability.

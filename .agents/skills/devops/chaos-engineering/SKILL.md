@@ -56,8 +56,6 @@ Emit `ChaosEngineeringArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Chaos Engineering
 
 Design **chaos engineering** — fault injection, GameDays, resilience validation — with explicit steady-state hypotheses, blast radius controls, and safety rails.

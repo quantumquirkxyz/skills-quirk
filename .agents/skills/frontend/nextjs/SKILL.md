@@ -63,8 +63,6 @@ Emit `NextjsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Next.js
 
 Use this skill when the project is built on Next.js and the route tree or rendering model needs to be shaped with intent. Record the execution traceId and link the artifact to the originating issue for review replay. Keep the route surface small, the server/client split explicit, and the data flow easy to reason about.

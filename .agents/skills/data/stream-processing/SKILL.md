@@ -56,8 +56,6 @@ Emit `StreamProcessingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Stream Processing
 
 Design **stream processing** — Flink, Kafka Streams, RisingWave, windowing, state management, and exactly-once semantics.

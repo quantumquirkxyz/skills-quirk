@@ -36,6 +36,7 @@ tags: ["auxiliary"]
 compatibility: []
 approvalRequired: true
 approvalFor: [write-files, write-generated-projections]
+maxIterations: "6"
 ---
 
 ## Normative Rules
@@ -72,8 +73,6 @@ Emit `SetupQuirkSkillsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Setup Quirk Skills
 
 Scaffold the per-repo configuration that the quirk engineering skills assume for the current repository:

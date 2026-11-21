@@ -56,8 +56,6 @@ Emit `RagPipelineArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # RAG Pipeline Design
 
 Design a **Retrieval-Augmented Generation (RAG) pipeline** — retrieval, chunking, embedding, reranking, generation — with explicit data flow, latency budgets, and evaluation seams.

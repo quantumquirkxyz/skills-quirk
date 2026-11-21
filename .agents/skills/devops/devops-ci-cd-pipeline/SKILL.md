@@ -56,8 +56,6 @@ Emit `DevopsCiCdPipelineArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # CI/CD Pipeline Design
 
 Design a **CI/CD pipeline** — build, test, security, deploy, rollback — with reproducible steps and deployment gates.

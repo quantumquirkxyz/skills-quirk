@@ -57,8 +57,6 @@ Emit `RuleCatalogerArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Rule Cataloger
 
 

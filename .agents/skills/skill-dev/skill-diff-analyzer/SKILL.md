@@ -56,8 +56,6 @@ Emit `SkillDiffAnalyzerArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Diff Analyzer
 
 

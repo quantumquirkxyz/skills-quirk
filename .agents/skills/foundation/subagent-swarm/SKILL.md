@@ -153,8 +153,6 @@ Emit `SubagentSwarmArtifact` as both:
 The artifact status vocabulary above is retained for compatibility; map legacy values to the canonical status and record that mapping in validation.
 
 
-# 
-# 
 # Subagent Swarm
 
 

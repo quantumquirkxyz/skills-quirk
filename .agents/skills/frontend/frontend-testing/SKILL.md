@@ -63,8 +63,6 @@ Emit `FrontendTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Frontend Testing
 
 Use this skill when designing the test strategy for a frontend application — unit tests, integration tests, end-to-end tests, visual regression, and Storybook workflows.

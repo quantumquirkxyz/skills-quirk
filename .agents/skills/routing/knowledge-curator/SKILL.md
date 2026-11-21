@@ -64,8 +64,6 @@ Emit `KnowledgeCuratorArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Knowledge Curator
 
 Use this skill to curate durable knowledge after a run.

@@ -58,8 +58,6 @@ Emit `AccessibilityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # accessibility
 
 Design inclusive products — WCAG compliance, assistive technology support, keyboard navigation, color contrast — so all users can access the product regardless of ability.

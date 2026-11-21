@@ -55,8 +55,6 @@ Emit `DeploymentArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Deployment
 
 Use this skill when the project needs a clear release path. It should define how an immutable build artifact moves from repo to runtime, what can fail, and how to recover without guessing. It covers deployment mechanics; release policy and cadence belong to `release-management`.

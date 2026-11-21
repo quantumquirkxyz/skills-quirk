@@ -74,8 +74,6 @@ Emit `SkillPromoterArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Promoter
 
 Use this skill to promote validated experimental skills from the sandbox to the canonical skills bundle.

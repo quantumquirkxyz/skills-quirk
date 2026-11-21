@@ -59,8 +59,6 @@ Emit `ResearchArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: prefer primary sources and record why any secondary source was used.

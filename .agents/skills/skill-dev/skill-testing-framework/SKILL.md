@@ -58,8 +58,6 @@ Emit `SkillTestingFrameworkArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Testing Framework
 
 

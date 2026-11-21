@@ -65,8 +65,6 @@ Emit `SecSecurityAuditArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Security Audit
 
 Audit a **system or codebase** for security vulnerabilities — with explicit findings, severity, and remediation priorities.

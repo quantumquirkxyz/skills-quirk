@@ -54,8 +54,6 @@ Emit `MathLinearAlgebraArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Linear Algebra
 
 Apply **linear algebra** — decompositions, solving systems, transformations — with explicit numerical stability and interpretation.

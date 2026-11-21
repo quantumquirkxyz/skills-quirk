@@ -56,8 +56,6 @@ Emit `SemanticLayerArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Semantic Layer
 
 Design a **semantic layer** — dbt, Cube, metrics, dimensions, measures, self-service analytics — with explicit business logic, governance, and query optimization.

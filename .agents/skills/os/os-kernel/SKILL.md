@@ -55,8 +55,6 @@ Emit `OsKernelArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # os-kernel
 
 Design and analyze operating system internals — process management, memory management, file systems, scheduling, system calls, concurrency — with explicit resource accounting and failure boundaries.

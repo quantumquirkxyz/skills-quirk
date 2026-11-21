@@ -57,8 +57,6 @@ When operational evidence, an incident, defect, regression, or accepted risk req
 Return `DocsManagementArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-# 
-# 
 # Docs Management
 
 Use this skill when the repository needs durable documentation discipline: what belongs in `CONTEXT.md`, when to write an ADR, and how to keep docs from drifting away from the code.

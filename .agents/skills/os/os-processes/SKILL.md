@@ -56,8 +56,6 @@ Emit `OsProcessesArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # os-processes
 
 Use this skill when reasoning about process lifecycle, scheduling, signals, forks, exec, IPC, synchronization, process isolation, or OS-level concurrency behavior.

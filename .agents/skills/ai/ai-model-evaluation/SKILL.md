@@ -56,8 +56,6 @@ Emit `AiModelEvaluationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Model Evaluation
 
 Evaluate a **machine-learning or LLM model** with metrics, subgroup fairness, robustness, and explainability — and recommend deployment or revision.

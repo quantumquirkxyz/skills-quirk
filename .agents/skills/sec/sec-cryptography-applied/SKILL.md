@@ -56,8 +56,6 @@ Emit `SecCryptographyAppliedArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Applied Cryptography
 
 Apply **cryptography** correctly — encryption, signatures, key management, TLS — with implementation guidance and anti-pattern detection.

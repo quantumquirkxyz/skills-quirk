@@ -56,8 +56,6 @@ Emit `StructuredOutputArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Structured Output
 
 Produce reliable, parseable structured output from LLMs with validation and fallback.

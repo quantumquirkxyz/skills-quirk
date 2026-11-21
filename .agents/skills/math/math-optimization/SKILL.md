@@ -57,8 +57,6 @@ Emit `MathOptimizationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Mathematical Optimization
 
 Turn a real problem into a **mathematical program**, solve it with an appropriate solver, and report what was found — including the gap to optimality when the optimum is not proven.

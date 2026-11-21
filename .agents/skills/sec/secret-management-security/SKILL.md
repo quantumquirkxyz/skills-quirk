@@ -56,8 +56,6 @@ Emit `SecretManagementSecurityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Secret Management Security
 
 Design and audit **secrets management** — Vault, KMS, rotation, injection, and External Secrets Operator — with explicit lifecycle controls and leakage prevention.

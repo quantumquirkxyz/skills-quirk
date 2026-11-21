@@ -66,8 +66,6 @@ Emit `IssueOperationsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: resolve the tracker, repository or project, and exact issue target before mutating anything.

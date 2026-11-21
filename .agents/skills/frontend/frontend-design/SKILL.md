@@ -61,8 +61,6 @@ Emit `FrontendDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Frontend Design
 
 Use this skill when the project needs a clear frontend shape before implementation. Record the execution traceId and link the artifact to the originating issue for review replay. It should decide what the user sees first, which interactions matter, and where the seam should sit so the rest of the UI can stay deep rather than shallow.

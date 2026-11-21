@@ -56,8 +56,6 @@ Emit `QaManualTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # qa-manual-testing
 
 Use this skill when manually testing a feature, reproducing a user-visible issue, or running an exploratory session that needs evidence and coverage notes.

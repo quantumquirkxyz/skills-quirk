@@ -57,8 +57,6 @@ Emit `Web3GovernanceArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Web3 Governance Design
 
 Design or audit a **Web3 governance system** — token voting, delegation, on-chain execution, oSnap, Zodiac, EIP-7702 — with attack vectors and resilience analysis.

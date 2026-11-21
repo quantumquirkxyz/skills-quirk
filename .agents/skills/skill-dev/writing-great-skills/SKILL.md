@@ -54,8 +54,6 @@ Emit `WritingGreatSkillsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Invocation
 
 Two choices, trading different costs:

@@ -59,8 +59,6 @@ Emit `QaAutomationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # qa-automation
 
 Design and implement automated test suites — unit, integration, e2e — with proper coverage, maintainability, and CI integration.

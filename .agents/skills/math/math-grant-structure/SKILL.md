@@ -69,8 +69,6 @@ Emit `MathGrantStructureArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Math Grant Proposal Structuring
 
 Turn a **research programme** into a grant proposal that matches the agency's review criteria — and stress-test it from the reviewer's chair.

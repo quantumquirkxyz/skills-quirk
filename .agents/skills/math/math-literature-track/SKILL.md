@@ -72,8 +72,6 @@ Emit `MathLiteratureTrackArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Math Literature Tracking
 
 Track the **front of mathematics** that matters to the researcher, with explicit sources and a personal relevance signal.

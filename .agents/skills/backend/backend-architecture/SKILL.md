@@ -64,8 +64,6 @@ Emit `BackendArchitectureArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # backend-architecture
 
 Shape backend systems — REST/gRPC APIs, service contracts, data flow, state management, error handling — with explicit seams and caller responsibilities.

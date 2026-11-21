@@ -58,8 +58,6 @@ Emit `PerformanceTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # performance-testing
 
 Design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions.

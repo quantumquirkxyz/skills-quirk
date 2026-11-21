@@ -1,5 +1,8 @@
 ---
 name: "project-viability"
+category: "project"
+maturity: "stable"
+version: "1"
 description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work."
 license: "MIT"
 capabilities:
@@ -81,8 +84,6 @@ Return `ProjectViabilityArtifact` as structured output in the current response, 
 Use `code-review` findings as repository evidence when assessing viability. Preserve their severity, confidence, location, and limitations; do not convert an unverified risk into a project-blocking conclusion without independent support.
 
 
-# 
-# 
 # Project Viability
 
 Analyze whether the project is viable, functional, and scalable across logic, architecture, technical capacity, team maintainability, and domain growth. Ground every finding in `CONTEXT.md`, the ADRs under `docs/adr/`, and actual code evidence. Complement subjective findings with an automated baseline of objective health signals.

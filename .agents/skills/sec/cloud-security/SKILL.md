@@ -56,8 +56,6 @@ Emit `CloudSecurityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Cloud Security
 
 Design and audit **cloud security** for AWS, GCP, and Azure — IAM, KMS, network controls, compliance, and posture management.

@@ -66,8 +66,6 @@ Emit `MathPaperCollaborationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Math Paper Collaboration
 
 Coordinate a **mathematical paper** from first draft to arXiv submission — with version control, citation tracking, reproducible computation links, and co-author rules.

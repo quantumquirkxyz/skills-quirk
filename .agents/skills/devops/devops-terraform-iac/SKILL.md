@@ -56,8 +56,6 @@ Emit `DevopsTerraformIacArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Infrastructure as Code Design
 
 Design **reproducible infrastructure** — compute, network, storage, identity — with version control, state management, and policy enforcement.

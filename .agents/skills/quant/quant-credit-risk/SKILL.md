@@ -54,8 +54,6 @@ Emit `QuantCreditRiskArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Credit Risk Modeling
 
 Model **credit risk** at the instrument and portfolio level — PD, LGD, EAD, EL, UL — with default correlation and aggregation.

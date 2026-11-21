@@ -55,8 +55,6 @@ Emit `ReleaseManagementArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Release Management
 
 Use this skill when a project needs governance for getting changes into production without turning shipping into guesswork. It should define the release train, the CI handoff, approvals, and the conditions for backing out. It decides when a release may advance; `deployment` decides how the runtime promotion works.

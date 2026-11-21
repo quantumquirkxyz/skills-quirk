@@ -60,8 +60,6 @@ Emit `QaSecurityTestingArtifact` as JSON and Markdown:
 The manifest must record `manifest_version`, authorized scope, target/environment identifiers, code and fixture SHA-256 hashes, dependency-lock hash, seed, exact command, replay input/output hashes, baseline reference/delta, redaction policy, and `PASS | FAIL | BLOCKED | NOT-RUN`. Never put secrets or reusable credentials in artifacts.
 
 
-# 
-# 
 # qa-security-testing
 
 Use this skill when checking security-sensitive behavior such as authentication, authorization, session handling, injection resistance, rate limits, or configuration exposure.

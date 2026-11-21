@@ -59,8 +59,6 @@ Emit `ResearchDataArchivingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # research-data-archiving
 
 Use this skill when preparing research data, code, notebooks, instruments outputs, or derived datasets for preservation, publication, review, or reuse.

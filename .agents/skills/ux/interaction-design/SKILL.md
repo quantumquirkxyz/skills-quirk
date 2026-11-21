@@ -65,8 +65,6 @@ Emit `InteractionDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # interaction-design
 
 Design user interactions — task flows, screen states, transitions, error states, feedback patterns — so the interface guides users predictably.

@@ -60,8 +60,6 @@ Emit `MicroservicesArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # microservices
 
 Design microservice architectures — service decomposition, inter-service communication, data ownership, resilience patterns — with explicit boundaries and failure isolation.

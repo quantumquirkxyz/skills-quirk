@@ -108,8 +108,6 @@ Emit `ContextEngineArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Context Engine
 
 

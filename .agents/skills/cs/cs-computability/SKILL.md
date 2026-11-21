@@ -56,8 +56,6 @@ Emit `CsComputabilityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cs-computability
 
 Use this skill when the task involves decidability, recognizability, reductions, Rice-style reasoning, or a proof that a language or machine property cannot be decided.

@@ -54,8 +54,6 @@ Repository audit handoffs must preserve objective, scope, inspected areas, findi
 Return `ArtifactHandoffArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-# 
-# 
 # Artifact Handoff
 
 Use this skill to move a result from one Skill to another without flattening it into prose.

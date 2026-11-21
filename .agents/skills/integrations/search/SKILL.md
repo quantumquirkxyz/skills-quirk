@@ -67,8 +67,6 @@ Emit `SearchArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Search
 
 Use this skill when the system needs retrieval that users can trust. It should define the retrieval seam, indexing shape, relevance controls, and observability so search stays understandable and adjustable.

@@ -55,8 +55,6 @@ Emit `CachingAdvancedArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Advanced Caching
 
 Use this skill when designing, reviewing, or optimizing advanced caching systems — Redis, Memcached, CDN, cache invalidation patterns, stampede prevention, consistency models, and multi-tier cache hierarchies.

@@ -59,8 +59,6 @@ Emit `CmsContentStrategyArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cms-content-strategy
 
 Use this skill when designing CMS content models, editorial workflows, taxonomies, governance, content lifecycle, or publishing rules across channels.

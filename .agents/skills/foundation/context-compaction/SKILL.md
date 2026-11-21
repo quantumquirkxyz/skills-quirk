@@ -94,6 +94,7 @@ tags: ["context-engineering", "memory", "long-running-sessions"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+stopCondition: "Durable artifacts preserved by reference; dropped items re-derivable or recorded in riskRemaining; the next window opens with the summary and budget; completion criteria checked."
 ---
 
 ## Critical Rules

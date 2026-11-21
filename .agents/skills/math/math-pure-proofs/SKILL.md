@@ -74,8 +74,6 @@ Emit `MathPureProofsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Pure-Math Proofs
 
 Construct a **proof** — an airtight argument from accepted axioms to a stated statement — using the strategy that fits the shape of the claim.

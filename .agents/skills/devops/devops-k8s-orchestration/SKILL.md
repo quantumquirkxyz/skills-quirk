@@ -56,8 +56,6 @@ Emit `DevopsK8sOrchestrationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Kubernetes Orchestration Design
 
 Design a **Kubernetes deployment** — architecture, deployment strategy, service mesh, observability — with reproducible manifests.

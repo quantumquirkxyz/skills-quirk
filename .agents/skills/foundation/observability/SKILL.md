@@ -58,8 +58,6 @@ Emit `ObservabilityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Observability
 
 Use this skill when a system needs to be understood in production, not just in tests. Design operational signals — SLIs, SLOs, dashboards, alerts, and runbooks — so the system stays understandable under load.

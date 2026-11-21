@@ -56,8 +56,6 @@ Emit `ProdPrdWritingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Product Requirements Document
 
 Turn a **product idea** into a structured PRD with aligned goals, measurable outcomes, and clear scope.

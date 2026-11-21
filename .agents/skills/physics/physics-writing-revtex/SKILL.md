@@ -56,8 +56,6 @@ Emit `PhysicsWritingRevtexArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Paper Writing — RevTeX and Formats
 
 Prepare a **physics paper** in the target journal format — RevTeX (APS), IOP, AIP — with figures meeting conventions and a submission package.

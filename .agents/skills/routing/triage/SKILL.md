@@ -62,8 +62,6 @@ Emit `TriageArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Triage
 
 Move issues on the project issue tracker through a small state machine of triage roles. Use this repo's vocabulary from `CONTEXT.md` when naming the work, its boundaries, or the agent brief. If the repo's work-item governance may have changed, run `work-item-router` first.

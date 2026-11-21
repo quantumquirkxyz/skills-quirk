@@ -54,8 +54,6 @@ approvalFor: []
 Return `GrillArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-# 
-# 
 # Grill
 
 Run the `grilling` primitive as the stable quirk entrypoint named `grill`.

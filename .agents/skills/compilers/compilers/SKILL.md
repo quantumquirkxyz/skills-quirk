@@ -55,8 +55,6 @@ Emit `CompilersArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # compilers
 
 Design and implement compilers and interpreters — lexer, parser, AST, type checking, code generation, optimization — with correctness and modularity.

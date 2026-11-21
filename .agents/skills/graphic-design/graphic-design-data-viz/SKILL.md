@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-data-viz"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design data visualizations — charts, infographics, dashboards — with explicit readability, accessibility, color, typography, and production rules."
 capabilities:
   - apply graphic design data viz methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Visualization artifact complete; chart choice justified, palette accessible, labels and text alternatives validated."
 ---
 
 ## Untrusted Input Handling
@@ -48,8 +55,6 @@ Emit `GraphicDesignDataVizArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Data Viz
 
 ## Purpose

@@ -54,8 +54,6 @@ Emit `PhysicsThermoArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Thermodynamics Modeling
 
 Apply **thermodynamics** — first/second law, entropy, phase transitions — to a physical system with explicit energy accounting and efficiency limits.

@@ -56,8 +56,6 @@ Emit `AccessibilityDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # accessibility-design
 
 Use this skill when designing or reviewing interface behavior for keyboard access, semantics, focus management, contrast, forms, errors, and assistive-technology compatibility.

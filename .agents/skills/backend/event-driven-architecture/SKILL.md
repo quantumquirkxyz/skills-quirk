@@ -55,8 +55,6 @@ Emit `EventDrivenArchitectureArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Event-Driven Architecture
 
 Use this skill when designing event-driven systems — Kafka, NATS, EventBridge, SQS/SNS — with choreography, orchestration, event schemas, and delivery guarantees.

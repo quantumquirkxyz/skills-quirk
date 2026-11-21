@@ -114,8 +114,6 @@ Emit `ImplementReviewFixesArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 ## Preconditions
 
 Before reading or editing source files, verify that `branchState` matches `fixedPoint`, the plan digest is current, the branch is not conflicted, `scope` permits every planned file, and `approval` covers each delegated or own side effect. A conflict routes to `resolving-merge-conflicts`; a stale plan routes to `plan-review-fixes`; missing approval yields `needs-approval` without edits.

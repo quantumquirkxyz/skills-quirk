@@ -59,8 +59,6 @@ Emit `GraphicDesignToolsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Tools
 
 Use this skill when the workflow needs to connect graphic design tools to agent or team automation. It should evaluate Figma, Adobe Creative Cloud, Canva, and local production tools against the team workflow, then define explicit authentication, scopes, data flow, and safety boundaries before any integration is built.

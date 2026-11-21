@@ -59,8 +59,6 @@ Emit `PhysicsReproducibilityArchiveArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Reproducibility and Archival
 
 Make a **physics result** reproducible and archive it with a DOI — data, code, and environment — for compliance with journals and funders.

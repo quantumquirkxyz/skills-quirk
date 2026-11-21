@@ -54,8 +54,6 @@ approvalFor: []
 Return `ContributionWorkflowOptimizerArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-# 
-# 
 # Contribution Workflow Optimizer
 
 

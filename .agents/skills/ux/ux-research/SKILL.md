@@ -58,8 +58,6 @@ Emit `UxResearchArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # ux-research
 
 Conduct user research — interviews, surveys, usability testing, personas, journey mapping — to ground design decisions in real user behavior.

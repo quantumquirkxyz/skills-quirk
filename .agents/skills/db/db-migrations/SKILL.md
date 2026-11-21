@@ -56,8 +56,6 @@ Emit `DbMigrationsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # db-migrations
 
 Use this skill when changing a database schema, moving data, adding constraints, backfilling fields, or coordinating application and database compatibility.

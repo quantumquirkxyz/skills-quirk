@@ -58,8 +58,6 @@ Emit `PhysicsAstroArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Astrophysics Modeling
 
 Model an **astrophysical system** — stellar, galactic, cosmological — with physical scales, order-of-magnitude estimates, and known scaling laws.

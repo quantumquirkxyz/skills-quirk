@@ -58,8 +58,6 @@ Emit `StateManagementArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # State Management
 
 Use this skill when designing state architecture for modern frontend applications — client state, server state, derived signals, and cache boundaries.

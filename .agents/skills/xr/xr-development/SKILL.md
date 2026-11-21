@@ -58,8 +58,6 @@ Emit `XrDevelopmentArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # xr-development
 
 Design and build extended reality (AR/VR/MR) experiences — 3D interaction, spatial computing, headset development, immersive UX — with performance, comfort, and accessibility as first-class concerns.

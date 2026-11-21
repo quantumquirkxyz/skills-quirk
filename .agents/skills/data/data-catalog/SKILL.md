@@ -59,8 +59,6 @@ Emit `DataCatalogArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Catalog
 
 Design a **data catalog** — metadata management, discovery, classification, data mesh, and governance.

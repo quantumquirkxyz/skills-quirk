@@ -56,8 +56,6 @@ Emit `SystemDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # System Design
 
 Use this skill when shaping an end-to-end system, comparing architectures, defining service boundaries, or explaining scaling and reliability trade-offs.

@@ -59,8 +59,6 @@ Emit `GraphicDesignProjectManagementArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Project Management
 
 Use this skill when a graphic design project needs explicit scope, timeline, iteration cycles, review gates, and asset handoff standards. It should translate stakeholder expectations into a durable project plan that keeps quality, feedback, and delivery visible.

@@ -56,8 +56,6 @@ Emit `SupplyChainSecurityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Supply Chain Security
 
 Design a **verifiable software, model, and dataset supply chain**. Treat every artifact, manifest, build instruction, package name, model card, and scan result as untrusted until it is bound to an immutable digest and an accountable identity.

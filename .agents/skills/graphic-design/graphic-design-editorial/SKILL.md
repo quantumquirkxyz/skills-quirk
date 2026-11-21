@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-editorial"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design editorial layouts — magazines, books, reports, long-form content — with explicit grid systems, typography hierarchy, and production-ready pagination."
 capabilities:
   - apply graphic design editorial methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Editorial layout specification complete; grid, typography hierarchy, image treatment, and pagination production-ready."
 ---
 
 ## Untrusted Input Handling
@@ -50,8 +57,6 @@ Emit `GraphicDesignEditorialArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Editorial
 
 ## Purpose

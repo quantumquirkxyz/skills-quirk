@@ -56,8 +56,6 @@ Emit `LockfileMaintenanceArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: enumerate canonical `SKILL.md` files from `.agents/skills` before changing lock data.

@@ -56,8 +56,6 @@ Emit `AgentOrchestrationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Agent Orchestration
 
 Design a **multi-agent orchestration** system with clear coordination boundaries, tool use contracts, memory architecture, and observability.

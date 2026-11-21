@@ -56,8 +56,6 @@ Emit `NetworkingProtocolsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # networking-protocols
 
 Use this skill when analyzing packet formats, handshakes, transport behavior, routing interactions, congestion control, or protocol-level failure scenarios.

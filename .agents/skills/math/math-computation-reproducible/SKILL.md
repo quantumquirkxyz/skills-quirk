@@ -59,8 +59,6 @@ Emit `MathComputationReproducibleArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Reproducible Math Computation
 
 Run a **mathematical computation** that another researcher can rerun bit-for-bit — same inputs, same library versions, same outputs — and ship the artifacts.

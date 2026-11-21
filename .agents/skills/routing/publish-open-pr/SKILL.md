@@ -131,7 +131,9 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 ### 5. Prepare the PR bundle
 
 - Follow [PR Body](references/pr-body.md).
-- Run `scripts/render_pr_bundle.py` to materialize the title, body, and metadata from the current branch, latest commit, validation results, and linked issue.
+- Run the bundled read-only renderer from this skill directory:
+  `python3 scripts/render_pr_bundle.py --base <base> --issue <number> --validation "<command>: <result>" --out /tmp/pr.json --body-file /tmp/pr-body.md`.
+  It reads git and (when `gh` is available) the linked issue, and never pushes or edits a PR.
 - Use explicit temporary files only when required by `gh pr create --body-file`; delete or ignore them after the PR is opened.
 - If the repository already has a PR template, fill it in rather than replacing it.
 

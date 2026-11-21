@@ -82,8 +82,6 @@ Emit `ReviewFixLoopArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Review Fix Loop
 
 ## Overview

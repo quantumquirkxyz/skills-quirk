@@ -54,8 +54,6 @@ Emit `FinancePortfolioTheoryArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Portfolio Theory
 
 Apply **Modern Portfolio Theory** — efficient frontier, CAPM, APT, performance attribution — with explicit assumptions and regime analysis.

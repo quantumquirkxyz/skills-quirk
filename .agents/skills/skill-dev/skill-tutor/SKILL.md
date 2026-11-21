@@ -55,8 +55,6 @@ Emit `SkillTutorArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Tutor: Interactive Guide to Creating Your First quirk Skill
 
 This skill provides an interactive, worksheet-based tutorial that guides you through creating your first quirk skill using hands-on practice and structured learning.

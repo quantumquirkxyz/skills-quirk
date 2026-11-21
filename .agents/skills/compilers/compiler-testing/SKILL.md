@@ -56,8 +56,6 @@ Emit `CompilerTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # compiler-testing
 
 Use this skill when planning tests for a compiler, interpreter, transpiler, parser, type checker, optimizer, or code generator.

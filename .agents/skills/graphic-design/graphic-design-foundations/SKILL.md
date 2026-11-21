@@ -58,8 +58,6 @@ Emit `GraphicDesignFoundationsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Foundations
 
 Use this skill when a visual artifact needs a deliberate graphic design foundation before production. It should translate brief, audience, and channel into explicit layout, color, typography, and production decisions.

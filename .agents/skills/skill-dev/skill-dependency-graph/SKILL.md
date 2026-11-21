@@ -56,8 +56,6 @@ Emit `SkillDependencyGraphArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Dependency Graph
 
 

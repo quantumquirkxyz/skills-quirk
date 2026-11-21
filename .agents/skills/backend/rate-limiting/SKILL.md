@@ -55,8 +55,6 @@ Emit `RateLimitingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Rate Limiting and Throttling
 
 Use this skill when designing, reviewing, or implementing rate limiting and throttling systems — token bucket, sliding window, distributed rate limiting, API protection, and overload prevention.

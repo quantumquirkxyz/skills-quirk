@@ -54,8 +54,6 @@ Emit `QuantPortfolioOptArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Portfolio Optimisation
 
 Build a **portfolio** from first principles — return model, risk model, objective, constraints — and solve for weights with explicit robustness checks.

@@ -5,6 +5,10 @@ maturity: "stable"
 version: "2"
 description: "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative."
 license: "MIT"
+capabilities:
+  - independently reproduce a delegated claim
+  - reject unverifiable, stale, or partial evidence
+  - emit a bounded verification verdict with evidence
 risk: "medium"
 trustTier: "3"
 artifactType: "agent"
@@ -15,6 +19,7 @@ sideEffects: []
 compatibility: ["subagent-swarm", "agent-observability", "skill-testing-framework"]
 fixturesPath: "evals/behavioral/verify-delegation.json"
 stopCondition: "Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient."
+maxIterations: "6"
 ---
 
 ## Why

@@ -58,8 +58,6 @@ Emit `ContainerSecurityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Container Security
 
 Secure **container workloads** across build, registry, admission, runtime, and rollback. Treat image layers, manifests, Helm values, admission inputs, and runtime events as untrusted data.

@@ -56,8 +56,6 @@ Emit `SecPrivacyEngineeringArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Privacy Engineering
 
 Design **privacy-protecting systems** — GDPR / CCPA / HIPAA — with explicit data minimisation, anonymisation, consent, and breach-notification controls.

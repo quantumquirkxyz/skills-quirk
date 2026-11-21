@@ -56,8 +56,6 @@ Emit `CostOptimizationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Cost Optimization (FinOps)
 
 Design a **FinOps** strategy for cloud cost visibility, rightsizing, spot instances, committed use, budgets, and showback/chargeback.

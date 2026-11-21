@@ -48,6 +48,7 @@ tags: ["auxiliary"]
 compatibility: []
 approvalRequired: false
 approvalFor: []
+maxIterations: "6"
 ---
 
 ## Contract

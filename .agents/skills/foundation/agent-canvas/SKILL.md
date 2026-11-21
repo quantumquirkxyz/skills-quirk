@@ -57,8 +57,6 @@ Emit `AgentCanvasArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Agent Canvas
 
 

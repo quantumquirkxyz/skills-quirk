@@ -56,8 +56,6 @@ Emit `PhysicsExperimentalNotebookArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Experimental Physics Notebook
 
 Build an **experimental lab notebook** — structured, reproducible, FAIR-compliant — that another physicist could use to reproduce the measurement.

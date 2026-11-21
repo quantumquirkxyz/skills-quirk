@@ -61,8 +61,6 @@ Emit `BackendQueuesArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # backend-queues
 
 Use this skill when designing background jobs, event consumers, message queues, worker pools, scheduled tasks, or asynchronous workflow boundaries.

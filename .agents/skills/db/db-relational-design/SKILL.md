@@ -59,8 +59,6 @@ Emit `DbRelationalDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Relational DB Design
 
 Design a **relational database schema** — entities, relations, keys, indexes, constraints — with normalisation, query patterns, and migration planning.

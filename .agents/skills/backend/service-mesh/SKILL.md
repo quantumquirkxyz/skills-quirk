@@ -55,8 +55,6 @@ Emit `ServiceMeshArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Service Mesh
 
 Use this skill when designing or reviewing a service mesh — Istio, Linkerd, Cilium, or similar — for mTLS, traffic management, observability, and zero-trust networking.

@@ -56,8 +56,6 @@ Emit `ZeroTrustArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Zero Trust Architecture
 
 Design a **zero trust architecture** — identity, per-request auth, microsegmentation, policy — with explicit trust tiers, continuous verification, and least-privilege enforcement.

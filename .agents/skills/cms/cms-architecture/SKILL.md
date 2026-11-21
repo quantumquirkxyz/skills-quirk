@@ -55,8 +55,6 @@ Emit `CmsArchitectureArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cms-architecture
 
 Design content management systems — content models, editorial workflows, publishing pipelines, localization — with schema evolution and multi-channel delivery.

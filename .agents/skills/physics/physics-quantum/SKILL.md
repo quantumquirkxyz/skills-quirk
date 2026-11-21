@@ -54,8 +54,6 @@ Emit `PhysicsQuantumArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Quantum Physics Modeling
 
 Construct a **quantum model** of a system — state space, Hamiltonian, measurement — and answer a question about it with explicit regime checks.

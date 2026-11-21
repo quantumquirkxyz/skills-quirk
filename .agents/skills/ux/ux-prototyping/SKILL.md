@@ -62,8 +62,6 @@ Emit `UxPrototypingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # ux-prototyping
 
 Use this skill when planning or reviewing a UX prototype meant to answer a question about flow, usability, comprehension, layout, or interaction behavior.

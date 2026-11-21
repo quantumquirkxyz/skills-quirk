@@ -56,8 +56,6 @@ Emit `FeatureStoreArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Feature Store
 
 Design a **feature store** — online/offline, feature engineering, serving, monitoring, and drift detection.

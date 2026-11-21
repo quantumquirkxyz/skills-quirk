@@ -58,8 +58,6 @@ Emit `DesignSystemVisualArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Design System Visual
 
 Use this skill when a product or brand needs a coherent visual design system. It should translate brand and accessibility requirements into explicit design tokens, component patterns, and cross-channel adaptation rules.

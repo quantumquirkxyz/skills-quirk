@@ -56,8 +56,6 @@ Emit `BackupDisasterRecoveryArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Backup and Disaster Recovery
 
 Design a **backup and disaster recovery** strategy with explicit recovery objectives (RPO/RTO), backup strategies, restore testing, and cross-region resilience.

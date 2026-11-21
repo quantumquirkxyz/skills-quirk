@@ -56,8 +56,6 @@ Emit `XrInteractionDesignArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # xr-interaction-design
 
 Use this skill when designing AR/VR/MR interactions involving spatial input, hand tracking, controllers, gaze, locomotion, gestures, haptics, or immersive feedback.

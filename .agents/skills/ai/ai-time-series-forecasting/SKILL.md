@@ -56,8 +56,6 @@ Emit `AiTimeSeriesForecastingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Time-Series Forecasting
 
 Build a **time-series forecast** — with stationarity analysis, seasonality, exogenous variables, and backtest — and recommend the best model.

@@ -56,8 +56,6 @@ Emit `AiPromptEngineeringArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Prompt Engineering
 
 Design **LLM prompts** that produce correct, consistent, and useful outputs — with evaluation, iteration, and failure-mode analysis.

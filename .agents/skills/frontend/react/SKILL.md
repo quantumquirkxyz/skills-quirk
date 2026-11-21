@@ -60,8 +60,6 @@ Emit `ReactArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # React
 
 Use this skill when React components or state need to be shaped deliberately. Record the execution traceId and link the artifact to the originating issue for review replay. Keep the component graph shallow where possible, and make the state seam explicit so the UI remains testable and refactor-friendly.

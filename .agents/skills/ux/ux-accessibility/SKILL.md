@@ -63,8 +63,6 @@ Emit `UxAccessibilityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # ux-accessibility
 
 Use this skill when reviewing or designing the accessibility of a user journey, not just individual UI components.

@@ -57,8 +57,6 @@ Emit `Web3ConsensusArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Consensus Mechanism Analysis
 
 Analyse a **consensus mechanism** — its security model, finality, liveness, MEV, and economic incentives — and compare it against alternatives for a given threat model.

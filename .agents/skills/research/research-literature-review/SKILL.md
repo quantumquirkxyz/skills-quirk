@@ -59,8 +59,6 @@ Emit `ResearchLiteratureReviewArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # research-literature-review
 
 Use this skill when planning or performing a literature review, evidence scan, related-work section, systematic screening, or research synthesis.

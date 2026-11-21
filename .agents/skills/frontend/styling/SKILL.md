@@ -60,8 +60,6 @@ Emit `StylingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Styling
 
 Use this skill when designing the styling architecture for a frontend project. Record the execution traceId and link the artifact to the originating issue for review replay. — utility-first CSS, CSS modules, component variants, design tokens, and theme systems.

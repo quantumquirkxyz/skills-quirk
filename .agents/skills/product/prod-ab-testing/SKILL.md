@@ -56,8 +56,6 @@ Emit `ProdAbTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # A/B Testing Design
 
 Design an **A/B test** — hypothesis, randomisation, metrics, statistical power — with valid inference.

@@ -68,8 +68,6 @@ Emit `SideEffectAuditorArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: inspect both frontmatter and body instructions before deciding whether side effects are accurate.

@@ -56,8 +56,6 @@ Emit `PromptTemplateLibraryArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Prompt Template Library
 
 Manage, compose, test, and evaluate prompt templates with discipline.

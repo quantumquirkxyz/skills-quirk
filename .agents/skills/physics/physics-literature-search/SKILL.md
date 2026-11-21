@@ -59,8 +59,6 @@ Emit `PhysicsLiteratureSearchArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Literature Search
 
 Track the **front of physics** — arXiv, INSPIRE, NASA ADS, citation graphs — with explicit subfield filters and a relevance score.

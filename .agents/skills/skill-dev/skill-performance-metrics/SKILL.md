@@ -56,8 +56,6 @@ Emit `SkillPerformanceMetricsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Performance Metrics
 
 

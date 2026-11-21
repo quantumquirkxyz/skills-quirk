@@ -55,8 +55,6 @@ Emit `ApiGatewayArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # API Gateway
 
 Use this skill when designing or reviewing an API gateway layer — Kong, Envoy, AWS API Gateway, or similar — for routing, rate limiting, authentication, and observability.

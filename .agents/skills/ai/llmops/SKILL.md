@@ -56,8 +56,6 @@ Emit `LlmopsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # LLMOps
 
 Deploy, monitor, and operate LLM applications in production with discipline.

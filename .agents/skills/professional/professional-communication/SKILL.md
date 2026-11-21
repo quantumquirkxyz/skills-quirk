@@ -56,8 +56,6 @@ Emit `ProfessionalCommunicationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # professional-communication
 
 Use this skill when writing or reviewing status updates, stakeholder messages, escalation notes, expectation resets, decision requests, or sensitive professional communication.

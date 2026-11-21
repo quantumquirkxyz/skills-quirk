@@ -57,6 +57,7 @@ tags: ["auxiliary"]
 compatibility: []
 approvalRequired: false
 approvalFor: []
+maxIterations: "6"
 ---
 
 ## Contract
@@ -127,8 +128,6 @@ Emit `InteractiveTutorialBuilderArtifact` as both:
 - **Expected output shape**: Every exercise must declare an explicit expected output shape and at least one checkable checkpoint.
 - **Skill boundary preservation**: Preserve the target Skill's boundaries and side-effect policy; do not teach behavior outside the Skill's declared contract.
 
-# 
-# 
 # Interactive Tutorial Builder
 
 

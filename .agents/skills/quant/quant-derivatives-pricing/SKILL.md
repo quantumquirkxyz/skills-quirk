@@ -54,8 +54,6 @@ Emit `QuantDerivativesPricingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Derivatives Pricing & Calibration
 
 Price a **derivative** — vanilla option, exotic, structured — using a model, compute Greeks, and validate calibration against market data.

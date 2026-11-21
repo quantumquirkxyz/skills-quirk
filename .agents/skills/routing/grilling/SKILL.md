@@ -52,8 +52,6 @@ approvalFor: []
 Return `GrillingArtifact` as structured output in the current response. Do not write local artifact files unless the user explicitly asks for an export.
 
 
-## 
-## 
 ## Rules
 
 - Rule: ask exactly one main question at a time.

@@ -56,8 +56,6 @@ Emit `DataContractsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Contracts
 
 Design **data contracts** — schema evolution, producer-consumer agreements, schema registry, breaking change detection — with explicit compatibility rules and versioning.

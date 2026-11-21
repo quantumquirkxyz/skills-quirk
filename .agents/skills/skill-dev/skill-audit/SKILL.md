@@ -68,8 +68,6 @@ Emit `SkillAuditArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Skill Audit
 
 Use this skill to verify the repository-local Skills platform.

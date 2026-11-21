@@ -54,8 +54,6 @@ Emit `DbNosqlModelingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # NoSQL Data Modeling
 
 Design a **NoSQL data model** — document, key-value, wide-column, graph, time-series — with access pattern analysis and consistency trade-offs.

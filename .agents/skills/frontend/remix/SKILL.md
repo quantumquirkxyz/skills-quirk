@@ -63,8 +63,6 @@ Emit `RemixArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Remix
 
 Use this skill when designing or reviewing Remix applications. Record the execution traceId and link the artifact to the originating issue for review replay. — loaders, actions, nested routes, mutations, and progressive enhancement.

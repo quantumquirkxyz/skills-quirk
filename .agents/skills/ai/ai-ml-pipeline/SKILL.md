@@ -56,8 +56,6 @@ Emit `AiMlPipelineArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # ML Pipeline Design
 
 Build a **machine-learning pipeline** from data to deployed model with reproducibility and fairness checks.

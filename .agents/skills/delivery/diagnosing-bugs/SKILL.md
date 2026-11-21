@@ -63,8 +63,6 @@ When a diagnosis identifies an incident, defect, or regression, include a `Maint
 Use `code-review` when the reported symptom may originate outside the initially named file. Consume its evidence as hypotheses to test, not as confirmed causes. Trace the complete path from input through business logic, persistence, integrations, and output, and distinguish symptom, contributing condition, and confirmed root cause.
 
 
-# 
-# 
 # Diagnosing Bugs
 
 A discipline for hard bugs. Skip phases only when explicitly justified.

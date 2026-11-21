@@ -56,8 +56,6 @@ Emit `DataQualityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Quality
 
 Design a **data quality framework** — Great Expectations, Soda, checks, observability, contracts — with explicit SLAs, freshness rules, and incident response for bad data.

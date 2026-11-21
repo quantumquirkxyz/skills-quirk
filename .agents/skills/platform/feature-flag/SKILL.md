@@ -1,6 +1,8 @@
 ---
 name: "feature-flag"
 category: "platform"
+maturity: "stable"
+version: "1"
 description: "Design and manage feature flags with short-lived flags, gradual rollouts, kill switches, A/B testing, and cleanup discipline."
 capabilities:
   - apply feature flag methods within explicit platform boundaries
@@ -51,8 +53,6 @@ Emit `FeatureFlagArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Feature Flag
 
 ## Why

@@ -59,8 +59,6 @@ Emit `BrandIdentityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Brand Identity
 
 Use this skill when a brand needs a coherent visual and verbal identity system. It should translate strategy into explicit logo, color, typography, imagery, iconography, and usage rules that scale across channels.

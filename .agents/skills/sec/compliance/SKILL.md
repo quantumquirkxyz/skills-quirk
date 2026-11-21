@@ -56,8 +56,6 @@ Emit `ComplianceArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Compliance
 
 Assess **compliance posture** across SOC2, ISO27001, GDPR, HIPAA, and PCI DSS — with explicit control mapping, evidence collection, gap analysis, and remediation planning.

@@ -56,8 +56,6 @@ Emit `ProfessionalProjectManagementArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # professional-project-management
 
 Use this skill when turning an ambiguous initiative into a project plan, recovering a drifting project, or preparing stakeholder-ready tracking artifacts.

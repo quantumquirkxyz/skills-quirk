@@ -56,8 +56,6 @@ Emit `CmsAccessControlArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cms-access-control
 
 Use this skill when designing or reviewing CMS roles, permissions, approval gates, publishing authority, content ownership, and audit requirements.

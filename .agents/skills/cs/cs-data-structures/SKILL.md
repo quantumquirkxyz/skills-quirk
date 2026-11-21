@@ -56,8 +56,6 @@ Emit `CsDataStructuresArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # cs-data-structures
 
 Use this skill when choosing, designing, or reviewing a data structure for a specific workload, API, or algorithm.

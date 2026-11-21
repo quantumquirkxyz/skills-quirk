@@ -56,8 +56,6 @@ Emit `DocsKnowledgeBaseArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # docs-knowledge-base
 
 Use this skill when building or maintaining a repository knowledge base, glossary, handbook, or indexed guidance set that multiple agents or contributors rely on.

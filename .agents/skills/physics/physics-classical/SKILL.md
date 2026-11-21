@@ -54,8 +54,6 @@ Emit `PhysicsClassicalArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Classical Mechanics
 
 Solve a **classical mechanics** problem — Newton's laws, Lagrangian, Hamiltonian, or orbital — with free-body analysis, energy accounting, and dimensional checks.

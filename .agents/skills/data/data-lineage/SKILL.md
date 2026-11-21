@@ -56,8 +56,6 @@ Emit `DataLineageArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Data Lineage
 
 Design **data lineage** — end-to-end tracing, impact analysis, column-level lineage, and governance support.

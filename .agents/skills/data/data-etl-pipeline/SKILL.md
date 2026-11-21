@@ -56,8 +56,6 @@ Emit `DataEtlPipelineArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # ETL Pipeline Design
 
 Design an **ETL / ELT pipeline** — extraction, transformation, load — with reproducible steps, schema evolution, and data quality checks.

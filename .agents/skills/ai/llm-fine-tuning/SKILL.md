@@ -56,8 +56,6 @@ Emit `LlmFineTuningArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # LLM Fine-Tuning
 
 Fine-tune a **large language model** using efficient methods (LoRA, QLoRA, full fine-tuning) with reproducible data pipelines and safety controls.

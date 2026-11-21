@@ -58,8 +58,6 @@ Emit `AccessibilityTestingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # accessibility-testing
 
 Test web interfaces for accessibility compliance — automated scans, manual keyboard navigation, screen reader validation — so barriers are found and fixed before users encounter them.

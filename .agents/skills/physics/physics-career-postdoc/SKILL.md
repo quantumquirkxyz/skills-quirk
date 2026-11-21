@@ -59,8 +59,6 @@ Emit `PhysicsCareerPostdocArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Physics Career — Postdocs, Faculty, Grants
 
 Build a **career application package** for a physics researcher — postdoc, faculty, or early-career grant — with a research statement, teaching philosophy, and timeline.

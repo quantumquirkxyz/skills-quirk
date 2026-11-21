@@ -56,8 +56,6 @@ Emit `DevopsFeatureFlagsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Feature Flag System Design
 
 Design a **feature flag system** — rollouts, targeting, kill switches — with lifecycle management and operational runbooks.

@@ -58,8 +58,6 @@ Emit `DistributedTracingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Distributed Tracing
 
 Use this skill when designing distributed tracing for a service-oriented system — OpenTelemetry, W3C TraceContext, sampling strategies, instrumentation, and trace-based debugging.

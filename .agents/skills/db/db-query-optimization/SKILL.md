@@ -56,8 +56,6 @@ Emit `DbQueryOptimizationArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # db-query-optimization
 
 Use this skill when a query is slow, a database plan changed, an index is being considered, or a data-access pattern needs performance review.

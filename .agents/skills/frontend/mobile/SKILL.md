@@ -58,8 +58,6 @@ Emit `MobileArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Mobile
 
 Use this skill when the product needs to respect device constraints, offline behavior, platform-specific UX, or push notifications. It should keep the seam explicit so the app can remain reliable across different device conditions.

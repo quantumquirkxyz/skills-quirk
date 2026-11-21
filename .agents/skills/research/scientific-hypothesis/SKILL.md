@@ -57,8 +57,6 @@ Emit `ScientificHypothesisArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Scientific Hypothesis Design
 
 Formulate a **scientific hypothesis** that is testable, falsifiable, and tied to measurable variables with controls, using 2025–2026 scientific method best practices: falsifiability first, pre-registration for confirmatory work, multiplicity control, effect-size reporting, and reproducibility manifests.

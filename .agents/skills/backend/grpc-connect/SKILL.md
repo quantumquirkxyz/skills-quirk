@@ -55,8 +55,6 @@ Emit `GrpcConnectArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # gRPC and Connect
 
 Use this skill when designing gRPC services, ConnectRPC APIs, or gRPC-to-REST gateway layers — protobuf contracts, streaming patterns, code generation, and cross-language compatibility.

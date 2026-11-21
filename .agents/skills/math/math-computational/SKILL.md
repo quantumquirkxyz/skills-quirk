@@ -56,8 +56,6 @@ Emit `MathComputationalArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Computational Math
 
 Solve a mathematical problem **numerically or symbolically** with an algorithm whose error, stability, and cost are explicit. Never ship a black-box answer.

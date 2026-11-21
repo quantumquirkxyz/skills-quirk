@@ -59,8 +59,6 @@ Emit `SkillCreatorArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Operational Contract
 
 - **Input:** Skill creation request, user interview answers, optional interview JSON, and validation parameters.
@@ -93,6 +91,10 @@ The interview has five phases:
 5. **Generation:** Create `SKILL.md`, `scripts/`, `references/`, `assets/`, `adrs/`, and an interview trace.
 
 ## Script Usage
+
+Run every command below from this skill directory
+(`.agents/skills/skill-dev/skill-creator/`). The scripts and `templates/` ship
+with the skill, so the paths work after installation into another repository.
 
 ### `scripts/interview_skill.py`
 

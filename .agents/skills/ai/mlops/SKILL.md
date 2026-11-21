@@ -59,8 +59,6 @@ Emit `MlopsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # MLOps
 
 Operate ML systems with reproducibility, validation, and monitoring.

@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-motion"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design motion graphics and UI animations — microinteractions, transitions, Lottie, CSS animations — with explicit timing, easing, choreography, and performance rules."
 capabilities:
   - apply graphic design motion methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Motion specification and assets complete; timing, easing, reduced-motion behavior, and performance budgets verified."
 ---
 
 ## Untrusted Input Handling
@@ -48,8 +55,6 @@ Emit `GraphicDesignMotionArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Motion
 
 ## Purpose

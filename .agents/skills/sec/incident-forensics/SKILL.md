@@ -59,8 +59,6 @@ Emit `IncidentForensicsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Incident Forensics
 
 Conduct a **digital forensic investigation** — evidence collection, timeline reconstruction, root cause analysis, and formal reporting — with integrity and chain-of-custody discipline.

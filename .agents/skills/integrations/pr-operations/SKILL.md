@@ -66,8 +66,6 @@ Emit `PrOperationsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-## 
-## 
 ## Rules
 
 - Rule: resolve the repository, head branch, base branch, and target PR before applying any PR mutation.

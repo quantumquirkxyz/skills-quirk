@@ -61,8 +61,6 @@ Emit `BackendCachingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # backend-caching
 
 Use this skill when adding, reviewing, or debugging a backend cache, memoization layer, CDN-backed response cache, read-through cache, or stale-while-revalidate design.

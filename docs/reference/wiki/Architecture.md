@@ -128,7 +128,7 @@ Scripts that synchronize, install, configure, and route work through the bundle.
 | `scripts/sync-registry.mjs` | Synchronizes `registry.yaml` to `marketplace.json`, `CATALOG.md`, and other artifacts. |
 | `scripts/generate-site-data.mjs` | Generates data for the discovery site. |
 | `scripts/install-quirk-skills.sh` | One-line installer from upstream. |
-| `scripts/skill-creator/` | Auxiliary scripts for skill creation. |
+| `.agents/skills/skill-dev/skill-creator/scripts/` | Auxiliary scripts bundled with the skill-creator skill. |
 
 ### Detail
 
@@ -340,7 +340,7 @@ skills-quirk/
 │   ├── sync-registry.mjs             # Sync registry to artifacts
 │   ├── generate-site-data.mjs        # Data for discovery site
 │   ├── install-quirk-skills.sh       # One-line installer
-│   └── skill-creator/                # Auxiliary scripts
+│   └── (skill-creator tooling lives with its skill: `.agents/skills/skill-dev/skill-creator/scripts/`)
 ├── site/
 │   ├── src/                          # React + Vite source
 │   │   ├── App.jsx

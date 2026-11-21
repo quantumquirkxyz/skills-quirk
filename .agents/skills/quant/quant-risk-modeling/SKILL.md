@@ -54,8 +54,6 @@ Emit `QuantRiskModelingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Quant Risk Modeling
 
 Build a **risk measure** — VaR, CVaR, drawdown, stress — with explicit distributions, assumptions, and historical validation. A risk number without context is misleading.

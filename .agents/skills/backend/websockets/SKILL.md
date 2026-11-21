@@ -58,8 +58,6 @@ Emit `WebsocketsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # WebSockets and Real-Time
 
 Use this skill when designing, reviewing, or debugging real-time systems — WebSockets (WS), Server-Sent Events (SSE), Socket.IO, pub/sub messaging, connection scaling, reconnection logic, backpressure, and long-lived connection management.

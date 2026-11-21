@@ -54,8 +54,6 @@ Emit `FinanceCorporateValArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Corporate Valuation
 
 Compute a **corporate valuation** — not a price target, but a disciplined range with assumptions exposed — using DCF, multiples, and scenario analysis.

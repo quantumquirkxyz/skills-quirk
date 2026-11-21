@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-packaging"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design physical packaging — dielines, structure, materials, regulatory labels — with production-ready specifications."
 capabilities:
   - apply graphic design packaging methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Packaging specification complete; dielines, materials, regulatory labels, and production constraints explicit."
 ---
 
 ## Untrusted Input Handling
@@ -49,8 +56,6 @@ Emit `GraphicDesignPackagingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Packaging
 
 ## Purpose

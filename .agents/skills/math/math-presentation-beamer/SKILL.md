@@ -66,8 +66,6 @@ Emit `MathPresentationBeamerArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Math Presentation — Beamer and Design
 
 Build a **Beamer presentation** that communicates the mathematics clearly to the audience, with accessible design and speaker-ready notes.

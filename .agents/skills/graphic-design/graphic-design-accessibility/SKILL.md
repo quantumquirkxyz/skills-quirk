@@ -1,5 +1,8 @@
 ---
 name: "graphic-design-accessibility"
+category: "graphic-design"
+maturity: "stable"
+version: "1"
 description: "Design inclusive graphic artifacts — WCAG-compliant visuals, colorblind-safe palettes, readable typography, and assistive-technology-compatible layouts for print and digital."
 capabilities:
   - apply graphic design accessibility methods within explicit graphic-design boundaries
@@ -17,6 +20,10 @@ tags: ["graphic-design"]
 compatibility: []
 approvalRequired: "false"
 approvalFor: []
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+stopCondition: "Accessible artifact specification complete; WCAG level, contrast, palette, typography, and remediation evidence explicit."
 ---
 
 ## Untrusted Input Handling
@@ -50,8 +57,6 @@ Emit `GraphicDesignAccessibilityArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Graphic Design Accessibility
 
 ## Purpose

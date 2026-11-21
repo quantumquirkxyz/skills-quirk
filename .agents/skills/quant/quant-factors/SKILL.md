@@ -56,8 +56,6 @@ Emit `QuantFactorsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Quant Factors
 
 Build a **factor** — a signal that explains cross-sectional returns — and test it with discipline. A factor without a robust test is a story.

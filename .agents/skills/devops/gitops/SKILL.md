@@ -59,8 +59,6 @@ Emit `GitopsArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # GitOps
 
 Design a **GitOps** workflow using ArgoCD or Flux with declarative sync, drift detection, and progressive delivery.

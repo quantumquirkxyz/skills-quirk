@@ -57,8 +57,6 @@ Emit `Web3L2ScalingArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Layer-2 Scaling Analysis
 
 Analyse a **Layer-2 scaling solution** — rollups, validiums, based sequencing, shared sequencers — for security assumptions, throughput, cost, and trade-offs vs L1.

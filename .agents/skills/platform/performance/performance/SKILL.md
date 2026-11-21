@@ -61,8 +61,6 @@ Emit `PerformanceArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Performance
 
 Use this skill when diagnosing or improving latency, throughput, resource usage, scalability, capacity, or performance regressions in a system.

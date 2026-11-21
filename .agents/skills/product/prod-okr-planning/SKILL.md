@@ -56,8 +56,6 @@ Emit `ProdOkrPlanningArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # OKR Planning
 
 Design a **quarterly OKR cycle** — Objectives, Key Results, initiatives — with measurable outcomes and team alignment.

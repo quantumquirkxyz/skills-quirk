@@ -66,8 +66,6 @@ Emit `MathTeachingProblemSetArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Math Teaching — Problem Sets and Exams
 
 Design a **problem set or exam** that tests the right concepts at the right difficulty, with grading rules and exam-ready variants.

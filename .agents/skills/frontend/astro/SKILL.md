@@ -63,8 +63,6 @@ Emit `AstroArtifact` as both:
 - Markdown view: same filename with `.md` extension
 
 
-# 
-# 
 # Astro
 
 Use this skill when designing or reviewing Astro projects. Record the execution traceId and link the artifact to the originating issue for review replay. — content-focused sites, islands architecture, SSR/SSG hybrid rendering, and view transitions.
