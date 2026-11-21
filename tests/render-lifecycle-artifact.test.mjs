@@ -49,3 +49,9 @@ test('completed verification artifact cannot claim success without executed chec
   assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Complete'}),/High-risk success requires validation evidence/);
   assert.throws(()=>renderLifecycleArtifact(canonical(),{title:'Review',summary:'Complete',validation:[{check:'security',status:'skipped',reason:'Unavailable'}]}),/Skipped validation cannot yield unqualified success/);
 });
+
+test('rejects inherited Object prototype keys as lifecycle statuses',()=>{
+  for(const status of ['constructor','toString','__proto__']) {
+    assert.throws(()=>renderLifecycleArtifact({...canonical(),status},{title:'Review',summary:'Rejected'}),/Unsupported lifecycle status/);
+  }
+});
