@@ -6,7 +6,7 @@ const required = ['schemaVersion', 'artifactType', 'artifactId', 'operationId', 
 
 export function validateSkillOutput(record) {
   if (!record || typeof record !== 'object' || Array.isArray(record)) throw new TypeError('Skill output must be an object');
-  for (const key of required) if (!(key in record)) throw new Error('Missing field: ' + key);
+  for (const key of required) if (!Object.hasOwn(record,key)) throw new Error('Missing field: ' + key);
   if (record.schemaVersion !== '1.0') throw new Error('Unsupported schemaVersion');
   for (const key of ['artifactType', 'artifactId', 'operationId', 'title', 'summary'])
     if (typeof record[key] !== 'string' || !record[key].trim()) throw new Error('Invalid field: ' + key);
