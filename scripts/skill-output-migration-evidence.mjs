@@ -5,9 +5,10 @@ import {resolve} from 'node:path';
 // Evidence is bound to the exact canonical skill bytes and a fixture's bytes.
 // Never treat a declaration or schema reference as proof of migration.
 export function verifyMigrationEvidence(inventory,manifest) {
-  if (!inventory || !Array.isArray(inventory.skills)) throw new Error('Invalid inventory');
+  if (!inventory || !Array.isArray(inventory.skills) || inventory.skills.length===0) throw new Error('Invalid inventory');
   if (!manifest || manifest.schemaVersion!=='1.0' || !Array.isArray(manifest.entries)) throw new Error('Invalid evidence manifest');
   const expected=new Set(inventory.skills.map(s=>s.path));
+  if(expected.size!==inventory.skills.length) throw new Error('Duplicate canonical skill paths in inventory');
   const seen=new Set();
   const verified=new Set();
   const problems=[];
