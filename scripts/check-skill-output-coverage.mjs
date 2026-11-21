@@ -8,7 +8,11 @@ export function evaluateCoverage(inventory,{requireMapped=false,verifiedPaths=[]
     throw new Error('Invalid skill inventory');
   }
   const unclassified=inventory.skills.filter(skill=>!skill.migrationStatus || skill.migrationStatus==='not-assessed');
+  if(inventory.total===0) throw new Error('Empty canonical skill inventory');
+  const known=new Set(inventory.skills.map(x=>x.path));
+  if(known.size!==inventory.total) throw new Error('Duplicate canonical skill paths');
   const verified=new Set(verifiedPaths);
+  for(const path of verified) if(!known.has(path)) throw new Error('Unknown verified skill: '+path);
   const unmapped=inventory.skills.filter(skill=>!verified.has(skill.path));
   return {
     total:inventory.total,
