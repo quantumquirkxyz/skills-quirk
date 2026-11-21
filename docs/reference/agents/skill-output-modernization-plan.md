@@ -91,3 +91,20 @@ Do not change `migrationStatus` to `mapped-and-verified` without a
 recorded schema/fixture check for that skill. The strict gate
 `node scripts/check-skill-output-coverage.mjs --require-mapped` must
 pass before claiming the catalog-wide migration complete.
+
+## Evidence-first migration tooling
+
+Run `npm run output:migration-backlog` to generate a deterministic,
+risk-prioritized task for every canonical skill. Candidate contract paths
+are suggestions, not verified mappings. P1 includes side-effecting and
+high-risk skills; P2 includes skills missing output declarations; P3
+contains the remaining skills.
+
+The `--require-mapped --evidence` release gate verifies exact canonical
+and test fixture SHA-256 digests. `npm run output:verify-fixtures -- FILE`
+also executes each pinned Node test file, failing on incomplete coverage,
+digest drift, fixture failure, or timeout. This is intentionally stricter
+than a frontmatter declaration. The actual evidence manifest must be
+populated through completed migrations and real passing tests; no placeholder
+manifest is accepted as completion. A reviewer must independently verify
+side effects, permissions, trust boundaries and consumer compatibility.
