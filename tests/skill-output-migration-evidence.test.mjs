@@ -42,3 +42,8 @@ test('refuses untrusted fixture paths outside tracked test directory',()=>{
   const report=verifyMigrationEvidence(inventory,{...valid,entries:[{...valid.entries[0],fixturePath:'../../secret'}]});
   assert.equal(report.verified.size,0);
 });
+
+test('rejects empty and duplicate canonical inventories',()=>{
+  assert.throws(()=>verifyMigrationEvidence({skills:[]},{schemaVersion:'1.0',entries:[]}),/Invalid inventory/);
+  assert.throws(()=>verifyMigrationEvidence({skills:[inventory.skills[0],inventory.skills[0]]},valid),/Duplicate canonical/);
+});
