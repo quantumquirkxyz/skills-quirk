@@ -11,10 +11,10 @@ const patterns = {
   fixtures: /^fixturesPath:\s*(.+)$/m,
   output: /^outputs:\s*$/m,
 };
-async function scan(directory, entries) {
+async function scan(directory, entries, base) {
   for (const entry of await readdir(directory,{withFileTypes:true})) {
     const path=join(directory,entry.name);
-    if (entry.isDirectory()) await scan(path,entries);
+    if (entry.isDirectory()) await scan(path,entries,base);
     else if (entry.name==='SKILL.md') {
       const content=await readFile(path,'utf8');
       const frontmatter=content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
@@ -23,7 +23,7 @@ async function scan(directory, entries) {
       const sideEffects=patterns.sideEffects.test(frontmatter);
       const approval=patterns.approval.exec(frontmatter)?.[1] ?? 'unspecified';
       entries.push({
-        path:relative('.',path).replaceAll('\\','/'),
+        path:relative(base,path).replaceAll('\\','/'),
         artifactType:patterns.artifactType.exec(frontmatter)?.[1]?.trim() ?? null,
         risk, sideEffects, approvalRequired:approval,
         fixture:patterns.fixtures.exec(frontmatter)?.[1]?.trim() ?? null,
@@ -37,9 +37,9 @@ async function scan(directory, entries) {
     }
   }
 }
-export async function inventorySkills(directory=root) {
+export async function inventorySkills(directory=root,{base='.'}={}) {
   const entries=[];
-  await scan(directory,entries);
+  await scan(directory,entries,base);
   entries.sort((a,b)=>a.path.localeCompare(b.path,'en'));
   return {schemaVersion:'1.0',generatedBy:'scripts/skill-output-inventory.mjs',
     total:entries.length,
