@@ -2,7 +2,7 @@
   "skill": "ai/prompt-template-library",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f82cc85f75030fd109576a394fd2ae7f0e73691a2ef8f9f537184ed335099565",
+  "frontmatterHash": "d3e0232d5b325e34c7c2761865d2ed3cb85a742c132b944d2518553f081a7ea0",
   "role": "workflow",
   "router": {
     "positive": [],

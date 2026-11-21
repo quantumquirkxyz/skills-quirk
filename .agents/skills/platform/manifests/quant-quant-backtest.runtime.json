@@ -2,7 +2,7 @@
   "skill": "quant/quant-backtest",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f9c82ed7b540149adc030d90a2c6d7477c52f2fe8be48c6c2eea564aa57a6a36",
+  "frontmatterHash": "b8fd10abdb41f91bdeea781ea31e9c97b6a267dd0178ea4209a37d96ec04fa16",
   "role": "workflow",
   "router": {
     "positive": [],

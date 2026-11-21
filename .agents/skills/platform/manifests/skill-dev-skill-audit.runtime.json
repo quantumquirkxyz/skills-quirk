@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-audit",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2a1ede56c8d0f0f4f8f015e05668aab0f67708e66a4d0910a92b9775beb2b76b",
+  "frontmatterHash": "8a6361472735e9dc0d75600ad0f7e7cee56c4e11fcd4121da6bf625b37321dd1",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -2,7 +2,7 @@
   "skill": "cms/cms-access-control",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "36c1e2840f0b55dc764a7ad1348e9b736db95cd1236a1dbb38c9f61eb01c446b",
+  "frontmatterHash": "b913797be0deb801e7d57781ebb3325e1271a4f0bebe915a7c07f4520bce4265",
   "role": "workflow",
   "router": {
     "positive": [],

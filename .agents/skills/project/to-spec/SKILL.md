@@ -77,7 +77,7 @@ evaluators:
   - regression
   - traceability
   - quality-bar
-fixturesPath: .agents/skills/platform/fixtures/behavioral/to-spec.json
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: how-to
 tags: [project, spec, planning, documentation]
 compatibility: [to-tickets, grill-with-docs]

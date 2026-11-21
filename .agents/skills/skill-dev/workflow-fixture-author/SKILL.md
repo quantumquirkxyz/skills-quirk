@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "skill-dev-fixture"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/workflow-fixture-author.json"
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["skill-dev"]
 compatibility: []

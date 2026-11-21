@@ -2,7 +2,7 @@
   "skill": "routing/grill-me",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "82d096f2f08b154ffb8b66273a0e8783ad49a322425bb94f2ef5bfeeb31d2acb",
+  "frontmatterHash": "c020b913bea0f8714df83390e0c86bda9ae11c072e32d569ae210bb2a28cfeab",
   "role": "workflow",
   "router": {
     "positive": [],

@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "pull-request"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/physics-reproducibility-archive.json"
+fixturesPath: "tests/skill-output-migration-physics.test.mjs"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: ["physics-simulation-setup", "physics-data-analysis-root", "physics-writing-revtex"]

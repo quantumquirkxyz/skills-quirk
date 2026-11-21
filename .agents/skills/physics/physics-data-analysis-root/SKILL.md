@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "data"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/physics-data-analysis-root.json"
+fixturesPath: "tests/skill-output-migration-physics.test.mjs"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: ["physics-experimental-notebook", "physics-reproducibility-archive"]

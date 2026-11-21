@@ -1,0 +1,23 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-backend-queues",
+      "skill": "backend-queues",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "durability",
+          "retries",
+          "idempotency",
+          "backpressure"
+        ],
+        "doesNotContain": [
+          "exactly-once delivery is guaranteed",
+          "unbounded retries"
+        ]
+      }
+    }
+  ]
+}

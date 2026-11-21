@@ -54,7 +54,7 @@ promptVersion: "2.0"
 artifactType: "loop-engineering"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/loop-engineering.json"
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["loop", "loop-engineering", "bounded-loop", "agent-engineering", "termination"]
 compatibility: ["delivery/loop-budget", "delivery/implement", "delivery/review-fix-loop"]

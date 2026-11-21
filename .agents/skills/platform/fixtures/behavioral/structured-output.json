@@ -1,0 +1,22 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-structured-output",
+      "skill": "structured-output",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "json schema",
+          "validation",
+          "constrained decoding"
+        ],
+        "doesNotContain": [
+          "skip validation",
+          "guaranteed valid"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-backend-caching",
+      "skill": "backend-caching",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "cache keys",
+          "invalidation",
+          "stale-while-revalidate"
+        ],
+        "doesNotContain": [
+          "cache everything",
+          "ignore consistency"
+        ]
+      }
+    }
+  ]
+}

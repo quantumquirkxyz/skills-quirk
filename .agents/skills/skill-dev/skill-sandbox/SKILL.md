@@ -28,7 +28,7 @@ promptVersion: "3.0"
 artifactType: "skill-dev"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression", "boundary", "cleanup"]
-fixturesPath: ".agents/skills/skill-dev/skill-sandbox/fixtures.json"
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["skill-dev", "sandbox", "isolation", "security"]
 compatibility: []

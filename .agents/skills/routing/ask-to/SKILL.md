@@ -50,7 +50,7 @@ artifactType: plan
 evaluators:
   - behavioral
   - traceability
-fixturesPath: .agents/skills/platform/fixtures/regression/ask-to.json
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: how-to
 tags:
   - routing

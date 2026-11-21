@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "test-strategy"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-manual-testing.json"
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: []

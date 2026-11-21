@@ -60,7 +60,7 @@ promptVersion: "2.0"
 artifactType: "project"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["project", "analysis", "requirements", "consistency"]
 compatibility: ["to-spec", "to-tickets", "review-pr"]

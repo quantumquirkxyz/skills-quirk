@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "plan"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-accessibility-graphic-os-platform-xr.test.mjs"
 diataxis: "how-to"
 tags: ["xr"]
 compatibility: []

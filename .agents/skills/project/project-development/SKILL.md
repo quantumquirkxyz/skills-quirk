@@ -40,7 +40,7 @@ promptVersion: "2.0"
 artifactType: "project-assessment"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/project-development.json"
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["project"]
 compatibility: []

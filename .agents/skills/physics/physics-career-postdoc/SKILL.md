@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "physics"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/physics-career-postdoc.json"
+fixturesPath: "tests/skill-output-migration-physics.test.mjs"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: []

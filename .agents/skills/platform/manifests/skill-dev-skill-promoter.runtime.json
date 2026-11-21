@@ -2,7 +2,7 @@
   "skill": "skill-dev/skill-promoter",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "81446d5a7304c076cb64d13ac13d6b74b382e22a6c75e60ab402c4813f69c431",
+  "frontmatterHash": "bf08813b220d64522ab4591abb3c9562aa6c8d5052c633dcaae0f4bdc081bc88",
   "role": "workflow",
   "router": {
     "positive": [],

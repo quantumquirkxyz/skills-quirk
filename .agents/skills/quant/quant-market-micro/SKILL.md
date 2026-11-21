@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "quant"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/quant-market-micro.json"
+fixturesPath: "tests/skill-output-migration-quant.test.mjs"
 diataxis: "how-to"
 tags: ["quant"]
 compatibility: ["quant-backtest", "quant-derivatives-pricing"]

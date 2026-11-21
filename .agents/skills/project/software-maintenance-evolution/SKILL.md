@@ -29,7 +29,7 @@ risk: high
 trustTier: 4
 artifactType: MaintenanceArtifact
 evaluators: [behavioral, regression, traceability, quality-bar]
-fixturesPath: .agents/skills/project/software-maintenance-evolution/behavioral-fixtures
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 compatibility: [diagnosing-bugs, db-migrations, release-management, docs-management, supply-chain-security, requirements-engineering, architecture-evaluation]
 approvalRequired: true
 approvalFor: [write, migration, deprecation, retirement, release-impacting-change]

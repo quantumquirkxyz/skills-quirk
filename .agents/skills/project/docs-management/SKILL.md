@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
 diataxis: "how-to"
 tags: ["project"]
 compatibility: []

@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "research"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/scientific-hypothesis.json"
+fixturesPath: "tests/skill-output-migration-research.test.mjs"
 diataxis: "how-to"
 tags: ["research"]
 compatibility: ["math-pure-proofs", "math-probability-models", "research-literature-review"]

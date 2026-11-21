@@ -20,7 +20,7 @@ promptVersion: "4.0"
 artifactType: "skill-dev"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression", "security", "agentic", "reliability"]
-fixturesPath: "fixtures/"
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["skill-dev", "quality-gate", "policy-as-code", "security", "reproducibility"]
 compatibility: []

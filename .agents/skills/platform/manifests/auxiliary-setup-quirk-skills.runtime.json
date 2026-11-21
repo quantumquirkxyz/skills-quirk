@@ -2,7 +2,7 @@
   "skill": "auxiliary/setup-quirk-skills",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "b2f5bda87ef903757dd515a881ca0d295bf7f7211f01e781585acaf761dbbe44",
+  "frontmatterHash": "b88bf9393ac0c6440bdde985495db090a72623dcab996e118c28376b340d5565",
   "role": "workflow",
   "router": {
     "positive": [],

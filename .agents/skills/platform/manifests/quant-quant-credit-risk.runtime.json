@@ -2,7 +2,7 @@
   "skill": "quant/quant-credit-risk",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2e28006e19f35a3ea06a94e090c06dbe468ee3e883df1c6eec0be48dbcaaef5a",
+  "frontmatterHash": "cd23ee2f32df2d9b185ca5b886436954469dcef136ee23bec64bc1f532cc153c",
   "role": "workflow",
   "router": {
     "positive": [],

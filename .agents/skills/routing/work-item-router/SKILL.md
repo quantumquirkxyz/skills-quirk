@@ -40,7 +40,7 @@ evaluators:
   - regression
   - traceability
   - quality-bar
-fixturesPath: .agents/skills/platform/fixtures/behavioral/work-item-router.json
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: how-to
 tags: [routing, governance, work-items, triage]
 compatibility: [ask-to, to-spec, to-tickets, make-project]

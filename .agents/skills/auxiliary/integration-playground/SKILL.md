@@ -42,7 +42,7 @@ promptVersion: "2.0"
 artifactType: "auxiliary"
 modelTier: "fast"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/integration-playground.json"
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
 diataxis: "how-to"
 tags: ["auxiliary"]
 compatibility: []

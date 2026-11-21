@@ -22,7 +22,7 @@ promptVersion: "2.0"
 artifactType: "adr"
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
 diataxis: "how-to"
 tags: ["routing"]
 compatibility: []

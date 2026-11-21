@@ -20,7 +20,7 @@ promptVersion: "2.0"
 artifactType: "cs"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "evals/behavioral/cs-computability.json"
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
 diataxis: "how-to"
 tags: ["cs"]
 compatibility: ["cs-algorithms", "math-formal-proof"]

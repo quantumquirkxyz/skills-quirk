@@ -2,7 +2,7 @@
   "skill": "routing/worktree-swarm",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "49d2450732cc69ead08c5d42ad3f68f6d93da58b91ca6f5afd9762e69fbda561",
+  "frontmatterHash": "e2349a1490e0dca09d80262333a52f1c7ada7177a3ae9264b271abbfb86cdc6b",
   "role": "workflow",
   "router": {
     "positive": [],
