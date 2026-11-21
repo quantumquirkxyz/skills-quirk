@@ -5,9 +5,10 @@
     "tranches": [
       "tests/skill-output-migration-ai-backend.test.mjs",
       "tests/delivery-frontend-output-contracts.test.mjs",
-      "tests/skill-output-migration-security-data-math-networking.test.mjs"
+      "tests/skill-output-migration-security-data-math-networking.test.mjs",
+      "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs"
     ],
-    "verified": 90
+    "verified": 123
   },
   "entries": [
     {
@@ -435,6 +436,118 @@
       "fixtureSha256": "05ae8fa1ed5c8bb97e9b9634b7c1671a810c4768c2d895be92be48b8b16ad275"
     },
     {
+      "path": ".agents/skills/foundation/agent-canvas/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "b6e4504cc51c6649e86bcbe95f5263675ba7c23647a40b00445bd79a8933c3ff",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/agent-card/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "4969bd3bd3db0aed31edc3ee8a48f866fb30171f572c2b97742104614ae979b8",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/agent-memory/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "34e78ce9bcf1438eaec611913dbe42979bde15af1ad81e4713bf7de1f3c7221a",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/agent-observability/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "e0bee2a0eac5e2392e6b6960246856c78ad1f9bf92608923537fdb8117b38c4f",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/api-design/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "f52cce8f3585114b4f6642ee565cdc59e9d6e69389055a37d2a2c9f8424b8853",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/codebase-design/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "04f7e2ad5756b03afee887429c998ae9b7b5991f33f0f7838b9d0de893c5fa8c",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/context-compaction/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "86896d825453b3cb6108d988495895c8b8bd9b822e25874a544909129a3b67ec",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/context-engine/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "5cae7889b47e774644cb86ffb055106f32577bf84879fbabe4643d11a3f1e827",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/domain-modeling/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "7a5e43fdc3010377e0087d8bb64fcdb2d0f2464bbf73fac33f03ccda1ef99811",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/mcp-server/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "44329b38d7dba28b143a7e83e60476943881889ed9f2a1e0f1c0d67827ab0d88",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/observability/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "58b7d6ebffa23914b939cfd0506ff8a87cc7d0764835e03873bffd0cfaa5d84a",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/skill-composition/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "d8f038449f6f037c348ecf5e6da8cc0732df9c9ff8a7d108fd36b05479d187fd",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/subagent-swarm/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "fdb85723fbd9a592c5e8377b93eaf0f1f1090db65f2c34c3b69bba572e5f55dd",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/foundation/verify-delegation/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "f31aa3b78700b684e66edd93cc650eab21fe83e24e0ffcb34fcc2c15a75a6764",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
       "path": ".agents/skills/frontend/astro/SKILL.md",
       "fixturePath": "tests/delivery-frontend-output-contracts.test.mjs",
       "contract": "schema/skill-output.schema.json",
@@ -513,6 +626,70 @@
       "result": "passed",
       "skillSha256": "5a5466a5373b07efd8a23ce0368bc8d2217a6e7c9a30af0ad7df9964fedac490",
       "fixtureSha256": "05ae8fa1ed5c8bb97e9b9634b7c1671a810c4768c2d895be92be48b8b16ad275"
+    },
+    {
+      "path": ".agents/skills/integrations/api-contracts/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "ec74ca5c5b9e6d7702799d0ceea4804edabe94d828dc5c9646823bbbf4ec0512",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/auth/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0714b6839356c0c810646cf5e042e9f9e7b02aceef657de8a5f06c416573257c",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/browser-automation/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "9cf741c803cc58af0649d5179b6d01bec145fd7512b7f5bcb82996bbeba55380",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/issue-operations/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "31f4587f403bbd0c749f2946bdc1d8f5f4fc181c8bd18491196651a74b8d034d",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/payments/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "ea45a0f64afda2616847630285ef3d2665131bc2acc41e510516d3821c0db605",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/pr-operations/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "abb4a0607046fde6c0cd420d1ab2e479e692f776172bf296a36b9d73a751a18e",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/integrations/search/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "781ea4d7d2666505506d5f62f672c14662a4dfc2171b4deec9fc15c8f43e0efa",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/iot/iot-embedded/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "fe52dc11b6f0a81d69b2d8c73ac85bc7fc552b39af559e020ef5623bcf067637",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
     },
     {
       "path": ".agents/skills/math/math-computation-reproducible/SKILL.md",
@@ -643,6 +820,62 @@
       "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
     },
     {
+      "path": ".agents/skills/product/brainstorming/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "f8aadc92d784d2fa64d5de4200d8a7b72f9b5f9a7809f6dd190faec1c55f278b",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/product/prod-ab-testing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "39bf964ae2ba46987c9448695a4309383d11f5da9fce4cf5f76d85f32f8b8f10",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/product/prod-okr-planning/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "491864ca53f05f7669a7c724df2af084f24069a012fa44a96391956160297c93",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/product/prod-prd-writing/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a8595053933473c9b6b7ab0d9fd461ca692355f5aad9104e2c867c4f9feb6c1a",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/professional/pro-market-analysis/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "d9205e663627e394f5fb9d079222d3dcac33bade83f84c3ac11509ec373725df",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/professional/professional-communication/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "0fa41f8823a7f6f5d050a26b062cd94c0112eb711683ee5af94d51c203c5d2d0",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/professional/professional-project-management/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "a5b72003a590df5615146510eb628ff879edf1c2bc396132f83de1318e54a245",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
       "path": ".agents/skills/sec/cloud-security/SKILL.md",
       "fixturePath": "tests/skill-output-migration-security-data-math-networking.test.mjs",
       "contract": "schema/skill-output.schema.json",
@@ -729,6 +962,38 @@
       "result": "passed",
       "skillSha256": "50b2012c49d673ed7b39defb471046d783e6a96cc7b44bd1854e480dd2f1eae9",
       "fixtureSha256": "c885bbc58848fa12e2170e31613cc2787e4a2b5ad6107c7787f14de07d9d863f"
+    },
+    {
+      "path": ".agents/skills/ux/interaction-design/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "75a2079c9a6df540960f569623643ea3b265cd3dafe7938ab029b298f7e8e1e9",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/ux/ux-accessibility/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "451a5945074b358554ad5b8e981fb82f7c7bf58af5b695ac5d3dbab40e7994ff",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/ux/ux-prototyping/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "cb1e087100f6fa45ea0a25f0ac923bbd0cd47ab72055c730fcc6b70f8c7baa97",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
+    },
+    {
+      "path": ".agents/skills/ux/ux-research/SKILL.md",
+      "fixturePath": "tests/skill-output-migration-foundation-integrations-iot-product-professional-ux.test.mjs",
+      "contract": "schema/skill-output.schema.json",
+      "result": "passed",
+      "skillSha256": "b00469fd55fd2c3fb40b25d1a8bad56cb58a69cf1a25044ad5d840162a22fa23",
+      "fixtureSha256": "a86074e1303b7803c9aa074fc2a9d63f147c127e27e458c290536ad4852d1f2a"
     }
   ]
 }

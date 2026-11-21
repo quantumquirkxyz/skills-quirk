@@ -10,6 +10,8 @@ const tranches = [
   ['tests/skill-output-migration-ai-backend.test.mjs', ['ai', 'backend']],
   ['tests/delivery-frontend-output-contracts.test.mjs', ['delivery', 'frontend']],
   ['tests/skill-output-migration-security-data-math-networking.test.mjs', ['sec', 'data', 'math', 'networking']],
+  ['tests/skill-output-migration-devops-docs-engineering-finance-graph.test.mjs',
+    ['devops', 'docs', 'engineering', 'finance', 'graph']],
 ];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
