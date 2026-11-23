@@ -1,7 +1,7 @@
 ---
 name: ship-subissue
 description: "Use when a finished subissue already has a clean PR and you need to merge it, mark it as completed, and close the linked issue — with release discipline."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash
 model: sonnet
 permissionMode: default
 ---

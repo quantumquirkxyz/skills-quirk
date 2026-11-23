@@ -857,7 +857,7 @@
     "review-fix-loop": {
       "domain": "delivery",
       "tier": "3",
-      "artifactType": "review",
+      "artifactType": "ReviewFixLoopArtifact",
       "capabilities": [
         "apply review fix loop methods within explicit delivery boundaries",
         "analyze orchestrate the pr repair loop: run review-pr, use plan-review-fixes when findings exist, use implement-review-fixes to apply them, and repeat until the pr is clean or blocked. this skill coordinates the loop only with assumptions, constraints, and failure modes",
@@ -2752,7 +2752,7 @@
     "publish-open-pr": {
       "domain": "routing",
       "tier": "3",
-      "artifactType": "pull-request",
+      "artifactType": "publish-open-pr",
       "capabilities": [
         "produce publish open pr artifact",
         "validate publish open pr completion criteria",
@@ -2765,7 +2765,7 @@
     "ship-subissue": {
       "domain": "routing",
       "tier": "4",
-      "artifactType": "routing",
+      "artifactType": "ship-subissue",
       "capabilities": [
         "apply ship subissue methods within explicit routing boundaries",
         "analyze use when a finished subissue already has a clean pr and you need to merge it, mark it as completed, and close the linked issue — with release discipline with assumptions, constraints, and failure modes",

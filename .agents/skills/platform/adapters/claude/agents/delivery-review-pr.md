@@ -1,7 +1,7 @@
 ---
 name: review-pr
 description: "Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct axes."
-tools: Read, Grep, Glob, WebFetch, WebSearch
+tools: Read, Grep, Glob, Bash, WebFetch, WebSearch
 model: opus
 permissionMode: default
 ---

@@ -10,12 +10,13 @@ When to use: Use when a finished subissue already has a clean PR and you need to
 1. Confirm the target
 2. Confirm review is clean
 3. Merge the PR
-4. Close or complete the issue
-5. Record completion
+4. Update project state, then issue state and labels
+5. Close or complete the issue
+6. Delete the branch only after merge verification and successful/reconciled downstream checkpoints, then record completion
 
 ## Deliverables
 
-- routing artifact
+- ship-subissue artifact
 
 ## Guardrails
 

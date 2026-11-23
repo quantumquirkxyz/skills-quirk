@@ -1,7 +1,7 @@
 ---
 name: implement
 description: "Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication. This skill stops at the implemented, validated branch."
-tools: Read, Grep, Glob, Edit, Write
+tools: Read, Grep, Glob, Edit, Write, Bash
 model: opus
 permissionMode: default
 ---

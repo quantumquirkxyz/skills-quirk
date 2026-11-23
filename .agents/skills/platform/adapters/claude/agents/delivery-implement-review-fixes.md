@@ -1,7 +1,7 @@
 ---
 name: implement-review-fixes
 description: "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result."
-tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: opus
 permissionMode: default
 ---

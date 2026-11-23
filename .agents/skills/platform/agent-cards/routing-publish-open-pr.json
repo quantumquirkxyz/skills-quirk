@@ -27,7 +27,7 @@
       "parameters": {
         "trustTier": "3",
         "modelTier": "router",
-        "artifactType": "pull-request"
+        "artifactType": "publish-open-pr"
       }
     }
   ]

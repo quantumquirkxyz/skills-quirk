@@ -1,6 +1,6 @@
 {
   "totalCards": 271,
-  "generatedAt": "2026-11-23T07:20:07.297Z",
+  "generatedAt": "2026-11-23T18:47:58.753Z",
   "cards": [
     {
       "name": "accessibility",
@@ -2211,7 +2211,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "review"
+            "artifactType": "ReviewFixLoopArtifact"
           }
         }
       ]
@@ -7060,7 +7060,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "router",
-            "artifactType": "pull-request"
+            "artifactType": "publish-open-pr"
           }
         }
       ]
@@ -7091,7 +7091,7 @@
           "parameters": {
             "trustTier": "4",
             "modelTier": "router",
-            "artifactType": "routing"
+            "artifactType": "ship-subissue"
           }
         }
       ]

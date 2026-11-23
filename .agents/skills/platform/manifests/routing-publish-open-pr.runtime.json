@@ -2,7 +2,7 @@
   "skill": "routing/publish-open-pr",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "01ca4b7bf05b2f46d3cf2832d07d0387a7e0ba409eb9856b0eb5f12f64fe85a3",
+  "frontmatterHash": "17cfd88f28a6c9d71d49a8caeeb1143420143ed7dff0ab21f3e608fa985fcb27",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,7 +18,8 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Bash"
       ],
       "deny": []
     }
@@ -38,7 +39,7 @@
   },
   "verification": {
     "commands": [],
-    "artifactSchema": null
+    "artifactSchema": ".agents/skills/platform/schemas/publish-open-pr-schema.json"
   },
   "observability": {
     "traceEvents": [

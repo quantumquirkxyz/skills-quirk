@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: "Analyze a repository or requested code scope for logical correctness, behavior, architecture, risks, and maintainability, returning evidence-backed findings without editing source files."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash
 model: opus
 permissionMode: default
 ---

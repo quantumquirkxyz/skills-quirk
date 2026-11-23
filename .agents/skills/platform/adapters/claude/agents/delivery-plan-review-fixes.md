@@ -1,7 +1,7 @@
 ---
 name: plan-review-fixes
 description: Convert review-pr findings on a GitHub PR into a concrete remediation plan and post that plan as PR comments. Use after
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash
 model: opus
 permissionMode: default
 ---

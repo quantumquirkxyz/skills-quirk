@@ -20,7 +20,8 @@
         "Grep",
         "Glob",
         "Edit",
-        "Write"
+        "Write",
+        "Bash"
       ],
       "deny": []
     }

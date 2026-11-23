@@ -19,6 +19,7 @@
         "Read",
         "Grep",
         "Glob",
+        "Bash",
         "WebFetch",
         "WebSearch"
       ],

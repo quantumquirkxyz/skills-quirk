@@ -17,7 +17,7 @@ When to use: Use when the user wants to publish a finished subissue as an open G
 
 ## Deliverables
 
-- pull-request artifact
+- publish-open-pr artifact
 
 ## Guardrails
 

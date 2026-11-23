@@ -16,7 +16,7 @@ When to use: Orchestrate the PR repair loop: run review-pr, use plan-review-fixe
 
 ## Deliverables
 
-- review artifact
+- ReviewFixLoopArtifact artifact
 
 ## Guardrails
 

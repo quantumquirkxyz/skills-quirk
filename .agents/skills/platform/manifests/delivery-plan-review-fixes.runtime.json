@@ -18,7 +18,8 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Bash"
       ],
       "deny": []
     }

@@ -1,7 +1,7 @@
 ---
 name: resolving-merge-conflicts
 description: "Use when you need to resolve a conflicted or blocked branch state: in-progress git merge/rebase conflicts, PR branch corrections, or other branch-state blockers that need deliberate resolution."
-tools: Read, Grep, Glob, Edit, Write
+tools: Read, Grep, Glob, Edit, Write, Bash
 model: opus
 permissionMode: default
 ---

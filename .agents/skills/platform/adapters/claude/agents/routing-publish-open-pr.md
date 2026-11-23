@@ -1,7 +1,7 @@
 ---
 name: publish-open-pr
 description: "Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch — with scoped, auditable publication."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash
 model: sonnet
 permissionMode: default
 ---

@@ -2,7 +2,7 @@
   "skill": "routing/ship-subissue",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "af94a70f750a629c766c7a1443564988c9148fc007068dbfb6430dc9d02d28c8",
+  "frontmatterHash": "bf315a9f988cf5c034556b28187076f1cb62a4bc4f51cc2df6ec9cf41635b093",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -18,7 +18,8 @@
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Bash"
       ],
       "deny": []
     }
@@ -40,7 +41,7 @@
   },
   "verification": {
     "commands": [],
-    "artifactSchema": null
+    "artifactSchema": ".agents/skills/platform/schemas/ship-subissue-schema.json"
   },
   "observability": {
     "traceEvents": [

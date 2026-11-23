@@ -46,6 +46,16 @@ export const VERIFICATION_COMMAND = 'node .agents/skills/platform/check-all.mjs'
 export const VERIFICATION_DOMAINS = new Set(['delivery', 'skill-dev', 'platform']);
 export const HIGH_RISK_DENY = ['Bash', 'WebFetch', 'WebSearch'];
 
+// Remote, git, and tracker mutations require the shell/tool boundary even
+// when the skill does not mention a literal command in its prose.
+const SHELL_SIDE_EFFECTS = new Set([
+  'git-mutation', 'commit-git', 'push-branch', 'create-pull-request',
+  'merge-pull-request', 'continue-merge-or-rebase', 'post-pr-comment',
+  'post-comment', 'issue-mutation', 'create-issue', 'create-issues',
+  'label-issue', 'close-issue', 'update-project', 'create-project',
+  'create-project-fields', 'link-repositories',
+]);
+
 // Side effects that mutate the working tree or a remote tracker, so the skill
 // runs inside a worktree instead of the caller's checkout.
 export const MUTATING_SIDE_EFFECTS = new Set([
@@ -120,6 +130,7 @@ export function deriveTools(haystack, sideEffects, risk, approvalRequired = fals
   const allow = [...BASE_TOOLS];
   if (EXECUTION_MENTION.test(haystack)) allow.push('Bash');
   if (sideEffects.includes('write-code') || sideEffects.includes('write-files')) allow.push('Edit', 'Write');
+  if (sideEffects.some((effect) => SHELL_SIDE_EFFECTS.has(effect)) && !allow.includes('Bash')) allow.push('Bash');
   if (WEB_MENTION.test(haystack)) allow.push('WebFetch', 'WebSearch');
   const deny = risk === 'high' && !approvalRequired ? [...HIGH_RISK_DENY] : [];
   return { allow, deny };
