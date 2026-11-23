@@ -15,7 +15,22 @@
       "description": "A self-contained delegation brief. It carries everything the worker needs and nothing it does not: no transcript, no implementation narrative.",
       "required": [
         "briefId",
+        "schemaVersion",
+        "traceId",
+        "runId",
+        "parentId",
+        "roleId",
         "objective",
+        "inputDigest",
+        "sourceDigests",
+        "outputSchema",
+        "checkpointId",
+        "leaseExpiry",
+        "authorityPolicy",
+        "quota",
+        "retentionPolicy",
+        "redactionPolicy",
+        "signature",
         "outputFormat",
         "toolGuidance",
         "boundaries",
@@ -31,10 +46,42 @@
           "pattern": "^brief-[a-z0-9][a-z0-9-]*$",
           "description": "Stable identifier shared by the brief and its verdict."
         },
+        "schemaVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "traceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parentId": {
+          "type": ["string", "null"]
+        },
+        "roleId": {
+          "type": "string",
+          "minLength": 1
+        },
         "objective": {
           "type": "string",
           "minLength": 1,
           "description": "The single outcome the worker must produce. One objective per brief."
+        },
+        "inputDigest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "sourceDigests": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        },
+        "outputSchema": {
+          "type": "string",
+          "minLength": 1
         },
         "outputFormat": {
           "type": "string",
@@ -83,6 +130,54 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "description": "Explicit sources the worker may consult (paths, URLs, commands). Empty means the brief must say so in toolGuidance."
+        },
+        "checkpointId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "leaseExpiry": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "authorityPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scope", "capabilities"],
+          "properties": {
+            "scope": { "type": "string", "minLength": 1 },
+            "capabilities": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "quota": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxToolCalls", "maxMinutes"],
+          "properties": {
+            "maxToolCalls": { "type": "integer", "minimum": 1 },
+            "maxMinutes": { "type": "integer", "minimum": 1 },
+            "maxSources": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "retentionPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["redactSecrets", "expiresAt"],
+          "properties": {
+            "redactSecrets": { "type": "boolean" },
+            "expiresAt": { "type": "string", "format": "date-time" }
+          }
+        },
+        "redactionPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": { "type": "string", "enum": ["redact-secrets", "quarantine-untrusted"] }
+          }
+        },
+        "signature": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
         },
         "expectedArtifactPath": {
           "type": "string",

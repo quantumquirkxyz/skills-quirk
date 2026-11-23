@@ -9,7 +9,7 @@ capabilities:
   - apply grill with docs methods within explicit routing boundaries
   - analyze a relentless interview to sharpen a plan or design, while creating docs (adrs and glossary) as we go with assumptions, constraints, and failure modes
   - produce and validate a routing artifact with evidence, decisions, and next steps
-outputs: "adr artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+outputs: "GrillWithDocsArtifact validated against references/grill-with-docs-artifact.schema.json, containing objective, context, documents, constraints, evidence, decisions, residual risks, provenance, and next consumer."
 sideEffects:
   - write-docs
 
@@ -51,7 +51,7 @@ approvalFor: ["write-docs"]
 
 ## Artifact
 
-Emit `GrillWithDocsArtifact` as both:
+Validate `GrillWithDocsArtifact` against `references/grill-with-docs-artifact.schema.json` before emission. Its required `objective` and `context` fields are structured producer outputs, not values inferred from the Markdown view. Emit `GrillWithDocsArtifact` as both:
 - JSON: `.agents/skills/platform/artifacts/grill-with-docs/{identifier}.json`
 - Markdown view: same filename with `.md` extension
 
@@ -77,5 +77,6 @@ Emit `GrillWithDocsArtifact` as both:
 - the artifact is saved and validated
 - any blockers or skipped validations are documented
 - the next consumer is identified or the work is handed off
+- `objective`, `context`, `documents`, `constraints`, `evidence`, `decisions`, `residualRisks`, `sourceDigests`, and `operationId` validate against the companion schema
 ---
 @include .agents/skills/platform/contract-base.xml

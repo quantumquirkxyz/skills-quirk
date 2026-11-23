@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.local/schemas/grill-with-docs-artifact-v1.json",
+  "title": "GrillWithDocsArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifactId", "artifactType", "operationId", "objective", "context", "documents", "constraints", "evidence", "decisions", "residualRisks", "nextConsumer", "sourceDigests", "createdAt"],
+  "properties": {
+    "artifactId": {"type": "string", "minLength": 1},
+    "artifactType": {"const": "grill-with-docs"},
+    "operationId": {"type": "string", "minLength": 1},
+    "parentOperationId": {"type": ["string", "null"]},
+    "objective": {"type": "string", "minLength": 1},
+    "context": {"type": "string", "minLength": 1},
+    "documents": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "constraints": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "evidence": {"type": "array"},
+    "decisions": {"type": "array"},
+    "residualRisks": {"type": "array"},
+    "nextConsumer": {"type": "string", "minLength": 1},
+    "sourceDigests": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}},
+    "createdAt": {"type": "string", "minLength": 1}
+  }
+}

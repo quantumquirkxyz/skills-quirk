@@ -113,6 +113,21 @@ const verdictRef = '#/$defs/DelegationVerdict';
 
 const validBrief = () => ({
   briefId: 'brief-silicon-exposure',
+  schemaVersion: '1.0',
+  traceId: 'trace-silicon-exposure',
+  runId: 'run-silicon-exposure',
+  parentId: null,
+  roleId: 'researcher',
+  inputDigest: `sha256:${'a'.repeat(64)}`,
+  sourceDigests: [`sha256:${'b'.repeat(64)}`],
+  outputSchema: 'findings/silicon-exposure.schema.json',
+  checkpointId: 'checkpoint-0',
+  leaseExpiry: '2026-12-01T00:00:00.000Z',
+  authorityPolicy: { scope: 'contracts-and-data', capabilities: ['read'] },
+  quota: { maxToolCalls: 40, maxMinutes: 20, maxSources: 2 },
+  retentionPolicy: { redactSecrets: true, expiresAt: '2026-12-02T00:00:00.000Z' },
+  redactionPolicy: { mode: 'redact-secrets' },
+  signature: `sha256:${'c'.repeat(64)}`,
   objective: 'List the clauses in contracts/silicon-*.pdf exposed to a 12-week lead-time increase, one row per clause.',
   outputFormat: 'artifact-reference',
   toolGuidance: 'Read only contracts/ and data/leadtimes.csv; record "none" where a contract has no lead-time clause.',
@@ -167,6 +182,20 @@ test('a valid delegation brief validates', () => {
 
 test('a valid delegation verdict validates', () => {
   assert.deepEqual(validateAgainst(validVerdict(), verdictRef), []);
+});
+
+test('a brief missing identity, digest, lease, signature, or authority fails', () => {
+  for (const field of ['briefId', 'traceId', 'runId', 'inputDigest', 'sourceDigests', 'leaseExpiry', 'signature', 'authorityPolicy']) {
+    const brief = validBrief();
+    delete brief[field];
+    const errors = validateAgainst(brief, briefRef);
+    assert.ok(errors.some((e) => e.includes(`missing required "${field}"`)), `${field} should be required`);
+  }
+});
+
+test('a brief with an invalid digest fails', () => {
+  const errors = validateAgainst({ ...validBrief(), inputDigest: 'not-a-digest' }, briefRef);
+  assert.ok(errors.some((e) => e.includes('does not match pattern')), errors.join('; '));
 });
 
 test('a brief missing boundaries fails', () => {

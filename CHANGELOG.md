@@ -14,7 +14,7 @@ This project follows semantic versioning once releases are cut:
 
 ### Added
 
-- Added the experimental `automatic-refinement` routing skill with a mandatory six-role agent graph, dynamic domain-skill routing, bounded convergence controls, independent verification, typed handoffs, and fail-closed terminal statuses.
+- Added the experimental `automatic-refinement` routing skill with a dynamic capability-routed agent graph, bounded convergence controls, independent verification, typed handoffs, and fail-closed terminal statuses.
 - Added automatic-refinement agent-graph and RefinementArtifact schema references, deterministic behavioral fixtures, and focused regression tests.
 - Regenerated the Claude, Cursor, Kilo, OpenAI Agents, and OpenHands adapter projections for the corrected skill descriptions and the new automatic-refinement skill; the adapter drift check now passes with 271 skills and no errors.
 
