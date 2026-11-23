@@ -1,6 +1,6 @@
 {
   "totalCards": 271,
-  "generatedAt": "2026-11-21T20:23:08.271Z",
+  "generatedAt": "2026-11-23T07:20:07.297Z",
   "cards": [
     {
       "name": "accessibility",
@@ -6710,9 +6710,9 @@
     },
     {
       "name": "automatic-refinement",
-      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+      "description": "Orchestrate a bounded multi-agent refinement graph that runs after grill-with-docs to update and improve the little things left over from grilling. Agents dynamically invoke any canonical skill they need (search, brainstorming, research, grill-with-docs, grilling, code-review, etc.) based on the context and objective, using graph-skill-routing for discovery and loop-engineering for bounded iteration. Stops at refined-awaiting-review without publishing or implementing.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/automatic-refinement/SKILL.md",
-      "version": "1",
+      "version": "3",
       "capabilities": {
         "skillInvocation": true,
         "artifactProduction": true,
@@ -6727,13 +6727,16 @@
         {
           "id": "routing/automatic-refinement",
           "name": "automatic-refinement",
-          "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+          "description": "Orchestrate a bounded multi-agent refinement graph that runs after grill-with-docs to update and improve the little things left over from grilling. Agents dynamically invoke any canonical skill they need (search, brainstorming, research, grill-with-docs, grilling, code-review, etc.) based on the context and objective, using graph-skill-routing for discovery and loop-engineering for bounded iteration. Stops at refined-awaiting-review without publishing or implementing.",
           "tags": [
             "routing",
             "orchestration",
             "refinement",
             "multi-agent",
-            "bounded-loop"
+            "bounded-loop",
+            "post-grill",
+            "little-things",
+            "dynamic-skills"
           ],
           "parameters": {
             "trustTier": "3",

@@ -2,7 +2,7 @@
   "skill": "routing/automatic-refinement",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "4e9f1a33174c3657f6c1d5b6e14f357b578518ab0437cb8264f4291cf90f3c53",
+  "frontmatterHash": "cf7ea89a89d6b84087f4425c351b01ff6d3c59c8a1e867214bc5ff2dc34ed8e9",
   "role": "workflow",
   "router": {
     "positive": [],

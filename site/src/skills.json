@@ -424,15 +424,16 @@
     {
       "name": "automatic-refinement",
       "category": "routing",
-      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
-      "version": "1",
-      "maturity": "experimental",
+      "description": "Orchestrate a bounded multi-agent refinement graph that runs after grill-with-docs to update and improve the little things left over from grilling. Agents dynamically invoke any canonical skill they need (search, brainstorming, research, grill-with-docs, grilling, code-review, etc.) based on the context and objective, using graph-skill-routing for discovery and loop-engineering for bounded iteration. Stops at refined-awaiting-review without publishing or implementing.",
+      "version": "3",
+      "maturity": "stable",
       "risk": "medium",
       "trustTier": "3",
       "capabilities": [
-        "enforce typed handoffs, budgets, convergence, and independent verification",
-        "plan and execute a mandatory six-role refinement graph",
-        "route dynamic domain skills through the canonical skill graph",
+        "agents invoke canonical skills they need based on context and objective",
+        "enforce typed handoffs, budgets, convergence, and independent verification via canonical loop/loop-engineering",
+        "plan and execute a dynamic multi-agent refinement graph",
+        "route skills dynamically through canonical graph/graph-skill-routing, with no fixed role set",
         "synthesize a review-ready RefinementArtifact without remote effects"
       ],
       "sideEffects": [

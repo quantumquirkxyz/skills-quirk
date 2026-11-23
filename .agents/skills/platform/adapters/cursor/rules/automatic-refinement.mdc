@@ -1,5 +1,5 @@
 ---
-description: Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.
+description: "Orchestrate a bounded multi-agent refinement graph that runs after grill-with-docs to update and improve the little things left over from grilling. Agents dynamically invoke any canonical skill they need (search, brainstorming, research, grill-with-docs, grilling, code-review, etc.) based on the context and objective, using graph-skill-routing for discovery and loop-engineering for bounded iteration. Stops at refined-awaiting-review without publishing or implementing."
 globs: []
 alwaysApply: false
 ---
@@ -8,9 +8,10 @@ alwaysApply: false
 Apply the automatic-refinement skill when the request matches its scope.
 
 Capabilities:
-- plan and execute a mandatory six-role refinement graph
-- route dynamic domain skills through the canonical skill graph
-- enforce typed handoffs, budgets, convergence, and independent verification
+- plan and execute a dynamic multi-agent refinement graph
+- agents invoke canonical skills they need based on context and objective
+- route skills dynamically through canonical graph/graph-skill-routing, with no fixed role set
+- enforce typed handoffs, budgets, convergence, and independent verification via canonical loop/loop-engineering
 - synthesize a review-ready RefinementArtifact without remote effects
 
-Stop when: All mandatory roles have valid handoffs, synthesis is independently verified, and a RefinementArtifact is emitted at refined-awaiting-review or a typed terminal failure is returned.
+Stop when: Loop-engineering reports converged, budget-exceeded, no-progress, or ping-pong; all agent skill invocations have valid typed handoffs; a RefinementArtifact is emitted at refined-awaiting-review or a typed terminal failure is returned.

@@ -2625,12 +2625,13 @@
       "tier": "3",
       "artifactType": "refinement",
       "capabilities": [
-        "plan and execute a mandatory six-role refinement graph",
-        "route dynamic domain skills through the canonical skill graph",
-        "enforce typed handoffs, budgets, convergence, and independent verification",
+        "plan and execute a dynamic multi-agent refinement graph",
+        "agents invoke canonical skills they need based on context and objective",
+        "route skills dynamically through canonical graph/graph-skill-routing, with no fixed role set",
+        "enforce typed handoffs, budgets, convergence, and independent verification via canonical loop/loop-engineering",
         "synthesize a review-ready RefinementArtifact without remote effects"
       ],
-      "description": "Orchestrate a bounded multi-agent refinement run that turns an idea into an evidence-backed draft and stops at refined-awaiting-review without publishing or implementing it.",
+      "description": "Orchestrate a bounded multi-agent refinement graph that runs after grill-with-docs to update and improve the little things left over from grilling. Agents dynamically invoke any canonical skill they need (search, brainstorming, research, grill-with-docs, grilling, code-review, etc.) based on the context and objective, using graph-skill-routing for discovery and loop-engineering for bounded iteration. Stops at refined-awaiting-review without publishing or implementing.",
       "path": ".agents/skills/routing/automatic-refinement"
     },
     "capability-router": {
@@ -5063,6 +5064,12 @@
       "weight": 0.4
     },
     {
+      "from": "automatic-refinement",
+      "to": "grill-with-docs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "parallel-issue-fleet",
       "to": "to-tickets",
       "type": "compatible",
@@ -5262,6 +5269,24 @@
     },
     {
       "from": "to-spec",
+      "to": "to-tickets",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "implement",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "automatic-refinement",
+      "to": "to-spec",
+      "type": "handoff",
+      "weight": 0.8
+    },
+    {
+      "from": "automatic-refinement",
       "to": "to-tickets",
       "type": "handoff",
       "weight": 0.8
