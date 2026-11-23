@@ -101,6 +101,14 @@ const validPublishArtifact = () => ({
   gateCiResult: { status: 'pass', failingChecks: [] },
   reviewers: ['m-collaborator'],
   labels: ['ready-for-human'],
+  issueMetadata: { issueNumber: 214, identityVerified: true, assignees: ['owner'], reviewerPolicy: {}, labels: [], milestone: null, projects: [], projectItems: [], fields: {}, development: {}, relationships: {} },
+  prMetadata: { issueNumber: 214, identityVerified: true, assignees: ['owner'], reviewerPolicy: {}, labels: [], milestone: null, projects: [], projectItems: [], fields: {}, development: {}, relationships: {} },
+  mutationEvidence: [],
+  checkpoint: {},
+  operationId: 'op-test-214',
+  reconciliationEvidence: [],
+  dryRun: false,
+  saga: {},
 });
 
 test('review-findings schema copies parse and match the canonical schema byte-for-byte', async () => {

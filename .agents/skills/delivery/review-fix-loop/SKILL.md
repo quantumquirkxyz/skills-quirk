@@ -25,7 +25,7 @@ risk: "medium"
 trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "review"
+artifactType: "ReviewFixLoopArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/review-fix-loop.json
@@ -110,6 +110,7 @@ The machine states are `review`, `plan-fixes`, `implement-fixes`, `verify`, `com
 2. Decide.
    - If Standards and Spec both have no findings, stop the loop and tell the user the PR is ready for ship-subissue.
    - If either axis has findings, continue.
+   - Recoverable failures (`stale-input`, `validation-failed`, transient remote errors, and `outcome-unknown`) continue through bounded retry, reconciliation, and a fresh re-review; they are not terminal blockers.
    - If the same blocking condition repeats for three consecutive loop passes, stop and report the blocker instead of looping indefinitely.
    - If the latest review changes only wording but not substance, treat it as the same blocker.
    - If a conflicted branch state was resolved, rerun review-pr on the cleaned branch before deciding whether to plan more fixes or hand off to ship-subissue.
@@ -133,6 +134,18 @@ The machine states are `review`, `plan-fixes`, `implement-fixes`, `verify`, `com
   - Before every external effect, write a checkpoint and verify the same PR head, base fixed point, and review revision; stale data returns `stale-input`.
   - After a crash or unknown result, reconcile by operationId, effect digest, PR head, and exact comment marker before retrying. Adopt existing effects; never duplicate comments, commits, pushes, or plans. If reconciliation cannot prove the outcome, return `outcome-unknown`.
   - Compensate only operation-owned comments or branch effects when explicitly supported; record rollback evidence and never claim rollback from a failed request.
+
+### Recovery decision table
+
+| Condition | Continue action | Terminal outcome |
+|---|---|---|
+| stale plan or revision fence | reconcile head/plan, refresh plan, re-review | `blocked` only when authority is missing or fence cannot be reconciled |
+| validation failure | apply scoped fix, rerun validation, re-review | `blocked` only when no scoped fix or budget is exhausted |
+| remote conflict | invoke conflict-resolution handoff, verify clean tree, re-review | `blocked` for unresolved conflict |
+| unknown effect | reconcile by `operationId` and effect digest, adopt or retry once within budget | `outcome-unknown`, then `blocked` only if irreconcilable |
+| repeated action | change approach and checkpoint; do not duplicate effect | `blocked` after repeat safeguard/budget |
+
+`blocked` is reserved for missing authority/input, unresolved conflict, irreconcilable unknown effects, exhausted budget, or an explicit user stop. Every recovery attempt keeps idempotency, checkpoints, `operationId`, the fixed-point fence, and repeat safeguards.
 
 ## Loop State
 

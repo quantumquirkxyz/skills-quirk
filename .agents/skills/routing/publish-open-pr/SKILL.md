@@ -13,7 +13,7 @@ capabilities:
 inputs:
   - operationId or idempotencyKey (optional for backward compatibility)
   - fixedPoint (optional legacy alias for the prepared branch revision)
-  - validated issue branch, linked issue metadata, PR bundle metadata, and quality gate results
+  - validated issue branch, linked issue identity/metadata, PR bundle metadata, and quality gate results
 outputs:
   - type: object
     name: PublishOpenPrArtifact
@@ -27,6 +27,9 @@ outputs:
       gateCiResult: { type: object }
       reviewers: { type: array, items: { type: string } }
       labels: { type: array, items: { type: string } }
+      issueMetadata: { type: object }
+      prMetadata: { type: object }
+      mutationEvidence: { type: array, items: { type: object } }
       checkpoint: { type: object }
       operationId: { type: string }
       recoveryStatus: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
@@ -44,7 +47,7 @@ trustTier: 3
 maxIterations: 6
 modelTier: router
 promptVersion: "2.0"
-artifactType: pull-request
+artifactType: publish-open-pr
 evaluators:
   - behavioral
   - regression
@@ -79,7 +82,7 @@ reloadPolicy: always
 - Rule: never open a PR before `gate-ci` has passed on the pushed branch.
 - Rule: never create or amend commits here; that belongs to `implement`.
 - Rule: never merge the PR or close the issue here; that belongs to `ship-subissue`.
-- Rule: the linked issue's labels and milestone are the source of truth for PR metadata.
+- Rule: the linked issue's complete metadata is the source of truth: identity, assignees, reviewer policy, labels (including state/triage classification), milestone, projects and item IDs, Project V2 fields, development linkage, and relationships.
 - Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; supplied values must be echoed in `PublishOpenPrArtifact`.
 - Side effect ownership: this skill owns pushing the prepared branch and creating one open PR; both require explicit approval. It does not own commits, comments, merges, issue closure, or review decisions.
 - Recovery invariant: write `checkpoint` before push, after push, and after PR lookup/create. On an unknown push or PR result, reconcile branch and PR state by branch, head revision, title, linked issue, and idempotency key before any retry. Adopt an existing matching PR; never create a second PR.
@@ -140,12 +143,8 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 ### 6. Push the branch and open a PR
 
 - Use `git push -u origin <branch>`.
-- Use the metadata bundle to set:
-  - assignee: the current GitHub user
-  - reviewers: the other human collaborator, and any additional reviewers explicitly resolved by the bundle
-  - labels: the linked issue's non-triage labels
-  - milestone: the linked issue milestone, if one is set
-- Use `gh pr create --title "<title>" --body-file "<body-file>" --assignee "@me" --milestone "<milestone>"` without `--draft`, then add repeated `--label` and `--reviewer` flags from the metadata bundle.
+- Verify the linked issue identity before mutation and resolve assignees/reviewers by login, never by `@me`. Copy labels, milestone, project/item IDs, relationships, and development linkage according to the explicit PR-copy policy in the body/schema; preserve unsupported fields as `unsupported` or `partial` evidence rather than fabricating mutations.
+- Use resolved login values with `gh pr create`, then reconcile assignees, reviewers, labels, milestone, projects, and linkage. This skill owns only push/open-PR effects.
 - If GitHub rejects the non-draft PR path with a diff-resolution error for this prepared branch, retry the same PR as `--draft` rather than stopping.
 - Use a title that matches the subissue and the actual diff.
 
@@ -164,6 +163,7 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 - PR bundle prepared from linked issue metadata
 - branch pushed to origin
 - open PR created with title, body, assignee, labels, milestone, and reviewers
+- linked issue identity verified and all requested metadata/project/relationship outcomes recorded
 - `PublishOpenPrArtifact` returned as structured output
 - handoff to `review-pr` is explicit
 - saga checkpoints, operationId, approvals, budgets, and reconciliation evidence are returned

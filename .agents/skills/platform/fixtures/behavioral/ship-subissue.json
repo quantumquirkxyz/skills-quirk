@@ -15,7 +15,11 @@
           "ShipSubissueArtifact",
           "Never merge with unresolved review findings.",
           "Never mark an issue complete unless the linked reference is clear.",
-          "Never delete the branch before the merge has succeeded."
+          "Never delete the branch before the merge has succeeded.",
+           "Configurable transition policy",
+           "protected states",
+           "merge verification -> project update -> issue state/labels -> close -> branch deletion",
+           "idempotent"
         ],
         "doesNotContain": [
           "## Operating Contract",
@@ -46,7 +50,7 @@
           "trustTier: \"4\"",
           "modelTier: \"router\"",
           "promptVersion: \"2.0\"",
-          "artifactType: \"routing\"",
+          "artifactType: ship-subissue",
           "diataxis: \"how-to\""
         ]
       }

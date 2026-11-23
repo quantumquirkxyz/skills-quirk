@@ -35,7 +35,7 @@ risk: "high"
 trustTier: "4"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "routing"
+artifactType: ship-subissue
 modelTier: "router"
 evaluators: ["behavioral", "regression"]
 fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
@@ -98,6 +98,10 @@ Use the canonical work-item format in [`docs/reference/agents/work-item-format.m
 
 ## Workflow
 
+### Configurable transition policy
+
+The caller supplies a label/project-state matrix. The default is `pr-opened` => `in-progress`/`review`, and verified merge => `done`/`completed`. Descriptive labels are preserved. Protected states (`blocked`, `needs-info`, `needs-triage`, `wontfix`) are never overwritten or removed by this workflow.
+
 1. Confirm the target.
    - Read the open PR with `gh pr view`.
    - Confirm the PR still belongs to the current branch and subissue.
@@ -108,12 +112,15 @@ Use the canonical work-item format in [`docs/reference/agents/work-item-format.m
    - If review is not clean, stop and return to `review-fix-loop`.
 3. Merge the PR.
    - Use `gh pr merge <number>` with the repository's accepted merge strategy.
-   - Delete the branch if the repository convention allows it.
-4. Close or complete the issue.
+   - Verify the merge commit before any downstream mutation.
+4. Update project state, then issue state and labels.
+    - Apply the configured matrix only after merge verification; record typed applied, skipped, unsupported, and partial mutation fields.
+    - Reconcile project item and issue state before retrying any unknown effect.
+5. Close or complete the issue.
    - If the workflow uses an explicit completion state, update it to reflect that the subissue is done.
    - If GitHub does not auto-close the linked issue, close it with `gh issue close <number> --comment "Merged in PR #<number>."`
    - Do not guess the issue number.
-5. Record completion.
+6. Delete the branch only after merge verification and successful/reconciled downstream checkpoints, then record completion.
    - Leave a short note on the PR or issue summarizing the merge and completion state.
 
 ## Guardrails
@@ -121,6 +128,8 @@ Use the canonical work-item format in [`docs/reference/agents/work-item-format.m
 - Never merge with unresolved review findings.
 - Never mark an issue complete unless the linked reference is clear.
 - Never delete the branch before the merge has succeeded.
+- Sequence is merge verification -> project update -> issue state/labels -> close -> branch deletion.
+- Every step is idempotent and resumes from a checkpoint; unknown effects reconcile by `operationId`, PR, merge commit, project item ID, and issue identity.
 
 ## Completion
 

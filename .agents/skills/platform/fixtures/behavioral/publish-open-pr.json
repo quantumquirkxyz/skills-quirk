@@ -5,7 +5,7 @@
       "skill": "publish-open-pr",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "PublishOpenPrArtifact", "gate-ci", "gh pr create"],
+        "outputContains": ["## Contract", "## Provenance", "## Artifact", "PublishOpenPrArtifact", "gate-ci", "gh pr create", "linked issue identity", "Project V2", "unsupported", "partial", "never by `@me`"],
         "doesNotContain": ["## Operating Contract"]
       }
     }

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShipSubissueArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "operationId", "checkpoint", "merge", "projectTransition", "issueTransition", "closure", "branchDeletion", "reconciliationEvidence"],
+  "properties": {
+    "status": { "$ref": "#/$defs/status" },
+    "operationId": { "type": "string", "minLength": 1 },
+    "checkpoint": { "type": "object" },
+    "merge": { "type": "object", "required": ["verified"], "properties": { "verified": { "type": "boolean" }, "prNumber": { "type": "integer" }, "commit": { "type": ["string", "null"] } }, "additionalProperties": true },
+    "projectTransition": { "$ref": "#/$defs/transition" },
+    "issueTransition": { "$ref": "#/$defs/transition" },
+    "closure": { "$ref": "#/$defs/transition" },
+    "branchDeletion": { "$ref": "#/$defs/transition" },
+    "reconciliationEvidence": { "type": "array", "items": { "type": "object" } },
+    "recoveryStatus": { "$ref": "#/$defs/status" },
+    "dryRun": { "type": "boolean" },
+    "saga": { "type": "object" }
+  },
+  "$defs": {
+    "status": { "type": "string", "enum": ["planned", "completed", "blocked", "needs-approval", "outcome-unknown", "stale-input", "validation-failed", "budget-exceeded", "repeated-action", "superseded", "rolled-back"] },
+    "transition": { "type": "object", "required": ["status", "protectedStatesPreserved", "mutations"], "properties": { "status": { "enum": ["applied", "skipped", "unsupported", "partial", "failed", "reconciled"] }, "protectedStatesPreserved": { "type": "boolean" }, "mutations": { "type": "array", "items": { "type": "object" } } }, "additionalProperties": true }
+  }
+}

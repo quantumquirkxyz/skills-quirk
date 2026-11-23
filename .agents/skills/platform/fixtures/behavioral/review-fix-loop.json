@@ -17,6 +17,11 @@
           "## Exit Conditions",
           "## Deferred Work",
           "ReviewFixLoopArtifact",
+           "Recovery decision table",
+           "stale plan",
+           "validation failure",
+           "remote conflict",
+           "recoverable failures",
           "## Review Fix Plan",
           "User stop",
           ".agents/skills/platform/artifacts/review-fix-loop/{identifier}.json"
@@ -50,7 +55,7 @@
           "trustTier: \"3\"",
           "modelTier: \"reasoning\"",
           "promptVersion: \"2.0\"",
-          "artifactType: \"review\"",
+          "artifactType: \"ReviewFixLoopArtifact\"",
           "diataxis: \"how-to\""
         ]
       }

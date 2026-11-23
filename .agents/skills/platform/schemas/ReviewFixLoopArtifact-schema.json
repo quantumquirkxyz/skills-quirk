@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewFixLoopArtifact",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["status", "operationId", "checkpoint"],
+  "properties": {
+    "status": { "type": "string" },
+    "operationId": { "type": "string", "minLength": 1 },
+    "checkpoint": { "type": "object" },
+    "reconciliationEvidence": { "type": "array", "items": { "type": "object" } },
+    "saga": { "type": "object" }
+  }
+}

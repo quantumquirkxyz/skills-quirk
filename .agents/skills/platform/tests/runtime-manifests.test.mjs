@@ -118,7 +118,7 @@ test('manifests derived from real fixture frontmatter carry the required fields 
   assert.equal(reviewPr.execution.isolation, 'worktree');
   assert.equal(reviewPr.execution.maxTurns, 6);
   assert.equal(reviewPr.execution.modelTier, 'reasoning');
-  assert.deepEqual(reviewPr.execution.tools.allow, ['Read', 'Grep', 'Glob', 'WebFetch', 'WebSearch']);
+  assert.deepEqual(reviewPr.execution.tools.allow, ['Read', 'Grep', 'Glob', 'Bash', 'WebFetch', 'WebSearch']);
   assert.deepEqual(reviewPr.execution.tools.deny, []);
   assert.deepEqual(reviewPr.guardrails.sideEffects, ['post-pr-comment']);
   assert.equal(reviewPr.guardrails.approvalRequired, true);
@@ -279,6 +279,13 @@ test('tool and guardrail derivation follows the documented rules', () => {
   );
   assert.ok(runner.execution.tools.allow.includes('Bash'));
   assert.equal(runner.execution.isolation, 'none');
+
+  const remoteMutation = buildRuntimeManifest(
+    { ...REVIEW_PR_FRONTMATTER, sideEffects: ['push-branch'], trustTier: '3' },
+    { skill: 'routing/publish-open-pr', body: 'Publishes the prepared branch.', schemasDir: emptySchemasDir() },
+  );
+  assert.ok(remoteMutation.execution.tools.allow.includes('Bash'));
+  assert.equal(remoteMutation.execution.isolation, 'none');
   assert.equal(runner.execution.defaultAgent, 'explore');
 
   const risky = buildRuntimeManifest(
