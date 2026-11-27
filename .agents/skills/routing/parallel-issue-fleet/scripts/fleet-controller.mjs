@@ -10,6 +10,11 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { analyze, normalizeInput } from '../../../platform/dag-scheduler.mjs';
+import {
+  isRealCommitSha,
+  validateGateResults,
+  validatePublishableArtifact,
+} from '../../../platform/delivery-integrity.mjs';
 import { resolveWorkerProfile } from './worker-runner.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -209,9 +214,6 @@ export function detectBootstrapCommands(workspace) {
   } else if (exists('yarn.lock')) {
     commands.push(['yarn', 'install', '--immutable']);
     packageRunner = ['yarn'];
-  } else if (exists('package-lock.json')) {
-    commands.push(['npm', 'ci']);
-    packageRunner = ['npm', 'run'];
   }
   if (exists('package.json') && packageRunner) {
     try {
@@ -233,7 +235,8 @@ function defaultQualityCommands(workspace) {
   if (!fs.existsSync(path.join(workspace, 'package.json'))) return [];
   try {
     const pkg = JSON.parse(fs.readFileSync(path.join(workspace, 'package.json'), 'utf8'));
-    const runner = fs.existsSync(path.join(workspace, 'bun.lock')) ? 'bun' : 'npm';
+    const runner = fs.existsSync(path.join(workspace, 'bun.lock')) ? 'bun' : null;
+    if (!runner) return [];
     return ['lint', 'typecheck', 'test'].filter((name) => pkg.scripts?.[name]).map((name) => [runner, 'run', name]);
   } catch {
     return [];
@@ -617,14 +620,10 @@ function commandSummary(result, secretValues = []) {
 export function validateImplementArtifact(value) {
   const errors = [];
   if (!value || typeof value !== 'object') return ['artifact must be an object'];
-  if (!['completed', 'blocked', 'partial'].includes(value.status)) errors.push('status must be completed, blocked, or partial');
-  if (value.status !== 'completed') errors.push('status must be completed before publication');
-  if (value.validation?.acceptanceCriteriaMet !== true) errors.push('validation.acceptanceCriteriaMet must be true');
-  for (const key of ['gateIde', 'gatePreCommit', 'gateCi']) {
-    if (!['pass', 'fail', 'skipped'].includes(value.qualityGateResults?.[key])) {
-      errors.push(`qualityGateResults.${key} must be pass, fail, or skipped`);
-    }
-  }
+  if (!['completed', 'blocked', 'partial', 'failed', 'skipped', 'outcome-unknown'].includes(value.status)) errors.push('invalid artifact status');
+  if (!isRealCommitSha(value.commitSha)) errors.push('commitSha must be a real 40-character commit SHA');
+  errors.push(...validateGateResults(value.qualityGateResults));
+  if (value.status === 'completed') errors.push(...validatePublishableArtifact(value));
   return errors;
 }
 
@@ -632,7 +631,7 @@ export function normalizeImplementArtifact(value, issue, options = {}) {
   const gateCommands = options.gateCommands ?? [];
   const localGatesPassed = options.localGatesPassed === true;
   const runId = options.runId ?? '';
-  return {
+  const normalized = {
     ...value,
     commitSha: issue.commitSha,
     branch: issue.branch,
@@ -653,6 +652,13 @@ export function normalizeImplementArtifact(value, issue, options = {}) {
     },
     riskRemaining: 'Remote CI, review, and publication remain required.',
   };
+  if (normalized.status === 'completed') normalized.status = 'partial';
+  normalized.validation = {
+    ...normalized.validation,
+    mandatoryGates: ['gateCi'],
+    skippedGates: ['gateIde', 'gateCi'],
+  };
+  return normalized;
 }
 
 async function collectImplementArtifact(artifact, issue, stateRoot, workspacePath, providedPath = null, artifactPath = null) {
@@ -953,7 +959,15 @@ async function processIssue(artifact, issue, config, stateRoot, checkpoint) {
       }
       workerArtifactPath = String(collected.output.implementArtifactPath);
     }
-    await collectImplementArtifact(artifact, issue, stateRoot, resource?.workspacePath, workerArtifactPath, artifactPath);
+    const collectedPath = await collectImplementArtifact(artifact, issue, stateRoot, resource?.workspacePath, workerArtifactPath, artifactPath);
+    const collectedArtifact = JSON.parse(await fsp.readFile(collectedPath, 'utf8'));
+    if (collectedArtifact.status !== 'completed') {
+      issue.status = 'blocked';
+      issue.error = 'Implementation artifact is partial until the mandatory repository-wide gate passes.';
+      event(artifact, 'fleet.issue-blocked', { issueId: issue.id, reason: issue.error });
+      await checkpoint();
+      return issue;
+    }
     issue.status = 'validated';
     event(artifact, 'fleet.issue-validated', { issueId: issue.id, branch: issue.branch, commitSha: issue.commitSha });
   } catch (error) {
