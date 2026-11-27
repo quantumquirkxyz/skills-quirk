@@ -94,11 +94,12 @@ const validImplementArtifact = () => ({
 const validPublishArtifact = () => ({
   status: 'completed',
   branch: 'feat/issue-214-routing-audit',
+  commitSha: '9f2c1ab4d5e6f70819a2b3c4d5e6f708192a3b4c',
   prNumber: 217,
   prUrl: 'https://github.com/quantumquirkxyz/skills-quirk/pull/217',
   title: 'fix: route audit findings 6-8 (fixtures, citations, schemas)',
   validation: { passed: true, commands: ['node --test .agents/skills/platform/tests/'] },
-  gateCiResult: { status: 'pass', failingChecks: [] },
+  gateCiResult: { status: 'pass', mandatory: true, failingChecks: [] },
   reviewers: ['m-collaborator'],
   labels: ['ready-for-human'],
   issueMetadata: { issueNumber: 214, identityVerified: true, assignees: ['owner'], reviewerPolicy: {}, labels: [], milestone: null, projects: [], projectItems: [], fields: {}, development: {}, relationships: {} },
