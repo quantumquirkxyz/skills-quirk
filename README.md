@@ -84,8 +84,8 @@ Follow the [adoption guide](docs/how-to/adoption.md) to configure local context,
 
 | Location | Role |
 |---|---|
-| `.agents/skills/` | Canonical skill definitions (`SKILL.md`) |
-| `.claude/skills/` | Generated compatibility view (committed symlinks) |
+| `.agents/skills/` | Canonical definitions plus vendor-neutral flat aliases (`<skill>/SKILL.md`) |
+| `.claude/skills/` | Generated compatibility view (committed symlinks; optional for generic discovery) |
 | `skills-lock.json` | SHA-256 integrity hashes for canonical skills |
 | `CONTEXT.md` | Repository-local vocabulary |
 | `docs/reference/agents/` | Work-item, routing, issue-tracker, and provenance reference |

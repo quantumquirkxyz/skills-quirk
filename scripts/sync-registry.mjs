@@ -59,6 +59,32 @@ function parseYaml(text) {
 
 async function exists(p) { try { await fs.access(p); return true; } catch { return false; } }
 
+async function createAgentStandardAliases(skills) {
+  const names = new Set();
+  let created = 0;
+  for (const skill of skills) {
+    if (names.has(skill.name)) throw new Error(`duplicate flat skill name cannot be exposed to generic agents: ${skill.name}`);
+    names.add(skill.name);
+    const domain = skill.path.split(path.sep)[2];
+    const directPath = path.join(agentsSkillsDir, skill.name);
+    let direct;
+    try { direct = await fs.lstat(directPath); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    const aliasName = direct && !direct.isSymbolicLink() ? `${domain}-${skill.name}` : skill.name;
+    const linkPath = path.join(agentsSkillsDir, aliasName);
+    const target = path.relative(path.dirname(linkPath), path.join(repoRoot, skill.path));
+    let current;
+    try { current = await fs.lstat(linkPath); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    if (!current) {
+      if (write) { await fs.symlink(target, linkPath); created++; }
+      continue;
+    }
+    if (!current.isSymbolicLink() || await fs.readlink(linkPath) !== target) {
+      throw new Error(`refusing to replace non-canonical generic-agent alias: .agents/skills/${aliasName}`);
+    }
+  }
+  return created;
+}
+
 const categoryMismatches = [];
 
 async function collectSkills(dir, out = [], domain = null) {
@@ -111,6 +137,9 @@ async function main() {
       console.log(`[sync-registry]   ${mismatch}`);
     }
   }
+
+  const genericAgentAliases = await createAgentStandardAliases(skills);
+  console.log(`[sync-registry] Generic-agent aliases: ${genericAgentAliases} would be created`);
 
   // Group by category
   const byCategory = {};
