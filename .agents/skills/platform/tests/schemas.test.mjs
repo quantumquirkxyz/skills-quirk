@@ -34,6 +34,13 @@ function validate(schemaNode, instance, pointer, errors) {
     errors.push(`${pointer}: expected ${JSON.stringify(schemaNode.type)}, got ${typeOf(instance)}`);
     return;
   }
+  if (schemaNode.allOf) schemaNode.allOf.forEach((subschema) => validate(subschema, instance, pointer, errors));
+  if (schemaNode.if) {
+    const conditionErrors = [];
+    validate(schemaNode.if, instance, pointer, conditionErrors);
+    if (conditionErrors.length === 0 && schemaNode.then) validate(schemaNode.then, instance, pointer, errors);
+    if (conditionErrors.length > 0 && schemaNode.else) validate(schemaNode.else, instance, pointer, errors);
+  }
   if (schemaNode.const !== undefined && JSON.stringify(instance) !== JSON.stringify(schemaNode.const)) {
     errors.push(`${pointer}: expected const ${JSON.stringify(schemaNode.const)}`);
   }
@@ -46,6 +53,9 @@ function validate(schemaNode, instance, pointer, errors) {
     }
     if (schemaNode.pattern && !new RegExp(schemaNode.pattern).test(instance)) {
       errors.push(`${pointer}: does not match pattern ${schemaNode.pattern}`);
+    }
+    if (schemaNode.format === 'date-time' && (Number.isNaN(Date.parse(instance)) || !instance.includes('T'))) {
+      errors.push(`${pointer}: invalid date-time`);
     }
   }
   if (Array.isArray(instance)) {
@@ -79,6 +89,8 @@ const validateAgainst = (schema, instance) => {
 
 const implementSchema = await loadSchema('implement-schema.json');
 const publishSchema = await loadSchema('publish-open-pr-schema.json');
+const preflightSchema = JSON.parse(await fs.readFile(path.join(root, 'schemas', 'software-engineering', 'engineering-preflight-artifact.schema.json'), 'utf8'));
+const workflowStatusSchema = JSON.parse(await fs.readFile(path.join(root, 'schemas', 'software-engineering', 'workflow-status.schema.json'), 'utf8'));
 
 const validImplementArtifact = () => ({
   status: 'completed',
@@ -197,4 +209,33 @@ test('the skills that cite these schemas resolve the paths', async () => {
     assert.ok(skill.includes(schemaRel), `${skillRel} must cite ${schemaRel}`);
     await fs.access(path.join(root, schemaRel));
   }
+});
+
+
+test('workflow-status requires the minimum routing envelope', () => {
+  const valid = {
+    schemaVersion: '1.0', artifactType: 'workflow-status', artifactId: 'status-1',
+    traceId: 'trace-1', operationId: 'operation-1', status: 'in-progress',
+    workflow: 'standard-feature', state: 'engineering-preflight', updatedAt: '2026-11-27T00:00:00Z'
+  };
+  assert.deepEqual(validateAgainst(workflowStatusSchema, valid), []);
+  for (const field of ['workflow', 'state', 'updatedAt']) {
+    const invalid = { ...valid };
+    delete invalid[field];
+    assert.notDeepEqual(validateAgainst(workflowStatusSchema, invalid), [], `missing ${field} must fail`);
+  }
+});
+
+test('engineering preflight schema accepts approved and structured not-applicable exceptions', () => {
+  const base = { schemaVersion: '1.0', artifactType: 'EngineeringPreflightArtifact', artifactId: 'pf-1', scope: 'bug fix', traceability: [{ stage: 'implementation', evidence: ['ticket-1'], owner: 'team', status: 'ready' }], verificationAfter: 'tests', exception: null };
+  assert.deepEqual(validateAgainst(preflightSchema, { ...base, status: 'approved' }), []);
+  assert.deepEqual(validateAgainst(preflightSchema, { ...base, status: 'not-applicable', exception: { kind: 'hotfix', rationale: 'Production outage', approver: 'oncall-lead', expiresAt: '2099-01-01T00:00:00Z', postVerification: 'Run regression suite' } }), []);
+});
+
+test('engineering preflight schema rejects missing, malformed, and expired exceptions', () => {
+  const base = { schemaVersion: '1.0', artifactType: 'EngineeringPreflightArtifact', artifactId: 'pf-1', scope: 'bug fix', status: 'not-applicable', traceability: [{ stage: 'implementation', evidence: ['ticket-1'], owner: 'team', status: 'ready' }], verificationAfter: 'tests' };
+  assert.notDeepEqual(validateAgainst(preflightSchema, base), []);
+  assert.notDeepEqual(validateAgainst(preflightSchema, { ...base, exception: { kind: 'hotfix', rationale: 'x', approver: 'lead', expiresAt: 'not-a-date', postVerification: 'tests' } }), []);
+  assert.notDeepEqual(validateAgainst(preflightSchema, { ...base, exception: null }), []);
+  assert.notDeepEqual(validateAgainst(preflightSchema, { ...base, status: 'approved', exception: { kind: 'hotfix', rationale: 'x', approver: 'lead', expiresAt: '2099-01-01T00:00:00Z', postVerification: 'tests' } }), []);
 });

@@ -29,6 +29,14 @@
     reconcile but cannot mutate. A revision fence mismatch, protected-branch
     violation, stale review, or missing approval stops the saga.
   </saga>
+  <commit-push-governance>
+    Never finish work as one commit when there are two or more independently reviewable logical units;
+    create multiple minimal logical commits. A single commit is allowed only for one inseparable unit and
+    must record the rationale. Commit messages MUST be English and conventional. Commit, push, PR creation,
+    merge, issue closure, and release are separate effects with separate approvals and checkpoints. Validate
+    the exact commit before push. Reconcile unknown commit/push results by operationId, branch, and SHA;
+    never blindly retry. No push is allowed before required gates pass.
+  </commit-push-governance>
   <budgets>
     Aggregate caller budget takes precedence over skill and retry budgets;
     attempts, remote mutations, comments, PRs, wall time, and compensation

@@ -22,6 +22,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseFrontmatter } from '../skill-graph.mjs';
 import { recordExecution } from '../record-execution.mjs';
+import { validateJson } from '../json-schema-validator.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const PLATFORM_DIR = path.resolve(here, '..');
@@ -126,80 +127,8 @@ function matchesType(value, type) {
   return false;
 }
 
-// Minimal JSON-Schema validator for the subset the repo schemas use: type,
-// required, enum, const, properties, additionalProperties, items, minimum,
-// maximum, minLength, maxLength, pattern. No runtime dependency is available.
-function validateNode(schema, instance, pointer, errors) {
-  if (schema === true || schema === undefined || schema === null) return;
-  if (schema === false) {
-    errors.push(`${pointer}: the schema forbids any value`);
-    return;
-  }
-  if (typeof schema !== 'object') return;
-  if (schema.type !== undefined) {
-    const types = Array.isArray(schema.type) ? schema.type : [schema.type];
-    if (!types.some((type) => matchesType(instance, type))) {
-      errors.push(`${pointer}: expected ${JSON.stringify(schema.type)}, got ${jsonTypeOf(instance)}`);
-      return;
-    }
-  }
-  if (schema.enum !== undefined && !schema.enum.some((value) => deepEqual(value, instance))) {
-    errors.push(`${pointer}: ${JSON.stringify(instance)} is not one of ${JSON.stringify(schema.enum)}`);
-  }
-  if (schema.const !== undefined && !deepEqual(schema.const, instance)) {
-    errors.push(`${pointer}: expected the const ${JSON.stringify(schema.const)}`);
-  }
-  if (typeof instance === 'string') {
-    if (schema.minLength !== undefined && instance.length < schema.minLength) {
-      errors.push(`${pointer}: shorter than minLength ${schema.minLength}`);
-    }
-    if (schema.maxLength !== undefined && instance.length > schema.maxLength) {
-      errors.push(`${pointer}: longer than maxLength ${schema.maxLength}`);
-    }
-    if (schema.pattern !== undefined && !new RegExp(schema.pattern).test(instance)) {
-      errors.push(`${pointer}: does not match pattern ${schema.pattern}`);
-    }
-  }
-  if (typeof instance === 'number' && Number.isFinite(instance)) {
-    if (schema.minimum !== undefined && instance < schema.minimum) {
-      errors.push(`${pointer}: below the minimum ${schema.minimum}`);
-    }
-    if (schema.maximum !== undefined && instance > schema.maximum) {
-      errors.push(`${pointer}: above the maximum ${schema.maximum}`);
-    }
-  }
-  if (Array.isArray(instance)) {
-    if (schema.minItems !== undefined && instance.length < schema.minItems) {
-      errors.push(`${pointer}: fewer than minItems ${schema.minItems}`);
-    }
-    if (schema.items !== undefined) {
-      instance.forEach((item, index) => validateNode(schema.items, item, `${pointer}[${index}]`, errors));
-    }
-  }
-  if (isPlainObject(instance)) {
-    for (const key of schema.required ?? []) {
-      if (!(key in instance)) errors.push(`${pointer}: missing required property "${key}"`);
-    }
-    const properties = schema.properties ?? {};
-    for (const [key, sub] of Object.entries(properties)) {
-      if (key in instance) validateNode(sub, instance[key], `${pointer}.${key}`, errors);
-    }
-    if (schema.additionalProperties === false) {
-      for (const key of Object.keys(instance)) {
-        if (!(key in properties)) errors.push(`${pointer}: unexpected property "${key}"`);
-      }
-    } else if (isPlainObject(schema.additionalProperties)) {
-      for (const key of Object.keys(instance)) {
-        if (!(key in properties)) validateNode(schema.additionalProperties, instance[key], `${pointer}.${key}`, errors);
-      }
-    }
-  }
-}
-
 export function validateSkillRun(record) {
-  const errors = [];
-  validateNode(SKILL_RUN_SCHEMA, record, '$', errors);
-  return errors;
+  return validateJson(SKILL_RUN_SCHEMA, record);
 }
 
 export function redact(value) {

@@ -1,6 +1,6 @@
 name: bug-fix
 description: Diagnosis loop for hard bugs and regressions
-entryPoint: diagnosing-bugs
+entryPoint: engineering-preflight
 version: "2.0"
 
 context:
@@ -8,10 +8,25 @@ context:
     standardsFindings: 0
     specFindings: 0
   gateCI: "pending"
+  engineeringPreflight: "missing"
   loopIterations: 0
   maxIterations: 5
 
 states:
+  engineering-preflight:
+    type: gate
+    description: Require a current EngineeringPreflightArtifact before bug-fix work
+    artifactType: EngineeringPreflightArtifact
+    transitions:
+      APPROVED: diagnosing-bugs
+      NOT_APPLICABLE_APPROVED: diagnosing-bugs
+      STALE: escalate
+      BLOCKED: escalate
+      MISSING: escalate
+    guards:
+      APPROVED: engineeringPreflight == "approved"
+      NOT_APPLICABLE_APPROVED: engineeringPreflight == "not-applicable"
+
   diagnosing-bugs:
     type: investigator
     description: Tight reproduction loop for intermittent or ambiguous failures
@@ -28,6 +43,7 @@ states:
     transitions:
       GREEN: publish-open-pr
       RED: tdd
+      MISSING_PREFLIGHT: engineering-preflight
       BLOCKED: escalate
 
   publish-open-pr:
@@ -36,8 +52,9 @@ states:
     transitions:
       OPENED: review-pr
       FAILED: tdd
+      MISSING_PREFLIGHT: engineering-preflight
     guards:
-      OPENED: gateCI == "passed"
+      OPENED: gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")
 
   review-pr:
     type: reviewer
@@ -74,6 +91,7 @@ states:
     transitions:
       MERGED: done
       FAILED: review-pr
+      MISSING_PREFLIGHT: engineering-preflight
 
   escalate:
     type: terminal

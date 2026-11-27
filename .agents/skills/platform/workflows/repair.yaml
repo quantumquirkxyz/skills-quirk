@@ -1,6 +1,6 @@
 name: repair
 description: Review-repair cycle for PRs with findings
-entryPoint: plan-review-fixes
+entryPoint: engineering-preflight
 version: "2.0"
 
 context:
@@ -9,8 +9,23 @@ context:
     specFindings: 0
   loopIterations: 0
   maxIterations: 5
+  engineeringPreflight: "missing"
 
 states:
+  engineering-preflight:
+    type: gate
+    description: Require a current EngineeringPreflightArtifact before review-repair work
+    artifactType: EngineeringPreflightArtifact
+    transitions:
+      APPROVED: plan-review-fixes
+      NOT_APPLICABLE_APPROVED: plan-review-fixes
+      STALE: escalate
+      BLOCKED: escalate
+      MISSING: escalate
+    guards:
+      APPROVED: engineeringPreflight == "approved"
+      NOT_APPLICABLE_APPROVED: engineeringPreflight == "not-applicable"
+
   plan-review-fixes:
     type: planner
     description: Convert review findings into concrete remediation plan
@@ -25,6 +40,7 @@ states:
     transitions:
       FIXED: review-pr
       FAILED: implement-review-fixes
+      MISSING_PREFLIGHT: engineering-preflight
       BLOCKED: escalate
 
   review-pr:
@@ -50,6 +66,7 @@ states:
     transitions:
       MERGED: done
       FAILED: review-pr
+      MISSING_PREFLIGHT: engineering-preflight
 
   escalate:
     type: terminal

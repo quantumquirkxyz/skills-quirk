@@ -1,17 +1,33 @@
 name: operations
 description: Continuous release, deployment, and monitoring flow
-entryPoint: release-management
+entryPoint: engineering-preflight
 version: "2.0"
 
 context:
   gateCI: "pending"
+  engineeringPreflight: "missing"
 
 states:
+  engineering-preflight:
+    type: gate
+    description: Require a current EngineeringPreflightArtifact before operational software changes
+    artifactType: EngineeringPreflightArtifact
+    transitions:
+      APPROVED: release-management
+      NOT_APPLICABLE_APPROVED: release-management
+      STALE: escalate
+      BLOCKED: escalate
+      MISSING: escalate
+    guards:
+      APPROVED: engineeringPreflight == "approved"
+      NOT_APPLICABLE_APPROVED: engineeringPreflight == "not-applicable"
+
   release-management:
     type: planner
     description: Plan the release train and CI handoff
     transitions:
       PLANNED: deployment
+      MISSING_PREFLIGHT: engineering-preflight
       BLOCKED: escalate
 
   deployment:
@@ -21,6 +37,7 @@ states:
     transitions:
       DEPLOYED: observability
       FAILED: deployment
+      MISSING_PREFLIGHT: engineering-preflight
       ROLLED_BACK: release-management
     guards:
       DEPLOYED: gateCI == "passed"

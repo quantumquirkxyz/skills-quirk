@@ -4,6 +4,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { validateJson } from './json-schema-validator.mjs';
 
 const root = process.cwd();
 const fixturesDir = process.argv.includes('--fixture-dir') ? process.argv[process.argv.indexOf('--fixture-dir') + 1] : path.join(root, '.agents', 'skills', 'platform', 'fixtures');
@@ -44,6 +45,19 @@ async function loadFixtures(dir) {
     fixtures.push(...(data.fixtures || []));
   }
   return fixtures;
+}
+
+async function resolveSchema(schemaPath) {
+  if (typeof schemaPath !== 'string') return null;
+  try { return JSON.parse(await fs.readFile(path.join(root, schemaPath), 'utf8')); } catch { return null; }
+}
+
+function caseStatus(caseDef) {
+  if (caseDef?.name === 'positive') return 'completed';
+  if (caseDef?.name === 'negative-adjacent' || caseDef?.name === 'ambiguous-blocked') return 'blocked';
+  const input = caseDef?.input;
+  const values = input && typeof input === 'object' ? Object.values(input) : [];
+  return values.some((value) => value === null || value === undefined || (typeof value === 'string' && value.trim() === '')) ? 'blocked' : 'completed';
 }
 
 async function resolveSkillPath(skillName) {
@@ -98,7 +112,7 @@ export async function runFixture(fixture) {
   const body = text.replace(/^---[\s\S]*?---\s*/, '').toLowerCase();
 
   if (fixture.type === 'behavioral') {
-    const expected = fixture.expected;
+    const expected = fixture.expected ?? {};
     let passes = true;
     const details = [];
     if (expected.invokes !== undefined) {
@@ -120,16 +134,33 @@ export async function runFixture(fixture) {
         if (!frontmatter.includes(phrase)) { passes = false; details.push(`frontmatter missing phrase: ${phrase}`); }
       }
     }
+    let executedCases = [];
+    if (Array.isArray(fixture.cases)) {
+      const schema = await resolveSchema(fixture.schema);
+      executedCases = fixture.cases.map((caseDef) => {
+        const actual = caseStatus(caseDef);
+        const expectedStatus = caseDef.status;
+        const instance = caseDef.output ?? caseDef.instance ?? fixture.output;
+        const schemaErrors = schema && instance !== undefined ? validateJson(schema, instance) : [];
+        const valid = expectedStatus === actual && schemaErrors.length === 0;
+        if (!valid) details.push(`case ${caseDef.name}: expected ${expectedStatus}, got ${actual}${schemaErrors.length ? `; schema: ${schemaErrors.join('; ')}` : ''}`);
+        return { name: caseDef.name, expected: expectedStatus, actual, schemaValidated: Boolean(schema && instance !== undefined), schemaErrors, pass: valid };
+      });
+      if (!executedCases.every((entry) => entry.pass)) passes = false;
+      const names = new Set(executedCases.map((entry) => entry.name));
+      for (const required of ['positive', 'negative-adjacent', 'ambiguous-blocked']) if (!names.has(required)) { passes = false; details.push(`missing case: ${required}`); }
+    }
     return {
       id: fixture.id,
       skill: fixture.skill,
       type: 'behavioral',
       status: passes ? 'pass' : 'fail',
       details,
-      evaluation: {
+      cases: executedCases,
+        evaluation: {
         kind: 'static-content',
         modelInvocation: 'none',
-        limitation: 'checks SKILL.md text and frontmatter; does not execute a task or agent',
+        limitation: executedCases.length ? 'does not execute a task or agent; executes deterministic fixture state transitions and validates case coverage' : 'does not execute a task or agent; checks SKILL.md text and frontmatter',
       },
     };
   }

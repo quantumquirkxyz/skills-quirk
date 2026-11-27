@@ -146,14 +146,14 @@ test('manifests derived from real fixture frontmatter carry the required fields 
 
 test('manifest coverage over the real bundle is complete and exact', () => {
   const inputs = collectManifestInputs(REPO_ROOT);
-  assert.equal(inputs.length, 271);
+  assert.equal(inputs.length, 272);
 
   const coverage = manifestCoverage(
     inputs.map((input) => ({ skill: input.skill })),
     inputs.map((input) => input.manifest),
   );
-  assert.equal(coverage.skills, 271);
-  assert.equal(coverage.manifests, 271);
+  assert.equal(coverage.skills, 272);
+  assert.equal(coverage.manifests, 272);
   assert.deepEqual(coverage.missing, []);
   assert.deepEqual(coverage.extra, []);
   assert.equal(coverage.complete, true);

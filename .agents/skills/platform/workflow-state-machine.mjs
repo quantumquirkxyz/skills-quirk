@@ -95,6 +95,14 @@ function stateDir() {
 // default. WORKFLOW_STATE_MACHINE_CHECKPOINTS_DIR overrides it explicitly; when
 // the state directory is overridden (tests, scratch runs) the journal nests
 // inside it, so isolation travels with the existing wave-2 env var.
+function stableJson(value) {
+  if (Array.isArray(value)) return value.map(stableJson);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableJson(value[key])]));
+  }
+  return value;
+}
+
 function checkpointsDir() {
   if (process.env.WORKFLOW_STATE_MACHINE_CHECKPOINTS_DIR) {
     return resolve(process.env.WORKFLOW_STATE_MACHINE_CHECKPOINTS_DIR)
@@ -847,6 +855,27 @@ function forkWorkflow(workflow, workflowName, rest) {
   }
 }
 
+function capabilityRequirementStatus(requirements, context) {
+  const aliases = new Map(Object.entries(context.capabilityAliases ?? {}));
+  const available = new Set([
+    ...(context.capabilities?.providers ?? []),
+    ...(context.capabilities?.handoffs ?? []),
+    ...(context.providers ?? []),
+    ...(context.handoffs ?? [])
+  ].map((value) => aliases.get(String(value)) ?? String(value)));
+  const blocked = [];
+  const warnings = [];
+  for (const raw of requirements ?? []) {
+    const text = String(raw);
+    const requested = text.split(' (')[0].trim();
+    const target = aliases.get(requested) ?? requested;
+    const required = /\brequired\b/i.test(text) && !/\boptional\b/i.test(text);
+    if (available.has(target)) continue;
+    (required ? blocked : warnings).push({ requirement: target, severity: required ? 'required' : 'recommended', reason: 'missing provider or handoff' });
+  }
+  return { blocked, warnings };
+}
+
 // Events legal from the current state after guard evaluation. An event with no
 // declared guard is always legal (backward compatible). Blocked events are
 // reported with their guard expression so the caller can re-offer the legal
@@ -858,15 +887,23 @@ function computeLegalEvents(workflow, state) {
   const context = effectiveContext(workflow, state)
   const legalEvents = []
   const blockedEvents = []
+  const capabilityWarnings = []
   for (const [event, target] of Object.entries(transitions)) {
     const guard = guards[event]
+    const requirements = workflow.states[current]?.capabilityRequirements ?? []
+    const capability = capabilityRequirementStatus(requirements, context)
+    if (capability.blocked.length) {
+      blockedEvents.push({ event, target, reason: 'missing-required-capability', capability: capability.blocked })
+      continue
+    }
+    capabilityWarnings.push(...capability.warnings.map((warning) => ({ event, ...warning })))
     if (guard === undefined || evaluateGuard(guard, context)) {
       legalEvents.push(event)
     } else {
       blockedEvents.push({ event, target, guard })
     }
   }
-  return { legalEvents, blockedEvents }
+  return { legalEvents, blockedEvents, capabilityWarnings }
 }
 
 function loadState(name) {
@@ -978,6 +1015,11 @@ function transitionState(workflow, state, event) {
   // the remaining legal move set instead of an opaque counter surprise.
   // Guards are pure: same state + same context => same decision.
   const guard = (stateDef.guards || {})[event]
+  const capability = capabilityRequirementStatus(stateDef.capabilityRequirements, effectiveContext(workflow, state))
+  if (capability.blocked.length) {
+    const { legalEvents } = computeLegalEvents(workflow, state)
+    return { ok: false, reason: 'missing-required-capability', event, capability: capability.blocked, legalEvents, exitCode: 2 }
+  }
   if (guard !== undefined && !evaluateGuard(guard, effectiveContext(workflow, state))) {
     const { legalEvents } = computeLegalEvents(workflow, state)
     const ts = now()
@@ -1302,7 +1344,9 @@ function main() {
         state: fold.state,
         verification: {
           fullFold: fullFold,
-          matchesPersistedSnapshot: fullFold && snapshot ? JSON.stringify(fold.state) === JSON.stringify(snapshot) : null,
+          matchesPersistedSnapshot: fullFold && snapshot
+            ? JSON.stringify(stableJson(fold.state)) === JSON.stringify(stableJson(snapshot))
+            : null,
           persistedSnapshotPath: join(stateDir(), workflowName + '.json'),
           guardChecks: fold.guardChecks,
           guardVerificationSkipped: from !== null && from > 1
@@ -1359,6 +1403,7 @@ export {
   loadWorkflow,
   evaluateGuard,
   computeLegalEvents,
+  capabilityRequirementStatus,
   transitionState,
   mergeContext,
   tokenizeGuard,

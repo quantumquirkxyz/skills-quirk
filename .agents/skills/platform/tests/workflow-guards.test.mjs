@@ -51,6 +51,7 @@ function snapshot(workflow, currentState, context) {
 const CLEAN_DEFAULTS = {
   review: { standardsFindings: 0, specFindings: 0 },
   gateCI: 'pending',
+  engineeringPreflight: 'missing',
   loopIterations: 0,
   maxIterations: 5
 };
@@ -62,8 +63,7 @@ const FINDINGS_CONTEXT = {
 
 const CLEAN_GUARD = 'review.standardsFindings == 0 && review.specFindings == 0';
 const LOOP_GUARD = 'loopIterations < maxIterations';
-const GATE_GUARD = 'gateCI == "passed"';
-
+const GATE_GUARD = 'gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")';
 describe('workflow-state-machine guards: legal-events', () => {
   test('legal-events lists the full router set at the entry state', (t) => {
     const stateDir = tempDir('quirk-guards-legal-');
@@ -74,7 +74,7 @@ describe('workflow-state-machine guards: legal-events', () => {
     assert.equal(payload.workflow, 'standard-feature');
     assert.equal(payload.currentState, 'ask-to');
     assert.deepEqual(payload.legalEvents, [
-      'AMBIGUOUS', 'CLEAR_SPEC', 'BUG', 'NEW_PROJECT', 'VIABILITY_CHECK', 'LARGE_EFFORT', 'MONITORING'
+      'AMBIGUOUS', 'CLEAR_SPEC', 'BUG', 'NEW_PROJECT', 'VIABILITY_CHECK', 'LARGE_EFFORT', 'MONITORING', 'SOFTWARE_CHANGE', 'DOCUMENTATION_ONLY', 'RESEARCH_ONLY'
     ]);
     assert.deepEqual(payload.blockedEvents, []);
   });
@@ -101,15 +101,15 @@ describe('workflow-state-machine guards: legal-events', () => {
     const stateDir = tempDir('quirk-guards-gate-');
     t.after(() => fs.rmSync(stateDir, { recursive: true, force: true }));
 
-    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', CLEAN_DEFAULTS));
+    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', { ...CLEAN_DEFAULTS, engineeringPreflight: 'approved' }));
     const pending = JSON.parse(runWorkflow(['standard-feature', 'legal-events', '--json'], { stateDir }).stdout);
-    assert.deepEqual(pending.legalEvents, ['FAILED']);
+    assert.deepEqual(pending.legalEvents, ['FAILED', 'MISSING_PREFLIGHT']);
     assert.equal(pending.blockedEvents[0].event, 'OPENED');
-    assert.equal(pending.blockedEvents[0].guard, GATE_GUARD);
+    assert.match(pending.blockedEvents[0].guard, /gateCI == "passed"/);
 
-    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', { ...CLEAN_DEFAULTS, gateCI: 'passed' }));
+    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', { ...CLEAN_DEFAULTS, gateCI: 'passed', engineeringPreflight: 'approved' }));
     const passed = JSON.parse(runWorkflow(['standard-feature', 'legal-events', '--json'], { stateDir }).stdout);
-    assert.deepEqual(passed.legalEvents, ['OPENED', 'FAILED']);
+    assert.deepEqual(passed.legalEvents, ['OPENED', 'FAILED', 'MISSING_PREFLIGHT']);
     assert.deepEqual(passed.blockedEvents, []);
   });
 
@@ -185,14 +185,14 @@ describe('workflow-state-machine guards: transition rejection', () => {
     assert.equal(blocked.status, 2, blocked.stderr);
     const blockedPayload = JSON.parse(blocked.stdout);
     assert.equal(blockedPayload.reason, 'rejected-by-guard');
-    assert.deepEqual(blockedPayload.legalEvents, ['FAILED']);
+    assert.deepEqual(blockedPayload.legalEvents, ['FAILED', 'MISSING_PREFLIGHT']);
 
-    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', { ...CLEAN_DEFAULTS, gateCI: 'passed' }));
+    writeSnapshot(stateDir, snapshot('standard-feature', 'publish-open-pr', { ...CLEAN_DEFAULTS, gateCI: 'passed', engineeringPreflight: 'approved' }));
     const allowed = runWorkflow(['standard-feature', 'transition', 'OPENED', '--json'], { stateDir });
     assert.equal(allowed.status, 0, allowed.stderr);
     const allowedPayload = JSON.parse(allowed.stdout);
-    assert.equal(allowedPayload.current, 'review-pr');
-    assert.deepEqual(allowedPayload.legalEvents, ['CLEAN', 'FINDINGS', 'CONFLICT']);
+    assert.equal(allowedPayload.current, 'trunk-based-guard');
+    assert.deepEqual(allowedPayload.legalEvents, ['FAILED']);
   });
 
   test('loop re-entry beyond the budget is rejected-by-guard, within budget it succeeds', (t) => {
@@ -324,14 +324,14 @@ states:
 
     const second = runWorkflow(['standard-feature', 'transition', 'SHARP_ENOUGH', '--json'], { stateDir, workflowsDir });
     assert.equal(second.status, 0, second.stderr);
-    assert.equal(JSON.parse(second.stdout).current, 'to-spec');
+    assert.equal(JSON.parse(second.stdout).current, 'automatic-refinement');
 
     const invalid = runWorkflow(['standard-feature', 'transition', 'INVALID_EVENT'], { stateDir, workflowsDir });
     assert.equal(invalid.status, 1);
     assert.ok(invalid.stderr.includes('Invalid event'));
 
     const legal = runWorkflow(['standard-feature', 'legal-events', '--json'], { stateDir, workflowsDir });
-    assert.deepEqual(JSON.parse(legal.stdout).legalEvents, ['PUBLISHED', 'MISSING_INPUT', 'BLOCKED']);
+    assert.deepEqual(JSON.parse(legal.stdout).legalEvents, ['REFINED', 'REFINED_NOT_APPLICABLE', 'SKIPPED', 'BLOCKED']);
   });
 });
 
@@ -453,9 +453,9 @@ states:
 describe('workflow guard declarations (repository workflows)', () => {
   test('the four workflows declare the documented guards and context defaults', () => {
     const standard = loadWorkflow('standard-feature');
-    assert.deepEqual(standard.context, CLEAN_DEFAULTS);
+    assert.deepEqual(standard.context, { ...CLEAN_DEFAULTS, architecture: 'missing', refinement: 'pending', engineeringPreflight: 'missing', trunk: 'pending', releaseApproval: 'pending' });
     assert.deepEqual(standard.states['review-pr'].guards, { CLEAN: CLEAN_GUARD, FINDINGS: LOOP_GUARD });
-    assert.deepEqual(standard.states['publish-open-pr'].guards, { OPENED: GATE_GUARD });
+    assert.deepEqual(standard.states['publish-open-pr'].guards, { OPENED: 'gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")' });
 
     const bugFix = loadWorkflow('bug-fix');
     assert.deepEqual(bugFix.context, CLEAN_DEFAULTS);
@@ -463,11 +463,11 @@ describe('workflow guard declarations (repository workflows)', () => {
     assert.deepEqual(bugFix.states['publish-open-pr'].guards, { OPENED: GATE_GUARD });
 
     const repair = loadWorkflow('repair');
-    assert.deepEqual(repair.context, { review: { standardsFindings: 0, specFindings: 0 }, loopIterations: 0, maxIterations: 5 });
+    assert.deepEqual(repair.context, { review: { standardsFindings: 0, specFindings: 0 }, loopIterations: 0, maxIterations: 5, engineeringPreflight: 'missing' });
     assert.deepEqual(repair.states['review-pr'].guards, { CLEAN: CLEAN_GUARD, FINDINGS: LOOP_GUARD });
 
     const operations = loadWorkflow('operations');
-    assert.deepEqual(operations.context, { gateCI: 'pending' });
-    assert.deepEqual(operations.states.deployment.guards, { DEPLOYED: GATE_GUARD });
+    assert.deepEqual(operations.context, { gateCI: 'pending', engineeringPreflight: 'missing' });
+    assert.deepEqual(operations.states.deployment.guards, { DEPLOYED: 'gateCI == "passed"' });
   });
 });

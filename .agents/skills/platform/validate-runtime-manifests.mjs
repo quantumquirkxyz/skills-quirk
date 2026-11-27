@@ -29,93 +29,16 @@ import {
   collectManifestInputs,
   manifestFileName,
 } from './scripts/build-runtime-manifests.mjs';
+import { validateJson } from './json-schema-validator.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const MANIFESTS_REL_DIR = '.agents/skills/platform/manifests';
 const SCHEMA_REL_PATH = 'schema/runtime-manifest.schema.json';
 
-// ── minimal JSON Schema validator ───────────────────────────────────────────
-
-function typeOf(value) {
-  if (value === null) return 'null';
-  if (Array.isArray(value)) return 'array';
-  if (Number.isInteger(value)) return 'integer';
-  return typeof value;
-}
-
-function matchesType(value, type) {
-  const types = Array.isArray(type) ? type : [type];
-  return types.some((expected) => (expected === 'number' ? typeof value === 'number' : typeOf(value) === expected));
-}
-
-function validateInstance(schemaNode, instance, pointer, errors) {
-  if (schemaNode === true || schemaNode === undefined || schemaNode === null) return;
-  if (schemaNode === false) {
-    errors.push(`${pointer}: schema is false`);
-    return;
-  }
-  if (schemaNode.type && !matchesType(instance, schemaNode.type)) {
-    errors.push(`${pointer}: expected ${JSON.stringify(schemaNode.type)}, got ${typeOf(instance)}`);
-    return;
-  }
-  if (schemaNode.const !== undefined && JSON.stringify(instance) !== JSON.stringify(schemaNode.const)) {
-    errors.push(`${pointer}: expected const ${JSON.stringify(schemaNode.const)}`);
-  }
-  if (schemaNode.enum && !schemaNode.enum.some((value) => JSON.stringify(value) === JSON.stringify(instance))) {
-    errors.push(`${pointer}: ${JSON.stringify(instance)} not in enum ${JSON.stringify(schemaNode.enum)}`);
-  }
-  if (typeof instance === 'string') {
-    if (schemaNode.minLength !== undefined && instance.length < schemaNode.minLength) {
-      errors.push(`${pointer}: shorter than minLength ${schemaNode.minLength}`);
-    }
-    if (schemaNode.maxLength !== undefined && instance.length > schemaNode.maxLength) {
-      errors.push(`${pointer}: longer than maxLength ${schemaNode.maxLength}`);
-    }
-    if (schemaNode.pattern && !new RegExp(schemaNode.pattern).test(instance)) {
-      errors.push(`${pointer}: does not match pattern ${schemaNode.pattern}`);
-    }
-  }
-  if (typeof instance === 'number') {
-    if (schemaNode.minimum !== undefined && instance < schemaNode.minimum) {
-      errors.push(`${pointer}: below minimum ${schemaNode.minimum}`);
-    }
-    if (schemaNode.maximum !== undefined && instance > schemaNode.maximum) {
-      errors.push(`${pointer}: above maximum ${schemaNode.maximum}`);
-    }
-  }
-  if (Array.isArray(instance)) {
-    if (schemaNode.minItems !== undefined && instance.length < schemaNode.minItems) {
-      errors.push(`${pointer}: fewer than minItems ${schemaNode.minItems}`);
-    }
-    instance.forEach((item, index) => {
-      if (schemaNode.items) validateInstance(schemaNode.items, item, `${pointer}/${index}`, errors);
-    });
-  }
-  if (instance && typeof instance === 'object' && !Array.isArray(instance)) {
-    for (const key of schemaNode.required ?? []) {
-      if (instance[key] === undefined) errors.push(`${pointer}: missing required "${key}"`);
-    }
-    for (const [key, value] of Object.entries(instance)) {
-      const childSchema = schemaNode.properties?.[key];
-      if (childSchema === undefined && schemaNode.additionalProperties === false) {
-        errors.push(`${pointer}: additional property "${key}" not allowed`);
-        continue;
-      }
-      if (childSchema) validateInstance(childSchema, value, `${pointer}/${key}`, errors);
-    }
-  }
-}
-
-// Validates one manifest object against the runtime manifest schema and
-// returns the list of schema errors (empty when the manifest conforms).
+// Validates one manifest object against the shared draft-compatible validator.
 export function validateManifestEntry(manifest, schema) {
-  const errors = [];
-  if (!schema || typeof schema !== 'object') {
-    errors.push('schema: no runtime manifest schema supplied');
-    return errors;
-  }
-  validateInstance(schema, manifest, '$', errors);
-  return errors;
+  if (!schema || typeof schema !== 'object') return ['schema: no runtime manifest schema supplied'];
+  return validateJson(schema, manifest);
 }
 
 // ── coverage ────────────────────────────────────────────────────────────────

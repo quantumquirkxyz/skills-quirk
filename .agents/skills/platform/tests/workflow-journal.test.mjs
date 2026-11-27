@@ -45,6 +45,19 @@ function readSnapshot(workflow) {
   return JSON.parse(fs.readFileSync(path.join(stateDir, workflow + '.json'), 'utf8'));
 }
 
+function approveArchitecture() {
+  const snapshot = readSnapshot('standard-feature');
+  snapshot.context.architecture = 'approved';
+  snapshot.context.refinement = 'completed';
+  snapshot.context.engineeringPreflight = 'approved';
+  fs.writeFileSync(path.join(stateDir, 'standard-feature.json'), JSON.stringify(snapshot, null, 2));
+  const records = readRecords('standard-feature');
+  const contextDelta = { architecture: 'approved', refinement: 'completed' };
+  records.at(-1).contextDelta = { ...(records.at(-1).contextDelta ?? {}), ...contextDelta };
+  if (records.length > 1) records[1].contextDelta = { ...(records[1].contextDelta ?? {}), ...contextDelta, engineeringPreflight: 'approved' };
+  writeJournal('standard-feature', records);
+}
+
 function writeJournal(workflow, records) {
   fs.mkdirSync(path.join(stateDir, 'checkpoints'), { recursive: true });
   fs.writeFileSync(
@@ -85,10 +98,12 @@ describe('workflow-state-machine checkpoint journal', () => {
   beforeEach(() => {
     stateDir = fs.mkdtempSync(path.join(os.tmpdir(), 'quirk-journal-state-'));
     workflowsDir = fs.mkdtempSync(path.join(os.tmpdir(), 'quirk-journal-workflows-'));
-    fs.copyFileSync(
-      path.join(REPO_WORKFLOWS_DIR, 'standard-feature.yaml'),
-      path.join(workflowsDir, 'standard-feature.yaml')
-    );
+    const standardWorkflow = fs.readFileSync(path.join(REPO_WORKFLOWS_DIR, 'standard-feature.yaml'), 'utf8')
+      .replace('architecture: "missing"', 'architecture: "approved"')
+      .replace('engineeringPreflight: "missing"', 'engineeringPreflight: "approved"')
+      .replace('refinement: "pending"', 'refinement: completed')
+      .replace('refinement == "completed" && architecture in ["approved", "not-applicable-approved"]', 'refinement == "completed" && (architecture == "approved" || architecture == "not-applicable-approved")');
+    fs.writeFileSync(path.join(workflowsDir, 'standard-feature.yaml'), standardWorkflow);
     fs.writeFileSync(path.join(workflowsDir, 'journal-flow.yaml'), GUARD_FREE_YAML);
   });
 
@@ -148,10 +163,13 @@ describe('workflow-state-machine checkpoint journal', () => {
 
   test('replay reproduces the persisted snapshot exactly for a full fold', () => {
     runIsolated(['standard-feature', 'reset']);
-    for (const event of ['AMBIGUOUS', 'SHARP_ENOUGH', 'PUBLISHED', 'APPROVED', 'NEXT_READY', 'VALIDATED']) {
+    for (const event of ['AMBIGUOUS', 'SHARP_ENOUGH', 'REFINED', 'APPROVED', 'PUBLISHED', 'APPROVED', 'NEXT_READY']) {
       const result = runIsolated(['standard-feature', 'transition', event]);
       assert.equal(result.status, 0, event + ': ' + result.stderr);
     }
+    approveArchitecture();
+    const validated = runIsolated(['standard-feature', 'transition', 'VALIDATED']);
+    assert.equal(validated.status, 0, 'VALIDATED: ' + validated.stderr);
 
     const replayed = JSON.parse(run(['standard-feature', 'replay', '--json']).stdout);
     assert.equal(replayed.ok, true, JSON.stringify(replayed));
@@ -205,10 +223,13 @@ describe('workflow-state-machine checkpoint journal', () => {
 
   test('replay verifies recorded guard decisions and reports divergence', () => {
     runIsolated(['standard-feature', 'reset']);
-    for (const event of ['CLEAR_SPEC', 'PUBLISHED', 'APPROVED', 'NEXT_READY', 'VALIDATED']) {
+    for (const event of ['CLEAR_SPEC', 'APPROVED', 'SHARP_ENOUGH', 'REFINED', 'APPROVED', 'PUBLISHED', 'APPROVED', 'NEXT_READY']) {
       const result = runIsolated(['standard-feature', 'transition', event]);
       assert.equal(result.status, 0, event + ': ' + result.stderr);
     }
+    approveArchitecture();
+    const validated = runIsolated(['standard-feature', 'transition', 'VALIDATED']);
+    assert.equal(validated.status, 0, 'VALIDATED: ' + validated.stderr);
     // gateCI is still "pending", so OPENED is rejected by its guard.
     const blocked = runIsolated(['standard-feature', 'transition', 'OPENED']);
     assert.equal(blocked.status, 2, blocked.stderr);
@@ -217,9 +238,9 @@ describe('workflow-state-machine checkpoint journal', () => {
     const rejection = records[records.length - 1];
     assert.equal(rejection.event, 'OPENED');
     assert.equal(rejection.status, 'rejected-by-guard');
-    assert.equal(rejection.guard, 'gateCI == "passed"');
+    assert.equal(rejection.guard, 'gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")');
     assert.equal(rejection.guardResult, false);
-    assert.deepEqual(rejection.legalEvents, ['FAILED']);
+    assert.deepEqual(rejection.legalEvents, ['FAILED', 'MISSING_PREFLIGHT']);
 
     const replayed = JSON.parse(run(['standard-feature', 'replay', '--json']).stdout);
     assert.equal(replayed.ok, true, JSON.stringify(replayed.verification));
@@ -245,7 +266,7 @@ describe('workflow-state-machine checkpoint journal', () => {
     assert.equal(payload.divergences.length, 1);
     assert.equal(payload.divergences[0].recordedGuardResult, true);
     assert.equal(payload.divergences[0].reevaluatedGuardResult, false);
-    assert.equal(payload.divergences[0].guard, 'gateCI == "passed"');
+    assert.equal(payload.divergences[0].guard, 'gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")');
   });
 
   test('readJournal and foldJournal are importable pure helpers', () => {
@@ -272,7 +293,9 @@ describe('workflow-state-machine checkpoint journal', () => {
 
   test('fork creates a new thread and never modifies the original', () => {
     runIsolated(['standard-feature', 'reset']);
-    for (const event of ['CLEAR_SPEC', 'PUBLISHED', 'APPROVED', 'NEXT_READY', 'VALIDATED']) {
+    runIsolated(['standard-feature', 'transition', 'CLEAR_SPEC']);
+    approveArchitecture();
+    for (const event of ['APPROVED', 'SHARP_ENOUGH', 'REFINED', 'APPROVED', 'PUBLISHED', 'APPROVED', 'NEXT_READY', 'VALIDATED']) {
       const result = runIsolated(['standard-feature', 'transition', event]);
       assert.equal(result.status, 0, event + ': ' + result.stderr);
     }
@@ -283,13 +306,13 @@ describe('workflow-state-machine checkpoint journal', () => {
     // Branch from BEFORE the gate-guarded OPENED transition, with the override
     // that makes it legal (the A/B repair use case from CHECKPOINTS.md).
     const forkSeq = parentRecords.find((r) => r.event === 'VALIDATED').seq;
-    const forked = runIsolated(['standard-feature', 'fork', '--to', String(forkSeq), '--set', 'gateCI=passed']);
+    const forked = runIsolated(['standard-feature', 'fork', '--to', String(forkSeq), '--set', 'gateCI=passed', '--set', 'trunk=passed']);
     assert.equal(forked.status, 0, forked.stderr);
     const payload = JSON.parse(forked.stdout);
     assert.equal(payload.ok, true);
     assert.equal(payload.fork.name, 'standard-feature-fork-1');
     assert.deepEqual(payload.fork.forkedFrom, { workflow: 'standard-feature', seq: forkSeq, name: 'standard-feature-fork-1' });
-    assert.deepEqual(payload.fork.overrides, { gateCI: 'passed' });
+    assert.deepEqual(payload.fork.overrides, { gateCI: 'passed', trunk: 'passed' });
 
     // The original thread is untouched, byte for byte.
     assert.deepStrictEqual(readSnapshot('standard-feature'), parentState, 'the parent snapshot is unchanged');
@@ -313,7 +336,10 @@ describe('workflow-state-machine checkpoint journal', () => {
     // Subsequent commands accept the fork name like any workflow.
     const transition = runIsolated(['standard-feature-fork-1', 'transition', 'OPENED', '--json']);
     assert.equal(transition.status, 0, transition.stderr);
-    assert.equal(JSON.parse(transition.stdout).current, 'review-pr');
+    assert.equal(JSON.parse(transition.stdout).current, 'trunk-based-guard');
+    const passed = runIsolated(['standard-feature-fork-1', 'transition', 'PASSED', '--json']);
+    assert.equal(passed.status, 0, passed.stderr);
+    assert.equal(JSON.parse(passed.stdout).current, 'review-pr');
 
     // ... and the fork journal replays to the fork snapshot.
     const forkReplay = JSON.parse(runIsolated(['standard-feature-fork-1', 'replay', '--json']).stdout);
@@ -435,7 +461,7 @@ describe('workflow-state-machine checkpoint journal', () => {
     const windowed = JSON.parse(runIsolated(['standard-feature', 'replay', '--from', '2']).stdout);
     assert.equal(windowed.ok, true);
     assert.equal(windowed.eventsFolded, 1);
-    assert.equal(windowed.state.currentState, 'to-spec');
+    assert.equal(windowed.state.currentState, 'engineering-preflight');
     assert.match(windowed.verification.guardVerificationSkipped, /windowed fold/);
   });
 });

@@ -60,6 +60,9 @@ describe('check-gate wiring: default DAG gate', () => {
   test('the default DAG mirrors the standard-feature flow without redundant edges', () => {
     const payload = JSON.parse(fs.readFileSync(DEFAULT_DAG, 'utf8'));
     const analysis = analyze(payload);
+    assert.equal(payload.entryPoint, 'engineering-preflight');
+    assert.equal(payload.delegatesToWorkflow, 'standard-feature');
+    assert.deepEqual(payload.tickets.find((ticket) => ticket.id === 'to-spec').blockedBy, ['engineering-preflight']);
     const levelOf = (id) => analysis.levels.find((wave) => wave.tickets.some((ticket) => ticket.id === id));
     assert.ok(levelOf('to-spec'), 'to-spec must be scheduled');
     assert.ok(levelOf('to-tickets'), 'to-tickets must be scheduled');
@@ -67,7 +70,8 @@ describe('check-gate wiring: default DAG gate', () => {
     assert.ok(levelOf('review-pr'), 'review-pr must be scheduled');
     assert.ok(levelOf('ship-subissue'), 'ship-subissue must be scheduled');
     const level = (id) => analysis.levels.findIndex((wave) => wave.tickets.some((ticket) => ticket.id === id));
-    assert.equal(level('to-spec'), 0);
+    assert.equal(level('engineering-preflight'), 0);
+    assert.equal(level('to-spec'), 1);
     assert.ok(level('to-tickets') > level('to-spec'));
     assert.ok(level('publish-open-pr') > level('to-tickets'));
     assert.ok(level('review-pr') > level('publish-open-pr'));

@@ -8,6 +8,11 @@ context:
     standardsFindings: 0
     specFindings: 0
   gateCI: "pending"
+  architecture: "missing"
+  refinement: "pending"
+  engineeringPreflight: "missing"
+  trunk: "pending"
+  releaseApproval: "pending"
   loopIterations: 0
   maxIterations: 5
 
@@ -17,21 +22,63 @@ states:
     description: Route to the next correct step when routing is ambiguous
     transitions:
       AMBIGUOUS: grill-with-docs
-      CLEAR_SPEC: to-spec
+      CLEAR_SPEC: engineering-preflight
       BUG: bug-fix
       NEW_PROJECT: project-development
       VIABILITY_CHECK: project-viability
       LARGE_EFFORT: wayfinder
       MONITORING: observability
+      SOFTWARE_CHANGE: engineering-preflight
+      DOCUMENTATION_ONLY: documentation-only
+      RESEARCH_ONLY: research-only
+
+  engineering-preflight:
+    type: gate
+    description: Require a current EngineeringPreflightArtifact before software-changing work
+    artifactType: EngineeringPreflightArtifact
+    transitions:
+      APPROVED: grill-with-docs
+      NOT_APPLICABLE_APPROVED: grill-with-docs
+      CLEAR_SPEC_APPROVED: to-spec
+      SHARP_ENOUGH: grill-with-docs
+      STALE: escalate
+      BLOCKED: escalate
+      MISSING: escalate
+    guards:
+      APPROVED: engineeringPreflight == "approved"
+      NOT_APPLICABLE_APPROVED: engineeringPreflight == "not-applicable"
 
   grill-with-docs:
     type: interview
     description: Sharpen plans through structured interview and update durable docs
     maxIterations: 6
     transitions:
-      SHARP_ENOUGH: to-spec
+      SHARP_ENOUGH: automatic-refinement
       BLOCKED: escalate
       AMBIGUOUS: ask-to
+
+  automatic-refinement:
+    type: orchestrator
+    description: Apply bounded refinement before architecture and specification handoff
+    artifactType: refinement
+    transitions:
+      REFINED: architecture-design
+      REFINED_NOT_APPLICABLE: architecture-design
+      SKIPPED: escalate
+      BLOCKED: escalate
+
+  architecture-design:
+    type: evaluator
+    description: Produce an architecture/design handoff or explicitly approved not-applicable decision
+    artifactType: architecture-or-design
+    transitions:
+      APPROVED: to-spec
+      NOT_APPLICABLE_APPROVED: to-spec
+      MISSING: escalate
+      BLOCKED: escalate
+    guards:
+      APPROVED: architecture == "approved"
+      NOT_APPLICABLE_APPROVED: architecture == "not-applicable-approved"
 
   to-spec:
     type: artifact-writer
@@ -51,6 +98,9 @@ states:
       FLEET_APPROVED: dispatch-mode
       NEEDS_SPLIT: to-tickets
       BLOCKED: escalate
+    guards:
+      APPROVED: (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")
+      FLEET_APPROVED: (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")
 
   dispatch-mode:
     type: router
@@ -96,17 +146,31 @@ states:
     transitions:
       VALIDATED: publish-open-pr
       FAILED: implement
+      MISSING_PREFLIGHT: engineering-preflight
       BLOCKED: escalate
+    guards:
+      VALIDATED: refinement == "completed" && architecture in ["approved", "not-applicable-approved"] && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")
 
   publish-open-pr:
     type: artifact-writer
     description: Open pull request from issue branch with validation evidence
     artifactType: pull-request
     transitions:
-      OPENED: review-pr
+      OPENED: trunk-based-guard
       FAILED: implement
+      MISSING_PREFLIGHT: engineering-preflight
     guards:
-      OPENED: gateCI == "passed"
+      OPENED: gateCI == "passed" && (engineeringPreflight == "approved" || engineeringPreflight == "not-applicable")
+
+  trunk-based-guard:
+    type: gate
+    description: Validate branch age, PR size, green CI, merge strategy, and cleanup before merge
+    artifactType: trunk-based-workflow
+    transitions:
+      PASSED: review-pr
+      FAILED: escalate
+    guards:
+      PASSED: trunk == "passed"
 
   review-pr:
     type: reviewer
@@ -145,8 +209,29 @@ states:
     type: publisher
     description: Merge clean PR, close linked issue, update tracker
     transitions:
-      MERGED: done
+      MERGED: release-management
       FAILED: review-pr
+      MISSING_PREFLIGHT: engineering-preflight
+
+  release-management:
+    type: gate
+    description: Approve an immutable release candidate with provenance, rollback, canary, and CI evidence
+    artifactType: release-candidate
+    transitions:
+      APPROVED: deployment
+      REJECTED: escalate
+      BLOCKED: escalate
+    guards:
+      APPROVED: releaseApproval == "approved"
+      REJECTED: releaseApproval == "rejected"
+
+  deployment:
+    type: executor
+    description: Promote the approved release candidate using the deployment strategy
+    transitions:
+      DEPLOYED: observability
+      FAILED: release-management
+      BLOCKED: escalate
 
   escalate:
     type: terminal
@@ -189,5 +274,12 @@ states:
     type: designer
     description: Define logs, metrics, traces, alerts, SLIs, SLOs
     transitions:
-      DEFINED: ask-to
+      DEFINED: sre
       BLOCKED: escalate
+
+  sre:
+    type: observer
+    description: Verify post-deployment health, SLOs, and rollback signals
+    transitions:
+      VERIFIED: done
+      DEGRADED: escalate

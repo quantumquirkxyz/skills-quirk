@@ -33,8 +33,8 @@ const weakTemplatePatterns = [
 const sideEffectExpectations = new Map([
   ['grill-with-docs', { effects: ['write-docs'], risk: 'low' }],
   ['handoff', { effects: ['write-temp-file'], risk: 'low' }],
-  ['implement', { effects: ['write-code', 'commit-git', 'push-branch'], risk: 'medium' }],
-  ['implement-review-fixes', { effects: ['write-code', 'commit-git', 'push-branch'], risk: 'medium' }],
+  ['implement', { effects: ['write-code', 'commit-git'], risk: 'medium' }],
+  ['implement-review-fixes', { effects: ['write-files', 'post-pr-comment'], risk: 'medium' }],
   ['knowledge-curator', { effects: ['write-docs'], risk: 'low' }],
   ['make-project', { effects: ['create-project', 'create-project-fields', 'link-repositories'], risk: 'medium' }],
   ['plan-review-fixes', { effects: ['post-pr-comment'], risk: 'medium' }],

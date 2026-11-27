@@ -2,12 +2,18 @@
   "name": "standard-feature-default",
   "description": "Canonical ticket DAG for this repo's standard-feature flow (see workflows/standard-feature.yaml): publish the spec, split it into tracer-bullet tickets, run the parallel implement wave, green the CI gate, open the pull request, review it on the Standards and Spec axes, then merge. Blocking edges follow the documented transition order and no edge is implied by another, so the over-coupling linter has nothing to report.",
   "version": "1.0",
-  "entryPoint": "to-spec",
+  "entryPoint": "engineering-preflight",
+  "delegatesToWorkflow": "standard-feature",
   "tickets": [
+    {
+      "id": "engineering-preflight",
+      "title": "Approve the engineering preflight before any software change",
+      "blockedBy": []
+    },
     {
       "id": "to-spec",
       "title": "Publish the feature spec from the clarified requirements",
-      "blockedBy": []
+      "blockedBy": ["engineering-preflight"]
     },
     {
       "id": "to-tickets",

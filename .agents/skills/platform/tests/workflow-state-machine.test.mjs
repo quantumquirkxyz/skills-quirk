@@ -44,13 +44,13 @@ describe('workflow-state-machine.mjs', () => {
     assert.equal(state.current, 'grill-with-docs');
   });
 
-  test('SHARP_ENOUGH transition from grill-with-docs goes to to-spec', () => {
+  test('SHARP_ENOUGH transition from grill-with-docs enters refinement', () => {
     run(['standard-feature', 'reset']);
     run(['standard-feature', 'transition', 'AMBIGUOUS']);
     const result = run(['standard-feature', 'transition', 'SHARP_ENOUGH', '--json']);
     assert.equal(result.status, 0, result.stderr);
     const state = JSON.parse(result.stdout);
-    assert.equal(state.current, 'to-spec');
+    assert.equal(state.current, 'automatic-refinement');
   });
 
   test('Invalid event returns exit code 1', () => {

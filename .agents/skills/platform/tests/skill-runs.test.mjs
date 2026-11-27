@@ -125,7 +125,7 @@ describe('newSkillRun and validateSkillRun', () => {
     const built = newSkillRun({ event: 'route.exploded', skill: 'platform/skill-run-test' });
     const errors = validateSkillRun(built);
     assert.ok(errors.some((error) => error.includes('event')));
-    assert.ok(errors.some((error) => error.includes('is not one of')));
+    assert.ok(errors.some((error) => error.includes('not in enum')));
   });
 
   test('an unexpected property fails validation', () => {
@@ -142,7 +142,7 @@ describe('newSkillRun and validateSkillRun', () => {
     assert.ok(errors.some((error) => error.includes('durationMs') && error.includes('integer')));
     const wrongCount = newSkillRun({ event: 'run.completed', skill: 'platform/skill-run-test' });
     wrongCount.cost = { inputTokens: '12', outputTokens: 0, costUsd: 0 };
-    assert.ok(validateSkillRun(wrongCount).some((error) => error.includes('cost.inputTokens')));
+    assert.ok(validateSkillRun(wrongCount).some((error) => error.includes('/cost/inputTokens')));
   });
 
   test('a record outside the verdict enum and a wrong uuid shape fail validation', () => {

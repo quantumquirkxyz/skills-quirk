@@ -81,6 +81,43 @@ function hasExplicitApproval(value) {
   return String(value).trim().toLowerCase() === 'true';
 }
 
+function capabilityTarget(value) {
+  return String(value).split(' (')[0].trim();
+}
+
+function buildAliasIndex(manifests) {
+  const aliases = new Map();
+  for (const {name, aliases: declared = []} of manifests) {
+    for (const alias of Array.isArray(declared) ? declared : [declared]) {
+      const key = String(alias).trim();
+      if (!key || key === name) continue;
+      if (aliases.has(key) && aliases.get(key) !== name) throw new Error(`duplicate skill alias: ${key}`);
+      aliases.set(key, name);
+    }
+  }
+  return aliases;
+}
+
+function findCycles(graph) {
+  const cycles = [];
+  const visiting = new Set();
+  const visited = new Set();
+  const stack = [];
+  function visit(node) {
+    if (visiting.has(node)) {
+      const start = stack.indexOf(node);
+      cycles.push(stack.slice(start).concat(node));
+      return;
+    }
+    if (visited.has(node)) return;
+    visiting.add(node); stack.push(node);
+    for (const next of graph.get(node) ?? []) visit(next);
+    stack.pop(); visiting.delete(node); visited.add(node);
+  }
+  for (const node of graph.keys()) visit(node);
+  return cycles;
+}
+
 function jaccardSimilarity(a, b) {
   const tokensA = new Set((a || '').split(/\s+/).filter(Boolean));
   const tokensB = new Set((b || '').split(/\s+/).filter(Boolean));
@@ -98,6 +135,21 @@ async function main() {
   const lock = JSON.parse(await fs.readFile(lockPath, 'utf8'));
   const lockSkills = new Set(Object.keys(lock.skills ?? {}));
   const skillNames = new Set(skillDirs.map((dir) => path.basename(dir)));
+  const manifestByName = new Map();
+  for (const skillDir of skillDirs) {
+    const skillMd = path.join(skillDir, 'SKILL.md');
+    const text = await fs.readFile(skillMd, 'utf8');
+    const fm = parseFrontmatter(text);
+    manifestByName.set(parseName(text, skillMd), fm);
+  }
+  let aliases;
+  try {
+    aliases = buildAliasIndex([...manifestByName.entries()].map(([name, fm]) => ({name, aliases: fm.aliases})));
+  } catch (error) {
+    errors.push(error.message);
+    aliases = new Map();
+  }
+  const requirementGraph = new Map([...skillNames].map((name) => [name, []]));
 
   // Lockfile provenance shape (docs/how-to/release.md#lockfile-provenance):
   // authored skills are pinned by hash and declare their local origin; imported
@@ -184,6 +236,19 @@ async function main() {
     for (const dependency of fm.dependencies ?? []) {
       if (!skillNames.has(dependency)) errors.push(`${name}: dependency missing ${dependency}`);
     }
+    const capabilityRequirements = Array.isArray(fm.capabilityRequirements) ? fm.capabilityRequirements : [];
+    for (const requirement of capabilityRequirements) {
+      const requestedName = capabilityTarget(requirement);
+      const capabilityName = aliases.get(requestedName) ?? requestedName;
+      if (!capabilityName || !skillNames.has(capabilityName)) {
+        errors.push(`${name}: capabilityRequirements must reference an existing skill (${requirement})`);
+      }
+      if (capabilityName === name) errors.push(`${name}: capabilityRequirements cannot reference itself`);
+      if (skillNames.has(capabilityName)) requirementGraph.get(name).push(capabilityName);
+    }
+    for (const dependency of fm.dependencies ?? []) {
+      if (skillNames.has(dependency)) requirementGraph.get(name).push(dependency);
+    }
     for (const effect of fm.sideEffects ?? []) {
       if (effect === 'write-code' && fm.risk === 'low') {
         warnings.push(`${name}: write-code skill marked low risk`);
@@ -208,6 +273,10 @@ async function main() {
 
     const hash = crypto.createHash('sha256').update(await fs.readFile(skillMd)).digest('hex');
     if (lock.skills?.[name]?.hash !== hash) errors.push(`${name}: lock hash is stale`);
+  }
+
+  for (const cycle of findCycles(requirementGraph)) {
+    errors.push(`capability/dependency cycle detected: ${cycle.join(' -> ')}`);
   }
 
   const skillManifests = [];
