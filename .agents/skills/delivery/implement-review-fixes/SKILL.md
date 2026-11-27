@@ -66,7 +66,7 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/implement-review-fixes
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: false
+approvalRequired: true
 approvalFor: []
 ---
 

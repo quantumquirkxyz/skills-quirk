@@ -1,4 +1,5 @@
 ---
+capabilityRequirements: []
 name: "loop-engineering"
 category: "loop"
 maturity: "experimental"
@@ -51,10 +52,10 @@ risk: "low"
 trustTier: "2"
 maxIterations: 5
 promptVersion: "2.0"
-artifactType: "loop-engineering"
+artifactType: "LoopEngineeringArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/loop-engineering.json"
 diataxis: "how-to"
 tags: ["loop", "loop-engineering", "bounded-loop", "agent-engineering", "termination"]
 compatibility: ["delivery/loop-budget", "delivery/implement", "delivery/review-fix-loop"]

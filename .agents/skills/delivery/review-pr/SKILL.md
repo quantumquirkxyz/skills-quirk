@@ -78,11 +78,14 @@ fixturesPath: .agents/skills/platform/fixtures/regression/review-pr.json
 diataxis: how-to
 tags: [delivery, review, standards, spec, quality]
 compatibility: [plan-review-fixes, ship-subissue, resolving-merge-conflicts]
-approvalRequired: false
+approvalRequired: true
 approvalFor: []
 sideEffects:
   - post-pr-comment
 dependencies: []
+capabilityRequirements:
+  - requirements-engineering (required when reviewing software scope)
+  - testing (required for behavioral verification)
 stopCondition: Review a pull request against the fixed point the user supplies, separating Standards and Spec findings into distinct ax complete; structured result returned; completion criteria checked.
 risk: medium
 trustTier: 3

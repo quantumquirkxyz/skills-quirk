@@ -11,6 +11,8 @@ capabilities:
   - produce and validate a platform artifact with evidence, decisions, and next steps
 outputs: "release train guidance, CI handoff guidance, rollback posture, and a release decision record."
 sideEffects: []
+owner: release-manager
+nextConsumer: deployment
 dependencies: []
 stopCondition: "Plan the release train, CI handoff, and rollback posture for a project complete; artifact saved; completion criteria checked."
 risk: "low"
@@ -24,17 +26,19 @@ fixturesPath: ".agents/skills/platform/fixtures/behavioral/release-management.js
 diataxis: "how-to"
 tags: ["platform"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: true
+approvalFor: ["approve-release", "promote-release"]
 ---
 
 ## Contract
 
-- Input: release brief, delivery context, and pipeline constraints.
+- Input: release brief, delivery context, release-candidate provenance, owner, rollback, canary, and CI evidence.
 - Output: release train guidance, CI handoff guidance, rollback posture, and a release decision record.
+- Rule: `approvalRequired` is true for every release decision; an unapproved candidate cannot advance to deployment.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+- Rule: release is a separate approved effect from commit, push, PR creation, merge, and issue closure; require exact reviewed commit SHA and all gates before release, and reconcile unknown results by operationId, branch, and SHA.
 
 ## Provenance
 
@@ -86,6 +90,8 @@ Use this skill when a project needs governance for getting changes into producti
 - Verify rollback in the target environment or a controlled rehearsal, including migration compatibility, feature-flag state, artifact signature, and health recovery.
 
 ## ReleaseCandidateArtifact Contract
+
+A release candidate must explicitly identify `provenance`, `owner`, `rollback`, `canary`, `ciGates`, `approval`, and the reviewed fixed point. Missing or stale evidence is a blocker, not an advisory warning.
 
 Emit a schema-valid `ReleaseCandidateArtifact` using `schemas/software-engineering/release-candidate-artifact.schema.json`, bound to the reviewed fixed point and source digests. Required evidence includes SBOM, VEX, provenance/attestation, named owner, approval, verification artifact, rollback plan and verification, canary/rollout evidence, and `nextConsumer: deployment`. Reject stale candidates, missing owner/approval, failed canaries, missing verification artifacts, or missing rollback verification; return the blocker to `ship-subissue`.
 

@@ -12,18 +12,25 @@ capabilities:
 outputs: "docs guidance, ADR guidance, and context coherence notes."
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when documentation change accompanies software delivery)
+  - requirements-engineering (when docs encode requirements or acceptance)
+  - architecture-evaluation (when ADRs record architecture decisions)
+  - codebase-design (when docs describe code seams)
+  - testing (when documentation changes verification guidance)
+  - engineering-governance (when ADR approval or risk ownership is required)
 stopCondition: "Keep repository documentation, ADRs, and durable context aligned with the current project shape complete; structured result returned; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "adr"
+artifactType: "DocumentationGuidanceArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/docs-management.json"
 diataxis: "how-to"
 tags: ["project"]
-compatibility: []
+compatibility: [docs-adrs, requirements-engineering, architecture-evaluation, codebase-design, testing, engineering-governance, release-management]
 approvalRequired: "false"
 approvalFor: []
 ---
@@ -107,3 +114,5 @@ The tiering is proven practice rather than a local invention: Devin loads `MEMOR
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/documentation-guidance-artifact.schema.json`. Legacy artifact aliases remain accepted by adapters.

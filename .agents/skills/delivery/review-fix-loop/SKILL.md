@@ -32,7 +32,7 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/review-fix-loop.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: true
 approvalFor: []
 clauses:
   - id: REVIEW-FIX-LOOP-1

@@ -9,29 +9,41 @@ capabilities:
   - apply prod okr planning methods within explicit product boundaries
   - analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes
   - produce and validate a product artifact with evidence, decisions, and next steps
-outputs: "team OKR document + initiative mapping."
-sideEffects: []
+outputs: "OkrArtifact with team OKR document, initiative mapping, measurement evidence, and work-item metadata."
+sideEffects: ["write-files"]
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required when initiatives govern software delivery)
+  - requirements-engineering (when KRs encode software outcomes)
+  - architecture-evaluation (when initiatives include architecture decisions)
+  - codebase-design (when initiatives name code seams)
+  - testing (when KRs require verification)
+  - qa-automation (when automated quality gates are measured)
+  - observability (when KRs depend on product or system telemetry)
+  - engineering-governance (when approvals or risk controls are tracked)
 stopCondition: "OKR document saved; initiatives mapped to KRs; progress tracker template ready."
 risk: "low"
 trustTier: "1"
 maxIterations: "4"
 promptVersion: "2.0"
-artifactType: "plan"
+artifactType: "OkrArtifact"
+aliases: [OKR]
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/prod-okr-planning.json"
 diataxis: "how-to"
 tags: ["product"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: [requirements-engineering, professional-project-management, architecture-evaluation, testing, observability, release-management, sre]
+approvalRequired: "true"
+approvalFor: ["write-files", "release-plan"]
 ---
 
 ## Contract
 
 - Input: team mission, company OKRs, current quarter / cycle.
 - Output: team OKR document + initiative mapping.
+- Contract base: emit a schema-versioned OKR artifact with source digests, cycle fixed point, artifact/operation IDs, owner, next consumer, approvals, evidence, blockers, risks, and canonical work-item metadata.
+- Handoff: version the cycle and measurement schema; release planning must reference the frozen OKR revision and named owners rather than treating initiative mapping as execution approval.
 - Scope: designs OKRs; does not execute initiatives.
 - Rule: designs OKRs; does not execute initiatives.
 - Rule: documented standards override defaults; explicit project rules take precedence.
@@ -119,3 +131,5 @@ At end of cycle: score each KR (0.0–1.0); write retrospective: what worked, wh
 - Negative fixtures: metric drift, missing denominator, stale source, unsupported target, PII leakage, inaccessible communication, or inequitable cohort omission. Stop as `blocked` and require named-owner remediation evidence plus rerun.
 
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/okr-artifact.schema.json`; legacy artifact aliases are accepted by adapters.

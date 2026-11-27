@@ -52,6 +52,7 @@ approvalFor: []
 ## Normative Rules
 
 - Every edge has exactly one type (`dependency`, `workflow`, `semantic`, or `alternative`) and one role (`state`, `data`, or `order`); undeclared edges are absent.
+- `dependencies` are structural prerequisite edges. `capabilityRequirements` are contextual capability handoffs and must never be expanded as unconditional dependency edges.
 - Skill nodes are unique; duplicate registrations are rejected, not merged.
 - The graph must remain acyclic. Cycles are violations, and any repair introducing one is rejected.
 - Reachability is measured from entry nodes to every goal-required node; goal completeness requires every required capability and accepted output to be covered by reachable nodes.
@@ -76,7 +77,7 @@ This follows the quirk Method: artifact-first, state-machine workflows, shift-le
 ### Input
 
 `SkillGraphBuildInput` — a typed object with:
-- `skillRegistry[]`: canonical skill entries (`name`, `version`, `category`, `capabilities[]`, `inputs[]`, `outputs[]`, `dependencies[]`).
+- `skillRegistry[]`: canonical skill entries (`name`, `version`, `category`, `capabilities[]`, `inputs[]`, `outputs[]`, `dependencies[]`, optional `capabilityRequirements[]`).
 - `dependencyDeclarations[]`: declared edges (`source`, `target`, `edgeType`, `role`, `condition?`).
 - `goalSpecification`: `goalId`, `requiredCapabilities[]`, `acceptedOutputs[]`.
 
@@ -140,7 +141,7 @@ Each node carries: `id` (skill name), `version`, `category`, `capabilities[]`, `
 | `semantic` | Skill A refines or transforms skill B's concept | `state` |
 | `alternative` | Skill B can replace skill A for the same goal | `order` |
 
-Each edge carries exactly one `edgeType` and one `role` (`state`, `data`, or `order`) plus an optional `condition`.
+Each edge carries exactly one `edgeType` and one `role` (`state`, `data`, or `order`) plus an optional `condition`. Contextual capability requirements are evaluated only when their predicate is true; they are not structural graph edges.
 
 ### DAG properties
 

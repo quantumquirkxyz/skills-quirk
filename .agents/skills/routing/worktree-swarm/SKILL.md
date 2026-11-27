@@ -36,6 +36,9 @@ sideEffects:
   - create-git-branches
   - launch-local-agents
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when delegated issues change software)
+  - testing (recommended for implementation handoff)
 stopCondition: All valid issues have isolated worktrees and local agents, a manifest is written, or validation/creation fails with safe rollback.
 risk: medium
 trustTier: 3
@@ -89,7 +92,7 @@ The script validates the checkout, `origin`, URL ownership, issue state and meta
 
 ## Agent workflow
 
-For each created worktree, the script launches one detached local `opencode run` process with the worktree as its working directory. Agents receive only their own worktree and the issue context. They must not switch branches, touch another worktree, push, or modify the primary checkout; they commit their work on the prepared issue branch.
+For each created worktree, the script launches one detached local `opencode run` process with the worktree as its working directory. Agents receive only their own worktree and the issue context. They must not switch branches, touch another worktree, push, or modify the primary checkout; they commit their work on the prepared issue branch using minimal English conventional commits, splitting independently reviewable units and recording rationale for any inseparable single commit. Exact commit validation and publication remain separate handoffs.
 
 Each delegated issue follows the complete project workflow loop when the corresponding skills are available:
 

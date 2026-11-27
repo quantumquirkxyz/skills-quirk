@@ -1,4 +1,5 @@
 ---
+capabilityRequirements: []
 name: "qa-automation"
 category: "qa"
 maturity: "stable"
@@ -18,10 +19,10 @@ risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "qa"
+artifactType: "QaArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-automation.json"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: [code-review, testing, tdd]

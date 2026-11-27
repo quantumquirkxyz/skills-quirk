@@ -12,21 +12,33 @@ capabilities:
 outputs: "brainstorm brief, idea inventory, decision matrix, next-step experiments"
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when a selected idea enters software delivery)
+  - requirements-engineering (when an idea becomes a requirement candidate)
+  - architecture-evaluation (conditional on technical trade-offs)
+  - codebase-design (conditional on an existing code seam)
+  - testing (conditional on a testable software experiment)
+  - qa-automation (conditional on automated validation)
+  - engineering-governance (conditional on risk, approval, or policy constraints)
 stopCondition: "The problem is framed, ideas are captured and clustered, priorities are justified, and next experiments have owners and acceptance criteria."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "product-discovery"
+artifactType: "BrainstormingArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: "tests/project-product-routing-contracts.test.mjs"
 diataxis: "how-to"
 tags: ["product", "ideation"]
-compatibility: []
+compatibility: [requirements-engineering, prod-prd-writing, architecture-evaluation, testing, prod-ab-testing]
 approvalRequired: "false"
 approvalFor: []
 ---
+
+## Typed Handoff
+
+Brainstorming remains discovery-only. It activates engineering capabilities only for a selected idea that is explicitly handed off as a requirements candidate, architecture question, testable experiment, or governed delivery item; unselected ideas retain no implementation authority.
 
 ## Contract
 
@@ -94,3 +106,6 @@ Created from the skill-creator workflow using the requested brainstorming use ca
 ## References
 
 - `../../skill-dev/skill-creator/references/skill_design_principles.md`
+
+
+Output schema: `schemas/software-engineering/brainstorming-artifact.schema.json`; legacy artifact aliases are accepted by adapters.

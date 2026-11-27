@@ -32,18 +32,26 @@ outputs:
     - thinnestSafePath
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when the project will change software)
+  - requirements-engineering (required before an ArchitectureArtifact is emitted)
+  - architecture-evaluation (required when the project is software-shaped)
+  - codebase-design (required when an existing code seam is assessed)
+  - testing (required when the recommended path changes software behavior)
+  - qa-automation (conditional on automated verification)
+  - engineering-governance (conditional on governed or risk-bearing scope)
 stopCondition: "Evaluate a project's shape, agent fit, and architectural starting point complete; structured result returned; completion criteria checked."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "project-assessment"
+artifactType: "ProjectAssessmentArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/project-development.json"
 diataxis: "how-to"
 tags: ["project"]
-compatibility: []
+compatibility: [requirements-engineering, architecture-evaluation, codebase-design, testing, qa-automation, engineering-governance, release-management, project-viability]
 approvalRequired: false
 approvalFor: []
 ---
@@ -59,6 +67,10 @@ approvalFor: []
 - The architecture payload must include the fixed point, source requirements digest, quality-attribute scenarios, risks, owner, next consumer, and verification plan. A missing requirements digest is a blocker, not an inferred value.
 - If architecture is genuinely not applicable, emit `status: "blocked"` or `"completed"` with `payload.notApplicable: true`, explain the boundary and reason, and include an explicit approval record in `approvals`; never silently omit architecture.
 - Do not claim certification or compliance merely because the artifact validates.
+
+## Typed Handoff
+
+A software-shaped assessment may emit `ArchitectureArtifact` only when `sourceDigests.requirements` points to a valid requirements fixed point. Missing requirements digest is `blocked`; never infer it from the project brief. The handoff names `architecture-evaluation` or `codebase-design`, testing/QA, governance, and release/SRE consumers conditionally.
 
 ## Contract
 
@@ -235,3 +247,5 @@ This skill stays at classification level rather than designing the whole system.
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/project-assessment-artifact.schema.json`. Legacy artifact aliases remain accepted by adapters.

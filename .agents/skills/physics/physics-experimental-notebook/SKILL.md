@@ -10,28 +10,30 @@ capabilities:
   - analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes
   - produce and validate a physics artifact with evidence, decisions, and next steps
 outputs: "digital notebook entry + FAIR checklist."
-sideEffects: []
+sideEffects: ["write-files"]
 dependencies: []
 stopCondition: "Notebook entry saved with all sections; calibration and error analysis complete; FAIR checklist filled."
-risk: "low"
-trustTier: "1"
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "physics"
+artifactType: "PhysicsExperimentalNotebookArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: "tests/skill-output-migration-physics.test.mjs"
 diataxis: "how-to"
 tags: ["physics"]
 compatibility: ["physics-data-analysis-root", "physics-reproducibility-archive"]
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-files", "archive-data", "release"]
 ---
 
 ## Contract
 
 - Input: experiment setup, measurements, calibration data.
 - Output: digital notebook entry + FAIR checklist.
+- Contract base: emit a schema-versioned notebook artifact with artifact/operation IDs, measurement/data snapshot digests, provenance graph, fixed-point environment and calibration manifest, owner, next consumer, approvals, evidence, blockers, risks, and explicit uncertainty/NOT-RUN states.
+- Handoff: notebook and data snapshot writes remain within the declared local boundary; archive or release handoff requires verified hashes, calibration traceability, retention/access evidence, and the exact notebook revision.
 - Scope: produces documentation artifacts; no changes to equipment.
 - Rule: produces documentation artifacts; no changes to equipment.
 - Rule: documented standards override defaults; explicit project rules take precedence.

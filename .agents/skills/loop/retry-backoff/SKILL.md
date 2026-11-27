@@ -1,4 +1,5 @@
 ---
+capabilityRequirements: []
 name: "retry-backoff"
 category: "loop"
 maturity: "experimental"
@@ -48,9 +49,9 @@ risk: "low"
 trustTier: "2"
 maxIterations: 3
 promptVersion: "2.0"
-artifactType: "retry-backoff"
+artifactType: "RetryBackoffArtifact"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/retry-backoff.json"
 diataxis: "how-to"
 tags: ["retry", "backoff", "idempotency", "circuit-breaker", "loop-engineering", "agent-engineering"]
 compatibility: ["loop/loop-engineering", "delivery/implement", "delivery/review-fix-loop"]

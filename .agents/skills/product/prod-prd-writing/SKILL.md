@@ -9,29 +9,41 @@ capabilities:
   - apply prod prd writing methods within explicit product boundaries
   - analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes
   - produce and validate a product artifact with evidence, decisions, and next steps
-outputs: "PRD with problem, goals, user stories, acceptance criteria, metrics, timeline."
-sideEffects: []
+outputs: "RequirementsArtifact with problem, goals, user stories, acceptance criteria, metrics, timeline, and work-item metadata."
+sideEffects: ["write-files"]
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required when PRD implies software change)
+  - requirements-engineering (required for software requirements)
+  - architecture-evaluation (conditional on solution constraints or trade-offs)
+  - codebase-design (conditional on existing code seams)
+  - testing (required for acceptance criteria)
+  - qa-automation (conditional on automated verification)
+  - engineering-governance (conditional on approval, risk, security, privacy, or safety)
+  - observability (conditional on measurable product telemetry)
 stopCondition: "PRD saved; stakeholder alignment noted; metrics defined."
 risk: "low"
 trustTier: "1"
 maxIterations: "5"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "ProductRequirementsArtifact"
+aliases: [PRD]
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/prod-prd-writing.json"
 diataxis: "how-to"
 tags: ["product"]
-compatibility: []
-approvalRequired: "false"
-approvalFor: []
+compatibility: [requirements-engineering, to-spec, architecture-evaluation, codebase-design, testing, qa-automation, observability, release-management, sre]
+approvalRequired: "true"
+approvalFor: ["write-files", "create-issue"]
 ---
 
 ## Contract
 
 - Input: product idea, user feedback, business problem, stakeholder input.
 - Output: PRD with problem, goals, user stories, acceptance criteria, metrics, timeline.
+- Contract base: emit and validate `RequirementsArtifact` against `schemas/software-engineering/requirements-artifact.schema.json`.
+- Fixed-point handoff: include schema version, source digests, repository/spec fixed point, artifact and operation IDs, owner, next consumer, approvals, evidence, blockers, risks, and the canonical work-item metadata (labels, milestone, project, and acceptance content). Version every revision; do not publish stale or unapproved requirements.
 - Scope: writes PRD; does not make product decisions unilaterally.
 - Rule: writes PRD; does not make product decisions unilaterally.
 - Rule: documented standards override defaults; explicit project rules take precedence.
@@ -120,3 +132,5 @@ For each user journey: "As a [user type], I want [action] so that [benefit]."
 - Negative fixtures: missing security/accessibility NFR, stale or unlicensed source, unsupported claim, undisclosed synthetic content, PII leak, undefined metric, and missing inclusive/localized criteria. Stop as `blocked` until remediation evidence is recorded and rerun.
 
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/product-requirements-artifact.schema.json`; legacy artifact aliases are accepted by adapters.

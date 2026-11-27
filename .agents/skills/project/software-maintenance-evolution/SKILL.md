@@ -19,18 +19,23 @@ outputs:
     description: Evidence-linked maintenance analysis and proposal envelope with impact, ownership, closure state, and downstream feedback.
     schema: schemas/software-engineering/maintenance-artifact.schema.json
 sideEffects: []
-dependencies:
-  - diagnosing-bugs
-  - db-migrations
-  - docs-management
-  - supply-chain-security
+dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required for software-changing maintenance)
+  - requirements-engineering (when requirements or acceptance change)
+  - architecture-evaluation (when architecture or compatibility changes)
+  - codebase-design (when an existing seam is affected)
+  - testing (required for closure evidence)
+  - qa-automation (when automated regression checks are needed)
+  - engineering-governance (required for risk, deprecation, migration, or retirement approval)
 stopCondition: Return one schema-valid MaintenanceArtifact only when each finding has evidence, maintenance class, impact, owner or an explicit no-owner blocker, proposed action, closure state, and downstream feedback; otherwise return blocked with exact gaps and no invented ownership or approval.
 risk: high
 trustTier: 4
-artifactType: MaintenanceArtifact
+artifactType: "MaintenanceArtifact"
+aliases: [maintenance]
 evaluators: [behavioral, regression, traceability, quality-bar]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
-compatibility: [diagnosing-bugs, db-migrations, release-management, docs-management, supply-chain-security, requirements-engineering, architecture-evaluation]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/software-maintenance-evolution.json"
+compatibility: [diagnosing-bugs, db-migrations, release-management, docs-management, supply-chain-security, requirements-engineering, architecture-evaluation, codebase-design, testing, qa-automation, engineering-governance, sre]
 approvalRequired: true
 approvalFor: [write, migration, deprecation, retirement, release-impacting-change]
 modelTier: reasoning

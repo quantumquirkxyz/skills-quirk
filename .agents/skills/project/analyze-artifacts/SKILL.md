@@ -52,15 +52,21 @@ outputs:
         type: string
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when analysis gates a software change)
+  - requirements-engineering (when requirements consistency is assessed)
+  - architecture-evaluation (when plan/design consistency is assessed)
+  - testing (when verification traceability is assessed)
+  - engineering-governance (when approval or risk conflicts are assessed)
 stopCondition: "Artifact consistency analysis complete; every finding classified with evidence; clarification markers carry an owner; report returned read-only; completion criteria checked."
 risk: "low"
 trustTier: "2"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "project"
+artifactType: "ArtifactAnalysisReport"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/analyze-artifacts.json"
 diataxis: "how-to"
 tags: ["project", "analysis", "requirements", "consistency"]
 compatibility: ["to-spec", "to-tickets", "review-pr"]
@@ -163,3 +169,6 @@ A work item decays between artifacts. The spec says one thing, the plan sequence
 - the next consumer is identified or the work is handed off
 ---
 @include .agents/skills/platform/contract-base.xml
+
+
+Output schema: `schemas/software-engineering/artifact-analysis-report.schema.json`. Legacy artifact aliases remain accepted by adapters.

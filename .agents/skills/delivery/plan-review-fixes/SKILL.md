@@ -38,7 +38,7 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/plan-review-fixes.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "false"
+approvalRequired: true
 approvalFor: []
 ---
 

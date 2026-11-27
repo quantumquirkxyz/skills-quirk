@@ -42,7 +42,7 @@ fixturesPath: .agents/skills/platform/fixtures/regression/code-review.json
 diataxis: how-to
 tags: [delivery, audit, logic, architecture, quality]
 compatibility: [diagnosing-bugs, testing, project-viability, improve-codebase-architecture]
-approvalRequired: false
+approvalRequired: true
 approvalFor: []
 clauses:
   - id: CODE-REVIEW-1

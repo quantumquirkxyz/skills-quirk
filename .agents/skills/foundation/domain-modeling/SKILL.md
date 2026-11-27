@@ -15,22 +15,22 @@ inputs:
 outputs:
   - type: object
     description: Domain model artifact with entities, value objects, aggregates, and ubiquitous language glossary.
-sideEffects: []
+sideEffects: ["write-files", "write-docs"]
 dependencies: []
 stopCondition: "Build and sharpen a project's domain model complete; artifact saved; completion criteria checked."
-risk: "low"
-trustTier: "1"
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "model"
+artifactType: "DesignArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/domain-modeling.json
 diataxis: "how-to"
 tags: ["foundation"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-files", "write-docs"]
 ---
 
 ## Normative Rules
@@ -47,6 +47,8 @@ approvalFor: []
 - Input: one overloaded or uncertain term, the current codebase context, and the existing glossary.
 - Output: one resolved term, or one ADR-ready decision with the glossary updated to match.
 - Artifact: `DesignArtifact` envelope from `schemas/software-engineering/design-artifact.schema.json`, with domain model content in `payload` and requirements/architecture provenance in `sourceDigests`.
+- Fixed point: freeze the repository revision, CONTEXT/CONTEXT-MAP and relevant ADR revisions, plus their digests, before changing local files.
+- Handoff: include `schemaVersion`, `artifactType`, `artifactId`, `operationId`, `fixedPoint`, source digests, owner, next consumer, approvals, blockers, risks, and verification evidence; local CONTEXT/ADR and artifact writes stay inside the declared repository boundary.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.

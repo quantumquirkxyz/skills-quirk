@@ -9,29 +9,41 @@ capabilities:
   - apply prod ab testing methods within explicit product boundaries
   - analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes
   - produce and validate a product artifact with evidence, decisions, and next steps
-outputs: "test design with power analysis and rollback rules."
-sideEffects: []
+outputs: "ExperimentArtifact with a versioned test manifest, power analysis, evidence ledger, and rollback rules."
+sideEffects: ["write-files"]
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required when experiment exposure changes software behavior)
+  - requirements-engineering (when experiment hypotheses become product requirements)
+  - architecture-evaluation (when experiment instrumentation or seams require trade-offs)
+  - codebase-design (when instrumentation changes existing code seams)
+  - testing (required for experiment acceptance and analysis validation)
+  - qa-automation (when experiment checks are automated)
+  - observability (required for experiment telemetry and metric integrity)
+  - engineering-governance (required for privacy, safety, approval, or rollback authority)
 stopCondition: "Test design saved; analysis plan saved; rollback rules defined; statistical power computed."
 risk: "medium"
 trustTier: "3"
 maxIterations: "5"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "ExperimentArtifact"
+aliases: [AB, "A/B"]
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: .agents/skills/platform/fixtures/behavioral/prod-ab-testing.json
 diataxis: "how-to"
 tags: ["product"]
-compatibility: []
+compatibility: [requirements-engineering, architecture-evaluation, codebase-design, testing, qa-automation, observability, engineering-governance, release-management, sre]
 approvalRequired: "true"
-approvalFor: []
+approvalFor: ["write-files", "expose-experiment"]
 ---
 
 ## Contract
 
 - Input: feature change, user segment, metric of interest.
 - Output: test design with power analysis and rollback rules.
+- Contract base: emit a schema-versioned experiment artifact with artifact/operation IDs, source and code/config digests, fixed-point manifest, owner, approvals, evidence ledger, blockers, risks, and next consumer.
+- Handoff: the frozen manifest is the fixed point; release or exposure metadata must name the work item, revision, rollout owner, privacy review, and rollback authority. This skill never exposes a treatment without the required approval.
 - Scope: designs experiment; does not expose users to unapproved changes.
 - Rule: designs experiment; does not expose users to unapproved changes.
 - Rule: documented standards override defaults; explicit project rules take precedence.
@@ -123,3 +135,5 @@ Compute:
 - Negative fixtures: SRM, denominator drift, unregistered variant, stale event schema, guardrail breach, peeking, privacy violation, and unsupported claim. Stop as `blocked` on critical failure or non-reproducible manifest; require remediation evidence and rerun.
 
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/experiment-artifact.schema.json`; legacy artifact aliases are accepted by adapters.

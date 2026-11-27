@@ -14,7 +14,6 @@ inputs: "ArchitectureEvaluationInput object: architecture context, requirements,
 outputs: "ArchitectureArtifact object validated against schemas/software-engineering/architecture-artifact.schema.json, including evaluation, ADR candidates, fitness functions, risks, and handoffs."
 sideEffects: []
 dependencies:
-  - requirements-engineering
   - codebase-design
   - docs-adrs
   - cost-optimization

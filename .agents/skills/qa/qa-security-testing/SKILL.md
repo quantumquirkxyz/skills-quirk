@@ -1,4 +1,5 @@
 ---
+capabilityRequirements: []
 name: "qa-security-testing"
 category: "qa"
 maturity: "stable"
@@ -17,10 +18,10 @@ risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "3.0"
-artifactType: "test-strategy"
+artifactType: "TestStrategyArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/qa-security-testing.json"
 diataxis: "how-to"
 tags: ["qa"]
 compatibility: []

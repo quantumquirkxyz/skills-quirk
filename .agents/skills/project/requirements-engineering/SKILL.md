@@ -19,19 +19,21 @@ outputs:
     description: Schema-validated requirements envelope; payload contains taxonomy, provenance, quality checks, acceptance mappings, traceability, decisions, baseline, and impact analysis.
     schema: schemas/software-engineering/requirements-artifact.schema.json
 sideEffects: []
-dependencies:
-  - to-spec
-  - prod-prd-writing
-  - analyze-artifacts
-  - domain-modeling
-  - testing
+dependencies: []
 stopCondition: Return one schema-valid RequirementsArtifact only when every included requirement has provenance, owner, status, priority, verification evidence, and bidirectional traceability; otherwise return a structured blocked or rejected artifact with exact blockers and no invented values.
 risk: high
 trustTier: 4
-artifactType: RequirementsArtifact
+artifactType: "RequirementsArtifact"
 evaluators: [behavioral, regression, traceability, quality-bar]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
-compatibility: [to-spec, prod-prd-writing, analyze-artifacts, domain-modeling, testing, architecture-evaluation, to-tickets, sec-threat-modeling]
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/requirements-engineering.json"
+compatibility: [to-spec, prod-prd-writing, analyze-artifacts, domain-modeling, testing, architecture-evaluation, codebase-design, to-tickets, sec-threat-modeling, engineering-governance, release-management, sre]
+capabilityRequirements:
+  - engineering-preflight (required for software-changing requirements)
+  - architecture-evaluation (required when solution constraints or trade-offs are present)
+  - codebase-design (required when requirements name an existing code seam)
+  - testing (required when acceptance or verification is in scope)
+  - qa-automation (conditional on automated verification)
+  - engineering-governance (required for approval, risk, safety, security, or privacy constraints)
 approvalRequired: true
 approvalFor: [baseline, approved, release-impacting-change]
 modelTier: reasoning

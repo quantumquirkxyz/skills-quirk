@@ -12,7 +12,7 @@ capabilities:
   - trace trunk based workflow decisions across inputs, constraints, and failure paths
   - validate platform outcomes with evidence, assumptions, and explicit next steps
 outputs: TrunkBasedWorkflowArtifact as JSON and Markdown
-sideEffects: none
+sideEffects: []
 dependencies:
   - implement
   - publish-open-pr
@@ -46,7 +46,7 @@ Use this skill when the project needs to enforce trunk-based development discipl
 - Scope: enforce workflow rules; not responsible for writing application code.
 - Rule: every feature branch must be shorter than 24 hours old at merge time.
 - Rule: every PR must be 400 lines changed or fewer.
-- Rule: CI must be green before merge; no exceptions without explicit approval.
+- Rule: CI must be green before merge; no exceptions without explicit approval. Commits, pushes, PR creation, merge, closure, and release are separate approved effects; validate exact commit SHA before push and use minimal English conventional commits.
 - Rule: merge strategy is either squash or merge-commit; never rebase after review.
 - Rule: branch must be deleted after successful merge to keep trunk clean.
 - Rule: violations must be recorded in the artifact with severity and remediation.

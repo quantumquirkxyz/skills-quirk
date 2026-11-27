@@ -20,7 +20,6 @@ outputs: "EngineeringGovernanceArtifact validated against schemas/software-engin
 sideEffects: []
 dependencies:
   - execution-policy
-  - professional-project-management
   - compliance
   - supply-chain-security
   - docs-adrs
@@ -35,7 +34,7 @@ evaluators: [behavioral, regression, schema, traceability]
 fixturesPath: ".agents/skills/platform/fixtures/behavioral/engineering-governance.json"
 diataxis: "how-to"
 tags: ["engineering", "governance", "approvals", "audit", "risk"]
-compatibility: ["execution-policy", "professional-project-management", "compliance", "supply-chain-security", "docs-adrs", "configuration-management"]
+compatibility: ["execution-policy", "compliance", "supply-chain-security", "docs-adrs", "configuration-management"]
 approvalRequired: "false"
 approvalFor: []
 ---

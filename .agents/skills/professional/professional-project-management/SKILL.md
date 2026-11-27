@@ -12,21 +12,33 @@ capabilities:
 outputs: "scope, milestones, ownership, risks, dependencies, and communication cadence."
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (only when the project governs software changes)
+  - requirements-engineering (when software scope or acceptance is planned)
+  - architecture-evaluation (when milestones govern architecture decisions)
+  - codebase-design (when milestones name code seams)
+  - testing (when exit criteria govern verification)
+  - qa-automation (when automated quality gates are tracked)
 stopCondition: "Scope, ownership, milestones, risks, and tracking cadence are explicit."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "pull-request"
+artifactType: "ProjectPlanArtifact"
+aliases: ["project management"]
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: ""
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/professional-project-management.json"
 diataxis: "how-to"
 tags: ["professional"]
-compatibility: []
+compatibility: [make-project, requirements-engineering, to-spec, to-tickets, engineering-governance, release-management]
 approvalRequired: "false"
 approvalFor: []
 ---
+
+## Typed Handoff
+
+For project-board-only work, return a planning artifact without activating engineering. When the plan governs software delivery, include the software classification, requirements/spec/ticket next consumer, applicable architecture/testing/governance/release capabilities, fixed point, owners, and approval state. This handoff authorizes no implementation by itself.
 
 ## Contract
 
@@ -91,3 +103,5 @@ Use this skill when turning an ambiguous initiative into a project plan, recover
 - Negative fixtures: stale/unlicensed evidence, unsupported claim, undefined metric, PII leak, inaccessible/localization failure, missing NFR, guardrail breach, and unreconciled risk. Stop as `blocked` on critical failure and resume only after named-owner remediation evidence and rerun.
 
 @include .agents/skills/platform/contract-base.xml
+
+Output schema: `schemas/software-engineering/project-plan-artifact.schema.json`; legacy artifact aliases are accepted by adapters.

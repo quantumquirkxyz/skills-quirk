@@ -22,24 +22,35 @@ outputs:
       recommendations: { type: array, items: { type: object } }
       reportPaths: { type: array, items: { type: string } }
     required: [assessment, score, evidence, confidence, risks, recommendations, reportPaths]
-sideEffects:
-  - write-files
+sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required when viability evaluates a software delivery decision)
+  - requirements-engineering (required when recommendations change requirements)
+  - architecture-evaluation (recommended when software viability is assessed)
+  - codebase-design (recommended when architectural seams are assessed)
+  - testing (required when baseline or recommendation depends on verification)
+  - qa-automation (conditional on automated baseline checks)
+  - engineering-governance (conditional on risk/approval findings)
 stopCondition: "Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed."
 risk: "low"
 trustTier: "1"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "project-viability"
+artifactType: "ViabilityArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/project-viability.json"
 diataxis: "how-to"
 tags: ["project"]
-compatibility: [code-review, improve-codebase-architecture]
-approvalRequired: true
-approvalFor: ["write-files"]
+compatibility: [code-review, improve-codebase-architecture, requirements-engineering, architecture-evaluation, codebase-design, testing, qa-automation, engineering-governance]
+approvalRequired: false
+approvalFor: []
 ---
+
+## Typed Handoff
+
+This skill is read-only by default and emits a `viability-artifact` report only. It consumes `code-review` findings as evidence, preserves their severity/confidence/limitations, and hands recommendations to a named next consumer (`requirements-engineering`, `architecture-evaluation`, or `to-tickets`). It never treats the report as implementation authorization.
 
 ## Contract
 
@@ -241,3 +252,6 @@ Read this file after writing the report to decide which follow-up skill to recom
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+
+Output schema: `schemas/software-engineering/viability-artifact.schema.json`. Legacy artifact aliases remain accepted by adapters.

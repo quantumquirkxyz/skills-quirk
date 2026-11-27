@@ -32,28 +32,40 @@ outputs:
 sideEffects:
   - write-docs
   - write-files
-dependencies:
-  - to-spec
-  - to-tickets
-  - grill-with-docs
-  - implement
-  - analyze-artifacts
-  - docs-adrs
+dependencies: []
 stopCondition: "Constitution, spec, plan, and tasks exist as durable artifacts and the implementation verifies against them."
 risk: "medium"
 trustTier: "3"
 maxIterations: "12"
 promptVersion: "1.0"
-artifactType: "spec-driven-artifacts"
+artifactType: "SpecDrivenArtifact"
+aliases: [SDD, spec-driven]
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/spec-driven-development.json"
 diataxis: "how-to"
 tags: ["spec-driven", "sdd", "spec-kit", "constitution", "planning"]
 compatibility:
   - claude-code
   - codex
   - opencode
+  - engineering-preflight
+  - requirements-engineering
+  - architecture-evaluation
+  - codebase-design
+  - testing
+  - qa-automation
+  - engineering-governance
+  - release-management
+  - sre
+capabilityRequirements:
+  - engineering-preflight (required for software-changing SDD)
+  - requirements-engineering (required for specify)
+  - architecture-evaluation (required for plan when architecture is in scope)
+  - codebase-design (required when an existing seam is changed)
+  - testing (required for verification planning)
+  - qa-automation (conditional on automated quality gates)
+  - engineering-governance (required for governed or risk-bearing work)
 approvalRequired: "true"
 approvalFor:
   - write-docs
@@ -126,3 +138,6 @@ Vibe coding produces implementations no artifact can be held against. A constitu
 
 ---
 @include .agents/skills/platform/contract-base.xml
+
+
+Output schema: `schemas/software-engineering/spec-driven-artifact.schema.json`. Legacy artifact aliases remain accepted by adapters.

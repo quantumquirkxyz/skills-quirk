@@ -41,6 +41,9 @@ dependencies:
   - publish-open-pr
   - review-pr
   - ship-subissue
+capabilityRequirements:
+  - engineering-preflight (required for software-changing tickets)
+  - testing (required for validation handoff)
 stopCondition: Every issue in the eligible DAG frontier has a validated implementation artifact and the fleet is completed or awaiting an explicit land-by-wave handoff, or the run is durably blocked with cleanup evidence.
 risk: high
 trustTier: 4
@@ -89,7 +92,7 @@ The skill is deliberately separate from `worktree-swarm`. The latter remains a s
 - **Rule:** every external effect must have a durable artifact checkpoint. A retry reuses recorded resources and completed issue results rather than creating duplicates.
 - **Rule:** clean up only resources recorded in the run artifact with a non-empty ownership token. Never infer ownership from names alone.
 - **Rule:** secret names may be persisted; secret values may not.
-- **Boundary:** `implement` owns code changes and local validation. `publish-open-pr`, `review-pr`, and `ship-subissue` retain publication, findings, merge, and issue-close authority.
+- **Boundary:** `implement` owns code changes, minimal English conventional commits, and local validation. `publish-open-pr`, `review-pr`, and `ship-subissue` retain publication, findings, merge, and issue-close authority. Workers never push; validate exact SHAs before the separately approved publication effect.
 
 ## Provider model
 
@@ -157,7 +160,7 @@ Run the configured quality commands, then require the worker to have written its
 
 ### 5. Converge
 
-- Under `land-by-wave`, return `awaiting-land` after every non-final wave. Resume only after all branches in that wave have passed the standard publication, review, and shipping flow.
+- Under `land-by-wave`, return `awaiting-land` after every non-final wave. Reconcile unknown commit results by operationId, branch, and SHA; never blindly retry. Resume only after all branches in that wave have passed the standard publication, review, and shipping flow.
 - `confirm-landed` verifies with `git merge-base --is-ancestor` that every issue commit is in the new base and that the new base descends from the previous one. Land with a merge or rebase commit; a squash merge loses the issue commit identity and fails closed.
 - Under `integration-branch`, merge validated branches in issue order, run gates on the integration branch, and use its new commit as the next wave's base.
 

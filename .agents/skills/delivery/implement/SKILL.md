@@ -46,7 +46,7 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/implement.json
 diataxis: how-to
 tags: [tdd, delivery, implementation, testing]
 compatibility: [to-tickets, publish-open-pr, tdd, gate-ide, gate-pre-commit, gate-ci]
-approvalRequired: false
+approvalRequired: true
 approvalFor: []
 clauses:
   - id: IMPLEMENT-1
@@ -74,7 +74,7 @@ reloadPolicy: on-trigger
 - Input: one ticket or spec with concrete acceptance criteria, current repo state, explicit seams, optional feature flags.
 - Output: `ImplementArtifact` (JSON schema + Markdown view). See `.agents/skills/platform/schemas/implement-schema.json`.
 - Scope: execute approved work; do not reopen spec decisions unless blocked by a real defect or missing dependency.
-- Rule: a ticket is executable only when its acceptance criteria are concrete and blockers are resolved.
+- Rule: a ticket is executable only when its acceptance criteria are concrete, blockers are resolved, and an approved, current `EngineeringPreflightArtifact` is present (or an explicitly approved bounded exception).
 - Rule: prefer one seam; make seam choice explicit before coding.
 - Rule: break into tracer-bullet vertical slices; each slice: implement → validate → commit.
 - Rule: use TDD at pre-agreed seams (see `tdd` skill).
@@ -82,7 +82,7 @@ reloadPolicy: on-trigger
 - Rule: trunk-based workflow — short-lived branches (< 24h), hand off the validated branch for separately approved publication, and use feature flags for incomplete features.
 - Rule: side effects that change repository state (`write-code`, `commit-git`) execute automatically within the declared scope; pushing belongs to `publish-open-pr`.
 - Rule: run quality gates after each slice — gate-ide on file-save, gate-pre-commit before commit, gate-ci before PR.
-- Rule: do not proceed to `publish-open-pr` until `gate-ci` passes and the independent verifier records a matching fixed point, source digests, changed-file set, and canonical `completed` verification status.
+- Rule: do not proceed to `publish-open-pr` until `gate-ci` passes and the `EngineeringPreflightArtifact` remains current and approved, and the independent verifier records a matching fixed point, source digests, changed-file set, and canonical `completed` verification status.
 - Rule: do not open or merge PR here; stop at the validated branch and report the exact commit SHA; never push from implement.
 
 The `gate-ide`, `gate-pre-commit`, and `gate-ci` names are compatibility labels for the repository's validation workflows, not canonical skill dependencies. Run their equivalent validation commands when available and record the results in `qualityGateResults`.

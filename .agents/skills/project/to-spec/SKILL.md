@@ -71,21 +71,29 @@ outputs:
         type: boolean
 modelTier: reasoning
 promptVersion: "2.0"
-artifactType: spec
+artifactType: "RequirementsArtifact"
 evaluators:
   - behavioral
   - regression
   - traceability
   - quality-bar
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/to-spec.json"
 diataxis: how-to
 tags: [project, spec, planning, documentation]
-compatibility: [to-tickets, grill-with-docs]
+compatibility: [to-tickets, grill-with-docs, architecture-evaluation, codebase-design, qa-automation, engineering-governance, release-management]
 approvalRequired: true
 approvalFor: ["create-issue"]
 sideEffects:
   - create-issue
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required only when software change is confirmed)
+  - requirements-engineering (required for software-changing scope)
+  - architecture-evaluation (required when architecture or trade-offs are in scope)
+  - codebase-design (required when an existing seam or code structure is affected)
+  - testing (required for software acceptance criteria)
+  - qa-automation (required when automated verification is part of acceptance)
+  - engineering-governance (required for governed, safety, security, or release-impacting scope)
 stopCondition: Turn the current conversation into a spec and publish it to the project issue tracker - no interview, just synthesis of what is already known complete; structured result returned; completion criteria checked.
 risk: medium
 trustTier: 3
@@ -114,6 +122,10 @@ Publishing the spec to the issue tracker makes it durable and linkable. Tickets 
 ## RequirementsArtifact Handoff
 
 `to-spec` MUST emit one `RequirementsArtifact` conforming to [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json) alongside the Markdown spec. Validate the complete envelope before publication: `schemaVersion: "1.0"`, `artifactType: "requirements-artifact"`, `status`, `sourceDigests`, `fixedPoint`, `owner`, `nextConsumer`, `approvals`, `createdAt`, and `expiresAt` are required, and `artifactId`, `traceId`, `operationId`, `sourceArtifacts`, `producer`, `evidence`, `blockers`, and `risks` must remain intact. Set `nextConsumer` to `to-tickets` (or the explicitly named downstream consumer), record approval state in `approvals`, and make a non-approved or blocked handoff ineligible for publication. A missing or stale source digest/fixed point is a validation failure, not a best-effort artifact.
+
+## Typed Handoff
+
+Emit a common output envelope with `artifactType: requirements-artifact`, `sourceArtifacts`, `sourceDigests`, `fixedPoint`, `producer: to-spec`, `nextConsumer: to-tickets`, approval state, blockers, risks, and a payload conforming to `requirements-artifact.schema.json`. Legacy callers may read the nested `spec` projection, but it is not the canonical artifact type.
 
 ## Contract
 

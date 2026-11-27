@@ -12,6 +12,9 @@ capabilities:
 outputs: "a map, decision tickets, and a clear route for the next build step."
 sideEffects: []
 dependencies: []
+capabilityRequirements:
+  - requirements-engineering (recommended when decision tickets govern software behavior)
+  - architecture-evaluation (recommended when architecture decisions are on the map)
 stopCondition: "Plan a huge chunk of work complete; structured result returned; completion criteria checked."
 risk: "low"
 trustTier: "1"

@@ -48,22 +48,30 @@ outputs:
           items: { type: object }
 modelTier: reasoning
 promptVersion: "2.0"
-artifactType: ticket
+artifactType: "TicketArtifact"
 evaluators:
   - behavioral
   - regression
   - traceability
   - quality-bar
-fixturesPath: "tests/skill-output-migration-loop-project-qa.test.mjs"
+fixturesPath: ".agents/skills/platform/fixtures/behavioral/to-tickets.json"
 diataxis: how-to
 tags: [project, tickets, planning, decomposition]
-compatibility: [implement, to-spec]
+compatibility: [architecture-evaluation, codebase-design, implement, to-spec, qa-automation, engineering-governance, release-management]
 approvalRequired: true
 approvalFor: ["create-issues", "write-files"]
 sideEffects:
   - create-issues
   - write-files
 dependencies: []
+capabilityRequirements:
+  - engineering-preflight (required only for software-changing tickets)
+  - requirements-engineering (required)
+  - architecture-evaluation (required for architecture/design handoff)
+  - codebase-design (required when tickets change an existing code seam)
+  - testing (required for verification planning)
+  - qa-automation (required when automated checks are part of acceptance)
+  - engineering-governance (required for governed or release-impacting tickets)
 stopCondition: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, and publish the smallest claimable slices complete; artifact saved; completion criteria checked.
 risk: medium
 trustTier: 3
@@ -95,9 +103,13 @@ Vertical slices solve this by cutting a narrow but complete path through every l
 
 Tracer bullets also surface design problems early. The first slice reveals the seams. Subsequent slices follow the same path. If the first slice was painful, the design needs refactoring before the team commits to building the remaining slices on a broken foundation.
 
+## Typed Handoff
+
+The canonical output is a `ticket-artifact` envelope with `sourceArtifacts` containing the approved requirements and architecture/design handoffs, `fixedPoint`, `producer: to-tickets`, `nextConsumer: implement` (or the explicitly approved fleet), and traceable blocker edges. Legacy `ticket` projections remain readable for callers but are not emitted as the canonical artifact type.
+
 ## Artifact Preconditions
 
-`to-tickets` MUST receive a valid, non-stale `RequirementsArtifact` conforming to [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json). Its `status` must be approved or otherwise explicitly ticketable, its `sourceDigests` and `fixedPoint` must match the current handoff, its `owner` and `nextConsumer` must be present, and its `approvals` must contain the required approval record. It MUST also receive a valid, non-stale `ArchitectureArtifact` or `DesignArtifact` with matching provenance. The only exception is an explicitly approved `not-applicable` architecture/design decision that records rationale, approver, fixed point, and source digest. Missing, stale, expired, superseded, rejected, blocked, or unapproved artifacts stop processing with `stale-input`, `blocked`, or `validation-failed`; do not infer or regenerate them from conversation context.
+`to-tickets` MUST receive a valid, non-stale `RequirementsArtifact` conforming to [`schemas/software-engineering/requirements-artifact.schema.json`](../../../../schemas/software-engineering/requirements-artifact.schema.json). Its `status` must be approved or otherwise explicitly ticketable, its `sourceDigests` and `fixedPoint` must match the current handoff, its `owner` and `nextConsumer` must be present, and its `approvals` must contain the required approval record. It MUST also receive a valid, non-stale `ArchitectureArtifact` or `DesignArtifact` with matching provenance. The only exception is an explicitly approved `not-applicable` architecture/design decision that records rationale, approver, fixed point, and source digest. Missing, stale, expired, superseded, rejected, blocked, or unapproved preflight, requirements, or architecture/design artifacts stop processing with `stale-input`, `blocked`, or `validation-failed`; do not infer or regenerate them from conversation context.
 
 ## Contract
 
@@ -109,7 +121,7 @@ Tracer bullets also surface design problems early. The first slice reveals the s
 - **Rule:** every blocking edge must be a genuine prerequisite — a redundant edge only lowers expected subtask success (FLOW, ICLR 2025), so remove it or record it as intentional in the ticket's risks.
 - **Rule:** every published ticket must carry the canonical metadata from `docs/reference/agents/work-item-format.md` for labels, milestone, project item, and project fields.
 - **Rule:** when the input is corrective, preserve the parent spec metadata and the minimal missing behavior only.
-- **Rule:** ticketing is permitted only after the requirements and architecture/design handoff gates pass, including an approved `not-applicable` rationale where relevant.
+- **Rule:** ticketing is permitted only after an approved, current `EngineeringPreflightArtifact`, requirements, automatic-refinement, and architecture/design handoff gates pass, including an approved `not-applicable` rationale where relevant. The handoff must identify the architecture/design artifact or the approved not-applicable artifact as the next-consumer input.
 - **Compatibility:** `operationId`, `idempotencyKey`, and `baseRevision` are optional for legacy callers; when either idempotency field is supplied, preserve it in the artifact and use it for every publication attempt.
 - **Side effect ownership:** this skill owns creation of ticket artifacts and issue/ticket publication; writing files or creating issues requires the declared approval. Parent issue mutation, closure, comments, merges, and PR creation are not owned here.
 - **States:** return exactly one `recoveryStatus`: `completed`, `blocked`, `needs-approval`, `stale-input`, `validation-failed`, or `superseded`.
@@ -153,6 +165,8 @@ The ticket array includes a traceId linking the decomposition session to the exe
 ## Process
 
 ### 1. Validate handoff and gather context
+
+The canonical route is `grill-with-docs -> automatic-refinement -> architecture/design (or approved not-applicable) -> to-spec -> to-tickets`. Never infer that refinement or architecture happened from a conversational claim.
 
 Validate the `RequirementsArtifact` and the required `ArchitectureArtifact`/`DesignArtifact` (or approved `not-applicable` rationale) before building context. Recompute or compare source digests and fixed point; reject stale or missing artifacts rather than falling back to the conversation. Then build a minimal fresh context pack and route the task against declared capabilities so the ticket shape is chosen deliberately. Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments. If the input is a corrective recommendation, inherit the parent requirement quote, blockers, and metadata from the upstream audit output.
 
@@ -226,3 +240,6 @@ See [`references/issue-template.md`](references/issue-template.md) for the canon
 - Persist a common snapshot with `operationId`/`idempotencyKey`, `fixedPoint`, scope, ticket plan, checkpoints, and command evidence.
 - After crash or unknown publication result, reconcile by source requirement, stable title, tracker owner, and operation key before retrying; adopt matches and never duplicate tickets.
 - Compensate only tickets created by this operation when safe; otherwise report `outcome-unknown` with reconciliation evidence. Terminal statuses remain explicit and canonical.
+
+
+Output schema: `schemas/software-engineering/ticket-artifact.schema.json`. Legacy artifact aliases remain accepted by adapters.

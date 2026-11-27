@@ -14,6 +14,10 @@ sideEffects:
   - write-docs
 
 dependencies: []
+capabilityRequirements:
+  - requirements-engineering (required when the grilled outcome governs software behavior)
+  - architecture-evaluation (recommended when design trade-offs surface)
+  - codebase-design (recommended when boundaries or seams are unstable)
 stopCondition: "A relentless interview to sharpen a plan or design, while creating docs (ADRs and glossary) as we go complete; artifact saved; completion criteria checked."
 risk: "low"
 trustTier: "2"
