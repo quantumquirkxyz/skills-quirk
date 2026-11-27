@@ -1,6 +1,6 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0f172a" />
-  <img alt="Version" src="https://img.shields.io/badge/version-3.2.1-facc15?style=flat-square&labelColor=0f172a" />
+  <img alt="Version" src="https://img.shields.io/badge/version-3.2.2-facc15?style=flat-square&labelColor=0f172a" />
   <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
 </p>
 

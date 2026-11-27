@@ -10,6 +10,7 @@ This project follows semantic versioning once releases are cut:
 
 ## [Unreleased]
 
+- Added vendor-neutral flat discovery aliases for every skill, including qualified aliases for domain-name collisions, so generic coding agents can invoke the full bundle without vendor-specific configuration.
 - Fixed implement artifact schema routing, fail-closed implementation validation, release-gate test isolation, and native agent-view installation paths.
 - Added governed engineering preflight, typed capability requirements, workflow-journal compatibility checks, and expanded internal validators and MCP stdio coverage.
 
