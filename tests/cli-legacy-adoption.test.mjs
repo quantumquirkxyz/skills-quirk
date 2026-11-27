@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, existsSync, readFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -24,6 +24,7 @@ for (const [name, args] of [
   test(`${name} previews safely and requires --write`, t => {
     const target = mkdtempSync(path.join(tmpdir(), 'quirk-cli-legacy-'));
     t.after(() => rmSync(target, { recursive: true, force: true }));
+    writeFileSync(path.join(target, 'skills-lock.json'), '{}\n');
 
     const preview = run(target, args);
     const report = JSON.parse(preview.stdout);
