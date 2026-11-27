@@ -179,6 +179,11 @@
     },
     "payload": {
       "type": "object",
+      "required": ["localCommit", "publicationHandoff"],
+      "properties": {
+        "localCommit": { "type": "object", "required": ["sha", "branch", "validated"] },
+        "publicationHandoff": { "type": "object", "required": ["nextConsumer", "remotePublicationOwner"] }
+      },
       "additionalProperties": true
     }
   }

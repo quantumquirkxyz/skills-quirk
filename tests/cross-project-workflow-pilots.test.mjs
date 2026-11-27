@@ -28,9 +28,44 @@ function run(project, env, workflow, command, ...args) {
 function prepareWorkflows(dir) {
   fs.mkdirSync(dir, { recursive: true });
   for (const name of ['standard-feature.yaml', 'bug-fix.yaml', 'repair.yaml']) {
-    const text = fs.readFileSync(path.join(sourceWorkflows, name), 'utf8').replace('gateCI: "pending"', 'gateCI: "passed"');
+    const text = fs.readFileSync(path.join(sourceWorkflows, name), 'utf8')
+      .replace('gateCI: "pending"', 'gateCI: "passed"')
+      .replace('engineeringPreflight: "missing"', 'engineeringPreflight: "approved"')
+      .replace('architecture: "missing"', 'architecture: "approved"')
+      .replace('refinement: "pending"', 'refinement: completed')
+      .replace('trunk: "pending"', 'trunk: "passed"')
+      .replace('releaseApproval: "pending"', 'releaseApproval: "approved"')
+      .replace('refinement == "completed" && architecture in ["approved", "not-applicable-approved"]', 'refinement == "completed" && (architecture == "approved" || architecture == "not-applicable-approved")');
     fs.writeFileSync(path.join(dir, name), text);
   }
+}
+
+function seedPreflightContext(state, workflow) {
+  const snapshotPath = path.join(state, `${workflow}.json`);
+  const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+  snapshot.context.engineeringPreflight = 'approved';
+  fs.writeFileSync(snapshotPath, JSON.stringify(snapshot, null, 2));
+  const journalPath = path.join(state, 'checkpoints', `${workflow}.jsonl`);
+  const records = fs.readFileSync(journalPath, 'utf8').trim().split('\n').map(JSON.parse);
+  records.at(-1).contextDelta = snapshot.context;
+  fs.writeFileSync(journalPath, records.map(record => JSON.stringify(record)).join('\n') + '\n');
+}
+
+function seedFeatureContext(state) {
+  const snapshotPath = path.join(state, 'standard-feature.json');
+  const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+  snapshot.context.architecture = 'approved';
+  snapshot.context.refinement = 'completed';
+  snapshot.context.engineeringPreflight = 'approved';
+  fs.writeFileSync(snapshotPath, JSON.stringify(snapshot, null, 2));
+  const journalPath = path.join(state, 'checkpoints', 'standard-feature.jsonl');
+  const records = fs.readFileSync(journalPath, 'utf8').trim().split('\n').map(JSON.parse);
+  // Preserve the complete current preflight context, including contextual
+  // capability requirements added by the portable workflow contract.
+  const contextDelta = snapshot.context;
+  records[1].contextDelta = contextDelta;
+  records.at(-1).contextDelta = contextDelta;
+  fs.writeFileSync(journalPath, records.map(record => JSON.stringify(record)).join('\n') + '\n');
 }
 
 for (const [domain, marker, markerText] of domains) {
@@ -50,7 +85,12 @@ for (const [domain, marker, markerText] of domains) {
     };
 
     run(project, env, 'standard-feature', 'reset');
-    for (const event of ['CLEAR_SPEC','PUBLISHED','APPROVED','NEXT_READY','VALIDATED','OPENED','FINDINGS','CLEAN','MERGED']) {
+    run(project, env, 'standard-feature', 'transition', 'CLEAR_SPEC');
+    seedFeatureContext(state);
+    for (const event of ['APPROVED','SHARP_ENOUGH','REFINED','APPROVED','PUBLISHED','APPROVED','NEXT_READY']) {
+      run(project, env, 'standard-feature', 'transition', event);
+    }
+    for (const event of ['VALIDATED','OPENED','PASSED','FINDINGS','CLEAN','MERGED','APPROVED','DEPLOYED','DEFINED','VERIFIED']) {
       run(project, env, 'standard-feature', 'transition', event);
     }
     const featureReplay = run(project, env, 'standard-feature', 'replay');
@@ -59,6 +99,8 @@ for (const [domain, marker, markerText] of domains) {
     assert.equal(featureReplay.verification.matchesPersistedSnapshot, true);
 
     run(project, env, 'bug-fix', 'reset');
+    seedPreflightContext(state, 'bug-fix');
+    run(project, env, 'bug-fix', 'transition', 'APPROVED');
     for (const event of ['REPRODUCED','GREEN','OPENED','CLEAN','MERGED']) {
       run(project, env, 'bug-fix', 'transition', event);
     }

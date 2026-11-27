@@ -102,6 +102,17 @@
   },
   "type": "object",
   "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactType",
+    "artifactId",
+    "traceId",
+    "operationId",
+    "status",
+    "workflow",
+    "state",
+    "updatedAt"
+  ],
   "$defs": {
     "id": {
       "type": "string",
@@ -261,28 +272,5 @@
       "type": "object",
       "additionalProperties": true
     }
-  },
-  "required": [
-    "schemaVersion",
-    "artifactType",
-    "artifactId",
-    "traceId",
-    "operationId",
-    "status",
-    "sourceArtifacts",
-    "sourceDigests",
-    "fixedPoint",
-    "producer",
-    "owner",
-    "nextConsumer",
-    "evidence",
-    "approvals",
-    "blockers",
-    "risks",
-    "createdAt",
-    "expiresAt",
-    "workflow",
-    "state",
-    "updatedAt"
-  ]
+  }
 }

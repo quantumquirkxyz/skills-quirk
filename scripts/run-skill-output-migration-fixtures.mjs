@@ -15,9 +15,10 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
     : inventory;
   const report=await verifyMigrationEvidenceFiles(scopedInventory,manifest,{root});
   if(report.problems.length || report.missing.length) {
-    return {passed:false,verified:report.verified.length,verifiedPaths:report.verified,problems:report.problems,missing:report.missing,results:[]};
+    return {passed:false,casesDiscovered:manifest.entries.length,casesExecuted:0,fixtureFiles:new Set(manifest.entries.map((entry) => entry.fixturePath)).size,verified:report.verified.length,verifiedPaths:report.verified,problems:report.problems,missing:report.missing,results:[]};
   }
-  const fixtures=[...new Set(manifest.entries.map(e=>e.fixturePath))].sort();
+  const entries = manifest.entries.filter((entry) => report.verified.includes(entry.path));
+  const fixtures=[...new Set(entries.map(e=>e.fixturePath))].sort();
   const results=[];
   for(const path of fixtures) {
     if(!/^tests\/[A-Za-z0-9_./-]+\.test\.mjs$/.test(path)||path.split('/').includes('..')) {
@@ -39,9 +40,13 @@ export async function runMigrationFixtures(manifest,{root='.',timeoutMs=30000,ru
       child.once('error',error=>{if(!settled){settled=true;clearTimeout(timer);settle({path,passed:false,reason:error.message});}});
       child.once('close',(code,signal)=>{if(!settled){settled=true;clearTimeout(timer);settle({path,passed:code===0&&!signal,exitCode:code,signal});}});
     });
-    results.push(result);
+    for (const entry of entries.filter((candidate) => candidate.fixturePath === path)) {
+      results.push({ ...result, path: entry.path, fixturePath: path });
+    }
   }
-  return {passed:fixtures.length>0 && results.length===fixtures.length && results.every(x=>x.passed),verified:report.verified.length,verifiedPaths:report.verified,problems:[],missing:[],results};
+  const casesDiscovered = entries.length;
+  const casesExecuted = results.filter((result) => result.exitCode !== undefined || result.passed === false).length;
+  return {passed:casesDiscovered>0 && casesExecuted===casesDiscovered && results.every(x=>x.passed),casesDiscovered,casesExecuted,fixtureFiles:fixtures.length,verified:report.verified.length,verifiedPaths:report.verified,problems:[],missing:[],results};
 }
 if(process.argv[1]?.endsWith('run-skill-output-migration-fixtures.mjs')) {
   try {
