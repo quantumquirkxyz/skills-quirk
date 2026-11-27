@@ -2,7 +2,7 @@
   "skill": "foundation/domain-modeling",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "9e3fe6a2200d6664f5031f999abee76679e9ab35e52858ae41685ae2d1550ea5",
+  "frontmatterHash": "d77bee0313b280c7987ff567d8ae4687a79f607438f0702957dffede21bf867f",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,25 +10,33 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files",
+      "write-docs"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "write-docs"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

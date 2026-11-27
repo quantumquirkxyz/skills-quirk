@@ -2,7 +2,7 @@
   "skill": "delivery/prototype",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "f81bc81dd1d1daafa8d675864f81416a429299866a60a1156671196a33f5a6f8",
+  "frontmatterHash": "f0eb29dcd7a2c6832cec72ec181da0b50c31b7a3d11c801468a0ada9642a49e1",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,8 +10,8 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
@@ -20,6 +20,8 @@
         "Grep",
         "Glob",
         "Bash",
+        "Edit",
+        "Write",
         "WebFetch",
         "WebSearch"
       ],
@@ -27,9 +29,13 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files"
+    ],
     "risk": "low",
     "trustTier": 1
   },

@@ -15,7 +15,7 @@ When to use: Break a plan, spec, or the current conversation into a set of trace
 
 ## Deliverables
 
-- ticket artifact
+- TicketArtifact artifact
 
 ## Guardrails
 

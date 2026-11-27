@@ -21,5 +21,5 @@ edges:
   - {from: verify, to: report}
 metadata:
   skill: foundation/domain-modeling
-  risk: low
-  trustTier: 1
+  risk: medium
+  trustTier: 3

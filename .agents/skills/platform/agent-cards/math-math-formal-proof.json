@@ -22,9 +22,9 @@
         "math"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "pull-request"
+        "artifactType": "MathFormalProofArtifact"
       }
     }
   ]

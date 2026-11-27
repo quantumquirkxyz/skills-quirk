@@ -14,7 +14,7 @@ When to use: Keep repository documentation, ADRs, and durable context aligned wi
 
 ## Deliverables
 
-- adr artifact
+- DocumentationGuidanceArtifact artifact
 
 ## Guardrails
 

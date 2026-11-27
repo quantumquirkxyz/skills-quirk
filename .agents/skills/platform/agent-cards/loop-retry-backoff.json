@@ -28,7 +28,7 @@
       ],
       "parameters": {
         "trustTier": "2",
-        "artifactType": "retry-backoff"
+        "artifactType": "RetryBackoffArtifact"
       }
     }
   ]

@@ -11,12 +11,12 @@ When to use: Build and sharpen a project's domain model. Record the execution tr
 
 ## Deliverables
 
-- model artifact
+- DesignArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files, write-docs
+- isolation: worktree; model tier: reasoning
 
 Stop when: Build and sharpen a project's domain model complete; artifact saved; completion criteria checked.

@@ -2,7 +2,7 @@
   "skill": "math/math-formal-proof",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "d6ec788660bb5a17b07914a94707de64beefb2f513362e5d6f2cce5bfd1df7d5",
+  "frontmatterHash": "6f9b2be9e604bdc5f5f75d60d0059b098c58b2628cbc9dac6b428c87cfc615ad",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,8 +10,8 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 8,
     "modelTier": "reasoning",
     "tools": {
@@ -19,6 +19,8 @@
         "Read",
         "Grep",
         "Glob",
+        "Edit",
+        "Write",
         "WebFetch",
         "WebSearch"
       ],
@@ -26,11 +28,17 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "axiom-review",
+      "release"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

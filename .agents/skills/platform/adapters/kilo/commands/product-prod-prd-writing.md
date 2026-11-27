@@ -16,12 +16,12 @@ When to use: Write Product Requirement Documents (PRDs) — problem statement, g
 
 ## Deliverables
 
-- pull-request artifact
+- ProductRequirementsArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: low; trust tier: 1; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: PRD saved; stakeholder alignment noted; metrics defined.

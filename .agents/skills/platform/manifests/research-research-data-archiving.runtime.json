@@ -2,7 +2,7 @@
   "skill": "research/research-data-archiving",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "a939b3ffd2355122f442a7c7a622a2b62db8f9b105bc56e00b1d224dd4a90fc1",
+  "frontmatterHash": "cf8b4f222a26494067459f4bf98b2b26e3f0d1b9d4c2c8227ad45de685c803b6",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,8 +10,8 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
@@ -19,6 +19,8 @@
         "Read",
         "Grep",
         "Glob",
+        "Edit",
+        "Write",
         "WebFetch",
         "WebSearch"
       ],
@@ -26,11 +28,17 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "archive-data",
+      "release"
+    ],
+    "risk": "high",
+    "trustTier": 4
   },
   "verification": {
     "commands": [],

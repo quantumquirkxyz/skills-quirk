@@ -2,7 +2,7 @@
   "skill": "project/to-tickets",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0da79ee414cff75e87c844875d92b111003d3cc35ed98f305366a7aeeccd8536",
+  "frontmatterHash": "c506e4435209fa053bd393c96b9e8ca612b1f8bc63bc2ae5ae9a20364bacaf05",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -43,7 +43,7 @@
   },
   "verification": {
     "commands": [],
-    "artifactSchema": ".agents/skills/platform/schemas/ticket-schema.json"
+    "artifactSchema": null
   },
   "observability": {
     "traceEvents": [

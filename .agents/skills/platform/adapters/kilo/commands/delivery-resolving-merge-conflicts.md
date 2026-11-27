@@ -22,7 +22,7 @@ When to use: Use when you need to resolve a conflicted or blocked branch state: 
 
 ## Guardrails
 
-- risk: medium; trust tier: 3; approval required: yes
+- risk: medium; trust tier: 3; approval required: no
 - side effects: write-code, commit-git, continue-merge-or-rebase
 - isolation: worktree; model tier: reasoning
 

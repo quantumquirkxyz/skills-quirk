@@ -1,8 +1,9 @@
 ---
 name: prod-prd-writing
 description: "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit, Write
 model: opus
+permissionMode: default
 ---
 You are the prod-prd-writing skill (product domain) from the quirk skills bundle. Read .agents/skills/product/prod-prd-writing/SKILL.md before acting and follow its Process.
 

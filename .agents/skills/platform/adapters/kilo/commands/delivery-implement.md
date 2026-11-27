@@ -19,7 +19,7 @@ When to use: Implement a piece of work based on a spec or set of tickets, or bui
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: write-code, commit-git, push-branch
+- side effects: write-code, commit-git
 - isolation: worktree; model tier: reasoning
 
 Stop when: Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication complete; artifact saved; completion criteria checked.

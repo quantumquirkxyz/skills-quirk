@@ -1,6 +1,6 @@
 {
-  "totalCards": 271,
-  "generatedAt": "2026-11-23T18:47:58.753Z",
+  "totalCards": 272,
+  "generatedAt": "2026-11-27T08:47:41.523Z",
   "cards": [
     {
       "name": "accessibility",
@@ -2858,6 +2858,40 @@
       ]
     },
     {
+      "name": "engineering-preflight",
+      "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+      "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/engineering-preflight/SKILL.md",
+      "version": "1",
+      "capabilities": {
+        "skillInvocation": true,
+        "artifactProduction": true,
+        "workflowOrchestration": true
+      },
+      "authentication": {
+        "schemes": [
+          "none"
+        ]
+      },
+      "skills": [
+        {
+          "id": "engineering/engineering-preflight",
+          "name": "engineering-preflight",
+          "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+          "tags": [
+            "engineering",
+            "governance",
+            "preflight",
+            "traceability"
+          ],
+          "parameters": {
+            "trustTier": "3",
+            "modelTier": "reasoning",
+            "artifactType": "engineering-preflight"
+          }
+        }
+      ]
+    },
+    {
       "name": "green-software-engineering",
       "description": "This skill should be used when assessing or improving software carbon intensity, energy use, embodied hardware impact, workload efficiency, or regional carbon intensity with source-qualified measurement and explicit performance, reliability, and cost trade-offs.",
       "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/green-software-engineering/SKILL.md",
@@ -3410,9 +3444,9 @@
             "foundation"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "model"
+            "artifactType": "DesignArtifact"
           }
         }
       ]
@@ -4604,7 +4638,7 @@
           "parameters": {
             "trustTier": "2",
             "modelTier": "reasoning",
-            "artifactType": "loop-engineering"
+            "artifactType": "LoopEngineeringArtifact"
           }
         }
       ]
@@ -4639,7 +4673,7 @@
           ],
           "parameters": {
             "trustTier": "2",
-            "artifactType": "retry-backoff"
+            "artifactType": "RetryBackoffArtifact"
           }
         }
       ]
@@ -4761,9 +4795,9 @@
             "math"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "MathFormalProofArtifact"
           }
         }
       ]
@@ -5381,9 +5415,9 @@
             "physics"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "physics"
+            "artifactType": "PhysicsExperimentalNotebookArtifact"
           }
         }
       ]
@@ -5632,7 +5666,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "product-discovery"
+            "artifactType": "BrainstormingArtifact"
           }
         }
       ]
@@ -5663,7 +5697,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "ExperimentArtifact"
           }
         }
       ]
@@ -5694,7 +5728,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "plan"
+            "artifactType": "OkrArtifact"
           }
         }
       ]
@@ -5725,7 +5759,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "ProductRequirementsArtifact"
           }
         }
       ]
@@ -5818,7 +5852,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "pull-request"
+            "artifactType": "ProjectPlanArtifact"
           }
         }
       ]
@@ -5852,7 +5886,7 @@
           "parameters": {
             "trustTier": "2",
             "modelTier": "reasoning",
-            "artifactType": "project"
+            "artifactType": "ArtifactAnalysisReport"
           }
         }
       ]
@@ -5883,7 +5917,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "adr"
+            "artifactType": "DocumentationGuidanceArtifact"
           }
         }
       ]
@@ -5914,7 +5948,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "project"
+            "artifactType": "MakeProjectArtifact"
           }
         }
       ]
@@ -5945,7 +5979,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "project-assessment"
+            "artifactType": "ProjectAssessmentArtifact"
           }
         }
       ]
@@ -5976,7 +6010,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "project-viability"
+            "artifactType": "ViabilityArtifact"
           }
         }
       ]
@@ -6073,7 +6107,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "spec-driven-artifacts"
+            "artifactType": "SpecDrivenArtifact"
           }
         }
       ]
@@ -6107,7 +6141,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "spec"
+            "artifactType": "RequirementsArtifact"
           }
         }
       ]
@@ -6141,7 +6175,7 @@
           "parameters": {
             "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "ticket"
+            "artifactType": "TicketArtifact"
           }
         }
       ]
@@ -6172,7 +6206,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "test-strategy"
+            "artifactType": "TestStrategyArtifact"
           }
         }
       ]
@@ -6203,7 +6237,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "qa"
+            "artifactType": "QaArtifact"
           }
         }
       ]
@@ -6234,7 +6268,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "test-strategy"
+            "artifactType": "TestStrategyArtifact"
           }
         }
       ]
@@ -6265,7 +6299,7 @@
           "parameters": {
             "trustTier": "1",
             "modelTier": "reasoning",
-            "artifactType": "test-strategy"
+            "artifactType": "TestStrategyArtifact"
           }
         }
       ]
@@ -6577,9 +6611,9 @@
             "research"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "4",
             "modelTier": "reasoning",
-            "artifactType": "research"
+            "artifactType": "ResearchDataArchivingArtifact"
           }
         }
       ]
@@ -6608,9 +6642,9 @@
             "research"
           ],
           "parameters": {
-            "trustTier": "1",
+            "trustTier": "3",
             "modelTier": "reasoning",
-            "artifactType": "review"
+            "artifactType": "ResearchLiteratureReviewArtifact"
           }
         }
       ]

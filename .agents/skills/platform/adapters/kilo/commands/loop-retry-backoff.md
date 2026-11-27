@@ -16,7 +16,7 @@ When to use: Retry-with-backoff patterns for agent actions: exponential backoff 
 
 ## Deliverables
 
-- retry-backoff artifact
+- RetryBackoffArtifact artifact
 
 ## Guardrails
 

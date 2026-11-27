@@ -1112,6 +1112,18 @@
       "description": "Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.",
       "path": ".agents/skills/engineering/engineering-governance"
     },
+    "engineering-preflight": {
+      "domain": "engineering",
+      "tier": "3",
+      "artifactType": "engineering-preflight",
+      "capabilities": [
+        "produce EngineeringPreflightArtifact",
+        "validate requirement-to-release traceability",
+        "classify explicit exceptions and their expiry"
+      ],
+      "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+      "path": ".agents/skills/engineering/engineering-preflight"
+    },
     "green-software-engineering": {
       "domain": "engineering",
       "tier": "3",
@@ -1323,8 +1335,8 @@
     },
     "domain-modeling": {
       "domain": "foundation",
-      "tier": "1",
-      "artifactType": "model",
+      "tier": "3",
+      "artifactType": "DesignArtifact",
       "capabilities": [
         "apply domain modeling methods within explicit foundation boundaries",
         "analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes",
@@ -1791,7 +1803,7 @@
     "loop-engineering": {
       "domain": "loop",
       "tier": "2",
-      "artifactType": "loop-engineering",
+      "artifactType": "LoopEngineeringArtifact",
       "capabilities": [
         "declare loop budgets and termination contracts up front",
         "detect progress, degeneration, and ping-pong across iterations",
@@ -1805,7 +1817,7 @@
     "retry-backoff": {
       "domain": "loop",
       "tier": "2",
-      "artifactType": "retry-backoff",
+      "artifactType": "RetryBackoffArtifact",
       "capabilities": [
         "Exponential backoff with jitter for transient tool failures",
         "Idempotency keys for write-like agent actions",
@@ -1854,8 +1866,8 @@
     },
     "math-formal-proof": {
       "domain": "math",
-      "tier": "1",
-      "artifactType": "pull-request",
+      "tier": "3",
+      "artifactType": "MathFormalProofArtifact",
       "capabilities": [
         "apply math formal proof methods within explicit math boundaries",
         "analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes",
@@ -2094,8 +2106,8 @@
     },
     "physics-experimental-notebook": {
       "domain": "physics",
-      "tier": "1",
-      "artifactType": "physics",
+      "tier": "3",
+      "artifactType": "PhysicsExperimentalNotebookArtifact",
       "capabilities": [
         "apply physics experimental notebook methods within explicit physics boundaries",
         "analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes",
@@ -2191,7 +2203,7 @@
     "brainstorming": {
       "domain": "product",
       "tier": "1",
-      "artifactType": "product-discovery",
+      "artifactType": "BrainstormingArtifact",
       "capabilities": [
         "apply brainstorming methods within explicit product boundaries",
         "analyze facilitate structured, inclusive brainstorming that turns an ambiguous problem into prioritized, testable ideas with assumptions, constraints, and failure modes",
@@ -2203,7 +2215,7 @@
     "prod-ab-testing": {
       "domain": "product",
       "tier": "3",
-      "artifactType": "pull-request",
+      "artifactType": "ExperimentArtifact",
       "capabilities": [
         "apply prod ab testing methods within explicit product boundaries",
         "analyze design a/b tests — hypothesis, control/treatment, randomization, metrics, statistical power, duration — with valid inference and rollback rules with assumptions, constraints, and failure modes",
@@ -2215,7 +2227,7 @@
     "prod-okr-planning": {
       "domain": "product",
       "tier": "1",
-      "artifactType": "plan",
+      "artifactType": "OkrArtifact",
       "capabilities": [
         "apply prod okr planning methods within explicit product boundaries",
         "analyze design okr cycles — objectives, key results, initiatives — with measurable outcomes, quarterly cadences, and team alignment with assumptions, constraints, and failure modes",
@@ -2227,7 +2239,7 @@
     "prod-prd-writing": {
       "domain": "product",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "ProductRequirementsArtifact",
       "capabilities": [
         "apply prod prd writing methods within explicit product boundaries",
         "analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes",
@@ -2263,7 +2275,7 @@
     "professional-project-management": {
       "domain": "professional",
       "tier": "1",
-      "artifactType": "pull-request",
+      "artifactType": "ProjectPlanArtifact",
       "capabilities": [
         "apply professional project management methods within explicit professional boundaries",
         "analyze manage professional projects — scope, milestones, risks, dependencies, and stakeholder alignment — with explicit planning and tracking artifacts with assumptions, constraints, and failure modes",
@@ -2275,7 +2287,7 @@
     "analyze-artifacts": {
       "domain": "project",
       "tier": "2",
-      "artifactType": "project",
+      "artifactType": "ArtifactAnalysisReport",
       "capabilities": [
         "classify consistency findings by evidence",
         "emit a read-only artifact consistency report",
@@ -2288,7 +2300,7 @@
     "docs-management": {
       "domain": "project",
       "tier": "1",
-      "artifactType": "adr",
+      "artifactType": "DocumentationGuidanceArtifact",
       "capabilities": [
         "apply docs management methods within explicit project boundaries",
         "analyze keep repository documentation, adrs, and durable context aligned with the current project shape — with explicit consumer rules with assumptions, constraints, and failure modes",
@@ -2300,7 +2312,7 @@
     "make-project": {
       "domain": "project",
       "tier": "3",
-      "artifactType": "project",
+      "artifactType": "MakeProjectArtifact",
       "capabilities": [
         "apply make project methods within explicit project boundaries",
         "analyze use when the user wants a new board in github projects, or another skill needs one — create the project, wire its fields, and preserve tracker semantics with assumptions, constraints, and failure modes",
@@ -2312,7 +2324,7 @@
     "project-development": {
       "domain": "project",
       "tier": "1",
-      "artifactType": "project-assessment",
+      "artifactType": "ProjectAssessmentArtifact",
       "capabilities": [
         "apply project development methods within explicit project boundaries",
         "analyze evaluate a project's shape, agent fit, and architectural starting point — before the main workflow begins with assumptions, constraints, and failure modes",
@@ -2324,7 +2336,7 @@
     "project-viability": {
       "domain": "project",
       "tier": "1",
-      "artifactType": "project-viability",
+      "artifactType": "ViabilityArtifact",
       "capabilities": [
         "evaluate functional, architectural, and growth risks",
         "consume repository audit findings",
@@ -2363,7 +2375,7 @@
     "spec-driven-development": {
       "domain": "project",
       "tier": "3",
-      "artifactType": "spec-driven-artifacts",
+      "artifactType": "SpecDrivenArtifact",
       "capabilities": [
         "produce a spec artifact from intent (specify phase)",
         "produce a plan artifact with architecture and seams (plan phase)",
@@ -2378,7 +2390,7 @@
     "to-spec": {
       "domain": "project",
       "tier": "3",
-      "artifactType": "spec",
+      "artifactType": "RequirementsArtifact",
       "capabilities": [
         "produce to spec artifact",
         "validate to spec completion criteria",
@@ -2391,7 +2403,7 @@
     "to-tickets": {
       "domain": "project",
       "tier": "3",
-      "artifactType": "ticket",
+      "artifactType": "TicketArtifact",
       "capabilities": [
         "produce to tickets artifact",
         "validate to tickets completion criteria",
@@ -2404,7 +2416,7 @@
     "performance-testing": {
       "domain": "qa",
       "tier": "1",
-      "artifactType": "test-strategy",
+      "artifactType": "TestStrategyArtifact",
       "capabilities": [
         "apply performance testing methods within explicit qa boundaries",
         "analyze design and execute performance tests — load, stress, soak, spike — to validate latency, throughput, and resource consumption under realistic conditions with assumptions, constraints, and failure modes",
@@ -2416,7 +2428,7 @@
     "qa-automation": {
       "domain": "qa",
       "tier": "1",
-      "artifactType": "qa",
+      "artifactType": "QaArtifact",
       "capabilities": [
         "design regression coverage from audit evidence",
         "distinguish coverage gaps from functional defects",
@@ -2429,7 +2441,7 @@
     "qa-manual-testing": {
       "domain": "qa",
       "tier": "1",
-      "artifactType": "test-strategy",
+      "artifactType": "TestStrategyArtifact",
       "capabilities": [
         "apply qa manual testing methods within explicit qa boundaries",
         "analyze perform manual test sessions — exploratory checks, edge cases, accessibility, and user-visible regressions — with explicit reproduction notes with assumptions, constraints, and failure modes",
@@ -2441,7 +2453,7 @@
     "qa-security-testing": {
       "domain": "qa",
       "tier": "1",
-      "artifactType": "test-strategy",
+      "artifactType": "TestStrategyArtifact",
       "capabilities": [
         "apply qa security testing methods within explicit qa boundaries",
         "analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes",
@@ -2561,8 +2573,8 @@
     },
     "research-data-archiving": {
       "domain": "research",
-      "tier": "1",
-      "artifactType": "research",
+      "tier": "4",
+      "artifactType": "ResearchDataArchivingArtifact",
       "capabilities": [
         "apply research data archiving methods within explicit research boundaries",
         "analyze archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls with assumptions, constraints, and failure modes",
@@ -2573,8 +2585,8 @@
     },
     "research-literature-review": {
       "domain": "research",
-      "tier": "1",
-      "artifactType": "review",
+      "tier": "3",
+      "artifactType": "ResearchLiteratureReviewArtifact",
       "capabilities": [
         "apply research literature review methods within explicit research boundaries",
         "analyze review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria with assumptions, constraints, and failure modes",
@@ -3451,12 +3463,6 @@
     },
     {
       "from": "architecture-evaluation",
-      "to": "requirements-engineering",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "architecture-evaluation",
       "to": "codebase-design",
       "type": "depends-on",
       "weight": 1
@@ -3482,12 +3488,6 @@
     {
       "from": "engineering-governance",
       "to": "execution-policy",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "engineering-governance",
-      "to": "professional-project-management",
       "type": "depends-on",
       "weight": 1
     },
@@ -3734,96 +3734,6 @@
     {
       "from": "retry-backoff",
       "to": "loop-budget",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "requirements-engineering",
-      "to": "to-spec",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "requirements-engineering",
-      "to": "prod-prd-writing",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "requirements-engineering",
-      "to": "analyze-artifacts",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "requirements-engineering",
-      "to": "domain-modeling",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "requirements-engineering",
-      "to": "testing",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "software-maintenance-evolution",
-      "to": "diagnosing-bugs",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "software-maintenance-evolution",
-      "to": "db-migrations",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "software-maintenance-evolution",
-      "to": "docs-management",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "software-maintenance-evolution",
-      "to": "supply-chain-security",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "to-spec",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "to-tickets",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "grill-with-docs",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "implement",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "analyze-artifacts",
-      "type": "depends-on",
-      "weight": 1
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "docs-adrs",
       "type": "depends-on",
       "weight": 1
     },
@@ -4177,12 +4087,6 @@
     },
     {
       "from": "engineering-governance",
-      "to": "professional-project-management",
-      "type": "compatible",
-      "weight": 0.4
-    },
-    {
-      "from": "engineering-governance",
       "to": "compliance",
       "type": "compatible",
       "weight": 0.4
@@ -4196,6 +4100,42 @@
     {
       "from": "engineering-governance",
       "to": "docs-adrs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "work-item-router",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "ask-to",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "implement",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "engineering-preflight",
+      "to": "publish-open-pr",
       "type": "compatible",
       "weight": 0.4
     },
@@ -4680,6 +4620,180 @@
       "weight": 0.4
     },
     {
+      "from": "brainstorming",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "brainstorming",
+      "to": "prod-prd-writing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "brainstorming",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "brainstorming",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "brainstorming",
+      "to": "prod-ab-testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-ab-testing",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-okr-planning",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-okr-planning",
+      "to": "professional-project-management",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-okr-planning",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-okr-planning",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-okr-planning",
+      "to": "observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "prod-prd-writing",
+      "to": "observability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "professional-project-management",
+      "to": "make-project",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "professional-project-management",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "professional-project-management",
+      "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "professional-project-management",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "professional-project-management",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "analyze-artifacts",
       "to": "to-spec",
       "type": "compatible",
@@ -4698,6 +4812,114 @@
       "weight": 0.4
     },
     {
+      "from": "docs-management",
+      "to": "docs-adrs",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "docs-management",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "docs-management",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "docs-management",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "docs-management",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "docs-management",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "make-project",
+      "to": "professional-project-management",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "make-project",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "make-project",
+      "to": "spec-driven-development",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "make-project",
+      "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "make-project",
+      "to": "to-tickets",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-development",
+      "to": "project-viability",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "project-viability",
       "to": "code-review",
       "type": "compatible",
@@ -4706,6 +4928,42 @@
     {
       "from": "project-viability",
       "to": "improve-codebase-architecture",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "project-viability",
+      "to": "engineering-governance",
       "type": "compatible",
       "weight": 0.4
     },
@@ -4747,6 +5005,12 @@
     },
     {
       "from": "requirements-engineering",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
       "to": "to-tickets",
       "type": "compatible",
       "weight": 0.4
@@ -4754,6 +5018,12 @@
     {
       "from": "requirements-engineering",
       "to": "sec-threat-modeling",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "requirements-engineering",
+      "to": "engineering-governance",
       "type": "compatible",
       "weight": 0.4
     },
@@ -4794,6 +5064,72 @@
       "weight": 0.4
     },
     {
+      "from": "software-maintenance-evolution",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "software-maintenance-evolution",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "engineering-preflight",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "requirements-engineering",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "testing",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "to-spec",
       "to": "to-tickets",
       "type": "compatible",
@@ -4806,6 +5142,42 @@
       "weight": 0.4
     },
     {
+      "from": "to-spec",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-spec",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-spec",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-spec",
+      "to": "engineering-governance",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-tickets",
+      "to": "architecture-evaluation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-tickets",
+      "to": "codebase-design",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "to-tickets",
       "to": "implement",
       "type": "compatible",
@@ -4814,6 +5186,18 @@
     {
       "from": "to-tickets",
       "to": "to-spec",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-tickets",
+      "to": "qa-automation",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "to-tickets",
+      "to": "engineering-governance",
       "type": "compatible",
       "weight": 0.4
     },
@@ -5064,6 +5448,12 @@
       "weight": 0.4
     },
     {
+      "from": "ask-to",
+      "to": "engineering-preflight",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
       "from": "automatic-refinement",
       "to": "grill-with-docs",
       "type": "compatible",
@@ -5120,6 +5510,12 @@
     {
       "from": "work-item-router",
       "to": "ask-to",
+      "type": "compatible",
+      "weight": 0.4
+    },
+    {
+      "from": "work-item-router",
+      "to": "engineering-preflight",
       "type": "compatible",
       "weight": 0.4
     },

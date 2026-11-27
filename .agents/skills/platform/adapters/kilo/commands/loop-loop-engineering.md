@@ -16,7 +16,7 @@ When to use: Design bounded agent loops with termination contracts, progress det
 
 ## Deliverables
 
-- loop-engineering artifact
+- LoopEngineeringArtifact artifact
 
 ## Guardrails
 

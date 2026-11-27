@@ -71,7 +71,7 @@
       "sourceType": "local"
     },
     "analyze-artifacts": {
-      "hash": "e808af9d2dea2afc8275f1bc55b8bb7904dcd9937e0663976f67a513e2f82e1c",
+      "hash": "40b67b3039b80bc91a8666c717751cfc2d68043647d42a5b9853c1b44ade96d7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -91,7 +91,7 @@
       "sourceType": "local"
     },
     "architecture-evaluation": {
-      "hash": "9db50c1a2dad65189b16d6a6844f661cc57c2fa16f718c207dd3b0dc72308ed8",
+      "hash": "1dcfe9c8a8a6c31c842351bce1c22892924e07541658d9fc37e915f6b834f814",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -101,7 +101,7 @@
       "sourceType": "local"
     },
     "ask-to": {
-      "hash": "f897e59db0e6d17b0abad7249dca60044da5abec05683bdea1e167d20373691c",
+      "hash": "a148eeef9a05fa3730f0a601cb27c87aac8d9d1c4a5fb50e54bb928a65381869",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -141,7 +141,7 @@
       "sourceType": "local"
     },
     "brainstorming": {
-      "hash": "f8aadc92d784d2fa64d5de4200d8a7b72f9b5f9a7809f6dd190faec1c55f278b",
+      "hash": "74419ddc3595bd713c3aab9943252f9e352e971033f21ff2469684be826fcd6e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -191,7 +191,7 @@
       "sourceType": "local"
     },
     "code-review": {
-      "hash": "27444fe6b9a7179ed2ca9e1e5936d3bb29e5c1338a1f4272242a1e3c00d8ef59",
+      "hash": "0c9d4c45d99f656feb81426ef3e83c3c4da3e479f4516315248580c41ca2ad7c",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -391,7 +391,7 @@
       "sourceType": "local"
     },
     "docs-management": {
-      "hash": "04dd4d3bc8d74f924eb8612bd89fc80958d287bc8793bcbf80a23f6395486ab8",
+      "hash": "ea2184474fae5b6c38d58d99d0fe9c268d4cb267f274a9005a9b7fc7a2df8452",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -401,7 +401,7 @@
       "sourceType": "local"
     },
     "domain-modeling": {
-      "hash": "b59245fff019dd83f0b37bd28ab54e3b396baf4a2bad115db55f3d1f159782ed",
+      "hash": "f614402fe770847495e7b469157299dc2ea4e8a8f5511f0bea213ab95dae0038",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -411,7 +411,12 @@
       "sourceType": "local"
     },
     "engineering-governance": {
-      "hash": "e1ed557bf09fa17deabac14abce2092a23234aec3c39f344a90c7e8914cb8061",
+      "hash": "b7dd856307f853085e0022422b440eec8168fa258955cb09fc3bce624736cd3c",
+      "revision": "working-tree",
+      "sourceType": "local"
+    },
+    "engineering-preflight": {
+      "hash": "df30d900709944c79bc3f248e48071c22a56cd5fd87f56adcf7286624dd77dda",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -566,7 +571,7 @@
       "sourceType": "local"
     },
     "grill-with-docs": {
-      "hash": "66af6945e6edb17b018bd3d20a7021a7ff42a98bce1c2889d5116bb0731df17b",
+      "hash": "512b7495fdada5d558c6c352748363f3b78b003dfb8781bda1edfe7386f2a8e2",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -586,12 +591,12 @@
       "sourceType": "local"
     },
     "implement": {
-      "hash": "38a6873ac279563718660d72539800069bff61a3a3bb10e0cd65583e7ccc508d",
+      "hash": "9a419bfc53ca547c1bdd9ea209e2b0956193aee636a9b5a059d07471cf2b1d79",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "implement-review-fixes": {
-      "hash": "66ee82cb15f3fba647e7affe2fb436d639c07afd2965e760b3be4211853ca77f",
+      "hash": "b5073520fc7dbd355f4495219f022f236e0f3d1d33cbdd031fda34bff78ba777",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -671,12 +676,12 @@
       "sourceType": "local"
     },
     "loop-engineering": {
-      "hash": "ca5b631f8b0687f02d3178f1063e0877abf54f87077c4b899b8f93e0768f1330",
+      "hash": "3bf92392a25d628233c97c65b1be617479faa72d0b02d285eb60aa5ab7a0b346",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "make-project": {
-      "hash": "cf24e16013b3415a213f0ebf1a15e2bf775cfb08462ab0e37c072d45f671ae24",
+      "hash": "b3c6a1936ed89c6fe29397062f2e3ce0fc1b2fd093c32cd7984c9a78e95c730b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -696,7 +701,7 @@
       "sourceType": "local"
     },
     "math-formal-proof": {
-      "hash": "99f4727a10e90968f3357cd04b30e2fffbe62e349fe28ba836c7bbfa610dc477",
+      "hash": "893a93ef2bff894d645f77ee38e3b7e585f7f0e1903da722bdd5d6656c083abf",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -811,7 +816,7 @@
       "sourceType": "local"
     },
     "parallel-issue-fleet": {
-      "hash": "8a6450abd39bbfccdf198b09b343462440b2432dffd7f825531e595c1318a28a",
+      "hash": "311499de02c928acb94b7ef9697d802171ab3fa780774207617205f412b950cb",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -826,7 +831,7 @@
       "sourceType": "local"
     },
     "performance-testing": {
-      "hash": "5325773b7053422a24521909c45edee03bae158cbd7a543c14619c7d68f82f35",
+      "hash": "207a51f655678bae7c57c5dac2113dcae3bffb994d98c6723feee21d93cdfe36",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -851,7 +856,7 @@
       "sourceType": "local"
     },
     "physics-experimental-notebook": {
-      "hash": "bdc472565dba3e2dc86430a8e3d4835574b2771aedaf7c816a2419593a6fd40f",
+      "hash": "5738437e2d7c85219fde1370cd4f71e5af6af4028387d106f9c28cbdcabf8fba",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -891,7 +896,7 @@
       "sourceType": "local"
     },
     "plan-review-fixes": {
-      "hash": "2c5786363faf8eb818f6ce1b8d5ef46e9d97d2ed793a869be309167e87204d65",
+      "hash": "a5c893facb788f6bc6afb605dca215025abd71412b22cc01ea8d8eea46cb0867",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -906,7 +911,7 @@
       "sourceType": "local"
     },
     "pr-operations": {
-      "hash": "f5ffd5f07a09e9bb35787fbee9f19b7084747c924fa1f0dd42e69725e3fdd209",
+      "hash": "f3a7cfce91f2d3439a2d3fa0213479b302ef6ffaadbcfd419431d0ecea4d49e2",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -916,17 +921,17 @@
       "sourceType": "local"
     },
     "prod-ab-testing": {
-      "hash": "5241f78ca1402a9cc6c3595499bbd5b7c0477f616f1f2a88219d45570f278672",
+      "hash": "373fc4568301844a29560a5cae79353c457626ab41d9f7c78aa1e6f885d93ea9",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "prod-okr-planning": {
-      "hash": "fa9fd0ea653abb0b1df7a211c200f34f4cdd83a16558c1d603b3a74f04d7c6b0",
+      "hash": "27d9195c39f86563fe9f1bca1c841ef04c3de9469b11056f9b873f42a21cb473",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "prod-prd-writing": {
-      "hash": "79e980a9a6a561f3cda2dfa74232b692a3e34c99d640c98462e6f85303dded51",
+      "hash": "50d74428fc5b6ae029daf883aec71b922941d5d87f481b9b0b83c3e24d255ed9",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -936,17 +941,17 @@
       "sourceType": "local"
     },
     "professional-project-management": {
-      "hash": "1df219f18eb7886295c10b7141f5a42b850cf0861629eca13a8515a85df90e5d",
+      "hash": "60b2693431990e0fbdee153fbe6de0684eb69d6c4317c15aa9474139b5b16b34",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "project-development": {
-      "hash": "0f8b2445c6c76e21cc780eb594cee0199fdf4aef1fb4c92b6d6f5aedd3daacdb",
+      "hash": "66cb2fe7cde01a725f515a9c6899e7207f44aae125e239df4e7e144f2e97933b",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "project-viability": {
-      "hash": "0e833fb228473574fedcc59b01e7c8266a7acdc57477e4704cad2f76ad63df9c",
+      "hash": "ac554efb51f588e7c2c4d79eb93b084736394d9bf67e3d939c17137a34a22b65",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -956,27 +961,27 @@
       "sourceType": "local"
     },
     "prototype": {
-      "hash": "ec0a8b3af01441c1fce859b65f57c1ec164b9fce3a873e3f2550125efb85992d",
+      "hash": "4a0c6d24c08c52fb978ed5b891931a5be748b620610f06f5ad2b8cb26306fd7c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "publish-open-pr": {
-      "hash": "4bcacd4aa362fe6789322871274bba6a2c9fad7819327699f00f5dd7afe7ecf7",
+      "hash": "88b8a9e38899a5cef3fa5cfce1ebde70b19590677fef9a86e62609e601f45964",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "qa-automation": {
-      "hash": "94f455c46628d5bb7e4ce9e9b390d71281e8e7da5305ddbb1b0abbddaa11a48f",
+      "hash": "94c98d76f11d4e9c8d5e57a50416fba5c04a23b5505e937524a89c5293b3fbfb",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "qa-manual-testing": {
-      "hash": "ac9dd6e522c812df113f02be621e128bfd21890584527afc14417197d5926922",
+      "hash": "24bb424c23b444f537eab25b79d000c608b1956c75cfb5e5598ffd99277f4a11",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "qa-security-testing": {
-      "hash": "73ff26e091c0f12bf18dc4783746486129ca91fa4ea9b9dc2f214b2028c8ab50",
+      "hash": "9b0cc72e6f10656182badb0f229251c41f0c6e5b3e618a8fdb7bce836bcc4597",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1031,7 +1036,7 @@
       "sourceType": "local"
     },
     "release-management": {
-      "hash": "0fdbaba6fc8c718bd417e6b56eebf81dc7b25f1b3fac331b6f855f20e443c3ff",
+      "hash": "2be5880abf0735bd599b1d8c39d9be777ad26c5577dc7587d63cb000840e050b",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1041,7 +1046,7 @@
       "sourceType": "local"
     },
     "requirements-engineering": {
-      "hash": "9d2ebd3f24dbbac1e5077a9c18c759749a6ce655fb81fe9322c63aef7f156085",
+      "hash": "a4f06224e4d369698d874349f2a31c242cf4cc38375dbefbbd6bd1e1b25935c0",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1051,12 +1056,12 @@
       "sourceType": "local"
     },
     "research-data-archiving": {
-      "hash": "ea832ff27745c438ff5640dd52c3adf27ea4f0c2e0ce2f8865dd4cd9a9a1f56a",
+      "hash": "a9c4a5639e3488df9e31ac978297848400d803c0e73555f1aa1bc71b84eb4549",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "research-literature-review": {
-      "hash": "39e6e42c2a9550329874b6cc4cd18a02d5fe62eecdf2fd282ed7ca508aaed756",
+      "hash": "c555f8039c5336d2988be7aa45d10dc1cdd0c4099a4c207c227bcef2152539f7",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1066,17 +1071,17 @@
       "sourceType": "local"
     },
     "retry-backoff": {
-      "hash": "687ba8e4afc2ab74c32a9b93c322eb9cd790c31956299cf70f615e6dbcd9ddf7",
+      "hash": "1df18d34a80d9b5579b7835206b1d20590ac97314aff18fb773ba7d0b86d468c",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "review-fix-loop": {
-      "hash": "3f664c22b7c8e0e5faf04e5a0bb252e951a7d322857ed68b7e81ac60dcfe60bd",
+      "hash": "36fde2aaf421b8eee6dab8be702c62e4206514d3066d2975bb8f15b24262b094",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "review-pr": {
-      "hash": "4d3e5d098e07bff4686b980d6638847456f7a5101a5efe98358191a92e04028f",
+      "hash": "9dd33b88f6d38118e4b36ce1d48c5114c9dab5215defa098dc30626c2defc164",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1151,7 +1156,7 @@
       "sourceType": "local"
     },
     "ship-subissue": {
-      "hash": "60781934257b21e3e2df52a1b652f0fb22fc8693284c519882d33cc025caec89",
+      "hash": "d2a797ff9625a914538f1aca9d73f5807fd1e229c347d4f054f768ee64c25b64",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1186,7 +1191,7 @@
       "sourceType": "local"
     },
     "skill-graph-engineering": {
-      "hash": "5603b24d10e9154fc1a4d06d982c7f0a43d043ccf52e7b8e263489ddb205c8d7",
+      "hash": "a381ecc5db39a3539a6dc9944f6189345194f2711e5fdaccec335e96a8a63972",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1241,12 +1246,12 @@
       "sourceType": "local"
     },
     "software-maintenance-evolution": {
-      "hash": "1b8a8c36b7318608b167d5b2b46e0c096665f4858ba7f27b5b81fd55897e356a",
+      "hash": "1ca73e31f5101f1dca7c41daa973722a46a4e989a86b79fcaf96238b2454a40f",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "spec-driven-development": {
-      "hash": "11ccc41669f0e341d93fac15564227983fe1a97e3a5bbf0643a125a3ffd93609",
+      "hash": "5ca4ea3c1e7e461c6bf6cf9e083e21496bd65ad4244127d0085875c7ef50bebb",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1286,12 +1291,12 @@
       "sourceType": "local"
     },
     "system-design": {
-      "hash": "2ed88a02662f3789c43784fe1682b3acbd4791221f658de00e77e74cd93edaca",
+      "hash": "21923794c1eabf3be437af53193c7724b7f84275b9a3aba9a8597647496b6f62",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "tdd": {
-      "hash": "da7990d75c4c90f54621d1988abd8a2704475ee2f5f3b61b7aaa3d3b18fc2e7f",
+      "hash": "59fb63805aade97a6b51153b101525529a9e81117df5aed6231cd32ca0973b2e",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1301,12 +1306,12 @@
       "sourceType": "local"
     },
     "to-spec": {
-      "hash": "b528fa2b60a711b5c184bb35454c6c1925cc1caad54e36faf1f1b1858e883ae3",
+      "hash": "33302b0c2c685551d79834896e604cb95602a7d47e417c988d7442bcb59c6a97",
       "revision": "working-tree",
       "sourceType": "local"
     },
     "to-tickets": {
-      "hash": "edb27f6b6c54f3288b67b9f77a8f695dd757c29fa71e2d3b174e83a5dc8bf9d5",
+      "hash": "614b897373460bcc573464ddd5c4ac0b445e223e3e6d67a15a55943ea7c29f9d",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1316,7 +1321,7 @@
       "sourceType": "local"
     },
     "trunk-based-workflow": {
-      "hash": "2a2f99e1389f30a7217d667c0de604001a035600b6b2edbe12f33a6ea35ab06c",
+      "hash": "6afd1707dce41deae7c3ecfc280131e1028b7d1b8d21a81fad7351cb370841f8",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1346,7 +1351,7 @@
       "sourceType": "local"
     },
     "wayfinder": {
-      "hash": "2c4f464fff2bb0692f3e04aa9ba0dc09dbb116e9e6db69b591baf4d7685f55e7",
+      "hash": "0db172687439dfb9b5837ae075c635035b85d05ba9b8f80887431d421c8777f1",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1391,7 +1396,7 @@
       "sourceType": "local"
     },
     "work-item-router": {
-      "hash": "fa51aec3cc9636ddb9cc3451df6664978ebb36516f33f97cf88bd48ab4914fec",
+      "hash": "f7e08939e8f7cba92973c78b35b0de3bd35fd217bbae5c227ab7748c804114f5",
       "revision": "working-tree",
       "sourceType": "local"
     },
@@ -1401,7 +1406,7 @@
       "sourceType": "local"
     },
     "worktree-swarm": {
-      "hash": "8eb5844eac00eb813ba85158557e28aaf55dd615a25f04a781ea8f400d44cab1",
+      "hash": "5a84db8b53914cdb60329a7b6ea655b7ea1449e6b61f91c305dc8eef87819b0b",
       "revision": "working-tree",
       "sourceType": "local"
     },

@@ -17,7 +17,7 @@ When to use: Design and implement automated test suites — unit, integration, e
 
 ## Deliverables
 
-- qa artifact
+- QaArtifact artifact
 
 ## Guardrails
 

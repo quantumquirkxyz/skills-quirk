@@ -2,7 +2,7 @@
   "skill": "delivery/review-pr",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0c53c110f81e3dadd0d40edad57e144051e3f32f962541cb18518f6e1ee70d1a",
+  "frontmatterHash": "6145dcefa715d1c02aa62d3501d69d273c1d82c13bdc1622e59009c4412cc745",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -31,9 +31,7 @@
       "post-pr-comment"
     ],
     "approvalRequired": true,
-    "approvalFor": [
-      "post-pr-comment"
-    ],
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

@@ -2,7 +2,7 @@
   "skill": "research/research-literature-review",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "27c4d2d09b1f0c219e763e6c2b30c20af3c0febfe72d8f258825de0579f272f6",
+  "frontmatterHash": "f9e36a1b4a39f95fa49d409e1b02975d6a0a9055a6038e89e7e203bf2bfbd022",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,8 +10,8 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
@@ -19,6 +19,8 @@
         "Read",
         "Grep",
         "Glob",
+        "Edit",
+        "Write",
         "WebFetch",
         "WebSearch"
       ],
@@ -26,11 +28,16 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
-    "risk": "low",
-    "trustTier": 1
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "publish-review"
+    ],
+    "risk": "medium",
+    "trustTier": 3
   },
   "verification": {
     "commands": [],

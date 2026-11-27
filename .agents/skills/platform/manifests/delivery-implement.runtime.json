@@ -2,7 +2,7 @@
   "skill": "delivery/implement",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "099bea6196cee3a2b353df58537cf25510a4049662a1a48ff0ca5e33feb0e33b",
+  "frontmatterHash": "2fd425451ac487930ac8125bf207c91747fa90ef44042a4211d81b8779727419",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,15 +29,10 @@
   "guardrails": {
     "sideEffects": [
       "write-code",
-      "commit-git",
-      "push-branch"
+      "commit-git"
     ],
     "approvalRequired": true,
-    "approvalFor": [
-      "write-code",
-      "commit-git",
-      "push-branch"
-    ],
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

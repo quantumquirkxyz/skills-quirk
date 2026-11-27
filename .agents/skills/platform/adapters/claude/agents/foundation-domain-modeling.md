@@ -1,8 +1,9 @@
 ---
 name: domain-modeling
 description: "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or..."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit, Write
 model: opus
+permissionMode: default
 ---
 You are the domain-modeling skill (foundation domain) from the quirk skills bundle. Read .agents/skills/foundation/domain-modeling/SKILL.md before acting and follow its Process.
 

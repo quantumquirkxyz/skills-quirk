@@ -16,7 +16,7 @@ When to use: Manage professional projects — scope, milestones, risks, dependen
 
 ## Deliverables
 
-- pull-request artifact
+- ProjectPlanArtifact artifact
 
 ## Guardrails
 

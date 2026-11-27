@@ -22,9 +22,9 @@
         "physics"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "physics"
+        "artifactType": "PhysicsExperimentalNotebookArtifact"
       }
     }
   ]

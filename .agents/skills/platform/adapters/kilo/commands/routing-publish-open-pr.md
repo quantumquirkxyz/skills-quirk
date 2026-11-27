@@ -9,7 +9,7 @@ When to use: Use when the user wants to publish a finished subissue as an open G
 
 1. Confirm scope
 2. Verify prerequisites
-3. Run gate-ci before opening PR
+3. Run mandatory gates before opening PR
 4. Run the smallest relevant validation
 5. Prepare the PR bundle
 6. Push the branch and open a PR

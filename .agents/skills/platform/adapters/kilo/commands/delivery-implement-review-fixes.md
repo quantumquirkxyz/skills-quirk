@@ -21,7 +21,7 @@ When to use: Apply a plan-review-fixes remediation plan through implement, valid
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: write-code, commit-git, push-branch, post-pr-comment
+- side effects: write-files, post-pr-comment
 - isolation: worktree; model tier: reasoning
 
 Stop when: Validate the plan and branch preconditions, apply or defer every in-scope finding exactly once, validate the resulting changes, save an ImplementReviewFixesArtifact, and identify the next consumer.

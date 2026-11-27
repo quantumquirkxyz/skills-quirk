@@ -2,7 +2,7 @@
   "skill": "product/prod-okr-planning",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "64781d7584fd72eced711c890d0c23793cf45477e9f8e7b6a882365c2513d377",
+  "frontmatterHash": "f95545e4490552d62bc2df8dc184c0c402006957b5e2502d252f22c66d11fcf0",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,23 +10,30 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 4,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "release-plan"
+    ],
     "risk": "low",
     "trustTier": 1
   },

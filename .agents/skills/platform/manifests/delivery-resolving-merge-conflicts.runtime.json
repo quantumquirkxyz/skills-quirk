@@ -2,7 +2,7 @@
   "skill": "delivery/resolving-merge-conflicts",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "a81000913adbaa0e60f234b2711ad6523916b83ff0b15a1b5e9d13a8737f1f1c",
+  "frontmatterHash": "b9f3df7728603cb2d9273c76f99b104cd1dec629de5a2d371d6e3c2eb292c2bc",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -32,12 +32,8 @@
       "commit-git",
       "continue-merge-or-rebase"
     ],
-    "approvalRequired": true,
-    "approvalFor": [
-      "write-code",
-      "commit-git",
-      "continue-merge-or-rebase"
-    ],
+    "approvalRequired": false,
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

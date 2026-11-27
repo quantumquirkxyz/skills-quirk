@@ -16,7 +16,7 @@ When to use: Perform manual test sessions — exploratory checks, edge cases, ac
 
 ## Deliverables
 
-- test-strategy artifact
+- TestStrategyArtifact artifact
 
 ## Guardrails
 

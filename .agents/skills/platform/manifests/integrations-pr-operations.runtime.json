@@ -2,7 +2,7 @@
   "skill": "integrations/pr-operations",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "4abba966e1ef43d5aa86d6b9af64ee85194e61ae865c3c9d6274882fa5f05d1a",
+  "frontmatterHash": "f9e57170aedfa18d055445639f0f6c78c35953c0fe0c6641d2e034a8c653bfd2",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,7 +11,7 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
@@ -19,6 +19,7 @@
         "Read",
         "Grep",
         "Glob",
+        "Bash",
         "WebFetch",
         "WebSearch"
       ],
@@ -26,9 +27,21 @@
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "create-pull-request",
+      "update-pull-request",
+      "post-pr-comment",
+      "request-review",
+      "update-labels"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "create-pull-request",
+      "update-pull-request",
+      "post-pr-comment",
+      "request-review",
+      "update-labels"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

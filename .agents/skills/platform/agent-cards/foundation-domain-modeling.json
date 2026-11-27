@@ -22,9 +22,9 @@
         "foundation"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "model"
+        "artifactType": "DesignArtifact"
       }
     }
   ]

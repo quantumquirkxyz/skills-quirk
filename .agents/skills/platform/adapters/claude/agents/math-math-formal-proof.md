@@ -1,8 +1,9 @@
 ---
 name: math-formal-proof
 description: "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven constructi..."
-tools: Read, Grep, Glob, WebFetch, WebSearch
+tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
 model: opus
+permissionMode: default
 ---
 You are the math-formal-proof skill (math domain) from the quirk skills bundle. Read .agents/skills/math/math-formal-proof/SKILL.md before acting and follow its Process.
 

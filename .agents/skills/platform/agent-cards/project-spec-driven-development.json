@@ -28,7 +28,7 @@
       "parameters": {
         "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "spec-driven-artifacts"
+        "artifactType": "SpecDrivenArtifact"
       }
     }
   ]

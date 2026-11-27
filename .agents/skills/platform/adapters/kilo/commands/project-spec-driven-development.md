@@ -11,7 +11,7 @@ When to use: Run spec-driven development (SDD): a constitution for repo-local ru
 
 ## Deliverables
 
-- spec-driven-artifacts artifact
+- SpecDrivenArtifact artifact
 
 ## Guardrails
 

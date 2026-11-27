@@ -2,7 +2,7 @@
   "skill": "project/to-spec",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "2c4a5db22b930ad21bb0f50eb17d1f2cbe9b894ed7f9213ddc66e8ecadef2f07",
+  "frontmatterHash": "db12e42618542624ed0f3171f23e452879792c909c3d33ba30c3b791a0c4eb44",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -37,7 +37,7 @@
   },
   "verification": {
     "commands": [],
-    "artifactSchema": ".agents/skills/platform/schemas/spec-schema.json"
+    "artifactSchema": null
   },
   "observability": {
     "traceEvents": [

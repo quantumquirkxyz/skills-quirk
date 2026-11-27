@@ -22,9 +22,9 @@
         "research"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "4",
         "modelTier": "reasoning",
-        "artifactType": "research"
+        "artifactType": "ResearchDataArchivingArtifact"
       }
     }
   ]

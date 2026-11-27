@@ -2,7 +2,7 @@
   "skill": "delivery/implement-review-fixes",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "7849b4a8b781907cf66919d3f3632b482b898fce5fe6bda2b40d4cafee5b3b63",
+  "frontmatterHash": "64091e4cd7923433146a2ea21b4dc8a7e943c225a21e8ff0849248cd6c012bbf",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -30,18 +30,11 @@
   },
   "guardrails": {
     "sideEffects": [
-      "write-code",
-      "commit-git",
-      "push-branch",
+      "write-files",
       "post-pr-comment"
     ],
     "approvalRequired": true,
-    "approvalFor": [
-      "write-code",
-      "commit-git",
-      "push-branch",
-      "post-pr-comment"
-    ],
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

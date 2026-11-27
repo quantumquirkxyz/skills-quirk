@@ -22,9 +22,9 @@
         "research"
       ],
       "parameters": {
-        "trustTier": "1",
+        "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "review"
+        "artifactType": "ResearchLiteratureReviewArtifact"
       }
     }
   ]

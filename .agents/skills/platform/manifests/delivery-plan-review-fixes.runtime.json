@@ -2,7 +2,7 @@
   "skill": "delivery/plan-review-fixes",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "0ae2b4cf33812bb332653d5d1e1434861c8f9208164a4a4d147664f6de709185",
+  "frontmatterHash": "65993af13e73ccc5a31790d34ca720eed5c07ebba19a4af8a2be28ca065dd08a",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -29,9 +29,7 @@
       "post-pr-comment"
     ],
     "approvalRequired": true,
-    "approvalFor": [
-      "post-pr-comment"
-    ],
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

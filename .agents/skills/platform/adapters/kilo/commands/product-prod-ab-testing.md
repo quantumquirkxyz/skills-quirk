@@ -16,12 +16,12 @@ When to use: Design A/B tests — hypothesis, control/treatment, randomization, 
 
 ## Deliverables
 
-- pull-request artifact
+- ExperimentArtifact artifact
 
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
-- isolation: none; model tier: reasoning
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Test design saved; analysis plan saved; rollback rules defined; statistical power computed.

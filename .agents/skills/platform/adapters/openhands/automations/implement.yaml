@@ -12,4 +12,4 @@ steps:
       task: "{{ event.title }}"
 policy:
   approvalRequired: true
-  sideEffects: [write-code, commit-git, push-branch]
+  sideEffects: [write-code, commit-git]

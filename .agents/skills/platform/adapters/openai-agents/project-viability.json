@@ -7,7 +7,7 @@
   "runtime": {
     "role": "workflow",
     "maxTurns": 6,
-    "isolation": "worktree"
+    "isolation": "none"
   },
   "guardrails": {
     "input": [],

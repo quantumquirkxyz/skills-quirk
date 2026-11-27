@@ -15,8 +15,8 @@ When to use: Build a throwaway prototype to answer a design question. Use when t
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: low; trust tier: 1; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Build a throwaway prototype to answer a design question complete; structured result returned; completion criteria checked.

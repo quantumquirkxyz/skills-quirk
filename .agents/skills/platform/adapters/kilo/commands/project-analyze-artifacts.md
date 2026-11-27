@@ -16,7 +16,7 @@ When to use: Analyze the spec, plan, and ticket artifacts of one work item for c
 
 ## Deliverables
 
-- project artifact
+- ArtifactAnalysisReport artifact
 
 ## Guardrails
 

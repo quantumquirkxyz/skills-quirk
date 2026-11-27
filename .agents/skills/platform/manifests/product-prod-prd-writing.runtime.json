@@ -2,7 +2,7 @@
   "skill": "product/prod-prd-writing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "61b4b3ee2a0f714a251ef55825f92e4d886b9aa344a5e749777361def516d7e2",
+  "frontmatterHash": "3f97983b6012c461eff43cf2d2ae8598e3eee3c60158e5c40f44ac1ca801a5c4",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,23 +10,30 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "explore",
-    "isolation": "none",
+    "defaultAgent": "general",
+    "isolation": "worktree",
     "maxTurns": 5,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
-    "approvalRequired": false,
-    "approvalFor": [],
+    "sideEffects": [
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "create-issue"
+    ],
     "risk": "low",
     "trustTier": 1
   },

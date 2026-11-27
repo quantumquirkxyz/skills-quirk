@@ -22,7 +22,7 @@ When to use: Manage pull request operations with branch, diff, validation, revie
 ## Guardrails
 
 - risk: medium; trust tier: 3; approval required: yes
-- side effects: none
-- isolation: none; model tier: reasoning
+- side effects: create-pull-request, update-pull-request, post-pr-comment, request-review, update-labels
+- isolation: worktree; model tier: reasoning
 
 Stop when: Requested PR actions are completed or explicitly skipped, target PRs are identified, and validation or readiness evidence is reported.

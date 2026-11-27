@@ -18,7 +18,7 @@ When to use: Run reproducible security tests for authorization drift, adversaria
 
 ## Deliverables
 
-- test-strategy artifact
+- TestStrategyArtifact artifact
 
 ## Guardrails
 

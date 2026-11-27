@@ -1,8 +1,9 @@
 ---
 name: physics-experimental-notebook
 description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit, Write
 model: opus
+permissionMode: default
 ---
 You are the physics-experimental-notebook skill (physics domain) from the quirk skills bundle. Read .agents/skills/physics/physics-experimental-notebook/SKILL.md before acting and follow its Process.
 

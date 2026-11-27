@@ -14,7 +14,7 @@ When to use: Facilitate structured, inclusive brainstorming that turns an ambigu
 
 ## Deliverables
 
-- product-discovery artifact
+- BrainstormingArtifact artifact
 
 ## Guardrails
 

@@ -8,10 +8,11 @@ When to use: Force reading the canonical work-item governance index before routi
 ## Workflow
 
 1. Read `docs/reference/agents/index.md`
-2. Identify whether the request is a spec, ticket, spec completion audit, ticket coverage audit, corrective ticket publication, project board, PR publication, review-fix plan, or closeout
-3. Route to the thinnest downstream skill that can finish the work
-4. If metadata is involved, preserve the canonical shape from `docs/reference/agents/work-item-format.md`
-5. Return the routing decision as structured output in the current response; rely on execution traces for auditability
+2. Classify whether the request can modify software. If yes, require `engineering-preflight` before selecting any downstream work-item skill
+3. Identify whether the request is a spec, ticket, spec completion audit, ticket coverage audit, corrective ticket publication, project board, PR publication, review-fix plan, or closeout
+4. Route to the thinnest downstream skill that can finish the work
+5. If metadata is involved, preserve the canonical shape from `docs/reference/agents/work-item-format.md`
+6. Return the routing decision as structured output in the current response; rely on execution traces for auditability
 
 ## Deliverables
 

@@ -16,12 +16,12 @@ When to use: Archive research data — metadata, storage, preservation, provenan
 
 ## Deliverables
 
-- research artifact
+- ResearchDataArchivingArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: high; trust tier: 4; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Data, metadata, provenance, access controls, and preservation plan are explicit.

@@ -2,7 +2,7 @@
   "skill": "routing/publish-open-pr",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "17cfd88f28a6c9d71d49a8caeeb1143420143ed7dff0ab21f3e608fa985fcb27",
+  "frontmatterHash": "6b6771bd92cfd6819ad5d1ddae18db99e85eeedfbb430f7d686d1f4dd610792c",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -30,10 +30,7 @@
       "create-pull-request"
     ],
     "approvalRequired": true,
-    "approvalFor": [
-      "push-branch",
-      "create-pull-request"
-    ],
+    "approvalFor": [],
     "risk": "medium",
     "trustTier": 3
   },

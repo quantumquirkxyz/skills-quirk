@@ -17,7 +17,7 @@ When to use: Design and execute performance tests — load, stress, soak, spike 
 
 ## Deliverables
 
-- test-strategy artifact
+- TestStrategyArtifact artifact
 
 ## Guardrails
 

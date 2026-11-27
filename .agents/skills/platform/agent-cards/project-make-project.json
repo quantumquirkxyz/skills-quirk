@@ -24,7 +24,7 @@
       "parameters": {
         "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "project"
+        "artifactType": "MakeProjectArtifact"
       }
     }
   ]

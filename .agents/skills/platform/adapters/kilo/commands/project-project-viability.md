@@ -18,12 +18,12 @@ When to use: Evaluate whether a project is viable, functional, and scalable by a
 
 ## Deliverables
 
-- project-viability artifact
+- ViabilityArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: yes
-- side effects: write-files
-- isolation: worktree; model tier: reasoning
+- risk: low; trust tier: 1; approval required: no
+- side effects: none
+- isolation: none; model tier: reasoning
 
 Stop when: Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed.

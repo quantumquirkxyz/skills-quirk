@@ -1282,6 +1282,20 @@
       "reason": "trustTier>3"
     },
     {
+      "skill": "engineering/engineering-preflight",
+      "trustTier": 3,
+      "tools": [
+        "get_skill"
+      ],
+      "resources": [
+        "skill://skill/engineering/engineering-preflight"
+      ],
+      "prompts": [
+        "use_skill"
+      ],
+      "exposed": true
+    },
+    {
       "skill": "engineering/green-software-engineering",
       "trustTier": 3,
       "tools": [
@@ -1508,7 +1522,7 @@
     },
     {
       "skill": "foundation/domain-modeling",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -2110,7 +2124,7 @@
     },
     {
       "skill": "math/math-formal-proof",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -2390,7 +2404,7 @@
     },
     {
       "skill": "physics/physics-experimental-notebook",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],
@@ -2925,7 +2939,7 @@
     },
     {
       "skill": "research/research-data-archiving",
-      "trustTier": 1,
+      "trustTier": 4,
       "tools": [
         "get_skill"
       ],
@@ -2935,11 +2949,12 @@
       "prompts": [
         "use_skill"
       ],
-      "exposed": true
+      "exposed": false,
+      "reason": "trustTier>3"
     },
     {
       "skill": "research/research-literature-review",
-      "trustTier": 1,
+      "trustTier": 3,
       "tools": [
         "get_skill"
       ],

@@ -27,7 +27,7 @@
       "parameters": {
         "trustTier": "2",
         "modelTier": "reasoning",
-        "artifactType": "project"
+        "artifactType": "ArtifactAnalysisReport"
       }
     }
   ]

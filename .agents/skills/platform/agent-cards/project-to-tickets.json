@@ -27,7 +27,7 @@
       "parameters": {
         "trustTier": "3",
         "modelTier": "reasoning",
-        "artifactType": "ticket"
+        "artifactType": "TicketArtifact"
       }
     }
   ]

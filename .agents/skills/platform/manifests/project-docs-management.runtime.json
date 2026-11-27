@@ -2,7 +2,7 @@
   "skill": "project/docs-management",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "9eadec2a2aa6ce32685fc85c6e46edaee19ffa1a0f90ba7883f53b7cb8501332",
+  "frontmatterHash": "eb032e395b8d7b94fa9b0c8e4a0994e2d0400280d0b13afbc3b793cbebd738ce",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -32,7 +32,7 @@
   },
   "verification": {
     "commands": [],
-    "artifactSchema": ".agents/skills/platform/schemas/adr-schema.json"
+    "artifactSchema": null
   },
   "observability": {
     "traceEvents": [

@@ -15,12 +15,12 @@ When to use: Develop formal mathematical proofs in proof assistants (Lean 4, Coq
 
 ## Deliverables
 
-- pull-request artifact
+- MathFormalProofArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: Source file compiles in target assistant with pinned toolchain and no errors; no sorry/Admitted; CI proof-checking job passes; verification report attached.

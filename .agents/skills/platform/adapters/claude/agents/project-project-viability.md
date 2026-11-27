@@ -1,9 +1,8 @@
 ---
 name: project-viability
 description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectura..."
-tools: Read, Grep, Glob, Edit, Write
+tools: Read, Grep, Glob
 model: opus
-permissionMode: default
 ---
 You are the project-viability skill (project domain) from the quirk skills bundle. Read .agents/skills/project/project-viability/SKILL.md before acting and follow its Process.
 

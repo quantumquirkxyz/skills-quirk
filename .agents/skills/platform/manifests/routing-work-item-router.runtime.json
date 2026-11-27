@@ -2,7 +2,7 @@
   "skill": "routing/work-item-router",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "b7a9049b4afdc6507d18695845823a7ca38eb13629ce305a85daea8844719622",
+  "frontmatterHash": "abb38a1704220420519f33699dce20990cf21236c24dc314076db031b8e737bd",
   "role": "workflow",
   "router": {
     "positive": [],

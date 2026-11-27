@@ -16,12 +16,12 @@ When to use: Design OKR cycles — Objectives, Key Results, initiatives — with
 
 ## Deliverables
 
-- plan artifact
+- OkrArtifact artifact
 
 ## Guardrails
 
-- risk: low; trust tier: 1; approval required: no
-- side effects: none
-- isolation: none; model tier: reasoning
+- risk: low; trust tier: 1; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
 
 Stop when: OKR document saved; initiatives mapped to KRs; progress tracker template ready.

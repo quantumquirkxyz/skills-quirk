@@ -2,7 +2,7 @@
   "skill": "project/project-viability",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "cea07aae1ec4c77d8148e7f6d2ac28aaa9882eab0a2c0bca0d8e56c4d7b5d7d9",
+  "frontmatterHash": "ca16901792caac1569c74da6ae12b37476d10943facd7fa49e58ed1863ab4234",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -10,29 +10,23 @@
     "requiredSignals": []
   },
   "execution": {
-    "defaultAgent": "general",
-    "isolation": "worktree",
+    "defaultAgent": "explore",
+    "isolation": "none",
     "maxTurns": 6,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob",
-        "Edit",
-        "Write"
+        "Glob"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [
-      "write-files"
-    ],
-    "approvalRequired": true,
-    "approvalFor": [
-      "write-files"
-    ],
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [],
     "risk": "low",
     "trustTier": 1
   },

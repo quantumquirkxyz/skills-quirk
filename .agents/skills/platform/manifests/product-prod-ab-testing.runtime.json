@@ -2,7 +2,7 @@
   "skill": "product/prod-ab-testing",
   "version": 1,
   "generatedFrom": "frontmatter",
-  "frontmatterHash": "b08bd5fb1f0dbcdfe298b4c02fc25ece0f688b2a611fbc77ce96067e9c130ad9",
+  "frontmatterHash": "10fc8636e0f6fc63d98021112b31c26b5737d5a4e8c358b2596d89595bae3ec7",
   "role": "workflow",
   "router": {
     "positive": [],
@@ -11,22 +11,29 @@
   },
   "execution": {
     "defaultAgent": "general",
-    "isolation": "none",
+    "isolation": "worktree",
     "maxTurns": 5,
     "modelTier": "reasoning",
     "tools": {
       "allow": [
         "Read",
         "Grep",
-        "Glob"
+        "Glob",
+        "Edit",
+        "Write"
       ],
       "deny": []
     }
   },
   "guardrails": {
-    "sideEffects": [],
+    "sideEffects": [
+      "write-files"
+    ],
     "approvalRequired": true,
-    "approvalFor": [],
+    "approvalFor": [
+      "write-files",
+      "expose-experiment"
+    ],
     "risk": "medium",
     "trustTier": 3
   },

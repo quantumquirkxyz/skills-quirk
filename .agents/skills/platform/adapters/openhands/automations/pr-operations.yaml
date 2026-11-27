@@ -12,4 +12,4 @@ steps:
       task: "{{ event.title }}"
 policy:
   approvalRequired: true
-  sideEffects: []
+  sideEffects: [create-pull-request, update-pull-request, post-pr-comment, request-review, update-labels]

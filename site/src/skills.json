@@ -1,5 +1,5 @@
 {
-  "totalSkills": 271,
+  "totalSkills": 272,
   "categories": [
     "accessibility",
     "ai",
@@ -1330,8 +1330,8 @@
       "description": "Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "analyze build and sharpen a project's domain model. record the execution traceid and link the artifact to the originating issue for review replay. use when the user wants to pin down domain terminology or a ubiquitous language boundary with assumptions, constraints, and failure modes",
         "apply domain modeling methods within explicit foundation boundaries",
@@ -1373,6 +1373,22 @@
       ],
       "sideEffects": [],
       "path": ".agents/skills/engineering/engineering-governance"
+    },
+    {
+      "name": "engineering-preflight",
+      "category": "engineering",
+      "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+      "version": "1",
+      "maturity": "stable",
+      "risk": "medium",
+      "trustTier": "3",
+      "capabilities": [
+        "classify explicit exceptions and their expiry",
+        "produce EngineeringPreflightArtifact",
+        "validate requirement-to-release traceability"
+      ],
+      "sideEffects": [],
+      "path": ".agents/skills/engineering/engineering-preflight"
     },
     {
       "name": "evaluate-skill",
@@ -2230,8 +2246,8 @@
       "description": "Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle, Agda) with pinned toolchains, CI proof checking, zero-sorry discipline, literate programming, tactic-driven construction, and verification.",
       "version": "2",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "analyze develop formal mathematical proofs in proof assistants (lean 4, coq, isabelle, agda) with literate programming, tactic-driven construction, and verification with assumptions, constraints, and failure modes",
         "apply math formal proof methods within explicit math boundaries",
@@ -2730,8 +2746,8 @@
       "description": "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.",
       "version": "2",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "analyze maintain experimental physics lab notebooks — measurements, calibration, error analysis, fair data principles, reproducibility — with digital and physical structure with assumptions, constraints, and failure modes",
         "apply physics experimental notebook methods within explicit physics boundaries",
@@ -3012,9 +3028,7 @@
         "trace project viability decisions across inputs, constraints, and failure paths",
         "validate project outcomes with evidence, assumptions, and explicit next steps"
       ],
-      "sideEffects": [
-        "write-files"
-      ],
+      "sideEffects": [],
       "path": ".agents/skills/project/project-viability"
     },
     {
@@ -3335,8 +3349,8 @@
       "description": "Archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls.",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "high",
+      "trustTier": "4",
       "capabilities": [
         "analyze archive research data — metadata, storage, preservation, provenance, and reuse planning — with reproducibility and access controls with assumptions, constraints, and failure modes",
         "apply research data archiving methods within explicit research boundaries",
@@ -3351,8 +3365,8 @@
       "description": "Review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria.",
       "version": "1",
       "maturity": "stable",
-      "risk": "low",
-      "trustTier": "1",
+      "risk": "medium",
+      "trustTier": "3",
       "capabilities": [
         "analyze review research literature — search strategy, screening, synthesis, citation tracking, and evidence grading — with transparent inclusion criteria with assumptions, constraints, and failure modes",
         "apply research literature review methods within explicit research boundaries",
