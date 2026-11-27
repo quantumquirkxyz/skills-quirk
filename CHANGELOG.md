@@ -8,7 +8,7 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
-## [Unreleased]
+## [3.2.2] - 2026-11-27
 
 - Added vendor-neutral flat discovery aliases for every skill, including qualified aliases for domain-name collisions, so generic coding agents can invoke the full bundle without vendor-specific configuration.
 - Fixed implement artifact schema routing, fail-closed implementation validation, release-gate test isolation, and native agent-view installation paths.
