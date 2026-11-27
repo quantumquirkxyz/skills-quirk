@@ -77,6 +77,28 @@ async function walk(filePath) {
   return out;
 }
 
+let targetLock;
+async function loadTargetLock() {
+  if (targetLock !== undefined) return targetLock;
+  try {
+    targetLock = JSON.parse(await fs.readFile(path.join(targetRoot, 'skills-lock.json'), 'utf8'));
+  } catch {
+    targetLock = null;
+  }
+  return targetLock;
+}
+
+async function canUpdateIncrementally(relFile, targetFile) {
+  if (!incremental) return false;
+  if (['skills-lock.json', 'skills.json'].includes(relFile)) return true;
+  if (!relFile.endsWith('/SKILL.md')) return false;
+  const lock = await loadTargetLock();
+  const skillName = path.basename(path.dirname(relFile));
+  const expected = lock?.skills?.[skillName]?.hash;
+  if (!expected) return false;
+  return await hashFile(targetFile).catch(() => '') === expected;
+}
+
 async function copyPath(source, target) {
   if (source === target) return;
   await ensureSafeDestination(target);
@@ -147,9 +169,9 @@ for (const relative of copyEntries) {
     await ensureSafeDestination(targetFile);
     if (await exists(targetFile)) {
       const same = await hashFile(sourceFile) === await hashFile(targetFile).catch(() => '');
-      if (!same && incremental && ['skills-lock.json', 'skills.json'].includes(relFile)) {
-        // These files are generated bundle metadata. In incremental mode they may
-        // be refreshed after the dry-run has identified skill-level changes.
+      if (!same && await canUpdateIncrementally(relFile, targetFile)) {
+        // Incremental mode updates only files whose prior canonical hash matches
+        // the target. Local edits remain conflicts instead of being overwritten.
         planned.push(relFile);
         continue;
       }
