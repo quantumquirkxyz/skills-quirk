@@ -28,10 +28,21 @@ Skills are installed **by prompt only**: use the prompts in `README.md` (see [In
 
 ## Installation Prompts
 
-The repository `README.md` contains two AI-agnostic prompts:
+The canonical prompts are maintained in [installation-prompts.md](installation-prompts.md):
 
-- Use the greenfield prompt when you are bootstrapping a repository that has no prior local context.
-- Use the existing-repo prompt when the target repository already has ADRs, a `CONTEXT.md`, and documentation that must remain untouched.
+- Use the **first-installation prompt** when the target repository has no managed Quirk Skills installation.
+- Use the **incremental-update prompt** for an existing installation.
+- Both prompts are automatic, English-first, Git-based, and do not use npm or npx.
+- The update prompt compares hashes, skips byte-identical skills, preserves local modifications, and blocks ambiguous conflicts before writing.
+
+For established repositories, the supported synchronizer path is:
+
+```bash
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental --write
+```
+
+Run the dry run first and review its JSON result before applying `--write`.
 
 ## Required Repo Files
 
