@@ -1,6 +1,6 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0f172a" />
-  <img alt="Version" src="https://img.shields.io/badge/version-3.1.0-facc15?style=flat-square&labelColor=0f172a" />
+  <img alt="Version" src="https://img.shields.io/badge/version-3.1.1-facc15?style=flat-square&labelColor=0f172a" />
   <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
 </p>
 
@@ -489,15 +489,15 @@ Bring this repository into a valid quirk Skills state with the canonical bundle 
 - The result should be a repository that can be used by an AI-agnostic IDE without extra hidden setup.
 - Verification summary: all above commands must report `status: pass` or `pass` with zero findings.
 
-### 2. Existing repository with ADRs and local context
+### 2. Existing repository with an older or partially outdated quirk Skills installation
 
 ```text
-You are going to synchronize the quirk Skills bundle in this repository with the canonical upstream.
+You are going to update the existing quirk Skills installation in this repository to the canonical upstream version.
 
 REPO_UPSTREAM = <url of the canonical skills repo>  # for example, https://github.com/quantumquirkxyz/skills-quirk
 
 ## Objective
-Update the skills implementation so it matches the upstream bundle while preserving the repository's own documentation, ADRs, and local context.
+Update only missing, older, or otherwise outdated skills and their generated compatibility/integrity metadata so they match the upstream bundle. Preserve the repository's own documentation, ADRs, local context, and any newer local skills. Do not reinstall the repository from scratch and do not replace unrelated project files.
 
 ## What you must not touch
 - `docs/adr/**`, `docs/reference/adr/**`, and any ADR content
@@ -515,14 +515,16 @@ Update the skills implementation so it matches the upstream bundle while preserv
 
 ## Steps
 1. Clone the upstream into a temporary directory with `git clone --depth 1 <REPO_UPSTREAM> <temp-dir>`.
-2. Run `node .agents/skills/platform/sync-bundle.mjs <target-repo>` from the upstream checkout and inspect the dry-run report before editing anything.
-3. Replace only the canonical skills tree, compatibility view, lockfile, and explicitly allowed bundle metadata with the upstream versions, preserving symlinks.
-4. Do not rewrite repository docs, ADRs, README, or CONTEXT.md to make the sync fit; keep the bundle change narrowly scoped to the skills bundle.
-5. Validate the sync and confirm that only the allowed paths changed.
+2. Inspect the target's installed skills and `skills-lock.json`; compare each skill's version/content hash with the upstream checkout and classify entries as current, outdated, missing, locally newer, or locally modified.
+3. Run `node .agents/skills/platform/sync-bundle.mjs <target-repo>` from the upstream checkout and inspect the dry-run report before editing anything.
+4. Update the outdated or missing canonical skills, compatibility links, lockfile, and explicitly allowed bundle metadata. Leave current and locally newer skills untouched unless the user explicitly requests a downgrade.
+5. Preserve local modifications by surfacing conflicts instead of silently overwriting them; do not rewrite repository docs, ADRs, README, or CONTEXT.md.
+6. Validate the update and confirm that only the allowed paths changed.
 
 ## Final checks
 - `git status --short` must show only `.agents/AGENTS.md`, `.agents/skills/`, `.claude/skills/`, `skills-lock.json`, `skills.json`, and any explicitly allowed optional file.
 - ADRs, `CONTEXT.md`, `README.md`, and product documentation must remain untouched.
+- The result must be an in-place update: outdated or missing skills are refreshed, while current and locally newer skills remain intact.
 - If any protected path changes, revert only that part before finishing.
 
 <details>
