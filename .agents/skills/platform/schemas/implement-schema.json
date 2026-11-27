@@ -3,9 +3,9 @@
   "title": "ImplementArtifact",
   "description": "Durable implementation artifact emitted by the implement skill at the validated branch, before publication.",
   "type": "object",
-  "required": ["status", "nextConsumer", "validation", "qualityGateResults"],
+  "required": ["status", "nextConsumer", "validation", "qualityGateResults", "commitSha", "branch"],
   "properties": {
-    "status": { "type": "string", "enum": ["completed", "blocked", "partial"] },
+    "status": { "type": "string", "enum": ["completed", "blocked", "partial", "failed", "skipped", "outcome-unknown"] },
     "changes": { "type": "array", "items": { "type": "string" } },
     "validation": {
       "type": "object",
@@ -17,8 +17,8 @@
         "notes": { "type": "string" }
       }
     },
-    "commitSha": { "type": "string" },
-    "branch": { "type": "string" },
+    "commitSha": { "type": "string", "pattern": "^[0-9a-fA-F]{40}$" },
+    "branch": { "type": "string", "minLength": 1 },
     "nextConsumer": { "type": "string" },
     "blockedBy": { "type": "array", "items": { "type": "string" } },
     "riskRemaining": { "type": "string" },
@@ -31,5 +31,14 @@
         "gateCi": { "type": "string", "enum": ["pass", "fail", "skipped"] }
       }
     }
-  }
+  },
+  "allOf": [{
+    "if": { "properties": { "status": { "const": "completed" } } },
+    "then": {
+      "properties": {
+        "validation": { "properties": { "acceptanceCriteriaMet": { "const": true } } },
+        "qualityGateResults": { "properties": { "gateCi": { "const": "pass" } } }
+      }
+    }
+  }]
 }
