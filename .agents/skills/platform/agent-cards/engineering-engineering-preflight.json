@@ -1,0 +1,34 @@
+{
+  "name": "engineering-preflight",
+  "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/engineering-preflight/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "engineering/engineering-preflight",
+      "name": "engineering-preflight",
+      "description": "Establish the mandatory engineering traceability gate before any work that changes software.",
+      "tags": [
+        "engineering",
+        "governance",
+        "preflight",
+        "traceability"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "engineering-preflight"
+      }
+    }
+  ]
+}

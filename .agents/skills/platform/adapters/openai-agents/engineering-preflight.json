@@ -1,0 +1,16 @@
+{
+  "name": "engineering-preflight",
+  "instructions": "Establish the mandatory engineering traceability gate before any work that changes software.\n\nCapabilities:\n- produce EngineeringPreflightArtifact\n- validate requirement-to-release traceability\n- classify explicit exceptions and their expiry\n\nCanonical skill: .agents/skills/engineering/engineering-preflight/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "A current EngineeringPreflightArtifact is approved before software-changing work, or an explicit bounded exception is recorded and approved.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 4,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

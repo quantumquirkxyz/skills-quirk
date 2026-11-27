@@ -1,0 +1,19 @@
+name: research-only
+description: Governed route for research-only work without software preflight
+entryPoint: research
+version: "1.0"
+states:
+  research:
+    type: artifact-writer
+    description: Produce a research artifact under an explicit auditable exception
+    capabilityRequirements:
+      - research (recommended)
+    transitions:
+      PUBLISHED: done
+      BLOCKED: escalate
+  done:
+    type: terminal
+    description: Research route completed
+  escalate:
+    type: terminal
+    description: Research route blocked
