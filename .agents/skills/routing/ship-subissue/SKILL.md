@@ -67,6 +67,8 @@ This high-trust workflow is not exposed over MCP; it requires explicit local app
 - Output: a structured artifact or guidance aligned to the skill's declared outputs.
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: follow the skill's completion criteria and stop condition exactly.
+- Rule: merge requires an open, mergeable PR, an unambiguous linked issue, zero latest Standards findings, zero latest Spec findings, and all mandatory gates passed or an explicit project policy authorizing documented partial validation.
+- Rule: the merge artifact must contain the verified non-null 40-character merge commit SHA; never close the issue or delete the branch before merge confirmation.
 - Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; preserve supplied values in `ShipSubissueArtifact`.
 - Side effect ownership: this skill owns one approved PR merge, project completion update, and linked issue closure; each requires explicit approval. It does not own code changes, review fixes, or PR creation.
 - Recovery invariant: checkpoint before merge, after merge, after project update, and after issue closure. If any result is unknown, reconcile PR, commit, project item, and issue state before retrying. Existing matching state is adopted; never duplicate merge, completion comment, or closure.
@@ -106,10 +108,12 @@ The caller supplies a label/project-state matrix. The default is `pr-opened` => 
    - Read the open PR with `gh pr view`.
    - Confirm the PR still belongs to the current branch and subissue.
    - Confirm the linked issue reference is clear.
+   - Confirm the PR is open and mergeable and its head is a real commit SHA.
    - Confirm the branch is clean and no conflicted branch state remains from merge/rebase or review-request follow-up work; if it is conflicted, return to `resolving-merge-conflicts` before shipping.
 2. Confirm review is clean.
    - Only proceed if the last `review-pr` pass was clean on both Standards and Spec.
    - If review is not clean, stop and return to `review-fix-loop`.
+   - Verify the latest review-loop artifact records zero Standards and Spec findings and matches the PR head.
 3. Merge the PR.
    - Use `gh pr merge <number>` with the repository's accepted merge strategy.
    - Verify the merge commit before any downstream mutation.

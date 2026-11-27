@@ -1,6 +1,6 @@
 {
   "name": "@quantumquirkxyz/skills-quirk",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "type": "module",
   "description": "Quirk Skills — portable, validated skills bundle for AI coding agents",
   "scripts": {

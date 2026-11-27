@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
@@ -15,6 +16,48 @@ if (!targetArg) {
 }
 
 const targetRoot = path.resolve(targetArg);
+
+function validateInstallationBundle(root) {
+  const errors = [];
+  const skillsRoot = path.join(root, '.agents', 'skills');
+  if (!existsSync(skillsRoot)) return ['missing .agents/skills'];
+  for (const required of ['skills-lock.json']) {
+    if (!existsSync(path.join(root, required))) errors.push(`missing required installation artifact: ${required}`);
+  }
+  const walkFiles = (dir) => {
+    const files = [];
+    if (!existsSync(dir)) return files;
+    for (const entry of fsSync.readdirSync(dir, { withFileTypes: true })) {
+      const absolute = path.join(dir, entry.name);
+      if (entry.isDirectory()) files.push(...walkFiles(absolute));
+      else files.push(absolute);
+    }
+    return files;
+  };
+  for (const file of walkFiles(skillsRoot)) {
+    const relative = path.relative(root, file).split(path.sep).join('/');
+    if (path.basename(file) === 'SKILL.md' && fsSync.readFileSync(file, 'utf8').trim() === '') errors.push(`empty skill: ${relative}`);
+    if (file.endsWith('.json')) {
+      try { JSON.parse(fsSync.readFileSync(file, 'utf8')); } catch (error) { errors.push(`invalid JSON artifact ${relative}: ${error.message}`); }
+    }
+  }
+  const documentationRoots = [skillsRoot, ...['docs/reference/agents', 'docs/how-to', 'docs/explanation'].map((rel) => path.join(root, rel))];
+  for (const file of documentationRoots.flatMap(walkFiles)) {
+    if (!file.endsWith('.md')) continue;
+    const text = fsSync.readFileSync(file, 'utf8');
+    for (const match of text.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+      const href = match[1].split('#')[0];
+      if (!href || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('<')) continue;
+      const candidate = path.resolve(path.dirname(file), href);
+      if (!existsSync(candidate)) errors.push(`broken documentation link ${relativePath(root, file)} -> ${href}`);
+    }
+  }
+  return errors;
+}
+function relativePath(root, file) { return path.relative(root, file).split(path.sep).join('/'); }
+function existsSync(filePath) {
+  return fsSync.existsSync(filePath);
+}
 if (targetRoot === repoRoot || repoRoot.startsWith(targetRoot + path.sep) || targetRoot.startsWith(repoRoot + path.sep)) {
   console.error('Source and target must be separate, non-nested repositories.');
   process.exit(2);
@@ -174,6 +217,10 @@ async function recreateClaudeLinks() {
 
 const planned = [];
 const conflicts = [];
+const report = { added: [], updated: [], preserved: [], skipped: [], failed: [] };
+function classify(relFile, kind) {
+  if (!report[kind].includes(relFile)) report[kind].push(relFile);
+}
 
 for (const relative of copyEntries) {
   const source = path.join(repoRoot, relative);
@@ -184,13 +231,23 @@ for (const relative of copyEntries) {
     await ensureSafeDestination(targetFile);
     if (await exists(targetFile)) {
       const same = await hashFile(sourceFile) === await hashFile(targetFile).catch(() => '');
-      if (!same && await canUpdateIncrementally(relFile, targetFile)) {
+      if (same) {
+        classify(relFile, 'preserved');
+      } else if (await canUpdateIncrementally(relFile, targetFile)) {
         // Incremental mode updates only files whose prior canonical hash matches
         // the target. Local edits remain conflicts instead of being overwritten.
         planned.push(relFile);
+        classify(relFile, 'updated');
         continue;
       }
-      if (!same && !force) conflicts.push(relFile);
+      if (!same && !force) {
+        conflicts.push(relFile);
+        classify(relFile, 'failed');
+      } else if (!same) {
+        classify(relFile, 'updated');
+      }
+    } else {
+      classify(relFile, 'added');
     }
     planned.push(relFile);
   }
@@ -238,6 +295,7 @@ if (conflicts.length) {
     write,
     target: targetRoot,
     conflicts,
+    report,
     note: 'Use --force with --write only after reviewing target-local changes.',
   }, null, 2));
   process.exit(1);
@@ -270,12 +328,20 @@ if (write) {
   await ensureSafeDestination(manifestPath);
   await fs.mkdir(path.dirname(manifestPath), { recursive: true });
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  const validationErrors = validateInstallationBundle(targetRoot);
+  if (validationErrors.length) {
+    report.failed.push(...validationErrors);
+    console.log(JSON.stringify({ status: 'failed', outcome: 'failed', mode: 'write', target: targetRoot, report, validationErrors }, null, 2));
+    process.exit(1);
+  }
 }
 
 console.log(JSON.stringify({
   status: 'pass',
+  outcome: 'passed',
   mode: write ? 'write' : 'dry-run',
   target: targetRoot,
   files: planned.length,
+  report,
   note: write ? 'Bundle synced.' : 'No files written. Add --write to apply.',
 }, null, 2));

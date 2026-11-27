@@ -20,6 +20,7 @@ outputs:
     properties:
       status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       branch: { type: string }
+      commitSha: { type: string, pattern: "^[0-9a-fA-F]{40}$" }
       prNumber: { type: integer }
       prUrl: { type: string }
       title: { type: string }
@@ -60,7 +61,7 @@ approvalRequired: false
 approvalFor: []
 clauses:
   - id: PUBLISH-OPEN-PR-1
-    text: "Never open a PR before gate-ci has passed on the pushed branch; stop and report the failure instead."
+    text: "Never open a PR before every mandatory gate has passed on the exact pushed commit; skipped, blocked, partial, and unknown outcomes prevent publication."
     check: "evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-1"
   - id: PUBLISH-OPEN-PR-2
     text: "Never create or amend commits here, and never merge the PR or close the issue; those belong to implement and ship-subissue."
@@ -79,7 +80,9 @@ reloadPolicy: always
 - Input: validated issue branch, linked issue metadata, PR bundle metadata, and quality gate results.
 - Output: `PublishOpenPrArtifact` as structured output in the response. See `.agents/skills/platform/schemas/publish-open-pr-schema.json`.
 - Scope: package, push, and publish a completed branch as an open PR; do not reopen implementation decisions.
-- Rule: never open a PR before `gate-ci` has passed on the pushed branch.
+- Rule: never open a PR before every mandatory gate has passed on the exact pushed commit.
+- Rule: a real 40-character commit SHA is required; null, placeholder, invented, and stale SHAs are invalid.
+- Rule: read the linked issue before changing files and reject files outside its declared scope or non-goals.
 - Rule: push and PR creation run automatically after validating the exact commit SHA and required gates immediately before publication.
 - Rule: never create or amend commits here; that belongs to `implement`.
 - Rule: never merge the PR or close the issue here; that belongs to `ship-subissue`.
@@ -121,10 +124,11 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 - Confirm `gh` is available and `gh auth status` succeeds.
 - Confirm the current branch can push to `origin`.
 
-### 3. Run gate-ci before opening PR
+### 3. Run mandatory gates before opening PR
 
 - Execute `gate-ci` against the current branch state.
-- If `gate-ci` fails, stop and report the failure rather than opening a PR.
+- If a mandatory gate fails, is skipped, blocked, or has an unknown outcome, stop and report it rather than opening the PR.
+- Record every skipped check and its reason in the artifact and PR body; never convert an unavailable check into `pass`.
 - Summarize the gate-ci result in the PR body or PR metadata; do not write a local gate artifact.
 
 ### 4. Run the smallest relevant validation
@@ -159,7 +163,7 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 
 - branch scope confirmed
 - prerequisites verified
-- `gate-ci` passed on pushed branch
+- all mandatory gates passed on the exact pushed commit
 - validation completed
 - PR bundle prepared from linked issue metadata
 - branch pushed to origin

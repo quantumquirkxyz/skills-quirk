@@ -56,6 +56,10 @@ reloadPolicy: on-trigger
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 - Contract metadata: carry `loopId`, `ledgerRef`, `budget`, `progressEvidence`, `recoveryPolicy`, and `status`; carry `operationId` for comments, code, git, or other external effects.
 - Standard statuses are `planned`, `completed`, `blocked`, `outcome-unknown`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, `superseded`, and `rolled-back`. The loop executes its declared local and PR effects automatically; `needs-approval` is not a normal loop state.
+- Standards findings and Spec findings remain separate throughout review, planning, implementation, and the final artifact.
+- There is exactly one idempotent `## Review Fix Plan` per review revision; reconcile by plan digest before posting or updating it.
+- After every repair pass, rerun scoped validation and review-pr. Never merge while either findings axis is non-zero.
+- Stop after three consecutive repetitions of the same blocker and record the blocker instead of looping.
 - Budget precedence is caller budget > loop budget > retry policy; no inherited limit may be relaxed. Unknown effect results require reconciliation by `operationId` before repeating the effect.
 - Saga metadata MUST include `dryRun`, `fixedPoint`, `revisionFence`, checkpoints, and rollback evidence. Execute declared loop effects automatically, while validating exact commit SHA before push and reconciling unknown commit/push results by operationId, branch, and SHA. Dry-run remains available for callers that explicitly request it.
 

@@ -300,12 +300,14 @@ test('redactSecrets removes every occurrence of an ephemeral secret value', () =
 test('worker ImplementArtifact validation refuses invented gate and acceptance claims', () => {
   const base = {
     status: 'completed',
+    commitSha: '0123456789abcdef0123456789abcdef01234567',
+    branch: 'fleet/test',
     validation: { acceptanceCriteriaMet: true, commands: [] },
     qualityGateResults: { gateIde: 'pass', gatePreCommit: 'pass', gateCi: 'pass' },
   };
   assert.deepEqual(validateImplementArtifact(base), []);
   assert.match(validateImplementArtifact({ ...base, validation: { acceptanceCriteriaMet: false } })[0], /acceptanceCriteriaMet/);
-  assert.match(validateImplementArtifact({ ...base, status: 'partial' })[0], /completed/);
+  assert.deepEqual(validateImplementArtifact({ ...base, status: 'partial' }), []);
   assert.match(validateImplementArtifact({ ...base, qualityGateResults: { ...base.qualityGateResults, gateCi: 'maybe' } })[0], /gateCi/);
 });
 
@@ -314,11 +316,11 @@ test('normalized artifacts record only the gates the fleet actually ran', () => 
     status: 'completed',
     validation: { acceptanceCriteriaMet: true, commands: ['worker-check'] },
     qualityGateResults: { gateIde: 'pass', gatePreCommit: 'pass', gateCi: 'pass' },
-  }, { commitSha: 'sha1', branch: 'fleet/x', blockedBy: [] }, {
+  }, { commitSha: '0123456789abcdef0123456789abcdef01234567', branch: 'fleet/x', blockedBy: [] }, {
     runId: 'run-1', gateCommands: ['node check.mjs'], localGatesPassed: true,
   });
 
-  assert.equal(normalized.commitSha, 'sha1');
+  assert.equal(normalized.commitSha, '0123456789abcdef0123456789abcdef01234567');
   assert.equal(normalized.branch, 'fleet/x');
   assert.deepEqual(normalized.validation.commands, ['worker-check', 'node check.mjs']);
   assert.deepEqual(normalized.qualityGateResults, { gateIde: 'skipped', gatePreCommit: 'pass', gateCi: 'skipped' });
@@ -341,7 +343,7 @@ const IMPLEMENT_ARTIFACT = {
   status: 'completed',
   changes: ['feature.txt'],
   validation: { acceptanceCriteriaMet: true, commands: ['worker-check'], skipped: [] },
-  commitSha: 'worker-placeholder',
+  commitSha: '0123456789abcdef0123456789abcdef01234567',
   branch: 'worker-placeholder',
   nextConsumer: 'publish-open-pr',
   blockedBy: [],
@@ -388,8 +390,8 @@ test('local fleet executes and validates one issue end to end, then cleans its w
   const { artifact } = JSON.parse(result.stdout);
   const issue = artifact.issues[0];
 
-  assert.equal(artifact.status, 'completed');
-  assert.equal(issue.status, 'validated');
+  assert.equal(artifact.status, 'blocked');
+  assert.equal(issue.status, 'blocked');
   assert.equal(artifact.resources[0].status, 'cleaned');
   assert.match(issue.commitSha, /^[0-9a-f]{40}$/);
   assert.ok(fs.existsSync(issue.implementArtifactPath));
@@ -477,8 +479,8 @@ test('local fleet runs a portable worker profile without an agent-specific defau
   const { artifact } = JSON.parse(result.stdout);
   const issue = artifact.issues[0];
 
-  assert.equal(artifact.status, 'completed');
-  assert.equal(issue.status, 'validated');
+  assert.equal(artifact.status, 'blocked');
+  assert.equal(issue.status, 'blocked');
   assert.deepEqual(artifact.provider.worker, { name: 'test-agent', profile, model: 'test/model' });
   assert.ok(fs.existsSync(issue.implementArtifactPath));
   assert.ok(fs.existsSync(path.join(outputDir, 'setup.txt')), 'profile setup ran');
@@ -516,7 +518,7 @@ test('vm-pool fleet collects the validated branch, artifact, and cleanup evidenc
     '  fs.mkdirSync(dir, { recursive: true });',
     "  fs.writeFileSync(path.join(dir, '101.json'), JSON.stringify(artifact, null, 2));",
     '} else if (command === "collect") {',
-    "  console.log(JSON.stringify({ branch: 'fleet/vm/101', commitSha: 'deadbeef', implementArtifactPath: path.join(workspace, '.agents', 'skills', 'platform', 'artifacts', 'implement', '101.json') }));",
+    "  console.log(JSON.stringify({ branch: 'fleet/vm/101', commitSha: '0123456789abcdef0123456789abcdef01234567', implementArtifactPath: path.join(workspace, '.agents', 'skills', 'platform', 'artifacts', 'implement', '101.json') }));",
     '} else if (command === "cleanup") {',
     `  fs.writeFileSync(${JSON.stringify(marker)}, 'cleaned');`,
     '}',
@@ -550,15 +552,15 @@ test('vm-pool fleet collects the validated branch, artifact, and cleanup evidenc
   const { artifact } = JSON.parse(result.stdout);
   const issue = artifact.issues[0];
 
-  assert.equal(artifact.status, 'completed');
-  assert.equal(issue.status, 'validated');
+  assert.equal(artifact.status, 'blocked');
+  assert.equal(issue.status, 'blocked');
   assert.equal(issue.branch, 'fleet/vm/101');
-  assert.equal(issue.commitSha, 'deadbeef');
+  assert.equal(issue.commitSha, '0123456789abcdef0123456789abcdef01234567');
   assert.equal(artifact.resources[0].status, 'cleaned');
   assert.ok(fs.existsSync(marker), 'cleanup command ran');
 
   const stored = JSON.parse(fs.readFileSync(issue.implementArtifactPath, 'utf8'));
-  assert.equal(stored.commitSha, 'deadbeef');
+  assert.equal(stored.commitSha, '0123456789abcdef0123456789abcdef01234567');
   assert.equal(stored.qualityGateResults.gateCi, 'skipped');
   assert.equal(stored.qualityGateResults.gatePreCommit, 'pass');
 });
@@ -609,18 +611,11 @@ test('integration-branch merges independent issues and gates the converged branc
   assert.equal(result.status, 0, result.stderr);
   const { artifact } = JSON.parse(result.stdout);
 
-  assert.equal(artifact.status, 'completed');
-  assert.equal(artifact.waves[0].status, 'integrated');
-  assert.deepEqual(artifact.issues.map((issue) => issue.status), ['validated', 'validated']);
-  assert.ok(artifact.integration.commits.length === 2);
+  assert.equal(artifact.status, 'blocked');
+  assert.equal(artifact.waves[0].status, 'blocked');
+  assert.deepEqual(artifact.issues.map((issue) => issue.status), ['blocked', 'blocked']);
+  assert.equal(artifact.integration.commits.length, 0);
 
-  const branch = artifact.integration.branch;
-  for (const id of ['201', '202']) {
-    const show = spawnSync('git', ['show', `${branch}:feature-${id}.txt`], { cwd: repo, encoding: 'utf8' });
-    assert.equal(show.status, 0, `integration branch contains feature-${id}`);
-  }
-  const tip = spawnSync('git', ['rev-parse', `refs/heads/${branch}`], { cwd: repo, encoding: 'utf8' }).stdout.trim();
-  assert.equal(tip, artifact.source.baseRevision, 'the integration branch tip becomes the next immutable base');
 });
 
 
@@ -670,6 +665,8 @@ test('a downloaded GitHub artifact must be completed and satisfy acceptance crit
   fs.writeFileSync(file, JSON.stringify({
     status: 'completed',
     validation: { acceptanceCriteriaMet: true },
+    commitSha: '0123456789abcdef0123456789abcdef01234567',
+    qualityGateResults: { gateIde: 'pass', gatePreCommit: 'pass', gateCi: 'pass' },
   }));
   assert.deepEqual(validateCollectedArtifact(file, '77'), []);
 

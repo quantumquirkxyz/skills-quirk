@@ -8,7 +8,23 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
-## [Unreleased]
+## [Unreleased]\n\n## [3.1.1] - 2026-11-27
+
+### Added
+
+- Added fail-closed installation, upgrade, validation, review, and publication controls.
+- Added copy-safe installation reports, canonical artifact validation, real commit SHA checks, scope enforcement, review-loop termination safeguards, and merge protection.
+
+### Changed
+
+- Consolidated the delivery workflow around explicit passed, failed, skipped, partial, blocked, and outcome-unknown states.
+- Updated release metadata and generated projections to version 3.1.1.
+
+### Validation
+
+- Focused installation, schema, fleet, and integrity tests passed.
+- Link and skill validation passed.
+- The repository-wide gate remains blocked by pre-existing baseline findings recorded in the delivery report.
 
 ## [3.1.0] - 2026-11-21
 
