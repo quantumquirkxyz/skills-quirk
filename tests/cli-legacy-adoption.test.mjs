@@ -24,7 +24,7 @@ for (const [name, args] of [
   test(`${name} previews safely and requires --write`, t => {
     const target = mkdtempSync(path.join(tmpdir(), 'quirk-cli-legacy-'));
     t.after(() => rmSync(target, { recursive: true, force: true }));
-    writeFileSync(path.join(target, 'skills-lock.json'), '{}\n');
+    writeFileSync(path.join(target, 'skills-lock.json'), readFileSync(path.join(root, 'skills-lock.json')));
 
     const preview = run(target, args);
     const report = JSON.parse(preview.stdout);
