@@ -53,7 +53,9 @@ function resolveCommand(command, commandArgs) {
     'metrics': { script: '.agents/skills/platform/skill-lab.mjs', args: ['metrics'] },
     'sync': { script: 'scripts/sync-registry.mjs' },
     'catalog': { script: 'scripts/generate-site-data.mjs' },
-    'install': { script: 'scripts/install-quirk-skills.sh', cwd: consumerCwd },
+    // Legacy install now delegates to the safe, manifest-backed adoption flow.
+    // Preview is the default; callers must opt in to writes explicitly.
+    'install': { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd], cwd: bundleRoot },
     // Safe repository adoption: inspect first, then opt in to --write.
     'adopt': { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd] },
     'verify-install': { script: 'scripts/manage-adoption.mjs', args: ['verify'], cwd: consumerCwd },
@@ -64,8 +66,8 @@ function resolveCommand(command, commandArgs) {
   };
   if (command === 'add') {
     if (commandArgs[0] !== 'quirk-skills') return null;
-    // Legacy local install alias; it uses the checked-out bundle and does not require a package registry.
-    return { script: 'scripts/setup-quirk-skills.sh', args: [consumerCwd, bundleRoot], cwd: consumerCwd, skipUserArgs: 1 };
+    // Preserve the npx alias while delegating to the safe adoption flow.
+    return { script: '.agents/skills/platform/sync-bundle.mjs', args: [consumerCwd], cwd: bundleRoot, skipUserArgs: 1 };
   }
   return commands[command] || null;
 }
@@ -96,14 +98,15 @@ Commands:
   metrics               Generate skill bundle metrics
   sync [--write]        Sync registry.yaml to marketplace.json and catalog
   catalog [--write]     Generate site/src/skills.json
-  install               Legacy greenfield installer (replaces managed paths)
+  install [--write]     Legacy alias for safe adoption (preview by default)
   adopt [--incremental] [--write]  Preview or incrementally sync into the current project
   verify-install         Verify the managed installation manifest and drift
   upgrade [--write]      Preview or apply a backed-up managed upgrade
   rollback [--write]     Preview or restore the latest pre-upgrade state
   uninstall [--write]    Preview or conservatively remove unchanged managed files
   issue-meta             Preview/apply assignees, labels, milestone, project, relationships, and Development linkage
-  add quirk-skills      Install/setup the bundle into the current repo
+  add quirk-skills [--write]
+                        Legacy alias for safe adoption (preview by default)
   version               Print CLI version
 
 Examples:
