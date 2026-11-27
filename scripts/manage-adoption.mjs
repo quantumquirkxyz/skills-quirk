@@ -145,6 +145,11 @@ async function upgrade() {
   const applied = runSync('--write', '--force');
   if (applied.status !== 0) throw new Error(applied.stderr || applied.stdout || 'upgrade sync failed');
   console.log(JSON.stringify({ status: 'pass', mode: 'write', backupRoot: path.relative(targetRoot, backupRoot).split(path.sep).join('/'), backedUp: backupFiles.length }, null, 2));
+  /*
+   * The backup is the recovery boundary: managed files may be updated, but
+   * unchanged skills remain hash-preserved by sync-bundle and rollback remains
+   * available for every overwritten managed path.
+   */
 }
 
 
