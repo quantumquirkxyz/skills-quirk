@@ -1,6 +1,6 @@
 # Installation Options: From One Skill to Full Harness
 
-Status: installation guidance reviewed 2026-11-10. Skills are installed **by prompt only** — there is no npm/npx installation channel for this bundle. Re-run the portable distribution workflows for the exact release candidate before publishing.
+Status: installation guidance reviewed 2026-11-27. Skills are installed **by prompt only** — there is no npm/npx installation channel for this bundle. Re-run the portable distribution workflows for the exact release candidate before publishing.
 
 ## Preferred path: prompt-based install
 
@@ -14,8 +14,8 @@ From a local checkout of this repository:
 
 ```bash
 node .agents/skills/platform/check-all.mjs
-node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo          # dry run
-node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write  # apply
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental          # dry run for an existing repo
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental --write  # apply safe delta
 ```
 
 The dry run writes nothing. Existing repositories should preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation unless the user explicitly approves broader adoption changes.
@@ -25,8 +25,8 @@ The dry run writes nothing. Existing repositories should preserve their own `REA
 Run the CLI from this checkout with `node bin/skills-quirk.js <command>` (it is not installed globally):
 
 ```bash
-node bin/skills-quirk.js adopt            # preview conflicts and planned files, no writes
-node bin/skills-quirk.js adopt --write    # apply only if the preview reports no conflicts
+node bin/skills-quirk.js adopt --incremental            # preview the safe delta, no writes
+node bin/skills-quirk.js adopt --incremental --write     # apply only if the preview reports no conflicts
 ```
 
 The `adopt` command routes to the repository's `sync-bundle.mjs` synchronizer. A successful write creates `.agents/quirk-install.json`, which records hashes of bundle-managed files and compatibility links. That manifest enables three additional lifecycle commands:
