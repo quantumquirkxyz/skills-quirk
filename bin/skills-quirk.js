@@ -64,7 +64,7 @@ function resolveCommand(command, commandArgs) {
   };
   if (command === 'add') {
     if (commandArgs[0] !== 'quirk-skills') return null;
-    // npx-generated install alias; it sets up the bundle in the caller's current repo.
+    // Legacy local install alias; it uses the checked-out bundle and does not require a package registry.
     return { script: 'scripts/setup-quirk-skills.sh', args: [consumerCwd, bundleRoot], cwd: consumerCwd, skipUserArgs: 1 };
   }
   return commands[command] || null;
@@ -97,7 +97,7 @@ Commands:
   sync [--write]        Sync registry.yaml to marketplace.json and catalog
   catalog [--write]     Generate site/src/skills.json
   install               Legacy greenfield installer (replaces managed paths)
-  adopt [--write]        Safely preview or sync into the current project
+  adopt [--incremental] [--write]  Preview or incrementally sync into the current project
   verify-install         Verify the managed installation manifest and drift
   upgrade [--write]      Preview or apply a backed-up managed upgrade
   rollback [--write]     Preview or restore the latest pre-upgrade state
@@ -114,8 +114,8 @@ Examples:
   node bin/skills-quirk.js graph --format mermaid
   node bin/skills-quirk.js sync --write
   node bin/skills-quirk.js mcp --stdio
-  node bin/skills-quirk.js adopt
-  node bin/skills-quirk.js adopt --write
+  node bin/skills-quirk.js adopt --incremental
+  node bin/skills-quirk.js adopt --incremental --write
   node bin/skills-quirk.js verify-install
   node bin/skills-quirk.js upgrade
   node bin/skills-quirk.js upgrade --write
