@@ -113,10 +113,10 @@ Execution contract:
    - Treat removed upstream skills as review items; do not delete them automatically.
    - Verify every .claude/skills entry is a symlink to the expected .agents/skills target.
 4. Run the canonical dry run:
-   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository>
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --incremental
    Inspect its JSON result. Do not use --force automatically. A conflict involving a local file, local modification, non-symlink compatibility entry, ADR, CONTEXT.md, README.md, or product documentation is a hard stop.
 5. Apply only the safe delta:
-   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --write
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --incremental --write
    The synchronizer must compare file contents and skip byte-identical files. It may create missing files and update changed bundle-managed files only after the dry run confirms they are safe. It must preserve valid existing compatibility symlinks.
 6. Reconcile generated metadata only when required:
    - Update skills-lock.json and skills.json when the canonical bundle changed.
