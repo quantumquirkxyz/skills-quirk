@@ -18,5 +18,21 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "structured-output",
+  "id": "output-contract-structured-output",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "json schema",
+      "validation",
+      "constrained decoding"
+    ],
+    "doesNotContain": [
+      "skip validation",
+      "guaranteed valid"
+    ]
+  }
 }

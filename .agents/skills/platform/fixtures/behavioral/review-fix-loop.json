@@ -17,11 +17,11 @@
           "## Exit Conditions",
           "## Deferred Work",
           "ReviewFixLoopArtifact",
-           "Recovery decision table",
-           "stale plan",
-           "validation failure",
-           "remote conflict",
-           "recoverable failures",
+          "Recovery decision table",
+          "stale plan",
+          "validation failure",
+          "remote conflict",
+          "recoverable failures",
           "## Review Fix Plan",
           "User stop",
           ".agents/skills/platform/artifacts/review-fix-loop/{identifier}.json"
@@ -69,12 +69,24 @@
           "@include .agents/skills/platform/contract-base.xml"
         ]
       }
-    }
-    ,{
+    },
+    {
       "id": "saga-crash-existing-remote-stale-review-repeated-action",
       "skill": "review-fix-loop",
       "type": "behavioral",
-      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "revisionFence", "never duplicate", "budget-exceeded", "rollback evidence"]}
+      "expected": {
+        "outputContains": [
+          "operationId",
+          "outcome-unknown",
+          "dryRun",
+          "fixedPoint",
+          "revisionFence",
+          "never duplicate",
+          "budget-exceeded",
+          "rollback evidence"
+        ]
+      }
     }
-  ]
+  ],
+  "skill": "review-fix-loop"
 }

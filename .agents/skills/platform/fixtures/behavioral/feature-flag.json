@@ -5,9 +5,34 @@
       "skill": "feature-flag",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "FeatureFlagArtifact", "4 weeks", "rollout"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "FeatureFlagArtifact",
+          "4 weeks",
+          "rollout"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "feature-flag",
+  "id": "v2-contract-feature-flag",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "FeatureFlagArtifact",
+      "4 weeks",
+      "rollout"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

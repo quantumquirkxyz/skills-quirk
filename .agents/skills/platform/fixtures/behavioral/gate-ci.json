@@ -5,9 +5,36 @@
       "skill": "gate-ci",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "GateCiArtifact", "80%", "30min", "security scan"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "GateCiArtifact",
+          "80%",
+          "30min",
+          "security scan"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "gate-ci",
+  "id": "v2-contract-gate-ci",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "GateCiArtifact",
+      "80%",
+      "30min",
+      "security scan"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

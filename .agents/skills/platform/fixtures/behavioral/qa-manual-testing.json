@@ -1,1 +1,76 @@
-{"skill":"qa-manual-testing","seed":1729,"cases":[{"id":"happy-path","kind":"deterministic","expected":"PASS"},{"id":"permission-denied","kind":"negative","expected":"FAIL"},{"id":"blocked-device","kind":"negative","expected":"NOT-RUN"}],"checks":["manifest","flaky-retry","accessibility","privacy-redaction"],"fixtures":[{"id":"qa-manual-testing-scenario","skill":"qa-manual-testing","type":"regression","expectedOutput":{"contains":["qa-manual-testing"]}}]}
+{
+  "fixtures": [
+    {
+      "skill": "qa-manual-testing",
+      "schema": "schemas/software-engineering/verification-artifact.schema.json",
+      "artifactType": "verification-artifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "charter": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "charter": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "charter": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-qa-manual-testing",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "qa-manual-testing",
+  "schema": "schemas/software-engineering/verification-artifact.schema.json",
+  "artifactType": "verification-artifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "charter": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "charter": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "charter": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-qa-manual-testing",
+  "type": "behavioral"
+}

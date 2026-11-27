@@ -13,7 +13,9 @@
           "evidence-gap",
           "logical impact"
         ],
-        "doesNotContain": ["## Operating Contract"]
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     },
     {
@@ -36,8 +38,14 @@
       "input": "Audit the current repository and explain whether the requested behavior is logically implemented",
       "expected": {
         "invokes": true,
-        "outputContains": ["RepositoryAuditArtifact", "objective", "findings"],
-        "doesNotContain": ["not found"]
+        "outputContains": [
+          "RepositoryAuditArtifact",
+          "objective",
+          "findings"
+        ],
+        "doesNotContain": [
+          "not found"
+        ]
       }
     },
     {
@@ -48,9 +56,18 @@
       "input": "Inspect this module end to end for defects and risks",
       "expected": {
         "invokes": true,
-        "usesTools": ["Read", "Grep", "Bash"],
-        "outputContains": ["scope", "inspected", "limitations"]
+        "usesTools": [
+          "Read",
+          "Grep",
+          "Bash"
+        ],
+        "outputContains": [
+          "scope",
+          "inspected",
+          "limitations"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "code-review"
 }

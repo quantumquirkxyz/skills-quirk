@@ -5,9 +5,30 @@
       "skill": "ask-to",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "routing", "state-machine"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "routing",
+          "state-machine"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "ask-to",
+  "id": "v2-contract-ask-to",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "routing",
+      "state-machine"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

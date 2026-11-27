@@ -5,9 +5,36 @@
       "skill": "mcp-server",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "McpServerArtifact", "MCP", "tool definitions", "resource definitions"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "McpServerArtifact",
+          "MCP",
+          "tool definitions",
+          "resource definitions"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "mcp-server",
+  "id": "v2-contract-mcp-server",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "McpServerArtifact",
+      "MCP",
+      "tool definitions",
+      "resource definitions"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

@@ -1,1 +1,76 @@
-{"skill":"qa-automation","seed":1729,"cases":[{"id":"valid-contract","kind":"deterministic","expected":"PASS"},{"id":"malformed-input","kind":"negative","expected":"FAIL"},{"id":"dependency-unavailable","kind":"negative","expected":"NOT-RUN"}],"checks":["manifest","flaky","mutation","property","redaction"],"fixtures":[{"id":"qa-automation-scenario","skill":"qa-automation","type":"regression","expectedOutput":{"contains":["qa-automation"]}}]}
+{
+  "fixtures": [
+    {
+      "skill": "qa-automation",
+      "schema": "schemas/software-engineering/verification-artifact.schema.json",
+      "artifactType": "verification-artifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "suite": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "suite": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "suite": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-qa-automation",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "qa-automation",
+  "schema": "schemas/software-engineering/verification-artifact.schema.json",
+  "artifactType": "verification-artifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "suite": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "suite": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "suite": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-qa-automation",
+  "type": "behavioral"
+}

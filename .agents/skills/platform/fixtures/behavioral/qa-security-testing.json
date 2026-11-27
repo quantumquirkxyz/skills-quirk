@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "qa-security-testing",
+      "schema": "schemas/software-engineering/verification-artifact.schema.json",
+      "artifactType": "verification-artifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "threatModel": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "threatModel": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "threatModel": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-qa-security-testing",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "qa-security-testing",
+  "schema": "schemas/software-engineering/verification-artifact.schema.json",
+  "artifactType": "verification-artifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "threatModel": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "threatModel": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "threatModel": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-qa-security-testing",
+  "type": "behavioral"
+}

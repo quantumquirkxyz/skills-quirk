@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "loop-engineering",
+      "schema": "schemas/software-engineering/project-assessment-or-architecture.schema.json",
+      "artifactType": "LoopEngineeringArtifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "budget": 2
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "budget": 0
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "budget": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-loop-engineering",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "loop-engineering",
+  "schema": "schemas/software-engineering/project-assessment-or-architecture.schema.json",
+  "artifactType": "LoopEngineeringArtifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "budget": 2
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "budget": 0
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "budget": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-loop-engineering",
+  "type": "behavioral"
+}

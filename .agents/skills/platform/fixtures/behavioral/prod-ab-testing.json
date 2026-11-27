@@ -1,64 +1,76 @@
 {
   "fixtures": [
     {
-      "id": "v2-contract-prod-ab-testing",
       "skill": "prod-ab-testing",
-      "type": "behavioral",
-      "expected": {
-        "outputContains": [
-          "## Contract",
-          "## Provenance",
-          "## Artifact",
-          "## Completion",
-          "## Process",
-          "ProdAbTestingArtifact",
-          "Exclusions",
-          "Minimum detectable effect (MDE)",
-          "Significance level α"
-        ],
-        "doesNotContain": [
-          "## Operating Contract",
-          "ask-matt",
-          "ship-review-fix-loop",
-          "doc-draft-pr",
-          "frontend-development",
-          "Matt",
-          "TODO",
-          "point 1",
-          "Criterion 1",
-          "Acceptance criterion 1",
-          "BE-2",
-          "OpenAPI spec",
-          "localhost:3000",
-          "extremely extensive"
-        ]
-      }
-    },
-    {
-      "id": "v2-frontmatter-prod-ab-testing",
-      "skill": "prod-ab-testing",
-      "type": "behavioral",
-      "expected": {
-        "frontmatterContains": [
-          "name: \"prod-ab-testing\"",
-          "risk: \"medium\"",
-          "trustTier: \"3\"",
-          "modelTier: \"reasoning\"",
-          "promptVersion: \"2.0\"",
-          "artifactType: \"pull-request\"",
-          "diataxis: \"how-to\""
-        ]
-      }
-    },
-    {
-      "id": "v2-footer-prod-ab-testing",
-      "skill": "prod-ab-testing",
-      "type": "behavioral",
-      "expected": {
-        "outputContains": [
-          "@include .agents/skills/platform/contract-base.xml"
-        ]
-      }
+      "schema": "schemas/software-engineering/experiment-artifact.schema.json",
+      "artifactType": "ExperimentArtifact",
+      "capabilityRequirements": [
+        "AB (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "observability",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "hypothesis": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "hypothesis": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "hypothesis": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-prod-ab-testing",
+      "type": "behavioral"
     }
-  ]
+  ],
+  "skill": "prod-ab-testing",
+  "schema": "schemas/software-engineering/experiment-artifact.schema.json",
+  "artifactType": "ExperimentArtifact",
+  "capabilityRequirements": [
+    "AB (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "observability",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "hypothesis": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "hypothesis": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "hypothesis": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-prod-ab-testing",
+  "type": "behavioral"
 }

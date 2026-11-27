@@ -5,8 +5,19 @@
       "skill": "implement",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "ImplementArtifact"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "ImplementArtifact",
+          "independently reviewable logical unit",
+          "English conventional",
+          "exact commit SHA",
+          "never push from implement"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     },
     {
@@ -14,7 +25,17 @@
       "skill": "implement",
       "type": "behavioral",
       "expected": {
-        "frontmatterContains": ["modelTier: code", "promptVersion: \"2.0\"", "artifactType: implementation", "evaluators:", "fixturesPath:", "diataxis:", "tags:", "compatibility:", "approvalRequired:"]
+        "frontmatterContains": [
+          "modelTier: code",
+          "promptVersion: \"2.0\"",
+          "artifactType: implementation",
+          "evaluators:",
+          "fixturesPath:",
+          "diataxis:",
+          "tags:",
+          "compatibility:",
+          "approvalRequired:"
+        ]
       }
     },
     {
@@ -22,8 +43,11 @@
       "skill": "implement",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["@include .agents/skills/platform/contract-base.xml"]
+        "outputContains": [
+          "@include .agents/skills/platform/contract-base.xml"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "implement"
 }

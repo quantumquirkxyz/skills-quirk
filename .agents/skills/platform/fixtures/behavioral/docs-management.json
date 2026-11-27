@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "docs-management",
+      "schema": "schemas/software-engineering/documentation-guidance-artifact.schema.json",
+      "artifactType": "DocumentationGuidanceArtifact",
+      "capabilityRequirements": [
+        "requirements-engineering (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "requirements-engineering",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "document": "adr"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "document": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "document": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-docs-management",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "docs-management",
+  "schema": "schemas/software-engineering/documentation-guidance-artifact.schema.json",
+  "artifactType": "DocumentationGuidanceArtifact",
+  "capabilityRequirements": [
+    "requirements-engineering (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "requirements-engineering",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "document": "adr"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "document": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "document": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-docs-management",
+  "type": "behavioral"
+}

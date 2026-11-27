@@ -64,5 +64,6 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "subagent-swarm"
 }

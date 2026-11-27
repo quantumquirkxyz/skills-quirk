@@ -15,11 +15,11 @@
           "Refund",
           "Dispute / chargeback",
           "Adyen",
-           "ledger invariants",
-           "partial settlement",
-           "provider failover",
-           "fraud outcomes",
-           "PCI evidence boundary"
+          "ledger invariants",
+          "partial settlement",
+          "provider failover",
+          "fraud outcomes",
+          "PCI evidence boundary"
         ],
         "doesNotContain": [
           "## Operating Contract",
@@ -36,7 +36,7 @@
           "OpenAPI spec",
           "localhost:3000",
           "extremely extensive",
-           "legal certification"
+          "legal certification"
         ]
       }
     },
@@ -66,5 +66,6 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "payments"
 }

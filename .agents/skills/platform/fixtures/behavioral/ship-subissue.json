@@ -16,10 +16,10 @@
           "Never merge with unresolved review findings.",
           "Never mark an issue complete unless the linked reference is clear.",
           "Never delete the branch before the merge has succeeded.",
-           "Configurable transition policy",
-           "protected states",
-           "merge verification -> project update -> issue state/labels -> close -> branch deletion",
-           "idempotent"
+          "Configurable transition policy",
+          "protected states",
+          "merge verification -> project update -> issue state/labels -> close -> branch deletion",
+          "idempotent"
         ],
         "doesNotContain": [
           "## Operating Contract",
@@ -64,12 +64,23 @@
           "@include .agents/skills/platform/contract-base.xml"
         ]
       }
-    }
-    ,{
+    },
+    {
       "id": "saga-crash-existing-remote-stale-review-repeated-action-ship-subissue",
       "skill": "ship-subissue",
       "type": "behavioral",
-      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "branch protection", "never duplicate", "rollback evidence"]}
+      "expected": {
+        "outputContains": [
+          "operationId",
+          "outcome-unknown",
+          "dryRun",
+          "fixedPoint",
+          "branch protection",
+          "never duplicate",
+          "rollback evidence"
+        ]
+      }
     }
-  ]
+  ],
+  "skill": "ship-subissue"
 }

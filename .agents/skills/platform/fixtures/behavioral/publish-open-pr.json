@@ -5,15 +5,40 @@
       "skill": "publish-open-pr",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "PublishOpenPrArtifact", "gate-ci", "gh pr create", "linked issue identity", "Project V2", "unsupported", "partial", "never by `@me`"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "PublishOpenPrArtifact",
+          "gate-ci",
+          "gh pr create",
+          "linked issue identity",
+          "Project V2",
+          "unsupported",
+          "partial",
+          "never by `@me`"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
-    }
-    ,{
+    },
+    {
       "id": "saga-crash-existing-remote-repeated-action",
       "skill": "publish-open-pr",
       "type": "behavioral",
-      "expected": {"outputContains": ["operationId", "outcome-unknown", "dryRun", "fixedPoint", "branch protection", "never create a second PR", "checkpoint"]}
+      "expected": {
+        "outputContains": [
+          "operationId",
+          "outcome-unknown",
+          "dryRun",
+          "fixedPoint",
+          "branch protection",
+          "never create a second PR",
+          "checkpoint"
+        ]
+      }
     }
-  ]
+  ],
+  "skill": "publish-open-pr"
 }

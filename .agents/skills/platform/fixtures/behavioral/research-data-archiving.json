@@ -1,1 +1,48 @@
-{"skill":"research-data-archiving","seed":1729,"cases":[{"id":"fair-care-complete","kind":"deterministic","expected":"PASS"},{"id":"corrupt-sensitive","kind":"negative","expected":"FAIL"},{"id":"restricted-consent-unknown","kind":"negative","expected":"NOT-RUN"}],"checks":["manifest","provenance","license","fair","care","redaction"],"fixtures":[{"id":"research-data-archiving-scenario","skill":"research-data-archiving","type":"regression","expectedOutput":{"contains":["research-data-archiving"]}}]}
+{
+  "skill": "research-data-archiving",
+  "seed": 1729,
+  "cases": [
+    {
+      "id": "fair-care-complete",
+      "kind": "deterministic",
+      "expected": "PASS"
+    },
+    {
+      "id": "corrupt-sensitive",
+      "kind": "negative",
+      "expected": "FAIL"
+    },
+    {
+      "id": "restricted-consent-unknown",
+      "kind": "negative",
+      "expected": "NOT-RUN"
+    }
+  ],
+  "checks": [
+    "manifest",
+    "provenance",
+    "license",
+    "fair",
+    "care",
+    "redaction"
+  ],
+  "fixtures": [
+    {
+      "id": "research-data-archiving-scenario",
+      "skill": "research-data-archiving",
+      "type": "regression",
+      "expectedOutput": {
+        "contains": [
+          "research-data-archiving"
+        ]
+      }
+    }
+  ],
+  "id": "research-data-archiving-scenario",
+  "type": "regression",
+  "expectedOutput": {
+    "contains": [
+      "research-data-archiving"
+    ]
+  }
+}

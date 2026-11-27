@@ -63,5 +63,6 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "ai-time-series-forecasting"
 }

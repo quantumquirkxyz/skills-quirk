@@ -61,5 +61,6 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "devops-k8s-orchestration"
 }

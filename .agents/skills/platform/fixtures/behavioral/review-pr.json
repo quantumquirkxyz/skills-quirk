@@ -5,9 +5,34 @@
       "skill": "review-pr",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "ReviewArtifact", "Standards", "Spec"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "ReviewArtifact",
+          "Standards",
+          "Spec"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "review-pr",
+  "id": "v2-contract-review-pr",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "ReviewArtifact",
+      "Standards",
+      "Spec"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

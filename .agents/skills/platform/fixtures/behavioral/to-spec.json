@@ -1,13 +1,76 @@
 {
   "fixtures": [
     {
-      "id": "v2-contract-to-spec",
       "skill": "to-spec",
-      "type": "behavioral",
-      "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "SpecArtifact"],
-        "doesNotContain": ["## Operating Contract"]
-      }
+      "schema": "schemas/software-engineering/requirements-artifact.schema.json",
+      "artifactType": "requirements-artifact",
+      "capabilityRequirements": [
+        "requirements-engineering (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "spec-driven-development",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "request": "clear"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "request": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "request": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-to-spec",
+      "type": "behavioral"
     }
-  ]
+  ],
+  "skill": "to-spec",
+  "schema": "schemas/software-engineering/requirements-artifact.schema.json",
+  "artifactType": "requirements-artifact",
+  "capabilityRequirements": [
+    "requirements-engineering (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "spec-driven-development",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "request": "clear"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "request": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "request": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-to-spec",
+  "type": "behavioral"
 }

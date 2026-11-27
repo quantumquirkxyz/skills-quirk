@@ -1,0 +1,42 @@
+{
+  "fixtures": [
+    {
+      "id": "release-candidate-requires-governance",
+      "skill": "release-management",
+      "type": "behavioral",
+      "expected": {
+        "frontmatterContains": [
+          "approvalRequired: true",
+          "nextConsumer: deployment",
+          "owner: release-manager"
+        ],
+        "outputContains": [
+          "provenance",
+          "rollback",
+          "canary",
+          "ciGates",
+          "approval",
+          "ship-subissue -> release-management -> deployment"
+        ]
+      }
+    }
+  ],
+  "skill": "release-management",
+  "id": "release-candidate-requires-governance",
+  "type": "behavioral",
+  "expected": {
+    "frontmatterContains": [
+      "approvalRequired: true",
+      "nextConsumer: deployment",
+      "owner: release-manager"
+    ],
+    "outputContains": [
+      "provenance",
+      "rollback",
+      "canary",
+      "ciGates",
+      "approval",
+      "ship-subissue -> release-management -> deployment"
+    ]
+  }
+}

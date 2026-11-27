@@ -1,13 +1,80 @@
 {
   "fixtures": [
     {
-      "id": "v2-contract-to-tickets",
       "skill": "to-tickets",
-      "type": "behavioral",
-      "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact", "TicketArtifact", "tracer bullet"],
-        "doesNotContain": ["## Operating Contract"]
-      }
+      "schema": "schemas/software-engineering/ticket-artifact.schema.json",
+      "artifactType": "ticket-artifact",
+      "capabilityRequirements": [
+        "SDD (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "implement",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "tickets": [
+              "t1"
+            ]
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "tickets": []
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "tickets": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-to-tickets",
+      "type": "behavioral"
     }
-  ]
+  ],
+  "skill": "to-tickets",
+  "schema": "schemas/software-engineering/ticket-artifact.schema.json",
+  "artifactType": "ticket-artifact",
+  "capabilityRequirements": [
+    "SDD (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "implement",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "tickets": [
+          "t1"
+        ]
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "tickets": []
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "tickets": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-to-tickets",
+  "type": "behavioral"
 }

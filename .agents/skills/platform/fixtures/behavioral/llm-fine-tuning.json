@@ -63,5 +63,6 @@
         ]
       }
     }
-  ]
+  ],
+  "skill": "llm-fine-tuning"
 }

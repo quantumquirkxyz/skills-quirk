@@ -5,9 +5,28 @@
       "skill": "context-engine",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "context-engine",
+  "id": "v2-contract-context-engine",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

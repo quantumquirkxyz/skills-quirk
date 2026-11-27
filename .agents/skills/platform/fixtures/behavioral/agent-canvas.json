@@ -5,9 +5,28 @@
       "skill": "agent-canvas",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "agent-canvas",
+  "id": "v2-contract-agent-canvas",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }

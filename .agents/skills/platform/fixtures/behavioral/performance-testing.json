@@ -1,1 +1,76 @@
-{"skill":"performance-testing","seed":1729,"cases":[{"id":"baseline-deterministic","kind":"deterministic","expected":"PASS"},{"id":"missing-telemetry","kind":"negative","expected":"NOT-RUN"},{"id":"invalid-threshold","kind":"negative","expected":"FAIL"}],"checks":["manifest","flaky-retry","mutation","property","redaction"],"fixtures":[{"id":"performance-testing-scenario","skill":"performance-testing","type":"regression","expectedOutput":{"contains":["performance-testing"]}}]}
+{
+  "fixtures": [
+    {
+      "skill": "performance-testing",
+      "schema": "schemas/software-engineering/verification-artifact.schema.json",
+      "artifactType": "verification-artifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "workload": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "workload": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "workload": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-performance-testing",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "performance-testing",
+  "schema": "schemas/software-engineering/verification-artifact.schema.json",
+  "artifactType": "verification-artifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "workload": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "workload": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "workload": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-performance-testing",
+  "type": "behavioral"
+}

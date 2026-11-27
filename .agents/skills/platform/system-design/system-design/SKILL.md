@@ -9,29 +9,31 @@ capabilities:
   - apply system design methods within explicit platform boundaries
   - analyze design whole systems — components, data flow, scaling, reliability, and trade-offs — with clear assumptions and failure boundaries with assumptions, constraints, and failure modes
   - produce and validate a platform artifact with evidence, decisions, and next steps
-outputs: "system design proposal with components, data flow, APIs, storage, trade-offs, risks, and validation plan."
-sideEffects: []
+outputs: "ArchitectureArtifact with components, data flow, APIs, storage, trade-offs, risks, and validation plan."
+sideEffects: ["write-files"]
 dependencies: []
 stopCondition: "Components, data flow, trade-offs, failure modes, and operational assumptions are explicit."
-risk: "low"
-trustTier: "1"
+risk: "medium"
+trustTier: "3"
 maxIterations: "6"
 promptVersion: "2.0"
-artifactType: "plan"
+artifactType: "ArchitectureArtifact"
 modelTier: "reasoning"
 evaluators: ["behavioral", "regression"]
 fixturesPath: ".agents/skills/platform/fixtures/behavioral/system-design.json"
 diataxis: "how-to"
 tags: ["platform/system-design"]
 compatibility: []
-approvalRequired: "false"
-approvalFor: []
+approvalRequired: "true"
+approvalFor: ["write-files"]
 ---
 
 ## Contract
 
 - Input: goals, users, scale, constraints, data model, integration points, and operational requirements.
 - Output: system design proposal with components, data flow, APIs, storage, trade-offs, risks, and validation plan.
+- Contract base: emit and validate `ArchitectureArtifact` against `schemas/software-engineering/architecture-artifact.schema.json`.
+- Fixed point and handoff: record schema version, artifact/operation IDs, source requirements and architecture digests, repository/environment fixed point, owner, next consumer, approvals, risks, blockers, verification evidence, and a versioned schema/API handoff. Write only the declared local artifact files.
 - Scope: make assumptions visible and avoid pretending a single architecture is optimal for every constraint.
 - Rule: make assumptions visible and avoid pretending a single architecture is optimal for every constraint.
 - Rule: documented standards override defaults; explicit project rules take precedence.

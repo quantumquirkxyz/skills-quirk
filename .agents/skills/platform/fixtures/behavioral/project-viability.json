@@ -1,13 +1,76 @@
 {
   "fixtures": [
     {
-      "id": "v2-contract-project-viability",
       "skill": "project-viability",
-      "type": "behavioral",
-      "expected": {
-        "outputContains": ["## Contract", "## Provenance", "## Artifact"],
-        "doesNotContain": ["## Operating Contract"]
-      }
+      "schema": "schemas/software-engineering/viability-artifact.schema.json",
+      "artifactType": "ViabilityArtifact",
+      "capabilityRequirements": [
+        "project-development (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "project-development",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "assessment": "evidence"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "assessment": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "assessment": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-project-viability",
+      "type": "behavioral"
     }
-  ]
+  ],
+  "skill": "project-viability",
+  "schema": "schemas/software-engineering/viability-artifact.schema.json",
+  "artifactType": "ViabilityArtifact",
+  "capabilityRequirements": [
+    "project-development (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "project-development",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "assessment": "evidence"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "assessment": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "assessment": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-project-viability",
+  "type": "behavioral"
 }

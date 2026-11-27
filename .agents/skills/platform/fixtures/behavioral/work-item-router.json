@@ -5,9 +5,30 @@
       "skill": "work-item-router",
       "type": "behavioral",
       "expected": {
-        "outputContains": ["## Contract", "## Provenance", "routing", "governance"],
-        "doesNotContain": ["## Operating Contract"]
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "routing",
+          "governance"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
       }
     }
-  ]
+  ],
+  "skill": "work-item-router",
+  "id": "v2-contract-work-item-router",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "routing",
+      "governance"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
 }
