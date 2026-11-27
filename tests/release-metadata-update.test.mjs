@@ -11,14 +11,14 @@ const run = (env = {}) => {
 };
 
 test('release metadata gate evaluates the current merge-base diff safely', () => {
-  const result = run({ RELEASE_METADATA_BASE: 'HEAD' });
+  const result = run({ RELEASE_METADATA_BASE: 'origin/main' });
   assert.equal(result.status, 0);
   assert.match(result.output, /required update present/);
 });
 
 test('release metadata exemptions are explicit and bounded', () => {
-  assert.equal(run({ RELEASE_METADATA_BASE: 'HEAD', RELEASE_METADATA_EXEMPTION: 'generated-only' }).status, 1);
-  assert.equal(run({ RELEASE_METADATA_BASE: 'HEAD', RELEASE_METADATA_EXEMPTION: 'emergency-maintenance' }).status, 1);
-  assert.equal(run({ RELEASE_METADATA_BASE: 'HEAD', RELEASE_METADATA_EXEMPTION: 'emergency-maintenance', RELEASE_METADATA_EXEMPTION_REASON: 'incident fix' }).status, 0);
-  assert.equal(run({ RELEASE_METADATA_BASE: 'HEAD', RELEASE_METADATA_EXEMPTION: 'nope' }).status, 1);
+  assert.equal(run({ RELEASE_METADATA_BASE: 'origin/main', RELEASE_METADATA_EXEMPTION: 'generated-only' }).status, 1);
+  assert.equal(run({ RELEASE_METADATA_BASE: 'origin/main', RELEASE_METADATA_EXEMPTION: 'emergency-maintenance' }).status, 1);
+  assert.equal(run({ RELEASE_METADATA_BASE: 'origin/main', RELEASE_METADATA_EXEMPTION: 'emergency-maintenance', RELEASE_METADATA_EXEMPTION_REASON: 'incident fix' }).status, 0);
+  assert.equal(run({ RELEASE_METADATA_BASE: 'origin/main', RELEASE_METADATA_EXEMPTION: 'nope' }).status, 1);
 });
