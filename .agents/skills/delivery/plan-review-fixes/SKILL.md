@@ -38,8 +38,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/plan-review-fixes.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "true"
-approvalFor: ["post-pr-comment"]
+approvalRequired: "false"
+approvalFor: []
 ---
 
 ## Contract
@@ -49,9 +49,9 @@ approvalFor: ["post-pr-comment"]
 - Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
 - Rule: follow the skill's completion criteria and stop condition exactly.
 - Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; preserve supplied values in `PlanReviewFixesArtifact`.
-- Side effect ownership: this skill owns one review-plan comment publication; posting it requires explicit approval. It does not own source edits, review dismissal, merge, issue closure, or implementation.
+- Side effect ownership: this skill owns one review-plan comment publication and posts it automatically within the declared PR scope. It does not own source edits, review dismissal, merge, issue closure, or implementation.
 - Recovery invariant: checkpoint after finding normalization and before/after comment publication. If publication is unknown, reconcile existing PR comments by the fixed heading, fixed point, operation key, and plan digest; adopt or supersede the matching comment, never post a duplicate plan.
-- Retry invariant: reconcile remote comments and verify `fixedPoint` before every retry. Changed review state returns `stale-input`; missing approval returns `needs-approval`; malformed findings or failed validation returns `validation-failed`; replaced work returns `superseded`.
+- Retry invariant: reconcile remote comments and verify `fixedPoint` before every retry. Changed review state returns `stale-input`; malformed findings or failed validation returns `validation-failed`; replaced work returns `superseded`.
 
 ## Provenance
 

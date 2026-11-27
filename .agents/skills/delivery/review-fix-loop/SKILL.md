@@ -32,8 +32,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/review-fix-loop.json
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: "true"
-approvalFor: ["write-code", "post-pr-comment", "commit-git", "push-branch"]
+approvalRequired: "false"
+approvalFor: []
 clauses:
   - id: REVIEW-FIX-LOOP-1
     text: "Stop instead of restating the same repair when a pass would post the same review-fix plan without a new finding."
@@ -55,9 +55,9 @@ reloadPolicy: on-trigger
 - Rule: documented standards override defaults; explicit project rules take precedence.
 - Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
 - Contract metadata: carry `loopId`, `ledgerRef`, `budget`, `progressEvidence`, `recoveryPolicy`, and `status`; carry `operationId` for comments, code, git, or other external effects.
-- Standard statuses are `planned`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, `superseded`, and `rolled-back`.
+- Standard statuses are `planned`, `completed`, `blocked`, `outcome-unknown`, `stale-input`, `validation-failed`, `budget-exceeded`, `repeated-action`, `superseded`, and `rolled-back`. The loop executes its declared local and PR effects automatically; `needs-approval` is not a normal loop state.
 - Budget precedence is caller budget > loop budget > retry policy; no inherited limit may be relaxed. Unknown effect results require reconciliation by `operationId` before repeating the effect.
-- Saga metadata MUST include `dryRun`, `fixedPoint`, `revisionFence`, checkpoints, per-effect approvals, and rollback evidence. Dry-run may review and reconcile but cannot write code, comment, commit, or push.
+- Saga metadata MUST include `dryRun`, `fixedPoint`, `revisionFence`, checkpoints, and rollback evidence. Execute declared loop effects automatically, while validating exact commit SHA before push and reconciling unknown commit/push results by operationId, branch, and SHA. Dry-run remains available for callers that explicitly request it.
 
 ## Provenance
 
@@ -97,7 +97,7 @@ Keep the loop tight: if the same review-fix plan would be posted again without a
 - Fixed point for review-pr, such as `main`, a base branch, a commit SHA, or a tag.
 - Spec source when review-pr cannot infer one.
 
-If the fixed point is missing, ask for it before starting. If the PR is missing, identify it with `gh pr view` or stop.
+If the fixed point is missing, derive it from the PR base branch and record that inference. If the PR is missing, identify it with `gh pr view` or stop.
 
 ## Workflow
 

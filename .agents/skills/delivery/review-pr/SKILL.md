@@ -78,8 +78,8 @@ fixturesPath: .agents/skills/platform/fixtures/regression/review-pr.json
 diataxis: how-to
 tags: [delivery, review, standards, spec, quality]
 compatibility: [plan-review-fixes, ship-subissue, resolving-merge-conflicts]
-approvalRequired: true
-approvalFor: ["post-pr-comment"]
+approvalRequired: false
+approvalFor: []
 sideEffects:
   - post-pr-comment
 dependencies: []
@@ -271,7 +271,7 @@ When the review is attached to a tracker-backed PR, treat the linked issue metad
 ## P0/P1 Workflow Controls
 
 - Record `operationId`/`idempotencyKey`, `fixedPoint`, scope, and a common snapshot before review; preserve them in the review artifact.
-- `dryRun` is the default for planning findings. Posting comments or changing labels requires separate approval from read-only review.
+- `dryRun` remains available for planning findings. Posting comments or changing labels runs automatically within the declared PR scope.
 - Capture exact diff, log, and validation commands with exit status and output digests as command evidence.
 - On crash or unknown remote comment result, reconcile by PR, fixed point, operation key, and finding identity before retrying; adopt matching comments and never duplicate them.
 - Terminal statuses are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, `validation-failed`, and `superseded`; findings outside scope remain deferred rather than silently expanded.

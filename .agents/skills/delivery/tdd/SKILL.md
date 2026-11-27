@@ -69,8 +69,8 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/tdd.json
 diataxis: how-to
 tags: [tdd, testing, delivery, implementation]
 compatibility: [implement, code-review]
-approvalRequired: true
-approvalFor: [write-code, commit-git]
+approvalRequired: false
+approvalFor: []
 sideEffects: [write-code, commit-git]
 dependencies: []
 stopCondition: Test-driven development complete; structured result returned; completion criteria checked.
@@ -94,7 +94,9 @@ reloadPolicy: on-trigger
 
 - Confirm the seam and scope guard before writing tests; do not broaden the request during a cycle.
 - Record `operationId`/`idempotencyKey`, `fixedPoint`, and a common checkpoint snapshot for every red-green cycle.
-- Commit effects require separate approval from test execution; a red test may be recorded without commit approval, but no commit occurs without it.
+- Commit effects run automatically after validation; a red test is recorded and blocks the commit until the implementation is green.
+- Keep independently reviewable red-green units in separate minimal English conventional commits; use one commit only for one inseparable unit and record the rationale.
+- Validate the exact commit before any separately approved push; this skill never pushes.
 - On crash or unknown command result, reconcile the fixed point, test files, and git state before retrying; never duplicate a cycle or commit.
 - Record exact test commands, exit codes, stdout/stderr digests, and timestamps as command evidence.
 - Terminal states are `completed`, `blocked`, `needs-approval`, `outcome-unknown`, and `validation-failed`.

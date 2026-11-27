@@ -35,8 +35,8 @@ fixturesPath: ".agents/skills/platform/fixtures/behavioral/resolving-merge-confl
 diataxis: "how-to"
 tags: ["delivery"]
 compatibility: []
-approvalRequired: true
-approvalFor: ["write-code", "commit-git", "continue-merge-or-rebase"]
+approvalRequired: false
+approvalFor: []
 ---
 
 ## Vocabulary
@@ -74,7 +74,7 @@ The following terms are defined in [CONTEXT.md](../../../../CONTEXT.md) and used
 - Rule: preserve both intents where the conflicting changes are compatible; combine them rather than choosing one side.
 - Rule: where intents genuinely conflict, document the trade-off explicitly and do not silently discard either side.
 - Rule: never discard unrelated user changes while resolving conflicts; only resolve the conflicting hunks.
-- Rule: run the relevant checks after resolution and before committing.
+- Rule: run the relevant checks after resolution and before committing; use a minimal English conventional commit, split independently reviewable units, and record rationale if one inseparable commit is necessary.
 - Rule: finish the merge or rebase process completely; do not leave the branch half-resolved.
 
 ## Provenance
@@ -158,7 +158,7 @@ The following terms are defined in [CONTEXT.md](../../../../CONTEXT.md) and used
 
 ## Guardrails
 
-- Never discard unrelated user changes while resolving conflicts; resolve only the conflicting hunks.
+- Never discard unrelated user changes while resolving conflicts; resolve only the conflicting hunks. Validate the exact resulting commit before any separately approved push and reconcile unknown commit results by operationId, branch, and SHA.
 - Run checks (lint, typecheck, tests) before committing the resolution.
 - Complete the merge or rebase process fully; never leave the branch half-resolved with unmerged paths.
 - Record every conflict decision in the artifact so reviewers can verify intent preservation.

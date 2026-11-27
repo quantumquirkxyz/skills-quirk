@@ -42,8 +42,8 @@ fixturesPath: .agents/skills/platform/fixtures/regression/code-review.json
 diataxis: how-to
 tags: [delivery, audit, logic, architecture, quality]
 compatibility: [diagnosing-bugs, testing, project-viability, improve-codebase-architecture]
-approvalRequired: true
-approvalFor: ["post-pr-comment"]
+approvalRequired: false
+approvalFor: []
 clauses:
   - id: CODE-REVIEW-1
     text: "Establish repository context and the user's objective before judging code, and inspect the complete requested scope rather than assuming a diff is sufficient."

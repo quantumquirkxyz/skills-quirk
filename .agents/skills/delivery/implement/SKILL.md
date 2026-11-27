@@ -32,7 +32,6 @@ outputs:
 sideEffects:
   - write-code
   - commit-git
-  - push-branch
 dependencies:
   - tdd
 stopCondition: Implement a piece of work based on a spec or set of tickets, or build a scoped fix that can be handed off for publication complete; artifact saved; completion criteria checked.
@@ -47,20 +46,20 @@ fixturesPath: .agents/skills/platform/fixtures/behavioral/implement.json
 diataxis: how-to
 tags: [tdd, delivery, implementation, testing]
 compatibility: [to-tickets, publish-open-pr, tdd, gate-ide, gate-pre-commit, gate-ci]
-approvalRequired: true
-approvalFor: ["write-code", "commit-git", "push-branch"]
+approvalRequired: false
+approvalFor: []
 clauses:
   - id: IMPLEMENT-1
     text: "Treat a ticket as executable only when its acceptance criteria are concrete and its blockers are resolved."
     check: "evals/behavioral/implement.json#IMPLEMENT-1"
   - id: IMPLEMENT-2
-    text: "Require an explicit user request or prior workflow approval before any repository-mutating side effect (write-code, commit-git, push-branch)."
+    text: "Execute repository-mutating implementation effects automatically within the declared scope; remote publication remains owned by publish-open-pr."
     check: "evals/behavioral/implement.json#IMPLEMENT-2"
   - id: IMPLEMENT-3
     text: "Do not open or merge a PR here; stop at the validated branch and do not proceed to publish-open-pr until gate-ci passes."
     check: "evals/behavioral/implement.json#IMPLEMENT-3"
   - id: IMPLEMENT-4
-    text: "Drive tracer-bullet vertical slices with TDD at pre-agreed seams: implement, validate, commit, per slice."
+    text: "Drive tracer-bullet vertical slices with TDD at pre-agreed seams: implement, validate, commit, per slice; never push from implement."
     check: "evals/behavioral/implement.json#IMPLEMENT-4"
 reloadPolicy: on-trigger
 ---
@@ -80,11 +79,11 @@ reloadPolicy: on-trigger
 - Rule: break into tracer-bullet vertical slices; each slice: implement → validate → commit.
 - Rule: use TDD at pre-agreed seams (see `tdd` skill).
 - Rule: when implementing incomplete features, use feature flags via `feature-flag` skill and document the flag in the artifact.
-- Rule: trunk-based workflow — short-lived branches (< 24h), push to origin, feature flags for incomplete features.
-- Rule: side effects that change repository state (`write-code`, `commit-git`, `push-branch`) require an explicit user request or prior workflow approval before execution.
+- Rule: trunk-based workflow — short-lived branches (< 24h), hand off the validated branch for separately approved publication, and use feature flags for incomplete features.
+- Rule: side effects that change repository state (`write-code`, `commit-git`) execute automatically within the declared scope; pushing belongs to `publish-open-pr`.
 - Rule: run quality gates after each slice — gate-ide on file-save, gate-pre-commit before commit, gate-ci before PR.
 - Rule: do not proceed to `publish-open-pr` until `gate-ci` passes and the independent verifier records a matching fixed point, source digests, changed-file set, and canonical `completed` verification status.
-- Rule: do not open or merge PR here; stop at validated branch.
+- Rule: do not open or merge PR here; stop at the validated branch and report the exact commit SHA; never push from implement.
 
 The `gate-ide`, `gate-pre-commit`, and `gate-ci` names are compatibility labels for the repository's validation workflows, not canonical skill dependencies. Run their equivalent validation commands when available and record the results in `qualityGateResults`.
 
@@ -93,7 +92,7 @@ See `.agents/skills/prompts/implement/v2.md` for the canonical prompt.
 Implement the work described by the user in the spec or tickets.
 
 Follow the issue workflow in `AGENTS.md` for branch creation and publication handoff.
-When the work comes from a spec or ticket set that expects a dedicated issue branch, create a new branch from the current branch before editing, so it inherits the current branch state and history. Name the branch formally from the issue reference, for example `feat/issue-28-consolidate-simulation-notebook-runtime-entry-points`, unless the user or spec explicitly names a different branch. After the local branch is ready, push the same branch name to `origin` so it is available for review and publication.
+When the work comes from a spec or ticket set that expects a dedicated issue branch, create a new branch from the current branch before editing, so it inherits the current branch state and history. Name the branch formally from the issue reference, for example `feat/issue-28-consolidate-simulation-notebook-runtime-entry-points`, unless the user or spec explicitly names a different branch. After the local branch is ready, stop with the exact validated commit identity; `publish-open-pr` owns separately approved publication.
 
 Use /tdd where possible, at pre-agreed seams.
 
@@ -128,7 +127,7 @@ Every artifact this skill produces must answer the quality bar:
    - Write a failing test (red).
    - Implement the minimal code to pass (green).
    - Run quality gates (validate).
-   - Commit with a conventional message.
+   - Commit each independently reviewable logical unit with a minimal English conventional message; use one commit only for one inseparable unit and record the rationale.
 4. Run the full test suite and gate-ci.
 
 ### Quality Gate Sequence
