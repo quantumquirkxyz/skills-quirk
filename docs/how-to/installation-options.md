@@ -4,7 +4,7 @@ Status: installation guidance reviewed 2026-11-10. Skills are installed **by pro
 
 ## Preferred path: prompt-based install
 
-Use one of the prompts preserved verbatim in [README.md → Installation & Sync](../../README.md#installation--sync). Paste the prompt into the AI coding agent working inside the target repository; the agent clones or references this repository, copies the bundle-managed files, and validates the result.
+Use one of the canonical prompts in [installation-prompts.md](installation-prompts.md). Paste the prompt into the AI coding agent working inside the target repository; the agent clones or references this repository, copies the bundle-managed files, and validates the result.
 
 This is the only endorsed installation channel. Do not publish or consume an npm package for skill installation.
 
