@@ -45,14 +45,14 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
 node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 ```
 
-For a brand-new target where replacing starter docs is acceptable, use `scripts/install-quirk-skills.sh`. For any repository that already has a `README.md`, `CONTEXT.md`, ADRs, or local docs, prefer the dry-run sync plus the existing-repository prompt in [Installation & Sync](#installation--sync).
+For a brand-new disposable target where replacing starter docs is acceptable, the legacy `scripts/install-quirk-skills.sh` is available but destructive. For any repository that already has a `README.md`, `CONTEXT.md`, ADRs, or local docs, use the dry-run sync plus the existing-repository prompt in [Installation & Sync](#installation--sync).
 
 Follow the [adoption guide](docs/how-to/adoption.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
 
 <details>
 <summary>What the bundle includes</summary>
 
-- **Setup automation** — `scripts/setup-quirk-skills.sh` to install in target repos
+- **Legacy setup automation** — `scripts/setup-quirk-skills.sh` (destructive; use sync/adopt for first installation)
 - **Canonical auxiliary skills** — `.agents/skills/auxiliary/integration-playground`, `.agents/skills/skill-dev/skill-testing-framework`, and foundation skills: `agent-canvas`, `context-engine`, `mcp-server`, `subagent-swarm`
 - **CI validation** — `.github/workflows/validate.yml`
 - **Skill evolution** — `skill-lab.mjs` and `skill-evolver.mjs`

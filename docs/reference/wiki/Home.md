@@ -214,18 +214,23 @@ flowchart LR
 
 ## Quick installation
 
-### Option 1: One-liner installer
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/quantumquirkxyz/skills-quirk/main/scripts/install-quirk-skills.sh | bash
-```
-
-### Option 2: From a local checkout
+### Option 1: Safe sync from a local checkout (recommended)
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
 cd skills-quirk
-bash scripts/install-quirk-skills.sh
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
+```
+
+Review the dry-run conflicts before applying `--write`. Do not pipe remote scripts to `bash`.
+
+### Option 2: Legacy installer (destructive)
+
+`install-quirk-skills.sh` replaces bundle-managed paths and requires explicit destination and source arguments. Use it only for a disposable greenfield target:
+
+```bash
+bash scripts/install-quirk-skills.sh /path/to/new-target-repo /path/to/skills-quirk
 ```
 
 ### Option 3: Manual copy
@@ -265,7 +270,7 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 
 ## First steps after installation
 
-1. **Run `setup-quirk-skills`** in the target repo.
+1. **Adopt with dry-run sync, then reviewed `--write`**; use the existing-repository prompt when local docs must remain untouched.
 2. **Configure `../../reference/agents/issue-tracker.md`**, `../../reference/agents/triage-labels.md` and `../../reference/agents/domain.md` for the project's real tracker and domain.
 3. **Update `CONTEXT.md`** with repository-specific vocabulary. Do not copy domain vocabulary from another repo.
 4. **Run `work-item-router`** before any workflow skill when tracker configuration may have changed.

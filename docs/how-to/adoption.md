@@ -15,7 +15,7 @@ flowchart TD
 
 1. Copy or sync `.agents/skills/`, `.claude/skills/`, `docs/reference/agents/`, `docs/reference/adr/README.md`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, and `.env.template` into the target repo.
 2. Prefer the safe dry-run sync from the source checkout: `node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo` before `--write`.
-3. Use `scripts/install-quirk-skills.sh` only for greenfield targets where replacing bundle-managed paths is acceptable.
+3. Treat `scripts/setup-quirk-skills.sh` and `scripts/install-quirk-skills.sh` as legacy destructive installers; use them only for disposable greenfield targets after reviewing their replacement behavior.
 4. Configure `docs/reference/agents/issue-tracker.md` and `docs/reference/agents/triage-labels.md` for the project's real tracker and labels.
 5. Update `CONTEXT.md` with project-specific language. Do not copy domain vocabulary from another repo.
 6. Run `work-item-router` before workflow skills whenever tracker governance or ownership may have changed.
@@ -123,7 +123,7 @@ flowchart LR
 
 ## Readiness Checklist
 
-- [ ] `setup-quirk-skills` has run or equivalent docs exist.
+- [ ] The bundle was adopted with dry-run sync followed by reviewed `--write`, or an explicitly approved legacy installer was used for a disposable target.
 - [ ] `docs/reference/adr/` exists with at least one ADR recording a design decision
 - [ ] `CONTEXT.md` exists, names only this repo's domain, and references `docs/reference/adr/`
 - [ ] `docs/reference/agents/issue-tracker.md` reflects the actual tracker.

@@ -50,9 +50,9 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 
 If the dry run reports conflicts, inspect them before using `--force`. Existing repositories should preserve their own `README.md`, `CONTEXT.md`, ADRs, and product documentation unless the user explicitly approves broader adoption changes.
 
-### 3.2 Greenfield installer
+### 3.2 Legacy greenfield installers (destructive)
 
-Use the shell installer only for a new or disposable target where replacing bundle-managed paths is acceptable:
+These shell installers are legacy/destructive paths. They replace bundle-managed target paths and are not the recommended first-install route. Use them only for a new or disposable target after confirming that replacement is acceptable:
 
 ```bash
 git clone https://github.com/quantumquirkxyz/skills-quirk.git
@@ -61,7 +61,7 @@ bash skills-quirk/scripts/install-quirk-skills.sh /path/to/new-target-repo /path
 
 The installer replaces target paths when they already exist. Do not use it as the default update path for established repositories.
 
-### 3.3 Advanced installer usage
+### 3.3 Legacy installer usage
 
 ```bash
 bash scripts/install-quirk-skills.sh <destination-repo-path> [source-repo-path]
@@ -194,7 +194,7 @@ Specializing the bundle for a specific repository is governed by the following r
 
 Before considering installation complete, verify the following:
 
-- [ ] setup-quirk-skills has run or equivalent documents exist.
+- [ ] The bundle was adopted with dry-run sync followed by reviewed `--write`, or an explicitly approved legacy installer was used for a disposable target.
 - [ ] docs/reference/adr/ exists with at least one ADR recording a design decision.
 - [ ] CONTEXT.md exists, names only this repository domain, and references docs/reference/adr/.
 - [ ] docs/reference/agents/issue-tracker.md reflects the project actual tracker.
@@ -232,13 +232,9 @@ The full gate covers structure, semantic health, 8 scenario fixtures, 4 behavior
 
 After copying the bundle files, complete the following steps to prepare the repository for normal work.
 
-### 10.1 Run setup-quirk-skills
+### 10.1 Adopt the synchronized bundle
 
-```bash
-bash scripts/setup-quirk-skills.sh
-```
-
-This script configures the initial bundle structure in the target repository.
+Do not run `setup-quirk-skills.sh` without arguments; it requires a target path and replaces bundle-managed paths. For first installation, use the dry-run sync in section 3.1, review the changed paths, then apply it with `--write`. Complete the tracker, domain, and `CONTEXT.md` configuration below as the adoption step.
 
 ### 10.2 Configure the issue tracker
 

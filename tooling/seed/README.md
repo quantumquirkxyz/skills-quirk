@@ -28,13 +28,13 @@ node .agents/skills/platform/skill-evolver.mjs integration-playground --target-v
 
 ## Setup
 
-To initialize a new repository with this bundle:
+Legacy destructive setup, for a disposable target only:
 
 ```bash
-bash scripts/setup-quirk-skills.sh /path/to/target-repo
+bash scripts/setup-quirk-skills.sh /path/to/target-repo /path/to/skills-quirk
 ```
 
-This creates the sandbox, installs skills, and creates seed skills.
+The script replaces bundle-managed paths. For normal first installation, use the dry-run sync and adoption flow in [docs/how-to/installation.md](../../docs/how-to/installation.md).
 
 ## Contributing
 

@@ -124,16 +124,16 @@ Scripts that synchronize, install, configure, and route work through the bundle.
 | Path | Role |
 |---|---|
 | `scripts/work-item-router.mjs` | Keyword-based router that maps descriptions to skills. |
-| `scripts/setup-quirk-skills.sh` | Installs the bundle in a target repository. |
+| `scripts/setup-quirk-skills.sh` | Legacy destructive installer; replaces bundle-managed paths in a target repository. Prefer sync/adopt. |
 | `scripts/sync-registry.mjs` | Synchronizes `registry.yaml` to `marketplace.json`, `CATALOG.md`, and other artifacts. |
 | `scripts/generate-site-data.mjs` | Generates data for the discovery site. |
-| `scripts/install-quirk-skills.sh` | One-line installer from upstream. |
+| `scripts/install-quirk-skills.sh` | Legacy destructive greenfield installer; replaces bundle-managed paths. Prefer sync/adopt. |
 | `.agents/skills/skill-dev/skill-creator/scripts/` | Auxiliary scripts bundled with the skill-creator skill. |
 
 ### Detail
 
 - **Work Item Router** (`work-item-router.mjs`) is the main router. It reads `../agents/index.md` before routing any spec, ticket, board, or publication flow.
-- `setup-quirk-skills.sh` runs the initial setup in the target repository.
+- `setup-quirk-skills.sh` is a legacy destructive setup path. First installation should use dry-run sync followed by reviewed adoption.
 - `sync-registry.mjs` regenerates distribution artifacts from `registry.yaml`.
 - `generate-site-data.mjs` produces `site/src/skills.json` and other data for the discovery site.
 
