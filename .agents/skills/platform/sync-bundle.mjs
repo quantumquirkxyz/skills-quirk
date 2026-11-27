@@ -7,9 +7,10 @@ const args = process.argv.slice(2);
 const targetArg = args.find((arg) => !arg.startsWith('--'));
 const write = args.includes('--write');
 const force = args.includes('--force');
+const incremental = args.includes('--incremental');
 
 if (!targetArg) {
-  console.error('Usage: node .agents/skills/platform/sync-bundle.mjs <target-repo> [--write] [--force]');
+  console.error('Usage: node .agents/skills/platform/sync-bundle.mjs <target-repo> [--write] [--incremental] [--force]');
   process.exit(2);
 }
 
@@ -88,6 +89,10 @@ async function copyPath(source, target) {
     }
     return;
   }
+  if (await exists(target)) {
+    const targetStat = await fs.lstat(target);
+    if (targetStat.isFile() && await hashFile(source) === await hashFile(target)) return;
+  }
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.copyFile(source, target);
 }
@@ -142,6 +147,12 @@ for (const relative of copyEntries) {
     await ensureSafeDestination(targetFile);
     if (await exists(targetFile)) {
       const same = await hashFile(sourceFile) === await hashFile(targetFile).catch(() => '');
+      if (!same && incremental && ['skills-lock.json', 'skills.json'].includes(relFile)) {
+        // These files are generated bundle metadata. In incremental mode they may
+        // be refreshed after the dry-run has identified skill-level changes.
+        planned.push(relFile);
+        continue;
+      }
       if (!same && !force) conflicts.push(relFile);
     }
     planned.push(relFile);
