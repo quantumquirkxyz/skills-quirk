@@ -24,7 +24,7 @@ flowchart TD
 
 ## Installation channels
 
-Skills are installed **by prompt only**: use the prompts in `README.md` (see [Installation Prompts](#installation-prompts) below) or the safe dry-run sync from a local checkout. There is no npm/npx installation channel for this bundle. [Installation Options](installation-options.md) documents the sync, greenfield, and managed-lifecycle variants.
+Skills are installed **by prompt only**: use the canonical prompts in [installation-prompts.md](installation-prompts.md) or the safe dry-run sync from a local checkout. There is no npm/npx installation channel for this bundle. [Installation Options](installation-options.md) documents the sync, greenfield, and managed-lifecycle variants.
 
 ## Installation Prompts
 
