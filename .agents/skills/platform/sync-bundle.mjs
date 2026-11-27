@@ -101,9 +101,24 @@ async function canUpdateIncrementally(relFile, targetFile) {
 
 async function copyPath(source, target) {
   if (source === target) return;
-  await ensureSafeDestination(target);
   const stat = await fs.lstat(source);
-  if (stat.isSymbolicLink()) return;
+  if (stat.isSymbolicLink()) {
+    const linkTarget = await fs.readlink(source);
+    let existing;
+    try { existing = await fs.lstat(target); } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    if (existing) {
+      if (existing.isSymbolicLink() && await fs.readlink(target) === linkTarget) return;
+      if (!force) throw new Error('Refusing to replace existing path: ' + target);
+      await fs.rm(target, { recursive: true, force: true });
+    }
+    await ensureSafeDestination(target);
+    await fs.mkdir(path.dirname(target), { recursive: true });
+    await fs.symlink(linkTarget, target);
+    return;
+  }
+  await ensureSafeDestination(target);
   if (stat.isDirectory()) {
     await fs.mkdir(target, { recursive: true });
     for (const entry of await fs.readdir(source)) {
