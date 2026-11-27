@@ -144,6 +144,13 @@ test('manifests derived from real fixture frontmatter carry the required fields 
   assert.deepEqual(validateManifestEntry(gateCi, schema), []);
 });
 
+test('implementation artifact types resolve to the canonical implement schema', () => {
+  const implementation = buildRuntimeManifest({
+    name: 'implement', artifactType: 'implementation', inputs: ['ticket'], sideEffects: ['write-code'],
+  }, { skill: 'delivery/implement', schemasDir: path.join(REPO_ROOT, '.agents', 'skills', 'platform', 'schemas') });
+  assert.equal(implementation.verification.artifactSchema, '.agents/skills/platform/schemas/implement-schema.json');
+});
+
 test('manifest coverage over the real bundle is complete and exact', () => {
   const inputs = collectManifestInputs(REPO_ROOT);
   assert.equal(inputs.length, 272);

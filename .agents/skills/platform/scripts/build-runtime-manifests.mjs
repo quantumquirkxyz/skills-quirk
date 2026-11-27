@@ -121,8 +121,10 @@ function resolveArtifactSchema(artifactType, schemasDir) {
   if (!artifactType) return null;
   const dir = schemasDir === undefined ? DEFAULT_SCHEMAS_DIR : schemasDir;
   if (!dir) return null;
-  const relative = `${SCHEMAS_REL_DIR}/${artifactType}-schema.json`;
-  if (existsSync(path.join(dir, `${artifactType}-schema.json`))) return relative;
+  const aliases = { implementation: 'implement' };
+  const schemaName = aliases[artifactType] ?? artifactType;
+  const relative = `${SCHEMAS_REL_DIR}/${schemaName}-schema.json`;
+  if (existsSync(path.join(dir, `${schemaName}-schema.json`))) return relative;
   return null;
 }
 

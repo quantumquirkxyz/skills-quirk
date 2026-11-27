@@ -19,7 +19,7 @@ outputs:
   - type: object
     name: ImplementArtifact
     properties:
-      status: { type: string, enum: [completed, blocked, partial] }
+      status: { type: string, enum: [completed, failed, skipped, partial, blocked, outcome-unknown] }
       changes: { type: array, items: { type: string } }
       validation: { type: object }
       commitSha: { type: string }
@@ -28,7 +28,7 @@ outputs:
       blockedBy: { type: array, items: { type: string } }
       riskRemaining: { type: string }
       qualityGateResults: { type: object }
-    required: [status, nextConsumer, validation, qualityGateResults]
+    required: [status, nextConsumer, validation, qualityGateResults, commitSha, branch]
 sideEffects:
   - write-code
   - commit-git
@@ -66,10 +66,10 @@ reloadPolicy: on-trigger
 
 ## Contract
 
-- Artifact contract: emit `ImplementArtifact` using `schemas/software-engineering/implement-artifact.schema.json`; put implementation details in `payload` and retain the full envelope fields.
+- Artifact contract: emit `ImplementArtifact` using `.agents/skills/platform/schemas/implement-schema.json`; put implementation details in `payload` and retain the full envelope fields.
 - `payload` must include the same `operationId`, fixed-point commit/ref and source digests used for the run; list changed files with before/after digests and command provenance (argv, resolved executable/version, cwd, exit status, output digest, timestamp).
 - Record tests run and skipped with reasons, coverage denominator/result, mutation evidence, security evidence, performance evidence, independent verifier identity/result, approvals, blockers, and canonical status. A transcript, plan, screenshot, or self-attestation is never evidence of execution.
-- Reject stale source or a fixed-point mismatch. Partial validation must be disclosed and yields `blocked`, `validation-failed`, or `outcome-unknown`, never `completed`.
+- Reject stale source or a fixed-point mismatch. Partial validation must be disclosed and yields `failed`, `skipped`, `partial`, `blocked`, or `outcome-unknown`, never `completed`.
 
 - Input: one ticket or spec with concrete acceptance criteria, current repo state, explicit seams, optional feature flags.
 - Output: `ImplementArtifact` (JSON schema + Markdown view). See `.agents/skills/platform/schemas/implement-schema.json`.
@@ -185,4 +185,4 @@ Set `nextConsumer` to the next workflow skill (`publish-open-pr`, `tdd`, or a na
 - Require an explicit `dryRun` plan before any write, commit, or push, and separate approval for each declared side effect.
 - Persist a common snapshot and checkpoint before and after every slice, including scope, branch, fixed point, command evidence, and validation results.
 - After a crash or unknown command result, reconcile git state and artifact identity before retrying; never duplicate commits or pushes.
-- Use compensation only for effects owned by this operation. Terminal statuses are `planned`, `running`, `completed`, `blocked`, `needs-approval`, `outcome-unknown`, and `validation-failed`.
+- Use compensation only for effects owned by this operation. Internal lifecycle states may be `planned`, `running`, or `needs-approval`; the persisted `ImplementArtifact.status` must use only the six schema values: `completed`, `failed`, `skipped`, `partial`, `blocked`, or `outcome-unknown`.

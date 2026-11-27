@@ -538,7 +538,7 @@
       "fixturePath": "tests/delivery-frontend-output-contracts.test.mjs",
       "contract": "schema/skill-output.schema.json",
       "result": "passed",
-      "skillSha256": "9a419bfc53ca547c1bdd9ea209e2b0956193aee636a9b5a059d07471cf2b1d79",
+      "skillSha256": "acde89eb00066fdba3075409f83c2401f94989875737cb442b3b27311df06129",
       "fixtureSha256": "d67074b592cbd11e2ae7f50ed5c27bee21e00c13c7cc524186870a5ad4c67431"
     },
     {

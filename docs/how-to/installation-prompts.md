@@ -63,6 +63,7 @@ Execution contract:
    node .agents/skills/platform/validate-skills.mjs
    node .agents/skills/platform/audit-semantics.mjs
    node .agents/skills/platform/fix-compatibility-view.mjs --dry-run
+   node .agents/skills/platform/project-agent-paths.mjs --write
    node .agents/skills/platform/check-all.mjs
    node bin/skills-quirk.js verify-install
    Continue only if the commands pass or report only documented advisory warnings. Record every failure.
@@ -126,6 +127,7 @@ Execution contract:
    node .agents/skills/platform/validate-skills.mjs
    node .agents/skills/platform/audit-semantics.mjs
    node .agents/skills/platform/fix-compatibility-view.mjs --dry-run
+   node .agents/skills/platform/project-agent-paths.mjs --write
    node .agents/skills/platform/check-all.mjs
    node bin/skills-quirk.js verify-install
    Continue only if the commands pass or report only documented advisory warnings. Record every failure.

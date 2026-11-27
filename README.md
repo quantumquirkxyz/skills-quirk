@@ -1,6 +1,6 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0f172a" />
-  <img alt="Version" src="https://img.shields.io/badge/version-3.2.0-facc15?style=flat-square&labelColor=0f172a" />
+  <img alt="Version" src="https://img.shields.io/badge/version-3.2.1-facc15?style=flat-square&labelColor=0f172a" />
   <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
 </p>
 
@@ -220,7 +220,7 @@ flowchart LR
 - **Subagents** — `.claude/agents/` (architect, explorer, reviewer, tester, implementer, doc-writer)
 - **On-demand native agent views** — generate local Cursor, Gemini, Copilot,
   OpenCode, and Windsurf symlink views without committing duplicate projections:
-  `npm run views:native`
+  `node .agents/skills/platform/project-agent-paths.mjs --write`
 
 Removing a generated native directory is safe; rerun the command to recreate it.
 `.agents/skills/` remains the only source of truth and `.claude/skills/` remains

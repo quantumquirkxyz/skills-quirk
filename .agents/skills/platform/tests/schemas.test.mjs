@@ -143,7 +143,7 @@ test('implement-schema.json parses and declares its root contract', () => {
   for (const field of ['status', 'changes', 'validation', 'commitSha', 'branch', 'nextConsumer', 'blockedBy', 'riskRemaining', 'qualityGateResults']) {
     assert.ok(implementSchema.properties[field], `implement-schema.json must declare ${field}`);
   }
-  for (const field of ['status', 'nextConsumer', 'validation', 'qualityGateResults']) {
+  for (const field of ['status', 'nextConsumer', 'validation', 'qualityGateResults', 'commitSha', 'branch']) {
     assert.ok(implementSchema.required.includes(field), `implement-schema.json must require ${field}`);
   }
 });

@@ -10,6 +10,7 @@ This project follows semantic versioning once releases are cut:
 
 ## [Unreleased]
 
+- Fixed implement artifact schema routing, fail-closed implementation validation, release-gate test isolation, and native agent-view installation paths.
 - Added governed engineering preflight, typed capability requirements, workflow-journal compatibility checks, and expanded internal validators and MCP stdio coverage.
 
 ## [3.2.0] - 2026-11-27
