@@ -23,6 +23,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { isRealCommitSha, validateGateResults } from '../../../platform/delivery-integrity.mjs';
 
 const DEFAULT_WORKFLOW = 'fleet-worker.yml';
 const DEFAULT_ARTIFACT = 'fleet-artifact';
@@ -209,6 +210,9 @@ export function validateCollectedArtifact(file, issueId) {
     return [`downloaded ImplementArtifact is not valid JSON: ${error.message}`];
   }
   if (value.status !== 'completed') errors.push('status must be completed');
+  if (!isRealCommitSha(value.commitSha)) errors.push('commitSha must be a real 40-character commit SHA');
+  errors.push(...validateGateResults(value.qualityGateResults));
+  if (value.qualityGateResults?.gateCi !== 'pass') errors.push('gateCi must be pass before collection is publishable');
   if (value.validation?.acceptanceCriteriaMet !== true) errors.push('validation.acceptanceCriteriaMet must be true');
   if (String(value.issueId ?? value.issue ?? issueId) !== String(issueId)) {
     errors.push(`artifact issue identity does not match ${issueId}`);
