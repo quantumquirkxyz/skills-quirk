@@ -1122,8 +1122,7 @@
           ],
           "sideEffects": [
             "write-code",
-            "commit-git",
-            "push-branch"
+            "commit-git"
           ],
           "path": ".agents/skills/delivery/implement"
         },
@@ -1141,9 +1140,7 @@
             "produce and validate a delivery artifact with evidence, decisions, and next steps"
           ],
           "sideEffects": [
-            "write-code",
-            "commit-git",
-            "push-branch",
+            "write-files",
             "post-pr-comment"
           ],
           "path": ".agents/skills/delivery/implement-review-fixes"
