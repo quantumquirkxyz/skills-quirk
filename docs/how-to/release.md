@@ -60,3 +60,20 @@ The tag-triggered workflow is `.github/workflows/release.yml`. It validates vers
 - [ ] Sync one target repo using dry-run first.
 - [ ] Run the target repo validation commands.
 - [ ] Add a case study if the release exposed a method change.
+## Repository update policy
+
+Every mergeable tracked update is a release-metadata update. Unless an explicit exemption applies, the same change must update:
+
+- `VERSION` with the next semver value.
+- `CHANGELOG.md` under `## [Unreleased]` with at least one descriptive bullet.
+- All hand-maintained version surfaces: `package.json`, `registry.yaml`, `skills.json`, the README version badge, and `.claude-plugin/plugin.json` (the consistency test also checks the generated marketplace projection).
+
+Run `node scripts/check-release-metadata.mjs` and `node --test tests/version-consistency.test.mjs tests/release-metadata-update.test.mjs` before opening a merge request. Generated projections are never hand-edited: run `node scripts/sync-registry.mjs --write` after canonical changes, then inspect the generated diff and run the generated drift checks.
+
+### Explicit exemptions
+
+Use `RELEASE_METADATA_EXEMPTION=generated-only` only when every changed path is a known generated projection. Use `RELEASE_METADATA_EXEMPTION=emergency-maintenance` only for a non-shipping emergency fix and provide a non-empty `RELEASE_METADATA_EXEMPTION_REASON`; record that reason in the change description. Unknown or undocumented exemptions fail validation.
+
+### Version policy
+
+Use MAJOR for breaking workflow or artifact contracts, MINOR for new compatible skills, validators, scenarios, or extensions, and PATCH for documentation or non-breaking fixes. Keep `VERSION` and every hand-maintained surface identical. Add release notes to `Unreleased` before regeneration; when cutting a release, move those notes under `## [<version>] - YYYY-MM-DD`, then tag `v<version>` and push the branch and tag only after all validation passes.

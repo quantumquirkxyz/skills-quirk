@@ -1,6 +1,6 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=0f172a" />
-  <img alt="Version" src="https://img.shields.io/badge/version-3.1.1-facc15?style=flat-square&labelColor=0f172a" />
+  <img alt="Version" src="https://img.shields.io/badge/version-3.2.0-facc15?style=flat-square&labelColor=0f172a" />
   <img alt="Mode" src="https://img.shields.io/badge/mode-8--bit-38bdf8?style=flat-square&labelColor=0f172a" />
 </p>
 
@@ -16,7 +16,7 @@
 
 `quirk Skills` is a repository-local workflow system for moving software work from intent to validated delivery.
 
-It follows the `quirk` method: clarify before building, preserve context, split work into claimable slices, review against separate Standards and Spec axes, repair with explicit plans, and ship only on clean evidence.
+It follows the `quirk` method: engineering preflight is mandatory before software changes, then clarify before building, preserve context, split work into claimable slices, trace requirements through architecture/design, QA/security/operations, implementation, gates, review and release, repair with explicit plans, and ship only on clean evidence.
 
 If a PR branch is conflicted, resolve branch state first with `resolving-merge-conflicts`, then return to `review-pr` and `review-fix-loop` before shipping.
 
@@ -47,7 +47,7 @@ node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --write
 
 For a brand-new disposable target where replacing starter docs is acceptable, the legacy `scripts/install-quirk-skills.sh` is available but destructive. For any repository that already has a `README.md`, `CONTEXT.md`, ADRs, or local docs, use the dry-run sync plus the existing-repository prompt in [Installation & Sync](#installation--sync).
 
-Follow the [adoption guide](docs/how-to/adoption.md) to configure local context, then invoke `ask-to` or the relevant skill through your coding agent. Skill names describe agent instructions, not shell commands.
+Follow the [adoption guide](docs/how-to/adoption.md) to configure local context, then invoke `engineering-preflight` for software-changing work before `ask-to` or any implementation, ticketing, or publication skill. Documentation, research, and hotfix exceptions require rationale, approver, expiry, and post-change verification. Skill names describe agent instructions, not shell commands.
 
 <details>
 <summary>What the bundle includes</summary>

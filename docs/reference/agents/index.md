@@ -4,7 +4,8 @@ This repo uses the repository-local quirk Skills bundle in `.agents/skills/`. `.
 
 ```mermaid
 flowchart TD
-    A[work-item-router] --> B[triage]
+    A[work-item-router] --> PF[engineering-preflight]
+    PF --> B[triage]
     A --> N[worktree-swarm]
     A --> P[parallel-issue-fleet]
     B --> C[to-spec]
@@ -31,9 +32,10 @@ flowchart TD
 
 - `work-item-router` reads this index first before any spec, ticket, project board, or publication flow.
 - `triage` uses the same index when classifying issues and PRs into durable states.
-- `to-spec` and `to-tickets` use the issue tracker configuration and canonical work-item format documented here.
-- `review-pr`, `plan-review-fixes`, `implement-review-fixes`, `publish-open-pr`, and `ship-subissue` preserve the same metadata contract.
-- `ask-to` is the user-facing route selector after governance preflight. Use it when the next step is uncertain or the request is not already a claimed work item.
+- The canonical software-changing route is `engineering-preflight -> grill-with-docs -> automatic-refinement -> architecture/design (or approved not-applicable) -> to-spec -> to-tickets -> implement -> gates -> publish-open-pr -> trunk-based guard -> review-pr/review-fix-loop -> ship-subissue -> release-management -> deployment -> observability/sre`. The preflight records requirement -> architecture/design -> QA/security/operations -> implementation -> gates -> review -> release trace and is mandatory; stale, blocked, expired, or missing preflight cannot bypass into a downstream skill.
+- `CLEAR_SPEC` is a valid semantic bypass: after software classification it runs `engineering-preflight -> to-spec` without forcing grilling. The preflight classifies intent/risk and may consume existing requirements evidence; it does not structurally depend on requirements or to-spec. Contextual engineering capabilities are declared as `capabilityRequirements`, not universal dependencies. `to-spec` and `to-tickets` use the issue tracker configuration and canonical work-item format documented here. `to-tickets` rejects missing refinement or architecture/design handoffs.
+- `review-pr`, `plan-review-fixes`, `implement-review-fixes`, `publish-open-pr`, and `ship-subissue` preserve the same metadata contract. `implement` creates validated local commits only; `publish-open-pr` owns remote push and PR creation; release-management owns approval and hands off to deployment.
+- `ask-to` is the user-facing route selector after `engineering-preflight` and governance preflight. Documentation, research, and hotfix exceptions require an explicit rationale, approver, expiration, and post-change verification.
 - If a PR branch is conflicted while review or repair is in progress, branch-state resolution belongs to `resolving-merge-conflicts` before review or shipping resumes.
 - `worktree-swarm` is opt-in only. It validates a batch of open GitHub issues, creates isolated local worktrees, and launches local agents in parallel; each delegated item follows the implementation/review/publication/shipping handoff loop without granting push, PR, merge, or issue-close authority.
 - `parallel-issue-fleet` is the opt-in Core Flow dispatcher between `to-tickets` and `implement`. It consumes the ticket DAG, executes only the claimable wave with bounded isolated workers, and stops at `awaiting-land` before dependent waves unless an integration branch was explicitly approved. It does not inherit publication, review, merge, or issue-close authority.

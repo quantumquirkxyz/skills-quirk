@@ -39,17 +39,23 @@ flowchart TD
 
 | Producer | Consumer | Artifact |
 |---|---|---|
-| `grill-with-docs` | `to-spec` | Clarified decisions, glossary/ADR updates |
-| `to-spec` | `to-tickets` | Spec issue |
-| `to-tickets` | `implement` | Claimable ticket |
+| `grill-with-docs` | `automatic-refinement` | Clarified decisions, glossary/ADR updates |
+| `automatic-refinement` | `architecture-evaluation` / `codebase-design` | Refinement artifact with explicit next consumer |
+| `architecture-evaluation` / `codebase-design` | `to-spec` | Approved architecture/design artifact or approved not-applicable rationale |
 | `to-tickets` | `parallel-issue-fleet` | TicketArtifact with validated DAG waves |
 | `parallel-issue-fleet` | `implement` | Per-issue isolated environment and immutable issue context |
 | `parallel-issue-fleet` | `publish-open-pr` | FleetRunArtifact with validated branches and ImplementArtifact references |
-| `implement` | `publish-open-pr` | Validated issue branch |
+| `to-tickets` | `implement` | Claimable ticket with architecture/design provenance |
 | `review-pr` | `plan-review-fixes` | Standards and Spec findings |
 | `plan-review-fixes` | `implement-review-fixes` | Review Fix Plan PR comment |
 | `implement-review-fixes` | `review-pr` | Implementation note and validation |
+| `implement` | `publish-open-pr` | Validated local commit and exact fixed point; no remote publication |
+| `publish-open-pr` | `trunk-based-workflow` | Pushed branch and opened PR with CI evidence |
+| `trunk-based-workflow` | `review-pr` | Passing pre-merge guard |
 | `review-pr` | `ship-subissue` | Clean review state |
+| `ship-subissue` | `release-management` | Merged commit and release-candidate inputs |
+| `release-management` | `deployment` | Approved release candidate with provenance, owner, rollback, canary, and CI gates |
+| `deployment` | `observability` / `sre` | Deployment result and health signals |
 | `worktree-swarm` | `implement` | Per-issue worktree, issue context, and local agent manifest |
 
 ## Conflict Handling

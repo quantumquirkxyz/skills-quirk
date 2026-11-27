@@ -1,7 +1,7 @@
 # Quirk Skills Catalog
 
-> Generated from quirk-skills v3.1.0
-> 271 skills across 37 categories
+> Generated from quirk-skills v3.2.0
+> 272 skills across 37 categories
 
 ## Skills by Category
 
@@ -160,6 +160,7 @@
 | [agent-native-engineering](.agents/skills/engineering/agent-native-engineering) | 1 | experimental | medium | 3 | AI-Native Engineer skill stack: spec literacy, context engineering, orchestra... |
 | [architecture-evaluation](.agents/skills/engineering/architecture-evaluation) | 1 | stable | medium | 3 | Evaluate architecture alternatives against quality attributes, constraints, c... |
 | [engineering-governance](.agents/skills/engineering/engineering-governance) | 1 | experimental | high | 4 | Establish engineering decision rights, approval gates, exceptions, evidence, ... |
+| [engineering-preflight](.agents/skills/engineering/engineering-preflight) | 1 | stable | medium | 3 | Establish the mandatory engineering traceability gate before any work that ch... |
 | [green-software-engineering](.agents/skills/engineering/green-software-engineering) | 1 | experimental | medium | 3 | This skill should be used when assessing or improving software carbon intensi... |
 | [improve-codebase-architecture](.agents/skills/engineering/improve-codebase-architecture) | 1 | stable | low | 2 | Scan a codebase for deepening opportunities and present candidates as a visua... |
 | [safety-critical-software](.agents/skills/engineering/safety-critical-software) | 1 | experimental | high | 4 | Engineer safety evidence for hazard analysis, safety requirements, assurance ... |
@@ -186,7 +187,7 @@
 | [codebase-design](.agents/skills/foundation/codebase-design) | 1 | stable | low | 1 | Shared vocabulary for designing deep modules. Use when the user wants to desi... |
 | [context-compaction](.agents/skills/foundation/context-compaction) | 1 | experimental | low | 2 | Run the context compaction discipline for long agent sessions: summarize the ... |
 | [context-engine](.agents/skills/foundation/context-engine) | 1 | stable | low | 2 | Manage dynamic context for agent execution using retrieval-augmented generati... |
-| [domain-modeling](.agents/skills/foundation/domain-modeling) | 1 | stable | low | 1 | Build and sharpen a project's domain model. Record the execution traceId and ... |
+| [domain-modeling](.agents/skills/foundation/domain-modeling) | 1 | stable | medium | 3 | Build and sharpen a project's domain model. Record the execution traceId and ... |
 | [mcp-server](.agents/skills/foundation/mcp-server) | 3 | beta | low | 1 | Define and harden an MCP server that exposes quirk Skills as least-privilege ... |
 | [observability](.agents/skills/foundation/observability) | 2 | stable | low | 1 | Define the logs, metrics, traces, and alerts needed to understand a system in... |
 | [skill-composition](.agents/skills/foundation/skill-composition) | 1 | experimental | medium | 3 | Compose skills into chains and workflows with explicit contracts: declare the... |
@@ -264,7 +265,7 @@
 | [math-computation-reproducible](.agents/skills/math/math-computation-reproducible) | 1 | stable | low | 1 | Make mathematical computations reproducible — SymPy, Mathematica, Magma, Sage... |
 | [math-computational](.agents/skills/math/math-computational) | 2 | stable | low | 1 | Solve numerical and symbolic math problems (root finding, integration, ODEs, ... |
 | [math-cryptography](.agents/skills/math/math-cryptography) | 2 | stable | medium | 3 | Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, z... |
-| [math-formal-proof](.agents/skills/math/math-formal-proof) | 2 | stable | low | 1 | Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle... |
+| [math-formal-proof](.agents/skills/math/math-formal-proof) | 2 | stable | medium | 3 | Develop formal mathematical proofs in proof assistants (Lean 4, Coq, Isabelle... |
 | [math-grant-structure](.agents/skills/math/math-grant-structure) | 2 | stable | low | 1 | Structure mathematics grant proposals (NSF, ERC, Simons, MSCA) — aims, broade... |
 | [math-linear-algebra](.agents/skills/math/math-linear-algebra) | 2 | stable | low | 1 | Solve and analyse linear algebra problems — matrix decompositions (LU, QR, SV... |
 | [math-literature-track](.agents/skills/math/math-literature-track) | 2 | stable | low | 1 | Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts... |
@@ -299,7 +300,7 @@
 | [physics-career-postdoc](.agents/skills/physics/physics-career-postdoc) | 2 | stable | low | 1 | Navigate physics career transitions — postdoc applications, faculty applicati... |
 | [physics-classical](.agents/skills/physics/physics-classical) | 2 | stable | low | 1 | Solve classical mechanics problems — Newton's laws, Lagrangian, Hamiltonian, ... |
 | [physics-data-analysis-root](.agents/skills/physics/physics-data-analysis-root) | 2 | stable | medium | 3 | Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibrat... |
-| [physics-experimental-notebook](.agents/skills/physics/physics-experimental-notebook) | 2 | stable | low | 1 | Maintain experimental physics lab notebooks — measurements, calibration, erro... |
+| [physics-experimental-notebook](.agents/skills/physics/physics-experimental-notebook) | 2 | stable | medium | 3 | Maintain experimental physics lab notebooks — measurements, calibration, erro... |
 | [physics-literature-search](.agents/skills/physics/physics-literature-search) | 2 | stable | low | 1 | Track physics literature — arXiv (hep-th, cond-mat, astro-ph, gr-qc, quant-ph... |
 | [physics-quantum](.agents/skills/physics/physics-quantum) | 2 | stable | low | 1 | Model quantum systems (states, operators, measurement, entanglement) and perf... |
 | [physics-reproducibility-archive](.agents/skills/physics/physics-reproducibility-archive) | 2 | stable | low | 1 | Make physics research reproducible and archive it — Zenodo DOI, GitHub + cont... |
@@ -367,8 +368,8 @@
 |-------|---------|----------|------|------------|-------------|
 | [empirical-software-engineering](.agents/skills/research/empirical-software-engineering) | 1 | stable | medium | 3 | Design and assess empirical software-engineering studies — operational defini... |
 | [github-project-analysis](.agents/skills/research/github-project-analysis) | 1 | stable | medium | 3 | Research comparable projects exclusively on GitHub and analyze their structur... |
-| [research-data-archiving](.agents/skills/research/research-data-archiving) | 1 | stable | low | 1 | Archive research data — metadata, storage, preservation, provenance, and reus... |
-| [research-literature-review](.agents/skills/research/research-literature-review) | 1 | stable | low | 1 | Review research literature — search strategy, screening, synthesis, citation ... |
+| [research-data-archiving](.agents/skills/research/research-data-archiving) | 1 | stable | high | 4 | Archive research data — metadata, storage, preservation, provenance, and reus... |
+| [research-literature-review](.agents/skills/research/research-literature-review) | 1 | stable | medium | 3 | Review research literature — search strategy, screening, synthesis, citation ... |
 | [scientific-hypothesis](.agents/skills/research/scientific-hypothesis) | 2 | stable | low | 1 | Formulate testable scientific hypotheses — null/alternative, variables, contr... |
 
 ### routing

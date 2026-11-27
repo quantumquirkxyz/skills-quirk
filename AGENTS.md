@@ -23,6 +23,15 @@ Instructions for coding agents working in this repository. This file complements
 - Reference issues and tickets by name, not by bare ids.
 - Never merge with unresolved review findings. Findings from `review-pr` separate into Standards and Spec axes; repair them with an explicit plan via `plan-review-fixes` and `implement-review-fixes`, then re-review.
 
+## Commit and Push Governance
+
+- Never finish work as one commit when there are two or more independently reviewable logical units; create multiple minimal logical commits.
+- A single commit is allowed only for one inseparable unit and must record the rationale.
+- Commit messages are English and conventional.
+- Commit, push, PR creation, merge, issue closure, and release are separate effects with separate approvals and checkpoints.
+- Validate the exact commit before push. Reconcile unknown commit/push results by `operationId`, branch, and SHA; never blindly retry.
+- Do not push before all required gates pass.
+
 ## Commands
 
 - Full local gate (run before claiming any work done): `node .agents/skills/platform/check-all.mjs`

@@ -72,8 +72,9 @@ test('VERSION, package.json, registry.yaml, skills.json, Claude manifests and th
   const pluginVersion = readClaudePluginVersion();
   const marketplaceVersion = readMarketplaceVersion();
 
-  assert.match(versionFile, /^\d+\.\d+\.\d+$/, `VERSION must be semver, got "${versionFile}"`);
+  assert.match(versionFile, /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/, `VERSION must be valid semver, got "${versionFile}"`);
   assert.equal(packageVersion, versionFile, `package.json version (${packageVersion}) must match VERSION (${versionFile})`);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'package.json'), 'utf8')).name, '@quantumquirkxyz/skills-quirk', 'package.json name must remain canonical');
   assert.equal(registryVersion, versionFile, `registry.yaml bundleVersion (${registryVersion}) must match VERSION (${versionFile})`);
   assert.equal(registryInnerVersion, versionFile, `registry.yaml inner version (${registryInnerVersion}) must match VERSION (${versionFile})`);
   assert.equal(skillsJsonVersions.version, versionFile, `skills.json version (${skillsJsonVersions.version}) must match VERSION (${versionFile})`);

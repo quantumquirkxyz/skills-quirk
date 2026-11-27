@@ -32,12 +32,14 @@ The canonical skills are cross-harness artifacts, so the bundle targets the agen
 | Skill | Artifact | Purpose | Next consumer |
 |---|---|---|---|
 | `triage` | `AGENT-BRIEF.md`, `OUT-OF-SCOPE.md`, needs-info template | Stable triage state and durable handoff | `implement`, `plan-review-fixes`, or `wontfix` closure |
+| `automatic-refinement` | refinement artifact schema and agent graph | Refine residual ambiguity without publishing or implementing | `architecture-evaluation` / `codebase-design` |
 | `to-spec` | `references/spec-template.md` | Publish a buildable spec issue | `to-tickets` |
-| `to-tickets` | `references/issue-template.md` | Split spec into tracer-bullet tickets | `implement` or approved `parallel-issue-fleet` |
+| `to-tickets` | `references/issue-template.md` | Split spec into tracer-bullet tickets after architecture/design or approved not-applicable handoff | `implement` or approved `parallel-issue-fleet` |
 | `plan-review-fixes` | `references/review-fix-plan.md` | Convert review findings into a repair plan | `implement-review-fixes` |
 | `implement-review-fixes` | `references/implementation-note.md` | Apply the scoped review plan and report completion | `review-pr` again |
 | `review-fix-loop` | review-pr, plan-review-fixes, implement-review-fixes handoff | Close the review-repair loop | `ship-subissue` when clean |
-| `publish-open-pr` | `references/pr-body.md`, `references/validation.md`, `references/failure-modes.md` | Package a finished branch into a reviewable PR | `review-pr` |
+| `publish-open-pr` | `references/pr-body.md`, `references/validation.md`, `references/failure-modes.md` | Push a finished local branch and package it into a reviewable PR | `trunk-based-workflow` |
+| `release-management` | `ReleaseCandidateArtifact` schema | Gate approval, provenance, rollback, canary, and CI evidence | `deployment` |
 
 ### Setup and structure
 
@@ -46,7 +48,7 @@ The canonical skills are cross-harness artifacts, so the bundle targets the agen
 | `setup-quirk-skills` | seed tracker/domain templates | Configure a repo for quirk workflows | `ask-to`, `triage`, `to-spec` |
 | `make-project` | `references/graphql.md` | Create and configure a GitHub Projects board | project users and work-item skills |
 | `domain-modeling` | `ADR-FORMAT.md`, `CONTEXT-FORMAT.md` | Record and maintain domain vocabulary | `grill-with-docs`, `triage`, `make-project` |
-| `grill-with-docs` | context and ADR updates created during the interview | Sharpen the plan and write durable context | `to-spec`, `implement` |
+| `grill-with-docs` | context and ADR updates created during the interview | Sharpen the plan and write durable context | `automatic-refinement` |
 
 ### Routing and learning
 

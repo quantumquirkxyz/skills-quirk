@@ -12,6 +12,10 @@ on:
       - "scripts/**"
       - "bin/**"
       - "package.json"
+      - "VERSION"
+      - "CHANGELOG.md"
+      - "README.md"
+      - ".claude-plugin/**"
       - ".github/workflows/validate.yml"
   pull_request:
     paths:
@@ -22,6 +26,11 @@ on:
       - "registry.yaml"
       - "skills.json"
       - "plugins/**"
+      - "VERSION"
+      - "CHANGELOG.md"
+      - "README.md"
+      - ".claude-plugin/**"
+      - ".github/workflows/validate.yml"
   workflow_dispatch:
 
 env:
@@ -63,6 +72,12 @@ jobs:
           name: canonical-skill-inventory
           path: .skill-sandbox/baseline/skill-inventory.json
           retention-days: 30
+
+      - name: Validate release metadata
+        run: node scripts/check-release-metadata.mjs
+
+      - name: Validate version surfaces
+        run: node --test tests/version-consistency.test.mjs tests/release-metadata-update.test.mjs
 
       - name: Validate adoption and inventory regressions
         run: node --test tests/adoption-safety.test.mjs tests/skill-inventory.test.mjs

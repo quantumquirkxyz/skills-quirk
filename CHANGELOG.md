@@ -8,7 +8,21 @@ This project follows semantic versioning once releases are cut:
 - `MINOR` for new skills, new validators, new scenarios, or compatible workflow extensions.
 - `PATCH` for documentation fixes, template clarifications, and non-breaking validator fixes.
 
-## [Unreleased]\n\n## [3.1.1] - 2026-11-27
+## [Unreleased]
+
+- Added governed engineering preflight, typed capability requirements, workflow-journal compatibility checks, and expanded internal validators and MCP stdio coverage.
+
+## [3.2.0] - 2026-11-27
+
+### Changed
+
+- Finalized the governed engineering preflight update, synchronized generated adapter and site projections, and aligned validation to the current 272-skill inventory.
+
+### Validation
+
+- Full `check-all` and root test suite pass with dynamically derived inventory counts.
+
+## [3.1.1] - 2026-11-27
 
 ### Added
 
@@ -25,6 +39,10 @@ This project follows semantic versioning once releases are cut:
 - Focused installation, schema, fleet, and integrity tests passed.
 - Link and skill validation passed.
 - The repository-wide gate remains blocked by pre-existing baseline findings recorded in the delivery report.
+
+### Added
+
+- Enforced release metadata updates for every mergeable repository change, with bounded exemptions and CI validation.
 
 ## [3.1.0] - 2026-11-21
 

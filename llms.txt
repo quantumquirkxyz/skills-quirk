@@ -1,6 +1,6 @@
 # Quirk Skills - Agent Discovery Entrypoint
 
-> 271 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
+> 272 skills for AI coding agents. Source: https://github.com/quantumquirkxyz/skills-quirk
 
 ## Quick Install
 
@@ -95,6 +95,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - [domain-modeling](./.agents/skills/foundation/domain-modeling/SKILL.md) — Build and sharpen a project's domain model. Record the execution traceId and link the artifact to the originating issue for review replay. Use when the user wants to pin down domain terminology or a ubiquitous language boundary.
 - [empirical-software-engineering](./.agents/skills/research/empirical-software-engineering/SKILL.md) — Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.
 - [engineering-governance](./.agents/skills/engineering/engineering-governance/SKILL.md) — Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.
+- [engineering-preflight](./.agents/skills/engineering/engineering-preflight/SKILL.md) — Establish the mandatory engineering traceability gate before any work that changes software.
 - [evaluate-skill](./.agents/skills/skill-dev/evaluate-skill/SKILL.md) — Evaluate a Skill with versioned baseline/candidate experiments for routing, completion, safety, artifact validity, evaluator reliability, and regression risk.
 - [event-driven-architecture](./.agents/skills/backend/event-driven-architecture/SKILL.md) — Event-driven architecture (Kafka, NATS, EventBridge, choreography vs orchestration).
 - [execution-policy](./.agents/skills/auxiliary/execution-policy/SKILL.md) — Decide whether a Skill action is allowed, requires approval, or must stop.
@@ -300,7 +301,7 @@ https://github.com/quantumquirkxyz/skills-quirk using the prompts in README.md
 - delivery: 15 skills
 - devops: 10 skills
 - docs: 3 skills
-- engineering: 8 skills
+- engineering: 9 skills
 - finance: 3 skills
 - foundation: 14 skills
 - frontend: 10 skills

@@ -29,10 +29,12 @@ Use the canonical shape from `work-item-format.md` for the issue sidebar and dev
 
 ## Wayfinding operations
 
-- `to-spec` publishes one spec issue.
-- `to-tickets` publishes tracer-bullet tickets with explicit blockers.
-- `publish-open-pr` publishes a prepared branch as a PR.
-- `ship-subissue` merges a clean subissue PR and closes the linked issue when needed.
+- `to-spec` publishes one spec issue after refinement and architecture/design (or approved not-applicable) handoff.
+- `to-tickets` publishes tracer-bullet tickets with explicit blockers and architecture/design provenance.
+- `implement` creates validated local commits only; it does not push or create PRs.
+- `publish-open-pr` publishes a prepared local branch as a PR and hands it to the trunk-based guard.
+- `ship-subissue` merges a clean subissue PR and closes the linked issue when needed, then hands the reviewed commit to release-management.
+- `release-management` requires explicit approval and release-candidate provenance, owner, rollback, canary, and CI gates before handing off to deployment.
 
 ## Notes
 
