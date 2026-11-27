@@ -443,26 +443,143 @@ After syncing, run the following verification commands from the target repositor
 
 > **Note on dry-run integrity:** A dry-run (`--write` omitted) reports conflicts and writes nothing. It confirms what would change but does not prove integrity — only an actual verification run against the installed state can confirm that hashes, symlinks, and the manifest are consistent.
 
-### AI-agnostic installation and update prompts
+### Copy-and-paste installation prompts
 
 > [!IMPORTANT]
-> Skills are installed and maintained by prompt-driven Git workflows. There is no npm or npx installation channel.
+> The following are the two official installation prompts. Copy the prompt that matches the target repository and paste it directly into the AI coding agent working inside that repository. The workflow uses Git, Bash, and Node.js; it does not use npm or npx.
 
-The complete canonical prompts are maintained in [docs/how-to/installation-prompts.md](docs/how-to/installation-prompts.md):
+#### Prompt A — First installation into a repository
 
-- **First installation** — bootstraps a repository that does not yet have Quirk Skills.
-- **Incremental update** — compares the existing installation with the canonical source, keeps identical skills untouched, preserves local modifications, and updates only the safe delta.
+Use this prompt when the target repository does not have a managed Quirk Skills installation.
 
-Both prompts require inspection and dry-run validation before mutation, use SHA-256 comparisons, protect project-owned files, create English commits, and push only to the current branch without force-pushing.
+```text
+You are installing the Quirk Skills bundle into the current repository for the first time.
 
-The synchronizer supports incremental behavior directly:
+CANONICAL_REPOSITORY = https://github.com/quantumquirkxyz/skills-quirk.git
 
-```bash
-node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental
-node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental --write
+Work automatically inside the current repository. Use English for every file you create or modify, every commit message, and every final summary. Do not use npm, npx, package installation, or a registry. Use only git, bash, the existing Node.js runtime, and the scripts shipped by the canonical repository.
+
+Objective:
+Install a valid, reproducible Quirk Skills bundle, preserve the target repository's project-specific content, validate the installation, create one English commit, and push it to the current branch when the remote and credentials permit.
+
+Execution contract:
+1. Inspect before editing:
+   - Run git status --short, git branch --show-current, and git remote -v.
+   - Inspect AGENTS.md, CLAUDE.md, CONTEXT.md, docs/, ADR directories, .agents/, and .claude/.
+   - Detect whether .agents/skills, .claude/skills, skills-lock.json, or .agents/quirk-install.json already exist.
+   - If a managed or partial installation already exists, stop and use the existing-repository update prompt instead of this prompt.
+2. Create a temporary directory safely with mktemp -d and clone the canonical repository with:
+   git clone --depth 1 https://github.com/quantumquirkxyz/skills-quirk.git <temporary-source>
+3. Verify the source contains:
+   .agents/skills/
+   .claude/skills/
+   .agents/skills/platform/sync-bundle.mjs
+   skills-lock.json
+   skills.json
+   docs/how-to/ and docs/explanation/
+4. From the canonical checkout, run a dry run against the current repository:
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository>
+   Do not write anything if the dry run reports conflicts.
+5. If the dry run is clean, apply the installation:
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --write
+   The installer must preserve symlinks and generate .agents/quirk-install.json.
+6. Create or update only the repository-local setup material required by the installation:
+   - Keep existing CONTEXT.md and project documentation intact.
+   - If CONTEXT.md is absent, create a concise English placeholder that clearly marks repository-specific vocabulary as TODO.
+   - Do not create or modify ADR content.
+7. Run validation from the target repository root:
+   node .agents/skills/platform/validate-skills.mjs
+   node .agents/skills/platform/audit-semantics.mjs
+   node .agents/skills/platform/fix-compatibility-view.mjs --dry-run
+   node .agents/skills/platform/check-all.mjs
+   node bin/skills-quirk.js verify-install
+   Continue only if the commands pass or report only documented advisory warnings. Record every failure.
+8. Review git diff and git status. The changed paths must be limited to the installed bundle, its generated compatibility/integrity metadata, and any intentionally created setup file. Do not stage unrelated changes.
+9. Create an English commit:
+   chore(skills): install quirk skills bundle
+10. Push safely:
+   - Push the current branch to its configured upstream if one exists.
+   - If no upstream exists, push the current branch with git push -u origin <current-branch>.
+   - Never force-push.
+   - If push fails because credentials or branch protection are unavailable, keep the commit locally and report the exact command and failure.
+11. Remove the temporary source directory and report:
+   source revision, changed paths, validation results, commit SHA, push result, and any remaining manual follow-up.
+
+Stop conditions:
+- Stop before writing when the dry run reports conflicts.
+- Stop before committing when protected project files or unrelated changes appear in the diff.
+- Stop before pushing when validation fails or the remote is unavailable.
 ```
 
-Use `--incremental` for established repositories. It skips byte-identical files, refreshes generated lock metadata when needed, and still blocks unrelated or ambiguous conflicts. Review the dry-run output before adding `--write`.
+#### Prompt B — Incremental update for an existing installation
+
+Use this prompt when the target repository already contains Quirk Skills and must receive newer skills without reinstalling the bundle from scratch.
+
+```text
+You are updating an existing Quirk Skills installation in the current repository.
+
+CANONICAL_REPOSITORY = https://github.com/quantumquirkxyz/skills-quirk.git
+
+Work automatically inside the current repository. Use English for every file you create or modify, every commit message, and every final summary. Do not use npm, npx, package installation, or a registry. Use only git, bash, the existing Node.js runtime, and the scripts shipped by the canonical repository.
+
+Objective:
+Synchronize only missing or changed canonical skills and their generated compatibility/integrity metadata. Identical files must remain untouched. Preserve local skills, local modifications, project documentation, ADRs, CONTEXT.md, and product code. Create one English commit and push it to the current branch when the remote and credentials permit.
+
+Execution contract:
+1. Inspect before editing:
+   - Run git status --short, git branch --show-current, and git remote -v.
+   - Locate .agents/skills, .claude/skills, skills-lock.json, skills.json, and .agents/quirk-install.json.
+   - Record the initial working tree state. Never mix pre-existing user changes into the update commit.
+   - If no existing Quirk Skills installation is found, stop and use the first-installation prompt.
+2. Create a temporary directory safely with mktemp -d and clone the canonical repository:
+   git clone --depth 1 https://github.com/quantumquirkxyz/skills-quirk.git <temporary-source>
+3. Build a comparison report before writing:
+   - Compare canonical skill paths and SHA-256 hashes from the source skills-lock.json against the target.
+   - Classify every skill as identical, missing, outdated, locally modified, locally newer, renamed, or removed upstream.
+   - Treat identical files as no-ops. Do not delete and recreate them.
+   - Treat locally modified or locally newer skills as conflicts; do not overwrite them automatically.
+   - Treat removed upstream skills as review items; do not delete them automatically.
+   - Verify every .claude/skills entry is a symlink to the expected .agents/skills target.
+4. Run the canonical dry run:
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --incremental
+   Inspect its JSON result. Do not use --force automatically. A conflict involving a local file, local modification, non-symlink compatibility entry, ADR, CONTEXT.md, README.md, or product documentation is a hard stop.
+5. Apply only the safe delta:
+   node <temporary-source>/.agents/skills/platform/sync-bundle.mjs <current-repository> --incremental --write
+   The synchronizer must compare file contents and skip byte-identical files. It may create missing files and update changed bundle-managed files only after the dry run confirms they are safe. It must preserve valid existing compatibility symlinks.
+6. Reconcile generated metadata only when required:
+   - Update skills-lock.json and skills.json when the canonical bundle changed.
+   - Update .agents/quirk-install.json to represent the resulting managed state.
+   - Do not rewrite metadata when its content is already identical.
+7. Run validation from the target repository root:
+   node .agents/skills/platform/validate-skills.mjs
+   node .agents/skills/platform/audit-semantics.mjs
+   node .agents/skills/platform/fix-compatibility-view.mjs --dry-run
+   node .agents/skills/platform/check-all.mjs
+   node bin/skills-quirk.js verify-install
+   Continue only if the commands pass or report only documented advisory warnings. Record every failure.
+8. Review the final diff:
+   - Only missing/outdated canonical skills, necessary compatibility links, lock/manifests, and explicitly allowed bundle metadata may be changed.
+   - Identical skills must not appear in the diff.
+   - No ADR, CONTEXT.md, README.md, project documentation, or product code may appear in the diff.
+   - Do not stage pre-existing user changes.
+9. If the safe delta is empty, report that the installation is already current and do not create an empty commit.
+10. If changes exist, create one English commit:
+    chore(skills): update quirk skills bundle
+11. Push safely:
+    - Push the current branch to its configured upstream if one exists.
+    - If no upstream exists, push the current branch with git push -u origin <current-branch>.
+    - Never force-push.
+    - If push fails because credentials or branch protection are unavailable, keep the commit locally and report the exact command and failure.
+12. Remove the temporary source directory and report:
+    source revision, counts for identical/updated/added/conflicted/removed skills, changed paths, validation results, commit SHA, push result, and manual follow-up.
+
+Stop conditions:
+- Stop before writing when the target has uncommitted changes that overlap the bundle paths.
+- Stop before overwriting any locally modified or locally newer skill.
+- Stop before deleting any upstream-removed skill.
+- Stop before committing when protected or unrelated paths appear in the diff.
+- Stop before pushing when validation fails or the remote is unavailable.
+```
 
 ---
 
