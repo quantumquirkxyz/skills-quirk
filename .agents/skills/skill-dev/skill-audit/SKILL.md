@@ -1,0 +1,99 @@
+---
+name: "skill-audit"
+category: "skill-dev"
+maturity: "stable"
+version: "1"
+description: "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output."
+license: "MIT"
+capabilities:
+  - apply skill audit methods within explicit skill-dev boundaries
+  - analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes
+  - produce and validate a skill-dev artifact with evidence, decisions, and next steps
+outputs: "a concise audit report with warnings and errors ranked by impact."
+sideEffects:
+  - write-files
+dependencies: []
+stopCondition: "Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "8"
+promptVersion: "2.0"
+artifactType: "skill-dev"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: tests/skill-output-migration-routing-skill-dev.test.mjs
+diataxis: "how-to"
+tags: ["skill-dev"]
+compatibility: []
+approvalRequired: "true"
+approvalFor:
+  - write-files
+clauses:
+  - id: SKILL-AUDIT-1
+    text: "Run the platform validator and the semantic auditor before reporting, so findings cover structure and contract drift together."
+    check: "evals/behavioral/skill-audit-clauses.json#SKILL-AUDIT-1"
+  - id: SKILL-AUDIT-2
+    text: "Inspect for missing canonical skills, broken .claude symlinks, and lockfile drift, then rank findings by impact."
+    check: "evals/behavioral/skill-audit-clauses.json#SKILL-AUDIT-2"
+  - id: SKILL-AUDIT-3
+    text: "Surface blockers such as missing context or dependencies before proceeding instead of auditing around them."
+    check: "evals/behavioral/skill-audit-clauses.json#SKILL-AUDIT-3"
+reloadPolicy: on-trigger
+---
+
+## Contract
+
+- Input: the local Skills bundle, lockfile, symlink tree, and platform schemas.
+- Output: a concise audit report with warnings and errors ranked by impact.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `SkillAuditArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/skill-audit/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# Skill Audit
+
+Use this skill to verify the repository-local Skills platform.
+
+
+## Steps
+
+1. Run the platform validator in `.agents/skills/platform/validate-skills.mjs`.
+2. Run the semantic auditor in `.agents/skills/platform/audit-semantics.mjs` when the audit includes templates, retired names, Markdown links, or contract drift.
+3. Inspect the output for missing canonical skills, broken `.claude/` links, and lockfile drift.
+4. Inspect the inventory for stale aliases or mismatched metadata that the validator may not classify crisply.
+5. Summarize findings as a prioritized maintenance report.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+- no approval is required for audit writes: the scripts only update the bundle's own audit, card, and index files, reversible via git
+---
+@include .agents/skills/platform/contract-base.xml
+
+## 2026 Controls
+
+- Eval-first audit plan must declare scope, authority, policy severity, expected semantic diff, and read-only mode before inspection.
+- Audit declared versus observed authority, side effects, provenance/signatures, generated-view integrity, and routing anti-gaming; separate findings from evidence and hypotheses.
+- Include adversarial prompt/tool-injection, mutation/property, flaky/replay, refusal/non-action, and cleanup fixtures. Redact secrets and PII.
+- Least agency is default; approval is required for repairs or generated writes. Block on critical findings, missing authority, signature mismatch, or unexplained mutation.

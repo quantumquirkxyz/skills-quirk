@@ -1,0 +1,196 @@
+{
+  "id": "skill-audit-paired-v1",
+  "skill": "skill-dev/skill-audit",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Two SKILL.md bodies were edited on a branch. The operator asks for an audit of the bundle, the lockfile, symlink parity, and contract drift, ranked by impact, before publishing.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "i edited two SKILL.md bodies on this branch. audit the bundle, the lockfile, the .claude/ symlink tree and contract drift, then rank what i have to fix before i publish. save the audit report where the skill says it goes.",
+  "context": [
+    "repo skills-quirk on branch feat/evals-harness",
+    "the platform validator is .agents/skills/platform/validate-skills.mjs",
+    "the semantic auditor is .agents/skills/platform/audit-semantics.mjs",
+    "skills-lock.json holds one sha256 per canonical skill"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Steps",
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Contract (audit report with warnings and errors ranked by impact)",
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Artifact (SkillAuditArtifact at .agents/skills/platform/artifacts/skill-audit/{identifier}.json)"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 360000,
+    "inputTokens": 120000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The audit runs both declared tools and reports their output: validate-skills.mjs for parity and lock coverage, and audit-semantics.mjs for retired names, weak markers, dependencies, links, and lock drift.",
+        "levels": {
+          "4": "both runners are invoked (or their recorded output is cited) and each contributing finding is attributed to one of them",
+          "2": "one runner is used, or both are mentioned without any output or attribution",
+          "0": "neither runner is invoked or cited; the verdict is asserted from a directory listing"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Findings are split into the three declared surfaces: missing canonical skills, broken .claude/ links, and lockfile drift.",
+        "levels": {
+          "4": "all three surfaces are reported separately, each with the specific skill or link affected",
+          "2": "surfaces are merged into one count with no per-surface detail",
+          "0": "no surface separation at all"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The report is a prioritised maintenance report with warnings and errors ranked by impact, not a raw dump.",
+        "levels": {
+          "4": "each finding carries a severity and an impact statement, ordered worst-first",
+          "2": "findings are listed with severities but without impact or ordering",
+          "0": "an unordered raw dump with no severity"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The artifact is saved at the path the skill declares, in both JSON and Markdown views, and the inventory is inspected for stale aliases and metadata mismatches the validator does not classify crisply.",
+        "levels": {
+          "4": ".agents/skills/platform/artifacts/skill-audit/ is named with both views and the inventory inspection is reported",
+          "2": "one view is produced or the inventory inspection is skipped",
+          "0": "no artifact path and no inventory inspection"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The audit answers the operator's actual question: what must be fixed before publishing, in order.",
+        "levels": {
+          "4": "an ordered fix list where every entry names the file and the change required",
+          "2": "a list of problems without the concrete fix per entry",
+          "0": "no actionable fix list"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Stale lock hashes caused by the two edited SKILL.md files are detected and named per skill.",
+        "levels": {
+          "4": "each edited skill is named with its stale hash and the command that re-locks it",
+          "2": "a generic statement that hashes are stale, without naming the skills",
+          "0": "the stale-hash condition is missed entirely"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Symlink parity is verified as relative symlinks in the compatibility view, not just as existing entries.",
+        "levels": {
+          "4": "the report states that .claude/skills entries are relative symlinks and names any violation",
+          "2": "link existence is checked but link type is not",
+          "0": "symlink parity is not checked"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "Every lockfile entry maps to an existing canonical skill and every canonical skill has a lock entry, in both directions.",
+        "levels": {
+          "4": "both directions are checked and reported with counts",
+          "2": "one direction is checked",
+          "0": "neither direction is checked"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "validate-skills.mjs",
+          "audit-semantics.mjs"
+        ],
+        "note": "at least one declared runner must have actually been executed"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_all",
+        "values": [
+          ".claude/skills",
+          "skills-lock.json"
+        ],
+        "note": "symlink parity and lock coverage are the declared surfaces"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "skills-lock.json",
+          "lock hash",
+          "lockfile"
+        ],
+        "note": "the report must name the lockfile surface"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          ".agents/skills/platform/artifacts/skill-audit/",
+          "error"
+        ],
+        "note": "artifact path declared by the skill, plus severity vocabulary"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 120
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Are missing canonical skills, broken .claude/ links, and lockfile drift reported as three separate surfaces with the specific entries named?",
+        "levels": {
+          "pass": "three separated surfaces with named entries",
+          "fail": "merged or unspecified"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Is the output a prioritised maintenance report where each ranked finding names the file and the fix required?",
+        "levels": {
+          "pass": "ranked findings with per-entry file and fix",
+          "fail": "unordered dump or missing fixes"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

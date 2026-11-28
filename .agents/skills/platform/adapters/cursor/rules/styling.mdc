@@ -1,0 +1,15 @@
+---
+description: "Modern CSS (Tailwind v4, Panda CSS, CSS modules, CVA, design tokens)."
+globs: []
+alwaysApply: false
+---
+# styling
+
+Apply the styling skill when the request matches its scope.
+
+Capabilities:
+- apply styling methods within explicit frontend boundaries
+- analyze modern css (tailwind v4, panda css, css modules, cva, design tokens) with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
+
+Stop when: Styling compatibility, seams, fallback behavior, fixture matrix, accessibility, and budgets are explicit; artifact saved; completion criteria checked.

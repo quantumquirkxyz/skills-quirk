@@ -1,0 +1,1 @@
+{"scenario":"A primary speed sensor can fail high, fail low, freeze, or become stale during closed-loop control.","expectedStatus":"blocked","mustContain":["sensor failure","detection","safe state","independent verification"]}

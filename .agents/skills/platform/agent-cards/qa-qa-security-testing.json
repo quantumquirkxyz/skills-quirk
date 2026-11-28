@@ -1,0 +1,31 @@
+{
+  "name": "qa-security-testing",
+  "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/qa/qa-security-testing/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "qa/qa-security-testing",
+      "name": "qa-security-testing",
+      "description": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.",
+      "tags": [
+        "qa"
+      ],
+      "parameters": {
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "TestStrategyArtifact"
+      }
+    }
+  ]
+}

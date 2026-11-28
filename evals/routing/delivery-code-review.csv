@@ -1,0 +1,17 @@
+should_trigger,category,prompt
+true,explicit,"use code-review to audit the current repository for logical correctness and explain the evidence behind every finding"
+true,explicit,/code-review the whole repository and verify whether the requested behavior is actually implemented
+true,explicit,code-review this module end to end for bugs risks and maintainability; do not edit source
+true,implicit,trace this behavior across entrypoints business logic persistence and integrations
+true,implicit,tell me the worst confirmed defect the risks and the improvements separately
+true,implicit,audit the repository even if there is no specification and mark evidence gaps honestly
+true,contextual,repo skills-quirk on main; inspect CONTEXT.md AGENTS.md entrypoints tests and configuration
+true,contextual,the user reports a bug but the named file may not contain the cause; inspect the full flow
+true,contextual,reviewing evals/*.mjs in this repo. validate the RepositoryAuditArtifact against .agents/skills/platform/schemas/repository-audit-schema.json before returning
+true,explicit,code-review with inspected areas and limitations in the audit artifact
+true,implicit,if the repository is too large for full coverage report the boundary instead of claiming everything was checked
+false,negative-control,review-pr #88 against the fixed point i pinned in the issue — publish the findings on the PR
+false,negative-control,review-fix-loop: run review-pr then plan then implement and repeat until clean
+false,negative-control,qa-security-testing: test auth flows and session handling adversarially
+false,negative-control,contribution-workflow-optimizer: inspect changed skills and recommend contribution improvements
+false,negative-control,skill-audit: run validate-skills.mjs and audit-semantics.mjs then rank findings

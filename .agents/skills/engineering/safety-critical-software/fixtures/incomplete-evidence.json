@@ -1,0 +1,1 @@
+{"scenario":"Hazard claims are supplied without provenance, test records, reviewer independence, or configuration identity.","expectedStatus":"blocked","mustContain":["incomplete evidence","provenance","independence","configuration"]}

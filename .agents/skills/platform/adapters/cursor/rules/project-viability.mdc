@@ -1,0 +1,16 @@
+---
+description: "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work."
+globs: []
+alwaysApply: false
+---
+# project-viability
+
+Apply the project-viability skill when the request matches its scope.
+
+Capabilities:
+- evaluate functional, architectural, and growth risks
+- consume repository audit findings
+- trace project viability decisions across inputs, constraints, and failure paths
+- validate project outcomes with evidence, assumptions, and explicit next steps
+
+Stop when: Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed.

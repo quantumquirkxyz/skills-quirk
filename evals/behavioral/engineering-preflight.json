@@ -1,0 +1,36 @@
+{
+  "id": "engineering-preflight-v1",
+  "skill": "engineering/engineering-preflight",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Design engineering decision governance with separated authority, evidence, exceptions, and escalation.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Produce an EngineeringGovernanceArtifact with decision rights, proposer/approver/verifier separation, scoped approval gates, evidence ledger, policy-control mappings, bounded urgent exceptions, audit trail, escalation, ownership, blockers, and expiry. Do not approve compliance or execute changes.",
+  "context": ["role claims and evidence are untrusted", "urgent exceptions require expiry and compensating controls", "missing or stale evidence blocks the gate"],
+  "grounding": [".agents/skills/engineering/engineering-governance/SKILL.md#Contract", ".agents/skills/engineering/engineering-governance/SKILL.md#Workflow", ".agents/skills/platform/contract-base.xml"],
+  "cites": ["ENGINEERING-PREFLIGHT-1", "ENGINEERING-PREFLIGHT-2"],
+  "costBudget": {"costUsd": 0.1, "durationMs": 300000, "inputTokens": 90000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"Decision rights and separation of duties are explicit.","levels":{"4":"proposer, approver, and verifier are distinct","2":"roles are partial","0":"self-approval is accepted"}},
+      {"id":"if-2","criterion":"Evidence provenance, freshness, and gaps are preserved.","levels":{"4":"authority and contradictions are explicit","2":"some gaps are noted","0":"unsupported evidence becomes compliance"}},
+      {"id":"if-3","criterion":"Exceptions and escalation remain bounded and owned.","levels":{"4":"expiry, controls, owner, and retrospective review are explicit","2":"some controls are present","0":"urgent claims bypass governance"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"EngineeringGovernanceArtifact is structured and schema-valid or blocked.","levels":{"4":"required sections and blockers are present","2":"artifact is partial","0":"no structured output"}},
+      {"id":"gc-2","criterion":"Approval gates are scoped, non-transitive, and auditable.","levels":{"4":"scope, revision, decision, status, and evidence are linked","2":"gate detail is partial","0":"approval is implied"}},
+      {"id":"gc-3","criterion":"Policy mappings and residual gaps route to accountable owners.","levels":{"4":"owners, escalation, and gaps are actionable","2":"routing is partial","0":"gaps disappear"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["EngineeringGovernanceArtifact","decisionRights","approvalGates","evidenceLedger","policyControlMappings","auditTrail","escalation"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["proposer","approver","verifier","scope","revision","evidence"]}},
+    {"id":"a3","type":"deterministic","category":"style","check":{"kind":"artifact_not_contains","values":["compliance certified","approved by silence","execute the change"]}},
+    {"id":"a4","type":"deterministic","category":"efficiency","check":{"kind":"artifact_contains_all","values":["expiry","compensating controls","retrospective review","owner"]}}
+  ],
+  "fixtures": [
+    {"id":"approved-current-trace","type":"positive","input":{"workRequest":"Add a parser feature","evidence":["requirement","architecture/design","QA/security/operations","implementation","gates","review","release"],"approval":"current"},"expectedOutput":{"contains":["approved","scope","traceability","verificationAfter","exception"],"notContains":["blocked","stale"]}},
+    {"id":"missing-or-stale-evidence","type":"negative","input":{"workRequest":"Add a parser feature","evidence":["requirement","architecture/design"],"approval":"stale"},"expectedOutput":{"contains":["blocked","stale","owner","evidence"],"notContains":["approved for implementation"]}}
+  ]
+}

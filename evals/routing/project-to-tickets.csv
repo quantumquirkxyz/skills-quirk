@@ -1,0 +1,16 @@
+should_trigger,category,prompt
+true,explicit,use to-tickets: break the spec at docs/specs/eval-harness.md into tracer bullets with blocking edges
+true,explicit,/to-tickets on the approved plan — publish the smallest claimable slices
+true,explicit,to-tickets and quiz me on the granularity before publishing anything
+true,implicit,this plan is too big for one PR — cut it into tickets that are each demoable on their own
+true,implicit,i want the frontier written out: which tickets have no blockers and can start right now
+true,implicit,"decompose the harness work into vertical slices, not a horizontal task dump"
+true,contextual,"repo skills-quirk. input is corrective: the review-pr findings say the provenance table is missing. publish the smallest ticket that closes it, inheriting parent metadata"
+true,contextual,context: tracker is GitHub and the spec issue is 42. create the tickets as subissues in dependency order
+true,contextual,we are in .scratch/eval-harness/. a wide refactor renames a shared symbol across 250 files — sequence expand and contract as separate tickets
+true,explicit,to-tickets with blockedBy edges as issue numbers and a traceId in the JSON
+true,implicit,each ticket must carry ready-for-agent plus the work-item-format metadata
+false,negative-control,to-spec the conversation instead — the spec is not written yet
+false,negative-control,wayfinder: plan this as a map of decision tickets spread across sessions
+false,negative-control,implement the first ticket in .scratch/eval-harness/issues/01-seams.md
+false,negative-control,grill-me: interrogate this plan before i commit to it

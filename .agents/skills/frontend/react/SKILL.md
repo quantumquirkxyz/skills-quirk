@@ -1,0 +1,93 @@
+---
+name: "react"
+category: "frontend"
+maturity: "stable"
+version: "1"
+description: "Design React component structure and state seams — with composability, testability, and clear data flow."
+license: "MIT"
+capabilities:
+  - apply react methods within explicit frontend boundaries
+  - analyze design react component structure and state seams — with composability, testability, and clear data flow with assumptions, constraints, and failure modes
+  - produce and validate a frontend artifact with evidence, decisions, and next steps
+inputs:
+  - type: object
+    description: React brief, component tree, state shape, and interaction requirements.
+outputs:
+  - type: object
+    description: React seam proposal, component guidance, state boundary guidance, and test hooks.
+sideEffects: []
+dependencies: []
+stopCondition: "React ownership seams, fixtures, fallbacks, compatibility targets, a11y coverage, and budgets are explicit; artifact saved; completion criteria checked."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "frontend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: ""
+diataxis: "how-to"
+tags: ["frontend"]
+compatibility: [concurrent-rendering, suspense, streaming, rsc-boundaries, browser-fallbacks]
+approvalRequired: "false"
+approvalFor: []
+---
+
+## Contract
+
+- Input: React brief, component tree, and state shape.
+- Output: a React seam proposal, component guidance, and state boundary guidance.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `ReactArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/react/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# React
+
+Use this skill when React components or state need to be shaped deliberately. Record the execution traceId and link the artifact to the originating issue for review replay. Keep the component graph shallow where possible, and make the state seam explicit so the UI remains testable and refactor-friendly.
+
+
+## Why
+
+A clean component seam keeps the UI refactor-friendly and testable. Without it, state leaks across boundaries and changes ripple unpredictably.
+
+## Steps
+
+1. Identify the primary interaction path.
+2. Decide which state is local and which state must be lifted.
+3. Shape the component graph around the seam.
+4. Describe the boundaries that make the UI easy to test.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml
+## Modern Target Contract
+
+5. Classify server, client, cache, and external-store ownership; mark hydration, serialization, Suspense/streaming, transition, and error boundaries.
+6. Specify auth/CSRF-sensitive actions and privacy-preserving state exposure; define graceful fallback for unavailable browser APIs, JS, network, or reduced motion.
+7. Provide deterministic fixtures for each state and interaction, including visual/a11y assertions, browser targets, and performance budgets.
+
+**Completion criterion:** ownership seams, fallback states, deterministic fixtures, browser/a11y coverage, budgets, and stop conditions are explicit.

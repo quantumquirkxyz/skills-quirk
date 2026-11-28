@@ -1,0 +1,16 @@
+{
+  "name": "finance-portfolio-theory",
+  "instructions": "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis.\n\nCapabilities:\n- apply finance portfolio theory methods within explicit finance boundaries\n- analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes\n- produce and validate a finance artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/finance/finance-portfolio-theory/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Efficient frontier computed, CAPM/APT estimated, attribution decomposed, regime robustness noted.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

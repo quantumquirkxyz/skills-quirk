@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.dev/schemas/execution/1.0/execution-evidence-record.schema.json",
+  "title": "EvidenceRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "evidenceId", "authority", "producer", "observedAt", "subject", "result", "limitations"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "evidenceId": { "type": "string", "format": "uuid" },
+    "authority": { "enum": ["shipped-artifact", "controlled-replay", "historical-reference", "external-authority", "analyst-inference"] },
+    "producer": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "producerVersion": { "type": "string", "maxLength": 64 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "subject": { "type": "object", "additionalProperties": false, "required": ["type", "identity"], "properties": { "type": { "type": "string" }, "identity": { "type": "string" }, "digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" } } },
+    "method": { "type": "string", "maxLength": 500 },
+    "inputs": { "type": "array", "items": { "type": "string", "maxLength": 500 } },
+    "result": {},
+    "limitations": { "type": "array", "items": { "type": "string", "maxLength": 500 } },
+    "reviewer": { "type": "string", "maxLength": 200 }
+  }
+}

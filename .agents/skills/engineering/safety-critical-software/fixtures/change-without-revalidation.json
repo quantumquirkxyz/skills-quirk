@@ -1,0 +1,1 @@
+{"scenario":"A safety scheduler changed after baseline approval; the team has no impact analysis or regression evidence.","expectedStatus":"blocked","mustContain":["change impact","revalidation","configuration baseline","blocked"]}

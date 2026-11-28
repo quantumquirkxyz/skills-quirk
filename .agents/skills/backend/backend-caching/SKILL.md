@@ -1,0 +1,106 @@
+---
+name: "backend-caching"
+category: "backend"
+maturity: "stable"
+version: "1"
+description: "Design backend caching strategies — cache keys, TTLs, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs."
+license: "MIT"
+capabilities:
+  - apply backend caching methods within explicit backend boundaries
+  - analyze design backend caching strategies — cache keys, ttls, invalidation, stale-while-revalidate, and cache coherence — with explicit consistency and failure trade-offs with assumptions, constraints, and failure modes
+  - produce and validate a backend artifact with evidence, decisions, and next steps
+inputs:
+  - type: object
+    description: Data source, read/write pattern, freshness requirements, traffic profile, and failure tolerance.
+outputs:
+  - type: object
+    description: Cache strategy, key design, TTL plan, invalidation rules, consistency trade-offs, and monitoring plan.
+sideEffects: []
+dependencies: []
+stopCondition: "Cache purpose, freshness, invalidation, and failure behavior are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "backend"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: .agents/skills/platform/fixtures/behavioral/backend-caching.json
+diataxis: "how-to"
+tags: ["backend"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
+---
+
+## Contract
+
+- Input: data source, read/write pattern, freshness requirements, traffic profile, failure tolerance, and invalidation triggers.
+- Output: cache strategy with keys, TTLs, consistency trade-offs, invalidation rules, and monitoring.
+- Scope: do not introduce caching until the source of latency or load is understood.
+- Rule: do not introduce caching until the source of latency or load is understood.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `BackendCachingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/backend-caching/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# backend-caching
+
+Use this skill when adding, reviewing, or debugging a backend cache, memoization layer, CDN-backed response cache, read-through cache, or stale-while-revalidate design.
+
+
+## Rules
+
+- Rule: name the cache's job: latency reduction, load shedding, availability, or cost control.
+- Rule: define cache keys from stable identity and all response-affecting dimensions.
+- Rule: state freshness guarantees and what stale data can harm.
+- Rule: choose explicit invalidation, TTL, write-through, write-behind, or stale-while-revalidate behavior.
+- Rule: include fallback behavior for cache outage, stampede, and cold start.
+
+## Why
+
+Caching changes latency and consistency boundaries. Making those trade-offs explicit prevents hidden stale-data bugs and cache storms.
+
+## Steps
+
+1. Identify data, readers, writers, traffic shape, and freshness constraints.
+2. Decide cache placement: client, CDN, edge, service, shared store, or local memory.
+3. Define key format, value shape, TTL, and invalidation triggers.
+4. Analyze consistency risks, stampede risk, and failure behavior.
+5. Add observability: hit rate, latency, eviction, stale responses, and backend load.
+6. Document rollout, rollback, and cache-warming considerations.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml
+
+## P1 Operational Audit Addendum
+
+- Contract: define caller-visible request/response or command contract, ownership, timeout, retry, cancellation, and compatibility rules; include a versioned schema or event envelope with id, type, version, occurredAt, tenantId, traceId, and idempotencyKey where applicable.
+- Reliability: make retries and side effects idempotent, and specify a crash/replay fixture proving no duplicate effect after timeout, restart, or redelivery.
+- Security: define ACL checks, tenant isolation, least privilege, PII classification/redaction, and negative cases for cross-tenant access, missing claims, malformed envelopes, replayed keys, and unauthorized admin paths.
+- SLOs and evidence: state latency, error, throughput, and cost SLOs; capture a pre-change baseline of metrics, trace, schema digest, load assumptions, and post-change evidence.
+- Provenance: record source requirements, assumptions, versions, fixture IDs, evidence timestamps, and residual unknowns; do not claim runtime behavior from design-only evidence.
+- Completion gate: cover normal, timeout, crash/restart, duplicate, overload, dead-letter, authorization, PII, and dependency-outage cases with rollback or forward-fix ownership.

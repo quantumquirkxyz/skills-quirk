@@ -1,0 +1,15 @@
+---
+description: "Feature store (online/offline, feature engineering, serving, monitoring, drift)."
+globs: []
+alwaysApply: false
+---
+# feature-store
+
+Apply the feature-store skill when the request matches its scope.
+
+Capabilities:
+- apply feature store methods within explicit data boundaries
+- analyze feature store (online/offline, feature engineering, serving, monitoring, drift) with assumptions, constraints, and failure modes
+- produce and validate a data artifact with evidence, decisions, and next steps
+
+Stop when: Architecture diagram saved; feature definitions documented; monitoring plan present.

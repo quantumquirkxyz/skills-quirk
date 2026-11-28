@@ -1,0 +1,50 @@
+{
+  "skill": "routing/knowledge-curator",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "ad59f70cd0ae82ddab93e2142a3e06cd38de3b3abb3713dc810316123dcf011d",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "router",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-docs"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-docs"
+    ],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+---
+description: "Formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity."
+globs: []
+alwaysApply: false
+---
+# math-optimization
+
+Apply the math-optimization skill when the request matches its scope.
+
+Capabilities:
+- apply math optimization methods within explicit math boundaries
+- analyze formulate and solve optimization problems (linear, convex, non-convex, combinatorial) — model, choose solver, verify optimality, report sensitivity with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
+
+Stop when: Model formulated, solver selected, optimality bound or gap reported, sensitivity analysis complete.

@@ -1,0 +1,16 @@
+{
+  "name": "web3-smart-contracts",
+  "instructions": "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate.\n\nCapabilities:\n- design and review smart contracts within explicit web3 boundaries\n- specify invariants, adversarial fixtures, verification plans, and operational controls\n- produce a typed web3 artifact with decisions, assumptions, residual risks, and deployment status\n\nCanonical skill: .agents/skills/web3/web3-smart-contracts/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Stop when every required gate is typed as pass, fail, blocked, not-applicable, or not-run; deployment recommendation and residual risks are explicit.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

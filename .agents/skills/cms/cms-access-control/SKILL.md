@@ -1,0 +1,94 @@
+---
+name: "cms-access-control"
+category: "cms"
+maturity: "stable"
+version: "1"
+description: "Design CMS access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability."
+license: "MIT"
+capabilities:
+  - apply cms access control methods within explicit cms boundaries
+  - analyze design cms access control — roles, permissions, editorial workflows, and publishing boundaries — with explicit least-privilege and auditability with assumptions, constraints, and failure modes
+  - produce and validate a cms artifact with evidence, decisions, and next steps
+outputs: "role-permission matrix, workflow gates, audit requirements, and exception handling."
+sideEffects: []
+dependencies: []
+stopCondition: "Roles, permissions, workflow gates, and audit requirements are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "cms"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
+diataxis: "how-to"
+tags: ["cms"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
+---
+
+## Contract
+
+- Input: editorial roles, content types, workflow states, publishing risk, compliance constraints, and platform capabilities.
+- Output: role-permission matrix, workflow gates, audit requirements, and exception handling.
+- Scope: keep least privilege practical enough for editors to complete normal work without sharing privileged accounts.
+- Rule: keep least privilege practical enough for editors to complete normal work without sharing privileged accounts.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CmsAccessControlArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/cms-access-control/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# cms-access-control
+
+Use this skill when designing or reviewing CMS roles, permissions, approval gates, publishing authority, content ownership, and audit requirements.
+
+
+## Rules
+
+- Rule: define roles by editorial responsibility, not only by organization chart.
+- Rule: separate create, edit, review, approve, publish, archive, delete, and administer permissions.
+- Rule: require explicit gates for high-risk publishing surfaces.
+- Rule: log privileged actions, workflow transitions, and permission changes.
+- Rule: document break-glass or emergency publishing behavior if needed.
+
+## Steps
+
+1. Inventory roles, content types, workflow states, and publishing risks.
+2. Build a permission matrix by action and content scope.
+3. Define approval gates, segregation of duties, and exceptions.
+4. Specify audit logs, review cadence, and permission-change controls.
+5. Identify usability risks that could drive unsafe workarounds.
+6. Document validation tests for representative roles.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+## Lifecycle And Security Controls
+
+- Evaluate permissions across draft, review, scheduled, published, archived, deleted, and restored states; separate content scope, field scope, environment, and action.
+- Require preview isolation: drafts and unpublished media must be unguessable, non-indexed, tenant-scoped, and protected against cache leakage; preview must reflect the intended schema version.
+- Record immutable audit evidence for grants, denials, impersonation, break-glass, workflow transitions, exports, and destructive actions, with actor, target, reason, correlation ID, and outcome.
+- Test deny-by-default, tenant isolation, segregation of duties, replayed approvals, stale sessions, CSRF/SSRF, upload/content injection, and rollback. Hand off schema/lifecycle design to `cms-architecture` and editorial policy to `cms-content-strategy`.
+@include .agents/skills/platform/contract-base.xml

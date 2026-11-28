@@ -1,0 +1,42 @@
+{
+  "fixtures": [
+    {
+      "id": "skill-load-basic",
+      "skill": "skill-creator",
+      "type": "behavioral",
+      "description": "Skill loads and provides guidance for creating a new skill",
+      "input": "I want to create a skill for reviewing Dockerfiles",
+      "expected": {
+        "invokes": true,
+        "outputContains": [
+          "SKILL.md",
+          "frontmatter",
+          "Contract"
+        ],
+        "doesNotContain": [
+          "error",
+          "not found"
+        ]
+      }
+    },
+    {
+      "id": "skill-creator-loads",
+      "skill": "skill-creator",
+      "type": "behavioral",
+      "description": "Skill loads and provides guidance for creating a new skill",
+      "input": "I want to create a skill for reviewing Dockerfiles",
+      "expected": {
+        "invokes": true,
+        "outputContains": [
+          "SKILL.md",
+          "frontmatter",
+          "Contract"
+        ],
+        "doesNotContain": [
+          "not found"
+        ]
+      }
+    }
+  ],
+  "skill": "skill-creator"
+}

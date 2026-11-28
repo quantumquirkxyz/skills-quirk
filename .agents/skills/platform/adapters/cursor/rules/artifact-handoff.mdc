@@ -1,0 +1,15 @@
+---
+description: "Transfer structured artifacts between Skills and sessions — with explicit provenance and consumer expectations."
+globs: []
+alwaysApply: false
+---
+# artifact-handoff
+
+Apply the artifact-handoff skill when the request matches its scope.
+
+Capabilities:
+- apply artifact handoff methods within explicit routing boundaries
+- analyze transfer structured artifacts between skills and sessions — with explicit provenance and consumer expectations with assumptions, constraints, and failure modes
+- produce and validate a routing artifact with evidence, decisions, and next steps
+
+Stop when: Transfer structured artifacts between Skills and sessions complete; structured result returned; completion criteria checked.

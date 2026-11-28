@@ -1,0 +1,134 @@
+---
+name: "math-probability-models"
+category: "math"
+maturity: "stable"
+version: "2"
+description: "Build probability models — distributions, stochastic processes (Markov, Brownian, Poisson), inference — with explicit assumptions and sanity checks."
+license: "MIT"
+capabilities:
+  - apply math probability models methods within explicit math boundaries
+  - analyze build probability models — distributions, stochastic processes (markov, brownian, poisson), inference — with explicit assumptions and sanity checks with assumptions, constraints, and failure modes
+  - produce and validate a math artifact with evidence, decisions, and next steps
+outputs: "pull-request artifact containing the scoped result, supporting evidence, validation status, and residual risks required by this skill's contract."
+sideEffects: []
+dependencies: []
+stopCondition: "Model specified, parameters estimated, validation against limits complete, uncertainty intervals reported."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "pull-request"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: "evals/behavioral/math-probability-models.json"
+diataxis: "how-to"
+tags: ["math"]
+compatibility: ["quant-risk-modeling", "quant-factors"]
+approvalRequired: "false"
+approvalFor: []
+---
+
+## Contract
+
+- Input: skill invocation with the user's request and available context.
+- Output: a structured artifact or guidance aligned to the skill's declared outputs.
+- Scope: stay within the skill's declared boundaries; do not broaden without explicit direction.
+- Rule: follow the skill's completion criteria and stop condition exactly.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `MathProbabilityModelsArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/math-probability-models/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# Probability & Stochastic Modeling
+
+Construct a **probability model** — distribution, process, or inference — with explicit assumptions and checks against known limits.
+
+## When to use
+
+- User asks for random variables, distributions, stochastic processes, or inference.
+- A risk / quant / ML problem needs a probabilistic backbone.
+
+## Process
+
+### 1. Define the space
+
+Name the sample space and events; identify if a sigma-algebra is needed (continuous spaces).
+
+**Completion criterion:** sample space and event space explicit; independence / measurability called out if relevant.
+
+### 2. Choose distribution / process
+
+- Discrete (Bernoulli, Binomial, Poisson, Geometric).
+- Continuous (Uniform, Normal, Exponential, Beta, Gamma, t, chi-square).
+- Multivariate (Multivariate Normal, Dirichlet, Copulas).
+- Stochastic processes (Markov chain, Poisson process, Brownian motion, Lévy, ARMA / GARCH).
+- Bayesian: prior + likelihood → posterior.
+
+**Completion criterion:** distribution or process named with type and parameters.
+
+### 3. State parameters
+
+Each parameter is named with value or estimation method (MLE, MAP, moment-matching, prior).
+
+**Completion criterion:** parameters listed with values or estimation procedure.
+
+### 4. Compute / simulate
+
+- Analytical where tractable (mean, variance, CDF, moments).
+- Monte Carlo with: seed, sample size N (justified), convergence check.
+- For inference: posterior sampling (MCMC, variational, conjugate update). For MCMC, run multiple chains and require R-hat convergence (< 1.01).
+
+**Completion criterion:** computation done; sample size or analytical result explicit.
+
+### 5. Validate
+
+- **Limits:** law of large numbers, central limit, stationary distribution, long-run mean.
+- **Sanity:** small cases (n=1, 2, 3) checked by hand.
+- **Cross-check:** analytical vs simulated mean / variance / tail probability.
+- **Calibration:** does the model reproduce known data moments?
+- **Prior sensitivity analysis:** power-scaling — vary prior strength and confirm posterior stability.
+- **Prior predictive checks:** simulate from the prior and compare to observed data.
+- **Posterior predictive checks:** simulate from the posterior and compare to observed data.
+- **Non-identifiability diagnosis:** diagnose non-identifiability before accepting results (flat posteriors, correlated parameters).
+
+**Completion criterion:** validation completed; discrepancy addressed.
+
+### 6. Deliver
+
+Markdown artifact: model, parameters, computation, validation, and an operational interpretation ("expected return X% with std Y% over horizon T").
+
+**Completion criterion:** artifact complete and reproducible.
+
+## Quality Gates
+
+- Record SHA-256 hashes for observations, model code, dependencies, random seeds, and environment; preserve collection timestamps.
+- Check look-ahead, survivorship, censoring, missingness, selection, and label leakage; stop when the sample or filtration is not point-in-time.
+- Report parameter/posterior and predictive uncertainty intervals, calibration curves, coverage, and backtesting or posterior predictive checks.
+- Run known-solution distribution/process fixtures and counterexamples for violated support, dependence, stationarity, or boundary assumptions; state numerical tolerances.
+- Assess fairness/privacy for sensitive observations and state no-claims/no-advice boundaries for operational, medical, financial, or policy interpretations.
+- Fixtures: R-hat convergence (< 1.01), SBC calibration, prior predictive check.
+- Stop with `inconclusive` when provenance, calibration, uncertainty, or tolerance checks fail; align artifact validation and stop condition.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+@include .agents/skills/platform/contract-base.xml

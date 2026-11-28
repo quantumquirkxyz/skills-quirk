@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","kind":"integrity","artifact":{"declaredDigest":"sha256:declared","observedDigest":"sha256:tampered"},"expected":"BLOCKED","reason":"artifact-digest-mismatch"}

@@ -1,0 +1,16 @@
+should_trigger,category,prompt
+true,explicit,"use review-pr on PR #88 — two axes, findings only, publish the review on the PR"
+true,explicit,"/review-pr with fixed point main, diff git diff main...HEAD, spec fetched from issue 88"
+true,explicit,review-pr #91 against HEAD~3 and leave each finding at the exact file and line
+true,implicit,look at the PR and find where the applied change breaks the acceptance criteria — dont summarize it
+true,implicit,the goal is not a summary; identify defects and point at the error
+true,implicit,"if there are no findings, publish the clean review state so the author can see it was inspected"
+true,contextual,repo skills-quirk. PR #88 has inline review history — check it first so we dont duplicate a concern with new wording
+true,contextual,context: the PR is obviously broken by a failing test. name the failing command first
+true,contextual,the branch is in a conflicted merge state from review follow-up work — dont turn the conflict into Standards or Spec findings
+true,explicit,review-pr with the traceId in the metadata and the markdown footer
+true,implicit,standards findings must cite the documented rule or smell name; spec findings must quote the spec line
+false,negative-control,"code-review the branch since the merge-base and return the artifact as structured output, no PR comment"
+false,negative-control,plan-review-fixes: convert the review-pr findings on #88 into a remediation plan posted as PR comments
+false,negative-control,ship-subissue: PR #88 is reviewed clean — merge it and close the issue
+false,negative-control,pr-operations: assign reviewers and add the ready-for-review label to #88

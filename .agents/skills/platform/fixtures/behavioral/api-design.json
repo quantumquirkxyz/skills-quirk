@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {
+      "id": "v2-contract-api-design",
+      "skill": "api-design",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "seam",
+          "caller contract"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
+      }
+    }
+  ],
+  "skill": "api-design",
+  "id": "v2-contract-api-design",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "seam",
+      "caller contract"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
+}

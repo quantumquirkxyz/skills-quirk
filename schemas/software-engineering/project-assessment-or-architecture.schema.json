@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://skills-quirk.dev/schemas/software-engineering/project-assessment-or-architecture.schema.json","title":"ProjectAssessmentOrArchitectureArtifact","oneOf":[{"$ref":"project-assessment-artifact.schema.json"},{"$ref":"architecture-artifact.schema.json"}]}

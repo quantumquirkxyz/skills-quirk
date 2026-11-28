@@ -1,0 +1,245 @@
+{
+  "id": "ask-to-paired-v1",
+  "skill": "routing/ask-to",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "The standard-feature workflow sits in the frontier state with every ticket of the wave implemented. The operator asks for a parallel swarm to settle a reviewer/implementer disagreement and merge the winning output, a request that has no matching transition from the current state.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "every ticket in the wave is done but the reviewer and the implementer still disagree about the seam. can you just spin up a swarm, let them fight it out in parallel and merge whichever side wins? then we ship.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "workflow standard-feature is loaded; the current state is frontier with availableTransitions NEXT_READY, ALL_DONE and BLOCKED only",
+    "the state machine runner is .agents/skills/platform/workflow-state-machine.mjs and the workflows are .agents/skills/platform/workflows/*.yaml",
+    "the request touches review and tracker state, so work-item-router is the governance preflight for it",
+    "no subagent has been spawned and no issue exists for this request yet"
+  ],
+  "grounding": [
+    ".agents/skills/routing/ask-to/SKILL.md#Contract (RoutingArtifact, routing only, escalate when the current state has no matching transition)",
+    ".agents/skills/routing/ask-to/references/routing-rules.md (selection criteria and fallback policy)",
+    ".agents/skills/routing/ask-to/references/workflow-state-machine.md (reading current state and available transitions)",
+    ".agents/skills/platform/workflows/standard-feature.yaml (frontier state transitions)"
+  ],
+  "cites": [
+    "ASK-TO-1",
+    "ASK-TO-2",
+    "ASK-TO-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 240000,
+    "inputTokens": 70000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The workflow state machine is read before any recommendation, and the current state plus the available transitions are loaded from the workflow definition rather than recalled from memory.",
+        "levels": {
+          "4": "the state machine runner is invoked or its workflow definition is read, and the current state plus its transitions are quoted from it",
+          "2": "the state machine is named but the current state or the transitions are not quoted from it",
+          "0": "the recommendation is produced with no state machine read at all"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The response names the current state, lists the valid transitions out of it, and states which transition was selected.",
+        "levels": {
+          "4": "current state, the full transition list, and the selected transition all appear explicitly",
+          "2": "the current state is named but the transition list or the selection is missing",
+          "0": "no state and no transition is named; the answer is a generic flow description"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Exactly one primary skill path is recommended, and the rationale distinguishes it from the nearest alternative the operator was leaning toward.",
+        "levels": {
+          "4": "one path is chosen and the rationale says why the adjacent path was rejected",
+          "2": "one path is chosen but presented as the only option with no rationale against the alternative",
+          "0": "several paths are offered without a choice, or no path is recommended"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The router stays routing-only: no issue, ticket, pull request, or project item is created, and no artifact body is drafted.",
+        "levels": {
+          "4": "no tracker write and no artifact body appears anywhere in the transcript or the response",
+          "2": "no tracker write happens but the response drafts part of the downstream artifact",
+          "0": "a tracker item is created or the routed artifact is drafted inside the router"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "When the current state has no matching transition, the route goes to escalate with an explicit escalation report instead of a forced jump to a skill the state machine does not allow.",
+        "levels": {
+          "4": "escalate is selected, the missing transition is named, and the report says what the operator must resolve first",
+          "2": "escalate is selected but the report does not say which transition was missing or what to resolve",
+          "0": "a forced jump is made to a skill with no declared transition from the current state"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The missing-context case is made explicit rather than implied: what the operator must supply before a transition becomes valid.",
+        "levels": {
+          "4": "the missing input is named, along with the transition that would become valid once it is supplied",
+          "2": "missing context is mentioned without naming what to supply",
+          "0": "the gap is smoothed over and a route is forced anyway"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The RoutingArtifact is returned as structured output in the current response with currentState, selectedTransition, nextSkill and workflow, and a trace records the decision.",
+        "levels": {
+          "4": "all four declared fields are present in the response and the trace carries the transition and next skill",
+          "2": "structured output is returned but a declared field is missing, or no trace is emitted",
+          "0": "prose only with no structured routing artifact"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The operator's question is answered as the next runnable step, not as a catalogue of the flows that exist.",
+        "levels": {
+          "4": "the answer names what to run now and what that step will produce",
+          "2": "the answer names a step but not what it produces or who runs it",
+          "0": "the response lists available skills and flows without answering the request"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "workflow-state-machine.mjs",
+          "standard-feature.yaml"
+        ],
+        "note": "clause ASK-TO-1: the workflow state machine is read before routing, so the state definition must be visible in the transcript"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "frontier",
+          "escalate"
+        ],
+        "note": "clause ASK-TO-3: the frontier state declares no transition for a merge-decision swarm, so the route escalates with an explicit report"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "gh issue create",
+          "gh pr create",
+          "gh project"
+        ],
+        "note": "negative control for clause ASK-TO-2: the router is routing-only and must create no issue, pull request, or project item"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "## Acceptance criteria",
+          "## Ticket body",
+          "## Draft spec"
+        ],
+        "note": "negative control for clause ASK-TO-2: the router answers with a route, not with the drafted downstream artifact"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "currentState",
+          "selectedTransition",
+          "nextSkill"
+        ],
+        "note": "clause ASK-TO-1: the current state, the valid transitions and the selected transition are all named in the returned routing artifact"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Routing decision",
+          "## Escalation report"
+        ],
+        "note": "the escalation path carries an explicit report rather than a silent dead end"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 120
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Are the current state, the valid transitions out of it, and the selected transition all named explicitly?",
+        "levels": {
+          "pass": "state, transition list and selection all present",
+          "fail": "state or transition missing, or a generic flow description instead"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Did the router escalate with an explicit report instead of forcing a jump to a skill with no declared transition from the current state?",
+        "levels": {
+          "pass": "escalate chosen, missing transition named, blocking input stated",
+          "fail": "a forced jump to an undeclared transition"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Did the router stay routing-only, creating no tracker item and drafting no downstream artifact body?",
+        "levels": {
+          "pass": "no tracker write and no drafted artifact body",
+          "fail": "a tracker item is created or the routed artifact is drafted"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

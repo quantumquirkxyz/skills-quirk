@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/tool-risk-budget.schema.json",
+  "version": 1,
+  "generatedFor": "skills-quirk",
+  "phase": "Release target",
+  "source": "docs/tool-risk-debt.md",
+  "budgets": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "targets": [
+    {
+      "phase": "Fase 0",
+      "errors": 84,
+      "note": "baseline gate: existing debt is visible and capped"
+    },
+    {
+      "phase": "Fase 1",
+      "errors": 20,
+      "note": "first remediation batch documents untrusted content handling"
+    },
+    {
+      "phase": "Fase 2",
+      "errors": 10,
+      "note": "operational security gate tightens before model-backed evals"
+    },
+    {
+      "phase": "Release target",
+      "errors": 0,
+      "note": "no error-severity tool-risk debt remains"
+    }
+  ]
+}

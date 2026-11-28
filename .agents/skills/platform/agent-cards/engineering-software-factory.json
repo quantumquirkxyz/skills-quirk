@@ -1,0 +1,38 @@
+{
+  "name": "software-factory",
+  "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/software-factory/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "engineering/software-factory",
+      "name": "software-factory",
+      "description": "Engineer the system that builds code — foreman agent, separate validator, different-model critic, observability views, MCP wiring, context window management, convergence tuning.",
+      "tags": [
+        "engineering",
+        "software-factory",
+        "agent-factory",
+        "foreman",
+        "validator",
+        "critic",
+        "mcp",
+        "observability"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "factory-design"
+      }
+    }
+  ]
+}

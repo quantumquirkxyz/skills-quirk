@@ -1,0 +1,19 @@
+{
+  "name": "quirk-devops",
+  "version": "1.0.0",
+  "description": "DevOps skills for Quirk: Docker, Kubernetes, Terraform, CI/CD, monitoring",
+  "author": {
+    "name": "quantumquirkxyz",
+    "url": "https://github.com/quantumquirkxyz/skills-quirk"
+  },
+  "skills": [
+    "docker", "kubernetes", "terraform", "ci-cd",
+    "monitoring", "incident-response", "chaos-engineering"
+  ],
+  "agents": [],
+  "commands": [
+    "wayfinder", "to-tickets"
+  ],
+  "hooks": [],
+  "mcpServers": []
+}

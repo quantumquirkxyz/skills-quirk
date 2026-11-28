@@ -1,0 +1,258 @@
+{
+  "id": "skill-audit-clauses-v1",
+  "skill": "skill-dev/skill-audit",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "The bundle audit is requested while the semantic auditor cannot run because the manifest it reads has not been generated yet, one canonical skill has no relative symlink in the compatibility view, and one lock entry points at a skill that was renamed. The operator wants the report now and asks the run to skip whatever does not work.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "audit the bundle and tell me what to fix before i publish. if a tool doesn't run, just skip it and audit what you can - i need the report today.",
+  "context": [
+    "the platform validator is .agents/skills/platform/validate-skills.mjs and the semantic auditor is .agents/skills/platform/audit-semantics.mjs",
+    "the manifest the semantic auditor reads has not been generated, so contract drift cannot be measured yet",
+    "one canonical skill has no relative symlink in the compatibility view, and one lock entry points at a skill that was renamed",
+    "the tempting shortcut is reporting structure findings only and calling that the audit",
+    "the SkillAuditArtifact is emitted at .agents/skills/platform/artifacts/skill-audit/{identifier}.json with a Markdown view",
+    "the paired fixture evals/behavioral/skill-audit.json covers the two-edited-bodies scenario, so this one carries the contract-clause citations"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Steps (run the platform validator, run the semantic auditor, inspect for missing skills, broken links and lockfile drift, inspect the inventory, summarize)",
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Contract (surface blockers before proceeding; a concise audit report with warnings and errors ranked by impact)",
+    ".agents/skills/skill-dev/skill-audit/SKILL.md#Artifact (SkillAuditArtifact at .agents/skills/platform/artifacts/skill-audit/{identifier}.json)",
+    ".agents/skills/platform/validate-skills.mjs",
+    "skills-lock.json"
+  ],
+  "cites": [
+    "SKILL-AUDIT-1",
+    "SKILL-AUDIT-2",
+    "SKILL-AUDIT-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 360000,
+    "inputTokens": 120000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Both declared runners are executed before anything is reported: the platform validator for structure and the semantic auditor for contract drift.",
+        "levels": {
+          "4": "both runners are invoked or their recorded output is cited, and each contributing finding is attributed to the runner that produced it",
+          "2": "one runner is used, or both are named without any output or attribution",
+          "0": "neither runner is invoked or cited and the verdict is asserted from a directory listing"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "A runner that cannot execute is surfaced as a blocker naming the missing dependency, never skipped silently so the report can still be produced.",
+        "levels": {
+          "4": "the run states that the semantic auditor could not execute, names the missing manifest as the blocker, and stops the audit instead of publishing a partial report",
+          "2": "the failure is mentioned as a caveat while the partial report is still published as the audit",
+          "0": "the failed runner is skipped silently and the report presents structure findings as the complete audit"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The three declared surfaces are inspected separately - missing canonical skills, broken compatibility-view symlinks, and lockfile drift - each with the specific entry named.",
+        "levels": {
+          "4": "all three surfaces are reported separately, each naming the specific skill, link, or lock entry affected",
+          "2": "the surfaces are merged into one count with no per-surface entry named",
+          "0": "no surface separation at all"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The report is ranked by impact, worst first, with a severity per finding rather than a raw dump of validator output.",
+        "levels": {
+          "4": "each finding carries a severity and an impact statement and the worst finding appears first",
+          "2": "findings carry severities but no impact, or they are listed in discovery order",
+          "0": "an unordered raw dump with no severity"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The audit answers what must be fixed before publishing, in order, naming the file and the change per entry.",
+        "levels": {
+          "4": "an ordered fix list where every entry names the file and the change required",
+          "2": "a list of problems without the concrete fix per entry",
+          "0": "no actionable fix list"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Symlink parity is checked as relative symlinks in the compatibility view, and a link that exists but is absolute or broken is reported.",
+        "levels": {
+          "4": "the report states that compatibility-view entries are relative symlinks and names any violation, including the missing one",
+          "2": "link existence is checked but link type is not, so a broken or absolute link passes",
+          "0": "symlink parity is not checked"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The lockfile is checked in both directions: every entry maps to an existing canonical skill and every canonical skill has an entry.",
+        "levels": {
+          "4": "both directions are checked and reported with counts, and the stale entry naming the renamed skill is identified",
+          "2": "one direction is checked, so a stale entry can survive",
+          "0": "neither direction is checked"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The SkillAuditArtifact is saved at the declared path in both JSON and Markdown views, and the inventory is inspected for stale aliases and metadata mismatches.",
+        "levels": {
+          "4": ".agents/skills/platform/artifacts/skill-audit/ is named with both views and the inventory inspection is reported",
+          "2": "one view is produced, or the inventory inspection is skipped",
+          "0": "no artifact path and no inventory inspection"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "validate-skills.mjs",
+          "audit-semantics.mjs"
+        ],
+        "note": "clause SKILL-AUDIT-1: at least one declared runner is executed before the report is written"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "skills-lock.json",
+          ".claude/skills"
+        ],
+        "note": "clause SKILL-AUDIT-2: lockfile drift and compatibility-view symlink parity are inspected as named surfaces"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "blocked",
+          "blocker"
+        ],
+        "note": "clause SKILL-AUDIT-3: the missing semantic-auditor dependency is surfaced as a blocker rather than skipped"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Findings",
+          "## Blockers",
+          "## Ranked Fix List"
+        ],
+        "note": "clause SKILL-AUDIT-2: the three surfaces are reported separately and then ranked by impact"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "skipped the auditor",
+          "ran the validator only",
+          "audit limited to structure"
+        ],
+        "note": "negative control for clause SKILL-AUDIT-3: a runner that cannot execute is never quietly skipped so the report can still be produced"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "skills-lock.json"
+        ],
+        "note": "clause SKILL-AUDIT-2: the lockfile is read for drift instead of inferred from the skill listing"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          ".agents/skills/platform/artifacts/skill-audit/",
+          "error"
+        ],
+        "note": "the artifact is saved where the skill declares it, with the severity vocabulary the report ranks by"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Was the missing semantic-auditor dependency surfaced as a blocker naming what is missing, instead of the audit proceeding without it?",
+        "levels": {
+          "pass": "the blocker names the missing manifest and the audit stops rather than publishing a partial report",
+          "fail": "the failure is a caveat over a partial report, or it is skipped silently"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Was the lockfile checked in both directions, with each stale entry named?",
+        "levels": {
+          "pass": "both directions are checked and the entry naming the renamed skill is identified",
+          "fail": "one direction only, or the stale entry is left unnamed"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Is the report ranked by impact with a severity per finding, rather than a raw dump of validator output?",
+        "levels": {
+          "pass": "severities and impact statements are present and the worst finding is first",
+          "fail": "an unordered dump, or findings without severities"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

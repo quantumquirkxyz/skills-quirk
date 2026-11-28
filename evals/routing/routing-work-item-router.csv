@@ -1,0 +1,15 @@
+should_trigger,category,prompt
+true,explicit,run /work-item-router before i touch the tracker — request is: publish the spec for issue 42
+true,explicit,use work-item-router: the user wants a new project board for the eval harness work
+true,explicit,"work-item-router on ""split the approved spec into tickets"" — route it, do not draft it"
+true,implicit,before anything else read the governance index and tell me which downstream skill this belongs to: add a corrective ticket for the review findings on PR 88
+true,implicit,i keep guessing the tracker metadata for specs and tickets — force the governance preflight and route this properly
+true,contextual,"repo is skills-quirk, branch main. user pasted: this PR conflicts, resolve it. route it, do not draft it"
+true,contextual,we're in docs/reference/agents/. request: audit whether every ticket in the wave-1 plan has acceptance criteria. route before acting
+true,contextual,"working in .agents/skills/routing/. user says: the closeout for issue 54 is done, mark it. hit the governance index first, then route"
+true,explicit,"work-item-router please: request type is review-fix-plan, PR #91 has standards findings"
+true,implicit,governance preflight before publishing anything to the tracker for milestone 2.0
+true,contextual,"fresh session, no prior context. user asks for the ticket decomposition of docs/specs/eval-harness.md and expects canonical metadata. route first"
+false,negative-control,use capability-router to pick the skill that fits: add redis caching to /search
+false,negative-control,"run ask-to — im not sure which flow this belongs to, just recommend the next step"
+false,negative-control,"capability-router, not work-item-router: match this task against declared capabilities only"

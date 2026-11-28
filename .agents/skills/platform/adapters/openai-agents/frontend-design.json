@@ -1,0 +1,16 @@
+{
+  "name": "frontend-design",
+  "instructions": "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries.\n\nCapabilities:\n- identify loading, empty, error, and success state gaps\n- consume code-review audit findings\n- trace frontend design decisions across inputs, constraints, and failure paths\n- validate frontend outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/frontend/frontend-design/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Visual system, interaction seams, fallback states, fixtures, compatibility targets, and budgets are explicit; artifact saved; completion criteria checked.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

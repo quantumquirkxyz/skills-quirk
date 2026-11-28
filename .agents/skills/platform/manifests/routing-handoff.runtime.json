@@ -1,0 +1,52 @@
+{
+  "skill": "routing/handoff",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "da966de3debdfabde00c2f9a01c89b415cf629476453fb33b648a065d5062254",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 6,
+    "modelTier": "router",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Edit",
+        "Write"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-temp-file",
+      "write-files"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-temp-file",
+      "write-files"
+    ],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "physics-data-analysis-root",
+  "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/physics/physics-data-analysis-root/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "physics/physics-data-analysis-root",
+      "name": "physics-data-analysis-root",
+      "description": "Analyse experimental physics data with ROOT, pandas, uproot, NumPy — calibration, systematic errors, statistical inference, result archival — with reproducible scripts.",
+      "tags": [
+        "physics"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "data"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+description: "Shape Next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled."
+globs: []
+alwaysApply: false
+---
+# nextjs
+
+Apply the nextjs skill when the request matches its scope.
+
+Capabilities:
+- apply nextjs methods within explicit frontend boundaries
+- analyze shape next.js projects around routes, server/client seams, and data flow that stay deep rather than tangled with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
+
+Stop when: Next route, RSC/streaming, auth/CSRF, cache seams, fixtures, fallbacks, and budgets are explicit; artifact saved; completion criteria checked.

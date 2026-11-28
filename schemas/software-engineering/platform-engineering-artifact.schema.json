@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-quirk.dev/schemas/software-engineering/platform-engineering-artifact.schema.json",
+  "title": "PlatformEngineeringArtifact",
+  "type": "object",
+  "allOf": [{ "$ref": "#/$defs/envelope" }, { "type": "object", "required": ["payload"], "properties": { "artifactType": { "const": "PlatformEngineeringArtifact" }, "payload": { "$ref": "#/$defs/payload" } } }],
+  "$defs": {
+    "id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["draft", "in-progress", "ready", "approved", "rejected", "blocked", "completed", "superseded", "expired"] },
+    "record": { "type": "object", "additionalProperties": true },
+    "envelope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schemaVersion", "artifactType", "artifactId", "traceId", "operationId", "status", "sourceArtifacts", "sourceDigests", "fixedPoint", "producer", "owner", "nextConsumer", "evidence", "approvals", "blockers", "risks", "createdAt", "expiresAt"],
+      "properties": {
+        "schemaVersion": { "const": "1.0" }, "artifactType": { "type": "string" }, "artifactId": { "$ref": "#/$defs/id" }, "traceId": { "$ref": "#/$defs/id" }, "operationId": { "$ref": "#/$defs/id" }, "status": { "$ref": "#/$defs/status" },
+        "sourceArtifacts": { "type": "array", "items": { "$ref": "#/$defs/id" } }, "sourceDigests": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } }, "fixedPoint": { "$ref": "#/$defs/record" }, "producer": { "$ref": "#/$defs/id" }, "owner": { "$ref": "#/$defs/id" }, "nextConsumer": { "anyOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }] }, "evidence": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "approvals": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "blockers": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "risks": { "type": "array", "items": { "$ref": "#/$defs/record" } }, "createdAt": { "type": "string", "format": "date-time" }, "expiresAt": { "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }] }, "payload": { "$ref": "#/$defs/payload" }
+      }
+    },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } },
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["platformProductModel", "capabilityMap", "pavedRoads", "platformApis", "portal", "tenancy", "guardrails", "ownership", "metrics"],
+      "properties": { "platformProductModel": { "$ref": "#/$defs/record" }, "capabilityMap": { "$ref": "#/$defs/records" }, "pavedRoads": { "$ref": "#/$defs/records" }, "platformApis": { "$ref": "#/$defs/records" }, "portal": { "$ref": "#/$defs/record" }, "tenancy": { "$ref": "#/$defs/record" }, "guardrails": { "$ref": "#/$defs/records" }, "ownership": { "$ref": "#/$defs/records" }, "metrics": { "$ref": "#/$defs/records" }, "assumptions": { "$ref": "#/$defs/records" }, "handoffs": { "$ref": "#/$defs/records" }, "limitations": { "$ref": "#/$defs/records" } }
+    }
+  }
+}

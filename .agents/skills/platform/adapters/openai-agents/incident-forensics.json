@@ -1,0 +1,16 @@
+{
+  "name": "incident-forensics",
+  "instructions": "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)\n\nCapabilities:\n- apply incident forensics methods within explicit sec boundaries\n- analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes\n- produce and validate a sec artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/sec/incident-forensics/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Evidence collected and hashed; timeline complete; root cause identified; report reviewed.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

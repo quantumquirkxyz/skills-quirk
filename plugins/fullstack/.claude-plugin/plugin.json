@@ -1,0 +1,19 @@
+{
+  "name": "quirk-fullstack",
+  "version": "1.0.0",
+  "description": "Fullstack development skills for Quirk: React, Next.js, TypeScript, testing, accessibility",
+  "author": {
+    "name": "quantumquirkxyz",
+    "url": "https://github.com/quantumquirkxyz/skills-quirk"
+  },
+  "skills": [
+    "react", "nextjs", "typescript", "testing", "accessibility",
+    "frontend-design", "state-management", "styling"
+  ],
+  "agents": [],
+  "commands": [
+    "ship-subissue", "review-pr"
+  ],
+  "hooks": [],
+  "mcpServers": []
+}

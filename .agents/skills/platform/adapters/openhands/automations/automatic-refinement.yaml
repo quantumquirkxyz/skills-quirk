@@ -1,0 +1,15 @@
+name: automatic-refinement
+description: "Run a bounded multi-agent refinement graph after grill-with-docs. Route canonical skills from the context and objective, enforce typed handoffs and bounded iteration, and stop at refined-awaiting-review without publishing or implementing."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/routing-automatic-refinement
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: true
+  sideEffects: [write-temp-file]

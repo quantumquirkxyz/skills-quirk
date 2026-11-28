@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "exceptions": [
+    {
+      "rule": "credential-path-access",
+      "path": ".agents/skills/platform/hooks/tool-risk-guard.mjs",
+      "reason": "The PreToolUse guard reads QUIRK_APPROVAL_SECRET only to verify HMAC-signed short-lived approval grants; it never logs or persists the secret.",
+      "expires": "2027-04-30"
+    }
+  ]
+}

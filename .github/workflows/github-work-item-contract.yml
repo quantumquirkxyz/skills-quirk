@@ -1,0 +1,68 @@
+name: GitHub Work Item Contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/apply-issue-metadata.mjs"
+      - ".agents/skills/platform/schemas/work-item-metadata.schema.json"
+      - "docs/reference/agents/work-item-format.md"
+      - "docs/reference/agents/issue-tracker.md"
+      - ".github/workflows/github-work-item-contract.yml"
+  pull_request:
+    paths:
+      - "scripts/apply-issue-metadata.mjs"
+      - ".agents/skills/platform/schemas/work-item-metadata.schema.json"
+      - "docs/reference/agents/work-item-format.md"
+      - "docs/reference/agents/issue-tracker.md"
+      - ".github/workflows/github-work-item-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gh-cli-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record gh version
+        run: gh --version
+      - name: Verify issue edit metadata flags
+        shell: bash
+        run: |
+          help="$(gh issue edit --help)"
+          for flag in             --add-assignee             --add-label             --add-project             --milestone             --parent             --add-sub-issue             --add-blocked-by             --add-blocking
+          do
+            grep -F -- "$flag" <<<"$help" >/dev/null || {
+              echo "::error::gh issue edit does not expose required flag $flag"
+              exit 1
+            }
+          done
+      - name: Verify Development branch flags
+        shell: bash
+        run: |
+          help="$(gh issue develop --help)"
+          for flag in --base --name; do
+            grep -F -- "$flag" <<<"$help" >/dev/null || {
+              echo "::error::gh issue develop does not expose required flag $flag"
+              exit 1
+            }
+          done
+      - name: Verify applicator dry-run
+        shell: bash
+        run: |
+          tmp="$(mktemp)"
+          cat >"$tmp" <<'JSON'
+          {
+            "assignees":["quantumquirkxyz"],
+            "labels":["ready-for-agent","spec"],
+            "projects":["Example"],
+            "milestone":"Example",
+            "relationships":{"parent":6,"blockedBy":[7]},
+            "development":{"branch":{"name":"feat/example","base":"main"}}
+          }
+          JSON
+          node scripts/apply-issue-metadata.mjs             --repo quantumquirkxyz/skills-quirk             --issue 8             --metadata "$tmp" > plan.json
+          node -e "const p=require('./plan.json'); if(p.mode!=='dry-run'||p.status!=='pass'||p.commands.length<2) process.exit(1)"

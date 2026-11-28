@@ -1,0 +1,128 @@
+{
+  "fixtures": [
+    {
+      "id": "dynamic-capability-graph",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "no fixed role set",
+          "orchestrator capability",
+          "critic capability",
+          "verifier capability",
+          "graph/graph-skill-routing",
+          "loop/loop-engineering"
+        ]
+      }
+    },
+    {
+      "id": "loop-status-mapping",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "completed",
+          "refined-awaiting-review",
+          "limits-exceeded",
+          "budget-exceeded",
+          "repeated-action",
+          "ping-pong",
+          "no-progress",
+          "blocker-escalated",
+          "blocked",
+          "loopId",
+          "ledgerRef",
+          "recoveryPolicy",
+          "progressEvidence",
+          "budgetSpent"
+        ]
+      }
+    },
+    {
+      "id": "fail-closed-availability",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "return `blocked`",
+          "Never claim an agent ran when it was unavailable",
+          "not verified"
+        ]
+      }
+    },
+    {
+      "id": "approval-and-publication-boundary",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "refinement-review",
+          "local-file-approval",
+          "remote-effect-approval",
+          "Do not automatically create issues, projects, PRs",
+          "refined-awaiting-review"
+        ]
+      }
+    },
+    {
+      "id": "budget-convergence",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "maxIterations",
+          "maxSubagents",
+          "maxSkillInvocations",
+          "maxParallelSubagents",
+          "maxWallTimeMs",
+          "maxSources",
+          "ping-pong",
+          "no-progress"
+        ]
+      }
+    },
+    {
+      "id": "digest-lineage-and-brief",
+      "skill": "automatic-refinement",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "operationId",
+          "parentOperationId",
+          "inputDigest",
+          "sourceDigests",
+          "inputDigests",
+          "signature",
+          "leaseExpiry",
+          "authorityPolicy",
+          "quota",
+          "retentionPolicy"
+        ]
+      }
+    },
+    {
+      "id": "stale-digest-blocks",
+      "skill": "automatic-refinement",
+      "type": "regression",
+      "expectedOutput": {
+        "contains": [
+          "changed source digests",
+          "stale-input",
+          "require a new operation"
+        ]
+      }
+    },
+    {
+      "id": "negative-no-review",
+      "skill": "automatic-refinement",
+      "type": "regression",
+      "expectedOutput": {
+        "contains": [
+          "pending-refinement-review",
+          "never mark the result approved"
+        ]
+      }
+    }
+  ],
+  "skill": "automatic-refinement"
+}

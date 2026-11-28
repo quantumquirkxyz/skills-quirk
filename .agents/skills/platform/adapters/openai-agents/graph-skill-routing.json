@@ -1,0 +1,16 @@
+{
+  "name": "graph-skill-routing",
+  "instructions": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.\n\nCapabilities:\n- expand the prerequisite closure of root skills through declared dependency edges up to a depth limit\n- compute overlap-based edge weights between skills from shared prerequisites, artifacts, and tags\n- topologically order skills into a dependency-respecting execution sequence using Kahn's algorithm seeded by reverse Personalized PageRank\n- verify acyclicity of the skill subgraph and surface cycles as blockers\n- emit a RoutingResult with ordered skill list, closure, dependency edges, and confidence\n\nCanonical skill: .agents/skills/graph/graph-skill-routing/SKILL.md",
+  "model": "gpt-5.1",
+  "tools": [],
+  "handoff_description": "Prerequisite closure expanded and skills topologically ordered with verified dependency-respecting sequence",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 4,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

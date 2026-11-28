@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.dev/schemas/execution/1.0/execution-side-effect-record.schema.json",
+  "title": "SideEffectRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "effectId", "kind", "operation", "observedAt", "outcome"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "effectId": { "type": "string", "format": "uuid" },
+    "kind": { "enum": ["filesystem", "network", "process", "device", "repository", "external-service", "other"] },
+    "operation": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "target": { "type": "string", "maxLength": 500 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "outcome": { "enum": ["planned", "attempted", "succeeded", "failed", "blocked", "unknown"] },
+    "approval": { "enum": ["not-required", "granted", "denied", "unknown"] },
+    "evidenceIds": { "type": "array", "items": { "type": "string", "format": "uuid" }, "uniqueItems": true },
+    "details": { "type": "object", "additionalProperties": true }
+  }
+}

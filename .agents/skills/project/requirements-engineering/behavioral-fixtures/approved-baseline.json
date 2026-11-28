@@ -1,0 +1,1 @@
+{"id":"approved-baseline","input":"Owner-approved v1 requirements have measures, sources, acceptance criteria, and resolved findings.","expectedStatus":"baselined","requiredFindings":["revision","approval"]}

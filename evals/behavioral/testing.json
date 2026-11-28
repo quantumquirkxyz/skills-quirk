@@ -1,0 +1,209 @@
+{
+  "id": "testing-paired-v1",
+  "skill": "delivery/testing",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A REST API with user and order endpoints needs a behavior-focused test strategy that assigns each behavior slice to the smallest sufficient seam and test level.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "define a test strategy for POST /users, GET /users/:id, POST /orders, GET /orders/:id using vitest; assign each behavior slice to unit, integration, or e2e with justification, and list intentional coverage gaps with rationale.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the system surface exposes POST /users, GET /users/:id, POST /orders, GET /orders/:id",
+    "the test stack is vitest with expect assertions and GitHub Actions CI",
+    "each behavior slice must cite its public behavior source and seam assignment justification",
+    "internal implementation details and private methods must not be tested through public seams",
+    "test pyramid applies: most unit, fewer integration, fewest e2e"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/testing/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/delivery/testing/SKILL.md#Seam selection rules - smallest seam, unit for pure logic, integration for cross-module, e2e for critical journeys",
+    ".agents/skills/delivery/testing/SKILL.md#Evidence requirements for test strategy - behavior source, seam justification, level rationale, coverage gaps",
+    ".agents/skills/delivery/testing/SKILL.md#Guardrails - test pyramid, avoid over-mocking, behavior-focused, no silent gaps"
+  ],
+  "cites": [
+    "TST-1",
+    "TST-2",
+    "TST-3",
+    "TST-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.09,
+    "durationMs": 420000,
+    "inputTokens": 120000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The public behavior inventory is complete for the declared scope with observable outcomes and preconditions.",
+        "levels": {
+          "4": "every endpoint and behavior is listed with an observable outcome and preconditions",
+          "2": "most behaviors are listed but some lack outcomes or preconditions",
+          "0": "no public behavior inventory is produced"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Each behavior slice has a seam assignment with justification for why a smaller seam is insufficient.",
+        "levels": {
+          "4": "every slice has unit/integration/e2e assignment plus a one-sentence justification",
+          "2": "seams are assigned but justifications are missing or weak",
+          "0": "no seam assignments are made"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Each test level assignment includes risk-based justification and follows the test pyramid.",
+        "levels": {
+          "4": "level assignments carry risk rationale and unit > integration > e2e distribution",
+          "2": "levels are assigned but risk rationale or pyramid balance is missing",
+          "0": "no level assignments or the pyramid is inverted"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Intentional coverage gaps are enumerated with rationale and revisit triggers.",
+        "levels": {
+          "4": "gaps are named with rationale and a revisit trigger or owner",
+          "2": "gaps are listed without rationale or triggers",
+          "0": "no coverage gaps are documented"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Tests assert on public behavior and observable outcomes, not internal implementation details.",
+        "levels": {
+          "4": "no private methods, internal state shapes, or implementation-specific returns are asserted",
+          "2": "mostly behavior-focused with minor internal-detail assertions",
+          "0": "tests assert on private methods or internal state"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "No behavior slice within declared scope is silently uncovered; every slice is covered or an intentional gap.",
+        "levels": {
+          "4": "every slice is covered or explicitly listed as an intentional gap with rationale",
+          "2": "most slices are covered but some are silently omitted",
+          "0": "multiple slices are silently uncovered"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Mocking is limited to the boundary of the unit under test; no cross-seam mocking.",
+        "levels": {
+          "4": "mocks only appear at unit boundaries, never across seams",
+          "2": "mostly boundary mocking with one cross-seam mock",
+          "0": "cross-seam or deep internal mocking is used"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The structured test strategy result is returned and validated with blockers documented if any.",
+        "levels": {
+          "4": "testStrategy, seamGuidance, and coverageBoundaries are all present and validated",
+          "2": "the result is present but validation is skipped or fields are missing",
+          "0": "no structured result is returned"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "testStrategy",
+          "seamGuidance",
+          "coverageBoundaries"
+        ],
+        "note": "the test strategy artifact must contain all three output fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "unit",
+          "integration",
+          "e2e"
+        ],
+        "note": "all three test levels must be referenced in the strategy"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "private method",
+          "internal state",
+          "implementation detail"
+        ],
+        "note": "negative control: no assertions on private methods, internal state, or implementation details"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 20
+        },
+        "note": "the strategy must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Does every behavior slice have a seam assignment with justification for why a smaller seam is insufficient?",
+        "levels": {
+          "pass": "all slices have seam assignments with justifications",
+          "fail": "one or more slices lack a seam or justification"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Do tests assert on public behavior and observable outcomes rather than internal implementation details?",
+        "levels": {
+          "pass": "all assertions target public behavior only",
+          "fail": "private methods or internal state are asserted"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Are intentional coverage gaps enumerated with rationale and revisit triggers?",
+        "levels": {
+          "pass": "gaps are named with rationale and triggers",
+          "fail": "gaps are missing or lack rationale"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

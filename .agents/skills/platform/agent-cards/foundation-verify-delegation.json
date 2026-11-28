@@ -1,0 +1,30 @@
+{
+  "name": "verify-delegation",
+  "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/foundation/verify-delegation/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "foundation/verify-delegation",
+      "name": "verify-delegation",
+      "description": "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative.",
+      "tags": [
+        "foundation"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "artifactType": "agent"
+      }
+    }
+  ]
+}

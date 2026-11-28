@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewFixLoopArtifact",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["status", "operationId", "checkpoint", "fixedPoint", "revisionFence", "checkpoints", "validation", "blockers", "nextConsumer"],
+  "properties": {
+    "status": { "type": "string" },
+    "operationId": { "type": "string", "minLength": 1 },
+    "checkpoint": { "type": "object" },
+    "fixedPoint": { "type": "string", "minLength": 1 },
+    "revisionFence": { "type": "string", "minLength": 1 },
+    "checkpoints": { "type": "array", "items": { "type": "object" } },
+    "validation": { "type": "object" },
+    "blockers": { "type": "array", "items": { "type": "object" } },
+    "standardsFindings": { "type": "integer", "minimum": 0 },
+    "specFindings": { "type": "integer", "minimum": 0 },
+    "nextConsumer": { "type": "string", "minLength": 1 },
+    "reconciliationEvidence": { "type": "array", "items": { "type": "object" } },
+    "saga": { "type": "object" }
+  }
+}

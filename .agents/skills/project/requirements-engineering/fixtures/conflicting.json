@@ -1,0 +1,1 @@
+{"id":"conflicting","input":"Source A requires deletion in 7 days; approved policy B requires retention for 30 days.","expectedStatus":"blocked","requiredFindings":["conflict","authority","decision"]}

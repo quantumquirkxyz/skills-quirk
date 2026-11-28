@@ -1,0 +1,59 @@
+{
+  "skill": "delivery/review-fix-loop",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "9e58b88527fb3d67a6f8c3a02f474a91cc801b0282da2c0c8e70a8720e4c2336",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Edit",
+        "Write",
+        "Bash"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-code",
+      "post-pr-comment",
+      "commit-git",
+      "push-branch"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-code",
+      "commit-git",
+      "push-branch",
+      "post-pr-comment"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [
+      "node .agents/skills/platform/check-all.mjs"
+    ],
+    "artifactSchema": ".agents/skills/platform/schemas/ReviewFixLoopArtifact-schema.json"
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

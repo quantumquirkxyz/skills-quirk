@@ -1,0 +1,15 @@
+---
+description: "Black-box verify a delegated worker claim from the artifact, fixed-point inputs, success criteria, and independently reproducible read-only checks; never trust the worker narrative."
+globs: []
+alwaysApply: false
+---
+# verify-delegation
+
+Apply the verify-delegation skill when the request matches its scope.
+
+Capabilities:
+- independently reproduce a delegated claim
+- reject unverifiable, stale, or partial evidence
+- emit a bounded verification verdict with evidence
+
+Stop when: Black-box verification complete; evidence reviewed; capability inventory confirmed; fixed-point digest matches; refusal issued when evidence insufficient.

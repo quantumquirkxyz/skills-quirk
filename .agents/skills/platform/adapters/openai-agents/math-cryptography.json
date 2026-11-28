@@ -1,0 +1,16 @@
+{
+  "name": "math-cryptography",
+  "instructions": "Analyse cryptographic constructions — symmetric, asymmetric, hashing, MACs, zero-knowledge — with NIST post-quantum standards (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA), formally verified implementations, constant-time discipline, side-channel countermeasures, machine-checked security reductions (EasyCrypt/F*), and KAT vectors.\n\nCapabilities:\n- apply math cryptography methods within explicit math boundaries\n- analyze analyse cryptographic constructions — symmetric, asymmetric, hashing, macs, zero-knowledge — with security reductions, hardness assumptions, and attack analysis with assumptions, constraints, and failure modes\n- produce and validate a math artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/math/math-cryptography/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Cryptographic analysis complete; security verdict stated; attack surface documented; assumptions listed; NIST PQ default applied; KAT vectors verified; constant-time discipline confirmed.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

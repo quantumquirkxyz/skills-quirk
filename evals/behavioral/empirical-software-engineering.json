@@ -1,0 +1,45 @@
+{
+  "id": "empirical-software-engineering-v1",
+  "skill": "research/empirical-software-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Design an empirical software-engineering study and safely handle six adversarial evidence problems.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Produce an EmpiricalStudyArtifact for evaluating whether a developer-tool rollout improves delivery outcomes. Include protocol, operational definitions, estimand, data provenance, analysis plan, uncertainty, validity threats, ethics/privacy, replication, and decision report. Address these cases explicitly: a bad productivity metric based on lines changed, a confounded before/after comparison, survivorship bias from only retained projects, a causal overclaim from observational telemetry, a tiny clustered sample, and a privacy-violating request for identifiable keystrokes.",
+  "context": [
+    "The skill must remain empirical software engineering, not generic hypothesis formulation or analytics.",
+    "Unsupported analyses must be marked NOT-RUN and causal language must be downgraded when identification is absent.",
+    "The artifact must preserve provenance, uncertainty, validity threats, and decision boundaries."
+  ],
+  "grounding": [
+    ".agents/skills/research/empirical-software-engineering/SKILL.md#Method",
+    ".agents/skills/research/empirical-software-engineering/SKILL.md#Design Guidance",
+    ".agents/skills/research/empirical-software-engineering/SKILL.md#Quality Gates",
+    ".agents/skills/research/empirical-software-engineering/SKILL.md#Artifact"
+  ],
+  "cites": ["operational definitions", "difference-in-differences", "survivorship", "NOT-RUN", "data minimisation"],
+  "costBudget": {"costUsd": 0.08, "durationMs": 420000, "inputTokens": 90000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"Artifact contains protocol, estimand, operational measurements, provenance, analysis plan, uncertainty, validity threats, ethics/privacy, replication, and decision report.","levels":{"4":"All required sections are concrete and traceable","2":"Most sections exist but one material gap remains","0":"No structured empirical artifact"}},
+      {"id":"if-2","criterion":"Six adversarial cases are corrected without fabricated evidence.","levels":{"4":"Every case receives a specific correction, downgrade, or NOT-RUN disposition","2":"Cases are mentioned but one or more remedies are vague","0":"Cases are accepted as valid evidence"}},
+      {"id":"if-3","criterion":"Causal, predictive, and associative claims are distinguished and bounded by design assumptions.","levels":{"4":"Identification assumptions and causal language are explicit","2":"Some causal caveats are present","0":"Observational association is reported as causal"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"Decision report states evidence, uncertainty, decision rule, residual unknowns, and next probe.","levels":{"4":"Decision is conditional and auditable","2":"Decision exists but uncertainty or next probe is incomplete","0":"Unbounded recommendation"}},
+      {"id":"gc-2","criterion":"Privacy and ethics safeguards minimise telemetry and protect participants.","levels":{"4":"Identifiable keystrokes are refused and replaced with minimised aggregate measures plus governance","2":"Privacy is noted without a concrete replacement","0":"Sensitive collection proceeds"}},
+      {"id":"gc-3","criterion":"Replication and decision boundaries are actionable.","levels":{"4":"Replication materials, limits, and next probes are explicit","2":"Replication is mentioned","0":"No reproducibility path"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["EmpiricalStudyArtifact","protocol","estimand","data provenance","analysis plan","uncertainty","validity threats","decision report"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["lines changed","construct validity","gaming","denominator"]}},
+    {"id":"a3","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["before/after","confound","control group","NOT-RUN"]}},
+    {"id":"a4","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["survivorship","attrition","denominator"]}},
+    {"id":"a5","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["association","causal","identification"]}},
+    {"id":"a6","type":"deterministic","category":"efficiency","check":{"kind":"artifact_contains_all","values":["tiny","cluster","precision","confidence interval"]}},
+    {"id":"a7","type":"deterministic","category":"style","check":{"kind":"artifact_contains_all","values":["keystrokes","data minimisation","consent","access control","retention"]}},
+    {"id":"a8","type":"deterministic","category":"style","check":{"kind":"artifact_not_contains","values":["proves the tool caused","all developers are more productive","collect raw keystrokes without consent"]}}
+  ]
+}

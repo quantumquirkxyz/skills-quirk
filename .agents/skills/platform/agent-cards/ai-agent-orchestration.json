@@ -1,0 +1,31 @@
+{
+  "name": "agent-orchestration",
+  "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/ai/agent-orchestration/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "ai/agent-orchestration",
+      "name": "agent-orchestration",
+      "description": "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication.",
+      "tags": [
+        "ai"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "agent"
+      }
+    }
+  ]
+}

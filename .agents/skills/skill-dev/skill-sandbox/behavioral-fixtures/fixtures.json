@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","skill":"skill-dev/skill-sandbox","cases":[{"id":"escape-denied","expected":"BLOCKED","asserts":["deny-by-default","cleanup-attestation","no-network"]}]}

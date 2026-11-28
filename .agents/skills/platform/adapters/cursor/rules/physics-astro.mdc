@@ -1,0 +1,15 @@
+---
+description: "Model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws."
+globs: []
+alwaysApply: false
+---
+# physics-astro
+
+Apply the physics-astro skill when the request matches its scope.
+
+Capabilities:
+- apply physics astro methods within explicit physics boundaries
+- analyze model astrophysical systems — stellar structure, orbital dynamics, cosmology, gravitational waves — with physical scales, order-of-magnitude estimates, and scaling laws with assumptions, constraints, and failure modes
+- produce and validate a physics artifact with evidence, decisions, and next steps
+
+Stop when: Regime, scales, governing physics, scaling laws, numerical estimate, and observational check all documented.

@@ -1,0 +1,38 @@
+{
+  "fixtures": [
+    {
+      "id": "v2-contract-gate-post-merge",
+      "skill": "gate-post-merge",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "GatePostMergeArtifact",
+          "canary",
+          "alert"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
+      }
+    }
+  ],
+  "skill": "gate-post-merge",
+  "id": "v2-contract-gate-post-merge",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "GatePostMergeArtifact",
+      "canary",
+      "alert"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
+}

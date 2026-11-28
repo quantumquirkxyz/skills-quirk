@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepositoryAuditArtifact",
+  "description": "Evidence from a repository-wide or scoped code audit.",
+  "type": "object",
+  "required": ["schemaVersion", "artifactType", "skill", "scope", "objective", "findings", "summary", "limitations"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "artifactType": { "type": "string", "const": "repository-audit" },
+    "skill": { "type": "string", "const": "code-review" },
+    "scope": { "type": "string" },
+    "objective": { "type": "string" },
+    "inspected": { "type": "array", "items": { "type": "string" } },
+    "findings": { "type": "array", "items": { "type": "object", "required": ["severity", "kind", "location", "evidence", "impact"], "properties": { "severity": { "type": "string", "enum": ["info", "low", "medium", "high", "critical"] }, "kind": { "type": "string", "enum": ["confirmed-defect", "risk", "improvement", "evidence-gap"] }, "location": { "type": "string" }, "evidence": { "type": "string" }, "impact": { "type": "string" }, "cause": { "type": "string" }, "recommendation": { "type": "string" } } } },
+    "summary": { "type": "object", "required": ["findingCount", "highestSeverity", "conclusion"], "properties": { "findingCount": { "type": "integer", "minimum": 0 }, "highestSeverity": { "type": "string" }, "conclusion": { "type": "string" } } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "nextConsumer": { "type": "string" }
+  }
+}

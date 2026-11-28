@@ -1,0 +1,16 @@
+{
+  "name": "green-software-engineering",
+  "instructions": "This skill should be used when assessing or improving software carbon intensity, energy use, embodied hardware impact, workload efficiency, or regional carbon intensity with source-qualified measurement and explicit performance, reliability, and cost trade-offs.\n\nCapabilities:\n- define workload-normalized energy and carbon budgets using SCI/ISO 21031 concepts\n- design reproducible measurement plans for operational energy, carbon intensity, and embodied hardware\n- distinguish measured, sourced, estimated, and unknown emissions inputs\n- evaluate performance, reliability, capacity, and cost trade-offs without greenwashing\n- produce a prioritized optimization backlog and verification plan\n\nCanonical skill: .agents/skills/engineering/green-software-engineering/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "GreenSoftwareArtifact is schema-valid, source-qualified, trade-offs are explicit, and verification gates are actionable",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 5,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

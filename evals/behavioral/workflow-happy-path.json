@@ -1,0 +1,17 @@
+{
+  "id": "workflow-happy-path-v1",
+  "skill": "routing/work-item-router",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A complete feature request has approved preflight, passing validation, explicit publication approval, and all required evidence.",
+  "baseline": "without-skill",
+  "trials": 1,
+  "prompt": "Run the approved feature workflow through validation and publication using the supplied evidence.",
+  "context": ["preflight=approved", "validation=passed", "releaseApproval=approved", "evidence=complete"],
+  "states": ["discovered", "planned", "authorized", "running", "validating", "review", "completed"],
+  "transitions": [{"from":"discovered","to":"planned","guard":"preflight=approved"},{"from":"planned","to":"authorized","guard":"releaseApproval=approved"},{"from":"authorized","to":"running","guard":"evidence=complete"},{"from":"running","to":"validating","guard":"implementation=complete"},{"from":"validating","to":"review","guard":"validation=passed"},{"from":"review","to":"completed","guard":"review=approved"}],
+  "terminalStatus": "completed",
+  "expectedEffects": {"allowed":["record-transition","publish-approved-artifact"],"forbidden":["publish-before-approval","skip-validation"]},
+  "rubric": {"instructionFollowing":[{"id":"if-1","criterion":"All guarded states are traversed in order.","levels":{"4":"Every expected transition is recorded in order.","2":"Most transitions are recorded but one is omitted.","0":"The workflow bypasses a guarded state."}},{"id":"if-2","criterion":"Publication occurs only after approval and validation.","levels":{"4":"Both guards precede publication.","2":"One prerequisite is only implied.","0":"Publication precedes a prerequisite."}},{"id":"if-3","criterion":"Effects stay within the declared workflow boundary.","levels":{"4":"Only allowed effects occur.","2":"An effect is not classified.","0":"A forbidden effect occurs."}}],"goalCompletion":[{"id":"gc-1","criterion":"The terminal status is completed.","levels":{"4":"terminalStatus is completed.","2":"Completion is implied without the field.","0":"The run is not completed."}},{"id":"gc-2","criterion":"Evidence covers every transition.","levels":{"4":"Each transition has evidence.","2":"Evidence covers most transitions.","0":"Evidence is absent."}},{"id":"gc-3","criterion":"The artifact is deterministic and structured.","levels":{"4":"All declared fields are present.","2":"One field is missing.","0":"Only prose is returned."}}]},
+  "assertions": [{"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["states","transitions","terminalStatus","expectedEffects"]}},{"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["completed","preflight=approved","validation=passed"]}},{"id":"a3","type":"deterministic","category":"outcome","check":{"kind":"artifact_not_contains","values":["publish-before-approval","skip-validation"]}}]
+}

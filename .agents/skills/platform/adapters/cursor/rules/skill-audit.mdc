@@ -1,0 +1,15 @@
+---
+description: "Audit the Skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output."
+globs: []
+alwaysApply: false
+---
+# skill-audit
+
+Apply the skill-audit skill when the request matches its scope.
+
+Capabilities:
+- apply skill audit methods within explicit skill-dev boundaries
+- analyze audit the skills bundle, lockfile, symlink parity, and contract drift — with actionable maintenance output with assumptions, constraints, and failure modes
+- produce and validate a skill-dev artifact with evidence, decisions, and next steps
+
+Stop when: Audit the Skills bundle, lockfile, symlink parity, and contract drift complete; artifact saved; completion criteria checked.

@@ -1,0 +1,35 @@
+{
+  "name": "retry-backoff",
+  "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/loop/retry-backoff/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "loop/retry-backoff",
+      "name": "retry-backoff",
+      "description": "Retry-with-backoff patterns for agent actions: exponential backoff with jitter, idempotency keys, circuit breakers, and a retry decision table — retry tool errors, never retry hallucinated calls.",
+      "tags": [
+        "retry",
+        "backoff",
+        "idempotency",
+        "circuit-breaker",
+        "loop-engineering",
+        "agent-engineering"
+      ],
+      "parameters": {
+        "trustTier": "2",
+        "artifactType": "RetryBackoffArtifact"
+      }
+    }
+  ]
+}

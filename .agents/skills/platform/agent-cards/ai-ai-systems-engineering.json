@@ -1,0 +1,34 @@
+{
+  "name": "ai-systems-engineering",
+  "description": "Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/ai/ai-systems-engineering/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "ai/ai-systems-engineering",
+      "name": "ai-systems-engineering",
+      "description": "Engineer complete AI systems by integrating product requirements, models, data, evaluation, safety, security, serving, fallback, human oversight, monitoring, cost, and latency; use when an AI feature needs an end-to-end production contract rather than isolated MLOps or prompt work.",
+      "tags": [
+        "ai",
+        "systems",
+        "safety",
+        "serving"
+      ],
+      "parameters": {
+        "trustTier": "4",
+        "modelTier": "reasoning",
+        "artifactType": "ai-system"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+---
+description: "Create and maintain Architecture Decision Records — context, decision, consequences, alternatives, status — with periodic review."
+globs: []
+alwaysApply: false
+---
+# docs-adrs
+
+Apply the docs-adrs skill when the request matches its scope.
+
+Capabilities:
+- produce docs adrs analysis artifact
+- validate docs adrs completion criteria
+- trace docs adrs decisions across inputs, constraints, and failure paths
+- validate docs outcomes with evidence, assumptions, and explicit next steps
+
+Stop when: Create and maintain Architecture Decision Records complete; required sections present; completion criteria checked.

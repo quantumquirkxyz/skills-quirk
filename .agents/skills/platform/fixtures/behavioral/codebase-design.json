@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {
+      "id": "v2-contract-codebase-design",
+      "skill": "codebase-design",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "deep module",
+          "seam"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
+      }
+    }
+  ],
+  "skill": "codebase-design",
+  "id": "v2-contract-codebase-design",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "deep module",
+      "seam"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
+}

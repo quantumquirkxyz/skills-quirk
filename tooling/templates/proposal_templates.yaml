@@ -1,0 +1,105 @@
+# Proposal templates for the skill creator interview.
+
+architecture_templates:
+  - name: "workflow-first"
+    description: "A compact workflow skill with one primary execution path."
+    template: "Use a focused workflow skill with one primary script, one domain reference, a short asset note, and an ADR that records the initial design choice."
+    when_to_use:
+      - "The skill guides users through a repeatable process."
+      - "The work has clear inputs, outputs, and validation criteria."
+      - "The implementation should stay easy to review."
+
+  - name: "reference-first"
+    description: "A reference-heavy skill with light procedural guidance."
+    template: "Use a reference-first structure where SKILL.md routes the user to concise domain references and reusable templates."
+    when_to_use:
+      - "The skill mainly organizes knowledge."
+      - "Users need authoritative guidance more than automation."
+      - "The domain has stable checklists, templates, or standards."
+
+  - name: "interactive-guidance"
+    description: "A skill that guides a user through decisions step by step."
+    template: "Use an interactive guidance pattern with checkpoints, review prompts, and validation before final handoff."
+    when_to_use:
+      - "The process benefits from staged decisions."
+      - "Incorrect assumptions are costly."
+      - "The user may need help clarifying the task."
+
+resource_templates:
+  - name: "minimal-executable-skill"
+    description: "Small generated skill structure with validation-friendly files."
+    items:
+      - "scripts/main.py - Main executable entry point"
+      - "references/domain.md - Domain guidance and constraints"
+      - "assets/README.md - Notes for static assets"
+      - "adrs/0001-initial-design.md - Initial design decision"
+    justification: "This structure is enough to run, explain, and validate the skill without adding unnecessary files."
+
+  - name: "reference-templates"
+    description: "Reference files for reusable guidance and examples."
+    items:
+      - "references/templates/ - Output templates"
+      - "references/examples/ - Usage examples and expected outputs"
+      - "references/best-practices/ - Domain best practices"
+      - "references/troubleshooting/ - Common failure modes and fixes"
+    justification: "Reference material reduces ambiguity and makes repeated use more predictable."
+
+workflow_templates:
+  - name: "linear-process"
+    description: "A simple sequential workflow."
+    steps:
+      - "Step 1: Clarify the request and success criteria"
+      - "Step 2: Gather the required context"
+      - "Step 3: Produce the requested artifact"
+      - "Step 4: Validate the output"
+      - "Step 5: Report completion and follow-up options"
+    when_to_use:
+      - "Each step depends on the previous step."
+      - "The task has a clear beginning and end."
+      - "The output can be validated against explicit criteria."
+
+  - name: "iterative-refinement"
+    description: "A workflow that improves the result through review cycles."
+    steps:
+      - "Step 1: Draft an initial approach"
+      - "Step 2: Execute a small pass"
+      - "Step 3: Review results against constraints"
+      - "Step 4: Refine the output"
+      - "Step 5: Validate the final version"
+    when_to_use:
+      - "The first result is likely to need adjustment."
+      - "Creative or exploratory decisions are involved."
+      - "Feedback should shape the final artifact."
+
+  - name: "conditional-branching"
+    description: "A workflow with branches for different input types."
+    steps:
+      - "Step 1: Classify the request"
+      - "Step 2A: Handle documentation-oriented requests"
+      - "Step 2B: Handle code-oriented requests"
+      - "Step 2C: Handle validation-oriented requests"
+      - "Step 3: Merge findings into one handoff"
+      - "Step 4: Validate the chosen path"
+    when_to_use:
+      - "Different inputs require different handling."
+      - "The skill must choose between multiple modes."
+      - "The user may not know which path applies."
+
+naming_algorithms:
+  - name: "keyword-category"
+    description: "Combine a meaningful keyword with a broad category."
+    pattern: "[keyword]-[category]"
+    examples:
+      - "api-workflow"
+      - "data-validator"
+      - "skill-planner"
+    suffixes: ["workflow", "checker", "planner", "validator", "generator"]
+
+  - name: "verb-noun"
+    description: "Use an action and the artifact being produced or reviewed."
+    pattern: "[verb]-[noun]"
+    examples:
+      - "review-api"
+      - "validate-data"
+      - "generate-docs"
+    connectors: ["-"]

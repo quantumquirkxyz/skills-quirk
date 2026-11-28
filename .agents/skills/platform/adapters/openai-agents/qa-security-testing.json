@@ -1,0 +1,16 @@
+{
+  "name": "qa-security-testing",
+  "instructions": "Run reproducible security tests for authorization drift, adversarial tool and prompt injection, secret exfiltration, session abuse, and configuration exposure with safe evidence.\n\nCapabilities:\n- apply qa security testing methods within explicit qa boundaries\n- analyze test security posture — auth flows, authorization boundaries, injection paths, session handling, and misconfiguration checks — with adversarial scenarios with assumptions, constraints, and failure modes\n- produce and validate a qa artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/qa/qa-security-testing/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Scope is authorized, fixtures and replay are recorded, findings are emitted as SARIF plus attestation, baseline drift is evaluated, and status is PASS, FAIL, BLOCKED, or NOT-RUN.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

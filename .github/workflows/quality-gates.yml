@@ -1,0 +1,75 @@
+name: Quality Gates
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  gate-ide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate skill structure
+        run: node .agents/skills/platform/validate-skills.mjs
+      - name: Audit semantics
+        run: node .agents/skills/platform/audit-semantics.mjs
+      - name: Evaluate scenarios
+        run: node .agents/skills/platform/evaluate-scenarios.mjs
+      - name: Evaluate behavioral fixtures
+        run: node .agents/skills/platform/evaluate-behavioral-fixtures.mjs
+
+  gate-ci:
+    runs-on: ubuntu-latest
+    needs: gate-ide
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run full validation gate
+        run: node .agents/skills/platform/check-all.mjs
+
+  gate-skill-output:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify assessed skill inventory
+        run: npm run output:release-gate
+      - name: Run skill output integration and publication tests
+        run: node --test tests/*output*.test.mjs tests/*publication*.test.mjs tests/*pilot*.test.mjs tests/filesystem-publication-coordinator.test.mjs
+
+  quality-report:
+    runs-on: ubuntu-latest
+    needs: [gate-ide, gate-ci, gate-skill-output]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate quality report
+        run: |
+          GATE_IDE="${{ needs.gate-ide.result }}"
+          GATE_CI="${{ needs.gate-ci.result }}"
+          GATE_OUTPUT="${{ needs.gate-skill-output.result }}"
+          echo "## Quality Gates Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Gate | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| gate-ide | $GATE_IDE |" >> $GITHUB_STEP_SUMMARY
+          echo "| gate-ci | $GATE_CI |" >> $GITHUB_STEP_SUMMARY
+          echo "| gate-skill-output | $GATE_OUTPUT |" >> $GITHUB_STEP_SUMMARY

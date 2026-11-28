@@ -1,0 +1,31 @@
+{
+  "name": "mcp-server",
+  "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/foundation/mcp-server/SKILL.md",
+  "version": "3",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": false
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "foundation/mcp-server",
+      "name": "mcp-server",
+      "description": "Define and harden an MCP server that exposes quirk Skills as least-privilege tools, resources, and prompts to external LLM agents via the Model Context Protocol.",
+      "tags": [
+        "foundation"
+      ],
+      "parameters": {
+        "trustTier": "1",
+        "modelTier": "router",
+        "artifactType": "plan"
+      }
+    }
+  ]
+}

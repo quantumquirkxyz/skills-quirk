@@ -1,0 +1,15 @@
+---
+description: "Modern Portfolio Theory — efficient frontier, CAPM, APT, risk attribution, and performance measurement — with explicit assumptions and regime analysis."
+globs: []
+alwaysApply: false
+---
+# finance-portfolio-theory
+
+Apply the finance-portfolio-theory skill when the request matches its scope.
+
+Capabilities:
+- apply finance portfolio theory methods within explicit finance boundaries
+- analyze modern portfolio theory — efficient frontier, capm, apt, risk attribution, and performance measurement — with explicit assumptions and regime analysis with assumptions, constraints, and failure modes
+- produce and validate a finance artifact with evidence, decisions, and next steps
+
+Stop when: Efficient frontier computed, CAPM/APT estimated, attribution decomposed, regime robustness noted.

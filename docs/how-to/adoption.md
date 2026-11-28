@@ -1,0 +1,147 @@
+# quirk Skills Adoption Guide
+
+Use this guide to install this skills bundle into a new or existing project repository.
+
+## Adoption Flow
+
+For existing repositories, prioritize `sync-bundle` dry-run adoption. Use the managed `adopt` command when verification, upgrade, rollback, or conservative uninstall is required; both paths are preferred over shell installers.
+
+```mermaid
+flowchart TD
+    A[Dry-run or install bundle] --> B[Review changed paths]
+    B --> C[Specialize CONTEXT.md]
+    C --> D[Configure tracker docs]
+    D --> E[Run validation]
+    E --> F[Start normal work]
+```
+
+1. Prefer the safe dry-run sync from the source checkout: `node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo` before `--write`, or use `node bin/skills-quirk.js adopt --incremental` for managed adoption.
+2. Review the proposed paths, then apply only the approved `--write` operation.
+3. Treat `scripts/setup-quirk-skills.sh` and `scripts/install-quirk-skills.sh` as legacy destructive installers; use them only for disposable greenfield targets after reviewing their replacement behavior.
+4. Copy or sync `.agents/skills/`, `.claude/skills/`, `docs/reference/agents/`, `docs/reference/adr/README.md`, `docs/how-to/`, `docs/explanation/`, `AUTHORSHIP.md`, `CONTEXT.md`, `skills-lock.json`, `skills.json`, and `.env.template` into the target repo.
+5. Configure `docs/reference/agents/issue-tracker.md` and `docs/reference/agents/triage-labels.md` for the project's real tracker and labels.
+6. Update `CONTEXT.md` with project-specific language. Do not copy domain vocabulary from another repo.
+7. Run `work-item-router` before workflow skills whenever tracker governance or ownership may have changed.
+8. Run the validation commands in this guide.
+9. Start normal work through `ask-to` for ambiguous routing or the canonical feature flow for a claimed work item.
+
+## Installation channels
+
+Skills are installed **by prompt only**: use the canonical prompts in [installation-prompts.md](installation-prompts.md) or the safe dry-run sync from a local checkout. There is no npm/npx installation channel for this bundle. [Installation Options](installation-options.md) documents the sync, greenfield, and managed-lifecycle variants.
+
+## Installation Prompts
+
+The canonical prompts are maintained in [installation-prompts.md](installation-prompts.md):
+
+- Use the **first-installation prompt** when the target repository has no managed Quirk Skills installation.
+- Use the **incremental-update prompt** for an existing installation.
+- Both prompts are automatic, English-first, Git-based, and do not use npm or npx.
+- The update prompt compares hashes, skips byte-identical skills, preserves local modifications, and blocks ambiguous conflicts before writing.
+
+For established repositories, the supported synchronizer path is the preferred safe adoption route:
+
+```bash
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental
+node .agents/skills/platform/sync-bundle.mjs /path/to/target-repo --incremental --write
+```
+
+Run the dry run first and review its JSON result before applying `--write`.
+
+## Required Repo Files
+
+| File | Purpose |
+|---|---|
+| `AUTHORSHIP.md` | Authorship, naming, and integrity rules |
+| `.agents/AGENTS.md` | Agent instructions for the local skills bundle |
+| `.agents/skills/` | Canonical skill definitions |
+| `.claude/skills/` | Compatibility symlinks to canonical skills |
+| `skills-lock.json` | SHA-256 hashes for canonical `SKILL.md` files |
+| `skills.json` | Portable skills manifest for agent discovery |
+| `.env.template` | Optional reproducible environment template |
+| `CONTEXT.md` | Repository-local domain vocabulary |
+| `docs/reference/adr/README.md` | ADR entry point |
+| `docs/reference/agents/index.md` | Governance index for work-item skills |
+| `docs/explanation/quirk-method.md` | Method vocabulary and quality bar |
+| `docs/explanation/provenance.md` | Origin, redesign, retired-name record |
+| `docs/reference/agents/work-item-format.md` | Metadata shape for specs, tickets, PRs |
+| `docs/reference/agents/skill-templates.md` | Artifact template map |
+
+## Validation Commands
+
+Run from the target repo root:
+
+```bash
+node .agents/skills/platform/check-all.mjs
+```
+
+Expected result: `status: "pass"`, `failed: 0`, `totalWarnings: 0`, and `totalErrors: 0`.
+
+## First Project Run
+
+### Standard feature
+
+```mermaid
+flowchart LR
+    A[ask-to] --> B[grill-with-docs]
+    B --> C[to-spec]
+    C --> D[to-tickets]
+    D --> E[implement]
+    E --> F[publish-open-pr]
+    F --> G[review-pr]
+    G --> H{clean?}
+    H -->|no| I[review-fix-loop]
+    I --> G
+    H -->|yes| J[ship-subissue]
+```
+
+### Bug fix
+
+```mermaid
+flowchart LR
+    A[ask-to] --> B[diagnosing-bugs]
+    B --> C[tdd]
+    C --> D[implement]
+    D --> E[publish-open-pr]
+    E --> F[review-pr]
+```
+
+### Operations
+
+```mermaid
+flowchart LR
+    A[release-management] --> B[deployment]
+    B --> C[observability]
+    C --> D[observability]
+```
+
+## Specialization Rules
+
+- Keep skill names stable unless the target repo has a strong reason to fork them.
+- Specialize through `CONTEXT.md`, ADRs, issue tracker docs, validation commands, and stack-specific skills.
+- Do not embed another repo's domain terms, branch names, issue numbers, or examples.
+- Preserve `AUTHORSHIP.md`, `docs/explanation/quirk-method.md`, and `docs/explanation/provenance.md` unless intentionally forking the method.
+- Add new skills only when the behavior is repeatedly useful and cannot be expressed cleanly through existing skills.
+- Prefer scenario fixtures under `evaluate-skill/scenarios/` before changing core workflow skills.
+- Treat `compatibility only` skills as transitional. Keep them only when the alias is still used externally, and add a concrete migration or retirement note in provenance before the next release that touches the surrounding area.
+
+## Readiness Checklist
+
+- [ ] The bundle was adopted with dry-run sync followed by reviewed `--write`, or an explicitly approved legacy installer was used for a disposable target.
+- [ ] `docs/reference/adr/` exists with at least one ADR recording a design decision
+- [ ] `CONTEXT.md` exists, names only this repo's domain, and references `docs/reference/adr/`
+- [ ] `docs/reference/agents/issue-tracker.md` reflects the actual tracker.
+- [ ] `docs/reference/agents/triage-labels.md` matches actual label strings.
+- [ ] `skills-lock.json` matches all local `SKILL.md` hashes.
+- [ ] `.claude/skills` has a symlink for every canonical skill.
+- [ ] Scenario evaluation passes.
+- [ ] Semantic audit passes.
+- [ ] Behavioral fixtures pass.
+- [ ] Any real use of the bundle is captured under `tooling/case-studies/` when it changes the method.
+
+## Maintenance Cadence
+
+| Check | When to run |
+|---|---|
+| `check-all.mjs` | After every skill edit |
+| `audit-semantics.mjs` | Before publishing the bundle |
+| `evaluate-scenarios.mjs` | After changing routing, templates, or workflow skills |

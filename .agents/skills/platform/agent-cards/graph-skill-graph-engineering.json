@@ -1,0 +1,36 @@
+{
+  "name": "skill-graph-engineering",
+  "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/graph/skill-graph-engineering/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "graph/skill-graph-engineering",
+      "name": "skill-graph-engineering",
+      "description": "Build typed skill dependency graphs (dependency, workflow, semantic, alternative edges), DAG compilation, and local repair operators (Rebind, InsertPrereq, Substitute, Rewire, Bypass) for skill orchestration.",
+      "tags": [
+        "graph",
+        "skill-graph",
+        "dependency-graph",
+        "dag",
+        "graph-engineering",
+        "composition"
+      ],
+      "parameters": {
+        "trustTier": "2",
+        "modelTier": "reasoning",
+        "artifactType": "skill-graph"
+      }
+    }
+  ]
+}

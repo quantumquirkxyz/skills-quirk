@@ -1,0 +1,89 @@
+// GitHub REST client for the injected comment adapter. Requires an explicit
+// token and owner/repo; never prints or persists credentials.
+export function createGitHubRestCommentClient({token, owner, repo, actor, fetchImpl = globalThis.fetch}) {
+  for (const [name,value] of Object.entries({token,owner,repo,actor})) {
+    if (typeof value !== 'string' || !value.trim()) throw new Error('Missing GitHub client setting: ' + name);
+  }
+  if (!/^[\w.-]+$/.test(owner) || !/^[\w.-]+$/.test(repo)) throw new Error('Invalid repository identity');
+  if (typeof fetchImpl !== 'function') throw new TypeError('fetchImpl must be a function');
+  const api = 'https://api.github.com';
+  const root = api + '/repos/' + owner + '/' + repo;
+  let identityCheck;
+  async function verifiedActor() {
+    identityCheck ??= (async () => {
+      const user = await request('GET', '/user', undefined, true);
+      if (typeof user?.login !== 'string' || user.login.toLowerCase() !== actor.toLowerCase()) {
+        throw new Error('GitHub authenticated identity does not match configured actor');
+      }
+      return user.login;
+    })();
+    return identityCheck;
+  }
+  async function request(method, path, body, identityEndpoint = false) {
+    const response = await fetchImpl((identityEndpoint ? api : root) + path, {
+      method,
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        ...(body === undefined ? {} : {'Content-Type':'application/json'}),
+      },
+      ...(body === undefined ? {} : {body:JSON.stringify(body)}),
+    });
+    if (!response || typeof response.ok !== 'boolean') throw new Error('Invalid GitHub response');
+    if (!response.ok) {
+      const err = new Error('GitHub API request failed: HTTP ' + response.status);
+      err.status = response.status;
+      throw err;
+    }
+    return response.json();
+  }
+  const issueNumber = target => {
+    if (!target || !Number.isSafeInteger(target.number) || target.number < 1 || !['issue','pr'].includes(target.kind)) throw new Error('Invalid GitHub target');
+    return target.number;
+  };
+  return {
+    async listComments(target, {page = 1, perPage = 100} = {}) {
+      const number = issueNumber(target);
+      await verifiedActor();
+      if (!Number.isSafeInteger(page) || page < 1 || perPage !== 100) throw new Error('Invalid pagination');
+      const result = await request('GET','/issues/' + number + '/comments?per_page=100&page=' + page);
+      if (!Array.isArray(result)) throw new Error('Invalid GitHub comments payload');
+      return result.map(item => ({id:item.id,body:item.body,owned:typeof item.user?.login === 'string' && item.user.login.toLowerCase() === actor.toLowerCase()}));
+    },
+    async createComment(target, body) {
+      await verifiedActor();
+      const result = await request('POST','/issues/' + issueNumber(target) + '/comments',{body});
+      return {id:result.id,body:result.body};
+    },
+    async updateComment(target, id, body) {
+      const number = issueNumber(target);
+      await verifiedActor();
+      if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid comment id');
+      const existing = await request('GET','/issues/comments/' + id);
+      if (typeof existing?.user?.login !== 'string' || existing.user.login.toLowerCase() !== actor.toLowerCase()) {
+        throw new Error('Refusing to update a comment not owned by authenticated actor');
+      }
+      const expectedIssueUrl = root + '/issues/' + number;
+      // Normalize only the URL pathname; do not accept lookalike domains,
+      // query parameters, fragments, or an unexpected API origin.
+      let matchesTarget = false;
+      try {
+        const actual = new URL(existing.issue_url);
+        matchesTarget = actual.origin === api && actual.search === '' && actual.hash === '' &&
+          actual.pathname.toLowerCase() === new URL(expectedIssueUrl).pathname.toLowerCase();
+      } catch { /* Missing or invalid URL is not trusted. */ }
+      if (!matchesTarget) {
+        throw new Error('Refusing to update a comment attached to another issue or repository');
+      }
+      const markerPattern = /<!-- quirk-skill-output:[A-Za-z0-9_-]+ -->$/;
+      const oldMarker = typeof existing.body === 'string' ? existing.body.match(markerPattern)?.[0] : null;
+      const newMarker = typeof body === 'string' ? body.match(markerPattern)?.[0] : null;
+      if (!oldMarker || oldMarker !== newMarker) {
+        throw new Error('Refusing to replace a comment with a different or missing idempotency marker');
+      }
+      const result = await request('PATCH','/issues/comments/' + id,{body});
+      return {id:result.id,body:result.body};
+    },
+  };
+}

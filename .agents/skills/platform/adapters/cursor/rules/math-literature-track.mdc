@@ -1,0 +1,15 @@
+---
+description: "Track mathematics literature across arXiv, MathSciNet, zbMATH, journal alerts, and citation graphs to keep a researcher current without drowning in papers."
+globs: []
+alwaysApply: false
+---
+# math-literature-track
+
+Apply the math-literature-track skill when the request matches its scope.
+
+Capabilities:
+- apply math literature track methods within explicit math boundaries
+- analyze track mathematics literature across arxiv, mathscinet, zbmath, journal alerts, and citation graphs to keep a researcher current without drowning in papers with assumptions, constraints, and failure modes
+- produce and validate a math artifact with evidence, decisions, and next steps
+
+Stop when: digest artifact saved with grouped papers and relevance scores; all sources cited.

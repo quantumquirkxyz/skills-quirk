@@ -1,0 +1,24 @@
+# Skill Inventory
+
+This page records the inventory contract for the quirk Skills bundle without duplicating the generated catalog by hand.
+
+## Current Counts
+
+Counts are not maintained as literals in this document. Read the current counts from the generated [`CATALOG.md`](../../../CATALOG.md) and confirm them against `.agents/skills/`, `registry.yaml`, and the relevant consistency tests. This prevents stale totals when skills are added or retired.
+
+- Canonical skill source: `.agents/skills/`.
+- Public projections exclude platform infrastructure according to the registry generation rules.
+- Integrity sources: `skills-lock.json`, `registry.yaml`, and the registry generator.
+
+## Inventory Sources
+
+| Source | Purpose |
+|---|---|
+| [`../../../CATALOG.md`](../../../CATALOG.md) | Generated human-readable catalog grouped by category. |
+| [`../../how-to/generated-views.md`](../../how-to/generated-views.md) | Explains generated projections and compatibility views. |
+| [`skills-map.md`](skills-map.md) | Maintained map for agent routing and governance references. |
+| `../../../skills-lock.json` | Hash lockfile for canonical `SKILL.md` integrity. |
+
+## Maintenance Rule
+
+Do not maintain a full skill table or frozen counts by hand in this file. Regenerate projections from the registry and filesystem, then use this page as the stable pointer to the generated inventory sources.

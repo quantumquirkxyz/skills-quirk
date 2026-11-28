@@ -1,0 +1,28 @@
+# Generated runtime artifacts
+.agents/skills/platform/runs/
+/artifacts/
+.agents/skills/platform/artifacts/benchmark-history.jsonl
+.agents/skills/platform/artifacts/trace-improvements.json
+/memory
+evals/results/mock/
+node_modules/
+.opencode/goals/
+# On-demand vendor-specific agent views. Generic `.agents/skills/` aliases and
+# the `.claude/skills/` compatibility view are committed projections.
+.cursor/skills/
+.gemini/skills/
+.github/skills/
+.opencode/skills/
+.windsurf/skills/
+site/dist/
+.skill-sandbox/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+*.zip
+.agents/skills/platform/traces/*.jsonl
+.agents/skills/platform/skill-runs/*.jsonl
+.agents/skills/platform/state/*.json
+.agents/skills/platform/checkpoints/*.jsonl
+.scratch/

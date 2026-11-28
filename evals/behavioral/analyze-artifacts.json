@@ -1,0 +1,261 @@
+{
+  "id": "analyze-artifacts-paired-v1",
+  "skill": "project/analyze-artifacts",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Work item 88's spec, plan, and tickets have drifted: one acceptance criterion is in scope in the spec and out of scope in a ticket, one plan step has no ticket, a latency sentence is ambiguous, and a ticket links a closed issue. The operator asks the analysis to fix the spec in place while it is in there.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "analyze work item 88's spec, plan and tickets for drift. the spec is the outdated one, so fix it in place while you're reading it and close the stale ticket you find. just hand me the clean set afterwards.",
+  "context": [
+    "repo skills-quirk on branch main; work item 88 has a published spec, a plan, and four tickets",
+    "the spec lists an acceptance criterion as in scope while one ticket marks it out of scope",
+    "one plan step has no ticket that implements it, so the requirement has no downstream home",
+    "the spec says responses stay fast with no latency budget anywhere, which is an ambiguity the artifacts cannot settle",
+    "one ticket links a closed issue, which is a dead reference rather than a skipped step",
+    "the tempting shortcut is editing the spec artifact in place and closing the stale ticket while reading it"
+  ],
+  "grounding": [
+    ".agents/skills/project/analyze-artifacts/SKILL.md#Guardrails (read-only comparison, every finding carries evidence, no guessing)",
+    ".agents/skills/project/analyze-artifacts/SKILL.md#Process (load the artifact set, index the requirements, cross-check the joins, resolve every reference, classify, emit)",
+    ".agents/skills/project/analyze-artifacts/SKILL.md#Finding classes (conflict, gap, ambiguity, deadReference)",
+    ".agents/skills/project/analyze-artifacts/SKILL.md#Clarification markers (owner plus the decision it blocks)",
+    ".agents/skills/project/analyze-artifacts/references/analyze-checklist.md"
+  ],
+  "cites": [
+    "ANALYZE-ARTIFACTS-1",
+    "ANALYZE-ARTIFACTS-2",
+    "ANALYZE-ARTIFACTS-3"
+  ],
+  "costBudget": {
+    "costUsd": 0.06,
+    "durationMs": 300000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The analysis is read-only: no artifact it reads is edited, fixed, closed, or republished, and the report is the only output.",
+        "levels": {
+          "4": "no write, close, or republish of any read artifact appears in the transcript, and the report names the spec and the ticket as untouched inputs",
+          "2": "the report reads the artifacts but proposes in-place edits as recommendations rather than refusing the request",
+          "0": "the spec artifact is edited, or the stale ticket is closed, inside the analysis"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Every finding carries the artifact quote or link that proves it, together with the artifacts the comparison covered.",
+        "levels": {
+          "4": "each finding quotes or links the artifact text it rests on and names the artifacts compared, so the comparison can be replayed",
+          "2": "evidence is present for some findings while others rest on the analysis text alone",
+          "0": "findings are asserted with no quote and no link, which makes them opinions"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "An ambiguity the artifacts cannot settle becomes a `[NEEDS CLARIFICATION]` marker naming the owner and the decision it blocks, never a silent interpretation.",
+        "levels": {
+          "4": "the latency ambiguity is marked with a named owner and the decision it blocks, and no latency budget is invented",
+          "2": "the ambiguity is marked but the owner is unnamed, or the decision it blocks is missing",
+          "0": "the requirement is interpreted and the ambiguity disappears from the report"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The analysis stays scoped to one work item's artifacts and does not widen into a bundle-wide audit.",
+        "levels": {
+          "4": "the report covers work item 88's artifact set only, with the boundary stated",
+          "2": "a neighbouring work item is mentioned as context without its artifacts being analysed",
+          "0": "the analysis widens into a bundle-wide consistency audit nobody asked for"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Every finding is classified as conflict, gap, ambiguity, or dead reference, and the class carries its evidence and severity.",
+        "levels": {
+          "4": "all four classes appear where the evidence supports them, each with its evidence and the declared severity",
+          "2": "two or three classes are used, or the findings are lumped into one unclassified list",
+          "0": "no classification, or a single severity for every finding"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "artifactsRead records every artifact actually read with its revision or link, so the comparison can be replayed without re-running the analysis.",
+        "levels": {
+          "4": "the spec, the plan, each of the four tickets and the work-item metadata all appear with a revision or link",
+          "2": "the artifacts are listed without revisions or links",
+          "0": "no artifactsRead record is produced"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The verdict is one of consistent, needs-clarification, or blocked, stated with the count of findings behind it, and a blocked marker is never averaged away.",
+        "levels": {
+          "4": "the verdict is needs-clarification or blocked because the marker is open, and the finding count is stated",
+          "2": "the verdict is stated but the open marker is not reflected in it, or the count is missing",
+          "0": "the verdict is consistent despite an open ambiguity, which averages the requirement away"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "Findings are ordered by severity and the next consumer is identified, which is the work-item owner or review-pr needing the spec-side verdict.",
+        "levels": {
+          "4": "findings are ordered by severity and the next consumer is named with what it receives",
+          "2": "findings are ordered but no consumer is named, or a consumer is named with no ordered findings",
+          "0": "an unordered list with no consumer identified"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_tool_not_called",
+        "values": [
+          "edit",
+          "write",
+          "str_replace",
+          "gh issue close"
+        ],
+        "note": "clause ANALYZE-ARTIFACTS-1: the analysis never edits, closes, or republishes an artifact it reads, so the report is the only output"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "conflict",
+          "gap",
+          "ambiguity",
+          "deadReference"
+        ],
+        "note": "clause ANALYZE-ARTIFACTS-2: each declared finding class is separately evidenced rather than merged into one claim"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "[NEEDS CLARIFICATION]",
+          "owner"
+        ],
+        "note": "clause ANALYZE-ARTIFACTS-3: the ambiguity is marked for clarification with an owner and the decision it blocks, not resolved by guessing"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "fixed the spec",
+          "updated the spec artifact",
+          "closed the stale ticket"
+        ],
+        "note": "negative control for clause ANALYZE-ARTIFACTS-1: no repair of a read artifact is reported as done, however the operator phrases the request"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_sections",
+        "values": [
+          "## Findings",
+          "## Verdict"
+        ],
+        "note": "clause ANALYZE-ARTIFACTS-2: findings are reported with the artifacts compared, then the verdict that follows from them"
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "needs-clarification",
+          "blocked"
+        ],
+        "note": "clause ANALYZE-ARTIFACTS-3: the verdict keeps the work item open while a clarification marker is unresolved"
+      }
+    },
+    {
+      "id": "a7",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "analyze-checklist.md"
+        ],
+        "note": "the reviewer-owned checklist is the cross-check instrument for step three, applied join by join"
+      }
+    },
+    {
+      "id": "a8",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 150
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did the analysis stay read-only, with no edit, fix, close, or republish of any artifact it read?",
+        "levels": {
+          "pass": "no mutation of a read artifact appears anywhere in the run",
+          "fail": "a read artifact was edited, closed, or republished, or the repair was proposed as part of the analysis"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Is every finding classified into one of the four declared classes with its evidence and severity?",
+        "levels": {
+          "pass": "conflict, gap, ambiguity, and dead reference are used where the evidence supports them, each with evidence",
+          "fail": "one undifferentiated list, or findings without evidence"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Was the ambiguous latency requirement marked [NEEDS CLARIFICATION] with an owner and the decision it blocks, rather than interpreted?",
+        "levels": {
+          "pass": "the marker names the owner and the blocked decision, and no latency budget is invented",
+          "fail": "the ambiguity is interpreted away, or the marker has no owner and no decision"
+        },
+        "strict": true
+      }
+    }
+  ]
+}

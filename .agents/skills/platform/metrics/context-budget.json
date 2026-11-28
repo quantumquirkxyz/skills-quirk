@@ -1,0 +1,107 @@
+{
+  "date": "2026-11-21",
+  "totalTokens": 13329,
+  "skillCount": 285,
+  "perDomain": {
+    "skill-dev": 895,
+    "foundation": 741,
+    "platform": 738,
+    "delivery": 677,
+    "math": 673,
+    "routing": 667,
+    "physics": 632,
+    "graphic-design": 604,
+    "ai": 591,
+    "project": 587,
+    "engineering": 554,
+    "devops": 452,
+    "backend": 437,
+    "sec": 436,
+    "data": 392,
+    "quant": 367,
+    "integrations": 362,
+    "web3": 322,
+    "frontend": 308,
+    "research": 254,
+    "auxiliary": 179,
+    "cms": 179,
+    "qa": 174,
+    "db": 172,
+    "cs": 165,
+    "ux": 165,
+    "product": 163,
+    "graph": 154,
+    "accessibility": 151,
+    "os": 144,
+    "professional": 143,
+    "networking": 140,
+    "xr": 137,
+    "loop": 136,
+    "docs": 133,
+    "finance": 130,
+    "compilers": 130,
+    "iot": 45
+  },
+  "topSkills": [
+    {
+      "skill": "skill-optimizer",
+      "domain": "skill-dev",
+      "tokens": 107,
+      "layerChars": 424
+    },
+    {
+      "skill": "analyze-artifacts",
+      "domain": "project",
+      "tokens": 106,
+      "layerChars": 418
+    },
+    {
+      "skill": "quant-backtest",
+      "domain": "quant",
+      "tokens": 95,
+      "layerChars": 375
+    },
+    {
+      "skill": "green-software-engineering",
+      "domain": "engineering",
+      "tokens": 91,
+      "layerChars": 357
+    },
+    {
+      "skill": "math-cryptography",
+      "domain": "math",
+      "tokens": 91,
+      "layerChars": 360
+    },
+    {
+      "skill": "loop-budget",
+      "domain": "delivery",
+      "tokens": 90,
+      "layerChars": 356
+    },
+    {
+      "skill": "safety-critical-software",
+      "domain": "engineering",
+      "tokens": 86,
+      "layerChars": 342
+    },
+    {
+      "skill": "agent-native-engineering",
+      "domain": "engineering",
+      "tokens": 84,
+      "layerChars": 334
+    },
+    {
+      "skill": "ai-systems-engineering",
+      "domain": "ai",
+      "tokens": 84,
+      "layerChars": 329
+    },
+    {
+      "skill": "graph-skill-routing",
+      "domain": "graph",
+      "tokens": 79,
+      "layerChars": 312
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+description: "Discounted Cash Flow — forecast, WACC, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range."
+globs: []
+alwaysApply: false
+---
+# finance-dcf
+
+Apply the finance-dcf skill when the request matches its scope.
+
+Capabilities:
+- apply finance dcf methods within explicit finance boundaries
+- analyze discounted cash flow — forecast, wacc, terminal value, sensitivity — with explicit assumptions, cross-check against multiples, and a valuation range with assumptions, constraints, and failure modes
+- produce and validate a finance artifact with evidence, decisions, and next steps
+
+Stop when: Forecast built, WACC computed, terminal value calculated, sensitivity analyzed, cross-check complete, valuation range delivered.

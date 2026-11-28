@@ -1,0 +1,59 @@
+{
+  "skill": "integrations/pr-operations",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "f9e57170aedfa18d055445639f0f6c78c35953c0fe0c6641d2e034a8c653bfd2",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "create-pull-request",
+      "update-pull-request",
+      "post-pr-comment",
+      "request-review",
+      "update-labels"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "create-pull-request",
+      "update-pull-request",
+      "post-pr-comment",
+      "request-review",
+      "update-labels"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

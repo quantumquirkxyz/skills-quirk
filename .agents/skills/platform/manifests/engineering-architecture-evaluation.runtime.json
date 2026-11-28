@@ -1,0 +1,49 @@
+{
+  "skill": "engineering/architecture-evaluation",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "1ac36c4b36adcde7ac6722b9e49195f251fe92ebe04bee23e8c5b4408214a181",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 4,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [],
+    "approvalRequired": false,
+    "approvalFor": [
+      "accepting a high-risk or hard-to-reverse architecture decision",
+      "committing migration or operational policy"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "quant-backtest",
+  "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/quant/quant-backtest/SKILL.md",
+  "version": "4",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "quant/quant-backtest",
+      "name": "quant-backtest",
+      "description": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.",
+      "tags": [
+        "quant"
+      ],
+      "parameters": {
+        "trustTier": "4",
+        "modelTier": "reasoning",
+        "artifactType": "test-strategy"
+      }
+    }
+  ]
+}

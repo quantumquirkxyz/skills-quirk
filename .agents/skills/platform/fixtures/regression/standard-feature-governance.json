@@ -1,0 +1,14 @@
+{
+  "fixtures": [
+    {
+      "id": "standard-feature-canonical-route",
+      "type": "workflow",
+      "workflow": "standard-feature",
+      "expected": {
+        "reachableStates": ["automatic-refinement", "architecture-design", "to-spec", "to-tickets", "implement", "publish-open-pr", "trunk-based-guard", "review-pr", "review-fix-loop", "ship-subissue", "release-management", "deployment", "observability", "sre", "done"],
+        "guards": ["missing architecture", "skipped refinement", "unapproved release", "trunk failure"],
+        "handoffs": ["implement -> publish-open-pr", "release-management -> deployment", "deployment -> observability"]
+      }
+    }
+  ]
+}

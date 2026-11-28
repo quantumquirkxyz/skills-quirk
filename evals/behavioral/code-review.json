@@ -1,0 +1,41 @@
+{
+  "id": "code-review-repository-audit-v1",
+  "skill": "delivery/code-review",
+  "skillVersion": "3",
+  "fixtureVersion": "1",
+  "scenario": "The operator asks for a read-only audit of the current repository to verify a stated behavior and explain the logic behind findings, without comparing branches.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "audit this repository to verify whether the requested behavior is logically implemented. Inspect the relevant code, tests, configuration, and documentation; explain why each finding matters; do not edit anything; validate the RepositoryAuditArtifact schema before returning it.",
+  "context": [
+    "repo skills-quirk on main",
+    "no fixed point or diff is supplied",
+    "the repository objective is supplied in the prompt",
+    "the RepositoryAuditArtifact schema is .agents/skills/platform/schemas/repository-audit-schema.json"
+  ],
+  "grounding": [
+    ".agents/skills/delivery/code-review/SKILL.md#Contract",
+    ".agents/skills/delivery/code-review/SKILL.md#Process",
+    ".agents/skills/platform/schemas/repository-audit-schema.json"
+  ],
+  "cites": ["CODE-REVIEW-1", "CODE-REVIEW-2", "CODE-REVIEW-3", "CODE-REVIEW-4"],
+  "costBudget": { "costUsd": 0.12, "durationMs": 600000, "inputTokens": 180000 },
+  "rubric": {
+    "instructionFollowing": [
+      { "id": "if-1", "criterion": "The audit establishes the objective and inspects the requested repository scope without requiring a fixed point or diff.", "levels": { "4": "objective, scope, and inspected areas are explicit", "2": "scope is partially stated", "0": "the response treats the task as a branch diff review" } },
+      { "id": "if-2", "criterion": "The audit stays read-only and returns evidence-backed findings.", "levels": { "4": "no writes and every finding has location, evidence, and impact", "2": "read-only but evidence is incomplete", "0": "source is changed or findings are unsupported" } },
+      { "id": "if-3", "criterion": "Findings distinguish confirmed defects, risks, improvements, and evidence gaps.", "levels": { "4": "classification is explicit per finding", "2": "some categories are mixed", "0": "all observations are presented as defects" } }
+    ],
+    "goalCompletion": [
+      { "id": "gc-1", "criterion": "The RepositoryAuditArtifact is returned and validated against the declared schema.", "levels": { "4": "schema path and validation are evidenced", "2": "artifact is present without validation evidence", "0": "no structured artifact" } },
+      { "id": "gc-2", "criterion": "Limitations and uninspected areas are stated honestly.", "levels": { "4": "limitations are explicit", "2": "limitations are vague", "0": "full coverage is claimed without evidence" } },
+      { "id": "gc-3", "criterion": "The audit explains the logical impact of each material finding and identifies an appropriate next consumer.", "levels": { "4": "impact and next consumer are explicit", "2": "one is missing", "0": "findings are unexplained" } }
+    ]
+  },
+  "assertions": [
+    { "id": "a1", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_all", "values": ["scope", "objective", "findings", "summary", "limitations"], "note": "RepositoryAuditArtifact fields" } },
+    { "id": "a2", "type": "deterministic", "category": "process", "check": { "kind": "artifact_contains_any", "values": ["repository-audit-schema.json", "RepositoryAuditArtifact"], "note": "schema validation must be evidenced" } },
+    { "id": "a3", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_any", "values": ["confirmed-defect", "risk", "improvement", "evidence-gap"], "note": "findings must be classified" } },
+    { "id": "a4", "type": "deterministic", "category": "outcome", "check": { "kind": "artifact_contains_all", "values": ["nextConsumer", "recommendation"], "note": "handoff and remediation context must be represented" } }
+  ]
+}

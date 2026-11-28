@@ -1,0 +1,16 @@
+{
+  "name": "quant-backtest",
+  "instructions": "Run a reproducible, leakage-resistant backtest with point-in-time data, purged and embargoed validation, combinatorial purged cross-validation, walk-forward evaluation, DSR/PSR, deterministic replay, FRTB alignment, multiple-testing correction, cost/impact realism, generated-code audit, failure fixtures, and an explicit PASS/FAIL/BLOCKED/NOT-RUN verdict.\n\nCapabilities:\n- apply quant backtest methods within explicit quant boundaries\n- audit data, code, configuration, validation, costs, execution assumptions, and failure modes\n- produce and validate a quant artifact with evidence, provenance, hashes, and a bounded verdict\n\nCanonical skill: .agents/skills/quant/quant-backtest/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Required manifests and hashes recorded, point-in-time and leakage controls pass, purged/embargoed/CPCV/walk-forward validation evidenced, DSR/PSR reported, multiple-testing correction disclosed, deterministic replay verified, FRTB alignment evidenced, verdict is PASS/FAIL/BLOCKED/NOT-RUN.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

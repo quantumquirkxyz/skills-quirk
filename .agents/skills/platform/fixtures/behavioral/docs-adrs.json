@@ -1,0 +1,49 @@
+{
+  "skill": "docs-adrs",
+  "seed": 1729,
+  "cases": [
+    {
+      "id": "accepted-decision",
+      "kind": "deterministic",
+      "expected": "PASS"
+    },
+    {
+      "id": "supersession-cycle",
+      "kind": "negative",
+      "expected": "FAIL"
+    },
+    {
+      "id": "missing-context",
+      "kind": "negative",
+      "expected": "NOT-RUN"
+    }
+  ],
+  "checks": [
+    "manifest",
+    "supersession-graph",
+    "link",
+    "evidence-ledger",
+    "redaction"
+  ],
+  "fixtures": [
+    {
+      "id": "docs-adrs-scenario",
+      "skill": "docs-adrs",
+      "type": "regression",
+      "expectedOutput": {
+        "contains": [
+          "completed ADR document",
+          "decision"
+        ]
+      }
+    }
+  ],
+  "id": "docs-adrs-scenario",
+  "type": "regression",
+  "expectedOutput": {
+    "contains": [
+      "completed ADR document",
+      "decision"
+    ]
+  }
+}

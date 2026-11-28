@@ -1,0 +1,16 @@
+---
+description: "Shape frontend work into a clear visual system, interaction model, and implementation seam — with explicit state and motion boundaries."
+globs: []
+alwaysApply: false
+---
+# frontend-design
+
+Apply the frontend-design skill when the request matches its scope.
+
+Capabilities:
+- identify loading, empty, error, and success state gaps
+- consume code-review audit findings
+- trace frontend design decisions across inputs, constraints, and failure paths
+- validate frontend outcomes with evidence, assumptions, and explicit next steps
+
+Stop when: Visual system, interaction seams, fallback states, fixtures, compatibility targets, and budgets are explicit; artifact saved; completion criteria checked.

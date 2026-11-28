@@ -1,0 +1,31 @@
+{
+  "name": "diagnosing-bugs",
+  "description": ">-",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/delivery/diagnosing-bugs/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "delivery/diagnosing-bugs",
+      "name": "diagnosing-bugs",
+      "description": ">-",
+      "tags": [
+        "delivery"
+      ],
+      "parameters": {
+        "trustTier": "1",
+        "modelTier": "reasoning",
+        "artifactType": "diagnosis"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "project-viability",
+  "instructions": "Evaluate whether a project is viable, functional, and scalable by analyzing its codebase against CONTEXT.md and ADRs. Use when the user wants a structured assessment of project health, architectural soundness, and growth boundaries before committing to further work.\n\nCapabilities:\n- evaluate functional, architectural, and growth risks\n- consume repository audit findings\n- trace project viability decisions across inputs, constraints, and failure paths\n- validate project outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/project/project-viability/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Pre-flight checks recorded; automated baseline completed; three parallel sub-agents executed; quality gate passed; Markdown and JSON reports saved under .reports/; ProjectViabilityArtifact with assessment, score, evidence, confidence, risks, recommendations, and report paths returned; completion criteria verified; no implementation or project changes performed.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

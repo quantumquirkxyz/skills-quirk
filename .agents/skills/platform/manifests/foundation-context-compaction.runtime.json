@@ -1,0 +1,49 @@
+{
+  "skill": "foundation/context-compaction",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "ab0da79bb2fdab1898b70f82d04af71e757e7985073876a5b3d49058aa616066",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 4,
+    "modelTier": "fast",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-temp-file: \"ephemeral staging and discarded tool-result indexes only",
+      "write-persistent-file: \"session handoff state or repo-local CONTEXT.md only; never task artifacts"
+    ],
+    "approvalRequired": false,
+    "approvalFor": [],
+    "risk": "low",
+    "trustTier": 2
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

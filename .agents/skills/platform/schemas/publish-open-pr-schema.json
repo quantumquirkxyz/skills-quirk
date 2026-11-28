@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PublishOpenPrArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "branch", "commitSha", "prNumber", "prUrl", "title", "validation", "gateCiResult", "issueMetadata", "prMetadata", "mutationEvidence", "checkpoint", "operationId", "reconciliationEvidence", "dryRun", "saga"],
+  "properties": {
+    "status": { "$ref": "#/$defs/status" },
+    "branch": { "type": "string", "minLength": 1 },
+    "commitSha": { "type": "string", "pattern": "^[0-9a-fA-F]{40}$" },
+    "prNumber": { "type": "integer", "minimum": 1 },
+    "prUrl": { "type": "string", "format": "uri" },
+    "title": { "type": "string", "minLength": 1 },
+    "validation": { "type": "object", "required": ["passed"], "properties": { "passed": { "type": "boolean" }, "commands": { "type": "array", "items": { "type": "string" } }, "notes": { "type": "string" } }, "additionalProperties": true },
+    "gateCiResult": { "type": "object", "required": ["status", "failingChecks", "mandatory"], "properties": { "status": { "enum": ["pass", "fail", "skipped", "blocked", "outcome-unknown"] }, "failingChecks": { "type": "array", "items": { "type": "string" } }, "mandatory": { "type": "boolean" }, "reason": { "type": "string" } }, "additionalProperties": true },
+    "reviewers": { "type": "array", "items": { "type": "string" } },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "issueMetadata": { "$ref": "#/$defs/metadata" },
+    "prMetadata": { "$ref": "#/$defs/metadata" },
+    "mutationEvidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "checkpoint": { "type": "object" },
+    "operationId": { "type": "string", "minLength": 1 },
+    "recoveryStatus": { "$ref": "#/$defs/status" },
+    "reconciliationEvidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "dryRun": { "type": "boolean" },
+    "saga": { "type": "object" }
+  },
+  "$defs": {
+    "status": { "type": "string", "enum": ["planned", "completed", "blocked", "needs-approval", "outcome-unknown", "stale-input", "validation-failed", "budget-exceeded", "repeated-action", "superseded", "rolled-back"] },
+    "metadata": { "type": "object", "required": ["issueNumber", "identityVerified", "assignees", "reviewerPolicy", "labels", "milestone", "projects", "projectItems", "fields", "development", "relationships"], "properties": { "issueNumber": { "type": "integer", "minimum": 1 }, "identityVerified": { "type": "boolean" }, "assignees": { "type": "array", "items": { "type": "string" } }, "reviewerPolicy": { "type": "object" }, "labels": { "type": "array", "items": { "type": "object" } }, "milestone": {}, "projects": { "type": "array", "items": { "type": "object" } }, "projectItems": { "type": "array", "items": { "type": "object" } }, "fields": { "type": "object" }, "development": { "type": "object" }, "relationships": { "type": "object" } }, "additionalProperties": true },
+    "evidence": { "type": "object", "required": ["operation", "status"], "properties": { "operation": { "type": "string" }, "status": { "enum": ["applied", "skipped", "unsupported", "partial", "failed", "reconciled"] }, "detail": {} }, "additionalProperties": true }
+  },
+  "allOf": [{
+    "if": { "properties": { "status": { "const": "completed" } } },
+    "then": { "properties": { "gateCiResult": { "properties": { "status": { "const": "pass" } } } } }
+  }]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "implement-review-fixes",
+  "instructions": "Apply a plan-review-fixes remediation plan through implement, validate each finding, and hand off a traceable implementation result.\n\nCapabilities:\n- apply implement review fixes methods within explicit delivery boundaries\n- analyze read a github pr remediation plan produced by plan-review-fixes, implement the planned corrections through the repositor with assumptions, constraints, and failure modes\n- produce and validate a delivery artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/delivery/implement-review-fixes/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Validate the plan and branch preconditions, apply or defer every in-scope finding exactly once, validate the resulting changes, save an ImplementReviewFixesArtifact, and identify the next consumer.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

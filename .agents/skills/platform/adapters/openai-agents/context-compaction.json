@@ -1,0 +1,16 @@
+{
+  "name": "context-compaction",
+  "instructions": "Run the context compaction discipline for long agent sessions: summarize the working set, clear stale tool results, and re-initiate a fresh window without losing the thread or the durable artifacts.\n\nCapabilities:\n- compact a conversation window with a structured summary\n- clear stale tool results and re-derive them on demand\n- hand off a session across a compaction boundary\n- trace context compaction decisions across inputs, constraints, and failure paths\n- validate foundation outcomes with evidence, assumptions, and explicit next steps\n\nCanonical skill: .agents/skills/foundation/context-compaction/SKILL.md",
+  "model": "gpt-5-mini",
+  "tools": [],
+  "handoff_description": "Durable artifacts preserved by reference; dropped items re-derivable or recorded in riskRemaining; the next window opens with the summary and budget; completion criteria checked.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 4,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

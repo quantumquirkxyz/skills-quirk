@@ -1,0 +1,15 @@
+---
+description: Establish the mandatory engineering traceability gate before any work that changes software.
+globs: []
+alwaysApply: false
+---
+# engineering-preflight
+
+Apply the engineering-preflight skill when the request matches its scope.
+
+Capabilities:
+- produce EngineeringPreflightArtifact
+- validate requirement-to-release traceability
+- classify explicit exceptions and their expiry
+
+Stop when: A current EngineeringPreflightArtifact is approved before software-changing work, or an explicit bounded exception is recorded and approved.

@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quirk Skill Runtime Manifest",
+  "description": "Runtime manifest for one bundle skill, derived mechanically from its SKILL.md frontmatter by scripts/build-runtime-manifests.mjs.",
+  "type": "object",
+  "required": ["skill", "version", "generatedFrom", "role", "execution", "guardrails"],
+  "properties": {
+    "skill": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*(?:/[a-z0-9][a-z0-9-]*)+$",
+      "maxLength": 120,
+      "description": "Bundle skill identity as <domain>/<skill> (for example delivery/review-pr)."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Runtime manifest format version."
+    },
+    "generatedFrom": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Source the manifest was derived from; frontmatter for generated manifests."
+    },
+    "frontmatterHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 of the JSON-stringified frontmatter with sorted keys; the validator compares it to detect drift."
+    },
+    "role": {
+      "type": "string",
+      "enum": ["workflow", "tool", "guardrail", "router"],
+      "description": "Declared role of the skill inside the routing graph."
+    },
+    "router": {
+      "type": "object",
+      "description": "Routing signals; optional and reserved for a later phase.",
+      "properties": {
+        "positive": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Queries or phrases that should route to this skill."
+        },
+        "negative": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Queries or phrases that must not route to this skill."
+        },
+        "requiredSignals": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Signals a query must carry before this skill is eligible."
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "description": "How a runtime executes the skill.",
+      "required": ["defaultAgent", "isolation", "maxTurns", "modelTier", "tools"],
+      "properties": {
+        "defaultAgent": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Default sub-agent kind; explore for read-only tier-1 skills, general otherwise."
+        },
+        "isolation": {
+          "type": "string",
+          "enum": ["none", "worktree", "container"],
+          "description": "Filesystem isolation required while the skill runs."
+        },
+        "maxTurns": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Turn budget; the frontmatter maxIterations or the default of 6."
+        },
+        "modelTier": {
+          "type": "string",
+          "enum": ["fast", "reasoning", "router"],
+          "description": "Model tier the manifest routes to; the frontmatter code tier normalizes to reasoning."
+        },
+        "tools": {
+          "type": "object",
+          "description": "Conservative tool policy derived from the frontmatter.",
+          "required": ["allow", "deny"],
+          "properties": {
+            "allow": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Tool names the skill may use."
+            },
+            "deny": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Tool names the skill must not use; non-empty only for high-risk skills."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "guardrails": {
+      "type": "object",
+      "description": "Safety envelope copied from the frontmatter.",
+      "required": ["sideEffects", "approvalRequired", "approvalFor", "risk", "trustTier"],
+      "properties": {
+        "sideEffects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Declared side effects; empty when the frontmatter declares none."
+        },
+        "approvalRequired": {
+          "type": "boolean",
+          "description": "Whether the skill must obtain approval before acting."
+        },
+        "approvalFor": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Side effects that require approval."
+        },
+        "risk": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Declared risk class; low when the frontmatter declares none."
+        },
+        "trustTier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "description": "Declared trust tier 1-4; 1 when the frontmatter declares none."
+        }
+      },
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "description": "Optional verification envelope.",
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Commands that verify the skill; the repo gate for delivery, skill-dev, and platform domain skills."
+        },
+        "artifactSchema": {
+          "type": ["string", "null"],
+          "description": "Repository-relative artifact schema path when .agents/skills/platform/schemas/<artifactType>-schema.json exists; null otherwise."
+        }
+      },
+      "additionalProperties": false
+    },
+    "observability": {
+      "type": "object",
+      "description": "Optional observability envelope.",
+      "properties": {
+        "traceEvents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Trace event names the skill emits."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

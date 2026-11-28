@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "make-project",
+      "schema": "schemas/software-engineering/make-project-artifact.schema.json",
+      "artifactType": "MakeProjectArtifact",
+      "capabilityRequirements": [
+        "professional-project-management (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "professional-project-management",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "name": "alpha"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "name": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "name": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-make-project",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "make-project",
+  "schema": "schemas/software-engineering/make-project-artifact.schema.json",
+  "artifactType": "MakeProjectArtifact",
+  "capabilityRequirements": [
+    "professional-project-management (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "professional-project-management",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "name": "alpha"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "name": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "name": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-make-project",
+  "type": "behavioral"
+}

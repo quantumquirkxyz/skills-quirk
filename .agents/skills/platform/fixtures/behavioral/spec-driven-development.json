@@ -1,0 +1,78 @@
+{
+  "fixtures": [
+    {
+      "skill": "spec-driven-development",
+      "schema": "schemas/software-engineering/spec-driven-artifact.schema.json",
+      "artifactType": "SpecDrivenArtifact",
+      "capabilityRequirements": [
+        "SDD (required)",
+        "requirements-engineering (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "to-tickets",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "spec": "complete"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "spec": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "spec": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-spec-driven-development",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "spec-driven-development",
+  "schema": "schemas/software-engineering/spec-driven-artifact.schema.json",
+  "artifactType": "SpecDrivenArtifact",
+  "capabilityRequirements": [
+    "SDD (required)",
+    "requirements-engineering (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "to-tickets",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "spec": "complete"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "spec": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "spec": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-spec-driven-development",
+  "type": "behavioral"
+}

@@ -1,0 +1,15 @@
+---
+description: "Design and review smart contracts with threat modeling, executable invariants, fuzz/property/formal verification plans, upgrade and account-abstraction safety, cross-chain risk controls, provenance, and an adversarial deployment gate."
+globs: []
+alwaysApply: false
+---
+# web3-smart-contracts
+
+Apply the web3-smart-contracts skill when the request matches its scope.
+
+Capabilities:
+- design and review smart contracts within explicit web3 boundaries
+- specify invariants, adversarial fixtures, verification plans, and operational controls
+- produce a typed web3 artifact with decisions, assumptions, residual risks, and deployment status
+
+Stop when: Stop when every required gate is typed as pass, fail, blocked, not-applicable, or not-run; deployment recommendation and residual risks are explicit.

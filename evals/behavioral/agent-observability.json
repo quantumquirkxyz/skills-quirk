@@ -1,0 +1,212 @@
+{
+  "id": "agent-observability-paired-v1",
+  "skill": "foundation/agent-observability",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A review-pr skill run emits an execution record that must be redacted before storage, with secrets, PII, and sensitive project data removed and redaction completeness verified.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "capture a redacted execution record for a review-pr skill run; redact API keys and PII, structure data for analysis, link to traceability artifacts, and verify redaction completeness before emission.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the skill being observed is review-pr at version 1",
+    "inputs include a PR URL, reviewer email, and an API key that must be redacted",
+    "tools invoked include grep, read_text_file, and filesystem_directory_tree",
+    "every execution record must be redacted before storage or emission; no secrets or PII in plaintext",
+    "traceability links must resolve to existing artifacts or evidence"
+  ],
+  "grounding": [
+    ".agents/skills/foundation/agent-observability/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/foundation/agent-observability/SKILL.md#Guardrails - redaction completeness, traceability link integrity, no sensitive data leakage",
+    ".agents/skills/foundation/agent-observability/SKILL.md#Steps - capture execution context, redact sensitive data, structure data for analysis, link to outputs",
+    ".agents/skills/foundation/agent-observability/SKILL.md#Artifact - AgentObservabilityArtifact emitted as JSON and Markdown"
+  ],
+  "cites": [
+    "AO-1",
+    "AO-2",
+    "AO-3",
+    "AO-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.07,
+    "durationMs": 330000,
+    "inputTokens": 95000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Skill name, version, triggering context, tools invoked, inputs, context pack, timestamp, and compute resources are captured.",
+        "levels": {
+          "4": "all execution context fields are recorded completely",
+          "2": "most context fields are recorded but some are missing",
+          "0": "no execution context is captured"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "All secrets, PII, and sensitive project data are redacted; redaction evidence documents patterns applied and fields redacted.",
+        "levels": {
+          "4": "all sensitive fields are redacted with patterns and fields documented",
+          "2": "most secrets are redacted but evidence is incomplete",
+          "0": "no redaction is performed or secrets appear in plaintext"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Data is structured in JSON with standardized fields for invocation patterns, timing, outcomes, error types, and dependency invocation.",
+        "levels": {
+          "4": "JSON structure includes all five analysis pattern categories",
+          "2": "structure is present but some pattern categories are missing",
+          "0": "no structured analysis data is produced"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Traceability links exist for all produced artifacts and every link resolves to an existing target.",
+        "levels": {
+          "4": "links for all artifacts are present and each URI resolves to an existing file",
+          "2": "links are present but some targets are missing or dangling",
+          "0": "no traceability links are provided"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The redaction completeness check passes before the artifact is saved or emitted.",
+        "levels": {
+          "4": "completenessCheck is passed and no sensitive data remains in plaintext",
+          "2": "completeness check is attempted but some sensitive data may remain",
+          "0": "no completeness check or sensitive data is emitted unredacted"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "No secret, PII, or competitively sensitive project information leaks into execution records, analysis data, or traceability links.",
+        "levels": {
+          "4": "zero leakage across all output artifacts",
+          "2": "minor leakage in non-critical fields",
+          "0": "significant leakage of secrets or PII"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Risk assessment records residual risk, leakage detected flag, and notes; critical risk blocks emission.",
+        "levels": {
+          "4": "riskAssessment is complete and critical risk prevents artifact emission",
+          "2": "risk assessment is present but critical risk does not block emission",
+          "0": "no risk assessment is provided"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The redacted execution record, structured analysis data, and traceability links are returned and validated.",
+        "levels": {
+          "4": "all three required output objects are present and validation passes",
+          "2": "output objects are partially present or validation is skipped",
+          "0": "no output objects are returned"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "redactedExecutionRecord",
+          "structuredAnalysisData",
+          "traceabilityLinks",
+          "redactionEvidence",
+          "riskAssessment"
+        ],
+        "note": "the observability artifact must contain all required output objects"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "sk-live-",
+          "alice@example.com",
+          "PRIVATE KEY"
+        ],
+        "note": "negative control: no API keys, emails, or private keys may appear unredacted"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "patternsApplied",
+          "fieldsRedacted",
+          "redactionCount",
+          "completenessCheck"
+        ],
+        "note": "redaction evidence must document patterns, fields, count, and completeness"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the observation record must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does the redaction completeness check pass before the artifact is saved or emitted?",
+        "levels": {
+          "pass": "completenessCheck is passed before emission",
+          "fail": "artifact is emitted without a passed completeness check"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is there zero leakage of secrets, PII, or sensitive project information across all output artifacts?",
+        "levels": {
+          "pass": "no secrets, PII, or sensitive data appear anywhere in the output",
+          "fail": "any secret, PII, or sensitive data is present"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Does every traceability link resolve to an existing artifact or evidence target?",
+        "levels": {
+          "pass": "all traceability link URIs resolve to existing files",
+          "fail": "one or more traceability links are dangling or unresolved"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

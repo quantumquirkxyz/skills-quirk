@@ -1,0 +1,214 @@
+{
+  "id": "interactive-tutorial-builder-paired-v1",
+  "skill": "auxiliary/interactive-tutorial-builder",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A novice learner needs a runnable tutorial with learning goals, an exercise input, an expected output shape, and a checkable checkpoint derived from the capability-router skill contract.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "generate a tutorial for the capability-router skill for a novice agent whose goal is to route work to the best matching skill using declared capabilities; include learning goals, an exercise with expected output, a checkpoint, and response space with constraints.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the target skill is capability-router and its SKILL.md contract must be read before generating tutorial content",
+    "the learner context is role agent, experienceLevel novice, no prior skills",
+    "learning goals must derive from the target skill's actual contract, not its name alone",
+    "the exercise must declare an explicit expected output shape and at least one checkable checkpoint",
+    "the tutorial must not drift into teaching a neighboring skill"
+  ],
+  "grounding": [
+    ".agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md#Rules about instructional scaffolding - goals from contract, expected output shape, checkable checkpoint",
+    ".agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md#Guardrails - learner responsibility, exercise size, expected output shape, skill boundary preservation",
+    ".agents/skills/auxiliary/interactive-tutorial-builder/SKILL.md#Steps - read contract, generate scaffold, adapt to learner, add evidence, verify target skill"
+  ],
+  "cites": [
+    "ITB-1",
+    "ITB-2",
+    "ITB-3",
+    "ITB-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.07,
+    "durationMs": 330000,
+    "inputTokens": 100000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The target skill's SKILL.md contract is read and its inputs, outputs, rules, and completion criteria are recorded before generating tutorial content.",
+        "levels": {
+          "4": "the capability-router contract is read and a traceable mapping from each learning goal to a contract rule exists",
+          "2": "the contract is consulted but no explicit goal-to-contract mapping is recorded",
+          "0": "no skill contract is read before generating content"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Learning goals are non-empty and each goal cites the contract rule it derives from.",
+        "levels": {
+          "4": "multiple learning goals each trace to a specific capability-router contract rule",
+          "2": "goals are present but some do not cite a contract rule",
+          "0": "no learning goals or goals are unrelated to the contract"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The exercise declares scenario, input, and expectedOutput; the checkpoint declares name, criteria, and verification.",
+        "levels": {
+          "4": "all exercise fields and all checkpoint fields are populated with concrete values",
+          "2": "most fields are present but expected output shape or verification is missing",
+          "0": "exercise or checkpoint is missing required fields"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The response space defines a prompt template and constraints the learner must respect.",
+        "levels": {
+          "4": "promptTemplate and constraints are both defined and constrain the learner to the target skill boundary",
+          "2": "promptTemplate is present but constraints are weak or missing",
+          "0": "no response space is defined"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The scenario matches the learner's experience level and goal, and the exercise input is executable by the learner alone.",
+        "levels": {
+          "4": "scenario is novice-appropriate, matches the stated goal, and input is concrete and self-contained",
+          "2": "scenario roughly matches but input requires external context or neighboring skills",
+          "0": "scenario does not match the learner level or goal"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Checkpoint criteria are checkable without external context beyond what the learner has.",
+        "levels": {
+          "4": "every criterion can be verified from the learner's own output and the skill contract",
+          "2": "some criteria require external context not available to the learner",
+          "0": "no checkable criteria are provided"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The exercise stays within the target skill's declared boundary and does not require a neighboring skill.",
+        "levels": {
+          "4": "no step requires capability-router-internal behavior outside its contract or a neighboring skill",
+          "2": "the exercise lightly touches a neighboring skill without clear justification",
+          "0": "the exercise requires a neighboring skill to complete"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The tutorial artifact is saved as JSON and Markdown and validated against completion criteria.",
+        "levels": {
+          "4": "artifact saved in both formats and validation passes",
+          "2": "artifact produced but not saved in both formats or validation skipped",
+          "0": "no artifact emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "learningGoals",
+          "exercise",
+          "checkpoint",
+          "responseSpace"
+        ],
+        "note": "the tutorial artifact must contain all four top-level output fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "scenario",
+          "input",
+          "expectedOutput"
+        ],
+        "note": "the exercise must declare scenario, input, and expected output shape"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "name",
+          "criteria",
+          "verification"
+        ],
+        "note": "the checkpoint must declare name, criteria, and verification"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "placeholder",
+          "fill-in"
+        ],
+        "note": "negative control: no placeholder values may remain in the tutorial artifact"
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Does each learning goal cite a specific contract rule from the target skill's SKILL.md?",
+        "levels": {
+          "pass": "every goal traces to a contract rule",
+          "fail": "one or more goals do not cite a contract rule"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Does the exercise stay within the target skill's declared boundary without requiring a neighboring skill?",
+        "levels": {
+          "pass": "the exercise is self-contained within capability-router's contract",
+          "fail": "the exercise requires a neighboring skill to complete"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-4",
+      "check": {
+        "criterion": "Is the response space defined with a prompt template and constraints the learner must respect?",
+        "levels": {
+          "pass": "promptTemplate and constraints are both present and boundary-respecting",
+          "fail": "response space is missing or constraints do not enforce the skill boundary"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

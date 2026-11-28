@@ -1,0 +1,334 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { recordExecution } from './record-execution.mjs';
+
+const repoRoot = process.cwd();
+const agentsSkillsDir = path.join(repoRoot, '.agents', 'skills');
+const claudeSkillsDir = path.join(repoRoot, '.claude', 'skills');
+const lockPath = path.join(repoRoot, 'skills-lock.json');
+const ignored = new Set(['platform']);
+const writeLikeSideEffects = new Set(['write-files', 'write-docs', 'write-code']);
+const protectedInstructionPathPattern = /(?:^|[\s`"'(:/])(?:SKILL\.md|AGENTS\.md|CONTEXT\.md|MEMORY\.md|skills-lock\.json|\.agents\/[\w./*-]+)/;
+const strictMode = process.argv.includes('--strict');
+
+async function exists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function collectSkillDirs(dir, out = []) {
+  if (!(await exists(dir))) return out;
+  for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || ignored.has(entry.name)) continue;
+    const child = path.join(dir, entry.name);
+    const skillMd = path.join(child, 'SKILL.md');
+    if (await exists(skillMd)) {
+      out.push(child);
+      continue;
+    }
+    await collectSkillDirs(child, out);
+  }
+  return out;
+}
+
+function parseFrontmatter(text) {
+  if (!text.startsWith('---')) return {};
+  const end = text.indexOf('\n---', 3);
+  if (end === -1) return {};
+  const out = {};
+  let active = null;
+  for (const line of text.slice(4, end).split(/\r?\n/)) {
+    const key = line.match(/^([A-Za-z][A-Za-z0-9-]*):\s*(.*)$/);
+    if (key) {
+      active = key[1];
+      let raw = key[2].replace(/^["']|["']$/g, '');
+      if (raw === '') {
+        out[active] = [];
+      } else if (raw.startsWith('[') && raw.endsWith(']')) {
+        try {
+          out[active] = JSON.parse(raw);
+        } catch {
+          out[active] = raw.slice(1, -1).split(',').map((s) => s.trim()).filter(Boolean);
+        }
+      } else {
+        out[active] = raw;
+      }
+      continue;
+    }
+    const item = line.match(/^\s+-\s+(.+)$/);
+    if (item && active) {
+      if (!Array.isArray(out[active])) out[active] = [];
+      out[active].push(item[1].replace(/^["']|["']$/g, ''));
+    }
+  }
+  return out;
+}
+
+function parseName(text, filePath) {
+  const fmName = text.match(/^name:\s*(.*)$/m)?.[1]?.trim().replace(/^["']|["']$/g, '');
+  if (fmName) return fmName;
+  const heading = text.match(/^#\s+(.+)$/m)?.[1]?.trim();
+  if (heading) return heading;
+  return path.basename(path.dirname(filePath));
+}
+
+function hasExplicitApproval(value) {
+  return String(value).trim().toLowerCase() === 'true';
+}
+
+function capabilityTarget(value) {
+  return String(value).split(' (')[0].trim();
+}
+
+function buildAliasIndex(manifests) {
+  const aliases = new Map();
+  for (const {name, aliases: declared = []} of manifests) {
+    for (const alias of Array.isArray(declared) ? declared : [declared]) {
+      const key = String(alias).trim();
+      if (!key || key === name) continue;
+      if (aliases.has(key) && aliases.get(key) !== name) throw new Error(`duplicate skill alias: ${key}`);
+      aliases.set(key, name);
+    }
+  }
+  return aliases;
+}
+
+function findCycles(graph) {
+  const cycles = [];
+  const visiting = new Set();
+  const visited = new Set();
+  const stack = [];
+  function visit(node) {
+    if (visiting.has(node)) {
+      const start = stack.indexOf(node);
+      cycles.push(stack.slice(start).concat(node));
+      return;
+    }
+    if (visited.has(node)) return;
+    visiting.add(node); stack.push(node);
+    for (const next of graph.get(node) ?? []) visit(next);
+    stack.pop(); visiting.delete(node); visited.add(node);
+  }
+  for (const node of graph.keys()) visit(node);
+  return cycles;
+}
+
+function jaccardSimilarity(a, b) {
+  const tokensA = new Set((a || '').split(/\s+/).filter(Boolean));
+  const tokensB = new Set((b || '').split(/\s+/).filter(Boolean));
+  if (!tokensA.size || !tokensB.size) return 0;
+  let intersection = 0;
+  for (const token of tokensA) if (tokensB.has(token)) intersection++;
+  return intersection / (tokensA.size + tokensB.size - intersection);
+}
+
+async function main() {
+  const skillDirs = await collectSkillDirs(agentsSkillsDir);
+  const errors = [];
+  const warnings = [];
+  const artifactOutputDebt = [];
+  const lock = JSON.parse(await fs.readFile(lockPath, 'utf8'));
+  const lockSkills = new Set(Object.keys(lock.skills ?? {}));
+  const skillNames = new Set(skillDirs.map((dir) => path.basename(dir)));
+  const manifestByName = new Map();
+  for (const skillDir of skillDirs) {
+    const skillMd = path.join(skillDir, 'SKILL.md');
+    const text = await fs.readFile(skillMd, 'utf8');
+    const fm = parseFrontmatter(text);
+    manifestByName.set(parseName(text, skillMd), fm);
+  }
+  let aliases;
+  try {
+    aliases = buildAliasIndex([...manifestByName.entries()].map(([name, fm]) => ({name, aliases: fm.aliases})));
+  } catch (error) {
+    errors.push(error.message);
+    aliases = new Map();
+  }
+  const requirementGraph = new Map([...skillNames].map((name) => [name, []]));
+
+  // Lockfile provenance shape (docs/how-to/release.md#lockfile-provenance):
+  // authored skills are pinned by hash and declare their local origin; imported
+  // skills must name the upstream revision they came from.
+  const allowedSourceTypes = new Set(['local', 'upstream']);
+  for (const [lockName, entry] of Object.entries(lock.skills ?? {})) {
+    if (!/^[a-f0-9]{64}$/.test(String(entry?.hash ?? ''))) {
+      errors.push(`${lockName}: skills-lock.json hash must be 64 hex characters`);
+    }
+    if (!allowedSourceTypes.has(entry?.sourceType)) {
+      errors.push(`${lockName}: skills-lock.json sourceType must be local|upstream (${entry?.sourceType})`);
+    }
+    if (typeof entry?.revision !== 'string' || entry.revision.trim() === '') {
+      errors.push(`${lockName}: skills-lock.json revision must be a non-empty string`);
+    } else if (entry.sourceType === 'local' && entry.revision !== 'working-tree') {
+      errors.push(`${lockName}: local skills-lock.json entries must use revision "working-tree"`);
+    }
+  }
+
+  for (const skillDir of skillDirs) {
+    const relDir = path.relative(agentsSkillsDir, skillDir);
+    const skillMd = path.join(skillDir, 'SKILL.md');
+    if (!(await exists(skillMd))) {
+      errors.push(`missing SKILL.md for ${relDir}`);
+      continue;
+    }
+    const text = await fs.readFile(skillMd, 'utf8');
+    const fm = parseFrontmatter(text);
+    const name = parseName(text, skillMd);
+
+    if (fm.name && fm.name !== name) errors.push(`${name}: frontmatter name mismatch (${fm.name})`);
+
+    const allowedRisks = new Set(['low', 'medium', 'high']);
+    if (fm.risk && !allowedRisks.has(fm.risk)) errors.push(`${name}: frontmatter risk must be low|medium|high (${fm.risk})`);
+
+    const allowedTrustTiers = new Set([undefined, '', '1', '2', '3', '4']);
+    if (!allowedTrustTiers.has(fm.trustTier)) errors.push(`${name}: frontmatter trustTier must be 1|2|3|4 (${fm.trustTier})`);
+
+    if (fm.trustTier !== undefined && fm.trustTier !== '') {
+      const tier = Number(fm.trustTier);
+      const inferred = fm.risk === 'low' ? (tier <= 2 ? null : 'low risk should be tier 1 or 2') : fm.risk === 'medium' ? (tier === 3 ? null : 'medium risk should be tier 3') : fm.risk === 'high' ? (tier === 4 ? null : 'high risk should be tier 4') : null;
+      if (inferred) errors.push(`${name}: ${inferred}`);
+    }
+
+    const body = text.replace(/^---[\s\S]*?---\s*/, '');
+    const hasLoop = /\b(repeat|loop|until|passes|cycle|red-green|again)\b/i.test(body) && !/disable-model-invocation:\s*true/.test(text);
+    if (fm.maxIterations && (!Number.isInteger(Number(fm.maxIterations)) || Number(fm.maxIterations) < 1)) {
+      errors.push(`${name}: maxIterations must be a positive integer (${fm.maxIterations})`);
+    }
+
+    if ((fm.risk === 'medium' || fm.risk === 'high')) {
+      // Fixtures may live in a per-skill `<skillDir>/behavioral-fixtures/` directory
+      // or at the bundle's canonical central location. Both satisfy the coverage rule.
+      const fixturesDir = path.join(skillDir, 'behavioral-fixtures');
+      const hasLocalFixtures = await exists(fixturesDir) && (await fs.readdir(fixturesDir)).length > 0;
+      const centralFixture = path.join(repoRoot, '.agents', 'skills', 'platform', 'fixtures', 'behavioral', `${name}.json`);
+      const hasCentralFixture = await exists(centralFixture);
+      if (!hasLocalFixtures && !hasCentralFixture) {
+        warnings.push(`${name}: ${fm.risk} risk skill has no behavioral-fixtures directory`);
+      }
+    }
+
+    const declaredFixturesPath = Array.isArray(fm.fixturesPath) ? '' : fm.fixturesPath;
+    if (declaredFixturesPath !== undefined && declaredFixturesPath !== '' && declaredFixturesPath !== '[]') {
+      const fixturesFullPath = path.resolve(repoRoot, String(declaredFixturesPath));
+      if (!(await exists(fixturesFullPath))) {
+        errors.push(`${name}: fixturesPath does not resolve to an existing file (${declaredFixturesPath})`);
+      }
+    }
+
+    // ADR-001 contract: a skill that declares an artifactType must say what it
+    // emits. Empty `outputs` is schema-legal, so the bundle-wide debt is reported
+    // as structured data (artifactOutputDebt) rather than warning noise that would
+    // break the documented `totalWarnings: 0` release invariant. --strict promotes
+    // the debt to errors once the core skills are backfilled.
+    const declaredArtifactType = typeof fm.artifactType === 'string' ? fm.artifactType.trim() : '';
+    const declaredOutputs = (Array.isArray(fm.outputs) ? fm.outputs : [fm.outputs])
+      .map((value) => String(value ?? '').trim())
+      .filter(Boolean);
+    if (declaredArtifactType && declaredOutputs.length === 0) {
+      artifactOutputDebt.push(`${name}: artifactType "${declaredArtifactType}" declared but outputs is empty`);
+    }
+
+    for (const dependency of fm.dependencies ?? []) {
+      if (!skillNames.has(dependency)) errors.push(`${name}: dependency missing ${dependency}`);
+    }
+    const capabilityRequirements = Array.isArray(fm.capabilityRequirements) ? fm.capabilityRequirements : [];
+    for (const requirement of capabilityRequirements) {
+      const requestedName = capabilityTarget(requirement);
+      const capabilityName = aliases.get(requestedName) ?? requestedName;
+      if (!capabilityName || !skillNames.has(capabilityName)) {
+        errors.push(`${name}: capabilityRequirements must reference an existing skill (${requirement})`);
+      }
+      if (capabilityName === name) errors.push(`${name}: capabilityRequirements cannot reference itself`);
+      if (skillNames.has(capabilityName)) requirementGraph.get(name).push(capabilityName);
+    }
+    for (const dependency of fm.dependencies ?? []) {
+      if (skillNames.has(dependency)) requirementGraph.get(name).push(dependency);
+    }
+    for (const effect of fm.sideEffects ?? []) {
+      if (effect === 'write-code' && fm.risk === 'low') {
+        warnings.push(`${name}: write-code skill marked low risk`);
+      }
+    }
+
+    const sideEffects = Array.isArray(fm.sideEffects) ? fm.sideEffects : [fm.sideEffects].filter(Boolean);
+    const writesFiles = sideEffects.some((effect) => writeLikeSideEffects.has(effect));
+    if (strictMode && writesFiles && protectedInstructionPathPattern.test(text) && !hasExplicitApproval(fm.approvalRequired)) {
+      warnings.push(`${name}: write-like skill references protected instruction/identity paths without approvalRequired: true`);
+    }
+
+    const claudeLink = path.join(claudeSkillsDir, path.basename(skillDir));
+    if (!(await exists(claudeLink))) {
+      errors.push(`missing flat .claude link for ${relDir}`);
+    } else {
+      const stat = await fs.lstat(claudeLink);
+      if (!stat.isSymbolicLink()) {
+        errors.push(`.claude/${path.basename(skillDir)} is not a symlink`);
+      }
+    }
+
+    const hash = crypto.createHash('sha256').update(await fs.readFile(skillMd)).digest('hex');
+    if (lock.skills?.[name]?.hash !== hash) errors.push(`${name}: lock hash is stale`);
+  }
+
+  for (const cycle of findCycles(requirementGraph)) {
+    errors.push(`capability/dependency cycle detected: ${cycle.join(' -> ')}`);
+  }
+
+  const skillManifests = [];
+  for (const skillDir of skillDirs) {
+    const skillMd = path.join(skillDir, 'SKILL.md');
+    const text = await fs.readFile(skillMd, 'utf8').catch(() => '');
+    const fm = parseFrontmatter(text);
+    skillManifests.push({ name: parseName(text, skillMd), description: (fm.description || '').toLowerCase(), capabilities: fm.capabilities ?? [] });
+  }
+
+  for (let i = 0; i < skillManifests.length; i++) {
+    for (let j = i + 1; j < skillManifests.length; j++) {
+      const a = skillManifests[i];
+      const b = skillManifests[j];
+      const sharedCapabilities = a.capabilities.filter((cap) => b.capabilities.includes(cap));
+      if (sharedCapabilities.length === 0) continue;
+      const descOverlap = jaccardSimilarity(a.description, b.description);
+      if (descOverlap > 0.5) {
+        warnings.push(`${a.name}/${b.name}: duplicate capability overlap ${descOverlap.toFixed(2)} over shared capabilities [${sharedCapabilities.join(', ')}]`);
+      }
+    }
+  }
+
+  if (strictMode) errors.push(...artifactOutputDebt);
+
+  const runPath = await recordExecution({
+    repoRoot,
+    skill: 'skill-audit',
+    tool: 'skills:validate',
+    contextPack: 'platform-default',
+    status: errors.length ? 'fail' : 'pass',
+    errors,
+    warnings,
+    extra: { skills: skillDirs.length, warnings: warnings.length },
+  });
+
+  console.log(JSON.stringify({
+    skills: skillDirs.length,
+    warnings,
+    errors,
+    artifactOutputDebt: {
+      count: artifactOutputDebt.length,
+      examples: artifactOutputDebt.slice(0, 5)
+    },
+    status: errors.length ? 'fail' : 'pass',
+    executionRecord: path.relative(repoRoot, runPath)
+  }, null, 2));
+
+  if (errors.length) process.exit(1);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

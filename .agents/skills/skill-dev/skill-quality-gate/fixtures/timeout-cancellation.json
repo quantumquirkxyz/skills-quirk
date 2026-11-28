@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","kind":"lifecycle","timeoutMs":10,"cancelAtMs":5,"gate":{"id":"behavioral","required":true},"expected":"BLOCKED","reason":"timeout-or-cancellation"}

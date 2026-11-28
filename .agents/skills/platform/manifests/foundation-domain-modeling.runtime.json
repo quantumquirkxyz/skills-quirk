@@ -1,0 +1,52 @@
+{
+  "skill": "foundation/domain-modeling",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "d77bee0313b280c7987ff567d8ae4687a79f607438f0702957dffede21bf867f",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Edit",
+        "Write"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-files",
+      "write-docs"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "write-docs"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

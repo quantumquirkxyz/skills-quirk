@@ -1,0 +1,95 @@
+---
+name: "compiler-testing"
+category: "compilers"
+maturity: "stable"
+version: "1"
+description: "Test compilers and interpreters — parser tests, semantic tests, IR validation, golden tests, and regression checks — with explicit oracle design."
+license: "MIT"
+capabilities:
+  - apply compiler testing methods within explicit compilers boundaries
+  - analyze test compilers and interpreters — parser tests, semantic tests, ir validation, golden tests, and regression checks — with explicit oracle design with assumptions, constraints, and failure modes
+  - produce and validate a compilers artifact with evidence, decisions, and next steps
+outputs: "test matrix with fixture types, expected oracles, golden strategy, and regression checks."
+sideEffects: []
+dependencies: []
+stopCondition: "Test oracles, fixture classes, and regression checks are explicit."
+risk: "low"
+trustTier: "1"
+maxIterations: "6"
+promptVersion: "2.0"
+artifactType: "test-strategy"
+modelTier: "reasoning"
+evaluators: ["behavioral", "regression"]
+fixturesPath: tests/skill-output-migration-auxiliary-cms-compilers-cs-db.test.mjs
+diataxis: "how-to"
+tags: ["compilers"]
+compatibility: []
+approvalRequired: "false"
+approvalFor: []
+---
+
+## Contract
+
+- Input: language surface, compiler stages, existing fixtures, known bugs, and target runtime behavior.
+- Output: test matrix with fixture types, expected oracles, golden strategy, and regression checks.
+- Scope: do not rely on golden files alone when structural invariants or diagnostics need stronger oracles.
+- Rule: do not rely on golden files alone when structural invariants or diagnostics need stronger oracles.
+- Rule: documented standards override defaults; explicit project rules take precedence.
+- Rule: if blocked by missing context or dependencies, surface the blocker before proceeding.
+
+## Provenance
+
+| Question | Answer |
+|---|---|
+| What is the source of truth? | The user's request, originating spec/issue, and the skill's declared outputs |
+| What is in scope? | Work covered by the skill's acceptance criteria and completion rules |
+| What is explicitly out of scope? | Files, behaviors, and decisions outside the skill's declared boundary |
+| Who or what consumes this artifact afterward? | The next skill in the workflow or the user |
+| What evidence proves it is done? | Completion criteria met, artifact saved, validation passed |
+| What risk remains? | Subjective judgment calls, missing context, or external dependency failures
+
+
+## Artifact
+
+Emit `CompilerTestingArtifact` as both:
+- JSON: `.agents/skills/platform/artifacts/compiler-testing/{identifier}.json`
+- Markdown view: same filename with `.md` extension
+
+
+# compiler-testing
+
+Use this skill when planning tests for a compiler, interpreter, transpiler, parser, type checker, optimizer, or code generator.
+
+
+## Rules
+
+- Rule: test each pipeline stage at the narrowest reliable boundary.
+- Rule: include positive, negative, malformed, boundary, and regression fixtures.
+- Rule: define the oracle: parse tree, typed AST, diagnostics, IR, output behavior, or runtime result.
+- Rule: keep diagnostics tests stable by checking meaning, location, and code rather than incidental wording when possible.
+- Rule: verify optimizer tests preserve semantics, not only textual IR shape.
+
+## Steps
+
+1. Map compiler stages and externally visible behavior.
+2. Identify fixture classes for syntax, semantics, diagnostics, IR, optimization, and runtime.
+3. Choose oracles for each stage and decide where golden tests are appropriate.
+4. Add negative and recovery tests for invalid programs.
+5. Tie known bugs to regression fixtures.
+6. Define minimization, naming, and update rules for fixtures.
+
+## Completion
+
+- the skill's completion criteria are explicitly checked
+- the artifact is saved and validated
+- any blockers or skipped validations are documented
+- the next consumer is identified or the work is handed off
+---
+## Fixture And Oracle Contract
+
+- Maintain grammar/conformance, negative/error-recovery, semantic, IR-invariant, optimization, runtime, determinism, sandbox, and known-regression fixture classes.
+- Use differential oracles against a reference implementation where available; property-based generators assert parse/print round trips, semantic preservation, idempotent normalization, and bounded termination.
+- Fuzz lexing, parsing, typing, lowering, and resource limits with minimized reproducers; assert no crashes, hangs, escapes, or nondeterministic diagnostics.
+- Prefer verified oracles: structured AST/IR predicates, diagnostic code/span sets, runtime equivalence, output digests, resource-policy events, and conformance results. Golden text alone is insufficient.
+- Boundary: consume invariants from `compiler-design`; validate the implementation owned by `compilers`; do not redesign pipeline stages inside tests.
+@include .agents/skills/platform/contract-base.xml

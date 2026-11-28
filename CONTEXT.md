@@ -1,0 +1,56 @@
+# Context
+
+This repository contains the canonical quirk Skills bundle in `.agents/skills/`.
+
+Use the repository-local docs in `docs/reference/agents/` and `docs/how-to/` to understand issue tracking, work-item format, domain-doc layout, triage labels, and adoption workflows before using the workflow skills.
+
+When installing or syncing this bundle in another repository, prefer the AI-agnostic prompts in `README.md`:
+
+- Use the greenfield prompt when the target repo has no established local context and needs a clean skills bootstrap.
+- Use the existing-repo prompt when the target repo already has ADRs, local documentation, and a repository-specific context that must stay untouched.
+
+## Vocabulary
+
+| Term | Meaning |
+|---|---|
+| **quirk Skills** | The author-owned skills bundle in this repository |
+| **quirk Method** | The workflow philosophy that governs how the skills route work, preserve context, produce artifacts, review changes, repair findings, and ship |
+| **Canonical skill** | A skill folder under `.agents/skills/` with a `SKILL.md` entrypoint and matching lockfile entry |
+| **Compatibility view** | The `.claude/skills/` symlink tree that exposes canonical skills to consumers expecting that layout |
+| **Provenance** | The recorded origin and redesign status of a skill, name, or workflow |
+| **Agent Canvas** | Workspace/session control skill (`agent-canvas`) for multi-agent persistence |
+| **Context Engine** | Dynamic context retrieval (`context-engine`) via RAG from issues/docs/traces |
+| **MCP Server** | External data connection (`mcp-server`) for issues, PRs, traces |
+| **Subagent Swarm** | Coordinated sub-agent roles (`subagent-swarm`) with handoff contracts |
+| **Work Item Router** | Routing script (`work-item-router.mjs`) that maps descriptions to skills |
+| **Graphic Design** | The discipline of visual communication through composition, color, typography, and imagery for print, digital, and environmental media |
+| **Context Compaction** | The runbook (`context-compaction`) for crossing a context-window boundary: summarize, clear stale tool results, re-initiate fresh |
+| **Agent Memory** | External memory (`agent-memory`) via NOW.md (working thread) and MEMORY.md (durable facts) that survives compaction |
+| **Skill Chain** | Ordered producer-consumer composition of skills (`skill-composition`) with per-edge artifact contracts and a declared budget |
+| **Constitution** | The repo-local rule set (`spec-driven-development`) that specs, plans, and tasks must trace to |
+
+```mermaid
+flowchart LR
+    A[Canonical skill] --> B[SKILL.md]
+    A --> C[skills-lock.json]
+    D[Compatibility view] --> E[.claude/skills/ symlinks]
+    E --> A
+```
+
+## Usage rules
+
+- Use **quirk Skills** when referring to the whole workflow system.
+- Use **quirk Method** when discussing why the skills behave the way they do.
+- Use **Canonical skill** when distinguishing real skills from compatibility symlinks.
+- Use **Compatibility view** when discussing installation or parity.
+- Use **Provenance** when discussing authorship, influence, retired aliases, or renamed skills.
+- Use **Graphic Design** when discussing visual communication artifacts, brand identity, design systems, or tool integrations for graphic production.
+- Use **Context Compaction** when a long session needs a bounded summary and a fresh window.
+- Use **Agent Memory** when state must survive compaction, reset, or handoff across sessions.
+- Use **Skill Chain** when skills execute as an ordered workflow with per-edge artifact contracts.
+- Use **Constitution** when discussing the repo-local rule set that specs, plans, and tasks trace to.
+- Use the README prompts as the operational entry point for AI-agnostic installation or sync tasks.
+
+## Maintenance Rule
+
+This file is required. It must name the local domain vocabulary, project boundaries, and naming conventions. Skills should reference this context and avoid vocabulary from unrelated repositories.

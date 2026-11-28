@@ -1,0 +1,35 @@
+{
+  "name": "engineering-governance",
+  "description": "Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/engineering-governance/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "engineering/engineering-governance",
+      "name": "engineering-governance",
+      "description": "Establish engineering decision rights, approval gates, exceptions, evidence, policy controls, auditability, escalation, and accountable ownership without replacing domain risk owners.",
+      "tags": [
+        "engineering",
+        "governance",
+        "approvals",
+        "audit",
+        "risk"
+      ],
+      "parameters": {
+        "trustTier": "4",
+        "modelTier": "reasoning",
+        "artifactType": "EngineeringGovernanceArtifact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "empirical-software-engineering",
+  "description": "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/research/empirical-software-engineering/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "research/empirical-software-engineering",
+      "name": "empirical-software-engineering",
+      "description": "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis.",
+      "tags": [
+        "research",
+        "software-engineering",
+        "empirical-methods"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "research"
+      }
+    }
+  ]
+}

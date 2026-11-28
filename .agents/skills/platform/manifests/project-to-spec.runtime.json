@@ -1,0 +1,49 @@
+{
+  "skill": "project/to-spec",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "db12e42618542624ed0f3171f23e452879792c909c3d33ba30c3b791a0c4eb44",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "create-issue"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "create-issue"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

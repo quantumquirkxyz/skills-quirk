@@ -1,0 +1,31 @@
+{
+  "name": "graph-skill-routing",
+  "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/graph/graph-skill-routing/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": false
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "graph/graph-skill-routing",
+      "name": "graph-skill-routing",
+      "description": "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills.",
+      "tags": [
+        "graph"
+      ],
+      "parameters": {
+        "trustTier": "2",
+        "modelTier": "router",
+        "artifactType": "graph-routing"
+      }
+    }
+  ]
+}

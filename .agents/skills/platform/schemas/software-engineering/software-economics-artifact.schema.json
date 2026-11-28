@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.dev/schemas/software-economics-artifact.schema.json",
+  "title": "SoftwareEconomicsArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "producer", "status", "summary", "payload"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": { "const": "SoftwareEconomicsArtifact" },
+    "producer": { "const": "software-economics" },
+    "status": { "enum": ["draft", "ready", "blocked", "accepted", "rejected"] },
+    "summary": { "type": "string", "minLength": 1 },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "consumers": { "type": "array", "items": { "type": "string" } },
+    "createdAt": { "type": "string", "minLength": 1 },
+    "payload": { "$ref": "#/$defs/payload" }
+  },
+  "$defs": {
+    "value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "basis", "classification"],
+      "properties": {
+        "value": { "type": "number" },
+        "low": { "type": "number" },
+        "high": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 },
+        "basis": { "type": "string", "minLength": 1 },
+        "classification": { "enum": ["observed", "derived", "assumed", "inferred"] },
+        "confidence": { "enum": ["high", "medium", "low", "unknown"] },
+        "source": { "type": "string" }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "horizon", "alternatives", "tco", "costOfDelay", "options", "qualityDebt", "sensitivity", "recommendation", "limitations"],
+      "properties": {
+        "decision": { "type": "string", "minLength": 1 },
+        "horizon": { "type": "object", "additionalProperties": false, "required": ["periods", "currency", "timeBasis"], "properties": { "periods": { "type": "integer", "minimum": 1 }, "currency": { "type": "string", "minLength": 1 }, "timeBasis": { "type": "string", "minLength": 1 }, "discountRate": { "$ref": "#/$defs/value" } } },
+        "alternatives": { "type": "array", "minItems": 2, "items": { "type": "object", "additionalProperties": false, "required": ["id", "name", "kind", "assumptions", "risks"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "kind": { "enum": ["build", "buy", "open-source", "hybrid", "defer", "baseline", "other"] }, "assumptions": { "type": "array", "items": { "type": "string" } }, "risks": { "type": "array", "items": { "type": "string" } } } } },
+        "tco": { "type": "object", "additionalProperties": false, "required": ["byAlternative", "formula", "reconciliation"], "properties": { "byAlternative": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["alternativeId", "oneTime", "recurring", "quality", "exit", "total"], "properties": { "alternativeId": { "type": "string" }, "oneTime": { "$ref": "#/$defs/value" }, "recurring": { "$ref": "#/$defs/value" }, "quality": { "$ref": "#/$defs/value" }, "exit": { "$ref": "#/$defs/value" }, "total": { "$ref": "#/$defs/value" } } } }, "formula": { "type": "string" }, "reconciliation": { "type": "string" } } },
+        "costOfDelay": { "type": "object", "additionalProperties": false, "required": ["byAlternative", "formula", "doubleCountCheck"], "properties": { "byAlternative": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["alternativeId", "periodic", "total"], "properties": { "alternativeId": { "type": "string" }, "periodic": { "type": "array", "items": { "$ref": "#/$defs/value" } }, "total": { "$ref": "#/$defs/value" } } } }, "formula": { "type": "string" }, "doubleCountCheck": { "type": "string" } } },
+        "options": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["name", "trigger", "exerciseCost", "informationGained", "expiry"], "properties": { "name": { "type": "string" }, "trigger": { "type": "string" }, "exerciseCost": { "$ref": "#/$defs/value" }, "informationGained": { "type": "string" }, "expiry": { "type": "string" } } } },
+        "qualityDebt": { "type": "object", "additionalProperties": false, "required": ["defects", "incidents", "debt", "method"], "properties": { "defects": { "type": "string" }, "incidents": { "type": "string" }, "debt": { "type": "string" }, "method": { "type": "string" } } },
+        "sensitivity": { "type": "object", "additionalProperties": false, "required": ["variables", "scenarios", "breakEven", "reversalConditions"], "properties": { "variables": { "type": "array", "items": { "type": "string" } }, "scenarios": { "type": "array", "items": { "type": "string" } }, "breakEven": { "type": "array", "items": { "type": "string" } }, "reversalConditions": { "type": "array", "items": { "type": "string" } } } },
+        "recommendation": { "type": "object", "additionalProperties": false, "required": ["alternativeId", "rationale", "conditions", "reviewDate"], "properties": { "alternativeId": { "type": "string" }, "rationale": { "type": "string" }, "conditions": { "type": "array", "items": { "type": "string" } }, "reviewDate": { "type": "string" } } },
+        "limitations": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

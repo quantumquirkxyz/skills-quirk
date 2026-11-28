@@ -1,0 +1,211 @@
+{
+  "id": "evaluate-skill-paired-v1",
+  "skill": "skill-dev/evaluate-skill",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A routing fixture CSV for work-item-router was just edited. The operator asks for a behavioral evaluation of the skill against its fixed scenarios, covering routing, completion, and artifact validity, and expects a prioritised list of what is broken.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "we just edited evals/routing/routing-work-item-router.csv. evaluate the skill against its fixed scenarios for routing, completion and artifact validity, then tell me exactly what is broken and what i should record as a regression case.",
+  "context": [
+    "repo skills-quirk on branch main",
+    "the fixture set lives in .agents/skills/skill-dev/evaluate-skill/scenarios/ and behavioral-fixtures/",
+    "the deterministic runners are .agents/skills/platform/evaluate-scenarios.mjs and .agents/skills/platform/evaluate-behavioral-fixtures.mjs"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/evaluate-skill/SKILL.md#Steps",
+    ".agents/skills/skill-dev/evaluate-skill/SKILL.md#Rules",
+    ".agents/skills/skill-dev/evaluate-skill/SKILL.md#Artifact (EvaluateSkillArtifact at .agents/skills/platform/artifacts/evaluate-skill/{identifier}.json)"
+  ],
+  "costBudget": {
+    "costUsd": 0.06,
+    "durationMs": 300000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The run loads the skill manifest and the representative fixtures from scenarios/ before reporting anything, and it runs the deterministic evaluators rather than eyeballing the skill.",
+        "levels": {
+          "4": "the report names both evaluate-scenarios.mjs and evaluate-behavioral-fixtures.mjs (or the fixtures directory) and quotes their output as evidence",
+          "2": "the report mentions the fixtures but never runs or cites the deterministic runner output",
+          "0": "no fixture or runner is referenced; the verdict is asserted from reading the SKILL.md text alone"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Failures are separated into the three declared classes: routing failures, artifact-shape failures, and contract mismatches.",
+        "levels": {
+          "4": "all three classes appear as distinct labelled findings, each with its own evidence",
+          "2": "two of the three classes are separated, or all findings are lumped into one undifferentiated list",
+          "0": "a single overall verdict with no classification at all"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The declared-contract versus observed-behaviour check runs: a routing-only skill that writes, or a write-capable skill that does not declare its side effects, is reported as a promotion blocker.",
+        "levels": {
+          "4": "the report explicitly states the side-effect verdict for the skill under test, with the observed tool calls or artifact writes as evidence",
+          "2": "the report mentions the check but does not state a verdict or cite evidence",
+          "0": "the contract-versus-effect check is absent"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "The artifact is saved where the skill declares it, in both the JSON and Markdown views, with the completion criteria explicitly checked and blockers or skipped validations documented.",
+        "levels": {
+          "4": "the artifact path .agents/skills/platform/artifacts/evaluate-skill/ is present with both views, and the report lists completion criteria and any skipped validation",
+          "2": "only one view is produced, or the completion criteria are checked but skipped validations are not documented",
+          "0": "no artifact path is named and no completion criteria are checked"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The evaluation actually answers the four declared checks: routing, output shape, stop condition, and safety behaviour.",
+        "levels": {
+          "4": "all four checks have an explicit verdict with evidence",
+          "2": "two or three of the four checks have a verdict; the rest are missing or implied",
+          "0": "fewer than two checks are answered"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Every reported failure is converted into a concrete regression action: a new or updated scenario/behavioural fixture that would catch it again.",
+        "levels": {
+          "4": "each failure names the fixture file to add or edit and the assertion it would carry",
+          "2": "regression cases are suggested generically without fixture files or assertions",
+          "0": "no regression action is proposed"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Evaluability defects are surfaced honestly: a missing stop condition or a vague output is reported as a defect, not smoothed over.",
+        "levels": {
+          "4": "each vague or missing completion criterion is named and classified as an evaluability defect",
+          "2": "defects are mentioned once as a caveat without identification",
+          "0": "defects are not mentioned at all"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The output is prioritised by impact so the operator knows what to fix first.",
+        "levels": {
+          "4": "findings are ranked and each rank states the consequence of leaving it unfixed",
+          "2": "findings are listed in discovery order without ranking",
+          "0": "no prioritisation and no consequence statement"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "routing",
+          "artifact",
+          "contract",
+          ".agents/skills/platform/artifacts/evaluate-skill/"
+        ],
+        "note": "the report must separate the declared evaluation surfaces and name the artifact path the skill declares"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "evaluate-scenarios.mjs",
+          "evaluate-behavioral-fixtures.mjs"
+        ],
+        "note": "deterministic runner evidence must be cited"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "side effect",
+          "side-effect",
+          "sideEffect"
+        ],
+        "note": "the contract-versus-observed-effect check must appear"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_any",
+        "values": [
+          "stop condition",
+          "stopCondition"
+        ],
+        "note": "stop-condition validity is one of the four declared checks"
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 120
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-1",
+      "check": {
+        "criterion": "Did the run load the fixtures and cite deterministic runner output instead of judging the skill from its documentation text alone?",
+        "levels": {
+          "pass": "runner output or fixture paths are quoted as evidence",
+          "fail": "the verdict rests on reading SKILL.md text only"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Are routing failures, artifact-shape failures, and contract mismatches reported as three separate classes?",
+        "levels": {
+          "pass": "three labelled classes with their own evidence",
+          "fail": "one undifferentiated list or a single verdict"
+        },
+        "strict": false
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is every failure converted into a concrete regression case naming the fixture file and the assertion to add?",
+        "levels": {
+          "pass": "fixture file plus assertion named per failure",
+          "fail": "generic advice or no regression action"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

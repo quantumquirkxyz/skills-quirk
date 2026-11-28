@@ -1,0 +1,15 @@
+---
+description: "Incident forensics (evidence collection, timeline reconstruction, root cause, reporting)"
+globs: []
+alwaysApply: false
+---
+# incident-forensics
+
+Apply the incident-forensics skill when the request matches its scope.
+
+Capabilities:
+- apply incident forensics methods within explicit sec boundaries
+- analyze incident forensics (evidence collection, timeline reconstruction, root cause, reporting) with assumptions, constraints, and failure modes
+- produce and validate a sec artifact with evidence, decisions, and next steps
+
+Stop when: Evidence collected and hashed; timeline complete; root cause identified; report reviewed.

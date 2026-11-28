@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "performance-testing",
+      "schema": "schemas/software-engineering/verification-artifact.schema.json",
+      "artifactType": "verification-artifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "workload": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "workload": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "workload": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-performance-testing",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "performance-testing",
+  "schema": "schemas/software-engineering/verification-artifact.schema.json",
+  "artifactType": "verification-artifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "workload": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "workload": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "workload": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-performance-testing",
+  "type": "behavioral"
+}

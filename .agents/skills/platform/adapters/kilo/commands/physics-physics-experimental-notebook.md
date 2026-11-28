@@ -1,0 +1,28 @@
+---
+description: "Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure."
+---
+# physics-experimental-notebook
+
+When to use: Maintain experimental physics lab notebooks — measurements, calibration, error analysis, FAIR data principles, reproducibility — with digital and physical structure.
+
+## Workflow
+
+1. Experiment description
+2. Setup and calibration
+3. Measurements
+4. Error analysis
+5. FAIR checklist
+6. Audit trail immutability
+7. Deliver
+
+## Deliverables
+
+- PhysicsExperimentalNotebookArtifact artifact
+
+## Guardrails
+
+- risk: medium; trust tier: 3; approval required: yes
+- side effects: write-files
+- isolation: worktree; model tier: reasoning
+
+Stop when: Notebook entry saved with all sections; calibration and error analysis complete; FAIR checklist filled.

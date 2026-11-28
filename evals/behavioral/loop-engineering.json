@@ -1,0 +1,213 @@
+{
+  "id": "loop-engineering-paired-v1",
+  "skill": "loop/loop-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A repair loop needs a termination contract declared up front with budget enforcement, progress detection per iteration, and a typed exit verdict rather than a timeout.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "declare the loop termination contract with maxIterations, maxCost, maxWallTimeMs, and repeat thresholds; run the loop through runLoop; detect progress, degeneration, and ping-pong; emit a LoopEngineeringVerdict with a typed exit status.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the loop spec includes loopId, goal, maxIterations, maxCost, maxWallTimeMs, repeatThreshold, repeatWindow",
+    "the desired state predicate returns progress and evidence per iteration",
+    "budgets are declared up front and never relaxed mid-loop",
+    "a step repeating with identical args and result is degeneration; A-B-A-B oscillation is ping-pong",
+    "the loop verdict is the only exit and loop-control failures never throw"
+  ],
+  "grounding": [
+    ".agents/skills/loop/loop-engineering/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/loop/loop-engineering/SKILL.md#Rules - budgets up front, checked before each step, verdict is the only exit, ledger is append-only",
+    ".agents/skills/loop/loop-engineering/SKILL.md#Workflow - declare contract, wire ledger, run loop, verify outside model, route on verdict, record artifact",
+    ".agents/skills/loop/loop-engineering/SKILL.md#Guardrails - never relax budget mid-loop, never restart unchanged after degeneration/ping-pong, no ledger compaction"
+  ],
+  "cites": [
+    "LE-1",
+    "LE-2",
+    "LE-3",
+    "LE-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.09,
+    "durationMs": 450000,
+    "inputTokens": 130000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The termination contract is declared up front with maxIterations, maxCost, maxWallTimeMs, repeatThreshold, and repeatWindow before the first iteration.",
+        "levels": {
+          "4": "all budget fields are declared before iteration one and never relaxed mid-loop",
+          "2": "budgets are declared but some fields are missing or relaxed mid-loop",
+          "0": "no termination contract is declared before iteration"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Progress, degeneration, and ping-pong are detected per iteration using the predicate and progress measure together.",
+        "levels": {
+          "4": "all three conditions are detected per iteration with predicate and measure",
+          "2": "some conditions are detected or activity is mistaken for progress",
+          "0": "no progress, degeneration, or ping-pong detection is performed"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "The loop ledger is append-only with one hashed JSON line per step plus a final summary line; no compaction.",
+        "levels": {
+          "4": "ledger is append-only with hashed lines per step and a summary",
+          "2": "ledger is present but not fully append-only or missing hashes",
+          "0": "no ledger is maintained or it is compacted"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Every escalation emits a nudge with type, severity, message, and instruction before the caller routes.",
+        "levels": {
+          "4": "every escalation carries a complete nudge and is recorded in escalation",
+          "2": "nudges are present but missing fields or not recorded",
+          "0": "no nudges or escalation records are produced"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The loop ends with a typed verdict (completed, limits-exceeded, repeated-action, ping-pong, no-progress, blocker-escalated); no exception or timeout.",
+        "levels": {
+          "4": "the loop exits with a typed LoopEngineeringVerdict and no exception",
+          "2": "the loop exits but the verdict is not fully typed or an exception occurs",
+          "0": "the loop times out or throws without a typed verdict"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Progress is verified outside the model with the predicate and measure, or a blocker is escalated.",
+        "levels": {
+          "4": "progress is confirmed by predicate plus independent measure, or a blocker is escalated",
+          "2": "progress relies partly on model self-report or escalation is incomplete",
+          "0": "progress is based solely on model self-report"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "No budget is relaxed mid-loop; after degeneration/ping-pong/no-progress/blocker-escalated, the same loop is not restarted unchanged.",
+        "levels": {
+          "4": "budget is never relaxed and the loop is not restarted unchanged after a non-completed verdict",
+          "2": "budget is mostly respected or the loop is restarted with minor changes",
+          "0": "budget is relaxed mid-loop or the loop is restarted unchanged"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The LoopEngineeringVerdict artifact is saved as JSON and Markdown with budgetSpent, progressEvidence, escalation, and ledger beside it.",
+        "levels": {
+          "4": "artifact saved in both formats with all required fields and ledger present",
+          "2": "artifact is partially saved or ledger is missing",
+          "0": "no artifact is emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "exitStatus",
+          "budgetSpent",
+          "progressEvidence",
+          "escalation"
+        ],
+        "note": "the LoopEngineeringVerdict must contain all required top-level fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "completed",
+          "limits-exceeded",
+          "repeated-action",
+          "ping-pong",
+          "no-progress",
+          "blocker-escalated"
+        ],
+        "note": "the exit status vocabulary must cover all six verdict types"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "iterations",
+          "cost",
+          "wallTimeMs"
+        ],
+        "note": "budgetSpent must contain iterations, cost, and wallTimeMs"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the verdict must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does the loop end with a typed verdict rather than an exception or timeout?",
+        "levels": {
+          "pass": "typed LoopEngineeringVerdict is produced with no exception",
+          "fail": "the loop times out or throws without a typed verdict"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-2",
+      "check": {
+        "criterion": "Is progress verified outside the model with the predicate and measure, or is a blocker escalated?",
+        "levels": {
+          "pass": "progress is confirmed externally or a blocker is escalated",
+          "fail": "progress relies on model self-report with no escalation"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "gc-3",
+      "check": {
+        "criterion": "Is budget never relaxed mid-loop and is the loop not restarted unchanged after a non-completed verdict?",
+        "levels": {
+          "pass": "budget is fixed and the loop is not restarted unchanged after non-completion",
+          "fail": "budget is relaxed or the loop is restarted unchanged"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

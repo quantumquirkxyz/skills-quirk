@@ -1,0 +1,16 @@
+{
+  "name": "payments",
+  "instructions": "Design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, PCI DSS, and rollback posture — with Stripe, Adyen, or equivalent.\n\nCapabilities:\n- apply payments methods within explicit integrations boundaries\n- analyze design payment flows as a high-trust seam with explicit failure, reconciliation, webhooks, idempotency, pci dss, and rollback posture — with stripe, adyen, or equivalent with assumptions, constraints, and failure modes\n- produce and validate a integrations artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/integrations/payments/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Stop only when each money movement has an authoritative state machine, immutable ledger postings, replay/idempotency strategy, settlement and reconciliation owner, fraud/approval outcome, compensation path, and evidence boundary; stop as blocked on amount/currency mismatch, unverifiable webhook, unresolved ledger discrepancy, unsafe failover, or missing approval.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "quant-credit-risk",
+  "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/quant/quant-credit-risk/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "quant/quant-credit-risk",
+      "name": "quant-credit-risk",
+      "description": "Model credit risk — PD, LGD, EAD, expected loss, loss distribution, credit VaR — with default correlation and portfolio-level risk aggregation.",
+      "tags": [
+        "quant"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "quant"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+description: "Data versioning (DVC, lakeFS, delta tables, snapshotting, reproducibility)."
+globs: []
+alwaysApply: false
+---
+# data-versioning
+
+Apply the data-versioning skill when the request matches its scope.
+
+Capabilities:
+- apply data versioning methods within explicit data boundaries
+- analyze data versioning (dvc, lakefs, delta tables, snapshotting, reproducibility) with assumptions, constraints, and failure modes
+- produce and validate a data artifact with evidence, decisions, and next steps
+
+Stop when: Versioning strategy saved; branching workflow defined; reproducibility plan documented.

@@ -1,0 +1,1 @@
+{"scenario":"A requirement says the controller shall respond quickly, but gives no threshold, mode, oracle, or acceptance criterion.","expectedStatus":"blocked","mustContain":["non-verifiable","threshold","oracle","blocked"]}

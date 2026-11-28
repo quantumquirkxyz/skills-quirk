@@ -1,0 +1,16 @@
+{
+  "name": "software-maintenance-evolution",
+  "instructions": "Analyze and govern corrective, adaptive, perfective, and preventive software maintenance, technical debt, compatibility, deprecation, EOL, migration, modernization, retirement, ownership, and feedback into requirements and architecture.\n\nCapabilities:\n- produce schema-validated MaintenanceArtifact records from repository and operational evidence\n- classify maintenance drivers, risks, compatibility impact, ownership, and closure evidence\n- analyze consumers and dependencies before migration, deprecation, modernization, or retirement proposals\n- feed verified maintenance findings back to requirements, architecture, contracts, and release planning\n\nCanonical skill: .agents/skills/project/software-maintenance-evolution/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Return one schema-valid MaintenanceArtifact only when each finding has evidence, maintenance class, impact, owner or an explicit no-owner blocker, proposed action, closure state, and downstream feedback; otherwise return blocked with exact gaps and no invented ownership or approval.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "none"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

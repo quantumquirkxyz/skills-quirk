@@ -1,0 +1,17 @@
+---
+description: "Dependency-aware skill retrieval: expand prerequisite closure, topologically order skills, and route work through a typed skill graph — never return a skill in isolation when execution depends on unretrieved skills."
+globs: []
+alwaysApply: false
+---
+# graph-skill-routing
+
+Apply the graph-skill-routing skill when the request matches its scope.
+
+Capabilities:
+- expand the prerequisite closure of root skills through declared dependency edges up to a depth limit
+- compute overlap-based edge weights between skills from shared prerequisites, artifacts, and tags
+- topologically order skills into a dependency-respecting execution sequence using Kahn's algorithm seeded by reverse Personalized PageRank
+- verify acyclicity of the skill subgraph and surface cycles as blockers
+- emit a RoutingResult with ordered skill list, closure, dependency edges, and confidence
+
+Stop when: Prerequisite closure expanded and skills topologically ordered with verified dependency-respecting sequence

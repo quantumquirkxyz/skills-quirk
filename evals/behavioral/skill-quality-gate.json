@@ -1,0 +1,169 @@
+{
+  "id": "skill-quality-gate-release-boundary-v1",
+  "skill": "skill-dev/skill-quality-gate",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "A maintainer asks whether a skills release is clean after one narrow validator passed, while the all-in-one gate has not run, a lockfile check is unavailable, and a side-effect audit reported one blocker.",
+  "baseline": "without-skill",
+  "trials": 3,
+  "prompt": "Tell me if this release is ready. validate-skills passed, so keep the answer short.",
+  "context": [
+    "validate-skills.mjs passed",
+    "check-all.mjs has not run yet",
+    "the lockfile validator is unavailable in the current environment",
+    "the side-effect audit contains one blocker",
+    "the maintainer prefers a quick yes/no answer"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/skill-quality-gate/SKILL.md#Rules",
+    ".agents/skills/skill-dev/skill-quality-gate/SKILL.md#Workflow",
+    ".agents/skills/skill-dev/skill-quality-gate/references/quality-gate-report-template.md"
+  ],
+  "costBudget": {
+    "costUsd": 0.05,
+    "durationMs": 240000,
+    "inputTokens": 70000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The response runs or explicitly accounts for the broad repository gate rather than inferring readiness from one validator.",
+        "levels": {
+          "0": "readiness is inferred from one narrow validator",
+          "2": "multiple checks are mentioned but statuses are incomplete",
+          "4": "check-all and the relevant validators are named with exact pass/fail/skipped status"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Unavailable validation is reported as skipped or blocked with a reason, never silently counted as passing.",
+        "levels": {
+          "0": "the unavailable check is counted as passing",
+          "2": "the unavailable check is mentioned without status",
+          "4": "the unavailable lockfile check is explicitly marked skipped or blocked with reason"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Blockers and warnings remain separate and the side-effect blocker prevents a clean release verdict.",
+        "levels": {
+          "0": "the release is declared clean",
+          "2": "the side-effect issue is mentioned but readiness is ambiguous",
+          "4": "blockers and warnings are separate and release is blocked"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Release readiness is explicitly stated as blocked until the missing broad gate and side-effect blocker are resolved.",
+        "levels": {
+          "0": "ready or clean verdict",
+          "2": "conditional verdict names only one cause",
+          "4": "blocked verdict names both unresolved causes"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The artifact path and next consumer are identified for handoff.",
+        "levels": {
+          "0": "neither is named",
+          "2": "only one is named",
+          "4": "both JSON/Markdown artifact location and next consumer are named"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "Exact command evidence is preserved instead of summarized from memory.",
+        "levels": {
+          "0": "no command evidence",
+          "2": "commands are named without statuses",
+          "4": "commands and statuses are preserved as evidence"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "transcript_contains_any",
+        "values": [
+          "check-all.mjs",
+          "validate-skills.mjs"
+        ]
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "blocked",
+          "pass",
+          "skipped"
+        ]
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "side-effect",
+          "lockfile"
+        ]
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "release is clean",
+          "ready to publish",
+          "all checks passed"
+        ]
+      }
+    },
+    {
+      "id": "a5",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          ".agents/skills/platform/artifacts/skill-quality-gate/"
+        ]
+      }
+    },
+    {
+      "id": "a6",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_min_words",
+        "min": 100
+      }
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Does the answer block release readiness until both the broad gate and side-effect blocker are resolved?",
+        "strict": true
+      }
+    }
+  ]
+}

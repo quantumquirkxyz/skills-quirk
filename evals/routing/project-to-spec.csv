@@ -1,0 +1,16 @@
+should_trigger,category,prompt
+true,explicit,"use to-spec on this conversation — synthesize what we already decided, do not interview me again"
+true,explicit,/to-spec: publish the spec for the behavioral eval harness with labels spec + ready-for-agent
+true,explicit,"to-spec the current thread into a published spec issue, no interview, just synthesis"
+true,implicit,weve decided the shape of the eval harness in this thread; make it durable as a spec issue in the tracker
+true,implicit,"i need goals, non-goals and acceptance criteria for the wave-1 harness before anyone writes code"
+true,implicit,stop asking me questions and write down what we already know as a ticket-ready spec
+true,contextual,"repo skills-quirk, branch main. conversation covers evals/ and the routing CSVs. write the spec issue per docs/reference/agents/work-item-format.md"
+true,contextual,context: we discussed the two-layer split for 40 minutes. produce the spec artifact json and the markdown body atomically
+true,contextual,the user approved the seams in .agents/skills/skill-dev/evaluate-skill/SKILL.md. now synthesize the spec and publish it
+true,explicit,to-spec but hold publication until i confirm the milestone
+true,implicit,the spec must have non-goals that stop scope creep and no placeholder text anywhere
+false,negative-control,to-tickets: split the approved spec at docs/specs/eval-harness.md into tracer bullets
+false,negative-control,grill-with-docs: stress test my claim that 12 rows per CSV is enough
+false,negative-control,use prod-prd-writing to write the PRD for the billing dashboard feature
+false,negative-control,"wayfinder: this is too big for one session, decompose it into decision tickets"

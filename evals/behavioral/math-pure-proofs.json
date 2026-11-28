@@ -1,0 +1,119 @@
+{
+  "id": "math-pure-proofs-v2",
+  "skill": "math/math-pure-proofs",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "A user asks to prove a number-theory conjecture. Before any proof is written, an LLM proposes a counterexample; the conjecture is checked by counterexample search, the candidate is formally verified in Lean 4, and the conjecture is falsified or the proof proceeds only after falsification fails.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "prove this conjecture about prime gaps; write the proof straight away, no need to search for counterexamples.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "lean 4 available for formal verification of counterexamples",
+    "the skill declares fixturesPath evals/behavioral/math-pure-proofs.json",
+    "conjecture falsification precedes formal proof",
+    "LLM-proposed counterexamples must be formally verified before they count"
+  ],
+  "grounding": [
+    ".agents/skills/math/math-pure-proofs/SKILL.md#Falsify-the-conjecture-(counterexample-search)",
+    ".agents/skills/math/math-pure-proofs/SKILL.md#Verify",
+    ".agents/skills/math/math-pure-proofs/SKILL.md#Fixtures"
+  ],
+  "cites": [
+    "PURE-PROOFS-1",
+    "PURE-PROOFS-2"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 480000,
+    "inputTokens": 110000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "Counterexample search runs before any proof attempt; small-instance and domain search are documented.",
+        "levels": {
+          "4": "search executed and documented before the proof step",
+          "2": "search mentioned but not executed or recorded",
+          "0": "proof written with no falsification attempt"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "LLM-proposed counterexamples are formally verified (Lean 4) before they refute the conjecture.",
+        "levels": {
+          "4": "every refuting candidate verified in Lean 4; unverified proposals treated as leads only",
+          "2": "candidates checked informally only",
+          "0": "unverified LLM output accepted as a refutation"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "A verified counterexample halts the proof attempt and records rejection or weakening of the conjecture.",
+        "levels": {
+          "4": "proof stopped; counterexample and decision recorded in the artifact",
+          "2": "counterexample noted but proof attempted anyway",
+          "0": "no falsification record"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Verified algebraic proof checkers are applied where one exists for the domain.",
+        "levels": {
+          "4": "checker named and applied to algebraic steps; result recorded",
+          "2": "checker mentioned but not applied",
+          "0": "no verified checker used"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The final artifact records the conjecture status and the evidence supporting that status.",
+        "levels": {
+          "4": "status, counterexample or proof, and evidence are recorded",
+          "2": "status is recorded with incomplete evidence",
+          "0": "no defensible conjecture status is returned"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The proof workflow is reproducible from documented search bounds and verification commands.",
+        "levels": {
+          "4": "bounds, commands, and verification results are reproducible",
+          "2": "some workflow details are recorded",
+          "0": "the workflow cannot be repeated"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "counterexample",
+          "Falsify"
+        ],
+        "note": "clause PURE-PROOFS-1: falsification precedes proof"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "Lean 4",
+          "verified"
+        ],
+        "note": "clause PURE-PROOFS-2: LLM-proposed counterexamples formally verified"
+      }
+    }
+  ]
+}

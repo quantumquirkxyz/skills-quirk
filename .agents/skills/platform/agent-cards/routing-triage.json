@@ -1,0 +1,31 @@
+{
+  "name": "triage",
+  "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/triage/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "routing/triage",
+      "name": "triage",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent briefs.",
+      "tags": [
+        "routing"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "router",
+        "artifactType": "routing"
+      }
+    }
+  ]
+}

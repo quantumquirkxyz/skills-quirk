@@ -1,0 +1,80 @@
+{
+  "fixtures": [
+    {
+      "skill": "analyze-artifacts",
+      "schema": "schemas/software-engineering/artifact-analysis-report.schema.json",
+      "artifactType": "ArtifactAnalysisReport",
+      "capabilityRequirements": [
+        "requirements-engineering (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "requirements-engineering",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "artifacts": [
+              "spec"
+            ]
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "artifacts": []
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "artifacts": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-analyze-artifacts",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "analyze-artifacts",
+  "schema": "schemas/software-engineering/artifact-analysis-report.schema.json",
+  "artifactType": "ArtifactAnalysisReport",
+  "capabilityRequirements": [
+    "requirements-engineering (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "requirements-engineering",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "artifacts": [
+          "spec"
+        ]
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "artifacts": []
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "artifacts": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-analyze-artifacts",
+  "type": "behavioral"
+}

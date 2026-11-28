@@ -1,0 +1,73 @@
+{
+  "fixtures": [
+    {
+      "id": "v3-contract-code-review",
+      "skill": "code-review",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Process",
+          "RepositoryAuditArtifact",
+          "confirmed-defect",
+          "evidence-gap",
+          "logical impact"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
+      }
+    },
+    {
+      "id": "v3-frontmatter-code-review",
+      "skill": "code-review",
+      "type": "behavioral",
+      "expected": {
+        "frontmatterContains": [
+          "modelTier: reasoning",
+          "promptVersion: \"3.0\"",
+          "artifactType: repository-audit"
+        ]
+      }
+    },
+    {
+      "id": "code-review-triggers",
+      "skill": "code-review",
+      "type": "behavioral",
+      "description": "Repository audit skill triggers on logic and full-codebase review language",
+      "input": "Audit the current repository and explain whether the requested behavior is logically implemented",
+      "expected": {
+        "invokes": true,
+        "outputContains": [
+          "RepositoryAuditArtifact",
+          "objective",
+          "findings"
+        ],
+        "doesNotContain": [
+          "not found"
+        ]
+      }
+    },
+    {
+      "id": "skill-load-with-dependencies",
+      "skill": "code-review",
+      "type": "behavioral",
+      "description": "Skill loads with its repository audit contract available",
+      "input": "Inspect this module end to end for defects and risks",
+      "expected": {
+        "invokes": true,
+        "usesTools": [
+          "Read",
+          "Grep",
+          "Bash"
+        ],
+        "outputContains": [
+          "scope",
+          "inspected",
+          "limitations"
+        ]
+      }
+    }
+  ],
+  "skill": "code-review"
+}

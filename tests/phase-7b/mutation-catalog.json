@@ -1,0 +1,18 @@
+{
+  "phase": "7B",
+  "scope": ["policy", "replay", "side-effects", "gates"],
+  "mutants": [
+    "policy-ignore-destination",
+    "policy-accept-mismatched-approval",
+    "replay-allow-duplicate-event",
+    "replay-allow-undeclared-variation",
+    "side-effect-ignore-undeclared-resource",
+    "side-effect-leak-sensitive-argument",
+    "gate-ignore-fixed-point-drift",
+    "gate-treat-audit-incomplete-as-pass"
+  ],
+  "survivingGaps": [
+    {"id": "policy-approval-revocation", "reason": "The current adapter has issuance and expiry, but no revocation operation to mutate."},
+    {"id": "replay-concurrent-claim-race", "reason": "The pure replay manifest does not model a concurrent writer; filesystem idempotency owns that boundary."}
+  ]
+}

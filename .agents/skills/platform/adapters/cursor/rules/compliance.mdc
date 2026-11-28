@@ -1,0 +1,15 @@
+---
+description: "Compliance (SOC2, ISO27001, GDPR, HIPAA, PCI DSS, audits, evidence, remediation)"
+globs: []
+alwaysApply: false
+---
+# compliance
+
+Apply the compliance skill when the request matches its scope.
+
+Capabilities:
+- apply compliance methods within explicit sec boundaries
+- analyze compliance (soc2, iso27001, gdpr, hipaa, pci dss, audits, evidence, remediation) with assumptions, constraints, and failure modes
+- produce and validate a sec artifact with evidence, decisions, and next steps
+
+Stop when: Gap analysis complete; evidence pack assembled; remediation roadmap accepted.

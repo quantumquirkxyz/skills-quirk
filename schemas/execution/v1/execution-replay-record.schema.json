@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.dev/schemas/execution/1.0/execution-replay-record.schema.json",
+  "title": "ReplayRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "replayId", "sourceExecutionId", "mode", "startedAt", "verdict"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "replayId": { "type": "string", "format": "uuid" },
+    "sourceExecutionId": { "type": "string", "format": "uuid" },
+    "mode": { "enum": ["deterministic", "fixture", "controlled", "best-effort"] },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "endedAt": { "type": ["string", "null"], "format": "date-time" },
+    "inputHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "environment": { "type": "object", "additionalProperties": true },
+    "verdict": { "enum": ["pass", "fail", "blocked", "not-run", "audit-incomplete"] },
+    "differences": { "type": "array", "items": { "type": "string", "maxLength": 500 } },
+    "evidenceIds": { "type": "array", "items": { "type": "string", "format": "uuid" }, "uniqueItems": true }
+  }
+}

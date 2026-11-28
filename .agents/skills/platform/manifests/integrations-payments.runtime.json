@@ -1,0 +1,56 @@
+{
+  "skill": "integrations/payments",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "daf048b750399a18b8495ead3c76c46c57dab8fd5529b5dd2cdae4a68fe58423",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "WebFetch",
+        "WebSearch"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-artifact"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "refund",
+      "payout",
+      "dispute-response",
+      "provider-credential-change",
+      "production-migration",
+      "fraud-policy-exception",
+      "manual-ledger-adjustment"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

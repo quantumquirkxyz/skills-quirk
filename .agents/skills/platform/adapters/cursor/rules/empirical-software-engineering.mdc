@@ -1,0 +1,16 @@
+---
+description: "Design and assess empirical software-engineering studies — operational definitions, experiments, quasi-experiments, case studies, surveys, MSR, causal threats, ethics, preregistration, replication, and evidence synthesis."
+globs: []
+alwaysApply: false
+---
+# empirical-software-engineering
+
+Apply the empirical-software-engineering skill when the request matches its scope.
+
+Capabilities:
+- operationalize software-engineering constructs and estimands
+- design experiments, quasi-experiments, case studies, surveys, and mining-software-repositories studies
+- assess causal threats, selection, measurement, missingness, privacy, and ethics
+- produce a provenance-aware empirical study artifact and decision report
+
+Stop when: Constructs and estimands are operationalized; design and identification assumptions are explicit; provenance, analysis plan, uncertainty, validity threats, ethics/privacy, and decision boundaries are documented; unsupported causal claims are downgraded or blocked.

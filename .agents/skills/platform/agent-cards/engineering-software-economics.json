@@ -1,0 +1,33 @@
+{
+  "name": "software-economics",
+  "description": "Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/software-economics/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "engineering/software-economics",
+      "name": "software-economics",
+      "description": "Evaluate software decisions through total cost, delay, quality, debt, lock-in, option value, unit economics, and explicit uncertainty without collapsing into generic valuation or FinOps.",
+      "tags": [
+        "engineering",
+        "software-economics",
+        "decision-support"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "SoftwareEconomicsArtifact"
+      }
+    }
+  ]
+}

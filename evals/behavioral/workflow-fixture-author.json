@@ -1,0 +1,209 @@
+{
+  "id": "workflow-fixture-author-paired-v1",
+  "skill": "skill-dev/workflow-fixture-author",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Behavioral fixtures for the capability-router skill need to be authored covering routing, contracts, outputs, side effects, and refusal boundaries, then validated before promotion.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "author deterministic behavioral fixtures for the capability-router skill covering routing, contracts, outputs, and refusal boundaries; validate against skill-testing-framework and emit the WorkflowFixtureAuthorArtifact.",
+  "context": [
+    "repo skills-quirk on branch main, node 24",
+    "the target skill is capability-router and its SKILL.md contract is read before writing fixtures",
+    "fixtures must test observable behavior, not the private chain of reasoning",
+    "assertions are deterministic and forbid placeholders",
+    "at least one normal path and one refusal path are included",
+    "existing fixture formats and naming conventions are preserved"
+  ],
+  "grounding": [
+    ".agents/skills/skill-dev/workflow-fixture-author/SKILL.md#Contract - input schema and output schema",
+    ".agents/skills/skill-dev/workflow-fixture-author/SKILL.md#Explicit rules about fixture behavior testing - observable behavior, deterministic assertions, no placeholders, normal and refusal paths",
+    ".agents/skills/skill-dev/workflow-fixture-author/SKILL.md#Workflow - inspect skill, derive coverage, draft scenarios, draft behavioral expectations, add files, run validator, summarize",
+    ".agents/skills/skill-dev/workflow-fixture-author/SKILL.md#Guardrails - deterministic assertions only, no network dependencies, no model-style dependencies, observable behavior testing, preserve formats"
+  ],
+  "cites": [
+    "WFA-1",
+    "WFA-2",
+    "WFA-3",
+    "WFA-4"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 390000,
+    "inputTokens": 115000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The target skill's SKILL.md contract is read and its inputs, outputs, side effects, and stop condition are documented before writing fixtures.",
+        "levels": {
+          "4": "the capability-router contract is fully documented before fixture authoring",
+          "2": "the contract is partially read before writing fixtures",
+          "0": "no skill contract is read before writing fixtures"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "Fixtures test observable behavior, not the private chain of reasoning, and assertions are deterministic with no placeholders.",
+        "levels": {
+          "4": "all assertions target observable behavior and are deterministic with no placeholders",
+          "2": "most assertions are behavior-focused but some depend on reasoning or dates",
+          "0": "assertions depend on private reasoning or contain placeholders"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "At least one normal path and one refusal path are included for skills that perform mutations or external coordination.",
+        "levels": {
+          "4": "both normal and refusal paths are present with deterministic assertions",
+          "2": "only the normal path or only the refusal path is present",
+          "0": "neither normal nor refusal paths are present"
+        }
+      },
+      {
+        "id": "if-4",
+        "criterion": "Existing fixture formats and naming conventions are preserved; compatibility-view symlinks are not hand-edited.",
+        "levels": {
+          "4": "fixture naming and schema match neighbors; .claude/skills/ symlinks are untouched",
+          "2": "naming mostly matches but symlinks or schema are touched",
+          "0": "naming conventions are violated or symlinks are hand-edited"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "Fixture files are saved at the declared fixturesPath under evals/behavioral/.",
+        "levels": {
+          "4": "fixture files exist at evals/behavioral/<skill>.json",
+          "2": "fixture files are produced but not at the declared path",
+          "0": "no fixture files are saved"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "The coverage report maps each contract area to covered/gap/skipped with justification.",
+        "levels": {
+          "4": "every contract area is mapped to covered/gap/skipped with justification",
+          "2": "coverage is partial with some areas unmapped",
+          "0": "no coverage report is produced"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The validation result is recorded with pass/fail status, failure details, and follow-up fixes.",
+        "levels": {
+          "4": "validation result has pass/fail status, failure details, and follow-up fixes",
+          "2": "validation result is present but incomplete",
+          "0": "no validation result is recorded"
+        }
+      },
+      {
+        "id": "gc-4",
+        "criterion": "The WorkflowFixtureAuthorArtifact is emitted as JSON and Markdown with coverage summary, validation result, and remaining gaps.",
+        "levels": {
+          "4": "artifact saved in both formats with complete summary",
+          "2": "artifact produced but not saved in both formats or summary is incomplete",
+          "0": "no artifact is emitted"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "fixtureFiles",
+          "coverageReport",
+          "validationResult",
+          "artifact"
+        ],
+        "note": "the workflow fixture author output must contain all required fields"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_not_contains",
+        "values": [
+          "TODO",
+          "placeholder",
+          "fill-in"
+        ],
+        "note": "negative control: no placeholder values may remain in fixtures or output"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": [
+          "covered",
+          "gap"
+        ],
+        "note": "the coverage report must include both covered and gap statuses"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_min_lines",
+        "min": 15
+        },
+        "note": "the output must contain sufficient detail beyond a trivial stub"
+    },
+    {
+      "id": "j1",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-2",
+      "check": {
+        "criterion": "Are all assertions deterministic and free of placeholders, testing observable behavior only?",
+        "levels": {
+          "pass": "all assertions are deterministic, placeholder-free, and behavior-focused",
+          "fail": "assertions contain placeholders or depend on private reasoning"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j2",
+      "type": "judge",
+      "category": "outcome",
+      "rubricId": "gc-1",
+      "check": {
+        "criterion": "Are fixture files saved at the declared fixturesPath under evals/behavioral/?",
+        "levels": {
+          "pass": "fixture files exist at the declared path",
+          "fail": "fixture files are missing or at the wrong path"
+        },
+        "strict": true
+      }
+    },
+    {
+      "id": "j3",
+      "type": "judge",
+      "category": "process",
+      "rubricId": "if-3",
+      "check": {
+        "criterion": "Is at least one normal path and one refusal path included?",
+        "levels": {
+          "pass": "both normal and refusal paths are present",
+          "fail": "only one path type or neither is present"
+        },
+        "strict": false
+      }
+    }
+  ]
+}

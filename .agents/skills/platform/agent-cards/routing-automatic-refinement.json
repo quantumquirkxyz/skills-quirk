@@ -1,0 +1,38 @@
+{
+  "name": "automatic-refinement",
+  "description": "Run a bounded multi-agent refinement graph after grill-with-docs. Route canonical skills from the context and objective, enforce typed handoffs and bounded iteration, and stop at refined-awaiting-review without publishing or implementing.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/routing/automatic-refinement/SKILL.md",
+  "version": "3",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "routing/automatic-refinement",
+      "name": "automatic-refinement",
+      "description": "Run a bounded multi-agent refinement graph after grill-with-docs. Route canonical skills from the context and objective, enforce typed handoffs and bounded iteration, and stop at refined-awaiting-review without publishing or implementing.",
+      "tags": [
+        "routing",
+        "orchestration",
+        "refinement",
+        "multi-agent",
+        "bounded-loop",
+        "post-grill",
+        "little-things",
+        "dynamic-skills"
+      ],
+      "parameters": {
+        "trustTier": "3",
+        "modelTier": "reasoning",
+        "artifactType": "refinement"
+      }
+    }
+  ]
+}

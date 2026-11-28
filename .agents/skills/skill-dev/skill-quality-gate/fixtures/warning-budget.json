@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","kind":"policy","policy":{"warningsAsErrors":true,"warningBudget":{"allowedSeverities":["low","info"],"max":1}},"findings":[{"id":"W1","severity":"low"},{"id":"W2","severity":"low"}],"expected":"FAIL","reason":"warning-budget-exceeded"}

@@ -1,0 +1,42 @@
+{
+  "fixtures": [
+    {
+      "id": "code-review-body-completeness",
+      "skill": "code-review",
+      "type": "regression",
+      "version": "3.0.0",
+      "input": "Audit the current repository for logical correctness and explain evidence-backed findings",
+      "expectedOutput": {
+        "contains": [
+          "## Contract",
+          "## Process",
+          "## Finding standard",
+          "## Boundaries",
+          "## Completion",
+          "RepositoryAuditArtifact",
+          "confirmed-defect",
+          "evidence-gap",
+          "logical impact",
+          "limitations"
+        ],
+        "minLength": 500
+      }
+    },
+    {
+      "id": "code-review-observability",
+      "skill": "code-review",
+      "type": "regression",
+      "version": "3.0.0",
+      "input": "Emit a repository audit with inspected areas and limitations",
+      "expectedOutput": {
+        "contains": [
+          "repository-audit-schema.json",
+          "inspected areas",
+          "limitations",
+          "schema-validated"
+        ],
+        "minLength": 300
+      }
+    }
+  ]
+}

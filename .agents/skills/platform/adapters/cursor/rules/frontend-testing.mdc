@@ -1,0 +1,15 @@
+---
+description: "Frontend testing (Vitest, Testing Library, Playwright, visual testing, Storybook)."
+globs: []
+alwaysApply: false
+---
+# frontend-testing
+
+Apply the frontend-testing skill when the request matches its scope.
+
+Capabilities:
+- apply frontend testing methods within explicit frontend boundaries
+- analyze frontend testing (vitest, testing library, playwright, visual testing, storybook) with assumptions, constraints, and failure modes
+- produce and validate a frontend artifact with evidence, decisions, and next steps
+
+Stop when: Test tiers, deterministic fixtures, browser matrix, a11y/visual checks, budgets, and stop conditions are explicit; artifact saved; completion criteria checked.

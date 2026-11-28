@@ -1,0 +1,36 @@
+{
+  "name": "safety-critical-software",
+  "description": "Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/engineering/safety-critical-software/SKILL.md",
+  "version": "1",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "engineering/safety-critical-software",
+      "name": "safety-critical-software",
+      "description": "Engineer safety evidence for hazard analysis, safety requirements, assurance cases, independent verification, traceability, change impact, and residual risk across DO-178C, IEC 62304, ISO 26262, IEC 61508, and EN 50128 profiles without claiming certification.",
+      "tags": [
+        "engineering",
+        "safety",
+        "assurance",
+        "verification",
+        "traceability",
+        "risk"
+      ],
+      "parameters": {
+        "trustTier": "4",
+        "modelTier": "reasoning",
+        "artifactType": "SafetyCaseArtifact"
+      }
+    }
+  ]
+}

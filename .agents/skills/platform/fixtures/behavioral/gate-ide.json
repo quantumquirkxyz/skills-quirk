@@ -1,0 +1,44 @@
+{
+  "fixtures": [
+    {
+      "id": "v2-contract-gate-ide",
+      "skill": "gate-ide",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "## Artifact",
+          "GateIdeArtifact",
+          "lint",
+          "format",
+          "typecheck",
+          "spellcheck",
+          "secret scan"
+        ],
+        "doesNotContain": [
+          "## Operating Contract"
+        ]
+      }
+    }
+  ],
+  "skill": "gate-ide",
+  "id": "v2-contract-gate-ide",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "## Artifact",
+      "GateIdeArtifact",
+      "lint",
+      "format",
+      "typecheck",
+      "spellcheck",
+      "secret scan"
+    ],
+    "doesNotContain": [
+      "## Operating Contract"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+name: documentation-only
+description: Governed route for documentation-only work without software preflight
+entryPoint: documentation
+version: "1.0"
+states:
+  documentation:
+    type: artifact-writer
+    description: Write documentation under an explicit auditable exception
+    capabilityRequirements:
+      - docs-management (recommended)
+    transitions:
+      PUBLISHED: done
+      BLOCKED: escalate
+  done:
+    type: terminal
+    description: Documentation route completed
+  escalate:
+    type: terminal
+    description: Documentation route blocked

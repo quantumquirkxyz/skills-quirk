@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "retry-backoff",
+      "schema": "schemas/software-engineering/project-assessment-or-architecture.schema.json",
+      "artifactType": "RetryBackoffArtifact",
+      "capabilityRequirements": [
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "testing",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "attempt": 1
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "attempt": 0
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "attempt": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-retry-backoff",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "retry-backoff",
+  "schema": "schemas/software-engineering/project-assessment-or-architecture.schema.json",
+  "artifactType": "RetryBackoffArtifact",
+  "capabilityRequirements": [
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "testing",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "attempt": 1
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "attempt": 0
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "attempt": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-retry-backoff",
+  "type": "behavioral"
+}

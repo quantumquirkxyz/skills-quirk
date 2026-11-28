@@ -1,0 +1,15 @@
+name: subagent-swarm
+description: "Coordinate multiple agent sub-roles (architect, implementer, reviewer, tester) in parallel or sequential swarm mode, with clear handoff contracts and evidence recording."
+trigger:
+  type: webhook
+  events: [pull_request.opened, issues.opened]
+runtime:
+  agent: claude-code
+  sandbox: docker
+steps:
+  - uses: skill/foundation-subagent-swarm
+    with:
+      task: "{{ event.title }}"
+policy:
+  approvalRequired: true
+  sideEffects: [write-files (orchestrator-owned swarm artifact only), write-temp-file (bounded role-result references, when needed), write-ledger (intent, lease, checkpoint, approval, and kill-switch records; bounded and orchestrator-owned), emit-telemetry (trace-linked, redacted, bounded role lifecycle events)]

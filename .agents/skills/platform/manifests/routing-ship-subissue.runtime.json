@@ -1,0 +1,53 @@
+{
+  "skill": "routing/ship-subissue",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "fcf32c77d429a47d8b0a81129e4dda32b323adb405f587425ff7cbe64732e810",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "none",
+    "maxTurns": 6,
+    "modelTier": "router",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "merge-pull-request",
+      "close-issue",
+      "update-project"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "merge-pull-request",
+      "update-project",
+      "close-issue"
+    ],
+    "risk": "high",
+    "trustTier": 4
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": ".agents/skills/platform/schemas/ship-subissue-schema.json"
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

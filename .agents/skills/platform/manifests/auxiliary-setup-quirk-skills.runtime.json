@@ -1,0 +1,53 @@
+{
+  "skill": "auxiliary/setup-quirk-skills",
+  "version": 1,
+  "generatedFrom": "frontmatter",
+  "frontmatterHash": "ef72216ec89d1967a4a020e7554ec4048a042e2086c0b28ca17fba4c01889997",
+  "role": "workflow",
+  "router": {
+    "positive": [],
+    "negative": [],
+    "requiredSignals": []
+  },
+  "execution": {
+    "defaultAgent": "general",
+    "isolation": "worktree",
+    "maxTurns": 6,
+    "modelTier": "reasoning",
+    "tools": {
+      "allow": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Edit",
+        "Write"
+      ],
+      "deny": []
+    }
+  },
+  "guardrails": {
+    "sideEffects": [
+      "write-files",
+      "write-temp-file",
+      "write-generated-projections"
+    ],
+    "approvalRequired": true,
+    "approvalFor": [
+      "write-files",
+      "write-generated-projections"
+    ],
+    "risk": "medium",
+    "trustTier": 3
+  },
+  "verification": {
+    "commands": [],
+    "artifactSchema": null
+  },
+  "observability": {
+    "traceEvents": [
+      "skill.route",
+      "skill.execute",
+      "skill.verify"
+    ]
+  }
+}

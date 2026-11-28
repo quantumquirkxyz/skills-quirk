@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quirk.dev/schemas/execution/1.0/execution-envelope.schema.json",
+  "title": "ExecutionEnvelope",
+  "description": "Versioned envelope for one governed skill execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "executionId", "traceId", "skill", "status", "startedAt"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "executionId": { "$ref": "#/$defs/uuid" },
+    "traceId": { "$ref": "#/$defs/uuid" },
+    "skill": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._/-]*$", "maxLength": 120 },
+    "skillVersion": { "type": "string", "maxLength": 32 },
+    "status": { "enum": ["draft", "in-progress", "completed", "failed", "blocked", "cancelled"] },
+    "startedAt": { "$ref": "#/$defs/dateTime" },
+    "endedAt": { "anyOf": [{ "$ref": "#/$defs/dateTime" }, { "type": "null" }] },
+    "inputHash": { "$ref": "#/$defs/sha256" },
+    "environment": { "type": "object", "additionalProperties": false, "properties": { "platform": { "type": "string" }, "architecture": { "type": "string" }, "isolation": { "enum": ["none", "process", "container", "virtual-machine", "worktree"] } } },
+    "evidence": { "type": "array", "items": { "$ref": "execution-evidence-record.schema.json" } },
+    "sideEffects": { "type": "array", "items": { "$ref": "execution-side-effect-record.schema.json" } },
+    "replay": { "anyOf": [{ "$ref": "execution-replay-record.schema.json" }, { "type": "null" }] },
+    "scorecard": { "anyOf": [{ "$ref": "execution-scorecard.schema.json" }, { "type": "null" }] }
+  },
+  "$defs": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "dateTime": { "type": "string", "format": "date-time" }
+  }
+}

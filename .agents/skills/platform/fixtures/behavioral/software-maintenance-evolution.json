@@ -1,0 +1,84 @@
+{
+  "fixtures": [
+    {
+      "skill": "software-maintenance-evolution",
+      "schema": "schemas/software-engineering/maintenance-artifact.schema.json",
+      "artifactType": "maintenance-artifact",
+      "capabilityRequirements": [
+        "maintenance (required)",
+        "testing (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "requirements-engineering",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "finding": "defect",
+            "owner": "team"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "finding": "defect",
+            "owner": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "finding": null,
+            "owner": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-software-maintenance-evolution",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "software-maintenance-evolution",
+  "schema": "schemas/software-engineering/maintenance-artifact.schema.json",
+  "artifactType": "maintenance-artifact",
+  "capabilityRequirements": [
+    "maintenance (required)",
+    "testing (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "requirements-engineering",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "finding": "defect",
+        "owner": "team"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "finding": "defect",
+        "owner": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "finding": null,
+        "owner": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-software-maintenance-evolution",
+  "type": "behavioral"
+}

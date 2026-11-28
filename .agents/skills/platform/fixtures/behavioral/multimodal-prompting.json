@@ -1,0 +1,38 @@
+{
+  "fixtures": [
+    {
+      "id": "output-contract-multimodal-prompting",
+      "skill": "multimodal-prompting",
+      "type": "behavioral",
+      "expected": {
+        "outputContains": [
+          "## Contract",
+          "## Provenance",
+          "MultimodalPromptingArtifact",
+          "validation suite",
+          "fallback discipline"
+        ],
+        "doesNotContain": [
+          "deploys to production",
+          "guaranteed safe"
+        ]
+      }
+    }
+  ],
+  "skill": "multimodal-prompting",
+  "id": "output-contract-multimodal-prompting",
+  "type": "behavioral",
+  "expected": {
+    "outputContains": [
+      "## Contract",
+      "## Provenance",
+      "MultimodalPromptingArtifact",
+      "validation suite",
+      "fallback discipline"
+    ],
+    "doesNotContain": [
+      "deploys to production",
+      "guaranteed safe"
+    ]
+  }
+}

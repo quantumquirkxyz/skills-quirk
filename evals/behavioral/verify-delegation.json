@@ -1,0 +1,139 @@
+{
+  "id": "verify-delegation-behavioral-v2",
+  "skill": "foundation/verify-delegation",
+  "skillVersion": "2",
+  "fixtureVersion": "1",
+  "scenario": "Verify delegated worker claims against a fixed point using independent evidence, refusing false or unexecuted claims, preserving partial and stale statuses, and detecting undeclared side effects.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Verify six delegated-worker cases: wrong commit, partial suite, fabricated command, mutation survivor, security omission, and one valid verification. Return pass only for the valid case; preserve stale, partial, refusal, fail, and blocked statuses for the others.",
+  "context": [
+    "fixed point artifact deliverables/unit-suite-report.json with a recorded digest and repository revision",
+    "case claim-false: worker claims 10/10 but independent evidence observes 6/10 and one command is capability-missing",
+    "case command-not-executed: npm test and npm run lint have no process records",
+    "case suite-partial: 6 of 10 tests executed and replay is NOT-RUN",
+    "case output-stale: artifact and fixed point predate the current repository revision",
+    "case side-effect-hidden: undeclared writes to deliverables/temp-cache.json and scratch/notes.md",
+    "case-wrong-commit: replay observes a different commit than the fixed point",
+    "case-mutation-survivor: mutation run leaves one surviving mutant",
+    "case-security-omission: security scan is skipped without a documented exception",
+    "case-valid: all commands have process provenance, full suite and required quality evidence match the fixed point"
+  ],
+  "grounding": [
+    ".agents/skills/foundation/verify-delegation/SKILL.md"
+  ],
+  "cites": [
+    "fixed-point verification",
+    "execution provenance",
+    "partial coverage",
+    "staleness",
+    "side-effect detection"
+  ],
+  "costBudget": {
+    "costUsd": 0.08,
+    "durationMs": 420000,
+    "inputTokens": 90000
+  },
+  "rubric": {
+    "instructionFollowing": [
+      {
+        "id": "if-1",
+        "criterion": "The verifier compares claims with independent evidence and never treats declared work as executed work.",
+        "levels": {
+          "4": "each claim is tied to observed provenance or an explicit evidence gap",
+          "2": "some claims are checked but provenance handling is incomplete",
+          "0": "worker claims are accepted without independent evidence"
+        }
+      },
+      {
+        "id": "if-2",
+        "criterion": "The verifier preserves non-pass outcomes for partial, stale, missing, or contradictory evidence.",
+        "levels": {
+          "4": "refusal, partial, stale, and fail states retain their reasons",
+          "2": "non-pass state is reported without complete reasons",
+          "0": "unsupported evidence is upgraded to pass"
+        }
+      },
+      {
+        "id": "if-3",
+        "criterion": "Undeclared side effects are checked independently and are treated as a contract violation.",
+        "levels": {
+          "4": "every hidden write is recorded and produces fail",
+          "2": "side effects are noticed but incompletely recorded",
+          "0": "read-only violation is silently accepted"
+        }
+      }
+    ],
+    "goalCompletion": [
+      {
+        "id": "gc-1",
+        "criterion": "The verification artifact reports denominator, observed, omitted, and reason data for incomplete suites.",
+        "levels": {
+          "4": "denominators and machine-readable omission reasons are complete",
+          "2": "partial counts are present but reasons are incomplete",
+          "0": "coverage is claimed without counts"
+        }
+      },
+      {
+        "id": "gc-2",
+        "criterion": "Fixed-point identity and artifact freshness are checked before a pass verdict.",
+        "levels": {
+          "4": "digest and revision mismatches block or mark stale verification",
+          "2": "freshness is mentioned without a complete check",
+          "0": "stale output can pass"
+        }
+      },
+      {
+        "id": "gc-3",
+        "criterion": "The final report gives actionable next probes for every evidence gap or refusal.",
+        "levels": {
+          "4": "each gap has a concrete next probe and status",
+          "2": "some gaps have next steps",
+          "0": "gaps are unexplained"
+        }
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "a1",
+      "type": "deterministic",
+      "category": "process",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": ["fixed point", "independent evidence", "provenance"],
+        "note": "claims must be checked against the fixed point and observed evidence"
+      }
+    },
+    {
+      "id": "a2",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": ["blocked", "partial", "stale", "fail", "refusal", "pass"],
+        "note": "all non-pass statuses remain represented"
+      }
+    },
+    {
+      "id": "a3",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": ["undeclared writes", "deliverables/temp-cache.json", "scratch/notes.md"],
+        "note": "hidden side effects are recorded"
+      }
+    },
+    {
+      "id": "a4",
+      "type": "deterministic",
+      "category": "outcome",
+      "check": {
+        "kind": "artifact_contains_all",
+        "values": ["wrong commit", "mutation survivor", "security omission", "valid verification"],
+        "note": "fixed-point, mutation, security and valid-verification boundaries are covered"
+      }
+    }
+  ]
+}

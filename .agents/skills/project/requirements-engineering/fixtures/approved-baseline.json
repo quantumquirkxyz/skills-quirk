@@ -1,0 +1,1 @@
+{"id":"approved-baseline","input":"Owner-approved v1 requirements have measurable limits, sources, acceptance criteria, and resolved findings.","expectedStatus":"approved","requiredFindings":["baseline","revision","approval","traceability"]}

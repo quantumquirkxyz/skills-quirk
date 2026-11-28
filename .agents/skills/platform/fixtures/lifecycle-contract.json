@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "fixedPoint": "lifecycle-fixture-2026-11-18",
+  "execution": { "journal": "fixture-journal", "snapshot": "fixture-snapshot" },
+  "stages": [
+    {"id":"requirements","schemaVersion":"1.0","sourceDigest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","owner":"requirements","nextConsumer":"architecture","verifier":"requirements-review"},
+    {"id":"architecture","schemaVersion":"1.0","sourceDigest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","owner":"architecture","nextConsumer":"design","verifier":"architecture-review"},
+    {"id":"design","schemaVersion":"1.0","sourceDigest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","owner":"design","nextConsumer":"tickets","verifier":"design-review"},
+    {"id":"tickets","schemaVersion":"1.0","sourceDigest":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","owner":"tickets","nextConsumer":"implement","verifier":"ticket-review"},
+    {"id":"implement","schemaVersion":"1.0","sourceDigest":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","owner":"implement","nextConsumer":"verification","verifier":"implementation-tests"},
+    {"id":"verification","schemaVersion":"1.0","sourceDigest":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","owner":"verification","nextConsumer":"release","verifier":"verification-review"},
+    {"id":"release","schemaVersion":"1.0","sourceDigest":"1111111111111111111111111111111111111111111111111111111111111111","owner":"release","nextConsumer":"deployment","verifier":"release-review","verificationEvidence":"verification-report","rollbackEvidence":"rollback-plan"},
+    {"id":"deployment","schemaVersion":"1.0","sourceDigest":"2222222222222222222222222222222222222222222222222222222222222222","owner":"deployment","nextConsumer":"operations","verifier":"deployment-smoke","verificationEvidence":"smoke-report","rollbackEvidence":"rollback-runbook"},
+    {"id":"operations","schemaVersion":"1.0","sourceDigest":"3333333333333333333333333333333333333333333333333333333333333333","owner":"operations","nextConsumer":"maintenance","verifier":"operations-review"},
+    {"id":"maintenance","schemaVersion":"1.0","sourceDigest":"4444444444444444444444444444444444444444444444444444444444444444","owner":"maintenance","nextConsumer":"requirements","verifier":"maintenance-review","correctiveRequirement":"requirements-reassessment"}
+  ],
+  "edges": [
+    {"from":"requirements","to":"architecture","schemaVersion":"1.0","sourceDigest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","owner":"requirements","nextConsumer":"architecture","verifier":"architecture-review","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"architecture","to":"design","schemaVersion":"1.0","sourceDigest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","owner":"architecture","nextConsumer":"design","verifier":"design-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"design","to":"tickets","schemaVersion":"1.0","sourceDigest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","owner":"design","nextConsumer":"tickets","verifier":"ticket-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"tickets","to":"implement","schemaVersion":"1.0","sourceDigest":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","owner":"tickets","nextConsumer":"implement","verifier":"implementation-tests","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"implement","to":"verification","schemaVersion":"1.0","sourceDigest":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","owner":"implement","nextConsumer":"verification","verifier":"verification-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"verification","to":"release","schemaVersion":"1.0","sourceDigest":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","owner":"verification","nextConsumer":"release","verifier":"release-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"release","to":"deployment","schemaVersion":"1.0","sourceDigest":"1111111111111111111111111111111111111111111111111111111111111111","owner":"release","nextConsumer":"deployment","verifier":"deployment-smoke","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"deployment","to":"operations","schemaVersion":"1.0","sourceDigest":"2222222222222222222222222222222222222222222222222222222222222222","owner":"deployment","nextConsumer":"operations","verifier":"operations-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"},
+    {"from":"operations","to":"maintenance","schemaVersion":"1.0","sourceDigest":"3333333333333333333333333333333333333333333333333333333333333333","owner":"operations","nextConsumer":"maintenance","verifier":"maintenance-review","fixedPoint":"lifecycle-fixture-2026-11-18","approvalScope":"lifecycle"}
+  ]
+}

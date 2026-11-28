@@ -1,0 +1,1 @@
+{"fixtureVersion":"1","kind":"baseline","baseline":{"scopeDigest":"old","policyDigest":"old","fixtureDigest":"old","resultDigest":"old"},"candidate":{"scopeDigest":"new","policyDigest":"new","fixtureDigest":"new"},"expected":"BLOCKED","reason":"stale-baseline"}

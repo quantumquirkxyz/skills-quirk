@@ -1,0 +1,76 @@
+{
+  "fixtures": [
+    {
+      "skill": "prod-okr-planning",
+      "schema": "schemas/software-engineering/okr-artifact.schema.json",
+      "artifactType": "OkrArtifact",
+      "capabilityRequirements": [
+        "OKR (required)"
+      ],
+      "handoff": {
+        "nextConsumer": "professional-project-management",
+        "cycleCheck": []
+      },
+      "cases": [
+        {
+          "name": "positive",
+          "input": {
+            "objective": "defined"
+          },
+          "status": "completed"
+        },
+        {
+          "name": "negative-adjacent",
+          "input": {
+            "objective": ""
+          },
+          "status": "blocked"
+        },
+        {
+          "name": "ambiguous-blocked",
+          "input": {
+            "objective": null
+          },
+          "status": "blocked"
+        }
+      ],
+      "id": "audited-prod-okr-planning",
+      "type": "behavioral"
+    }
+  ],
+  "skill": "prod-okr-planning",
+  "schema": "schemas/software-engineering/okr-artifact.schema.json",
+  "artifactType": "OkrArtifact",
+  "capabilityRequirements": [
+    "OKR (required)"
+  ],
+  "handoff": {
+    "nextConsumer": "professional-project-management",
+    "cycleCheck": []
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "input": {
+        "objective": "defined"
+      },
+      "status": "completed"
+    },
+    {
+      "name": "negative-adjacent",
+      "input": {
+        "objective": ""
+      },
+      "status": "blocked"
+    },
+    {
+      "name": "ambiguous-blocked",
+      "input": {
+        "objective": null
+      },
+      "status": "blocked"
+    }
+  ],
+  "id": "audited-prod-okr-planning",
+  "type": "behavioral"
+}

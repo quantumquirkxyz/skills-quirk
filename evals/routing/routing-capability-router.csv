@@ -1,0 +1,15 @@
+should_trigger,category,prompt
+true,explicit,use capability-router: which skill handles designing a redis cache invalidation strategy for /search
+true,explicit,"/capability-router — match this task against declared capabilities and side effects, prefer the thinnest skill"
+true,explicit,capability-router: two skills look like they fit (db-migrations and db-query-optimization). give me the human-readable rationale
+true,implicit,"i forgot which skill owns contract versioning for the payments webhook — route by declared capabilities, not by memory"
+true,implicit,"the registry has 254 skills; pick the right one for add a Kafka consumer with backpressure, dont make me grep"
+true,implicit,dont rely on my memory of the registry — route this to the declared-capabilities match
+true,contextual,repo skills-quirk. task: harden the auth boundary on the new /login route. route it using declared capabilities and compatibility
+true,contextual,in .agents/skills/backend/ there are 13 skills. i need the one that can model a credit loss distribution. route it
+true,contextual,"context: node 24, repo on branch fix/queue-retry. task: make the retry policy configurable. which skill declares that output?"
+true,explicit,capability-router with fallback rationale: review this diff and write the findings to the PR
+true,implicit,route add an SBOM check to CI against declared capabilities and pick the thinnest skill that can finish it
+false,negative-control,run ask-to — the user is lost and wants a recommendation of the next step
+false,negative-control,"use work-item-router: governance index first, then tell me where this spec request goes"
+false,negative-control,skill-dependency-graph please: build the dependency graph and show me the central skills

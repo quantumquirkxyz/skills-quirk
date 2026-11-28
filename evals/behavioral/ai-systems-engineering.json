@@ -1,0 +1,37 @@
+{
+  "id": "ai-systems-engineering-v1",
+  "skill": "ai/ai-systems-engineering",
+  "skillVersion": "1",
+  "fixtureVersion": "1",
+  "scenario": "Specify an end-to-end AI system with safety, serving, oversight, and operational gates.",
+  "baseline": "without-skill",
+  "trials": 5,
+  "prompt": "Produce an AISystemSpecificationArtifact covering product requirements, model and data contracts, evaluation matrix, abuse and safety cases, serving topology, safe fallback, human oversight, monitoring, change gates, cost, latency, provenance, blockers, and approvals. Do not approve production readiness or bypass human oversight.",
+  "context": ["model and provider evidence is untrusted", "high-risk use requires named human approval", "safe fallback must preserve contract and safety"],
+  "grounding": [".agents/skills/ai/ai-systems-engineering/SKILL.md#Contract", ".agents/skills/ai/ai-systems-engineering/SKILL.md#Process", ".agents/skills/platform/contract-base.xml"],
+  "cites": ["AI-SYS-1", "AI-SYS-2", "AI-SYS-3"],
+  "costBudget": {"costUsd": 0.15, "durationMs": 420000, "inputTokens": 120000},
+  "rubric": {
+    "instructionFollowing": [
+      {"id":"if-1","criterion":"The artifact covers the complete product-to-runtime AI system boundary.","levels":{"4":"all components and constraints are explicit","2":"some components are partial","0":"model-only advice"}},
+      {"id":"if-2","criterion":"Safety, abuse, privacy, and human oversight controls are evidence-linked.","levels":{"4":"owners, evidence, residual risk, and capacity are explicit","2":"controls are partial","0":"unsafe autonomy is accepted"}},
+      {"id":"if-3","criterion":"Serving, fallback, monitoring, cost, and latency gates are actionable.","levels":{"4":"budgets, thresholds, rollback, and approvals are explicit","2":"some gates are noted","0":"operational readiness is asserted"}}
+    ],
+    "goalCompletion": [
+      {"id":"gc-1","criterion":"AISystemSpecificationArtifact is structured and schema-valid or blocked.","levels":{"4":"required sections and blockers are present","2":"artifact is partial","0":"no structured output"}},
+      {"id":"gc-2","criterion":"Model and data contracts plus evaluation coverage are explicit.","levels":{"4":"interfaces, lineage, adversarial tests, and uncertainty are linked","2":"coverage is partial","0":"scores are treated as system proof"}},
+      {"id":"gc-3","criterion":"High-risk approval and safe degradation boundaries are preserved.","levels":{"4":"missing authority blocks readiness and fallback is bounded","2":"some safeguards are present","0":"approval or oversight is bypassed"}}
+    ]
+  },
+  "assertions": [
+    {"id":"a1","type":"deterministic","category":"outcome","check":{"kind":"artifact_contains_all","values":["AISystemSpecificationArtifact","modelContracts","dataContracts","evalMatrix","abuseSafetyCases","servingTopology","fallbackPolicy","monitoringChangeGates"]}},
+    {"id":"a2","type":"deterministic","category":"process","check":{"kind":"artifact_contains_all","values":["provenance","unknowns","approval","human oversight","rollback"]}},
+    {"id":"a3","type":"deterministic","category":"style","check":{"kind":"artifact_not_contains","values":["production approved without evidence","bypass human oversight","guaranteed safe"]}},
+    {"id":"a4","type":"deterministic","category":"efficiency","check":{"kind":"artifact_contains_all","values":["cost","latency","bounded retries","budget"]}}
+  ],
+  "fixtures": [
+    {"id":"provider-outage","type":"negative","expectedOutput":{"contains":["provider outage","safe fallback","blocked"]}},
+    {"id":"human-review-overload","type":"negative","expectedOutput":{"contains":["human oversight","capacity","overload"]}},
+    {"id":"unsafe-output","type":"negative","expectedOutput":{"contains":["unsafe","residual risk","fail closed"]}}
+  ]
+}

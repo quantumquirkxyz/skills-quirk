@@ -1,0 +1,16 @@
+{
+  "name": "quant-derivatives-pricing",
+  "instructions": "Price and calibrate derivatives (options, exotics, structured products) — Black-Scholes, trees, Monte Carlo — with Greeks, model risk, and calibration validation.\n\nCapabilities:\n- apply quant derivatives pricing methods within explicit quant boundaries\n- analyze price and calibrate derivatives (options, exotics, structured products) — black-scholes, trees, monte carlo — with greeks, model risk, and calibration validation with assumptions, constraints, and failure modes\n- produce and validate a quant artifact with evidence, decisions, and next steps\n\nCanonical skill: .agents/skills/quant/quant-derivatives-pricing/SKILL.md",
+  "model": "gpt-5",
+  "tools": [],
+  "handoff_description": "Instrument specified, model selected, price computed, Greeks reported, calibration validated.",
+  "runtime": {
+    "role": "workflow",
+    "maxTurns": 6,
+    "isolation": "worktree"
+  },
+  "guardrails": {
+    "input": [],
+    "output": []
+  }
+}

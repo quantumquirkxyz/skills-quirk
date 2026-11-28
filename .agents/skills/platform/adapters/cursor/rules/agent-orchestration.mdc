@@ -1,0 +1,15 @@
+---
+description: "Design governed multi-agent workflows with state machines or DAGs, capability and authority matrices, typed handoffs, human approvals, bounded recovery, independent verification, and traceable publication."
+globs: []
+alwaysApply: false
+---
+# agent-orchestration
+
+Apply the agent-orchestration skill when the request matches its scope.
+
+Capabilities:
+- apply agent orchestration methods within explicit ai boundaries
+- analyze design agent orchestration — multi-agent patterns, tool use, memory, handoffs, evaluation — with explicit coordination boundaries and observability with assumptions, constraints, and failure modes
+- produce and validate a ai artifact with evidence, decisions, and next steps
+
+Stop when: Architecture, state/DAG, capability matrix, approval policy, budgets, handoff contracts, verification rubric, adversarial fixtures, and trace schema are complete and diff-checked.

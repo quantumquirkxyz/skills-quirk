@@ -1,0 +1,16 @@
+---
+description: "Transform stakeholder, business, and system needs into verifiable, traceable, versioned requirements with explicit provenance, conflicts, quality gates, and change impact."
+globs: []
+alwaysApply: false
+---
+# requirements-engineering
+
+Apply the requirements-engineering skill when the request matches its scope.
+
+Capabilities:
+- elicit and classify requirements without treating stakeholder text as authority
+- produce schema-validated RequirementsArtifact records
+- make requirements measurable, testable, traceable, and version-controlled
+- identify omissions, conflicts, unsafe assumptions, and unresolved decisions
+
+Stop when: Return one schema-valid RequirementsArtifact only when every included requirement has provenance, owner, status, priority, verification evidence, and bidirectional traceability; otherwise return a structured blocked or rejected artifact with exact blockers and no invented values.

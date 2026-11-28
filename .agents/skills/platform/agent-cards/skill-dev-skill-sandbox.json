@@ -1,0 +1,34 @@
+{
+  "name": "skill-sandbox",
+  "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
+  "url": "https://github.com/quantumquirkxyz/skills-quirk/blob/main/.agents/skills/skill-dev/skill-sandbox/SKILL.md",
+  "version": "2",
+  "capabilities": {
+    "skillInvocation": true,
+    "artifactProduction": true,
+    "workflowOrchestration": true
+  },
+  "authentication": {
+    "schemes": [
+      "none"
+    ]
+  },
+  "skills": [
+    {
+      "id": "skill-dev/skill-sandbox",
+      "name": "skill-sandbox",
+      "description": "Create, test, and iterate on experimental skills inside a deny-by-default sandbox with isolation, adversarial fixtures, deterministic replay, cleanup attestation, and promotion gates.",
+      "tags": [
+        "skill-dev",
+        "sandbox",
+        "isolation",
+        "security"
+      ],
+      "parameters": {
+        "trustTier": "4",
+        "modelTier": "reasoning",
+        "artifactType": "skill-dev"
+      }
+    }
+  ]
+}

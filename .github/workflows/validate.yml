@@ -1,0 +1,194 @@
+name: Validate Skills Bundle
+on:
+  push:
+    paths:
+      - ".agents/skills/**/*"
+      - "evals/**/*"
+      - "tests/**/*"
+      - "skills-lock.json"
+      - "registry.yaml"
+      - "skills.json"
+      - "plugins/**"
+      - "scripts/**"
+      - "bin/**"
+      - "package.json"
+      - "VERSION"
+      - "CHANGELOG.md"
+      - "README.md"
+      - ".claude-plugin/**"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - ".agents/skills/**/*"
+      - "evals/**/*"
+      - "tests/**/*"
+      - "skills-lock.json"
+      - "registry.yaml"
+      - "skills.json"
+      - "plugins/**"
+      - "package.json"
+      - "VERSION"
+      - "CHANGELOG.md"
+      - "README.md"
+      - ".claude-plugin/**"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+
+env:
+  SKILLS_DIR: ".agents/skills"
+  SANDBOX_DIR: ".skill-sandbox"
+
+jobs:
+  validate:
+    name: Validate Skills Bundle
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.4"
+
+      - name: Install dependencies
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p "$SANDBOX_DIR"
+          echo "{}" > "$SANDBOX_DIR/manifest.json"
+
+      - name: Capture canonical skill inventory
+        run: |
+          mkdir -p .skill-sandbox/baseline
+          node scripts/skill-inventory.mjs --out .skill-sandbox/baseline/skill-inventory.json
+
+      - name: Upload inventory baseline
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-skill-inventory
+          path: .skill-sandbox/baseline/skill-inventory.json
+          retention-days: 30
+
+      - name: Validate release metadata
+        run: node scripts/check-release-metadata.mjs
+
+      - name: Validate version surfaces
+        run: node --test tests/version-consistency.test.mjs tests/release-metadata-update.test.mjs
+
+      - name: Validate adoption and inventory regressions
+        run: node --test tests/adoption-safety.test.mjs tests/skill-inventory.test.mjs
+
+      - name: Run focused security and memory regression checks
+        run: node --test tests/action-policy.test.mjs tests/mcp-server-safety.test.mjs tests/memory-provenance.test.mjs tests/loop-budget-safety.test.mjs tests/loop-durable-ledger.test.mjs tests/baseline-scorecard.test.mjs
+
+      - name: Enforce strict supply-chain scan with visible suppressions
+        run: node .agents/skills/platform/security-scan-skills.mjs --strict --json
+
+      - name: Run full local gate
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/check-all.mjs 2>&1 | tee "$(mktemp)"
+
+      - name: Check node lint
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          bash -n .agents/skills/delivery/diagnosing-bugs/scripts/hitl-loop.template.sh
+
+      - name: Sync registry projections
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node scripts/sync-registry.mjs --write 2>&1 | tee "$(mktemp)"
+
+      - name: Verify registry projection drift
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git diff --exit-code -- CATALOG.md llms.txt .claude-plugin/marketplace.json .claude/skills
+
+      - name: Generate metrics
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/skill-lab.mjs metrics 2>&1 | tee "$(mktemp)"
+
+      - name: Generate skill graph
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/skill-lab.mjs graph --format mermaid 2>&1 | tee "$(mktemp)"
+
+      - name: Quality score gate
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/quality-scorer.mjs .agents/skills/skill-dev/skill-creator --minimum-score 60 2>&1 | tee "$(mktemp)"
+
+      - name: Security scan
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node .agents/skills/platform/security-scanner.mjs .agents/skills/skill-dev/skill-creator --json 2>&1 | tee "$(mktemp)"
+
+      - name: Generate site data
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node scripts/generate-site-data.mjs --write 2>&1 | tee "$(mktemp)"
+
+      - name: Verify site data drift
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git diff --exit-code -- site/src/skills.json
+
+      - name: Verify registry.yaml structure
+        run: |
+          set -o pipefail
+          cd "$GITHUB_WORKSPACE"
+          node - <<'NODE' 2>&1 | tee "$(mktemp)"
+          const fs = require('fs');
+          let registry;
+          try {
+            registry = JSON.parse(fs.readFileSync('registry.yaml', 'utf8'));
+          } catch (error) {
+            console.error('registry.yaml unparseable:', error.message);
+            process.exit(1);
+          }
+          const requiredStrings = ['name', 'displayName', 'version', 'bundleVersion', 'repository', 'skillsDir'];
+          const missing = requiredStrings.filter((field) => typeof registry[field] !== 'string' || registry[field].length === 0);
+          if (!Array.isArray(registry.categories) || registry.categories.length === 0) missing.push('categories[]');
+          if (!Array.isArray(registry.supportsAgents) || registry.supportsAgents.length === 0) missing.push('supportsAgents[]');
+          if (missing.length) {
+            console.error('registry.yaml missing required structure:', missing.join(', '));
+            process.exit(1);
+          }
+          console.log('registry.yaml structure valid:', registry.name, registry.version);
+          NODE
+
+      - name: Verify plugins structure
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          missing=0
+          for plugin in plugins/*; do
+            if [ -d "$plugin/.claude-plugin" ]; then
+              echo "Plugin: $(basename "$plugin")"
+              if [ -f "$plugin/.claude-plugin/plugin.json" ]; then
+                echo "  plugin.json: OK"
+              else
+                echo "  plugin.json: MISSING"
+                missing=1
+              fi
+            fi
+          done
+          exit "$missing"
+
+      - name: Summary
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          echo "Skills bundle validation complete."
+          echo "You can find the detailed validation report in the job summary."

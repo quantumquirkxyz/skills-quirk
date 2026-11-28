@@ -1,0 +1,15 @@
+---
+description: "Write Product Requirement Documents (PRDs) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment."
+globs: []
+alwaysApply: false
+---
+# prod-prd-writing
+
+Apply the prod-prd-writing skill when the request matches its scope.
+
+Capabilities:
+- apply prod prd writing methods within explicit product boundaries
+- analyze write product requirement documents (prds) — problem statement, goals, user stories, acceptance criteria, success metrics, timeline — with stakeholder alignment with assumptions, constraints, and failure modes
+- produce and validate a product artifact with evidence, decisions, and next steps
+
+Stop when: PRD saved; stakeholder alignment noted; metrics defined.
